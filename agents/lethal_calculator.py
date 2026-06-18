@@ -20,6 +20,8 @@ class LethalCalculator(BaseAgent):
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
+        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
 
     def receive(self, packet: Any) -> Any:
         """
@@ -54,18 +56,24 @@ class LethalCalculator(BaseAgent):
             "action_override": response.get("action_override"),
             "reasoning_chain": response.get("reasoning_chain")
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to write logic logs: {e}")
+        self._reasoning_buffer.append(log_entry)
+
+    def flush_logs(self):
+        """Write all buffered logs to disk. Called once at end of game."""
+        if self._reasoning_buffer:
+            try:
+                logs = []
+                if self.reasoning_log_file.exists():
+                    content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
+                    if content:
+                        try:
+                            logs = json.loads(content)
+                            if not isinstance(logs, list):
+                                logs = [logs]
+                        except json.JSONDecodeError:
+                            logs = []
+                logs.extend(self._reasoning_buffer)
+                self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+                self._reasoning_buffer.clear()
+            except Exception as e:
+                logger.error(f"Failed to flush lethal calculator reasoning logs: {e}")

@@ -67,6 +67,7 @@ class RouterBus:
         self.delegation_map = delegation_map
         self.registry: Dict[str, Callable[[Any], Any]] = {}
         self.log_file = Path(log_dir) / "action_log.json"
+        self._action_buffer = []  # In-memory buffer for logs
         # Strict mapping of who is allowed to receive what packet class names
         self.allowed_packets: Dict[str, set] = {
             "opponent_model": {"OpponentModelPacket"},
@@ -123,27 +124,31 @@ class RouterBus:
         return response
 
     def _log_delegation(self, event_name: str, agent_name: str, packet_type: str):
-        """Appends a delegation log entry to action_log.json."""
+        """Appends a delegation log entry to the in-memory buffer."""
         log_entry = {
             "event": event_name,
             "agent_called": agent_name,
             "packet_type": packet_type
         }
-        
-        try:
-            logs = []
-            if self.log_file.exists():
-                content = self.log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            
-            logs.append(log_entry)
-            self.log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to log delegation to {self.log_file}: {e}")
+        self._action_buffer.append(log_entry)
 
+    def flush_logs(self):
+        """Write all buffered logs to disk. Called once at end of game."""
+        if self._action_buffer:
+            try:
+                logs = []
+                if self.log_file.exists():
+                    content = self.log_file.read_text(encoding="utf-8").strip()
+                    if content:
+                        try:
+                            logs = json.loads(content)
+                            if not isinstance(logs, list):
+                                logs = [logs]
+                        except json.JSONDecodeError:
+                            logs = []
+                logs.extend(self._action_buffer)
+                self.log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+                self._action_buffer.clear()
+            except Exception as e:
+                logger.error(f"Failed to write delegation logs to {self.log_file}: {e}")
+            self._action_buffer.clear()

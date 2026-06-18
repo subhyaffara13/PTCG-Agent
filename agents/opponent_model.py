@@ -16,17 +16,24 @@ from router.bus import OpponentModelPacket
 logger = logging.getLogger(__name__)
 
 class OpponentModel(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "opponent"):
+    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "opponent", shared_context=None):
         # PERSPECTIVE_FLAG = "opponent" always
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
+        self.shared_context = shared_context
         
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
+        self.reasoning_log_file = self.log_dir / "opponent_model_reasoning.json"
+        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
         
         # Load once on init only
-        self.archetypes = self._load_deck_archetypes()
+        if self.shared_context:
+            self.archetypes = self.shared_context.get_config(str(self.skills_dir), "deck_archetypes.json").get("archetypes", {})
+        else:
+            self.archetypes = self._load_deck_archetypes()
+            
         self.revealed_state = []  # cards opponent has played
         self.inferred_state = {}  # probabilistic fill
         self.archetype_confidence = 0.0
@@ -123,7 +130,7 @@ class OpponentModel(BaseAgent):
         # STEP 5: Build reasoning
         reasoning = f"Identified {self.identified_archetype} with {round(self.archetype_confidence * 100, 2)}% confidence based on {total_revealed} revealed cards. Predicting {predicted}."
 
-        # Log to logs/opponent_model_reasoning.json
+        # Log to buffer
         log_entry = {
             "turn": turn_number,
             "perspective": self.perspective_flag,
@@ -134,20 +141,7 @@ class OpponentModel(BaseAgent):
             "reasoning": reasoning
         }
         
-        log_file = self.log_dir / "opponent_model_reasoning.json"
-        try:
-            existing_logs = []
-            if log_file.exists():
-                content = log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        existing_logs = json.loads(content)
-                    except:
-                        pass
-            existing_logs.append(log_entry)
-            log_file.write_text(json.dumps(existing_logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to write opponent model reasoning log: {e}")
+        self._reasoning_buffer.append(log_entry)
 
         return {
             "predicted_next_action": predicted,

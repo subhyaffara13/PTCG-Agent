@@ -15,19 +15,33 @@ from router.bus import StrategyPacket
 logger = logging.getLogger(__name__)
 
 class StrategyAgent(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player"):
+    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player", shared_context=None):
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
+        self.shared_context = shared_context
         
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
+        self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
         
-        self.profiles = self._load_strategy_profiles()
+        self.learned_donts = {"behavior_donts": []}
+        donts_path = self.skills_dir / "learned_donts.json"
+        if donts_path.exists():
+            try:
+                self.learned_donts = json.loads(donts_path.read_text(encoding="utf-8"))
+            except:
+                pass
+        
+        if self.shared_context:
+            self.profiles = self.shared_context.get_config(str(self.skills_dir), "strategy_profiles.json")
+        else:
+            self.profiles = self._load_strategy_profiles()
+            
         self.active_strategy = "aggro_push"
         self.last_triggered_turn = -1
         self.last_priority_profile = None
-        self.reasoning_log_file = self.log_dir / "reasoning_log.json"
 
     def _load_strategy_profiles(self) -> dict:
         path = self.skills_dir / "strategy_profiles.json"
@@ -60,16 +74,21 @@ class StrategyAgent(BaseAgent):
         opponent_archetype = board_summary.get("opponent_archetype", "unknown")
         bench_has_attacker = board_summary.get("bench_has_attacker", False)
 
+        prized_probabilities = board_summary.get("prized_probabilities", {})
+        pikachu_prized_prob = prized_probabilities.get("721", 0.0)
+        raichu_prized_prob = prized_probabilities.get("722", 0.0)
+
         # Trigger logic conditions
         is_prize_gap = (my_prizes - opponent_prizes) >= 2
         is_deck_identified = opponent_confidence > 0.75
         is_hand_shift = (self.last_priority_profile is not None) and (priority_profile != self.last_priority_profile)
-        is_explicit = trigger == "force_evaluate"
+        is_explicit = trigger == "force_evaluate" or trigger == "prize_gap"
         is_turn_milestone = turn_number in (3, 6, 9, 12, 15)
         my_bench_count = board_summary.get('my_bench_count', 0)
         is_bench_advantage = my_bench_count >= 3 and opponent_prizes > 3
+        is_prized_attacker = (pikachu_prized_prob >= 0.75 or raichu_prized_prob >= 0.75)
 
-        should_trigger = is_prize_gap or is_deck_identified or is_hand_shift or is_explicit or is_turn_milestone or is_bench_advantage
+        should_trigger = is_prize_gap or is_deck_identified or is_hand_shift or is_explicit or is_turn_milestone or is_bench_advantage or is_prized_attacker
 
         # Cache last profile state
         self.last_priority_profile = priority_profile
@@ -85,12 +104,14 @@ class StrategyAgent(BaseAgent):
             return response
 
         # Strategy selection logic (in priority order)
-        prev_strategy = self.active_strategy
-        
-        if opponent_prizes <= 2:
-            new_strategy = 'closing'
+        # Apply learned behavior donts to avoid certain strategies
+        proposed_strategy = self.active_strategy
+        if (pikachu_prized_prob >= 0.75 or raichu_prized_prob >= 0.75) and opponent_prizes > 2:
+            proposed_strategy = 'setup'
+        elif opponent_prizes <= 2:
+            proposed_strategy = 'closing'
         elif my_prizes >= 5 and opponent_prizes <= 3:
-            new_strategy = 'aggro_push'  # desperation: far behind, must attack
+            proposed_strategy = 'aggro_push'  # desperation: far behind, must attack
         elif opponent_archetype == 'aggro' and my_prizes < opponent_prizes:
             new_strategy = 'stall'  # only stall when ahead in prizes
         elif opponent_prizes <= 2 and my_prizes > opponent_prizes:
@@ -128,18 +149,24 @@ class StrategyAgent(BaseAgent):
             "triggered": triggered,
             "reasoning": reasoning
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to log strategy choice: {e}")
+        self._reasoning_buffer.append(log_entry)
+
+    def flush_logs(self):
+        """Write all buffered logs to disk. Called once at end of game."""
+        if self._reasoning_buffer:
+            try:
+                logs = []
+                if self.reasoning_log_file.exists():
+                    content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
+                    if content:
+                        try:
+                            logs = json.loads(content)
+                            if not isinstance(logs, list):
+                                logs = [logs]
+                        except json.JSONDecodeError:
+                            logs = []
+                logs.extend(self._reasoning_buffer)
+                self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+                self._reasoning_buffer.clear()
+            except Exception as e:
+                logger.error(f"Failed to flush strategy reasoning logs: {e}")

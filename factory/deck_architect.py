@@ -31,6 +31,15 @@ class DeckArchitect(BaseAgent):
         self.skills_dir.mkdir(parents=True, exist_ok=True)
         self.staging_dir.mkdir(parents=True, exist_ok=True)
         
+        # Load learned_donts.json
+        self.learned_donts = {"deck_donts": []}
+        donts_path = self.skills_dir / "learned_donts.json"
+        if donts_path.exists():
+            try:
+                self.learned_donts = json.loads(donts_path.read_text(encoding="utf-8"))
+            except Exception as e:
+                logger.error(f"Failed to load learned_donts.json: {e}")
+        
         # Load once on init only
         self.card_pool = self._load_card_pool()
         self.rubric = self._load_deck_rubric()
@@ -483,12 +492,30 @@ class DeckArchitect(BaseAgent):
         matchup_spread_score = 0.8
 
         # Weighted sum of scores
-        deck_score = (
+        score = (
             consistency_score * 0.35 +
             prize_efficiency_score * 0.25 +
             recovery_score * 0.20 +
             matchup_spread_score * 0.20
         )
+
+        # APPLY LEARNED DONT'S PENALTIES
+        for rule in self.learned_donts.get("deck_donts", []):
+            condition = rule.get("condition", "")
+            
+            # Count types if needed by rules
+            if "energy_gt_25_trainer_lt_10" == condition:
+                energy_c = sum(1 for c in deck if c.get("card_type") == "Energy")
+                trainer_c = sum(1 for c in deck if c.get("card_type") == "Trainer")
+                if energy_c > 25 and trainer_c < 10:
+                    score -= 5.0  # Massive penalty
+                    
+            elif "pokemon_gt_30" == condition:
+                poke_c = sum(1 for c in deck if c.get("card_type") == "Pokemon")
+                if poke_c > 30:
+                    score -= 5.0
+
+        deck_score = max(0.0, score)
 
         return {
             "deck_score": round(deck_score, 4),

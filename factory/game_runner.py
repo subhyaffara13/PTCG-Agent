@@ -282,7 +282,9 @@ class GameRunner(BaseAgent):
         results = {}
 
         # Run games in parallel processes to isolate ctypes DLL battle pointers
-        with ProcessPoolExecutor(max_workers=3) as executor:
+        # Use up to 6 workers on multi-core machines for maximum throughput
+        num_workers = min(6, os.cpu_count() or 4)
+        with ProcessPoolExecutor(max_workers=num_workers) as executor:
             futures = []
             for label, deck_a, deck_b, use_staging_a, use_staging_b in games_config:
                 futures.append(
@@ -379,6 +381,15 @@ def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str,
     env = make("cabt")
     env.run([agent_a, agent_b])
     elapsed = time.time() - start_time
+
+    # Flush all in-memory log buffers to disk (one write per agent, not per turn)
+    try:
+        if hasattr(agent_a, 'orchestrator'):
+            agent_a.orchestrator.flush_all_logs()
+        if hasattr(agent_b, 'orchestrator'):
+            agent_b.orchestrator.flush_all_logs()
+    except Exception as e:
+        logger.warning(f"Failed to flush orchestrator logs: {e}")
 
     # Extract stats from finished steps
     final_steps = env.steps

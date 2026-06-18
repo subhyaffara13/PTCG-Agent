@@ -1,8 +1,7 @@
-// Card name database lookup
 const CARD_DATABASE = {
-    721: { name: "Pikachu", type: "pokemon" },
-    722: { name: "Raichu", type: "pokemon" },
-    723: { name: "Magnemite", type: "pokemon" },
+    721: { name: "Kyogre", type: "pokemon" },
+    722: { name: "Snover", type: "pokemon" },
+    723: { name: "Mega Abomasnow ex", type: "pokemon" },
     1092: { name: "Professor's Research", type: "trainer" },
     1121: { name: "Poké Ball", type: "trainer" },
     1145: { name: "Switch", type: "trainer" },
@@ -10,7 +9,7 @@ const CARD_DATABASE = {
     1219: { name: "Great Ball", type: "trainer" },
     1227: { name: "Ultra Ball", type: "trainer" },
     1262: { name: "Nest Ball", type: "trainer" },
-    3: { name: "Energy", type: "energy" }
+    3: { name: "Basic {W} Energy", type: "energy" }
 };
 
 function getCardDetails(cardId) {
@@ -54,6 +53,86 @@ const p2Bench = document.getElementById("opp-bench");
 const p2Active = document.getElementById("opp-active");
 const p2Prizes = document.getElementById("opp-prizes");
 const p2Deck = document.getElementById("opp-deck");
+
+const fileSelect = document.getElementById("game-file-select");
+
+// Populate files list from /data/ listing page
+async function loadAvailableLogs() {
+    try {
+        if (window.location.protocol === 'file:') {
+            fileSelect.innerHTML = `<option value="">Use http://localhost:8000 to see options</option>`;
+            console.warn("Visualizer opened via file:// protocol. Local logs list is only available when served over HTTP (http://localhost:8000).");
+            return;
+        }
+
+        const response = await fetch('/data/');
+        if (!response.ok) {
+            fileSelect.innerHTML = `<option value="">Failed to fetch log options</option>`;
+            return;
+        }
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const files = Array.from(doc.querySelectorAll('a'))
+            .map(a => a.getAttribute('href'))
+            .filter(href => href && href.endsWith('.json'))
+            .map(href => decodeURIComponent(href.split('/').pop()));
+
+        const uniqueFiles = Array.from(new Set(files)).sort().reverse();
+
+        if (uniqueFiles.length > 0) {
+            fileSelect.innerHTML = `<option value="">-- Select Match Log --</option>`;
+            uniqueFiles.forEach(file => {
+                const opt = document.createElement("option");
+                opt.value = file;
+                
+                // Determine friendly nickname
+                let nickname = file;
+                const match = file.match(/iter_(\d+)_(reasoning_test|deck_test|variance_baseline)\.json/);
+                if (match) {
+                    const iterNum = match[1];
+                    const testType = match[2];
+                    let label = "";
+                    if (testType === "reasoning_test") {
+                        label = "Logic Staging (New vs Old)";
+                    } else if (testType === "deck_test") {
+                        label = "Deck Staging (New vs Old)";
+                    } else if (testType === "variance_baseline") {
+                        label = "RNG / Noise Control Match";
+                    }
+                    nickname = `Iteration ${iterNum} — ${label}`;
+                }
+                
+                opt.textContent = nickname;
+                fileSelect.appendChild(opt);
+            });
+        } else {
+            fileSelect.innerHTML = `<option value="">No log files found in data/</option>`;
+        }
+    } catch (err) {
+        console.error("Failed to load available logs:", err);
+        fileSelect.innerHTML = `<option value="">Error loading logs list</option>`;
+    }
+}
+
+// Handle select change
+fileSelect.addEventListener("change", async (event) => {
+    const filename = event.target.value;
+    if (!filename) return;
+
+    try {
+        const response = await fetch(`/data/${encodeURIComponent(filename)}`);
+        if (!response.ok) throw new Error("Server returned status " + response.status);
+        gameSteps = await response.json();
+        currentStepIdx = 0;
+        initPlayback();
+    } catch (err) {
+        alert("Failed to load match JSON: " + err.message);
+    }
+});
+
+// Call on startup
+loadAvailableLogs();
 
 // Handle File upload
 fileInput.addEventListener("change", (event) => {
@@ -181,7 +260,7 @@ function renderStep(idx) {
     }
 
     // Render step action logs
-    appendLog(idx, stepData);
+    rebuildLogs(idx);
 }
 
 function renderPlayerBoard(playerData, handDOM, benchDOM, activeDOM, prizesDOM, deckDOM, pClass) {
@@ -191,12 +270,12 @@ function renderPlayerBoard(playerData, handDOM, benchDOM, activeDOM, prizesDOM, 
     handDOM.innerHTML = "";
     const hand = playerData.hand || [];
     hand.forEach(card => {
-        const details = getCardDetails(card.id || card);
+        const cardId = card.id || card;
+        const details = getCardDetails(cardId);
         const cardDiv = document.createElement("div");
         cardDiv.className = `card-item ${details.type}`;
         cardDiv.innerHTML = `
-            <div class="card-name">${details.name}</div>
-            <div class="card-type-lbl">${details.type}</div>
+            <img src="images/card_${cardId}.jpeg" alt="${details.name}" class="card-image" onerror="this.style.opacity='0.2';">
         `;
         handDOM.appendChild(cardDiv);
     });
@@ -206,12 +285,12 @@ function renderPlayerBoard(playerData, handDOM, benchDOM, activeDOM, prizesDOM, 
     const bench = playerData.bench || [];
     bench.forEach(pokemon => {
         if (!pokemon) return;
-        const details = getCardDetails(pokemon.id || pokemon);
+        const cardId = pokemon.id || pokemon;
+        const details = getCardDetails(cardId);
         const cardDiv = document.createElement("div");
         cardDiv.className = `card-item pokemon`;
         cardDiv.innerHTML = `
-            <div class="card-name">${details.name}</div>
-            <div class="card-type-lbl">Bench (HP: ${pokemon.hp || 100})</div>
+            <img src="images/card_${cardId}.jpeg" alt="${details.name}" class="card-image" onerror="this.style.opacity='0.2';">
         `;
         benchDOM.appendChild(cardDiv);
     });
@@ -221,18 +300,18 @@ function renderPlayerBoard(playerData, handDOM, benchDOM, activeDOM, prizesDOM, 
     const activeList = playerData.active || [];
     if (activeList.length > 0 && activeList[0]) {
         const active = activeList[0];
-        const details = getCardDetails(active.id || active);
+        const cardId = active.id || active;
+        const details = getCardDetails(cardId);
         const hpPercent = Math.max(0, Math.min(100, ((active.hp || 100) / (active.maxHp || 100)) * 100));
         activeDOM.innerHTML = `
             <div class="active-pokemon-card ${pClass}">
-                <div>
-                    <h3 style="font-size: 1.1rem; font-family: 'Space Grotesk'">${details.name}</h3>
-                    <div style="font-size: 0.8rem; opacity: 0.8">HP: ${active.hp || 100}/${active.maxHp || 100}</div>
+                <img src="images/card_${cardId}.jpeg" alt="${details.name}" class="active-card-image" onerror="this.style.opacity='0.2';">
+                <div class="active-overlay">
+                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--text-primary);">HP: ${active.hp || 100}/${active.maxHp || 100}</div>
                     <div class="active-hp-bar">
                         <div class="active-hp-inner" style="width: ${hpPercent}%"></div>
                     </div>
                 </div>
-                <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: bold; opacity: 0.6">Active Spot</div>
             </div>
         `;
     } else {
@@ -247,23 +326,32 @@ function renderPlayerBoard(playerData, handDOM, benchDOM, activeDOM, prizesDOM, 
     deckDOM.textContent = playerData.deckCount !== undefined ? playerData.deckCount : 60;
 }
 
-function appendLog(idx, stepData) {
-    if (idx === 0) {
-        logOutput.innerHTML = `<div class="log-entry turn-header">Game Started</div>`;
-    }
-
-    const logsList = [];
-    stepData.players.forEach(p => {
-        if (p.action !== null && p.action !== undefined) {
-            logsList.push(`Player ${p.player + 1} chose option indices: [${p.action.join(", ")}]`);
+function rebuildLogs(maxIdx) {
+    logOutput.innerHTML = "";
+    for (let i = 0; i <= maxIdx; i++) {
+        const stepData = gameSteps[i];
+        if (!stepData) continue;
+        
+        if (i === 0) {
+            const entry = document.createElement("div");
+            entry.className = "log-entry turn-header";
+            entry.textContent = "Game Started";
+            logOutput.appendChild(entry);
         }
-    });
 
-    if (logsList.length > 0) {
-        const logItem = document.createElement("div");
-        logItem.className = "log-entry";
-        logItem.innerHTML = `<strong>Step ${idx}:</strong><br>${logsList.join("<br>")}`;
-        logOutput.appendChild(logItem);
-        logOutput.scrollTop = logOutput.scrollHeight;
+        const logsList = [];
+        stepData.players.forEach(p => {
+            if (p.action !== null && p.action !== undefined) {
+                logsList.push(`Player ${p.player + 1} chose option indices: [${p.action.join(", ")}]`);
+            }
+        });
+
+        if (logsList.length > 0) {
+            const logItem = document.createElement("div");
+            logItem.className = "log-entry";
+            logItem.innerHTML = `<strong>Step ${i}:</strong><br>${logsList.join("<br>")}`;
+            logOutput.appendChild(logItem);
+        }
     }
+    logOutput.scrollTop = logOutput.scrollHeight;
 }

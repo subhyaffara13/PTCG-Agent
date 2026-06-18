@@ -31,6 +31,9 @@ class Orchestrator(BaseAgent):
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
         
+        from agents.context import SharedContext
+        self.context = SharedContext()
+        
         # Load delegation_map.json on init only
         self.delegation_map = self._load_delegation_map()
         
@@ -38,10 +41,10 @@ class Orchestrator(BaseAgent):
         self.bus = RouterBus(self.delegation_map, log_dir=str(self.log_dir))
         
         # Initialize and register sub-agents
-        self.hand_analyst = HandAnalyst(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir))
-        self.turn_planner = TurnPlanner(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir))
-        self.strategy_agent = StrategyAgent(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir))
-        self.opponent_model = OpponentModel(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir))
+        self.hand_analyst = HandAnalyst(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir), shared_context=self.context)
+        self.turn_planner = TurnPlanner(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir), shared_context=self.context)
+        self.strategy_agent = StrategyAgent(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir), shared_context=self.context)
+        self.opponent_model = OpponentModel(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir), shared_context=self.context)
         self.time_manager = TimeManager(log_dir=str(self.log_dir))
         self.lethal_calculator = LethalCalculator(log_dir=str(self.log_dir))
 
@@ -118,7 +121,16 @@ class Orchestrator(BaseAgent):
         if lethal_result.get("action_override") is not None:
             return lethal_result["action_override"]
 
-        # STEP 3: Check StrategyAgent trigger
+        # STEP 3: Run HandAnalyst
+        hand_packet = HandAnalystPacket(
+            hand=game_state.get("my_hand", []),
+            deck_remaining=game_state.get("my_deck_count", 60),
+            discard=game_state.get("my_discard", []),
+            board=game_state.get("my_board", [])
+        )
+        hand_result = self.bus.dispatch("turn_start", hand_packet)
+
+        # STEP 4: Check StrategyAgent trigger
         board_summary = {
             "my_prizes_remaining": game_state.get("my_prizes", 6),
             "opponent_prizes_remaining": game_state.get("opponent_prizes", 6),
@@ -127,7 +139,9 @@ class Orchestrator(BaseAgent):
             "turn_number": self.current_turn,
             "opponent_archetype": self.opponent_model.identified_archetype,
             "opponent_archetype_confidence": self.opponent_model.archetype_confidence,
-            "bench_has_attacker": game_state.get("bench_has_attacker", False)
+            "bench_has_attacker": game_state.get("bench_has_attacker", False),
+            "my_bench_count": len(game_state.get("my_bench", [])),
+            "prized_probabilities": hand_result.get("prized_probabilities", {})
         }
         
         strategy_packet = StrategyPacket(
@@ -137,19 +151,10 @@ class Orchestrator(BaseAgent):
         strategy_result = self.bus.dispatch("on_trigger", strategy_packet)
         active_strategy = strategy_result["new_strategy"]
 
-        # STEP 4: Run HandAnalyst
-        hand_packet = HandAnalystPacket(
-            hand=game_state.get("my_hand", []),
-            deck_remaining=game_state.get("my_deck_count", 60),
-            discard=game_state.get("my_discard", []),
-            board=game_state.get("my_board", [])
-        )
-        hand_result = self.bus.dispatch("turn_start", hand_packet)
-
         # STEP 5: Run TurnPlanner
         turn_packet = TurnPlannerPacket(
             hand_score=hand_result["hand_score"],
-            priority_profile=hand_result["priority_profile"],
+            priority_profile=active_strategy,
             top_play=hand_result["top_play"],
             game_state=self._get_public_state(),
             turn=self.current_turn

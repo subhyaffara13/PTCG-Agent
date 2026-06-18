@@ -1,52 +1,49 @@
 card_id,card_name,card_type,count,ev_score
-241,Vaporeon ex,Pokemon,1,0.8
-9,Boomerang Energy,Energy,8,0.4286
-348,Hydrapple,Pokemon,1,0.4
-641,Steven's Metagross ex,Pokemon,1,0.5714
-147,Cradily,Pokemon,1,0.2857
-234,Terapagos,Pokemon,1,0.2857
-953,Zapdos,Pokemon,1,0.5429
-412,Blaziken,Pokemon,1,0.3429
-304,Hop’s Snorlax,Pokemon,1,0.4
-857,Camerupt,Pokemon,1,0.4857
-153,Cinderace ex,Pokemon,1,0.8
-854,Dustox,Pokemon,2,0.2857
-84,Scizor ex,Pokemon,1,0.3429
-721,Kyogre,Pokemon,1,0.3714
-372,Electivire ex,Pokemon,1,0.5143
-1072,Snorlax,Pokemon,1,0.4571
-1047,Probopass,Pokemon,1,0.7429
-108,Wellspring Mask Ogerpon ex,Pokemon,1,0.2857
-636,Steven's Claydol,Pokemon,1,0.6286
-530,Conkeldurr,Pokemon,1,0.2857
-409,Team Rocket's Houndoom,Pokemon,1,0.3429
-83,Farigiraf ex,Pokemon,1,0.4571
-802,Mamoswine,Pokemon,1,0.5714
-115,Conkeldurr,Pokemon,1,0.7143
-992,Duraludon,Pokemon,1,0.3714
-299,Hop’s Zacian ex,Pokemon,1,0.6857
-563,Sawsbuck,Pokemon,1,0.2857
-326,Blaziken ex,Pokemon,1,0.5714
-135,Bloodmoon Ursaluna,Pokemon,1,0.2857
-678,Mega Lucario ex,Pokemon,2,0.7714
-17,Ignition Energy,Energy,1,0.4286
-737,Mega Manectric ex,Pokemon,1,0.3429
-368,Floatzel,Pokemon,1,0.4
-527,Excadrill ex,Pokemon,1,0.5714
-209,Chien-Pao,Pokemon,1,0.3429
-685,Garganacl,Pokemon,1,0.3714
-601,Gigalith,Pokemon,1,0.4571
-579,Swanna,Pokemon,1,0.3429
-686,Crawdaunt,Pokemon,1,0.3714
-613,Garbodor,Pokemon,1,0.3429
-369,Dondozo ex,Pokemon,1,0.3429
-21,Scrafty,Pokemon,1,0.2857
-553,Unfezant,Pokemon,1,0.3429
-811,Pawmot,Pokemon,1,0.3714
-290,Tyranitar,Pokemon,1,0.4286
-1067,Aegislash,Pokemon,1,0.6571
+266,Iono’s Electrode,Pokemon,1,0.2857
+3,Basic {W} Energy,Energy,8,0.0
+4,Basic {L} Energy,Energy,2,0.0
+1031,Mega Starmie ex,Pokemon,1,0.6
+553,Unfezant,Pokemon,2,0.3429
+969,Scream Tail ex,Pokemon,1,0.3429
+82,Excadrill,Pokemon,1,0.5143
+23,Hippowdon,Pokemon,1,0.4286
+674,Hariyama,Pokemon,1,0.6
+14,Spiky Energy,Energy,1,0.4286
+896,Mega Scrafty ex,Pokemon,1,0.4571
+832,Krookodile,Pokemon,1,0.4571
+349,Teal Mask Ogerpon,Pokemon,1,0.3429
+834,Toxtricity,Pokemon,1,0.2857
+631,Bouffalant ex,Pokemon,1,0.2857
+894,Galarian Obstagoon,Pokemon,1,0.4571
+259,Volcanion ex,Pokemon,1,0.4571
+175,Bouffalant,Pokemon,1,0.3714
+216,Mesprit,Pokemon,1,0.4571
+772,Mega Gengar ex,Pokemon,3,0.6571
 1054,Tyrantrum,Pokemon,1,0.4571
-670,Sandslash,Pokemon,1,0.2857
-982,Scolipede,Pokemon,1,0.4571
-797,Ceruledge,Pokemon,1,0.6286
-707,Tangrowth,Pokemon,1,0.3429
+241,Vaporeon ex,Pokemon,1,0.8
+471,Team Rocket's Persian ex,Pokemon,1,0.4
+585,Zebstrika,Pokemon,1,0.2857
+179,Black Kyurem ex,Pokemon,1,0.7143
+481,Serperior ex,Pokemon,1,0.4286
+209,Chien-Pao,Pokemon,1,0.3429
+583,Keldeo ex,Pokemon,1,0.3429
+975,Stunfisk ex,Pokemon,1,0.2857
+142,Genesect,Pokemon,1,0.2857
+17,Ignition Energy,Energy,1,0.4286
+601,Gigalith,Pokemon,1,0.4571
+504,Carracosta,Pokemon,1,0.4286
+6,Basic {F} Energy,Energy,1,0.0
+269,Iono’s Bellibolt ex,Pokemon,2,0.6571
+318,Ho-Oh,Pokemon,1,0.2857
+944,Regice ex,Pokemon,1,0.4
+386,Cornerstone Mask Ogerpon,Pokemon,1,0.2857
+40,Greninja ex,Pokemon,1,0.4857
+1022,Decidueye ex,Pokemon,1,0.6857
+954,Luxray ex,Pokemon,1,0.7143
+514,Thundurus,Pokemon,1,0.3143
+905,Rayquaza,Pokemon,1,0.3714
+121,Dragapult ex,Pokemon,1,0.5714
+636,Steven's Claydol,Pokemon,1,0.6286
+889,Coalossal,Pokemon,1,0.6286
+725,Clawitzer,Pokemon,1,0.6
+613,Garbodor,Pokemon,1,0.3429

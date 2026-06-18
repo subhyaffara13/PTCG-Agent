@@ -11,22 +11,28 @@ from pathlib import Path
 from typing import Any, Dict, List
 from agents.base_agent import BaseAgent
 from router.bus import HandAnalystPacket
+from agents.card_registry import CardRegistry
 
 logger = logging.getLogger(__name__)
 
 class HandAnalyst(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player"):
+    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player", shared_context=None):
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
+        self.shared_context = shared_context
         
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
         
         # Load card pool scoring data on init only
-        self.card_pool = self._load_card_pool()
-        self.card_lookup = {c["card_id"]: c for c in self.card_pool}
+        self.registry = CardRegistry(self.skills_dir)
+        self.card_lookup = self.registry.cards
+        
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self.prize_mapper_file = self.log_dir / "prize_mapper_reasoning.json"
+        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
+        self._prize_mapper_buffer = []  # In-memory buffer for prize mapper logs
         self.deck_base_list = self._load_deck_base_list()
 
     def _load_deck_base_list(self) -> dict:
@@ -127,23 +133,13 @@ class HandAnalyst(BaseAgent):
 
         # Log prized mapping
         if prized_probabilities:
-            log_file = self.log_dir / "prize_mapper_reasoning.json"
-            try:
-                existing_logs = []
-                if log_file.exists():
-                    content = log_file.read_text(encoding="utf-8").strip()
-                    if content:
-                        existing_logs = json.loads(content)
-                existing_logs.append({
-                    "turn": turn,
-                    "perspective": self.perspective_flag,
-                    "prize_remaining": prize_remaining,
-                    "total_unrevealed": total_unrevealed,
-                    "prized_probabilities": prized_probabilities
-                })
-                log_file.write_text(json.dumps(existing_logs, indent=2), encoding="utf-8")
-            except Exception as e:
-                logger.error(f"Failed to log prize mapper: {e}")
+            self._prize_mapper_buffer.append({
+                "turn": turn,
+                "perspective": self.perspective_flag,
+                "prize_remaining": prize_remaining,
+                "total_unrevealed": total_unrevealed,
+                "prized_probabilities": prized_probabilities
+            })
 
         # Empty hand fallback check
         if not hand:
@@ -151,7 +147,8 @@ class HandAnalyst(BaseAgent):
                 "hand_score": 0.0,
                 "priority_profile": "stall",
                 "top_play": "none",
-                "reasoning_chain": "Empty hand — stall profile activated"
+                "reasoning_chain": "Empty hand — stall profile activated",
+                "prized_probabilities": {}
             }
             self._log_reasoning(turn, response)
             return response
@@ -261,7 +258,8 @@ class HandAnalyst(BaseAgent):
             "hand_score": round(hand_score, 4),
             "priority_profile": priority_profile,
             "top_play": top_play,
-            "reasoning_chain": reasoning_chain
+            "reasoning_chain": reasoning_chain,
+            "prized_probabilities": prized_probabilities if 'prized_probabilities' in locals() else {}
         }
 
         # Log reasoning details
@@ -276,18 +274,24 @@ class HandAnalyst(BaseAgent):
             "top_play": response["top_play"],
             "reasoning_chain": response["reasoning_chain"]
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to write logic logs: {e}")
+        self._reasoning_buffer.append(log_entry)
+
+    def flush_logs(self):
+        """Write all buffered logs to disk. Called once at end of game."""
+        if self._reasoning_buffer:
+            try:
+                self.reasoning_log_file.write_text(
+                    json.dumps(self._reasoning_buffer, indent=2), encoding='utf-8'
+                )
+            except Exception as e:
+                logger.error(f"Failed to flush reasoning logs: {e}")
+            self._reasoning_buffer.clear()
+        if self._prize_mapper_buffer:
+            prize_log_file = self.log_dir / "prize_mapper_reasoning.json"
+            try:
+                prize_log_file.write_text(
+                    json.dumps(self._prize_mapper_buffer, indent=2), encoding='utf-8'
+                )
+            except Exception as e:
+                logger.error(f"Failed to flush prize mapper logs: {e}")
+            self._prize_mapper_buffer.clear()

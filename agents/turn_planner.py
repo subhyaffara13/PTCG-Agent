@@ -15,17 +15,23 @@ from router.bus import TurnPlannerPacket
 logger = logging.getLogger(__name__)
 
 class TurnPlanner(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player"):
+    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player", shared_context=None):
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
+        self.shared_context = shared_context
         
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
         
         # Load priority rules on init only
-        self.rules = self._load_priority_rules()
+        if self.shared_context:
+            self.rules = self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
+        else:
+            self.rules = self._load_priority_rules()
+            
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
 
     def _load_priority_rules(self) -> dict:
         path = self.skills_dir / "priority_rules.json"
@@ -61,7 +67,7 @@ class TurnPlanner(BaseAgent):
         candidates = self._build_legal_candidates(game_state)
 
         # STEP 2: Sort candidates according to active profile priorities
-        sorted_actions = self._sort_actions(candidates, priority_profile)
+        sorted_actions = self._sort_actions(candidates, priority_profile, game_state)
 
         # Always guarantee at least ["pass"] exists
         if not sorted_actions:
@@ -118,7 +124,7 @@ class TurnPlanner(BaseAgent):
         candidates.append("pass")
         return candidates
 
-    def _sort_actions(self, candidates: List[str], profile: str) -> List[str]:
+    def _sort_actions(self, candidates: List[str], profile: str, game_state: dict) -> List[str]:
         """Sorts actions based on the explicit priority order per profile."""
         
         # Profile order registries: non-ending moves first, then attack, then pass
@@ -132,13 +138,36 @@ class TurnPlanner(BaseAgent):
 
         order = profile_orders.get(profile, profile_orders["aggro_push"])
 
-        def get_priority_rank(action: str) -> int:
+        active_pokemon = game_state.get("my_active_pokemon")
+        over_attached = False
+        if isinstance(active_pokemon, dict):
+            card_id = active_pokemon.get("id")
+            attached_count = len(active_pokemon.get("energies", []))
+            needed = 3 if card_id == 722 else 2
+            if attached_count >= needed:
+                over_attached = True
+
+        def get_priority_rank(action: str) -> tuple:
+            cat_rank = len(order)
             for rank, prefix in enumerate(order):
                 if action.startswith(prefix):
-                    return rank
-            return len(order)
+                    cat_rank = rank
+                    break
 
-        # Sort based on rank prefix match, preserve secondary ordering
+            micro_rank = 0
+            if action.startswith("play_trainer:"):
+                trainer_name = action.split(":", 1)[1]
+                if "Research" in trainer_name or "Professor" in trainer_name:
+                    micro_rank = -2
+                elif "Ball" in trainer_name:
+                    micro_rank = 2
+            elif action.startswith("attach_energy:"):
+                if over_attached:
+                    cat_rank = order.index("pass") - 1
+                    micro_rank = 10
+
+            return (cat_rank, micro_rank, action)
+
         return sorted(candidates, key=get_priority_rank)
 
     def _log_reasoning(self, turn: int, profile: str, response: dict):
@@ -149,18 +178,15 @@ class TurnPlanner(BaseAgent):
             "primary_action": response["primary_action"],
             "reasoning_chain": response["reasoning_chain"]
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to log turn planner decision: {e}")
+        self._reasoning_buffer.append(log_entry)
+
+    def flush_logs(self):
+        """Write all buffered logs to disk. Called once at end of game."""
+        if self._reasoning_buffer:
+            try:
+                self.reasoning_log_file.write_text(
+                    json.dumps(self._reasoning_buffer, indent=2), encoding='utf-8'
+                )
+            except Exception as e:
+                logger.error(f"Failed to flush turn planner logs: {e}")
+            self._reasoning_buffer.clear()

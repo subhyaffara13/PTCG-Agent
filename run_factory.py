@@ -21,6 +21,13 @@ from factory.builder_agent import BuilderAgent
 from factory.deck_architect import DeckArchitect
 from factory.validator_agent import ValidatorAgent
 
+# Horizon 3 Components
+from factory.anti_pattern_extractor import AntiPatternExtractor
+from factory.degradation_tracker import DegradationTracker
+from factory.trajectory_logger import TrajectoryLogger
+from factory.replay_buffer import ReplayBuffer
+from factory.early_stopping import EarlyStoppingGate
+
 def run_iteration(iteration_id: int, forced_archetype: str = None, forced_change_type: str = None, forced_escalation: dict = None):
     logger.info(f"=== STARTING ITERATION {iteration_id} ===")
 
@@ -31,6 +38,13 @@ def run_iteration(iteration_id: int, forced_archetype: str = None, forced_change
     builder = BuilderAgent()
     architect = DeckArchitect()
     validator = ValidatorAgent()
+    
+    # Init Horizon 3 components
+    anti_pattern = AntiPatternExtractor()
+    deg_tracker = DegradationTracker()
+    traj_logger = TrajectoryLogger()
+    replay_buf = ReplayBuffer()
+    early_stop = EarlyStoppingGate()
 
     # Load baseline/current configurations
     skills_dir = Path("skills")
@@ -78,6 +92,37 @@ def run_iteration(iteration_id: int, forced_archetype: str = None, forced_change
         archetype=archetype
     )
     logger.info(f"Evaluation report generated. Best version: {eval_report['version_scores']['best_version']}")
+    
+    # STEP 2.5: Horizon 3 Telemetry & Meta-Learning
+    logger.info("Step 2.5: Extracting telemetry and anti-patterns...")
+    try:
+        # We need behavioral vectors from the games. For simplicity, just use dummy dicts 
+        # or rely on the modules to handle empty/missing.
+        anti_pattern.analyze_iteration(iteration_result, {}, {})
+        
+        # Track health
+        best_ver_score = eval_report['version_scores'].get('player_b', 0.5)
+        deg_tracker.record_iteration_stats(win_rate=best_ver_score, diversity_score=0.5)
+        health_report = deg_tracker.evaluate_health()
+        
+        if health_report.is_degraded:
+            logger.warning(f"DEGRADATION DETECTED: {health_report.reasons}")
+            # Force escalation to the suggested optimizer
+            if health_report.suggested_action == "trigger_deck_optimizer":
+                forced_escalation = forced_escalation or {}
+                forced_escalation["deck_architect"] = True
+            
+        # Log trajectories (async)
+        for label, game in iteration_result.get("games", {}).items():
+            traj_logger.log_match({
+                "iteration": iteration_id,
+                "label": label,
+                "winner": game.get("winner"),
+                "turns": game.get("turns_taken")
+            })
+            
+    except Exception as e:
+        logger.error(f"Error in Horizon 3 telemetry: {e}", exc_info=True)
 
     # STEP 3: Decide improvement policy
     logger.info("Step 3: Deciding improvement action...")

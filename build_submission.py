@@ -5,9 +5,20 @@ from datetime import datetime
 
 # 1. Sync the promoted deck_new.csv into submission/
 promoted_deck = Path("staging/deck_new.csv")
-shutil.copy2(promoted_deck, Path("submission/deck.csv"))
-shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
+if promoted_deck.exists():
+    shutil.copy2(promoted_deck, Path("submission/deck.csv"))
+    shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
 print("Synced promoted deck.")
+
+# 1.5 Sync all agents to submission/cb_agents and adjust imports
+print("Syncing agents to submission/cb_agents...")
+for f in Path("agents").glob("*.py"):
+    dest = Path("submission/cb_agents") / f.name
+    shutil.copy2(f, dest)
+    content = dest.read_text(encoding="utf-8")
+    content = content.replace("from agents.", "from cb_agents.")
+    content = content.replace("import agents.", "import cb_agents.")
+    dest.write_text(content, encoding="utf-8")
 
 # 2. Write a manifest
 manifest = {

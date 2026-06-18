@@ -196,5 +196,3542 @@
     "failed_check": 8,
     "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
     "promoted": false
+  },
+  {
+    "version_id": "v_20260618_110509",
+    "timestamp": "2026-06-18T11:05:09.711122",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_110802",
+    "timestamp": "2026-06-18T11:08:02.837982",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_110836",
+    "timestamp": "2026-06-18T11:08:36.567728",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111422",
+    "timestamp": "2026-06-18T11:14:22.623933",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0975 fails baseline check. Delta: 0.1512",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111455",
+    "timestamp": "2026-06-18T11:14:55.672196",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111511",
+    "timestamp": "2026-06-18T11:15:11.074115",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111540",
+    "timestamp": "2026-06-18T11:15:40.010944",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111551",
+    "timestamp": "2026-06-18T11:15:51.213104",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111602",
+    "timestamp": "2026-06-18T11:16:02.627340",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111615",
+    "timestamp": "2026-06-18T11:16:15.607845",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111622",
+    "timestamp": "2026-06-18T11:16:22.443348",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111629",
+    "timestamp": "2026-06-18T11:16:29.372738",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111649",
+    "timestamp": "2026-06-18T11:16:49.531820",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111657",
+    "timestamp": "2026-06-18T11:16:57.356825",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0009 fails baseline check. Delta: 0.2478",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111706",
+    "timestamp": "2026-06-18T11:17:06.217706",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111712",
+    "timestamp": "2026-06-18T11:17:12.508769",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111721",
+    "timestamp": "2026-06-18T11:17:21.165736",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111730",
+    "timestamp": "2026-06-18T11:17:30.074221",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.2487",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111737",
+    "timestamp": "2026-06-18T11:17:37.008414",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.4701,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true
+  },
+  {
+    "version_id": "v_20260618_111745",
+    "timestamp": "2026-06-18T11:17:45.308462",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111751",
+    "timestamp": "2026-06-18T11:17:51.793625",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111757",
+    "timestamp": "2026-06-18T11:17:57.384417",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111804",
+    "timestamp": "2026-06-18T11:18:04.785308",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111812",
+    "timestamp": "2026-06-18T11:18:12.966156",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111818",
+    "timestamp": "2026-06-18T11:18:18.423033",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111826",
+    "timestamp": "2026-06-18T11:18:26.939311",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0907 fails baseline check. Delta: 0.3794",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111836",
+    "timestamp": "2026-06-18T11:18:36.287994",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111844",
+    "timestamp": "2026-06-18T11:18:44.197779",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111853",
+    "timestamp": "2026-06-18T11:18:53.902032",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111900",
+    "timestamp": "2026-06-18T11:19:00.289043",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.4701",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_111907",
+    "timestamp": "2026-06-18T11:19:07.118486",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.5598,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true
+  },
+  {
+    "version_id": "v_20260618_111915",
+    "timestamp": "2026-06-18T11:19:15.825460",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.3867 fails baseline check. Delta: 0.1731",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112029",
+    "timestamp": "2026-06-18T11:20:29.732836",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112239",
+    "timestamp": "2026-06-18T11:22:39.762453",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112413",
+    "timestamp": "2026-06-18T11:24:13.844817",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112616",
+    "timestamp": "2026-06-18T11:26:16.854635",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112808",
+    "timestamp": "2026-06-18T11:28:08.198586",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0914 fails baseline check. Delta: 0.4684",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112851",
+    "timestamp": "2026-06-18T11:28:51.446030",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.4683 fails baseline check. Delta: 0.0915",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112934",
+    "timestamp": "2026-06-18T11:29:34.082469",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0165 fails baseline check. Delta: 0.5433",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_112955",
+    "timestamp": "2026-06-18T11:29:55.937410",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_134716",
+    "timestamp": "2026-06-18T13:47:16.522617",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_134748",
+    "timestamp": "2026-06-18T13:47:48.199073",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_134754",
+    "timestamp": "2026-06-18T13:47:54.810292",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_134804",
+    "timestamp": "2026-06-18T13:48:04.171287",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_134814",
+    "timestamp": "2026-06-18T13:48:14.004117",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_135042",
+    "timestamp": "2026-06-18T13:50:42.684565",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.5464 fails baseline check. Delta: 0.0134",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_135126",
+    "timestamp": "2026-06-18T13:51:26.430463",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.067 fails baseline check. Delta: 0.4928",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_135211",
+    "timestamp": "2026-06-18T13:52:11.593100",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_135249",
+    "timestamp": "2026-06-18T13:52:49.823397",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.4215 fails baseline check. Delta: 0.1383",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_135307",
+    "timestamp": "2026-06-18T13:53:07.284286",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141734",
+    "timestamp": "2026-06-18T14:17:34.990974",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141740",
+    "timestamp": "2026-06-18T14:17:40.324914",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141804",
+    "timestamp": "2026-06-18T14:18:04.462017",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141815",
+    "timestamp": "2026-06-18T14:18:15.030484",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0779 fails baseline check. Delta: 0.4819",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141820",
+    "timestamp": "2026-06-18T14:18:20.586865",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141828",
+    "timestamp": "2026-06-18T14:18:28.699799",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141834",
+    "timestamp": "2026-06-18T14:18:34.725453",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.4018 fails baseline check. Delta: 0.158",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141840",
+    "timestamp": "2026-06-18T14:18:40.862058",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141849",
+    "timestamp": "2026-06-18T14:18:49.203468",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141932",
+    "timestamp": "2026-06-18T14:19:32.085767",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141939",
+    "timestamp": "2026-06-18T14:19:39.087094",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141944",
+    "timestamp": "2026-06-18T14:19:44.766626",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_141951",
+    "timestamp": "2026-06-18T14:19:51.517508",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142014",
+    "timestamp": "2026-06-18T14:20:14.221950",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142041",
+    "timestamp": "2026-06-18T14:20:41.731731",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142051",
+    "timestamp": "2026-06-18T14:20:51.678821",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.3993 fails baseline check. Delta: 0.1605",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142057",
+    "timestamp": "2026-06-18T14:20:57.209257",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142124",
+    "timestamp": "2026-06-18T14:21:24.459235",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142129",
+    "timestamp": "2026-06-18T14:21:29.792635",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142153",
+    "timestamp": "2026-06-18T14:21:53.958581",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142217",
+    "timestamp": "2026-06-18T14:22:17.596208",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142224",
+    "timestamp": "2026-06-18T14:22:24.732390",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142256",
+    "timestamp": "2026-06-18T14:22:56.717537",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.5499 fails baseline check. Delta: 0.0099",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142327",
+    "timestamp": "2026-06-18T14:23:27.994287",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142335",
+    "timestamp": "2026-06-18T14:23:35.908944",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142346",
+    "timestamp": "2026-06-18T14:23:46.701412",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142408",
+    "timestamp": "2026-06-18T14:24:08.815334",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142417",
+    "timestamp": "2026-06-18T14:24:17.518124",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142424",
+    "timestamp": "2026-06-18T14:24:24.442796",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142432",
+    "timestamp": "2026-06-18T14:24:32.213204",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142441",
+    "timestamp": "2026-06-18T14:24:41.921571",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.303 fails baseline check. Delta: 0.2568",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142512",
+    "timestamp": "2026-06-18T14:25:12.684406",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142525",
+    "timestamp": "2026-06-18T14:25:25.082742",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142533",
+    "timestamp": "2026-06-18T14:25:33.975278",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142548",
+    "timestamp": "2026-06-18T14:25:48.451008",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0789 fails baseline check. Delta: 0.4809",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142558",
+    "timestamp": "2026-06-18T14:25:58.424343",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142646",
+    "timestamp": "2026-06-18T14:26:46.126644",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142658",
+    "timestamp": "2026-06-18T14:26:58.269453",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142710",
+    "timestamp": "2026-06-18T14:27:10.604909",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0686 fails baseline check. Delta: 0.4912",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142746",
+    "timestamp": "2026-06-18T14:27:46.812248",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_142837",
+    "timestamp": "2026-06-18T14:28:37.048011",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143003",
+    "timestamp": "2026-06-18T14:30:03.148288",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143020",
+    "timestamp": "2026-06-18T14:30:20.310667",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143119",
+    "timestamp": "2026-06-18T14:31:19.695690",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143133",
+    "timestamp": "2026-06-18T14:31:33.363508",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143225",
+    "timestamp": "2026-06-18T14:32:25.263311",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.2037 fails baseline check. Delta: 0.3561",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143319",
+    "timestamp": "2026-06-18T14:33:19.623387",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143339",
+    "timestamp": "2026-06-18T14:33:39.748498",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143358",
+    "timestamp": "2026-06-18T14:33:58.000810",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143408",
+    "timestamp": "2026-06-18T14:34:08.334844",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143506",
+    "timestamp": "2026-06-18T14:35:06.055676",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143555",
+    "timestamp": "2026-06-18T14:35:55.763633",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.021 fails baseline check. Delta: 0.5388",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143627",
+    "timestamp": "2026-06-18T14:36:27.583431",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143704",
+    "timestamp": "2026-06-18T14:37:04.428321",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.3345 fails baseline check. Delta: 0.2253",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143716",
+    "timestamp": "2026-06-18T14:37:16.514200",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143804",
+    "timestamp": "2026-06-18T14:38:04.863062",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143839",
+    "timestamp": "2026-06-18T14:38:39.894664",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143853",
+    "timestamp": "2026-06-18T14:38:53.749092",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143902",
+    "timestamp": "2026-06-18T14:39:02.817110",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.3336 fails baseline check. Delta: 0.2262",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143944",
+    "timestamp": "2026-06-18T14:39:44.197325",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_143952",
+    "timestamp": "2026-06-18T14:39:52.315536",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144032",
+    "timestamp": "2026-06-18T14:40:32.457983",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0684 fails baseline check. Delta: 0.4914",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144209",
+    "timestamp": "2026-06-18T14:42:09.148266",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144224",
+    "timestamp": "2026-06-18T14:42:24.092429",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144233",
+    "timestamp": "2026-06-18T14:42:33.724564",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144247",
+    "timestamp": "2026-06-18T14:42:47.660501",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144327",
+    "timestamp": "2026-06-18T14:43:27.648949",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0833 fails baseline check. Delta: 0.4765",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144334",
+    "timestamp": "2026-06-18T14:43:34.352430",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144421",
+    "timestamp": "2026-06-18T14:44:21.997745",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144504",
+    "timestamp": "2026-06-18T14:45:04.158985",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0509 fails baseline check. Delta: 0.5089",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144515",
+    "timestamp": "2026-06-18T14:45:15.137441",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144558",
+    "timestamp": "2026-06-18T14:45:58.519170",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.538 fails baseline check. Delta: 0.0218",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144614",
+    "timestamp": "2026-06-18T14:46:14.118972",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0751 fails baseline check. Delta: 0.4847",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144630",
+    "timestamp": "2026-06-18T14:46:30.540643",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144639",
+    "timestamp": "2026-06-18T14:46:39.933203",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144753",
+    "timestamp": "2026-06-18T14:47:53.822655",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144803",
+    "timestamp": "2026-06-18T14:48:03.964924",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144817",
+    "timestamp": "2026-06-18T14:48:17.138392",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144901",
+    "timestamp": "2026-06-18T14:49:01.511162",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_144949",
+    "timestamp": "2026-06-18T14:49:49.747080",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_145008",
+    "timestamp": "2026-06-18T14:50:08.204296",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_145053",
+    "timestamp": "2026-06-18T14:50:53.913687",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_145147",
+    "timestamp": "2026-06-18T14:51:47.017675",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1584 fails baseline check. Delta: 0.4014",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_145205",
+    "timestamp": "2026-06-18T14:52:05.656928",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0718 fails baseline check. Delta: 0.488",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_145222",
+    "timestamp": "2026-06-18T14:52:22.067689",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.5497 fails baseline check. Delta: 0.0101",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150328",
+    "timestamp": "2026-06-18T15:03:28.770808",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150426",
+    "timestamp": "2026-06-18T15:04:26.646296",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0625 fails baseline check. Delta: 0.4973",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150437",
+    "timestamp": "2026-06-18T15:04:37.798630",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150528",
+    "timestamp": "2026-06-18T15:05:28.601986",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150542",
+    "timestamp": "2026-06-18T15:05:42.971271",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150553",
+    "timestamp": "2026-06-18T15:05:53.522465",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150642",
+    "timestamp": "2026-06-18T15:06:42.457129",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0704 fails baseline check. Delta: 0.4894",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150657",
+    "timestamp": "2026-06-18T15:06:57.183940",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150721",
+    "timestamp": "2026-06-18T15:07:21.451317",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.073 fails baseline check. Delta: 0.4868",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150748",
+    "timestamp": "2026-06-18T15:07:48.754930",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.2849 fails baseline check. Delta: 0.2749",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150810",
+    "timestamp": "2026-06-18T15:08:10.543569",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.5598",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150827",
+    "timestamp": "2026-06-18T15:08:27.205171",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.6522,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true
+  },
+  {
+    "version_id": "v_20260618_150915",
+    "timestamp": "2026-06-18T15:09:15.875809",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0596 fails baseline check. Delta: 0.5926",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_150933",
+    "timestamp": "2026-06-18T15:09:33.897277",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151016",
+    "timestamp": "2026-06-18T15:10:16.560875",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0439 fails baseline check. Delta: 0.6083",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151105",
+    "timestamp": "2026-06-18T15:11:05.364876",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151159",
+    "timestamp": "2026-06-18T15:11:59.433586",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151215",
+    "timestamp": "2026-06-18T15:12:15.704796",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1953 fails baseline check. Delta: 0.4569",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151254",
+    "timestamp": "2026-06-18T15:12:54.937174",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0586 fails baseline check. Delta: 0.5936",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151345",
+    "timestamp": "2026-06-18T15:13:45.264071",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151529",
+    "timestamp": "2026-06-18T15:15:29.077997",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151544",
+    "timestamp": "2026-06-18T15:15:44.997294",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151624",
+    "timestamp": "2026-06-18T15:16:24.899479",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151655",
+    "timestamp": "2026-06-18T15:16:55.200865",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0747 fails baseline check. Delta: 0.5775",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151704",
+    "timestamp": "2026-06-18T15:17:04.123664",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.186 fails baseline check. Delta: 0.4662",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151725",
+    "timestamp": "2026-06-18T15:17:25.497507",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151737",
+    "timestamp": "2026-06-18T15:17:37.846716",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151839",
+    "timestamp": "2026-06-18T15:18:39.061053",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151845",
+    "timestamp": "2026-06-18T15:18:45.369544",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151852",
+    "timestamp": "2026-06-18T15:18:52.220395",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_151939",
+    "timestamp": "2026-06-18T15:19:39.673803",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.5175 fails baseline check. Delta: 0.1347",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_152025",
+    "timestamp": "2026-06-18T15:20:25.110448",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_160138",
+    "timestamp": "2026-06-18T16:01:38.051332",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_160206",
+    "timestamp": "2026-06-18T16:02:06.137037",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_160215",
+    "timestamp": "2026-06-18T16:02:15.467507",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_160225",
+    "timestamp": "2026-06-18T16:02:25.016686",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.219 fails baseline check. Delta: 0.4332",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_160233",
+    "timestamp": "2026-06-18T16:02:33.514853",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_161857",
+    "timestamp": "2026-06-18T16:18:57.025220",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0637 fails baseline check. Delta: 0.5885",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_161909",
+    "timestamp": "2026-06-18T16:19:09.235922",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_161919",
+    "timestamp": "2026-06-18T16:19:19.813103",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.003 fails baseline check. Delta: 0.6492",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_161927",
+    "timestamp": "2026-06-18T16:19:27.041937",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_161933",
+    "timestamp": "2026-06-18T16:19:33.850332",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162045",
+    "timestamp": "2026-06-18T16:20:45.162149",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162054",
+    "timestamp": "2026-06-18T16:20:54.282712",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162103",
+    "timestamp": "2026-06-18T16:21:03.155875",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162111",
+    "timestamp": "2026-06-18T16:21:11.373748",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162135",
+    "timestamp": "2026-06-18T16:21:35.492613",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162207",
+    "timestamp": "2026-06-18T16:22:07.252182",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.2137 fails baseline check. Delta: 0.4385",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162215",
+    "timestamp": "2026-06-18T16:22:15.017699",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162223",
+    "timestamp": "2026-06-18T16:22:23.712069",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162232",
+    "timestamp": "2026-06-18T16:22:32.303674",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162240",
+    "timestamp": "2026-06-18T16:22:40.389369",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0214 fails baseline check. Delta: 0.6308",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162259",
+    "timestamp": "2026-06-18T16:22:59.118579",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162334",
+    "timestamp": "2026-06-18T16:23:34.893575",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162407",
+    "timestamp": "2026-06-18T16:24:07.335966",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.03 fails baseline check. Delta: 0.6222",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162417",
+    "timestamp": "2026-06-18T16:24:17.026342",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162438",
+    "timestamp": "2026-06-18T16:24:38.892600",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162450",
+    "timestamp": "2026-06-18T16:24:50.082783",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162501",
+    "timestamp": "2026-06-18T16:25:01.385243",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0654 fails baseline check. Delta: 0.5868",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162509",
+    "timestamp": "2026-06-18T16:25:09.945568",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0022 fails baseline check. Delta: 0.65",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162519",
+    "timestamp": "2026-06-18T16:25:19.219461",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162555",
+    "timestamp": "2026-06-18T16:25:55.884602",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162609",
+    "timestamp": "2026-06-18T16:26:09.553700",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1837 fails baseline check. Delta: 0.4685",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162649",
+    "timestamp": "2026-06-18T16:26:49.382195",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162700",
+    "timestamp": "2026-06-18T16:27:00.159996",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0606 fails baseline check. Delta: 0.5916",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162742",
+    "timestamp": "2026-06-18T16:27:42.138985",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162751",
+    "timestamp": "2026-06-18T16:27:51.415122",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162817",
+    "timestamp": "2026-06-18T16:28:17.601861",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162834",
+    "timestamp": "2026-06-18T16:28:34.027750",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1725 fails baseline check. Delta: 0.4797",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162839",
+    "timestamp": "2026-06-18T16:28:39.268628",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162852",
+    "timestamp": "2026-06-18T16:28:52.554101",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162919",
+    "timestamp": "2026-06-18T16:29:19.857032",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162941",
+    "timestamp": "2026-06-18T16:29:41.695517",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_162950",
+    "timestamp": "2026-06-18T16:29:50.553364",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163045",
+    "timestamp": "2026-06-18T16:30:45.673536",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163058",
+    "timestamp": "2026-06-18T16:30:58.368512",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163105",
+    "timestamp": "2026-06-18T16:31:05.793714",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163115",
+    "timestamp": "2026-06-18T16:31:15.444016",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163156",
+    "timestamp": "2026-06-18T16:31:56.843235",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163235",
+    "timestamp": "2026-06-18T16:32:35.945228",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1199 fails baseline check. Delta: 0.5323",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163402",
+    "timestamp": "2026-06-18T16:34:02.759721",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163444",
+    "timestamp": "2026-06-18T16:34:44.857414",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163521",
+    "timestamp": "2026-06-18T16:35:21.824771",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0453 fails baseline check. Delta: 0.6069",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163550",
+    "timestamp": "2026-06-18T16:35:50.168222",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163602",
+    "timestamp": "2026-06-18T16:36:02.581289",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163807",
+    "timestamp": "2026-06-18T16:38:07.652287",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163818",
+    "timestamp": "2026-06-18T16:38:18.140172",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163832",
+    "timestamp": "2026-06-18T16:38:32.106462",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163913",
+    "timestamp": "2026-06-18T16:39:13.251828",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163928",
+    "timestamp": "2026-06-18T16:39:28.892082",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163943",
+    "timestamp": "2026-06-18T16:39:43.795171",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_163958",
+    "timestamp": "2026-06-18T16:39:58.263619",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164016",
+    "timestamp": "2026-06-18T16:40:16.463628",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164052",
+    "timestamp": "2026-06-18T16:40:52.705991",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0268 fails baseline check. Delta: 0.6254",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164101",
+    "timestamp": "2026-06-18T16:41:01.707830",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0426 fails baseline check. Delta: 0.6096",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164117",
+    "timestamp": "2026-06-18T16:41:17.304825",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164158",
+    "timestamp": "2026-06-18T16:41:58.140678",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0486 fails baseline check. Delta: 0.6036",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164339",
+    "timestamp": "2026-06-18T16:43:39.970407",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1461 fails baseline check. Delta: 0.5061",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164355",
+    "timestamp": "2026-06-18T16:43:55.909454",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.6262 fails baseline check. Delta: 0.026",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164407",
+    "timestamp": "2026-06-18T16:44:07.531030",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164510",
+    "timestamp": "2026-06-18T16:45:10.622141",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164526",
+    "timestamp": "2026-06-18T16:45:26.281178",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164611",
+    "timestamp": "2026-06-18T16:46:11.332141",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164742",
+    "timestamp": "2026-06-18T16:47:42.391412",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0895 fails baseline check. Delta: 0.5627",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164825",
+    "timestamp": "2026-06-18T16:48:25.761187",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1594 fails baseline check. Delta: 0.4928",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_164955",
+    "timestamp": "2026-06-18T16:49:55.352059",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1053 fails baseline check. Delta: 0.5469",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165053",
+    "timestamp": "2026-06-18T16:50:53.449152",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165115",
+    "timestamp": "2026-06-18T16:51:15.010068",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165153",
+    "timestamp": "2026-06-18T16:51:53.659930",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165204",
+    "timestamp": "2026-06-18T16:52:04.039911",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165224",
+    "timestamp": "2026-06-18T16:52:24.511924",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165244",
+    "timestamp": "2026-06-18T16:52:44.185908",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165307",
+    "timestamp": "2026-06-18T16:53:07.958341",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165352",
+    "timestamp": "2026-06-18T16:53:52.532678",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165429",
+    "timestamp": "2026-06-18T16:54:29.546517",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165436",
+    "timestamp": "2026-06-18T16:54:36.734483",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165524",
+    "timestamp": "2026-06-18T16:55:24.720231",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165546",
+    "timestamp": "2026-06-18T16:55:46.760788",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0279 fails baseline check. Delta: 0.6243",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165606",
+    "timestamp": "2026-06-18T16:56:06.888445",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165659",
+    "timestamp": "2026-06-18T16:56:59.675925",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165714",
+    "timestamp": "2026-06-18T16:57:14.370130",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0812 fails baseline check. Delta: 0.571",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165814",
+    "timestamp": "2026-06-18T16:58:14.766867",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165834",
+    "timestamp": "2026-06-18T16:58:34.392578",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.01 fails baseline check. Delta: 0.6422",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165918",
+    "timestamp": "2026-06-18T16:59:18.158596",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_165957",
+    "timestamp": "2026-06-18T16:59:57.608029",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0245 fails baseline check. Delta: 0.6277",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170009",
+    "timestamp": "2026-06-18T17:00:09.020080",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170017",
+    "timestamp": "2026-06-18T17:00:17.272629",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170111",
+    "timestamp": "2026-06-18T17:01:11.184543",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170207",
+    "timestamp": "2026-06-18T17:02:07.998863",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170225",
+    "timestamp": "2026-06-18T17:02:25.420364",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170241",
+    "timestamp": "2026-06-18T17:02:41.655715",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.039 fails baseline check. Delta: 0.6132",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170259",
+    "timestamp": "2026-06-18T17:02:59.172793",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170358",
+    "timestamp": "2026-06-18T17:03:58.402636",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170459",
+    "timestamp": "2026-06-18T17:04:59.344409",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170545",
+    "timestamp": "2026-06-18T17:05:45.071733",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170644",
+    "timestamp": "2026-06-18T17:06:44.359812",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170703",
+    "timestamp": "2026-06-18T17:07:03.494349",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170808",
+    "timestamp": "2026-06-18T17:08:08.084229",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170915",
+    "timestamp": "2026-06-18T17:09:15.258289",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_170934",
+    "timestamp": "2026-06-18T17:09:34.848611",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171040",
+    "timestamp": "2026-06-18T17:10:40.325159",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0812 fails baseline check. Delta: 0.571",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171148",
+    "timestamp": "2026-06-18T17:11:48.190830",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171233",
+    "timestamp": "2026-06-18T17:12:33.098762",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171245",
+    "timestamp": "2026-06-18T17:12:45.914290",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171336",
+    "timestamp": "2026-06-18T17:13:36.875829",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171355",
+    "timestamp": "2026-06-18T17:13:55.287925",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171414",
+    "timestamp": "2026-06-18T17:14:14.465503",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171429",
+    "timestamp": "2026-06-18T17:14:29.528491",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171447",
+    "timestamp": "2026-06-18T17:14:47.475975",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171509",
+    "timestamp": "2026-06-18T17:15:09.380065",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1057 fails baseline check. Delta: 0.5465",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171526",
+    "timestamp": "2026-06-18T17:15:26.641329",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171550",
+    "timestamp": "2026-06-18T17:15:50.652267",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1265 fails baseline check. Delta: 0.5257",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171611",
+    "timestamp": "2026-06-18T17:16:11.700483",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171633",
+    "timestamp": "2026-06-18T17:16:33.404865",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171705",
+    "timestamp": "2026-06-18T17:17:05.819380",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0461 fails baseline check. Delta: 0.6061",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171722",
+    "timestamp": "2026-06-18T17:17:22.605561",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1234 fails baseline check. Delta: 0.5288",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171744",
+    "timestamp": "2026-06-18T17:17:44.669656",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171849",
+    "timestamp": "2026-06-18T17:18:49.008127",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_171900",
+    "timestamp": "2026-06-18T17:19:00.515533",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172001",
+    "timestamp": "2026-06-18T17:20:01.322191",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172021",
+    "timestamp": "2026-06-18T17:20:21.620348",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172143",
+    "timestamp": "2026-06-18T17:21:43.472013",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172224",
+    "timestamp": "2026-06-18T17:22:24.614039",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172415",
+    "timestamp": "2026-06-18T17:24:15.631067",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172543",
+    "timestamp": "2026-06-18T17:25:43.893726",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0773 fails baseline check. Delta: 0.5749",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172623",
+    "timestamp": "2026-06-18T17:26:23.993004",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172640",
+    "timestamp": "2026-06-18T17:26:40.737430",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.5328 fails baseline check. Delta: 0.1194",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172652",
+    "timestamp": "2026-06-18T17:26:52.350560",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172743",
+    "timestamp": "2026-06-18T17:27:43.460576",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172758",
+    "timestamp": "2026-06-18T17:27:58.902607",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172810",
+    "timestamp": "2026-06-18T17:28:10.288193",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172913",
+    "timestamp": "2026-06-18T17:29:13.080354",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172920",
+    "timestamp": "2026-06-18T17:29:20.502808",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172928",
+    "timestamp": "2026-06-18T17:29:28.472712",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_172944",
+    "timestamp": "2026-06-18T17:29:44.885334",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173001",
+    "timestamp": "2026-06-18T17:30:01.293144",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1196 fails baseline check. Delta: 0.5326",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173043",
+    "timestamp": "2026-06-18T17:30:43.197679",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173143",
+    "timestamp": "2026-06-18T17:31:43.052142",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173337",
+    "timestamp": "2026-06-18T17:33:37.271108",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173347",
+    "timestamp": "2026-06-18T17:33:47.499806",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173357",
+    "timestamp": "2026-06-18T17:33:57.572995",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173441",
+    "timestamp": "2026-06-18T17:34:41.073802",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173500",
+    "timestamp": "2026-06-18T17:35:00.125776",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173537",
+    "timestamp": "2026-06-18T17:35:37.925800",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173557",
+    "timestamp": "2026-06-18T17:35:57.544225",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173606",
+    "timestamp": "2026-06-18T17:36:06.996586",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173616",
+    "timestamp": "2026-06-18T17:36:16.418803",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173635",
+    "timestamp": "2026-06-18T17:36:35.870102",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173714",
+    "timestamp": "2026-06-18T17:37:14.150507",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173733",
+    "timestamp": "2026-06-18T17:37:33.688517",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173744",
+    "timestamp": "2026-06-18T17:37:44.425456",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_173854",
+    "timestamp": "2026-06-18T17:38:54.046197",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174137",
+    "timestamp": "2026-06-18T17:41:37.693944",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174240",
+    "timestamp": "2026-06-18T17:42:40.856030",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174254",
+    "timestamp": "2026-06-18T17:42:54.513794",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0701 fails baseline check. Delta: 0.5821",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174314",
+    "timestamp": "2026-06-18T17:43:14.904889",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174545",
+    "timestamp": "2026-06-18T17:45:45.325800",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174659",
+    "timestamp": "2026-06-18T17:46:59.543296",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174736",
+    "timestamp": "2026-06-18T17:47:36.736863",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0228 fails baseline check. Delta: 0.6294",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174805",
+    "timestamp": "2026-06-18T17:48:05.967252",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174844",
+    "timestamp": "2026-06-18T17:48:44.971634",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174927",
+    "timestamp": "2026-06-18T17:49:27.082387",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174940",
+    "timestamp": "2026-06-18T17:49:40.090370",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_174950",
+    "timestamp": "2026-06-18T17:49:50.760700",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175037",
+    "timestamp": "2026-06-18T17:50:37.871980",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0228 fails baseline check. Delta: 0.6294",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175102",
+    "timestamp": "2026-06-18T17:51:02.533158",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175137",
+    "timestamp": "2026-06-18T17:51:37.774742",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0239 fails baseline check. Delta: 0.6283",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175153",
+    "timestamp": "2026-06-18T17:51:53.539353",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175234",
+    "timestamp": "2026-06-18T17:52:34.537433",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0776 fails baseline check. Delta: 0.5746",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175250",
+    "timestamp": "2026-06-18T17:52:50.197388",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175312",
+    "timestamp": "2026-06-18T17:53:12.389850",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0701 fails baseline check. Delta: 0.5821",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175353",
+    "timestamp": "2026-06-18T17:53:53.252254",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175406",
+    "timestamp": "2026-06-18T17:54:06.709155",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175449",
+    "timestamp": "2026-06-18T17:54:49.512483",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1039 fails baseline check. Delta: 0.5483",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175501",
+    "timestamp": "2026-06-18T17:55:01.376319",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0701 fails baseline check. Delta: 0.5821",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175517",
+    "timestamp": "2026-06-18T17:55:17.008699",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175606",
+    "timestamp": "2026-06-18T17:56:06.383393",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0701 fails baseline check. Delta: 0.5821",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175632",
+    "timestamp": "2026-06-18T17:56:32.657275",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1112 fails baseline check. Delta: 0.541",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175709",
+    "timestamp": "2026-06-18T17:57:09.871336",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175723",
+    "timestamp": "2026-06-18T17:57:23.575706",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175802",
+    "timestamp": "2026-06-18T17:58:02.041003",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175812",
+    "timestamp": "2026-06-18T17:58:12.965807",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0701 fails baseline check. Delta: 0.5821",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175904",
+    "timestamp": "2026-06-18T17:59:04.045262",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175927",
+    "timestamp": "2026-06-18T17:59:27.010046",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0212 fails baseline check. Delta: 0.631",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175939",
+    "timestamp": "2026-06-18T17:59:39.476450",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_175957",
+    "timestamp": "2026-06-18T17:59:57.694251",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0594 fails baseline check. Delta: 0.5928",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180013",
+    "timestamp": "2026-06-18T18:00:13.745684",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0107 fails baseline check. Delta: 0.6415",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180114",
+    "timestamp": "2026-06-18T18:01:14.857864",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180136",
+    "timestamp": "2026-06-18T18:01:36.217904",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0197 fails baseline check. Delta: 0.6325",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180220",
+    "timestamp": "2026-06-18T18:02:20.879838",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0326 fails baseline check. Delta: 0.6196",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180243",
+    "timestamp": "2026-06-18T18:02:43.503732",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180258",
+    "timestamp": "2026-06-18T18:02:58.102087",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0668 fails baseline check. Delta: 0.5854",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180343",
+    "timestamp": "2026-06-18T18:03:43.051910",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0668 fails baseline check. Delta: 0.5854",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180400",
+    "timestamp": "2026-06-18T18:04:00.823863",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0078 fails baseline check. Delta: 0.6444",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180459",
+    "timestamp": "2026-06-18T18:04:59.064527",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180532",
+    "timestamp": "2026-06-18T18:05:32.157879",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.094 fails baseline check. Delta: 0.5582",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180619",
+    "timestamp": "2026-06-18T18:06:19.188120",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0323 fails baseline check. Delta: 0.6199",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180716",
+    "timestamp": "2026-06-18T18:07:16.154169",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180741",
+    "timestamp": "2026-06-18T18:07:41.973738",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1309 fails baseline check. Delta: 0.5213",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180845",
+    "timestamp": "2026-06-18T18:08:45.094290",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_180917",
+    "timestamp": "2026-06-18T18:09:17.332248",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0672 fails baseline check. Delta: 0.585",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181016",
+    "timestamp": "2026-06-18T18:10:16.277441",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0668 fails baseline check. Delta: 0.5854",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181038",
+    "timestamp": "2026-06-18T18:10:38.013103",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0044 fails baseline check. Delta: 0.6478",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181056",
+    "timestamp": "2026-06-18T18:10:56.291358",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181305",
+    "timestamp": "2026-06-18T18:13:05.673701",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181336",
+    "timestamp": "2026-06-18T18:13:36.600580",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0636 fails baseline check. Delta: 0.5886",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181356",
+    "timestamp": "2026-06-18T18:13:56.349307",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0022 fails baseline check. Delta: 0.65",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181417",
+    "timestamp": "2026-06-18T18:14:17.673761",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181436",
+    "timestamp": "2026-06-18T18:14:36.499486",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181457",
+    "timestamp": "2026-06-18T18:14:57.693332",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181532",
+    "timestamp": "2026-06-18T18:15:32.133690",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181546",
+    "timestamp": "2026-06-18T18:15:46.973190",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181600",
+    "timestamp": "2026-06-18T18:16:00.668761",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.1058 fails baseline check. Delta: 0.5464",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181618",
+    "timestamp": "2026-06-18T18:16:18.933924",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181651",
+    "timestamp": "2026-06-18T18:16:51.536563",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181708",
+    "timestamp": "2026-06-18T18:17:08.222900",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181729",
+    "timestamp": "2026-06-18T18:17:29.808605",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0239 fails baseline check. Delta: 0.6283",
+    "promoted": false
+  },
+  {
+    "version_id": "v_20260618_181811",
+    "timestamp": "2026-06-18T18:18:11.650433",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 0.0,
+    "failed_check": 8,
+    "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
+    "promoted": false
   }
 ]

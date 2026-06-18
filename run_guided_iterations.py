@@ -70,8 +70,16 @@ def main():
         forced_archetype = "aggro"
         forced_escalation = None
         
+        # Rule 0: Every 100 iterations, force a complete deck and strategy redraw into a new archetype
+        if i % 100 == 0:
+            all_archetypes = ["aggro", "control", "combo", "utility"]
+            idx = (i // 100) % len(all_archetypes)
+            forced_archetype = all_archetypes[idx]
+            logger.info(f"[MASTER ARCHETYPE SHIFT] Iteration {i} is a multiple of 100. Redrawing deck and strategy to archetype: {forced_archetype}")
+            forced_escalation = {"deck_architect": True, "builder_agent": False}
+        
         # Rule 1: Every 5 iterations, switch strategy (archetype)
-        if i % 5 == 0:
+        elif i % 5 == 0:
             archetypes = ["aggro", "control", "tempo"]
             # Alternate based on divisor
             idx = (i // 5) % len(archetypes)
@@ -99,12 +107,27 @@ def main():
             logger.error(f"Error during iteration {i}: {e}", exc_info=True)
             break
             
-        # Sync and compile the latest submission code into main.py and build tarfile
-        logger.info("Automatically building latest submission tarball...")
-        try:
-            subprocess.run([sys.executable, "build_submission.py"], check=True)
-        except Exception as e:
-            logger.error(f"Failed to auto-build submission: {e}")
+        # Sync and compile the latest submission code only when the score improved or at the final round
+        should_build = (i == end_iter)
+        eval_report_path = Path("eval_report.json")
+        if eval_report_path.exists():
+            try:
+                report_data = json.loads(eval_report_path.read_text(encoding="utf-8"))
+                best_ver = report_data.get("version_scores", {}).get("best_version", "player_a")
+                if best_ver == "player_b":
+                    should_build = True
+                    logger.info(f"Iteration {i} achieved a new high score! Triggering build.")
+            except Exception as e:
+                logger.warning(f"Could not read eval_report.json to determine build need: {e}")
+
+        if should_build:
+            logger.info("Building latest submission tarball...")
+            try:
+                subprocess.run([sys.executable, "build_submission.py"], check=True)
+            except Exception as e:
+                logger.error(f"Failed to auto-build submission: {e}")
+        else:
+            logger.info(f"Skipping build for iteration {i} (no score improvement).")
 
 if __name__ == "__main__":
     # Allow running a dry-run to verify scheduling

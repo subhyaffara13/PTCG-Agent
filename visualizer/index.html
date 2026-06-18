@@ -18,8 +18,11 @@
             <p>Match Playback Engine</p>
         </div>
         <div class="controls-panel">
-            <div class="file-selector">
-                <label for="game-file-input" class="custom-file-upload">Load Game JSON</label>
+            <div class="file-selector" style="display: flex; gap: 0.5rem; align-items: center;">
+                <select id="game-file-select" class="select-match-log">
+                    <option value="">-- Select Match Log --</option>
+                </select>
+                <label for="game-file-input" class="custom-file-upload">Or Browse File</label>
                 <input type="file" id="game-file-input" accept=".json">
             </div>
             <div class="playback-controls">
@@ -94,6 +97,6 @@
         </section>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=4"></script>
 </body>
 </html>

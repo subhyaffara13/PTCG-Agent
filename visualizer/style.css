@@ -97,6 +97,38 @@ body {
     display: none;
 }
 
+.select-match-log {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    max-width: 280px;
+    height: 40px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.select-match-log:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.select-match-log option {
+    background: #0d0e16;
+    color: var(--text-primary);
+    padding: 0.5rem;
+}
+
 .playback-controls button {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--card-border);
@@ -183,47 +215,24 @@ body {
 .card-item {
     width: 80px;
     height: 110px;
-    background: #1e293b;
-    border: 1px solid var(--card-border);
-    border-radius: 6px;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    font-weight: 600;
     position: relative;
-    transition: transform 0.2s;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    background: transparent;
 }
 
 .card-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.card-item.pokemon {
-    background: linear-gradient(135deg, #b45309, #d97706);
-    border-color: #f59e0b;
-}
-
-.card-item.energy {
-    background: linear-gradient(135deg, #047857, #059669);
-    border-color: #10b981;
-}
-
-.card-item.trainer {
-    background: linear-gradient(135deg, #1e3a8a, #2563eb);
-    border-color: #3b82f6;
-}
-
-.card-name {
-    word-break: break-word;
-    font-size: 0.7rem;
-}
-
-.card-type-lbl {
-    font-size: 0.6rem;
-    opacity: 0.7;
-    text-transform: uppercase;
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: opacity 0.2s;
 }
 
 /* Active Slot representation */
@@ -231,7 +240,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 160px;
+    min-height: 240px;
     border: 1px solid var(--card-border);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.01);
@@ -241,11 +250,36 @@ body {
     width: 160px;
     height: 220px;
     border-radius: 8px;
-    padding: 1rem;
+    box-shadow: var(--glow-glow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.active-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.active-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 11, 20, 0.95);
+    padding: 0.6rem;
+    border-top: 1px solid var(--card-border);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: var(--glow-glow);
+}
+
+.active-card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
 }
 
 .active-pokemon-card.p1 {
