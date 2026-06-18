@@ -25,7 +25,13 @@ try:
     cwd_resolved = Path.cwd().resolve()
     sys.path = [p for p in sys.path if p and Path(p).resolve() != cwd_resolved]
 finally:
-    from kaggle_environments import make
+    import logging
+    import os
+    import contextlib
+    logging.getLogger("kaggle_environments").setLevel(logging.WARNING)
+    with open(os.devnull, 'w') as fnull:
+        with contextlib.redirect_stdout(fnull), contextlib.redirect_stderr(fnull):
+            from kaggle_environments import make
     sys.path = saved_path
 
 from agents.base_agent import BaseAgent
@@ -313,16 +319,29 @@ class GameRunner(BaseAgent):
                     "log_files": {"action": "", "reasoning": "", "variance": ""}
                 }
 
+        # Create a copy of the games results for the disk without the huge steps_dump
+        disk_results = {}
+        for label, res_dict in results.items():
+            disk_results[label] = {k: v for k, v in res_dict.items() if k != "steps_dump"}
+
+        disk_payload = {
+            "iteration": iteration_id,
+            "timestamp": datetime.now().isoformat(),
+            "games": disk_results,
+            "ready_for_eval": True
+        }
+
+        # Save iteration result json without steps_dump (to save disk write time and space)
+        out_file = self.log_dir / "iteration_result.json"
+        out_file.write_text(json.dumps(disk_payload, indent=2), encoding="utf-8")
+
+        # Return full payload in memory so caller can access steps_dump if needed
         output_payload = {
             "iteration": iteration_id,
             "timestamp": datetime.now().isoformat(),
             "games": results,
             "ready_for_eval": True
         }
-
-        # Save iteration result json
-        out_file = self.log_dir / "iteration_result.json"
-        out_file.write_text(json.dumps(output_payload, indent=2), encoding="utf-8")
         return output_payload
 
     def _run_single_game(self, label: str, v_a: str, v_b: str, 
@@ -339,7 +358,13 @@ def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str,
     try:
         cwd_resolved = Path.cwd().resolve()
         sys.path = [p for p in sys.path if p and Path(p).resolve() != cwd_resolved]
-        from kaggle_environments import make
+        import logging
+        import os
+        import contextlib
+        logging.getLogger("kaggle_environments").setLevel(logging.WARNING)
+        with open(os.devnull, 'w') as fnull:
+            with contextlib.redirect_stdout(fnull), contextlib.redirect_stderr(fnull):
+                from kaggle_environments import make
     finally:
         sys.path = saved_path
 
@@ -403,13 +428,19 @@ def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str,
             "players": step_data
         })
 
-    # Save step history
+    # Save step history (in memory only, avoid slow disk I/O)
     steps_filename = f"steps_{label}_v{v_a}_vs_v{v_b}.json"
-    steps_file = Path(log_dir) / steps_filename
+
+    # Predict winner & upgrade weights if wrong
+    prediction = "n/a"
     try:
-        steps_file.write_text(json.dumps(steps_dump, indent=2), encoding="utf-8")
+        from factory.early_predictor import EarlyWinPredictor
+        predictor = EarlyWinPredictor()
+        prediction = predictor.predict_winner(deck_a, deck_b, steps_dump)
+        if prediction != winner and winner in ("player_a", "player_b"):
+            predictor.upgrade(prediction, winner, steps_dump)
     except Exception as e:
-        logger.error(f"Failed to write steps dump: {e}")
+        logger.error(f"EarlyWinPredictor failed: {e}")
 
     # Save populated logs
     g_logger.save(v_a, v_b)
@@ -419,6 +450,7 @@ def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str,
     return {
         "label": label,
         "winner": winner,
+        "early_prediction": prediction,
         "turns_taken": turns,
         "prizes_taken_a": prizes_a,
         "prizes_taken_b": prizes_b,
@@ -429,5 +461,6 @@ def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str,
             "reasoning": f"reasoning_{suffix}",
             "variance": f"variance_{suffix}",
             "steps": steps_filename
-        }
+        },
+        "steps_dump": steps_dump
     }

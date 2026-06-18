@@ -140,15 +140,13 @@ def run_iteration(iteration_id: int, forced_archetype: str = None, forced_change
             vis_dir.mkdir(parents=True, exist_ok=True)
             
             for label, game in iteration_result.get("games", {}).items():
-                steps_filename = game.get("log_files", {}).get("steps")
-                if steps_filename:
-                    src_path = Path("logs") / steps_filename
-                    if src_path.exists():
-                        dest_path = vis_dir / f"iter_{iteration_id}_{label}.json"
-                        dest_path.write_text(src_path.read_text(encoding="utf-8"), encoding="utf-8")
-                        logger.info(f"Copied {steps_filename} -> {dest_path}")
+                steps_dump = game.get("steps_dump")
+                if steps_dump:
+                    dest_path = vis_dir / f"iter_{iteration_id}_{label}.json"
+                    dest_path.write_text(json.dumps(steps_dump), encoding="utf-8")
+                    logger.info(f"Wrote steps data directly -> {dest_path}")
     except Exception as e:
-        logger.error(f"Error copying visualizer steps: {e}")
+        logger.error(f"Error saving visualizer steps: {e}")
 
     logger.info(f"=== COMPLETED ITERATION {iteration_id} ===\n")
 
