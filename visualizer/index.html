@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTCG Game Match Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <header class="app-header">
+        <div class="logo">
+            <h1>PTCG <span>Architect</span></h1>
+            <p>Match Playback Engine</p>
+        </div>
+        <div class="controls-panel">
+            <div class="file-selector">
+                <label for="game-file-input" class="custom-file-upload">Load Game JSON</label>
+                <input type="file" id="game-file-input" accept=".json">
+            </div>
+            <div class="playback-controls">
+                <button id="btn-prev" disabled>&larr; Prev</button>
+                <button id="btn-play">Play</button>
+                <button id="btn-next" disabled>Next &rarr;</button>
+            </div>
+            <div class="speed-control">
+                <label for="speed-range">Speed: <span id="speed-val">1.0s</span></label>
+                <input type="range" id="speed-range" min="0.2" max="3" step="0.1" value="1.0">
+            </div>
+        </div>
+    </header>
+
+    <main class="game-board-wrapper">
+        <section class="board-column opponent-side">
+            <div class="player-info-card">
+                <h2>Player 2 (Opponent)</h2>
+                <div class="player-stats">
+                    <div>Prizes Taken: <span id="opp-prizes">0</span>/6</div>
+                    <div>Deck: <span id="opp-deck">60</span> cards</div>
+                </div>
+            </div>
+            <div class="hand-row" id="opp-hand">
+                <!-- Cards will render here -->
+            </div>
+            <div class="bench-row" id="opp-bench">
+                <!-- Bench Pokemon -->
+            </div>
+            <div class="active-slot" id="opp-active">
+                <!-- Active Pokemon -->
+            </div>
+        </section>
+
+        <section class="game-meta-column">
+            <div class="step-card">
+                <h3>Step Details</h3>
+                <div class="meta-item">Step: <span id="current-step">0</span>/<span id="total-steps">0</span></div>
+                <div class="meta-item">Turn: <span id="current-turn">0</span></div>
+                <div class="meta-item">Phase: <span id="game-phase">Setup</span></div>
+                
+                <div class="timeline-slider-wrapper">
+                    <input type="range" id="timeline-slider" min="0" value="0" style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="log-card">
+                <h3>Turn Log</h3>
+                <div class="log-output" id="log-output">
+                    <!-- Step decisions and logs will print here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="board-column player-side">
+            <div class="active-slot" id="player-active">
+                <!-- Active Pokemon -->
+            </div>
+            <div class="bench-row" id="player-bench">
+                <!-- Bench Pokemon -->
+            </div>
+            <div class="hand-row" id="player-hand">
+                <!-- Cards will render here -->
+            </div>
+            <div class="player-info-card">
+                <h2>Player 1 (Candidate)</h2>
+                <div class="player-stats">
+                    <div>Prizes Taken: <span id="player-prizes">0</span>/6</div>
+                    <div>Deck: <span id="player-deck">60</span> cards</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

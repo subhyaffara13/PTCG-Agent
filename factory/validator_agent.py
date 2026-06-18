@@ -94,51 +94,81 @@ class ValidatorAgent(BaseAgent):
             return self._handle_failure(report, 0, f"Could not read staged file: {e}")
 
         # --- CHECK 1: Python Syntax ---
+        # --- CHECK 1: Python Syntax ---
         checks_status["syntax"] = "fail"
-        try:
-            tree = ast.parse(content, filename=staged_path.name)
-            checks_status["syntax"] = "pass"
-        except SyntaxError as e:
-            return self._handle_failure(report, 1, f"SyntaxError on line {e.lineno}: {e.msg}")
+        if staged_path.suffix == ".csv":
+            try:
+                import csv
+                reader = csv.reader(content.strip().splitlines())
+                header = next(reader, None)  # skip header row
+                if header is None:
+                    return self._handle_failure(report, 1, "CSV is empty — no header found")
+                total_cards = 0
+                for row in reader:
+                    if not row or not any(cell.strip() for cell in row):
+                        continue  # skip blank lines
+                    # card_id (col 0) may be a string sentinel like 'BASE-PKMN' — allow it
+                    # card_type (col 2) is always a string — skip
+                    count = int(row[3])   # count must be integer
+                    float(row[4])          # ev_score must be numeric
+                    total_cards += count
+                if total_cards != 60:
+                    return self._handle_failure(report, 1, f"Deck must contain exactly 60 cards, found {total_cards}")
+                checks_status["syntax"] = "pass"
+            except (ValueError, IndexError) as e:
+                return self._handle_failure(report, 1, f"CSV parsing error: {e}")
+        else:
+            try:
+                tree = ast.parse(content, filename=staged_path.name)
+                checks_status["syntax"] = "pass"
+            except SyntaxError as e:
+                return self._handle_failure(report, 1, f"SyntaxError on line {e.lineno}: {e.msg}")
 
         # --- CHECK 2: BaseAgent Inheritance ---
         checks_status["base_inheritance"] = "fail"
-        has_class = False
-        inherits_base = False
-        for node in ast.walk(tree):
-            if isinstance(node, ast.ClassDef):
-                has_class = True
-                for base in node.bases:
-                    if isinstance(base, ast.Name) and base.id == "BaseAgent":
-                        inherits_base = True
-                        break
-        if has_class and not inherits_base:
-            return self._handle_failure(report, 2, "Class definition found but does not inherit from BaseAgent")
-        checks_status["base_inheritance"] = "pass"
+        if staged_path.suffix == ".csv":
+            checks_status["base_inheritance"] = "pass"
+        else:
+            has_class = False
+            inherits_base = False
+            for node in ast.walk(tree):
+                if isinstance(node, ast.ClassDef):
+                    has_class = True
+                    for base in node.bases:
+                        if isinstance(base, ast.Name) and base.id == "BaseAgent":
+                            inherits_base = True
+                            break
+            if has_class and not inherits_base:
+                return self._handle_failure(report, 2, "Class definition found but does not inherit from BaseAgent")
+            checks_status["base_inheritance"] = "pass"
 
         # --- CHECK 3: receive() NotImplementedError ---
         checks_status["receive_method"] = "fail"
-        is_factory = any(x in staged_path.name for x in ["logger", "runner", "eval", "improvement", "builder", "validator"])
-        has_receive = False
-        receive_raises_nie = False
-        
-        for node in ast.walk(tree):
-            if isinstance(node, ast.FunctionDef) and node.name == "receive":
-                has_receive = True
-                for sub_node in ast.walk(node):
-                    if isinstance(sub_node, ast.Raise):
-                        if isinstance(sub_node.exc, ast.Call) and isinstance(sub_node.exc.func, ast.Name) and sub_node.exc.func.id == "NotImplementedError":
-                            receive_raises_nie = True
-                        elif isinstance(sub_node.exc, ast.Name) and sub_node.exc.id == "NotImplementedError":
-                            receive_raises_nie = True
-        
-        if is_factory:
-            if not has_receive or not receive_raises_nie:
-                return self._handle_failure(report, 3, "Factory component receive() must raise NotImplementedError")
+        if staged_path.suffix == ".csv":
+            is_factory = False  # deck CSVs are not factory components
+            checks_status["receive_method"] = "pass"
         else:
-            if not has_receive:
-                return self._handle_failure(report, 3, "Player agent receive() is missing or not implemented")
-        checks_status["receive_method"] = "pass"
+            is_factory = any(x in staged_path.name for x in ["logger", "runner", "eval", "improvement", "builder", "validator"])
+            has_receive = False
+            receive_raises_nie = False
+            
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef) and node.name == "receive":
+                    has_receive = True
+                    for sub_node in ast.walk(node):
+                        if isinstance(sub_node, ast.Raise):
+                            if isinstance(sub_node.exc, ast.Call) and isinstance(sub_node.exc.func, ast.Name) and sub_node.exc.func.id == "NotImplementedError":
+                                receive_raises_nie = True
+                            elif isinstance(sub_node.exc, ast.Name) and sub_node.exc.id == "NotImplementedError":
+                                receive_raises_nie = True
+            
+            if is_factory:
+                if not has_receive or not receive_raises_nie:
+                    return self._handle_failure(report, 3, "Factory component receive() must raise NotImplementedError")
+            else:
+                if not has_receive:
+                    return self._handle_failure(report, 3, "Player agent receive() is missing or not implemented")
+            checks_status["receive_method"] = "pass"
 
         # --- CHECK 4: Router Bus Boundaries ---
         checks_status["router_boundaries"] = "fail"

@@ -61,12 +61,15 @@ class StrategyAgent(BaseAgent):
         bench_has_attacker = board_summary.get("bench_has_attacker", False)
 
         # Trigger logic conditions
-        is_prize_gap = (opponent_prizes - my_prizes) >= 2
+        is_prize_gap = (my_prizes - opponent_prizes) >= 2
         is_deck_identified = opponent_confidence > 0.75
         is_hand_shift = (self.last_priority_profile is not None) and (priority_profile != self.last_priority_profile)
         is_explicit = trigger == "force_evaluate"
+        is_turn_milestone = turn_number in (3, 6, 9, 12, 15)
+        my_bench_count = board_summary.get('my_bench_count', 0)
+        is_bench_advantage = my_bench_count >= 3 and opponent_prizes > 3
 
-        should_trigger = is_prize_gap or is_deck_identified or is_hand_shift or is_explicit
+        should_trigger = is_prize_gap or is_deck_identified or is_hand_shift or is_explicit or is_turn_milestone or is_bench_advantage
 
         # Cache last profile state
         self.last_priority_profile = priority_profile
@@ -84,8 +87,12 @@ class StrategyAgent(BaseAgent):
         # Strategy selection logic (in priority order)
         prev_strategy = self.active_strategy
         
-        if opponent_archetype == "aggro" and my_prizes > 3:
-            new_strategy = "stall"
+        if opponent_prizes <= 2:
+            new_strategy = 'closing'
+        elif my_prizes >= 5 and opponent_prizes <= 3:
+            new_strategy = 'aggro_push'  # desperation: far behind, must attack
+        elif opponent_archetype == 'aggro' and my_prizes < opponent_prizes:
+            new_strategy = 'stall'  # only stall when ahead in prizes
         elif opponent_prizes <= 2 and my_prizes > opponent_prizes:
             new_strategy = "aggro_push"
         elif my_active_hp < 30 and bench_has_attacker:

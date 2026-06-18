@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Ordered action-priority rules consumed by TurnPlanner. Rules are evaluated top-down; the first matching rule wins.",
     "fields": {
       "priority":    "Evaluation order — lower number = higher priority",
@@ -34,13 +34,27 @@
     },
     {
       "priority": 4,
+      "action":   "PLAY_SUPPORTER",
+      "condition": "supporter_card_in_hand AND no_supporter_played_this_turn",
+      "profile_tag": "*",
+      "rationale": "Supporters provide draw or search; one allowed per turn — play before trainers that may shuffle hand."
+    },
+    {
+      "priority": 5,
       "action":   "PLAY_TRAINER",
       "condition": "trainer_card_in_hand",
       "profile_tag": "*",
       "rationale": "Trainer cards provide draw, search, or disruption without spending the attack."
     },
     {
-      "priority": 5,
+      "priority": 6,
+      "action":   "BENCH_POKEMON",
+      "condition": "basic_pokemon_in_hand AND bench_not_full",
+      "profile_tag": "*",
+      "rationale": "Benching basics preserves future evolution lines and prevents auto-loss from empty bench."
+    },
+    {
+      "priority": 7,
       "action":   "PASS",
       "condition": "no_other_action_available",
       "profile_tag": "*",
@@ -50,17 +64,17 @@
   "profile_overrides": {
     "aggressive": {
       "description": "Maximise damage output; skip trainer plays that don't accelerate KO.",
-      "boost": ["ATTACK_KO", "ATTACH_ENERGY"],
+      "boost":    ["ATTACK_KO", "ATTACH_ENERGY"],
       "suppress": []
     },
     "defensive": {
       "description": "Preserve resources; prioritise evolution and trainer cards.",
-      "boost": ["EVOLVE", "PLAY_TRAINER"],
+      "boost":    ["EVOLVE", "PLAY_TRAINER", "PLAY_SUPPORTER"],
       "suppress": []
     },
     "tempo": {
       "description": "Balance aggression and resource development.",
-      "boost": [],
+      "boost":    ["BENCH_POKEMON", "EVOLVE"],
       "suppress": []
     }
   }

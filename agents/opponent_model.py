@@ -51,11 +51,11 @@ class OpponentModel(BaseAgent):
                 f"OpponentModel received an illegal packet type: {type(packet).__name__}."
             )
 
-        revealed_cards = getattr(packet, "revealed_cards", []) or getattr(packet, "newly_played_cards", [])
-        turn_number = getattr(packet, "turn_number", 1) or getattr(packet, "turn", 1)
+        revealed_cards = getattr(packet, "revealed_cards", None) or getattr(packet, "newly_played_cards", [])
+        turn_number = getattr(packet, "turn_number", None) or getattr(packet, "turn", 1)
         active_pokemon = getattr(packet, "active_pokemon", None) or getattr(packet, "revealed_active_pokemon", None)
-        prizes_remaining = getattr(packet, "prizes_remaining", 6) or getattr(packet, "revealed_prizes_remaining", 6)
-        discard_pile = getattr(packet, "discard_pile", []) or getattr(packet, "revealed_discard", [])
+        prizes_remaining = getattr(packet, "prizes_remaining", None) or getattr(packet, "revealed_prizes_remaining", 6)
+        discard_pile = getattr(packet, "discard_pile", None) or getattr(packet, "revealed_discard", [])
 
         # STEP 1: Update revealed_state
         for card in revealed_cards:
@@ -122,6 +122,32 @@ class OpponentModel(BaseAgent):
 
         # STEP 5: Build reasoning
         reasoning = f"Identified {self.identified_archetype} with {round(self.archetype_confidence * 100, 2)}% confidence based on {total_revealed} revealed cards. Predicting {predicted}."
+
+        # Log to logs/opponent_model_reasoning.json
+        log_entry = {
+            "turn": turn_number,
+            "perspective": self.perspective_flag,
+            "revealed_count": total_revealed,
+            "identified_archetype": self.identified_archetype,
+            "confidence": self.archetype_confidence,
+            "predicted_next_action": predicted,
+            "reasoning": reasoning
+        }
+        
+        log_file = self.log_dir / "opponent_model_reasoning.json"
+        try:
+            existing_logs = []
+            if log_file.exists():
+                content = log_file.read_text(encoding="utf-8").strip()
+                if content:
+                    try:
+                        existing_logs = json.loads(content)
+                    except:
+                        pass
+            existing_logs.append(log_entry)
+            log_file.write_text(json.dumps(existing_logs, indent=2), encoding="utf-8")
+        except Exception as e:
+            logger.error(f"Failed to write opponent model reasoning log: {e}")
 
         return {
             "predicted_next_action": predicted,

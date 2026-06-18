@@ -48,4 +48,4 @@ def test_turn_planner_sorting(tmp_path):
         game_state=state
     )
     res_bad = planner.receive(packet_bad_profile)
-    assert res_bad["primary_action"] == "attack:Thunderbolt"  # priority 1 in aggro_push
+    assert res_bad["primary_action"] == "play_trainer:Professor Oak"  # prioritized over attack to avoid ending turn early

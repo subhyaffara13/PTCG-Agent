@@ -1,12 +1,36 @@
 {
   "_meta": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Known deck archetypes used by opponent_model.py for Bayesian inference. signature_cards are card_ids that strongly indicate this archetype. typical_actions are ordered by likelihood per game phase."
   },
   "archetypes": {
     "aggro": {
-      "signature_cards": [],
-      "card_pool": [],
+      "signature_cards": [
+        "chien-pao-ex-paf-061",
+        "iron-hands-ex-par-070",
+        "roaring-moon-ex-par-124",
+        "koraidon-ex-sv1-125",
+        "iron-valiant-ex-par-089"
+      ],
+      "card_pool": [
+        "chien-pao-ex-paf-061",
+        "baxcalibur-par-060",
+        "frigibax-par-057",
+        "arctibax-par-058",
+        "iron-hands-ex-par-070",
+        "roaring-moon-ex-par-124",
+        "koraidon-ex-sv1-125",
+        "irida-ast-186",
+        "superior-energy-retrieval-paf-101",
+        "nest-ball-sv1-255",
+        "ultra-ball-sv1-196",
+        "professor-s-research-sv1-190",
+        "iono-pal-185",
+        "iron-valiant-ex-par-089",
+        "basic-water-energy",
+        "basic-darkness-energy",
+        "basic-fighting-energy"
+      ],
       "typical_actions": {
         "early": ["attach_energy", "evolve", "attack"],
         "mid":   ["attack", "attach_energy", "play_supporter"],
@@ -17,8 +41,28 @@
       "bench_fill_rate": 0.6
     },
     "control": {
-      "signature_cards": [],
-      "card_pool": [],
+      "signature_cards": [
+        "sableye-lof-070",
+        "pecharunt-ex-pre-013",
+        "comfey-lof-079",
+        "path-to-the-peak-cre-148",
+        "lost-vacuum-lof-096"
+      ],
+      "card_pool": [
+        "sableye-lof-070",
+        "comfey-lof-079",
+        "pecharunt-ex-pre-013",
+        "colress-experiment-lof-155",
+        "mirage-gate-lof-163",
+        "lost-vacuum-lof-096",
+        "path-to-the-peak-cre-148",
+        "iono-pal-185",
+        "judge-fsf-108",
+        "crushing-hammer-sv1-168",
+        "hand-trimmer-sv6-161",
+        "basic-psychic-energy",
+        "basic-fire-energy"
+      ],
       "typical_actions": {
         "early": ["play_trainer", "play_supporter", "attach_energy"],
         "mid":   ["play_trainer", "disrupt", "use_ability"],
@@ -29,8 +73,33 @@
       "bench_fill_rate": 0.3
     },
     "combo": {
-      "signature_cards": [],
-      "card_pool": [],
+      "signature_cards": [
+        "charizard-ex-obs-125",
+        "pidgeot-ex-obs-164",
+        "gardevoir-ex-sv1-086",
+        "lugia-v-asr-138",
+        "archeops-sit-147"
+      ],
+      "card_pool": [
+        "charizard-ex-obs-125",
+        "charmeleon-obs-007",
+        "charmander-obs-023",
+        "pidgeot-ex-obs-164",
+        "pidgey-obs-162",
+        "pidgeotto-obs-163",
+        "gardevoir-ex-sv1-086",
+        "kirlia-sv1-068",
+        "ralts-sv1-067",
+        "lugia-v-asr-138",
+        "archeops-sit-147",
+        "rare-candy-sv1-191",
+        "arven-pal-186",
+        "professor-s-research-sv1-190",
+        "ultra-ball-sv1-196",
+        "nest-ball-sv1-255",
+        "basic-fire-energy",
+        "basic-psychic-energy"
+      ],
       "typical_actions": {
         "early": ["play_supporter", "play_trainer", "bench_pokemon"],
         "mid":   ["use_ability", "evolve", "attach_energy"],
@@ -41,8 +110,29 @@
       "bench_fill_rate": 0.8
     },
     "utility": {
-      "signature_cards": [],
-      "card_pool": [],
+      "signature_cards": [
+        "mew-ex-lof-151",
+        "genesect-v-cel-185",
+        "sylveon-ex-sv6-086",
+        "eevee-sv1-120",
+        "radiant-greninja-ast-046"
+      ],
+      "card_pool": [
+        "mew-ex-lof-151",
+        "genesect-v-cel-185",
+        "mewtwo-v-pr-123",
+        "sylveon-ex-sv6-086",
+        "eevee-sv1-120",
+        "radiant-greninja-ast-046",
+        "power-tablet-fst-236",
+        "elesa-s-sparkle-fst-233",
+        "iono-pal-185",
+        "ultra-ball-sv1-196",
+        "nest-ball-sv1-255",
+        "professor-s-research-sv1-190",
+        "basic-psychic-energy",
+        "double-turbo-energy-brg-151"
+      ],
       "typical_actions": {
         "early": ["draw", "play_supporter", "bench_pokemon"],
         "mid":   ["play_trainer", "attach_energy", "evolve"],

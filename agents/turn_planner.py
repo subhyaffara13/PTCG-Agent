@@ -53,7 +53,7 @@ class TurnPlanner(BaseAgent):
         turn = getattr(packet, "turn", 1)
 
         # Default profile check
-        valid_profiles = {"aggro_push", "setup", "disruption", "stall"}
+        valid_profiles = {"aggro_push", "setup", "disruption", "stall", "closing"}
         if priority_profile not in valid_profiles:
             priority_profile = "aggro_push"
 
@@ -121,12 +121,13 @@ class TurnPlanner(BaseAgent):
     def _sort_actions(self, candidates: List[str], profile: str) -> List[str]:
         """Sorts actions based on the explicit priority order per profile."""
         
-        # Profile order registries
+        # Profile order registries: non-ending moves first, then attack, then pass
         profile_orders = {
-            "aggro_push": ["attack:", "evolve:", "attach_energy:", "play_trainer:", "bench:", "pass"],
-            "setup": ["bench:", "play_trainer:", "attach_energy:", "evolve:", "pass"],
-            "disruption": ["play_trainer:", "attack:", "attach_energy:", "pass"],
-            "stall": ["play_trainer:", "attach_energy:", "pass"]
+            "aggro_push": ["evolve:", "attach_energy:", "play_trainer:", "bench:", "attack:", "pass"],
+            "setup": ["bench:", "play_trainer:", "attach_energy:", "evolve:", "attack:", "pass"],
+            "disruption": ["play_trainer:", "bench:", "attach_energy:", "evolve:", "attack:", "pass"],
+            "stall": ["play_trainer:", "bench:", "attach_energy:", "evolve:", "attack:", "pass"],
+            "closing": ["attach_energy:", "attack:", "evolve:", "play_trainer:", "bench:", "pass"]
         }
 
         order = profile_orders.get(profile, profile_orders["aggro_push"])

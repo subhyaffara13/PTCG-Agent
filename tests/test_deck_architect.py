@@ -20,7 +20,8 @@ def test_deck_architect_build_fallback(tmp_path):
     cards_file.write_text(json.dumps({
         "cards": [
             {"card_id": "SV-1", "card_name": "Pikachu", "card_type": "Pokemon", "archetype": "aggro", "combo_tags": ["Basic"]},
-            {"card_id": "SV-2", "card_name": "Lightning Energy", "card_type": "Energy", "archetype": "utility", "combo_tags": []}
+            {"card_id": "SV-2", "card_name": "Lightning Energy", "card_type": "Energy", "archetype": "utility", "combo_tags": []},
+            {"card_id": "SV-3", "card_name": "Raichu", "card_type": "Pokemon", "archetype": "aggro", "combo_tags": ["Stage 1"]}
         ]
     }), encoding="utf-8")
 

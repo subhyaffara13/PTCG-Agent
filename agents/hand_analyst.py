@@ -27,6 +27,35 @@ class HandAnalyst(BaseAgent):
         self.card_pool = self._load_card_pool()
         self.card_lookup = {c["card_id"]: c for c in self.card_pool}
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self.deck_base_list = self._load_deck_base_list()
+
+    def _load_deck_base_list(self) -> dict:
+        # Try finding deck configurations
+        path = self.skills_dir.parent / "agents" / "deck_new.csv"
+        if not path.exists():
+            path = self.skills_dir.parent / "deck.csv"
+        if not path.exists():
+            path = Path("agents/deck_new.csv")
+        if not path.exists():
+            path = Path("deck.csv")
+            
+        deck_dict = {}
+        if path.exists():
+            try:
+                import csv
+                with open(path, "r", encoding="utf-8") as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        try:
+                            cid = int(row["card_id"])
+                            count = int(row["count"])
+                            deck_dict[cid] = count
+                        except:
+                            pass
+            except Exception as e:
+                logger.error(f"Failed to load deck list in HandAnalyst: {e}")
+        return deck_dict
+
 
     def _load_card_pool(self) -> list:
         path = self.skills_dir / "card_scoring.json"
@@ -37,6 +66,15 @@ class HandAnalyst(BaseAgent):
             except Exception as e:
                 logger.error(f"Failed to read card_scoring.json: {e}")
         return []
+
+    def _get_phase(self, turn: int) -> str:
+        """Returns the game phase based on the current turn number."""
+        if turn <= 3:
+            return 'early'
+        elif turn <= 8:
+            return 'mid'
+        else:
+            return 'late'
 
     def receive(self, packet: Any) -> dict:
         """
@@ -52,6 +90,60 @@ class HandAnalyst(BaseAgent):
         deck_remaining = packet.deck_remaining
         turn = getattr(packet, "turn", 1)
         opponent_prizes = getattr(packet, "opponent_prizes_remaining", 6)
+        
+        discard = getattr(packet, "discard", []) or []
+        board = getattr(packet, "board", []) or []
+
+        # Prize Zone Mapper Deduction logic
+        revealed_counts = {}
+        for cid in hand + discard + board:
+            try:
+                cid_int = int(cid)
+                revealed_counts[cid_int] = revealed_counts.get(cid_int, 0) + 1
+            except:
+                pass
+                
+        total_revealed_count = sum(revealed_counts.values())
+        total_starting_count = sum(self.deck_base_list.values()) if self.deck_base_list else 60
+        total_unrevealed = max(0, total_starting_count - total_revealed_count)
+        prize_remaining = max(0, total_unrevealed - deck_remaining)
+        
+        prized_probabilities = {}
+        if total_unrevealed > 0 and prize_remaining > 0:
+            import math
+            def nCr(n, r):
+                if r < 0 or r > n:
+                    return 0
+                return math.comb(n, r)
+                
+            for cid_int, start_count in self.deck_base_list.items():
+                rev_count = revealed_counts.get(cid_int, 0)
+                n_unrevealed = max(0, start_count - rev_count)
+                if n_unrevealed > 0:
+                    prob = 1.0 - (nCr(total_unrevealed - n_unrevealed, prize_remaining) / nCr(total_unrevealed, prize_remaining))
+                    prized_probabilities[str(cid_int)] = round(prob, 4)
+                else:
+                    prized_probabilities[str(cid_int)] = 0.0
+
+        # Log prized mapping
+        if prized_probabilities:
+            log_file = self.log_dir / "prize_mapper_reasoning.json"
+            try:
+                existing_logs = []
+                if log_file.exists():
+                    content = log_file.read_text(encoding="utf-8").strip()
+                    if content:
+                        existing_logs = json.loads(content)
+                existing_logs.append({
+                    "turn": turn,
+                    "perspective": self.perspective_flag,
+                    "prize_remaining": prize_remaining,
+                    "total_unrevealed": total_unrevealed,
+                    "prized_probabilities": prized_probabilities
+                })
+                log_file.write_text(json.dumps(existing_logs, indent=2), encoding="utf-8")
+            except Exception as e:
+                logger.error(f"Failed to log prize mapper: {e}")
 
         # Empty hand fallback check
         if not hand:
@@ -84,6 +176,7 @@ class HandAnalyst(BaseAgent):
                     has_supporter = True
                 elif ctype == "Energy":
                     has_energy = True
+                    ev_score += 0.05  # flat energy-in-hand relevance bonus
                 
                 hand_cards_data.append((card, ev_score))
             else:
@@ -91,16 +184,36 @@ class HandAnalyst(BaseAgent):
                 hand_cards_data.append(({"card_id": cid, "card_name": cid, "card_type": "Trainer"}, ev_score))
             ev_scores.append(ev_score)
 
-        # STEP 2: Calculate hand_score
+        # STEP 2: Calculate hand_score with phase-aware bonuses
+        phase = self._get_phase(turn)
         avg_ev = sum(ev_scores) / len(ev_scores)
         bonus = 0.0
-        if has_basic:
-            bonus += 0.1
-        if has_supporter:
-            bonus += 0.1
-        if has_energy:
-            bonus += 0.1
-        
+
+        if phase == 'early':
+            if has_basic:
+                bonus += 0.15
+            if has_supporter:
+                bonus += 0.1
+        elif phase == 'mid':
+            if has_energy:
+                bonus += 0.15
+            has_evolution = any(
+                c[0].get("card_type") == "Pokemon" and "Stage" in c[0].get("card_name", "")
+                for c in hand_cards_data
+            )
+            if has_evolution:
+                bonus += 0.1
+        else:  # late
+            has_late_attacker = any(
+                c[0].get("damage_output", 0) > 0
+                for c in hand_cards_data if c[0].get("card_type") == "Pokemon"
+            )
+            if has_late_attacker:
+                bonus += 0.15
+            high_ev_count = sum(1 for c in hand_cards_data if c[1] > 0.6)
+            if high_ev_count > 0:
+                bonus += 0.1
+
         hand_score = min(1.0, avg_ev + bonus)
 
         # STEP 3: Priority profile selection logic
@@ -108,16 +221,21 @@ class HandAnalyst(BaseAgent):
         has_evolution = any(c[0].get("card_type") == "Pokemon" and "Stage" in c[0].get("card_name", "") for c in hand_cards_data)
         control_count = sum(1 for c in hand_cards_data if c[0].get("archetype") == "control")
 
-        if has_attacker and has_energy and hand_score > 0.5:
+        # Closing profile: maximum aggression when opponent is nearly out
+        if opponent_prizes <= 2 and has_attacker:
+            priority_profile = "closing"
+        elif has_attacker and has_energy and hand_score > 0.35:
             priority_profile = "aggro_push"
         elif (has_basic and not has_energy) or (has_evolution and not has_basic) or hand_score < 0.3:
             priority_profile = "setup"
         elif control_count >= 2 and opponent_prizes <= 3:
             priority_profile = "disruption"
-        elif deck_remaining < 10 or (not has_attacker and not has_supporter):
+        # PrizeTracker proxy: mathematically unlikely to draw an attacker if deck is thin
+        elif deck_remaining < 15 and not has_attacker:
             priority_profile = "stall"
         else:
-            priority_profile = "aggro_push"
+            # Phase-aware default
+            priority_profile = "setup" if phase == 'early' else "aggro_push"
 
         # STEP 4: Identify top play
         # Highest ev_score, resolve tie using Pokemon > Trainer > Energy

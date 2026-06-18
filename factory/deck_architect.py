@@ -112,29 +112,44 @@ class DeckArchitect(BaseAgent):
         deck = []
         
         # Rule: Include at least 1 Basic Pokemon
-        basic_choice = random.choice(basic_pokemon) if basic_pokemon else {
-            "card_id": "BASE-PKMN", "card_name": "Basic Pokemon Starters", "card_type": "Pokemon", "ev_score": 0.5, "combo_tags": ["Basic"]
-        }
+        # Prefer explicit Basic Pokemon; fall back to any Pokemon in pool before using sentinel
+        if basic_pokemon:
+            basic_choice = random.choice(basic_pokemon)
+        else:
+            any_pokemon = [c for c in legal_cards if c.get("card_type") == "Pokemon"]
+            if any_pokemon:
+                basic_choice = random.choice(any_pokemon)
+            else:
+                # Last-resort sentinel — should never reach here with a populated card pool
+                basic_choice = {"card_id": 0, "card_name": "Basic Pokemon", "card_type": "Pokemon", "ev_score": 0.5, "combo_tags": ["Basic"]}
         deck.append(dict(basic_choice))
 
         # Rule: Include basic Energy cards
-        energy_choice = random.choice(energy_cards) if energy_cards else {
-            "card_id": "BASE-ENERGY", "card_name": "Basic Energy", "card_type": "Energy", "ev_score": 0.5
+        basic_energies = [c for c in energy_cards if "Basic" in c.get("card_name", "")]
+        energy_choice = random.choice(basic_energies) if basic_energies else {
+            "card_id": 1, "card_name": "Basic Energy", "card_type": "Energy", "ev_score": 0.5
         }
         deck.extend([dict(energy_choice) for _ in range(8)]) # typical minimum boundary
 
-        # Fill up to 60 using legal pool, enforcing max 4 copies constraint
+        # Fill up to 60 using legal pool, enforcing max 4 copies constraint (except Energy)
         card_copies = {}
         for c in deck:
             cid = c["card_id"]
             card_copies[cid] = card_copies.get(cid, 0) + 1
 
-        while len(deck) < 60:
+        loop_guard = 0
+        while len(deck) < 60 and loop_guard < 5000:
+            loop_guard += 1
             candidate_card = random.choice(legal_cards)
             cid = candidate_card["card_id"]
-            if card_copies.get(cid, 0) < 4:
+            is_basic_energy = candidate_card.get("card_type") == "Energy" and "Basic" in candidate_card.get("card_name", "")
+            if is_basic_energy or card_copies.get(cid, 0) < 4:
                 deck.append(dict(candidate_card))
                 card_copies[cid] = card_copies.get(cid, 0) + 1
+
+        # If loop guard tripped, pad with whatever is available
+        while len(deck) < 60:
+            deck.append(dict(random.choice(legal_cards)))
 
         return deck
 

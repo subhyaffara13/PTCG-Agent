@@ -100,9 +100,6 @@ class ImprovementAgent(BaseAgent):
                 if renormalized:
                     reasoning += " Weights renormalized to sum to 1.0."
 
-                # Step 5: Append to decisions.md before writing config files
-                self._append_decision(iteration, action, reasoning, next_context if 'next_context' in locals() else eval_context, best_version)
-                
                 # Write back changes
                 rubric_file = self.skills_dir / "eval_rubric.json"
                 rubric_file.write_text(json.dumps(rubric, indent=2), encoding="utf-8")
@@ -146,9 +143,8 @@ class ImprovementAgent(BaseAgent):
         notes_file = self.log_dir / "improvement_notes.json"
         notes_file.write_text(json.dumps(notes, indent=2), encoding="utf-8")
 
-        # Step 5: Append to decisions.md if not already written in tuning block
-        if action != "tuned_weights":
-            self._append_decision(iteration, action, reasoning, next_context, best_version)
+        # Step 5: Append to decisions.md
+        self._append_decision(iteration, action, reasoning, next_context, best_version)
 
         return notes
 

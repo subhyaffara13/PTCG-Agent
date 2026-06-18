@@ -1,44 +1,24 @@
 {
   "_meta": {
     "version": "0.1.0",
-    "description": "Scoring rubric used by DeckArchitect to evaluate and mutate deck compositions. Weights must sum to 1.0 per category."
+    "description": "Deck scoring rubric loaded by DeckArchitect. scoring_weights must sum to 1.0. archetypes map to theoretical_min_turns used for speed benchmarking. deck_rules define hard legality constraints validated before any scoring."
   },
-  "scoring": {
-    "consistency": {
-      "description": "Probability of drawing key cards in opening hand (Monte Carlo estimate).",
-      "weight": 0.30
-    },
-    "prize_race_speed": {
-      "description": "Expected turns to take the first prize card.",
-      "weight": 0.25
-    },
-    "energy_efficiency": {
-      "description": "Ratio of energy cards to attackers; penalises over/under-supply.",
-      "weight": 0.20
-    },
-    "trainer_density": {
-      "description": "Fraction of deck that are Trainer/Supporter cards (target band: 0.30–0.45).",
-      "weight": 0.15
-    },
-    "tech_coverage": {
-      "description": "Number of unique counter-tech cards that address meta threats.",
-      "weight": 0.10
-    }
+  "scoring_weights": {
+    "consistency_score":    0.35,
+    "prize_efficiency_score": 0.25,
+    "recovery_score":       0.20,
+    "matchup_spread_score": 0.20
   },
-  "thresholds": {
-    "min_pokemon":       10,
-    "max_pokemon":       20,
-    "min_energy":         8,
-    "max_energy":        15,
-    "min_trainers":      15,
-    "max_trainers":      26,
-    "deck_size":         60,
-    "max_copies_per_card": 4
+  "archetypes": {
+    "aggro":   { "theoretical_min_turns": 4 },
+    "control": { "theoretical_min_turns": 12 },
+    "combo":   { "theoretical_min_turns": 6 },
+    "utility": { "theoretical_min_turns": 7 }
   },
-  "mutation": {
-    "max_swap_per_cycle": 3,
-    "preferred_archetypes": ["aggro", "combo"],
-    "energy_adjust_step": 1,
-    "trainer_adjust_step": 1
+  "deck_rules": {
+    "total_cards":          60,
+    "max_copies_per_card":  4,
+    "min_basic_pokemon":    1,
+    "must_include_energy":  true
   }
 }

@@ -16,7 +16,7 @@ from agents.base_agent import BaseAgent
 logger = logging.getLogger(__name__)
 
 class GameLogger(BaseAgent):
-    def __init__(self, log_dir: str = "logs", perspective_flag: str = "factory"):
+    def __init__(self, log_dir: str = "logs", perspective_flag: str = "player"):
         """
         Initializes the GameLogger.
         

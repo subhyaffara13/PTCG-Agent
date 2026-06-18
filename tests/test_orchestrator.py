@@ -21,6 +21,7 @@ def test_orchestrator_initialization_and_turn(tmp_path):
             "after_hand_analysis": "turn_planner",
             "on_trigger": "strategy_agent",
             "on_opponent_play": "opponent_model",
+            "before_turn_planner": "lethal_calculator",
             "always": "time_manager"
         }
     }), encoding="utf-8")
@@ -47,5 +48,5 @@ def test_orchestrator_initialization_and_turn(tmp_path):
     
     action = orchestrator.run_turn(state)
     
-    assert action == "pass"  # turn planner defaults to pass when rules are empty
+    assert action == "attack:Thunderbolt"  # TurnPlanner selects the legal attack since it is now routed in public state
     assert orchestrator.current_turn == 1

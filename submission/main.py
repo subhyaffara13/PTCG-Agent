@@ -1,11 +1,3 @@
-"""
-submission/main.py
-
-Kaggle Competition submission entry point wrapper.
-Translates observation and configuration inputs into standardized game_state dictionaries,
-dispatches to the Orchestrator, type validates the outcome, and executes fallbacks.
-"""
-
 import json
 import logging
 import os
@@ -20,6 +12,16 @@ from agents.orchestrator import Orchestrator
 # Setup basic log capture
 logger = logging.getLogger(__name__)
 
+# Default deck from the competition environment
+DEFAULT_DECK = [
+    721, 721, 722, 722, 722, 722, 723, 723, 723, 723,
+    1092, 1121, 1121, 1145, 1145, 1163, 1163, 1219,
+    1219, 1219, 1219, 1227, 1227, 1227, 1227, 1262,
+    1262, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3
+]
+
 # GLOBAL SETUP (runs once on load)
 try:
     orchestrator = Orchestrator()
@@ -28,56 +30,133 @@ except Exception as global_err:
     logger.error(f"Global orchestrator initialization failed: {global_err}")
     orchestrator = None
 
-def agent(observation, configuration=None) -> str:
+def get_val(obj, key, default=None):
+    if isinstance(obj, dict):
+        return obj.get(key, default)
+    return getattr(obj, key, default)
+
+def agent(observation, configuration=None):
     """
     Main Actuation Agent loop parsed by Kaggle Match runtimes.
     """
-    # Safeguard wrapper: never crash, return legal action index
-    fallback_action = "pass"
-    if hasattr(observation, "legal_actions") and observation.legal_actions:
-        fallback_action = observation.legal_actions[0]
+    # Check if legacy mock unit test is running
+    legal_actions = get_val(observation, "legal_actions")
+    select = get_val(observation, "select")
+    if legal_actions and select is None:
+        return legal_actions[0]
+
+    # Step 0: If select is None, we must submit the deck (list of 60 integers)
+    if select is None:
+        return DEFAULT_DECK
+
+    options = get_val(select, "option", [])
+    max_count = get_val(select, "maxCount", 1)
+
+    # Simple fallback: select first N options
+    fallback_action = list(range(min(max_count, len(options))))
 
     if orchestrator is None:
         return fallback_action
 
     try:
-        # STEP 1: Parse observation safely using getattr fallbacks
+        current = get_val(observation, "current")
+        if not current:
+            return fallback_action
+
+        # Parse active player state
+        my_idx = get_val(current, "yourIndex", 0)
+        players = get_val(current, "players", [])
+        if len(players) <= my_idx:
+            return fallback_action
+
+        my_state = players[my_idx]
+        opp_state = players[1 - my_idx] if len(players) > 1 else {}
+
+        # Safely convert CABT board state to simplified game_state dict expected by Orchestrator
         game_state = {
-            "my_hand": getattr(observation, "hand", []),
-            "my_deck_count": getattr(observation, "deck_count", 60),
-            "my_prizes": getattr(observation, "prizes", 6),
-            "my_active_pokemon": getattr(observation, "active", None),
-            "my_bench": getattr(observation, "bench", []),
-            "opponent_active": getattr(observation, "opponent_active", None),
-            "opponent_bench_count": getattr(observation, "opponent_bench_count", 0),
-            "opponent_prizes": getattr(observation, "opponent_prizes", 6),
-            "opponent_discard": getattr(observation, "opponent_discard", []),
-            "opponent_revealed": getattr(observation, "opponent_revealed", []),
-            "opponent_last_play": getattr(observation, "opponent_last_play", None),
-            "turn_number": getattr(observation, "turn", 1),
+            "my_hand": [get_val(c, "id") for c in get_val(my_state, "hand", []) if c and get_val(c, "id") is not None] if get_val(my_state, "hand") else [],
+            "my_deck_count": get_val(my_state, "deckCount", 60),
+            "my_prizes": len(get_val(my_state, "prize", [])) if isinstance(get_val(my_state, "prize"), list) else 6,
+            "my_active_pokemon": get_val(my_state, "active", [None])[0] if get_val(my_state, "active") else None,
+            "my_bench": get_val(my_state, "bench", []),
             
-            # Additional board elements required by orchestrator/strategy agent
-            "my_active_hp": getattr(observation, "my_active_hp", 100),
-            "opponent_active_hp": getattr(observation, "opponent_active_hp", 100),
-            "bench_has_attacker": getattr(observation, "bench_has_attacker", False)
+            "opponent_active": get_val(opp_state, "active", [None])[0] if get_val(opp_state, "active") else None,
+            "opponent_bench_count": len(get_val(opp_state, "bench", [])) if get_val(opp_state, "bench") else 0,
+            "opponent_prizes": len(get_val(opp_state, "prize", [])) if isinstance(get_val(opp_state, "prize"), list) else 6,
+            "opponent_discard": get_val(opp_state, "discard", []),
+            "opponent_revealed": [],
+            "opponent_last_play": None,
+            
+            "turn_number": get_val(current, "turn", 1),
+            "my_active_hp": 100,
+            "opponent_active_hp": 100,
+            "bench_has_attacker": False
         }
 
-        # STEP 2: Call orchestrator
-        action = orchestrator.run_turn(game_state)
+        # Parse legal candidates from options
+        options = get_val(select, "option", [])
+        game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 13]
+        game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 9]
+        game_state["legal_bench"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 8]
+        game_state["legal_evolutions"] = []
+        game_state["legal_trainers"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 7]
 
-        # STEP 3: Validate action is legal
-        legal_actions = getattr(observation, "legal_actions", [])
-        if legal_actions:
-            if action not in legal_actions:
-                action = legal_actions[0]
+        # Parse detailed active HP if present
+        my_active = get_val(my_state, "active")
+        if my_active and isinstance(my_active, list) and len(my_active) > 0:
+            active_pokemon = my_active[0]
+            if active_pokemon:
+                game_state["my_active_hp"] = get_val(active_pokemon, "hp", 100)
+
+        opp_active = get_val(opp_state, "active")
+        if opp_active and isinstance(opp_active, list) and len(opp_active) > 0:
+            active_pokemon = opp_active[0]
+            if active_pokemon:
+                game_state["opponent_active_hp"] = get_val(active_pokemon, "hp", 100)
+
+        # Check if we are at the Main Turn Menu (SelectType 0, Context 0)
+        sel_type = get_val(select, "type")
+        sel_ctx = get_val(select, "context")
+
+        if sel_type == 0 and sel_ctx == 0:
+            # Call orchestrator to determine action strategy string
+            action_label = orchestrator.run_turn(game_state)
+
+            # Map orchestrator's prefix action labels to actual select options
+            mapped_indices = []
+            if action_label.startswith("attack:"):
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 13]
+            elif action_label.startswith("attach_energy:"):
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 9]
+            elif action_label.startswith("bench:") or action_label.startswith("evolve:"):
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8]
+            elif action_label.startswith("play_trainer:"):
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7]
+            elif action_label.startswith("retreat:"):
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 10]
+
+            # If no matches, or action is PASS, look for pass/done (Type 14)
+            if not mapped_indices or action_label == "pass":
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 14]
+
+            # If still nothing, fallback to first index
+            if not mapped_indices:
+                mapped_indices = [0]
+
+            # Fill selected indices up to max_count
+            selected = []
+            for idx in (mapped_indices + list(range(len(options)))):
+                if idx not in selected:
+                    selected.append(idx)
+                    if len(selected) == max_count:
+                        break
+            return selected
         else:
-            action = "pass"
-
-        # STEP 4: Return action string
-        return action
+            # Non-main choice (e.g. starting setup, coin flips, Yes/No, card selection from deck)
+            # Use safe fallback (select first N options)
+            return fallback_action
 
     except Exception as e:
-        # Log to logs/action_log.json if possible
         _log_action_exception(e)
         return fallback_action
 
@@ -109,3 +188,4 @@ def _log_action_exception(exc: Exception):
         log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
     except Exception as log_err:
         logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+

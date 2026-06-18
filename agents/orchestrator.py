@@ -12,12 +12,13 @@ import time
 from pathlib import Path
 from typing import Any, Dict
 from agents.base_agent import BaseAgent
-from router.bus import RouterBus, HandAnalystPacket, TurnPlannerPacket, StrategyPacket, TimePacket
+from router.bus import RouterBus, HandAnalystPacket, TurnPlannerPacket, StrategyPacket, TimePacket, LethalPacket
 from agents.hand_analyst import HandAnalyst
 from agents.turn_planner import TurnPlanner
 from agents.strategy_agent import StrategyAgent
 from agents.opponent_model import OpponentModel, OpponentModelPacket
 from agents.time_manager import TimeManager
+from agents.lethal_calculator import LethalCalculator
 
 logger = logging.getLogger(__name__)
 
@@ -42,12 +43,14 @@ class Orchestrator(BaseAgent):
         self.strategy_agent = StrategyAgent(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir))
         self.opponent_model = OpponentModel(log_dir=str(self.log_dir), skills_dir=str(self.skills_dir))
         self.time_manager = TimeManager(log_dir=str(self.log_dir))
+        self.lethal_calculator = LethalCalculator(log_dir=str(self.log_dir))
 
         self.bus.register_agent("hand_analyst", self.hand_analyst.receive)
         self.bus.register_agent("turn_planner", self.turn_planner.receive)
         self.bus.register_agent("strategy_agent", self.strategy_agent.receive)
         self.bus.register_agent("opponent_model", self.opponent_model.receive, perspective_flag="opponent")
         self.bus.register_agent("time_manager", self.time_manager.receive)
+        self.bus.register_agent("lethal_calculator", self.lethal_calculator.receive)
         
         # Game states
         self.game_state = {}
@@ -68,6 +71,7 @@ class Orchestrator(BaseAgent):
             "after_hand_analysis": "turn_planner",
             "on_trigger": "strategy_agent",
             "on_opponent_play": "opponent_model",
+            "before_turn_planner": "lethal_calculator",
             "always": "time_manager"
         }
 
@@ -104,6 +108,16 @@ class Orchestrator(BaseAgent):
         if time_result.get("action_override") is not None:
             return time_result["action_override"]
 
+        # STEP 2.5: Lethal Calculator check
+        lethal_packet = LethalPacket(
+            my_active_damage=game_state.get("my_active_damage", 0),
+            opponent_active_hp=game_state.get("opponent_active_hp", 100),
+            legal_attacks=game_state.get("legal_attacks", [])
+        )
+        lethal_result = self.bus.dispatch("before_turn_planner", lethal_packet)
+        if lethal_result.get("action_override") is not None:
+            return lethal_result["action_override"]
+
         # STEP 3: Check StrategyAgent trigger
         board_summary = {
             "my_prizes_remaining": game_state.get("my_prizes", 6),
@@ -126,7 +140,9 @@ class Orchestrator(BaseAgent):
         # STEP 4: Run HandAnalyst
         hand_packet = HandAnalystPacket(
             hand=game_state.get("my_hand", []),
-            deck_remaining=game_state.get("my_deck_count", 60)
+            deck_remaining=game_state.get("my_deck_count", 60),
+            discard=game_state.get("my_discard", []),
+            board=game_state.get("my_board", [])
         )
         hand_result = self.bus.dispatch("turn_start", hand_packet)
 
@@ -135,7 +151,8 @@ class Orchestrator(BaseAgent):
             hand_score=hand_result["hand_score"],
             priority_profile=hand_result["priority_profile"],
             top_play=hand_result["top_play"],
-            game_state=self._get_public_state()
+            game_state=self._get_public_state(),
+            turn=self.current_turn
         )
         plan_result = self.bus.dispatch("after_hand_analysis", turn_packet)
 
@@ -168,7 +185,12 @@ class Orchestrator(BaseAgent):
             "opponent_bench_count": len(self.game_state.get("opponent_bench", [])),
             "opponent_prizes": self.game_state.get("opponent_prizes", 6),
             "opponent_discard": self.game_state.get("opponent_discard", []),
-            "turn_number": self.current_turn
+            "turn_number": self.current_turn,
+            "legal_attacks": self.game_state.get("legal_attacks", []),
+            "legal_attachments": self.game_state.get("legal_attachments", []),
+            "legal_bench": self.game_state.get("legal_bench", []),
+            "legal_evolutions": self.game_state.get("legal_evolutions", []),
+            "legal_trainers": self.game_state.get("legal_trainers", [])
         }
 
     def _check_trigger(self) -> str:

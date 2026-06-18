@@ -22,11 +22,17 @@ logger = logging.getLogger(__name__)
 class HandAnalystPacket:
     hand: list[str]
     deck_remaining: int
+    discard: list[str] = None
+    board: list[str] = None
+
 
 @dataclass(frozen=True)
 class TurnPlannerPacket:
     hand_score: float
     priority_profile: dict[str, Any]
+    top_play: str = ""
+    game_state: dict[str, Any] = None
+    turn: int = 1
 
 @dataclass(frozen=True)
 class StrategyPacket:
@@ -37,6 +43,23 @@ class StrategyPacket:
 class TimePacket:
     time_elapsed: float
     time_limit: float
+
+@dataclass(frozen=True)
+class OpponentModelPacket:
+    turn: int
+    newly_played_cards: list[str]
+    revealed_active_pokemon: str
+    revealed_bench_count: int
+    revealed_hand_size: int
+    revealed_prizes_remaining: int
+    revealed_discard: list[str]
+    game_phase: str
+
+@dataclass(frozen=True)
+class LethalPacket:
+    my_active_damage: int
+    opponent_active_hp: int
+    legal_attacks: list[str]
 
 
 class RouterBus:
@@ -50,7 +73,8 @@ class RouterBus:
             "hand_analyst": {"HandAnalystPacket"},
             "turn_planner": {"TurnPlannerPacket"},
             "strategy_agent": {"StrategyPacket"},
-            "time_manager": {"TimePacket"}
+            "time_manager": {"TimePacket"},
+            "lethal_calculator": {"LethalPacket"}
         }
 
     def register_agent(self, agent_name: str, callback: Callable[[Any], Any], perspective_flag: str = None):

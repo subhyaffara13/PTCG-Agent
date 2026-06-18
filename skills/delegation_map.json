@@ -15,6 +15,7 @@
     "after_hand_analysis": "turn_planner",
     "on_trigger": "strategy_agent",
     "on_opponent_play": "opponent_model",
+    "before_turn_planner": "lethal_calculator",
     "always": "time_manager"
   }
 }
