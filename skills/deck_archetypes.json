@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "description": "Known deck archetypes used by opponent_model.py for Bayesian inference. signature_cards are card_ids that strongly indicate this archetype. typical_actions are ordered by likelihood per game phase."
+  },
+  "archetypes": {
+    "aggro": {
+      "signature_cards": [],
+      "card_pool": [],
+      "typical_actions": {
+        "early": ["attach_energy", "evolve", "attack"],
+        "mid":   ["attack", "attach_energy", "play_supporter"],
+        "late":  ["attack", "use_ability"]
+      },
+      "avg_energy_per_attacker": 2,
+      "prize_race_priority": 0.9,
+      "bench_fill_rate": 0.6
+    },
+    "control": {
+      "signature_cards": [],
+      "card_pool": [],
+      "typical_actions": {
+        "early": ["play_trainer", "play_supporter", "attach_energy"],
+        "mid":   ["play_trainer", "disrupt", "use_ability"],
+        "late":  ["disrupt", "stall", "play_trainer"]
+      },
+      "avg_energy_per_attacker": 1,
+      "prize_race_priority": 0.3,
+      "bench_fill_rate": 0.3
+    },
+    "combo": {
+      "signature_cards": [],
+      "card_pool": [],
+      "typical_actions": {
+        "early": ["play_supporter", "play_trainer", "bench_pokemon"],
+        "mid":   ["use_ability", "evolve", "attach_energy"],
+        "late":  ["attack", "use_ability", "play_trainer"]
+      },
+      "avg_energy_per_attacker": 3,
+      "prize_race_priority": 0.6,
+      "bench_fill_rate": 0.8
+    },
+    "utility": {
+      "signature_cards": [],
+      "card_pool": [],
+      "typical_actions": {
+        "early": ["draw", "play_supporter", "bench_pokemon"],
+        "mid":   ["play_trainer", "attach_energy", "evolve"],
+        "late":  ["attack", "play_supporter", "use_ability"]
+      },
+      "avg_energy_per_attacker": 2,
+      "prize_race_priority": 0.5,
+      "bench_fill_rate": 0.5
+    }
+  }
+}
