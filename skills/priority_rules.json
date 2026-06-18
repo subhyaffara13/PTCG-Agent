@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "description": "Ordered action-priority rules consumed by TurnPlanner. Rules are evaluated top-down; the first matching rule wins.",
+    "fields": {
+      "priority":    "Evaluation order — lower number = higher priority",
+      "action":      "Canonical action label returned in the action list",
+      "condition":   "Human-readable trigger condition (evaluated by TurnPlanner logic)",
+      "profile_tag": "Which priority_profile strings activate this rule ('*' = always active)",
+      "rationale":   "Why this action ranks here"
+    }
+  },
+  "rules": [
+    {
+      "priority": 1,
+      "action":   "ATTACK_KO",
+      "condition": "hand_score >= ko_threshold AND energy_sufficient",
+      "profile_tag": "*",
+      "rationale": "Taking a KO advances prize count — highest tempo play available."
+    },
+    {
+      "priority": 2,
+      "action":   "EVOLVE",
+      "condition": "evolution_card_in_hand AND base_on_bench",
+      "profile_tag": "*",
+      "rationale": "Evolving unlocks higher-damage attacks and abilities on the next turn."
+    },
+    {
+      "priority": 3,
+      "action":   "ATTACH_ENERGY",
+      "condition": "energy_card_in_hand AND active_or_bench_needs_energy",
+      "profile_tag": "*",
+      "rationale": "Energy attachment is once-per-turn; always use if available to build pressure."
+    },
+    {
+      "priority": 4,
+      "action":   "PLAY_TRAINER",
+      "condition": "trainer_card_in_hand",
+      "profile_tag": "*",
+      "rationale": "Trainer cards provide draw, search, or disruption without spending the attack."
+    },
+    {
+      "priority": 5,
+      "action":   "PASS",
+      "condition": "no_other_action_available",
+      "profile_tag": "*",
+      "rationale": "Fallback when no higher-priority action is legal this turn."
+    }
+  ],
+  "profile_overrides": {
+    "aggressive": {
+      "description": "Maximise damage output; skip trainer plays that don't accelerate KO.",
+      "boost": ["ATTACK_KO", "ATTACH_ENERGY"],
+      "suppress": []
+    },
+    "defensive": {
+      "description": "Preserve resources; prioritise evolution and trainer cards.",
+      "boost": ["EVOLVE", "PLAY_TRAINER"],
+      "suppress": []
+    },
+    "tempo": {
+      "description": "Balance aggression and resource development.",
+      "boost": [],
+      "suppress": []
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"turn": 3, "event_type": "bad_draw", "expected_outcome": "draw energy", "actual_outcome": "drew Supporter (unusable this turn)", "impact_score": -0.35}

@@ -1,0 +1,1 @@
+{"turn": 1, "agent_called": "HandAnalyst", "action_taken": "evaluate_hand", "game_state_before": {"hand_size": 7, "prizes_remaining": 6}, "game_state_after": {"hand_size": 6, "prizes_remaining": 6}}
