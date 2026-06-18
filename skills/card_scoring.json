@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "description": "Card scoring knowledge base. Each entry defines scoring metadata for a single card used by hand_analyst and turn_planner.",
+    "fields": {
+      "card_id":        "Unique identifier (e.g. set code + number, e.g. 'SVI-001')",
+      "card_name":      "Full card name as printed",
+      "card_type":      "Pokemon | Trainer | Energy",
+      "archetype":      "aggro | control | combo | utility",
+      "energy_cost":    "Total energy required to use primary attack (0 if Trainer/Energy)",
+      "damage_output":  "Base damage of primary attack (0 if non-attacking)",
+      "utility_score":  "0–10 score for non-damage value (draw, search, disruption, etc.)",
+      "combo_tags":     "List of tag strings that link synergistic cards (e.g. ['bench-snipe', 'attach-from-discard'])",
+      "deck_frequency": "0.0–1.0 — how often this card appears across top-tier decks (meta presence)",
+      "ev_score":       "Computed expected-value score; updated by eval_agent after each game cycle"
+    }
+  },
+  "cards": [
+    {
+      "card_id": "",
+      "card_name": "",
+      "card_type": "Pokemon | Trainer | Energy",
+      "archetype": "aggro | control | combo | utility",
+      "energy_cost": 0,
+      "damage_output": 0,
+      "utility_score": 0,
+      "combo_tags": [],
+      "deck_frequency": 0.0,
+      "ev_score": 0.0
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "description": "Evaluation rubric used by eval_agent. Each context defines a weighted scoring formula. Weights per context must sum to 1.0.",
+    "metrics": {
+      "win_rate":         "Proportion of games won in the test batch",
+      "prize_efficiency": "Prizes taken per turn relative to opponent",
+      "turn_efficiency":  "Actions-per-turn utilization (setup speed, resource use)",
+      "ko_rate":          "Rate of successful KOs relative to attacks made",
+      "logic_delta":      "Improvement in decision quality vs. previous agent version (from reasoning_log diff)"
+    },
+    "contexts": {
+      "aggro_test":   "Fast-aggro mirror matchup — rewards explosive damage and prize racing",
+      "meta_test":    "Broad meta simulation — rewards consistency and adaptive play",
+      "micro_patch":  "Small targeted improvement pass — rewards logic quality over raw wins"
+    }
+  },
+  "contexts": {
+    "aggro_test": {
+      "win_rate": 0.35,
+      "prize_efficiency": 0.25,
+      "turn_efficiency": 0.00,
+      "ko_rate": 0.20,
+      "logic_delta": 0.20
+    },
+    "meta_test": {
+      "win_rate": 0.30,
+      "prize_efficiency": 0.00,
+      "turn_efficiency": 0.25,
+      "ko_rate": 0.20,
+      "logic_delta": 0.25
+    },
+    "micro_patch": {
+      "win_rate": 0.25,
+      "prize_efficiency": 0.25,
+      "turn_efficiency": 0.00,
+      "ko_rate": 0.15,
+      "logic_delta": 0.35
+    }
+  }
+}
