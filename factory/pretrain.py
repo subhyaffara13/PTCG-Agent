@@ -1,7 +1,7 @@
 """
 factory/pretrain.py
 
-Supervised offline pre-training loop via Behavioral Cloning.
+Supervised offline pre-training loop via Behavioral Cloning. Kept under 100 lines.
 """
 
 import sys
@@ -24,12 +24,8 @@ logger = logging.getLogger(__name__)
 
 
 class PreTrainer:
-    """Pre-trains a PolicyNetwork using offline expert game files."""
     def __init__(self, state_dim: int = 71, action_dim: int = 3000, model_path: str = 'models/policy_net.pt'):
-        self.state_dim = state_dim
-        self.action_dim = action_dim
-        self.model_path = model_path
-        
+        self.state_dim, self.action_dim, self.model_path = state_dim, action_dim, model_path
         if TORCH_AVAILABLE:
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             self.model = PolicyNetwork(state_dim, 256, action_dim).to(self.device)
@@ -38,19 +34,13 @@ class PreTrainer:
             self.model = None
 
     def train(self, states, actions, epochs: int = 10, batch_size: int = 64, lr: float = 0.001):
-        if not TORCH_AVAILABLE:
-            logger.error("Cannot train without PyTorch installed.")
-            return
-
-        if not states:
-            logger.error("No training data provided.")
+        if not TORCH_AVAILABLE or not states:
+            logger.error("Cannot train: PyTorch missing or empty states.")
             return
 
         dataset = ReplayDataset(states, actions)
         train_size = int(0.8 * len(dataset))
-        val_size = len(dataset) - train_size
-        train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, val_size])
-        
+        train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, len(dataset) - train_size])
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
         val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
         
@@ -62,7 +52,6 @@ class PreTrainer:
             start_time = time.time()
             self.model.train()
             total_loss = 0.0
-            
             for batch_states, batch_actions in train_loader:
                 batch_states, batch_actions = batch_states.to(self.device), batch_actions.to(self.device)
                 optimizer.zero_grad()
@@ -72,8 +61,7 @@ class PreTrainer:
                 total_loss += loss.item()
                 
             val_loss, val_acc = self.evaluate_loader(val_loader, criterion)
-            epoch_time = time.time() - start_time
-            logger.info(f"Epoch {epoch+1}/{epochs} | Time: {epoch_time:.1f}s | Train Loss: {total_loss/len(train_loader):.4f} | Val Loss: {val_loss:.4f} | Val Acc: {val_acc:.2f}%")
+            logger.info(f"Epoch {epoch+1}/{epochs} | Time: {time.time() - start_time:.1f}s | Train Loss: {total_loss/len(train_loader):.4f} | Val Loss: {val_loss:.4f} | Val Acc: {val_acc:.2f}%")
             
             if val_loss < best_val_loss:
                 best_val_loss = val_loss

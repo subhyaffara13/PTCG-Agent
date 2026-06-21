@@ -1,7 +1,7 @@
 """
 factory/ppo_trainer.py
 
-Proximal Policy Optimization (PPO) training loop.
+Proximal Policy Optimization (PPO) training loop. Kept under 100 lines.
 """
 
 import os
@@ -22,18 +22,9 @@ logger = logging.getLogger(__name__)
 
 
 class PPOTrainer:
-    """
-    Proximal Policy Optimization (PPO) trainer.
-    """
     def __init__(self, state_dim: int = 71, action_dim: int = 3000, model_path: str = 'models/ppo_actor_critic.pt'):
-        self.state_dim = state_dim
-        self.action_dim = action_dim
-        self.model_path = model_path
-        self.clip_ratio = 0.2
-        self.gamma = 0.99
-        self.lam = 0.95
-        self.value_coef = 0.5
-        self.entropy_coef = 0.01
+        self.state_dim, self.action_dim, self.model_path = state_dim, action_dim, model_path
+        self.clip_ratio, self.gamma, self.lam, self.value_coef, self.entropy_coef = 0.2, 0.99, 0.95, 0.5, 0.01
         
         if TORCH_AVAILABLE:
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -53,22 +44,15 @@ class PPOTrainer:
         advantages = torch.zeros_like(rewards)
         last_adv = 0
         padded_values = torch.cat([values, torch.tensor([0.0]).to(self.device)])
-        
         for t in reversed(range(len(rewards))):
             delta = rewards[t] + self.gamma * padded_values[t + 1] - padded_values[t]
-            advantages[t] = delta + self.gamma * self.lam * last_adv
-            last_adv = advantages[t]
-            
-        returns = advantages + values
-        return advantages, returns
+            advantages[t] = last_adv = delta + self.gamma * self.lam * last_adv
+        return advantages, advantages + values
 
-    def update(self, states: List[List[float]], actions: List[int], old_log_probs: List[float], rewards: List[float], epochs: int = 4, batch_size: int = 64):
-        if not TORCH_AVAILABLE:
-            logger.error("Cannot train without PyTorch installed.")
-            return
-
-        if not states:
-            logger.error("No training data provided.")
+    def update(self, states: List[List[float]], actions: List[int], old_log_probs: List[float],
+               rewards: List[float], epochs: int = 4, batch_size: int = 64):
+        if not TORCH_AVAILABLE or not states:
+            logger.error("Cannot train: PyTorch missing or empty states.")
             return
             
         states_t = torch.FloatTensor(states).to(self.device)
@@ -97,15 +81,11 @@ class PPOTrainer:
                 
                 dist = Categorical(logits=logits)
                 new_log_probs = dist.log_prob(actions_t[idx])
-                entropy = dist.entropy().mean()
-                
                 ratio = torch.exp(new_log_probs - old_log_probs_t[idx])
                 surr1 = ratio * advantages_t[idx]
                 surr2 = torch.clamp(ratio, 1.0 - self.clip_ratio, 1.0 + self.clip_ratio) * advantages_t[idx]
-                actor_loss = -torch.min(surr1, surr2).mean()
-                critic_loss = nn.MSELoss()(b_values, returns_t[idx])
                 
-                loss = actor_loss + self.value_coef * critic_loss - self.entropy_coef * entropy
+                loss = -torch.min(surr1, surr2).mean() + self.value_coef * nn.MSELoss()(b_values, returns_t[idx]) - self.entropy_coef * dist.entropy().mean()
                 self.optimizer.zero_grad()
                 loss.backward()
                 nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=0.5)
