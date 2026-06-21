@@ -45,4 +45,6 @@ def test_time_manager_thresholds(tmp_path):
     p5 = TimePacket(time_elapsed=-10.0, time_limit=600.0)
     r5 = tm.receive(p5)
     assert r5["status"] == "normal"
+    tm.flush_logs()
     assert (tmp_path / "reasoning_log.json").exists()
+

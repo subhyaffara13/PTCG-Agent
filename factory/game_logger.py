@@ -122,30 +122,11 @@ class GameLogger(BaseAgent):
         File format: game_YYYYMMDD_HHMMSS_v{player}_vs_v{opponent}.json
         Suffixes: action, reasoning, variance.
         """
-        base_name = f"game_{self.timestamp_str}_v{v_player}_vs_v{v_opponent}"
-        
-        stream_mappings = {
-            "action": self.action_logs,
-            "reasoning": self.reasoning_logs,
-            "variance": self.variance_logs
-        }
-        
-        for suffix, logs in stream_mappings.items():
-            file_path = self.log_dir / f"{suffix}_{base_name}.json"
-            
-            # Read existing if exists for append safety
-            existing_logs = []
-            if file_path.exists():
-                try:
-                    content = file_path.read_text(encoding="utf-8").strip()
-                    if content:
-                        existing_logs = json.loads(content)
-                except Exception as e:
-                    logger.error(f"Error reading existing log file {file_path}: {e}")
-            
-            existing_logs.extend(logs)
-            file_path.write_text(json.dumps(existing_logs, indent=2), encoding="utf-8")
-        
+        from factory.game_logger_io import save_log_streams
+        save_log_streams(
+            self.log_dir, self.timestamp_str, v_player, v_opponent,
+            self.action_logs, self.reasoning_logs, self.variance_logs
+        )
         # Clear local buffers
         self.action_logs.clear()
         self.reasoning_logs.clear()

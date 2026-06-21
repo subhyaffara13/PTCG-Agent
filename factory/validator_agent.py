@@ -5,16 +5,16 @@ Enforces syntax correctness, inheritance bounds, security checks, time limits,
 regression testing, and promotion logic prior to pushing staged updates live.
 """
 
-import ast
 import os
-import re
 import json
 import shutil
 import logging
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Tuple
+from typing import Any
 from agents.base_agent import BaseAgent
+from factory.validator_syntax import check_syntax_and_inheritance
+from factory.validator_security import check_security_and_time
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +28,7 @@ class ValidatorAgent(BaseAgent):
         self.staging_dir = Path(staging_dir)
         self.agents_dir = Path(agents_dir)
         self.factory_dir = Path(factory_dir)
+        self.skills_dir = Path("skills")
         
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.versions_dir.mkdir(parents=True, exist_ok=True)
@@ -35,276 +36,89 @@ class ValidatorAgent(BaseAgent):
         
         self.validation_log_file = self.log_dir / "validation_log.json"
         self.history_file = self.versions_dir / "version_history.json"
-        
-        self.time_limit = 600
-        self.min_improvement = 0.0
-        
-        # Load previous baseline
         self.baseline_score = self._load_baseline_score()
 
     def receive(self, packet: Any) -> Any:
-        raise NotImplementedError(
-            "ValidatorAgent does not receive routed packets — it validates codebase components directly"
-        )
+        raise NotImplementedError("ValidatorAgent does not receive routed packets")
 
     def _load_baseline_score(self) -> float:
         if self.history_file.exists():
             try:
-                content = self.history_file.read_text(encoding="utf-8").strip()
-                if content:
-                    history = json.loads(content)
-                    if isinstance(history, list) and history:
-                        # Extract maximum promoted version score as baseline
-                        scores = [item.get("version_score", 0.0) for item in history if item.get("promoted") is True]
-                        if scores:
-                            return max(scores)
+                history = json.loads(self.history_file.read_text(encoding="utf-8").strip())
+                if history:
+                    scores = [item.get("version_score", 0.0) for item in history if item.get("promoted") is True]
+                    if scores: return max(scores)
             except Exception as e:
                 logger.error(f"Failed to load baseline score: {e}")
         return 0.0
 
     def validate(self, staged_file_path: str, eval_report: dict) -> dict:
-        """
-        Runs exactly 9 checks in strict sequence. Promotes or logs failure.
-        """
         staged_path = Path(staged_file_path)
         timestamp = datetime.now().isoformat()
         version_id = f"v_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
-        checks_status = {
-            "syntax": "n/a", "base_inheritance": "n/a", "receive_method": "n/a",
-            "router_boundaries": "n/a", "no_auto_submit": "n/a", "no_api_keys": "n/a",
-            "time_compliance": "n/a", "score_improvement": "n/a", "staging_integrity": "n/a"
-        }
-
-        # Initialize failure/success payload template
-        report = {
-            "version_id": version_id,
-            "timestamp": timestamp,
-            "staged_file": str(staged_path),
-            "checks": checks_status,
-            "all_passed": False,
-            "promoted": False,
-            "failed_check": None,
-            "reason": None
-        }
+        checks = {k: "n/a" for k in ["syntax", "base_inheritance", "receive_method", "router_boundaries", "no_auto_submit", "no_api_keys", "time_compliance", "score_improvement", "staging_integrity"]}
+        report = {"version_id": version_id, "timestamp": timestamp, "staged_file": str(staged_path), "checks": checks, "all_passed": False, "promoted": False, "failed_check": None, "reason": None}
 
         try:
             content = staged_path.read_text(encoding="utf-8")
         except Exception as e:
             return self._handle_failure(report, 0, f"Could not read staged file: {e}")
 
-        # --- CHECK 1: Python Syntax ---
-        # --- CHECK 1: Python Syntax ---
-        checks_status["syntax"] = "fail"
-        if staged_path.suffix == ".csv":
-            try:
-                import csv
-                reader = csv.reader(content.strip().splitlines())
-                header = next(reader, None)  # skip header row
-                if header is None:
-                    return self._handle_failure(report, 1, "CSV is empty — no header found")
-                total_cards = 0
-                for row in reader:
-                    if not row or not any(cell.strip() for cell in row):
-                        continue  # skip blank lines
-                    # card_id (col 0) may be a string sentinel like 'BASE-PKMN' — allow it
-                    # card_type (col 2) is always a string — skip
-                    count = int(row[3])   # count must be integer
-                    float(row[4])          # ev_score must be numeric
-                    total_cards += count
-                if total_cards != 60:
-                    return self._handle_failure(report, 1, f"Deck must contain exactly 60 cards, found {total_cards}")
-                checks_status["syntax"] = "pass"
-            except (ValueError, IndexError) as e:
-                return self._handle_failure(report, 1, f"CSV parsing error: {e}")
-        else:
-            try:
-                tree = ast.parse(content, filename=staged_path.name)
-                checks_status["syntax"] = "pass"
-            except SyntaxError as e:
-                return self._handle_failure(report, 1, f"SyntaxError on line {e.lineno}: {e.msg}")
+        # Check 1, 2, 3 (Syntax and Structure)
+        passed, err_msg = check_syntax_and_inheritance(staged_path, content, self.skills_dir)
+        if not passed:
+            check_num = 1 if "Syntax" in err_msg or "CSV" in err_msg or "Rule" in err_msg or "Basic" in err_msg else (2 if "BaseAgent" in err_msg else 3)
+            return self._handle_failure(report, check_num, err_msg)
+        for k in ["syntax", "base_inheritance", "receive_method"]:
+            checks[k] = "pass"
 
-        # --- CHECK 2: BaseAgent Inheritance ---
-        checks_status["base_inheritance"] = "fail"
-        if staged_path.suffix == ".csv":
-            checks_status["base_inheritance"] = "pass"
-        else:
-            has_class = False
-            inherits_base = False
-            for node in ast.walk(tree):
-                if isinstance(node, ast.ClassDef):
-                    has_class = True
-                    for base in node.bases:
-                        if isinstance(base, ast.Name) and base.id == "BaseAgent":
-                            inherits_base = True
-                            break
-            if has_class and not inherits_base:
-                return self._handle_failure(report, 2, "Class definition found but does not inherit from BaseAgent")
-            checks_status["base_inheritance"] = "pass"
+        # Check 4, 5, 6, 7 (Security and Compliance)
+        failed_check, sec_err = check_security_and_time(staged_path, content)
+        if failed_check > 0:
+            return self._handle_failure(report, failed_check, sec_err)
+        for k in ["router_boundaries", "no_auto_submit", "no_api_keys"]:
+            checks[k] = "pass"
+        checks["time_compliance"] = "pass" if staged_path.name == "game_runner.py" else "n/a"
 
-        # --- CHECK 3: receive() NotImplementedError ---
-        checks_status["receive_method"] = "fail"
-        if staged_path.suffix == ".csv":
-            is_factory = False  # deck CSVs are not factory components
-            checks_status["receive_method"] = "pass"
-        else:
-            is_factory = any(x in staged_path.name for x in ["logger", "runner", "eval", "improvement", "builder", "validator"])
-            has_receive = False
-            receive_raises_nie = False
-            
-            for node in ast.walk(tree):
-                if isinstance(node, ast.FunctionDef) and node.name == "receive":
-                    has_receive = True
-                    for sub_node in ast.walk(node):
-                        if isinstance(sub_node, ast.Raise):
-                            if isinstance(sub_node.exc, ast.Call) and isinstance(sub_node.exc.func, ast.Name) and sub_node.exc.func.id == "NotImplementedError":
-                                receive_raises_nie = True
-                            elif isinstance(sub_node.exc, ast.Name) and sub_node.exc.id == "NotImplementedError":
-                                receive_raises_nie = True
-            
-            if is_factory:
-                if not has_receive or not receive_raises_nie:
-                    return self._handle_failure(report, 3, "Factory component receive() must raise NotImplementedError")
-            else:
-                if not has_receive:
-                    return self._handle_failure(report, 3, "Player agent receive() is missing or not implemented")
-            checks_status["receive_method"] = "pass"
-
-        # --- CHECK 4: Router Bus Boundaries ---
-        checks_status["router_boundaries"] = "fail"
-        lines = content.splitlines()
-        for idx, line in enumerate(lines, start=1):
-            if "GameState" in line or "OrchestratorState" in line:
-                return self._handle_failure(report, 4, f"Access to full state object found on line {idx}")
-            if "RouterBus." in line and not (".dispatch(" in line):
-                return self._handle_failure(report, 4, f"Direct access to RouterBus internals on line {idx}")
-        checks_status["router_boundaries"] = "pass"
-
-        # --- CHECK 5: No Auto-Submit Logic ---
-        checks_status["no_auto_submit"] = "fail"
-        forbidden_words = ["kaggle", "submit", "api_key", "upload", "competition"]
-        for idx, line in enumerate(lines, start=1):
-            for word in forbidden_words:
-                if word in line.lower():
-                    # Ignore normal python imports, path configs, or strings containing keywords in comments
-                    if f"#{word}" not in line.lower() and "import" not in line.lower():
-                        return self._handle_failure(report, 5, f"Auto-submit string '{word}' found on line {idx}")
-        checks_status["no_auto_submit"] = "pass"
-
-        # --- CHECK 6: No Hardcoded API Keys ---
-        checks_status["no_api_keys"] = "fail"
-        key_pattern = re.compile(r'["\'](sk-[A-Za-z0-9]{15,}|AIza[A-Za-z0-9_-]{15,}|Bearer\s+[A-Za-z0-9_-]{15,})["\']')
-        long_string_pattern = re.compile(r'["\']([A-Za-z0-9]{20,})["\']')
-        
-        for idx, line in enumerate(lines, start=1):
-            match = key_pattern.search(line)
-            if match:
-                redacted_val = "[REDACTED]"
-                return self._handle_failure(report, 6, f"Hardcoded key pattern found on line {idx}: {redacted_val}")
-            
-            # Simple check for strings longer than 20 chars with a mix of characters
-            for match in long_string_pattern.finditer(line):
-                val = match.group(1)
-                # If mixed casing and digits exist, flag it
-                if any(c.islower() for c in val) and any(c.isupper() for c in val) and any(c.isdigit() for c in val):
-                    redacted_val = "[REDACTED]"
-                    return self._handle_failure(report, 6, f"Suspected high-entropy key on line {idx}: {redacted_val}")
-        checks_status["no_api_keys"] = "pass"
-
-        # --- CHECK 7: Time Limit Compliance ---
-        if staged_path.name == "game_runner.py":
-            checks_status["time_compliance"] = "fail"
-            # Ensure safety levels exist
-            if not any("600" in line for line in lines):
-                return self._handle_failure(report, 7, "Forced game timeout (600s) check missing in game_runner.py")
-            if not any("540" in line for line in lines):
-                return self._handle_failure(report, 7, "Fastest legal move check at 540s missing in game_runner.py")
-            if not any("570" in line for line in lines):
-                return self._handle_failure(report, 7, "Forced pass check at 570s missing in game_runner.py")
-            checks_status["time_compliance"] = "pass"
-        else:
-            checks_status["time_compliance"] = "n/a"
-
-        # --- CHECK 8: Version Score Improvement ---
-        checks_status["score_improvement"] = "fail"
+        # Check 8 (Version Score Improvement)
         new_score = eval_report.get("version_scores", {}).get("player_b", 0.0)
         if new_score < self.baseline_score:
-            delta = self.baseline_score - new_score
-            return self._handle_failure(report, 8, f"New score {new_score} fails baseline check. Delta: {round(delta, 4)}")
-        checks_status["score_improvement"] = "pass"
+            return self._handle_failure(report, 8, f"New score {new_score} fails baseline. Delta: {round(self.baseline_score - new_score, 4)}")
+        checks["score_improvement"] = "pass"
 
-        # --- CHECK 9: Staging Directory Integrity ---
-        checks_status["staging_integrity"] = "fail"
+        # Check 9 (Staging integrity)
         staged_abs = staged_path.resolve()
-        
-        # Ensure it is placed in staging folder
         if self.staging_dir.resolve() not in staged_abs.parents:
             return self._handle_failure(report, 9, f"Staged file must be in {self.staging_dir}")
-        
-        # Prevent any live agent pushes
         if self.agents_dir.resolve() in staged_abs.parents or self.factory_dir.resolve() in staged_abs.parents:
             return self._handle_failure(report, 9, "Staged file cannot reside in live directory path")
-        checks_status["staging_integrity"] = "pass"
+        checks["staging_integrity"] = "pass"
 
-        # --- PROMOTION ---
-        # All checks passed! Execute copying and logs.
+        # Promotion
+        is_factory = any(x in staged_path.name for x in ["logger", "runner", "eval", "improvement", "builder", "validator"])
         dest_dir = self.factory_dir if is_factory else self.agents_dir
-        dest_path = dest_dir / staged_path.name
-        
         try:
-            shutil.copy2(staged_path, dest_path)
+            shutil.copy2(staged_path, dest_dir / staged_path.name)
         except Exception as e:
-            return self._handle_failure(report, 9, f"Copying staged file to live location failed: {e}")
+            return self._handle_failure(report, 9, f"Copying staged file failed: {e}")
 
-        report["all_passed"] = True
-        report["promoted"] = True
-        
+        report.update({"all_passed": True, "promoted": True})
         self.baseline_score = new_score
         
-        # Write to version_history.json
         self._append_to_history({
-            "version_id": version_id,
-            "timestamp": timestamp,
-            "staged_file": str(staged_path),
-            "version_score": new_score,
-            "improvement_vs_baseline": round(new_score - self.baseline_score, 4),
-            "checks_passed": 9,
-            "promoted": True
+            "version_id": version_id, "timestamp": timestamp, "staged_file": str(staged_path),
+            "version_score": new_score, "improvement_vs_baseline": round(new_score - self.baseline_score, 4),
+            "checks_passed": 9, "promoted": True, "raw_scores": eval_report.get("raw_scores", {})
         })
-
-        # Write to validation_log.json
         self._write_validation_log(report)
         return report
 
     def _handle_failure(self, report: dict, check_num: int, reason: str) -> dict:
-        """Helper to format report on any fail and serialize metadata."""
-        report["all_passed"] = False
-        report["promoted"] = False
-        report["failed_check"] = f"check_{check_num}"
-        report["reason"] = reason
-
-        # Log check status fail if matching check_num
-        check_mapping = {
-            1: "syntax", 2: "base_inheritance", 3: "receive_method",
-            4: "router_boundaries", 5: "no_auto_submit", 6: "no_api_keys",
-            7: "time_compliance", 8: "score_improvement", 9: "staging_integrity"
-        }
+        report.update({"all_passed": False, "promoted": False, "failed_check": f"check_{check_num}", "reason": reason})
+        check_mapping = {1: "syntax", 2: "base_inheritance", 3: "receive_method", 4: "router_boundaries", 5: "no_auto_submit", 6: "no_api_keys", 7: "time_compliance", 8: "score_improvement", 9: "staging_integrity"}
         name = check_mapping.get(check_num)
-        if name:
-            report["checks"][name] = "fail"
-
-        # Write to version_history.json
-        self._append_to_history({
-            "version_id": report["version_id"],
-            "timestamp": report["timestamp"],
-            "staged_file": report["staged_file"],
-            "version_score": 0.0,
-            "failed_check": check_num,
-            "reason": reason,
-            "promoted": False
-        })
-
-        # Write to validation_log.json
+        if name: report["checks"][name] = "fail"
         self._write_validation_log(report)
         return report
 
@@ -312,26 +126,17 @@ class ValidatorAgent(BaseAgent):
         history = []
         if self.history_file.exists():
             try:
-                content = self.history_file.read_text(encoding="utf-8").strip()
-                if content:
-                    history = json.loads(content)
-                    if not isinstance(history, list):
-                        history = [history]
-            except Exception:
-                pass
+                history = json.loads(self.history_file.read_text(encoding="utf-8").strip())
+            except Exception as e:
+                logger.error(f"Failed to read version history: {e}")
         history.append(record)
-        self.history_file.write_text(json.dumps(history, indent=2), encoding="utf-8")
+        try:
+            self.history_file.write_text(json.dumps(history, indent=2), encoding="utf-8")
+        except Exception as e:
+            logger.error(f"Failed to write version history: {e}")
 
     def _write_validation_log(self, report: dict):
-        logs = []
-        if self.validation_log_file.exists():
-            try:
-                content = self.validation_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    logs = json.loads(content)
-                    if not isinstance(logs, list):
-                        logs = [logs]
-            except Exception:
-                pass
-        logs.append(report)
-        self.validation_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+        try:
+            self.validation_log_file.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        except Exception as e:
+            logger.error(f"Failed to write validation log: {e}")

@@ -56,3 +56,6 @@ submission/agents/
 submission/router/
 submission/skills/
 submission/manifest.json
+
+# Exclude large reference PDF
+skills/card_pool_reference.pdf

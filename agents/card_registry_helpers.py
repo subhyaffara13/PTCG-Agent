@@ -1,0 +1,91 @@
+"""
+agents/card_registry_helpers.py
+
+Helper loading logic for CardRegistry.
+"""
+
+import json
+import logging
+from pathlib import Path
+from typing import Dict, Any
+from agents.card_types import CARD_TYPE_MAP, CardType, CardStage
+
+logger = logging.getLogger(__name__)
+
+def load_metadata_helper(skills_dir: Path, cards: Dict[Any, Any], evolution_predecessors: Dict[str, str]):
+    meta_path = skills_dir / "card_metadata.json"
+    if meta_path.exists():
+        try:
+            data = json.loads(meta_path.read_text(encoding="utf-8"))
+            for cid_str, c in data.get("cards", {}).items():
+                try:
+                    cid_int = int(cid_str)
+                except ValueError:
+                    continue
+                
+                name = c.get("card_name", "")
+                c_type_str = c.get("card_type", "").lower()
+                c_type = CARD_TYPE_MAP.get(c_type_str, CardType.UNKNOWN)
+                
+                stage_type_str = c.get("stage_type", "")
+                stage = CardStage.NONE
+                if "basic" in stage_type_str:
+                    stage = CardStage.BASIC
+                elif "stage 1" in stage_type_str:
+                    stage = CardStage.STAGE1
+                elif "stage 2" in stage_type_str:
+                    stage = CardStage.STAGE2
+                    
+                prev = c.get("previous_stage", "")
+                if name and prev and prev.lower() != "none":
+                    evolution_predecessors[name.lower()] = prev
+                    
+                from agents.card_entry import CardEntry
+                entry = CardEntry(
+                    card_id=cid_int,
+                    card_name=name,
+                    card_type=c_type,
+                    stage=stage,
+                    previous_stage=prev
+                )
+                cards[cid_int] = entry
+                cards[cid_str] = entry
+            logger.info(f"CardRegistry loaded {len(cards)//2} metadata entries")
+        except Exception as e:
+            logger.error(f"Failed parsing card_metadata: {e}")
+    else:
+        scoring_path = skills_dir / "card_scoring.json"
+        if scoring_path.exists():
+            try:
+                data = json.loads(scoring_path.read_text(encoding="utf-8"))
+                for c in data.get("cards", []):
+                    cid_str = str(c.get("card_id", ""))
+                    if not cid_str:
+                        continue
+                    try:
+                        cid_int = int(cid_str)
+                    except ValueError:
+                        continue
+                    name = c.get("card_name", "")
+                    c_type_str = c.get("card_type", "").lower()
+                    c_type = CARD_TYPE_MAP.get(c_type_str, CardType.UNKNOWN)
+                    stage_type_str = c.get("stage_type", "").lower()
+                    stage = CardStage.NONE
+                    if "basic" in stage_type_str:
+                        stage = CardStage.BASIC
+                    elif "stage 1" in stage_type_str:
+                        stage = CardStage.STAGE1
+                    elif "stage 2" in stage_type_str:
+                        stage = CardStage.STAGE2
+                    
+                    from agents.card_entry import CardEntry
+                    entry = CardEntry(
+                        card_id=cid_int,
+                        card_name=name,
+                        card_type=c_type,
+                        stage=stage
+                    )
+                    cards[cid_int] = entry
+                    cards[cid_str] = entry
+            except Exception as e:
+                logger.error(f"Failed parsing fallback card_scoring: {e}")

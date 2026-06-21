@@ -1,38 +1,64 @@
 """build_submission.py — packages the promoted iteration into a Kaggle-ready .tar.gz"""
-import tarfile, shutil, json
+import tarfile
+import shutil
+import json
 from pathlib import Path
 from datetime import datetime
 
-# 1. Sync the promoted deck_new.csv into submission/
-promoted_deck = Path("staging/deck_new.csv")
+# 1. Sync the promoted deck_new.csv from agents/ into submission/
+promoted_deck = Path("agents/deck_new.csv")
 if promoted_deck.exists():
     shutil.copy2(promoted_deck, Path("submission/deck.csv"))
     shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
-print("Synced promoted deck.")
+    print("Synced promoted deck from agents/deck_new.csv.")
+else:
+    print("WARNING: agents/deck_new.csv not found!")
 
 # 1.5 Sync all agents to submission/cb_agents and adjust imports
 print("Syncing agents to submission/cb_agents...")
+submission_cb_agents = Path("submission/cb_agents")
+submission_cb_agents.mkdir(parents=True, exist_ok=True)
 for f in Path("agents").glob("*.py"):
-    dest = Path("submission/cb_agents") / f.name
+    dest = submission_cb_agents / f.name
     shutil.copy2(f, dest)
     content = dest.read_text(encoding="utf-8")
     content = content.replace("from agents.", "from cb_agents.")
     content = content.replace("import agents.", "import cb_agents.")
     dest.write_text(content, encoding="utf-8")
 
-# 2. Write a manifest
+# 2. Load best version from history dynamically
+history_file = Path("versions/version_history.json")
+best_version = "v_20260618_150827"
+best_score = 0.6522
+best_iter = "5580"
+
+if history_file.exists():
+    try:
+        history = json.loads(history_file.read_text(encoding="utf-8"))
+        promoted = [x for x in history if x.get("promoted")]
+        if promoted:
+            best_entry = max(promoted, key=lambda x: x.get("version_score", 0.0))
+            best_version = best_entry.get("version_id", "unknown")
+            best_score = best_entry.get("version_score", 0.0)
+            # Use timestamp or extract iteration name
+            best_iter = best_version
+            print(f"Found best promoted version in history: {best_version} with score {best_score}")
+    except Exception as e:
+        print(f"Error loading version history: {e}")
+
+# Write a manifest
 manifest = {
     "built_at": datetime.now().isoformat(),
-    "promoted_version": "v_20260618_081305",
-    "version_score": 0.2487,
-    "iteration": 28,
+    "promoted_version": best_version,
+    "version_score": best_score,
+    "iteration": best_iter,
     "deck_file": "cb_agents/deck_new.csv",
 }
 (Path("submission") / "manifest.json").write_text(json.dumps(manifest, indent=2))
 print("Wrote manifest.json")
 
-# 3. Build .tar.gz — exclude PDFs, pyc, pycache, old agents/ mirror
-tar_path = Path("submission_iter28_v0248.tar.gz")
+# 3. Build .tar.gz — exclude PDFs, pyc, pycache
+tar_path = Path("submission.tar.gz")
 with tarfile.open(tar_path, "w:gz") as tar:
     for f in sorted(Path("submission").rglob("*")):
         if not f.is_file():
@@ -41,7 +67,7 @@ with tarfile.open(tar_path, "w:gz") as tar:
             continue
         if f.suffix in (".pyc", ".pdf"):
             continue
-        # Skip the old agents/ mirror if it somehow exists
+        # Skip the old agents/ mirror if it exists
         if "submission/agents/" in str(f).replace("\\", "/"):
             continue
         arcname = str(f.relative_to("submission"))

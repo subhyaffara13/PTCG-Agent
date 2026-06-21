@@ -37,4 +37,5 @@ def test_hand_analyst_basic(tmp_path):
     assert res["priority_profile"] in ("aggro_push", "setup", "disruption", "stall")
     
     # Assert logs/reasoning_log.json was written
+    analyst.flush_logs()
     assert (tmp_path / "reasoning_log.json").exists()

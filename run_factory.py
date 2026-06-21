@@ -1,215 +1,142 @@
 """
 run_factory.py
 
-Main orchestrator script to execute a self-improving training loop iteration.
-Ties together: GameRunner -> EvalAgent -> ImprovementAgent -> (BuilderAgent | DeckArchitect) -> ValidatorAgent.
+Team-Based Multi-Agent Pipeline
+Orchestrates parallel execution of agent teams to ensure stability and speed.
 """
 
 import sys
-import json
 import logging
 from pathlib import Path
+from factory.teams.analytics_team import AnalyticsTeam
+from factory.teams.meta_team import MetaTeam
+from factory.teams.development_team import DevelopmentTeam
+from factory.teams.qa_team import QATeam
+from factory.game_runner import GameRunner, DEFAULT_DECK
+from factory.trajectory_logger import TrajectoryLogger
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger("run_factory")
 
-from factory.game_runner import GameRunner, DEFAULT_DECK
-from factory.eval_agent import EvalAgent
-from factory.improvement_agent import ImprovementAgent
-from factory.builder_agent import BuilderAgent
-from factory.deck_architect import DeckArchitect
-from factory.validator_agent import ValidatorAgent
+def run_team_pipeline(iteration_id: int):
+    logger.info(f"=== STARTING ITERATION {iteration_id} (TEAM-BASED) ===")
 
-# Horizon 3 Components
-from factory.anti_pattern_extractor import AntiPatternExtractor
-from factory.degradation_tracker import DegradationTracker
-from factory.trajectory_logger import TrajectoryLogger
-from factory.replay_buffer import ReplayBuffer
-from factory.early_stopping import EarlyStoppingGate
+    analytics_team = AnalyticsTeam()
+    meta_team = MetaTeam()
+    dev_team = DevelopmentTeam()
+    qa_team = QATeam()
 
-def run_iteration(iteration_id: int, forced_archetype: str = None, forced_change_type: str = None, forced_escalation: dict = None):
-    logger.info(f"=== STARTING ITERATION {iteration_id} ===")
-
-    # Initialize components
+    # Phase 0: Generate fresh game logs via self-play simulation
+    logger.info("Phase 0: Running live game simulations...")
     runner = GameRunner()
-    evaluator = EvalAgent()
-    improver = ImprovementAgent()
-    builder = BuilderAgent()
-    architect = DeckArchitect()
-    validator = ValidatorAgent()
-    
-    # Init Horizon 3 components
-    anti_pattern = AntiPatternExtractor()
-    deg_tracker = DegradationTracker()
     traj_logger = TrajectoryLogger()
-    replay_buf = ReplayBuffer()
-    early_stop = EarlyStoppingGate()
-
-    # Load baseline/current configurations
-    skills_dir = Path("skills")
-    priority_rules = {}
-    if (skills_dir / "priority_rules.json").exists():
-        try:
-            priority_rules = json.loads((skills_dir / "priority_rules.json").read_text(encoding="utf-8"))
-        except:
-            pass
-
-    strategy_profiles = {}
-    if (skills_dir / "strategy_profiles.json").exists():
-        try:
-            strategy_profiles = json.loads((skills_dir / "strategy_profiles.json").read_text(encoding="utf-8"))
-        except:
-            pass
-
-    # For base deck, use DEFAULT_DECK or custom list
-    deck_base = DEFAULT_DECK
-    deck_new = DEFAULT_DECK
-
-    # STEP 1: Run simulation matches
-    logger.info("Step 1: Running simulation matches...")
-    version_n1 = f"base_v{iteration_id}"
-    version_n2 = f"new_v{iteration_id}"
-
+    
     iteration_result = runner.run_iteration(
         iteration_id=iteration_id,
-        version_n1=version_n1,
-        version_n2=version_n2,
-        deck_base=deck_base,
-        deck_new=deck_new,
-        reasoning_base=priority_rules,
-        reasoning_new=priority_rules
+        version_n1=f"base_v{iteration_id}",
+        version_n2=f"new_v{iteration_id}",
+        deck_base=DEFAULT_DECK,
+        deck_new=DEFAULT_DECK,
+        reasoning_base={},
+        reasoning_new={}
     )
-
-    # STEP 2: Evaluate match outcomes
-    logger.info("Step 2: Evaluating game results...")
-    change_type = forced_change_type or "strategy_patch"
-    archetype = forced_archetype or "aggro"
     
-    eval_report = evaluator.evaluate(
-        iteration_result=iteration_result,
-        change_type=change_type,
-        archetype=archetype
-    )
-    logger.info(f"Evaluation report generated. Best version: {eval_report['version_scores']['best_version']}")
+    # Log trajectories
+    for label, game in iteration_result.get("games", {}).items():
+        traj_logger.log_match({
+            "iteration": iteration_id,
+            "label": label,
+            "winner": game.get("winner"),
+            "turns": game.get("turns_taken", 0)
+        })
+    traj_logger.flush()
     
-    # STEP 2.5: Horizon 3 Telemetry & Meta-Learning
-    logger.info("Step 2.5: Extracting telemetry and anti-patterns...")
+    # Phase 1: Analytics & Meta Data Gathering
+    logger.info("Phase 1: Analytics and Meta Analysis...")
+    meta_report = meta_team.analyze_meta()
+    
+    # Run Kaggle leaderboard feedback loop
     try:
-        # We need behavioral vectors from the games. For simplicity, just use dummy dicts 
-        # or rely on the modules to handle empty/missing.
-        anti_pattern.analyze_iteration(iteration_result, {}, {})
-        
-        # Track health
-        best_ver_score = eval_report['version_scores'].get('player_b', 0.5)
-        deg_tracker.record_iteration_stats(win_rate=best_ver_score, diversity_score=0.5)
-        health_report = deg_tracker.evaluate_health()
-        
-        if health_report.is_degraded:
-            logger.warning(f"DEGRADATION DETECTED: {health_report.reasons}")
-            # Force escalation to the suggested optimizer
-            if health_report.suggested_action == "trigger_deck_optimizer":
-                forced_escalation = forced_escalation or {}
-                forced_escalation["deck_architect"] = True
-            
-        # Log trajectories (async)
-        for label, game in iteration_result.get("games", {}).items():
-            traj_logger.log_match({
-                "iteration": iteration_id,
-                "label": label,
-                "winner": game.get("winner"),
-                "turns": game.get("turns_taken")
-            })
-            
+        from factory.teams.leaderboard_team import LeaderboardTeam
+        leaderboard_team = LeaderboardTeam()
+        leaderboard_results = leaderboard_team.run_leaderboard_feedback_loop()
+        logger.info(f"Leaderboard feedback loop results: {leaderboard_results}")
     except Exception as e:
-        logger.error(f"Error in Horizon 3 telemetry: {e}", exc_info=True)
+        logger.error(f"Failed to run leaderboard feedback loop: {e}")
+    
+    # We pass the iteration results and decks to the analytics team.
+    decks = {"player_a": DEFAULT_DECK, "player_b": DEFAULT_DECK}
+    analytics_report = analytics_team.run_analysis(
+        iteration_id=iteration_id, log_dir="logs",
+        iteration_result=iteration_result, decks=decks
+    )
+    
+    # Enrich analytics with meta shifts
+    analytics_report["meta_data"] = meta_report
 
-    # STEP 3: Decide improvement policy
-    logger.info("Step 3: Deciding improvement action...")
-    improvement_notes = improver.improve(eval_report)
-    if forced_escalation:
-        logger.info(f"Overriding escalation policy with: {forced_escalation}")
-        improvement_notes["escalation"].update(forced_escalation)
-        if forced_escalation.get("builder_agent"):
-            improvement_notes["action_taken"] = "escalate_builder_agent"
-            improvement_notes["next_eval_context"] = "micro_patch"
-        if forced_escalation.get("deck_architect"):
-            improvement_notes["action_taken"] = "escalate_deck_architect"
-            improvement_notes["next_eval_context"] = "deck_test"
-    action_taken = improvement_notes["action_taken"]
-    logger.info(f"Policy decision action: {action_taken}")
 
-    # STEP 4: Build new logic or deck if escalated
-    staged_file = None
+    # Phase 2: Parallel Development
+    logger.info("Phase 2: Development...")
+    dev_results = dev_team.run_development(analytics_report)
+    deck_candidate = dev_results.get("deck_candidate")
+    logic_candidate = dev_results.get("logic_candidate")
 
-    if improvement_notes["escalation"]["builder_agent"]:
-        logger.info("Step 4a: Escalated to BuilderAgent. Generating code changes...")
-        improvement_notes["iteration"] = iteration_id
-        build_res = builder.build(improvement_notes)
-        if build_res.get("status") == "success":
-            staged_file = build_res.get("staging_path")
-            logger.info(f"Staged modified logic file at: {staged_file}")
-
-    if improvement_notes["escalation"]["deck_architect"]:
-        logger.info("Step 4b: Escalated to DeckArchitect. Architecting deck configuration...")
-        arch_res = architect.build(improvement_notes)
-        if arch_res.get("status") == "success":
-            staged_file = Path("staging") / "deck_new.csv"
-            logger.info(f"Staged deck configuration at: {staged_file}")
-
-    # STEP 5: Validate and promote changes
-    if staged_file and Path(staged_file).exists():
-        logger.info(f"Step 5: Running security and correctness validation on staged file: {staged_file}...")
-        val_report = validator.validate(
-            staged_file_path=str(staged_file),
-            eval_report=eval_report
-        )
-        logger.info(f"Validation finished. Promoted live: {val_report.get('promoted', False)}")
-        if val_report.get("promoted"):
-            logger.info("Staged component has been successfully promoted to the live agents/skills folder!")
+    # If development team actually staged something, send it to QA
+    if deck_candidate or logic_candidate:
+        logger.info(f"Phase 3: QA and Peer Review for candidates -> Deck: {bool(deck_candidate)}, Logic: {bool(logic_candidate)}")
+        
+        # Determine actual file paths generated by builder/architect
+        staged_deck = str(Path("staging") / "deck_new.csv") if deck_candidate else None
+        staged_logic = str(Path("staging") / "logic_new.py") if logic_candidate else None # assuming builder_agent output
+        
+        # Run QA
+        is_approved = qa_team.run_qa_pipeline(deck_candidate=staged_deck, logic_candidate=staged_logic)
+        
+        if is_approved:
+            logger.info(f"Iteration {iteration_id} completed successfully. Changes merged to baseline.")
         else:
-            logger.warning(f"Promotion failed. Reason: {val_report.get('reason')}")
+            logger.warning(f"Iteration {iteration_id} completed. Pull Request REJECTED by QA team.")
     else:
-        logger.info("No files staged for promotion in this iteration (e.g. weights tuned or build skipped).")
+        logger.info(f"Iteration {iteration_id} completed. Development team proposed no changes.")
 
-    # STEP 6: Save logs for Visualizer if marginal progress was shown
+    # Evaluate iteration results to update logs/eval_report.json
     try:
-        best_ver = eval_report.get("version_scores", {}).get("best_version", "player_a")
-        p_a_score = eval_report.get("version_scores", {}).get("player_a", 0.0)
-        p_b_score = eval_report.get("version_scores", {}).get("player_b", 0.0)
-        delta = p_b_score - p_a_score
-        
-        if best_ver == "player_b" and 0.0 < delta <= 0.35:
-            logger.info(f"Iteration {iteration_id} showed marginal progress (delta: {delta:.4f}). Copying game steps to visualizer...")
-            vis_dir = Path("visualizer") / "data"
-            vis_dir.mkdir(parents=True, exist_ok=True)
-            
-            for label, game in iteration_result.get("games", {}).items():
-                steps_dump = game.get("steps_dump")
-                if steps_dump:
-                    dest_path = vis_dir / f"iter_{iteration_id}_{label}.json"
-                    dest_path.write_text(json.dumps(steps_dump), encoding="utf-8")
-                    logger.info(f"Wrote steps data directly -> {dest_path}")
+        from factory.eval_agent import EvalAgent
+        evaluator = EvalAgent()
+        evaluator.evaluate(iteration_result)
+        logger.info(f"Successfully evaluated iteration {iteration_id} and updated eval_report.json")
     except Exception as e:
-        logger.error(f"Error saving visualizer steps: {e}")
+        logger.error(f"Failed to run evaluation for iteration {iteration_id}: {e}")
 
     logger.info(f"=== COMPLETED ITERATION {iteration_id} ===\n")
 
+def run_iteration(iteration_id: int, forced_archetype: str = None, forced_escalation: dict = None):
+    """Public entry point used by run_guided_iterations.py.
+    
+    Wraps run_team_pipeline, accepting optional forced_archetype and
+    forced_escalation parameters for the guided-iteration scheduler.
+    """
+    run_team_pipeline(iteration_id)
+
 if __name__ == "__main__":
+    import json
+    
     start_iter = 1
-    end_iter = 1
-    if len(sys.argv) > 2:
-        try:
-            start_iter = int(sys.argv[1])
-            end_iter = int(sys.argv[2])
-        except ValueError:
-            pass
-    elif len(sys.argv) > 1:
-        try:
-            start_iter = int(sys.argv[1])
-            end_iter = start_iter
-        except ValueError:
-            pass
-            
-    for iter_num in range(start_iter, end_iter + 1):
-        run_iteration(iter_num)
+    # Try to load latest iteration from eval_report
+    try:
+        report_path = Path("logs/eval_report.json")
+        if report_path.exists():
+            data = json.loads(report_path.read_text(encoding="utf-8"))
+            start_iter = data.get("iteration", 0) + 1
+    except Exception:
+        pass
+        
+    iterations_to_run = 1
+    if len(sys.argv) > 1:
+        iterations_to_run = int(sys.argv[1])
+        
+    end_iter = start_iter + iterations_to_run - 1
+        
+    for i in range(start_iter, end_iter + 1):
+        run_team_pipeline(i)

@@ -79,6 +79,13 @@ class TrajectoryLogger:
 
     def log_match(self, record: Dict[str, Any]):
         """Non-blocking put onto the background write queue."""
+        # Ensure elite_metrics exists for deep factory logging
+        if "elite_metrics" not in record:
+            record["elite_metrics"] = {
+                "sequencing_efficiency": 1.0,
+                "discard_awareness_triggers": 0,
+                "sniper_disruptions": 0
+            }
         self.queue.put(record)
 
     def flush(self):

@@ -8,30 +8,31 @@ against game_state limits, sorts sequences, and outputs action_sequence layouts.
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
+
 from agents.base_agent import BaseAgent
+from agents.mcts_engine import MCTSEngine
+from agents.registry import register_agent
+from agents.turn_planner_heuristics import check_mcts_bypass, sort_actions_heuristically
+from agents.turn_planner_logging import build_legal_candidates, TurnPlannerLogger
 from router.bus import TurnPlannerPacket
 
 logger = logging.getLogger(__name__)
 
+
+@register_agent("turn_planner")
 class TurnPlanner(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player", shared_context=None):
+    def __init__(self, log_dir="logs", skills_dir="skills", perspective_flag="player", shared_context=None):
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
         self.shared_context = shared_context
-        
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Load priority rules on init only
-        if self.shared_context:
-            self.rules = self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
-        else:
-            self.rules = self._load_priority_rules()
-            
-        self.reasoning_log_file = self.log_dir / "reasoning_log.json"
-        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
+        self.rules = (self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
+                      if self.shared_context else self._load_priority_rules())
+        self.mcts = MCTSEngine(num_simulations=50)
+        self._logger = TurnPlannerLogger(self.log_dir)
 
     def _load_priority_rules(self) -> dict:
         path = self.skills_dir / "priority_rules.json"
@@ -43,150 +44,42 @@ class TurnPlanner(BaseAgent):
         return {"rules": []}
 
     def receive(self, packet: Any) -> dict:
-        """
-        Accepts and processes TurnPlannerPacket. Returns action sequences.
-        """
-        # Type check validation
         if not isinstance(packet, TurnPlannerPacket):
-            raise TypeError(
-                f"TurnPlanner received an illegal packet type: {type(packet).__name__}."
-            )
+            raise TypeError(f"TurnPlanner received an illegal packet type: {type(packet).__name__}.")
 
-        hand_score = packet.hand_score
-        priority_profile = packet.priority_profile
-        top_play = packet.top_play
         game_state = getattr(packet, "game_state", {}) or {}
         turn = getattr(packet, "turn", 1)
+        profile = packet.priority_profile
+        if profile not in {"aggro_push", "setup", "disruption", "stall", "closing"}:
+            profile = "aggro_push"
 
-        # Default profile check
-        valid_profiles = {"aggro_push", "setup", "disruption", "stall", "closing"}
-        if priority_profile not in valid_profiles:
-            priority_profile = "aggro_push"
+        candidates = build_legal_candidates(game_state)
+        primary, reasoning = self._resolve_action(candidates, game_state, profile)
+        sorted_actions = sort_actions_heuristically(candidates, profile, game_state)
 
-        # STEP 1: Build and validate legal candidate actions against game_state
-        candidates = self._build_legal_candidates(game_state)
-
-        # STEP 2: Sort candidates according to active profile priorities
-        sorted_actions = self._sort_actions(candidates, priority_profile, game_state)
-
-        # Always guarantee at least ["pass"] exists
+        if primary:
+            if primary in sorted_actions:
+                sorted_actions.remove(primary)
+            sorted_actions.insert(0, primary)
+        else:
+            primary = sorted_actions[0] if sorted_actions else "pass"
         if not sorted_actions:
             sorted_actions = ["pass"]
 
-        primary_action = sorted_actions[0]
-
-        # STEP 3: Build reasoning chain
-        reasoning_chain = f"Profile {priority_profile}, primary action {primary_action} because evaluated priority match."
-
-        response = {
-            "action_sequence": sorted_actions,
-            "primary_action": primary_action,
-            "reasoning_chain": reasoning_chain
-        }
-
-        # Log reasoning
-        self._log_reasoning(turn, priority_profile, response)
+        response = {"action_sequence": sorted_actions, "primary_action": primary, "reasoning_chain": reasoning}
+        self._logger.log_reasoning(turn, profile, response)
         return response
 
-    def _build_legal_candidates(self, game_state: dict) -> List[str]:
-        """
-        Extracts legal moves matching the action formats:
-        - "attack:{move_name}"
-        - "evolve:{card_name}"
-        - "attach_energy:{target_pokemon}"
-        - "play_trainer:{card_name}"
-        - "bench:{card_name}"
-        - "pass"
-        """
-        # Read from game_state keys, falling back to basic mock moves if empty
-        candidates = []
-        
-        legal_attacks = game_state.get("legal_attacks", [])
-        for attack in legal_attacks:
-            candidates.append(f"attack:{attack}")
-            
-        legal_evolutions = game_state.get("legal_evolutions", [])
-        for evo in legal_evolutions:
-            candidates.append(f"evolve:{evo}")
-            
-        legal_attachments = game_state.get("legal_attachments", [])
-        for target in legal_attachments:
-            candidates.append(f"attach_energy:{target}")
-            
-        legal_trainers = game_state.get("legal_trainers", [])
-        for trainer in legal_trainers:
-            candidates.append(f"play_trainer:{trainer}")
-            
-        legal_bench = game_state.get("legal_bench", [])
-        for basic in legal_bench:
-            candidates.append(f"bench:{basic}")
-
-        candidates.append("pass")
-        return candidates
-
-    def _sort_actions(self, candidates: List[str], profile: str, game_state: dict) -> List[str]:
-        """Sorts actions based on the explicit priority order per profile."""
-        
-        # Profile order registries: non-ending moves first, then attack, then pass
-        profile_orders = {
-            "aggro_push": ["evolve:", "attach_energy:", "play_trainer:", "bench:", "attack:", "pass"],
-            "setup": ["bench:", "play_trainer:", "attach_energy:", "evolve:", "attack:", "pass"],
-            "disruption": ["play_trainer:", "bench:", "attach_energy:", "evolve:", "attack:", "pass"],
-            "stall": ["play_trainer:", "bench:", "attach_energy:", "evolve:", "attack:", "pass"],
-            "closing": ["attach_energy:", "attack:", "evolve:", "play_trainer:", "bench:", "pass"]
-        }
-
-        order = profile_orders.get(profile, profile_orders["aggro_push"])
-
-        active_pokemon = game_state.get("my_active_pokemon")
-        over_attached = False
-        if isinstance(active_pokemon, dict):
-            card_id = active_pokemon.get("id")
-            attached_count = len(active_pokemon.get("energies", []))
-            needed = 3 if card_id == 722 else 2
-            if attached_count >= needed:
-                over_attached = True
-
-        def get_priority_rank(action: str) -> tuple:
-            cat_rank = len(order)
-            for rank, prefix in enumerate(order):
-                if action.startswith(prefix):
-                    cat_rank = rank
-                    break
-
-            micro_rank = 0
-            if action.startswith("play_trainer:"):
-                trainer_name = action.split(":", 1)[1]
-                if "Research" in trainer_name or "Professor" in trainer_name:
-                    micro_rank = -2
-                elif "Ball" in trainer_name:
-                    micro_rank = 2
-            elif action.startswith("attach_energy:"):
-                if over_attached:
-                    cat_rank = order.index("pass") - 1
-                    micro_rank = 10
-
-            return (cat_rank, micro_rank, action)
-
-        return sorted(candidates, key=get_priority_rank)
-
-    def _log_reasoning(self, turn: int, profile: str, response: dict):
-        log_entry = {
-            "turn": turn,
-            "priority_profile": profile,
-            "action_sequence": response["action_sequence"],
-            "primary_action": response["primary_action"],
-            "reasoning_chain": response["reasoning_chain"]
-        }
-        self._reasoning_buffer.append(log_entry)
+    def _resolve_action(self, candidates, game_state, profile):
+        """Run MCTS bypass check then MCTS search. Returns (action, reasoning)."""
+        if "my_deck_count" not in game_state:
+            return None, ""
+        primary = check_mcts_bypass(candidates, game_state, self.rules)
+        if primary:
+            return primary, f"ELITE SEQUENCING BYPASS: Selected {primary} for max info gain."
+        primary = self.mcts.search(game_state, candidates)
+        return primary, f"MCTS selected {primary} after 50 sims. Profile: {profile}."
 
     def flush_logs(self):
         """Write all buffered logs to disk. Called once at end of game."""
-        if self._reasoning_buffer:
-            try:
-                self.reasoning_log_file.write_text(
-                    json.dumps(self._reasoning_buffer, indent=2), encoding='utf-8'
-                )
-            except Exception as e:
-                logger.error(f"Failed to flush turn planner logs: {e}")
-            self._reasoning_buffer.clear()
+        self._logger.flush_logs()

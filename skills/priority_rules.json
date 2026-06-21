@@ -12,6 +12,27 @@
   },
   "rules": [
     {
+      "priority": 0.1,
+      "action":   "PLAY_TRAINER_DRAW",
+      "condition": "draw_trainer_in_hand AND not_drawn_yet",
+      "profile_tag": "*",
+      "rationale": "Perfect Sequencing: Always gather information (draw/search) before making board commitments like energy attachment."
+    },
+    {
+      "priority": 0.5,
+      "action":   "PLAY_SUPPORTER_DISRUPT",
+      "condition": "opponent_searched_last_turn AND iono_or_judge_in_hand",
+      "profile_tag": "*",
+      "rationale": "Sniper Disruption: If the opponent just searched for a winning piece, instantly shuffle their hand to destroy their setup."
+    },
+    {
+      "priority": 0,
+      "action":   "PLAY_SUPPORTER_BOSS",
+      "condition": "has_boss_orders AND opponent_has_engine_on_bench AND can_ko_engine",
+      "profile_tag": "*",
+      "rationale": "Always prioritize pulling up and KO'ing the opponent's draw engine (e.g., Bibarel, Baxcalibur) to cripple their setup."
+    },
+    {
       "priority": 1,
       "action":   "ATTACK_KO",
       "condition": "hand_score >= ko_threshold AND energy_sufficient",
@@ -20,6 +41,13 @@
     },
     {
       "priority": 2,
+      "action":   "RETREAT",
+      "condition": "active_hp_low AND bench_attacker_ready AND energy_sufficient_for_retreat",
+      "profile_tag": "*",
+      "rationale": "Retreating an injured Active Pokemon denies the opponent prizes and pivots to a fresh attacker."
+    },
+    {
+      "priority": 3,
       "action":   "EVOLVE",
       "condition": "evolution_card_in_hand AND base_on_bench",
       "profile_tag": "*",
@@ -42,7 +70,7 @@
     {
       "priority": 5,
       "action":   "PLAY_TRAINER",
-      "condition": "trainer_card_in_hand",
+      "condition": "trainer_card_in_hand AND (NOT opponent_disruption_exhausted)",
       "profile_tag": "*",
       "rationale": "Trainer cards provide draw, search, or disruption without spending the attack."
     },

@@ -19,6 +19,10 @@
     "total_cards":          60,
     "max_copies_per_card":  4,
     "min_basic_pokemon":    1,
-    "must_include_energy":  true
+    "must_include_energy":  true,
+    "min_trainers":         28,
+    "max_energy":           12,
+    "min_supporters":       8,
+    "min_search_items":     8
   }
 }

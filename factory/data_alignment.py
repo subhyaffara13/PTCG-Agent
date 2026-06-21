@@ -128,77 +128,13 @@ class DataAligner:
         return self.ACTION_SPACE_OFFSET_OTHER + 1
 
     def parse_tournament_csv(self, path: str) -> List[Dict]:
-        """Parse pro match logs in CSV format."""
-        samples = []
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    # Implement actual parsing logic based on CSV schema
-                    # This is placeholder conversion
-                    state = {"turn": int(row.get("Turn", 0))}
-                    action = row.get("Action", "pass")
-                    reward = 1.0 if row.get("Won") == "True" else 0.0
-                    samples.append({"state": state, "action": action, "reward": reward})
-        except Exception as e:
-            logger.error(f"Failed to parse CSV {path}: {e}")
-        return samples
+        from factory.data_alignment_normalizer import parse_tournament_csv
+        return parse_tournament_csv(path)
 
     def parse_replay_json(self, path: str) -> List[Dict]:
-        """Parse game replay JSON."""
-        samples = []
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                for step in data.get("steps", []):
-                    # Placeholder for actual JSON replay schema
-                    state = step.get("state", {})
-                    action = step.get("action", "pass")
-                    reward = step.get("reward", 0.0)
-                    samples.append({"state": state, "action": action, "reward": reward})
-        except Exception as e:
-            logger.error(f"Failed to parse JSON {path}: {e}")
-        return samples
+        from factory.data_alignment_normalizer import parse_replay_json
+        return parse_replay_json(path)
 
     def build_training_dataset(self, source_paths: List[str]) -> Tuple[List[List[float]], List[int]]:
-        """Builds tensors ready for model training, applying frame stacking and augmentation."""
-        states = []
-        actions = []
-        
-        for path in source_paths:
-            samples = []
-            if path.endswith(".csv"):
-                samples = self.parse_tournament_csv(path)
-            elif path.endswith(".json"):
-                samples = self.parse_replay_json(path)
-                
-            # Frame stacking queue
-            from collections import deque
-            frame_stack = deque([[0.0] * self.SINGLE_STATE_DIM] * self.STACK_SIZE, maxlen=self.STACK_SIZE)
-            
-            for s in samples:
-                try:
-                    norm_single_state = self.normalize_state(s["state"])
-                    frame_stack.append(norm_single_state)
-                    
-                    # Flatten the frame stack into a single tensor
-                    stacked_tensor = []
-                    for frame in frame_stack:
-                        stacked_tensor.extend(frame)
-                        
-                    norm_action = self.normalize_action(s["action"])
-                    
-                    # Original sample
-                    states.append(stacked_tensor)
-                    actions.append(norm_action)
-                    
-                    # Augmentation (create 2 additional synthetic samples via symmetry)
-                    for _ in range(2):
-                        aug_tensor = self.apply_symmetry_augmentation(stacked_tensor)
-                        states.append(aug_tensor)
-                        actions.append(norm_action)
-                        
-                except Exception as e:
-                    logger.warning(f"Skipping malformed sample: {e}")
-                    
-        return states, actions
+        from factory.data_alignment_normalizer import build_training_dataset
+        return build_training_dataset(self, source_paths)

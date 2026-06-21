@@ -11,9 +11,11 @@ from pathlib import Path
 from typing import Any, Dict
 from agents.base_agent import BaseAgent
 from router.bus import TimePacket
+from agents.registry import register_agent
 
 logger = logging.getLogger(__name__)
 
+@register_agent("time_manager", needs_skills_dir=False, needs_shared_context=False)
 class TimeManager(BaseAgent):
     def __init__(self, log_dir: str = "logs", perspective_flag: str = "player"):
         super().__init__(perspective_flag)

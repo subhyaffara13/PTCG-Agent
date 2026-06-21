@@ -1,23 +1,17 @@
-"""
-agents/opponent_model.py
-
-Opponent modelling sub-agent.
-Infers opponent's hidden state from revealed information only.
-Predicts opponent's next action to inform strategy decisions.
-"""
-
 import json
 import logging
 from pathlib import Path
 from typing import Any, Dict
 from agents.base_agent import BaseAgent
 from router.bus import OpponentModelPacket
+from agents.registry import register_agent
+from agents.opponent_model_helpers import identify_opponent_archetype, predict_opponent_action
 
 logger = logging.getLogger(__name__)
 
+@register_agent("opponent_model", perspective_flag="opponent")
 class OpponentModel(BaseAgent):
     def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "opponent", shared_context=None):
-        # PERSPECTIVE_FLAG = "opponent" always
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
@@ -26,18 +20,18 @@ class OpponentModel(BaseAgent):
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
         self.reasoning_log_file = self.log_dir / "opponent_model_reasoning.json"
-        self._reasoning_buffer = []  # In-memory buffer, NO disk I/O per turn
+        self._reasoning_buffer = []
         
-        # Load once on init only
         if self.shared_context:
             self.archetypes = self.shared_context.get_config(str(self.skills_dir), "deck_archetypes.json").get("archetypes", {})
         else:
             self.archetypes = self._load_deck_archetypes()
             
-        self.revealed_state = []  # cards opponent has played
-        self.inferred_state = {}  # probabilistic fill
+        self.revealed_state = []
+        self.inferred_state = {}
         self.archetype_confidence = 0.0
         self.identified_archetype = "unknown"
+        self.opponent_searched_last_turn = False
 
     def _load_deck_archetypes(self) -> dict:
         path = self.skills_dir / "deck_archetypes.json"
@@ -50,102 +44,60 @@ class OpponentModel(BaseAgent):
         return {}
 
     def receive(self, packet: Any) -> dict:
-        """
-        Accepts and processes OpponentModelPacket.
-        """
         if not isinstance(packet, OpponentModelPacket):
-            raise TypeError(
-                f"OpponentModel received an illegal packet type: {type(packet).__name__}."
-            )
+            raise TypeError(f"OpponentModel received illegal packet type: {type(packet).__name__}.")
 
         revealed_cards = getattr(packet, "revealed_cards", None) or getattr(packet, "newly_played_cards", [])
         turn_number = getattr(packet, "turn_number", None) or getattr(packet, "turn", 1)
-        active_pokemon = getattr(packet, "active_pokemon", None) or getattr(packet, "revealed_active_pokemon", None)
         prizes_remaining = getattr(packet, "prizes_remaining", None) or getattr(packet, "revealed_prizes_remaining", 6)
-        discard_pile = getattr(packet, "discard_pile", None) or getattr(packet, "revealed_discard", [])
 
-        # STEP 1: Update revealed_state
         for card in revealed_cards:
             if card not in self.revealed_state:
                 self.revealed_state.append(card)
 
-        # STEP 2: Update archetype_confidence
-        # Compare revealed_state against each archetype in deck_archetypes.json
-        total_revealed = len(self.revealed_state)
-        
-        if total_revealed < 3 or not self.archetypes:
-            # Minimum 3 revealed cards before confidence > 0.0
-            self.archetype_confidence = 0.0
-            self.identified_archetype = "unknown"
-        else:
-            best_match_count = 0
-            best_archetype = "unknown"
-            
-            for arch_name, arch_data in self.archetypes.items():
-                signature_cards = set(arch_data.get("signature_cards", []))
-                card_pool = set(arch_data.get("card_pool", []))
-                
-                # Count matches
-                matches = sum(1 for c in self.revealed_state if c in signature_cards or c in card_pool)
-                if matches > best_match_count:
-                    best_match_count = matches
-                    best_archetype = arch_name
-            
-            if best_match_count > 0:
-                self.archetype_confidence = round(best_match_count / total_revealed, 4)
-                self.identified_archetype = best_archetype
-            else:
-                self.archetype_confidence = 0.0
-                self.identified_archetype = "unknown"
+        # IDENTIFY ARCHETYPE
+        self.identified_archetype, self.archetype_confidence = identify_opponent_archetype(
+            self.revealed_state, self.archetypes
+        )
 
-        # STEP 3: Fill inferred_state
-        # For identified_archetype load its card pool, exclude already revealed
+        # FILL INFERRED STATE
         if self.identified_archetype != "unknown" and self.identified_archetype in self.archetypes:
             pool = self.archetypes[self.identified_archetype].get("card_pool", [])
             self.inferred_state = {c: 1.0 for c in pool if c not in self.revealed_state}
         else:
             self.inferred_state = {}
 
-        # STEP 4: Predict next action
-        predicted = "unknown"
-        if self.identified_archetype == "aggro":
-            # Estimate energy attached by inspecting discard or board (assume attached if we have prizes mismatch)
-            if prizes_remaining < 6:
-                predicted = "attack"
-            else:
-                predicted = "attach_energy"
-        elif self.identified_archetype == "control":
-            if prizes_remaining <= 3:
-                predicted = "play_trainer_disruption"
-            else:
-                predicted = "stall"
-        elif self.identified_archetype == "combo":
-            if turn_number < 3:
-                predicted = "setup_bench"
-            else:
-                predicted = "execute_combo"
-        else:
-            predicted = "unknown"
+        # PREDICT ACTION
+        predicted = predict_opponent_action(self.identified_archetype, prizes_remaining, turn_number)
 
-        # STEP 5: Build reasoning
-        reasoning = f"Identified {self.identified_archetype} with {round(self.archetype_confidence * 100, 2)}% confidence based on {total_revealed} revealed cards. Predicting {predicted}."
+        reasoning = f"Identified {self.identified_archetype} with {round(self.archetype_confidence * 100, 2)}% confidence. Predicting {predicted}."
 
-        # Log to buffer
-        log_entry = {
+        self._reasoning_buffer.append({
             "turn": turn_number,
             "perspective": self.perspective_flag,
-            "revealed_count": total_revealed,
+            "revealed_count": len(self.revealed_state),
             "identified_archetype": self.identified_archetype,
             "confidence": self.archetype_confidence,
             "predicted_next_action": predicted,
-            "reasoning": reasoning
-        }
-        
-        self._reasoning_buffer.append(log_entry)
+            "reasoning": reasoning,
+            "opponent_searched_last_turn": self.opponent_searched_last_turn
+        })
 
         return {
             "predicted_next_action": predicted,
             "archetype_confidence": self.archetype_confidence,
             "inferred_deck_type": self.identified_archetype,
-            "reasoning": reasoning
+            "reasoning": reasoning,
+            "opponent_searched_last_turn": self.opponent_searched_last_turn
         }
+
+    def flush_logs(self):
+        if not self._reasoning_buffer:
+            return
+        try:
+            with open(self.reasoning_log_file, "a", encoding="utf-8") as f:
+                for entry in self._reasoning_buffer:
+                    f.write(json.dumps(entry) + "\n")
+            self._reasoning_buffer.clear()
+        except Exception as e:
+            logger.error(f"Failed to flush opponent model reasoning logs: {e}")

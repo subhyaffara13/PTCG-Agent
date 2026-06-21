@@ -17,25 +17,25 @@
   },
   "contexts": {
     "aggro_test": {
-      "win_rate": 0.06359800509493324,
-      "prize_efficiency": 0.9152026598734223,
+      "win_rate": 0.35,
+      "prize_efficiency": 0.25,
       "turn_efficiency": 0.0,
-      "ko_rate": 0.010599667515822205,
-      "logic_delta": 0.010599667515822205
+      "ko_rate": 0.20,
+      "logic_delta": 0.20
     },
     "meta_test": {
-      "win_rate": 0.4751106791923119,
-      "prize_efficiency": 0.26573804124824535,
-      "turn_efficiency": 0.08638375985314761,
-      "ko_rate": 0.08638375985314761,
-      "logic_delta": 0.08638375985314761
+      "win_rate": 0.50,
+      "prize_efficiency": 0.10,
+      "turn_efficiency": 0.10,
+      "ko_rate": 0.10,
+      "logic_delta": 0.20
     },
     "micro_patch": {
-      "win_rate": 0.5,
-      "prize_efficiency": 0.15,
+      "win_rate": 0.30,
+      "prize_efficiency": 0.0,
       "turn_efficiency": 0.0,
-      "ko_rate": 0.1,
-      "logic_delta": 0.25
+      "ko_rate": 0.0,
+      "logic_delta": 0.70
     }
   }
 }

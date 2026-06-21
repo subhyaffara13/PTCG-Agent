@@ -5,6 +5,8 @@ from typing import List, Dict, Any
 
 logger = logging.getLogger(__name__)
 
+from factory.anti_pattern_logger import load_donts, save_donts, run_replays_analysis
+
 class AntiPatternExtractor:
     """
     Extracts negative behavioral and deck-building patterns from exceptionally poor iterations.
@@ -23,24 +25,10 @@ class AntiPatternExtractor:
         self.donts_file = self.skills_dir / "learned_donts.json"
         
         # Load existing don'ts
-        self.learned_donts = self._load_donts()
+        self.learned_donts = load_donts(self.donts_file)
         
-    def _load_donts(self) -> Dict[str, Any]:
-        if self.donts_file.exists():
-            try:
-                return json.loads(self.donts_file.read_text(encoding="utf-8"))
-            except json.JSONDecodeError:
-                pass
-        return {
-            "deck_donts": [],
-            "behavior_donts": []
-        }
-
     def _save_donts(self):
-        try:
-            self.donts_file.write_text(json.dumps(self.learned_donts, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to save learned don'ts: {e}")
+        save_donts(self.donts_file, self.learned_donts)
 
     def analyze_iteration(self, iteration_result: Dict[str, Any], behavioral_vectors: Dict[str, Any], decks: Dict[str, list]):
         """
@@ -120,3 +108,11 @@ class AntiPatternExtractor:
                 self.learned_donts["behavior_donts"].append(rule)
                 self._save_donts()
                 logger.info(f"Extracted behavior anti-pattern: {rule['description']}")
+
+    def analyze_losing_replays(self, replay_paths: List[Path], player_name_or_id: str):
+        """
+        Analyzes a list of losing replay JSON files for a specific player/team
+        to extract anti-patterns.
+        """
+        run_replays_analysis(replay_paths, player_name_or_id, self)
+

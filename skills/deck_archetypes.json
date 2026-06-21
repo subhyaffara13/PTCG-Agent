@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "0.2.0",
-    "description": "Known deck archetypes used by opponent_model.py for Bayesian inference. signature_cards are card_ids that strongly indicate this archetype. typical_actions are ordered by likelihood per game phase."
+    "version": "0.4.0",
+    "description": "Known deck archetypes used by opponent_model.py for Bayesian inference. Signature cards are matched by ID or lowercased card name to build and detect meta decks."
   },
   "archetypes": {
     "aggro": {
@@ -10,7 +10,11 @@
         "iron-hands-ex-par-070",
         "roaring-moon-ex-par-124",
         "koraidon-ex-sv1-125",
-        "iron-valiant-ex-par-089"
+        "iron-valiant-ex-par-089",
+        "miraidon ex",
+        "magnezone",
+        "koraidon ex",
+        "entei"
       ],
       "card_pool": [
         "chien-pao-ex-paf-061",
@@ -29,7 +33,20 @@
         "iron-valiant-ex-par-089",
         "basic-water-energy",
         "basic-darkness-energy",
-        "basic-fighting-energy"
+        "basic-fighting-energy",
+        "miraidon ex",
+        "magnezone",
+        "koraidon ex",
+        "entei",
+        "miraidon",
+        "koraidon",
+        "nest ball",
+        "ultra ball",
+        "professor's research",
+        "iono",
+        "basic {L} energy",
+        "basic {R} energy",
+        "basic {F} energy"
       ],
       "typical_actions": {
         "early": ["attach_energy", "evolve", "attack"],
@@ -46,7 +63,11 @@
         "pecharunt-ex-pre-013",
         "comfey-lof-079",
         "path-to-the-peak-cre-148",
-        "lost-vacuum-lof-096"
+        "lost-vacuum-lof-096",
+        "pecharunt ex",
+        "comfey",
+        "sableye",
+        "great tusk"
       ],
       "card_pool": [
         "sableye-lof-070",
@@ -61,7 +82,19 @@
         "crushing-hammer-sv1-168",
         "hand-trimmer-sv6-161",
         "basic-psychic-energy",
-        "basic-fire-energy"
+        "basic-fire-energy",
+        "pecharunt ex",
+        "comfey",
+        "sableye",
+        "great tusk",
+        "pecharunt",
+        "lost vacuum",
+        "path to the peak",
+        "iono",
+        "crushing hammer",
+        "basic {P} energy",
+        "basic {D} energy",
+        "basic {F} energy"
       ],
       "typical_actions": {
         "early": ["play_trainer", "play_supporter", "attach_energy"],
@@ -78,7 +111,11 @@
         "pidgeot-ex-obs-164",
         "gardevoir-ex-sv1-086",
         "lugia-v-asr-138",
-        "archeops-sit-147"
+        "archeops-sit-147",
+        "ceruledge ex",
+        "blaziken ex",
+        "greninja ex",
+        "cynthia's garchomp ex"
       ],
       "card_pool": [
         "charizard-ex-obs-125",
@@ -98,7 +135,22 @@
         "ultra-ball-sv1-196",
         "nest-ball-sv1-255",
         "basic-fire-energy",
-        "basic-psychic-energy"
+        "basic-psychic-energy",
+        "ceruledge ex",
+        "blaziken ex",
+        "greninja ex",
+        "cynthia's garchomp ex",
+        "ceruledge",
+        "blaziken",
+        "suicune",
+        "rare candy",
+        "arven",
+        "professor's research",
+        "ultra ball",
+        "nest ball",
+        "basic {R} energy",
+        "basic {W} energy",
+        "basic {F} energy"
       ],
       "typical_actions": {
         "early": ["play_supporter", "play_trainer", "bench_pokemon"],
@@ -115,7 +167,12 @@
         "genesect-v-cel-185",
         "sylveon-ex-sv6-086",
         "eevee-sv1-120",
-        "radiant-greninja-ast-046"
+        "radiant-greninja-ast-046",
+        "mega lucario ex",
+        "altaria",
+        "mega absol ex",
+        "luxray ex",
+        "oricorio ex"
       ],
       "card_pool": [
         "mew-ex-lof-151",
@@ -131,7 +188,21 @@
         "nest-ball-sv1-255",
         "professor-s-research-sv1-190",
         "basic-psychic-energy",
-        "double-turbo-energy-brg-151"
+        "double-turbo-energy-brg-151",
+        "mega lucario ex",
+        "altaria",
+        "mega absol ex",
+        "luxray ex",
+        "oricorio ex",
+        "luxray",
+        "absol",
+        "iono",
+        "ultra ball",
+        "nest ball",
+        "professor's research",
+        "basic {L} energy",
+        "basic {F} energy",
+        "basic {D} energy"
       ],
       "typical_actions": {
         "early": ["draw", "play_supporter", "bench_pokemon"],
