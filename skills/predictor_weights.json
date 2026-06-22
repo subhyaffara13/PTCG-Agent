@@ -1,0 +1,9 @@
+{
+  "prize_weight": 1.2499999999999993,
+  "hand_weight": 0.19999999999999973,
+  "board_weight": 0.5499999999999996,
+  "energy_weight": 0.8999999999999995,
+  "active_hp_weight": 0.01,
+  "evolution_combo_weight": 0.4999999999999998,
+  "trainer_utility_weight": 0.2499999999999999
+}
