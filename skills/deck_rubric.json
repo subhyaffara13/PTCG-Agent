@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "description": "Deck scoring rubric loaded by DeckArchitect. scoring_weights must sum to 1.0. archetypes map to theoretical_min_turns used for speed benchmarking. deck_rules define hard legality constraints validated before any scoring."
+  },
+  "scoring_weights": {
+    "consistency_score":    0.35,
+    "prize_efficiency_score": 0.25,
+    "recovery_score":       0.20,
+    "matchup_spread_score": 0.20
+  },
+  "archetypes": {
+    "aggro":   { "theoretical_min_turns": 4 },
+    "control": { "theoretical_min_turns": 12 },
+    "combo":   { "theoretical_min_turns": 6 },
+    "utility": { "theoretical_min_turns": 7 }
+  },
+  "deck_rules": {
+    "total_cards":          60,
+    "max_copies_per_card":  4,
+    "min_basic_pokemon":    1,
+    "must_include_energy":  true,
+    "min_trainers":         28,
+    "max_energy":           12,
+    "min_supporters":       8,
+    "min_search_items":     8
+  }
+}

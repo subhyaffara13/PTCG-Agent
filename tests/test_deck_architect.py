@@ -1,0 +1,149 @@
+"""
+tests/test_deck_architect.py
+
+Unit tests for factory/deck_architect.py.
+"""
+
+import os
+import csv
+import json
+import pytest
+from pathlib import Path
+from factory.deck_architect import DeckArchitect
+
+def test_deck_architect_build_fallback(tmp_path):
+    skills_dir = tmp_path / "skills"
+    skills_dir.mkdir()
+    
+    # Save a minimal card pool
+    cards_file = skills_dir / "card_scoring.json"
+    cards_file.write_text(json.dumps({
+        "cards": [
+            {"card_id": "SV-1", "card_name": "Pikachu", "card_type": "Pokemon", "archetype": "aggro", "combo_tags": ["Basic"]},
+            {"card_id": "SV-2", "card_name": "Lightning Energy", "card_type": "Energy", "archetype": "utility", "combo_tags": []},
+            {"card_id": "SV-3", "card_name": "Raichu", "card_type": "Pokemon", "archetype": "aggro", "combo_tags": ["Stage 1"]}
+        ]
+    }), encoding="utf-8")
+
+    decisions_file = tmp_path / "decisions.md"
+    decisions_file.write_text("# Decisions\n", encoding="utf-8")
+
+    staging_dir = tmp_path / "staging"
+    staging_dir.mkdir()
+
+    architect = DeckArchitect(
+        log_dir=str(tmp_path),
+        skills_dir=str(skills_dir),
+        staging_dir=str(staging_dir),
+        decisions_file=str(decisions_file)
+    )
+
+    notes = {"next_eval_context": "aggro_test", "reasoning": "Tuning"}
+    res = architect.build(notes)
+    
+    assert res["status"] == "success"
+    
+    # Verify exact file count created
+    csv_file = staging_dir / "deck_new.csv"
+    assert csv_file.exists()
+    
+    # Read and ensure sum of card count is exactly 60
+    total_cards = 0
+    with open(csv_file, mode="r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            total_cards += int(row["count"])
+            
+    assert total_cards == 60
+
+
+def test_supercharged_deck_rules(tmp_path):
+    skills_dir = tmp_path / "skills"
+    skills_dir.mkdir()
+    
+    # Define a realistic card pool with evolution chains and different energies
+    cards_file = skills_dir / "card_scoring.json"
+    cards_file.write_text(json.dumps({
+        "cards": [
+            # Water Evolution Line (Chien-Pao / Frigibax / Baxcalibur)
+            {"card_id": "frigibax-par-057", "card_name": "Frigibax", "card_type": "Pokemon", "archetype": "aggro", "combo_tags": ["Basic"]},
+            {"card_id": "baxcalibur-par-060", "card_name": "Baxcalibur", "card_type": "Pokemon", "archetype": "aggro", "combo_tags": ["Stage 2"]},
+            # Fire Card (Not matching required water archetype)
+            {"card_id": "charmander-obs-023", "card_name": "Charmander", "card_type": "Pokemon", "archetype": "combo", "combo_tags": ["Basic"]},
+            # Energies
+            {"card_id": "basic-water-energy", "card_name": "Basic {W} Energy", "card_type": "Energy", "archetype": "utility", "combo_tags": []},
+            {"card_id": "basic-fire-energy", "card_name": "Basic {R} Energy", "card_type": "Energy", "archetype": "utility", "combo_tags": []},
+            # Trainers
+            {"card_id": "nest-ball-sv1-255", "card_name": "Nest Ball", "card_type": "Trainer", "archetype": "utility", "combo_tags": ["search"]},
+            {"card_id": "ultra-ball-sv1-196", "card_name": "Ultra Ball", "card_type": "Trainer", "archetype": "utility", "combo_tags": ["search"]},
+            {"card_id": "professor-s-research-sv1-190", "card_name": "Professor's Research", "card_type": "Trainer", "archetype": "utility", "combo_tags": ["Supporter", "draw"]}
+        ]
+    }), encoding="utf-8")
+
+    # Mock raw CSV
+    csv_file = skills_dir / "card_pool_raw.csv"
+    csv_file.write_text(
+        "Card ID,Card Name,Stage (Pokémon)/Type (Energy and Trainer),Previous stage,Type\n"
+        "frigibax-par-057,Frigibax,Basic Pokémon,n/a,{W}\n"
+        "baxcalibur-par-060,Baxcalibur,Stage 2 Pokémon,Arctibax,{W}\n"
+        "charmander-obs-023,Charmander,Basic Pokémon,n/a,{R}\n"
+        "basic-water-energy,Basic {W} Energy,Basic Energy,n/a,{W}\n"
+        "basic-fire-energy,Basic {R} Energy,Basic Energy,n/a,{R}\n",
+        encoding="utf-8"
+    )
+
+    # Setup mock archetype signature mapping
+    archetypes_file = skills_dir / "deck_archetypes.json"
+    archetypes_file.write_text(json.dumps({
+        "archetypes": {
+            "aggro": {
+                "signature_cards": ["baxcalibur-par-060"],
+                "card_pool": ["frigibax-par-057"]
+            }
+        }
+    }), encoding="utf-8")
+
+    decisions_file = tmp_path / "decisions.md"
+    decisions_file.write_text("# Decisions\n", encoding="utf-8")
+    staging_dir = tmp_path / "staging"
+    staging_dir.mkdir()
+
+    architect = DeckArchitect(
+        log_dir=str(tmp_path),
+        skills_dir=str(skills_dir),
+        staging_dir=str(staging_dir),
+        decisions_file=str(decisions_file)
+    )
+
+    # Force generating an aggro deck
+    notes = {"next_eval_context": "aggro", "reasoning": "Test architecture rules"}
+    res = architect.build(notes)
+    
+    assert res["status"] == "success"
+    
+    # Read generated CSV deck
+    deck_csv = staging_dir / "deck_new.csv"
+    assert deck_csv.exists()
+    
+    deck_cards = {}
+    with open(deck_csv, mode="r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            deck_cards[row["card_id"]] = int(row["count"])
+
+    # Verifications:
+    # 1. Total deck count is exactly 60
+    assert sum(deck_cards.values()) == 60
+    
+    # 2. Contains matching energy (Basic Water Energy) and NO fire energy
+    assert deck_cards.get("basic-water-energy", 0) > 0
+    assert deck_cards.get("basic-fire-energy", 0) == 0
+
+    # 3. Contains Baxcalibur AND Frigibax (basic pre-evolution)
+    assert deck_cards.get("baxcalibur-par-060", 0) > 0
+    assert deck_cards.get("frigibax-par-057", 0) > 0
+
+    # 4. Contains search and consistency trainers (Nest Ball, Ultra Ball, Professor's Research)
+    assert deck_cards.get("nest-ball-sv1-255", 0) > 0
+    assert deck_cards.get("ultra-ball-sv1-196", 0) > 0
+    assert deck_cards.get("professor-s-research-sv1-190", 0) > 0

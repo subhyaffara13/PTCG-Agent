@@ -1,0 +1,17 @@
+card_id,card_name,card_type,count,ev_score
+1022,Decidueye ex,Pokemon,3,0.6857
+424,Cetitan ex,Pokemon,1,0.4
+754,Mega Latias ex,Pokemon,2,0.8571
+1021,Dartrix,Pokemon,2,0.5714
+994,Fraxure,Pokemon,2,0.4571
+995,Haxorus,Pokemon,2,0.6571
+1,Basic {G} Energy,Energy,18,0.0
+3,Basic {W} Energy,Energy,22,0.0
+99,Hearthflame Mask Ogerpon ex,Pokemon,1,0.4
+75,Iron Leaves ex,Pokemon,1,0.5143
+332,Dhelmise,Pokemon,1,0.3714
+514,Thundurus,Pokemon,1,0.3143
+175,Bouffalant,Pokemon,1,0.3714
+27,Iron Leaves,Pokemon,1,0.2857
+234,Terapagos,Pokemon,1,0.2857
+766,Mega Diancie ex,Pokemon,1,0.3429
