@@ -9,21 +9,30 @@ experience_queue = []
 def handle_client(conn, addr):
     global latest_weights, latest_archetype, experience_queue
     try:
+        conn.settimeout(10.0)
         req = conn.recv(1024)
         if not req: return
         cmd = req.decode('utf-8').strip()
+        print(f"--> [Master] Connection from {addr} - Command: {cmd}")
         if cmd == "GET_CONFIG":
             conn.sendall(pickle.dumps((latest_archetype, latest_weights)))
         elif cmd == "PUSH_EXP":
             conn.sendall(b"OK")
-            size = int.from_bytes(conn.recv(4), 'big')
+            size_bytes = conn.recv(4)
+            if len(size_bytes) < 4:
+                print(f"--> [Master] Protocol error: size header too short from {addr}")
+                return
+            size = int.from_bytes(size_bytes, 'big')
             data = b""
             while len(data) < size:
-                packet = conn.recv(size - len(data))
+                packet = conn.recv(min(size - len(data), 4096))
                 if not packet: break
                 data += packet
-            experience_queue.append(data)
-            conn.sendall(b"ACK")
+            if len(data) == size:
+                experience_queue.append(data)
+                conn.sendall(b"ACK")
+            else:
+                print(f"--> [Master] Incomplete payload from {addr}")
         elif cmd == "POP_EXP":
             if experience_queue:
                 data = experience_queue.pop(0)
@@ -32,14 +41,19 @@ def handle_client(conn, addr):
                 conn.sendall(b"EMPTY")
         elif cmd == "SET_WEIGHTS":
             conn.sendall(b"OK")
-            size = int.from_bytes(conn.recv(4), 'big')
+            size_bytes = conn.recv(4)
+            if len(size_bytes) < 4: return
+            size = int.from_bytes(size_bytes, 'big')
             data = b""
             while len(data) < size:
-                packet = conn.recv(size - len(data))
+                packet = conn.recv(min(size - len(data), 4096))
                 if not packet: break
                 data += packet
-            latest_weights = data
-            conn.sendall(b"ACK")
+            if len(data) == size:
+                latest_weights = data
+                conn.sendall(b"ACK")
+    except (socket.timeout, ConnectionResetError, BrokenPipeError) as e:
+        print(f"--> [Master] Graceful disconnect/timeout from {addr}: {e}")
     except Exception as e:
         print(f"Error handling client {addr}: {e}")
     finally:
