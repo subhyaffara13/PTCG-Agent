@@ -15,7 +15,7 @@ MASTER_HOST = os.getenv("MASTER_HOST", "localhost")
 def get_config():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(10.0)
+        s.settimeout(60.0)
         s.connect((MASTER_HOST, 5000))
         s.sendall(b"GET_CONFIG")
         res_data = b""
@@ -35,7 +35,7 @@ def get_config():
 def push_experience(payload):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(10.0)
+        s.settimeout(60.0)
         s.connect((MASTER_HOST, 5000))
         s.sendall(b"PUSH_EXP")
         ack = s.recv(1024)

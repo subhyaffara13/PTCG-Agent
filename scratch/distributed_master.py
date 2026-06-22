@@ -9,7 +9,7 @@ experience_queue = []
 def handle_client(conn, addr):
     global latest_weights, latest_archetype, experience_queue
     try:
-        conn.settimeout(10.0)
+        conn.settimeout(60.0)
         req = conn.recv(1024)
         if not req: return
         cmd = req.decode('utf-8').strip()
