@@ -22,6 +22,7 @@ class TurnPlannerPacket:
     top_play: str = ""
     game_state: dict[str, Any] = None
     turn: int = 1
+    time_remaining: float = 600.0
 
 
 @dataclass(frozen=True)

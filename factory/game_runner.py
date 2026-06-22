@@ -1,27 +1,19 @@
 """
 factory/game_runner.py
-
-Executes exactly 3 games per iteration isolating variables using the actual CABT simulator:
-1. Reasoning Test
-2. Deck Test
-3. Variance Baseline
-
-Strictly enforces timeouts, checks win conditions, and generates iteration_result.json.
+Runs parallel game playouts for iteration evaluations.
 """
-
 import os
 import time
 import json
 import logging
-import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Tuple
+from typing import Any
+from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 
 from agents.base_agent import BaseAgent
-from factory.game_logger import GameLogger
-from factory.game_agent_wrapper import CABTAgentWrapper
+from factory.game_runner_worker import _parallel_game_worker
 
 logger = logging.getLogger(__name__)
 
@@ -34,13 +26,15 @@ DEFAULT_DECK = [
     3, 3, 3
 ]
 
-from factory.game_runner_worker import _parallel_game_worker
-
 class GameRunner(BaseAgent):
+    _executor = None
+
     def __init__(self, log_dir: str = "logs", perspective_flag: str = "factory"):
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
+        if GameRunner._executor is None:
+            GameRunner._executor = ProcessPoolExecutor(max_workers=os.cpu_count() or 16)
 
     def receive(self, packet: Any) -> Any:
         raise NotImplementedError("GameRunner does not receive routed packets")
@@ -53,33 +47,45 @@ class GameRunner(BaseAgent):
         if not isinstance(d_base, list): d_base = DEFAULT_DECK
         if not isinstance(d_new, list): d_new = DEFAULT_DECK
 
-        games_config = [
-            ("reasoning_test", d_base, d_base, False, True),
-            ("deck_test", d_base, d_new, False, False),
-            ("variance_baseline", d_base, d_base, False, False)
-        ]
+        # RUN 100 PLAYS IN PARALLEL: 50 deck tests and 50 variance tests
+        games_config = [("reasoning_test", d_base, d_base, False, True)]
+        for j in range(50):
+            games_config.extend([
+                (f"deck_test_{j}", d_base, d_new, False, False),
+                (f"variance_baseline_{j}", d_base, d_base, False, False)
+            ])
 
         results = {}
-        num_workers = min(6, os.cpu_count() or 4)
-        with ProcessPoolExecutor(max_workers=num_workers) as executor:
-            futures = [
-                executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b)
-                for label, deck_a, deck_b, use_a, use_b in games_config
-            ]
-            for future in futures:
-                try:
-                    res = future.result()
-                    results[res["label"]] = res
-                except Exception as e:
-                    logger.error(f"Process execution crashed: {e}", exc_info=True)
+        futures = [
+            GameRunner._executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b)
+            for label, deck_a, deck_b, use_a, use_b in games_config
+        ]
+        for future in futures:
+            try:
+                res = future.result()
+                results[res["label"]] = res
+            except Exception as e:
+                logger.error(f"Process execution crashed: {e}", exc_info=True)
 
-        for label, _, _, _, _ in games_config:
-            if label not in results:
-                results[label] = {
-                    "label": label, "winner": "error", "turns_taken": 0, "prizes_taken_a": 0,
-                    "prizes_taken_b": 0, "time_elapsed": 0.0, "timeout": False,
-                    "log_files": {"action": "", "reasoning": "", "variance": ""}
+        # Consolidate results for EvalAgent (average metrics across 5 parallel runs)
+        for prefix, key in [("deck_test", "deck_test"), ("variance_baseline", "variance_baseline")]:
+            workers = [res for k, res in results.items() if k.startswith(prefix)]
+            if workers:
+                win_counts = Counter(w.get("winner") for w in workers)
+                results[key] = {
+                    "label": key, "winner": win_counts.most_common(1)[0][0],
+                    "turns_taken": int(sum(w.get("turns_taken", 0) for w in workers) / len(workers)),
+                    "prizes_taken_a": int(sum(w.get("prizes_taken_a", 0) for w in workers) / len(workers)),
+                    "prizes_taken_b": int(sum(w.get("prizes_taken_b", 0) for w in workers) / len(workers)),
+                    "time_elapsed": workers[0].get("time_elapsed", 0.0),
+                    "timeout": any(w.get("timeout") for w in workers),
+                    "log_files": workers[0].get("log_files", {})
                 }
+
+        # Ensure fallback keys
+        for k in ["reasoning_test", "deck_test", "variance_baseline"]:
+            if k not in results:
+                results[k] = {"winner": "error", "turns_taken": 0, "log_files": {}}
 
         disk_results = {label: {k: v for k, v in res.items() if k != "steps_dump"} for label, res in results.items()}
         disk_payload = {
@@ -88,11 +94,4 @@ class GameRunner(BaseAgent):
         }
         (self.log_dir / "iteration_result.json").write_text(json.dumps(disk_payload, indent=2), encoding="utf-8")
 
-        return {
-            "iteration": iteration_id, "timestamp": datetime.now().isoformat(),
-            "games": results, "ready_for_eval": True
-        }
-
-    def _run_single_game(self, label: str, v_a: str, v_b: str, 
-                          deck_a: list[int], deck_b: list[int], use_staging_a: bool, use_staging_b: bool) -> dict:
-        return _parallel_game_worker(str(self.log_dir), label, v_a, v_b, deck_a, deck_b, use_staging_a, use_staging_b)
+        return {"iteration": iteration_id, "timestamp": datetime.now().isoformat(), "games": results, "ready_for_eval": True}

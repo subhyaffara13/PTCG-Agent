@@ -9,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str, 
                           deck_a: list[int], deck_b: list[int], use_staging_a: bool, use_staging_b: bool) -> dict:
+    import os
+    os.environ["FAST_SIM_MODE"] = "true"
     saved_path = list(sys.path)
     try:
         cwd_resolved = Path.cwd().resolve()

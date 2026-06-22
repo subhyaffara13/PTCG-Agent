@@ -1,49 +1,18 @@
-card_id,card_name,card_type,count,ev_score
-266,Iono’s Electrode,Pokemon,1,0.2857
-3,Basic {W} Energy,Energy,8,0.0
-4,Basic {L} Energy,Energy,2,0.0
-1031,Mega Starmie ex,Pokemon,1,0.6
-553,Unfezant,Pokemon,2,0.3429
-969,Scream Tail ex,Pokemon,1,0.3429
-82,Excadrill,Pokemon,1,0.5143
-23,Hippowdon,Pokemon,1,0.4286
-674,Hariyama,Pokemon,1,0.6
-14,Spiky Energy,Energy,1,0.4286
-896,Mega Scrafty ex,Pokemon,1,0.4571
-832,Krookodile,Pokemon,1,0.4571
-349,Teal Mask Ogerpon,Pokemon,1,0.3429
-834,Toxtricity,Pokemon,1,0.2857
-631,Bouffalant ex,Pokemon,1,0.2857
-894,Galarian Obstagoon,Pokemon,1,0.4571
-259,Volcanion ex,Pokemon,1,0.4571
-175,Bouffalant,Pokemon,1,0.3714
-216,Mesprit,Pokemon,1,0.4571
-772,Mega Gengar ex,Pokemon,3,0.6571
-1054,Tyrantrum,Pokemon,1,0.4571
-241,Vaporeon ex,Pokemon,1,0.8
-471,Team Rocket's Persian ex,Pokemon,1,0.4
-585,Zebstrika,Pokemon,1,0.2857
-179,Black Kyurem ex,Pokemon,1,0.7143
-481,Serperior ex,Pokemon,1,0.4286
-209,Chien-Pao,Pokemon,1,0.3429
-583,Keldeo ex,Pokemon,1,0.3429
-975,Stunfisk ex,Pokemon,1,0.2857
-142,Genesect,Pokemon,1,0.2857
-17,Ignition Energy,Energy,1,0.4286
-601,Gigalith,Pokemon,1,0.4571
-504,Carracosta,Pokemon,1,0.4286
-6,Basic {F} Energy,Energy,1,0.0
-269,Iono’s Bellibolt ex,Pokemon,2,0.6571
-318,Ho-Oh,Pokemon,1,0.2857
-944,Regice ex,Pokemon,1,0.4
-386,Cornerstone Mask Ogerpon,Pokemon,1,0.2857
-40,Greninja ex,Pokemon,1,0.4857
-1022,Decidueye ex,Pokemon,1,0.6857
-954,Luxray ex,Pokemon,1,0.7143
-514,Thundurus,Pokemon,1,0.3143
-905,Rayquaza,Pokemon,1,0.3714
-121,Dragapult ex,Pokemon,1,0.5714
-636,Steven's Claydol,Pokemon,1,0.6286
-889,Coalossal,Pokemon,1,0.6286
-725,Clawitzer,Pokemon,1,0.6
-613,Garbodor,Pokemon,1,0.3429
+card_id,card_name,card_type,count
+957,Miraidon ex,Pokemon,4
+734,Magnezone,Pokemon,4
+979,Koraidon ex,Pokemon,4
+855,Entei,Pokemon,4
+87,Miraidon,Pokemon,2
+226,Koraidon,Pokemon,2
+1121,Ultra Ball,Trainer,4
+4,Basic {L} Energy,Energy,4
+2,Basic {R} Energy,Energy,2
+6,Basic {F} Energy,Energy,4
+733,Magneton,Pokemon,4
+950,Magnemite,Pokemon,4
+1102,Dusk Ball,Trainer,4
+1086,Buddy-Buddy Poffin,Trainer,4
+1213,Judge,Trainer,4
+1079,Rare Candy,Trainer,4
+1123,Switch,Trainer,2

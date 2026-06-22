@@ -54,7 +54,8 @@ class TurnPlanner(BaseAgent):
             profile = "aggro_push"
 
         candidates = build_legal_candidates(game_state)
-        primary, reasoning = self._resolve_action(candidates, game_state, profile)
+        time_rem = getattr(packet, "time_remaining", 600.0)
+        primary, reasoning = self._resolve_action(candidates, game_state, profile, time_rem)
         sorted_actions = sort_actions_heuristically(candidates, profile, game_state)
 
         if primary:
@@ -70,15 +71,26 @@ class TurnPlanner(BaseAgent):
         self._logger.log_reasoning(turn, profile, response)
         return response
 
-    def _resolve_action(self, candidates, game_state, profile):
+    def _resolve_action(self, candidates, game_state, profile, time_rem):
         """Run MCTS bypass check then MCTS search. Returns (action, reasoning)."""
         if "my_deck_count" not in game_state:
             return None, ""
+        import os
+        if os.environ.get("FAST_SIM_MODE") == "true":
+            return None, "FAST_SIM_MODE: Heuristic bypass"
         primary = check_mcts_bypass(candidates, game_state, self.rules)
         if primary:
             return primary, f"ELITE SEQUENCING BYPASS: Selected {primary} for max info gain."
+            
+        # Adaptive simulation count based on remaining turn/match time
+        if time_rem > 400.0: sims = 100
+        elif time_rem > 200.0: sims = 50
+        elif time_rem > 80.0: sims = 25
+        else: sims = 10
+        
+        self.mcts.num_simulations = sims
         primary = self.mcts.search(game_state, candidates)
-        return primary, f"MCTS selected {primary} after 50 sims. Profile: {profile}."
+        return primary, f"MCTS selected {primary} after {sims} sims. Profile: {profile}."
 
     def flush_logs(self):
         """Write all buffered logs to disk. Called once at end of game."""

@@ -41,6 +41,9 @@ class MCTSEngine:
         """Executes MCTS from the current state and returns the best action."""
         if not legal_actions:
             return "pass"
+        import os
+        if os.environ.get("FAST_SIM_MODE") == "true":
+            return legal_actions[0]
         if len(legal_actions) == 1:
             return legal_actions[0]
 

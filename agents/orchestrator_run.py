@@ -92,7 +92,7 @@ def execute_orchestrator_turn(orchestrator, game_state: dict) -> str:
     plan_result = orchestrator.bus.dispatch("after_hand_analysis", TurnPlannerPacket(
         hand_score=hand_result["hand_score"], priority_profile=active_strategy,
         top_play=hand_result["top_play"], game_state=get_public_state(game_state, orchestrator.current_turn),
-        turn=orchestrator.current_turn
+        turn=orchestrator.current_turn, time_remaining=600.0 - time_elapsed
     ))
 
     return plan_result["primary_action"]

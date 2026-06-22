@@ -32,38 +32,29 @@ class StrategyAgent(BaseAgent):
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
         self._reasoning_buffer = []
         
-        self.profiles = self._load_strategy_profiles()
-        self.strategy_thresholds = self._load_strategy_thresholds()
+        self.profiles = self._load_json("strategy_profiles.json", {"profiles": {}})
+        self.strategy_thresholds = self._load_json("strategy_thresholds.json", {})
 
         self.active_strategy = "aggro_push"
         self.last_triggered_turn = -1
         self.last_priority_profile = None
 
-    def _load_strategy_profiles(self) -> dict:
-        if self.shared_context:
-            return self.shared_context.get_config(str(self.skills_dir), "strategy_profiles.json") or {"profiles": {}}
-        path = self.skills_dir / "strategy_profiles.json"
+    def _load_json(self, name: str, default: dict) -> dict:
+        ctx = self.shared_context
+        if not ctx:
+            try:
+                from agents.context import SharedContext
+                ctx = SharedContext()
+            except Exception: pass
+        if ctx:
+            return ctx.get_config(str(self.skills_dir), name) or default
+        path = self.skills_dir / name
         if path.exists():
             try:
                 return json.loads(path.read_text(encoding="utf-8"))
             except Exception as e:
-                logger.error(f"Failed to read strategy_profiles.json: {e}")
-        return {"profiles": {}}
-
-    def _load_strategy_thresholds(self) -> dict:
-        if self.shared_context:
-            return self.shared_context.get_config(str(self.skills_dir), "strategy_thresholds.json") or {}
-        try:
-            from agents.context import SharedContext
-            return SharedContext().get_config(str(self.skills_dir), "strategy_thresholds.json") or {}
-        except Exception:
-            path = self.skills_dir / "strategy_thresholds.json"
-            if path.exists():
-                try:
-                    return json.loads(path.read_text(encoding="utf-8"))
-                except Exception as e:
-                    logger.error(f"Failed to load strategy_thresholds.json directly: {e}")
-        return {}
+                logger.error(f"Failed to load {name}: {e}")
+        return default
 
     def receive(self, packet: Any) -> dict:
         if not isinstance(packet, StrategyPacket):

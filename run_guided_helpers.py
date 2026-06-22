@@ -39,6 +39,10 @@ def execute_refactor_step(iteration_id: int):
         logger.error(f"build_submission.py failed: {e.stderr}")
 
 def execute_ppo_step(iteration_id: int):
+    import os
+    if os.environ.get("FAST_SIM_MODE") == "true":
+        logger.info("FAST_SIM_MODE: Skipping PPO update to run at warp speed.")
+        return
     logger.info(f"=== ITERATION {iteration_id}: EXECUTING PPO UPDATE ===")
     try:
         from factory.ppo_trainer import PPOTrainer

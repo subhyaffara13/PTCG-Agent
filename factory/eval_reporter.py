@@ -41,6 +41,11 @@ class EvalReporter:
             try:
                 content = path.read_text(encoding="utf-8").strip()
                 if content:
+                    if content.startswith("[") and content.endswith("]"):
+                        try:
+                            return json.loads(content)
+                        except Exception:
+                            pass
                     return [json.loads(line) for line in content.splitlines() if line.strip()]
             except Exception as e:
                 logger.error(f"Failed to load log file {filename}: {e}")

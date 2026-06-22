@@ -44,7 +44,7 @@ class LeaderboardTeam:
             if not leaderboard:
                 logger.warning("No leaderboard data found.")
                 return results
-            top_10 = leaderboard[:10]
+            top_10 = leaderboard[:30]
         except Exception as e:
             logger.error(f"Kaggle API or Authentication failed: {e}")
             return results
