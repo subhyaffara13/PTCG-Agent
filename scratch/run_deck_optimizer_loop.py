@@ -42,8 +42,24 @@ def main():
                     print(f"No significant improvement. Fitness: {new_fit:.2f} (Global Best: {global_best:.2f}). Consec runs: {consec_no_imp}/5")
                     
                 if consec_no_imp >= 5:
-                    print("PLATEAU DETECTED: No improvement for 5 consecutive runs. Shutting down deck optimizer loop.")
-                    break
+                    print("PLATEAU DETECTED: No improvement for 5 consecutive runs. Triggering plateau fix...")
+                    backup_path = Path("agents/deck_new_backup.csv")
+                    current_deck = Path("agents/deck_new.csv")
+                    if current_deck.exists():
+                        if backup_path.exists(): backup_path.unlink()
+                        current_deck.rename(backup_path)
+                    print("Diversity Injection: Erasing seed deck to restart search from Kaggle winning templates.")
+                    subprocess.run("python scratch/deck_optimizer.py", shell=True, check=True)
+                    new_fit = get_best_fitness()
+                    if new_fit > global_best:
+                        print(f"Plateau successfully broken! New fitness: {new_fit:.2f} > {global_best:.2f}")
+                        global_best = new_fit
+                    else:
+                        print("Plateau fix did not exceed previous best. Restoring backup deck.")
+                        if backup_path.exists():
+                            if current_deck.exists(): current_deck.unlink()
+                            backup_path.rename(current_deck)
+                    consec_no_imp = 0
             except subprocess.CalledProcessError as e:
                 print(f"Deck optimizer execution failed: {e}")
         time.sleep(15)

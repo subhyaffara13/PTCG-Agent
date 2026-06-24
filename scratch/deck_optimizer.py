@@ -30,7 +30,8 @@ def main():
     dominant_type = Counter(x for x in opp_types if x).most_common(1)
     bonus_type = {"{L}": "{F}", "{R}": "{W}", "{W}": "{L}", "{D}": "{F}", "{P}": "{D}", "{G}": "{R}"}.get(dominant_type[0][0]) if dominant_type else None
     
-    scores = {str(c["card_id"]): float(c.get("ev_score", 0.5)) + 2.0 * w_opp.get(str(c["card_id"]), 0) + 1.0 * w_us.get(str(c["card_id"]), 0) - 1.5 * l_us.get(str(c["card_id"]), 0) + (15.0 if bonus_type and details.get(str(c["card_id"]), {}).get("element_type") == bonus_type else 0.0) for c in pool_cards}
+    winning_freq = Counter(int(cid) for dk in winning_decks for cid in dk)
+    scores = {str(c["card_id"]): float(c.get("ev_score", 0.5)) + 2.0 * w_opp.get(str(c["card_id"]), 0) + 1.0 * w_us.get(str(c["card_id"]), 0) - 1.5 * l_us.get(str(c["card_id"]), 0) + 3.0 * winning_freq.get(int(c["card_id"]), 0) + (15.0 if bonus_type and details.get(str(c["card_id"]), {}).get("element_type") == bonus_type else 0.0) for c in pool_cards}
               
     winning_ids = set().union(*winning_decks)
     allowed_types = {details.get(str(cid), {}).get("element_type") for cid in winning_ids if details.get(str(cid), {}).get("element_type")}
