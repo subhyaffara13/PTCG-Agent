@@ -3733,5 +3733,89 @@
     "failed_check": 8,
     "reason": "New score 0.0 fails baseline check. Delta: 0.6522",
     "promoted": false
+  },
+  {
+    "version_id": "v_20260622_172117",
+    "timestamp": "2026-06-22T17:21:17.631223",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 14.5,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true,
+    "raw_scores": {
+      "reasoning_test": 14.5,
+      "deck_test": 14.5,
+      "variance_baseline": 14.5
+    }
+  },
+  {
+    "version_id": "v_20260622_173941",
+    "timestamp": "2026-06-22T17:39:41.371608",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 17.63888888888889,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true,
+    "raw_scores": {
+      "reasoning_test": 17.63888888888889,
+      "deck_test": 17.63888888888889,
+      "variance_baseline": 17.63888888888889
+    }
+  },
+  {
+    "version_id": "v_20260623_042955",
+    "timestamp": "2026-06-23T04:29:55.316391",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 17.77777777777778,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true,
+    "raw_scores": {
+      "reasoning_test": 17.77777777777778,
+      "deck_test": 17.77777777777778,
+      "variance_baseline": 17.77777777777778
+    }
+  },
+  {
+    "version_id": "v_20260623_044615",
+    "timestamp": "2026-06-23T04:46:15.308196",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 18.055555555555557,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true,
+    "raw_scores": {
+      "reasoning_test": 18.055555555555557,
+      "deck_test": 18.055555555555557,
+      "variance_baseline": 18.055555555555557
+    }
+  },
+  {
+    "version_id": "v_20260623_133619",
+    "timestamp": "2026-06-23T13:36:19.079772",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 18.11111111111111,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true,
+    "raw_scores": {
+      "reasoning_test": 18.11111111111111,
+      "deck_test": 18.11111111111111,
+      "variance_baseline": 18.11111111111111
+    }
+  },
+  {
+    "version_id": "v_20260623_155346",
+    "timestamp": "2026-06-23T15:53:46.631606",
+    "staged_file": "staging\\deck_new.csv",
+    "version_score": 18.86111111111111,
+    "improvement_vs_baseline": 0.0,
+    "checks_passed": 9,
+    "promoted": true,
+    "raw_scores": {
+      "reasoning_test": 18.86111111111111,
+      "deck_test": 18.86111111111111,
+      "variance_baseline": 18.86111111111111
+    }
   }
 ]

@@ -72,7 +72,7 @@
     },
     {
       "card_id": 1182,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (3.0x avg) in winning matches of player nogu."
     },
     {
@@ -162,7 +162,7 @@
     },
     {
       "card_id": 1266,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (3.0x avg) in winning matches of player \u30ab\u30c9\u30e9\u30d0 Kadoraba."
     },
     {
@@ -292,7 +292,7 @@
     },
     {
       "card_id": 1030,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (3.0x avg) in winning matches of player keidroid."
     },
     {
@@ -332,7 +332,7 @@
     },
     {
       "card_id": 3,
-      "avg_count": 9.0,
+      "avg_count": 10.0,
       "reason": "High usage (9.0x avg) in winning matches of player keidroid."
     },
     {
@@ -342,7 +342,7 @@
     },
     {
       "card_id": 1119,
-      "avg_count": 2.0,
+      "avg_count": 4.0,
       "reason": "High usage (2.0x avg) in winning matches of player yamy893."
     },
     {
@@ -397,7 +397,7 @@
     },
     {
       "card_id": 235,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage (2.0x avg) in winning matches of player shibushun."
     },
     {
@@ -407,7 +407,7 @@
     },
     {
       "card_id": 1256,
-      "avg_count": 2.0,
+      "avg_count": 4.0,
       "reason": "High usage (2.0x avg) in winning matches of player shibushun."
     },
     {
@@ -417,8 +417,108 @@
     },
     {
       "card_id": 1213,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage (2.0x avg) in winning matches of player yomogi mochi."
+    },
+    {
+      "card_id": 941,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 942,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 943,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 149,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 93,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 89,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 90,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 100,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 240,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1094,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1174,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1175,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1245,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1,
+      "avg_count": 6.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 112,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1260,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 7,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1161,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 860,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 861,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -541,11 +641,111 @@
       "player": "NecromanAlbert",
       "avg_setup_duration": 13.6,
       "avg_bench_density": 4.1
+    },
+    {
+      "player": "uuji-qvp",
+      "avg_setup_duration": 50.2,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "Kimiaki Nakamura",
+      "avg_setup_duration": 27.2,
+      "avg_bench_density": 3.0
+    },
+    {
+      "player": "Yushin Ito",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "Ryosei Kojima",
+      "avg_setup_duration": 7.8,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "\u307f\u305a\u3042\u3081",
+      "avg_setup_duration": 17.0,
+      "avg_bench_density": 2.6
+    },
+    {
+      "player": "e-toppo",
+      "avg_setup_duration": 17.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "ojicat",
+      "avg_setup_duration": 13.6,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "EF",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "\u30c1\u30fc\u30e0\u30ed\u30b9\u30ae\u30e9",
+      "avg_setup_duration": 14.4,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "\u307f\u304c\u308f\u308a",
+      "avg_setup_duration": 21.6,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "takumina",
+      "avg_setup_duration": 30.2,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "JJ",
+      "avg_setup_duration": 31.2,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "Eamonn Kashyap",
+      "avg_setup_duration": 42.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Psychic Genesis",
+      "avg_setup_duration": 9.2,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "shogo1229",
+      "avg_setup_duration": 20.8,
+      "avg_bench_density": 1.4
+    },
+    {
+      "player": "sohard",
+      "avg_setup_duration": 24.4,
+      "avg_bench_density": 2.9
+    },
+    {
+      "player": "Tsukuru",
+      "avg_setup_duration": 24.2,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Safiullah Baig",
+      "avg_setup_duration": 47.4,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "Shun",
+      "avg_setup_duration": 54.6,
+      "avg_bench_density": 1.4
+    },
+    {
+      "player": "Team kuma",
+      "avg_setup_duration": 13.8,
+      "avg_bench_density": 3.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 9.0
   }
 }

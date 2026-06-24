@@ -1,17 +1,18 @@
 card_id,card_name,card_type,count,ev_score
-1022,Decidueye ex,Pokemon,3,0.6857
-424,Cetitan ex,Pokemon,1,0.4
-754,Mega Latias ex,Pokemon,2,0.8571
-1021,Dartrix,Pokemon,2,0.5714
-994,Fraxure,Pokemon,2,0.4571
-995,Haxorus,Pokemon,2,0.6571
-1,Basic {G} Energy,Energy,18,0.0
-3,Basic {W} Energy,Energy,22,0.0
-99,Hearthflame Mask Ogerpon ex,Pokemon,1,0.4
-75,Iron Leaves ex,Pokemon,1,0.5143
-332,Dhelmise,Pokemon,1,0.3714
-514,Thundurus,Pokemon,1,0.3143
-175,Bouffalant,Pokemon,1,0.3714
-27,Iron Leaves,Pokemon,1,0.2857
-234,Terapagos,Pokemon,1,0.2857
-766,Mega Diancie ex,Pokemon,1,0.3429
+957,Miraidon ex,Pokemon,4,0.3429
+734,Magnezone,Pokemon,4,0.4571
+979,Koraidon ex,Pokemon,4,0.5714
+855,Entei,Pokemon,4,0.1714
+87,Miraidon,Pokemon,2,0.4571
+226,Koraidon,Pokemon,2,0.3143
+1121,Ultra Ball,Trainer,4,0.5714
+4,Basic {L} Energy,Energy,6,0.0
+2,Basic {R} Energy,Energy,2,0.0
+6,Basic {F} Energy,Energy,2,0.0
+733,Magneton,Pokemon,4,0.1714
+950,Magnemite,Pokemon,4,0.1143
+1102,Dusk Ball,Trainer,4,0.1429
+1086,Buddy-Buddy Poffin,Trainer,4,0.5714
+1213,Judge,Trainer,4,0.4286
+1079,Rare Candy,Trainer,4,0.1429
+1123,Switch,Trainer,2,0.2857
