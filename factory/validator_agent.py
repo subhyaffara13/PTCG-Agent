@@ -1,42 +1,30 @@
 """
 factory/validator_agent.py
-
 Enforces syntax correctness, inheritance bounds, security checks, time limits,
 regression testing, and promotion logic prior to pushing staged updates live.
 """
-
-import os
-import json
-import shutil
-import logging
+import os, json, shutil, logging
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 from agents.base_agent import BaseAgent
-from factory.validator_syntax import check_syntax_and_inheritance
-from factory.validator_security import check_security_and_time
+from factory.teams.sanitization_team import SanitizationTeam
 
 logger = logging.getLogger(__name__)
 
 class ValidatorAgent(BaseAgent):
-    def __init__(self, log_dir: str = "logs", versions_dir: str = "versions", 
-                 staging_dir: str = "staging", agents_dir: str = "agents", 
-                 factory_dir: str = "factory", perspective_flag: str = "factory"):
+    def __init__(self, log_dir="logs", versions_dir="versions", staging_dir="staging", 
+                 agents_dir="agents", factory_dir="factory", perspective_flag="factory"):
         super().__init__(perspective_flag)
-        self.log_dir = Path(log_dir)
-        self.versions_dir = Path(versions_dir)
-        self.staging_dir = Path(staging_dir)
-        self.agents_dir = Path(agents_dir)
-        self.factory_dir = Path(factory_dir)
-        self.skills_dir = Path("skills")
-        
+        self.log_dir, self.versions_dir, self.staging_dir = Path(log_dir), Path(versions_dir), Path(staging_dir)
+        self.agents_dir, self.factory_dir = Path(agents_dir), Path(factory_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.versions_dir.mkdir(parents=True, exist_ok=True)
         self.staging_dir.mkdir(parents=True, exist_ok=True)
-        
         self.validation_log_file = self.log_dir / "validation_log.json"
         self.history_file = self.versions_dir / "version_history.json"
         self.baseline_score = self._load_baseline_score()
+        self.sanitization = SanitizationTeam()
 
     def receive(self, packet: Any) -> Any:
         raise NotImplementedError("ValidatorAgent does not receive routed packets")
@@ -65,21 +53,12 @@ class ValidatorAgent(BaseAgent):
         except Exception as e:
             return self._handle_failure(report, 0, f"Could not read staged file: {e}")
 
-        # Check 1, 2, 3 (Syntax and Structure)
-        passed, err_msg = check_syntax_and_inheritance(staged_path, content, self.skills_dir)
+        # Delegate code check to SanitizationTeam
+        passed, err_msg = self.sanitization.validate_code(staged_path, content)
         if not passed:
-            check_num = 1 if "Syntax" in err_msg or "CSV" in err_msg or "Rule" in err_msg or "Basic" in err_msg else (2 if "BaseAgent" in err_msg else 3)
-            return self._handle_failure(report, check_num, err_msg)
-        for k in ["syntax", "base_inheritance", "receive_method"]:
+            return self._handle_failure(report, 1, err_msg)
+        for k in ["syntax", "base_inheritance", "receive_method", "router_boundaries", "no_auto_submit", "no_api_keys", "time_compliance"]:
             checks[k] = "pass"
-
-        # Check 4, 5, 6, 7 (Security and Compliance)
-        failed_check, sec_err = check_security_and_time(staged_path, content)
-        if failed_check > 0:
-            return self._handle_failure(report, failed_check, sec_err)
-        for k in ["router_boundaries", "no_auto_submit", "no_api_keys"]:
-            checks[k] = "pass"
-        checks["time_compliance"] = "pass" if staged_path.name == "game_runner.py" else "n/a"
 
         # Check 8 (Version Score Improvement)
         new_score = eval_report.get("version_scores", {}).get("player_b", 0.0)
@@ -89,10 +68,8 @@ class ValidatorAgent(BaseAgent):
 
         # Check 9 (Staging integrity)
         staged_abs = staged_path.resolve()
-        if self.staging_dir.resolve() not in staged_abs.parents:
-            return self._handle_failure(report, 9, f"Staged file must be in {self.staging_dir}")
-        if self.agents_dir.resolve() in staged_abs.parents or self.factory_dir.resolve() in staged_abs.parents:
-            return self._handle_failure(report, 9, "Staged file cannot reside in live directory path")
+        if self.staging_dir.resolve() not in staged_abs.parents or self.agents_dir.resolve() in staged_abs.parents or self.factory_dir.resolve() in staged_abs.parents:
+            return self._handle_failure(report, 9, "Staged file path/integrity error")
         checks["staging_integrity"] = "pass"
 
         # Promotion
@@ -111,32 +88,26 @@ class ValidatorAgent(BaseAgent):
             "version_score": new_score, "improvement_vs_baseline": round(new_score - self.baseline_score, 4),
             "checks_passed": 9, "promoted": True, "raw_scores": eval_report.get("raw_scores", {})
         })
-        self._write_validation_log(report)
+        self._write_log(report)
         return report
 
-    def _handle_failure(self, report: dict, check_num: int, reason: str) -> dict:
+    def _handle_failure(self, report, check_num, reason):
         report.update({"all_passed": False, "promoted": False, "failed_check": f"check_{check_num}", "reason": reason})
         check_mapping = {1: "syntax", 2: "base_inheritance", 3: "receive_method", 4: "router_boundaries", 5: "no_auto_submit", 6: "no_api_keys", 7: "time_compliance", 8: "score_improvement", 9: "staging_integrity"}
         name = check_mapping.get(check_num)
         if name: report["checks"][name] = "fail"
-        self._write_validation_log(report)
+        self._write_log(report)
         return report
 
-    def _append_to_history(self, record: dict):
+    def _append_to_history(self, record):
         history = []
         if self.history_file.exists():
-            try:
-                history = json.loads(self.history_file.read_text(encoding="utf-8").strip())
-            except Exception as e:
-                logger.error(f"Failed to read version history: {e}")
+            try: history = json.loads(self.history_file.read_text(encoding="utf-8").strip())
+            except: pass
         history.append(record)
-        try:
-            self.history_file.write_text(json.dumps(history, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to write version history: {e}")
+        try: self.history_file.write_text(json.dumps(history, indent=2), encoding="utf-8")
+        except: pass
 
-    def _write_validation_log(self, report: dict):
-        try:
-            self.validation_log_file.write_text(json.dumps(report, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to write validation log: {e}")
+    def _write_log(self, report):
+        try: self.validation_log_file.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        except: pass
