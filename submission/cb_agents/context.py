@@ -10,8 +10,43 @@ import json
 import logging
 from pathlib import Path
 from typing import Any, Dict
+from collections.abc import Mapping
 
 logger = logging.getLogger(__name__)
+
+class LazyDict(Mapping):
+    """A proxy dictionary that defers loading from disk until a key is accessed."""
+    def __init__(self, file_path: Path):
+        self._file_path = file_path
+        self._data = None
+
+    def _load(self):
+        if self._data is None:
+            if self._file_path.exists():
+                try:
+                    self._data = json.loads(self._file_path.read_text(encoding="utf-8"))
+                    logger.debug(f"LazyDict dynamically loaded: {self._file_path.name}")
+                except Exception as e:
+                    logger.error(f"LazyDict failed to load {self._file_path.name}: {e}")
+                    self._data = {}
+            else:
+                self._data = {}
+
+    def __getitem__(self, key):
+        self._load()
+        return self._data[key]
+
+    def __iter__(self):
+        self._load()
+        return iter(self._data)
+
+    def __len__(self):
+        self._load()
+        return len(self._data)
+        
+    def get(self, key, default=None):
+        self._load()
+        return self._data.get(key, default)
 
 class SharedContext:
     _instance = None
@@ -42,17 +77,6 @@ class SharedContext:
         
         if config_name not in cache:
             config_path = Path(resolved_dir) / config_name
-            loaded_data = {}
-            
-            if config_path.exists():
-                try:
-                    loaded_data = json.loads(config_path.read_text(encoding="utf-8"))
-                    logger.info(f"Loaded config {config_name} from disk into SharedContext cache for {resolved_dir}")
-                except Exception as e:
-                    logger.error(f"SharedContext failed to load config {config_name} from {config_path}: {e}")
-            else:
-                logger.warning(f"SharedContext could not find config {config_name} at {config_path}")
-                
-            cache[config_name] = loaded_data
+            cache[config_name] = LazyDict(config_path)
             
         return cache[config_name]

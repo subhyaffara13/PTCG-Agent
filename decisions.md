@@ -3657,3 +3657,1122 @@
 **Next context:** deck_test
 **Best version:** player_a
 ---
+
+## Iteration 0 — 2026-06-22 17:07:59
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-22 17:07:59
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-22 17:22:48
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-22 17:22:48
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-22 17:40:59
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-22 17:40:59
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 03:37:00
+**Processed New Player:** uuji-qvp (ID: 16374579)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 3
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 03:37:32
+**Processed New Player:** Kimiaki Nakamura (ID: 16380893)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 03:38:01
+**Processed New Player:** Yushin Ito (ID: 16381823)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 03:38:33
+**Processed New Player:** Ryosei Kojima (ID: 16406101)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 03:39:02
+**Processed New Player:** みずあめ (ID: 16392367)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 4
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-23 03:39:19
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 03:39:19
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 03:56:00
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 03:56:00
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 04:10:58
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 04:10:58
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 04:31:42
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 04:31:42
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 04:47:41
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 04:47:41
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 05:04:16
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 05:04:17
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 05:19:20
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 05:19:20
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 05:36:24
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 05:36:24
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 05:51:37
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 05:51:37
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 06:07:08
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 06:07:08
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 06:24:43
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 06:24:43
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 06:42:25
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 06:42:25
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 07:00:09
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 07:00:09
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 07:18:32
+**Processed New Player:** e-toppo (ID: 16371340)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-23 07:18:43
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 07:18:44
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 07:35:00
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 07:35:01
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 07:50:59
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 07:50:59
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 08:09:00
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 08:09:00
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 08:25:16
+**Processed New Player:** ojicat (ID: 16372692)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-23 08:25:25
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 08:25:26
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 08:41:50
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 08:41:50
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 09:00:08
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 09:00:08
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 09:18:33
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 09:18:33
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 09:37:15
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 09:37:15
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 09:54:11
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 09:54:11
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-23 10:15:12
+**Processed New Player:** EF (ID: 16384920)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-23 10:16:19
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 10:16:19
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 10:33:45
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 10:33:45
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 10:51:12
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 10:51:12
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 11:08:32
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 11:08:32
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 11:28:10
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 11:28:10
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 11:45:55
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 11:45:55
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 12:04:06
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 12:04:06
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 12:22:38
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 12:22:38
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 12:40:56
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 12:40:56
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 12:58:57
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 12:58:57
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 13:17:28
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 13:17:28
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 13:38:07
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 13:38:07
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 13:57:01
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 13:57:01
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 14:16:18
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 14:16:18
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 14:36:05
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 14:36:05
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 14:52:53
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 14:52:53
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 15:11:57
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 15:11:57
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 15:33:35
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 15:33:36
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 15:55:40
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 15:55:40
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 16:15:45
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 16:15:46
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 16:35:58
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 16:35:58
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 16:59:12
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 16:59:12
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 17:22:35
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 17:22:35
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 17:43:37
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 17:43:37
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 18:06:41
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 18:06:41
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-23 18:48:10
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-23 18:48:10
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 04:35:02
+**Processed New Player:** チームロスギラ (ID: 16378422)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 0
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 04:35:12
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 04:35:12
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 04:52:59
+**Processed New Player:** みがわり (ID: 16389765)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 0
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 04:53:10
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 04:53:10
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 05:12:55
+**Processed New Player:** takumina (ID: 16381262)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 05:13:06
+**Processed New Player:** JJ (ID: 16375320)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 0
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 05:13:15
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 05:13:15
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 05:33:01
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 05:33:01
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 05:52:48
+**Processed New Player:** Eamonn Kashyap (ID: 16382516)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 05:53:03
+**Processed New Player:** Psychic Genesis (ID: 16397322)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 05:53:14
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 05:53:14
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 06:13:24
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 06:13:24
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 06:31:41
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 06:31:41
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 06:49:44
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 06:49:44
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 07:10:24
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 07:10:24
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 07:31:10
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 07:31:10
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 07:52:06
+**Processed New Player:** shogo1229 (ID: 16403777)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 4
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 07:52:15
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 07:52:15
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 08:13:18
+**Processed New Player:** sohard (ID: 16382541)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 4
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 08:13:32
+**Processed New Player:** Tsukuru (ID: 16377992)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 08:13:42
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 08:13:42
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 08:34:45
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 08:34:45
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 08:55:44
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 08:55:44
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 09:17:09
+**Processed New Player:** Safiullah Baig (ID: 16403794)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 09:17:18
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 09:17:19
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 09:38:55
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 09:38:55
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 10:00:38
+**Processed New Player:** Shun (ID: 16373912)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 4
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 10:00:47
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 10:00:47
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 10:20:15
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 10:20:15
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 10:41:50
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 10:41:50
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 11:03:44
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 11:03:44
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 11:23:42
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 11:23:42
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 11:43:45
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 11:43:45
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 12:06:25
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 12:06:25
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 12:27:05
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 12:27:05
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 12:49:16
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 12:49:16
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 13:12:07
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 13:12:07
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 13:34:46
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 13:34:47
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 13:57:36
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 13:57:37
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 14:21:04
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 14:21:04
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 14:41:48
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 14:41:48
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 15:05:10
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 15:05:10
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 15:26:29
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 15:26:30
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 15:47:45
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 15:47:45
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 16:11:57
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 16:11:57
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-06-24 16:36:39
+**Processed New Player:** Team kuma (ID: 16388778)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-06-24 16:36:51
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 16:36:51
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 17:15:18
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 17:15:19
+**Error:** No clear change pattern from weak metric.
+---
+
+## Iteration 0 — 2026-06-24 17:43:03
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-06-24 17:43:03
+**Error:** No clear change pattern from weak metric.
+---

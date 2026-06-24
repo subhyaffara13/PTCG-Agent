@@ -6,9 +6,9 @@ card_id,card_name,card_type,count
 87,Miraidon,Pokemon,2
 226,Koraidon,Pokemon,2
 1121,Ultra Ball,Trainer,4
-4,Basic {L} Energy,Energy,4
+4,Basic {L} Energy,Energy,6
 2,Basic {R} Energy,Energy,2
-6,Basic {F} Energy,Energy,4
+6,Basic {F} Energy,Energy,2
 733,Magneton,Pokemon,4
 950,Magnemite,Pokemon,4
 1102,Dusk Ball,Trainer,4

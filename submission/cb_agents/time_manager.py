@@ -11,9 +11,12 @@ from pathlib import Path
 from typing import Any, Dict
 from cb_agents.base_agent import BaseAgent
 from router.bus import TimePacket
+from cb_agents.registry import register_agent
+from cb_agents.log_flusher import flush_reasoning_logs
 
 logger = logging.getLogger(__name__)
 
+@register_agent("time_manager", needs_skills_dir=False, needs_shared_context=False)
 class TimeManager(BaseAgent):
     def __init__(self, log_dir: str = "logs", perspective_flag: str = "player"):
         super().__init__(perspective_flag)
@@ -24,6 +27,7 @@ class TimeManager(BaseAgent):
         self.warning_threshold = 540.0
         self.force_pass_threshold = 570.0
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._reasoning_buffer = []
 
     def receive(self, packet: Any) -> dict:
         """
@@ -80,18 +84,8 @@ class TimeManager(BaseAgent):
             "top_play": "n/a",
             "reasoning_chain": f"TIME MANAGER WARNING: {msg}"
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to log warning: {e}")
+        self._reasoning_buffer.append(log_entry)
+
+    def flush_logs(self):
+        """Write all buffered logs to disk. Called once at end of game."""
+        flush_reasoning_logs(self._reasoning_buffer, self.reasoning_log_file, logger)

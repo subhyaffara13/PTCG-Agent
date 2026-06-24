@@ -3,6 +3,7 @@ import pickle
 import time
 import os
 import sys
+import subprocess
 
 cwd = os.getcwd()
 if cwd not in sys.path:
@@ -10,7 +11,7 @@ if cwd not in sys.path:
 
 from factory.game_runner import GameRunner, DEFAULT_DECK
 
-MASTER_HOST = os.getenv("MASTER_HOST", "localhost")
+MASTER_HOST = os.getenv("MASTER_HOST", "10.0.0.1")
 
 def get_config():
     try:
@@ -24,12 +25,9 @@ def get_config():
             if not chunk: break
             res_data += chunk
         s.close()
-        if not res_data:
-            return "aggro", None
-        arch, w_bytes = pickle.loads(res_data)
-        return arch, pickle.loads(w_bytes)
+        return pickle.loads(res_data) if res_data else ("aggro", None)
     except Exception as e:
-        print(f"--> [Worker] Failed to get config from master: {e}")
+        print(f"--> [Worker] Config fetch failed: {e}")
         return "aggro", None
 
 def push_experience(payload):
@@ -38,28 +36,58 @@ def push_experience(payload):
         s.settimeout(60.0)
         s.connect((MASTER_HOST, 5000))
         s.sendall(b"PUSH_EXP")
-        ack = s.recv(1024)
-        if ack == b"OK":
+        if s.recv(1024) == b"OK":
             s.sendall(len(payload).to_bytes(4, 'big') + payload)
             s.recv(1024)
         s.close()
     except Exception as e:
-        print(f"--> [Worker] Failed to push experience: {e}")
+        print(f"--> [Worker] Push experience failed: {e}")
+
+def detect_connection_type() -> str:
+    try:
+        res = subprocess.run("netsh interface show interface", shell=True, capture_output=True, text=True)
+        wifi, eth = False, False
+        for line in res.stdout.splitlines():
+            line_lower = line.lower()
+            if "connected" in line_lower:
+                if "wi-fi" in line_lower or "wireless" in line_lower: wifi = True
+                elif "ethernet" in line_lower or "lan" in line_lower: eth = True
+        if eth: return "ethernet"
+        if wifi: return "wifi"
+    except: pass
+    return "ethernet"
 
 def main():
     runner = GameRunner()
-    print("--> Distributed Rollout Worker running...")
+    conn_type = detect_connection_type()
+    print(f"--> Distributed Rollout Worker running on {conn_type.upper()}...")
+    
+    weights_cache, arch_cache = None, "aggro"
+    iteration_count = 0
+    
     while True:
-        arch, weights = get_config()
-        if weights is None:
-            print("--> [Worker] Master offline or weights missing. Retrying in 10s...")
-            time.sleep(10)
-            continue
+        iteration_count += 1
+        query_master = True
+        if conn_type == "wifi" and weights_cache is not None:
+            if iteration_count % 5 != 0:
+                query_master = False
+                
+        if query_master:
+            arch, weights = get_config()
+            if weights is not None:
+                weights_cache, arch_cache = weights, arch
+            elif weights_cache is None:
+                print("--> [Worker] Master offline, retrying in 10s...")
+                time.sleep(10)
+                continue
+        else:
+            arch, weights = arch_cache, weights_cache
+            
         try:
             res = runner.run_iteration(0, "base_v0", "new_v0", DEFAULT_DECK, DEFAULT_DECK, {}, {})
             payload = pickle.dumps({"archetype": arch, "result": res, "timestamp": time.time()})
             push_experience(payload)
-            print("--> [Worker] Successfully pushed rollout trajectory to master.")
+            print("--> [Worker] Successfully pushed rollout trajectory.")
         except Exception as e:
             print(f"--> [Worker] Simulation error: {e}")
             time.sleep(5)

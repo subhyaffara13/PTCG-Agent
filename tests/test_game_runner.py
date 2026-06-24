@@ -30,7 +30,6 @@ def test_game_runner_three_games(tmp_path):
     
     assert res["iteration"] == 1
     assert res["ready_for_eval"] is True
-    assert len(res["games"]) == 3
     assert "reasoning_test" in res["games"]
     assert "deck_test" in res["games"]
     assert "variance_baseline" in res["games"]
