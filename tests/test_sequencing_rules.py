@@ -37,8 +37,8 @@ def test_supporter_first_priority(tmp_path):
     # Extract only play_trainer moves
     trainers = [a for a in action_seq if a.startswith("play_trainer:")]
     
-    assert trainers[0] == "play_trainer:Professor's Research"
-    assert "play_trainer:Nest Ball" in trainers
+    assert trainers[0] == "play_trainer:Nest Ball"
+    assert "play_trainer:Professor's Research" in trainers
     assert "play_trainer:Poké Ball" in trainers
 
 def test_energy_over_attachment_prevention(tmp_path):

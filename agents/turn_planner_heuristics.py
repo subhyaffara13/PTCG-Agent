@@ -54,10 +54,15 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
         micro_rank = 0
         if action.startswith("play_trainer:"):
             trainer_name = action.split(":", 1)[1]
-            if "Research" in trainer_name or "Professor" in trainer_name:
-                micro_rank = -2
+            if "Research" in trainer_name or "Professor" in trainer_name or "Iono" in trainer_name:
+                has_search = any("ball" in c.lower() for c in candidates)
+                micro_rank = 3 if has_search else 1
             elif "Ball" in trainer_name:
-                micro_rank = 2
+                micro_rank = -4
+        elif action.startswith("bench:"):
+            bench_size = len(game_state.get("my_bench", []))
+            if bench_size >= 3:
+                micro_rank = 3
         elif action.startswith("attach_energy:"):
             target = action.split(":", 1)[1].lower()
             needed = 3
