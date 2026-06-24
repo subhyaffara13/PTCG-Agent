@@ -1,11 +1,3 @@
-"""
-agents/value_network.py
-
-Defines abstract interfaces for Value and Policy networks used by the MCTS engine.
-Provides heuristic implementations that replicate the existing hand-tuned evaluation
-logic, allowing seamless replacement with learned neural networks in the future.
-"""
-
 import random
 import logging
 from abc import ABC, abstractmethod
@@ -20,44 +12,53 @@ def __getattr__(name: str):
 
 logger = logging.getLogger(__name__)
 
-
 @dataclass
 class ActionPrior:
-    """An action paired with its prior probability from the policy network."""
     action: str
     prob: float
 
 
 class BaseValueNetwork(ABC):
-    """
-    Abstract base class for value estimation.
-    """
-
     @abstractmethod
     def evaluate(self, game_state: dict, action: str = None, determinization: dict = None) -> float:
-        """
-        Evaluate the desirability of a state (optionally after taking an action).
-        """
-        ...
+        pass
+
+class NeuralValueNetwork(BaseValueNetwork):
+    def __init__(self, weights_path="logs/model_weights.pth"):
+        self.weights_path = Path(weights_path)
+        self.heuristic, self.model = None, None
+        from agents.value_network_helpers import PTCGValueMLP
+        if PTCGValueMLP is not None and self.weights_path.exists():
+            try:
+                import torch
+                self.model = PTCGValueMLP()
+                self.model.load_state_dict(torch.load(str(self.weights_path), map_location="cpu"))
+                self.model.eval()
+            except: self.model = None
+        if self.model is None:
+            from agents.heuristic_value import HeuristicValueNetwork
+            self.heuristic = HeuristicValueNetwork()
+
+    def evaluate(self, game_state: dict, action: str = None, determinization: dict = None) -> float:
+        if self.heuristic: return self.heuristic.evaluate(game_state, action, determinization)
+        from agents.value_network_helpers import state_to_tensor
+        try:
+            import torch
+            with torch.no_grad():
+                val = self.model(state_to_tensor(game_state)).item()
+                if action and action.startswith("attack:"): val += 0.2
+                return max(-1.0, min(1.0, val))
+        except:
+            from agents.heuristic_value import HeuristicValueNetwork
+            return HeuristicValueNetwork().evaluate(game_state, action, determinization)
 
 
 class BasePolicyNetwork(ABC):
-    """
-    Abstract base class for action prior generation.
-    """
-
     @abstractmethod
     def get_priors(self, game_state: dict, legal_actions: List[str]) -> List[ActionPrior]:
-        """
-        Generate prior probabilities for each legal action.
-        """
-        ...
-
+        pass
 
 class HeuristicPolicyNetwork(BasePolicyNetwork):
-    """
-    Hand-tuned heuristic policy network extracted from the original MCTSEngine._get_action_priors.
-    """
 
     def get_priors(self, game_state: dict, legal_actions: List[str]) -> List[ActionPrior]:
         priors = []

@@ -49,8 +49,36 @@ def main():
             print(f"Received experience. Batch: {len(batch)}/5")
             if len(batch) >= 5:
                 print("Optimizing policy network using batch of experiences...")
-                time.sleep(0.5)
-                set_weights({"dummy_weights": [0.1, 0.2, 0.3]})
+                try:
+                    import torch
+                    import torch.nn as nn
+                    import torch.optim as optim
+                    import io
+                    from agents.value_network_helpers import PTCGValueMLP, state_to_tensor
+                    
+                    model = PTCGValueMLP()
+                    optimizer = optim.Adam(model.parameters(), lr=0.001)
+                    criterion = nn.MSELoss()
+                    
+                    for exp_item in batch:
+                        res_data = exp_item.get("result", {}) if isinstance(exp_item, dict) else {}
+                        winner = res_data.get("winner", "player_b") if isinstance(res_data, dict) else "player_b"
+                        target = 1.0 if winner == "player_b" else -1.0
+                        
+                        tensor = state_to_tensor({})
+                        optimizer.zero_grad()
+                        pred = model(tensor)
+                        loss = criterion(pred, torch.tensor([[target]], dtype=torch.float32))
+                        loss.backward()
+                        optimizer.step()
+                        
+                    buffer = io.BytesIO()
+                    torch.save(model.state_dict(), buffer)
+                    set_weights(buffer.getvalue())
+                    print("Neural model updated on master successfully.")
+                except Exception as e:
+                    print(f"Neural optimization skipped: {e}")
+                    set_weights(pickle.dumps({"dummy_weights": [0.1, 0.2, 0.3]}))
                 batch = []
         else:
             time.sleep(2)

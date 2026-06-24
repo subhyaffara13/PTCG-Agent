@@ -5,7 +5,33 @@ Hypergeometric math, synergy checks, goldfish playout simulator, and deck builde
 import math
 import random
 
+try:
+    import numba
+    import numpy as np
+    @numba.jit(nopython=True, cache=True)
+    def _numba_multivariate_setup_prob(basics: int, energies: int, consistency: int) -> float:
+        if basics <= 0 or energies <= 0 or consistency <= 0: return 0.0
+        success = 0
+        deck = np.zeros(60, dtype=np.int32)
+        deck[:basics] = 1
+        deck[basics:basics+energies] = 2
+        deck[basics+energies:basics+energies+consistency] = 3
+        for _ in range(300):
+            indices = np.random.choice(60, size=7, replace=False)
+            has_basic = has_energy = has_consistency = False
+            for idx in indices:
+                val = deck[idx]
+                if val == 1: has_basic = True
+                elif val == 2: has_energy = True
+                elif val == 3: has_consistency = True
+            if has_basic and has_energy and has_consistency: success += 1
+        return success / 300.0
+except ImportError:
+    _numba_multivariate_setup_prob = None
+
 def multivariate_setup_prob(basics: int, energies: int, consistency: int) -> float:
+    if _numba_multivariate_setup_prob is not None:
+        return _numba_multivariate_setup_prob(basics, energies, consistency)
     if basics <= 0 or energies <= 0 or consistency <= 0: return 0.0
     success = 0
     deck = [1]*basics + [2]*energies + [3]*consistency + [0]*(60 - basics - energies - consistency)

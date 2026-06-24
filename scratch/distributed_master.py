@@ -2,7 +2,15 @@ import socket
 import threading
 import pickle
 
-latest_weights = pickle.dumps({"dummy_weights": [0.0, 0.0, 0.0]})
+try:
+    import torch
+    import io
+    from agents.value_network_helpers import PTCGValueMLP
+    buffer = io.BytesIO()
+    torch.save(PTCGValueMLP().state_dict(), buffer)
+    latest_weights = pickle.dumps(buffer.getvalue())
+except Exception:
+    latest_weights = pickle.dumps(b"")
 latest_archetype = "aggro"
 experience_queue = []
 
