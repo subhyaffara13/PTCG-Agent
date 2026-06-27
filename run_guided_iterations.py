@@ -34,9 +34,14 @@ def main():
     logger.info(f"Starting fast guided iterations from {start_iter} to {end_iter} ({num_iters} iterations)")
     
     for i in range(start_iter, end_iter + 1):
-        logger.info(f"\n--- GUIDED ITERATION {i} ---")
+        pct = (i - start_iter) / (end_iter - start_iter + 1) * 100
         forced_archetype = get_archetype_for_iteration(i)
         forced_escalation = {"deck_architect": True, "builder_agent": False} if (i % 100 == 0 or i % 10 == 0) else None
+        logger.info(f"\n{'='*60}")
+        logger.info(f"  ITERATION {i}  [{pct:.0f}% complete]  archetype={forced_archetype}")
+        if forced_escalation:
+            logger.info(f"  Escalation: {forced_escalation}")
+        logger.info(f"{'='*60}")
         
         if i % 50 == 0: execute_refactor_step(i)
             
@@ -45,8 +50,16 @@ def main():
         except Exception as e:
             logger.error(f"Error during iteration {i}: {e}", exc_info=True)
             break
-            
-        execute_ppo_step(i)
+
+        orig_fast = os.environ.get("FAST_SIM_MODE")
+        os.environ["FAST_SIM_MODE"] = "false"
+        try:
+            execute_ppo_step(i)
+        finally:
+            if orig_fast is not None:
+                os.environ["FAST_SIM_MODE"] = orig_fast
+            else:
+                del os.environ["FAST_SIM_MODE"]
             
         should_build = (i == end_iter)
         eval_report_path = Path("eval_report.json")

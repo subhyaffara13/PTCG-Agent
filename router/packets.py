@@ -13,6 +13,7 @@ class HandAnalystPacket:
     deck_remaining: int
     discard: list[str] = None
     board: list[str] = None
+    has_searched_deck: bool = False
 
 
 @dataclass(frozen=True)
@@ -35,6 +36,7 @@ class StrategyPacket:
 class TimePacket:
     time_elapsed: float
     time_limit: float
+    legal_actions: list[str] = None
 
 
 @dataclass(frozen=True)

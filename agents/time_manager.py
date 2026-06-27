@@ -1,91 +1,88 @@
 """
 agents/time_manager.py
+----------------------
+Monitors elapsed game time and enforces strict timeout-avoidance policy.
 
-Monitors elapsed game time and forces speed thresholds or pass actions
-as limits are approached to prevent timeout forfeits.
+Contract
+--------
+- No skill file -- operates on hard-wired timing thresholds only.
+- Input packet: { time_elapsed: float, time_limit: float } -- from Router only
+- Output      : { directive: str, mode: str, urgency: float, time_remaining: float }
+- Runs on every tick -- never sleeps, never blocks.
+- Guarantees the game never times out.
+
+Timing policy (spec)
+--------------------
+    time_elapsed <= 540 s  -> NORMAL    -- planner decides freely
+    540 < elapsed <= 570 s -> FAST_MOVE -- force fastest legal move immediately
+    elapsed > 570 s        -> FORCE_PASS -- force pass to avoid timeout
 """
 
+from __future__ import annotations
 import json
-import logging
-from pathlib import Path
-from typing import Any, Dict
-from agents.base_agent import BaseAgent
-from router.bus import TimePacket
-from agents.registry import register_agent
-from agents.log_flusher import flush_reasoning_logs
+import pathlib
+import datetime
+from typing import Any
 
-logger = logging.getLogger(__name__)
+_PROJECT_ROOT         = pathlib.Path(__file__).resolve().parent.parent
+_LOG_PATH             = _PROJECT_ROOT / "logs" / "reasoning_log.json"
 
-@register_agent("time_manager", needs_skills_dir=False, needs_shared_context=False)
-class TimeManager(BaseAgent):
-    def __init__(self, log_dir: str = "logs", perspective_flag: str = "player"):
-        super().__init__(perspective_flag)
-        self.log_dir = Path(log_dir)
-        self.log_dir.mkdir(parents=True, exist_ok=True)
-        
-        self.time_limit = 600.0
-        self.warning_threshold = 540.0
-        self.force_pass_threshold = 570.0
-        self.reasoning_log_file = self.log_dir / "reasoning_log.json"
-        self._reasoning_buffer = []
 
-    def receive(self, packet: Any) -> dict:
-        """
-        Accepts and processes TimePacket. Returns timeout overrides.
-        """
-        # Type check validation
-        if not isinstance(packet, TimePacket):
-            raise TypeError(
-                f"TimeManager received an illegal packet type: {type(packet).__name__}."
-            )
+class TimeManager:
+    def __init__(self):
+        self._log_buffer: list[dict[str, Any]] = []
 
-        time_elapsed = getattr(packet, "time_elapsed", 0.0)
-        
-        # Negative or missing check
-        if time_elapsed is None or time_elapsed < 0.0:
-            time_elapsed = 0.0
-            self._log_warning("Negative or missing time_elapsed in TimePacket. Treated as 0.0.")
+    def flush_logs(self) -> None:
+        if not self._log_buffer:
+            return
+        _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            log: list[Any] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, FileNotFoundError):
+            log = []
+        log.extend(self._log_buffer)
+        _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
+        self._log_buffer.clear()
 
-        # Hardcoded limit enforcement
-        limit = self.time_limit
-        time_remaining = max(0.0, limit - time_elapsed)
-
-        # Timeout state logical checks
-        if time_elapsed < 540.0:
-            status = "normal"
-            action_override = None
-            urgent = False
-        elif 540.0 <= time_elapsed < 570.0:
-            status = "warning"
-            action_override = "fastest_legal_move"
-            urgent = True
-        elif 570.0 <= time_elapsed < 600.0:
-            status = "critical"
-            action_override = "pass"
-            urgent = True
-        else: # >= 600
-            status = "timeout"
-            action_override = "forfeit"
-            urgent = True
-
-        return {
-            "status": status,
-            "action_override": action_override,
+    def tick(self, packet: dict[str, Any]) -> dict[str, Any]:
+        time_elapsed: float = float(packet.get("time_elapsed", 0.0))
+        time_limit:   float = float(packet.get("time_limit",  600.0))
+        directive, mode     = self._classify(time_elapsed, time_limit)
+        urgency             = self._urgency(time_elapsed, time_limit)
+        time_remaining      = max(0.0, time_limit - time_elapsed)
+        result: dict[str, Any] = {
+            "directive":      directive,
+            "mode":           mode,
+            "urgency":        round(urgency, 4),
             "time_remaining": round(time_remaining, 2),
-            "urgent": urgent
         }
+        self._log(packet, result, time_limit)
+        return result
 
-    def _log_warning(self, msg: str):
-        logger.warning(msg)
-        log_entry = {
-            "turn": "n/a",
-            "hand_score": 0.0,
-            "priority_profile": "n/a",
-            "top_play": "n/a",
-            "reasoning_chain": f"TIME MANAGER WARNING: {msg}"
+    @staticmethod
+    def _classify(time_elapsed: float, time_limit: float) -> tuple[str, str]:
+        if time_elapsed > time_limit - 30.0:
+            return "FORCE_PASS", "critical"
+        if time_elapsed > time_limit - 60.0:
+            return "FAST_MOVE", "urgent"
+        return "NORMAL", "standard"
+
+    @staticmethod
+    def _urgency(time_elapsed: float, time_limit: float) -> float:
+        if time_limit <= 0:
+            return 1.0
+        return min(1.0, max(0.0, time_elapsed / time_limit))
+
+    def _log(self, packet, result, time_limit: float = 600.0):
+        entry: dict[str, Any] = {
+            "timestamp": datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z",
+            "agent":     "TimeManager",
+            "input":     packet,
+            "reasoning": {
+                "threshold_fast":       time_limit - 60.0,
+                "threshold_force_pass": time_limit - 30.0,
+                "evaluation": f"time_elapsed={packet.get('time_elapsed')} -> directive={result['directive']}",
+            },
+            "output": result,
         }
-        self._reasoning_buffer.append(log_entry)
-
-    def flush_logs(self):
-        """Write all buffered logs to disk. Called once at end of game."""
-        flush_reasoning_logs(self._reasoning_buffer, self.reasoning_log_file, logger)
+        self._log_buffer.append(entry)

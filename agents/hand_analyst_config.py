@@ -1,35 +1,48 @@
 from typing import Dict, Any
+from agents.configs import DEFAULT_HA_CONFIG
+
+SECTION_MAP = [
+    ("combo_multipliers", "search_and_bench", "search_bench_mult"),
+    ("combo_multipliers", "discard_and_draw", "discard_draw_mult"),
+    ("combo_multipliers", "discard_search_energy", "discard_search_energy_mult"),
+    ("combo_multipliers", "rare_candy_stage2", "rare_candy_stage2_mult"),
+    ("penalties", "supporter_oversaturation_threshold", "supp_thresh"),
+    ("penalties", "supporter_oversaturation_factor", "supp_factor"),
+    ("penalties", "brick_factor", "brick_factor"),
+    ("bonuses", "evolution_match_factor", "evo_match_factor"),
+    ("bonuses", "early_basic", "early_basic_bonus"),
+    ("bonuses", "early_supporter", "early_supporter_bonus"),
+    ("bonuses", "mid_energy", "mid_energy_bonus"),
+    ("bonuses", "mid_evolution", "mid_evolution_bonus"),
+    ("bonuses", "late_attacker", "late_attacker_bonus"),
+    ("bonuses", "late_high_ev_threshold", "late_high_ev_threshold"),
+    ("bonuses", "late_high_ev_bonus", "late_high_ev_bonus"),
+]
+
+PROFILE_MAP = [
+    ("closing", "opponent_prizes_max", "closing_opp_prizes"),
+    ("aggro_push", "hand_score_min", "aggro_push_hand_score"),
+    ("setup", "hand_score_max", "setup_hand_score"),
+    ("disruption", "control_count_min", "disruption_control_count"),
+    ("disruption", "opponent_prizes_max", "disruption_opp_prizes"),
+    ("stall", "deck_remaining_max", "stall_deck_remaining"),
+]
 
 def unpack_ha_config(strategy_thresholds: Dict[str, Any]) -> dict:
-    ha_config = strategy_thresholds.get("hand_analyst", {}) if hasattr(strategy_thresholds, "get") else {}
-    if not hasattr(ha_config, "get"):
-        ha_config = {}
+    ha_config = strategy_thresholds.get("hand_analyst", {}) if isinstance(strategy_thresholds, dict) else {}
+    if not isinstance(ha_config, dict):
+        return dict(DEFAULT_HA_CONFIG)
     
-    combo_mults = ha_config.get("combo_multipliers", {})
-    penalties = ha_config.get("penalties", {})
-    bonuses = ha_config.get("bonuses", {})
-    profiles_config = ha_config.get("priority_profiles", {})
+    result = dict(DEFAULT_HA_CONFIG)
+    for section, src_key, dst_key in SECTION_MAP:
+        sub = ha_config.get(section, {})
+        if isinstance(sub, dict) and src_key in sub:
+            result[dst_key] = sub[src_key]
     
-    return {
-        "search_bench_mult": float(combo_mults.get("search_and_bench", 0.1)) if hasattr(combo_mults, "get") else 0.1,
-        "discard_draw_mult": float(combo_mults.get("discard_and_draw", 0.15)) if hasattr(combo_mults, "get") else 0.15,
-        "discard_search_energy_mult": float(combo_mults.get("discard_search_energy", 0.25)) if hasattr(combo_mults, "get") else 0.25,
-        "rare_candy_stage2_mult": float(combo_mults.get("rare_candy_stage2", 0.35)) if hasattr(combo_mults, "get") else 0.35,
-        "supp_thresh": int(penalties.get("supporter_oversaturation_threshold", 2)) if hasattr(penalties, "get") else 2,
-        "supp_factor": float(penalties.get("supporter_oversaturation_factor", 0.1)) if hasattr(penalties, "get") else 0.1,
-        "brick_factor": float(penalties.get("brick_factor", 0.15)) if hasattr(penalties, "get") else 0.15,
-        "evo_match_factor": float(bonuses.get("evolution_match_factor", 0.20)) if hasattr(bonuses, "get") else 0.20,
-        "early_basic_bonus": float(bonuses.get("early_basic", 0.15)) if hasattr(bonuses, "get") else 0.15,
-        "early_supporter_bonus": float(bonuses.get("early_supporter", 0.1)) if hasattr(bonuses, "get") else 0.1,
-        "mid_energy_bonus": float(bonuses.get("mid_energy", 0.15)) if hasattr(bonuses, "get") else 0.15,
-        "mid_evolution_bonus": float(bonuses.get("mid_evolution", 0.1)) if hasattr(bonuses, "get") else 0.1,
-        "late_attacker_bonus": float(bonuses.get("late_attacker", 0.15)) if hasattr(bonuses, "get") else 0.15,
-        "late_high_ev_threshold": float(bonuses.get("late_high_ev_threshold", 0.6)) if hasattr(bonuses, "get") else 0.6,
-        "late_high_ev_bonus": float(bonuses.get("late_high_ev_bonus", 0.1)) if hasattr(bonuses, "get") else 0.1,
-        "closing_opp_prizes": int(profiles_config.get("closing", {}).get("opponent_prizes_max", 2)) if hasattr(profiles_config, "get") else 2,
-        "aggro_push_hand_score": float(profiles_config.get("aggro_push", {}).get("hand_score_min", 0.35)) if hasattr(profiles_config, "get") else 0.35,
-        "setup_hand_score": float(profiles_config.get("setup", {}).get("hand_score_max", 0.3)) if hasattr(profiles_config, "get") else 0.3,
-        "disruption_control_count": int(profiles_config.get("disruption", {}).get("control_count_min", 2)) if hasattr(profiles_config, "get") else 2,
-        "disruption_opp_prizes": int(profiles_config.get("disruption", {}).get("opponent_prizes_max", 3)) if hasattr(profiles_config, "get") else 3,
-        "stall_deck_remaining": int(profiles_config.get("stall", {}).get("deck_remaining_max", 15)) if hasattr(profiles_config, "get") else 15,
-    }
+    profiles = ha_config.get("priority_profiles", {})
+    if isinstance(profiles, dict):
+        for profile, src_key, dst_key in PROFILE_MAP:
+            psub = profiles.get(profile, {})
+            if isinstance(psub, dict) and src_key in psub:
+                result[dst_key] = psub[src_key]
+    return result

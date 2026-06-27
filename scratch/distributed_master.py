@@ -1,6 +1,13 @@
-import socket
-import threading
-import pickle
+import socket, threading, pickle, os
+
+def load_env():
+    if os.path.exists(".env"):
+        for l in open(".env", encoding="utf-8"):
+            if l.strip() and not l.startswith("#") and "=" in l:
+                k, v = l.split("=", 1)
+                os.environ[k.strip()] = v.strip().strip('"').strip("'")
+
+load_env()
 
 try:
     import torch

@@ -1,54 +1,50 @@
+"""agents/orchestrator.py -- Thin shell that owns Orchestrator.
+
+Delegates step logic to orchestrator_steps.py and logging to orchestrator_log.py.
 """
-agents/orchestrator.py
-Orchestrates the Pokémon TCG match. Routes packets to sub-agents.
-"""
-import logging
-import time
-from pathlib import Path
+
+from __future__ import annotations
 from typing import Any
-from agents.base_agent import BaseAgent
-from router.bus import RouterBus
-from agents.orchestrator_state import load_delegation_map, initialize_and_register_agents
-from agents.orchestrator_run import execute_orchestrator_turn
 
-class Orchestrator(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "player"):
-        super().__init__(perspective_flag)
-        self.log_dir = Path(log_dir)
-        self.skills_dir = Path(skills_dir)
-        self.log_dir.mkdir(parents=True, exist_ok=True)
-        self.skills_dir.mkdir(parents=True, exist_ok=True)
-        
-        from agents.context import SharedContext
-        self.context = SharedContext()
-        self.delegation_map = load_delegation_map(self.skills_dir)
-        self.bus = RouterBus(self.delegation_map, log_dir=str(self.log_dir))
-        initialize_and_register_agents(self)
-        
-        from agents.belief_tracker import BeliefTracker
-        from factory.game_runner import DEFAULT_DECK
-        default_deck_dict = {cid: DEFAULT_DECK.count(cid) for cid in set(DEFAULT_DECK)}
-        self.belief_tracker = BeliefTracker(initial_deck=default_deck_dict)
-        self.turn_planner.mcts.belief_tracker = self.belief_tracker
-        self.time_start = None
+from router.bus import Router
+from agents.hand_analyst   import HandAnalyst
+from agents.turn_planner   import TurnPlanner
+from agents.time_manager   import TimeManager
+from agents.strategy_agent import StrategyAgent
+from agents.opponent_model import OpponentModel
+from agents.orchestrator_types import TurnDecision
+from agents.orchestrator_steps import (
+    _step_time, _step_hand, _step_plan, _step_strategy, _step_opponent,
+)
+from agents.orchestrator_merge import _merge, _emergency_pass
+from agents.orchestrator_log import _log_orchestration
 
-    def receive(self, packet: Any) -> Any:
-        raise NotImplementedError("Orchestrator does not receive routed packets")
 
-    def start_game(self):
-        self.time_start = time.time()
-        self.current_turn = 0
-        self.opponent_model.revealed_state = []
-        self.opponent_model.inferred_state = {}
-        self.opponent_model.archetype_confidence = 0.0
-        self.opponent_model.identified_archetype = "unknown"
+class Orchestrator:
+    def __init__(self) -> None:
+        self._router   = Router()
+        self._analyst  = HandAnalyst()
+        self._planner  = TurnPlanner()
+        self._timer    = TimeManager()
+        self._strategy = StrategyAgent()
+        self._opponent = OpponentModel()
 
-    def run_turn(self, game_state: dict) -> str:
-        if self.time_start is None:
-            raise RuntimeError("start_game() must be called before first run_turn()")
-        return execute_orchestrator_turn(self, game_state)
+    def orchestrate(self, game_state: dict[str, Any]) -> TurnDecision:
+        time_result = _step_time(game_state, self._timer, self._router)
+        if time_result["directive"] == "FORCE_PASS":
+            return _emergency_pass(time_result)
+        hand_result  = _step_hand(game_state, self._analyst, self._router)
+        plan_result  = _step_plan(hand_result, self._planner, self._router)
+        strat_result = _step_strategy(game_state, self._strategy, self._router)
+        opp_result   = _step_opponent(game_state, self._opponent, self._router)
+        decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
+        _log_orchestration(game_state, decision)
+        return decision
 
-    def flush_all_logs(self):
-        for agent in [self.bus, self.hand_analyst, self.turn_planner, self.strategy_agent, 
-                      self.opponent_model, self.lethal_calculator, self.time_manager]:
-            agent.flush_logs()
+    def flush_all_logs(self) -> None:
+        self._timer.flush_logs()
+        self._analyst.flush_logs()
+        from agents.strategy_agent_io import flush_logs as flush_strategy_logs
+        from agents.orchestrator_log import flush_logs as flush_orch_logs
+        flush_strategy_logs()
+        flush_orch_logs()

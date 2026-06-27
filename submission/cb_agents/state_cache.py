@@ -1,4 +1,3 @@
-import functools
 import logging
 from typing import Tuple, Dict, Any
 
@@ -13,34 +12,32 @@ class CachedEvaluator:
         self.evaluator_func = evaluator_func
         self.hits = 0
         self.misses = 0
-        # Use lru_cache for the actual caching
-        self._cached_eval = functools.lru_cache(maxsize=1024)(self._eval)
+        self._cache: Dict[int, Dict[str, Any]] = {}
 
-    def _eval(self, state_hash: int, **kwargs) -> Dict[str, Any]:
-        """Wrapper to track cache misses."""
+    def _eval(self, state_hash: int, **eval_kwargs) -> Dict[str, Any]:
+        """Performs an evaluation and tracks cache misses."""
         self.misses += 1
-        return self.evaluator_func(**kwargs)
+        return self.evaluator_func(**eval_kwargs)
 
     def evaluate(self, hand_ids: list, board_ids: list, deck_remaining: int, turn: int, **kwargs) -> Dict[str, Any]:
         """Evaluates the board state, returning a cached result if available."""
         h_tuple = tuple(sorted(hand_ids))
         b_tuple = tuple(sorted(board_ids))
         h = board_hash(h_tuple, b_tuple, deck_remaining, turn)
-        
-        # We can't directly check if it's a hit with lru_cache easily without wrappers,
-        # so we track misses inside _eval. If total calls > misses, it was a hit.
-        calls_before = self.misses
-        result = self._cached_eval(h, hand_ids=hand_ids, board_ids=board_ids, deck_remaining=deck_remaining, turn=turn, **kwargs)
-        if self.misses == calls_before:
+
+        if h in self._cache:
             self.hits += 1
-            
+            return self._cache[h]
+
+        result = self._eval(h, hand_ids=hand_ids, board_ids=board_ids, deck_remaining=deck_remaining, turn=turn, **kwargs)
+        self._cache[h] = result
         return result
 
     def reset(self):
         """Clears the cache."""
-        self._cached_eval.cache_clear()
+        self._cache.clear()
         self.hits = 0
         self.misses = 0
-        
+
     def get_stats(self) -> Dict[str, int]:
         return {"hits": self.hits, "misses": self.misses}

@@ -23,25 +23,12 @@ def build_legal_candidates(game_state: dict) -> List[str]:
         ("legal_trainers", "play_trainer"),
         ("legal_bench", "bench"),
         ("legal_retreats", "retreat"),
+        ("legal_abilities", "ability"),
     ]:
         for val in game_state.get(k, []):
             candidates.append(f"{prefix}:{val}")
 
     candidates.append("pass")
-
-    my_deck_count = game_state.get("my_deck_count", 60)
-    if my_deck_count <= 5:
-        draw_search = {"research", "iono", "judge", "colress", "ball", "pokedex", "draw", "search"}
-        filtered = []
-        for cand in candidates:
-            if cand.startswith("play_trainer:"):
-                name = cand.split(":", 1)[1].lower()
-                if any(kw in name for kw in draw_search):
-                    continue
-            filtered.append(cand)
-        if filtered:
-            candidates = filtered
-
     return candidates
 
 

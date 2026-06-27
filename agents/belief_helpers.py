@@ -13,16 +13,20 @@ def hypergeometric_prob(N: int, K: int, n: int) -> float:
     Probability of exactly 1 success in n draws from N total with K successes.
     Returns the probability of drawing AT LEAST ONE.
     """
-    if N <= 0 or K <= 0 or n <= 0 or N < K or N < n:
+    if N <= 0 or K <= 0 or n <= 0 or N < K:
         return 0.0
+    if N <= n:
+        return 1.0
     
     try:
         prob_zero = math.comb(N - K, n) / math.comb(N, n)
         return 1.0 - prob_zero
     except ValueError:
+        if N - K < n:
+            return 1.0
         return 0.0
 
-def sample_determinization(state: Any, assumed_deck: Dict[int, int]) -> Dict[str, List[int]]:
+def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
     """
     Samples a concrete 'imagined' state of the opponent's hidden zones 
     based on the current belief state.
@@ -54,13 +58,31 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int]) -> Dict[str
     # Shuffle the unseen pool
     random.shuffle(unseen_pool)
     
+    # Lock guaranteed prizes into opponent's prized pool
+    if prize_guaranteed_counts:
+        for cid, count in prize_guaranteed_counts.items():
+            for _ in range(count):
+                if cid in unseen_pool:
+                    unseen_pool.remove(cid)
+                    sampled_prizes.append(cid)
+    elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
+        for cid_str, prob in state.prize_probabilities.items():
+            if prob >= 1.0:
+                try:
+                    cid = int(cid_str)
+                    if cid in unseen_pool:
+                        unseen_pool.remove(cid)
+                        sampled_prizes.append(cid)
+                except ValueError:
+                    pass
+
     # Fill the rest of the hand
     needed_hand = max(0, state.hand_size - len(sampled_hand))
     sampled_hand.extend(unseen_pool[:needed_hand])
     unseen_pool = unseen_pool[needed_hand:]
-    
-    # Fill prizes
-    needed_prizes = state.prize_size
+
+    # Fill remaining prizes
+    needed_prizes = max(0, state.prize_size - len(sampled_prizes))
     sampled_prizes.extend(unseen_pool[:needed_prizes])
     unseen_pool = unseen_pool[needed_prizes:]
     

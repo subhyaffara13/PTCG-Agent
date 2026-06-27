@@ -3,31 +3,65 @@ tests/test_prize_tracker.py
 Unit tests for agents/prize_tracker.py.
 """
 from agents.prize_tracker import PrizeTracker
+from test_prize_tracker_helpers import (
+    DECK_PIKA_RAICHU, VISIBLE_PIKA_RAICHU, DECK_DICT,
+    HAND, DISCARD, BOARD, DECK_CONTENTS, PRIZE_DECK_6, PRIZE_DECK_3
+)
 
 def test_prize_tracker_calculation():
-    # Deck of 10 cards: 4 Pikachus (721), 2 Raichus (722), 4 Energies (3)
-    deck = [721, 721, 721, 721, 722, 722, 3, 3, 3, 3]
-    tracker = PrizeTracker(deck)
-    
-    # Visible cards: 2 Pikachus, 1 Raichu, 2 Energies (total 5 visible cards)
-    visible = [721, 721, 722, 3, 3]
-    
-    # Remaining unseen hidden cards = 10 - 5 = 5 cards
-    # Remaining unseen hidden cards composition: 2 Pikachus, 1 Raichu, 2 Energies
-    # Prizes remaining = 2
-    probs = tracker.calculate_prized_probabilities(visible, prizes_remaining=2)
-    
-    # P(Pikachu is prized)
-    # Total unseen: 5. Unseen Pikachus: 2.
-    # Ways to choose 2 prizes from 5 unseen: comb(5, 2) = 10
-    # Ways to avoid Pikachus: comb(5 - 2, 2) = comb(3, 2) = 3
-    # P(avoid Pikachu prized) = 3/10 = 0.3
-    # P(at least 1 Pikachu prized) = 1 - 0.3 = 0.7
+    tracker = PrizeTracker(DECK_PIKA_RAICHU)
+    probs = tracker.calculate_prized_probabilities(VISIBLE_PIKA_RAICHU, prizes_remaining=2)
     assert round(probs[721], 2) == 0.70
-    
-    # P(Raichu is prized)
-    # Unseen Raichu: 1.
-    # Ways to avoid Raichu: comb(5 - 1, 2) = comb(4, 2) = 6
-    # P(avoid Raichu prized) = 6/10 = 0.6
-    # P(at least 1 Raichu prized) = 1 - 0.6 = 0.4
     assert round(probs[722], 2) == 0.40
+
+def test_on_deck_search_deduction():
+    tracker = PrizeTracker()
+    tracker.record_initial_decklist(DECK_DICT)
+    prized = tracker.on_deck_search(HAND, DISCARD, BOARD, DECK_CONTENTS, 48)
+    assert tracker._deck_search_used is True
+    assert prized.get(721) == 1
+    assert prized.get(722) == 1
+    assert prized.get(5) == 3
+    assert prized.get(3) == 44
+    enrichment = tracker.get_certainty_enrichment()
+    assert enrichment["prize_certainty"] == 1.0
+    assert enrichment["prizes_remaining"] == 49
+
+def test_on_deck_search_before_initial_list():
+    tracker = PrizeTracker()
+    prized = tracker.on_deck_search(["1"], [], [], ["2"], 10)
+    assert prized == {}
+    assert tracker._deck_search_used is False
+
+def test_get_certainty_enrichment_before_search():
+    assert PrizeTracker().get_certainty_enrichment() == {}
+
+def test_get_certainty_enrichment_after_search():
+    tracker = PrizeTracker(PRIZE_DECK_6)
+    tracker.on_deck_search(["1", "2"], [], ["3"], [], 3)
+    enrichment = tracker.get_certainty_enrichment()
+    assert enrichment["prize_certainty"] == 1.0
+    assert enrichment["prizes_remaining"] == 3
+    assert 1 in enrichment["prized_card_ids"]
+
+def test_is_card_prized():
+    tracker = PrizeTracker(PRIZE_DECK_6)
+    tracker.on_deck_search(["1"], ["2"], [], ["3", "3"], 2)
+    assert tracker.is_card_prized(1) is True
+    assert tracker.is_card_prized(2) is True
+    assert tracker.is_card_prized(3) is False
+
+def test_prices_remaining_no_search():
+    assert PrizeTracker(PRIZE_DECK_3).prizes_remaining() == 0
+
+def test_plan_prize_take_no_prized_ids():
+    result = PrizeTracker().plan_prize_take(0, "", {}, 0)
+    assert result["target"] == "active"
+    assert result["reason"] == "unknown_prizes"
+
+def test_plan_prize_take_close_game():
+    tracker = PrizeTracker(PRIZE_DECK_6)
+    tracker.on_deck_search(["1", "2", "3", "3"], [], [], [], 2)
+    assert tracker.prizes_remaining() <= 2
+    result = tracker.plan_prize_take(120, "{L}", {}, 50)
+    assert result["priority"] == "finisher"

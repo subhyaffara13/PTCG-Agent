@@ -1,98 +1,97 @@
-"""
-agents/strategy_agent.py
+"""Board-strategy selection agent. Delegates I/O to strategy_agent_io."""
 
-Evaluates macro game states on key trigger events, selects high-level strategy profiles,
-and reports dynamic directive states. Kept under 100 lines.
-"""
-
-import json
-import logging
-from pathlib import Path
+from __future__ import annotations
 from typing import Any
-from agents.base_agent import BaseAgent
-from router.bus import StrategyPacket
-from agents.registry import register_agent
-from agents.strategy_helpers import check_should_trigger, select_new_strategy
-from agents.log_flusher import flush_reasoning_logs
 
-logger = logging.getLogger(__name__)
+_CONF_EXACT_KEY = 1.0
+_CONF_KEYWORD = 0.75
+_CONF_FALLBACK = 0.3
+_FALLBACK_PROFILE_KEY = "hand_dead"
 
 
-@register_agent("strategy_agent")
-class StrategyAgent(BaseAgent):
-    def __init__(self, log_dir: str = "logs", skills_dir: str = "skills",
-                 perspective_flag: str = "player", shared_context=None):
-        super().__init__(perspective_flag)
-        self.log_dir = Path(log_dir)
-        self.skills_dir = Path(skills_dir)
-        self.shared_context = shared_context
-        self.log_dir.mkdir(parents=True, exist_ok=True)
-        self.skills_dir.mkdir(parents=True, exist_ok=True)
-        
-        self.reasoning_log_file = self.log_dir / "reasoning_log.json"
-        self._reasoning_buffer = []
-        
-        self.profiles = self._load_json("strategy_profiles.json", {"profiles": {}})
-        self.strategy_thresholds = self._load_json("strategy_thresholds.json", {})
+class StrategyAgent:
+    """Selects the best strategic posture for the current board state."""
 
-        self.active_strategy = "aggro_push"
-        self.last_triggered_turn = -1
-        self.last_priority_profile = None
+    def __init__(self) -> None:
+        from agents.strategy_agent_io import load_skill
+        self._profiles: dict[str, dict[str, Any]] = load_skill()
 
-    def _load_json(self, name: str, default: dict) -> dict:
-        ctx = self.shared_context
-        if not ctx:
-            try:
-                from agents.context import SharedContext
-                ctx = SharedContext()
-            except Exception: pass
-        if ctx:
-            return ctx.get_config(str(self.skills_dir), name) or default
-        path = self.skills_dir / name
-        if path.exists():
-            try:
-                return json.loads(path.read_text(encoding="utf-8"))
-            except Exception as e:
-                logger.error(f"Failed to load {name}: {e}")
-        return default
-
-    def receive(self, packet: Any) -> dict:
-        if not isinstance(packet, StrategyPacket):
-            raise TypeError(f"StrategyAgent received an illegal packet type: {type(packet).__name__}.")
-
-        board = packet.board_summary or {}
-        priority_profile = board.get("priority_profile", "aggro_push")
-        turn = board.get("turn_number", 1)
-
-        should_trigger, sa_config = check_should_trigger(
-            board, packet.trigger, self.last_priority_profile, self.strategy_thresholds
+    def evaluate(self, packet: dict[str, Any]) -> dict[str, Any]:
+        trigger: str = str(packet.get("trigger", "")).strip()
+        board_summary: dict = packet.get("board_summary", {})
+        profile_key, profile, confidence, match_reason = self._match_profile(
+            trigger, board_summary
         )
-        self.last_priority_profile = priority_profile
+        result: dict[str, Any] = {
+            "strategy":   profile_key,
+            "posture":    profile.get("posture", "tempo"),
+            "actions":    profile.get("actions", ["PASS"]),
+            "escalation": profile.get("escalation", "PASS"),
+            "confidence": round(confidence, 4),
+        }
+        self._log(packet, profile_key, match_reason, result)
+        return result
 
-        if not should_trigger:
-            self._log_reasoning(turn, packet.trigger, self.active_strategy, self.active_strategy, False, "No trigger condition met")
-            return {"new_strategy": self.active_strategy, "reasoning": "No trigger condition met", "triggered": False, "turn_triggered": turn}
+    def _match_profile(
+        self,
+        trigger: str,
+        board_summary: dict[str, Any],
+    ) -> tuple[str, dict[str, Any], float, str]:
+        trigger_lower = trigger.lower()
+        if trigger_lower in self._profiles:
+            return trigger_lower, self._profiles[trigger_lower], _CONF_EXACT_KEY, "exact key match"
+        board_match = self._board_signal_match(board_summary)
+        if board_match:
+            key = board_match
+            return key, self._profiles[key], _CONF_KEYWORD, f"board_summary signal -> {key}"
+        best_key, best_score = self._keyword_scan(trigger_lower)
+        if best_key and best_score > 0:
+            return (
+                best_key,
+                self._profiles[best_key],
+                _CONF_KEYWORD * best_score,
+                f"keyword scan score={best_score:.2f}",
+            )
+        fallback = self._profiles.get(_FALLBACK_PROFILE_KEY, {})
+        return _FALLBACK_PROFILE_KEY, fallback, _CONF_FALLBACK, "no match -> fallback"
 
-        prev_strategy = self.active_strategy
-        self.active_strategy = select_new_strategy(board, self.active_strategy, sa_config)
-        self.last_triggered_turn = turn
+    def _board_signal_match(self, board_summary: dict[str, Any]) -> str | None:
+        prizes     = board_summary.get("prizes")
+        bench      = board_summary.get("bench_count")
+        score      = board_summary.get("hand_score")
+        energy     = board_summary.get("energy_attached")
+        opp_prizes = board_summary.get("opponent_prizes")
+        if prizes is not None and int(prizes) <= 2:
+            return "endgame_close"
+        if opp_prizes is not None and int(opp_prizes) <= 2:
+            return "prize_race"
+        if bench is not None and int(bench) <= 1:
+            return "bench_low"
+        if energy is not None and int(energy) == 0:
+            return "energy_stall"
+        if score is not None and float(score) < 2.0:
+            return "hand_dead"
+        return None
 
-        reasoning = f"Evaluated new strategy {self.active_strategy} via trigger context check."
-        self._log_reasoning(turn, packet.trigger, prev_strategy, self.active_strategy, True, reasoning)
+    def _keyword_scan(self, trigger_lower: str) -> tuple[str | None, float]:
+        best_key, best_score = None, 0.0
+        for key, profile in self._profiles.items():
+            trigger_desc = profile.get("trigger", "").lower()
+            words = [w.strip("(),<>=") for w in trigger_desc.split() if len(w) > 3]
+            if not words:
+                continue
+            matched = sum(1 for w in words if w in trigger_lower)
+            score   = matched / len(words)
+            if score > best_score:
+                best_score, best_key = score, key
+        return best_key, best_score
 
-        return {"new_strategy": self.active_strategy, "reasoning": reasoning, "triggered": True, "turn_triggered": turn}
-
-    def _log_reasoning(self, turn: int, trigger_reason: str, prev_strat: str, 
-                      new_strat: str, triggered: bool, reasoning: str):
-        self._reasoning_buffer.append({
-            "turn_triggered": turn,
-            "trigger_reason": trigger_reason,
-            "previous_strategy": prev_strat,
-            "new_strategy": new_strat,
-            "triggered": triggered,
-            "reasoning": reasoning
-        })
-
-    def flush_logs(self):
-        """Write all buffered logs to disk. Called once at end of game."""
-        flush_reasoning_logs(self._reasoning_buffer, self.reasoning_log_file, logger)
+    def _log(
+        self,
+        packet: dict[str, Any],
+        matched_key: str,
+        match_reason: str,
+        result: dict[str, Any],
+    ) -> None:
+        from agents.strategy_agent_io import log_strategy
+        log_strategy(packet, matched_key, match_reason, result, list(self._profiles.keys()))

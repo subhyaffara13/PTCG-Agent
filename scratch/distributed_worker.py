@@ -1,9 +1,4 @@
-import socket
-import pickle
-import time
-import os
-import sys
-import subprocess
+import socket, pickle, time, os, sys, subprocess
 
 cwd = os.getcwd()
 if cwd not in sys.path:
@@ -11,6 +6,14 @@ if cwd not in sys.path:
 
 from factory.game_runner import GameRunner, DEFAULT_DECK
 
+def load_env():
+    if os.path.exists(".env"):
+        for l in open(".env", encoding="utf-8"):
+            if l.strip() and not l.startswith("#") and "=" in l:
+                k, v = l.split("=", 1)
+                os.environ[k.strip()] = v.strip().strip('"').strip("'")
+
+load_env()
 MASTER_HOST = os.getenv("MASTER_HOST", "10.0.0.1")
 
 def get_config():

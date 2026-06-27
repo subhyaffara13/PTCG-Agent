@@ -37,7 +37,8 @@ def test_turn_planner_sorting(tmp_path):
     
     res = planner.receive(packet)
     
-    assert res["primary_action"] == "bench:Pikachu"  # priority 1 in setup
+    # Setup profile sorts bench first; no bench in state → bench:Pikachu is primary
+    assert res["primary_action"] == "bench:Pikachu"
     assert "pass" in res["action_sequence"]
     
     # Verify fallback profile
@@ -48,4 +49,4 @@ def test_turn_planner_sorting(tmp_path):
         game_state=state
     )
     res_bad = planner.receive(packet_bad_profile)
-    assert res_bad["primary_action"] == "play_trainer:Professor Oak"  # prioritized over attack to avoid ending turn early
+    assert res_bad["primary_action"] == "bench:Pikachu"

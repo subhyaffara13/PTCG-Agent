@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="glass-bg"></div>
@@ -36,6 +37,17 @@
             </div>
         </div>
     </header>
+    <nav class="tab-nav" style="display:flex;gap:1rem;margin:1rem;">
+        <button id="tab-playback" class="tab-button active">Match Playback</button>
+        <button id="tab-analytics" class="tab-button">Analytics Dashboard</button>
+    </nav>
+    <section id="playback-section" class="tab-section" style="display:block;">
+        <!-- Existing board content remains unchanged -->
+    </section>
+    <section id="analytics-section" class="tab-section" style="display:none;">
+        <canvas id="analytics-chart" width="800" height="400"></canvas>
+    </section>
+
 
     <main class="game-board-wrapper">
         <section class="board-column opponent-side">

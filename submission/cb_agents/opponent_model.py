@@ -8,7 +8,6 @@ from cb_agents.registry import register_agent
 from cb_agents.opponent_model_helpers import identify_opponent_archetype, predict_opponent_action
 
 logger = logging.getLogger(__name__)
-
 @register_agent("opponent_model", perspective_flag="opponent")
 class OpponentModel(BaseAgent):
     def __init__(self, log_dir: str = "logs", skills_dir: str = "skills", perspective_flag: str = "opponent", shared_context=None):
@@ -16,17 +15,14 @@ class OpponentModel(BaseAgent):
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
         self.shared_context = shared_context
-        
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
         self.reasoning_log_file = self.log_dir / "opponent_model_reasoning.json"
         self._reasoning_buffer = []
-        
         if self.shared_context:
             self.archetypes = self.shared_context.get_config(str(self.skills_dir), "deck_archetypes.json").get("archetypes", {})
         else:
             self.archetypes = self._load_deck_archetypes()
-            
         self.revealed_state = []
         self.inferred_state = {}
         self.archetype_confidence = 0.0
@@ -90,7 +86,6 @@ class OpponentModel(BaseAgent):
             "reasoning": reasoning,
             "opponent_searched_last_turn": self.opponent_searched_last_turn
         }
-
     def flush_logs(self):
         if not self._reasoning_buffer:
             return

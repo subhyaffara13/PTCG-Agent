@@ -355,3 +355,84 @@ function rebuildLogs(maxIdx) {
     }
     logOutput.scrollTop = logOutput.scrollHeight;
 }
+
+// Load Chart.js library (already included via CDN in HTML)
+
+// Tab navigation handling
+const tabPlaybackBtn = document.getElementById('tab-playback');
+const tabAnalyticsBtn = document.getElementById('tab-analytics');
+const playbackSection = document.getElementById('playback-section');
+const analyticsSection = document.getElementById('analytics-section');
+
+function showPlayback() {
+  playbackSection.style.display = 'block';
+  analyticsSection.style.display = 'none';
+  tabPlaybackBtn.classList.add('active');
+  tabAnalyticsBtn.classList.remove('active');
+}
+function showAnalytics() {
+  playbackSection.style.display = 'none';
+  analyticsSection.style.display = 'block';
+  tabAnalyticsBtn.classList.add('active');
+  tabPlaybackBtn.classList.remove('active');
+  loadAnalytics();
+}
+
+tabPlaybackBtn.addEventListener('click', showPlayback);
+tabAnalyticsBtn.addEventListener('click', showAnalytics);
+
+// Load analytics data and render chart
+let analyticsChart = null;
+function loadAnalytics() {
+  // Prevent reloading if already rendered
+  if (analyticsChart) return;
+  Promise.all([
+    fetch('/versions/version_history.json').then(r => r.ok ? r.json() : []),
+    fetch('/logs/kaggle_summary/kaggle_results_summary.json').then(r => r.ok ? r.json() : [])
+  ]).then(([versions, kaggle]) => {
+    const ctx = document.getElementById('analytics-chart').getContext('2d');
+    // Example: line chart of version scores over time
+    const versionLabels = versions.map(v => v.version_id || v.version);
+    const versionScores = versions.map(v => v.version_score || 0);
+    const kaggleWins = kaggle.filter(e => e.result === 'win').length;
+    const kaggleLosses = kaggle.filter(e => e.result === 'loss').length;
+    const kaggleDraws = kaggle.filter(e => e.result === 'draw').length;
+    const data = {
+      labels: versionLabels,
+      datasets: [{
+        label: 'Version Score',
+        data: versionScores,
+        borderColor: 'var(--accent-blue)',
+        backgroundColor: 'rgba(59,130,246,0.2)',
+        tension: 0.4,
+        yAxisID: 'y'
+      }, {
+        type: 'bar',
+        label: 'Kaggle Wins',
+        data: versionLabels.map(() => kaggleWins),
+        backgroundColor: 'var(--accent-green)'
+      }, {
+        type: 'bar',
+        label: 'Kaggle Losses',
+        data: versionLabels.map(() => kaggleLosses),
+        backgroundColor: 'var(--accent-red)'
+      }]
+    };
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Analytics Dashboard' }
+        },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: 'Score' } },
+          y1: { beginAtZero: true, display: false }
+        }
+      }
+    };
+    analyticsChart = new Chart(ctx, config);
+  }).catch(err => console.error('Failed to load analytics data:', err));
+}

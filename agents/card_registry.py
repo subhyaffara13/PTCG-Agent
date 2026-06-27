@@ -45,11 +45,10 @@ class CardRegistry:
         ctx = SharedContext()
         heavy_data = ctx.get_config(str(self.skills_dir), "card_scoring.json")
         
-        card_data = None
-        for c in heavy_data.get("cards", []):
-            if str(c.get("card_id", "")) == str(base.card_id):
-                card_data = c
-                break
+        if not hasattr(self, "_heavy_cards_index"):
+            self._heavy_cards_index = {str(c.get("card_id", "")): c for c in heavy_data.get("cards", [])}
+            
+        card_data = self._heavy_cards_index.get(str(base.card_id))
                 
         if not card_data:
             self.full_cards[card_id] = base

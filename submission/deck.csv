@@ -1,18 +1,27 @@
-card_id,card_name,card_type,count,ev_score
-957,Miraidon ex,Pokemon,4,0.3429
-734,Magnezone,Pokemon,4,0.4571
-979,Koraidon ex,Pokemon,4,0.5714
-855,Entei,Pokemon,4,0.1714
-87,Miraidon,Pokemon,2,0.4571
-226,Koraidon,Pokemon,2,0.3143
-1121,Ultra Ball,Trainer,4,0.5714
-4,Basic {L} Energy,Energy,6,0.0
-2,Basic {R} Energy,Energy,2,0.0
-6,Basic {F} Energy,Energy,2,0.0
-733,Magneton,Pokemon,4,0.1714
-950,Magnemite,Pokemon,4,0.1143
-1102,Dusk Ball,Trainer,4,0.1429
-1086,Buddy-Buddy Poffin,Trainer,4,0.5714
-1213,Judge,Trainer,4,0.4286
-1079,Rare Candy,Trainer,4,0.1429
-1123,Switch,Trainer,2,0.2857
+card_id,card_name,card_type,count
+3,Basic {W} Energy,Energy,10
+5,Basic {P} Energy,Energy,1
+6,Basic {F} Energy,Energy,2
+11,Mist Energy,Energy,1
+19,Telepath Psychic Energy,Energy,2
+66,Dudunsparce,Pokemon,1
+722,Snover,Pokemon,1
+723,Mega Abomasnow ex,Pokemon,1
+741,Abra,Pokemon,3
+742,Kadabra,Pokemon,1
+743,Alakazam,Pokemon,1
+878,Hop's Phantump,Pokemon,4
+1079,Rare Candy,Trainer,1
+1081,Enhanced Hammer,Trainer,1
+1086,Buddy-Buddy Poffin,Trainer,4
+1097,Night Stretcher,Trainer,4
+1121,Ultra Ball,Trainer,1
+1122,Pokégear 3.0,Trainer,1
+1152,Poké Pad,Trainer,4
+1171,Hop’s Choice Band,Pokemon,4
+1182,Boss’s Orders,Trainer,4
+1219,Team Rocket's Petrel,Trainer,1
+1225,Hilda,Trainer,1
+1227,Lillie's Determination,Trainer,4
+1231,Dawn,Trainer,1
+1255,Postwick,Trainer,1

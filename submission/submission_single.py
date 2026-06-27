@@ -553,6 +553,7 @@ class StrategyPacket:
 class TimePacket:
     time_elapsed: float
     time_limit: float
+    legal_actions: list[str] = None
 
 @dataclass(frozen=True)
 class OpponentModelPacket:

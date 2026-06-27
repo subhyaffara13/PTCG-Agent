@@ -1,20 +1,11 @@
-"""
-factory/deck_generator.py
-
-Generates 60-card decks using archetype-aware construction with evolution pyramids,
-consistency trainers, and hypergeometric setup validation.
-"""
-
 import random
 from typing import List, Dict, Any
-from factory.deck_generator_helpers import (
-    hypergeometric_setup_prob, add_card,
-    inject_signature_cards, inject_evolution_pyramids,
-    inject_consistency_trainers, enforce_bounds, fill_to_60,
-)
 
+from factory.deck_generator_helpers import DeckMathMixin
+from factory.deck_generator_injection import DeckInjectionMixin
+from factory.deck_generator_bounds import DeckBoundsMixin
 
-class DeckGenerator:
+class DeckGenerator(DeckMathMixin, DeckInjectionMixin, DeckBoundsMixin):
     def __init__(self, card_pool: list, card_details: dict, archetypes_data: dict):
         self.card_pool = card_pool
         self.card_details = card_details
@@ -31,33 +22,33 @@ class DeckGenerator:
         arch = self.archetypes_data.get("archetypes", {}).get(archetype, {})
 
         # Core skeleton: signature + evolution + consistency
-        inject_signature_cards(arch, id_map, name_map, deck, copies, ctr)
-        inject_evolution_pyramids(deck, self.card_details, name_map, copies, ctr)
-        inject_consistency_trainers(deck, self.card_details, id_map, name_map, copies, ctr)
-        enforce_bounds(legal_cards, basic_pokemon, name_map, deck, copies, ctr,
-                       self.card_pool, self.card_details)
+        self.inject_signature_cards(arch, id_map, name_map, deck, copies, ctr)
+        self.inject_evolution_pyramids(deck, self.card_details, name_map, copies, ctr)
+        self.inject_consistency_trainers(deck, self.card_details, id_map, name_map, copies, ctr)
+        self.enforce_bounds(legal_cards, basic_pokemon, name_map, deck, copies, ctr,
+                            self.card_pool, self.card_details)
 
         # Energies
         matching = self._matching_energies(deck, energy_cards)
-        lim = 0
-        while ctr["energy"] < 12 and len(deck) < 60 and lim < 100:
-            if add_card(random.choice(matching), 1, deck, copies, ctr) == 0:
-                lim += 1
+        if matching:
+            needed = min(12 - ctr["energy"], 60 - len(deck))
+            for _ in range(max(0, needed)):
+                self.add_card(random.choice(matching), 1, deck, copies, ctr)
 
         # Fill to 60 + pad
-        fill_to_60(legal_cards, matching, deck, copies, ctr, self.card_details)
+        self.fill_to_60(legal_cards, matching, deck, copies, ctr, self.card_details)
         while len(deck) < 60:
             deck.append(dict(random.choice(matching or legal_cards)))
 
         # Hypergeometric validation: >= 95% chance of Basic in opening hand
         basics = sum(1 for c in deck if c.get("card_type") == "Pokemon"
                      and self.card_details.get(str(c["card_id"]), {}).get("stage") == "Basic")
-        if hypergeometric_setup_prob(60, basics) < 0.95 and basic_pokemon:
-            for _ in range(5):
-                if hypergeometric_setup_prob(60, basics) >= 0.95:
-                    break
-                add_card(random.choice(basic_pokemon), 1, deck, copies, ctr)
-                basics += 1
+        if basic_pokemon:
+            target_basics = basics
+            while target_basics < 20 and self.hypergeometric_setup_prob(60, target_basics) < 0.95:
+                target_basics += 1
+            for _ in range(target_basics - basics):
+                self.add_card(random.choice(basic_pokemon), 1, deck, copies, ctr)
         return deck[:60]
 
     def _matching_energies(self, deck, energy_cards):

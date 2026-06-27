@@ -577,6 +577,7 @@ class RouterBus:
         self.delegation_map = delegation_map
         self.registry: Dict[str, Callable[[Any], Any]] = {}
         self.log_file = Path(log_dir) / "action_log.json"
+        self._log_buffer = []
         # Strict mapping of who is allowed to receive what packet class names
         self.allowed_packets: Dict[str, set] = {
             "opponent_model": {"OpponentModelPacket"},
@@ -586,6 +587,26 @@ class RouterBus:
             "time_manager": {"TimePacket"},
             "lethal_calculator": {"LethalPacket"}
         }
+
+    def flush_logs(self):
+        if not self._log_buffer:
+            return
+        try:
+            logs = []
+            if self.log_file.exists():
+                content = self.log_file.read_text(encoding="utf-8").strip()
+                if content:
+                    try:
+                        logs = json.loads(content)
+                        if not isinstance(logs, list):
+                            logs = [logs]
+                    except json.JSONDecodeError:
+                        logs = []
+            logs.extend(self._log_buffer)
+            self.log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            self._log_buffer.clear()
+        except Exception as e:
+            logger.error(f"Failed to flush delegation logs: {e}")
 
     def register_agent(self, agent_name: str, callback: Callable[[Any], Any], perspective_flag: str = None):
         """
@@ -639,23 +660,7 @@ class RouterBus:
             "agent_called": agent_name,
             "packet_type": packet_type
         }
-        
-        try:
-            logs = []
-            if self.log_file.exists():
-                content = self.log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            
-            logs.append(log_entry)
-            self.log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to log delegation to {self.log_file}: {e}")
+        self._log_buffer.append(log_entry)
 
 
 # ==========================================
@@ -682,6 +687,27 @@ class LethalCalculator(BaseAgent):
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._log_buffer = []
+
+    def flush_logs(self):
+        if not self._log_buffer:
+            return
+        try:
+            logs = []
+            if self.reasoning_log_file.exists():
+                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
+                if content:
+                    try:
+                        logs = json.loads(content)
+                        if not isinstance(logs, list):
+                            logs = [logs]
+                    except json.JSONDecodeError:
+                        logs = []
+            logs.extend(self._log_buffer)
+            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            self._log_buffer.clear()
+        except Exception as e:
+            logger.error(f"Failed to flush lethal_calculator logs: {e}")
 
     def receive(self, packet: Any) -> Any:
         """
@@ -695,8 +721,18 @@ class LethalCalculator(BaseAgent):
         # If we have an attack available and we can KO the opponent's active
         if legal_attacks and my_damage >= opp_hp and my_damage > 0:
             attack_name = legal_attacks[0]
+            from agents.card_registry import CardRegistry
+            _reg = CardRegistry()
+            for att in legal_attacks:
+                try:
+                    card = _reg.get_full_skill(att)
+                    if card and card.damage_output >= opp_hp:
+                        attack_name = att
+                        break
+                except Exception:
+                    pass
             action = f"attack:{attack_name}"
-            reasoning = f"LethalCalculator found lethal: my_damage {my_damage} >= opponent_hp {opp_hp}. Forcing attack."
+            reasoning = f"LethalCalculator found lethal: attack {attack_name} damage >= opponent_hp {opp_hp}. Forcing attack."
             
             response = {
                 "action_override": action,
@@ -716,21 +752,7 @@ class LethalCalculator(BaseAgent):
             "action_override": response.get("action_override"),
             "reasoning_chain": response.get("reasoning_chain")
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to write logic logs: {e}")
+        self._log_buffer.append(log_entry)
 
 """
 agents/hand_analyst.py
@@ -759,6 +781,7 @@ class HandAnalyst(BaseAgent):
         self.card_pool = self._load_card_pool()
         self.card_lookup = {c["card_id"]: c for c in self.card_pool}
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._log_buffer = []
 
     def _load_card_pool(self) -> list:
         path = self.skills_dir / "card_scoring.json"
@@ -917,14 +940,9 @@ class HandAnalyst(BaseAgent):
         self._log_reasoning(turn, response)
         return response
 
-    def _log_reasoning(self, turn: int, response: dict):
-        log_entry = {
-            "turn": turn,
-            "hand_score": response["hand_score"],
-            "priority_profile": response["priority_profile"],
-            "top_play": response["top_play"],
-            "reasoning_chain": response["reasoning_chain"]
-        }
+    def flush_logs(self):
+        if not self._log_buffer:
+            return
         try:
             logs = []
             if self.reasoning_log_file.exists():
@@ -936,10 +954,21 @@ class HandAnalyst(BaseAgent):
                             logs = [logs]
                     except json.JSONDecodeError:
                         logs = []
-            logs.append(log_entry)
+            logs.extend(self._log_buffer)
             self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            self._log_buffer.clear()
         except Exception as e:
-            logger.error(f"Failed to write logic logs: {e}")
+            logger.error(f"Failed to flush hand_analyst logs: {e}")
+
+    def _log_reasoning(self, turn: int, response: dict):
+        log_entry = {
+            "turn": turn,
+            "hand_score": response["hand_score"],
+            "priority_profile": response["priority_profile"],
+            "top_play": response["top_play"],
+            "reasoning_chain": response["reasoning_chain"]
+        }
+        self._log_buffer.append(log_entry)
 
 """
 agents/turn_planner.py
@@ -967,6 +996,7 @@ class TurnPlanner(BaseAgent):
         # Load priority rules on init only
         self.rules = self._load_priority_rules()
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._log_buffer = []
 
     def _load_priority_rules(self) -> dict:
         return PRIORITY_RULES
@@ -1076,14 +1106,9 @@ class TurnPlanner(BaseAgent):
         # Sort based on rank prefix match, preserve secondary ordering
         return sorted(candidates, key=get_priority_rank)
 
-    def _log_reasoning(self, turn: int, profile: str, response: dict):
-        log_entry = {
-            "turn": turn,
-            "priority_profile": profile,
-            "action_sequence": response["action_sequence"],
-            "primary_action": response["primary_action"],
-            "reasoning_chain": response["reasoning_chain"]
-        }
+    def flush_logs(self):
+        if not self._log_buffer:
+            return
         try:
             logs = []
             if self.reasoning_log_file.exists():
@@ -1095,10 +1120,21 @@ class TurnPlanner(BaseAgent):
                             logs = [logs]
                     except json.JSONDecodeError:
                         logs = []
-            logs.append(log_entry)
+            logs.extend(self._log_buffer)
             self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            self._log_buffer.clear()
         except Exception as e:
-            logger.error(f"Failed to log turn planner decision: {e}")
+            logger.error(f"Failed to flush turn_planner logs: {e}")
+
+    def _log_reasoning(self, turn: int, profile: str, response: dict):
+        log_entry = {
+            "turn": turn,
+            "priority_profile": profile,
+            "action_sequence": response["action_sequence"],
+            "primary_action": response["primary_action"],
+            "reasoning_chain": response["reasoning_chain"]
+        }
+        self._log_buffer.append(log_entry)
 
 """
 agents/strategy_agent.py
@@ -1128,6 +1164,7 @@ class StrategyAgent(BaseAgent):
         self.last_triggered_turn = -1
         self.last_priority_profile = None
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._log_buffer = []
 
     def _load_strategy_profiles(self) -> dict:
         return STRATEGY_PROFILES
@@ -1212,16 +1249,9 @@ class StrategyAgent(BaseAgent):
         self._log_reasoning(turn_number, trigger, prev_strategy, new_strategy, True, reasoning)
         return response
 
-    def _log_reasoning(self, turn: int, trigger_reason: str, prev_strat: str, 
-                      new_strat: str, triggered: bool, reasoning: str):
-        log_entry = {
-            "turn_triggered": turn,
-            "trigger_reason": trigger_reason,
-            "previous_strategy": prev_strat,
-            "new_strategy": new_strat,
-            "triggered": triggered,
-            "reasoning": reasoning
-        }
+    def flush_logs(self):
+        if not self._log_buffer:
+            return
         try:
             logs = []
             if self.reasoning_log_file.exists():
@@ -1233,10 +1263,23 @@ class StrategyAgent(BaseAgent):
                             logs = [logs]
                     except json.JSONDecodeError:
                         logs = []
-            logs.append(log_entry)
+            logs.extend(self._log_buffer)
             self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            self._log_buffer.clear()
         except Exception as e:
-            logger.error(f"Failed to log strategy choice: {e}")
+            logger.error(f"Failed to flush strategy_agent logs: {e}")
+
+    def _log_reasoning(self, turn: int, trigger_reason: str, prev_strat: str, 
+                      new_strat: str, triggered: bool, reasoning: str):
+        log_entry = {
+            "turn_triggered": turn,
+            "trigger_reason": trigger_reason,
+            "previous_strategy": prev_strat,
+            "new_strategy": new_strat,
+            "triggered": triggered,
+            "reasoning": reasoning
+        }
+        self._log_buffer.append(log_entry)
 
 """
 agents/opponent_model.py
@@ -1385,6 +1428,27 @@ class TimeManager(BaseAgent):
         self.warning_threshold = 540.0
         self.force_pass_threshold = 570.0
         self.reasoning_log_file = self.log_dir / "reasoning_log.json"
+        self._log_buffer = []
+
+    def flush_logs(self):
+        if not self._log_buffer:
+            return
+        try:
+            logs = []
+            if self.reasoning_log_file.exists():
+                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
+                if content:
+                    try:
+                        logs = json.loads(content)
+                        if not isinstance(logs, list):
+                            logs = [logs]
+                    except json.JSONDecodeError:
+                        logs = []
+            logs.extend(self._log_buffer)
+            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            self._log_buffer.clear()
+        except Exception as e:
+            logger.error(f"Failed to flush time_manager logs: {e}")
 
     def receive(self, packet: Any) -> dict:
         """
@@ -1441,21 +1505,7 @@ class TimeManager(BaseAgent):
             "top_play": "n/a",
             "reasoning_chain": f"TIME MANAGER WARNING: {msg}"
         }
-        try:
-            logs = []
-            if self.reasoning_log_file.exists():
-                content = self.reasoning_log_file.read_text(encoding="utf-8").strip()
-                if content:
-                    try:
-                        logs = json.loads(content)
-                        if not isinstance(logs, list):
-                            logs = [logs]
-                    except json.JSONDecodeError:
-                        logs = []
-            logs.append(log_entry)
-            self.reasoning_log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to log warning: {e}")
+        self._log_buffer.append(log_entry)
 
 # ==========================================
 # ORCHESTRATOR
@@ -1607,8 +1657,22 @@ class Orchestrator(BaseAgent):
             )
             self.bus.dispatch("on_opponent_play", opp_packet)
 
-        # STEP 7: Return primary action
+        # STEP 7: Flush all buffered logs on turn boundary
+        self._flush_all_logs()
+
+        # STEP 8: Return primary action
         return plan_result["primary_action"]
+
+    def flush_all_logs(self):
+        self._flush_all_logs()
+
+    def _flush_all_logs(self):
+        self.bus.flush_logs()
+        self.hand_analyst.flush_logs()
+        self.turn_planner.flush_logs()
+        self.strategy_agent.flush_logs()
+        self.lethal_calculator.flush_logs()
+        self.time_manager.flush_logs()
 
     def _get_public_state(self) -> dict:
         """Returns only publicly visible game information."""

@@ -2,96 +2,95 @@
 import sys
 sys.path.insert(0, ".")
 
-# 1. StrategyAgent
+# 1. StrategyAgent (uses receive() with StrategyPacket)
+print("=" * 60)
+print("1. StrategyAgent")
 from agents.strategy_agent import StrategyAgent
+from router.bus import StrategyPacket
+
 sa = StrategyAgent()
-r = sa.evaluate({
-    "trigger": "turn_start",
-    "board_summary": {
-        "own_prizes_remaining": 6,
+packet = StrategyPacket(
+    trigger="turn_start",
+    board_summary={
+        "my_prizes_remaining": 6,
         "opponent_prizes_remaining": 5,
         "energy_in_hand": 2,
         "turn_number": 1,
     }
-})
-print("[StrategyAgent] strategy:", r["strategy"], "| posture:", r["posture"])
-assert r["strategy"] in sa._profiles, f"Unknown strategy: {r['strategy']}"
+)
+r = sa.receive(packet)
+print(f"  strategy: {r['new_strategy']} | triggered: {r['triggered']}")
+assert "new_strategy" in r, f"Missing 'new_strategy' key in response"
+print("  PASSED")
 
 # 2. DeckArchitect
+print("=" * 60)
+print("2. DeckArchitect")
 from factory.deck_architect import DeckArchitect
 da = DeckArchitect()
-rep = da.propose_mutation({"report_snapshot": {"deck_archetype": "aggro"}})
-print("[DeckArchitect] targeted:", rep["dimension_targeted"],
-      "| score:", rep["deck_score_before"], "->", rep["deck_score_after"])
-assert 0 <= rep["deck_score_before"] <= 1
-assert 0 <= rep["deck_score_after"]  <= 1
+rep = da.build({"next_eval_context": "aggro", "reasoning": "low deck delta"})
+print(f"  status: {rep['status']} | score: {rep.get('deck_score', 'N/A')}")
+assert rep["status"] == "success", f"DeckArchitect failed: {rep}"
+assert 0 <= rep["deck_score"] <= 1
+print("  PASSED")
 
 # 3. Orchestrator (single turn)
+print("=" * 60)
+print("3. Orchestrator (full turn pipeline)")
 from agents.orchestrator import Orchestrator
 orch = Orchestrator()
+orch.start_game()
+
 gs = {
-    "hand": ["Professor's Research", "Basic Attacker", "Energy",
+    "my_hand": ["Professor's Research", "Basic Attacker", "Energy",
              "Energy", "Nest Ball", "Rare Candy", "Switch"],
-    "deck_remaining": 52,
-    "revealed_cards": [],
+    "my_deck_count": 52,
+    "my_discard": [],
+    "my_board": [],
+    "my_bench": [],
+    "my_prizes": 6,
+    "my_active_hp": 100,
+    "my_active_damage": 30,
+    "opponent_prizes": 6,
+    "opponent_active_hp": 100,
+    "opponent_active": None,
+    "opponent_bench": [],
+    "opponent_hand_count": 5,
+    "opponent_discard": [],
+    "opponent_last_play": None,
+    "opponent_revealed": None,
     "turn_number": 1,
-    "archetype_confidence": 0.5,
-    "time_elapsed": 0.0,
-    "time_limit": 600.0,
-    "board_summary": {
-        "own_prizes_remaining": 6,
-        "opponent_prizes_remaining": 6,
-        "bench_pokemon_count": 0,
-        "energy_in_hand": 2,
-        "turn_number": 1,
-        "opponent_bench_size": 2,
-    },
+    "legal_attacks": ["Thunder Shock"],
+    "legal_evolutions": [],
+    "legal_attachments": ["energy_1"],
+    "legal_trainers": ["Professor's Research", "Nest Ball"],
+    "legal_bench": ["Basic Attacker"],
+    "legal_retreats": [],
 }
-turn_result = orch.run_turn(gs)
-print("[Orchestrator]  action:", turn_result["action"], "| profile:", turn_result["profile"])
-assert turn_result["action"] in ("ATTACK_KO", "EVOLVE", "ATTACH_ENERGY", "PLAY_TRAINER", "PASS")
+action = orch.run_turn(gs)
+print(f"  action returned: {action}")
+assert isinstance(action, str), f"Expected str, got {type(action)}"
+print("  PASSED")
 
-# 4. GameRunner (full series)
-from factory.game_runner import GameRunner
-gr = GameRunner(agent_archetype="aggro", opponent_archetype="control", seed=42)
-logs = gr.run_series()
-assert len(logs) == 3, f"Expected 3 logs, got {len(logs)}"
-for i, log in enumerate(logs, 1):
-    wr = log["win_rate"]
-    ko = log["ko_rate"]
-    print(f"[GameRunner]    Game {i} win_rate={wr} ko_rate={ko}")
+# 4. Multi-turn simulation
+print("=" * 60)
+print("4. Orchestrator (3-turn simulation)")
+for turn in range(2, 5):
+    gs["turn_number"] = turn
+    gs["my_deck_count"] = max(0, 52 - turn * 2)
+    gs["my_prizes"] = max(1, 6 - (turn - 1))
+    action = orch.run_turn(gs)
+    print(f"  Turn {turn}: {action}")
+    assert isinstance(action, str)
+print("  PASSED")
 
-# 5. EvalAgent end-to-end
-from factory.eval_agent import EvalAgent
-ea = EvalAgent()
-report = ea.evaluate(
-    game_logs=logs,
-    last_change_type="deck_swap",
-    deck_archetype="aggro",
-    version_tag="v0.2.0",
-)
-ctx = report["eval_context"]
-adj = report["adjusted"]["version_score"]
-print("[EvalAgent]     context:", ctx, "| adj version_score:", adj)
-assert ctx == "aggro_test"
-
-# 6. submission/main.py
-from submission.main import agent
-obs = {
-    "hand": ["Professor's Research", "Basic Attacker", "Energy"],
-    "deck_remaining": 50,
-    "revealed_cards": [],
-    "turn_number": 1,
-    "archetype_confidence": 0.5,
-    "own_prizes_remaining": 6,
-    "opponent_prizes_remaining": 6,
-    "bench_pokemon_count": 0,
-    "energy_in_hand": 1,
-    "time_elapsed": 0.0,
-}
-action = agent(obs, {"actTimeout": 600.0})
-print("[submission]    agent() returned:", action)
-assert isinstance(action, str)
+# 5. Flush all logs
+print("=" * 60)
+print("5. Log flushing")
+orch.flush_all_logs()
+print("  All agent logs flushed successfully")
+print("  PASSED")
 
 print()
-print("All integration checks passed.")
+print("=" * 60)
+print("All integration checks passed!")

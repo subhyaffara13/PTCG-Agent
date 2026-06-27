@@ -66,7 +66,8 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
             "turn_number": current.get("turn", 1),
             "my_active_hp": (my_state.get("active")[0].get("hp", 100) if my_state.get("active") and len(my_state.get("active")) > 0 and my_state.get("active")[0] is not None else 100),
             "opponent_active_hp": (opp_state.get("active")[0].get("hp", 100) if opp_state.get("active") and len(opp_state.get("active")) > 0 and opp_state.get("active")[0] is not None else 100),
-            "bench_has_attacker": False
+            "bench_has_attacker": False,
+            "has_searched_deck": getattr(my_state, "has_searched_deck", False),
         }
 
         # Parse legal candidates from options

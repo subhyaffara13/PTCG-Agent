@@ -1,13 +1,11 @@
 """
 factory/early_predictor.py
-
 EarlyWinPredictor system to forecast match outcomes at turns 3-5.
-Tunes itself dynamically on prediction failures.
 """
-
 import logging
 from pathlib import Path
 from factory.early_predictor_loader import EarlyPredictorLoader
+from factory.early_predictor_helpers import calculate_player_score, perform_weight_upgrade
 
 logger = logging.getLogger(__name__)
 
@@ -51,45 +49,10 @@ class EarlyWinPredictor:
         players_data = curr.get("players", []) or []
         if len(players_data) < 2: return "player_a"
 
-        scores = []
-        for idx in (0, 1):
-            p_data = players_data[idx]
-            if not p_data or not isinstance(p_data, dict):
-                scores.append(0.0)
-                continue
-            prizes_taken = 6 - len(p_data.get("prize", []) or [])
-            hand_list = p_data.get("hand", []) or []
-            active = p_data.get("active", []) or []
-            bench = p_data.get("bench", []) or []
-            
-            energy_attached = sum(len(b.get("attached", []) or []) for b in bench if isinstance(b, dict))
-            active_hp = 0
-            if active and isinstance(active[0], dict):
-                energy_attached += len(active[0].get("attached", []) or [])
-                active_hp += active[0].get("hp", 0) or 0
-
-            evolve_combos = trainer_utility = 0
-            board_names = {self.card_names.get(str(x["id"])) for x in (active + bench) if isinstance(x, dict) and "id" in x}
-            board_names.discard(None)
-
-            for h in hand_list:
-                if isinstance(h, dict) and "id" in h:
-                    hid = str(h["id"])
-                    if self.card_names.get(hid) in self.evolution_predecessors:
-                        if self.evolution_predecessors[self.card_names[hid]] in board_names:
-                            evolve_combos += 1
-                    if self.card_types.get(hid) == "Trainer":
-                        trainer_utility += 1
-
-            scores.append(
-                self.weights.get("prize_weight", 2.0) * prizes_taken +
-                self.weights.get("hand_weight", 0.5) * len(hand_list) +
-                self.weights.get("board_weight", 1.0) * (len(active) + len(bench)) +
-                self.weights.get("energy_weight", 1.5) * energy_attached +
-                self.weights.get("active_hp_weight", 0.01) * active_hp +
-                self.weights.get("evolution_combo_weight", 0.8) * evolve_combos +
-                self.weights.get("trainer_utility_weight", 0.4) * trainer_utility
-            )
+        scores = [
+            calculate_player_score(players_data[idx], self.weights, self.card_names, self.card_types, self.evolution_predecessors)
+            for idx in (0, 1)
+        ]
         return "player_a" if scores[0] >= scores[1] else "player_b"
 
     def upgrade(self, prediction: str, actual: str, steps: list):
@@ -97,10 +60,7 @@ class EarlyWinPredictor:
         direction = 1 if actual == "player_a" else -1
         feedback = {"prediction": prediction, "actual": actual, "reason": "mismatch", "weights_before": dict(self.weights)}
 
-        lr = 0.1
-        for w, scale in [("prize_weight", 0.5), ("hand_weight", 0.2), ("board_weight", 0.3), ("energy_weight", 0.4), ("evolution_combo_weight", 0.2), ("trainer_utility_weight", 0.1)]:
-            self.weights[w] = max(0.1, self.weights[w] + lr * direction * scale)
-        
+        self.weights = perform_weight_upgrade(self.weights, direction)
         self.loader.save_weights(self.weights)
         feedback["weights_after"] = dict(self.weights)
         self.loader.log_feedback(feedback)

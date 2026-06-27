@@ -1,28 +1,19 @@
 import sys, os, time, subprocess, json
 from pathlib import Path
+from scratch.orchestration_auto_submit import auto_submit_if_ready
 
 cwd = os.getcwd()
 if cwd not in sys.path:
     sys.path.insert(0, cwd)
-
-ENABLE_DISTRIBUTED = False  # Toggle this to activate distributed mode
+ENABLE_DISTRIBUTED = False
 
 def main():
     print("--> Orchestration Agent started...")
-    
-    # Select which scripts to run depending on distributed mode status
     if ENABLE_DISTRIBUTED:
-        scripts = [
-            "scratch/distributed_master.py",
-            "scratch/distributed_learner.py"
-        ]
+        scripts = ["scratch/distributed_master.py", "scratch/distributed_learner.py"]
         print("Distributed training mode is ENABLED. Remote workers should connect to this node.")
     else:
-        scripts = [
-            "scratch/run_deck_optimizer_loop.py",
-            "scratch/run_ppo_trainer_loop.py",
-            "scratch/run_training_batches.py"
-        ]
+        scripts = ["scratch/run_deck_optimizer_loop.py", "scratch/run_ppo_trainer_loop.py", "scratch/run_training_batches.py"]
         print("Local training mode is ENABLED.")
 
     processes = []
@@ -38,7 +29,6 @@ def main():
         analytics = AnalyticsTeam()
         iteration = 0
         while True:
-            # Monitor sub-process health
             for i, p in enumerate(processes):
                 if p.poll() is not None:
                     print(f"Sub-task {scripts[i]} stopped. Restarting...")
@@ -46,14 +36,16 @@ def main():
                         processes[i] = subprocess.Popen([sys.executable, scripts[i]])
                     except Exception as e:
                         print(f"Failed to restart {scripts[i]}: {e}")
-
             print(f"\n--- [Orchestration] Checking standing & starting batch ---")
             try:
                 subprocess.run([sys.executable, "scratch/check_submissions.py"], check=True)
                 subprocess.run([sys.executable, "scratch/run_leaderboard_loop.py"], check=True)
             except Exception as e:
                 print(f"Error checking online standings: {e}")
-
+            try:
+                auto_submit_if_ready()
+            except Exception as e:
+                print(f"Error executing auto submission: {e}")
             if iteration % 5 == 0:
                 try:
                     result_file = Path("logs/iteration_result.json")
@@ -63,7 +55,6 @@ def main():
                         print("Analytics heavy check finished successfully.")
                 except Exception as e:
                     print(f"Analytics Team execution failed: {e}")
-
             iteration += 1
             time.sleep(3600)
     finally:

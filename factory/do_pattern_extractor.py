@@ -31,10 +31,4 @@ class DoPatternExtractor:
         to extract recommended cards and behavior patterns.
         """
         run_winning_analysis(replay_paths, player_name_or_id, self)
-        card_counter = Counter()
-        setup_durations = []
-        bench_densities = []
-        pokemon_counts = []
-        trainer_counts = []
-        energy_counts = []
-        pass
+

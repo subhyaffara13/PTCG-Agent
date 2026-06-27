@@ -1,25 +1,25 @@
 [
   {
-    "prediction": "player_b",
-    "actual": "player_a",
+    "prediction": "player_a",
+    "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "prize_weight": 1.1999999999999993,
+      "hand_weight": 0.17999999999999972,
+      "board_weight": 0.5199999999999996,
+      "energy_weight": 0.8599999999999994,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.47999999999999976,
+      "trainer_utility_weight": 0.23999999999999988
     },
     "weights_after": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "prize_weight": 1.1499999999999992,
+      "hand_weight": 0.1599999999999997,
+      "board_weight": 0.48999999999999955,
+      "energy_weight": 0.8199999999999994,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.45999999999999974,
+      "trainer_utility_weight": 0.22999999999999987
     }
   },
   {
@@ -27,45 +27,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "prize_weight": 1.1499999999999992,
+      "hand_weight": 0.1599999999999997,
+      "board_weight": 0.48999999999999955,
+      "energy_weight": 0.8199999999999994,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.45999999999999974,
+      "trainer_utility_weight": 0.22999999999999987
     },
     "weights_after": {
-      "prize_weight": 0.10000000000000002,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "prize_weight": 1.0999999999999992,
+      "hand_weight": 0.13999999999999968,
+      "board_weight": 0.4599999999999995,
+      "energy_weight": 0.7799999999999994,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_b",
-    "actual": "player_a",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.10000000000000002,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.4399999999999997,
+      "trainer_utility_weight": 0.21999999999999986
     }
   },
   {
@@ -73,206 +50,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "prize_weight": 1.0999999999999992,
+      "hand_weight": 0.13999999999999968,
+      "board_weight": 0.4599999999999995,
+      "energy_weight": 0.7799999999999994,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.4399999999999997,
+      "trainer_utility_weight": 0.21999999999999986
     },
     "weights_after": {
-      "prize_weight": 0.10000000000000002,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "prize_weight": 1.0499999999999992,
+      "hand_weight": 0.11999999999999968,
+      "board_weight": 0.4299999999999995,
+      "energy_weight": 0.7399999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.10000000000000002,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.4199999999999997,
+      "trainer_utility_weight": 0.20999999999999985
     }
   },
   {
@@ -280,22 +73,22 @@
     "actual": "player_a",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "prize_weight": 1.0499999999999992,
+      "hand_weight": 0.11999999999999968,
+      "board_weight": 0.4299999999999995,
+      "energy_weight": 0.7399999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.4199999999999997,
+      "trainer_utility_weight": 0.20999999999999985
     },
     "weights_after": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "prize_weight": 1.0999999999999992,
+      "hand_weight": 0.13999999999999968,
+      "board_weight": 0.4599999999999995,
+      "energy_weight": 0.7799999999999994,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.4399999999999997,
+      "trainer_utility_weight": 0.21999999999999986
     }
   },
   {
@@ -303,22 +96,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "prize_weight": 1.0499999999999992,
+      "hand_weight": 0.11999999999999968,
+      "board_weight": 0.4299999999999995,
+      "energy_weight": 0.7399999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.4199999999999997,
+      "trainer_utility_weight": 0.20999999999999985
     },
     "weights_after": {
-      "prize_weight": 0.10000000000000002,
+      "prize_weight": 0.9999999999999991,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.39999999999999947,
+      "energy_weight": 0.6999999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.3999999999999997,
+      "trainer_utility_weight": 0.19999999999999984
     }
   },
   {
@@ -326,22 +119,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.10000000000000002,
+      "prize_weight": 0.9999999999999991,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.39999999999999947,
+      "energy_weight": 0.6999999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.3999999999999997,
+      "trainer_utility_weight": 0.19999999999999984
     },
     "weights_after": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.9499999999999991,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.36999999999999944,
+      "energy_weight": 0.6599999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.37999999999999967,
+      "trainer_utility_weight": 0.18999999999999984
     }
   },
   {
@@ -349,114 +142,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.9499999999999991,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.36999999999999944,
+      "energy_weight": 0.6599999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.37999999999999967,
+      "trainer_utility_weight": 0.18999999999999984
     },
     "weights_after": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
     }
   },
   {
@@ -464,22 +165,22 @@
     "actual": "player_a",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
     },
     "weights_after": {
-      "prize_weight": 0.15000000000000002,
+      "prize_weight": 0.9499999999999991,
       "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "board_weight": 0.36999999999999944,
+      "energy_weight": 0.6599999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.37999999999999967,
+      "trainer_utility_weight": 0.18999999999999984
     }
   },
   {
@@ -487,22 +188,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.15000000000000002,
+      "prize_weight": 0.9499999999999991,
       "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "board_weight": 0.36999999999999944,
+      "energy_weight": 0.6599999999999993,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.37999999999999967,
+      "trainer_utility_weight": 0.18999999999999984
     },
     "weights_after": {
-      "prize_weight": 0.10000000000000002,
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
     }
   },
   {
@@ -510,22 +211,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.10000000000000002,
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
     },
     "weights_after": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.849999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
     }
   },
   {
@@ -533,22 +234,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
     },
     "weights_after": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.849999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
     }
   },
   {
@@ -556,390 +257,22 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.849999999999999,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
     },
     "weights_after": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.7999999999999989,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
     }
   },
   {
@@ -947,22 +280,45 @@
     "actual": "player_a",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.1,
+      "prize_weight": 0.7999999999999989,
       "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
     },
     "weights_after": {
-      "prize_weight": 0.15000000000000002,
+      "prize_weight": 0.849999999999999,
       "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.849999999999999,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
+    },
+    "weights_after": {
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
     }
   },
   {
@@ -970,22 +326,45 @@
     "actual": "player_a",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.15000000000000002,
-      "hand_weight": 0.12000000000000001,
-      "board_weight": 0.13,
-      "energy_weight": 0.14,
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.12000000000000001,
-      "trainer_utility_weight": 0.11000000000000001
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
     },
     "weights_after": {
-      "prize_weight": 0.2,
+      "prize_weight": 0.849999999999999,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
+    }
+  },
+  {
+    "prediction": "player_b",
+    "actual": "player_a",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.849999999999999,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
+    },
+    "weights_after": {
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.14,
-      "board_weight": 0.16,
-      "energy_weight": 0.18000000000000002,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.14,
-      "trainer_utility_weight": 0.12000000000000002
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
     }
   },
   {
@@ -993,13 +372,657 @@
     "actual": "player_b",
     "reason": "mismatch",
     "weights_before": {
-      "prize_weight": 0.2,
+      "prize_weight": 0.899999999999999,
       "hand_weight": 0.14,
-      "board_weight": 0.16,
-      "energy_weight": 0.18000000000000002,
+      "board_weight": 0.3399999999999994,
+      "energy_weight": 0.6199999999999992,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.14,
-      "trainer_utility_weight": 0.12000000000000002
+      "evolution_combo_weight": 0.35999999999999965,
+      "trainer_utility_weight": 0.17999999999999983
+    },
+    "weights_after": {
+      "prize_weight": 0.849999999999999,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.849999999999999,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.3099999999999994,
+      "energy_weight": 0.5799999999999992,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.33999999999999964,
+      "trainer_utility_weight": 0.16999999999999982
+    },
+    "weights_after": {
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.7499999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.24999999999999936,
+      "energy_weight": 0.4999999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2999999999999996,
+      "trainer_utility_weight": 0.1499999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.7499999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.24999999999999936,
+      "energy_weight": 0.4999999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2999999999999996,
+      "trainer_utility_weight": 0.1499999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.7499999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.24999999999999936,
+      "energy_weight": 0.4999999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2999999999999996,
+      "trainer_utility_weight": 0.1499999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.6999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.21999999999999936,
+      "energy_weight": 0.4599999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2799999999999996,
+      "trainer_utility_weight": 0.1399999999999998
+    }
+  },
+  {
+    "prediction": "player_b",
+    "actual": "player_a",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.7499999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.24999999999999936,
+      "energy_weight": 0.4999999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2999999999999996,
+      "trainer_utility_weight": 0.1499999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.7999999999999989,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.27999999999999936,
+      "energy_weight": 0.5399999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.3199999999999996,
+      "trainer_utility_weight": 0.1599999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.7499999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.24999999999999936,
+      "energy_weight": 0.4999999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2999999999999996,
+      "trainer_utility_weight": 0.1499999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.7499999999999989,
+      "hand_weight": 0.1,
+      "board_weight": 0.24999999999999936,
+      "energy_weight": 0.4999999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2999999999999996,
+      "trainer_utility_weight": 0.1499999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.6999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.21999999999999936,
+      "energy_weight": 0.4599999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2799999999999996,
+      "trainer_utility_weight": 0.1399999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.21999999999999936,
+      "energy_weight": 0.4599999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2799999999999996,
+      "trainer_utility_weight": 0.1399999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    }
+  },
+  {
+    "prediction": "player_b",
+    "actual": "player_a",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    },
+    "weights_after": {
+      "prize_weight": 0.6999999999999988,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.21999999999999936,
+      "energy_weight": 0.4599999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2799999999999996,
+      "trainer_utility_weight": 0.1399999999999998
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6999999999999988,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.21999999999999936,
+      "energy_weight": 0.4599999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2799999999999996,
+      "trainer_utility_weight": 0.1399999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6999999999999988,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.21999999999999936,
+      "energy_weight": 0.4599999999999991,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.2799999999999996,
+      "trainer_utility_weight": 0.1399999999999998
+    },
+    "weights_after": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    },
+    "weights_after": {
+      "prize_weight": 0.5999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.15999999999999936,
+      "energy_weight": 0.379999999999999,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.23999999999999955,
+      "trainer_utility_weight": 0.11999999999999977
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    },
+    "weights_after": {
+      "prize_weight": 0.5999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.15999999999999936,
+      "energy_weight": 0.379999999999999,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.23999999999999955,
+      "trainer_utility_weight": 0.11999999999999977
+    }
+  },
+  {
+    "prediction": "player_b",
+    "actual": "player_a",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.5999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.15999999999999936,
+      "energy_weight": 0.379999999999999,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.23999999999999955,
+      "trainer_utility_weight": 0.11999999999999977
+    },
+    "weights_after": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.6499999999999988,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.18999999999999936,
+      "energy_weight": 0.41999999999999904,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.25999999999999956,
+      "trainer_utility_weight": 0.12999999999999978
+    },
+    "weights_after": {
+      "prize_weight": 0.5999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.15999999999999936,
+      "energy_weight": 0.379999999999999,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.23999999999999955,
+      "trainer_utility_weight": 0.11999999999999977
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.5999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.15999999999999936,
+      "energy_weight": 0.379999999999999,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.23999999999999955,
+      "trainer_utility_weight": 0.11999999999999977
+    },
+    "weights_after": {
+      "prize_weight": 0.5499999999999987,
+      "hand_weight": 0.1,
+      "board_weight": 0.12999999999999937,
+      "energy_weight": 0.33999999999999897,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.21999999999999953,
+      "trainer_utility_weight": 0.10999999999999976
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.5499999999999987,
+      "hand_weight": 0.1,
+      "board_weight": 0.12999999999999937,
+      "energy_weight": 0.33999999999999897,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.21999999999999953,
+      "trainer_utility_weight": 0.10999999999999976
+    },
+    "weights_after": {
+      "prize_weight": 0.4999999999999987,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.29999999999999893,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1999999999999995,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.4999999999999987,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.29999999999999893,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1999999999999995,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.44999999999999873,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.2599999999999989,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1799999999999995,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.44999999999999873,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.2599999999999989,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1799999999999995,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.39999999999999875,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.2199999999999989,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.15999999999999948,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.39999999999999875,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.2199999999999989,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.15999999999999948,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.34999999999999876,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.17999999999999888,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.13999999999999946,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.39999999999999875,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.2199999999999989,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.15999999999999948,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.34999999999999876,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.17999999999999888,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.13999999999999946,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.34999999999999876,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.17999999999999888,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.13999999999999946,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.29999999999999877,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.13999999999999888,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.11999999999999945,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.29999999999999877,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.13999999999999888,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.11999999999999945,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.24999999999999878,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.24999999999999878,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.1999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.1999999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.1499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.1499999999999988,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.1,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_a",
+    "actual": "player_b",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.1,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    },
+    "weights_after": {
+      "prize_weight": 0.1,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
+    }
+  },
+  {
+    "prediction": "player_b",
+    "actual": "player_a",
+    "reason": "mismatch",
+    "weights_before": {
+      "prize_weight": 0.1,
+      "hand_weight": 0.1,
+      "board_weight": 0.1,
+      "energy_weight": 0.1,
+      "active_hp_weight": 0.01,
+      "evolution_combo_weight": 0.1,
+      "trainer_utility_weight": 0.1
     },
     "weights_after": {
       "prize_weight": 0.15000000000000002,
@@ -1058,8 +1081,8 @@
     }
   },
   {
-    "prediction": "player_a",
-    "actual": "player_b",
+    "prediction": "player_b",
+    "actual": "player_a",
     "reason": "mismatch",
     "weights_before": {
       "prize_weight": 0.1,
@@ -1071,36 +1094,13 @@
       "trainer_utility_weight": 0.1
     },
     "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
+      "prize_weight": 0.15000000000000002,
+      "hand_weight": 0.12000000000000001,
+      "board_weight": 0.13,
+      "energy_weight": 0.14,
       "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    }
-  },
-  {
-    "prediction": "player_a",
-    "actual": "player_b",
-    "reason": "mismatch",
-    "weights_before": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
-    },
-    "weights_after": {
-      "prize_weight": 0.1,
-      "hand_weight": 0.1,
-      "board_weight": 0.1,
-      "energy_weight": 0.1,
-      "active_hp_weight": 0.01,
-      "evolution_combo_weight": 0.1,
-      "trainer_utility_weight": 0.1
+      "evolution_combo_weight": 0.12000000000000001,
+      "trainer_utility_weight": 0.11000000000000001
     }
   },
   {

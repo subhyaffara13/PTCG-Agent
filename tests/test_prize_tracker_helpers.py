@@ -1,0 +1,11 @@
+DECK_PIKA_RAICHU = [721, 721, 721, 721, 722, 722, 3, 3, 3, 3]
+VISIBLE_PIKA_RAICHU = [721, 721, 722, 3, 3]
+
+DECK_DICT = {721: 4, 722: 2, 5: 4, 3: 50}
+HAND = ["721", "721", "5"]
+DISCARD = ["3"]
+BOARD = ["722"]
+DECK_CONTENTS = ["721", "3", "3", "3", "3", "3"]
+
+PRIZE_DECK_6 = [1, 1, 2, 2, 3, 3]
+PRIZE_DECK_3 = [1, 2, 3]

@@ -5,6 +5,9 @@ Defines the ActorCritic neural network architecture for PPO.
 """
 
 import logging
+from factory.state_dimensions import STATE_DIM
+
+logger = logging.getLogger(__name__)
 
 try:
     import torch
@@ -12,7 +15,6 @@ try:
     TORCH_AVAILABLE = True
 except ImportError:
     TORCH_AVAILABLE = False
-    logger = logging.getLogger(__name__)
     logger.warning("PyTorch not available. ActorCritic model cannot be defined.")
 
 if TORCH_AVAILABLE:
@@ -20,7 +22,7 @@ if TORCH_AVAILABLE:
         """
         Shared feature extractor network with Actor and Critic heads.
         """
-        def __init__(self, input_dim: int = 71, hidden_dim: int = 256, action_dim: int = 3000):
+        def __init__(self, input_dim: int = STATE_DIM, hidden_dim: int = 256, action_dim: int = 3000):
             super().__init__()
             self.base = nn.Sequential(
                 nn.Linear(input_dim, hidden_dim),
