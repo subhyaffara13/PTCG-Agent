@@ -51,18 +51,16 @@ class AnalyticsTeam:
             
         # Download and parse the latest 5 episodes
         latest_episodes = episode_ids[:5]
-        parsed_replays = []
         for ep_id in latest_episodes:
-            replay_path = scraper.download_episode_replay(ep_id)
-            if replay_path:
-                history = scraper.parse_replay_to_history(replay_path)
-                parsed_replays.extend(history)
+            scraper.download_episode_replay(ep_id)
                 
-        # Analyze the loaded episodes for deck and behavioral faults
-        # In a full meta-learning setup, we would run AntiPatternExtractor or update heuristics
-        # based on where our agent lost (e.g. tracking turn counts, prizes, etc.)
+        try:
+            from scratch.card2vec import Card2VecTrainer
+            from factory.configs import CARD_POOL
+            trainer = Card2VecTrainer(list(CARD_POOL.keys()))
+            trainer.train(logs_dir="logs/kaggle_replays", epochs=3)
+        except Exception as e:
+            logger.error(f"Card2Vec Kaggle training failed: {e}")
+            
         logger.info(f"Kaggle Replay analysis complete. Analyzed {len(latest_episodes)} episodes.")
-        return {
-            "analyzed_episodes": latest_episodes, 
-            "log_events_count": len(parsed_replays)
-        }
+        return {"analyzed_episodes": latest_episodes}

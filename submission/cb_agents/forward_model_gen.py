@@ -67,8 +67,6 @@ def _remove_from_hand(hand: list, card_id: Any) -> None:
             return
         except (ValueError, TypeError):
             pass
-    if hand:
-        hand.pop(random.randrange(len(hand)))
 
 
 def _draw_cards(hand: list, gs: dict, n: int) -> list:

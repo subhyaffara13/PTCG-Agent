@@ -48,7 +48,7 @@ class StrategyAgent:
         board_match = self._board_signal_match(board_summary)
         if board_match:
             key = board_match
-            return key, self._profiles[key], _CONF_KEYWORD, f"board_summary signal -> {key}"
+            return key, self._profiles.get(key, {}), _CONF_KEYWORD, f"board_summary signal -> {key}"
         best_key, best_score = self._keyword_scan(trigger_lower)
         if best_key and best_score > 0:
             return (
@@ -86,7 +86,11 @@ class StrategyAgent:
             return "energy_stall"
         if score is not None and float(score) < 2.0:
             return "hand_dead"
-        return None
+            
+        p_val = int(prizes) if prizes is not None else 6
+        if p_val >= 5: return "early_game_setup"
+        if p_val >= 3: return "mid_game_aggro"
+        return "late_game_close"
 
     def _keyword_scan(self, trigger_lower: str) -> tuple[str | None, float]:
         best_key, best_score = None, 0.0

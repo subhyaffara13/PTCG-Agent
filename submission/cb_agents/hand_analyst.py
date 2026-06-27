@@ -16,23 +16,29 @@ _PROFILE_THRESHOLDS: list[tuple[float, str]] = [
 
 
 class HandAnalyst:
-    def __init__(self) -> None:
+    def __init__(self, **kwargs: Any) -> None:
+        self.skills_dir = pathlib.Path(kwargs.get("skills_dir")) if kwargs.get("skills_dir") else _PROJECT_ROOT / "skills"
+        self.log_dir = pathlib.Path(kwargs.get("log_dir")) if kwargs.get("log_dir") else _PROJECT_ROOT / "logs"
         self._scoring_db: dict[str, dict[str, Any]] = self._load_skill()
         self._log_buffer: list[dict[str, Any]] = []
 
     def flush_logs(self) -> None:
         if not self._log_buffer:
             return
-        _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        log_path = self.log_dir / "reasoning_log.json"
+        log_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            log: list[Any] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
+            log: list[Any] = json.loads(log_path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, FileNotFoundError):
             log = []
         log.extend(self._log_buffer)
-        _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
+        log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
         self._log_buffer.clear()
 
     def analyse(self, packet: dict[str, Any]) -> dict[str, Any]:
+        if hasattr(packet, "model_dump"): packet = packet.model_dump()
+        elif hasattr(packet, "_asdict"): packet = packet._asdict()
+        elif hasattr(packet, "__dict__"): packet = packet.__dict__
         hand: list[str]    = packet["hand"]
         deck_remaining: int = packet.get("deck_remaining", 0)
         scored_cards        = self._score_hand(hand)
@@ -47,21 +53,28 @@ class HandAnalyst:
         self._log(hand, deck_remaining, scored_cards, result)
         return result
 
+    receive = analyse
+
     def _load_skill(self) -> dict[str, dict[str, Any]]:
-        raw   = json.loads(_SKILL_PATH.read_text(encoding="utf-8"))
+        skill_path = self.skills_dir / "card_scoring.json"
+        try:
+            raw = json.loads(skill_path.read_text(encoding="utf-8"))
+        except FileNotFoundError:
+            raw = {"cards": []}
         index = {}
         for entry in raw.get("cards", []):
             name = entry.get("card_name", "").strip()
             if name:
-                index[name] = entry
+                index[name.lower()] = entry
         return index
 
     def _score_hand(self, hand: list[str]) -> list[tuple[str, float]]:
         scored = []
         for card_name in hand:
-            entry    = self._scoring_db.get(card_name, {})
+            card_name_str = str(card_name)
+            entry    = self._scoring_db.get(card_name_str.lower(), {})
             ev_score = float(entry.get("ev_score", 0.0))
-            scored.append((card_name, ev_score))
+            scored.append((card_name_str, ev_score))
         return scored
 
     def _mean_ev(self, scored_cards: list[tuple[str, float]]) -> float:

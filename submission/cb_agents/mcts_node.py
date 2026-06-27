@@ -13,6 +13,7 @@ class MCTSNode:
         self.prior_prob = prior_prob
         self.is_chance_node = is_chance_node
         self.is_pruned = False
+        self.is_terminal = False
         self.virtual_loss = 0.0
         self._lock = threading.Lock()
 
@@ -58,4 +59,4 @@ class MCTSNode:
                         parent=self, action_taken=ap.action, prior_prob=ap.prob)
 
     def is_expanded(self) -> bool:
-        return len(self.children) > 0
+        return len(self.children) > 0 or self.is_terminal

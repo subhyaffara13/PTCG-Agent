@@ -50,24 +50,27 @@ def run_hourly_checks(iteration: int):
 
 
 def main():
-    logger.info("Orchestration Agent started.")
+    logger.info("Orchestration Agent started (Block-Synchronous).")
     scripts = get_training_scripts(ENABLE_DISTRIBUTED)
-    processes = launch_processes(scripts)
 
-    try:
-        iteration = 0
-        while True:
-            monitor_and_restart(processes, scripts)
-            run_hourly_checks(iteration)
+    iteration = 0
+    while True:
+        logger.info("--- [Train Phase] Starting training workers ---")
+        processes = launch_processes(scripts)
+        try:
+            for _ in range(60):
+                monitor_and_restart(processes, scripts)
+                time.sleep(60)
+        finally:
+            logger.info("--- [Halt Phase] Stopping workers for analytics ---")
+            cleanup(processes)
+            time.sleep(5)
 
-            if iteration % 5 == 0:
-                run_analytics_check(iteration)
+        logger.info("--- [Analytics Phase] Running synchronous checks ---")
+        run_hourly_checks(iteration)
+        run_analytics_check(iteration)
 
-            iteration += 1
-            time.sleep(3600)
-    finally:
-        cleanup(processes)
-
+        iteration += 1
 
 if __name__ == "__main__":
     main()

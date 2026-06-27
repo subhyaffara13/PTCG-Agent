@@ -4,9 +4,39 @@ from cb_agents.schemas import GameState, BoardSummary
 from cb_agents.heuristic_pipeline import pipeline
 
 class OrchestratorRunMixin:
+    def _project_opponent_damage(self, game_state) -> int:
+        from cb_agents.card_registry import CardRegistry
+        registry = CardRegistry()
+        max_dmg = 0
+        active = getattr(game_state, 'opponent_active', None)
+        if active:
+            try:
+                opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
+                card = registry.get_full_skill(opp_active_id)
+                if card:
+                    max_dmg = card.damage_output
+            except:
+                pass
+        return max_dmg
+
+    def _check_defensive_retreat(self, game_state, board_summary) -> str:
+        opponent_max_damage = self._project_opponent_damage(game_state)
+        my_hp = getattr(game_state, 'my_active_hp', 0)
+        # Assumed damage is already subtracted from HP in some engines, but let's assume my_active_hp is current HP.
+        # If it's max HP, we need to subtract damage. Let's use my_active_hp.
+        if opponent_max_damage > 0 and opponent_max_damage >= my_hp:
+            retreat_actions = list(getattr(game_state, 'legal_retreats', []))
+            if retreat_actions:
+                return retreat_actions[0]
+        return None
+
     def execute_orchestrator_turn(self, game_state) -> str:
         if self.time_start is None:
             raise RuntimeError("start_game() must be called before first run_turn()")
+
+        def _get_f(obj, k, default=None):
+            if isinstance(obj, dict): return obj.get(k, default)
+            return getattr(obj, k, default)
 
         if isinstance(game_state, dict):
             game_state = GameState.from_dict(game_state)
@@ -84,15 +114,19 @@ class OrchestratorRunMixin:
 
         time_result = self.bus.dispatch("TimeManager", TimePacket(
             time_elapsed=time_elapsed, time_limit=600.0, legal_actions=legal_actions_list).__dict__)
-        if time_result.get("directive") == "FORCE_PASS":
+        
+        t_dir = _get_f(time_result, "directive")
+        t_act = _get_f(time_result, "action_override")
+        
+        if t_dir == "FORCE_PASS":
             if "pass" in legal_actions_list:
                 return "pass"
             elif legal_actions_list:
                 return legal_actions_list[0]
             else:
                 return "pass"
-        if time_result.get("action_override") is not None: return time_result["action_override"]
-        if time_result.get("directive") == "FAST_MOVE":
+        if t_act is not None: return t_act
+        if t_dir == "FAST_MOVE":
             gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
             best_action, best_score = "pass", -float('inf')
             for a in legal_actions_list:
@@ -112,17 +146,31 @@ class OrchestratorRunMixin:
             turn_number=self.current_turn, opponent_archetype=self.opponent_model.identified_archetype,
             opponent_archetype_confidence=self.opponent_model.archetype_confidence,
             bench_has_attacker=game_state.bench_has_attacker, my_bench_count=len(game_state.my_bench),
-            prized_probabilities=hand_result.get("prized_probabilities", {}))
+            prized_probabilities=_get_f(hand_result, "prized_probabilities", {}))
+
+        board_summary_dict = board_summary.__dict__
+        board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")
+        board_summary_dict["iono_prob"] = self.belief_tracker.probability_opponent_holds("iono")
 
         my_prizes, opponent_prizes = game_state.my_prizes, game_state.opponent_prizes
         trigger = "prize_gap" if (opponent_prizes - my_prizes) >= 2 else "none"
-        strategy_result = self.bus.dispatch("StrategyAgent", StrategyPacket(trigger=trigger, board_summary=board_summary.__dict__))
+        strategy_result = self.bus.dispatch("StrategyAgent", StrategyPacket(trigger=trigger, board_summary=board_summary_dict))
 
         gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
         self.sync_belief_tracker(gs_dict)
 
+        defensive_retreat = self._check_defensive_retreat(game_state, board_summary)
+        if defensive_retreat:
+            # We override if we are in danger, but strategy agent might have a say.
+            # Let's just return it as a defensive override.
+            return defensive_retreat
+
+        from cb_agents.sequencing_engine import SequencingEngine
+        seq_engine = SequencingEngine()
+        legal_actions_list = seq_engine.sequence_actions(legal_actions_list, gs_dict)
+
         plan_result = self.bus.dispatch("TurnPlanner", TurnPlannerPacket(
-            hand_score=hand_result["hand_score"], priority_profile=strategy_result["new_strategy"],
-            top_play=hand_result["top_play"], game_state=self.get_public_state(game_state),
+            hand_score=_get_f(hand_result, "hand_score", 0), priority_profile=_get_f(strategy_result, "new_strategy"),
+            top_play=_get_f(hand_result, "top_play"), game_state=self.get_public_state(game_state),
             turn=self.current_turn, time_remaining=600.0 - time_elapsed))
-        return plan_result["primary_action"]
+        return _get_f(plan_result, "primary_action", "pass")

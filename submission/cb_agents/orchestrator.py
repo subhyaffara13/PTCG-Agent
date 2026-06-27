@@ -6,7 +6,7 @@ Delegates step logic to orchestrator_steps.py and logging to orchestrator_log.py
 from __future__ import annotations
 from typing import Any
 
-from router.bus import Router
+from router.bus import RouterBus
 from cb_agents.hand_analyst   import HandAnalyst
 from cb_agents.turn_planner   import TurnPlanner
 from cb_agents.time_manager   import TimeManager
@@ -21,13 +21,29 @@ from cb_agents.orchestrator_log import _log_orchestration
 
 
 class Orchestrator:
-    def __init__(self) -> None:
-        self._router   = Router()
-        self._analyst  = HandAnalyst()
-        self._planner  = TurnPlanner()
-        self._timer    = TimeManager()
-        self._strategy = StrategyAgent()
-        self._opponent = OpponentModel()
+    def __init__(self, **kwargs: Any) -> None:
+        delegation_map = {
+            "TimeManager": "time_manager",
+            "HandAnalyst": "hand_analyst",
+            "TurnPlanner": "turn_planner",
+            "StrategyAgent": "strategy_agent",
+            "OpponentModel": "opponent_model"
+        }
+        self.bus = self._router = RouterBus(delegation_map=delegation_map, log_dir=kwargs.get("log_dir", "logs"))
+        self.hand_analyst = self._analyst  = HandAnalyst(**kwargs)
+        self.turn_planner = self._planner  = TurnPlanner(**kwargs)
+        self.time_manager = self._timer    = TimeManager(**kwargs)
+        self.strategy_agent = self._strategy = StrategyAgent(**kwargs)
+        self.opponent_model = self._opponent = OpponentModel(**kwargs)
+        self.context   = {}
+        for agent in (self.hand_analyst, self.turn_planner, self.time_manager, self.strategy_agent, self.opponent_model):
+            agent.shared_context = self.context
+
+        self.bus.register_agent("time_manager", self._timer.tick)
+        self.bus.register_agent("hand_analyst", self._analyst.analyse)
+        self.bus.register_agent("turn_planner", self._planner.receive)
+        self.bus.register_agent("strategy_agent", self._strategy.evaluate)
+        self.bus.register_agent("opponent_model", self._opponent.receive, perspective_flag="opponent")
 
     def orchestrate(self, game_state: dict[str, Any]) -> TurnDecision:
         time_result = _step_time(game_state, self._timer, self._router)
@@ -40,6 +56,11 @@ class Orchestrator:
         decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
         _log_orchestration(game_state, decision)
         return decision
+
+    def start_game(self) -> None:
+        pass
+        
+    run_turn = orchestrate
 
     def flush_all_logs(self) -> None:
         self._timer.flush_logs()

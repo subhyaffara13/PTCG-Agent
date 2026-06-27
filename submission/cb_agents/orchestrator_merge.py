@@ -7,7 +7,7 @@ def _merge(
     if strat_result["confidence"] >= 0.75:
         final_actions = strat_result["actions"]
     else:
-        final_actions = [s["action"] for s in plan_result if s.get("viable", False)]
+        final_actions = plan_result.get("action_sequence", ["PASS"])
     if time_result["directive"] == "FAST_MOVE":
         final_actions = final_actions[:1] if final_actions else ["PASS"]
     primary_action = final_actions[0] if final_actions else "PASS"

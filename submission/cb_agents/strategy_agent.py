@@ -12,11 +12,14 @@ _FALLBACK_PROFILE_KEY = "hand_dead"
 class StrategyAgent:
     """Selects the best strategic posture for the current board state."""
 
-    def __init__(self) -> None:
+    def __init__(self, **kwargs: Any) -> None:
         from cb_agents.strategy_agent_io import load_skill
-        self._profiles: dict[str, dict[str, Any]] = load_skill()
+        self._profiles: dict[str, dict[str, Any]] = load_skill(kwargs.get("skills_dir"))
 
     def evaluate(self, packet: dict[str, Any]) -> dict[str, Any]:
+        if hasattr(packet, "model_dump"): packet = packet.model_dump()
+        elif hasattr(packet, "_asdict"): packet = packet._asdict()
+        elif hasattr(packet, "__dict__"): packet = packet.__dict__
         trigger: str = str(packet.get("trigger", "")).strip()
         board_summary: dict = packet.get("board_summary", {})
         profile_key, profile, confidence, match_reason = self._match_profile(
@@ -32,6 +35,8 @@ class StrategyAgent:
         self._log(packet, profile_key, match_reason, result)
         return result
 
+    receive = evaluate
+
     def _match_profile(
         self,
         trigger: str,
@@ -43,7 +48,7 @@ class StrategyAgent:
         board_match = self._board_signal_match(board_summary)
         if board_match:
             key = board_match
-            return key, self._profiles[key], _CONF_KEYWORD, f"board_summary signal -> {key}"
+            return key, self._profiles.get(key, {}), _CONF_KEYWORD, f"board_summary signal -> {key}"
         best_key, best_score = self._keyword_scan(trigger_lower)
         if best_key and best_score > 0:
             return (
@@ -61,6 +66,16 @@ class StrategyAgent:
         score      = board_summary.get("hand_score")
         energy     = board_summary.get("energy_attached")
         opp_prizes = board_summary.get("opponent_prizes")
+        
+        boss_prob  = board_summary.get("boss_prob", 0.0)
+        iono_prob  = board_summary.get("iono_prob", 0.0)
+
+        if boss_prob > 0.7 and bench is not None and int(bench) > 0:
+            return "stall"
+
+        if iono_prob > 0.7 and score is not None and float(score) > 5.0:
+            return "aggro_push"
+
         if prizes is not None and int(prizes) <= 2:
             return "endgame_close"
         if opp_prizes is not None and int(opp_prizes) <= 2:
@@ -71,7 +86,11 @@ class StrategyAgent:
             return "energy_stall"
         if score is not None and float(score) < 2.0:
             return "hand_dead"
-        return None
+            
+        p_val = int(prizes) if prizes is not None else 6
+        if p_val >= 5: return "early_game_setup"
+        if p_val >= 3: return "mid_game_aggro"
+        return "late_game_close"
 
     def _keyword_scan(self, trigger_lower: str) -> tuple[str | None, float]:
         best_key, best_score = None, 0.0

@@ -26,11 +26,20 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
     elif act_type == "attach_energy":
         _remove_from_hand(hand, _int_or_str(target))
         gs["my_hand"] = hand
-        pokemon = gs.get("my_active_pokemon", {})
-        if isinstance(pokemon, dict):
-            attached = list(pokemon.get("attached", []))
+        
+        valid_targets = []
+        if isinstance(gs.get("my_active_pokemon"), dict):
+            valid_targets.append(gs["my_active_pokemon"])
+        bench = gs.get("my_bench", [])
+        if isinstance(bench, list):
+            valid_targets.extend([p for p in bench if isinstance(p, dict)])
+            
+        if valid_targets:
+            import random
+            chosen = random.choice(valid_targets)
+            attached = list(chosen.get("attached", []))
             attached.append(target)
-            pokemon["attached"] = attached
+            chosen["attached"] = attached
 
     elif act_type == "retreat":
         bench = list(gs.get("my_bench", []))
@@ -94,7 +103,7 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
                 except Exception:
                     pass
             gs["my_prizes"] = max(0, gs.get("my_prizes", 6) - prize_yield)
-            gs["my_hand"] = _draw_cards(hand, gs, prize_yield)
+            gs["my_hand"] = hand + [0] * prize_yield
             opp_bench = list(gs.get("opponent_bench", []))
             if opp_bench:
                 opp_promoted = opp_bench.pop(0)
@@ -135,6 +144,7 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
             gs["my_hand"] = _draw_cards(hand, gs, 7)
         elif any(k in base_name for k in {"iono", "judge"}):
             gs["my_deck"] = gs.get("my_deck", []) + hand.copy()
+            gs["my_deck_count"] = gs.get("my_deck_count", 60) + len(hand)
             hand.clear()
             gs["my_hand"] = _draw_cards(hand, gs, 4)
         elif any(k in base_name for k in {"ball", "ultra"}):
@@ -146,6 +156,7 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
                 import random
                 added = random.choice(list(gs["my_decklist"].keys()))
             gs["my_hand"] = hand + [added]
+            gs["my_deck_count"] = gs.get("my_deck_count", 60) - 1
         elif "secret box" in base_name or "petrel" in base_name:
             added1, added2 = 1, 2
             if gs.get("my_deck"):
@@ -158,6 +169,7 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
                 added1 = random.choice(keys)
                 added2 = random.choice(keys)
             gs["my_hand"] = hand + [added1, added2]
+            gs["my_deck_count"] = gs.get("my_deck_count", 60) - 2
 
     elif act_type == "ability":
         name = target.lower() if target else ""
