@@ -28,7 +28,7 @@ def test_orchestrator_initialization_and_turn(tmp_path):
     
     (skills_dir / "card_scoring.json").write_text(json.dumps({"cards": []}), encoding="utf-8")
     (skills_dir / "priority_rules.json").write_text(json.dumps({"rules": []}), encoding="utf-8")
-    (skills_dir / "strategy_profiles.json").write_text(json.dumps({"profiles": {}}), encoding="utf-8")
+    (skills_dir / "strategy_profiles.json").write_text(json.dumps({"profiles": {"setup": {"actions": ["PASS"]}, "hand_dead": {"actions": ["PASS"]}}}), encoding="utf-8")
     (skills_dir / "deck_archetypes.json").write_text(json.dumps({"archetypes": {}}), encoding="utf-8")
 
     orchestrator = Orchestrator(log_dir=str(tmp_path), skills_dir=str(skills_dir))

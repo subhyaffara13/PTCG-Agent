@@ -67,6 +67,8 @@ def main():
             time.sleep(5)
 
         logger.info("--- [Analytics Phase] Running synchronous checks ---")
+        from factory.log_pruner import prune_logs
+        prune_logs(max_files=1000)
         run_hourly_checks(iteration)
         run_analytics_check(iteration)
 

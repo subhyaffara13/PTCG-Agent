@@ -40,4 +40,4 @@ def test_prized_attacker_strategy_switch(tmp_path):
         "opponent_confidence": 0.1, "priority_profile": "aggro_push",
         "turn_number": 2, "prized_probabilities": {"721": 0.85}
     }))
-    assert res["strategy"] == "early_game_setup"
+    assert res["strategy"] == "setup"

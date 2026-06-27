@@ -7,7 +7,7 @@ def setup_skills_dir(tmp_path, filename, content):
     return skills_dir
 
 PRIORITY_RULES_EMPTY = {"rules": []}
-STRATEGY_PROFILES_EMPTY = {"profiles": {}}
+STRATEGY_PROFILES_EMPTY = {"profiles": {"setup": {"actions": ["PASS"]}, "hand_dead": {"actions": ["PASS"]}, "aggro_push": {"actions": ["PASS"]}}}
 
 CHARGED_ACTIVE = {
     "id": 722,

@@ -45,10 +45,14 @@ class StrategyAgent:
         trigger_lower = trigger.lower()
         if trigger_lower in self._profiles:
             return trigger_lower, self._profiles[trigger_lower], _CONF_EXACT_KEY, "exact key match"
+        
         board_match = self._board_signal_match(board_summary)
         if board_match:
             key = board_match
-            return key, self._profiles.get(key, {}), _CONF_KEYWORD, f"board_summary signal -> {key}"
+            if key not in self._profiles:
+                raise ValueError(f"CRITICAL SILENT FAILURE PREVENTED: Strategy key '{key}' is missing from strategy_profiles.json!")
+            return key, self._profiles[key], _CONF_KEYWORD, f"board_summary signal -> {key}"
+            
         best_key, best_score = self._keyword_scan(trigger_lower)
         if best_key and best_score > 0:
             return (
@@ -57,7 +61,10 @@ class StrategyAgent:
                 _CONF_KEYWORD * best_score,
                 f"keyword scan score={best_score:.2f}",
             )
-        fallback = self._profiles.get(_FALLBACK_PROFILE_KEY, {})
+            
+        if _FALLBACK_PROFILE_KEY not in self._profiles:
+            raise ValueError(f"CRITICAL SILENT FAILURE PREVENTED: Fallback key '{_FALLBACK_PROFILE_KEY}' is missing from strategy_profiles.json!")
+        fallback = self._profiles[_FALLBACK_PROFILE_KEY]
         return _FALLBACK_PROFILE_KEY, fallback, _CONF_FALLBACK, "no match -> fallback"
 
     def _board_signal_match(self, board_summary: dict[str, Any]) -> str | None:
@@ -88,9 +95,9 @@ class StrategyAgent:
             return "hand_dead"
             
         p_val = int(prizes) if prizes is not None else 6
-        if p_val >= 5: return "early_game_setup"
-        if p_val >= 3: return "mid_game_aggro"
-        return "late_game_close"
+        if p_val >= 5: return "setup"
+        if p_val >= 3: return "aggro"
+        return "endgame_close"
 
     def _keyword_scan(self, trigger_lower: str) -> tuple[str | None, float]:
         best_key, best_score = None, 0.0

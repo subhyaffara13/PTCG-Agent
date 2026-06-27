@@ -17,7 +17,7 @@ def test_strategy_agent_triggers(tmp_path):
     
     # Save a minimal strategy file
     strategy_file = skills_dir / "strategy_profiles.json"
-    strategy_file.write_text(json.dumps({"profiles": {}}), encoding="utf-8")
+    strategy_file.write_text(json.dumps({"profiles": {"setup": {"actions": ["PASS"]}, "hand_dead": {"actions": ["PASS"]}, "aggro_push": {"actions": ["PASS"]}}}), encoding="utf-8")
 
     agent = StrategyAgent(log_dir=str(tmp_path), skills_dir=str(skills_dir))
     
