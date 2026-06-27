@@ -26,7 +26,7 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
 
         def _get_id(c):
             if hasattr(c, "id"): return getattr(c, "id")
-            if isinstance(c, dict): return c.get("id")
+            if isinstance(c, dict): return c.get("id") or c.get("cardId") or c.get("name")
             return None
 
         my_board_ids = []
@@ -74,13 +74,16 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
         game_state["legal_attacks"] = [opt.get("name", "") for opt in options if opt.get("type") == 13]
         game_state["legal_attachments"] = [opt.get("name", "") for opt in options if opt.get("type") == 9]
         game_state["legal_bench"] = [opt.get("name", "") for opt in options if opt.get("type") == 8]
-        game_state["legal_evolutions"] = []
+        game_state["legal_evolutions"] = [opt.get("name", "") for opt in options if opt.get("type") == 10]
         game_state["legal_trainers"] = [opt.get("name", "") for opt in options if opt.get("type") == 7]
-
+        game_state["legal_retreats"] = [opt.get("name", "") for opt in options if opt.get("type") == 12]
+        
         sel_type = select.get("type")
         sel_ctx = select.get("context")
+        
+        game_state["select_prize"] = True if sel_ctx in ("prize", "select_prize") or sel_type == 2 else False
 
-        if sel_type == 0 and sel_ctx == 0:
+        if (sel_type == 0 and sel_ctx == 0) or game_state["select_prize"]:
             action_label = orchestrator.run_turn(game_state)
             if hasattr(action_label, 'primary_action'):
                 action_label = action_label.primary_action

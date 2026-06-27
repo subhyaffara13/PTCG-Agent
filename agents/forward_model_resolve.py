@@ -78,17 +78,27 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
             gs["my_active_pokemon"] = new_active
 
     elif act_type == "attack":
-        actual_damage = gs.get("my_active_damage", 0)
+        try:
+            actual_damage = int(gs.get("my_active_damage", 0))
+        except (ValueError, TypeError):
+            actual_damage = 0
+            
         my_active = gs.get("my_active_pokemon", {})
         my_active_id = my_active.get("id") if isinstance(my_active, dict) else my_active
-        if my_active_id is not None:
+        if not actual_damage and my_active_id is not None:
             try:
                 card = CardRegistry().get_full_skill(my_active_id)
                 if card is not None:
-                    actual_damage = card.damage_output
+                    actual_damage = int(card.damage_output)
             except Exception:
                 pass
-        gs["opponent_active_hp"] = max(0, gs.get("opponent_active_hp", 100) - actual_damage)
+                
+        try:
+            opp_hp = int(gs.get("opponent_active_hp", 100))
+        except (ValueError, TypeError):
+            opp_hp = 100
+            
+        gs["opponent_active_hp"] = max(0, opp_hp - actual_damage)
         if gs["opponent_active_hp"] <= 0:
             prize_yield = 1
             opp_active = gs.get("opponent_active", {})

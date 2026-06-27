@@ -916,6 +916,16 @@
       "player": "MasaPokemon",
       "avg_setup_duration": 35.2,
       "avg_bench_density": 2.0
+    },
+    {
+      "player": "NukoNiko15",
+      "avg_setup_duration": 12.4,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "ryoya",
+      "avg_setup_duration": 26.2,
+      "avg_bench_density": 1.9
     }
   ],
   "deck_stats": {
