@@ -1,4 +1,7 @@
+import sys
 import time
+import logging
+sys.path.insert(0, ".")
 from pathlib import Path
 from threading import Event
 

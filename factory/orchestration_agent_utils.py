@@ -9,8 +9,8 @@ def get_training_scripts(enable_distributed: bool) -> list:
     if enable_distributed:
         logger.info("Distributed training mode ENABLED.")
         return [
-            "scratch/distributed_master.py",
-            "scratch/distributed_learner.py",
+            "distributed/master_server.py",
+            "distributed/status_server.py",
         ]
     logger.info("Local training mode ENABLED.")
     return [

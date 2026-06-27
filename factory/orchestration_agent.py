@@ -29,7 +29,7 @@ sh = logging.StreamHandler()
 sh.setFormatter(fmt)
 logger.addHandler(sh)
 
-ENABLE_DISTRIBUTED = False
+ENABLE_DISTRIBUTED = True
 
 
 def run_hourly_checks(iteration: int):
