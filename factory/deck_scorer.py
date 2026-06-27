@@ -10,7 +10,7 @@ from typing import List, Dict
 from factory.deck_scorer_rules import apply_learned_rules
 from factory.configs import DEFAULT_ARCHETYPE_WEIGHTS
 from factory.deck_scorer_state import CardState
-
+from scratch.deck_synergy_graph import get_global_synergy_graph, score_deck_synergy
 class DeckScorer:
     def __init__(self, card_details: dict, learned_dos: dict, learned_donts: dict, weights_config: dict = None):
         self.card_details = card_details
@@ -26,14 +26,21 @@ class DeckScorer:
         recovery = self._recovery_score(counts)
         match_spread = self._matchup_spread(cards, counts)
 
-        weights = self.weights_config.get(archetype, (0.30, 0.20, 0.25, 0.25))
+        graph = get_global_synergy_graph()
+        synergy_raw = score_deck_synergy(deck, graph)
+        synergy_norm = min(1.0, max(0.0, synergy_raw / 100.0))
+
+        weights = self.weights_config.get(archetype, (0.25, 0.20, 0.20, 0.20, 0.15))
         score = consistency * weights[0] + prize_eff * weights[1] + recovery * weights[2] + match_spread * weights[3]
+        if len(weights) > 4:
+            score += synergy_norm * weights[4]
+            
         score = apply_learned_rules(score, deck, counts, self.learned_dos, self.learned_donts)
 
         return {"deck_score": round(max(0.0, score), 4), "metrics": {
             "consistency_score": round(consistency, 4), "prize_efficiency_score": round(prize_eff, 4),
-            "recovery_score": round(recovery, 4), "matchup_spread_score": round(match_spread, 4)}}
-
+            "recovery_score": round(recovery, 4), "matchup_spread_score": round(match_spread, 4),
+            "synergy_score": round(synergy_norm, 4)}}
     def _count_categories(self, deck: List[CardState]):
         basic = s1 = s2 = sup = item = eng = rec = 0
         attackers = []

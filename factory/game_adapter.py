@@ -82,6 +82,8 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
 
         if sel_type == 0 and sel_ctx == 0:
             action_label = orchestrator.run_turn(game_state)
+            if hasattr(action_label, 'primary_action'):
+                action_label = action_label.primary_action
             mapped_indices = get_mapped_indices(action_label, options)
             if not mapped_indices: mapped_indices = [0]
 

@@ -5,6 +5,16 @@ from collections import Counter
 
 from factory.deck_loader import DeckLoader
 from scratch.deck_clustering import filter_pool_by_archetype
+from dataclasses import dataclass
+from typing import Dict, List, Set
+from scratch.deck_synergy_graph import get_global_synergy_graph
+
+@dataclass
+class EmpiricalCore:
+    locked_cards: Dict[int, int]
+    flex_pool: List[int]
+    core_engines: List[Set[int]]
+    locked_count: int
 
 def load_optimizer_data(archetype: str = None):
     loader = DeckLoader(Path("skills"))
@@ -36,21 +46,53 @@ def load_optimizer_data(archetype: str = None):
     trainer_pool = {"ultra ball": 4, "switch": 4, "lillie's determination": 4, "buddy-buddy poffin": 4, "boss's orders": 4, "poke pad": 4, "pokegear 3.0": 4, "hilda": 4}
     energy_pool = [c for c in pool_cards if c.get("card_type") == "Energy"]
 
-    empirical_core = []
+    graph = get_global_synergy_graph()
+    core_engines = graph.extract_core_engines(threshold=1.0)
+    engine_cards = set().union(*core_engines) if core_engines else set()
+
+    locked_cards = {}
+    locked_count = 0
     if winning_decks:
         num_winners = len(winning_decks)
         for cid, freq in winning_freq.most_common():
+            if int(cid) not in engine_cards:
+                continue
             avg_copies = round(freq / num_winners)
             if avg_copies > 0:
                 card_dict = id_map.get(int(cid))
                 if card_dict:
                     limit = 99 if card_dict.get("card_type") == "Energy" and "Basic" in card_dict.get("card_name", "") else 4
                     copies_to_add = min(avg_copies, limit)
-                    if len(empirical_core) + copies_to_add <= 40:
-                        empirical_core.extend([card_dict] * copies_to_add)
+                    if locked_count + copies_to_add <= 40:
+                        locked_cards[int(cid)] = copies_to_add
+                        locked_count += copies_to_add
                     else:
-                        empirical_core.extend([card_dict] * (40 - len(empirical_core)))
+                        locked_cards[int(cid)] = 40 - locked_count
+                        locked_count = 40
                         break
+
+    flex_pool = []
+    for c in pool_cards:
+        cid = int(c["card_id"])
+        if cid in locked_cards:
+            continue
+        has_synergy = False
+        if not locked_cards:
+            has_synergy = True
+        else:
+            for l_cid in locked_cards:
+                if graph.get_pmi(cid, l_cid) > 0:
+                    has_synergy = True
+                    break
+        if has_synergy:
+            flex_pool.append(cid)
+
+    empirical_core = EmpiricalCore(
+        locked_cards=locked_cards,
+        flex_pool=flex_pool,
+        core_engines=core_engines,
+        locked_count=locked_count
+    )
 
     seed_deck = []
     p = Path("agents/deck_new.csv")

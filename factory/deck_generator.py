@@ -49,7 +49,26 @@ class DeckGenerator(DeckMathMixin, DeckInjectionMixin, DeckBoundsMixin):
                 target_basics += 1
             for _ in range(target_basics - basics):
                 self.add_card(random.choice(basic_pokemon), 1, deck, copies, ctr)
+                
+        self.optimize_supporter_count(deck, copies, ctr, legal_cards)
+        
         return deck[:60]
+
+    def optimize_supporter_count(self, deck: list, copies: dict, ctr: dict, legal_cards: list):
+        basics = sum(1 for c in deck if c.get("card_type") == "Pokemon"
+                     and self.card_details.get(str(c["card_id"]), {}).get("stage") == "Basic")
+        supporters = sum(1 for c in deck if self.is_supporter(c))
+        
+        target_supp = supporters
+        while target_supp < 20 and self.turn1_setup_prob(60, basics, target_supp) < 0.85:
+            target_supp += 1
+            
+        supp_pool = [c for c in legal_cards if self.is_supporter(c)]
+        if not supp_pool:
+            return
+            
+        for _ in range(target_supp - supporters):
+            self.add_card(random.choice(supp_pool), 1, deck, copies, ctr)
 
     def _matching_energies(self, deck, energy_cards):
         """Find basic energies matching the element types in the deck."""

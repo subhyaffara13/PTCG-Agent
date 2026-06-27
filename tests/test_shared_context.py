@@ -48,7 +48,7 @@ def test_orchestrator_context_injection(tmp_path):
     
     # Verify sub-agents got the context injected
     assert orchestrator.context is not None
-    assert orchestrator.hand_analyst.shared_context is orchestrator.context
-    assert orchestrator.turn_planner.shared_context is orchestrator.context
-    assert orchestrator.strategy_agent.shared_context is orchestrator.context
-    assert orchestrator.opponent_model.shared_context is orchestrator.context
+    assert getattr(orchestrator, "hand_analyst", getattr(orchestrator, "_analyst", None)).shared_context is orchestrator.context
+    assert getattr(orchestrator, "turn_planner", getattr(orchestrator, "_planner", None)).shared_context is orchestrator.context
+    assert getattr(orchestrator, "strategy_agent", getattr(orchestrator, "_strategy", None)).shared_context is orchestrator.context
+    assert getattr(orchestrator, "opponent_model", getattr(orchestrator, "_opponent", None)).shared_context is orchestrator.context

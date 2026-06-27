@@ -7,6 +7,7 @@ from scratch.deck_builder import make_deck
 from scratch.deck_simulator import evaluate_single_candidate
 from scratch.deck_surrogate_model import DeckFitnessMLP, _build_card_index, _deck_to_tensor, _max_copies_tensor
 from scratch.deck_surrogate_train_parts import decode_continuous as _decode_continuous, optimize_via_surrogate
+from scratch.deck_embedding_utils import build_embedding_index
 
 logger = logging.getLogger(__name__)
 
@@ -27,16 +28,21 @@ def build_training_data(pool_cards, details, scores, pokemon_pool, basics, energ
 
 def train_surrogate_model(pool_cards, details, scores, training_data, epochs=150):
     cards, card_index = _build_card_index(pool_cards)
+    _, embeddings_np = build_embedding_index(cards, details)
+    embeddings_t = torch.tensor(embeddings_np, dtype=torch.float32)
+    
     N, max_cp = len(cards), _max_copies_tensor(cards)
     X, y = [], []
     for deck, fitness in training_data:
-        X.append(_deck_to_tensor(deck, card_index, N) / max_cp)
+        counts = _deck_to_tensor(deck, card_index, N) / max_cp
+        deck_feature = torch.matmul(counts, embeddings_t)
+        X.append(deck_feature)
         y.append(fitness)
     X, y = torch.stack(X), torch.tensor(y, dtype=torch.float32)
     split = int(len(X) * 0.8)
     train_loader = DataLoader(TensorDataset(X[:split], y[:split]), batch_size=32, shuffle=True)
     val_loader = DataLoader(TensorDataset(X[split:], y[split:]), batch_size=32, shuffle=False)
-    model = DeckFitnessMLP(N)
+    model = DeckFitnessMLP(embeddings_t.shape[1])
     opt = torch.optim.Adam(model.parameters(), lr=1e-3)
     sched = torch.optim.lr_scheduler.ReduceLROnPlateau(opt, patience=10)
     best_val = float("inf")
@@ -56,4 +62,4 @@ def train_surrogate_model(pool_cards, details, scores, training_data, epochs=150
         if val_loss < best_val:
             best_val = val_loss
     logger.info("Training complete, best val loss: %.4f", best_val)
-    return model, cards, card_index, max_cp
+    return model, cards, card_index, max_cp, embeddings_t

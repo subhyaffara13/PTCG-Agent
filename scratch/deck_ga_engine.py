@@ -5,8 +5,9 @@ from scratch.deck_builder import make_deck
 from scratch.deck_simulator import evaluate_single_candidate
 from scratch.deck_genetics import _card_key, mutate_deck
 from scratch.deck_milp import optimize_deck_milp
-from scratch.configs import GEN_LIMIT
+from scratch.configs import GEN_LIMIT, SA_INITIAL_TEMP, SA_COOLING_RATE, SA_REHEAT_THRESHOLD, SA_GEN_LIMIT
 from scratch.deck_ga_engine_parts import surrogate_dreaming
+from scratch.deck_beam_builder import BeamDeckBuilder, extract_packages
 
 
 def run_generations(pool_cards, details, scores, pokemon_pool, basics,
@@ -14,39 +15,57 @@ def run_generations(pool_cards, details, scores, pokemon_pool, basics,
     best_deck, best_fitness = None, -float('inf')
     empirical_core = empirical_core or []
 
-    seed_deck = surrogate_dreaming(pool_cards, details, scores, pokemon_pool,
+    seeds = []
+
+    sd = surrogate_dreaming(pool_cards, details, scores, pokemon_pool,
                                    basics, energy_pool, trainer_pool, seed_deck)
+    if sd and len(sd) == 60:
+        seeds.append(sd)
 
-    current_deck = optimize_deck_milp(empirical_core, pool_cards, details, scores) if empirical_core else seed_deck
+    if empirical_core:
+        milp_sd = optimize_deck_milp(empirical_core, pool_cards, details, scores)
+        if milp_sd and len(milp_sd) == 60:
+            seeds.append(milp_sd)
 
-    if len(current_deck) != 60:
+    id_map = {int(c["card_id"]): c for c in pool_cards}
+    pkgs = extract_packages(id_map)
+    if pkgs:
+        beam_builder = BeamDeckBuilder(pkgs)
+        beam_deck = beam_builder.build(id_map)
+        if beam_deck:
+            beam_deck_full = optimize_deck_milp(beam_deck, pool_cards, details, scores)
+            if beam_deck_full and len(beam_deck_full) == 60:
+                seeds.append(beam_deck_full)
+
+    if not seeds:
         p_lines = random.sample(pokemon_pool[:max(1, len(pokemon_pool)//2)],
                                 min(len(pokemon_pool), random.randint(1, 3)))
-        current_deck = make_deck(p_lines, trainer_pool, energy_pool, basics, pool_cards, details)
+        seeds.append(make_deck(p_lines, trainer_pool, energy_pool, basics, pool_cards, details))
 
-    current_fitness = evaluate_single_candidate((current_deck, scores, details))
+    best_seed = seeds[0]
+    best_seed_fitness = evaluate_single_candidate((best_seed, scores, details))
+    
+    for s in seeds[1:]:
+        f = evaluate_single_candidate((s, scores, details))
+        if f > best_seed_fitness:
+            best_seed_fitness = f
+            best_seed = s
+            
+    current_deck = best_seed
+    current_fitness = best_seed_fitness
     best_deck, best_fitness = current_deck, current_fitness
 
     fitness_cache = {_card_key(current_deck): current_fitness}
 
-    initial_temp = 10.0
-    cooling_rate = 0.95
+    initial_temp = SA_INITIAL_TEMP
+    cooling_rate = SA_COOLING_RATE
+    gen_limit = SA_GEN_LIMIT
 
     temp = initial_temp
-    for step in range(GEN_LIMIT):
+    no_improve_count = 0
+    for step in range(gen_limit):
         mutant = mutate_deck(current_deck, pokemon_pool, basics, energy_pool,
-                             trainer_pool, pool_cards, details, 0.1)
-
-        if empirical_core:
-            core_ids = [str(c["card_id"]) for c in empirical_core]
-            mutant_ids = [str(c["card_id"]) for c in mutant]
-            valid = True
-            for cid in set(core_ids):
-                if mutant_ids.count(cid) < core_ids.count(cid):
-                    valid = False
-                    break
-            if not valid:
-                mutant = optimize_deck_milp(empirical_core, pool_cards, details, scores)
+                             trainer_pool, pool_cards, details, 0.1, empirical_core=empirical_core)
 
         if len(mutant) != 60:
             continue
@@ -61,6 +80,9 @@ def run_generations(pool_cards, details, scores, pokemon_pool, basics,
         if mutant_fitness > best_fitness:
             best_fitness = mutant_fitness
             best_deck = mutant
+            no_improve_count = 0
+        else:
+            no_improve_count += 1
 
         delta = mutant_fitness - current_fitness
         if delta > 0 or random.random() < math.exp(delta / max(temp, 1e-5)):
@@ -68,6 +90,9 @@ def run_generations(pool_cards, details, scores, pokemon_pool, basics,
             current_fitness = mutant_fitness
 
         temp *= cooling_rate
+        if no_improve_count >= SA_REHEAT_THRESHOLD:
+            temp *= 2
+            no_improve_count = 0
 
     final_polished = optimize_deck_milp(best_deck, pool_cards, details, scores)
     if len(final_polished) == 60:

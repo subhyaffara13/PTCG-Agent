@@ -11,12 +11,12 @@ def surrogate_dreaming(pool_cards, details, scores, pokemon_pool,
                                         basics, energy_pool, trainer_pool, n_samples=300)
     if training_data:
         print(f"[Surrogate] Training on {len(training_data)} decks...")
-        model, cards, card_index, max_cp = train_surrogate_model(
+        model, cards, card_index, max_cp, embeddings_t = train_surrogate_model(
             pool_cards, details, scores, training_data, epochs=120)
         dream_seeds = []
         for i in range(2):
             print(f"[Surrogate] Dreaming deck {i+1}...")
-            dream = optimize_via_surrogate(model, cards, card_index, max_cp,
+            dream = optimize_via_surrogate(model, cards, card_index, max_cp, embeddings_t,
                                            pool_cards, details, scores, steps=300)
             if len(dream) == 60 and not all(c.get("card_type") == "Energy" for c in dream):
                 fit = evaluate_single_candidate((dream, scores, details))

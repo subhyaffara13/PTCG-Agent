@@ -29,22 +29,27 @@ _LOG_PATH             = _PROJECT_ROOT / "logs" / "reasoning_log.json"
 
 
 class TimeManager:
-    def __init__(self):
+    def __init__(self, **kwargs: Any):
+        self.log_dir = pathlib.Path(kwargs.get("log_dir")) if kwargs.get("log_dir") else _PROJECT_ROOT / "logs"
         self._log_buffer: list[dict[str, Any]] = []
 
     def flush_logs(self) -> None:
         if not self._log_buffer:
             return
-        _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        log_path = self.log_dir / "reasoning_log.json"
+        log_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            log: list[Any] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
+            log: list[Any] = json.loads(log_path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, FileNotFoundError):
             log = []
         log.extend(self._log_buffer)
-        _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
+        log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
         self._log_buffer.clear()
 
     def tick(self, packet: dict[str, Any]) -> dict[str, Any]:
+        if hasattr(packet, "model_dump"): packet = packet.model_dump()
+        elif hasattr(packet, "_asdict"): packet = packet._asdict()
+        elif hasattr(packet, "__dict__"): packet = packet.__dict__
         time_elapsed: float = float(packet.get("time_elapsed", 0.0))
         time_limit:   float = float(packet.get("time_limit",  600.0))
         directive, mode     = self._classify(time_elapsed, time_limit)
@@ -58,6 +63,8 @@ class TimeManager:
         }
         self._log(packet, result, time_limit)
         return result
+
+    receive = tick
 
     @staticmethod
     def _classify(time_elapsed: float, time_limit: float) -> tuple[str, str]:

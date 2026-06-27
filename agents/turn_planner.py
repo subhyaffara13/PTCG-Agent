@@ -48,7 +48,7 @@ class TurnPlanner(BaseAgent):
             game_state = getattr(packet, "game_state", {}) or {}
             turn = getattr(packet, "turn", 1)
             profile = packet.priority_profile
-            if profile not in {"aggro_push", "setup", "disruption", "stall", "closing"}:
+            if profile not in {"aggressive", "defensive", "tempo", "aggro_push", "setup", "disruption", "stall", "closing"}:
                 logger.warning(f"Unknown profile '{profile}', falling back to aggro_push")
                 profile = "aggro_push"
             game_state["priority_profile"] = profile

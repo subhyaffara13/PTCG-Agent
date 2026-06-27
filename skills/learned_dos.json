@@ -552,7 +552,7 @@
     },
     {
       "card_id": 8,
-      "avg_count": 11.0,
+      "avg_count": 14.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -588,6 +588,11 @@
     {
       "card_id": 16,
       "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 57,
+      "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
   ],
@@ -901,11 +906,21 @@
       "player": "monnosuke",
       "avg_setup_duration": 12.8,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "ShumpeiNomura",
+      "avg_setup_duration": 21.0,
+      "avg_bench_density": 2.2
+    },
+    {
+      "player": "MasaPokemon",
+      "avg_setup_duration": 35.2,
+      "avg_bench_density": 2.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 14.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   }
 }

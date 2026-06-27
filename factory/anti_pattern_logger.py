@@ -66,13 +66,15 @@ def run_replays_analysis(replay_paths: List[Path], player_name_or_id: str, extra
             if len(steps) > 1 and len(steps[1]) > player_idx:
                 deck = steps[1][player_idx].get("action", [])
                 if len(deck) == 60:
-                    extractor._extract_deck_anti_patterns(deck)
+                    from factory.anti_pattern_extractor_helpers import extract_deck_anti_patterns
+                    extract_deck_anti_patterns(deck, extractor.learned_donts, extractor._save_donts)
             
             formatted_steps = []
             for s in steps:
                 formatted_steps.append({"players": s})
                 
             bv = compute_from_steps(formatted_steps, player_idx)
-            extractor._extract_behavior_anti_patterns(bv)
+            from factory.anti_pattern_extractor_helpers import extract_behavior_anti_patterns
+            extract_behavior_anti_patterns(bv, extractor.learned_donts, extractor._save_donts)
         except Exception as e:
             logger.error(f"Error parsing replay {path} for anti-patterns: {e}")

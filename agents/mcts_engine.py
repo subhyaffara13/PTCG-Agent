@@ -11,6 +11,7 @@ from agents.mcts_node import MCTSNode
 from agents.mcts_parallel import MCTSParallelMixin
 from agents.mcts_selection import MCTSSelectionMixin
 from agents.forward_model import apply_action
+from agents.mcts_mast import MASTPolicy
 
 logger = logging.getLogger(__name__)
 
@@ -23,8 +24,18 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         self.value_network = value_network or HeuristicValueNetwork()
         self.policy_network = policy_network or HeuristicPolicyNetwork()
 
-    def _get_action_priors(self, game_state: dict, legal_actions: List[str]) -> List[ActionPrior]:
-        return self.policy_network.get_priors(game_state, legal_actions)
+    def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy=None) -> List[ActionPrior]:
+        priors = self.policy_network.get_priors(game_state, legal_actions)
+        if mast_policy:
+            for p in priors:
+                mast_prior = mast_policy.get_action_prior(p.action)
+                p.prob = 0.7 * p.prob + 0.3 * mast_prior
+            # normalize
+            total = sum(p.prob for p in priors)
+            if total > 0:
+                for p in priors:
+                    p.prob /= total
+        return priors
 
     def _evaluate_state(self, game_state: dict, action: str, determinization: dict = None) -> float:
         return self.value_network.evaluate(game_state, action, determinization)
@@ -53,7 +64,8 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
 
         root_hash = f"turn_{game_state.get('turn_number', 0)}"
         root = MCTSNode(state_hash=root_hash)
-        priors = self._get_action_priors(game_state, canonical_actions)
+        mast_policy = MASTPolicy(exploration_weight=0.3)
+        priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
         root.expand(priors)
 
         import time
@@ -98,7 +110,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                 canonical_next, _ = pipeline.mask_actions(next_legal_actions, next_gs)
                 if not canonical_next:
                     canonical_next = ["pass"]
-                new_priors = self.policy_network.get_priors(next_gs, canonical_next)
+                new_priors = self._get_action_priors(next_gs, canonical_next, mast_policy)
                 if not new_priors and canonical_next == ["pass"]:
                     new_priors = [ActionPrior(action="pass", prob=1.0)]
                 if new_priors:
@@ -108,6 +120,9 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
             for n in reversed(path):
                 n.visit_count += 1
                 n.value_sum += current_val
+            
+            actions_played = [n.action_taken for n in path if getattr(n, "action_taken", None) is not None]
+            mast_policy.update(actions_played, won=(val > 0))
 
         best_action, mv = None, -1
         for act, child in root.children.items():

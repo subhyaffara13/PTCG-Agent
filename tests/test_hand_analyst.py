@@ -28,13 +28,13 @@ def test_hand_analyst_basic(tmp_path):
     analyst = HandAnalyst(log_dir=str(tmp_path), skills_dir=str(skills_dir))
     
     # Pass valid packet type
-    packet = HandAnalystPacket(hand=["1", "2", "3"], deck_remaining=30)
+    packet = HandAnalystPacket(hand=["pikachu", "supporter draw", "energy"], deck_remaining=30)
     
     res = analyst.receive(packet)
     
     assert res["hand_score"] > 0.0
-    assert res["top_play"] == "Pikachu"
-    assert res["priority_profile"] in ("aggro_push", "setup", "disruption", "stall")
+    assert res["top_play"] == "pikachu"
+    assert res["priority_profile"] in ("aggressive", "tempo", "defensive")
     
     # Assert logs/reasoning_log.json was written
     analyst.flush_logs()

@@ -25,6 +25,8 @@ class EvalAgent(BaseAgent):
         self.state_file = self.log_dir / "eval_state.json"
         self.eval_state = self.reporter.load_eval_state(self.state_file)
 
+    _determine_context = staticmethod(determine_context)
+
     def receive(self, packet: Any) -> Any:
         raise NotImplementedError("EvalAgent does not receive routed packets")
 

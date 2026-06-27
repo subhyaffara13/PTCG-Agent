@@ -84,3 +84,47 @@ class BeliefTracker:
 
     def sample_determinization(self) -> Dict[str, List[int]]:
         return sample_determinization(self.state, self.assumed_deck, self.prize_guaranteed_counts)
+
+    def probability_opponent_holds(self, card_name: str) -> float:
+        """
+        P(opponent has >=1 copy of card_name in hand).
+        Uses: P(X>=1) = 1 - C(N-D, H) / C(N, H)
+        where N = opponent deck size + hand size (unknown cards pool), D = remaining copies, H = opponent hand size.
+        """
+        from agents.card_registry import CardRegistry
+        import math
+        registry = CardRegistry()
+        
+        target_ids = []
+        for cid in self.assumed_deck.keys():
+            try:
+                card = registry.get_full_skill(cid)
+                if card and card.name.lower() == card_name.lower().replace("'", "").replace("’", ""):
+                    target_ids.append(cid)
+            except:
+                pass
+                
+        if not target_ids:
+            return 0.0
+            
+        N = self.state.deck_size + self.state.hand_size
+        H = self.state.hand_size
+        if N <= 0 or H <= 0:
+            return 0.0
+            
+        D = 0
+        for cid in target_ids:
+            played = self.state.known_in_play.get(cid, 0) + self.state.known_in_discard.get(cid, 0)
+            D += max(0, self.assumed_deck.get(cid, 0) - played)
+            
+        if D <= 0:
+            return 0.0
+            
+        if N - D < H:
+            return 1.0
+            
+        try:
+            prob_none = math.comb(N - D, H) / math.comb(N, H)
+            return 1.0 - prob_none
+        except (ValueError, ZeroDivisionError):
+            return 0.0

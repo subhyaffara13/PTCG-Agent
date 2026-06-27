@@ -45,7 +45,8 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
             for label, game in games.items():
                 if not isinstance(game, dict):
                     continue
-                steps_file = game.get("log_files", {}).get("steps")
+                log_files = game.get("log_files") or {}
+                steps_file = log_files.get("steps")
                 if not steps_file:
                     continue
                 steps_path = Path("logs") / steps_file

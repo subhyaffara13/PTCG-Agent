@@ -1,4 +1,7 @@
 import random
+from collections import Counter
+from scratch.deck_synergy_graph import get_global_synergy_graph
+from scratch.deck_setup import EmpiricalCore
 
 def _card_key(deck):
     return tuple(sorted(c["card_id"] for c in deck))
@@ -11,55 +14,64 @@ def _card_type_counts(deck, details):
     )
 
 def mutate_deck(deck: list, pokemon_pool: list, basics: list, energy_pool: list,
-                trainer_pool: dict, pool_cards: list, details: dict, mutation_rate: float = 0.3) -> list:
+                trainer_pool: dict, pool_cards: list, details: dict, mutation_rate: float = 0.3,
+                empirical_core=None) -> list:
+    is_core_obj = isinstance(empirical_core, EmpiricalCore)
+    if is_core_obj:
+        locked_cards = empirical_core.locked_cards
+        flex_pool = empirical_core.flex_pool
+    else:
+        locked_cards = {}
+        flex_pool = [int(c["card_id"]) for c in pool_cards]
+
+    graph = get_global_synergy_graph()
     result = list(deck)
-    for idx in range(len(result)):
+    
+    deck_cids = [int(c["card_id"]) for c in result]
+    locked_counts = Counter(locked_cards)
+    
+    flex_indices = []
+    assigned_locks = Counter()
+    for idx, cid in enumerate(deck_cids):
+        if assigned_locks[cid] < locked_counts[cid]:
+            assigned_locks[cid] += 1
+        else:
+            flex_indices.append(idx)
+            
+    id_map = {int(c["card_id"]): c for c in pool_cards}
+    
+    for idx in flex_indices:
         if random.random() >= mutation_rate:
             continue
+            
         c = result[idx]
         ctype = c.get("card_type")
-        if ctype == "Pokemon":
-            replacement = random.choice(pokemon_pool)
-        elif ctype == "Energy":
-            matching = [e for e in energy_pool if "{L}" in e.get("card_name", "")]
-            replacement = random.choice(matching or energy_pool)
-        elif ctype == "Trainer":
-            trainer_names = list(trainer_pool.keys())
-            tname = random.choice(trainer_names)
-            replacement = next(
-                (x for x in pool_cards if x.get("card_name", "").lower().replace("'", "'").replace("é", "e")
-                 == tname.lower().replace("'", "'").replace("é", "e")), None)
-            if replacement is None:
-                continue
-        else:
+        
+        valid_candidates = []
+        for cid in flex_pool:
+            cand = id_map.get(cid)
+            if not cand: continue
+            if ctype == cand.get("card_type"):
+                valid_candidates.append(cand)
+                
+        if not valid_candidates:
             continue
-        if replacement is not None:
-            result[idx] = replacement
+            
+        if len(valid_candidates) > 30:
+            valid_candidates = random.sample(valid_candidates, 30)
+            
+        weights = []
+        for cand in valid_candidates:
+            cand_id = int(cand["card_id"])
+            pmi_sum = 0.0
+            for other_cid in deck_cids:
+                if other_cid != cand_id:
+                    pmi_sum += graph.get_pmi(cand_id, other_cid)
+            w = max(0.1, 1.0 + pmi_sum / max(1, len(deck_cids) - 1))
+            weights.append(w)
+            
+        replacement = random.choices(valid_candidates, weights=weights, k=1)[0]
+        result[idx] = replacement
+        deck_cids[idx] = int(replacement["card_id"])
+
     return result
-
-def crossover_deck(a: list, b: list, pool_cards: list, details: dict) -> list:
-    split = random.randint(15, 45)
-    combined = a[:split] + b[split:]
-    copies = {}
-    result = []
-    for c in combined:
-        cid = str(c["card_id"])
-        limit = 99 if c.get("card_type") == "Energy" and "Basic" in c.get("card_name", "") else 4
-        if copies.get(cid, 0) < limit:
-            result.append(c)
-            copies[cid] = copies.get(cid, 0) + 1
-    return result[:60]
-
-def diversity_bonus(deck: list, population: list, details: dict) -> float:
-    if len(population) < 5:
-        return 0.0
-    deck_ids = {str(c["card_id"]) for c in deck}
-    avg_similarity = 0.0
-    for other in population:
-        other_ids = {str(c["card_id"]) for c in other}
-        if not deck_ids or not other_ids:
-            continue
-        overlap = len(deck_ids & other_ids) / max(len(deck_ids | other_ids), 1)
-        avg_similarity += overlap
-    avg_similarity /= len(population)
-    return (1.0 - avg_similarity) * 800.0

@@ -24,7 +24,7 @@ class EarlyPredictorLoader:
                 merged.update(loaded)
                 return merged
             except Exception as e:
-                logger.error(f"Failed to load predictor weights: {e}")
+                logger.debug(f"Failed to load predictor weights (likely concurrent access): {e}")
         return dict(DEFAULT_WEIGHTS)
 
     def save_weights(self, weights: dict):

@@ -11,8 +11,31 @@ _ARCHETYPES = ["aggro", "control", "combo", "utility"]
 _COMBO_TAGS = ["search", "discard", "attach", "energy", "draw", "shuffle",
                "bench", "switch", "heal", "damage", "evolve"]
 
+_CARD2VEC_TRAINER = None
 
-def _build_card_embedding(c, details):
+def get_card2vec_trainer(pool_cards):
+    global _CARD2VEC_TRAINER
+    if _CARD2VEC_TRAINER is None:
+        try:
+            from scratch.card2vec import Card2VecTrainer
+            vocab = [c["card_id"] for c in pool_cards]
+            trainer = Card2VecTrainer(vocab)
+            if trainer.train(logs_dir="logs", epochs=3):
+                _CARD2VEC_TRAINER = trainer
+            else:
+                _CARD2VEC_TRAINER = False
+        except Exception as e:
+            logger.warning(f"Failed to load/train Card2Vec: {e}")
+            _CARD2VEC_TRAINER = False
+            
+    return _CARD2VEC_TRAINER if _CARD2VEC_TRAINER is not False else None
+
+
+def _build_card_embedding(c, details, c2v_trainer=None):
+    if c2v_trainer is not None:
+        emb = c2v_trainer.get_embedding(c["card_id"])
+        if emb is not None:
+            return np.array(emb, dtype=np.float64)
     det = details.get(c["card_id"], {})
     stage = det.get("stage", "Basic")
     etype = det.get("element_type", "")
@@ -35,7 +58,9 @@ def _build_card_embedding(c, details):
     return np.array(feat, dtype=np.float64)
 
 
-def _feature_dim():
+def _feature_dim(use_c2v=False):
+    if use_c2v:
+        return 64
     return (3 + len(_ELEMENT_TYPES) + len(_STAGES) + len(_ARCHETYPES) + 5 + len(_COMBO_TAGS))
 
 
@@ -46,10 +71,13 @@ def build_embedding_index(pool_cards, details):
         if cid not in unique:
             unique[cid] = c
     cards = list(unique.values())
-    dim = _feature_dim()
+    
+    c2v_trainer = get_card2vec_trainer(cards)
+    dim = _feature_dim(use_c2v=(c2v_trainer is not None))
+    
     embeddings = np.zeros((len(cards), dim), dtype=np.float64)
     for i, c in enumerate(cards):
-        embeddings[i] = _build_card_embedding(c, details)
+        embeddings[i] = _build_card_embedding(c, details, c2v_trainer)
     return cards, embeddings
 
 

@@ -27,7 +27,7 @@ class CardState:
             card_name=c.get("card_name", "").lower(),
             card_type=c.get("card_type", ""),
             stage=det.get("stage", ""),
-            previous_stage=det.get("previous_stage", "").lower(),
+            previous_stage=str(det.get("previous_stage") or "").lower(),
             energy_cost=c.get("energy_cost", 0),
             damage_output=c.get("damage_output", 0),
             element_type=det.get("element_type", ""),

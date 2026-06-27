@@ -34,17 +34,19 @@ def decode_continuous(logits, cards, max_cp, target_size=60):
     return deck
 
 
-def optimize_via_surrogate(model, cards, card_index, max_cp, pool_cards, details, scores, steps=500, lr=0.05):
+def optimize_via_surrogate(model, cards, card_index, max_cp, embeddings_t, pool_cards, details, scores, steps=500, lr=0.05):
     N = len(cards)
     logits = torch.randn(N, requires_grad=True)
     opt = torch.optim.Adam([logits], lr=lr)
     masks = {t: torch.tensor([1.0 if c.get("card_type") == t else 0.0 for c in cards]) for t in ("Pokemon", "Trainer", "Energy")}
     with torch.no_grad():
-        PRED_SCALE = max(1.0, model((torch.sigmoid(logits) * max_cp / max_cp).unsqueeze(0)).abs().mean().item())
+        dummy_feature = torch.matmul((torch.sigmoid(logits) * max_cp / max_cp).unsqueeze(0), embeddings_t)
+        PRED_SCALE = max(1.0, model(dummy_feature).abs().mean().item())
     for _ in range(steps):
         opt.zero_grad()
         x = torch.sigmoid(logits) * max_cp
-        pred = model((x / max_cp).unsqueeze(0))
+        deck_feature = torch.matmul((x / max_cp).unsqueeze(0), embeddings_t)
+        pred = model(deck_feature)
         total, pk, tr, en = x.sum(), (x * masks["Pokemon"]).sum(), (x * masks["Trainer"]).sum(), (x * masks["Energy"]).sum()
         penalty = ((total - 60) ** 2 + F.relu(10 - pk) ** 2 + F.relu(pk - 20) ** 2 + F.relu(25 - tr) ** 2 + F.relu(8 - en) ** 2 + F.relu(en - 16) ** 2)
         loss = -pred.mean() / PRED_SCALE + 50.0 * penalty + 0.01 * logits.abs().mean()

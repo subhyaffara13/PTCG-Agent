@@ -5,7 +5,7 @@ from scratch.configs import (SYNERGY_MULTI_TYPE_PENALTY, SYNERGY_MULTI_BASIC_ENE
 
 _AREA_LIMITS = {"pkmn_max": 20, "pkmn_min": 10, "trainer_min": 25, "energy_min": 8, "energy_max": 16}
 
-def evaluate_deck_synergy(deck: list, details: dict) -> float:
+def evaluate_deck_penalties(deck: list, details: dict) -> float:
     penalty = 0.0
     p_types = {details.get(str(c["card_id"]), {}).get("element_type", "") for c in deck if c.get("card_type") == "Pokemon"}
     p_types.discard("")
@@ -47,3 +47,12 @@ def evaluate_deck_synergy(deck: list, details: dict) -> float:
     elif n_energy > _AREA_LIMITS["energy_max"]:
         penalty += SYNERGY_RATIO_PENALTY_MULT + SYNERGY_RATIO_PENALTY_PER * (n_energy - _AREA_LIMITS["energy_max"])
     return penalty
+
+from scratch.deck_synergy_graph import get_global_synergy_graph, score_deck_synergy
+from scratch.configs import SYNERGY_PMI_WEIGHT, SYNERGY_PENALTY_WEIGHT
+
+def evaluate_deck_synergy(deck: list, details: dict) -> float:
+    penalty = evaluate_deck_penalties(deck, details)
+    graph = get_global_synergy_graph()
+    pmi_score = score_deck_synergy(deck, graph)
+    return (SYNERGY_PMI_WEIGHT * pmi_score) - (SYNERGY_PENALTY_WEIGHT * penalty)

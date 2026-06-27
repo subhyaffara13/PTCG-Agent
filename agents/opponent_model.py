@@ -40,12 +40,14 @@ class OpponentModel(BaseAgent):
         return {}
 
     def receive(self, packet: Any) -> dict:
-        if not isinstance(packet, OpponentModelPacket):
+        if hasattr(packet, "_asdict"): packet = packet._asdict()
+        elif hasattr(packet, "__dict__"): packet = packet.__dict__
+        if not isinstance(packet, dict):
             raise TypeError(f"OpponentModel received illegal packet type: {type(packet).__name__}.")
 
-        revealed_cards = getattr(packet, "revealed_cards", None) or getattr(packet, "newly_played_cards", [])
-        turn_number = getattr(packet, "turn_number", None) or getattr(packet, "turn", 1)
-        prizes_remaining = getattr(packet, "prizes_remaining", None) or getattr(packet, "revealed_prizes_remaining", 6)
+        revealed_cards = packet.get("revealed_cards") or packet.get("newly_played_cards", [])
+        turn_number = packet.get("turn_number") or packet.get("turn", 1)
+        prizes_remaining = packet.get("prizes_remaining") or packet.get("revealed_prizes_remaining", 6)
 
         for card in revealed_cards:
             if card not in self.revealed_state:

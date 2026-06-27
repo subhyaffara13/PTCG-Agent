@@ -54,15 +54,18 @@ class CABTAgentWrapper:
 
     def __call__(self, obs: dict, conf: dict = None) -> list[int]:
         selected = run_agent_turn(self.orchestrator, obs, self.deck)
+        current_turn = obs.get("turn_number", 1)
         try:
-            strategy_active = self.orchestrator.strategy_agent.active_strategy
+            strategy_active = getattr(self.orchestrator.strategy_agent, "current_posture", "tempo")
+            last_triggered = getattr(self.orchestrator.strategy_agent, "last_triggered_turn", 0)
             hand_score = getattr(self.orchestrator.hand_analyst, "last_hand_score", 5.0)
+            opp_confidence = getattr(self.orchestrator.opponent_model, "archetype_confidence", 0.5)
             self.g_logger.log_reasoning(
-                turn=self.orchestrator.current_turn,
+                turn=current_turn,
                 strategy_active=strategy_active,
                 hand_score=hand_score,
-                strategy_switch_considered=(self.orchestrator.strategy_agent.last_triggered_turn == self.orchestrator.current_turn),
-                opponent_archetype_confidence=self.orchestrator.opponent_model.archetype_confidence,
+                strategy_switch_considered=(last_triggered == current_turn),
+                opponent_archetype_confidence=opp_confidence,
                 reasoning_chain=f"Step choice executed. Strategy: {strategy_active}",
                 reasoning_fired=True,
                 reasoning_outcome="positive"
@@ -74,7 +77,7 @@ class CABTAgentWrapper:
             for log_entry in obs.get("logs", []):
                 if log_entry.get("type") in (6, "coin_flip"):
                     self.g_logger.log_variance(
-                        turn=self.orchestrator.current_turn,
+                        turn=current_turn,
                         event_type="coin_flip",
                         expected_outcome="heads",
                         actual_outcome=log_entry.get("result", "heads"),
