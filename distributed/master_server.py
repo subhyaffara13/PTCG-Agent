@@ -3,6 +3,9 @@ import threading
 import time
 import json
 import logging
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from queue import Queue
 from collections import deque
 from distributed.work_order import WorkOrder, GameResult
