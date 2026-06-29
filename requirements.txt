@@ -1,0 +1,7 @@
+numpy
+pandas
+torch
+kaggle
+kaggle-environments
+python-dotenv
+pytest
