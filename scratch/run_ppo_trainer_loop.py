@@ -1,7 +1,8 @@
 import sys
+import os
 import time
 import logging
-sys.path.insert(0, ".")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pathlib import Path
 from threading import Event
 
