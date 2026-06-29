@@ -6,7 +6,7 @@ card_id,card_name,card_type,count
 19,Telepath Psychic Energy,Energy,2
 65,Dunsparce,Pokemon,1
 66,Dudunsparce,Pokemon,1
-674,Hariyama,Pokemon,1
+304,Hop’s Snorlax,Pokemon,1
 305,Dunsparce,Pokemon,1
 676,Solrock,Pokemon,4
 677,Riolu,Pokemon,1
@@ -27,11 +27,10 @@ card_id,card_name,card_type,count
 1141,Premium Power Pro,Trainer,1
 1142,Fighting Gong,Trainer,1
 1145,Mega Signal,Trainer,1
-1152,Poké Pad,Trainer,4
-1227,Lillie's Determination,Trainer,11
 1171,Hop’s Choice Band,Pokemon,1
 1192,Carmine,Trainer,1
 1219,Team Rocket's Petrel,Trainer,1
 1225,Hilda,Trainer,1
+1227,Lillie's Determination,Trainer,15
 1231,Dawn,Trainer,1
 1255,Postwick,Trainer,1

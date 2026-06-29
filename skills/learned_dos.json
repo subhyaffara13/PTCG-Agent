@@ -624,6 +624,61 @@
       "card_id": 1259,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 104,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 756,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1071,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 272,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 184,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 140,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 108,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1205,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1146,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1172,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1250,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1041,11 +1096,21 @@
       "player": "omoch1...?",
       "avg_setup_duration": 22.2,
       "avg_bench_density": 2.7
+    },
+    {
+      "player": "tonakaiiii",
+      "avg_setup_duration": 24.6,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "zoroark190",
+      "avg_setup_duration": 10.0,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 25.0,
+    "avg_energy_count": 12.0
   }
 }
