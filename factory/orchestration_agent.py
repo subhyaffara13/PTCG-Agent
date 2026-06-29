@@ -34,6 +34,17 @@ ENABLE_DISTRIBUTED = os.environ.get("ENABLE_DISTRIBUTED") == "1"
 
 
 def main():
+    import sys
+    if "--force-master" in sys.argv:
+        logger.info("[OVERRIDE] --force-master flag detected. Bypassing discovery and forcing Master Mode.")
+        from factory.orchestrator_master import run_master_loop
+        while True:
+            try:
+                run_master_loop()
+            except Exception as e:
+                logger.error(f"Master loop crashed: {e}")
+        return
+
     logger.info("Orchestration Agent (Auto-Discovery Mode) started.")
     from distributed.discovery import WorkerListener
     from distributed.election import run_election
