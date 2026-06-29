@@ -13,6 +13,17 @@ class MasterBeacon:
         self.running = False
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.local_ip = self._get_local_ip()
+
+    def _get_local_ip(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        try:
+            s.connect(('10.255.255.255', 1))
+            return s.getsockname()[0]
+        except Exception:
+            return '127.0.0.1'
+        finally:
+            s.close()
 
     def start(self):
         self.running = True
@@ -24,7 +35,11 @@ class MasterBeacon:
     def _broadcast_loop(self):
         while self.running:
             try:
-                message = json.dumps({'type': 'beacon', 'code_version': self.code_version})
+                message = json.dumps({
+                    'type': 'beacon',
+                    'code_version': self.code_version,
+                    'master_ip': self.local_ip
+                })
                 self.sock.sendto(message.encode(), ('<broadcast>', PORT))
                 time.sleep(BEACON_INTERVAL)
             except Exception as e:
@@ -44,7 +59,8 @@ class WorkerListener:
             data, addr = self.sock.recvfrom(1024)
             msg = json.loads(data.decode())
             if msg.get('type') == 'beacon':
-                return addr[0], msg.get('code_version')
+                master_ip = msg.get('master_ip', addr[0])
+                return master_ip, msg.get('code_version')
         except socket.timeout:
             return None, None
         except Exception as e:

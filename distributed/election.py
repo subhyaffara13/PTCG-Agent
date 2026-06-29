@@ -3,7 +3,7 @@ import time
 import json
 import threading
 
-ELECTION_PORT = 9871
+ELECTION_PORT = 9873
 
 def get_local_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
