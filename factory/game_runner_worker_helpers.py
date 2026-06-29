@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def setup_game_env():
-    os.environ["FAST_SIM_MODE"] = "true"
+    os.environ["FAST_SIM_MODE"] = "false"
     saved_path = list(sys.path)
     try:
         cwd_resolved = Path.cwd().resolve()

@@ -69,11 +69,11 @@ class WorkerClient:
                 conn.close()
                 
             except ConnectionRefusedError:
-                logger.warning(f"Connection refused to {self.host}:{self.port}. Retrying in 5s...")
-                time.sleep(5)
+                logger.warning(f"Connection refused to {self.host}:{self.port}. Master may be down.")
+                raise ConnectionError("Master is down")
             except Exception as e:
                 logger.error(f"Worker error: {e}")
-                time.sleep(2)
+                raise ConnectionError(f"Worker error: {e}")
 
 if __name__ == "__main__":
     host = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'

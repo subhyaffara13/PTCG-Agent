@@ -54,12 +54,12 @@ def auto_submit_if_ready():
     reason = ""
     if today_subs < 5:
         if is_new_best:
-            if elapsed_hours >= 1.0:
+            if elapsed_hours >= 5.5:
                 should_submit = True
                 reason = f"Breakthrough! Fitness improved from {last_submitted_fit:.2f} to {current_best_fit:.2f}."
             else:
-                print("[Auto-Submit] Breakthrough detected, but waiting 1 hour to avoid spamming.")
-        elif elapsed_hours >= 4.0:
+                print(f"[Auto-Submit] Breakthrough detected, but waiting 5.5 hours to space submissions. ({elapsed_hours:.2f}h elapsed)")
+        elif elapsed_hours >= 5.5:
             should_submit = True
             reason = f"Spacing trigger: {elapsed_hours:.1f} hours elapsed since last submission."
 

@@ -14,10 +14,27 @@ class DeckInjectionMixin:
         return added
 
     def inject_signature_cards(self, arch, id_map, name_map, deck, copies, ctr):
-        for sid in arch.get("signature_cards", []) + arch.get("card_pool", []):
+        import random
+        sig_pool = arch.get("signature_cards", [])
+        if sig_pool:
+            # Pick a core focus rather than mixing 10 different archetypes
+            focus = random.sample(sig_pool, min(len(sig_pool), random.randint(1, 2)))
+        else:
+            focus = []
+            
+        for sid in focus:
             s = str(sid)
-            if s in id_map: self.add_card(id_map[s], 2, deck, copies, ctr)
-            elif s.lower() in name_map: self.add_card(name_map[s.lower()], 2, deck, copies, ctr)
+            if s in id_map: self.add_card(id_map[s], 3, deck, copies, ctr)
+            elif s.lower() in name_map: self.add_card(name_map[s.lower()], 3, deck, copies, ctr)
+            
+        # Optional: pull some from the card pool if there's room, but don't force all of them
+        c_pool = arch.get("card_pool", [])
+        if c_pool:
+            supp_focus = random.sample(c_pool, min(len(c_pool), 2))
+            for sid in supp_focus:
+                s = str(sid)
+                if s in id_map: self.add_card(id_map[s], 2, deck, copies, ctr)
+                elif s.lower() in name_map: self.add_card(name_map[s.lower()], 2, deck, copies, ctr)
 
     def inject_evolution_pyramids(self, deck, details, name_map, copies, ctr):
         for pkmn in [c for c in deck if c.get("card_type") == "Pokemon"]:

@@ -4,7 +4,6 @@ import json
 import threading
 
 ELECTION_PORT = 9871
-ELECTION_TIMEOUT = 5
 
 def get_local_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -17,7 +16,7 @@ def get_local_ip():
         s.close()
     return IP
 
-def run_election():
+def run_election(timeout=10):
     local_ip = get_local_ip()
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
@@ -25,7 +24,7 @@ def run_election():
     sock.settimeout(2)
 
     peers = set([local_ip])
-    end_time = time.time() + ELECTION_TIMEOUT
+    end_time = time.time() + timeout
 
     def broadcast_election():
         while time.time() < end_time:

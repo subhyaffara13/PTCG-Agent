@@ -46,16 +46,33 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                     cat_rank = rank
                     break
             micro_rank = 0
+            
+            # Combo tag priority logic
+            card_id = None
+            if ":" in action:
+                parts = action.split(":", 2)
+                card_id = parts[1]
+                if card_id.isdigit():
+                    try:
+                        c = _registry.get(int(card_id))
+                        if c and c.combo_tags:
+                            if profile == "setup" and any(t in ("search", "bench", "setup") for t in c.combo_tags):
+                                micro_rank -= 4
+                            elif profile in ("aggro_push", "closing") and any(t in ("damage", "discard", "boss") for t in c.combo_tags):
+                                micro_rank -= 4
+                    except Exception:
+                        pass
+                        
             if action.startswith("play_trainer:"):
                 name = action.split(":", 1)[1]
                 has_dead = _dead_weight_heuristic(candidates, game_state)
                 _discard_search = {"ultra ball", "earthen vessel"}
                 if has_dead and any(ds in name.lower() for ds in _discard_search):
-                    micro_rank = -6
+                    micro_rank -= 6
                 elif "Research" in name or "Professor" in name or "Iono" in name:
-                    micro_rank = -5
+                    micro_rank -= 5
                 elif "Ball" in name:
-                    micro_rank = 1
+                    micro_rank -= 1
             elif action.startswith("bench:"):
                 bench_need = 0
                 if profile == "setup":
@@ -67,25 +84,42 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 elif my_hand_size < 3 and bench_size == 0:
                     micro_rank = -3
             elif action.startswith("attach_energy:"):
-                target = action.split(":", 1)[1].lower()
+                parts = action.split(":", 2)
+                energy_card = parts[1] if len(parts) > 1 else ""
+                target_id = parts[2] if len(parts) > 2 else ""
+                
+                pref_map = {
+                    "957": "4", "87": "4", "734": "4", "733": "4", "950": "4",
+                    "979": "6", "226": "6", "855": "2"
+                }
+                
+                if target_id and pref_map.get(target_id):
+                    if pref_map[target_id] != energy_card:
+                        micro_rank = 25  # High penalty for wrong color
+                        return cat_rank * 5 + micro_rank
+                    else:
+                        micro_rank = -5  # Reward for correct color
+                
                 needed = 3
                 act_id = active.get("id") or active.get("card_id") if isinstance(active, dict) else None
-                if act_id:
-                    try:
-                        card = _registry.get_full_skill(act_id)
-                        if card and card.energy_cost > 0:
-                            needed = card.energy_cost
-                    except ImportError:
-                        pass
-                if "active" in target and active_attached >= needed:
-                    act_name = active.get("card_name", "").lower() if isinstance(active, dict) else ""
-                    is_scaling = any(sa in act_name for sa in _SCALING_ATTACKERS)
-                    if not is_scaling:
-                        cat_rank = order.index("attack:") + 1 if "attack:" in order else len(order)
-                        micro_rank = 10
-                elif "bench" in target:
+                if target_id and str(act_id) != target_id:
+                    # attaching to bench
                     hp = game_state.get("my_active_hp", 100)
-                    micro_rank = -5 if (hp <= 50 or active_attached >= needed) else -2
+                    micro_rank -= 5 if (hp <= 50 or active_attached >= needed) else -2
+                else:
+                    if act_id:
+                        try:
+                            card = _registry.get_full_skill(act_id)
+                            if card and card.energy_cost > 0:
+                                needed = card.energy_cost
+                        except ImportError:
+                            pass
+                    if active_attached >= needed:
+                        act_name = active.get("card_name", "").lower() if isinstance(active, dict) else ""
+                        is_scaling = any(sa in act_name for sa in _SCALING_ATTACKERS)
+                        if not is_scaling:
+                            cat_rank = order.index("attack:") + 1 if "attack:" in order else len(order)
+                            micro_rank += 10
             return cat_rank * 5 + micro_rank
 
         return sorted(candidates, key=get_priority_rank)

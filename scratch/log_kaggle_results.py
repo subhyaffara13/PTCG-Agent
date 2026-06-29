@@ -11,8 +11,15 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    api = KaggleApi()
-    api.authenticate()
+    import time
+    for attempt in range(3):
+        try:
+            api = KaggleApi()
+            api.authenticate()
+            break
+        except Exception as e:
+            if attempt == 2: raise
+            time.sleep(2**attempt)
     replays_dir = Path("logs/kaggle_replays")
     replays_dir.mkdir(parents=True, exist_ok=True)
     summary_dir = Path("logs/kaggle_summary")

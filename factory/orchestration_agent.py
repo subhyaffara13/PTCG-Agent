@@ -29,50 +29,41 @@ sh = logging.StreamHandler()
 sh.setFormatter(fmt)
 logger.addHandler(sh)
 
-ENABLE_DISTRIBUTED = True
-
-
-def run_hourly_checks(iteration: int):
-    """Runs leaderboard checks and auto-submission logic."""
-    logger.info(f"--- [Orchestration] Hourly check #{iteration} ---")
-    for script in ["scratch/check_submissions.py", "scratch/run_leaderboard_loop.py"]:
-        log_path = script_log_path(script)
-        try:
-            with open(log_path, "a", encoding="utf-8") as f:
-                subprocess.run([sys.executable, script], stdout=f, stderr=f, check=True)
-        except Exception as e:
-            logger.error(f"Error running {script}: {e}")
-
-    try:
-        auto_submit_if_ready()
-    except Exception as e:
-        logger.error(f"Auto-submission error: {e}")
+import os
+ENABLE_DISTRIBUTED = os.environ.get("ENABLE_DISTRIBUTED") == "1"
 
 
 def main():
-    logger.info("Orchestration Agent started (Block-Synchronous).")
-    scripts = get_training_scripts(ENABLE_DISTRIBUTED)
-
-    iteration = 0
+    logger.info("Orchestration Agent (Auto-Discovery Mode) started.")
+    from distributed.discovery import WorkerListener
+    from distributed.election import run_election
+    from factory.orchestrator_master import run_master_loop
+    from factory.orchestrator_worker import run_worker_loop
+    
     while True:
-        logger.info("--- [Train Phase] Starting training workers ---")
-        processes = launch_processes(scripts)
         try:
-            for _ in range(60):
-                monitor_and_restart(processes, scripts)
-                time.sleep(60)
-        finally:
-            logger.info("--- [Halt Phase] Stopping workers for analytics ---")
-            cleanup(processes)
+            listener = WorkerListener(interface_type="wifi")
+            logger.info("[DISCOVERY] Listening for master...")
+            master_ip, master_version = listener.listen_for_master()
+            
+            if master_ip:
+                logger.info(f"[DISCOVERY] Found master at {master_ip}. Becoming worker.")
+                run_worker_loop(master_ip, master_version)
+            else:
+                logger.info("[ELECTION] No master found. Running election...")
+                is_master, winner_ip = run_election(timeout=10)
+                
+                if is_master:
+                    logger.info(f"[MASTER] Elected as master ({winner_ip}).")
+                    run_master_loop()
+                else:
+                    logger.info(f"[WORKER] Master is {winner_ip}. Waiting for beacon...")
+                    m_ip, m_version = listener.listen_for_master()
+                    run_worker_loop(winner_ip, m_version)
+        except Exception as e:
+            logger.error(f"Critical error in Orchestration Agent loop: {e}")
+            import time
             time.sleep(5)
-
-        logger.info("--- [Analytics Phase] Running synchronous checks ---")
-        from factory.log_pruner import prune_logs
-        prune_logs(max_files=1000)
-        run_hourly_checks(iteration)
-        run_analytics_check(iteration)
-
-        iteration += 1
 
 if __name__ == "__main__":
     main()

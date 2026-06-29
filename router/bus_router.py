@@ -79,7 +79,7 @@ class Router:
 
     def _log(self, agent_name: str, payload: dict[str, Any], *, status: str, detail: str | None = None) -> None:
         entry: dict[str, Any] = {
-            "timestamp": datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z",
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
             "agent": agent_name,
             "status": status,
             "packet_keys": sorted(payload.keys()),

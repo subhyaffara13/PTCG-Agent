@@ -12,7 +12,12 @@ class SequencingEngine:
             for card in registry.cards.values():
                 c_name = card.card_name.replace("'", "").lower()
                 if c_name == action_suffix or action_suffix in c_name:
-                    heavy = registry.get_full_skill(card.card_id)
+                    try:
+                        heavy = registry.get_full_skill(card.card_id)
+                    except Exception as e:
+                        import logging
+                        logging.error(f"get_full_skill failed: {e}")
+                        continue
                     if heavy:
                         if heavy.combo_tags & ComboTag.SEARCH:
                             return "search"

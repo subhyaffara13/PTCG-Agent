@@ -42,17 +42,47 @@ class DeckBoundsMixin:
                 break
             self.add_card(random.choice(sp), 2, deck, copies, ctr)
 
-    def fill_to_60(self, legal, matching, deck, copies, ctr, details):
-        """Fill deck to 60 cards respecting pyramid constraints."""
+    def fill_to_60(self, legal, matching, deck, copies, ctr, details, core_elements=None, core_tags=None):
+        """Fill deck to 60 cards respecting pyramid constraints, optimizing for synergy."""
+        if core_elements is None: core_elements = set()
+        if core_tags is None: core_tags = set()
+        
         m_ids = {str(e["card_id"]) for e in matching}
-        cands = [c for c in sorted(legal, key=lambda x: x.get("ev_score", 0.0), reverse=True)
+        
+        def _get_synergy_score(card):
+            base_ev = card.get("ev_score", 0.0)
+            det = details.get(str(card["card_id"]), {})
+            synergy = 0.0
+            
+            # Elemental synergy
+            if card.get("card_type") == "Pokemon" and core_elements:
+                elem = det.get("element_type", "")
+                if elem in core_elements or elem == "Colorless":
+                    synergy += 0.5
+                else:
+                    synergy -= 0.5
+                    
+            # Combo Tag synergy
+            c_tags = set(card.get("combo_tags", []))
+            if c_tags and core_tags:
+                if c_tags.intersection(core_tags):
+                    synergy += 0.2
+                    
+            return base_ev + synergy
+            
+        cands = [c for c in sorted(legal, key=_get_synergy_score, reverse=True)
                  if c.get("card_type") != "Energy" or str(c["card_id"]) in m_ids]
+                 
         for _ in range(5000):
             if len(deck) >= 60 or not cands:
                 break
-            c = random.choice(cands)
+            # Pick from the top 5 highest synergy cards to maintain some variance but enforce quality
+            top_cands = cands[:5]
+            c = random.choice(top_cands)
             if self._fill_ok(c, deck, ctr, details):
                 self.add_card(c, 1, deck, copies, ctr)
+            else:
+                cands.remove(c)
 
     def _fill_ok(self, c, deck, ctr, details):
         """Check if adding card c respects composition limits."""

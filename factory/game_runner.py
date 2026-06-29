@@ -17,14 +17,27 @@ from factory.game_runner_worker import _parallel_game_worker
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_DECK = [
-    721, 721, 722, 722, 722, 722, 723, 723, 723, 723,
-    1092, 1121, 1121, 1145, 1145, 1163, 1163, 1219,
-    1219, 1219, 1219, 1227, 1227, 1227, 1227, 1262,
-    1262, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    3, 3, 3
-]
+def _load_optimized_deck() -> list[int]:
+    """Load the best deck from the optimizer pipeline output."""
+    import csv
+    for deck_path in ["staging/deck_new.csv", "agents/deck_new.csv"]:
+        p = Path(deck_path)
+        if p.exists():
+            try:
+                deck = []
+                with open(p, "r", encoding="utf-8") as f:
+                    for row in csv.DictReader(f):
+                        deck.extend([int(row["card_id"])] * int(row["count"]))
+                if len(deck) == 60:
+                    logger.info("Loaded optimized deck from %s (%d cards)", deck_path, len(deck))
+                    return deck
+            except Exception as e:
+                logger.warning("Failed to load deck from %s: %s", deck_path, e)
+    logger.warning("No optimized deck found, using fallback")
+    return [957]*4 + [734]*4 + [979]*4 + [855]*4 + [87]*2 + [226]*2 + [1121]*4 + [4]*3 + [2]*3 + [6]*4 + [733]*4 + [950]*4 + [1102]*4 + [1086]*4 + [1213]*4 + [1079]*4 + [1123]*2
+
+DEFAULT_DECK = _load_optimized_deck()
+
 
 class GameRunner(BaseAgent):
     _executor = None

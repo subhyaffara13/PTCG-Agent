@@ -47,15 +47,18 @@ class Orchestrator:
 
     def orchestrate(self, game_state: dict[str, Any]) -> TurnDecision:
         time_result = _step_time(game_state, self._timer, self._router)
-        if time_result["directive"] == "FORCE_PASS":
+        if time_result.get("directive") == "FORCE_PASS":
             return _emergency_pass(time_result)
-        hand_result  = _step_hand(game_state, self._analyst, self._router)
-        plan_result  = _step_plan(hand_result, self._planner, self._router)
-        strat_result = _step_strategy(game_state, self._strategy, self._router)
-        opp_result   = _step_opponent(game_state, self._opponent, self._router)
-        decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
-        _log_orchestration(game_state, decision)
-        return decision
+        try:
+            hand_result  = _step_hand(game_state, self._analyst, self._router)
+            plan_result  = _step_plan(game_state, hand_result, self._planner, self._router)
+            strat_result = _step_strategy(game_state, self._strategy, self._router)
+            opp_result   = _step_opponent(game_state, self._opponent, self._router)
+            decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
+            _log_orchestration(game_state, decision)
+            return decision
+        except Exception:
+            return _emergency_pass(time_result)
 
     def start_game(self) -> None:
         pass
@@ -63,9 +66,17 @@ class Orchestrator:
     run_turn = orchestrate
 
     def flush_all_logs(self) -> None:
-        self._timer.flush_logs()
-        self._analyst.flush_logs()
-        from cb_agents.strategy_agent_io import flush_logs as flush_strategy_logs
-        from cb_agents.orchestrator_log import flush_logs as flush_orch_logs
-        flush_strategy_logs()
-        flush_orch_logs()
+        try:
+            self._timer.flush_logs()
+        except Exception: pass
+        try:
+            self._analyst.flush_logs()
+        except Exception: pass
+        try:
+            from cb_agents.strategy_agent_io import flush_logs as flush_strategy_logs
+            flush_strategy_logs()
+        except Exception: pass
+        try:
+            from cb_agents.orchestrator_log import flush_logs as flush_orch_logs
+            flush_orch_logs()
+        except Exception: pass

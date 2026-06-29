@@ -4,22 +4,36 @@ logger = logging.getLogger(__name__)
 
 
 def check_file_limits():
-    print("\n--- LINE LIMITS AUDIT (Max 150 Lines) ---")
+    print("\n--- LINE LIMITS AUDIT (Max 100 Lines) ---")
     exceeded = False
+    refactor_queue = []
+    queue_path = Path("logs/refactor_queue.json")
+    if queue_path.exists():
+        try:
+            refactor_queue = json.loads(queue_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
     for p in Path(".").glob("**/*.py"):
-        if any(x in p.parts for x in (".pytest_cache", "__pycache__", ".git", ".agents", "distributed", "visualizer")):
+        if any(x in p.parts for x in (".pytest_cache", "__pycache__", ".git", ".agents", "distributed", "visualizer", "skills")):
             continue
         try:
             lines = len(p.read_text(encoding="utf-8").splitlines())
-            if lines > 150:
-                print(f"  CRITICAL WARNING: {p} exceeds 150 lines ({lines} lines)!")
+            if lines > 100:
+                print(f"  CRITICAL WARNING: {p} exceeds 100 lines ({lines} lines)!")
                 exceeded = True
+                if str(p) not in refactor_queue:
+                    refactor_queue.append(str(p))
             else:
-                print(f"  {p}: {lines} lines")
+                pass
         except Exception:
             pass
+
+    if refactor_queue:
+        queue_path.write_text(json.dumps(refactor_queue, indent=2), encoding="utf-8")
+
     if not exceeded:
-        print("All code files comply with the line count limits.")
+        print("All code files comply with the 100-line count limits.")
 
 
 def download_and_analyze_my_replays(api, sub_id):

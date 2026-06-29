@@ -69,33 +69,24 @@ class HandAnalyst:
         return index
 
     def _score_hand(self, hand: list[str]) -> list[tuple[str, float]]:
-        scored = []
-        for card_name in hand:
-            card_name_str = str(card_name)
-            entry    = self._scoring_db.get(card_name_str.lower(), {})
-            ev_score = float(entry.get("ev_score", 0.0))
-            scored.append((card_name_str, ev_score))
-        return scored
+        from agents.hand_analyst_helpers import score_hand_helper
+        return score_hand_helper(hand, self._scoring_db)
 
     def _mean_ev(self, scored_cards: list[tuple[str, float]]) -> float:
-        if not scored_cards:
-            return 0.0
-        return sum(ev for _, ev in scored_cards) / len(scored_cards)
+        from agents.hand_analyst_helpers import mean_ev_helper
+        return mean_ev_helper(scored_cards)
 
     def _derive_profile(self, hand_score: float) -> str:
-        for threshold, profile in _PROFILE_THRESHOLDS:
-            if hand_score >= threshold:
-                return profile
-        return "defensive"
+        from agents.hand_analyst_helpers import derive_profile_helper
+        return derive_profile_helper(hand_score, _PROFILE_THRESHOLDS)
 
     def _best_card(self, scored_cards: list[tuple[str, float]]) -> str:
-        if not scored_cards:
-            return "(empty hand)"
-        return max(scored_cards, key=lambda t: t[1])[0]
+        from agents.hand_analyst_helpers import best_card_helper
+        return best_card_helper(scored_cards)
 
     def _log(self, hand, deck_remaining, scored_cards, result):
         entry: dict[str, Any] = {
-            "timestamp": datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z",
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
             "agent":     "HandAnalyst",
             "input":     {"hand": hand, "deck_remaining": deck_remaining},
             "reasoning": {

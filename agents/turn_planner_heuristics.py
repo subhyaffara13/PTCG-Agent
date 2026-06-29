@@ -50,15 +50,18 @@ def _has_dead_weight(game_state: dict) -> bool:
 
 def has_draw_remaining(candidates: List[str]) -> bool:
     for cand in candidates:
-        if cand.startswith("play_trainer:"):
-            name = cand.split(":", 1)[1].lower()
-            if any(dk in name for dk in {"research", "iono", "judge", "concealed cards",
-                                          "flower selecting", "shining arcana", "colress"}):
-                return True
-        if cand.startswith("ability:"):
-            target = cand.split(":", 1)[1].lower()
-            if any(dk in target for dk in _ABILITY_DRAW_KEYWORDS):
-                return True
+        try:
+            if cand.startswith("play_trainer:"):
+                name = cand.split(":", 1)[1].lower()
+                if any(dk in name for dk in {"research", "iono", "judge", "concealed cards",
+                                              "flower selecting", "shining arcana", "colress"}):
+                    return True
+            if cand.startswith("ability:"):
+                target = cand.split(":", 1)[1].lower()
+                if any(dk in target for dk in _ABILITY_DRAW_KEYWORDS):
+                    return True
+        except IndexError:
+            continue
     return False
 
 from agents.heuristic_pipeline import _thinning_value, _pick_best_search, _dead_weight_heuristic, check_mcts_bypass

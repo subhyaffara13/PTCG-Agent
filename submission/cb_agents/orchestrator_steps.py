@@ -26,11 +26,14 @@ def _step_hand(gs: dict[str, Any], analyst: HandAnalyst, router: Router) -> dict
     ))
 
 
-def _step_plan(hand_result: dict[str, Any], planner: TurnPlanner, router: Router) -> list[dict[str, Any]]:
+def _step_plan(game_state: dict[str, Any], hand_result: dict[str, Any], planner: TurnPlanner, router: Router) -> list[dict[str, Any]]:
     from router.bus import TurnPlannerPacket
     return router.dispatch("TurnPlanner", TurnPlannerPacket(
-        hand_score=hand_result["hand_score"],
-        priority_profile=hand_result["priority_profile"],
+        hand_score=hand_result.get("hand_score", 0.0),
+        priority_profile=hand_result.get("priority_profile", "balanced"),
+        game_state=game_state,
+        turn=game_state.get("turn_number", 1),
+        time_remaining=game_state.get("time_remaining", 600.0)
     ))
 
 

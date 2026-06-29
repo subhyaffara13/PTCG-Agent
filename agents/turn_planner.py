@@ -24,11 +24,16 @@ class TurnPlanner(BaseAgent):
         self.shared_context = shared_context
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.skills_dir.mkdir(parents=True, exist_ok=True)
-        self.rules = (self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
-                      if self.shared_context else self._load_priority_rules())
+        try:
+            self.rules = (self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
+                          if self.shared_context else self._load_priority_rules())
+        except Exception as e:
+            logger.error(f"Failed to get_config: {e}")
+            self.rules = {"rules": []}
         self.mcts = MCTSEngine(num_simulations=50, belief_tracker=belief_tracker)
         self._logger = TurnPlannerLogger(self.log_dir)
         self._prize_tracker = PrizeTracker()
+        self._consecutive_passes = 0
 
     def _load_priority_rules(self) -> dict:
         path = self.skills_dir / "priority_rules.json"
@@ -55,9 +60,17 @@ class TurnPlanner(BaseAgent):
             game_state = _process_prize_tracker(game_state, self._prize_tracker, packet)
             game_state["has_searched_deck"] = game_state.get("prize_certainty", 0.0) > 0
             candidates = build_legal_candidates(game_state)
+            if self._consecutive_passes >= 10 and "pass" in candidates and len(candidates) > 1:
+                logger.warning(f"10-Pass Hard Limit Reached. Forcefully removing 'pass' to break stalemate.")
+                candidates.remove("pass")
             time_rem = getattr(packet, "time_remaining", 600.0)
             _check_lethal_and_update(game_state)
             primary, reasoning = resolve_action(candidates, game_state, profile, time_rem, self.mcts, self.rules)
+            if primary == "pass":
+                self._consecutive_passes += 1
+            else:
+                self._consecutive_passes = 0
+            
             sorted_actions = sort_actions_heuristically(candidates, profile, game_state)
             if primary:
                 if primary in sorted_actions:

@@ -82,7 +82,7 @@ class TimeManager:
 
     def _log(self, packet, result, time_limit: float = 600.0):
         entry: dict[str, Any] = {
-            "timestamp": datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z",
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
             "agent":     "TimeManager",
             "input":     packet,
             "reasoning": {

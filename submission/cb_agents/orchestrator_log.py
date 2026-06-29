@@ -27,7 +27,7 @@ def flush_logs() -> None:
 
 def _log_orchestration(gs: dict[str, Any], decision: Any) -> None:
     entry: dict[str, Any] = {
-        "timestamp":  datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z",
+        "timestamp":  datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
         "agent":      "Orchestrator",
         "input_keys": sorted(gs.keys()),
         "output":     asdict(decision),

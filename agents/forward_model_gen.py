@@ -14,16 +14,33 @@ def _regenerate_legal_actions(gs: dict) -> None:
     actions = ["pass"]
     hand = gs.get("my_hand", [])
     if isinstance(hand, list) and len(hand) > 0:
+        valid_targets = []
+        if isinstance(gs.get("my_active_pokemon"), dict) and gs.get("my_active_pokemon"):
+            valid_targets.append(str(gs["my_active_pokemon"].get("id", "")))
+        bench = gs.get("my_bench", [])
+        if isinstance(bench, list):
+            for p in bench:
+                if isinstance(p, dict) and p.get("id"):
+                    valid_targets.append(str(p["id"]))
+
         for card in hand:
-            actions.append(f"attach_energy:{card}")
-            actions.append(f"bench:{card}")
             if CardRegistry is not None:
                 try:
                     c = CardRegistry().get(int(card) if not isinstance(card, int) else card)
-                    if c and getattr(c.card_type, "name", "") == "TRAINER":
+                    if c and getattr(c.card_type, "name", "") == "ENERGY":
+                        if valid_targets:
+                            for target in valid_targets:
+                                if target: actions.append(f"attach_energy:{card}:{target}")
+                        else:
+                            actions.append(f"attach_energy:{card}")
+                        continue
+                    elif c and getattr(c.card_type, "name", "") == "TRAINER":
                         actions.append(f"play_trainer:{c.card_name}")
+                        continue
                 except Exception:
                     pass
+            actions.append(f"attach_energy:{card}")
+            actions.append(f"bench:{card}")
     bench = gs.get("my_bench", [])
     if isinstance(bench, list) and len(bench) > 0:
         for i in range(len(bench)):
@@ -79,26 +96,5 @@ def _draw_cards(hand: list, gs: dict, n: int) -> list:
 
 
 def _apply_evolve(gs: dict, card_id: Any) -> None:
-    hand = list(gs.get("my_hand", []))
-    _remove_from_hand(hand, card_id)
-    gs["my_hand"] = hand
-
-    prev_stage_id = None
-    if CardRegistry is not None:
-        try:
-            c = CardRegistry().get(int(card_id) if not isinstance(card_id, int) else card_id)
-            if c and c.previous_stage:
-                prev_stage_id = c.previous_stage
-        except Exception:
-            pass
-
-    search_id = prev_stage_id if prev_stage_id is not None else card_id
-    bench = list(gs.get("my_bench", []))
-    for i, poke in enumerate(bench):
-        if isinstance(poke, dict) and str(poke.get("id")) == str(search_id):
-            bench[i] = {"id": f"evolved_{card_id}", "hp": 150, "attached": list(poke.get("attached", []))}
-            gs["my_bench"] = bench
-            return
-    active = gs.get("my_active_pokemon", {})
-    if isinstance(active, dict) and str(active.get("id")) == str(search_id):
-        gs["my_active_pokemon"] = {"id": f"evolved_{card_id}", "hp": 150, "attached": list(active.get("attached", []))}
+    from agents.forward_model_gen_helpers import apply_evolve_helper
+    apply_evolve_helper(gs, card_id, CardRegistry, _remove_from_hand)

@@ -60,6 +60,12 @@ class EvalAgent(BaseAgent):
         adj_reasoning, adj_deck = max(0.0, raw_reasoning - raw_variance), max(0.0, raw_deck - raw_variance)
         deck_delta = adj_deck - adj_reasoning
 
+        stalemate_detected = False
+        if logs.get("reasoning_test", {}).get("game_data", {}).get("prizes_taken_b", 0) == 0 and logs.get("reasoning_test", {}).get("game_data", {}).get("prizes_taken_a", 0) == 0:
+            if logs.get("reasoning_test", {}).get("game_data", {}).get("turns_taken", 0) >= 90:
+                stalemate_detected = True
+                logger.error("CRITICAL_STALEMATE_ERROR: reasoning_test match ended in timeout with 0 prizes taken!")
+        
         self.eval_state["consecutive_deck_failures"] = self.eval_state["consecutive_deck_failures"] + 1 if deck_delta < 0.1 else 0
         self.eval_state["consecutive_logic_failures"] = self.eval_state["consecutive_logic_failures"] + 1 if logic_delta < 0.1 else 0
         try:
@@ -78,7 +84,7 @@ class EvalAgent(BaseAgent):
             "adjusted_scores": {"reasoning_test": round(adj_reasoning, 4), "deck_test": round(adj_deck, 4)},
             "metrics": {"logic_delta": round(logic_delta, 4), "deck_delta": round(deck_delta, 4), "variance_baseline": round(raw_variance, 4)},
             "consecutive_failures": {"deck": self.eval_state["consecutive_deck_failures"], "logic": self.eval_state["consecutive_logic_failures"]},
-            "flags": {"flag_deck_architect": flag_deck, "flag_builder_agent": flag_logic},
+            "flags": {"flag_deck_architect": flag_deck, "flag_builder_agent": flag_logic, "stalemate_detected": stalemate_detected},
             "recommendation": recommendation,
             "version_scores": {"player_a": round(player_a_score, 4), "player_b": round(player_b_score, 4), "best_version": "player_b" if player_b_score > player_a_score else "player_a"}
         }

@@ -11,6 +11,8 @@ def get_training_scripts(enable_distributed: bool) -> list:
         return [
             "distributed/master_server.py",
             "distributed/status_server.py",
+            "scratch/run_ppo_trainer_loop.py",
+            "scratch/run_deck_optimizer_loop.py",
         ]
     logger.info("Local training mode ENABLED.")
     return [

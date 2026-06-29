@@ -35,8 +35,17 @@ class DeckGenerator(DeckMathMixin, DeckInjectionMixin, DeckBoundsMixin):
             for _ in range(max(0, needed)):
                 self.add_card(random.choice(matching), 1, deck, copies, ctr)
 
+        # Calculate Core Elements & Tags for Synergy
+        core_elements = {self.card_details.get(str(c["card_id"]), {}).get("element_type", "")
+                         for c in deck if c.get("card_type") == "Pokemon"}
+        core_elements.discard("")
+        
+        core_tags = set()
+        for c in deck:
+            core_tags.update(c.get("combo_tags", []))
+
         # Fill to 60 + pad
-        self.fill_to_60(legal_cards, matching, deck, copies, ctr, self.card_details)
+        self.fill_to_60(legal_cards, matching, deck, copies, ctr, self.card_details, core_elements, core_tags)
         while len(deck) < 60:
             deck.append(dict(random.choice(matching or legal_cards)))
 

@@ -39,13 +39,20 @@ def auto_submit_if_ready():
         logger.warning("Kaggle API not available. Skipping auto-submit.")
         return
 
-    try:
-        api = KaggleApi()
-        api.authenticate()
-        subs = api.competition_submissions("pokemon-tcg-ai-battle")
-    except Exception as e:
-        logger.error(f"Kaggle auth/query failed: {e}")
-        return
+    import time
+    subs = None
+    for attempt in range(3):
+        try:
+            api = KaggleApi()
+            api.authenticate()
+            subs = api.competition_submissions("pokemon-tcg-ai-battle")
+            break
+        except Exception as e:
+            if attempt == 2:
+                logger.error(f"Kaggle auth/query failed after 3 attempts: {e}")
+                return
+            logger.warning(f"Kaggle query failed (attempt {attempt+1}), retrying in {2**attempt}s...: {e}")
+            time.sleep(2**attempt)
 
     now_utc = datetime.now(timezone.utc)
     today_subs = sum(1 for s in subs if s.date.replace(tzinfo=timezone.utc).date() == now_utc.date())

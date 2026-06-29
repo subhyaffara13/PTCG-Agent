@@ -1,6 +1,8 @@
 # Single-file self-contained Pokemon TCG Kaggle Submission Agent
 # Generated automatically by build_single_file.py
 
+import os
+os.environ["FAST_SIM_MODE"] = "true"
 import json
 import logging
 import time

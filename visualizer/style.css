@@ -216,15 +216,10 @@ body {
     width: 80px;
     height: 110px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    /* overflow: hidden removed to allow energy icons to overflow */
+    transition: box-shadow 0.2s;
     cursor: pointer;
     background: transparent;
-}
-
-.card-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .card-image {
@@ -252,8 +247,8 @@ body {
     border-radius: 8px;
     box-shadow: var(--glow-glow);
     position: relative;
-    overflow: hidden;
-    transition: transform 0.2s;
+    /* overflow: hidden removed to allow energy icons to overflow */
+    transition: box-shadow 0.2s;
 }
 
 .active-card-image {
@@ -271,6 +266,7 @@ body {
     background: rgba(10, 11, 20, 0.95);
     padding: 0.6rem;
     border-top: 1px solid var(--card-border);
+    border-radius: 0 0 7px 7px;
     display: flex;
     flex-direction: column;
 }
