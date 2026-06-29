@@ -6,9 +6,10 @@ logger = logging.getLogger("orchestration_agent")
 
 def run_worker_loop(master_ip: str, master_version: str):
     logger.info(f"Orchestration Agent (Worker Mode) started. Syncing to {master_version}...")
-    from distributed.code_sync import sync_code
+    from distributed.code_sync import sync_code, restart_process
     if master_version:
-        sync_code(master_version)
+        if sync_code(master_version):
+            restart_process()
 
     client = WorkerClient(host=master_ip)
     try:

@@ -51,12 +51,16 @@ class WorkerClient:
                         win = res_dict["games"]["deck_test"].get("winner")
                         metrics["win_rate"] = 1.0 if win == "player_a" else 0.0
                 
+                    from distributed.telemetry_sync import compress_telemetry
+                    telemetry_data = compress_telemetry(res_dict)
+                
                     result = GameResult(
                         job_id=order.job_id,
                         iteration=order.iteration,
                         worker_id=self.worker_id,
                         metrics=metrics
                     )
+                    result.set_replay(telemetry_data)
                     
                     conn.sendall(f"RESULT:{result.serialize()}\n".encode('utf-8'))
                     

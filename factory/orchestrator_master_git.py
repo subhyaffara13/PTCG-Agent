@@ -1,0 +1,45 @@
+import subprocess
+import logging
+from pathlib import Path
+
+logger = logging.getLogger("orchestrator_master_git")
+
+def auto_commit_and_push_if_changed():
+    """Checks for changes to key factory/logic files, commits, and pushes them to Git."""
+    # List of files we want to ensure stay synchronized across all nodes
+    target_files = [
+        "models/ppo_actor_critic.pt",
+        "agents/deck_new.csv",
+        "skills/learned_dos.json",
+        "skills/predictor_feedback.json",
+        "skills/predictor_weights.json"
+    ]
+    
+    # Filter files that actually exist and have modifications
+    files_to_add = []
+    for file_str in target_files:
+        p = Path(file_str)
+        if p.exists():
+            # Check if git detects modification/untracked status for this file
+            res = subprocess.run(["git", "status", "--porcelain", file_str], capture_output=True, text=True)
+            if res.stdout.strip():
+                files_to_add.append(file_str)
+                
+    if not files_to_add:
+        logger.info("No factory updates detected. Skipping Git push.")
+        return
+        
+    logger.info(f"Factory updates detected in: {files_to_add}. Preparing auto-commit and push...")
+    try:
+        # Add files
+        subprocess.run(["git", "add"] + files_to_add, check=True)
+        # Commit
+        commit_msg = "Auto-update: Factory model/deck/skills update"
+        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+        # Push
+        subprocess.run(["git", "push"], check=True)
+        logger.info("Factory updates committed and pushed successfully.")
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Git auto-push failed (will retry next check): {e}")
+    except Exception as e:
+        logger.error(f"Unexpected error during Git auto-push: {e}")

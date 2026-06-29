@@ -58,6 +58,13 @@ def run_master_loop():
             prune_logs(max_files=1000)
             run_hourly_checks(iteration)
             run_analytics_check(iteration)
+            
+            try:
+                from factory.orchestrator_master_git import auto_commit_and_push_if_changed
+                auto_commit_and_push_if_changed()
+            except Exception as e:
+                logger.error(f"Git auto-push failed: {e}")
+                
             iteration += 1
     except Exception as e:
         logger.error(f"Master loop crashed: {e}")

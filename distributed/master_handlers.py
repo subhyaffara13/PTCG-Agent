@@ -4,6 +4,20 @@ from distributed.work_order import GameResult
 
 logger = logging.getLogger("master_server")
 
+def _read_line(conn):
+    buf = bytearray()
+    while True:
+        try:
+            chunk = conn.recv(65536)
+            if not chunk:
+                return None
+            buf.extend(chunk)
+            if b'\n' in chunk:
+                break
+        except Exception:
+            return None
+    return buf.decode('utf-8')
+
 class MasterHandlers:
     def __init__(self, server):
         self.server = server
@@ -13,14 +27,9 @@ class MasterHandlers:
             self.server.workers.append(conn)
         try:
             while self.server.running:
-                try:
-                    data = conn.recv(4096)
-                    if not data: break
-                except Exception as e:
-                    logger.info(f"Worker recv error {addr}: {e}")
-                    break
-                
-                msg = data.decode('utf-8').strip()
+                msg_line = _read_line(conn)
+                if not msg_line: break
+                msg = msg_line.strip()
                 if msg == "GET_WORK":
                     while self.server.work_queue.empty() and self.server.running:
                         time.sleep(0.5)
@@ -52,6 +61,13 @@ class MasterHandlers:
             conn.close()
 
     def process_results(self):
+        from distributed.telemetry_sync import decompress_telemetry
         while self.server.running:
             res = self.server.results_queue.get()
             logger.info(f"Collected result from {res.worker_id} for iteration {res.iteration}.")
+            try:
+                telemetry_data = res.get_replay()
+                if telemetry_data:
+                    decompress_telemetry(telemetry_data)
+            except Exception as e:
+                logger.error(f"Error extracting telemetry from {res.worker_id}: {e}")
