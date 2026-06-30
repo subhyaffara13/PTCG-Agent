@@ -679,6 +679,46 @@
       "card_id": 1250,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 379,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 380,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 381,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 341,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 342,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1206,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1173,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 20,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1106,11 +1146,21 @@
       "player": "zoroark190",
       "avg_setup_duration": 10.0,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "Dongwook Kim",
+      "avg_setup_duration": 11.4,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "Moegi",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 1.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 23.0,
-    "avg_trainer_count": 25.0,
-    "avg_energy_count": 12.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 14.0
   }
 }
