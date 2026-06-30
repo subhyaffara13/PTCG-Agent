@@ -377,7 +377,7 @@
     },
     {
       "card_id": 1166,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage (2.0x avg) in winning matches of player yamy893."
     },
     {
@@ -717,6 +717,11 @@
     },
     {
       "card_id": 20,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 506,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
     }
@@ -1156,11 +1161,16 @@
       "player": "Moegi",
       "avg_setup_duration": 30.0,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "Michael Krager",
+      "avg_setup_duration": 9.0,
+      "avg_bench_density": 1.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 14.0
+    "avg_pokemon_count": 9.0,
+    "avg_trainer_count": 45.0,
+    "avg_energy_count": 6.0
   }
 }
