@@ -53,11 +53,11 @@ def run_master_loop():
                 return
             finally:
                 logger.info("--- [Halt Phase] Stopping master server to run analytics ---")
-                cleanup(processes)
                 try:
+                    cleanup(processes)
                     time.sleep(2)
                 except KeyboardInterrupt:
-                    pass
+                    logger.info("Ignored extra Ctrl+C. Continuing safe shutdown...")
 
             logger.info("--- [Analytics Phase] Running synchronous checks ---")
             from factory.log_pruner import prune_logs
