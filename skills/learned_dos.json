@@ -1166,11 +1166,26 @@
       "player": "Michael Krager",
       "avg_setup_duration": 9.0,
       "avg_bench_density": 1.0
+    },
+    {
+      "player": "S4nkurero",
+      "avg_setup_duration": 24.0,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "capbloo",
+      "avg_setup_duration": 37.6,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "iwashi",
+      "avg_setup_duration": 15.0,
+      "avg_bench_density": 1.2
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 9.0,
-    "avg_trainer_count": 45.0,
-    "avg_energy_count": 6.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   }
 }
