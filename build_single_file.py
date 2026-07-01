@@ -11,6 +11,8 @@ def read_clean_source(path):
         # Match local imports and skip them
         if re.match(r"^\s*(from|import)\s+(cb_agents|agents|router)\b", line):
             continue
+        if "__future__" in line:
+            continue
         lines.append(line)
     return "\n".join(lines)
 
@@ -57,6 +59,7 @@ def bundle():
 
     # 3. Read Python sources
     base_agent = read_clean_source("agents/base_agent.py")
+    registry = read_clean_source("agents/registry.py")
     bus = read_clean_source("router/bus.py")
     hand_analyst = read_clean_source("agents/hand_analyst.py")
     turn_planner = read_clean_source("agents/turn_planner.py")
@@ -172,7 +175,8 @@ def bundle():
     log_exc_code = main_py[log_exc_idx:]
     
     # 5. Generate final content with 'agent' function at the very end
-    output = f"""# Single-file self-contained Pokemon TCG Kaggle Submission Agent
+    output = f"""from __future__ import annotations
+# Single-file self-contained Pokemon TCG Kaggle Submission Agent
 # Generated automatically by build_single_file.py
 
 import json
@@ -223,6 +227,8 @@ DEFAULT_DECK = [
 # ==========================================
 # SUB-AGENTS
 # ==========================================
+{registry}
+
 {hand_analyst}
 
 {turn_planner}

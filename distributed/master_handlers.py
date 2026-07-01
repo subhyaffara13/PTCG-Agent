@@ -26,8 +26,9 @@ class MasterHandlers:
         with self.server.lock:
             self.server.workers.append(conn)
         try:
+            rfile = conn.makefile('r', encoding='utf-8')
             while self.server.running:
-                msg_line = _read_line(conn)
+                msg_line = rfile.readline()
                 if not msg_line: break
                 msg = msg_line.strip()
                 if msg == "GET_WORK":
@@ -59,15 +60,21 @@ class MasterHandlers:
                 if conn in self.server.workers:
                     self.server.workers.remove(conn)
             conn.close()
-
+ 
     def process_results(self):
         from distributed.telemetry_sync import decompress_telemetry
+        import json
+        from pathlib import Path
         while self.server.running:
             res = self.server.results_queue.get()
             logger.info(f"Collected result from {res.worker_id} for iteration {res.iteration}.")
             try:
+                if res.payload:
+                    Path("logs/iteration_result.json").write_text(json.dumps(res.payload, indent=2), encoding="utf-8")
+                    logger.info(f"Wrote iteration_result.json for iteration {res.iteration}")
+                
                 telemetry_data = res.get_replay()
                 if telemetry_data:
                     decompress_telemetry(telemetry_data)
             except Exception as e:
-                logger.error(f"Error extracting telemetry from {res.worker_id}: {e}")
+                logger.error(f"Error extracting telemetry/payload from {res.worker_id}: {e}")

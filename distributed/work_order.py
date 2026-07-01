@@ -29,6 +29,7 @@ class GameResult:
     metrics: Dict[str, float]
     # We can store larger objects like serialized replays via pickle + base64 if needed
     replay_data_b64: Optional[str] = None
+    payload: Optional[Dict[str, Any]] = None
 
     def serialize(self) -> str:
         return json.dumps(asdict(self))

@@ -66,14 +66,13 @@ def get_registered_agents() -> Dict[str, dict]:
         needs_shared_context – bool
     """
     try:
-        from agents import hand_analyst
-        from agents import turn_planner
-        from agents import strategy_agent
-        from agents import opponent_model
-        from agents import lethal_calculator
-        from agents import time_manager
-    except ImportError:
-        # Fallback if imported from elsewhere (like staging/submission packaging)
+        import importlib
+        for m in ["hand_analyst", "turn_planner", "strategy_agent", "opponent_model", "time_manager"]:
+            try:
+                importlib.import_module(f"agents.{m}")
+            except ImportError:
+                pass
+    except Exception:
         pass
     return dict(_AGENT_REGISTRY)
 

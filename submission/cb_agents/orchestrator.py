@@ -13,9 +13,7 @@ from cb_agents.time_manager   import TimeManager
 from cb_agents.strategy_agent import StrategyAgent
 from cb_agents.opponent_model import OpponentModel
 from cb_agents.orchestrator_types import TurnDecision
-from cb_agents.orchestrator_steps import (
-    _step_time, _step_hand, _step_plan, _step_strategy, _step_opponent,
-)
+from cb_agents.orchestrator_steps import _step_time, _step_hand, _step_plan, _step_strategy, _step_opponent
 from cb_agents.orchestrator_merge import _merge, _emergency_pass
 from cb_agents.orchestrator_log import _log_orchestration
 

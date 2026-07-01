@@ -1,8 +1,79 @@
 import random
-
+import os
+import torch
 from scratch.deck_synergy import evaluate_deck_synergy
 
 _numba_multivariate_setup_prob = None
+
+# Initialize PPO ActorCritic model globally if weights exist
+PPO_MODEL = None
+ALIGNER = None
+
+try:
+    if os.path.exists("models/ppo_actor_critic.pt"):
+        from factory.ppo_trainer_network import ActorCritic
+        from factory.data_alignment import DataAligner
+        ALIGNER = DataAligner()
+        PPO_MODEL = ActorCritic(input_dim=213, hidden_dim=256, action_dim=3000)
+        PPO_MODEL.load_state_dict(torch.load("models/ppo_actor_critic.pt", map_location="cpu"))
+        PPO_MODEL.eval()
+except Exception as ppo_err:
+    pass
+
+def get_ppo_setup_value(cand: list, details: dict, num_trials: int = 5) -> float:
+    if PPO_MODEL is None or ALIGNER is None:
+        return 0.0
+    basics = [c for c in cand if c.get("card_type") == "Pokemon" and details.get(str(c["card_id"]), {}).get("stage") == "Basic"]
+    if not basics:
+        return -1.5  # Heavy penalty for no basic pokemon
+        
+    total_val = 0.0
+    valid_trials = 0
+    for _ in range(num_trials):
+        deck_copy = list(cand)
+        random.shuffle(deck_copy)
+        hand = [deck_copy.pop() for _ in range(min(len(deck_copy), 7))]
+        
+        hand_basics = [c for c in hand if c.get("card_type") == "Pokemon" and details.get(str(c["card_id"]), {}).get("stage") == "Basic"]
+        mulligans = 0
+        while not hand_basics and mulligans < 5:
+            mulligans += 1
+            deck_copy = list(cand)
+            random.shuffle(deck_copy)
+            hand = [deck_copy.pop() for _ in range(min(len(deck_copy), 7))]
+            hand_basics = [c for c in hand if c.get("card_type") == "Pokemon" and details.get(str(c["card_id"]), {}).get("stage") == "Basic"]
+            
+        if not hand_basics:
+            continue
+            
+        active = hand_basics[0]
+        hand.remove(active)
+        bench = [c for c in hand if c.get("card_type") == "Pokemon" and details.get(str(c["card_id"]), {}).get("stage") == "Basic"][:5]
+        for b in bench:
+            hand.remove(b)
+            
+        raw_state = {
+            "hand": [c["card_id"] for c in hand],
+            "active": active["card_id"],
+            "bench": [c["card_id"] for c in bench],
+            "prize": [1]*6,
+            "opponent_visible": [],
+            "turn": 1,
+            "is_first_player": 1,
+        }
+        
+        try:
+            norm_state = ALIGNER.normalize_state(raw_state)
+            stacked_state = norm_state * 3  # Stack size = 3 (STATE_DIM = 213)
+            state_tensor = torch.tensor(stacked_state, dtype=torch.float32).unsqueeze(0)
+            with torch.no_grad():
+                _, val_tensor = PPO_MODEL(state_tensor)
+                total_val += val_tensor.item()
+                valid_trials += 1
+        except Exception:
+            pass
+            
+    return (total_val / valid_trials) if valid_trials > 0 else 0.0
 
 def multivariate_setup_prob(basics: int, energies: int, consistency: int) -> float:
     if _numba_multivariate_setup_prob is not None:
@@ -68,4 +139,9 @@ def evaluate_single_candidate(args) -> float:
     n_energies = sum(1 for c in cand if c.get("card_type") == "Energy")
     n_trainers = sum(1 for c in cand if c.get("card_type") == "Trainer")
     fit = sum(scores.get(str(c["card_id"]), 0.0) for c in cand)
-    return fit + multivariate_setup_prob(n_basics, n_energies, n_trainers) * 150.0 - evaluate_deck_synergy(cand, details) + simulate_goldfish_playout(cand, details)
+    
+    base_score = fit + multivariate_setup_prob(n_basics, n_energies, n_trainers) * 150.0 - evaluate_deck_synergy(cand, details) + simulate_goldfish_playout(cand, details)
+    ppo_score = get_ppo_setup_value(cand, details)
+    
+    # Scale PPO score (which ranges from -1.5 to 1.0) to have a meaningful impact on fitness
+    return base_score + ppo_score * 120.0

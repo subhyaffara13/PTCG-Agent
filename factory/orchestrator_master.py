@@ -50,7 +50,7 @@ def run_master_loop():
                     time.sleep(60)
             except KeyboardInterrupt:
                 logger.info("Master loop manually interrupted. Shutting down gracefully...")
-                return
+                raise  # Re-raise to break out of the top-level while loop
             finally:
                 logger.info("--- [Halt Phase] Stopping master server to run analytics ---")
                 try:

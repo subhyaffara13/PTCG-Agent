@@ -13,9 +13,7 @@ from agents.time_manager   import TimeManager
 from agents.strategy_agent import StrategyAgent
 from agents.opponent_model import OpponentModel
 from agents.orchestrator_types import TurnDecision
-from agents.orchestrator_steps import (
-    _step_time, _step_hand, _step_plan, _step_strategy, _step_opponent,
-)
+from agents.orchestrator_steps import _step_time, _step_hand, _step_plan, _step_strategy, _step_opponent
 from agents.orchestrator_merge import _merge, _emergency_pass
 from agents.orchestrator_log import _log_orchestration
 

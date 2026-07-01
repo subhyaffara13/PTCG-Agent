@@ -57,6 +57,9 @@ def run_generations(pool_cards, details, scores, pokemon_pool, basics,
 
     fitness_cache = {_card_key(current_deck): current_fitness}
 
+    # Track top candidates for Stage 2 verification
+    top_candidates = [(current_fitness, current_deck)]
+
     initial_temp = SA_INITIAL_TEMP
     cooling_rate = SA_COOLING_RATE
     gen_limit = SA_GEN_LIMIT
@@ -77,12 +80,19 @@ def run_generations(pool_cards, details, scores, pokemon_pool, basics,
             mutant_fitness = evaluate_single_candidate((mutant, scores, details))
             fitness_cache[k] = mutant_fitness
 
+        # Keep track of unique top 5 candidates
         if mutant_fitness > best_fitness:
             best_fitness = mutant_fitness
             best_deck = mutant
             no_improve_count = 0
         else:
             no_improve_count += 1
+
+        # Add to top candidates if unique
+        if not any(_card_key(mutant) == _card_key(tc[1]) for tc in top_candidates):
+            top_candidates.append((mutant_fitness, mutant))
+            top_candidates.sort(key=lambda x: x[0], reverse=True)
+            top_candidates = top_candidates[:5]
 
         delta = mutant_fitness - current_fitness
         if delta > 0 or random.random() < math.exp(delta / max(temp, 1e-5)):
@@ -100,5 +110,9 @@ def run_generations(pool_cards, details, scores, pokemon_pool, basics,
         if final_fitness > best_fitness:
             best_deck = final_polished
             best_fitness = final_fitness
+            if not any(_card_key(best_deck) == _card_key(tc[1]) for tc in top_candidates):
+                top_candidates.append((best_fitness, best_deck))
+                top_candidates.sort(key=lambda x: x[0], reverse=True)
+                top_candidates = top_candidates[:5]
 
-    return best_deck, best_fitness
+    return top_candidates
