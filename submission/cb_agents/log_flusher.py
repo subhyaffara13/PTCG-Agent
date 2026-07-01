@@ -7,8 +7,38 @@ Handles reading existing logs, merging, and writing back atomically.
 
 import json
 import logging
+import os
+import time
 from pathlib import Path
 from typing import List
+
+
+class FileLock:
+    """Atomic cross-platform file locking manager using OS-level O_EXCL flags."""
+    def __init__(self, filepath: Path, timeout: float = 5.0):
+        self.lockfile = Path(str(filepath) + ".lock")
+        self.timeout = timeout
+
+    def __enter__(self):
+        start = time.time()
+        while True:
+            try:
+                fd = os.open(self.lockfile, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                os.close(fd)
+                return self
+            except FileExistsError:
+                if time.time() - start > self.timeout:
+                    try:
+                        self.lockfile.unlink(missing_ok=True)
+                    except:
+                        pass
+                time.sleep(0.05)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        try:
+            self.lockfile.unlink(missing_ok=True)
+        except:
+            pass
 
 
 def flush_reasoning_logs(
@@ -19,26 +49,19 @@ def flush_reasoning_logs(
     """
     Write all buffered log entries to *filepath*, merging with any
     existing entries already on disk.  Clears *buffer* on success.
-
-    Parameters
-    ----------
-    buffer : list[dict]
-        In-memory log entries to persist.
-    filepath : Path
-        Target JSON file (created if absent).
-    log : logging.Logger
-        Logger used for error reporting.
+    Protected by atomic file locking.
     """
     if not buffer:
         return
 
-    try:
-        logs = _read_existing_logs(filepath)
-        logs.extend(buffer)
-        filepath.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-        buffer.clear()
-    except Exception as e:
-        log.error(f"Failed to flush reasoning logs to {filepath}: {e}")
+    with FileLock(filepath):
+        try:
+            logs = _read_existing_logs(filepath)
+            logs.extend(buffer)
+            filepath.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            buffer.clear()
+        except Exception as e:
+            log.error(f"Failed to flush reasoning logs to {filepath}: {e}")
 
 
 def _read_existing_logs(filepath: Path) -> list:
