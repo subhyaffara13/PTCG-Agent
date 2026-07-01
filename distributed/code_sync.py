@@ -18,6 +18,7 @@ def sync_code(master_version) -> bool:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
             import subprocess
+            subprocess.run(['git', 'reset', '--hard', 'HEAD'], check=True)
             subprocess.run(['git', 'pull'], check=True)
             logging.info("Code synchronized successfully.")
             return True

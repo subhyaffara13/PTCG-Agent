@@ -4,6 +4,10 @@ Top-level orchestration loop: launches training, monitors health, auto-submits.
 """
 import sys
 import os
+
+# Fix path for os.execv restarts which launch as script instead of module
+sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+
 import time
 import subprocess
 import json
