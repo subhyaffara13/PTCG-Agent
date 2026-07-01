@@ -1211,11 +1211,16 @@
       "player": "xinpw8",
       "avg_setup_duration": 31.0,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "ezreal77",
+      "avg_setup_duration": 34.8,
+      "avg_bench_density": 1.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 13.0
   }
 }
