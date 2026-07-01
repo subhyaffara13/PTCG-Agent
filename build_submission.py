@@ -2,19 +2,29 @@
 import tarfile
 import shutil
 import json
+import subprocess
+import sys
 from pathlib import Path
 from datetime import datetime
 
-# 1. Sync the promoted deck_new.csv from agents/ into submission/
+# 1. Build C++ extension in-place
+print("Building C++ extension...")
+try:
+    subprocess.run([sys.executable, "setup.py", "build_ext", "--inplace"], check=True)
+    print("C++ extension built successfully.")
+except Exception as e:
+    print(f"WARNING: C++ extension build failed: {e}")
+
+# 2. Sync the promoted deck_new.csv from agents/ into submission/
 promoted_deck = Path("agents/deck_new.csv")
 if promoted_deck.exists():
     shutil.copy2(promoted_deck, Path("submission/deck.csv"))
     shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
-    print("Synced promoted deck from agents/deck_new.csv.")
+    print("Synced promoted deck.")
 else:
     print("WARNING: agents/deck_new.csv not found!")
 
-# 1.5 Sync all agents to submission/cb_agents and adjust imports
+# 3. Sync all agents to submission/cb_agents and adjust imports
 print("Syncing agents to submission/cb_agents...")
 submission_cb_agents = Path("submission/cb_agents")
 submission_cb_agents.mkdir(parents=True, exist_ok=True)
@@ -26,12 +36,23 @@ for f in Path("agents").glob("*.py"):
     content = content.replace("import agents.", "import cb_agents.")
     dest.write_text(content, encoding="utf-8")
 
-# 2. Load best version from history dynamically
-history_file = Path("versions/version_history.json")
-best_version = "v_20260618_150827"
-best_score = 0.6522
-best_iter = "5580"
+# Copy C++ binaries (*.pyd, *.so) to submission/cb_agents/
+for ext in ("*.pyd", "*.so"):
+    for f in Path(".").glob(ext):
+        if "ptcg_core" in f.name:
+            dest = submission_cb_agents / f.name
+            shutil.copy2(f, dest)
+            print(f"Bundled extension: {f.name} -> {dest}")
+            if f.suffix == ".so":
+                try:
+                    subprocess.run(["strip", "--strip-unneeded", str(dest)], check=False)
+                    print(f"Stripped symbols from {dest.name}")
+                except Exception as e:
+                    pass
 
+# 4. Load best version from history dynamically
+history_file = Path("versions/version_history.json")
+best_version, best_score, best_iter = "v_20260618_150827", 0.6522, "5580"
 if history_file.exists():
     try:
         history = json.loads(history_file.read_text(encoding="utf-8"))
@@ -40,9 +61,8 @@ if history_file.exists():
             best_entry = max(promoted, key=lambda x: x.get("version_score", 0.0))
             best_version = best_entry.get("version_id", "unknown")
             best_score = best_entry.get("version_score", 0.0)
-            # Use timestamp or extract iteration name
             best_iter = best_version
-            print(f"Found best promoted version in history: {best_version} with score {best_score}")
+            print(f"Best promoted version: {best_version} with score {best_score}")
     except Exception as e:
         print(f"Error loading version history: {e}")
 
@@ -55,9 +75,8 @@ manifest = {
     "deck_file": "cb_agents/deck_new.csv",
 }
 (Path("submission") / "manifest.json").write_text(json.dumps(manifest, indent=2))
-print("Wrote manifest.json")
 
-# 3. Build .tar.gz — exclude PDFs, pyc, pycache
+# 5. Build .tar.gz — exclude PDFs, pyc, pycache, and include .pyd/.so
 tar_path = Path("submission.tar.gz")
 with tarfile.open(tar_path, "w:gz") as tar:
     for f in sorted(Path("submission").rglob("*")):
@@ -67,7 +86,6 @@ with tarfile.open(tar_path, "w:gz") as tar:
             continue
         if f.suffix in (".pyc", ".pdf"):
             continue
-        # Skip the old agents/ mirror if it exists
         if "submission/agents/" in str(f).replace("\\", "/"):
             continue
         arcname = str(f.relative_to("submission"))
