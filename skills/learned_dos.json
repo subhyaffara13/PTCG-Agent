@@ -87,7 +87,7 @@
     },
     {
       "card_id": 675,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage (2.0x avg) in winning matches of player Praxel."
     },
     {
@@ -1181,11 +1181,21 @@
       "player": "iwashi",
       "avg_setup_duration": 15.0,
       "avg_bench_density": 1.2
+    },
+    {
+      "player": "Akira-Ninth",
+      "avg_setup_duration": 22.6,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "puraza",
+      "avg_setup_duration": 16.0,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   }
 }
