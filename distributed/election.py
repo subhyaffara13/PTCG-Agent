@@ -28,7 +28,8 @@ def run_election(timeout=10):
 
     def broadcast_election():
         while time.time() < end_time:
-            msg = json.dumps({'type': 'election', 'ip': local_ip})
+            current_ip = get_local_ip()
+            msg = json.dumps({'type': 'election', 'ip': current_ip})
             try:
                 sock.sendto(msg.encode(), ('<broadcast>', ELECTION_PORT))
             except:
@@ -50,8 +51,12 @@ def run_election(timeout=10):
             
     sock.close()
     
+    # Always inject the latest local IP into the peer list for the final vote
+    final_ip = get_local_ip()
+    peers.add(final_ip)
+    
     # Lowest IP wins
     sorted_peers = sorted(list(peers))
     winner = sorted_peers[0]
     
-    return winner == local_ip, winner
+    return winner == final_ip, winner
