@@ -18,10 +18,12 @@ class WorkerClient:
         
     def start(self):
         logger.info(f"Worker {self.worker_id} starting...")
+        consec_failures = 0
         while True:
             try:
                 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 conn.connect((self.host, self.port))
+                consec_failures = 0  # Reset on successful connection
                 
                 conn.sendall(b"GET_WORK\n")
                 
@@ -75,10 +77,18 @@ class WorkerClient:
                 conn.close()
                 
             except (ConnectionRefusedError, socket.error) as e:
-                logger.warning(f"Connection error to {self.host}:{self.port}: {e}. Retrying in 10s...")
+                consec_failures += 1
+                logger.warning(f"Connection error to {self.host}:{self.port} (attempt {consec_failures}): {e}. Retrying...")
+                if consec_failures >= 15:
+                    logger.error("Too many connection failures. Falling back to Master discovery.")
+                    raise ConnectionError("Master host unreachable")
                 time.sleep(10)
             except Exception as e:
-                logger.error(f"Unexpected worker error: {e}. Retrying in 10s...")
+                consec_failures += 1
+                logger.error(f"Unexpected worker error (attempt {consec_failures}): {e}. Retrying...")
+                if consec_failures >= 15:
+                    logger.error("Too many connection failures. Falling back to Master discovery.")
+                    raise ConnectionError("Master host unreachable")
                 time.sleep(10)
 
 if __name__ == "__main__":
