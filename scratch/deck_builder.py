@@ -1,10 +1,11 @@
 import random
+from scratch.deck_genetics import get_card_copy_limit
 
 def make_deck(lines, trainers, energies, basics, pool, details) -> list:
     deck, copies = [], {}
     def add(c, count):
         cid = str(c["card_id"])
-        limit = 99 if c.get("card_type") == "Energy" and "Basic" in c.get("card_name", "") else 4
+        limit = get_card_copy_limit(c)
         added = 0
         for _ in range(count):
             if len(deck) < 60 and copies.get(cid, 0) < limit:

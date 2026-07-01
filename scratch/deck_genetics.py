@@ -13,6 +13,11 @@ def _card_type_counts(deck, details):
         sum(1 for c in deck if c.get("card_type") == "Trainer"),
     )
 
+def get_card_copy_limit(card: dict) -> int:
+    """Canonical TCG deck limit rule: unlimited for Basic Energy, max 4 for others."""
+    is_basic_energy = "ENERGY" in str(card.get("card_type")).upper() and "BASIC" in str(card.get("card_name", "")).upper()
+    return 99 if is_basic_energy else 4
+
 def mutate_deck(deck: list, pokemon_pool: list, basics: list, energy_pool: list,
                 trainer_pool: dict, pool_cards: list, details: dict, mutation_rate: float = 0.3,
                 empirical_core=None) -> list:
@@ -56,9 +61,8 @@ def mutate_deck(deck: list, pokemon_pool: list, basics: list, energy_pool: list,
             if not cand: continue
             if ctype == cand.get("card_type"):
                 cand_id = int(cand["card_id"])
-                # Enforce the 4-copy rule unless it is Basic Energy
-                is_basic_energy = "ENERGY" in str(cand.get("card_type")).upper() and "BASIC" in str(cand.get("card_name", "")).upper()
-                if not is_basic_energy and current_counts[cand_id] >= 4:
+                # Enforce the 4-copy rule using our centralized validator
+                if current_counts[cand_id] >= get_card_copy_limit(cand):
                     continue
                 valid_candidates.append(cand)
                 
