@@ -47,13 +47,21 @@ def monitor_and_restart(processes: list, scripts: list):
 
 def cleanup(processes: list):
     logger.info("Cleaning up sub-tasks...")
+    # First send terminate to all processes immediately to trigger fast shutdowns
+    for p, f in processes:
+        if p is not None:
+            try:
+                p.terminate()
+            except Exception:
+                pass
+                
+    # Now wait for them to exit, falling back to force-kill if interrupted
     for p, f in processes:
         if p is None:
             continue
         try:
-            p.terminate()
-            p.wait(timeout=5)
-        except Exception:
+            p.wait(timeout=2)
+        except BaseException:
             try:
                 p.kill()
             except Exception:
