@@ -724,6 +724,11 @@
       "card_id": 506,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1209,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1191,11 +1196,21 @@
       "player": "puraza",
       "avg_setup_duration": 16.0,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "tsukammo",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "CardPilotLab",
+      "avg_setup_duration": 17.2,
+      "avg_bench_density": 1.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 30.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 13.0
   }
 }
