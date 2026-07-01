@@ -68,6 +68,14 @@ def main():
                 logger.info(f"[DISCOVERY] Found master at {master_ip}. Becoming worker.")
                 last_seen_master_time = time.time()
                 last_known_master_ip = master_ip
+                
+                try:
+                    from distributed.code_sync import sync_code, restart_process
+                    if master_version and sync_code(master_version):
+                        restart_process()
+                except Exception as sync_e:
+                    logger.warning(f"[SYNC] Code synchronization failed: {sync_e}")
+                    
                 run_worker_loop(master_ip, master_version)
             else:
                 grace_period = 300  # 5 minutes
@@ -88,6 +96,14 @@ def main():
                     else:
                         logger.info(f"[WORKER] Master is {winner_ip}. Waiting for beacon...")
                         m_ip, m_version = listener.listen_for_master()
+                        
+                        try:
+                            from distributed.code_sync import sync_code, restart_process
+                            if m_version and sync_code(m_version):
+                                restart_process()
+                        except Exception as sync_e:
+                            logger.warning(f"[SYNC] Code synchronization failed: {sync_e}")
+                            
                         run_worker_loop(winner_ip, m_version)
         except Exception as e:
             logger.error(f"Critical error in Orchestration Agent loop: {e}")
