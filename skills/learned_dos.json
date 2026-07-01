@@ -1221,11 +1221,21 @@
       "player": "TakamaruEX",
       "avg_setup_duration": 28.8,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "Rajan Nagarajan",
+      "avg_setup_duration": 22.0,
+      "avg_bench_density": 2.3
+    },
+    {
+      "player": "Dick Jessen William",
+      "avg_setup_duration": 31.0,
+      "avg_bench_density": 3.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 15.0
+    "avg_pokemon_count": 15.0,
+    "avg_trainer_count": 37.0,
+    "avg_energy_count": 8.0
   }
 }
