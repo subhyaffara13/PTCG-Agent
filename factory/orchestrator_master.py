@@ -51,13 +51,19 @@ def run_master_loop():
             finally:
                 logger.info("--- [Halt Phase] Stopping master server to run analytics ---")
                 cleanup(processes)
-                time.sleep(5)
+                try:
+                    time.sleep(2)
+                except KeyboardInterrupt:
+                    pass
 
             logger.info("--- [Analytics Phase] Running synchronous checks ---")
             from factory.log_pruner import prune_logs
             prune_logs(max_files=1000)
             run_hourly_checks(iteration)
             run_analytics_check(iteration)
+    except KeyboardInterrupt:
+        logger.info("Master loop manually interrupted. Shutting down gracefully...")
+        return
             
             try:
                 from factory.orchestrator_master_git import auto_commit_and_push_if_changed
