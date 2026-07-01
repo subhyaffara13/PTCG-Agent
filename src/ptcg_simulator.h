@@ -30,6 +30,9 @@ private:
     std::unordered_map<std::string, Card> cards;
     std::unordered_map<std::string, std::string> nameToId;
 
+    void loadMetadata(const std::string& path);
+    void loadScoring(const std::string& path);
+
     std::string lowercase(std::string s) const {
         std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c){ return std::tolower(c); });
         return s;
