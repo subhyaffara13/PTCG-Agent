@@ -35,10 +35,11 @@ class MasterBeacon:
     def _broadcast_loop(self):
         while self.running:
             try:
+                current_ip = self._get_local_ip()
                 message = json.dumps({
                     'type': 'beacon',
                     'code_version': self.code_version,
-                    'master_ip': self.local_ip
+                    'master_ip': current_ip
                 })
                 self.sock.sendto(message.encode(), ('<broadcast>', PORT))
                 time.sleep(BEACON_INTERVAL)
