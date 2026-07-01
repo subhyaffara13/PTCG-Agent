@@ -1,6 +1,5 @@
 import logging
 from pathlib import Path
-from agents.logging_helper import append_and_flush_logs
 
 logger = logging.getLogger(__name__)
 

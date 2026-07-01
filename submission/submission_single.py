@@ -678,6 +678,9 @@ import json
 import pathlib
 import datetime
 from typing import Any
+import logging
+
+logger = logging.getLogger(__name__)
 
 _PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
 _SKILL_PATH   = _PROJECT_ROOT / "skills" / "card_scoring.json"
@@ -698,17 +701,9 @@ class HandAnalyst:
         self._log_buffer: list[dict[str, Any]] = []
 
     def flush_logs(self) -> None:
-        if not self._log_buffer:
-            return
         log_path = self.log_dir / "reasoning_log.json"
         log_path.parent.mkdir(parents=True, exist_ok=True)
-        try:
-            log: list[Any] = json.loads(log_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, FileNotFoundError):
-            log = []
-        log.extend(self._log_buffer)
-        log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
-        self._log_buffer.clear()
+        flush_reasoning_logs(self._log_buffer, log_path, logger)
 
     def analyse(self, packet: dict[str, Any]) -> dict[str, Any]:
         if hasattr(packet, "model_dump"): packet = packet.model_dump()
@@ -1084,6 +1079,10 @@ import pathlib
 import datetime
 from typing import Any
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 _PROJECT_ROOT         = pathlib.Path(__file__).resolve().parent.parent
 _LOG_PATH             = _PROJECT_ROOT / "logs" / "reasoning_log.json"
 
@@ -1094,17 +1093,9 @@ class TimeManager:
         self._log_buffer: list[dict[str, Any]] = []
 
     def flush_logs(self) -> None:
-        if not self._log_buffer:
-            return
         log_path = self.log_dir / "reasoning_log.json"
         log_path.parent.mkdir(parents=True, exist_ok=True)
-        try:
-            log: list[Any] = json.loads(log_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, FileNotFoundError):
-            log = []
-        log.extend(self._log_buffer)
-        log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
-        self._log_buffer.clear()
+        flush_reasoning_logs(self._log_buffer, log_path, logger)
 
     def tick(self, packet: dict[str, Any]) -> dict[str, Any]:
         if hasattr(packet, "model_dump"): packet = packet.model_dump()
@@ -17625,6 +17616,16390 @@ def _log_action_exception(exc: Exception):
         logger.error(f"Failed to log crash event to {log_file}: {log_err}")
 
 
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
+
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": "",
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+
+
 def agent(observation, configuration=None):
     """
     Main Actuation Agent loop parsed by Kaggle Match runtimes.
@@ -17751,6 +34126,8 @@ def agent(observation, configuration=None):
     except Exception as e:
         _log_action_exception(e)
         return fallback_action
+
+
 
 
 

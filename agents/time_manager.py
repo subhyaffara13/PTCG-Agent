@@ -24,6 +24,11 @@ import pathlib
 import datetime
 from typing import Any
 
+from agents.log_flusher import flush_reasoning_logs
+import logging
+
+logger = logging.getLogger(__name__)
+
 _PROJECT_ROOT         = pathlib.Path(__file__).resolve().parent.parent
 _LOG_PATH             = _PROJECT_ROOT / "logs" / "reasoning_log.json"
 
@@ -34,17 +39,9 @@ class TimeManager:
         self._log_buffer: list[dict[str, Any]] = []
 
     def flush_logs(self) -> None:
-        if not self._log_buffer:
-            return
         log_path = self.log_dir / "reasoning_log.json"
         log_path.parent.mkdir(parents=True, exist_ok=True)
-        try:
-            log: list[Any] = json.loads(log_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, FileNotFoundError):
-            log = []
-        log.extend(self._log_buffer)
-        log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
-        self._log_buffer.clear()
+        flush_reasoning_logs(self._log_buffer, log_path, logger)
 
     def tick(self, packet: dict[str, Any]) -> dict[str, Any]:
         if hasattr(packet, "model_dump"): packet = packet.model_dump()

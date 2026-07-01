@@ -6,6 +6,10 @@ import pathlib
 import datetime
 from dataclasses import asdict
 from typing import Any
+from agents.log_flusher import flush_reasoning_logs
+import logging
+
+logger = logging.getLogger(__name__)
 
 _PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
 _LOG_PATH     = _PROJECT_ROOT / "logs" / "reasoning_log.json"
@@ -13,16 +17,8 @@ _log_buffer: list[dict[str, Any]] = []
 
 
 def flush_logs() -> None:
-    if not _log_buffer:
-        return
     _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        log: list[Any] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, FileNotFoundError):
-        log = []
-    log.extend(_log_buffer)
-    _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
-    _log_buffer.clear()
+    flush_reasoning_logs(_log_buffer, _LOG_PATH, logger)
 
 
 def _log_orchestration(gs: dict[str, Any], decision: Any) -> None:

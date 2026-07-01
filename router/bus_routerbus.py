@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 from typing import Dict, Any, Callable
-from agents.logging_helper import append_and_flush_logs
+from agents.log_flusher import flush_reasoning_logs
 from router.bus_helpers import ALLOWED_PACKETS, log_and_flush_delegation
 
 logger = logging.getLogger(__name__)
@@ -36,4 +36,4 @@ class RouterBus:
         return response
 
     def flush_logs(self):
-        append_and_flush_logs(self.log_file, self._action_buffer)
+        flush_reasoning_logs(self._action_buffer, self.log_file, logger)
