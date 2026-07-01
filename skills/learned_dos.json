@@ -702,7 +702,7 @@
     },
     {
       "card_id": 342,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -727,6 +727,11 @@
     },
     {
       "card_id": 1209,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1261,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -1241,11 +1246,21 @@
       "player": "L-WALID",
       "avg_setup_duration": 21.4,
       "avg_bench_density": 1.4
+    },
+    {
+      "player": "ochisamu",
+      "avg_setup_duration": 25.4,
+      "avg_bench_density": 1.2
+    },
+    {
+      "player": "CCoffie",
+      "avg_setup_duration": 17.4,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 36.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 27.0,
+    "avg_energy_count": 10.0
   }
 }
