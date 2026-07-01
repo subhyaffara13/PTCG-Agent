@@ -39,10 +39,12 @@ class WorkerClient:
                 logger.info(f"Received work order: {order.job_id} (Iteration {order.iteration})")
                 
                 try:
+                    d_base = {"cards": order.deck_base} if order.deck_base else {}
+                    d_new = {"cards": order.deck_new} if order.deck_new else {}
                     res_dict = self.runner.run_iteration(
                         iteration_id=order.iteration,
                         version_n1="base", version_n2="new",
-                        deck_base={}, deck_new={},
+                        deck_base=d_base, deck_new=d_new,
                         reasoning_base={}, reasoning_new={}
                     )
                     
@@ -72,12 +74,12 @@ class WorkerClient:
                     
                 conn.close()
                 
-            except ConnectionRefusedError:
-                logger.warning(f"Connection refused to {self.host}:{self.port}. Master may be down.")
-                raise ConnectionError("Master is down")
+            except (ConnectionRefusedError, socket.error) as e:
+                logger.warning(f"Connection error to {self.host}:{self.port}: {e}. Retrying in 10s...")
+                time.sleep(10)
             except Exception as e:
-                logger.error(f"Worker error: {e}")
-                raise ConnectionError(f"Worker error: {e}")
+                logger.error(f"Unexpected worker error: {e}. Retrying in 10s...")
+                time.sleep(10)
 
 if __name__ == "__main__":
     host = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'

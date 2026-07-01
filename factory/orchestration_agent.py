@@ -55,6 +55,9 @@ def main():
     from factory.orchestrator_master import run_master_loop
     from factory.orchestrator_worker import run_worker_loop
     
+    last_seen_master_time = None
+    last_known_master_ip = None
+    
     while True:
         try:
             listener = WorkerListener(interface_type="wifi")
@@ -63,18 +66,29 @@ def main():
             
             if master_ip:
                 logger.info(f"[DISCOVERY] Found master at {master_ip}. Becoming worker.")
+                last_seen_master_time = time.time()
+                last_known_master_ip = master_ip
                 run_worker_loop(master_ip, master_version)
             else:
-                logger.info("[ELECTION] No master found. Running election...")
-                is_master, winner_ip = run_election(timeout=10)
-                
-                if is_master:
-                    logger.info(f"[MASTER] Elected as master ({winner_ip}).")
-                    run_master_loop()
+                grace_period = 300  # 5 minutes
+                if last_known_master_ip and last_seen_master_time and (time.time() - last_seen_master_time < grace_period):
+                    logger.info(f"[DISCOVERY] Master beacons temporarily missing. Last seen master: {last_known_master_ip}. Retrying direct connect...")
+                    try:
+                        run_worker_loop(last_known_master_ip, None)
+                    except Exception as loop_err:
+                        logger.warning(f"Failed direct reconnect: {loop_err}")
+                    time.sleep(5)
                 else:
-                    logger.info(f"[WORKER] Master is {winner_ip}. Waiting for beacon...")
-                    m_ip, m_version = listener.listen_for_master()
-                    run_worker_loop(winner_ip, m_version)
+                    logger.info("[ELECTION] No master found and grace period expired. Running election...")
+                    is_master, winner_ip = run_election(timeout=10)
+                    
+                    if is_master:
+                        logger.info(f"[MASTER] Elected as master ({winner_ip}).")
+                        run_master_loop()
+                    else:
+                        logger.info(f"[WORKER] Master is {winner_ip}. Waiting for beacon...")
+                        m_ip, m_version = listener.listen_for_master()
+                        run_worker_loop(winner_ip, m_version)
         except Exception as e:
             logger.error(f"Critical error in Orchestration Agent loop: {e}")
             import time

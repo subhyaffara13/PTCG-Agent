@@ -10,6 +10,8 @@ class WorkOrder:
     iteration: int
     worker_id: Optional[str] = None
     config: Optional[Dict[str, Any]] = None
+    deck_base: Optional[list] = None
+    deck_new: Optional[list] = None
 
     def serialize(self) -> str:
         return json.dumps(asdict(self))

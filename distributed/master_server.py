@@ -15,6 +15,22 @@ from distributed.master_handlers import MasterHandlers
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - Master - %(levelname)s - %(message)s')
 logger = logging.getLogger("master_server")
 
+def _load_deck(path: str) -> list:
+    import csv
+    from factory.game_runner import DEFAULT_DECK
+    if not os.path.exists(path):
+        return DEFAULT_DECK
+    try:
+        deck = []
+        with open(path, "r", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                deck.extend([int(row["card_id"])] * int(row["count"]))
+        if len(deck) == 60:
+            return deck
+    except Exception:
+        pass
+    return DEFAULT_DECK
+
 class MasterServer:
     def __init__(self, port=9871):
         self.port = port
@@ -57,7 +73,15 @@ class MasterServer:
         iteration = 1
         while self.running:
             if self.work_queue.qsize() < 10:
-                order = WorkOrder(job_id=f"job_{iteration}", iteration=iteration, config={"base": "aggro", "new": "control"})
+                d_base = _load_deck("agents/deck_base.csv")
+                d_new = _load_deck("agents/deck_new.csv")
+                order = WorkOrder(
+                    job_id=f"job_{iteration}",
+                    iteration=iteration,
+                    config={"base": "aggro", "new": "control"},
+                    deck_base=d_base,
+                    deck_new=d_new
+                )
                 self.work_queue.put(order)
                 iteration += 1
                 with self.lock:
@@ -70,7 +94,8 @@ class MasterServer:
                         res_dict = runner.run_iteration(
                             iteration_id=local_order.iteration,
                             version_n1="base", version_n2="new",
-                            deck_base={}, deck_new={},
+                            deck_base={"cards": local_order.deck_base},
+                            deck_new={"cards": local_order.deck_new},
                             reasoning_base={}, reasoning_new={}
                         )
                         logger.info(f"Local iteration {local_order.iteration} completed.")
