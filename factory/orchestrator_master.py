@@ -48,6 +48,9 @@ def run_master_loop():
                 for _ in range(60):
                     monitor_and_restart(processes, scripts)
                     time.sleep(60)
+            except KeyboardInterrupt:
+                logger.info("Master loop manually interrupted. Shutting down gracefully...")
+                return
             finally:
                 logger.info("--- [Halt Phase] Stopping master server to run analytics ---")
                 cleanup(processes)
@@ -61,9 +64,6 @@ def run_master_loop():
             prune_logs(max_files=1000)
             run_hourly_checks(iteration)
             run_analytics_check(iteration)
-    except KeyboardInterrupt:
-        logger.info("Master loop manually interrupted. Shutting down gracefully...")
-        return
             
             try:
                 from factory.orchestrator_master_git import auto_commit_and_push_if_changed
