@@ -12,7 +12,7 @@ from scratch.run_guided_trajectory import _extract_all_steps
 from scratch.run_guided_refactor import get_last_iteration_id, execute_refactor_step
 
 logger = logging.getLogger("run_guided_helpers")
-PPO_EPOCHS = 4
+PPO_EPOCHS = 8
 PPO_BATCH_SIZE = 1024
 
 def execute_ppo_step(iteration_id: int, iteration_result: dict = None):

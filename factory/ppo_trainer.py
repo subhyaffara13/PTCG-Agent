@@ -25,12 +25,12 @@ logger = logging.getLogger(__name__)
 class PPOTrainer:
     def __init__(self, state_dim: int = STATE_DIM, action_dim: int = 3000, model_path: str = 'models/ppo_actor_critic.pt'):
         self.state_dim, self.action_dim, self.model_path = state_dim, action_dim, model_path
-        self.clip_ratio, self.gamma, self.lam, self.value_coef, self.entropy_coef = 0.2, 0.99, 0.95, 0.5, 0.02
+        self.clip_ratio, self.gamma, self.lam, self.value_coef, self.entropy_coef = 0.2, 0.99, 0.95, 0.5, 0.08
 
         if TORCH_AVAILABLE:
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             self.model = ActorCritic(state_dim, 256, action_dim).to(self.device)
-            self.optimizer = optim.Adam(self.model.parameters(), lr=3e-4)
+            self.optimizer = optim.Adam(self.model.parameters(), lr=1e-3)
             if os.path.exists(model_path):
                 try:
                     self.model.load_state_dict(torch.load(model_path, map_location=self.device))
@@ -48,7 +48,7 @@ class PPOTrainer:
                     else:
                         logger.warning(f"Could not load model: {e}")
                     self.model = ActorCritic(self.state_dim, 256, self.action_dim).to(self.device)
-                    self.optimizer = optim.Adam(self.model.parameters(), lr=3e-4)
+                    self.optimizer = optim.Adam(self.model.parameters(), lr=1e-3)
             logger.info(f"Initialized PPOTrainer on {self.device}")
         else:
             self.model = None
