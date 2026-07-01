@@ -47,11 +47,19 @@ def mutate_deck(deck: list, pokemon_pool: list, basics: list, energy_pool: list,
         c = result[idx]
         ctype = c.get("card_type")
         
+        # Count existing cards in the deck excluding the index being mutated
+        current_counts = Counter(int(card["card_id"]) for i, card in enumerate(result) if i != idx)
+        
         valid_candidates = []
         for cid in flex_pool:
             cand = id_map.get(cid)
             if not cand: continue
             if ctype == cand.get("card_type"):
+                cand_id = int(cand["card_id"])
+                # Enforce the 4-copy rule unless it is Basic Energy
+                is_basic_energy = "ENERGY" in str(cand.get("card_type")).upper() and "BASIC" in str(cand.get("card_name", "")).upper()
+                if not is_basic_energy and current_counts[cand_id] >= 4:
+                    continue
                 valid_candidates.append(cand)
                 
         if not valid_candidates:
