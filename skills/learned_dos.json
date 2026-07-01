@@ -1236,11 +1236,16 @@
       "player": "WEcoS",
       "avg_setup_duration": 27.8,
       "avg_bench_density": 3.1
+    },
+    {
+      "player": "L-WALID",
+      "avg_setup_duration": 21.4,
+      "avg_bench_density": 1.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 36.0,
+    "avg_energy_count": 11.0
   }
 }
