@@ -1361,11 +1361,16 @@
       "player": "Nghia Tran",
       "avg_setup_duration": 28.0,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "XIAODOUZI",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   }
 }
