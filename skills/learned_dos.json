@@ -1331,11 +1331,16 @@
       "player": "Pokk\u00e9n",
       "avg_setup_duration": 40.8,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "llkarill",
+      "avg_setup_duration": 23.4,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 11.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 15.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 7.0
   }
 }
