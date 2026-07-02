@@ -112,7 +112,7 @@
     },
     {
       "card_id": 1123,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (2.0x avg) in winning matches of player Praxel."
     },
     {
@@ -352,7 +352,7 @@
     },
     {
       "card_id": 1197,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (3.0x avg) in winning matches of player yamy893."
     },
     {
@@ -732,6 +732,26 @@
     },
     {
       "card_id": 1261,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 58,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 344,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 345,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1204,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -1261,11 +1281,21 @@
       "player": "YIN",
       "avg_setup_duration": 29.0,
       "avg_bench_density": 2.0
+    },
+    {
+      "player": "Hexylab",
+      "avg_setup_duration": 37.8,
+      "avg_bench_density": 1.5
+    },
+    {
+      "player": "ykuroka",
+      "avg_setup_duration": 26.0,
+      "avg_bench_density": 2.7
     }
   ],
   "deck_stats": {
     "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 13.0
+    "avg_trainer_count": 39.0,
+    "avg_energy_count": 8.0
   }
 }
