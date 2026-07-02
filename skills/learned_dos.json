@@ -1336,11 +1336,16 @@
       "player": "llkarill",
       "avg_setup_duration": 23.4,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "Bata09",
+      "avg_setup_duration": 27.0,
+      "avg_bench_density": 4.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 27.0,
+    "avg_energy_count": 10.0
   }
 }
