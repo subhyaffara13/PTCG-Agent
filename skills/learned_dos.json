@@ -1256,11 +1256,16 @@
       "player": "CCoffie",
       "avg_setup_duration": 17.4,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "YIN",
+      "avg_setup_duration": 29.0,
+      "avg_bench_density": 2.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 23.0,
-    "avg_trainer_count": 27.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 13.0
   }
 }
