@@ -1311,11 +1311,16 @@
       "player": "btk15049",
       "avg_setup_duration": 24.8,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "takaygiiiiiiii",
+      "avg_setup_duration": 19.8,
+      "avg_bench_density": 2.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 16.0,
-    "avg_trainer_count": 30.0,
-    "avg_energy_count": 14.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   }
 }
