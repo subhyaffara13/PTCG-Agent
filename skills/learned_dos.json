@@ -472,7 +472,7 @@
     },
     {
       "card_id": 1174,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -752,6 +752,16 @@
     },
     {
       "card_id": 1204,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1187,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1118,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -1291,11 +1301,21 @@
       "player": "ykuroka",
       "avg_setup_duration": 26.0,
       "avg_bench_density": 2.7
+    },
+    {
+      "player": "BioMath",
+      "avg_setup_duration": 22.2,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "btk15049",
+      "avg_setup_duration": 24.8,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 16.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 14.0
   }
 }
