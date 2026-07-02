@@ -1341,11 +1341,16 @@
       "player": "Bata09",
       "avg_setup_duration": 27.0,
       "avg_bench_density": 4.1
+    },
+    {
+      "player": "Kazuta MIZUTA",
+      "avg_setup_duration": 11.2,
+      "avg_bench_density": 1.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 23.0,
-    "avg_trainer_count": 27.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   }
 }
