@@ -3739,7 +3739,10 @@ def handle_time_manager_helper(orchestrator, time_elapsed, legal_actions_list, g
 logger = logging.getLogger(__name__)
 try:
     import ptcg_core
-    HAS_CPP = True
+    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ))
+    HAS_CPP = not is_kaggle
+    if is_kaggle:
+        logger.info('Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.')
 except Exception:
     ptcg_core = None
     HAS_CPP = False

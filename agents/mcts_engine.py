@@ -15,10 +15,13 @@ from agents.mcts_mast import MASTPolicy
 
 logger = logging.getLogger(__name__)
 
-# Try to import C++ extension module ptcg_core
+# Try to import C++ extension module ptcg_core (disabled on Kaggle to avoid sandbox segfaults)
 try:
     import ptcg_core  # type: ignore
-    HAS_CPP = True
+    is_kaggle = any(k.startswith("KAGGLE") for k in os.environ)
+    HAS_CPP = not is_kaggle
+    if is_kaggle:
+        logger.info("Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.")
 except Exception:
     ptcg_core = None
     HAS_CPP = False
