@@ -15,11 +15,18 @@ try:
 except Exception as e:
     print(f"WARNING: C++ extension build failed: {e}")
 
+# 1.5 Clean old target subfolders in submission/ to avoid packaging stale files
+print("Cleaning old target directories in submission/...")
+for folder in ("cb_agents", "router", "skills"):
+    p = Path("submission") / folder
+    if p.exists():
+        shutil.rmtree(p)
+
 # 2. Sync the promoted deck_new.csv from agents/ into submission/
 promoted_deck = Path("agents/deck_new.csv")
 if promoted_deck.exists():
+    Path("submission").mkdir(parents=True, exist_ok=True)
     shutil.copy2(promoted_deck, Path("submission/deck.csv"))
-    shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
     print("Synced promoted deck.")
 else:
     print("WARNING: agents/deck_new.csv not found!")
@@ -35,6 +42,36 @@ for f in Path("agents").glob("*.py"):
     content = content.replace("from agents.", "from cb_agents.")
     content = content.replace("import agents.", "import cb_agents.")
     dest.write_text(content, encoding="utf-8")
+
+# Copy the promoted deck inside the cb_agents directory as well
+if promoted_deck.exists():
+    shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
+
+# 3.1 Sync all router files to submission/router and adjust imports
+print("Syncing router files to submission/router...")
+submission_router = Path("submission/router")
+submission_router.mkdir(parents=True, exist_ok=True)
+for f in Path("router").glob("*.py"):
+    dest = submission_router / f.name
+    shutil.copy2(f, dest)
+    content = dest.read_text(encoding="utf-8")
+    content = content.replace("from agents.", "from cb_agents.")
+    content = content.replace("import agents.", "import cb_agents.")
+    dest.write_text(content, encoding="utf-8")
+
+# 3.2 Sync all skills files to submission/skills (excluding reference PDF)
+print("Syncing skills files to submission/skills...")
+submission_skills = Path("submission/skills")
+submission_skills.mkdir(parents=True, exist_ok=True)
+for f in Path("skills").glob("*"):
+    if f.is_file() and f.suffix not in (".pdf", ".pyc"):
+        dest = submission_skills / f.name
+        shutil.copy2(f, dest)
+
+# 3.3 Create package marker __init__.py files for all subpackages
+print("Creating package markers (__init__.py)...")
+for folder in ("cb_agents", "router", "skills"):
+    (Path("submission") / folder / "__init__.py").touch(exist_ok=True)
 
 # Copy C++ binaries (*.pyd, *.so) to submission/cb_agents/
 for ext in ("*.pyd", "*.so"):

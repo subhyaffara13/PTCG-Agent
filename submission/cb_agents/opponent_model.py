@@ -15,8 +15,12 @@ class OpponentModel(BaseAgent):
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
         self.shared_context = shared_context
-        self.log_dir.mkdir(parents=True, exist_ok=True)
-        self.skills_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            self.log_dir.mkdir(parents=True, exist_ok=True)
+            self.skills_dir.mkdir(parents=True, exist_ok=True)
+        except Exception as e:
+            logger.warning(f"Could not create opponent model directories: {e}")
+
         self.reasoning_log_file = self.log_dir / "opponent_model_reasoning.json"
         self._reasoning_buffer = []
         if self.shared_context:

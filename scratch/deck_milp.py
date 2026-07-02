@@ -31,6 +31,8 @@ def optimize_deck_milp(empirical_core, pool_cards, details, scores, target_size=
         if cid not in card_vars:
             limit = 60 if c.get("card_type") == "Energy" and "Basic" in c.get("card_name", "") else 4
             min_val = core_counts.get(cid, 0)
+            if not is_core_obj:
+                min_val = min(limit, min_val)
             
             if is_core_obj and cid in core_counts:
                 card_vars[cid] = pulp.LpVariable(f"x_{cid}", lowBound=min_val, upBound=min_val, cat='Integer')

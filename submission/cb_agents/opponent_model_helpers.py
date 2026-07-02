@@ -4,7 +4,9 @@ agents/opponent_model_helpers.py
 Helper logic for OpponentModel: archetype classification and action predictions.
 """
 
+from __future__ import annotations
 from typing import Dict, List, Any
+
 
 # Map Pokemon IDs to archetypes for fast lookup
 KEY_ID_TO_ARCHETYPE = {

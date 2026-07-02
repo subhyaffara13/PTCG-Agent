@@ -4,8 +4,10 @@ router/packets.py
 Scoped Packet Schemas for strict boundary verification in the PTCG Agent System.
 """
 
+from __future__ import annotations
 from typing import Any, Dict
 from dataclasses import dataclass
+
 
 @dataclass(frozen=True)
 class HandAnalystPacket:

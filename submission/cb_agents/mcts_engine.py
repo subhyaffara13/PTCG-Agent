@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 try:
     import ptcg_core
     HAS_CPP = True
-except ImportError:
+except Exception:
     ptcg_core = None
     HAS_CPP = False
     logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")

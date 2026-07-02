@@ -17,10 +17,11 @@ from factory.game_runner_worker import _parallel_game_worker
 
 logger = logging.getLogger(__name__)
 
-def _load_optimized_deck() -> list[int]:
+def _load_optimized_deck(custom_path: str = None) -> list[int]:
     """Load the best deck from the optimizer pipeline output."""
     import csv
-    for deck_path in ["staging/deck_new.csv", "agents/deck_new.csv"]:
+    paths = [custom_path] if custom_path else ["staging/deck_new.csv", "agents/deck_new.csv"]
+    for deck_path in paths:
         p = Path(deck_path)
         if p.exists():
             try:
@@ -35,6 +36,7 @@ def _load_optimized_deck() -> list[int]:
                 logger.warning("Failed to load deck from %s: %s", deck_path, e)
     logger.warning("No optimized deck found, using fallback")
     return [957]*4 + [734]*4 + [979]*4 + [855]*4 + [87]*2 + [226]*2 + [1121]*4 + [4]*3 + [2]*3 + [6]*4 + [733]*4 + [950]*4 + [1102]*4 + [1086]*4 + [1213]*4 + [1079]*4 + [1123]*2
+
 
 DEFAULT_DECK = _load_optimized_deck()
 

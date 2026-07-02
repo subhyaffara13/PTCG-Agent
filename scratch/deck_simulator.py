@@ -140,8 +140,24 @@ def evaluate_single_candidate(args) -> float:
     n_trainers = sum(1 for c in cand if c.get("card_type") == "Trainer")
     fit = sum(scores.get(str(c["card_id"]), 0.0) for c in cand)
     
+    # Enforce copy limits
+    from collections import Counter
+    from scratch.deck_genetics import get_card_copy_limit
+    counts = Counter(str(c["card_id"]) for c in cand)
+    violations = 0
+    for cid, cnt in counts.items():
+        card = next((c for c in cand if str(c["card_id"]) == cid), None)
+        if card:
+            limit = get_card_copy_limit(card)
+            if cnt > limit:
+                violations += (cnt - limit)
+    
     base_score = fit + multivariate_setup_prob(n_basics, n_energies, n_trainers) * 150.0 - evaluate_deck_synergy(cand, details) + simulate_goldfish_playout(cand, details)
     ppo_score = get_ppo_setup_value(cand, details)
     
     # Scale PPO score (which ranges from -1.5 to 1.0) to have a meaningful impact on fitness
-    return base_score + ppo_score * 120.0
+    final_score = base_score + ppo_score * 120.0
+    if violations > 0:
+        final_score -= violations * 100000.0
+    return final_score
+

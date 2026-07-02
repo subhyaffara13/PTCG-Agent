@@ -42,8 +42,9 @@ def bundle():
     if archetypes_path.exists():
         deck_archetypes = json.loads(archetypes_path.read_text(encoding="utf-8"))
         
-    # 2. Read deck EV scores from staging/deck_new.csv
+    # 2. Read deck EV scores and deck list from staging/deck_new.csv
     deck_ev = {}
+    deck_list = []
     deck_path = Path("staging/deck_new.csv")
     if not deck_path.exists():
         deck_path = Path("submission/deck.csv")
@@ -54,8 +55,17 @@ def bundle():
                 name = row.get("card_name", "").strip()
                 if name:
                     deck_ev[name] = float(row.get("ev_score", 0.0))
+                card_id_str = row.get("card_id", "").strip()
+                count_str = row.get("count", "").strip()
+                if card_id_str and count_str:
+                    deck_list.extend([int(card_id_str)] * int(count_str))
                     
     print(f"Loaded {len(deck_ev)} card EV scores")
+    if len(deck_list) == 60:
+        default_deck_str = repr(deck_list)
+    else:
+        print(f"Warning: Loaded deck has {len(deck_list)} cards, falling back to default 60-card deck.")
+        default_deck_str = "[\n    3, 3, 3, 3, 3, 3, 3, 5, 6, 6,\n    11, 19, 19, 65, 66, 304, 305, 676, 676, 676,\n    676, 677, 678, 722, 723, 741, 742, 743, 878, 879,\n    1079, 1081, 1086, 1086, 1086, 1086, 1102, 1115, 1121, 1122,\n    1141, 1142, 1145, 1152, 1152, 1152, 1152, 1171, 1182, 1182,\n    1182, 1192, 1219, 1225, 1227, 1227, 1227, 1227, 1231, 1255\n]"
 
     # 3. Read Python sources
     base_agent = read_clean_source("agents/base_agent.py")
@@ -67,7 +77,7 @@ def bundle():
     opponent_model = read_clean_source("agents/opponent_model.py")
     time_manager = read_clean_source("agents/time_manager.py")
     orchestrator = read_clean_source("agents/orchestrator.py")
-    main_py = read_clean_source("submission/main.py")
+    main_py = read_clean_source("submission/main_template.py")
 
     # 4. Patch class methods to read from inline dicts instead of files
     
@@ -205,14 +215,7 @@ DECK_ARCHETYPES = {json.dumps(deck_archetypes, indent=2)}
 
 DECK_EV_SCORES = {json.dumps(deck_ev, indent=2)}
 
-DEFAULT_DECK = [
-    721, 721, 722, 722, 722, 722, 723, 723, 723, 723,
-    1092, 1121, 1121, 1145, 1145, 1163, 1163, 1219,
-    1219, 1219, 1219, 1227, 1227, 1227, 1227, 1262,
-    1262, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    3, 3, 3
-]
+DEFAULT_DECK = {default_deck_str}
 
 # ==========================================
 # BASE AGENT
@@ -262,10 +265,9 @@ except Exception as global_err:
 {agent_code}
 """
 
-    # Write the compiled file to submission_single.py and main.py
+    # Write the compiled file to submission_single.py
     Path("submission/submission_single.py").write_text(output, encoding="utf-8")
-    Path("submission/main.py").write_text(output, encoding="utf-8")
-    print(f"Generated submission_single.py and main.py successfully ({len(output):,} bytes)")
+    print(f"Generated submission_single.py successfully ({len(output):,} bytes)")
 
 if __name__ == "__main__":
     bundle()

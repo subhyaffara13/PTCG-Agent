@@ -39,14 +39,16 @@ ENABLE_DISTRIBUTED = os.environ.get("ENABLE_DISTRIBUTED") == "1"
 
 def main():
     import sys
-    if "--force-master" in sys.argv:
-        logger.info("[OVERRIDE] --force-master flag detected. Bypassing discovery and forcing Master Mode.")
+    import os
+    if "--force-master" in sys.argv or os.environ.get("FORCE_MASTER") == "1" or os.path.exists(".force_master"):
+        logger.info("[OVERRIDE] Force Master Mode detected. Bypassing discovery and forcing Master Mode.")
         from factory.orchestrator_master import run_master_loop
         while True:
             try:
                 run_master_loop()
             except Exception as e:
                 logger.error(f"Master loop crashed: {e}")
+                time.sleep(5)
         return
 
     logger.info("Orchestration Agent (Auto-Discovery Mode) started.")
@@ -107,7 +109,6 @@ def main():
                         run_worker_loop(winner_ip, m_version)
         except Exception as e:
             logger.error(f"Critical error in Orchestration Agent loop: {e}")
-            import time
             time.sleep(5)
 
 if __name__ == "__main__":

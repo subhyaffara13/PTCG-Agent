@@ -4,8 +4,10 @@ agents/strategy_helpers.py
 Helper logic for StrategyAgent: trigger evaluation and strategy selection rules.
 """
 
+from __future__ import annotations
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
+
 from agents.configs import DEFAULT_TRIGGER_RULES, DEFAULT_STRATEGY_SELECTION
 from agents.board_state import BoardState
 from agents.prized_helpers import prized_pokemon_probs

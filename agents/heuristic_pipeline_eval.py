@@ -20,6 +20,12 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     if action.startswith("attack:"):
         v += 0.5
         if mp <= 1: v += 0.5
+        opp_ac = gs.get("opponent_active_pokemon", {})
+        if isinstance(ac, dict) and isinstance(opp_ac, dict):
+            my_type = ac.get("element_type", "")
+            opp_weak = opp_ac.get("weakness", "")
+            if my_type and opp_weak and my_type.lower() == opp_weak.lower():
+                v += 0.4
     elif action.startswith("evolve:"):
         v += 0.3
     elif action.startswith("attach_energy:"):

@@ -22,8 +22,12 @@ class TurnPlanner(BaseAgent):
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
         self.shared_context = shared_context
-        self.log_dir.mkdir(parents=True, exist_ok=True)
-        self.skills_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            self.log_dir.mkdir(parents=True, exist_ok=True)
+            self.skills_dir.mkdir(parents=True, exist_ok=True)
+        except Exception as e:
+            logger.warning(f"Could not create planner directories: {e}")
+
         try:
             self.rules = (self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
                           if self.shared_context else self._load_priority_rules())

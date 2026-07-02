@@ -18,6 +18,7 @@ class FileLock:
     def __init__(self, filepath: Path, timeout: float = 5.0):
         self.lockfile = Path(str(filepath) + ".lock")
         self.timeout = timeout
+        self.dummy = False
 
     def __enter__(self):
         start = time.time()
@@ -33,12 +34,18 @@ class FileLock:
                     except:
                         pass
                 time.sleep(0.05)
+            except Exception:
+                # If directory is read-only or permission is denied, fallback to dummy lock
+                self.dummy = True
+                return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        try:
-            self.lockfile.unlink(missing_ok=True)
-        except:
-            pass
+        if not self.dummy:
+            try:
+                self.lockfile.unlink(missing_ok=True)
+            except:
+                pass
+
 
 
 def flush_reasoning_logs(

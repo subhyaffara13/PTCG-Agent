@@ -67,9 +67,10 @@ def get_registered_agents() -> Dict[str, dict]:
     """
     try:
         import importlib
+        pkg = __package__ or "agents"
         for m in ["hand_analyst", "turn_planner", "strategy_agent", "opponent_model", "time_manager"]:
             try:
-                importlib.import_module(f"agents.{m}")
+                importlib.import_module(f"{pkg}.{m}")
             except ImportError:
                 pass
     except Exception:

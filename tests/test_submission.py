@@ -26,11 +26,61 @@ class MockObservation:
         self.turn = 1
         self.legal_actions = ["pass", "attack:Thunderbolt"]
 
-def test_submission_agent_returns_legal_action():
+class MockSelectOption:
+    def __init__(self, opt_type, name=""):
+        self.type = opt_type
+        self.name = name
+
+class MockSelect:
+    def __init__(self):
+        self.option = [MockSelectOption(14, "pass"), MockSelectOption(13, "Thunderbolt")]
+        self.maxCount = 1
+        self.type = 0
+        self.context = 0
+
+class MockCard:
+    def __init__(self, card_id):
+        self.id = card_id
+
+class MockPlayerState:
+    def __init__(self, is_me=True):
+        if is_me:
+            self.hand = [MockCard(721)]  # Active attacker basic
+            self.deckCount = 45
+            self.prize = [{}, {}, {}, {}, {}, {}]
+            self.active = [{"hp": 100, "name": "Pikachu", "id": 721}]
+            self.bench = []
+        else:
+            self.hand = []
+            self.deckCount = 45
+            self.prize = [{}, {}, {}, {}, {}, {}]
+            self.active = [{"hp": 100, "name": "Charmander", "id": 722}]
+            self.bench = []
+
+class MockCurrentState:
+    def __init__(self):
+        self.yourIndex = 0
+        self.players = [MockPlayerState(is_me=True), MockPlayerState(is_me=False)]
+        self.turn = 1
+
+class RealisticMockObservation:
+    def __init__(self):
+        self.select = MockSelect()
+        self.current = MockCurrentState()
+        self.legal_actions = ["pass", "attack:Thunderbolt"]
+
+def test_submission_agent_legacy_mock_fallback():
+    # When select is None, it should hit the legacy fallback and return the first legal action
     obs = MockObservation()
-    
-    # Run agent act iteration
+    action = agent(obs)
+    assert action in obs.legal_actions
+
+def test_realistic_submission_agent_orchestration():
+    # When select is a real turn choice, it should run orchestrator and return selected option indices
+    obs = RealisticMockObservation()
     action = agent(obs)
     
-    # Assert action is from the legal list
-    assert action in obs.legal_actions
+    # Assert return value is a list of indices representing the selected option(s)
+    assert isinstance(action, list)
+    for idx in action:
+        assert 0 <= idx < len(obs.select.option)
