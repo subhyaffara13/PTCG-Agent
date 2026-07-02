@@ -302,7 +302,7 @@
     },
     {
       "card_id": 1031,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (3.0x avg) in winning matches of player keidroid."
     },
     {
@@ -762,6 +762,16 @@
     },
     {
       "card_id": 1118,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1124,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1246,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -1316,11 +1326,16 @@
       "player": "takaygiiiiiiii",
       "avg_setup_duration": 19.8,
       "avg_bench_density": 2.3
+    },
+    {
+      "player": "Pokk\u00e9n",
+      "avg_setup_duration": 40.8,
+      "avg_bench_density": 1.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 11.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 15.0
   }
 }
