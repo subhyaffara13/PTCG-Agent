@@ -51,11 +51,20 @@ class NeuralValueNetwork(BaseValueNetwork):
             active_id = str(active.get("id")) if isinstance(active, dict) else None
             active_attached_sorted = sorted([str(x) for x in active.get("attached", [])]) if isinstance(active, dict) else []
             bench_strs = sorted([str(x) for x in gs.get("my_bench", [])]) if isinstance(gs.get("my_bench"), list) else []
+            opp_bench_strs = sorted([str(x) for x in gs.get("opponent_bench", [])]) if isinstance(gs.get("opponent_bench"), list) else []
+            my_discard_size = len(gs.get("my_discard_pile", [])) if isinstance(gs.get("my_discard_pile"), list) else 0
+            opp_discard_size = len(gs.get("opponent_discard_pile", [])) if isinstance(gs.get("opponent_discard_pile"), list) else 0
+            stadium = gs.get("stadium_card")
+            
             h = hash((str(hand_sorted),
                       str(gs.get("turn_number", 0)),
                       str(active_id),
                       str(active_attached_sorted),
                       str(bench_strs),
+                      str(opp_bench_strs),
+                      str(my_discard_size),
+                      str(opp_discard_size),
+                      str(stadium),
                       gs.get("my_active_damage", 0),
                       gs.get("my_prizes", 6),
                       gs.get("opponent_prizes", 6),

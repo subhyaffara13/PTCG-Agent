@@ -87,8 +87,11 @@ class Router:
         if detail:
             entry["detail"] = detail
         try:
-            log: list[dict[str, Any]] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, FileNotFoundError):
-            log = []
-        log.append(entry)
-        _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
+            try:
+                log: list[dict[str, Any]] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, FileNotFoundError):
+                log = []
+            log.append(entry)
+            _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
+        except Exception:
+            pass

@@ -245,6 +245,16 @@ DEFAULT_DECK = {default_deck_str}
 
 # Stub for skills path (not available in single-file mode)
 _SKILL_PATH = Path("card_metadata.json")
+
+# Monkeypatch Path.mkdir to silently ignore PermissionError/OSError when building log/skills dirs in read-only sandboxes
+def _safe_mkdir(self, *args, **kwargs):
+    try:
+        pathlib.Path._original_mkdir(self, *args, **kwargs)
+    except Exception:
+        pass
+
+pathlib.Path._original_mkdir = pathlib.Path.mkdir
+pathlib.Path.mkdir = _safe_mkdir
 '''
 
     # Build module sections
@@ -287,6 +297,9 @@ except Exception as global_err:
 '''
 
     output = header + all_modules + footer
+    
+    # Replace all .parent.parent root resolutions to .parent since single-file agent runs from workspace root directly
+    output = output.replace(".parent.parent", ".parent")
 
     # Write both copies
     Path("submission.py").write_text(output, encoding="utf-8")

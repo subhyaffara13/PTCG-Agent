@@ -13,7 +13,7 @@ from kaggle_environments import make
 # Test 1: Use the actual main.py agent
 print("=== Test 1: Full main.py agent ===")
 try:
-    from submission.main import agent
+    from submission import agent
     env = make("cabt", debug=True)
     result = env.run([agent, agent])
     

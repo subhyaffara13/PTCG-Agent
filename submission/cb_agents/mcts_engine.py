@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 # Try to import C++ extension module ptcg_core
 try:
-    import ptcg_core
+    import ptcg_core  # type: ignore
     HAS_CPP = True
 except Exception:
     ptcg_core = None

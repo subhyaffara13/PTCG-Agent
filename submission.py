@@ -550,6 +550,16 @@ DEFAULT_DECK = [1121, 1121, 1121, 1121, 1102, 1102, 1102, 1102, 1086, 1086, 1086
 # Stub for skills path (not available in single-file mode)
 _SKILL_PATH = Path("card_metadata.json")
 
+# Monkeypatch Path.mkdir to silently ignore PermissionError/OSError when building log/skills dirs in read-only sandboxes
+def _safe_mkdir(self, *args, **kwargs):
+    try:
+        pathlib.Path._original_mkdir(self, *args, **kwargs)
+    except Exception:
+        pass
+
+pathlib.Path._original_mkdir = pathlib.Path.mkdir
+pathlib.Path.mkdir = _safe_mkdir
+
 # === agents/base_agent ===
 """
 agents/base_agent.py
@@ -1921,7 +1931,7 @@ class ScopeViolationError(RuntimeError):
 class UnknownAgentError(KeyError):
     pass
 PACKET_SCHEMAS: dict[str, frozenset[str]] = {'HandAnalyst': frozenset({'hand', 'deck_remaining', 'discard', 'board', 'has_searched_deck'}), 'TurnPlanner': frozenset({'hand_score', 'priority_profile', 'top_play', 'game_state', 'turn', 'time_remaining'}), 'StrategyAgent': frozenset({'trigger', 'board_summary'}), 'OpponentModel': frozenset({'revealed_cards', 'turn_number', 'archetype_confidence', 'turn', 'newly_played_cards', 'revealed_active_pokemon', 'revealed_bench_count', 'revealed_hand_size', 'revealed_prizes_remaining', 'revealed_discard', 'game_phase'}), 'TimeManager': frozenset({'time_elapsed', 'time_limit', 'legal_actions'}), 'LethalCalculator': frozenset({'my_active_damage', 'opponent_active_hp', 'legal_attacks', 'opponent_active_id', 'my_active_hp'})}
-_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent
 _LOG_PATH = _PROJECT_ROOT / 'logs' / 'action_log.json'
 
 class Router:
@@ -1970,11 +1980,14 @@ class Router:
         if detail:
             entry['detail'] = detail
         try:
-            log: list[dict[str, Any]] = json.loads(_LOG_PATH.read_text(encoding='utf-8'))
-        except (json.JSONDecodeError, FileNotFoundError):
-            log = []
-        log.append(entry)
-        _LOG_PATH.write_text(json.dumps(log, indent=2), encoding='utf-8')
+            try:
+                log: list[dict[str, Any]] = json.loads(_LOG_PATH.read_text(encoding='utf-8'))
+            except (json.JSONDecodeError, FileNotFoundError):
+                log = []
+            log.append(entry)
+            _LOG_PATH.write_text(json.dumps(log, indent=2), encoding='utf-8')
+        except Exception:
+            pass
 
 # === router/packets ===
 """
@@ -2172,7 +2185,7 @@ def unpack_ha_config(strategy_thresholds: Dict[str, Any]) -> dict:
 
 # === agents/hand_analyst ===
 logger = logging.getLogger(__name__)
-_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent
 _SKILL_PATH = _PROJECT_ROOT / 'skills' / 'card_scoring.json'
 _LOG_PATH = _PROJECT_ROOT / 'logs' / 'reasoning_log.json'
 _PROFILE_THRESHOLDS: list[tuple[float, str]] = [(7.0, 'aggressive'), (4.0, 'tempo'), (0.0, 'defensive')]
@@ -2240,7 +2253,7 @@ class HandAnalyst:
 # === agents/orchestrator_log ===
 """Logging helper for Orchestrator decisions."""
 logger = logging.getLogger(__name__)
-_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent
 _LOG_PATH = _PROJECT_ROOT / 'logs' / 'reasoning_log.json'
 _log_buffer: list[dict[str, Any]] = []
 
@@ -2255,7 +2268,7 @@ def _log_orchestration(gs: dict[str, Any], decision: Any) -> None:
 # === agents/strategy_agent_io ===
 """File I/O helpers for StrategyAgent — skill loading and strategy logging."""
 logger = logging.getLogger(__name__)
-_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent
 _SKILL_PATH = _PROJECT_ROOT / 'skills' / 'strategy_profiles.json'
 _LOG_PATH = _PROJECT_ROOT / 'logs' / 'reasoning_log.json'
 _log_buffer: list[dict[str, Any]] = []
@@ -2339,7 +2352,7 @@ Timing policy (spec)
     elapsed > 570 s        -> FORCE_PASS -- force pass to avoid timeout
 """
 logger = logging.getLogger(__name__)
-_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent
 _LOG_PATH = _PROJECT_ROOT / 'logs' / 'reasoning_log.json'
 
 class TimeManager:
