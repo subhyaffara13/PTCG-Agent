@@ -1,6 +1,8 @@
 import random
 from typing import Any
 
+_ABILITY_DRAW = {"colress", "concealed", "flower selecting", "shining arcana"}
+
 try:
     from agents.card_registry import CardRegistry
 except ImportError:

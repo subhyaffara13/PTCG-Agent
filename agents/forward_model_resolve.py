@@ -1,7 +1,6 @@
 from typing import Any
 
-from agents.forward_model_gen import _remove_from_hand, _int_or_str, _apply_evolve, _draw_cards
-from agents.forward_model import _ABILITY_DRAW
+from agents.forward_model_gen import _remove_from_hand, _int_or_str, _apply_evolve, _draw_cards, _ABILITY_DRAW
 from agents.card_registry import CardRegistry
 
 

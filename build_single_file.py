@@ -1,53 +1,158 @@
+"""build_single_file.py — auto-bundles ALL agent+router Python files into one submission.py"""
 import os
 import re
 import json
 import csv
 from pathlib import Path
+from collections import defaultdict
+
 
 def read_clean_source(path):
+    """Read a .py file, stripping local imports and __future__ using AST."""
+    import ast
     content = Path(path).read_text(encoding="utf-8")
-    lines = []
-    for line in content.splitlines():
-        # Match local imports and skip them
-        if re.match(r"^\s*(from|import)\s+(cb_agents|agents|router)\b", line):
+    try:
+        tree = ast.parse(content)
+    except SyntaxError:
+        return content # Fallback if there's somehow a syntax error (e.g. from null bytes)
+        
+    class ImportStripper(ast.NodeTransformer):
+        def visit_Import(self, node):
+            new_names = [n for n in node.names if not any(n.name.startswith(p) for p in ("agents.", "cb_agents.", "router."))]
+            if not new_names:
+                return None
+            node.names = new_names
+            return node
+            
+        def visit_ImportFrom(self, node):
+            if node.module == "__future__":
+                return None
+            if node.module and any(node.module == p or node.module.startswith(p + ".") for p in ("agents", "cb_agents", "router")):
+                # Generate assignments for aliases
+                assignments = []
+                import ast as std_ast # Use standard ast here inside the transformer
+                for alias in node.names:
+                    if alias.asname:
+                        assignments.append(
+                            std_ast.Assign(
+                                targets=[std_ast.Name(id=alias.asname, ctx=std_ast.Store())],
+                                value=std_ast.Name(id=alias.name, ctx=std_ast.Load())
+                            )
+                        )
+                if assignments:
+                    return assignments
+                return None
+            return node
+
+    class EmptyBlockFixer(ast.NodeTransformer):
+        def generic_visit(self, node):
+            super().generic_visit(node)
+            for field, old_value in ast.iter_fields(node):
+                if isinstance(old_value, list) and len(old_value) == 0:
+                    if field in ('body', 'orelse', 'finalbody'):
+                        # orelse and finalbody are optional and can be empty lists
+                        if field == 'body' or (field in ('orelse', 'finalbody') and getattr(node, field) is not None and getattr(node, field) != []):
+                            pass # Wait, if orelse is empty list, it's fine. body MUST NOT be empty.
+                        if field == 'body':
+                            setattr(node, field, [ast.Pass()])
+            return node
+            
+    tree = ImportStripper().visit(tree)
+    tree = EmptyBlockFixer().visit(tree)
+    ast.fix_missing_locations(tree)
+    return ast.unparse(tree)
+
+
+def _topo_sort(source_files: dict[str, str]) -> list[str]:
+    import ast
+    all_mods = set(source_files.keys())
+    deps: dict[str, set[str]] = defaultdict(set)
+    
+    for mod_key, filepath in source_files.items():
+        content = Path(filepath).read_text(encoding="utf-8")
+        try:
+            tree = ast.parse(content)
+        except SyntaxError:
             continue
-        if "__future__" in line:
-            continue
-        lines.append(line)
-    return "\n".join(lines)
+        for node in tree.body:
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    # Example: import agents.foo
+                    parts = alias.name.split('.')
+                    if len(parts) >= 2 and parts[0] in ("agents", "cb_agents", "router"):
+                        dep_key = f"{parts[0]}/{parts[1]}"
+                        if dep_key in all_mods:
+                            deps[mod_key].add(dep_key)
+            elif isinstance(node, ast.ImportFrom):
+                if node.module:
+                    parts = node.module.split('.')
+                    if parts[0] in ("agents", "cb_agents", "router"):
+                        if len(parts) >= 2:
+                            dep_key = f"{parts[0]}/{parts[1]}"
+                        else:
+                            # from agents import foo -> foo is the module
+                            dep_key = f"{parts[0]}/{node.names[0].name}"
+                        if dep_key in all_mods:
+                            deps[mod_key].add(dep_key)
+
+    in_degree = {m: 0 for m in all_mods}
+    rev: dict[str, set[str]] = defaultdict(set)
+    for m in all_mods:
+        for dep in deps.get(m, set()):
+            if dep in all_mods and dep != m:
+                rev[dep].add(m)
+                in_degree[m] += 1
+
+    queue = sorted([m for m in all_mods if in_degree[m] == 0])
+    order = []
+    while queue:
+        node = queue.pop(0)
+        order.append(node)
+        for child in sorted(rev.get(node, set())):
+            in_degree[child] -= 1
+            if in_degree[child] == 0:
+                queue.append(child)
+                
+    for m in sorted(all_mods):
+        if m not in order:
+            order.append(m)
+    return order
+
 
 def bundle():
-    print("Bundling agent into a single file...")
-    
+    print("Bundling agent into a single file (auto-discovery)...")
+
     # 1. Read JSON config files
     skills_dir = Path("skills")
-    
+
     delegation_map = {}
     delegation_path = skills_dir / "delegation_map.json"
     if delegation_path.exists():
         delegation_map = json.loads(delegation_path.read_text(encoding="utf-8")).get("delegation", {})
-        
+
     priority_rules = {}
     priority_path = skills_dir / "priority_rules.json"
     if priority_path.exists():
         priority_rules = json.loads(priority_path.read_text(encoding="utf-8"))
-        
+
     strategy_profiles = {}
     strategy_path = skills_dir / "strategy_profiles.json"
     if strategy_path.exists():
         strategy_profiles = json.loads(strategy_path.read_text(encoding="utf-8"))
-        
+
     deck_archetypes = {}
     archetypes_path = skills_dir / "deck_archetypes.json"
     if archetypes_path.exists():
         deck_archetypes = json.loads(archetypes_path.read_text(encoding="utf-8"))
-        
-    # 2. Read deck EV scores and deck list from staging/deck_new.csv
+
+    # 2. Read deck EV scores and deck list
     deck_ev = {}
     deck_list = []
     deck_path = Path("staging/deck_new.csv")
     if not deck_path.exists():
         deck_path = Path("submission/deck.csv")
+    if not deck_path.exists():
+        deck_path = Path("agents/deck_new.csv")
     if deck_path.exists():
         with open(deck_path, mode="r", encoding="utf-8") as f:
             reader = csv.DictReader(f)
@@ -59,145 +164,66 @@ def bundle():
                 count_str = row.get("count", "").strip()
                 if card_id_str and count_str:
                     deck_list.extend([int(card_id_str)] * int(count_str))
-                    
-    print(f"Loaded {len(deck_ev)} card EV scores")
+
+    print(f"Loaded {len(deck_ev)} card EV scores, deck has {len(deck_list)} cards")
     if len(deck_list) == 60:
         default_deck_str = repr(deck_list)
     else:
-        print(f"Warning: Loaded deck has {len(deck_list)} cards, falling back to default 60-card deck.")
-        default_deck_str = "[\n    3, 3, 3, 3, 3, 3, 3, 5, 6, 6,\n    11, 19, 19, 65, 66, 304, 305, 676, 676, 676,\n    676, 677, 678, 722, 723, 741, 742, 743, 878, 879,\n    1079, 1081, 1086, 1086, 1086, 1086, 1102, 1115, 1121, 1122,\n    1141, 1142, 1145, 1152, 1152, 1152, 1152, 1171, 1182, 1182,\n    1182, 1192, 1219, 1225, 1227, 1227, 1227, 1227, 1231, 1255\n]"
+        print(f"Warning: deck has {len(deck_list)} cards, using hardcoded fallback.")
+        default_deck_str = repr([
+            3, 3, 3, 3, 3, 3, 3, 5, 6, 6,
+            11, 19, 19, 65, 66, 304, 305, 676, 676, 676,
+            676, 677, 678, 722, 723, 741, 742, 743, 878, 879,
+            1079, 1081, 1086, 1086, 1086, 1086, 1102, 1115, 1121, 1122,
+            1141, 1142, 1145, 1152, 1152, 1152, 1152, 1171, 1182, 1182,
+            1182, 1192, 1219, 1225, 1227, 1227, 1227, 1227, 1231, 1255
+        ])
 
-    # 3. Read Python sources
-    base_agent = read_clean_source("agents/base_agent.py")
-    registry = read_clean_source("agents/registry.py")
-    bus = read_clean_source("router/bus.py")
-    hand_analyst = read_clean_source("agents/hand_analyst.py")
-    turn_planner = read_clean_source("agents/turn_planner.py")
-    strategy_agent = read_clean_source("agents/strategy_agent.py")
-    opponent_model = read_clean_source("agents/opponent_model.py")
-    time_manager = read_clean_source("agents/time_manager.py")
-    orchestrator = read_clean_source("agents/orchestrator.py")
+    # 3. Auto-discover ALL .py source files from router/ and agents/
+    source_files = {}
+    for directory in ["router", "agents"]:
+        for py_file in sorted(Path(directory).glob("*.py")):
+            if py_file.name == "__init__.py":
+                continue
+            mod_key = f"{directory}/{py_file.stem}"
+            source_files[mod_key] = str(py_file)
+
+    print(f"Discovered {len(source_files)} source modules")
+
+    # 4. Read and clean all sources
+    sources: dict[str, str] = {}
+    for mod_key, filepath in source_files.items():
+        sources[mod_key] = read_clean_source(filepath)
+
+    # 5. Topologically sort based on original source files to find import dependencies
+    order = _topo_sort(source_files)
+    print(f"Topological order determined for {len(order)} modules")
+
+    # 6. Read the main template
     main_py = read_clean_source("submission/main_template.py")
 
-    # 4. Patch class methods to read from inline dicts instead of files
-    
-    # HandAnalyst patch:
-    # Rewrite _load_skill:
-    old_load_skill = """    def _load_skill(self) -> dict[str, dict[str, Any]]:
-        raw   = json.loads(_SKILL_PATH.read_text(encoding="utf-8"))
-        index = {}
-        for entry in raw.get("cards", []):
-            name = entry.get("card_name", "").strip()
-            if name:
-                index[name] = entry
-        return index"""
-        
-    new_load_skill = """    def _load_skill(self) -> dict[str, dict[str, Any]]:
-        index = {}
-        for name, ev in DECK_EV_SCORES.items():
-            index[name] = {"card_name": name, "ev_score": ev}
-        return index"""
-    
-    hand_analyst = hand_analyst.replace(old_load_skill, new_load_skill)
-
-    # TurnPlanner patch:
-    old_load_rules = """    def _load_priority_rules(self) -> dict:
-        path = self.skills_dir / "priority_rules.json"
-        if path.exists():
-            try:
-                return json.loads(path.read_text(encoding="utf-8"))
-            except Exception as e:
-                logger.error(f"Failed to read priority_rules.json: {e}")
-        return {"rules": []}"""
-        
-    new_load_rules = """    def _load_priority_rules(self) -> dict:
-        return PRIORITY_RULES"""
-        
-    turn_planner = turn_planner.replace(old_load_rules, new_load_rules)
-
-    # StrategyAgent patch:
-    old_load_profiles = """    def _load_strategy_profiles(self) -> dict:
-        path = self.skills_dir / "strategy_profiles.json"
-        if path.exists():
-            try:
-                return json.loads(path.read_text(encoding="utf-8"))
-            except Exception as e:
-                logger.error(f"Failed to read strategy_profiles.json: {e}")
-        return {"profiles": {}}"""
-        
-    new_load_profiles = """    def _load_strategy_profiles(self) -> dict:
-        return STRATEGY_PROFILES"""
-        
-    strategy_agent = strategy_agent.replace(old_load_profiles, new_load_profiles)
-
-    # OpponentModel patch:
-    old_load_archetypes = """    def _load_deck_archetypes(self) -> dict:
-        path = self.skills_dir / "deck_archetypes.json"
-        if path.exists():
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-                return data.get("archetypes", {})
-            except Exception as e:
-                logger.error(f"Failed to read deck_archetypes.json: {e}")
-        return {}"""
-        
-    new_load_archetypes = """    def _load_deck_archetypes(self) -> dict:
-        return DECK_ARCHETYPES.get("archetypes", {})"""
-        
-    opponent_model = opponent_model.replace(old_load_archetypes, new_load_archetypes)
-
-    # Orchestrator patch:
-    old_load_delegation = """    def _load_delegation_map(self) -> dict:
-        path = self.skills_dir / "delegation_map.json"
-        if path.exists():
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-                return data.get("delegation", {})
-            except Exception as e:
-                logger.error(f"Failed to read delegation_map.json: {e}")
-        # Default fallback map matching skills/delegation_map.json
-        return {
-            "turn_start": "hand_analyst",
-            "after_hand_analysis": "turn_planner",
-            "on_trigger": "strategy_agent",
-            "on_opponent_play": "opponent_model",
-            "before_turn_planner": "lethal_calculator",
-            "always": "time_manager"
-        }"""
-        
-    new_load_delegation = """    def _load_delegation_map(self) -> dict:
-        return DELEGATION_MAP"""
-        
-    orchestrator = orchestrator.replace(old_load_delegation, new_load_delegation)
-
-    # Find the definitions of get_val, _log_action_exception and agent in main_py
-    # We will split them to place 'agent' at the absolute bottom of the file
-    get_val_idx = main_py.find("def get_val")
-    agent_idx = main_py.find("def agent")
-    log_exc_idx = main_py.find("def _log_action_exception")
-    
-    # Extract each block
-    get_val_code = main_py[get_val_idx:agent_idx]
-    
-    # We want to trace the end of agent function to extract it cleanly
-    # Since agent goes until def _log_action_exception, let's extract it
-    agent_code = main_py[agent_idx:log_exc_idx]
-    log_exc_code = main_py[log_exc_idx:]
-    
-    # 5. Generate final content with 'agent' function at the very end
-    output = f"""from __future__ import annotations
+    # 7. Assemble output
+    header = f'''from __future__ import annotations
 # Single-file self-contained Pokemon TCG Kaggle Submission Agent
-# Generated automatically by build_single_file.py
+# Auto-generated by build_single_file.py
 
 import json
 import logging
 import time
 import sys
+import os
 import csv
+import math
+import random
+import hashlib
 import datetime
+import pathlib
+import dataclasses
 from pathlib import Path
-from typing import Any, Dict, List, Set, Callable
-from dataclasses import dataclass
+from typing import Any, Dict, List, Set, Callable, Optional, Tuple
+from dataclasses import dataclass, field
+from abc import ABC, abstractmethod
+from collections import defaultdict
 
 logger = logging.getLogger(__name__)
 
@@ -217,40 +243,36 @@ DECK_EV_SCORES = {json.dumps(deck_ev, indent=2)}
 
 DEFAULT_DECK = {default_deck_str}
 
-# ==========================================
-# BASE AGENT
-# ==========================================
-{base_agent}
+# Stub for skills path (not available in single-file mode)
+_SKILL_PATH = Path("card_metadata.json")
+'''
+
+    # Build module sections
+    module_sections = []
+    for mod_key in order:
+        src = sources[mod_key]
+        # Strip duplicate imports that are already in the header
+        cleaned_lines = []
+        for line in src.splitlines():
+            # Skip standalone stdlib imports already in header
+            if re.match(r"^import\s+(json|logging|time|sys|os|csv|math|random|hashlib|datetime|pathlib|dataclasses)\s*$", line):
+                continue
+            if re.match(r"^from\s+(pathlib|typing|dataclasses|abc|collections)\s+import\s+", line):
+                continue
+            if re.match(r"^import\s+(random|logging),", line):
+                continue
+            cleaned_lines.append(line)
+        src = "\n".join(cleaned_lines)
+        module_sections.append(f"\n# === {mod_key} ===\n{src}")
+
+    all_modules = "\n".join(module_sections)
+
+    # Build footer with main agent
+    footer = f'''
 
 # ==========================================
-# ROUTER / BUS
+# GLOBAL ORCHESTRATOR INIT
 # ==========================================
-{bus}
-
-# ==========================================
-# SUB-AGENTS
-# ==========================================
-{registry}
-
-{hand_analyst}
-
-{turn_planner}
-
-{strategy_agent}
-
-{opponent_model}
-
-{time_manager}
-
-# ==========================================
-# ORCHESTRATOR
-# ==========================================
-{orchestrator}
-
-# ==========================================
-# MAIN AGENT INTERFACE
-# ==========================================
-# GLOBAL SETUP (runs once on load)
 try:
     orchestrator = Orchestrator()
     orchestrator.start_game()
@@ -258,16 +280,19 @@ except Exception as global_err:
     logger.error(f"Global orchestrator initialization failed: {{global_err}}")
     orchestrator = None
 
-{get_val_code}
+# ==========================================
+# MAIN AGENT INTERFACE
+# ==========================================
+{main_py}
+'''
 
-{log_exc_code}
+    output = header + all_modules + footer
 
-{agent_code}
-"""
-
-    # Write the compiled file to submission_single.py
+    # Write both copies
+    Path("submission.py").write_text(output, encoding="utf-8")
     Path("submission/submission_single.py").write_text(output, encoding="utf-8")
-    print(f"Generated submission_single.py successfully ({len(output):,} bytes)")
+    print(f"Generated submission.py successfully ({len(output):,} bytes)")
+
 
 if __name__ == "__main__":
     bundle()
