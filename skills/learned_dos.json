@@ -617,7 +617,7 @@
     },
     {
       "card_id": 648,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -1346,11 +1346,26 @@
       "player": "Kazuta MIZUTA",
       "avg_setup_duration": 11.2,
       "avg_bench_density": 1.7
+    },
+    {
+      "player": "\u3092",
+      "avg_setup_duration": 24.0,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "easonyanyan",
+      "avg_setup_duration": 28.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Nghia Tran",
+      "avg_setup_duration": 28.0,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 9.0
   }
 }
