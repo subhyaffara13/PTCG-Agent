@@ -774,6 +774,11 @@
       "card_id": 1246,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1087,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1396,11 +1401,21 @@
       "player": "5.5",
       "avg_setup_duration": 23.2,
       "avg_bench_density": 3.1
+    },
+    {
+      "player": "kenkoooo",
+      "avg_setup_duration": 18.2,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "Myckel Uribe",
+      "avg_setup_duration": 24.2,
+      "avg_bench_density": 1.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 21.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 13.0
   }
 }
