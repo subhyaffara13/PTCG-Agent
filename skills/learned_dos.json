@@ -1451,11 +1451,16 @@
       "player": "BluezLee",
       "avg_setup_duration": 16.2,
       "avg_bench_density": 2.7
+    },
+    {
+      "player": "wangyuou",
+      "avg_setup_duration": 31.2,
+      "avg_bench_density": 1.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 8.0,
+    "avg_pokemon_count": 13.0,
     "avg_trainer_count": 34.0,
-    "avg_energy_count": 18.0
+    "avg_energy_count": 13.0
   }
 }
