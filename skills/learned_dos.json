@@ -1471,11 +1471,16 @@
       "player": "RK",
       "avg_setup_duration": 32.2,
       "avg_bench_density": 4.2
+    },
+    {
+      "player": "GarlicToday",
+      "avg_setup_duration": 10.5,
+      "avg_bench_density": 2.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 15.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   }
 }
