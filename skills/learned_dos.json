@@ -412,7 +412,7 @@
     },
     {
       "card_id": 2,
-      "avg_count": 4.0,
+      "avg_count": 7.0,
       "reason": "High usage (4.0x avg) in winning matches of player shibushun."
     },
     {
@@ -797,6 +797,26 @@
     },
     {
       "card_id": 18,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 352,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 353,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 354,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1215,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
     }
@@ -1501,11 +1521,16 @@
       "player": "Team BlackBox",
       "avg_setup_duration": 29.2,
       "avg_bench_density": 2.7
+    },
+    {
+      "player": "MizoTake",
+      "avg_setup_duration": 34.4,
+      "avg_bench_density": 3.2
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 22.0,
+    "avg_energy_count": 18.0
   }
 }
