@@ -52,7 +52,7 @@
     },
     {
       "card_id": 5,
-      "avg_count": 4.0,
+      "avg_count": 5.0,
       "reason": "High usage (3.0x avg) in winning matches of player nogu."
     },
     {
@@ -1456,11 +1456,21 @@
       "player": "wangyuou",
       "avg_setup_duration": 31.2,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "TeamSCSQ(\u30c1\u30fc\u30e0\u30b9\u30af\u30b9\u30af)",
+      "avg_setup_duration": 30.4,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "ZETADIVISION",
+      "avg_setup_duration": 18.6,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 9.0
   }
 }
