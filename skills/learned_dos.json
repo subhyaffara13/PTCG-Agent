@@ -789,6 +789,16 @@
       "card_id": 158,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 14,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 18,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1476,11 +1486,16 @@
       "player": "GarlicToday",
       "avg_setup_duration": 10.5,
       "avg_bench_density": 2.3
+    },
+    {
+      "player": "disgruntled.coffee",
+      "avg_setup_duration": 48.0,
+      "avg_bench_density": 1.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
+    "avg_pokemon_count": 12.0,
     "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_energy_count": 13.0
   }
 }
