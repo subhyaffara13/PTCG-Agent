@@ -1496,11 +1496,16 @@
       "player": "yt0914",
       "avg_setup_duration": 14.4,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "Team BlackBox",
+      "avg_setup_duration": 29.2,
+      "avg_bench_density": 2.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 39.0,
     "avg_energy_count": 8.0
   }
 }
