@@ -1421,11 +1421,16 @@
       "player": "MtN",
       "avg_setup_duration": 55.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "Yufeng",
+      "avg_setup_duration": 20.4,
+      "avg_bench_density": 2.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 9.0,
-    "avg_trainer_count": 45.0,
-    "avg_energy_count": 6.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 13.0
   }
 }
