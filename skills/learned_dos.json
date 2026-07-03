@@ -332,7 +332,7 @@
     },
     {
       "card_id": 3,
-      "avg_count": 10.0,
+      "avg_count": 18.0,
       "reason": "High usage (9.0x avg) in winning matches of player keidroid."
     },
     {
@@ -397,7 +397,7 @@
     },
     {
       "card_id": 235,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage (2.0x avg) in winning matches of player shibushun."
     },
     {
@@ -1441,11 +1441,21 @@
       "player": "chamboabi",
       "avg_setup_duration": 12.4,
       "avg_bench_density": 3.3
+    },
+    {
+      "player": "\u6e21\u908a\u5f81\u592e",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "BluezLee",
+      "avg_setup_duration": 16.2,
+      "avg_bench_density": 2.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 8.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 18.0
   }
 }
