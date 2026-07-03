@@ -779,6 +779,16 @@
       "card_id": 1087,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 157,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 158,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1426,11 +1436,16 @@
       "player": "Yufeng",
       "avg_setup_duration": 20.4,
       "avg_bench_density": 2.0
+    },
+    {
+      "player": "chamboabi",
+      "avg_setup_duration": 12.4,
+      "avg_bench_density": 3.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 9.0
   }
 }
