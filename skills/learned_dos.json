@@ -1371,11 +1371,21 @@
       "player": "atom1231",
       "avg_setup_duration": 30.4,
       "avg_bench_density": 1.9
+    },
+    {
+      "player": "ebisu_ya",
+      "avg_setup_duration": 28.0,
+      "avg_bench_density": 2.6
+    },
+    {
+      "player": "XP3RiX",
+      "avg_setup_duration": 51.8,
+      "avg_bench_density": 3.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 12.0,
+    "avg_trainer_count": 42.0,
+    "avg_energy_count": 6.0
   }
 }
