@@ -824,6 +824,11 @@
       "card_id": 1267,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 387,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1581,11 +1586,16 @@
       "player": "Claude and codex suck ;)",
       "avg_setup_duration": 1.0,
       "avg_bench_density": 3.2
+    },
+    {
+      "player": "nasuo445",
+      "avg_setup_duration": 44.6,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 9.0
   }
 }
