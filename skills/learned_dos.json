@@ -1556,11 +1556,16 @@
       "player": "Ryo Ochi",
       "avg_setup_duration": 12.2,
       "avg_bench_density": 2.0
+    },
+    {
+      "player": "iwata hiroki",
+      "avg_setup_duration": 26.6,
+      "avg_bench_density": 3.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 9.0
   }
 }
