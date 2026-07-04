@@ -819,6 +819,11 @@
       "card_id": 1215,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1267,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1566,11 +1571,16 @@
       "player": " me-keh-dev",
       "avg_setup_duration": 19.2,
       "avg_bench_density": 2.7
+    },
+    {
+      "player": "MCH",
+      "avg_setup_duration": 21.2,
+      "avg_bench_density": 3.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 22.0,
+    "avg_trainer_count": 26.0,
+    "avg_energy_count": 12.0
   }
 }
