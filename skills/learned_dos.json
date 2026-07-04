@@ -1561,11 +1561,16 @@
       "player": "iwata hiroki",
       "avg_setup_duration": 26.6,
       "avg_bench_density": 3.3
+    },
+    {
+      "player": " me-keh-dev",
+      "avg_setup_duration": 19.2,
+      "avg_bench_density": 2.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 15.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 13.0
   }
 }
