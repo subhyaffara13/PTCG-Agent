@@ -1526,11 +1526,21 @@
       "player": "MizoTake",
       "avg_setup_duration": 34.4,
       "avg_bench_density": 3.2
+    },
+    {
+      "player": "zamami",
+      "avg_setup_duration": 20.2,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "Clark Kitchen",
+      "avg_setup_duration": 27.4,
+      "avg_bench_density": 1.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 22.0,
-    "avg_energy_count": 18.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 36.0,
+    "avg_energy_count": 11.0
   }
 }
