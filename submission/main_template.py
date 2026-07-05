@@ -62,34 +62,60 @@ except Exception:
 from typing import Any
 
 def get_val(obj: Any, key: str, default: Any = None) -> Any:
+    if obj is None:
+        return default
     if isinstance(obj, dict):
         return obj.get(key, default)
-    return getattr(obj, key, default)
+    try:
+        return getattr(obj, key, default)
+    except Exception:
+        return default
 
 def agent(observation, configuration=None):
     """
     Main Actuation Agent loop parsed by Kaggle Match runtimes.
     """
-    # Check if legacy mock unit test is running
-    legal_actions = get_val(observation, "legal_actions")
-    select = get_val(observation, "select")
-    if legal_actions and select is None:
-        return legal_actions[0]
-
-    # Step 0: If select is None, we must submit the deck (list of 60 integers)
-    if select is None:
-        return DEFAULT_DECK
-
-    options = get_val(select, "option", [])
-    max_count = get_val(select, "maxCount", 1)
-
-    # Simple fallback: select first N options
-    fallback_action = list(range(min(max_count, len(options))))
-
-    if orchestrator is None:
-        return fallback_action
-
+    # Safe defaults
+    DEFAULT_DECK_FALLBACK = [
+        3, 3, 3, 3, 3, 3, 3, 5, 6, 6,
+        11, 19, 19, 65, 66, 304, 305, 676, 676, 676,
+        676, 677, 678, 722, 723, 741, 742, 743, 878, 879,
+        1079, 1081, 1086, 1086, 1086, 1086, 1102, 1115, 1121, 1122,
+        1141, 1142, 1145, 1152, 1152, 1152, 1152, 1171, 1182, 1182,
+        1182, 1192, 1219, 1225, 1227, 1227, 1227, 1227, 1231, 1255
+    ]
+    fallback_action = [0]
+    
     try:
+        if observation is None:
+            return DEFAULT_DECK_FALLBACK
+            
+        legal_actions = get_val(observation, "legal_actions")
+        select = get_val(observation, "select")
+        
+        # Check if legacy mock unit test is running
+        if legal_actions and select is None:
+            return [legal_actions[0]]
+
+        # Step 0: If select is None, we must submit the deck (list of 60 integers)
+        if select is None:
+            # Try to return the global DEFAULT_DECK if it is loaded, otherwise fallback
+            try:
+                if "DEFAULT_DECK" in globals() and len(globals()["DEFAULT_DECK"]) == 60:
+                    return globals()["DEFAULT_DECK"]
+            except Exception:
+                pass
+            return DEFAULT_DECK_FALLBACK
+
+        options = get_val(select, "option", [])
+        max_count = get_val(select, "maxCount", 1)
+        fallback_action = list(range(min(max_count, len(options)))) if options else [0]
+
+        if "orchestrator" not in globals() or globals()["orchestrator"] is None:
+            return fallback_action
+
+        orch = globals()["orchestrator"]
+
         current = get_val(observation, "current")
         if not current:
             return fallback_action
@@ -125,7 +151,6 @@ def agent(observation, configuration=None):
         }
 
         # Parse legal candidates from options
-        options = get_val(select, "option", [])
         game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 13]
         game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 9]
         game_state["legal_bench"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 8]
@@ -151,7 +176,7 @@ def agent(observation, configuration=None):
 
         if sel_type == 0 and sel_ctx == 0:
             # Call orchestrator to determine action strategy string
-            decision = orchestrator.run_turn(game_state)
+            decision = orch.run_turn(game_state)
             action_label = (decision.primary_action.lower() 
                             if hasattr(decision, "primary_action") 
                             else str(decision).lower())
@@ -191,23 +216,37 @@ def agent(observation, configuration=None):
             return fallback_action
 
     except Exception as e:
-        _log_action_exception(e)
+        import sys
+        sys.stderr.write(f"Agent execution crashed internally: {e}\n")
+        try:
+            _log_action_exception(e)
+        except Exception:
+            pass
+        
+        # Determine whether to return fallback deck or fallback action
+        try:
+            if observation is None or get_val(observation, "select") is None:
+                if "DEFAULT_DECK" in globals() and len(globals()["DEFAULT_DECK"]) == 60:
+                    return globals()["DEFAULT_DECK"]
+                return DEFAULT_DECK_FALLBACK
+        except Exception:
+            pass
         return fallback_action
 
 def _log_action_exception(exc: Exception):
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / "action_log.json"
-    
-    error_entry = {
-        "timestamp": datetime.datetime.now().isoformat(),
-        "event": "submission_agent_crash",
-        "agent_called": "submission/main.py",
-        "packet_type": "exception",
-        "error_reason": str(exc)
-    }
-    
     try:
+        log_dir = Path("logs")
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_file = log_dir / "action_log.json"
+        
+        error_entry = {
+            "timestamp": datetime.datetime.now().isoformat(),
+            "event": "submission_agent_crash",
+            "agent_called": "submission/main.py",
+            "packet_type": "exception",
+            "error_reason": str(exc)
+        }
+        
         logs = []
         if log_file.exists():
             content = log_file.read_text(encoding="utf-8").strip()
@@ -221,4 +260,4 @@ def _log_action_exception(exc: Exception):
         logs.append(error_entry)
         log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
     except Exception as log_err:
-        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+        pass
