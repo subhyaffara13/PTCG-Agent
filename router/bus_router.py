@@ -33,9 +33,12 @@ _LOG_PATH = _PROJECT_ROOT / "logs" / "action_log.json"
 class Router:
     def __init__(self) -> None:
         self.handlers = {}
-        _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-        if not _LOG_PATH.exists() or _LOG_PATH.stat().st_size == 0:
-            _LOG_PATH.write_text("[]", encoding="utf-8")
+        try:
+            _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+            if not _LOG_PATH.exists() or _LOG_PATH.stat().st_size == 0:
+                _LOG_PATH.write_text("[]", encoding="utf-8")
+        except Exception:
+            pass
 
     def register_handler(self, agent_name: str, handler_function: Any) -> None:
         self.handlers[agent_name] = handler_function
@@ -58,7 +61,7 @@ class Router:
 
     def _enforce_scope(self, agent_name: str, schema: frozenset[str], data: dict[str, Any]) -> Packet:
         import dataclasses
-        if dataclasses.is_dataclass(data):
+        if dataclasses.is_dataclass(data) and not isinstance(data, type):
             data = dataclasses.asdict(data)
         elif hasattr(data, "model_dump"):
             data = data.model_dump()

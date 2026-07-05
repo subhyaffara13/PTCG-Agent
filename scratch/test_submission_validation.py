@@ -6,6 +6,9 @@ import traceback
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'submission')))
 os.chdir(os.path.join(os.path.dirname(__file__), '..', 'submission'))
 
+import os
+os.environ["KAGGLE_KERNEL_RUN_TYPE"] = "Interactive"
+
 try:
     from kaggle_environments import make
     from main import agent, DEFAULT_DECK
