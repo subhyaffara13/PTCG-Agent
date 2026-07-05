@@ -472,7 +472,7 @@
     },
     {
       "card_id": 1174,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -832,7 +832,7 @@
     },
     {
       "card_id": 848,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -1711,6 +1711,16 @@
       "player": "Brady Meighan",
       "avg_setup_duration": 23.6,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "lmaffei",
+      "avg_setup_duration": 26.8,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "NoOne",
+      "avg_setup_duration": 44.4,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
