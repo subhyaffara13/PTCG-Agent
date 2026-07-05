@@ -40,7 +40,10 @@ class TimeManager:
 
     def flush_logs(self) -> None:
         log_path = self.log_dir / "reasoning_log.json"
-        log_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            log_path.parent.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
         flush_reasoning_logs(self._log_buffer, log_path, logger)
 
     def tick(self, packet: dict[str, Any]) -> dict[str, Any]:

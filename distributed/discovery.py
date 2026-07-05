@@ -33,9 +33,11 @@ class MasterBeacon:
         self.running = False
 
     def _broadcast_loop(self):
+        from distributed.code_sync import get_local_version
         while self.running:
             try:
                 current_ip = self._get_local_ip()
+                self.code_version = get_local_version() or self.code_version
                 message = json.dumps({
                     'type': 'beacon',
                     'code_version': self.code_version,
