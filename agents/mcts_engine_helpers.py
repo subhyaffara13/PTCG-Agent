@@ -8,7 +8,7 @@ from agents.value_network import ActionPrior
 
 logger = logging.getLogger(__name__)
 
-def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: List[str], mast_policy, time_remaining: float):
+def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: List[str], mast_policy, time_remaining: float | None):
     max_time = max(1.0, engine.num_simulations * 0.2)
     if time_remaining is not None:
         max_time = min(max_time, time_remaining - 0.5)

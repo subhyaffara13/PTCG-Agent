@@ -4,7 +4,7 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-_ABILITY_DRAW = {"colress", "concealed", "flower selecting", "shining arcana"}
+logger = logging.getLogger(__name__)
 
 from cb_agents.forward_model_resolve import _resolve_base
 from cb_agents.forward_model_gen import _regenerate_legal_actions, _check_win_conditions

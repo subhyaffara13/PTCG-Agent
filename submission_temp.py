@@ -4431,7 +4431,9 @@ def agent(observation, configuration=None):
     if legal_actions and select is None:
         return legal_actions[0]
     if select is None:
-        return DEFAULT_DECK
+        if get_val(observation, 'step', 0) == 0:
+            return DEFAULT_DECK
+        return []
     options = get_val(select, 'option', [])
     max_count = get_val(select, 'maxCount', 1)
     fallback_action = list(range(min(max_count, len(options))))

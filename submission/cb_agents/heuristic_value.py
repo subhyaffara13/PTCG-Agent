@@ -7,7 +7,7 @@ from cb_agents.heuristic_pipeline import _state_heuristics, _action_score
 logger = logging.getLogger(__name__)
 
 class HeuristicValueNetwork(BaseValueNetwork):
-    def evaluate(self, game_state: dict, action: str = None, determinization: dict = None) -> float:
+    def evaluate(self, game_state: dict, action: str | None = None, determinization: dict | None = None) -> float:
         if action is None:
             return 0.0
         if game_state.get("game_over"):

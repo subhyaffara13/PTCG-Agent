@@ -46,11 +46,12 @@ def dump_steps(raw_steps: list) -> list:
                 player_state = {}
             clean_obs = {k: v for k, v in player_state.get("observation", {}).items() if k != "search_begin_input"}
             step_data.append({
-                "player": player_idx, "action": player_state.get("action"),
-                "reward": player_state.get("reward"), "status": player_state.get("status"),
+                "action": player_state.get("action"),
+                "reward": player_state.get("reward"),
+                "status": player_state.get("status"),
                 "observation": clean_obs
             })
-        steps_dump.append({"step": idx, "players": step_data})
+        steps_dump.append(step_data)
     return steps_dump
 
 
@@ -70,8 +71,24 @@ def run_early_prediction(deck_a: list, deck_b: list, steps_dump: list, winner: s
 def write_steps_file(log_dir: str, timestamp_str: str, label: str, v_a: str, v_b: str, steps_dump: list):
     steps_filename = f"steps_{timestamp_str}_{label}_v{v_a}_vs_v{v_b}.json"
     steps_path = Path(log_dir) / steps_filename
+    
+    final_rewards = [0.0, 0.0]
+    if steps_dump and len(steps_dump[-1]) >= 2:
+        final_rewards = [
+            steps_dump[-1][0].get("reward") or 0.0,
+            steps_dump[-1][1].get("reward") or 0.0
+        ]
+        
+    replay_data = {
+        "steps": steps_dump,
+        "rewards": final_rewards,
+        "info": {
+            "TeamNames": [v_a, v_b]
+        }
+    }
+    
     try:
-        steps_path.write_text(json.dumps(steps_dump, indent=2), encoding="utf-8")
+        steps_path.write_text(json.dumps(replay_data, indent=2), encoding="utf-8")
     except Exception as e:
         logger.error(f"Failed to write steps file {steps_path}: {e}")
     return steps_filename

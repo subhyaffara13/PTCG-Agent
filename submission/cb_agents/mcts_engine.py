@@ -15,18 +15,24 @@ from cb_agents.mcts_mast import MASTPolicy
 
 logger = logging.getLogger(__name__)
 
-# Try to import C++ extension module ptcg_core
+# Try to import C++ extension module ptcg_core (disabled on Kaggle to avoid sandbox segfaults)
 try:
     import ptcg_core  # type: ignore
-    HAS_CPP = True
+    is_kaggle = any(k.startswith("KAGGLE") for k in os.environ)
+    HAS_CPP = not is_kaggle
+    if is_kaggle:
+        logger.info("Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.")
+        os.environ["FAST_SIM_MODE"] = "true"
 except Exception:
     ptcg_core = None
     HAS_CPP = False
     logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
+    if any(k.startswith("KAGGLE") for k in os.environ):
+        os.environ["FAST_SIM_MODE"] = "true"
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
     def __init__(self, c_puct: float = 1.25, num_simulations: int = 50, belief_tracker=None,
-                 value_network: BaseValueNetwork = None, policy_network: BasePolicyNetwork = None):
+                 value_network: BaseValueNetwork | None = None, policy_network: BasePolicyNetwork | None = None):
         self.c_puct = c_puct
         self.num_simulations = num_simulations
         self.belief_tracker = belief_tracker
@@ -34,7 +40,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         self.policy_network = policy_network or HeuristicPolicyNetwork()
 
         # Initialize C++ registry if module loaded and skills/ exists
-        if HAS_CPP:
+        if HAS_CPP and ptcg_core is not None:
             try:
                 skills_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "skills")
                 if os.path.exists(skills_path):
@@ -53,21 +59,21 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                     p.prob /= total
         return priors
 
-    def _evaluate_state(self, game_state: dict, action: str, determinization: dict = None) -> float:
+    def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None = None) -> float:
         try:
             return self.value_network.evaluate(game_state, action, determinization)
         except Exception as e:
             logger.error(f"_evaluate_state failed: {e}")
             return 0.0
 
-    def search(self, game_state: dict, legal_actions: List[str], time_remaining: float = None) -> str:
+    def search(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         try:
             return self._search_internal(game_state, legal_actions, time_remaining)
         except Exception as e:
             logger.error(f"search failed: {e}")
             return "pass"
 
-    def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float = None) -> str:
+    def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         if not legal_actions:
             return "pass"
         if os.environ.get("FAST_SIM_MODE") == "true" or len(legal_actions) == 1:
@@ -78,7 +84,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
             return canonical_actions[0] if canonical_actions else "pass"
 
         # Attempt to run C++ search
-        if HAS_CPP:
+        if HAS_CPP and ptcg_core is not None:
             try:
                 time_limit = time_remaining - 0.5 if time_remaining else 1.0
                 return ptcg_core.mcts_search(game_state, time_limit, self.num_simulations, self.c_puct)

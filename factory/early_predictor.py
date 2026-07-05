@@ -28,8 +28,12 @@ class EarlyWinPredictor:
     def predict_winner(self, deck_a: list, deck_b: list, steps: list) -> str:
         target_step = None
         for step in steps:
-            if not isinstance(step, dict): continue
-            players = step.get("players", [])
+            if isinstance(step, list):
+                players = step
+            elif isinstance(step, dict):
+                players = step.get("players", [])
+            else:
+                continue
             if not players or not isinstance(players[0], dict): continue
             obs = players[0].get("observation") or {}
             curr = obs.get("current") or {}
@@ -38,9 +42,15 @@ class EarlyWinPredictor:
             if turn is not None and turn > 5: break
 
         if not target_step and steps: target_step = steps[-1]
-        if not target_step or not isinstance(target_step, dict): return "player_a"
+        if not target_step: return "player_a"
 
-        players_state = target_step.get("players", [])
+        if isinstance(target_step, list):
+            players_state = target_step
+        elif isinstance(target_step, dict):
+            players_state = target_step.get("players", [])
+        else:
+            return "player_a"
+
         if len(players_state) < 2 or not isinstance(players_state[0], dict) or not isinstance(players_state[1], dict):
             return "player_a"
 

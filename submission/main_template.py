@@ -76,7 +76,9 @@ def agent(observation, configuration=None):
 
     # Step 0: If select is None, we must submit the deck (list of 60 integers)
     if select is None:
-        return DEFAULT_DECK
+        if get_val(observation, "step", 0) == 0:
+            return DEFAULT_DECK
+        return []
 
     options = get_val(select, "option", [])
     max_count = get_val(select, "maxCount", 1)
