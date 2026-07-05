@@ -2,6 +2,12 @@
 agents/value_network_helpers.py
 Defines the PyTorch MLP Value Network architecture for CPU-only training/evals.
 """
+import os
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ)
+
+if is_kaggle:
+    raise ImportError("Bypassing torch on Kaggle to prevent environment crashes.")
+
 try:
     import torch
     import torch.nn as nn
@@ -74,9 +80,9 @@ try:
             float(turn) / 20.0,
             float(my_discard_size) / 60.0,
             float(opp_discard_size) / 60.0,
-            float(stadium),
-            float(weakness_mult),
-            float(resistance_mult)
+            stadium,
+            weakness_mult,
+            resistance_mult
         ] + [0.0]*6
         
         return torch.tensor(features, dtype=torch.float32).unsqueeze(0)

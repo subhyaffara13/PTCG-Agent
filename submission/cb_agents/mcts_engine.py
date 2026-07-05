@@ -16,19 +16,20 @@ from cb_agents.mcts_mast import MASTPolicy
 logger = logging.getLogger(__name__)
 
 # Try to import C++ extension module ptcg_core (disabled on Kaggle to avoid sandbox segfaults)
-try:
-    import ptcg_core  # type: ignore
-    is_kaggle = any(k.startswith("KAGGLE") for k in os.environ)
-    HAS_CPP = not is_kaggle
-    if is_kaggle:
-        logger.info("Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.")
-        os.environ["FAST_SIM_MODE"] = "true"
-except Exception:
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ)
+if is_kaggle:
     ptcg_core = None
     HAS_CPP = False
-    logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
-    if any(k.startswith("KAGGLE") for k in os.environ):
-        os.environ["FAST_SIM_MODE"] = "true"
+    logger.info("Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.")
+    os.environ["FAST_SIM_MODE"] = "true"
+else:
+    try:
+        import ptcg_core  # type: ignore
+        HAS_CPP = True
+    except Exception:
+        ptcg_core = None
+        HAS_CPP = False
+        logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
     def __init__(self, c_puct: float = 1.25, num_simulations: int = 50, belief_tracker=None,

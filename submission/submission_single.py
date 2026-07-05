@@ -1868,6 +1868,9 @@ class HeuristicPolicyNetwork(BasePolicyNetwork):
 agents/value_network_helpers.py
 Defines the PyTorch MLP Value Network architecture for CPU-only training/evals.
 """
+is_kaggle = any((k.startswith('KAGGLE') for k in os.environ))
+if is_kaggle:
+    raise ImportError('Bypassing torch on Kaggle to prevent environment crashes.')
 try:
     import torch
     import torch.nn as nn
@@ -1912,7 +1915,7 @@ try:
                 weakness_mult = 1.0
             if my_type and opp_resistance and (my_type.lower() == opp_resistance.lower()):
                 resistance_mult = 1.0
-        features = [float(my_prizes) / 6.0, float(opp_prizes) / 6.0, float(my_active_hp), float(opp_active_hp), float(attached) / 10.0, float(my_bench_size) / 5.0, float(opp_bench_size) / 5.0, float(my_hand_size) / 10.0, float(turn) / 20.0, float(my_discard_size) / 60.0, float(opp_discard_size) / 60.0, float(stadium), float(weakness_mult), float(resistance_mult)] + [0.0] * 6
+        features = [float(my_prizes) / 6.0, float(opp_prizes) / 6.0, float(my_active_hp), float(opp_active_hp), float(attached) / 10.0, float(my_bench_size) / 5.0, float(opp_bench_size) / 5.0, float(my_hand_size) / 10.0, float(turn) / 20.0, float(my_discard_size) / 60.0, float(opp_discard_size) / 60.0, stadium, weakness_mult, resistance_mult] + [0.0] * 6
         return torch.tensor(features, dtype=torch.float32).unsqueeze(0)
 except ImportError:
     PTCGValueMLP = None
@@ -3746,19 +3749,20 @@ def handle_time_manager_helper(orchestrator, time_elapsed, legal_actions_list, g
 
 # === agents/mcts_engine ===
 logger = logging.getLogger(__name__)
-try:
-    import ptcg_core
-    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ))
-    HAS_CPP = not is_kaggle
-    if is_kaggle:
-        logger.info('Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.')
-        os.environ['FAST_SIM_MODE'] = 'true'
-except Exception:
+is_kaggle = any((k.startswith('KAGGLE') for k in os.environ))
+if is_kaggle:
     ptcg_core = None
     HAS_CPP = False
-    logger.info('ptcg_core C++ extension not found. Using pure Python MCTS.')
-    if any((k.startswith('KAGGLE') for k in os.environ)):
-        os.environ['FAST_SIM_MODE'] = 'true'
+    logger.info('Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.')
+    os.environ['FAST_SIM_MODE'] = 'true'
+else:
+    try:
+        import ptcg_core
+        HAS_CPP = True
+    except Exception:
+        ptcg_core = None
+        HAS_CPP = False
+        logger.info('ptcg_core C++ extension not found. Using pure Python MCTS.')
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
 
