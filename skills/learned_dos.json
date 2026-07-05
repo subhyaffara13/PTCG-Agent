@@ -1696,11 +1696,26 @@
       "player": "hoshippi",
       "avg_setup_duration": 18.8,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "Antonino Zumbo",
+      "avg_setup_duration": 13.2,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "kidekikish",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "Brady Meighan",
+      "avg_setup_duration": 23.6,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 24.0,
-    "avg_trainer_count": 26.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   }
 }
