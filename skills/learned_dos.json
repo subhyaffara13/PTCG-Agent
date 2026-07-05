@@ -1596,11 +1596,41 @@
       "player": "RicardoL\u00f3pez",
       "avg_setup_duration": 31.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "Majkel1337",
+      "avg_setup_duration": 14.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "payanotty",
+      "avg_setup_duration": 32.0,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "junlee789",
+      "avg_setup_duration": 17.4,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "genki toyama",
+      "avg_setup_duration": 25.8,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Rmy",
+      "avg_setup_duration": 55.6,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Hase2727",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 1.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 10.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 15.0
   }
 }
