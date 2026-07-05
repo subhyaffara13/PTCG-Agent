@@ -38,16 +38,6 @@ def main():
     import sys
     import os
 
-    if "--local" in sys.argv or os.environ.get("LOCAL_MODE") == "1":
-        logger.info("Orchestration Agent running in local mode (Distributed training disabled).")
-        from factory.orchestrator_master import run_master_loop
-        while True:
-            try:
-                run_master_loop(enable_distributed=False)
-            except Exception as e:
-                logger.error(f"Local orchestration loop crashed: {e}")
-                time.sleep(5)
-        return
 
     has_force_master_arg = False
     if "--force-master" in sys.argv:
