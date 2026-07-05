@@ -829,6 +829,21 @@
       "card_id": 387,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 848,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 849,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 791,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1636,11 +1651,21 @@
       "player": "Ramesh Arvind",
       "avg_setup_duration": 19.8,
       "avg_bench_density": 1.9
+    },
+    {
+      "player": "Ruko",
+      "avg_setup_duration": 46.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Ebi",
+      "avg_setup_duration": 23.6,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   }
 }
