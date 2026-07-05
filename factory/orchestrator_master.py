@@ -32,27 +32,29 @@ def run_hourly_checks(iteration: int):
     except Exception as e:
         logger.error(f"Auto-submission error: {e}")
 
-def run_master_loop():
-    logger.info("Orchestration Agent (Master Mode) started.")
-    version = get_local_version() or "unknown"
-    beacon = MasterBeacon(code_version=version)
-    beacon.start()
+def run_master_loop(enable_distributed=True):
+    logger.info("Orchestration Agent (Master Mode) started." if enable_distributed else "Orchestration Agent (Local Mode) started.")
+    beacon = None
+    if enable_distributed:
+        version = get_local_version() or "unknown"
+        beacon = MasterBeacon(code_version=version)
+        beacon.start()
     
-    scripts = get_training_scripts(enable_distributed=True)
+    scripts = get_training_scripts(enable_distributed=enable_distributed)
     iteration = 0
     try:
         while True:
-            logger.info("--- [Train Phase] Starting distributed master and PPO workers ---")
+            logger.info("--- [Train Phase] Starting distributed master and PPO workers ---" if enable_distributed else "--- [Train Phase] Starting local training processes ---")
             processes = launch_processes(scripts)
             try:
                 for _ in range(60):
                     monitor_and_restart(processes, scripts)
                     time.sleep(60)
             except KeyboardInterrupt:
-                logger.info("Master loop manually interrupted. Shutting down gracefully...")
+                logger.info("Loop manually interrupted. Shutting down gracefully...")
                 raise  # Re-raise to break out of the top-level while loop
             finally:
-                logger.info("--- [Halt Phase] Stopping master server to run analytics ---")
+                logger.info("--- [Halt Phase] Stopping training processes ---")
                 try:
                     cleanup(processes)
                     time.sleep(2)
@@ -65,14 +67,16 @@ def run_master_loop():
             run_hourly_checks(iteration)
             run_analytics_check(iteration)
             
-            try:
-                from factory.orchestrator_master_git import auto_commit_and_push_if_changed
-                auto_commit_and_push_if_changed()
-            except Exception as e:
-                logger.error(f"Git auto-push failed: {e}")
+            if enable_distributed:
+                try:
+                    from factory.orchestrator_master_git import auto_commit_and_push_if_changed
+                    auto_commit_and_push_if_changed()
+                except Exception as e:
+                    logger.error(f"Git auto-push failed: {e}")
                 
             iteration += 1
     except Exception as e:
-        logger.error(f"Master loop crashed: {e}")
+        logger.error(f"Loop crashed: {e}")
     finally:
-        beacon.stop()
+        if beacon:
+            beacon.stop()
