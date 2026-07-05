@@ -1626,11 +1626,21 @@
       "player": "Hase2727",
       "avg_setup_duration": 17.8,
       "avg_bench_density": 1.7
+    },
+    {
+      "player": "Pokopia",
+      "avg_setup_duration": 30.6,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "Ramesh Arvind",
+      "avg_setup_duration": 19.8,
+      "avg_bench_density": 1.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 10.0,
+    "avg_pokemon_count": 14.0,
     "avg_trainer_count": 35.0,
-    "avg_energy_count": 15.0
+    "avg_energy_count": 11.0
   }
 }
