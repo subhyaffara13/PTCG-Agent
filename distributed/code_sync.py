@@ -18,7 +18,26 @@ def sync_code(master_version) -> bool:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
             import subprocess
-            subprocess.run(['git', 'reset', '--hard', 'HEAD'], check=True)
+            import os
+            
+            # Discard local modifications to tracked files
+            subprocess.run(['git', 'checkout', '-f'], check=True)
+            
+            # Remove local copies of auto-updated files to prevent conflicts if they are untracked/modified
+            files_to_clean = [
+                "models/ppo_actor_critic.pt",
+                "agents/deck_new.csv",
+                "skills/learned_dos.json",
+                "skills/predictor_feedback.json",
+                "skills/predictor_weights.json"
+            ]
+            for f in files_to_clean:
+                if os.path.exists(f):
+                    try:
+                        os.remove(f)
+                    except Exception as clean_err:
+                        logging.warning(f"Could not remove {f} before pull: {clean_err}")
+            
             subprocess.run(['git', 'pull'], check=True)
             logging.info("Code synchronized successfully.")
             return True
