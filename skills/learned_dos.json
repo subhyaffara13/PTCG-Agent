@@ -844,6 +844,11 @@
       "card_id": 791,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 103,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1671,6 +1676,11 @@
       "player": "hirune924",
       "avg_setup_duration": 10.2,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "Shardul Gharat",
+      "avg_setup_duration": 16.8,
+      "avg_bench_density": 4.2
     }
   ],
   "deck_stats": {
