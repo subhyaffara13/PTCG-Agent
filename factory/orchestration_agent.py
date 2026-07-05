@@ -40,17 +40,6 @@ ENABLE_DISTRIBUTED = os.environ.get("ENABLE_DISTRIBUTED") == "1"
 def main():
     import sys
     import os
-    if not ENABLE_DISTRIBUTED:
-        logger.info("Orchestration Agent running in local mode (Distributed training disabled).")
-        from factory.orchestrator_master import run_master_loop
-        while True:
-            try:
-                run_master_loop(enable_distributed=False)
-            except Exception as e:
-                logger.error(f"Local orchestration loop crashed: {e}")
-                time.sleep(5)
-        return
-
     if "--force-master" in sys.argv or os.environ.get("FORCE_MASTER") == "1" or os.path.exists(".force_master"):
         logger.info("[OVERRIDE] Force Master Mode detected. Bypassing discovery and forcing Master Mode.")
         from factory.orchestrator_master import run_master_loop
@@ -59,6 +48,17 @@ def main():
                 run_master_loop(enable_distributed=True)
             except Exception as e:
                 logger.error(f"Master loop crashed: {e}")
+                time.sleep(5)
+        return
+
+    if not ENABLE_DISTRIBUTED:
+        logger.info("Orchestration Agent running in local mode (Distributed training disabled).")
+        from factory.orchestrator_master import run_master_loop
+        while True:
+            try:
+                run_master_loop(enable_distributed=False)
+            except Exception as e:
+                logger.error(f"Local orchestration loop crashed: {e}")
                 time.sleep(5)
         return
 
