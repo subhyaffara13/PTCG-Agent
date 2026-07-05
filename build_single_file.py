@@ -285,17 +285,22 @@ pathlib.Path.mkdir = _safe_mkdir
 
     all_modules = "\n".join(module_sections)
 
-    # Build footer with main agent
-    footer = f'''
+    # Indent the entire codebase by 4 spaces to place it within a module-level try/except safety net
+    indented_modules = ""
+    for line in all_modules.splitlines():
+        if line.strip():
+            indented_modules += "    " + line + "\n"
+        else:
+            indented_modules += "\n"
 
-# ==========================================
-# GLOBAL ORCHESTRATOR INIT
-# ==========================================
-try:
+    # Assemble output with giant try-except wrap around all classes, functions, and orchestrator init
+    output = header + "\n# ==========================================\n# BUNDLED MODULES (TRY/EXCEPT WRAPPED FOR SAFETY)\n# ==========================================\ntry:\n" + indented_modules + f'''
+    # Initialize the Orchestrator
     orchestrator = Orchestrator()
     orchestrator.start_game()
 except Exception as global_err:
-    logger.error(f"Global orchestrator initialization failed: {{global_err}}")
+    import logging
+    logging.getLogger(__name__).error(f"Global module loading or orchestrator initialization failed: {{global_err}}", exc_info=True)
     orchestrator = None
 
 # ==========================================
@@ -303,8 +308,6 @@ except Exception as global_err:
 # ==========================================
 {main_py}
 '''
-
-    output = header + all_modules + footer
     
     # Replace all .parent.parent root resolutions to .parent since single-file agent runs from workspace root directly
     output = output.replace(".parent.parent", ".parent")
