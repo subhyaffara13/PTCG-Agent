@@ -17,7 +17,10 @@ _log_buffer: list[dict[str, Any]] = []
 
 
 def flush_logs() -> None:
-    _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        pass
     flush_reasoning_logs(_log_buffer, _LOG_PATH, logger)
 
 

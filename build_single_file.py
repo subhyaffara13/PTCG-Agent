@@ -225,6 +225,14 @@ from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 from collections import defaultdict
 
+# CRITICAL: Register this module in sys.modules so @dataclass can resolve
+# field type annotations. Kaggle loads submissions via importlib.util which
+# does NOT auto-register the module, causing dataclasses._is_type() to crash
+# with: AttributeError: 'NoneType' object has no attribute '__dict__'
+if __name__ not in sys.modules:
+    import types as _types
+    sys.modules[__name__] = sys.modules.get(__name__) or _types.ModuleType(__name__)
+
 logger = logging.getLogger(__name__)
 
 # ==========================================
