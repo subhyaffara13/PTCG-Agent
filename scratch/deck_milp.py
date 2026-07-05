@@ -79,7 +79,7 @@ def optimize_deck_milp(empirical_core, pool_cards, details, scores, target_size=
     optimized_deck = []
     id_map = {str(c["card_id"]): c for c in pool_cards}
     for cid, var in card_vars.items():
-        count = int(var.varValue or 0)
+        count = int(round(var.varValue or 0))
         if count > 0:
             optimized_deck.extend([id_map[cid]] * count)
 

@@ -61,6 +61,7 @@ def detect_connection_type() -> str:
     return "ethernet"
 
 def main():
+    os.environ["IS_WORKER"] = "true"
     runner = GameRunner()
     conn_type = detect_connection_type()
     print(f"--> Distributed Rollout Worker running on {conn_type.upper()}...")

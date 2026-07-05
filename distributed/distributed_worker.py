@@ -48,6 +48,7 @@ def load_latest_config(r):
         return "aggro", None
 
 def main():
+    os.environ["IS_WORKER"] = "true"
     logger.info(f"Connecting to Redis at {REDIS_HOST}:{REDIS_PORT}...")
     r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
     

@@ -5,3 +5,5 @@ kaggle
 kaggle-environments
 python-dotenv
 pytest
+redis
+

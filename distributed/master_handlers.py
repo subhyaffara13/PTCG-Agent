@@ -65,6 +65,8 @@ class MasterHandlers:
         from distributed.telemetry_sync import decompress_telemetry
         import json
         from pathlib import Path
+        from factory.early_predictor import EarlyWinPredictor
+        predictor = EarlyWinPredictor()
         while self.server.running:
             res = self.server.results_queue.get()
             logger.info(f"Collected result from {res.worker_id} for iteration {res.iteration}.")
@@ -76,5 +78,27 @@ class MasterHandlers:
                 telemetry_data = res.get_replay()
                 if telemetry_data:
                     decompress_telemetry(telemetry_data)
+                    
+                    # Master-side training of the early win predictor
+                    if res.payload:
+                        games_data = res.payload.get("games", {})
+                        for game_label, game_res in games_data.items():
+                            if not any(game_label.startswith(p) for p in ["deck_test_", "variance_baseline_"]):
+                                continue
+                            winner = game_res.get("winner")
+                            prediction = game_res.get("early_prediction")
+                            steps_filename = game_res.get("log_files", {}).get("steps")
+                            
+                            if winner and prediction and prediction != "n/a" and steps_filename:
+                                steps_file = Path("logs") / steps_filename
+                                if steps_file.exists():
+                                    try:
+                                        replay_data = json.loads(steps_file.read_text(encoding="utf-8"))
+                                        steps_dump = replay_data.get("steps", [])
+                                        if prediction != winner and winner in ("player_a", "player_b"):
+                                            predictor.upgrade(prediction, winner, steps_dump)
+                                            logger.info(f"Upgraded early predictor on Master for {game_label} (predicted: {prediction}, actual: {winner})")
+                                    except Exception as ue:
+                                        logger.error(f"Failed to upgrade early predictor for {game_label} on Master: {ue}")
             except Exception as e:
                 logger.error(f"Error extracting telemetry/payload from {res.worker_id}: {e}")

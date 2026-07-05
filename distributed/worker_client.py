@@ -15,6 +15,8 @@ class WorkerClient:
         self.port = port
         self.worker_id = f"worker_{uuid.uuid4().hex[:8]}"
         self.runner = GameRunner(log_dir="logs")
+        import os
+        os.environ["IS_WORKER"] = "true"
         
     def start(self):
         logger.info(f"Worker {self.worker_id} starting...")

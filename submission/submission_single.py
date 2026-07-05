@@ -1774,14 +1774,18 @@ class ActionPrior:
 class BaseValueNetwork(ABC):
 
     @abstractmethod
-    def evaluate(self, game_state: dict, action: str=None, determinization: dict=None) -> float:
+    def evaluate(self, game_state: dict, action: str | None=None, determinization: dict | None=None) -> float:
         pass
 
 class NeuralValueNetwork(BaseValueNetwork):
+    heuristic: Any
+    model: Any
 
     def __init__(self, weights_path='logs/model_weights.pth'):
         self.weights_path = Path(weights_path)
-        self.heuristic, self.model, self._state_cache = (None, None, {})
+        self.heuristic = None
+        self.model = None
+        self._state_cache = {}
         if PTCGValueMLP is not None and self.weights_path.exists():
             try:
                 import torch
@@ -1793,32 +1797,34 @@ class NeuralValueNetwork(BaseValueNetwork):
         if self.model is None:
             self.heuristic = HeuristicValueNetwork()
 
-    def evaluate(self, gs: dict, action: str=None, det: dict=None) -> float:
-        if gs.get('game_over'):
-            return 1.0 if gs.get('winner') == 'me' else -1.0
+    def evaluate(self, game_state: dict, action: str | None=None, determinization: dict | None=None) -> float:
+        if game_state.get('game_over'):
+            return 1.0 if game_state.get('winner') == 'me' else -1.0
         if self.heuristic:
-            return self.heuristic.evaluate(gs, action, det)
+            return self.heuristic.evaluate(game_state, action, determinization)
         try:
             import torch
-            hand_sorted = sorted([str(x) for x in gs.get('my_hand', [])]) if isinstance(gs.get('my_hand'), list) else []
-            active = gs.get('my_active_pokemon', {})
+            hand_sorted = sorted([str(x) for x in game_state.get('my_hand', [])]) if isinstance(game_state.get('my_hand'), list) else []
+            active = game_state.get('my_active_pokemon', {})
             active_id = str(active.get('id')) if isinstance(active, dict) else None
             active_attached_sorted = sorted([str(x) for x in active.get('attached', [])]) if isinstance(active, dict) else []
-            bench_strs = sorted([str(x) for x in gs.get('my_bench', [])]) if isinstance(gs.get('my_bench'), list) else []
-            opp_bench_strs = sorted([str(x) for x in gs.get('opponent_bench', [])]) if isinstance(gs.get('opponent_bench'), list) else []
-            my_discard_size = len(gs.get('my_discard_pile', [])) if isinstance(gs.get('my_discard_pile'), list) else 0
-            opp_discard_size = len(gs.get('opponent_discard_pile', [])) if isinstance(gs.get('opponent_discard_pile'), list) else 0
-            stadium = gs.get('stadium_card')
-            h = hash((str(hand_sorted), str(gs.get('turn_number', 0)), str(active_id), str(active_attached_sorted), str(bench_strs), str(opp_bench_strs), str(my_discard_size), str(opp_discard_size), str(stadium), gs.get('my_active_damage', 0), gs.get('my_prizes', 6), gs.get('opponent_prizes', 6), gs.get('opponent_active_hp', 100)))
-            if h not in self._state_cache:
-                with torch.no_grad():
-                    self._state_cache[h] = self.model(state_to_tensor(gs)).item()
-            val = self._state_cache[h]
+            bench_strs = sorted([str(x) for x in game_state.get('my_bench', [])]) if isinstance(game_state.get('my_bench'), list) else []
+            opp_bench_strs = sorted([str(x) for x in game_state.get('opponent_bench', [])]) if isinstance(game_state.get('opponent_bench'), list) else []
+            my_discard_size = len(game_state.get('my_discard_pile', [])) if isinstance(game_state.get('my_discard_pile'), list) else 0
+            opp_discard_size = len(game_state.get('opponent_discard_pile', [])) if isinstance(game_state.get('opponent_discard_pile'), list) else 0
+            stadium = game_state.get('stadium_card')
+            h = hash((str(hand_sorted), str(game_state.get('turn_number', 0)), str(active_id), str(active_attached_sorted), str(bench_strs), str(opp_bench_strs), str(my_discard_size), str(opp_discard_size), str(stadium), game_state.get('my_active_damage', 0), game_state.get('my_prizes', 6), game_state.get('opponent_prizes', 6), game_state.get('opponent_active_hp', 100)))
+            val = 0.0
+            if self.model is not None and state_to_tensor is not None:
+                if h not in self._state_cache:
+                    with torch.no_grad():
+                        self._state_cache[h] = self.model(state_to_tensor(game_state)).item()
+                val = self._state_cache[h]
             if action:
-                val += _action_score(action, gs, 0.0)
+                val += _action_score(action, game_state, 0.0)
             return max(-1.0, min(1.0, val))
         except:
-            return HeuristicValueNetwork().evaluate(gs, action, det)
+            return HeuristicValueNetwork().evaluate(game_state, action, determinization)
 
 class BasePolicyNetwork(ABC):
 
@@ -1828,12 +1834,12 @@ class BasePolicyNetwork(ABC):
 
 class HeuristicPolicyNetwork(BasePolicyNetwork):
 
-    def get_priors(self, gs: dict, legal_actions: List[str]) -> List[ActionPrior]:
+    def get_priors(self, game_state: dict, legal_actions: List[str]) -> List[ActionPrior]:
         priors = []
         if not legal_actions:
             return priors
-        pid = gs.get('prized_card_ids', {})
-        pc = gs.get('prize_certainty', 0.0)
+        pid = game_state.get('prized_card_ids', {})
+        pc = game_state.get('prize_certainty', 0.0)
         bp = 1.0 / len(legal_actions)
         for a in legal_actions:
             p = bp
@@ -3409,7 +3415,7 @@ logger = logging.getLogger(__name__)
 
 class HeuristicValueNetwork(BaseValueNetwork):
 
-    def evaluate(self, game_state: dict, action: str=None, determinization: dict=None) -> float:
+    def evaluate(self, game_state: dict, action: str | None=None, determinization: dict | None=None) -> float:
         if action is None:
             return 0.0
         if game_state.get('game_over'):
@@ -3425,7 +3431,7 @@ class HeuristicValueNetwork(BaseValueNetwork):
 # === agents/mcts_engine_helpers ===
 logger = logging.getLogger(__name__)
 
-def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: List[str], mast_policy, time_remaining: float):
+def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: List[str], mast_policy, time_remaining: float | None):
     max_time = max(1.0, engine.num_simulations * 0.2)
     if time_remaining is not None:
         max_time = min(max_time, time_remaining - 0.5)
@@ -3743,20 +3749,23 @@ try:
     HAS_CPP = not is_kaggle
     if is_kaggle:
         logger.info('Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.')
+        os.environ['FAST_SIM_MODE'] = 'true'
 except Exception:
     ptcg_core = None
     HAS_CPP = False
     logger.info('ptcg_core C++ extension not found. Using pure Python MCTS.')
+    if any((k.startswith('KAGGLE') for k in os.environ)):
+        os.environ['FAST_SIM_MODE'] = 'true'
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
 
-    def __init__(self, c_puct: float=1.25, num_simulations: int=50, belief_tracker=None, value_network: BaseValueNetwork=None, policy_network: BasePolicyNetwork=None):
+    def __init__(self, c_puct: float=1.25, num_simulations: int=50, belief_tracker=None, value_network: BaseValueNetwork | None=None, policy_network: BasePolicyNetwork | None=None):
         self.c_puct = c_puct
         self.num_simulations = num_simulations
         self.belief_tracker = belief_tracker
         self.value_network = value_network or HeuristicValueNetwork()
         self.policy_network = policy_network or HeuristicPolicyNetwork()
-        if HAS_CPP:
+        if HAS_CPP and ptcg_core is not None:
             try:
                 skills_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'skills')
                 if os.path.exists(skills_path):
@@ -3775,21 +3784,21 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                     p.prob /= total
         return priors
 
-    def _evaluate_state(self, game_state: dict, action: str, determinization: dict=None) -> float:
+    def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None=None) -> float:
         try:
             return self.value_network.evaluate(game_state, action, determinization)
         except Exception as e:
             logger.error(f'_evaluate_state failed: {e}')
             return 0.0
 
-    def search(self, game_state: dict, legal_actions: List[str], time_remaining: float=None) -> str:
+    def search(self, game_state: dict, legal_actions: List[str], time_remaining: float | None=None) -> str:
         try:
             return self._search_internal(game_state, legal_actions, time_remaining)
         except Exception as e:
             logger.error(f'search failed: {e}')
             return 'pass'
 
-    def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float=None) -> str:
+    def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float | None=None) -> str:
         if not legal_actions:
             return 'pass'
         if os.environ.get('FAST_SIM_MODE') == 'true' or len(legal_actions) == 1:
@@ -3797,7 +3806,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         canonical_actions, _ = pipeline.mask_actions(legal_actions, game_state)
         if len(canonical_actions) <= 1:
             return canonical_actions[0] if canonical_actions else 'pass'
-        if HAS_CPP:
+        if HAS_CPP and ptcg_core is not None:
             try:
                 time_limit = time_remaining - 0.5 if time_remaining else 1.0
                 return ptcg_core.mcts_search(game_state, time_limit, self.num_simulations, self.c_puct)
@@ -4416,8 +4425,9 @@ try:
             DEFAULT_DECK = _loaded_deck
 except Exception:
     pass
+from typing import Any
 
-def get_val(obj, key, default=None):
+def get_val(obj: Any, key: str, default: Any=None) -> Any:
     if isinstance(obj, dict):
         return obj.get(key, default)
     return getattr(obj, key, default)
@@ -4431,9 +4441,7 @@ def agent(observation, configuration=None):
     if legal_actions and select is None:
         return legal_actions[0]
     if select is None:
-        if get_val(observation, 'step', 0) == 0:
-            return DEFAULT_DECK
-        return []
+        return DEFAULT_DECK
     options = get_val(select, 'option', [])
     max_count = get_val(select, 'maxCount', 1)
     fallback_action = list(range(min(max_count, len(options))))

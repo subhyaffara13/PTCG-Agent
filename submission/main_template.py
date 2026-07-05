@@ -59,7 +59,9 @@ except Exception:
 
 
 
-def get_val(obj, key, default=None):
+from typing import Any
+
+def get_val(obj: Any, key: str, default: Any = None) -> Any:
     if isinstance(obj, dict):
         return obj.get(key, default)
     return getattr(obj, key, default)
@@ -76,9 +78,7 @@ def agent(observation, configuration=None):
 
     # Step 0: If select is None, we must submit the deck (list of 60 integers)
     if select is None:
-        if get_val(observation, "step", 0) == 0:
-            return DEFAULT_DECK
-        return []
+        return DEFAULT_DECK
 
     options = get_val(select, "option", [])
     max_count = get_val(select, "maxCount", 1)
