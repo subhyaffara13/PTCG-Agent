@@ -849,6 +849,11 @@
       "card_id": 103,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 117,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1681,11 +1686,21 @@
       "player": "Shardul Gharat",
       "avg_setup_duration": 16.8,
       "avg_bench_density": 4.2
+    },
+    {
+      "player": "Iliamna",
+      "avg_setup_duration": 17.4,
+      "avg_bench_density": 4.4
+    },
+    {
+      "player": "hoshippi",
+      "avg_setup_duration": 18.8,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 30.0,
+    "avg_pokemon_count": 24.0,
+    "avg_trainer_count": 26.0,
     "avg_energy_count": 10.0
   }
 }
