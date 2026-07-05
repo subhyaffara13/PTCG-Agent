@@ -1,4 +1,5 @@
 import subprocess
+import os
 import logging
 
 def get_local_version():
@@ -17,9 +18,6 @@ def sync_code(master_version) -> bool:
     if local_version and master_version and local_version != master_version:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
-            import subprocess
-            import os
-            
             # Discard local modifications to tracked files
             subprocess.run(['git', 'checkout', '-f'], check=True)
             
