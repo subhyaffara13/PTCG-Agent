@@ -40,7 +40,18 @@ ENABLE_DISTRIBUTED = os.environ.get("ENABLE_DISTRIBUTED") == "1"
 def main():
     import sys
     import os
-    if "--force-master" in sys.argv or os.environ.get("FORCE_MASTER") == "1" or os.path.exists(".force_master"):
+    has_force_master_arg = False
+    if "--force-master" in sys.argv:
+        has_force_master_arg = True
+    elif "--force" in sys.argv:
+        try:
+            idx = sys.argv.index("--force")
+            if idx + 1 < len(sys.argv) and sys.argv[idx + 1] == "master":
+                has_force_master_arg = True
+        except ValueError:
+            pass
+
+    if has_force_master_arg or os.environ.get("FORCE_MASTER") == "1" or os.path.exists(".force_master"):
         logger.info("[OVERRIDE] Force Master Mode detected. Bypassing discovery and forcing Master Mode.")
         from factory.orchestrator_master import run_master_loop
         while True:
