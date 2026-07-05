@@ -33,8 +33,11 @@ sh = logging.StreamHandler()
 sh.setFormatter(fmt)
 logger.addHandler(sh)
 
-import os
-ENABLE_DISTRIBUTED = os.environ.get("ENABLE_DISTRIBUTED") == "1"
+ENABLE_DISTRIBUTED = (
+    os.environ.get("ENABLE_DISTRIBUTED") == "1" or
+    "--distributed" in sys.argv or
+    "--worker" in sys.argv
+)
 
 
 def main():
