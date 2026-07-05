@@ -51,7 +51,7 @@ def main():
         except ValueError:
             pass
 
-    if has_force_master_arg or os.environ.get("FORCE_MASTER") == "1" or os.path.exists(".force_master"):
+    if has_force_master_arg or os.environ.get("FORCE_MASTER") == "1":
         logger.info("[OVERRIDE] Force Master Mode detected. Bypassing discovery and forcing Master Mode.")
         from factory.orchestrator_master import run_master_loop
         while True:
