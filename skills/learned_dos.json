@@ -1661,6 +1661,16 @@
       "player": "Ebi",
       "avg_setup_duration": 23.6,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "koucha",
+      "avg_setup_duration": 20.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "hirune924",
+      "avg_setup_duration": 10.2,
+      "avg_bench_density": 3.4
     }
   ],
   "deck_stats": {
