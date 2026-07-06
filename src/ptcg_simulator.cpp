@@ -661,8 +661,38 @@ double score_action(const std::string& action, const BoardState& state, double t
 
 std::vector<std::string> mask_illegal(const std::vector<std::string>& legal_actions, const BoardState& state) {
     if (legal_actions.empty()) return {"pass"};
+    
+    bool has_active_plays = false;
+    for (const auto& action : legal_actions) {
+        if (action != "pass") {
+            if (action.rfind("attack:", 0) == 0 ||
+                action.rfind("play_trainer:", 0) == 0 ||
+                action.rfind("evolve:", 0) == 0 ||
+                action.rfind("attach_energy:", 0) == 0 ||
+                action.rfind("ability:", 0) == 0 ||
+                action.rfind("bench:", 0) == 0) {
+                
+                if (action.rfind("play_trainer:", 0) == 0 && state.me.deck_count <= 0) {
+                    std::string trainer_name = action.substr(13);
+                    std::transform(trainer_name.begin(), trainer_name.end(), trainer_name.begin(), ::tolower);
+                    if (trainer_name.find("research") != std::string::npos ||
+                        trainer_name.find("iono") != std::string::npos ||
+                        trainer_name.find("judge") != std::string::npos ||
+                        trainer_name.find("draw") != std::string::npos) {
+                        continue;
+                    }
+                }
+                has_active_plays = true;
+                break;
+            }
+        }
+    }
+
     std::vector<std::string> filtered;
     for (const auto& action : legal_actions) {
+        if (action == "pass" && has_active_plays) {
+            continue;
+        }
         if (action.rfind("retreat:", 0) == 0 && state.me.bench.empty()) {
             continue;
         }

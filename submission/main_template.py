@@ -258,18 +258,37 @@ def make_smart_choice(select, observation, fallback_action):
         if registry is None:
             return fallback_action
 
-        # Detect if this is likely a hand discard choice
+        # Detect if this is likely a hand discard choice (cost for trainer or energy discard)
         is_discard = False
-        if sel_type == 2:
+        if sel_type in (1, 2, 4):
             try:
-                current = get_val(observation, "current")
-                my_idx = get_val(current, "yourIndex", 0)
-                players = get_val(current, "players", [])
-                if len(players) > my_idx:
-                    my_hand = [get_val(c, "id") for c in get_val(players[my_idx], "hand", []) if c and get_val(c, "id") is not None]
-                    option_ids = [get_val(opt, "id") for opt in options]
-                    if option_ids and all(oid in my_hand for oid in option_ids if oid is not None):
-                        is_discard = True
+                if sel_type == 4 or str(get_val(select, "context", "")).lower() in ("discard", "energy_discard"):
+                    is_discard = True
+                else:
+                    # Check if all options point to cards in our hand
+                    current = get_val(observation, "current")
+                    my_idx = get_val(current, "yourIndex", 0)
+                    players = get_val(current, "players", [])
+                    if len(players) > my_idx:
+                        my_hand_ids = [get_val(c, "id") for c in get_val(players[my_idx], "hand", []) if c and get_val(c, "id") is not None]
+                        
+                        option_card_ids = []
+                        for opt in options:
+                            opt_id = get_val(opt, "id")
+                            if opt_id is None:
+                                # Resolve coordinate
+                                area = get_val(opt, "area")
+                                index = get_val(opt, "index")
+                                p_idx = get_val(opt, "playerIndex", 0)
+                                if p_idx == my_idx and area == 2: # Hand
+                                    hand = get_val(players[my_idx], "hand", [])
+                                    if len(hand) > index:
+                                        opt_id = get_val(hand[index], "id")
+                            if opt_id is not None:
+                                option_card_ids.append(opt_id)
+                        
+                        if option_card_ids and all(oid in my_hand_ids for oid in option_card_ids):
+                            is_discard = True
             except Exception:
                 pass
 
@@ -279,6 +298,31 @@ def make_smart_choice(select, observation, fallback_action):
             card_id = get_val(opt, "id")
             card_name = get_val(opt, "name", "")
             
+            # If coordinates are present instead of name/id, resolve them
+            if card_id is None and not card_name:
+                try:
+                    area = get_val(opt, "area")
+                    index = get_val(opt, "index")
+                    p_idx = get_val(opt, "playerIndex", 0)
+                    current = get_val(observation, "current")
+                    players = get_val(current, "players", [])
+                    if len(players) > p_idx:
+                        p_state = players[p_idx]
+                        if area == 2: # Hand
+                            hand = get_val(p_state, "hand", [])
+                            if len(hand) > index:
+                                card_id = get_val(hand[index], "id")
+                        elif area == 12: # Bench
+                            bench = get_val(p_state, "bench", [])
+                            if len(bench) > index:
+                                card_id = get_val(bench[index], "id")
+                        elif area == 4: # Active
+                            active = get_val(p_state, "active", [])
+                            if len(active) > index:
+                                card_id = get_val(active[index], "id")
+                except Exception:
+                    pass
+
             card = None
             if card_id is not None:
                 card = registry.get_full_skill(card_id)

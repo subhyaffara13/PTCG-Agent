@@ -9,7 +9,7 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 
-def setup_game_env():
+def setup_game_env(seed=None):
     os.environ["FAST_SIM_MODE"] = "false"
     saved_path = list(sys.path)
     try:
@@ -19,7 +19,10 @@ def setup_game_env():
         with open(os.devnull, 'w') as fnull:
             with contextlib.redirect_stdout(fnull), contextlib.redirect_stderr(fnull):
                 from kaggle_environments import make
-                env = make("cabt")
+                config = {}
+                if seed is not None:
+                    config["seed"] = seed
+                env = make("cabt", configuration=config)
     finally:
         sys.path = saved_path
     return env

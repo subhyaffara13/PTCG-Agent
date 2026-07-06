@@ -23,18 +23,38 @@ def make_smart_choice(select: dict, observation: dict, fallback_action: list[int
         if registry is None:
             return fallback_action
 
+        # Detect if this is likely a hand discard choice (cost for trainer or energy discard)
         is_discard = False
-        if sel_type == 2:
+        if sel_type in (1, 2, 4):
             try:
-                current = observation.get("current")
-                if current is not None:
-                    my_idx = current.get("yourIndex", 0)
-                    players = current.get("players", [])
-                    if len(players) > my_idx and players[my_idx] is not None:
-                        my_hand = [c.get("id") for c in players[my_idx].get("hand", []) if c and c.get("id") is not None]
-                        option_ids = [opt.get("id") for opt in options]
-                        if option_ids and all(oid in my_hand for oid in option_ids if oid is not None):
-                            is_discard = True
+                if sel_type == 4 or str(select.get("context", "")).lower() in ("discard", "energy_discard"):
+                    is_discard = True
+                else:
+                    # Check if all options point to cards in our hand
+                    current = observation.get("current")
+                    if current is not None:
+                        my_idx = current.get("yourIndex", 0)
+                        players = current.get("players", [])
+                        if len(players) > my_idx and players[my_idx] is not None:
+                            my_hand_ids = [c.get("id") for c in players[my_idx].get("hand", []) if c and c.get("id") is not None]
+                            
+                            option_card_ids = []
+                            for opt in options:
+                                opt_id = opt.get("id")
+                                if opt_id is None:
+                                    # Resolve coordinate
+                                    area = opt.get("area")
+                                    index = opt.get("index")
+                                    p_idx = opt.get("playerIndex", 0)
+                                    if p_idx == my_idx and area == 2: # Hand
+                                        hand = players[my_idx].get("hand", [])
+                                        if len(hand) > index:
+                                            opt_id = hand[index].get("id")
+                                if opt_id is not None:
+                                    option_card_ids.append(opt_id)
+                            
+                            if option_card_ids and all(oid in my_hand_ids for oid in option_card_ids):
+                                is_discard = True
             except Exception:
                 pass
 
@@ -44,6 +64,32 @@ def make_smart_choice(select: dict, observation: dict, fallback_action: list[int
             card_id = opt.get("id")
             card_name = opt.get("name", "")
             
+            # If coordinates are present instead of name/id, resolve them
+            if card_id is None and not card_name:
+                try:
+                    area = opt.get("area")
+                    index = opt.get("index")
+                    p_idx = opt.get("playerIndex", 0)
+                    current = observation.get("current")
+                    if current is not None:
+                        players = current.get("players", [])
+                        if len(players) > p_idx and players[p_idx] is not None:
+                            p_state = players[p_idx]
+                            if area == 2: # Hand
+                                hand = p_state.get("hand", [])
+                                if len(hand) > index:
+                                    card_id = hand[index].get("id")
+                            elif area == 12: # Bench
+                                bench = p_state.get("bench", [])
+                                if len(bench) > index:
+                                    card_id = bench[index].get("id")
+                            elif area == 4: # Active
+                                active = p_state.get("active", [])
+                                if len(active) > index:
+                                    card_id = active[index].get("id")
+                except Exception:
+                    pass
+
             card = None
             if card_id is not None:
                 card = registry.get_full_skill(card_id)
@@ -119,14 +165,11 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
         game_state["select_type"] = sel_type
         game_state["select_context"] = sel_ctx
 
-        # Route ALL decision points through the brain, not just main turn (type=0, ctx=0)
+        # Route only main turn and prize selections to the MCTS engine
         is_main_turn = (sel_type == 0 and sel_ctx == 0)
-        is_target_select = (sel_type == 1)  # Target selection for trainer/ability effects
-        is_energy_discard = (sel_type == 4)  # Energy discard for attack cost
-        is_energy_attach = (sel_type == 7)   # Energy attachment target
-        is_binary_choice = (sel_type == 9)   # Coin flip / binary
+        is_energy_attach = (sel_type == 7)
 
-        if is_main_turn or game_state["select_prize"] or is_target_select or is_energy_discard or is_energy_attach or is_binary_choice:
+        if is_main_turn or game_state["select_prize"]:
             action_label = orchestrator.run_turn(game_state)
             if hasattr(action_label, 'primary_action'):
                 action_label = action_label.primary_action
