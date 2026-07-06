@@ -869,6 +869,51 @@
       "card_id": 649,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 9,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 115,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 144,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 162,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 163,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 183,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 224,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1188,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1248,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1801,11 +1846,16 @@
       "player": "jiatu.l",
       "avg_setup_duration": 29.8,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "vibechu",
+      "avg_setup_duration": 12.4,
+      "avg_bench_density": 3.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 30.0,
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 27.0,
     "avg_energy_count": 10.0
   }
 }
