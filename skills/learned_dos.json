@@ -1891,6 +1891,11 @@
       "player": "zhan renyi",
       "avg_setup_duration": 96.2,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "LiamKirwin",
+      "avg_setup_duration": 45.8,
+      "avg_bench_density": 0.9
     }
   ],
   "deck_stats": {
