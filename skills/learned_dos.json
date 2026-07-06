@@ -502,7 +502,7 @@
     },
     {
       "card_id": 7,
-      "avg_count": 10.0,
+      "avg_count": 15.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -863,6 +863,11 @@
     {
       "card_id": 1228,
       "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 649,
+      "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
   ],
@@ -1771,11 +1776,21 @@
       "player": "Blake Mosley",
       "avg_setup_duration": 14.6,
       "avg_bench_density": 1.9
+    },
+    {
+      "player": "Oleksandr_Savsunenko",
+      "avg_setup_duration": 29.2,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "\u3054\u3093\u3055\u304f\u3088\u306d\u304d\u3061",
+      "avg_setup_duration": 9.8,
+      "avg_bench_density": 4.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 17.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 15.0
   }
 }
