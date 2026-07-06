@@ -36,7 +36,7 @@ class KaggleScraper:
             logger.error(f"Kaggle CLI failed to get episodes: {e}")
             return []
 
-    def download_episode_replay(self, episode_id: int) -> Path:
+    def download_episode_replay(self, episode_id: int) -> Path | None:
         """Downloads a specific episode replay JSON file."""
         target_path = self.output_dir / f"episode-{episode_id}-replay.json"
         if target_path.exists():

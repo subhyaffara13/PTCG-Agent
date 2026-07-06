@@ -184,6 +184,19 @@ def make_smart_choice(select: dict, observation: dict, fallback_action: list[int
                     except Exception:
                         pass
                 
+                # 4. Support Pokemon early match boost
+                try:
+                    current = observation.get("current")
+                    if current is not None:
+                        turn = current.get("turn", 1)
+                        if turn <= 5:
+                            support_names = {"bidoof", "bibarel", "snom", "frosmoth", "remoraid", "octillery", "dunsparce", "jirachi", "manaphy", "mew"}
+                            card_name_lower = getattr(card, "card_name", "").lower()
+                            if any(s in card_name_lower for s in support_names):
+                                score += 15.0
+                except Exception:
+                    pass
+                
                 if sel_type == 3:
                     score += getattr(card, "ev_score", 0.0) + (getattr(card, "damage_output", 0) * 0.01)
 
