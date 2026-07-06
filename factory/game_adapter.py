@@ -4,7 +4,10 @@ from factory.game_adapter_helpers import get_mapped_indices, get_card_id
 
 logger = logging.getLogger(__name__)
 
+_registry = None
+
 def make_smart_choice(select: dict, observation: dict, fallback_action: list[int], skills_dir: str) -> list[int]:
+    global _registry
     try:
         options = select.get("option", [])
         if not options:
@@ -15,8 +18,10 @@ def make_smart_choice(select: dict, observation: dict, fallback_action: list[int
         
         # Load CardRegistry
         try:
-            from agents.card_registry import CardRegistry
-            registry = CardRegistry(skills_dir=skills_dir)
+            if _registry is None:
+                from agents.card_registry import CardRegistry
+                _registry = CardRegistry(skills_dir=skills_dir)
+            registry = _registry
         except Exception:
             registry = None
 

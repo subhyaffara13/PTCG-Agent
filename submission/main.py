@@ -235,7 +235,10 @@ def _log_action_exception(exc: Exception):
     except Exception as log_err:
         pass
 
+_registry = None
+
 def make_smart_choice(select, observation, fallback_action):
+    global _registry
     try:
         options = get_val(select, "option", [])
         if not options:
@@ -246,12 +249,14 @@ def make_smart_choice(select, observation, fallback_action):
         
         # Resolve skills_dir for CardRegistry
         try:
-            from cb_agents.card_registry import CardRegistry
-            import os
-            from pathlib import Path
-            agent_dir = str(Path(__file__).parent.resolve()) if "__file__" in globals() and globals()["__file__"] else os.getcwd()
-            skills_dir = os.path.join(agent_dir, "skills")
-            registry = CardRegistry(skills_dir=skills_dir)
+            if _registry is None:
+                from cb_agents.card_registry import CardRegistry
+                import os
+                from pathlib import Path
+                agent_dir = str(Path(__file__).parent.resolve()) if "__file__" in globals() and globals()["__file__"] else os.getcwd()
+                skills_dir = os.path.join(agent_dir, "skills")
+                _registry = CardRegistry(skills_dir=skills_dir)
+            registry = _registry
         except Exception:
             registry = None
 
