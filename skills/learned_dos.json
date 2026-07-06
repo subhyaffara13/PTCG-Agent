@@ -237,7 +237,7 @@
     },
     {
       "card_id": 1194,
-      "avg_count": 2.0,
+      "avg_count": 4.0,
       "reason": "High usage (2.0x avg) in winning matches of player charmq."
     },
     {
@@ -853,6 +853,16 @@
     {
       "card_id": 117,
       "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 689,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1228,
+      "avg_count": 4.0,
       "reason": "High usage in winning matches."
     }
   ],
@@ -1721,11 +1731,21 @@
       "player": "NoOne",
       "avg_setup_duration": 44.4,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "SamuelSanolume",
+      "avg_setup_duration": 35.0,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "koga_poke",
+      "avg_setup_duration": 13.6,
+      "avg_bench_density": 3.3
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 7.0,
+    "avg_trainer_count": 41.0,
+    "avg_energy_count": 12.0
   }
 }
