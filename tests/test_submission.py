@@ -7,8 +7,12 @@ Unit tests for submission/main.py.
 import os
 import json
 import pytest
+import sys
 from pathlib import Path
-from submission.main import agent
+submission_dir = str(Path(__file__).parent.parent / "submission")
+if submission_dir not in sys.path:
+    sys.path.insert(0, submission_dir)
+from main import agent
 
 class MockObservation:
     def __init__(self):
@@ -73,7 +77,7 @@ def test_submission_agent_legacy_mock_fallback():
     # When select is None, it should hit the legacy fallback and return the first legal action
     obs = MockObservation()
     action = agent(obs)
-    assert action in obs.legal_actions
+    assert action[0] in obs.legal_actions
 
 def test_realistic_submission_agent_orchestration():
     # When select is a real turn choice, it should run orchestrator and return selected option indices

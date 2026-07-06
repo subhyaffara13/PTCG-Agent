@@ -12,6 +12,11 @@ from router.bus import RouterBus, StrategyPacket
 from factory.game_logger import GameLogger
 
 
+@pytest.fixture(autouse=True)
+def force_slow_sim(monkeypatch):
+    monkeypatch.setenv("FAST_SIM_MODE", "false")
+
+
 def test_game_logger_creation_and_streams(tmp_path):
     logger = GameLogger(log_dir=str(tmp_path))
     assert logger.perspective_flag == "player"
