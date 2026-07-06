@@ -612,7 +612,7 @@
     },
     {
       "card_id": 647,
-      "avg_count": 3.0,
+      "avg_count": 4.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -1751,11 +1751,16 @@
       "player": "CMK",
       "avg_setup_duration": 16.0,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "\u6012\u7834\u9913\u9b3c",
+      "avg_setup_duration": 44.2,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 21.0,
+    "avg_trainer_count": 29.0,
+    "avg_energy_count": 10.0
   }
 }
