@@ -17,7 +17,7 @@ from factory.game_runner_worker import _parallel_game_worker
 
 logger = logging.getLogger(__name__)
 
-def _load_optimized_deck(custom_path: str = None) -> list[int]:
+def _load_optimized_deck(custom_path: str | None = None) -> list[int]:
     """Load the best deck from the optimizer pipeline output."""
     import csv
     paths = [custom_path] if custom_path else ["staging/deck_new.csv", "agents/deck_new.csv"]
@@ -62,18 +62,64 @@ class GameRunner(BaseAgent):
         if not isinstance(d_base, list): d_base = DEFAULT_DECK
         if not isinstance(d_new, list): d_new = DEFAULT_DECK
 
+        # 1. Initialize League Manager
+        from factory.league_manager import LeagueManager
+        league = LeagueManager()
+        import random
+
         # RUN 100 PLAYS IN PARALLEL: 50 deck tests and 50 variance tests
-        games_config = [("reasoning_test", d_base, d_base, False, True)]
-        for j in range(50):
+        # Organized as 25 symmetric twin pairs (orig/swap) under shared seeds
+        games_config: list[tuple[str, list[int], list[int], bool, bool, int | None]] = [
+            ("reasoning_test", d_base, d_base, False, True, None)
+        ]
+        league_matchups = {}
+
+        for j in range(25):
+            seed = 1000 + j
+            
+            # Determine opponent deck (30% chance to matchmake against a league exploiter/snapshot)
+            opponent_deck = d_base
+            opp_name = "main_agent"
+            if random.random() < 0.30:
+                opp_name = league.matchmake()
+                opp_deck_path = Path("skills/league") / f"{opp_name}.csv"
+                if opp_deck_path.exists():
+                    try:
+                        loaded_deck = []
+                        import csv
+                        with open(opp_deck_path, "r", encoding="utf-8") as f:
+                            for row in csv.DictReader(f):
+                                loaded_deck.extend([int(row["card_id"])] * int(row["count"]))
+                        if len(loaded_deck) == 60:
+                            opponent_deck = loaded_deck
+                            # Track that this game is a league matchup
+                            league_matchups[f"deck_test_{j}_orig"] = opp_name
+                            league_matchups[f"deck_test_{j}_swap"] = opp_name
+                    except Exception:
+                        pass
+
+            # Deck test twin pair: Player A (opponent_deck) vs Player B (d_new)
             games_config.extend([
-                (f"deck_test_{j}", d_base, d_new, False, False),
-                (f"variance_baseline_{j}", d_base, d_base, False, False)
+                (f"deck_test_{j}_orig", opponent_deck, d_new, False, False, seed),
+                (f"deck_test_{j}_swap", d_new, opponent_deck, False, False, seed)
+            ])
+            
+            # Variance baseline twin pair: Player A (d_base) vs Player B (d_base)
+            games_config.extend([
+                (f"variance_baseline_{j}_orig", d_base, d_base, False, False, seed),
+                (f"variance_baseline_{j}_swap", d_base, d_base, False, False, seed)
             ])
 
         results = {}
+        executor = GameRunner._executor
+        if executor is None:
+            GameRunner._executor = ProcessPoolExecutor(max_workers=os.cpu_count() or 16)
+            executor = GameRunner._executor
+        assert executor is not None
+
         futures = [
-            GameRunner._executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b)
-            for label, deck_a, deck_b, use_a, use_b in games_config
+            executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed)
+            for label, deck_a, deck_b, use_a, use_b, seed in games_config
         ]
         for future in futures:
             try:
@@ -82,7 +128,30 @@ class GameRunner(BaseAgent):
             except Exception as e:
                 logger.error(f"Process execution crashed: {e}", exc_info=True)
 
-        # Consolidate results for EvalAgent (average metrics across 5 parallel runs)
+        # Normalize swapped twin games:
+        # In swap configurations, deck_a was d_new and deck_b was opponent_deck.
+        # We swap the metrics back so player_a represents the baseline opponent and player_b represents d_new
+        for label, res in list(results.items()):
+            if label.endswith("_swap"):
+                orig_winner = res.get("winner")
+                if orig_winner == "player_a":
+                    res["winner"] = "player_b"
+                elif orig_winner == "player_b":
+                    res["winner"] = "player_a"
+                
+                pa = res.get("prizes_taken_a", 0)
+                pb = res.get("prizes_taken_b", 0)
+                res["prizes_taken_a"] = pb
+                res["prizes_taken_b"] = pa
+
+        # Update League ELO based on matchmaking results
+        for label, opp_name in league_matchups.items():
+            res = results.get(label)
+            if res and res.get("winner") != "error":
+                winner = res.get("winner") # "player_a" (opp won), "player_b" (new agent won), or "draw"
+                league.update_elo(opp_name, "main_agent", winner)
+
+        # Consolidate results for EvalAgent (average metrics across all parallel runs)
         for prefix, key in [("deck_test", "deck_test"), ("variance_baseline", "variance_baseline")]:
             workers = [res for k, res in results.items() if k.startswith(prefix)]
             if workers:
