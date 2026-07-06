@@ -1856,6 +1856,11 @@
       "player": "jmatsukuma",
       "avg_setup_duration": 14.2,
       "avg_bench_density": 2.3
+    },
+    {
+      "player": "Ayodeji",
+      "avg_setup_duration": 25.8,
+      "avg_bench_density": 2.2
     }
   ],
   "deck_stats": {
