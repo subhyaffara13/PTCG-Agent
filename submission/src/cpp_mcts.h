@@ -65,6 +65,10 @@ private:
     int num_simulations = 50;
     std::mt19937 rng{std::random_device{}()};
 
+    std::string get_state_key(const BoardState& state) const;
+    std::unordered_map<std::string, double> state_value_cache;
+    std::unordered_map<std::string, std::vector<ActionPrior>> state_prior_cache;
+
     std::vector<ActionPrior> get_action_priors(const BoardState& state, const std::vector<std::string>& legalActions, const MASTPolicy& mastPolicy);
     double evaluate_state(const BoardState& state, const std::string& action);
     cpp_MCTSNode* select_child(cpp_MCTSNode* node);

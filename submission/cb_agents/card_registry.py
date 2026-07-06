@@ -27,6 +27,32 @@ class CardRegistry:
         self.full_cards: Dict[Any, CardEntry] = {}
         self.evolution_predecessors: Dict[str, str] = {}
         load_metadata_helper(self.skills_dir, self.cards, self.evolution_predecessors)
+        
+        # Load learned rules from crawler
+        self.learned_dos = set()
+        self.learned_donts = set()
+        import json
+        try:
+            dos_path = self.skills_dir / "learned_dos.json"
+            if dos_path.exists():
+                dos_data = json.loads(dos_path.read_text(encoding="utf-8"))
+                for item in dos_data.get("deck_dos", []):
+                    cid = item.get("card_id")
+                    if cid is not None:
+                        self.learned_dos.add(int(cid))
+        except Exception as e:
+            logger.error(f"Failed to load learned_dos.json: {e}")
+
+        try:
+            donts_path = self.skills_dir / "learned_donts.json"
+            if donts_path.exists():
+                donts_data = json.loads(donts_path.read_text(encoding="utf-8"))
+                for item in donts_data.get("deck_donts", []):
+                    cid = item.get("card_id")
+                    if cid is not None:
+                        self.learned_donts.add(int(cid))
+        except Exception as e:
+            logger.error(f"Failed to load learned_donts.json: {e}")
 
     def get(self, card_id: Any) -> Optional[CardEntry]:
         """Get lightweight metadata card entry."""

@@ -297,6 +297,25 @@ def make_smart_choice(select, observation, fallback_action):
             except Exception:
                 pass
 
+        # Collect board Pokemon names for evolution synergy mapping
+        board_pokemon_names = set()
+        try:
+            current = get_val(observation, "current")
+            my_idx = get_val(current, "yourIndex", 0)
+            players = get_val(current, "players", [])
+            if len(players) > my_idx:
+                my_state = players[my_idx]
+                act = get_val(my_state, "active")
+                if act:
+                    act_name = get_val(act, "name") or get_val(get_val(act, "card"), "name")
+                    if act_name: board_pokemon_names.add(str(act_name).lower())
+                for b in get_val(my_state, "bench", []):
+                    if b:
+                        b_name = get_val(b, "name") or get_val(get_val(b, "card"), "name")
+                        if b_name: board_pokemon_names.add(str(b_name).lower())
+        except Exception:
+            pass
+
         # Score each option
         scored_options = []
         for idx, opt in enumerate(options):
@@ -337,6 +356,50 @@ def make_smart_choice(select, observation, fallback_action):
             score = 0.0
             if card:
                 score = getattr(card, "utility_score", 0.0)
+                
+                # 1. Boost based on learned rules from Kaggle champions
+                card_id_int = getattr(card, "card_id", None)
+                if card_id_int is not None:
+                    if hasattr(registry, "learned_dos") and int(card_id_int) in registry.learned_dos:
+                        score += 12.0
+                    if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
+                        score -= 12.0
+                
+                # 2. Boost if evolution predecessor is on board
+                predecessor = registry.get_evolution_predecessor(getattr(card, "card_name", ""))
+                if predecessor and predecessor.lower() in board_pokemon_names:
+                    score += 15.0
+
+                # 3. Energy Requirement / Active priority boost
+                if sel_type in (1, 4) or str(get_val(select, "context", "")).lower() in ("energy", "attach"):
+                    try:
+                        area = get_val(opt, "area")
+                        index = get_val(opt, "index")
+                        p_idx = get_val(opt, "playerIndex", 0)
+                        current = get_val(observation, "current")
+                        my_idx = get_val(current, "yourIndex", 0)
+                        if p_idx == my_idx:
+                            players = get_val(current, "players", [])
+                            my_state = players[my_idx]
+                            instance = None
+                            if area == 4: # Active
+                                instance = get_val(my_state, "active")
+                            elif area == 12: # Bench
+                                bench = get_val(my_state, "bench", [])
+                                if len(bench) > index:
+                                    instance = bench[index]
+                            if instance:
+                                attached = get_val(instance, "attached", [])
+                                attached_count = len(attached) if isinstance(attached, list) else 0
+                                required = getattr(card, "energy_cost", 0)
+                                if attached_count < required:
+                                    boost = 10.0 * (required - attached_count)
+                                    if area == 4:
+                                        boost += 5.0
+                                    score += boost
+                    except Exception:
+                        pass
+                
                 if sel_type == 3:
                     score += getattr(card, "ev_score", 0.0) + (getattr(card, "damage_output", 0) * 0.01)
 

@@ -101,6 +101,17 @@ void cpp_MCTSNode::expand(const std::vector<ActionPrior>& actionPriors) {
     }
 }
 
+std::string cpp_MCTSEngine::get_state_key(const BoardState& state) const {
+    std::string key = std::to_string(state.turn_number) + "|";
+    key += (state.turn_ended ? "T" : "F") + std::string("|");
+    key += state.me.active.id + ":" + std::to_string(state.me.active.hp) + "|";
+    key += state.opponent.active.id + ":" + std::to_string(state.opponent.active.hp) + "|";
+    key += std::to_string(state.me.prizes) + ":" + std::to_string(state.opponent.prizes) + "|";
+    key += std::to_string(state.me.hand.size()) + ":" + std::to_string(state.opponent.hand.size()) + "|";
+    key += std::to_string(state.me.bench.size()) + ":" + std::to_string(state.opponent.bench.size());
+    return key;
+}
+
 std::vector<ActionPrior> cpp_MCTSEngine::get_action_priors(const BoardState& state, const std::vector<std::string>& legalActions, const MASTPolicy& mastPolicy) {
     std::vector<ActionPrior> priors;
     if (legalActions.empty()) return priors;
@@ -132,17 +143,27 @@ std::vector<ActionPrior> cpp_MCTSEngine::get_action_priors(const BoardState& sta
 }
 
 double cpp_MCTSEngine::evaluate_state(const BoardState& state, const std::string& action) {
-    if (state.game_over) {
-        return (state.winner == "me") ? 1.0 : -1.0;
+    std::string key = get_state_key(state) + "_" + action;
+    auto it = state_value_cache.find(key);
+    if (it != state_value_cache.end()) {
+        return it->second;
     }
-    double value = score_state(state);
-    double threat_penalty = state.opponent.hand.size() * 0.01;
-    value += score_action(action, state, threat_penalty);
+
+    double value = 0.0;
+    if (state.game_over) {
+        value = (state.winner == "me") ? 1.0 : -1.0;
+    } else {
+        value = score_state(state);
+        double threat_penalty = state.opponent.hand.size() * 0.01;
+        value += score_action(action, state, threat_penalty);
+        
+        std::uniform_real_distribution<double> dist(-0.01, 0.01);
+        value += dist(rng);
+    }
     
-    std::uniform_real_distribution<double> dist(-0.01, 0.01);
-    value += dist(rng);
-    
-    return std::max(-1.0, std::min(1.0, value));
+    double final_val = std::max(-1.0, std::min(1.0, value));
+    state_value_cache[key] = final_val;
+    return final_val;
 }
 
 cpp_MCTSNode* cpp_MCTSEngine::select_child(cpp_MCTSNode* node) {
@@ -186,6 +207,9 @@ double cpp_MCTSEngine::calculate_ucb(const cpp_MCTSNode* child, int parentVisits
 }
 
 std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimitSec) {
+    state_value_cache.clear();
+    state_prior_cache.clear();
+
     std::vector<std::string> next_legal_actions = mask_illegal(rootState.legal_actions, rootState);
     if (next_legal_actions.empty()) return "pass";
     if (next_legal_actions.size() == 1) return next_legal_actions.at(0);
@@ -233,14 +257,21 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
         if (next_gs.turn_ended || next_gs.game_over) {
             node->is_terminal = true;
         } else {
-            regenerate_legal_actions(next_gs);
-            std::vector<std::string> canonical_next = mask_illegal(next_gs.legal_actions, next_gs);
-            auto new_priors = get_action_priors(next_gs, canonical_next, mastPolicy);
-            if (new_priors.empty() && canonical_next == std::vector<std::string>{"pass"}) {
-                new_priors.push_back({"pass", 1.0});
-            }
-            if (!new_priors.empty()) {
-                node->expand(new_priors);
+            std::string state_key = get_state_key(next_gs);
+            auto prior_it = state_prior_cache.find(state_key);
+            if (prior_it != state_prior_cache.end()) {
+                node->expand(prior_it->second);
+            } else {
+                regenerate_legal_actions(next_gs);
+                std::vector<std::string> canonical_next = mask_illegal(next_gs.legal_actions, next_gs);
+                auto new_priors = get_action_priors(next_gs, canonical_next, mastPolicy);
+                if (new_priors.empty() && canonical_next == std::vector<std::string>{"pass"}) {
+                    new_priors.push_back({"pass", 1.0});
+                }
+                if (!new_priors.empty()) {
+                    node->expand(new_priors);
+                    state_prior_cache[state_key] = new_priors;
+                }
             }
         }
         
