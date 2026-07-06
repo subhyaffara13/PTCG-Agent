@@ -297,6 +297,11 @@ def make_smart_choice(select, observation, fallback_action):
             except Exception:
                 pass
 
+        def resolve_instance(val):
+            if isinstance(val, list):
+                return val[0] if len(val) > 0 else None
+            return val
+
         # Collect board Pokemon names for evolution synergy mapping
         board_pokemon_names = set()
         try:
@@ -305,13 +310,14 @@ def make_smart_choice(select, observation, fallback_action):
             players = get_val(current, "players", [])
             if len(players) > my_idx:
                 my_state = players[my_idx]
-                act = get_val(my_state, "active")
+                act = resolve_instance(get_val(my_state, "active"))
                 if act:
                     act_name = get_val(act, "name") or get_val(get_val(act, "card"), "name")
                     if act_name: board_pokemon_names.add(str(act_name).lower())
                 for b in get_val(my_state, "bench", []):
-                    if b:
-                        b_name = get_val(b, "name") or get_val(get_val(b, "card"), "name")
+                    b_resolved = resolve_instance(b)
+                    if b_resolved:
+                        b_name = get_val(b_resolved, "name") or get_val(get_val(b_resolved, "card"), "name")
                         if b_name: board_pokemon_names.add(str(b_name).lower())
         except Exception:
             pass
@@ -339,11 +345,15 @@ def make_smart_choice(select, observation, fallback_action):
                         elif area == 12: # Bench
                             bench = get_val(p_state, "bench", [])
                             if len(bench) > index:
-                                card_id = get_val(bench[index], "id")
+                                bench_item = resolve_instance(bench[index])
+                                if bench_item is not None:
+                                    card_id = get_val(bench_item, "id")
                         elif area == 4: # Active
                             active = get_val(p_state, "active", [])
                             if len(active) > index:
-                                card_id = get_val(active[index], "id")
+                                active_item = resolve_instance(active[index])
+                                if active_item is not None:
+                                    card_id = get_val(active_item, "id")
                 except Exception:
                     pass
 
@@ -383,11 +393,11 @@ def make_smart_choice(select, observation, fallback_action):
                             my_state = players[my_idx]
                             instance = None
                             if area == 4: # Active
-                                instance = get_val(my_state, "active")
+                                instance = resolve_instance(get_val(my_state, "active"))
                             elif area == 12: # Bench
                                 bench = get_val(my_state, "bench", [])
                                 if len(bench) > index:
-                                    instance = bench[index]
+                                    instance = resolve_instance(bench[index])
                             if instance:
                                 attached = get_val(instance, "attached", [])
                                 attached_count = len(attached) if isinstance(attached, list) else 0
