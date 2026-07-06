@@ -8,6 +8,8 @@ def auto_submit_if_ready():
     from kaggle.api.kaggle_api_extended import KaggleApi
     from datetime import datetime, timezone
 
+    api = None
+    subs = None
     print("[Auto-Submit] Auditing submission budget...")
     try:
         api = KaggleApi()
@@ -17,15 +19,21 @@ def auto_submit_if_ready():
         print(f"[Auto-Submit] Failed to authenticate or query Kaggle: {e}")
         return
 
+    if api is None or subs is None:
+        return
+
     now_utc = datetime.now(timezone.utc)
     today_subs = 0
     last_sub_time = None
     for s in subs:
-        s_date = s.date.replace(tzinfo=timezone.utc)
-        if s_date.date() == now_utc.date():
-            today_subs += 1
-        if last_sub_time is None or s_date > last_sub_time:
-            last_sub_time = s_date
+        if s is not None:
+            if str(s.status).lower() in ("submissionstatus.error", "error", "submissionstatus.failed", "failed"):
+                continue
+            s_date = s.date.replace(tzinfo=timezone.utc)
+            if s_date.date() == now_utc.date():
+                today_subs += 1
+            if last_sub_time is None or s_date > last_sub_time:
+                last_sub_time = s_date
 
     print(f"[Auto-Submit] Submissions today (UTC): {today_subs}/5")
     if last_sub_time:
@@ -54,12 +62,12 @@ def auto_submit_if_ready():
     reason = ""
     if today_subs < 5:
         if is_new_best:
-            if elapsed_hours >= 5.5:
+            if elapsed_hours >= 1.0:
                 should_submit = True
                 reason = f"Breakthrough! Fitness improved from {last_submitted_fit:.2f} to {current_best_fit:.2f}."
             else:
-                print(f"[Auto-Submit] Breakthrough detected, but waiting 5.5 hours to space submissions. ({elapsed_hours:.2f}h elapsed)")
-        elif elapsed_hours >= 5.5:
+                print(f"[Auto-Submit] Breakthrough detected, but waiting 1.0 hour to space submissions. ({elapsed_hours:.2f}h elapsed)")
+        elif elapsed_hours >= 4.0:
             should_submit = True
             reason = f"Spacing trigger: {elapsed_hours:.1f} hours elapsed since last submission."
 

@@ -5,25 +5,25 @@ Scoped Packet Schemas for strict boundary verification in the PTCG Agent System.
 """
 
 from __future__ import annotations
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class HandAnalystPacket:
-    hand: list[str]
+    hand: List[str]
     deck_remaining: int
-    discard: list[str] = None
-    board: list[str] = None
+    discard: Optional[List[str]] = None
+    board: Optional[List[str]] = None
     has_searched_deck: bool = False
 
 
 @dataclass(frozen=True)
 class TurnPlannerPacket:
     hand_score: float
-    priority_profile: dict[str, Any]
+    priority_profile: Dict[str, Any]
     top_play: str = ""
-    game_state: dict[str, Any] = None
+    game_state: Optional[Dict[str, Any]] = None
     turn: int = 1
     time_remaining: float = 600.0
 
@@ -31,33 +31,33 @@ class TurnPlannerPacket:
 @dataclass(frozen=True)
 class StrategyPacket:
     trigger: str
-    board_summary: dict[str, Any]
+    board_summary: Dict[str, Any]
 
 
 @dataclass(frozen=True)
 class TimePacket:
     time_elapsed: float
     time_limit: float
-    legal_actions: list[str] = None
+    legal_actions: Optional[List[str]] = None
 
 
 @dataclass(frozen=True)
 class OpponentModelPacket:
     turn: int
-    newly_played_cards: list[str]
-    revealed_active_pokemon: str
+    newly_played_cards: List[str]
     revealed_bench_count: int
     revealed_hand_size: int
     revealed_prizes_remaining: int
-    revealed_discard: list[str]
+    revealed_discard: List[str]
     game_phase: str
+    revealed_active_pokemon: Optional[str] = None
 
 
 @dataclass(frozen=True)
 class LethalPacket:
     my_active_damage: int
     opponent_active_hp: int
-    legal_attacks: list[str]
-    opponent_active_id: int = None
+    legal_attacks: List[str]
+    opponent_active_id: Optional[int] = None
     my_active_hp: int = 100
-    legal_retreats: list[str] = None
+    legal_retreats: Optional[List[str]] = None

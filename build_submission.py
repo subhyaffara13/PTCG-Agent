@@ -87,6 +87,27 @@ for ext in ("*.pyd", "*.so"):
                 except Exception as e:
                     pass
 
+# 3.4 Copy model weights checkpoint
+weights_src = Path("m71.pt")
+if weights_src.exists():
+    weights_dest_dir = Path("submission/logs")
+    weights_dest_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(weights_src, weights_dest_dir / "model_weights.pth")
+    print("Bundled model weights checkpoint to submission/logs/model_weights.pth")
+else:
+    print("WARNING: m71.pt not found, skipping weights bundling!")
+
+# 3.5 Sync C++ source files and build scripts for Kaggle compilation
+print("Syncing C++ source files and build configurations for Kaggle compilation...")
+submission_src = Path("submission/src")
+submission_src.mkdir(parents=True, exist_ok=True)
+for f in Path("src").glob("*"):
+    if f.is_file():
+        shutil.copy2(f, submission_src / f.name)
+shutil.copy2("setup.py", "submission/setup.py")
+if Path("CMakeLists.txt").exists():
+    shutil.copy2("CMakeLists.txt", "submission/CMakeLists.txt")
+
 # 4. Load best version from history dynamically
 history_file = Path("versions/version_history.json")
 best_version, best_score, best_iter = "v_20260618_150827", 0.6522, "5580"
@@ -121,7 +142,7 @@ with tarfile.open(tar_path, "w:gz") as tar:
             continue
         if "__pycache__" in str(f):
             continue
-        if f.suffix in (".pyc", ".pdf"):
+        if f.suffix in (".pyc", ".pdf", ".pyd"):
             continue
         if "submission/agents/" in str(f).replace("\\", "/"):
             continue

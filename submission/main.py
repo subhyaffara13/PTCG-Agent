@@ -14,6 +14,138 @@ if agent_dir not in sys.path:
     sys.path.insert(0, agent_dir)
 
 
+def compile_extension_on_kaggle(configuration=None):
+    """Compiles the C++ ptcg_core extension on Kaggle at module load time or Step 0."""
+    import sys
+    import os
+    import shutil
+    import subprocess
+    from pathlib import Path
+    
+    # 1. Check if we are running on Kaggle
+    is_kaggle_run = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
+    if not is_kaggle_run:
+        return False
+
+    sys.stderr.write("[compile] Running inside Kaggle sandbox. Checking C++ extension...\n")
+        
+    # 2. Check if we have already built the .so file in /kaggle/working
+    working_dir = Path("/kaggle/working")
+    if not working_dir.exists():
+        sys.stderr.write("[compile] /kaggle/working does not exist. Skipping compilation.\n")
+        return False
+        
+    # See if ptcg_core*.so is already in /kaggle/working
+    so_files = list(working_dir.glob("ptcg_core*.so"))
+    if so_files:
+        sys.stderr.write(f"[compile] Found pre-compiled C++ extension: {so_files[0].name}. Adding to path.\n")
+        if str(working_dir) not in sys.path:
+            sys.path.insert(0, str(working_dir))
+        try:
+            import ptcg_core  # type: ignore
+            _update_mcts_module(ptcg_core)
+        except Exception as e:
+            sys.stderr.write(f"[compile] Error loading pre-compiled extension: {e}\n")
+        return True
+        
+    # 3. Locate source files in the agent extraction directory
+    raw_path = None
+    if isinstance(configuration, dict):
+        raw_path = configuration.get("__raw_path__")
+    
+    if not raw_path:
+        # Fallback to sys.path or guess
+        sys.stderr.write("[compile] __raw_path__ not found in configuration. Trying path lookup...\n")
+        for p in sys.path:
+            if p and Path(p).joinpath("setup.py").exists():
+                raw_path = str(Path(p).joinpath("main.py"))
+                break
+                
+    if not raw_path:
+        # Try parent directory relative guess
+        curr_dir = Path(__file__).parent.resolve() if "__file__" in globals() and globals()["__file__"] else Path(os.getcwd())
+        if curr_dir.joinpath("setup.py").exists():
+            raw_path = str(curr_dir.joinpath("main.py"))
+            
+    if not raw_path:
+        sys.stderr.write("[compile] Could not determine agent extraction directory. Skipping compilation.\n")
+        return False
+        
+    curr_agent_dir = Path(raw_path).parent.resolve()
+    src_dir = curr_agent_dir / "src"
+    setup_file = curr_agent_dir / "setup.py"
+    
+    sys.stderr.write(f"[compile] Resolved agent extraction directory: {curr_agent_dir}\n")
+    
+    if not src_dir.exists() or not setup_file.exists():
+        sys.stderr.write("[compile] C++ source files or setup.py not found in agent directory. Skipping on-the-fly compile.\n")
+        return False
+        
+    # 4. Create temporary build dir in /kaggle/working
+    build_dir = working_dir / "ptcg_build"
+    try:
+        if build_dir.exists():
+            shutil.rmtree(build_dir, ignore_errors=True)
+        build_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Copy src/ and setup.py to build_dir
+        shutil.copytree(src_dir, build_dir / "src")
+        shutil.copy2(setup_file, build_dir / "setup.py")
+        if (curr_agent_dir / "CMakeLists.txt").exists():
+            shutil.copy2(curr_agent_dir / "CMakeLists.txt", build_dir / "CMakeLists.txt")
+            
+        sys.stderr.write(f"[compile] Copied C++ sources to build dir: {build_dir}\n")
+        
+        # 5. Run compilation command
+        sys.stderr.write("[compile] Compiling C++ ptcg_core extension on-the-fly...\n")
+        res = subprocess.run(
+            [sys.executable, "setup.py", "build_ext", "--inplace"],
+            cwd=str(build_dir),
+            capture_output=True,
+            text=True
+        )
+        sys.stderr.write(f"[compile] Compilation stdout:\n{res.stdout}\n")
+        sys.stderr.write(f"[compile] Compilation stderr:\n{res.stderr}\n")
+        
+        if res.returncode != 0:
+            sys.stderr.write(f"[compile] Compilation failed with exit code: {res.returncode}\n")
+            return False
+            
+        # 6. Locate compiled .so file
+        compiled_so = list(build_dir.glob("ptcg_core*.so"))
+        if not compiled_so:
+            sys.stderr.write("[compile] Compilation completed but ptcg_core*.so not found.\n")
+            return False
+            
+        # Copy to /kaggle/working
+        target_so = working_dir / compiled_so[0].name
+        shutil.copy2(compiled_so[0], target_so)
+        sys.stderr.write(f"[compile] Successfully copied compiled extension to {target_so}\n")
+        
+        # Add to sys.path
+        if str(working_dir) not in sys.path:
+            sys.path.insert(0, str(working_dir))
+            
+        # Try importing to verify
+        import ptcg_core  # type: ignore
+        _update_mcts_module(ptcg_core)
+        sys.stderr.write("[compile] ptcg_core successfully compiled, loaded, and verified!\n")
+        return True
+    except Exception as build_err:
+        sys.stderr.write(f"[compile] Exception during on-the-fly compilation: {build_err}\n")
+        return False
+
+def _update_mcts_module(ptcg_core_module):
+    """Helper to dynamically patch mcts_engine with C++ simulator module."""
+    import sys
+    for name, mod in list(sys.modules.items()):
+        if name == "cb_agents.mcts_engine" or name.endswith("mcts_engine"):
+            setattr(mod, "ptcg_core", ptcg_core_module)
+            setattr(mod, "HAS_CPP", True)
+
+# Run compilation on Kaggle immediately at module load time (best-effort)
+compile_extension_on_kaggle()
+
 # Try to import Orchestrator from cb_agents
 try:
     from cb_agents.orchestrator import Orchestrator
@@ -62,9 +194,43 @@ except Exception:
 from typing import Any
 
 def get_val(obj: Any, key: str, default: Any = None) -> Any:
+    if obj is None:
+        return default
     if isinstance(obj, dict):
         return obj.get(key, default)
-    return getattr(obj, key, default)
+    try:
+        return getattr(obj, key, default)
+    except Exception:
+        return default
+
+def _log_action_exception(exc: Exception):
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / "action_log.json"
+    
+    error_entry = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "event": "submission_agent_crash",
+        "agent_called": "submission/main.py",
+        "packet_type": "exception",
+        "error_reason": str(exc)
+    }
+    
+    try:
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding="utf-8").strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+    except Exception as log_err:
+        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
 
 def agent(observation, configuration=None):
     """
@@ -78,6 +244,7 @@ def agent(observation, configuration=None):
 
     # Step 0: If select is None, we must submit the deck (list of 60 integers)
     if select is None:
+        compile_extension_on_kaggle(configuration)
         return DEFAULT_DECK
 
     options = get_val(select, "option", [])
@@ -194,31 +361,4 @@ def agent(observation, configuration=None):
         _log_action_exception(e)
         return fallback_action
 
-def _log_action_exception(exc: Exception):
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / "action_log.json"
-    
-    error_entry = {
-        "timestamp": datetime.datetime.now().isoformat(),
-        "event": "submission_agent_crash",
-        "agent_called": "submission/main.py",
-        "packet_type": "exception",
-        "error_reason": str(exc)
-    }
-    
-    try:
-        logs = []
-        if log_file.exists():
-            content = log_file.read_text(encoding="utf-8").strip()
-            if content:
-                try:
-                    logs = json.loads(content)
-                    if not isinstance(logs, list):
-                        logs = [logs]
-                except json.JSONDecodeError:
-                    logs = []
-        logs.append(error_entry)
-        log_file.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-    except Exception as log_err:
-        logger.error(f"Failed to log crash event to {log_file}: {log_err}")
+

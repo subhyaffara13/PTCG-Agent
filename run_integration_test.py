@@ -19,8 +19,8 @@ packet = StrategyPacket(
     }
 )
 r = sa.receive(packet)
-print(f"  strategy: {r['new_strategy']} | triggered: {r['triggered']}")
-assert "new_strategy" in r, f"Missing 'new_strategy' key in response"
+print(f"  strategy: {r['strategy']} | posture: {r['posture']} | confidence: {r['confidence']}")
+assert "strategy" in r, f"Missing 'strategy' key in response"
 print("  PASSED")
 
 # 2. DeckArchitect
@@ -67,7 +67,8 @@ gs = {
     "legal_bench": ["Basic Attacker"],
     "legal_retreats": [],
 }
-action = orch.run_turn(gs)
+decision = orch.run_turn(gs)
+action = decision.primary_action if hasattr(decision, "primary_action") else decision
 print(f"  action returned: {action}")
 assert isinstance(action, str), f"Expected str, got {type(action)}"
 print("  PASSED")
@@ -79,7 +80,8 @@ for turn in range(2, 5):
     gs["turn_number"] = turn
     gs["my_deck_count"] = max(0, 52 - turn * 2)
     gs["my_prizes"] = max(1, 6 - (turn - 1))
-    action = orch.run_turn(gs)
+    decision = orch.run_turn(gs)
+    action = decision.primary_action if hasattr(decision, "primary_action") else decision
     print(f"  Turn {turn}: {action}")
     assert isinstance(action, str)
 print("  PASSED")

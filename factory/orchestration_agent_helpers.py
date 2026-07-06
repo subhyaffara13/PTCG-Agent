@@ -40,6 +40,7 @@ def auto_submit_if_ready():
         return
 
     import time
+    api = None
     subs = None
     for attempt in range(3):
         try:
@@ -54,9 +55,13 @@ def auto_submit_if_ready():
             logger.warning(f"Kaggle query failed (attempt {attempt+1}), retrying in {2**attempt}s...: {e}")
             time.sleep(2**attempt)
 
+    if api is None or subs is None:
+        return
+
     now_utc = datetime.now(timezone.utc)
-    today_subs = sum(1 for s in subs if s.date.replace(tzinfo=timezone.utc).date() == now_utc.date())
-    last_sub_time = max((s.date.replace(tzinfo=timezone.utc) for s in subs), default=None)
+    valid_subs = [s for s in subs if s is not None and str(s.status).lower() not in ("submissionstatus.error", "error", "submissionstatus.failed", "failed")]
+    today_subs = sum(1 for s in valid_subs if s is not None and s.date.replace(tzinfo=timezone.utc).date() == now_utc.date())
+    last_sub_time = max((s.date.replace(tzinfo=timezone.utc) for s in valid_subs if s is not None), default=None)
     elapsed_hours = (now_utc - last_sub_time).total_seconds() / 3600.0 if last_sub_time else 999.0
 
     logger.info(f"Submissions today: {today_subs}/5, hours since last: {elapsed_hours:.1f}h")

@@ -19,7 +19,7 @@ class StrategyAgent:
         except Exception as e:
             self._profiles = {}
 
-    def evaluate(self, packet: dict[str, Any]) -> dict[str, Any]:
+    def evaluate(self, packet: Any) -> dict[str, Any]:
         try:
             return self._evaluate_internal(packet)
         except Exception as e:

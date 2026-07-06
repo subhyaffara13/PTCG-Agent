@@ -3,6 +3,27 @@ from abc import ABC, abstractmethod
 from typing import List, Any
 from dataclasses import dataclass
 from pathlib import Path
+import os
+
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
+
+if is_kaggle:
+    class MockNoGrad:
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+    class MockTorch:
+        no_grad = MockNoGrad
+    torch = MockTorch()
+else:
+    try:
+        import torch
+    except ImportError:
+        class MockNoGrad:
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+        class MockTorch:
+            no_grad = MockNoGrad
+        torch = MockTorch()
 
 def __getattr__(name):
     if name == "HeuristicValueNetwork":
@@ -27,18 +48,21 @@ class NeuralValueNetwork(BaseValueNetwork):
     model: Any
 
     def __init__(self, weights_path="logs/model_weights.pth"):
-        self.weights_path = Path(weights_path)
+        agent_dir = Path(__file__).parent.parent.resolve()
+        self.weights_path = agent_dir / weights_path
         self.heuristic = None
         self.model = None
         self._state_cache = {}
-        from agents.value_network_helpers import PTCGValueMLP
+        from agents.value_network_helpers import PTCGValueMLP, load_weights
         if PTCGValueMLP is not None and self.weights_path.exists():
             try:
-                import torch
                 self.model = PTCGValueMLP()
-                self.model.load_state_dict(torch.load(str(self.weights_path), map_location="cpu"))
+                state_dict = load_weights(self.weights_path)
+                self.model.load_state_dict(state_dict)
                 self.model.eval()
-            except: self.model = None
+            except Exception as e:
+                logger.error(f"Failed to load neural value network: {e}")
+                self.model = None
         if self.model is None:
             from agents.heuristic_value import HeuristicValueNetwork
             self.heuristic = HeuristicValueNetwork()
@@ -50,7 +74,6 @@ class NeuralValueNetwork(BaseValueNetwork):
         from agents.value_network_helpers import state_to_tensor
         from agents.heuristic_pipeline import _action_score
         try:
-            import torch
             hand_sorted = sorted([str(x) for x in game_state.get("my_hand", [])]) if isinstance(game_state.get("my_hand"), list) else []
             active = game_state.get("my_active_pokemon", {})
             active_id = str(active.get("id")) if isinstance(active, dict) else None

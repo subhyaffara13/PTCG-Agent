@@ -15,20 +15,22 @@ from cb_agents.mcts_mast import MASTPolicy
 
 logger = logging.getLogger(__name__)
 
-# Try to import C++ extension module ptcg_core (disabled on Kaggle to avoid sandbox segfaults)
-is_kaggle = any(k.startswith("KAGGLE") for k in os.environ)
-if is_kaggle:
+try:
+    import ptcg_core  # type: ignore
+    HAS_CPP = True
+except Exception:
     ptcg_core = None
     HAS_CPP = False
-    logger.info("Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.")
+
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
+if is_kaggle:
     os.environ["FAST_SIM_MODE"] = "true"
+    if HAS_CPP:
+        logger.info("Running on Kaggle: C++ MCTS extension successfully loaded and activated.")
+    else:
+        logger.info("Running on Kaggle: C++ MCTS extension not available. Using pure Python MCTS.")
 else:
-    try:
-        import ptcg_core  # type: ignore
-        HAS_CPP = True
-    except Exception:
-        ptcg_core = None
-        HAS_CPP = False
+    if not HAS_CPP:
         logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
@@ -88,7 +90,9 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         if HAS_CPP and ptcg_core is not None:
             try:
                 time_limit = time_remaining - 0.5 if time_remaining else 1.0
-                return ptcg_core.mcts_search(game_state, time_limit, self.num_simulations, self.c_puct)
+                state_dict = game_state.copy()
+                state_dict["legal_actions"] = canonical_actions
+                return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct)
             except Exception as e:
                 logger.error(f"C++ MCTS search failed: {e}. Falling back to Python MCTS.")
 
