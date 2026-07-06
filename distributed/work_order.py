@@ -27,8 +27,7 @@ class GameResult:
     iteration: int
     worker_id: str
     metrics: Dict[str, float]
-    # We can store larger objects like serialized replays via pickle + base64 if needed
-    replay_data_b64: Optional[str] = None
+    replay: Optional[Dict[str, str]] = None
     payload: Optional[Dict[str, Any]] = None
 
     def serialize(self) -> str:
@@ -39,9 +38,7 @@ class GameResult:
         return GameResult(**json.loads(data))
 
     def set_replay(self, replay_obj: Any):
-        self.replay_data_b64 = base64.b64encode(pickle.dumps(replay_obj)).decode('utf-8')
+        self.replay = replay_obj
 
     def get_replay(self) -> Any:
-        if self.replay_data_b64:
-            return pickle.loads(base64.b64decode(self.replay_data_b64.encode('utf-8')))
-        return None
+        return self.replay
