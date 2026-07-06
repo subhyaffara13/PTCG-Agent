@@ -1786,11 +1786,21 @@
       "player": "\u3054\u3093\u3055\u304f\u3088\u306d\u304d\u3061",
       "avg_setup_duration": 9.8,
       "avg_bench_density": 4.1
+    },
+    {
+      "player": "Jett Huang",
+      "avg_setup_duration": 27.4,
+      "avg_bench_density": 1.7
+    },
+    {
+      "player": "flaty",
+      "avg_setup_duration": 14.2,
+      "avg_bench_density": 3.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 15.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   }
 }
