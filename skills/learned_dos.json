@@ -1741,11 +1741,21 @@
       "player": "koga_poke",
       "avg_setup_duration": 13.6,
       "avg_bench_density": 3.3
+    },
+    {
+      "player": "bono",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 0.9
+    },
+    {
+      "player": "CMK",
+      "avg_setup_duration": 16.0,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 7.0,
-    "avg_trainer_count": 41.0,
-    "avg_energy_count": 12.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   }
 }
