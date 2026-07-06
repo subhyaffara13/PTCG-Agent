@@ -1756,11 +1756,21 @@
       "player": "\u6012\u7834\u9913\u9b3c",
       "avg_setup_duration": 44.2,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "heliosli",
+      "avg_setup_duration": 27.2,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "anngle",
+      "avg_setup_duration": 18.8,
+      "avg_bench_density": 2.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 21.0,
-    "avg_trainer_count": 29.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   }
 }
