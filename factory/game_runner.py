@@ -74,7 +74,7 @@ class GameRunner(BaseAgent):
         ]
         league_matchups = {}
 
-        for j in range(25):
+        for j in range(15):
             seed = 1000 + j
             
             # Determine opponent deck (30% chance to matchmake against a league exploiter/snapshot)
