@@ -487,7 +487,7 @@
     },
     {
       "card_id": 1,
-      "avg_count": 6.0,
+      "avg_count": 13.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -917,6 +917,21 @@
     },
     {
       "card_id": 414,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1235,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1212,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 96,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -1871,11 +1886,16 @@
       "player": "Amane Suzuki",
       "avg_setup_duration": 24.0,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "zhan renyi",
+      "avg_setup_duration": 96.2,
+      "avg_bench_density": 2.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 10.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 11.0,
+    "avg_trainer_count": 24.0,
+    "avg_energy_count": 25.0
   }
 }
