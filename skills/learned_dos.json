@@ -914,6 +914,11 @@
       "card_id": 1248,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 414,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1861,11 +1866,16 @@
       "player": "Ayodeji",
       "avg_setup_duration": 25.8,
       "avg_bench_density": 2.2
+    },
+    {
+      "player": "Amane Suzuki",
+      "avg_setup_duration": 24.0,
+      "avg_bench_density": 3.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
+    "avg_pokemon_count": 10.0,
+    "avg_trainer_count": 39.0,
     "avg_energy_count": 11.0
   }
 }
