@@ -105,23 +105,20 @@ std::vector<ActionPrior> cpp_MCTSEngine::get_action_priors(const BoardState& sta
     std::vector<ActionPrior> priors;
     if (legalActions.empty()) return priors;
     
-    double bp = 1.0 / legalActions.size();
     for (const auto& a : legalActions) {
-        double p = bp;
-        if (a.rfind("attack:", 0) == 0) p *= 2.0;
-        else if (a.rfind("evolve:", 0) == 0) p *= 1.5;
-        else if (a.rfind("attach_energy:", 0) == 0) p *= 1.3;
-        else if (a.rfind("ability:", 0) == 0) p *= 1.5;
-        else if (a.rfind("retreat:", 0) == 0) p *= 1.2;
-        else if (a.rfind("play_trainer:", 0) == 0) {
-            p *= 1.3;
-        }
+        // Query utility score from heuristic evaluator
+        double score = score_action(a, state, 0.0);
+        // Translate utility score to a positive prior weight (baseline 1.0 for neutral scores)
+        double p = std::max(0.01, 1.0 + score);
         
+        // Incorporate MAST (Move-Average Sampling Technique) feedback
         double mast_prior = mastPolicy.getActionPrior(a);
-        p = 0.7 * p + 0.3 * mast_prior;
+        p = 0.6 * p + 0.4 * mast_prior;
+        
         priors.push_back({a, p});
     }
     
+    // Normalize probabilities
     double total = 0.0;
     for (const auto& pr : priors) {
         total += pr.prob;
