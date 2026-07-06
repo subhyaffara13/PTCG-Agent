@@ -4,6 +4,80 @@ from factory.game_adapter_helpers import get_mapped_indices, get_card_id
 
 logger = logging.getLogger(__name__)
 
+def make_smart_choice(select: dict, observation: dict, fallback_action: list[int], skills_dir: str) -> list[int]:
+    try:
+        options = select.get("option", [])
+        if not options:
+            return fallback_action
+            
+        max_count = select.get("maxCount", 1)
+        sel_type = select.get("type")
+        
+        # Load CardRegistry
+        try:
+            from agents.card_registry import CardRegistry
+            registry = CardRegistry(skills_dir=skills_dir)
+        except Exception:
+            registry = None
+
+        if registry is None:
+            return fallback_action
+
+        is_discard = False
+        if sel_type == 2:
+            try:
+                current = observation.get("current")
+                if current is not None:
+                    my_idx = current.get("yourIndex", 0)
+                    players = current.get("players", [])
+                    if len(players) > my_idx and players[my_idx] is not None:
+                        my_hand = [c.get("id") for c in players[my_idx].get("hand", []) if c and c.get("id") is not None]
+                        option_ids = [opt.get("id") for opt in options]
+                        if option_ids and all(oid in my_hand for oid in option_ids if oid is not None):
+                            is_discard = True
+            except Exception:
+                pass
+
+        # Score each option
+        scored_options = []
+        for idx, opt in enumerate(options):
+            card_id = opt.get("id")
+            card_name = opt.get("name", "")
+            
+            card = None
+            if card_id is not None:
+                card = registry.get_full_skill(card_id)
+            if card is None and card_name:
+                card = registry.get_full_skill(card_name)
+                
+            score = 0.0
+            if card:
+                score = getattr(card, "utility_score", 0.0)
+                if sel_type == 3:
+                    score += getattr(card, "ev_score", 0.0) + (getattr(card, "damage_output", 0) * 0.01)
+
+            scored_options.append((idx, score))
+
+        # Sort options: lowest scoring first for discards, highest first otherwise
+        if is_discard:
+            scored_options.sort(key=lambda x: x[1])
+        else:
+            scored_options.sort(key=lambda x: x[1], reverse=True)
+
+        selected = [idx for idx, _ in scored_options[:max_count]]
+        
+        # Ensure we return exactly max_count unique indices
+        if len(selected) < max_count:
+            for idx in range(len(options)):
+                if idx not in selected:
+                    selected.append(idx)
+                    if len(selected) == max_count:
+                        break
+        return selected
+    except Exception as e:
+        logger.error(f"[smart_choice] Exception during choice: {e}")
+        return fallback_action
+
 def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int]:
     """Interactions adapter mapping CABT observations to Orchestrator and actions back to options."""
     if not isinstance(observation, dict):
@@ -78,7 +152,7 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
                     if len(selected) == max_count: break
             return selected
         else:
-            return fallback_action
+            return make_smart_choice(select, observation, fallback_action, str(orchestrator.skills_dir))
     except Exception as e:
         logger.error(f"Error resolving agent choice: {e}")
         return fallback_action

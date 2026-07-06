@@ -31,6 +31,11 @@ if promoted_deck.exists():
 else:
     print("WARNING: agents/deck_new.csv not found!")
 
+# 2.5 Generate main.py from main_template.py
+if Path("submission/main_template.py").exists():
+    shutil.copy2("submission/main_template.py", "submission/main.py")
+    print("Generated submission/main.py from main_template.py")
+
 # 3. Sync all agents to submission/cb_agents and adjust imports
 print("Syncing agents to submission/cb_agents...")
 submission_cb_agents = Path("submission/cb_agents")

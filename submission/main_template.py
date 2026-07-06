@@ -235,6 +235,85 @@ def _log_action_exception(exc: Exception):
     except Exception as log_err:
         pass
 
+def make_smart_choice(select, observation, fallback_action):
+    try:
+        options = get_val(select, "option", [])
+        if not options:
+            return fallback_action
+            
+        max_count = get_val(select, "maxCount", 1)
+        sel_type = get_val(select, "type")
+        
+        # Resolve skills_dir for CardRegistry
+        try:
+            from cb_agents.card_registry import CardRegistry
+            import os
+            from pathlib import Path
+            agent_dir = str(Path(__file__).parent.resolve()) if "__file__" in globals() and globals()["__file__"] else os.getcwd()
+            skills_dir = os.path.join(agent_dir, "skills")
+            registry = CardRegistry(skills_dir=skills_dir)
+        except Exception:
+            registry = None
+
+        if registry is None:
+            return fallback_action
+
+        # Detect if this is likely a hand discard choice
+        is_discard = False
+        if sel_type == 2:
+            try:
+                current = get_val(observation, "current")
+                my_idx = get_val(current, "yourIndex", 0)
+                players = get_val(current, "players", [])
+                if len(players) > my_idx:
+                    my_hand = [get_val(c, "id") for c in get_val(players[my_idx], "hand", []) if c and get_val(c, "id") is not None]
+                    option_ids = [get_val(opt, "id") for opt in options]
+                    if option_ids and all(oid in my_hand for oid in option_ids if oid is not None):
+                        is_discard = True
+            except Exception:
+                pass
+
+        # Score each option
+        scored_options = []
+        for idx, opt in enumerate(options):
+            card_id = get_val(opt, "id")
+            card_name = get_val(opt, "name", "")
+            
+            card = None
+            if card_id is not None:
+                card = registry.get_full_skill(card_id)
+            if card is None and card_name:
+                card = registry.get_full_skill(card_name)
+                
+            score = 0.0
+            if card:
+                score = getattr(card, "utility_score", 0.0)
+                if sel_type == 3:
+                    score += getattr(card, "ev_score", 0.0) + (getattr(card, "damage_output", 0) * 0.01)
+
+            scored_options.append((idx, score))
+
+        # Sort options: lowest scoring first for discards, highest first otherwise
+        if is_discard:
+            scored_options.sort(key=lambda x: x[1])
+        else:
+            scored_options.sort(key=lambda x: x[1], reverse=True)
+
+        selected = [idx for idx, _ in scored_options[:max_count]]
+        
+        # Ensure we return exactly max_count unique indices
+        if len(selected) < max_count:
+            for idx in range(len(options)):
+                if idx not in selected:
+                    selected.append(idx)
+                    if len(selected) == max_count:
+                        break
+        return selected
+    except Exception as e:
+        import sys
+        sys.stderr.write(f"[smart_choice] Exception during choice: {e}\n")
+        return fallback_action
+
 def agent(observation, configuration=None):
     """
     Main Actuation Agent loop parsed by Kaggle Match runtimes.
@@ -379,8 +458,8 @@ def agent(observation, configuration=None):
             return selected
         else:
             # Non-main choice (e.g. starting setup, coin flips, Yes/No, card selection from deck)
-            # Use safe fallback (select first N options)
-            return fallback_action
+            # Use smart heuristic selector instead of naive fallback
+            return make_smart_choice(select, observation, fallback_action)
 
     except Exception as e:
         import sys
