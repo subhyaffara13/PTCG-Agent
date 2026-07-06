@@ -1766,6 +1766,11 @@
       "player": "anngle",
       "avg_setup_duration": 18.8,
       "avg_bench_density": 2.1
+    },
+    {
+      "player": "Blake Mosley",
+      "avg_setup_duration": 14.6,
+      "avg_bench_density": 1.9
     }
   ],
   "deck_stats": {
