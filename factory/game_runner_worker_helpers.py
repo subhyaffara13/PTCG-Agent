@@ -9,36 +9,24 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 
-@contextlib.contextmanager
-def silence_stderr():
-    """Silences raw file descriptor 2 (stderr) to catch C++ level OpenSpiel output prints."""
-    try:
-        devnull = os.open(os.devnull, os.O_WRONLY)
-        old_stderr = os.dup(2)
-        os.dup2(devnull, 2)
-        try:
-            yield
-        finally:
-            os.dup2(old_stderr, 2)
-            os.close(devnull)
-            os.close(old_stderr)
-    except Exception:
-        yield
-
 def setup_game_env(seed=None):
     os.environ["FAST_SIM_MODE"] = "false"
     saved_path = list(sys.path)
     try:
         cwd_resolved = Path.cwd().resolve()
         sys.path = [p for p in sys.path if p and Path(p).resolve() != cwd_resolved]
+        
+        # Suppress spammy kaggle_environments import warning messages selectively
         logging.getLogger("kaggle_environments").setLevel(logging.ERROR)
         
-        with silence_stderr():
-            from kaggle_environments import make
-            config = {}
-            if seed is not None:
-                config["seed"] = seed
-            env = make("cabt", configuration=config)
+        # Using python redirect_stderr is safe and doesn't hijack raw process descriptors
+        with open(os.devnull, 'w') as fnull:
+            with contextlib.redirect_stderr(fnull):
+                from kaggle_environments import make
+                config = {}
+                if seed is not None:
+                    config["seed"] = seed
+                env = make("cabt", configuration=config)
     finally:
         sys.path = saved_path
     return env
