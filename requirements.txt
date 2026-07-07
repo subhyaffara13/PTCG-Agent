@@ -6,4 +6,6 @@ kaggle-environments
 python-dotenv
 pytest
 redis
+pydantic
+pokerkit
 
