@@ -1901,11 +1901,21 @@
       "player": "Kazama Yusuke",
       "avg_setup_duration": 32.8,
       "avg_bench_density": 4.1
+    },
+    {
+      "player": "mhiro2",
+      "avg_setup_duration": 19.8,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "Mykhailo Kalus",
+      "avg_setup_duration": 22.4,
+      "avg_bench_density": 4.1
     }
   ],
   "deck_stats": {
     "avg_pokemon_count": 21.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 8.0
+    "avg_trainer_count": 29.0,
+    "avg_energy_count": 10.0
   }
 }
