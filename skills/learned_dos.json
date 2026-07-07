@@ -1896,11 +1896,16 @@
       "player": "LiamKirwin",
       "avg_setup_duration": 45.8,
       "avg_bench_density": 0.9
+    },
+    {
+      "player": "Kazama Yusuke",
+      "avg_setup_duration": 32.8,
+      "avg_bench_density": 4.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 11.0,
-    "avg_trainer_count": 24.0,
-    "avg_energy_count": 25.0
+    "avg_pokemon_count": 21.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 8.0
   }
 }
