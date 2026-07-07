@@ -89,7 +89,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         # Attempt to run C++ search
         if HAS_CPP and ptcg_core is not None:
             try:
-                time_limit = time_remaining - 0.5 if time_remaining else 1.0
+                time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
                 state_dict = game_state.copy()
                 state_dict["legal_actions"] = canonical_actions
                 return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct)
