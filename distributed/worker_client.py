@@ -27,6 +27,19 @@ class WorkerClient:
     def start(self):
         logger.info(f"Worker {self.worker_id} starting (Current Code: {self.current_code_version})...")
         
+        # Auto-install pydantic and pokerkit dynamically if missing in the running environment
+        try:
+            import pydantic
+            import pokerkit
+        except ImportError:
+            logger.info("Dependencies 'pydantic' or 'pokerkit' are missing. Attempting automatic installation...")
+            try:
+                import subprocess
+                subprocess.run([sys.executable, "-m", "pip", "install", "pydantic", "pokerkit"], check=True)
+                logger.info("Successfully installed pydantic and pokerkit in the running environment!")
+            except Exception as pip_err:
+                logger.error(f"Failed to auto-install dependencies: {pip_err}. Please run: pip install pydantic pokerkit manually.")
+        
         # Register Graceful Signal Handlers
         import signal
         def handle_signal(signum, frame):
