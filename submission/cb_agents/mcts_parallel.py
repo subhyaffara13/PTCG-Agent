@@ -1,6 +1,6 @@
 import logging
 import threading
-from typing import List
+from typing import List, Any
 from concurrent.futures import ThreadPoolExecutor
 from cb_agents.heuristic_pipeline import pipeline
 from cb_agents.mcts_node import MCTSNode
@@ -9,7 +9,21 @@ from cb_agents.forward_model import apply_action
 logger = logging.getLogger(__name__)
 
 class MCTSParallelMixin:
-    def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int = 4, time_remaining: float = None) -> str:
+    # Type stubs for static analysis
+    c_puct: float
+    num_simulations: int
+    belief_tracker: Any
+    
+    def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy: Any = None) -> List[Any]:
+        return []
+
+    def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None = None) -> float:
+        return 0.0
+
+    def select_child(self, node: Any, c_puct: float) -> Any:
+        return None
+
+    def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int = 4, time_remaining: float | None = None) -> str:
         if not legal_actions:
             return "pass"
         if len(legal_actions) == 1:

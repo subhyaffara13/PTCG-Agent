@@ -2,28 +2,34 @@ import sys
 from pathlib import Path
 
 # Verify Python 3.11 compatibility before running local match
-def verify_compatibility(file_path: Path):
-    if file_path.exists():
+def verify_compatibility(dir_path: Path):
+    if dir_path.exists():
         import ast
-        content = file_path.read_text(encoding="utf-8")
-        try:
-            tree = ast.parse(content)
-        except SyntaxError as e:
-            print(f"CRITICAL: SyntaxError in {file_path.name}: {e}")
-            sys.exit(1)
-        for node in ast.walk(tree):
-            if isinstance(node, ast.JoinedStr):
-                for val in node.values:
-                    if isinstance(val, ast.FormattedValue):
-                        expr_str = ast.unparse(val.value)
-                        if "'" in expr_str or '"' in expr_str:
-                            print(f"CRITICAL: Python 3.11 compatibility error in {file_path.name}: f-string expression contains quotes: {{{expr_str}}}")
-                            sys.exit(1)
+        for py_file in dir_path.rglob("*.py"):
+            content = py_file.read_text(encoding="utf-8")
+            try:
+                tree = ast.parse(content)
+            except SyntaxError as e:
+                print(f"CRITICAL: SyntaxError in {py_file.name}: {e}")
+                sys.exit(1)
+            for node in ast.walk(tree):
+                if isinstance(node, ast.JoinedStr):
+                    for val in node.values:
+                        if isinstance(val, ast.FormattedValue):
+                            expr_str = ast.unparse(val.value)
+                            if "'" in expr_str or '"' in expr_str:
+                                print(f"CRITICAL: Python 3.11 compatibility error in {py_file.name}: f-string expression contains quotes: {{{expr_str}}}")
+                                sys.exit(1)
 
-verify_compatibility(Path("submission.py"))
+verify_compatibility(Path("submission"))
+
+# Add submission directory to sys.path to resolve internal cb_agents/router imports
+sub_path = str(Path(__file__).parent / "submission")
+if sub_path not in sys.path:
+    sys.path.insert(0, sub_path)
 
 from kaggle_environments import make
-from submission import agent
+from main import agent
 
 env = make("cabt", debug=True)
 env.run([agent, agent])

@@ -15,13 +15,13 @@ class MCTSParallelMixin:
     belief_tracker: Any
     
     def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy: Any = None) -> List[Any]:
-        pass
+        return []
 
     def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None = None) -> float:
         return 0.0
 
     def select_child(self, node: Any, c_puct: float) -> Any:
-        pass
+        return None
 
     def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int = 4, time_remaining: float | None = None) -> str:
         if not legal_actions:
