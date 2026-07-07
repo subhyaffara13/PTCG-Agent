@@ -140,6 +140,10 @@ def request_code_mutation_from_llm(file_path: Path, telemetry_issues: str) -> st
     
     YOUR TASK:
     Modify the file '{file_path.name}' to fix these issues. 
+    - Leverage our MODULAR ARCHITECTURE: You can import and use helpers from:
+      * `cb_agents.preference_maps` (fallback to `agents.preference_maps`): `get_energy_preference(card_id: str) -> str`
+      * `cb_agents.lethal_detector` (fallback to `agents.lethal_detector`): `evaluate_active_danger(...) -> dict`
+    - Keep code clean, modular, and extremely compact.
     - If the issue is PASSIVE PLAY, ensure attacks are heavily prioritized over passing when available.
     - If the issue is CRASHES or type errors (e.g. Struct/dict mismatches), add robust safe-extraction logic.
     - Keep all imports intact.
