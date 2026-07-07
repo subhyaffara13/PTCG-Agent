@@ -24,6 +24,12 @@ def ensure_dependencies():
 
 import contextlib
 
+class DummyStream:
+    def write(self, s):
+        pass
+    def flush(self):
+        pass
+
 @contextlib.contextmanager
 def silence_kaggle_warnings():
     import builtins
@@ -33,10 +39,11 @@ def silence_kaggle_warnings():
             return
         orig_print(*args, **kwargs)
     builtins.print = dummy_print
+    
+    dummy_stream = DummyStream()
     try:
-        with open(os.devnull, 'w') as fnull:
-            with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
-                yield
+        with contextlib.redirect_stderr(dummy_stream), contextlib.redirect_stdout(dummy_stream):
+            yield
     finally:
         builtins.print = orig_print
 
