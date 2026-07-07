@@ -1,8 +1,39 @@
+import sys
+import os
+import subprocess
+
+def ensure_dependencies():
+    required_packages = ["numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "dotenv"]
+    missing = False
+    for pkg in required_packages:
+        try:
+            if pkg == "dotenv":
+                import dotenv
+            else:
+                __import__(pkg)
+        except ImportError:
+            missing = True
+            break
+            
+    if missing:
+        print("Missing dependencies detected. Running pip install for requirements.txt...")
+        try:
+            # Locate requirements.txt
+            req_path = os.path.join(os.getcwd(), "requirements.txt")
+            if os.path.exists(req_path):
+                subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_path], check=True)
+            else:
+                subprocess.run([sys.executable, "-m", "pip", "install", "numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "python-dotenv"], check=True)
+            print("Dependencies successfully installed!")
+        except Exception as e:
+            print(f"Failed to auto-install dependencies: {e}. Worker client may crash on imports.")
+
+ensure_dependencies()
+
 import socket
 import time
 import logging
 import uuid
-import sys
 from distributed.work_order import WorkOrder, GameResult
 from factory.game_runner import GameRunner
 
@@ -26,19 +57,6 @@ class WorkerClient:
         
     def start(self):
         logger.info(f"Worker {self.worker_id} starting (Current Code: {self.current_code_version})...")
-        
-        # Auto-install pydantic and pokerkit dynamically if missing in the running environment
-        try:
-            import pydantic
-            import pokerkit
-        except ImportError:
-            logger.info("Dependencies 'pydantic' or 'pokerkit' are missing. Attempting automatic installation...")
-            try:
-                import subprocess
-                subprocess.run([sys.executable, "-m", "pip", "install", "pydantic", "pokerkit"], check=True)
-                logger.info("Successfully installed pydantic and pokerkit in the running environment!")
-            except Exception as pip_err:
-                logger.error(f"Failed to auto-install dependencies: {pip_err}. Please run: pip install pydantic pokerkit manually.")
         
         # Register Graceful Signal Handlers
         import signal
