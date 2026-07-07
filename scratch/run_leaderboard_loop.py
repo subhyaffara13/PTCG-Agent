@@ -7,6 +7,8 @@ and policy update feedback loops.
 
 import sys
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 cwd = os.getcwd()
 if cwd not in sys.path:
