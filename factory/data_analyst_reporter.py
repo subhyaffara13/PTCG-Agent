@@ -59,8 +59,22 @@ def generate_tips_and_report(logs_dir: Path, skills_dir: Path, report_path: Path
     else:
         report_lines.append("\n- No high-risk stall/pass events recorded.")
 
-    # Write files
-    (skills_dir / "learned_donts.json").write_text(json.dumps(deck_tips, indent=2), encoding="utf-8")
+    # Load and merge with existing learned_donts to prevent erasing anti-pattern rules
+    donts_file = skills_dir / "learned_donts.json"
+    existing_donts = {"deck_donts": [], "behavior_donts": []}
+    if donts_file.exists():
+        try:
+            loaded = json.loads(donts_file.read_text(encoding="utf-8"))
+            if isinstance(loaded, dict):
+                existing_donts.update(loaded)
+        except Exception:
+            pass
+            
+    for tip in deck_tips.get("deck_donts", []):
+        if not any(item.get("condition") == tip.get("condition") for item in existing_donts.get("deck_donts", [])):
+            existing_donts["deck_donts"].append(tip)
+            
+    donts_file.write_text(json.dumps(existing_donts, indent=2), encoding="utf-8")
     (skills_dir / "strategy_tips.json").write_text(json.dumps(strategy_tips, indent=2), encoding="utf-8")
     
     pivotal = {"best_plays": best_plays[-50:], "worst_plays": worst_plays[-50:]}
