@@ -27,8 +27,6 @@ def auto_submit_if_ready():
     last_sub_time = None
     for s in subs:
         if s is not None:
-            if str(s.status).lower() in ("submissionstatus.error", "error", "submissionstatus.failed", "failed"):
-                continue
             s_date = s.date.replace(tzinfo=timezone.utc)
             if s_date.date() == now_utc.date():
                 today_subs += 1
@@ -67,7 +65,7 @@ def auto_submit_if_ready():
                 reason = f"Breakthrough! Fitness improved from {last_submitted_fit:.2f} to {current_best_fit:.2f}."
             else:
                 print(f"[Auto-Submit] Breakthrough detected, but waiting 1.0 hour to space submissions. ({elapsed_hours:.2f}h elapsed)")
-        elif elapsed_hours >= 4.0:
+        elif elapsed_hours >= 4.5:
             should_submit = True
             reason = f"Spacing trigger: {elapsed_hours:.1f} hours elapsed since last submission."
 

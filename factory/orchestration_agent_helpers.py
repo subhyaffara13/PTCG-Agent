@@ -59,9 +59,8 @@ def auto_submit_if_ready():
         return
 
     now_utc = datetime.now(timezone.utc)
-    valid_subs = [s for s in subs if s is not None and str(s.status).lower() not in ("submissionstatus.error", "error", "submissionstatus.failed", "failed")]
-    today_subs = sum(1 for s in valid_subs if s is not None and s.date.replace(tzinfo=timezone.utc).date() == now_utc.date())
-    last_sub_time = max((s.date.replace(tzinfo=timezone.utc) for s in valid_subs if s is not None), default=None)
+    today_subs = sum(1 for s in subs if s is not None and s.date.replace(tzinfo=timezone.utc).date() == now_utc.date())
+    last_sub_time = max((s.date.replace(tzinfo=timezone.utc) for s in subs if s is not None), default=None)
     elapsed_hours = (now_utc - last_sub_time).total_seconds() / 3600.0 if last_sub_time else 999.0
 
     logger.info(f"Submissions today: {today_subs}/5, hours since last: {elapsed_hours:.1f}h")
@@ -74,7 +73,7 @@ def auto_submit_if_ready():
         return
     if is_new_best and elapsed_hours >= 1.0:
         reason = f"Breakthrough! {last_submitted:.2f} -> {current_best:.2f}"
-    elif elapsed_hours >= 4.0:
+    elif elapsed_hours >= 4.5:
         reason = f"Spacing: {elapsed_hours:.1f}h elapsed"
     else:
         return
