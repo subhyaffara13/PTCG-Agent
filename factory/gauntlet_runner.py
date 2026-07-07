@@ -49,7 +49,7 @@ class GauntletRunner:
         """
         logger.info(f"Starting Gauntlet Evaluation against {len(self.archetypes)} real archetypes...")
         total_wins = 0
-        total_games = len(self.archetypes) * num_games_per_archetype * 3
+        total_games = 0
         runner = GameRunner()
         
         for archetype in self.archetypes:
@@ -70,15 +70,16 @@ class GauntletRunner:
                 
                 # Check if candidate won
                 games = res.get("games", {})
+                total_games += len(games)
                 for label, game in games.items():
                     if game.get("winner") == "player_a":
                         total_wins += 1
                         archetype_wins += 1
                 
-            logger.info(f"Stage Result vs {archetype}: {archetype_wins}/{num_games_per_archetype} wins.")
+            logger.info(f"Stage Result vs {archetype}: {archetype_wins} wins out of {num_games_per_archetype * 61} games played.")
             
-        win_rate = total_wins / total_games
-        logger.info(f"Gauntlet Complete. Overall Win Rate: {win_rate*100:.1f}%")
+        win_rate = total_wins / max(total_games, 1)
+        logger.info(f"Gauntlet Complete. Overall Win Rate: {win_rate*100:.1f}% ({total_wins}/{total_games} wins)")
         
         return win_rate
 
