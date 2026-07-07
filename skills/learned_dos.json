@@ -2031,11 +2031,16 @@
       "player": "ImANoob1122",
       "avg_setup_duration": 22.6,
       "avg_bench_density": 3.0
+    },
+    {
+      "player": "matsurih",
+      "avg_setup_duration": 15.8,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   }
 }
