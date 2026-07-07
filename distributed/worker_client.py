@@ -75,17 +75,25 @@ class WorkerClient:
                         
                         # 2. Dynamic Git Synchronization on Code Version Mismatch
                         if order.code_version and order.code_version != self.current_code_version:
-                            logger.info(f"Detected code version mismatch (Local: {self.current_code_version}, Master: {order.code_version}). Triggering dynamic synchronization...")
-                            try:
-                                from distributed.code_sync import sync_code, restart_process
-                                # Shutdown execution pool before restart to prevent leaks
-                                if hasattr(self.runner, '_executor') and self.runner._executor:
-                                    self.runner._executor.shutdown(wait=False, cancel_futures=True)
-                                if sync_code(order.code_version):
-                                    logger.info("Sync complete. Hot-restarting worker process...")
-                                    restart_process()
-                            except Exception as sync_err:
-                                logger.error(f"Dynamic synchronization failed: {sync_err}")
+                            if not hasattr(self, 'failed_sync_versions'):
+                                self.failed_sync_versions = {}
+                            
+                            last_failed_time = self.failed_sync_versions.get(order.code_version, 0)
+                            if time.time() - last_failed_time > 300:  # 5 minutes cooldown
+                                logger.info(f"Detected code version mismatch (Local: {self.current_code_version}, Master: {order.code_version}). Triggering dynamic synchronization...")
+                                try:
+                                    from distributed.code_sync import sync_code, restart_process
+                                    # Shutdown execution pool before restart to prevent leaks
+                                    if hasattr(self.runner, '_executor') and self.runner._executor:
+                                        self.runner._executor.shutdown(wait=False, cancel_futures=True)
+                                    if sync_code(order.code_version):
+                                        logger.info("Sync complete. Hot-restarting worker process...")
+                                        restart_process()
+                                    else:
+                                        self.failed_sync_versions[order.code_version] = time.time()
+                                except Exception as sync_err:
+                                    logger.error(f"Dynamic synchronization failed: {sync_err}")
+                                    self.failed_sync_versions[order.code_version] = time.time()
                         
                         try:
                             d_base = {"cards": order.deck_base} if order.deck_base else {}

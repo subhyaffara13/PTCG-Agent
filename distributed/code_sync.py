@@ -43,7 +43,12 @@ def sync_code(master_version) -> bool:
                 # Fallback to origin's main if master_version is not yet known locally
                 subprocess.run(['git', 'reset', '--hard', 'origin/main'], check=True)
                 
-            logging.info("Code synchronized successfully via hard reset.")
+            new_local_version = get_local_version()
+            if new_local_version == local_version:
+                logging.warning(f"Sync complete, but local version did not change from {local_version}. Mismatch persists (latest master: {master_version}).")
+                return False
+                
+            logging.info(f"Code synchronized successfully from {local_version} to {new_local_version}.")
             return True
         except subprocess.CalledProcessError as e:
             logging.error(f"Failed to synchronize code: {e}")
