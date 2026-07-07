@@ -1,6 +1,7 @@
 import sys
 import os
 import subprocess
+import time
 
 def ensure_dependencies():
     required_packages = ["numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "dotenv"]
@@ -26,7 +27,28 @@ def ensure_dependencies():
                 subprocess.run([sys.executable, "-m", "pip", "install", "numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "python-dotenv"], check=True)
             print("Dependencies successfully installed!")
         except Exception as e:
-            print(f"Failed to auto-install dependencies: {e}. Worker client may crash on imports.")
+            print(f"Failed to auto-install dependencies: {e}.")
+            
+        # Verify if everything was resolved
+        still_missing = []
+        for pkg in required_packages:
+            try:
+                if pkg == "dotenv":
+                    import dotenv
+                else:
+                    __import__(pkg)
+            except ImportError:
+                still_missing.append(pkg)
+                
+        if still_missing:
+            print("\n" + "="*80)
+            print(f"CRITICAL ERROR: The following packages are still missing: {still_missing}")
+            print("Please run manually on this machine:")
+            print(f"  pip install {' '.join(still_missing)}")
+            print("="*80 + "\n")
+            print("Worker will pause for 60 seconds before exiting to prevent infinite crash loops...")
+            time.sleep(60)
+            sys.exit(1)
 
 ensure_dependencies()
 
