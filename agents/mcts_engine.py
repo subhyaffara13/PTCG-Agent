@@ -106,7 +106,8 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                     best_val, best = v, a
             return best or legal_actions[0]
 
-        root_hash = f"turn_{game_state.get('turn_number', 0)}"
+        turn_num = game_state.get('turn_number', 0)
+        root_hash = f"turn_{turn_num}"
         root = MCTSNode(state_hash=root_hash)
         mast_policy = MASTPolicy(exploration_weight=0.3)
         priors = self._get_action_priors(game_state, canonical_actions, mast_policy)

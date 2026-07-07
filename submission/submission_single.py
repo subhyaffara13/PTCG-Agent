@@ -1512,7 +1512,8 @@ try:
 
         def decorator(cls: Type) -> Type:
             if bus_name in _AGENT_REGISTRY:
-                raise ValueError(f"Duplicate agent registration: bus_name '{bus_name}' is already registered to {_AGENT_REGISTRY[bus_name]['cls'].__name__}")
+                registered_cls = _AGENT_REGISTRY[bus_name]['cls'].__name__
+                raise ValueError(f"Duplicate agent registration: bus_name '{bus_name}' is already registered to {registered_cls}")
             _AGENT_REGISTRY[bus_name] = {'cls': cls, 'perspective_flag': perspective_flag, 'needs_skills_dir': needs_skills_dir, 'needs_shared_context': needs_shared_context}
             return cls
         return decorator
@@ -2680,7 +2681,9 @@ try:
             return min(1.0, max(0.0, time_elapsed / time_limit))
 
         def _log(self, packet, result, time_limit: float=600.0):
-            entry: dict[str, Any] = {'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='milliseconds') + 'Z', 'agent': 'TimeManager', 'input': packet, 'reasoning': {'threshold_fast': time_limit - 60.0, 'threshold_force_pass': time_limit - 30.0, 'evaluation': f'time_elapsed={packet.get('time_elapsed')} -> directive={result['directive']}'}, 'output': result}
+            time_el = packet.get('time_elapsed')
+            directive_val = result.get('directive') if isinstance(result, dict) else result
+            entry: dict[str, Any] = {'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='milliseconds') + 'Z', 'agent': 'TimeManager', 'input': packet, 'reasoning': {'threshold_fast': time_limit - 60.0, 'threshold_force_pass': time_limit - 30.0, 'evaluation': f'time_elapsed={time_el} -> directive={directive_val}'}, 'output': result}
             self._log_buffer.append(entry)
 
     # === agents/orchestrator_merge ===
@@ -3621,7 +3624,10 @@ try:
             bench_sigs = {}
             for i, poke in enumerate(bench):
                 if isinstance(poke, dict):
-                    bench_sigs[i] = f'{poke.get('id', '?')}_{poke.get('hp', '?')}_{len(poke.get('attached', []))}'
+                    poke_id = poke.get('id', '?')
+                    poke_hp = poke.get('hp', '?')
+                    attached_len = len(poke.get('attached', []))
+                    bench_sigs[i] = f'{poke_id}_{poke_hp}_{attached_len}'
                 else:
                     bench_sigs[i] = f'unknown_{i}'
             groups = {}
@@ -3794,8 +3800,20 @@ try:
     logger = logging.getLogger(__name__)
 
     class MCTSParallelMixin:
+        c_puct: float
+        num_simulations: int
+        belief_tracker: Any
 
-        def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int=4, time_remaining: float=None) -> str:
+        def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy: Any=None) -> List[Any]:
+            pass
+
+        def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None=None) -> float:
+            return 0.0
+
+        def select_child(self, node: Any, c_puct: float) -> Any:
+            pass
+
+        def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int=4, time_remaining: float | None=None) -> str:
             if not legal_actions:
                 return 'pass'
             if len(legal_actions) == 1:
@@ -3803,7 +3821,8 @@ try:
             canonical_actions, groups_map = pipeline.mask_actions(legal_actions, game_state)
             if len(canonical_actions) == 1:
                 return canonical_actions[0]
-            root_hash = f'turn_{game_state.get('turn_number', 0)}'
+            turn_num = game_state.get('turn_number', 0)
+            root_hash = f'turn_{turn_num}'
             root = MCTSNode(state_hash=root_hash)
             priors = self._get_action_priors(game_state, canonical_actions)
             root.expand(priors)
@@ -4123,7 +4142,8 @@ try:
                     if v > best_val:
                         best_val, best = (v, a)
                 return best or legal_actions[0]
-            root_hash = f'turn_{game_state.get('turn_number', 0)}'
+            turn_num = game_state.get('turn_number', 0)
+            root_hash = f'turn_{turn_num}'
             root = MCTSNode(state_hash=root_hash)
             mast_policy = MASTPolicy(exploration_weight=0.3)
             priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
@@ -4464,7 +4484,8 @@ try:
         prized_enrich = prize_tracker.get_certainty_enrichment()
         if prized_enrich:
             game_state.update(prized_enrich)
-            logger.debug(f'Injected prized certainty into game_state: {len(prized_enrich.get('prized_card_ids', {}))} card types')
+            prized_card_types = len(prized_enrich.get('prized_card_ids', {}))
+            logger.debug(f'Injected prized certainty into game_state: {prized_card_types} card types')
         return game_state
 
     def _check_lethal_and_update(game_state: dict) -> None:

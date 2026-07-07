@@ -38,7 +38,8 @@ def _process_prize_tracker(game_state: dict, prize_tracker: PrizeTracker, packet
     prized_enrich = prize_tracker.get_certainty_enrichment()
     if prized_enrich:
         game_state.update(prized_enrich)
-        logger.debug(f"Injected prized certainty into game_state: {len(prized_enrich.get('prized_card_ids', {}))} card types")
+        prized_card_types = len(prized_enrich.get('prized_card_ids', {}))
+        logger.debug(f"Injected prized certainty into game_state: {prized_card_types} card types")
     return game_state
 
 

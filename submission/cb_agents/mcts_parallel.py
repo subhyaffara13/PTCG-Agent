@@ -19,7 +19,8 @@ class MCTSParallelMixin:
         if len(canonical_actions) == 1:
             return canonical_actions[0]
 
-        root_hash = f"turn_{game_state.get('turn_number', 0)}"
+        turn_num = game_state.get('turn_number', 0)
+        root_hash = f"turn_{turn_num}"
         root = MCTSNode(state_hash=root_hash)
         priors = self._get_action_priors(game_state, canonical_actions)
         root.expand(priors)

@@ -75,7 +75,10 @@ class HeuristicPipeline:
         bench_sigs = {}
         for i, poke in enumerate(bench):
             if isinstance(poke, dict):
-                bench_sigs[i] = f"{poke.get('id', '?')}_{poke.get('hp', '?')}_{len(poke.get('attached', []))}"
+                poke_id = poke.get('id', '?')
+                poke_hp = poke.get('hp', '?')
+                attached_len = len(poke.get('attached', []))
+                bench_sigs[i] = f"{poke_id}_{poke_hp}_{attached_len}"
             else:
                 bench_sigs[i] = f"unknown_{i}"
         groups = {}
