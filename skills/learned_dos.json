@@ -1986,11 +1986,16 @@
       "player": "ei1333",
       "avg_setup_duration": 12.4,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "trickstar",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 2.9
     }
   ],
   "deck_stats": {
     "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 30.0,
-    "avg_energy_count": 10.0
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 7.0
   }
 }
