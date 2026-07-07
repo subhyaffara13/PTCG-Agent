@@ -1916,11 +1916,16 @@
       "player": "Kohei",
       "avg_setup_duration": 35.0,
       "avg_bench_density": 1.8
+    },
+    {
+      "player": "mitomeat823",
+      "avg_setup_duration": 18.4,
+      "avg_bench_density": 3.4
     }
   ],
   "deck_stats": {
     "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 13.0
   }
 }
