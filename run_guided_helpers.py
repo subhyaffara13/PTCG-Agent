@@ -30,7 +30,7 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
             logger.warning("PPO Trainer model not initialized. Skipping.")
             return
 
-        states, actions = [], []
+        states, actions, rewards = [], [], []
         eval_path = Path("logs") / "iteration_result.json"
         if not eval_path.exists():
             logger.warning("No iteration_result.json found. Skipping PPO.")
@@ -40,8 +40,10 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
             if raw_data is None:
                 raw_data = {}
             games = raw_data.get("games", {})
-            loaded_games = 0
-            total_steps_loaded = 0
+            
+            # List of (game_states, game_actions, game_rewards) tuples
+            game_trajectories = []
+            
             for label, game in games.items():
                 if not isinstance(game, dict):
                     continue
@@ -57,32 +59,70 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
                     if steps_data is None:
                         steps_data = []
                     s, a = _extract_all_steps(steps_data, aligner)
-                    if s:
-                        states.extend(s); actions.extend(a)
-                        loaded_games += 1
-                        total_steps_loaded += len(s)
+                    if not s:
+                        continue
+                    
+                    winner = game.get("winner")  # "player_a", "player_b", "draw"
+                    game_len = len(s)
+                    
+                    # Dense Reward Assignment:
+                    # Final outcome reward (+10.0 / -10.0)
+                    game_rew = [0.0] * game_len
+                    if winner == "player_a":
+                        game_rew[-1] = 10.0
+                    elif winner == "player_b":
+                        game_rew[-1] = -10.0
+                        
+                    # Intermediate Prize Rewards
+                    prev_p_mine, prev_p_opp = 6, 6
+                    for t in range(game_len):
+                        try:
+                            step_data = steps_data[t]
+                            players = step_data.get("players", [])
+                            if len(players) >= 2:
+                                p0_prize = len(players[0].get("observation", {}).get("prize", []))
+                                p1_prize = len(players[1].get("observation", {}).get("prize", []))
+                                p_mine = p0_prize
+                                p_opp = p1_prize
+                                
+                                # We took a prize card: +2.0
+                                if p_opp < prev_p_opp:
+                                    game_rew[t] += 2.0 * (prev_p_opp - p_opp)
+                                # Opponent took a prize card: -2.0
+                                if p_mine < prev_p_mine:
+                                    game_rew[t] -= 2.0 * (prev_p_mine - p_mine)
+                                    
+                                prev_p_mine, prev_p_opp = p_mine, p_opp
+                        except Exception:
+                            pass
+                            
+                    game_trajectories.append((s, a, game_rew))
                 except Exception as e:
                     logger.warning(f"Failed to load steps from {steps_path}: {e}")
             
-            if len(states) > 5000:
-                import random
-                combined = list(zip(states, actions))
-                random.shuffle(combined)
-                combined = combined[:5000]
-                states[:], actions[:] = zip(*combined)
-                logger.info(f"Subsampled trajectories down to 5000 steps to speed up PPO update.")
+            # Subsample by keeping whole game trajectories intact (retaining sequence coherence)
+            import random
+            random.shuffle(game_trajectories)
+            
+            total_steps = 0
+            for s, a, r in game_trajectories:
+                if total_steps + len(s) > 8000:
+                    break
+                states.extend(s)
+                actions.extend(a)
+                rewards.extend(r)
+                total_steps += len(s)
                 
-            logger.info(f"Loaded {total_steps_loaded} steps from {loaded_games} games (out of {len(games)} total entries).")
+            logger.info(f"Loaded {total_steps} sequential steps from {len(game_trajectories)} candidate trajectories.")
         except Exception as parse_err:
             logger.warning(f"Failed to parse iteration_result.json: {parse_err}")
-
+            
         if not states:
-            logger.error("No real trajectory data loaded. Skipping PPO update to preserve learned weights.")
+            logger.error("No real trajectory data loaded. Skipping PPO update.")
             return
 
         n = len(states)
         old_log_probs = [math.log(1.0 / 3000)] * n
-        rewards = [0.0] * max(n - 1, 0) + [1.0]
         logger.info(f"Loaded {n} state-action pairs. Running PPO...")
         ppo.update(states, actions, old_log_probs, rewards, epochs=PPO_EPOCHS, batch_size=PPO_BATCH_SIZE)
     except Exception as e:
