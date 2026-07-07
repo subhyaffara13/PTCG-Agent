@@ -662,7 +662,7 @@
     },
     {
       "card_id": 1205,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -982,6 +982,31 @@
     },
     {
       "card_id": 434,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 293,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 292,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 303,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1113,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1253,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -1991,11 +2016,26 @@
       "player": "trickstar",
       "avg_setup_duration": 17.8,
       "avg_bench_density": 2.9
+    },
+    {
+      "player": "rode",
+      "avg_setup_duration": 20.4,
+      "avg_bench_density": 2.3
+    },
+    {
+      "player": "Tanishi\uff06haru",
+      "avg_setup_duration": 14.2,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "ImANoob1122",
+      "avg_setup_duration": 22.6,
+      "avg_bench_density": 3.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 15.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 13.0
   }
 }
