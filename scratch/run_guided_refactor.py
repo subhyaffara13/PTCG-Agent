@@ -20,6 +20,15 @@ def get_last_iteration_id() -> int:
 
 def execute_refactor_step(iteration_id: int):
     logger.info(f"=== ITERATION {iteration_id}: INITIATING REFACTOR/CLEANUP STEP ===")
+    
+    # Run the Self-Evolving Code Optimization (SECO) mutator
+    try:
+        from agents.code_mutator import run_evolution_cycle
+        logger.info("Running Self-Evolving Code mutation check...")
+        run_evolution_cycle()
+    except Exception as ev_err:
+        logger.error(f"Self-Evolving Code mutator failed: {ev_err}")
+
     logger.info("Running pytest suite...")
     try:
         res = subprocess.run(["pytest"], capture_output=True, text=True, check=True)

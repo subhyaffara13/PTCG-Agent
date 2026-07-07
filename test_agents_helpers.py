@@ -28,11 +28,11 @@ strategy_tests = [
 opp_pkt = OpponentModelPacket(
     turn=3,
     newly_played_cards=["Quick Ball", "Nest Ball", "Boss's Orders"],
-    opponent_active_pokemon="Pikachu ex",
-    opponent_bench_count=3,
-    opponent_hand_size=4,
-    opponent_prizes_remaining=4,
-    opponent_discard=["Lightning Energy"],
+    revealed_active_pokemon="Pikachu ex",
+    revealed_bench_count=3,
+    revealed_hand_size=4,
+    revealed_prizes_remaining=4,
+    revealed_discard=["Lightning Energy"],
     game_phase="early",
 )
 

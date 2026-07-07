@@ -3,6 +3,33 @@ class OrchestratorBeliefMixin:
         """Synchronizes the belief tracker state with the current public game state.
         Calls update_on_* methods for detected opponent actions to keep known_in_hand accurate.
         """
+        def get_id(obj):
+            if obj is None:
+                return None
+            if isinstance(obj, (int, str)):
+                try:
+                    return int(obj)
+                except (ValueError, TypeError):
+                    return None
+            # Try dict key
+            if isinstance(obj, dict):
+                val = obj.get("id")
+                if val is not None:
+                    try:
+                        return int(val)
+                    except (ValueError, TypeError):
+                        pass
+            # Try attribute
+            for attr in ("id", "card_id"):
+                if hasattr(obj, attr):
+                    val = getattr(obj, attr)
+                    if val is not None:
+                        try:
+                            return int(val)
+                        except (ValueError, TypeError):
+                            pass
+            return None
+
         prev_hand_size = self.belief_tracker.state.hand_size
         prev_discard_len = len(self.belief_tracker.state.known_in_discard)
 
@@ -17,35 +44,26 @@ class OrchestratorBeliefMixin:
         known_in_play = {}
         active = game_state.get("opponent_active")
         if active:
-            active_id = active.get("id") if isinstance(active, dict) else active
-            if active_id:
-                try:
-                    known_in_play[int(active_id)] = 1
-                    # Detect play: active changed from previous sync
-                    prev_play = self.belief_tracker.state.known_in_play
-                    if int(active_id) not in prev_play:
-                        self.belief_tracker.update_on_play(int(active_id))
-                except ValueError:
-                    pass
+            active_id = get_id(active)
+            if active_id is not None:
+                known_in_play[active_id] = 1
+                # Detect play: active changed from previous sync
+                prev_play = self.belief_tracker.state.known_in_play
+                if active_id not in prev_play:
+                    self.belief_tracker.update_on_play(active_id)
 
         for bench_item in game_state.get("opponent_bench", []):
-            bench_id = bench_item.get("id") if isinstance(bench_item, dict) else bench_item
-            if bench_id:
-                try:
-                    bench_id_int = int(bench_id)
-                    known_in_play[bench_id_int] = known_in_play.get(bench_id_int, 0) + 1
-                except ValueError:
-                    pass
+            bench_id = get_id(bench_item)
+            if bench_id is not None:
+                known_in_play[bench_id] = known_in_play.get(bench_id, 0) + 1
 
         self.belief_tracker.state.known_in_play = known_in_play
 
         known_in_discard = {}
         for card_id in game_state.get("opponent_discard", []):
-            try:
-                card_id_int = int(card_id)
+            card_id_int = get_id(card_id)
+            if card_id_int is not None:
                 known_in_discard[card_id_int] = known_in_discard.get(card_id_int, 0) + 1
-            except ValueError:
-                pass
 
         # Detect discard: new cards in discard
         for cid, cnt in known_in_discard.items():

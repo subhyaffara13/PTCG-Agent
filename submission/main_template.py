@@ -237,6 +237,54 @@ def _log_action_exception(exc: Exception):
 
 _registry = None
 
+def resolve_option_names(options, observation, my_idx):
+    global _registry
+    try:
+        if _registry is None:
+            from cb_agents.card_registry import CardRegistry
+            import os
+            from pathlib import Path
+            agent_dir = str(Path(__file__).parent.resolve()) if "__file__" in globals() and globals()["__file__"] else os.getcwd()
+            skills_dir = os.path.join(agent_dir, "skills")
+            _registry = CardRegistry(skills_dir=skills_dir)
+        registry = _registry
+    except Exception:
+        registry = None
+
+    if not registry:
+        return
+
+    try:
+        current = get_val(observation, "current", {})
+        players = get_val(current, "players", [])
+        if len(players) <= my_idx:
+            return
+
+        my_state = players[my_idx]
+        hand = get_val(my_state, "hand", [])
+
+        for opt in options:
+            opt_type = get_val(opt, "type")
+            if opt_type in (7, 8, 9):
+                area = get_val(opt, "area", 2)
+                index = get_val(opt, "index")
+                if area == 2 and index is not None and len(hand) > index:
+                    card = hand[index]
+                    card_id = get_val(card, "id")
+                    if card_id is not None:
+                        card_entry = registry.get(card_id)
+                        if card_entry:
+                            if isinstance(opt, dict):
+                                opt["name"] = card_entry.card_name
+                            else:
+                                try:
+                                    setattr(opt, "name", card_entry.card_name)
+                                except:
+                                    pass
+    except Exception as e:
+        import sys
+        sys.stderr.write(f"[resolve_option_names] Error: {e}\n")
+
 def make_smart_choice(select, observation, fallback_action):
     global _registry
     try:
@@ -506,6 +554,24 @@ def agent(observation, configuration=None):
         if len(players) <= my_idx:
             return fallback_action
 
+        # Dynamically resolve card names for Trainer, Bench and Energy options in hand
+        resolve_option_names(options, observation, my_idx)
+
+        def _normalize_pokemon(p):
+            if not p or not isinstance(p, dict):
+                return p
+            p_copy = p.copy()
+            attached = []
+            energy_cards = p_copy.get("energyCards", [])
+            if isinstance(energy_cards, list):
+                for ec in energy_cards:
+                    if isinstance(ec, dict) and "id" in ec:
+                        attached.append(str(ec["id"]))
+                    elif isinstance(ec, (int, str)):
+                        attached.append(str(ec))
+            p_copy["attached"] = attached
+            return p_copy
+
         my_state = players[my_idx]
         opp_state = players[1 - my_idx] if len(players) > 1 else {}
 
@@ -514,13 +580,14 @@ def agent(observation, configuration=None):
             "my_hand": [get_val(c, "id") for c in get_val(my_state, "hand", []) if c and get_val(c, "id") is not None] if get_val(my_state, "hand") else [],
             "my_deck_count": get_val(my_state, "deckCount", 60),
             "my_prizes": len(get_val(my_state, "prize", [])) if isinstance(get_val(my_state, "prize"), list) else 6,
-            "my_active_pokemon": get_val(my_state, "active", [None])[0] if get_val(my_state, "active") else None,
-            "my_bench": get_val(my_state, "bench", []),
+            "my_active_pokemon": _normalize_pokemon(get_val(my_state, "active", [None])[0]) if get_val(my_state, "active") else None,
+            "my_bench": [_normalize_pokemon(p) for p in get_val(my_state, "bench", [])] if get_val(my_state, "bench") else [],
             
-            "opponent_active": get_val(opp_state, "active", [None])[0] if get_val(opp_state, "active") else None,
+            "opponent_active": _normalize_pokemon(get_val(opp_state, "active", [None])[0]) if get_val(opp_state, "active") else None,
+            "opponent_bench": [_normalize_pokemon(p) for p in get_val(opp_state, "bench", [])] if get_val(opp_state, "bench") else [],
             "opponent_bench_count": len(get_val(opp_state, "bench", [])) if get_val(opp_state, "bench") else 0,
             "opponent_prizes": len(get_val(opp_state, "prize", [])) if isinstance(get_val(opp_state, "prize"), list) else 6,
-            "opponent_discard": get_val(opp_state, "discard", []),
+            "opponent_discard": [get_val(c, "id") for c in get_val(opp_state, "discard", []) if c and get_val(c, "id") is not None] if get_val(opp_state, "discard") else [],
             "opponent_revealed": [],
             "opponent_last_play": None,
             
@@ -566,11 +633,21 @@ def agent(observation, configuration=None):
             if action_label.startswith("attack:"):
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 13]
             elif action_label.startswith("attach_energy:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 9]
+                parts = action_label.split(":")
+                energy_name = parts[1] if len(parts) > 1 else ""
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 9 and str(get_val(opt, "name", "")).lower() == energy_name.lower()]
+                if not mapped_indices:
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 9]
             elif action_label.startswith("bench:") or action_label.startswith("evolve:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8]
+                poke_name = action_label.split(":", 1)[1]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8 and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
+                if not mapped_indices:
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8]
             elif action_label.startswith("play_trainer:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7]
+                trainer_name = action_label.split(":", 1)[1]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7 and str(get_val(opt, "name", "")).lower() == trainer_name.lower()]
+                if not mapped_indices:
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7]
             elif action_label.startswith("retreat:"):
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 10]
 

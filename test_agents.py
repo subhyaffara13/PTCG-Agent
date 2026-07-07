@@ -25,9 +25,8 @@ print(SEP)
 print("2. TurnPlanner -- via Router")
 print(SEP)
 pkt2 = router.dispatch("TurnPlanner", {"hand_score": result["hand_score"], "priority_profile": result["priority_profile"]})
-for step in planner.plan(pkt2):
-    mark = "v" if step["viable"] else "x"
-    print(f"  [{mark}] {step['action']:<16}  {step['rationale'][:72]}")
+r2 = planner.receive(pkt2)
+print(json.dumps(r2, indent=2))
 
 print()
 print(SEP)
