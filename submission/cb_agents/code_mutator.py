@@ -262,7 +262,8 @@ def run_evolution_cycle(target_file: str = "agents/turn_planner_sort.py"):
         logger.info("Telemetry checks passed: No code evolution needed at this time.")
         return
 
-    logger.info(f"Evolution needed: {telemetry['reason']}")
+    reason = telemetry["reason"]
+    logger.info(f"Evolution needed: {reason}")
     file_path = _PROJECT_ROOT / target_file
     if not file_path.exists():
         logger.error(f"Target file {file_path} does not exist. Cannot mutate.")
