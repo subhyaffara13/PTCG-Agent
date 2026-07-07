@@ -41,6 +41,8 @@ print("Syncing agents to submission/cb_agents...")
 submission_cb_agents = Path("submission/cb_agents")
 submission_cb_agents.mkdir(parents=True, exist_ok=True)
 for f in Path("agents").glob("*.py"):
+    if f.name == "code_mutator.py":
+        continue
     dest = submission_cb_agents / f.name
     shutil.copy2(f, dest)
     content = dest.read_text(encoding="utf-8")
