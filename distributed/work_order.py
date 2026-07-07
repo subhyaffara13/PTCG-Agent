@@ -12,6 +12,7 @@ class WorkOrder:
     config: Optional[Dict[str, Any]] = None
     deck_base: Optional[list] = None
     deck_new: Optional[list] = None
+    code_version: Optional[str] = None
 
     def serialize(self) -> str:
         return json.dumps(asdict(self))

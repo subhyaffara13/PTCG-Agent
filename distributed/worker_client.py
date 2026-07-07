@@ -17,11 +17,15 @@ class WorkerClient:
         self.runner = GameRunner(log_dir="logs")
         self.last_git_check = time.time()
         self.shutdown_requested = False
+        
+        from distributed.code_sync import get_local_version
+        self.current_code_version = get_local_version()
+        
         import os
         os.environ["IS_WORKER"] = "true"
         
     def start(self):
-        logger.info(f"Worker {self.worker_id} starting...")
+        logger.info(f"Worker {self.worker_id} starting (Current Code: {self.current_code_version})...")
         
         # Register Graceful Signal Handlers
         import signal
@@ -68,6 +72,20 @@ class WorkerClient:
                             
                         order = WorkOrder.deserialize(msg)
                         logger.info(f"Received work order: {order.job_id} (Iteration {order.iteration})")
+                        
+                        # 2. Dynamic Git Synchronization on Code Version Mismatch
+                        if order.code_version and order.code_version != self.current_code_version:
+                            logger.info(f"Detected code version mismatch (Local: {self.current_code_version}, Master: {order.code_version}). Triggering dynamic synchronization...")
+                            try:
+                                from distributed.code_sync import sync_code, restart_process
+                                # Shutdown execution pool before restart to prevent leaks
+                                if hasattr(self.runner, '_executor') and self.runner._executor:
+                                    self.runner._executor.shutdown(wait=False, cancel_futures=True)
+                                if sync_code(order.code_version):
+                                    logger.info("Sync complete. Hot-restarting worker process...")
+                                    restart_process()
+                            except Exception as sync_err:
+                                logger.error(f"Dynamic synchronization failed: {sync_err}")
                         
                         try:
                             d_base = {"cards": order.deck_base} if order.deck_base else {}

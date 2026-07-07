@@ -78,12 +78,17 @@ class MasterServer:
             if self.work_queue.qsize() < 10:
                 d_base = _load_deck("agents/deck_base.csv")
                 d_new = _load_deck("agents/deck_new.csv")
+                
+                from distributed.code_sync import get_local_version
+                master_version = get_local_version()
+                
                 order = WorkOrder(
                     job_id=f"job_{iteration}",
                     iteration=iteration,
                     config={"base": "aggro", "new": "control"},
                     deck_base=d_base,
-                    deck_new=d_new
+                    deck_new=d_new,
+                    code_version=master_version
                 )
                 self.work_queue.put(order)
                 iteration += 1
