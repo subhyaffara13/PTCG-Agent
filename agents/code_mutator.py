@@ -235,6 +235,26 @@ def run_evaluation_match() -> float:
         logger.error(f"Evaluation match failed: {e}")
         return 0.0
 
+def push_mutation_to_git(file_path: Path, issue_desc: str):
+    """Automatically stage, commit, and push the verified mutation to git."""
+    try:
+        logger.info("Initiating automatic git commit and push for verified mutation...")
+        # Stage changed files
+        subprocess.run(["git", "add", str(file_path)], check=True)
+        # Stage submission folder (build_submission.py will be run to regenerate main.py)
+        subprocess.run([sys.executable, "build_submission.py"], check=True, capture_output=True)
+        subprocess.run(["git", "add", "submission/"], check=True)
+        
+        # Commit message
+        msg = f"Auto-evolve: Mutated {file_path.name} to fix: {issue_desc}"
+        subprocess.run(["git", "commit", "-m", msg], check=True, capture_output=True)
+        
+        # Push to remote
+        subprocess.run(["git", "push"], check=True, capture_output=True)
+        logger.info("Automatic git push completed successfully!")
+    except Exception as e:
+        logger.error(f"Failed to auto-push mutation to git: {e}")
+
 def run_evolution_cycle(target_file: str = "agents/turn_planner_sort.py"):
     """Orchestrates the entire code mutation and evolution cycle."""
     telemetry = analyze_recent_match_replay()
@@ -292,6 +312,9 @@ def run_evolution_cycle(target_file: str = "agents/turn_planner_sort.py"):
 
         # Clean up backup
         backup_path.unlink()
+
+        # Push to Git
+        push_mutation_to_git(file_path, telemetry["reason"])
 
     except Exception as e:
         logger.error(f"Code evolution rejected due to failed guardrails: {e}")
