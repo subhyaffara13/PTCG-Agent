@@ -22,17 +22,54 @@ def ensure_dependencies():
     except Exception:
         pass
 
+import contextlib
+
+@contextlib.contextmanager
+def silence_raw_fd():
+    fd_out = 1
+    fd_err = 2
+    dup_out, dup_err = None, None
+    try:
+        dup_out = os.dup(fd_out)
+        dup_err = os.dup(fd_err)
+        with open(os.devnull, 'w') as devnull:
+            null_fd = devnull.fileno()
+            os.dup2(null_fd, fd_out)
+            os.dup2(null_fd, fd_err)
+        yield
+    except OSError:
+        yield
+    finally:
+        if dup_out is not None:
+            os.dup2(dup_out, fd_out)
+            os.close(dup_out)
+        if dup_err is not None:
+            os.dup2(dup_err, fd_err)
+            os.close(dup_err)
+
+def ensure_dependencies():
+    # Purge any old colliding test_agents compiled bytecode cache files in root folder
+    try:
+        import pathlib
+        root_dir = pathlib.Path(__file__).parent.parent.resolve()
+        for p in root_dir.glob("__pycache__/test_agents*"):
+            if p.is_file():
+                p.unlink()
+        for p in root_dir.glob("test_agents*"):
+            if p.is_file() and p.suffix in (".pyc", ".pyo"):
+                p.unlink()
+    except Exception:
+        pass
+
     required_packages = ["numpy", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
     missing = False
-    import contextlib
     for pkg in required_packages:
         try:
             if pkg == "dotenv":
                 import dotenv
             else:
-                with open(os.devnull, 'w') as fnull:
-                    with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
-                        __import__(pkg)
+                with silence_raw_fd():
+                    __import__(pkg)
         except ImportError:
             missing = True
             break
@@ -62,9 +99,8 @@ def ensure_dependencies():
                 if pkg == "dotenv":
                     import dotenv
                 else:
-                    with open(os.devnull, 'w') as fnull:
-                        with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
-                            __import__(pkg)
+                    with silence_raw_fd():
+                        __import__(pkg)
             except ImportError:
                 still_missing.append(pkg)
                 
