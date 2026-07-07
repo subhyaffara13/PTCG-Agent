@@ -4,7 +4,7 @@ import subprocess
 import time
 
 def ensure_dependencies():
-    required_packages = ["numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "dotenv"]
+    required_packages = ["numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
     missing = False
     for pkg in required_packages:
         try:
@@ -17,14 +17,19 @@ def ensure_dependencies():
             break
             
     if missing:
-        print("Missing dependencies detected. Running pip install for requirements.txt...")
+        print("Missing dependencies detected. Satisfying requirements...")
         try:
-            # Locate requirements.txt
+            # 1. Install kaggle-environments with --no-deps to completely bypass pygame build errors!
+            print("Installing kaggle-environments without dependencies (avoids compiling pygame)...")
+            subprocess.run([sys.executable, "-m", "pip", "install", "kaggle-environments", "--no-deps"], check=True)
+            
+            # 2. Locate and install other dependencies via requirements.txt
             req_path = os.path.join(os.getcwd(), "requirements.txt")
             if os.path.exists(req_path):
+                print("Installing requirements.txt...")
                 subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_path], check=True)
             else:
-                subprocess.run([sys.executable, "-m", "pip", "install", "numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "python-dotenv"], check=True)
+                subprocess.run([sys.executable, "-m", "pip", "install", "numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "python-dotenv", "requests", "jsonschema", "flask", "urllib3"], check=True)
             print("Dependencies successfully installed!")
         except Exception as e:
             print(f"Failed to auto-install dependencies: {e}.")

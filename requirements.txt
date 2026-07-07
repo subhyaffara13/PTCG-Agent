@@ -2,10 +2,13 @@ numpy
 pandas
 torch
 kaggle
-kaggle-environments
 python-dotenv
 pytest
 redis
 pydantic
 pokerkit
+requests
+jsonschema
+flask
+urllib3
 
