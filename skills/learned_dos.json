@@ -2056,6 +2056,11 @@
       "player": "jp_nerdery",
       "avg_setup_duration": 18.6,
       "avg_bench_density": 1.9
+    },
+    {
+      "player": "Emre Cirak",
+      "avg_setup_duration": 19.0,
+      "avg_bench_density": 1.5
     }
   ],
   "deck_stats": {
