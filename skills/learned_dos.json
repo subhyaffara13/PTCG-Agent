@@ -934,6 +934,56 @@
       "card_id": 96,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 15,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 400,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 401,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1216,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1220,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1217,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1218,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1257,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 431,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 434,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -1921,11 +1971,26 @@
       "player": "mitomeat823",
       "avg_setup_duration": 18.4,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "djschmit",
+      "avg_setup_duration": 35.4,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "\u6c34\u9593",
+      "avg_setup_duration": 17.2,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "ei1333",
+      "avg_setup_duration": 12.4,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   }
 }
