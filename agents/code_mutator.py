@@ -160,7 +160,7 @@ def request_code_mutation_from_llm(file_path: Path, telemetry_issues: str) -> st
         try:
             logger.info("Connecting to Google Gemini API for mutation...")
             import requests
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={gemini_key}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
             headers = {"Content-Type": "application/json"}
             payload = {
                 "contents": [{"parts": [{"text": prompt}]}]
