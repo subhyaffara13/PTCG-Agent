@@ -4,7 +4,7 @@ import subprocess
 import time
 
 def ensure_dependencies():
-    required_packages = ["numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
+    required_packages = ["numpy", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
     missing = False
     for pkg in required_packages:
         try:
