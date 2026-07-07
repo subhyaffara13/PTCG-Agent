@@ -2061,11 +2061,16 @@
       "player": "Emre Cirak",
       "avg_setup_duration": 19.0,
       "avg_bench_density": 1.5
+    },
+    {
+      "player": "Bozo Boys",
+      "avg_setup_duration": 29.6,
+      "avg_bench_density": 3.2
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   }
 }
