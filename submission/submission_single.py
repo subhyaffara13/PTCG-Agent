@@ -533,27 +533,33 @@ DECK_ARCHETYPES = {
 }
 
 DECK_EV_SCORES = {
+  "Miraidon ex": 0.3429,
   "Ultra Ball": 0.5714,
   "Dusk Ball": 0.1429,
   "Buddy-Buddy Poffin": 0.5714,
   "Judge": 0.4286,
   "Switch": 0.2857,
-  "Mega Absol ex": 0.5714,
-  "Registeel ex": 0.4,
-  "Virizion": 0.3714,
-  "Snorunt": 0.0571,
-  "Mega Froslass ex": 0.4286,
-  "Dusclops": 0.2857,
-  "Dusknoir": 0.4286,
-  "Basic {G} Energy": 0.0,
+  "Ethan's Ho-Oh ex": 0.4571,
+  "Pignite": 0.4,
+  "Mega Emboar ex": 0.9143,
+  "Eevee ex": 0.5714,
+  "Crabrawler": 0.2857,
+  "Crabominable": 0.7143,
   "Basic {W} Energy": 0.0,
-  "Basic {P} Energy": 0.0,
-  "Basic {D} Energy": 0.0,
-  "Black Kyurem ex": 0.7143,
-  "Mega Mawile ex": 0.7429
+  "Basic {R} Energy": 0.0,
+  "Basic {L} Energy": 0.0,
+  "Basic {F} Energy": 0.0,
+  "Pikachu ex": 0.8571,
+  "Energy Coin": 0.7143,
+  "Crispin": 0.7143,
+  "Janine\u2019s Secret Art": 0.7143,
+  "Larry\u2019s Skill": 0.7143,
+  "Ogre\u2019s Mask": 0.5714,
+  "Secret Box": 0.5714,
+  "Glass Trumpet": 0.5714
 }
 
-DEFAULT_DECK = [1121, 1121, 1121, 1121, 1102, 1102, 1102, 1102, 1086, 1086, 1086, 1086, 1213, 1213, 1213, 1213, 1123, 1123, 687, 687, 988, 988, 566, 566, 860, 860, 861, 861, 132, 132, 133, 133, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 7, 7, 7, 7, 7, 179, 179, 179, 695]
+DEFAULT_DECK = [957, 957, 957, 1121, 1121, 1121, 1121, 1102, 1102, 1102, 1102, 1086, 1086, 1086, 1086, 1213, 1213, 1213, 1213, 1123, 1123, 357, 357, 931, 931, 932, 932, 932, 249, 249, 977, 977, 156, 156, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4, 4, 6, 210, 210, 1135, 1198, 1195, 1195, 1206, 1206, 1206, 1206, 1090, 1090, 1092, 1098]
 
 # Stub for skills path (not available in single-file mode)
 _SKILL_PATH = Path("card_metadata.json")
@@ -1670,7 +1676,7 @@ try:
             except Exception as e:
                 self._profiles = {}
 
-        def evaluate(self, packet: dict[str, Any]) -> dict[str, Any]:
+        def evaluate(self, packet: Any) -> dict[str, Any]:
             try:
                 return self._evaluate_internal(packet)
             except Exception as e:
@@ -1772,6 +1778,36 @@ try:
                 self._reasoning_buffer.clear()
 
     # === agents/value_network ===
+    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ)) or not os.path.exists('build_submission.py')
+    if is_kaggle:
+
+        class MockNoGrad:
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                pass
+
+        class MockTorch:
+            no_grad = MockNoGrad
+        torch = MockTorch()
+    else:
+        try:
+            import torch
+        except ImportError:
+
+            class MockNoGrad:
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *args):
+                    pass
+
+            class MockTorch:
+                no_grad = MockNoGrad
+            torch = MockTorch()
 
     def __getattr__(name):
         if name == 'HeuristicValueNetwork':
@@ -1795,17 +1831,19 @@ try:
         model: Any
 
         def __init__(self, weights_path='logs/model_weights.pth'):
-            self.weights_path = Path(weights_path)
+            agent_dir = Path(__file__).parent.resolve()
+            self.weights_path = agent_dir / weights_path
             self.heuristic = None
             self.model = None
             self._state_cache = {}
             if PTCGValueMLP is not None and self.weights_path.exists():
                 try:
-                    import torch
                     self.model = PTCGValueMLP()
-                    self.model.load_state_dict(torch.load(str(self.weights_path), map_location='cpu'))
+                    state_dict = load_weights(self.weights_path)
+                    self.model.load_state_dict(state_dict)
                     self.model.eval()
-                except:
+                except Exception as e:
+                    logger.error(f'Failed to load neural value network: {e}')
                     self.model = None
             if self.model is None:
                 self.heuristic = HeuristicValueNetwork()
@@ -1816,7 +1854,6 @@ try:
             if self.heuristic:
                 return self.heuristic.evaluate(game_state, action, determinization)
             try:
-                import torch
                 hand_sorted = sorted([str(x) for x in game_state.get('my_hand', [])]) if isinstance(game_state.get('my_hand'), list) else []
                 active = game_state.get('my_active_pokemon', {})
                 active_id = str(active.get('id')) if isinstance(active, dict) else None
@@ -1880,11 +1917,196 @@ try:
     """
     agents/value_network_helpers.py
     Defines the PyTorch MLP Value Network architecture for CPU-only training/evals.
+    Falls back to a pure-NumPy forward pass on Kaggle to avoid importing PyTorch.
     """
-    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ))
+    import numpy as np
+    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ)) or not os.path.exists('build_submission.py')
     if is_kaggle:
-        PTCGValueMLP = None
-        state_to_tensor = None
+        import zipfile, pickle, io, collections
+        from pathlib import Path
+
+        class NumpyTensorMock:
+
+            def __init__(self, val):
+                self.val = val
+
+            def item(self) -> float:
+                return float(self.val)
+
+            def __float__(self):
+                return float(self.val)
+
+        class PTCGValueMLP:
+            """Pure-NumPy replica of PTCGValueMLP (20 -> 64 -> 32 -> 1 + Tanh)."""
+
+            def __init__(self, input_dim=20):
+                self.w0 = np.zeros((1, 1))
+                self.b0 = np.zeros(1)
+                self.w1 = np.zeros((1, 1))
+                self.b1 = np.zeros(1)
+                self.w2 = np.zeros((1, 1))
+                self.b2 = np.zeros(1)
+
+            def load_state_dict(self, state_dict: dict):
+                self.w0 = state_dict['model.0.weight']
+                self.b0 = state_dict['model.0.bias']
+                self.w1 = state_dict['model.2.weight']
+                self.b1 = state_dict['model.2.bias']
+                self.w2 = state_dict['model.4.weight']
+                self.b2 = state_dict['model.4.bias']
+
+            def eval(self):
+                pass
+
+            def __call__(self, x: np.ndarray) -> NumpyTensorMock:
+                x = x @ self.w0.T + self.b0
+                x = np.maximum(0, x)
+                x = x @ self.w1.T + self.b1
+                x = np.maximum(0, x)
+                x = x @ self.w2.T + self.b2
+                x = np.tanh(x)
+                return NumpyTensorMock(x.item())
+
+        def load_weights(path):
+            """Load PyTorch checkpoint without importing torch."""
+            path = Path(path)
+            if not path.exists():
+                raise FileNotFoundError(f'{path} not found')
+            raw = path.read_bytes()
+            if raw[:2] == b'PK':
+                return _load_zip_state(path)
+            return _load_pickle_state(raw)
+
+        def _load_zip_state(path):
+            with zipfile.ZipFile(path) as z:
+                namelist = z.namelist()
+                prefixes = {n.split('/')[0] for n in namelist if '/' in n}
+                prefix = next(iter(prefixes)) if prefixes else ''
+                pkl_data = z.read(f'{prefix}/data.pkl') if prefix else z.read('data.pkl')
+
+                class _Unpickler(pickle.Unpickler):
+
+                    def __init__(self, *a, zf=None, zprefix='', **kw):
+                        super().__init__(*a, **kw)
+                        self.zf = zf
+                        self.zprefix = zprefix
+
+                    def find_class(self, module, name):
+                        if module == 'collections' and name == 'OrderedDict':
+                            return collections.OrderedDict
+                        if module == 'torch._utils':
+                            if name == '_rebuild_tensor_v2':
+                                return self._rebuild_tensor_v2
+                            if name == '_rebuild_parameter':
+                                return self._rebuild_parameter
+                        if module == 'torch.storage' and name == '_UntypedStorage':
+                            return self._UntypedStorage
+                        if module == 'torch' and name == 'FloatStorage':
+                            return self._FloatStorage
+                        if module == 'torch' and name == 'Size':
+                            return tuple
+                        if module == 'builtins':
+                            b = __builtins__
+                            return b[name] if isinstance(b, dict) else getattr(b, name)
+                        raise pickle.UnpicklingError(f'Unknown: {module}.{name}')
+
+                    def _UntypedStorage(self, *args, **kwargs):
+                        sz = args[0] if args else 0
+                        return np.zeros(sz, dtype=np.uint8)
+
+                    def _FloatStorage(self, *args, **kwargs):
+                        return None
+
+                    def _rebuild_tensor_v2(self, storage, storage_offset, size, stride, requires_grad, backward_hooks):
+                        if isinstance(storage, np.ndarray):
+                            raw = np.frombuffer(storage.tobytes(), dtype=np.float32)
+                            return raw[storage_offset:].reshape(size)
+                        return np.zeros(size, dtype=np.float32)
+
+                    def _rebuild_parameter(self, *args, **kwargs):
+                        return args[0] if args else None
+
+                    def persistent_load(self, pid):
+                        if isinstance(pid, tuple) and len(pid) >= 4 and (pid[0] == 'storage'):
+                            _fn, _storage_type_fn, data_id, _device, numel = pid
+                            if self.zf and self.zprefix:
+                                inzip = f'{self.zprefix}/data/{data_id}'
+                                if inzip in self.zf.namelist():
+                                    raw_bytes = self.zf.read(inzip)
+                                    return np.frombuffer(raw_bytes, dtype=np.uint8)
+                        return None
+                u = _Unpickler(io.BytesIO(pkl_data), zf=z, zprefix=prefix)
+                return u.load()
+
+        def _load_pickle_state(raw):
+
+            class _Unpickler(pickle.Unpickler):
+
+                def find_class(self, module, name):
+                    if module == 'collections' and name == 'OrderedDict':
+                        return collections.OrderedDict
+                    if module == 'torch._utils':
+                        if name == '_rebuild_tensor_v2':
+                            return self._rebuild_tensor_v2
+                        if name == '_rebuild_parameter':
+                            return self._rebuild_parameter
+                    if module in ('torch', 'torch.storage'):
+                        if name in ('FloatStorage', '_UntypedStorage'):
+                            return self._UntypedStorage
+                    if module == 'torch' and name == 'Size':
+                        return tuple
+                    if module == 'builtins':
+                        b = __builtins__
+                        return b[name] if isinstance(b, dict) else getattr(b, name)
+                    raise pickle.UnpicklingError(f'Unknown {module}.{name}')
+
+                def _UntypedStorage(self, *args, **kwargs):
+                    sz = args[0] if args else 0
+                    return np.zeros(sz, dtype=np.uint8)
+
+                def _rebuild_tensor_v2(self, storage, storage_offset, size, stride, requires_grad, backward_hooks):
+                    if isinstance(storage, np.ndarray):
+                        raw = np.frombuffer(storage.tobytes(), dtype=np.float32)
+                        return raw[storage_offset:].reshape(size)
+                    return np.zeros(size, dtype=np.float32)
+
+                def _rebuild_parameter(self, *args, **kwargs):
+                    return args[0] if args else None
+            return _Unpickler(io.BytesIO(raw)).load()
+
+        def state_to_tensor(game_state: dict) -> np.ndarray:
+            """Convert game state dict -> 20-element float32 feature vector for NumPy."""
+            my_prizes = float(game_state.get('my_prizes', 6)) / 6.0
+            opp_prizes = float(game_state.get('opponent_prizes', 6)) / 6.0
+            my_active_hp = game_state.get('my_active_hp', 100) / 100.0
+            opp_active_hp = game_state.get('opponent_active_hp', 100) / 100.0
+            active = game_state.get('my_active_pokemon', {}) or {}
+            attached = float(len(active.get('attached', []) or active.get('energies', [])) if isinstance(active, dict) else 0) / 10.0
+            my_bench = game_state.get('my_bench', [])
+            opp_bench = game_state.get('opponent_bench', [])
+            my_bench_size = float(len(my_bench) if isinstance(my_bench, list) else 0) / 5.0
+            opp_bench_size = float(len(opp_bench) if isinstance(opp_bench, list) else 0) / 5.0
+            my_hand = game_state.get('my_hand', [])
+            my_hand_size = float(len(my_hand) if isinstance(my_hand, list) else 0) / 10.0
+            turn = float(game_state.get('turn_number', 0)) / 20.0
+            my_discard = game_state.get('my_discard_pile', [])
+            opp_discard = game_state.get('opponent_discard_pile', [])
+            my_discard_size = float(len(my_discard) if isinstance(my_discard, list) else 0) / 60.0
+            opp_discard_size = float(len(opp_discard) if isinstance(opp_discard, list) else 0) / 60.0
+            stadium = 1.0 if game_state.get('stadium_card') else 0.0
+            weakness_mult = 0.0
+            resistance_mult = 0.0
+            opp_active = game_state.get('opponent_active_pokemon', {}) or {}
+            if isinstance(active, dict) and isinstance(opp_active, dict):
+                my_type = active.get('element_type', '')
+                opp_weakness = opp_active.get('weakness', '')
+                opp_resistance = opp_active.get('resistance', '')
+                if my_type and opp_weakness and (my_type.lower() == opp_weakness.lower()):
+                    weakness_mult = 1.0
+                if my_type and opp_resistance and (my_type.lower() == opp_resistance.lower()):
+                    resistance_mult = 1.0
+            features = [my_prizes, opp_prizes, my_active_hp, opp_active_hp, attached, my_bench_size, opp_bench_size, my_hand_size, turn, my_discard_size, opp_discard_size, stadium, weakness_mult, resistance_mult] + [0.0] * 6
+            return np.array(features, dtype=np.float32).reshape(1, -1)
     else:
         try:
             import torch
@@ -1898,6 +2120,9 @@ try:
 
                 def forward(self, x):
                     return self.model(x)
+
+            def load_weights(path):
+                return torch.load(str(path), map_location='cpu')
 
             def state_to_tensor(game_state: dict) -> torch.Tensor:
                 """Converts game state dictionary to a numeric tensor for the MLP."""
@@ -1933,8 +2158,26 @@ try:
                 features = [float(my_prizes) / 6.0, float(opp_prizes) / 6.0, float(my_active_hp), float(opp_active_hp), float(attached) / 10.0, float(my_bench_size) / 5.0, float(opp_bench_size) / 5.0, float(my_hand_size) / 10.0, float(turn) / 20.0, float(my_discard_size) / 60.0, float(opp_discard_size) / 60.0, stadium, weakness_mult, resistance_mult] + [0.0] * 6
                 return torch.tensor(features, dtype=torch.float32).unsqueeze(0)
         except ImportError:
-            PTCGValueMLP = None
-            state_to_tensor = None
+
+            class PTCGValueMLP:
+
+                def __init__(self, input_dim=20):
+                    pass
+
+                def load_state_dict(self, state_dict: dict):
+                    pass
+
+                def eval(self):
+                    pass
+
+                def __call__(self, x):
+                    pass
+
+            def state_to_tensor(game_state: dict):
+                return None
+
+            def load_weights(path):
+                raise NotImplementedError('PyTorch is not available.')
 
     # === router/bus_helpers ===
     logger = logging.getLogger(__name__)
@@ -2025,51 +2268,51 @@ try:
 
     @dataclass(frozen=True)
     class HandAnalystPacket:
-        hand: list[str]
+        hand: List[str]
         deck_remaining: int
-        discard: list[str] = None
-        board: list[str] = None
+        discard: Optional[List[str]] = None
+        board: Optional[List[str]] = None
         has_searched_deck: bool = False
 
     @dataclass(frozen=True)
     class TurnPlannerPacket:
         hand_score: float
-        priority_profile: dict[str, Any]
+        priority_profile: Dict[str, Any]
         top_play: str = ''
-        game_state: dict[str, Any] = None
+        game_state: Optional[Dict[str, Any]] = None
         turn: int = 1
         time_remaining: float = 600.0
 
     @dataclass(frozen=True)
     class StrategyPacket:
         trigger: str
-        board_summary: dict[str, Any]
+        board_summary: Dict[str, Any]
 
     @dataclass(frozen=True)
     class TimePacket:
         time_elapsed: float
         time_limit: float
-        legal_actions: list[str] = None
+        legal_actions: Optional[List[str]] = None
 
     @dataclass(frozen=True)
     class OpponentModelPacket:
         turn: int
-        newly_played_cards: list[str]
-        revealed_active_pokemon: str
+        newly_played_cards: List[str]
         revealed_bench_count: int
         revealed_hand_size: int
         revealed_prizes_remaining: int
-        revealed_discard: list[str]
+        revealed_discard: List[str]
         game_phase: str
+        revealed_active_pokemon: Optional[str] = None
 
     @dataclass(frozen=True)
     class LethalPacket:
         my_active_damage: int
         opponent_active_hp: int
-        legal_attacks: list[str]
-        opponent_active_id: int = None
+        legal_attacks: List[str]
+        opponent_active_id: Optional[int] = None
         my_active_hp: int = 100
-        legal_retreats: list[str] = None
+        legal_retreats: Optional[List[str]] = None
 
     # === agents/belief_tracker_recalc ===
     def recalculate_probabilities(state, assumed_deck, prize_guaranteed_counts):
@@ -2723,6 +2966,29 @@ try:
             self.full_cards: Dict[Any, CardEntry] = {}
             self.evolution_predecessors: Dict[str, str] = {}
             load_metadata_helper(self.skills_dir, self.cards, self.evolution_predecessors)
+            self.learned_dos = set()
+            self.learned_donts = set()
+            import json
+            try:
+                dos_path = self.skills_dir / 'learned_dos.json'
+                if dos_path.exists():
+                    dos_data = json.loads(dos_path.read_text(encoding='utf-8'))
+                    for item in dos_data.get('deck_dos', []):
+                        cid = item.get('card_id')
+                        if cid is not None:
+                            self.learned_dos.add(int(cid))
+            except Exception as e:
+                logger.error(f'Failed to load learned_dos.json: {e}')
+            try:
+                donts_path = self.skills_dir / 'learned_donts.json'
+                if donts_path.exists():
+                    donts_data = json.loads(donts_path.read_text(encoding='utf-8'))
+                    for item in donts_data.get('deck_donts', []):
+                        cid = item.get('card_id')
+                        if cid is not None:
+                            self.learned_donts.add(int(cid))
+            except Exception as e:
+                logger.error(f'Failed to load learned_donts.json: {e}')
 
         def get(self, card_id: Any) -> Optional[CardEntry]:
             """Get lightweight metadata card entry."""
@@ -3776,20 +4042,22 @@ try:
 
     # === agents/mcts_engine ===
     logger = logging.getLogger(__name__)
-    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ))
-    if is_kaggle:
+    try:
+        import ptcg_core
+        HAS_CPP = True
+    except Exception:
         ptcg_core = None
         HAS_CPP = False
-        logger.info('Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.')
-        os.environ['FAST_SIM_MODE'] = 'true'
-    else:
-        try:
-            import ptcg_core
-            HAS_CPP = True
-        except Exception:
-            ptcg_core = None
-            HAS_CPP = False
-            logger.info('ptcg_core C++ extension not found. Using pure Python MCTS.')
+    is_kaggle = any((k.startswith('KAGGLE') for k in os.environ)) or not os.path.exists('build_submission.py')
+    if is_kaggle:
+        if HAS_CPP:
+            os.environ['FAST_SIM_MODE'] = 'false'
+            logger.info('Running on Kaggle: C++ MCTS extension successfully loaded and activated.')
+        else:
+            os.environ['FAST_SIM_MODE'] = 'true'
+            logger.info('Running on Kaggle: C++ MCTS extension not available. Bypassing search to avoid timeouts.')
+    elif not HAS_CPP:
+        logger.info('ptcg_core C++ extension not found. Using pure Python MCTS.')
 
     class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
 
@@ -3842,8 +4110,10 @@ try:
                 return canonical_actions[0] if canonical_actions else 'pass'
             if HAS_CPP and ptcg_core is not None:
                 try:
-                    time_limit = time_remaining - 0.5 if time_remaining else 1.0
-                    return ptcg_core.mcts_search(game_state, time_limit, self.num_simulations, self.c_puct)
+                    time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
+                    state_dict = game_state.copy()
+                    state_dict['legal_actions'] = canonical_actions
+                    return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct)
                 except Exception as e:
                     logger.error(f'C++ MCTS search failed: {e}. Falling back to Python MCTS.')
             if self.belief_tracker is None:
@@ -3932,20 +4202,29 @@ try:
     # === agents/orchestrator_steps ===
     """Step helper functions for the Orchestrator."""
 
-    def _step_time(gs: dict[str, Any], timer: TimeManager, router: Router) -> dict[str, Any]:
+    def _step_time(gs: dict[str, Any], timer: TimeManager, router: RouterBus) -> dict[str, Any]:
         return router.dispatch('TimeManager', TimePacket(time_elapsed=gs.get('time_elapsed', 0.0), time_limit=gs.get('time_limit', 600.0), legal_actions=gs.get('legal_actions', [])))
 
-    def _step_hand(gs: dict[str, Any], analyst: HandAnalyst, router: Router) -> dict[str, Any]:
-        return router.dispatch('HandAnalyst', HandAnalystPacket(hand=gs.get('hand', []), deck_remaining=gs.get('deck_remaining', 0)))
+    def _step_hand(gs: dict[str, Any], analyst: HandAnalyst, router: RouterBus) -> dict[str, Any]:
+        return router.dispatch('HandAnalyst', HandAnalystPacket(hand=gs.get('my_hand', []), deck_remaining=gs.get('my_deck_count', 60)))
 
-    def _step_plan(game_state: dict[str, Any], hand_result: dict[str, Any], planner: TurnPlanner, router: Router) -> list[dict[str, Any]]:
+    def _step_plan(game_state: dict[str, Any], hand_result: dict[str, Any], planner: TurnPlanner, router: RouterBus) -> list[dict[str, Any]]:
         return router.dispatch('TurnPlanner', TurnPlannerPacket(hand_score=hand_result.get('hand_score', 0.0), priority_profile=hand_result.get('priority_profile', 'balanced'), game_state=game_state, turn=game_state.get('turn_number', 1), time_remaining=game_state.get('time_remaining', 600.0)))
 
-    def _step_strategy(gs: dict[str, Any], strategy: StrategyAgent, router: Router) -> dict[str, Any]:
+    def _step_strategy(gs: dict[str, Any], strategy: StrategyAgent, router: RouterBus) -> dict[str, Any]:
         return router.dispatch('StrategyAgent', StrategyPacket(trigger=gs.get('trigger', ''), board_summary=gs.get('board_summary', {})))
 
-    def _step_opponent(gs: dict[str, Any], opponent: OpponentModel, router: Router) -> dict[str, Any]:
-        opp_pkt = OpponentModelPacket(turn=int(gs.get('turn_number', 1)), newly_played_cards=gs.get('revealed_cards', []), revealed_active_pokemon=gs.get('opponent_active_pokemon'), revealed_bench_count=int(gs.get('opponent_bench_count', 0)), revealed_hand_size=int(gs.get('opponent_hand_size', 0)), revealed_prizes_remaining=int(gs.get('opponent_prizes_remaining', 6)), revealed_discard=gs.get('opponent_discard', []), game_phase=gs.get('game_phase', 'mid'))
+    def _step_opponent(gs: dict[str, Any], opponent: OpponentModel, router: RouterBus) -> dict[str, Any]:
+        active_pokemon = gs.get('opponent_active')
+        revealed_active = ''
+        if active_pokemon is not None:
+            if isinstance(active_pokemon, dict):
+                val = active_pokemon.get('id')
+                if val is not None:
+                    revealed_active = str(val)
+            else:
+                revealed_active = str(active_pokemon)
+        opp_pkt = OpponentModelPacket(turn=int(gs.get('turn_number', 1)), newly_played_cards=gs.get('opponent_revealed', []), revealed_active_pokemon=revealed_active, revealed_bench_count=int(gs.get('opponent_bench_count', 0)), revealed_hand_size=int(gs.get('opponent_hand_size', 0)), revealed_prizes_remaining=int(gs.get('opponent_prizes', 6)), revealed_discard=gs.get('opponent_discard', []), game_phase=gs.get('game_phase', 'mid'))
         return router.dispatch('OpponentModel', opp_pkt)
 
     # === agents/prize_mapping ===
@@ -4431,6 +4710,98 @@ logger = logging.getLogger(__name__)
 agent_dir = str(Path(__file__).parent.resolve()) if '__file__' in globals() and globals()['__file__'] else os.getcwd()
 if agent_dir not in sys.path:
     sys.path.insert(0, agent_dir)
+
+def compile_extension_on_kaggle(configuration=None):
+    """Compiles the C++ ptcg_core extension on Kaggle at module load time or Step 0."""
+    import sys
+    import os
+    import shutil
+    import subprocess
+    from pathlib import Path
+    is_kaggle_run = any((k.startswith('KAGGLE') for k in os.environ)) or not os.path.exists('build_submission.py')
+    if not is_kaggle_run:
+        return False
+    sys.stderr.write('[compile] Running inside Kaggle sandbox. Checking C++ extension...\n')
+    working_dir = Path('/kaggle/working')
+    if not working_dir.exists():
+        sys.stderr.write('[compile] /kaggle/working does not exist. Skipping compilation.\n')
+        return False
+    so_files = list(working_dir.glob('ptcg_core*.so'))
+    if so_files:
+        sys.stderr.write(f'[compile] Found pre-compiled C++ extension: {so_files[0].name}. Adding to path.\n')
+        if str(working_dir) not in sys.path:
+            sys.path.insert(0, str(working_dir))
+        try:
+            import ptcg_core
+            _update_mcts_module(ptcg_core)
+        except Exception as e:
+            sys.stderr.write(f'[compile] Error loading pre-compiled extension: {e}\n')
+        return True
+    raw_path = None
+    if isinstance(configuration, dict):
+        raw_path = configuration.get('__raw_path__')
+    if not raw_path:
+        sys.stderr.write('[compile] __raw_path__ not found in configuration. Trying path lookup...\n')
+        for p in sys.path:
+            if p and Path(p).joinpath('setup.py').exists():
+                raw_path = str(Path(p).joinpath('main.py'))
+                break
+    if not raw_path:
+        curr_dir = Path(__file__).parent.resolve() if '__file__' in globals() and globals()['__file__'] else Path(os.getcwd())
+        if curr_dir.joinpath('setup.py').exists():
+            raw_path = str(curr_dir.joinpath('main.py'))
+    if not raw_path:
+        sys.stderr.write('[compile] Could not determine agent extraction directory. Skipping compilation.\n')
+        return False
+    curr_agent_dir = Path(raw_path).parent.resolve()
+    src_dir = curr_agent_dir / 'src'
+    setup_file = curr_agent_dir / 'setup.py'
+    sys.stderr.write(f'[compile] Resolved agent extraction directory: {curr_agent_dir}\n')
+    if not src_dir.exists() or not setup_file.exists():
+        sys.stderr.write('[compile] C++ source files or setup.py not found in agent directory. Skipping on-the-fly compile.\n')
+        return False
+    build_dir = working_dir / 'ptcg_build'
+    try:
+        if build_dir.exists():
+            shutil.rmtree(build_dir, ignore_errors=True)
+        build_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(src_dir, build_dir / 'src')
+        shutil.copy2(setup_file, build_dir / 'setup.py')
+        if (curr_agent_dir / 'CMakeLists.txt').exists():
+            shutil.copy2(curr_agent_dir / 'CMakeLists.txt', build_dir / 'CMakeLists.txt')
+        sys.stderr.write(f'[compile] Copied C++ sources to build dir: {build_dir}\n')
+        sys.stderr.write('[compile] Compiling C++ ptcg_core extension on-the-fly...\n')
+        res = subprocess.run([sys.executable, 'setup.py', 'build_ext', '--inplace'], cwd=str(build_dir), capture_output=True, text=True)
+        sys.stderr.write(f'[compile] Compilation stdout:\n{res.stdout}\n')
+        sys.stderr.write(f'[compile] Compilation stderr:\n{res.stderr}\n')
+        if res.returncode != 0:
+            sys.stderr.write(f'[compile] Compilation failed with exit code: {res.returncode}\n')
+            return False
+        compiled_so = list(build_dir.glob('ptcg_core*.so'))
+        if not compiled_so:
+            sys.stderr.write('[compile] Compilation completed but ptcg_core*.so not found.\n')
+            return False
+        target_so = working_dir / compiled_so[0].name
+        shutil.copy2(compiled_so[0], target_so)
+        sys.stderr.write(f'[compile] Successfully copied compiled extension to {target_so}\n')
+        if str(working_dir) not in sys.path:
+            sys.path.insert(0, str(working_dir))
+        import ptcg_core
+        _update_mcts_module(ptcg_core)
+        sys.stderr.write('[compile] ptcg_core successfully compiled, loaded, and verified!\n')
+        return True
+    except Exception as build_err:
+        sys.stderr.write(f'[compile] Exception during on-the-fly compilation: {build_err}\n')
+        return False
+
+def _update_mcts_module(ptcg_core_module):
+    """Helper to dynamically patch mcts_engine with C++ simulator module."""
+    import sys
+    for name, mod in list(sys.modules.items()):
+        if name == 'cb_agents.mcts_engine' or name.endswith('mcts_engine'):
+            setattr(mod, 'ptcg_core', ptcg_core_module)
+            setattr(mod, 'HAS_CPP', True)
+compile_extension_on_kaggle()
 if globals().get('orchestrator') is None:
     try:
         orchestrator = Orchestrator(skills_dir=os.path.join(agent_dir, 'skills'), log_dir=os.path.join(agent_dir, 'logs'))
@@ -4472,6 +4843,207 @@ def get_val(obj: Any, key: str, default: Any=None) -> Any:
     except Exception:
         return default
 
+def _log_action_exception(exc: Exception):
+    try:
+        log_dir = Path('logs')
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_file = log_dir / 'action_log.json'
+        error_entry = {'timestamp': datetime.datetime.now().isoformat(), 'event': 'submission_agent_crash', 'agent_called': 'submission/main.py', 'packet_type': 'exception', 'error_reason': str(exc)}
+        logs = []
+        if log_file.exists():
+            content = log_file.read_text(encoding='utf-8').strip()
+            if content:
+                try:
+                    logs = json.loads(content)
+                    if not isinstance(logs, list):
+                        logs = [logs]
+                except json.JSONDecodeError:
+                    logs = []
+        logs.append(error_entry)
+        log_file.write_text(json.dumps(logs, indent=2), encoding='utf-8')
+    except Exception as log_err:
+        pass
+_registry = None
+
+def make_smart_choice(select, observation, fallback_action):
+    global _registry
+    try:
+        options = get_val(select, 'option', [])
+        if not options:
+            return fallback_action
+        max_count = get_val(select, 'maxCount', 1)
+        sel_type = get_val(select, 'type')
+        try:
+            if _registry is None:
+                import os
+                from pathlib import Path
+                agent_dir = str(Path(__file__).parent.resolve()) if '__file__' in globals() and globals()['__file__'] else os.getcwd()
+                skills_dir = os.path.join(agent_dir, 'skills')
+                _registry = CardRegistry(skills_dir=skills_dir)
+            registry = _registry
+        except Exception:
+            registry = None
+        if registry is None:
+            return fallback_action
+        is_discard = False
+        if sel_type in (1, 2, 4):
+            try:
+                if sel_type == 4 or str(get_val(select, 'context', '')).lower() in ('discard', 'energy_discard'):
+                    is_discard = True
+                else:
+                    current = get_val(observation, 'current')
+                    my_idx = get_val(current, 'yourIndex', 0)
+                    players = get_val(current, 'players', [])
+                    if len(players) > my_idx:
+                        my_hand_ids = [get_val(c, 'id') for c in get_val(players[my_idx], 'hand', []) if c and get_val(c, 'id') is not None]
+                        option_card_ids = []
+                        for opt in options:
+                            opt_id = get_val(opt, 'id')
+                            if opt_id is None:
+                                area = get_val(opt, 'area')
+                                index = get_val(opt, 'index')
+                                p_idx = get_val(opt, 'playerIndex', 0)
+                                if p_idx == my_idx and area == 2:
+                                    hand = get_val(players[my_idx], 'hand', [])
+                                    if len(hand) > index:
+                                        opt_id = get_val(hand[index], 'id')
+                            if opt_id is not None:
+                                option_card_ids.append(opt_id)
+                        if option_card_ids and all((oid in my_hand_ids for oid in option_card_ids)):
+                            is_discard = True
+            except Exception:
+                pass
+
+        def resolve_instance(val):
+            if isinstance(val, list):
+                return val[0] if len(val) > 0 else None
+            return val
+        board_pokemon_names = set()
+        try:
+            current = get_val(observation, 'current')
+            my_idx = get_val(current, 'yourIndex', 0)
+            players = get_val(current, 'players', [])
+            if len(players) > my_idx:
+                my_state = players[my_idx]
+                act = resolve_instance(get_val(my_state, 'active'))
+                if act:
+                    act_name = get_val(act, 'name') or get_val(get_val(act, 'card'), 'name')
+                    if act_name:
+                        board_pokemon_names.add(str(act_name).lower())
+                for b in get_val(my_state, 'bench', []):
+                    b_resolved = resolve_instance(b)
+                    if b_resolved:
+                        b_name = get_val(b_resolved, 'name') or get_val(get_val(b_resolved, 'card'), 'name')
+                        if b_name:
+                            board_pokemon_names.add(str(b_name).lower())
+        except Exception:
+            pass
+        scored_options = []
+        for idx, opt in enumerate(options):
+            card_id = get_val(opt, 'id')
+            card_name = get_val(opt, 'name', '')
+            if card_id is None and (not card_name):
+                try:
+                    area = get_val(opt, 'area')
+                    index = get_val(opt, 'index')
+                    p_idx = get_val(opt, 'playerIndex', 0)
+                    current = get_val(observation, 'current')
+                    players = get_val(current, 'players', [])
+                    if len(players) > p_idx:
+                        p_state = players[p_idx]
+                        if area == 2:
+                            hand = get_val(p_state, 'hand', [])
+                            if len(hand) > index:
+                                card_id = get_val(hand[index], 'id')
+                        elif area == 12:
+                            bench = get_val(p_state, 'bench', [])
+                            if len(bench) > index:
+                                bench_item = resolve_instance(bench[index])
+                                if bench_item is not None:
+                                    card_id = get_val(bench_item, 'id')
+                        elif area == 4:
+                            active = get_val(p_state, 'active', [])
+                            if len(active) > index:
+                                active_item = resolve_instance(active[index])
+                                if active_item is not None:
+                                    card_id = get_val(active_item, 'id')
+                except Exception:
+                    pass
+            card = None
+            if card_id is not None:
+                card = registry.get_full_skill(card_id)
+            if card is None and card_name:
+                card = registry.get_full_skill(card_name)
+            score = 0.0
+            if card:
+                score = getattr(card, 'utility_score', 0.0)
+                card_id_int = getattr(card, 'card_id', None)
+                if card_id_int is not None:
+                    if hasattr(registry, 'learned_dos') and int(card_id_int) in registry.learned_dos:
+                        score += 12.0
+                    if hasattr(registry, 'learned_donts') and int(card_id_int) in registry.learned_donts:
+                        score -= 12.0
+                predecessor = registry.get_evolution_predecessor(getattr(card, 'card_name', ''))
+                if predecessor and predecessor.lower() in board_pokemon_names:
+                    score += 15.0
+                if sel_type in (1, 4) or str(get_val(select, 'context', '')).lower() in ('energy', 'attach'):
+                    try:
+                        area = get_val(opt, 'area')
+                        index = get_val(opt, 'index')
+                        p_idx = get_val(opt, 'playerIndex', 0)
+                        current = get_val(observation, 'current')
+                        my_idx = get_val(current, 'yourIndex', 0)
+                        if p_idx == my_idx:
+                            players = get_val(current, 'players', [])
+                            my_state = players[my_idx]
+                            instance = None
+                            if area == 4:
+                                instance = resolve_instance(get_val(my_state, 'active'))
+                            elif area == 12:
+                                bench = get_val(my_state, 'bench', [])
+                                if len(bench) > index:
+                                    instance = resolve_instance(bench[index])
+                            if instance:
+                                attached = get_val(instance, 'attached', [])
+                                attached_count = len(attached) if isinstance(attached, list) else 0
+                                required = getattr(card, 'energy_cost', 0)
+                                if attached_count < required:
+                                    boost = 10.0 * (required - attached_count)
+                                    if area == 4:
+                                        boost += 5.0
+                                    score += boost
+                    except Exception:
+                        pass
+                try:
+                    current = get_val(observation, 'current')
+                    turn = get_val(current, 'turn', 1)
+                    if turn <= 5:
+                        support_names = {'bidoof', 'bibarel', 'snom', 'frosmoth', 'remoraid', 'octillery', 'dunsparce', 'jirachi', 'manaphy', 'mew'}
+                        card_name_lower = getattr(card, 'card_name', '').lower()
+                        if any((s in card_name_lower for s in support_names)):
+                            score += 15.0
+                except Exception:
+                    pass
+                if sel_type == 3:
+                    score += getattr(card, 'ev_score', 0.0) + getattr(card, 'damage_output', 0) * 0.01
+            scored_options.append((idx, score))
+        if is_discard:
+            scored_options.sort(key=lambda x: x[1])
+        else:
+            scored_options.sort(key=lambda x: x[1], reverse=True)
+        selected = [idx for idx, _ in scored_options[:max_count]]
+        if len(selected) < max_count:
+            for idx in range(len(options)):
+                if idx not in selected:
+                    selected.append(idx)
+                    if len(selected) == max_count:
+                        break
+        return selected
+    except Exception as e:
+        import sys
+        sys.stderr.write(f'[smart_choice] Exception during choice: {e}\n')
+        return fallback_action
+
 def agent(observation, configuration=None):
     """
     Main Actuation Agent loop parsed by Kaggle Match runtimes.
@@ -4487,6 +5059,7 @@ def agent(observation, configuration=None):
             return [legal_actions[0]]
         if select is None:
             if get_val(observation, 'step', 0) == 0:
+                compile_extension_on_kaggle(configuration)
                 try:
                     if 'DEFAULT_DECK' in globals() and len(globals()['DEFAULT_DECK']) == 60:
                         return globals()['DEFAULT_DECK']
@@ -4553,7 +5126,7 @@ def agent(observation, configuration=None):
                         break
             return selected
         else:
-            return fallback_action
+            return make_smart_choice(select, observation, fallback_action)
     except Exception as e:
         import sys
         sys.stderr.write(f'Agent execution crashed internally: {e}\n')
@@ -4569,24 +5142,3 @@ def agent(observation, configuration=None):
         except Exception:
             pass
         return fallback_action
-
-def _log_action_exception(exc: Exception):
-    try:
-        log_dir = Path('logs')
-        log_dir.mkdir(parents=True, exist_ok=True)
-        log_file = log_dir / 'action_log.json'
-        error_entry = {'timestamp': datetime.datetime.now().isoformat(), 'event': 'submission_agent_crash', 'agent_called': 'submission/main.py', 'packet_type': 'exception', 'error_reason': str(exc)}
-        logs = []
-        if log_file.exists():
-            content = log_file.read_text(encoding='utf-8').strip()
-            if content:
-                try:
-                    logs = json.loads(content)
-                    if not isinstance(logs, list):
-                        logs = [logs]
-                except json.JSONDecodeError:
-                    logs = []
-        logs.append(error_entry)
-        log_file.write_text(json.dumps(logs, indent=2), encoding='utf-8')
-    except Exception as log_err:
-        pass

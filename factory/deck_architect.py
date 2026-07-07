@@ -54,7 +54,7 @@ class DeckArchitect(BaseAgent):
             current_archetype = "aggro"
 
         weak_metric = improvement_notes.get("reasoning", "low deck delta")
-        legal_cards = [c for c in self.card_pool if c.get("archetype") == current_archetype or c.get("card_type") == "Energy"]
+        legal_cards = [c for c in self.card_pool if c.get("archetype") == current_archetype or c.get("card_type") == "Energy" or c.get("card_type") == "Trainer"]
         basic_pokemon = [c for c in self.card_pool if c.get("card_type") == "Pokemon" and self.card_details.get(str(c.get("card_id")), {}).get("stage") == "Basic"]
         energy_cards = [c for c in self.card_pool if c.get("card_type") == "Energy"]
 

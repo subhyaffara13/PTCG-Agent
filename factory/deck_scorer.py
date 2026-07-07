@@ -16,7 +16,7 @@ from factory.deck_scorer_consistency import consistency_score, recovery_score
 from factory.deck_scorer_efficiency import prize_efficiency
 from factory.deck_scorer_matchup import matchup_spread
 class DeckScorer:
-    def __init__(self, card_details: dict, learned_dos: dict, learned_donts: dict, weights_config: dict = None):
+    def __init__(self, card_details: dict, learned_dos: dict, learned_donts: dict, weights_config: dict | None = None):
         self.card_details = card_details
         self.learned_dos = learned_dos
         self.learned_donts = learned_donts
@@ -41,7 +41,7 @@ class DeckScorer:
             
         score = apply_learned_rules(score, deck, counts, self.learned_dos, self.learned_donts)
 
-        return {"deck_score": round(max(0.0, score), 4), "metrics": {
+        return {"deck_score": round(min(1.0, max(0.0, score)), 4), "metrics": {
             "consistency_score": round(consistency, 4), "prize_efficiency_score": round(prize_eff, 4),
             "recovery_score": round(recovery, 4), "matchup_spread_score": round(match_spread, 4),
             "synergy_score": round(synergy_norm, 4)}}
@@ -56,7 +56,11 @@ class DeckScorer:
                 if c.energy_cost > 0: attackers.append(c)
             elif c.card_type == "Energy": eng += 1
             elif c.card_type == "Trainer":
-                if "supporter" in c.combo_tags: sup += 1
+                name = c.card_name.lower()
+                supporters = {"judge", "professor's research", "iono", "boss's orders", "arven", "serena", 
+                              "colress's tenacity", "erika's invitation", "jacq", "nemona", "cynthia", 
+                              "marnie", "volkner", "skyla", "n", "juniper", "sycamore", "kiara"}
+                if "supporter" in c.combo_tags or any(s in name for s in supporters): sup += 1
                 else: item += 1
             if "discard" in c.combo_tags: rec += 1
         return {"basic": basic, "s1": s1, "s2": s2, "sup": sup, "item": item,

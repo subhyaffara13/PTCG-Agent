@@ -19,5 +19,12 @@ class DeckMathMixin:
         except (ValueError, ZeroDivisionError): return 0.0
 
     def is_supporter(self, card: dict) -> bool:
-        return card.get("card_type") == "Trainer" and "Supporter" in card.get("combo_tags", [])
+        if card.get("card_type") != "Trainer":
+            return False
+        name = card.get("card_name", "").lower()
+        supporters = {"judge", "professor's research", "iono", "boss's orders", "arven", "serena", 
+                      "colress's tenacity", "erika's invitation", "jacq", "nemona", "cynthia", 
+                      "marnie", "volkner", "skyla", "n", "juniper", "sycamore", "kiara"}
+        tags = {str(t).lower() for t in card.get("combo_tags", [])}
+        return "supporter" in tags or any(s in name for s in supporters)
 

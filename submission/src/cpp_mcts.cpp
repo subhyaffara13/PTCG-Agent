@@ -104,11 +104,58 @@ void cpp_MCTSNode::expand(const std::vector<ActionPrior>& actionPriors) {
 std::string cpp_MCTSEngine::get_state_key(const BoardState& state) const {
     std::string key = std::to_string(state.turn_number) + "|";
     key += (state.turn_ended ? "T" : "F") + std::string("|");
-    key += state.me.active.id + ":" + std::to_string(state.me.active.hp) + "|";
-    key += state.opponent.active.id + ":" + std::to_string(state.opponent.active.hp) + "|";
+    
+    if (state.me.has_active) {
+        key += "ma:" + state.me.active.id + ":" + std::to_string(state.me.active.hp) + ":";
+        for (const auto& att : state.me.active.attached) {
+            key += att + ",";
+        }
+        key += "|";
+    } else {
+        key += "ma:none|";
+    }
+    
+    if (state.opponent.has_active) {
+        key += "oa:" + state.opponent.active.id + ":" + std::to_string(state.opponent.active.hp) + ":";
+        for (const auto& att : state.opponent.active.attached) {
+            key += att + ",";
+        }
+        key += "|";
+    } else {
+        key += "oa:none|";
+    }
+    
     key += std::to_string(state.me.prizes) + ":" + std::to_string(state.opponent.prizes) + "|";
-    key += std::to_string(state.me.hand.size()) + ":" + std::to_string(state.opponent.hand.size()) + "|";
-    key += std::to_string(state.me.bench.size()) + ":" + std::to_string(state.opponent.bench.size());
+    
+    key += "mh:";
+    for (const auto& card : state.me.hand) {
+        key += card + ",";
+    }
+    key += "|";
+    
+    key += "oh:" + std::to_string(state.opponent.hand.size()) + "|";
+    
+    key += "mb:";
+    for (const auto& pkmn : state.me.bench) {
+        key += pkmn.id + ":" + std::to_string(pkmn.hp) + ":";
+        for (const auto& att : pkmn.attached) {
+            key += att + ",";
+        }
+        key += ";";
+    }
+    key += "|";
+    
+    key += "ob:";
+    for (const auto& pkmn : state.opponent.bench) {
+        key += pkmn.id + ":" + std::to_string(pkmn.hp) + ":";
+        for (const auto& att : pkmn.attached) {
+            key += att + ",";
+        }
+        key += ";";
+    }
+    
+    key += "|" + (state.me.supporter_played_this_turn ? std::string("S") : std::string("N"));
+    
     return key;
 }
 
