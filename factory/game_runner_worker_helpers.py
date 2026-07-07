@@ -16,12 +16,9 @@ def setup_game_env(seed=None):
         cwd_resolved = Path.cwd().resolve()
         sys.path = [p for p in sys.path if p and Path(p).resolve() != cwd_resolved]
         
-        # Suppress spammy kaggle_environments import warning messages selectively
-        logging.getLogger("kaggle_environments").setLevel(logging.ERROR)
-        
-        # Using python redirect_stderr is safe and doesn't hijack raw process descriptors
+        # Suppress standard print warning spam and stderr messages from kaggle_environments
         with open(os.devnull, 'w') as fnull:
-            with contextlib.redirect_stderr(fnull):
+            with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
                 from kaggle_environments import make
                 config = {}
                 if seed is not None:

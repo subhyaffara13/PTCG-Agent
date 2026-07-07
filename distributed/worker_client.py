@@ -24,12 +24,15 @@ def ensure_dependencies():
 
     required_packages = ["numpy", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
     missing = False
+    import contextlib
     for pkg in required_packages:
         try:
             if pkg == "dotenv":
                 import dotenv
             else:
-                __import__(pkg)
+                with open(os.devnull, 'w') as fnull:
+                    with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
+                        __import__(pkg)
         except ImportError:
             missing = True
             break
@@ -59,7 +62,9 @@ def ensure_dependencies():
                 if pkg == "dotenv":
                     import dotenv
                 else:
-                    __import__(pkg)
+                    with open(os.devnull, 'w') as fnull:
+                        with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
+                            __import__(pkg)
             except ImportError:
                 still_missing.append(pkg)
                 
