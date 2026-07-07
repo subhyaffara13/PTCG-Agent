@@ -29,6 +29,10 @@ if __name__ == "__main__":
     # Ensure current directory is in path
     sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
     
-    # Forward arguments and call orchestration_agent main
-    from factory.orchestration_agent import main
-    main()
+    try:
+        # Forward arguments and call orchestration_agent main
+        from factory.orchestration_agent import main
+        main()
+    except KeyboardInterrupt:
+        print("\n[INFO] Process terminated by user (Ctrl+C). Exiting gracefully...")
+        sys.exit(0)
