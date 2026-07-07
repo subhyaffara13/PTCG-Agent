@@ -7,7 +7,7 @@ plus a full Orchestrator pipeline run.
 import sys, json
 sys.path.insert(0, ".")
 from router.bus import ScopeViolationError
-from agents.orchestrator import Orchestrator
+from cb_agents.orchestrator import Orchestrator
 from test_agents_helpers import (
     SEP, router, analyst, planner, tm, strategy, opponent,
     strategy_tests, opp_pkt, game_state

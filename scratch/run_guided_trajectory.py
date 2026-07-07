@@ -73,8 +73,8 @@ def _extract_state_action(step: dict) -> tuple:
                 if opt_type == 8:
                     action_str = f"bench:{card_id}"
                 else:
-                    from agents.card_registry import CardRegistry
-                    from agents.card_types import CardType
+                    from cb_agents.card_registry import CardRegistry
+                    from cb_agents.card_types import CardType
                     registry = CardRegistry()
                     card_entry = registry.get(card_id)
                     if card_entry and card_entry.card_type == CardType.ENERGY:

@@ -43,8 +43,8 @@ def main():
                     
                 if consec_no_imp >= 5:
                     print("PLATEAU DETECTED: No improvement for 5 consecutive runs. Triggering plateau fix...")
-                    backup_path = Path("agents/deck_new_backup.csv")
-                    current_deck = Path("agents/deck_new.csv")
+                    backup_path = Path("cb_agents/deck_new_backup.csv")
+                    current_deck = Path("cb_agents/deck_new.csv")
                     if current_deck.exists():
                         if backup_path.exists(): backup_path.unlink()
                         current_deck.rename(backup_path)

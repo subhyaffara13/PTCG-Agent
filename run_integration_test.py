@@ -5,7 +5,7 @@ sys.path.insert(0, ".")
 # 1. StrategyAgent (uses receive() with StrategyPacket)
 print("=" * 60)
 print("1. StrategyAgent")
-from agents.strategy_agent import StrategyAgent
+from cb_agents.strategy_agent import StrategyAgent
 from router.bus import StrategyPacket
 
 sa = StrategyAgent()
@@ -37,7 +37,7 @@ print("  PASSED")
 # 3. Orchestrator (single turn)
 print("=" * 60)
 print("3. Orchestrator (full turn pipeline)")
-from agents.orchestrator import Orchestrator
+from cb_agents.orchestrator import Orchestrator
 orch = Orchestrator()
 orch.start_game()
 

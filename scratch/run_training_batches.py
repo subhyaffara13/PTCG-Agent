@@ -21,10 +21,10 @@ import json
 def check_file_line_counts() -> bool:
     print("Checking code standards: file line counts...")
     target_files = [
-        "agents/turn_planner.py",
-        "agents/turn_planner_logging.py",
-        "agents/strategy_agent.py",
-        "agents/time_manager.py"
+        "cb_agents/turn_planner.py",
+        "cb_agents/turn_planner_logging.py",
+        "cb_agents/strategy_agent.py",
+        "cb_agents/time_manager.py"
     ]
     queue_path = Path("logs/refactor_queue.json")
     try:

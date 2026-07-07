@@ -1,6 +1,6 @@
 import pytest
-from agents.opponent_model import OpponentModel
-from agents.hand_analyst import HandAnalyst
+from cb_agents.opponent_model import OpponentModel
+from cb_agents.hand_analyst import HandAnalyst
 from router.bus import OpponentModelPacket, HandAnalystPacket
 
 def test_opponent_model_archetype_predictor():

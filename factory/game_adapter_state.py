@@ -17,7 +17,7 @@ def build_game_state(my_state, opp_state, current):
         active_id = get_card_id(active_pokemon)
         if active_id is not None:
             try:
-                from agents.card_registry import CardRegistry
+                from cb_agents.card_registry import CardRegistry
                 card_entry = CardRegistry().get_full_skill(active_id)
                 if card_entry: my_active_damage = card_entry.damage_output
             except Exception as ex:

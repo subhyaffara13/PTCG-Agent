@@ -6,7 +6,7 @@ import json
 import logging
 from pathlib import Path
 from typing import Any, List, Dict
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 from factory.deck_loader import DeckLoader
 from factory.deck_generator import DeckGenerator
 from factory.deck_scorer import DeckScorer

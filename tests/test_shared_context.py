@@ -1,13 +1,13 @@
 """
 tests/test_shared_context.py
 
-Unit tests for agents/context.py (SharedContext singleton cache manager).
+Unit tests for cb_agents/context.py (SharedContext singleton cache manager).
 """
 
 import json
 from pathlib import Path
-from agents.context import SharedContext
-from agents.orchestrator import Orchestrator
+from cb_agents.context import SharedContext
+from cb_agents.orchestrator import Orchestrator
 
 def test_shared_context_singleton(tmp_path):
     skills_dir = tmp_path / "skills"

@@ -1,7 +1,7 @@
 import importlib.util
 import logging
 from pathlib import Path
-from agents.orchestrator import Orchestrator
+from cb_agents.orchestrator import Orchestrator
 from factory.game_adapter import run_agent_turn
 
 logger = logging.getLogger(__name__)

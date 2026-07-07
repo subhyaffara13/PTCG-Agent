@@ -2,11 +2,11 @@ import sys, json
 sys.path.insert(0, ".")
 
 from router.bus import Router
-from agents.hand_analyst import HandAnalyst
-from agents.turn_planner import TurnPlanner
-from agents.time_manager import TimeManager
-from agents.strategy_agent import StrategyAgent
-from agents.opponent_model import OpponentModel, OpponentModelPacket
+from cb_agents.hand_analyst import HandAnalyst
+from cb_agents.turn_planner import TurnPlanner
+from cb_agents.time_manager import TimeManager
+from cb_agents.strategy_agent import StrategyAgent
+from cb_agents.opponent_model import OpponentModel, OpponentModelPacket
 
 SEP = "=" * 60
 

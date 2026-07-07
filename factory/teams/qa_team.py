@@ -22,7 +22,7 @@ class QATeam:
         # 1. Performance Evaluation via Gauntlet
         logger.info("Handing off to GauntletRunner...")
         
-        eval_deck = deck_candidate or "agents/deck_new.csv"
+        eval_deck = deck_candidate or "cb_agents/deck_new.csv"
         if not Path(eval_deck).exists():
             eval_deck = "deck.csv"
             

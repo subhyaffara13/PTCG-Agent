@@ -1,7 +1,7 @@
 import logging
 from typing import List, Any
-from agents.card_registry import CardRegistry
-from agents.card_types import CardType
+from cb_agents.card_registry import CardRegistry
+from cb_agents.card_types import CardType
 
 logger = logging.getLogger(__name__)
 

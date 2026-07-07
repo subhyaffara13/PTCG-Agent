@@ -6,7 +6,7 @@ import os, json, shutil, logging
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 from factory.teams.sanitization_team import SanitizationTeam
 from factory.validator_helpers import load_baseline_score, handle_validation_failure, append_to_history, write_validation_log
 

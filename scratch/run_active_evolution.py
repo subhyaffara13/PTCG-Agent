@@ -22,7 +22,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - ActiveEvolve - %(levelname)s - %(message)s")
 logger = logging.getLogger("active_evolution")
 
-from agents.code_mutator import request_code_mutation_from_llm, push_mutation_to_git
+from cb_agents.code_mutator import request_code_mutation_from_llm, push_mutation_to_git
 from factory.gauntlet_runner import GauntletRunner
 from factory.game_runner import DEFAULT_DECK
 
@@ -38,7 +38,7 @@ def evaluate_heuristics(num_games: int = 2) -> float:
         return 0.0
 
 def main():
-    target_file = "agents/turn_planner_sort.py"
+    target_file = "cb_agents/turn_planner_sort.py"
     file_path = PROJECT_ROOT / target_file
     if not file_path.exists():
         logger.error(f"Target file {file_path} not found.")

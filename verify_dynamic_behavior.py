@@ -2,10 +2,10 @@ import os
 import json
 import shutil
 from pathlib import Path
-from agents.hand_analyst import HandAnalyst
-from agents.strategy_agent import StrategyAgent
+from cb_agents.hand_analyst import HandAnalyst
+from cb_agents.strategy_agent import StrategyAgent
 from router.bus import HandAnalystPacket, StrategyPacket
-from agents.context import SharedContext
+from cb_agents.context import SharedContext
 
 def run_empirical_verification():
     print("=== Empirical Verification of Dynamic Configuration (Task 1) ===")

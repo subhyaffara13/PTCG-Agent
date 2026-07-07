@@ -19,7 +19,7 @@ def make_smart_choice(select: dict, observation: dict, fallback_action: list[int
         # Load CardRegistry
         try:
             if _registry is None:
-                from agents.card_registry import CardRegistry
+                from cb_agents.card_registry import CardRegistry
                 _registry = CardRegistry(skills_dir=skills_dir)
             registry = _registry
         except Exception:

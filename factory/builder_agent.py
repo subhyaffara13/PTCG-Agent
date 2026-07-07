@@ -10,7 +10,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 import factory.builder_helper as helper
 
 logger = logging.getLogger(__name__)
@@ -26,8 +26,8 @@ class BuilderAgent(BaseAgent):
         self.staging_dir.mkdir(parents=True, exist_ok=True)
         
         self.allowed_targets = [
-            "agents/hand_analyst.py", "agents/turn_planner.py",
-            "agents/strategy_agent.py", "agents/opponent_model.py",
+            "cb_agents/hand_analyst.py", "cb_agents/turn_planner.py",
+            "cb_agents/strategy_agent.py", "cb_agents/opponent_model.py",
             "skills/priority_rules.json", "skills/strategy_profiles.json"
         ]
 
@@ -36,7 +36,7 @@ class BuilderAgent(BaseAgent):
 
     def build(self, improvement_notes: dict) -> dict:
         escalation = improvement_notes.get("escalation", {})
-        target_component = escalation.get("target", "agents/strategy_agent.py")
+        target_component = escalation.get("target", "cb_agents/strategy_agent.py")
         weak_metric = improvement_notes.get("action_taken", "logic_delta")
         iteration = improvement_notes.get("iteration", 0)
 

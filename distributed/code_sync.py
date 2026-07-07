@@ -24,7 +24,7 @@ def sync_code(master_version) -> bool:
             # Remove local copies of auto-updated files to prevent conflicts if they are untracked/modified
             files_to_clean = [
                 "models/ppo_actor_critic.pt",
-                "agents/deck_new.csv",
+                "cb_agents/deck_new.csv",
                 "skills/learned_dos.json",
                 "skills/predictor_feedback.json",
                 "skills/predictor_weights.json"

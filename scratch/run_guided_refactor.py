@@ -23,7 +23,7 @@ def execute_refactor_step(iteration_id: int):
     
     # Run the Self-Evolving Code Optimization (SECO) mutator
     try:
-        from agents.code_mutator import run_evolution_cycle
+        from cb_agents.code_mutator import run_evolution_cycle
         logger.info("Running Self-Evolving Code mutation check...")
         run_evolution_cycle()
     except Exception as ev_err:

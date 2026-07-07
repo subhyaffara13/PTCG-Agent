@@ -76,8 +76,8 @@ class MasterServer:
         
         while self.running:
             if self.work_queue.qsize() < 10:
-                d_base = _load_deck("agents/deck_base.csv")
-                d_new = _load_deck("agents/deck_new.csv")
+                d_base = _load_deck("cb_agents/deck_base.csv")
+                d_new = _load_deck("cb_agents/deck_new.csv")
                 
                 from distributed.code_sync import get_local_version
                 master_version = get_local_version()

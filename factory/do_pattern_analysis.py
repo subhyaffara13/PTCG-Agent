@@ -21,8 +21,8 @@ def _get_player_idx(steps, info, team_names, name_or_id) -> int:
     return -1
 
 def _count_deck_types(deck) -> tuple:
-    from agents.card_registry import CardRegistry
-    from agents.card_types import CardType
+    from cb_agents.card_registry import CardRegistry
+    from cb_agents.card_types import CardType
     reg = CardRegistry()
     p_c, t_c, e_c = 0, 0, 0
     for cid in deck:

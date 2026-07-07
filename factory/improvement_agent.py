@@ -7,7 +7,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 from factory.improvement_agent_helpers import determine_escalation, append_decision
 
 logger = logging.getLogger(__name__)

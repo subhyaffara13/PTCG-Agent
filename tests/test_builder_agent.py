@@ -22,7 +22,7 @@ def test_builder_agent_unauthorized_target(tmp_path):
 
     notes = {
         "iteration": 1,
-        "escalation": {"target": "agents/orchestrator.py"},
+        "escalation": {"target": "cb_agents/orchestrator.py"},
         "reasoning": "Tuning logic",
         "action_taken": "logic_delta"
     }

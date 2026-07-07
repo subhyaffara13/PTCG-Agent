@@ -3,7 +3,7 @@ import logging
 import random
 from pathlib import Path
 from factory.game_runner import GameRunner
-from agents.orchestrator import Orchestrator
+from cb_agents.orchestrator import Orchestrator
 from factory.deck_loader import DeckLoader
 from factory.deck_generator import DeckGenerator
 

@@ -2,7 +2,7 @@ import json
 import csv
 import logging
 from typing import List, Dict, Tuple, Any
-from agents.card_registry import CardRegistry
+from cb_agents.card_registry import CardRegistry
 from factory.data_alignment_helpers import apply_symmetry_augmentation, normalize_action
 from factory.state_dimensions import (
     MAX_BOARD,

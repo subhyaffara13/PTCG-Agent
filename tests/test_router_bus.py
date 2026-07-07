@@ -6,7 +6,7 @@ Tests boundary enforcement and routing behavior of RouterBus.
 
 import pytest
 from router.bus import RouterBus
-from agents.opponent_model import OpponentModelPacket
+from cb_agents.opponent_model import OpponentModelPacket
 
 class MockGameState:
     pass

@@ -1,8 +1,8 @@
 """
 tests/test_prize_tracker.py
-Unit tests for agents/prize_tracker.py.
+Unit tests for cb_agents/prize_tracker.py.
 """
-from agents.prize_tracker import PrizeTracker
+from cb_agents.prize_tracker import PrizeTracker
 from test_prize_tracker_helpers import (
     DECK_PIKA_RAICHU, VISIBLE_PIKA_RAICHU, DECK_DICT,
     HAND, DISCARD, BOARD, DECK_CONTENTS, PRIZE_DECK_6, PRIZE_DECK_3

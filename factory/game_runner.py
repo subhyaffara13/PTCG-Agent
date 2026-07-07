@@ -12,7 +12,7 @@ from typing import Any
 from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 from factory.game_runner_worker import _parallel_game_worker
 
 logger = logging.getLogger(__name__)
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 def _load_optimized_deck(custom_path: str | None = None) -> list[int]:
     """Load the best deck from the optimizer pipeline output."""
     import csv
-    paths = [custom_path] if custom_path else ["staging/deck_new.csv", "agents/deck_new.csv"]
+    paths = [custom_path] if custom_path else ["staging/deck_new.csv", "cb_agents/deck_new.csv"]
     for deck_path in paths:
         p = Path(deck_path)
         if p.exists():

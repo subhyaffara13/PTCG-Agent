@@ -1,14 +1,14 @@
 """
 tests/test_turn_planner.py
 
-Unit tests for agents/turn_planner.py.
+Unit tests for cb_agents/turn_planner.py.
 """
 
 import os
 import json
 import pytest
 from pathlib import Path
-from agents.turn_planner import TurnPlanner
+from cb_agents.turn_planner import TurnPlanner
 from router.bus import TurnPlannerPacket
 
 def test_turn_planner_sorting(tmp_path):

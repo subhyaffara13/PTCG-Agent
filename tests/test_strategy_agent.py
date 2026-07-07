@@ -1,14 +1,14 @@
 """
 tests/test_strategy_agent.py
 
-Unit tests for agents/strategy_agent.py.
+Unit tests for cb_agents/strategy_agent.py.
 """
 
 import os
 import json
 import pytest
 from pathlib import Path
-from agents.strategy_agent import StrategyAgent
+from cb_agents.strategy_agent import StrategyAgent
 from router.bus import StrategyPacket
 
 def test_strategy_agent_triggers(tmp_path):

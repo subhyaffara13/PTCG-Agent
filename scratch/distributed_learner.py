@@ -59,7 +59,7 @@ def main():
                     import torch.nn as nn
                     import torch.optim as optim
                     import io
-                    from agents.value_network_helpers import PTCGValueMLP, state_to_tensor
+                    from cb_agents.value_network_helpers import PTCGValueMLP, state_to_tensor
                     
                     model = PTCGValueMLP()
                     optimizer = optim.Adam(model.parameters(), lr=0.001)

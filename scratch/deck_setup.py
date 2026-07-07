@@ -95,7 +95,7 @@ def load_optimizer_data(archetype: str = None):
     )
 
     seed_deck = []
-    p = Path("agents/deck_new.csv")
+    p = Path("cb_agents/deck_new.csv")
     if p.exists():
         for r in list(csv.reader(p.open(encoding="utf-8")))[1:]:
             if r and int(r[0]) in id_map:

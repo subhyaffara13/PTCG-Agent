@@ -19,7 +19,7 @@ if __name__ == '__main__':
         print("GA main crashed with exception:")
         traceback.print_exc()
 
-    path = "agents/deck_new.csv"
+    path = "cb_agents/deck_new.csv"
     print(f"Checking '{path}':")
     print("  Exists:", os.path.exists(path))
     if os.path.exists(path):

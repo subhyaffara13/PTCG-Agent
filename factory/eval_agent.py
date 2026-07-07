@@ -7,7 +7,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 from factory.eval_reporter import EvalReporter
 from factory.eval_agent_helpers import determine_context, score_game_metrics
 

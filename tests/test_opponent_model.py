@@ -1,11 +1,11 @@
 """
 tests/test_opponent_model.py
 
-Unit tests for agents/opponent_model.py.
+Unit tests for cb_agents/opponent_model.py.
 """
 
 import pytest
-from agents.opponent_model import OpponentModel
+from cb_agents.opponent_model import OpponentModel
 from router.bus import OpponentModelPacket
 
 

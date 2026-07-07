@@ -5,8 +5,8 @@ Unit tests for new sequencing heuristics and prize-aware strategy switching.
 """
 import json
 import pytest
-from agents.turn_planner import TurnPlanner
-from agents.strategy_agent import StrategyAgent
+from cb_agents.turn_planner import TurnPlanner
+from cb_agents.strategy_agent import StrategyAgent
 from router.bus import TurnPlannerPacket, StrategyPacket
 from test_sequencing_rules_helpers import (
     setup_skills_dir, PRIORITY_RULES_EMPTY, STRATEGY_PROFILES_EMPTY, CHARGED_ACTIVE

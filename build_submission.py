@@ -22,14 +22,14 @@ for folder in ("cb_agents", "router", "skills"):
     if p.exists():
         shutil.rmtree(p)
 
-# 2. Sync the promoted deck_new.csv from agents/ into submission/
-promoted_deck = Path("agents/deck_new.csv")
+# 2. Sync the promoted deck_new.csv from cb_agents/ into submission/
+promoted_deck = Path("cb_agents/deck_new.csv")
 if promoted_deck.exists():
     Path("submission").mkdir(parents=True, exist_ok=True)
     shutil.copy2(promoted_deck, Path("submission/deck.csv"))
     print("Synced promoted deck.")
 else:
-    print("WARNING: agents/deck_new.csv not found!")
+    print("WARNING: cb_agents/deck_new.csv not found!")
 
 # 2.5 Generate main.py from main_template.py
 if Path("submission/main_template.py").exists():
@@ -40,14 +40,14 @@ if Path("submission/main_template.py").exists():
 print("Syncing agents to submission/cb_agents...")
 submission_cb_agents = Path("submission/cb_agents")
 submission_cb_agents.mkdir(parents=True, exist_ok=True)
-for f in Path("agents").glob("*.py"):
+for f in Path("cb_agents").glob("*.py"):
     if f.name == "code_mutator.py":
         continue
     dest = submission_cb_agents / f.name
     shutil.copy2(f, dest)
     content = dest.read_text(encoding="utf-8")
-    content = content.replace("from agents.", "from cb_agents.")
-    content = content.replace("import agents.", "import cb_agents.")
+    content = content.replace("from cb_agents.", "from cb_agents.")
+    content = content.replace("import cb_agents.", "import cb_agents.")
     dest.write_text(content, encoding="utf-8")
 
 # Copy the promoted deck inside the cb_agents directory as well
@@ -62,8 +62,8 @@ for f in Path("router").glob("*.py"):
     dest = submission_router / f.name
     shutil.copy2(f, dest)
     content = dest.read_text(encoding="utf-8")
-    content = content.replace("from agents.", "from cb_agents.")
-    content = content.replace("import agents.", "import cb_agents.")
+    content = content.replace("from cb_agents.", "from cb_agents.")
+    content = content.replace("import cb_agents.", "import cb_agents.")
     dest.write_text(content, encoding="utf-8")
 
 # 3.2 Sync all skills files to submission/skills (excluding reference PDF)

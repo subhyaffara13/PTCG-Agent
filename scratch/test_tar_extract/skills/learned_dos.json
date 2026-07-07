@@ -1,0 +1,1796 @@
+{
+  "deck_dos": [
+    {
+      "card_id": 19,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 65,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 66,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 741,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 742,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1086,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1152,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1225,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1231,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1264,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 5,
+      "avg_count": 5.0,
+      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 743,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1079,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1081,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 1182,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+    },
+    {
+      "card_id": 673,
+      "avg_count": 3.0,
+      "reason": "High usage (2.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 674,
+      "avg_count": 3.0,
+      "reason": "High usage (2.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 675,
+      "avg_count": 3.0,
+      "reason": "High usage (2.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 676,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 677,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 678,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1102,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1123,
+      "avg_count": 4.0,
+      "reason": "High usage (2.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1141,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1142,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1192,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1227,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 1252,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 6,
+      "avg_count": 14.0,
+      "reason": "High usage (13.0x avg) in winning matches of player Praxel."
+    },
+    {
+      "card_id": 305,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player hiroingk."
+    },
+    {
+      "card_id": 1097,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player hiroingk."
+    },
+    {
+      "card_id": 1184,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player \u30ab\u30c9\u30e9\u30d0 Kadoraba."
+    },
+    {
+      "card_id": 1266,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player \u30ab\u30c9\u30e9\u30d0 Kadoraba."
+    },
+    {
+      "card_id": 878,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 879,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 304,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 311,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1115,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1134,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1122,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1171,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1219,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1255,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 11,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player The Debauchery Tea Party."
+    },
+    {
+      "card_id": 1211,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player shu."
+    },
+    {
+      "card_id": 1129,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player THIRD PTCG Club."
+    },
+    {
+      "card_id": 1156,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player THIRD PTCG Club."
+    },
+    {
+      "card_id": 1194,
+      "avg_count": 4.0,
+      "reason": "High usage (2.0x avg) in winning matches of player charmq."
+    },
+    {
+      "card_id": 1210,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player charmq."
+    },
+    {
+      "card_id": 265,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 268,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 269,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 270,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 271,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 1121,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 1233,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 1254,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 4,
+      "avg_count": 22.0,
+      "reason": "High usage (22.0x avg) in winning matches of player onechan1."
+    },
+    {
+      "card_id": 1030,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 666,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1031,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1145,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1120,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1189,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1229,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1223,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 3,
+      "avg_count": 18.0,
+      "reason": "High usage (9.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 17,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player keidroid."
+    },
+    {
+      "card_id": 1119,
+      "avg_count": 4.0,
+      "reason": "High usage (2.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 164,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 1197,
+      "avg_count": 4.0,
+      "reason": "High usage (3.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 98,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 97,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 1186,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 494,
+      "avg_count": 2.0,
+      "reason": "High usage (2.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 1166,
+      "avg_count": 3.0,
+      "reason": "High usage (2.0x avg) in winning matches of player yamy893."
+    },
+    {
+      "card_id": 119,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 120,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 121,
+      "avg_count": 3.0,
+      "reason": "High usage (3.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 235,
+      "avg_count": 4.0,
+      "reason": "High usage (2.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 1198,
+      "avg_count": 4.0,
+      "reason": "High usage (4.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 1256,
+      "avg_count": 4.0,
+      "reason": "High usage (2.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 2,
+      "avg_count": 7.0,
+      "reason": "High usage (4.0x avg) in winning matches of player shibushun."
+    },
+    {
+      "card_id": 1213,
+      "avg_count": 4.0,
+      "reason": "High usage (2.0x avg) in winning matches of player yomogi mochi."
+    },
+    {
+      "card_id": 941,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 942,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 943,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 149,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 93,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 89,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 90,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 100,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 240,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1094,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1174,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1175,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1245,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1,
+      "avg_count": 6.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 112,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1260,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 7,
+      "avg_count": 15.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1161,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 860,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 861,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 131,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 169,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 190,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1244,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1147,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1185,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 8,
+      "avg_count": 15.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1224,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 116,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1051,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1052,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1137,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1238,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 16,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 57,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 132,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 133,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 646,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 647,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 648,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1259,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 104,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 756,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1071,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 272,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 184,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 140,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 108,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1205,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1146,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1172,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1250,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 379,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 380,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 381,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 341,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 342,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1206,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1173,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 20,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 506,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1209,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1261,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 58,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 344,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 345,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1204,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1187,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1118,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1124,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1246,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1087,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 157,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 158,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 14,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 18,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 352,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 353,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 354,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1215,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1267,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 387,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 848,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 849,
+      "avg_count": 3.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 791,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 103,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 117,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 689,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1228,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 649,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    }
+  ],
+  "behavior_dos": [
+    {
+      "player": "Praxel",
+      "avg_setup_duration": 17.2,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "hiroingk",
+      "avg_setup_duration": 43.0,
+      "avg_bench_density": 2.5
+    },
+    {
+      "player": "tototo",
+      "avg_setup_duration": 23.4,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "Pik-AI-chu",
+      "avg_setup_duration": 15.0,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "Blake Stagner",
+      "avg_setup_duration": 14.4,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "LORD DREGS",
+      "avg_setup_duration": 18.8,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "shu",
+      "avg_setup_duration": 21.2,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "nogu",
+      "avg_setup_duration": 43.4,
+      "avg_bench_density": 2.4
+    },
+    {
+      "player": "charmq",
+      "avg_setup_duration": 23.6,
+      "avg_bench_density": 4.3
+    },
+    {
+      "player": "Natsuki Kasubata",
+      "avg_setup_duration": 9.6,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "onechan1",
+      "avg_setup_duration": 11.0,
+      "avg_bench_density": 4.3
+    },
+    {
+      "player": "The Debauchery Tea Party",
+      "avg_setup_duration": 13.8,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "THIRD PTCG Club",
+      "avg_setup_duration": 21.0,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "TrustHub hiroingk",
+      "avg_setup_duration": 21.6,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "keidroid",
+      "avg_setup_duration": 19.0,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "foo_foo",
+      "avg_setup_duration": 13.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Naoki Maeda",
+      "avg_setup_duration": 47.8,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "blue0620",
+      "avg_setup_duration": 35.0,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "yamy893",
+      "avg_setup_duration": 24.4,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "\u30ab\u30c9\u30e9\u30d0 Kadoraba",
+      "avg_setup_duration": 41.2,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "graybackcat",
+      "avg_setup_duration": 23.6,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "shibushun",
+      "avg_setup_duration": 16.0,
+      "avg_bench_density": 2.9
+    },
+    {
+      "player": "yomogi mochi",
+      "avg_setup_duration": 14.6,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "NecromanAlbert",
+      "avg_setup_duration": 13.6,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "uuji-qvp",
+      "avg_setup_duration": 50.2,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "Kimiaki Nakamura",
+      "avg_setup_duration": 27.2,
+      "avg_bench_density": 3.0
+    },
+    {
+      "player": "Yushin Ito",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "Ryosei Kojima",
+      "avg_setup_duration": 7.8,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "\u307f\u305a\u3042\u3081",
+      "avg_setup_duration": 17.0,
+      "avg_bench_density": 2.6
+    },
+    {
+      "player": "e-toppo",
+      "avg_setup_duration": 17.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "ojicat",
+      "avg_setup_duration": 13.6,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "EF",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "\u30c1\u30fc\u30e0\u30ed\u30b9\u30ae\u30e9",
+      "avg_setup_duration": 14.4,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "\u307f\u304c\u308f\u308a",
+      "avg_setup_duration": 21.6,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "takumina",
+      "avg_setup_duration": 30.2,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "JJ",
+      "avg_setup_duration": 31.2,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "Eamonn Kashyap",
+      "avg_setup_duration": 42.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Psychic Genesis",
+      "avg_setup_duration": 9.2,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "shogo1229",
+      "avg_setup_duration": 20.8,
+      "avg_bench_density": 1.4
+    },
+    {
+      "player": "sohard",
+      "avg_setup_duration": 24.4,
+      "avg_bench_density": 2.9
+    },
+    {
+      "player": "Tsukuru",
+      "avg_setup_duration": 24.2,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Safiullah Baig",
+      "avg_setup_duration": 47.4,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "Shun",
+      "avg_setup_duration": 54.6,
+      "avg_bench_density": 1.4
+    },
+    {
+      "player": "Team kuma",
+      "avg_setup_duration": 13.8,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "nattomaki",
+      "avg_setup_duration": 16.6,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "halup",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "yoshimasak",
+      "avg_setup_duration": 16.6,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "pompom555",
+      "avg_setup_duration": 32.0,
+      "avg_bench_density": 4.4
+    },
+    {
+      "player": "milix",
+      "avg_setup_duration": 15.0,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "ysakuragi",
+      "avg_setup_duration": 33.6,
+      "avg_bench_density": 0.9
+    },
+    {
+      "player": "Gotem Penguin",
+      "avg_setup_duration": 9.8,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "aidy",
+      "avg_setup_duration": 22.2,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "harappa",
+      "avg_setup_duration": 20.2,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "nsytsqdtn",
+      "avg_setup_duration": 13.8,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "aaa",
+      "avg_setup_duration": 19.6,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "CoCoSh",
+      "avg_setup_duration": 28.4,
+      "avg_bench_density": 2.5
+    },
+    {
+      "player": "TomBombadyl",
+      "avg_setup_duration": 29.2,
+      "avg_bench_density": 1.6
+    },
+    {
+      "player": "Akito Maruo",
+      "avg_setup_duration": 16.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "KakuTakagawa",
+      "avg_setup_duration": 32.0,
+      "avg_bench_density": 1.8
+    },
+    {
+      "player": "tw_shin",
+      "avg_setup_duration": 8.8,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "takusemba",
+      "avg_setup_duration": 18.5,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "monnosuke",
+      "avg_setup_duration": 12.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "ShumpeiNomura",
+      "avg_setup_duration": 21.0,
+      "avg_bench_density": 2.2
+    },
+    {
+      "player": "MasaPokemon",
+      "avg_setup_duration": 35.2,
+      "avg_bench_density": 2.0
+    },
+    {
+      "player": "NukoNiko15",
+      "avg_setup_duration": 12.4,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "ryoya",
+      "avg_setup_duration": 26.2,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "kawachi",
+      "avg_setup_duration": 14.4,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "pztriatomic",
+      "avg_setup_duration": 15.2,
+      "avg_bench_density": 1.7
+    },
+    {
+      "player": "Takaaki Matsuda",
+      "avg_setup_duration": 31.8,
+      "avg_bench_density": 1.7
+    },
+    {
+      "player": "\u3089\u3059\u306f\u308b",
+      "avg_setup_duration": 12.6,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "reika555",
+      "avg_setup_duration": 22.4,
+      "avg_bench_density": 1.7
+    },
+    {
+      "player": "pokeka_ryo",
+      "avg_setup_duration": 13.8,
+      "avg_bench_density": 1.5
+    },
+    {
+      "player": "Morim",
+      "avg_setup_duration": 22.4,
+      "avg_bench_density": 2.5
+    },
+    {
+      "player": "mikelou1",
+      "avg_setup_duration": 24.2,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "haiy_qq",
+      "avg_setup_duration": 10.2,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "Akshay Punjabi",
+      "avg_setup_duration": 14.2,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "Ajishio",
+      "avg_setup_duration": 31.6,
+      "avg_bench_density": 3.5
+    },
+    {
+      "player": "kazuki0123",
+      "avg_setup_duration": 36.0,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "Hayhay2323",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 1.8
+    },
+    {
+      "player": "MR.h",
+      "avg_setup_duration": 34.6,
+      "avg_bench_density": 2.4
+    },
+    {
+      "player": "suguuuuu & hiehie",
+      "avg_setup_duration": 20.0,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "\u3010\uff21\uff29\u3068\u5171\u306b\u3001\uff21\uff29\u3068\u6226\u3046\u3011tubotu",
+      "avg_setup_duration": 11.6,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "omoch1...?",
+      "avg_setup_duration": 22.2,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "tonakaiiii",
+      "avg_setup_duration": 24.6,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "zoroark190",
+      "avg_setup_duration": 10.0,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "Dongwook Kim",
+      "avg_setup_duration": 11.4,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "Moegi",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 1.6
+    },
+    {
+      "player": "Michael Krager",
+      "avg_setup_duration": 9.0,
+      "avg_bench_density": 1.0
+    },
+    {
+      "player": "S4nkurero",
+      "avg_setup_duration": 24.0,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "capbloo",
+      "avg_setup_duration": 37.6,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "iwashi",
+      "avg_setup_duration": 15.0,
+      "avg_bench_density": 1.2
+    },
+    {
+      "player": "Akira-Ninth",
+      "avg_setup_duration": 22.6,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "puraza",
+      "avg_setup_duration": 16.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "tsukammo",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "CardPilotLab",
+      "avg_setup_duration": 17.2,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "xinpw8",
+      "avg_setup_duration": 31.0,
+      "avg_bench_density": 1.6
+    },
+    {
+      "player": "ezreal77",
+      "avg_setup_duration": 34.8,
+      "avg_bench_density": 1.5
+    },
+    {
+      "player": "TakamaruEX",
+      "avg_setup_duration": 28.8,
+      "avg_bench_density": 1.6
+    },
+    {
+      "player": "Rajan Nagarajan",
+      "avg_setup_duration": 22.0,
+      "avg_bench_density": 2.3
+    },
+    {
+      "player": "Dick Jessen William",
+      "avg_setup_duration": 31.0,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "WEcoS",
+      "avg_setup_duration": 27.8,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "L-WALID",
+      "avg_setup_duration": 21.4,
+      "avg_bench_density": 1.4
+    },
+    {
+      "player": "ochisamu",
+      "avg_setup_duration": 25.4,
+      "avg_bench_density": 1.2
+    },
+    {
+      "player": "CCoffie",
+      "avg_setup_duration": 17.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "YIN",
+      "avg_setup_duration": 29.0,
+      "avg_bench_density": 2.0
+    },
+    {
+      "player": "Hexylab",
+      "avg_setup_duration": 37.8,
+      "avg_bench_density": 1.5
+    },
+    {
+      "player": "ykuroka",
+      "avg_setup_duration": 26.0,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "BioMath",
+      "avg_setup_duration": 22.2,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "btk15049",
+      "avg_setup_duration": 24.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "takaygiiiiiiii",
+      "avg_setup_duration": 19.8,
+      "avg_bench_density": 2.3
+    },
+    {
+      "player": "Pokk\u00e9n",
+      "avg_setup_duration": 40.8,
+      "avg_bench_density": 1.6
+    },
+    {
+      "player": "llkarill",
+      "avg_setup_duration": 23.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Bata09",
+      "avg_setup_duration": 27.0,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "Kazuta MIZUTA",
+      "avg_setup_duration": 11.2,
+      "avg_bench_density": 1.7
+    },
+    {
+      "player": "\u3092",
+      "avg_setup_duration": 24.0,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "easonyanyan",
+      "avg_setup_duration": 28.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Nghia Tran",
+      "avg_setup_duration": 28.0,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "XIAODOUZI",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "atom1231",
+      "avg_setup_duration": 30.4,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "ebisu_ya",
+      "avg_setup_duration": 28.0,
+      "avg_bench_density": 2.6
+    },
+    {
+      "player": "XP3RiX",
+      "avg_setup_duration": 51.8,
+      "avg_bench_density": 3.0
+    },
+    {
+      "player": "Peng Wang",
+      "avg_setup_duration": 11.6,
+      "avg_bench_density": 2.2
+    },
+    {
+      "player": "kotsuton",
+      "avg_setup_duration": 74.0,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "5.5",
+      "avg_setup_duration": 23.2,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "kenkoooo",
+      "avg_setup_duration": 18.2,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "Myckel Uribe",
+      "avg_setup_duration": 24.2,
+      "avg_bench_density": 1.8
+    },
+    {
+      "player": "ShoheiSaito",
+      "avg_setup_duration": 33.8,
+      "avg_bench_density": 4.3
+    },
+    {
+      "player": "MtN",
+      "avg_setup_duration": 55.0,
+      "avg_bench_density": 2.4
+    },
+    {
+      "player": "Yufeng",
+      "avg_setup_duration": 20.4,
+      "avg_bench_density": 2.0
+    },
+    {
+      "player": "chamboabi",
+      "avg_setup_duration": 12.4,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "\u6e21\u908a\u5f81\u592e",
+      "avg_setup_duration": 16.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "BluezLee",
+      "avg_setup_duration": 16.2,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "wangyuou",
+      "avg_setup_duration": 31.2,
+      "avg_bench_density": 1.6
+    },
+    {
+      "player": "TeamSCSQ(\u30c1\u30fc\u30e0\u30b9\u30af\u30b9\u30af)",
+      "avg_setup_duration": 30.4,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "ZETADIVISION",
+      "avg_setup_duration": 18.6,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "RK",
+      "avg_setup_duration": 32.2,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "GarlicToday",
+      "avg_setup_duration": 10.5,
+      "avg_bench_density": 2.3
+    },
+    {
+      "player": "disgruntled.coffee",
+      "avg_setup_duration": 48.0,
+      "avg_bench_density": 1.5
+    },
+    {
+      "player": "yt0914",
+      "avg_setup_duration": 14.4,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Team BlackBox",
+      "avg_setup_duration": 29.2,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "MizoTake",
+      "avg_setup_duration": 34.4,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "zamami",
+      "avg_setup_duration": 20.2,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "Clark Kitchen",
+      "avg_setup_duration": 27.4,
+      "avg_bench_density": 1.3
+    },
+    {
+      "player": "Ars Noveau",
+      "avg_setup_duration": 22.2,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "Team",
+      "avg_setup_duration": 16.6,
+      "avg_bench_density": 2.6
+    },
+    {
+      "player": "Kotaro OKUYAMA",
+      "avg_setup_duration": 35.2,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "Ryo Ochi",
+      "avg_setup_duration": 12.2,
+      "avg_bench_density": 2.0
+    },
+    {
+      "player": "iwata hiroki",
+      "avg_setup_duration": 26.6,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": " me-keh-dev",
+      "avg_setup_duration": 19.2,
+      "avg_bench_density": 2.7
+    },
+    {
+      "player": "MCH",
+      "avg_setup_duration": 21.2,
+      "avg_bench_density": 3.0
+    },
+    {
+      "player": "Claude and codex suck ;)",
+      "avg_setup_duration": 1.0,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "nasuo445",
+      "avg_setup_duration": 44.6,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "RicardoL\u00f3pez",
+      "avg_setup_duration": 31.0,
+      "avg_bench_density": 2.4
+    },
+    {
+      "player": "Majkel1337",
+      "avg_setup_duration": 14.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "payanotty",
+      "avg_setup_duration": 32.0,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "junlee789",
+      "avg_setup_duration": 17.4,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "genki toyama",
+      "avg_setup_duration": 25.8,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Rmy",
+      "avg_setup_duration": 55.6,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Hase2727",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 1.7
+    },
+    {
+      "player": "Pokopia",
+      "avg_setup_duration": 30.6,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "Ramesh Arvind",
+      "avg_setup_duration": 19.8,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "Ruko",
+      "avg_setup_duration": 46.0,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Ebi",
+      "avg_setup_duration": 23.6,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "koucha",
+      "avg_setup_duration": 20.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "hirune924",
+      "avg_setup_duration": 10.2,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "Shardul Gharat",
+      "avg_setup_duration": 16.8,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "Iliamna",
+      "avg_setup_duration": 17.4,
+      "avg_bench_density": 4.4
+    },
+    {
+      "player": "hoshippi",
+      "avg_setup_duration": 18.8,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "Antonino Zumbo",
+      "avg_setup_duration": 13.2,
+      "avg_bench_density": 4.1
+    },
+    {
+      "player": "kidekikish",
+      "avg_setup_duration": 17.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "Brady Meighan",
+      "avg_setup_duration": 23.6,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "lmaffei",
+      "avg_setup_duration": 26.8,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "NoOne",
+      "avg_setup_duration": 44.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "SamuelSanolume",
+      "avg_setup_duration": 35.0,
+      "avg_bench_density": 3.6
+    },
+    {
+      "player": "koga_poke",
+      "avg_setup_duration": 13.6,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "bono",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 0.9
+    },
+    {
+      "player": "CMK",
+      "avg_setup_duration": 16.0,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "\u6012\u7834\u9913\u9b3c",
+      "avg_setup_duration": 44.2,
+      "avg_bench_density": 3.9
+    },
+    {
+      "player": "heliosli",
+      "avg_setup_duration": 27.2,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "anngle",
+      "avg_setup_duration": 18.8,
+      "avg_bench_density": 2.1
+    },
+    {
+      "player": "Blake Mosley",
+      "avg_setup_duration": 14.6,
+      "avg_bench_density": 1.9
+    },
+    {
+      "player": "Oleksandr_Savsunenko",
+      "avg_setup_duration": 29.2,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "\u3054\u3093\u3055\u304f\u3088\u306d\u304d\u3061",
+      "avg_setup_duration": 9.8,
+      "avg_bench_density": 4.1
+    }
+  ],
+  "deck_stats": {
+    "avg_pokemon_count": 17.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 15.0
+  }
+}

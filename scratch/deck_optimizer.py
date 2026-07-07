@@ -31,7 +31,7 @@ def main():
     from factory.game_runner_worker import _parallel_game_worker
     from factory.game_runner import _load_optimized_deck, DEFAULT_DECK
 
-    base_deck_ids = _load_optimized_deck("agents/deck_base.csv")
+    base_deck_ids = _load_optimized_deck("cb_agents/deck_base.csv")
     if not base_deck_ids:
         base_deck_ids = DEFAULT_DECK
 
@@ -89,7 +89,7 @@ def main():
         if c["card_id"] not in seen:
             rows.append([c["card_id"], c.get("card_name"), c.get("card_type"), final_copies[c["card_id"]]])
             seen.add(c["card_id"])
-    csv.writer(Path("agents/deck_new.csv").open("w", newline="", encoding="utf-8")).writerows(rows)
+    csv.writer(Path("cb_agents/deck_new.csv").open("w", newline="", encoding="utf-8")).writerows(rows)
     print(f"Two-Stage Hybrid Search Completed. Best Selected Deck Win Rate: {best_win_rate:.2%}, Stage 1 Fitness: {best_fitness:.2f}")
     Path("logs/best_fitness.json").write_text(json.dumps({"best_fitness": best_fitness}), encoding="utf-8")
 

@@ -8,7 +8,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
-from agents.base_agent import BaseAgent
+from cb_agents.base_agent import BaseAgent
 
 logger = logging.getLogger(__name__)
 

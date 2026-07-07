@@ -12,7 +12,7 @@ load_env()
 try:
     import torch
     import io
-    from agents.value_network_helpers import PTCGValueMLP
+    from cb_agents.value_network_helpers import PTCGValueMLP
     buffer = io.BytesIO()
     torch.save(PTCGValueMLP().state_dict(), buffer)
     latest_weights = pickle.dumps(buffer.getvalue())

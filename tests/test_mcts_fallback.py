@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from agents.mcts_engine import MCTSEngine
+from cb_agents.mcts_engine import MCTSEngine
 
 def test_mcts_fallback_when_import_fails():
     # If ptcg_core is not present or we mock HAS_CPP as False
