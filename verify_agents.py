@@ -1,6 +1,6 @@
 """
-test_agents.py
-──────────────
+verify_agents.py
+────────────────
 End-to-end integration tests for all five agents via the Router,
 plus a full Orchestrator pipeline run.
 """
