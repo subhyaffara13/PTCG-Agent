@@ -9,6 +9,19 @@ if cwd not in sys.path:
     sys.path.insert(0, cwd)
 
 def ensure_dependencies():
+    # Purge any old colliding test_agents compiled bytecode cache files in root folder
+    try:
+        import pathlib
+        root_dir = pathlib.Path(__file__).parent.parent.resolve()
+        for p in root_dir.glob("__pycache__/test_agents*"):
+            if p.is_file():
+                p.unlink()
+        for p in root_dir.glob("test_agents*"):
+            if p.is_file() and p.suffix in (".pyc", ".pyo"):
+                p.unlink()
+    except Exception:
+        pass
+
     required_packages = ["numpy", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
     missing = False
     for pkg in required_packages:
