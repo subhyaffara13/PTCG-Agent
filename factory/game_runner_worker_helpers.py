@@ -10,27 +10,20 @@ logger = logging.getLogger(__name__)
 
 
 @contextlib.contextmanager
-def silence_raw_fd():
-    fd_out = 1
-    fd_err = 2
-    dup_out, dup_err = None, None
+def silence_kaggle_warnings():
+    import builtins
+    orig_print = builtins.print
+    def dummy_print(*args, **kwargs):
+        if args and isinstance(args[0], str) and ("Loading environment" in args[0] and "failed" in args[0]):
+            return
+        orig_print(*args, **kwargs)
+    builtins.print = dummy_print
     try:
-        dup_out = os.dup(fd_out)
-        dup_err = os.dup(fd_err)
-        with open(os.devnull, 'w') as devnull:
-            null_fd = devnull.fileno()
-            os.dup2(null_fd, fd_out)
-            os.dup2(null_fd, fd_err)
-        yield
-    except OSError:
-        yield
+        with open(os.devnull, 'w') as fnull:
+            with contextlib.redirect_stderr(fnull), contextlib.redirect_stdout(fnull):
+                yield
     finally:
-        if dup_out is not None:
-            os.dup2(dup_out, fd_out)
-            os.close(dup_out)
-        if dup_err is not None:
-            os.dup2(dup_err, fd_err)
-            os.close(dup_err)
+        builtins.print = orig_print
 
 def setup_game_env(seed=None):
     os.environ["FAST_SIM_MODE"] = "false"
@@ -39,8 +32,8 @@ def setup_game_env(seed=None):
         cwd_resolved = Path.cwd().resolve()
         sys.path = [p for p in sys.path if p and Path(p).resolve() != cwd_resolved]
         
-        # Suppress raw C++ prints, stderr, stdout, and python level prints from kaggle_environments
-        with silence_raw_fd():
+        # Suppress prints and stderr messages from kaggle_environments cleanly
+        with silence_kaggle_warnings():
             from kaggle_environments import make
             config = {}
             if seed is not None:
