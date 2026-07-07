@@ -312,6 +312,20 @@ except Exception as global_err:
     # Replace all .parent.parent root resolutions to .parent since single-file agent runs from workspace root directly
     output = output.replace(".parent.parent", ".parent")
 
+    # Verify Python 3.11 compatibility (PEP 701 nested-quote f-strings checker)
+    try:
+        import ast
+        tree = ast.parse(output)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.JoinedStr):
+                for val in node.values:
+                    if isinstance(val, ast.FormattedValue):
+                        expr_str = ast.unparse(val.value)
+                        if "'" in expr_str or '"' in expr_str:
+                            raise ValueError(f"PEP 701 f-string compatibility error: f-string expression contains quotes: {{{expr_str}}}")
+    except SyntaxError as syntax_err:
+        raise ValueError(f"Generated bundle has a syntax error: {syntax_err}")
+
     # Write both copies
     Path("submission.py").write_text(output, encoding="utf-8")
     Path("submission/submission_single.py").write_text(output, encoding="utf-8")

@@ -50,7 +50,7 @@ def check_syntax_and_inheritance(staged_path: Path, content: str, skills_dir: Pa
 
             has_basic_pkmn = False
             for cid, count in card_counts.items():
-                name = card_name_by_id.get(cid, cid)
+                name = str(card_name_by_id.get(cid, cid) or "")
                 if cid in basic_pkmn_ids:
                     has_basic_pkmn = True
                 is_basic_energy = (cid in basic_energy_ids) or ("Basic" in name and "Energy" in name)
@@ -67,6 +67,15 @@ def check_syntax_and_inheritance(staged_path: Path, content: str, skills_dir: Pa
         tree = ast.parse(content, filename=staged_path.name)
     except SyntaxError as e:
         return False, f"SyntaxError on line {e.lineno}: {e.msg}"
+
+    # Verify Python 3.11 compatibility (PEP 701 nested-quote f-strings checker)
+    for node in ast.walk(tree):
+        if isinstance(node, ast.JoinedStr):
+            for val in node.values:
+                if isinstance(val, ast.FormattedValue):
+                    expr_str = ast.unparse(val.value)
+                    if "'" in expr_str or '"' in expr_str:
+                        return False, f"PEP 701 f-string compatibility error: f-string expression contains quotes: {{{expr_str}}}"
 
     has_class = any(isinstance(node, ast.ClassDef) for node in ast.walk(tree))
     inherits_base = any(isinstance(base, ast.Name) and base.id == "BaseAgent" for node in ast.walk(tree) if isinstance(node, ast.ClassDef) for base in node.bases)
