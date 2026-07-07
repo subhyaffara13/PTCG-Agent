@@ -3,6 +3,11 @@ import os
 import subprocess
 import time
 
+# Ensure root directory is in python path for clean package imports
+cwd = os.getcwd()
+if cwd not in sys.path:
+    sys.path.insert(0, cwd)
+
 def ensure_dependencies():
     required_packages = ["numpy", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
     missing = False
