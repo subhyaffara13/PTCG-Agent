@@ -2046,11 +2046,16 @@
       "player": "Star-mine",
       "avg_setup_duration": 13.8,
       "avg_bench_density": 3.2
+    },
+    {
+      "player": "wally0593",
+      "avg_setup_duration": 31.8,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
-    "avg_trainer_count": 37.0,
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
     "avg_energy_count": 8.0
   }
 }
