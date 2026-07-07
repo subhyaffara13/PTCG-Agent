@@ -18,8 +18,8 @@ def sync_code(master_version) -> bool:
     if local_version and master_version and local_version != master_version:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
-            # Discard local modifications to tracked files
-            subprocess.run(['git', 'checkout', '-f'], check=True)
+            # Fetch all updates from origin
+            subprocess.run(['git', 'fetch', '--all'], check=True)
             
             # Remove local copies of auto-updated files to prevent conflicts if they are untracked/modified
             files_to_clean = [
@@ -34,13 +34,19 @@ def sync_code(master_version) -> bool:
                     try:
                         os.remove(f)
                     except Exception as clean_err:
-                        logging.warning(f"Could not remove {f} before pull: {clean_err}")
+                        logging.warning(f"Could not remove {f} before reset: {clean_err}")
             
-            subprocess.run(['git', 'pull'], check=True)
-            logging.info("Code synchronized successfully.")
+            # Hard reset local branch to the master's exact version
+            try:
+                subprocess.run(['git', 'reset', '--hard', master_version], check=True)
+            except subprocess.CalledProcessError:
+                # Fallback to origin's main if master_version is not yet known locally
+                subprocess.run(['git', 'reset', '--hard', 'origin/main'], check=True)
+                
+            logging.info("Code synchronized successfully via hard reset.")
             return True
         except subprocess.CalledProcessError as e:
-            logging.error(f"Failed to pull code: {e}")
+            logging.error(f"Failed to synchronize code: {e}")
     else:
         logging.info("Code is up to date or version info unavailable.")
     return False
