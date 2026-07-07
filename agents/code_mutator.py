@@ -249,77 +249,101 @@ def push_mutation_to_git(file_path: Path, issue_desc: str):
         msg = f"Auto-evolve: Mutated {file_path.name} to fix: {issue_desc}"
         subprocess.run(["git", "commit", "-m", msg], check=True, capture_output=True)
         
-        # Push to remote
-        subprocess.run(["git", "push"], check=True, capture_output=True)
-        logger.info("Automatic git push completed successfully!")
-    except Exception as e:
+        except Exception as e:
         logger.error(f"Failed to auto-push mutation to git: {e}")
 
 def run_evolution_cycle(target_file: str = "agents/turn_planner_sort.py"):
     """Orchestrates the entire code mutation and evolution cycle."""
     telemetry = analyze_recent_match_replay()
     if not telemetry["needs_fixing"]:
-        logger.info("Telemetry checks passed: No code evolution needed at this time.")
+        logger.info("Recent match telemetry shows optimal performance. Skipping evolution.")
         return
 
-    reason = telemetry["reason"]
-    logger.info(f"Evolution needed: {reason}")
     file_path = _PROJECT_ROOT / target_file
     if not file_path.exists():
-        logger.error(f"Target file {file_path} does not exist. Cannot mutate.")
+        logger.error(f"Target file {file_path} not found.")
         return
 
-    # Request mutated code
-    mutated_code = request_code_mutation_from_llm(file_path, telemetry["reason"])
-    if not mutated_code:
-        return
+    import hashlib
+    blacklist_path = _PROJECT_ROOT / "logs" / "blacklisted_mutations.json"
+    blacklist = []
+    if blacklist_path.exists():
+        try:
+            blacklist = json.loads(blacklist_path.read_text(encoding="utf-8"))
+        except:
+            pass
 
-    # Backup original code
+    feedback = telemetry["reason"]
     backup_path = file_path.with_suffix(".py.bak")
     shutil.copy2(file_path, backup_path)
     logger.info(f"Created backup of original file at {backup_path}")
 
-    try:
-        # Apply mutation
-        file_path.write_text(mutated_code, encoding="utf-8")
-        logger.info(f"Applied mutation to {file_path}")
+    success = False
+    for attempt in range(1, 4):
+        logger.info(f"Evolution attempt {attempt}/3 for {target_file}...")
+        mutated_code = request_code_mutation_from_llm(file_path, feedback)
+        if not mutated_code:
+            logger.error("Failed to fetch mutation from LLM.")
+            break
 
-        # Guardrail 1: Run pytest suite
-        logger.info("Running pytest guardrails...")
-        test_res = subprocess.run(["pytest"], capture_output=True, text=True)
-        if test_res.returncode != 0:
-            raise Exception(f"Pytest suite failed on mutation: {test_res.stdout[-1000:]}")
-        logger.info("Pytest guardrails passed successfully!")
+        code_hash = hashlib.md5(mutated_code.encode("utf-8")).hexdigest()
+        if code_hash in blacklist:
+            logger.warning(f"Generated mutation {code_hash} is blacklisted (failed previously). Retrying with penalty feedback...")
+            feedback = f"The code you just generated was already blacklisted because it failed unit tests. Try a completely different logic approach."
+            continue
 
-        # Guardrail 2: Match evaluation
-        score = run_evaluation_match()
-        if score < 0.5:
-            raise Exception(f"Evaluation failed or win-rate regressed: score={score}")
-        logger.info("Evaluation match passed! Mutation promoted.")
+        try:
+            # Apply mutation
+            file_path.write_text(mutated_code, encoding="utf-8")
+            logger.info(f"Applied mutation variant {code_hash}")
 
-        # Log successful evolution
-        evolution_entry = {
-            "timestamp": "now",
-            "file": target_file,
-            "issues_fixed": telemetry["reason"],
-            "status": "PROMOTED"
-        }
-        logs = []
-        if _EVOLUTION_LOG.exists():
-            try: logs = json.loads(_EVOLUTION_LOG.read_text(encoding="utf-8"))
-            except: pass
-        logs.append(evolution_entry)
-        _EVOLUTION_LOG.write_text(json.dumps(logs, indent=2), encoding="utf-8")
+            # Guardrail 1: Run pytest
+            logger.info("Running pytest guardrails...")
+            test_res = subprocess.run(["pytest"], capture_output=True, text=True)
+            if test_res.returncode != 0:
+                raise Exception(f"Pytest suite failed: {test_res.stdout[-400:]}")
+            logger.info("Pytest guardrails passed!")
 
-        # Clean up backup
-        backup_path.unlink()
+            # Guardrail 2: Match evaluation
+            score = run_evaluation_match()
+            if score < 0.5:
+                raise Exception(f"Evaluation win rate regressed: score={score}")
+            logger.info("Evaluation match passed! Mutation promoted.")
 
-        # Push to Git
-        push_mutation_to_git(file_path, telemetry["reason"])
+            # Log successful evolution
+            evolution_entry = {
+                "timestamp": "now",
+                "file": target_file,
+                "issues_fixed": telemetry["reason"],
+                "status": "PROMOTED",
+                "hash": code_hash
+            }
+            logs = []
+            if _EVOLUTION_LOG.exists():
+                try:
+                    logs = json.loads(_EVOLUTION_LOG.read_text(encoding="utf-8"))
+                except:
+                    pass
+            logs.append(evolution_entry)
+            _EVOLUTION_LOG.write_text(json.dumps(logs, indent=2), encoding="utf-8")
 
-    except Exception as e:
-        logger.error(f"Code evolution rejected due to failed guardrails: {e}")
-        logger.info(f"Restoring original code from {backup_path}")
+            # Clean up backup and commit
+            backup_path.unlink()
+            push_mutation_to_git(file_path, telemetry["reason"])
+            success = True
+            break
+
+        except Exception as e:
+            logger.warning(f"Attempt {attempt} failed: {e}. Blacklisting hash and retrying...")
+            blacklist.append(code_hash)
+            try:
+                blacklist_path.write_text(json.dumps(blacklist, indent=2), encoding="utf-8")
+            except:
+                pass
+            feedback = f"Your previous code modification failed with error: {str(e)}. Please fix this error and try a different logic."
+
+    if not success:
+        logger.error(f"All 3 evolution attempts failed. Restoring stable baseline from {backup_path}")
         shutil.move(backup_path, file_path)
 
 if __name__ == "__main__":
