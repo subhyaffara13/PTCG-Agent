@@ -2126,12 +2126,17 @@
       "player": "Abhyuday",
       "avg_setup_duration": 60.2,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "\ubc15\uac15\ucc2c",
+      "avg_setup_duration": 64.8,
+      "avg_bench_density": 4.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 9.0
   },
   "setup_profiles": [
     {
@@ -2148,6 +2153,11 @@
       "player": "Abhyuday",
       "avg_setup_duration": 60.2,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "\ubc15\uac15\ucc2c",
+      "avg_setup_duration": 64.8,
+      "avg_bench_density": 4.1
     }
   ]
 }
