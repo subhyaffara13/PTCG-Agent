@@ -177,9 +177,25 @@ def make_smart_choice(select: dict, observation: dict, fallback_action: list[int
                                     attached_count = len(attached) if isinstance(attached, list) else 0
                                     required = getattr(card, "energy_cost", 0)
                                     if attached_count < required:
-                                        boost = 10.0 * (required - attached_count)
-                                        if area == 4:
-                                            boost += 5.0
+                                        # Avoid attaching energy to low-HP or non-attacking support/setup Pokemon
+                                        target_name = ""
+                                        target_id = instance.get("id") if isinstance(instance, dict) else getattr(instance, "id", None)
+                                        if target_id is not None and registry:
+                                            target_card = registry.get_full_skill(target_id)
+                                            if target_card:
+                                                target_name = getattr(target_card, "card_name", "").lower()
+                                        
+                                        is_passive_support = any(s in target_name for s in {"dunsparce", "bidoof", "snom", "remoraid", "jirachi", "manaphy"})
+                                        target_hp = instance.get("hp", 100) if isinstance(instance, dict) else getattr(instance, "hp", 100)
+                                        target_max_hp = instance.get("maxHp", 100) if isinstance(instance, dict) else getattr(instance, "maxHp", 100)
+                                        is_low_hp = target_hp <= 40 and target_max_hp <= 130
+                                        
+                                        if is_passive_support or is_low_hp:
+                                            boost = -15.0
+                                        else:
+                                            boost = 10.0 * (required - attached_count)
+                                            if area == 4:
+                                                boost += 5.0
                                         score += boost
                     except Exception:
                         pass
@@ -251,10 +267,45 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
         # Parse legal candidates from options using their exact index in the array
         game_state["legal_attacks"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 13]
         game_state["legal_attachments"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 9]
-        game_state["legal_bench"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 8]
-        game_state["legal_evolutions"] = [] # Handled by bench type 8 in CABT
+        
+        # Load registry for evolution checking
+        global _registry
+        try:
+            if _registry is None:
+                from cb_agents.card_registry import CardRegistry
+                _registry = CardRegistry(skills_dir=str(orchestrator.skills_dir))
+            registry = _registry
+        except Exception:
+            registry = None
+
+        legal_bench = []
+        legal_evolutions = []
+        my_hand = game_state.get("my_hand", [])
+        for i, opt in enumerate(options):
+            if opt.get("type") == 8:
+                is_evo = False
+                hand_idx = opt.get("index")
+                if hand_idx is not None and 0 <= hand_idx < len(my_hand):
+                    card_id = my_hand[hand_idx]
+                    if registry and card_id:
+                        try:
+                            card = registry.get_full_skill(card_id)
+                            if card:
+                                from cb_agents.card_types import CardStage
+                                if card.stage in (CardStage.STAGE1, CardStage.STAGE2) or card.previous_stage:
+                                    is_evo = True
+                        except Exception:
+                            pass
+                if is_evo:
+                    legal_evolutions.append(str(i))
+                else:
+                    legal_bench.append(str(i))
+
+        game_state["legal_bench"] = legal_bench
+        game_state["legal_evolutions"] = legal_evolutions
         game_state["legal_trainers"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 7]
         game_state["legal_retreats"] = [str(i) for i, opt in enumerate(options) if opt.get("type") in (10, 12)]
+        game_state["legal_abilities"] = [str(i) for i, opt in enumerate(options) if opt.get("type") in (11, 15)]
         
         sel_type = select.get("type")
         sel_ctx = select.get("context")

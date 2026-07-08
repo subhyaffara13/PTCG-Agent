@@ -15,7 +15,11 @@ def get_local_version():
 
 def sync_code(master_version) -> bool:
     local_version = get_local_version()
-    if local_version and master_version and local_version != master_version:
+    if not local_version or not master_version:
+        logging.info("Version info unavailable. Skipping code sync.")
+        return False
+
+    if local_version != master_version:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
             # Fetch all updates from origin
@@ -53,7 +57,7 @@ def sync_code(master_version) -> bool:
         except subprocess.CalledProcessError as e:
             logging.error(f"Failed to synchronize code: {e}")
     else:
-        logging.info("Code is up to date or version info unavailable.")
+        logging.info(f"Code is already up to date at version: {local_version}")
     return False
 
 def restart_process():

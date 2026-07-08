@@ -48,13 +48,17 @@ def _check_lethal_and_update(game_state: dict) -> None:
     registry = CardRegistry()
     legal_attacks = game_state.get("legal_attacks", [])
     max_damage = 0
-    for att in legal_attacks:
-        try:
-            card = registry.get_full_skill(att)
-            if card and card.damage_output > max_damage:
-                max_damage = card.damage_output
-        except:
-            pass
+    if legal_attacks:
+        my_active = game_state.get("my_active_pokemon")
+        if my_active:
+            my_active_id = my_active.get("id") if isinstance(my_active, dict) else my_active
+            if my_active_id is not None:
+                try:
+                    card = registry.get_full_skill(my_active_id)
+                    if card:
+                        max_damage = card.damage_output
+                except:
+                    pass
 
     lethal = pipeline.check_lethal(
         my_damage=max_damage,

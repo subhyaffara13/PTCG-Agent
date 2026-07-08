@@ -27,7 +27,7 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
             if my_type and opp_weak and my_type.lower() == opp_weak.lower():
                 v += 0.4
     elif action.startswith("evolve:"):
-        v += 0.3
+        v += 0.5
     elif action.startswith("attach_energy:"):
         v += 0.2
         if isinstance(ac, dict):
@@ -45,8 +45,10 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     elif action.startswith("bench:"):
         if not bn: v += 0.8
         else:
-            v += 0.15
             bs = len(bn)
+            if bs < 3: v += 0.35
+            elif bs < 4: v += 0.25
+            else: v += 0.15
             pr = gs.get("priority_profile", "aggro_push")
             tol = {"aggro_push": 0.15, "closing": 0.10, "disruption": -0.05, "setup": 0.15, "stall": -0.15}.get(pr, 0.0)
             if bs >= 4 and tol < 0: v += tol * bs * 0.3

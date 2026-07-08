@@ -32,13 +32,13 @@ def get_mapped_indices(action_label: str, options: list, game_state: dict = None
         return [tgt_slot if tgt_slot < len(options) else 0]
 
     # Try to map target (card ID) to an option using the hand index
-    if action_label.startswith("attach_energy:") or action_label.startswith("bench:") or action_label.startswith("play_trainer:"):
+    if action_label.startswith("attach_energy:") or action_label.startswith("bench:") or action_label.startswith("play_trainer:") or action_label.startswith("evolve:"):
         card_target = target.split(":")[0] if target else ""
         if card_target:
             target_str = str(card_target)
             for i, opt in enumerate(options):
                 opt_type = opt.get("type")
-                if opt_type in (7, 8):  # Play Card (includes energy/trainers) or Bench
+                if opt_type in (7, 8, 9):  # Play Card, Bench/Evolve, or Attach Energy
                     hand_idx = opt.get("index", -1)
                     if 0 <= hand_idx < len(my_hand):
                         card_id = str(my_hand[hand_idx])
@@ -46,20 +46,22 @@ def get_mapped_indices(action_label: str, options: list, game_state: dict = None
                             return [i]
     if target.isdigit():
         idx = int(target)
-        if 0 <= idx < len(options) and not any(o.get("type") in (7,8) for o in options):
+        if 0 <= idx < len(options) and not any(o.get("type") in (7,8,9) for o in options):
             return [idx]
             
     mapped_indices = []
     if action_label.startswith("attack:"):
         mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") in (12, 13)]
     elif action_label.startswith("attach_energy:"):
-        mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") == 7]
+        mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") in (7, 9)]
     elif action_label.startswith("bench:") or action_label.startswith("evolve:"):
         mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") == 8]
     elif action_label.startswith("play_trainer:"):
         mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") == 7]
     elif action_label.startswith("retreat:"):
         mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") in (10, 12)]
+    elif action_label.startswith("ability:"):
+        mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") in (11, 15)]
         
     if not mapped_indices:
         mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") == 14]

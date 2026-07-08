@@ -451,9 +451,25 @@ def make_smart_choice(select, observation, fallback_action):
                                 attached_count = len(attached) if isinstance(attached, list) else 0
                                 required = getattr(card, "energy_cost", 0)
                                 if attached_count < required:
-                                    boost = 10.0 * (required - attached_count)
-                                    if area == 4:
-                                        boost += 5.0
+                                    # Avoid attaching energy to low-HP or non-attacking support/setup Pokemon
+                                    target_name = ""
+                                    target_id = get_val(instance, "id")
+                                    if target_id is not None and registry:
+                                        target_card = registry.get_full_skill(target_id)
+                                        if target_card:
+                                            target_name = getattr(target_card, "card_name", "").lower()
+                                    
+                                    is_passive_support = any(s in target_name for s in {"dunsparce", "bidoof", "snom", "remoraid", "jirachi", "manaphy"})
+                                    target_hp = get_val(instance, "hp", 100)
+                                    target_max_hp = get_val(instance, "maxHp", 100)
+                                    is_low_hp = target_hp <= 40 and target_max_hp <= 130
+                                    
+                                    if is_passive_support or is_low_hp:
+                                        boost = -15.0
+                                    else:
+                                        boost = 10.0 * (required - attached_count)
+                                        if area == 4:
+                                            boost += 5.0
                                     score += boost
                     except Exception:
                         pass
@@ -598,11 +614,34 @@ def agent(observation, configuration=None):
         }
 
         # Parse legal candidates from options
-        game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 13]
-        game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 9]
-        game_state["legal_bench"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 8]
-        game_state["legal_evolutions"] = []
-        game_state["legal_trainers"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") == 7]
+        game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (13, "Attack", "attack")]
+        game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy")]
+        
+        legal_bench = []
+        legal_evolutions = []
+        for opt in options:
+            if get_val(opt, "type") in (8, "Play", "play"):
+                name = get_val(opt, "name", "")
+                is_evo = False
+                if _registry is not None and name:
+                    try:
+                        card = _registry.get_full_skill(name)
+                        if card:
+                            from cb_agents.card_types import CardStage
+                            if card.stage in (CardStage.STAGE1, CardStage.STAGE2) or card.previous_stage:
+                                is_evo = True
+                    except Exception:
+                        pass
+                if is_evo:
+                    legal_evolutions.append(name)
+                else:
+                    legal_bench.append(name)
+                    
+        game_state["legal_bench"] = legal_bench
+        game_state["legal_evolutions"] = legal_evolutions
+        game_state["legal_trainers"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (7, "Play", "play")]
+        game_state["legal_retreats"] = ["retreat"] if any(get_val(opt, "type") in (10, 12, "Retreat", "retreat") for opt in options) else []
+        game_state["legal_abilities"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (11, 15, "Ability", "ability")]
 
         # Parse detailed active HP if present
         my_active = get_val(my_state, "active")
@@ -631,29 +670,34 @@ def agent(observation, configuration=None):
             # Map orchestrator's prefix action labels to actual select options
             mapped_indices = []
             if action_label.startswith("attack:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 13]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (13, "Attack", "attack")]
             elif action_label.startswith("attach_energy:"):
                 parts = action_label.split(":")
                 energy_name = parts[1] if len(parts) > 1 else ""
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 9 and str(get_val(opt, "name", "")).lower() == energy_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy") and str(get_val(opt, "name", "")).lower() == energy_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 9]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy")]
             elif action_label.startswith("bench:") or action_label.startswith("evolve:"):
                 poke_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8 and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, "Play", "play") and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, "Play", "play")]
             elif action_label.startswith("play_trainer:"):
                 trainer_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7 and str(get_val(opt, "name", "")).lower() == trainer_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, "Play", "play") and str(get_val(opt, "name", "")).lower() == trainer_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, "Play", "play")]
             elif action_label.startswith("retreat:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 10]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (10, 12, "Retreat", "retreat")]
+            elif action_label.startswith("ability:"):
+                ability_name = action_label.split(":", 1)[1]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (11, 15, "Ability", "ability") and str(get_val(opt, "name", "")).lower() == ability_name.lower()]
+                if not mapped_indices:
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (11, 15, "Ability", "ability")]
 
             # If no matches, or action is PASS, look for pass/done (Type 14)
             if not mapped_indices or action_label == "pass":
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 14]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (14, "End", "pass")]
 
             # If still nothing, fallback to first index
             if not mapped_indices:
