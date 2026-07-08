@@ -1,5 +1,5 @@
 """
-agents/registry.py
+cb_agents/registry.py
 
 Decorator-based agent registration system.
 Each sub-agent class decorates itself with @register_agent to declare its

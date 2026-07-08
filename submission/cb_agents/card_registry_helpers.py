@@ -1,5 +1,5 @@
 """
-agents/card_registry_helpers.py
+cb_agents/card_registry_helpers.py
 
 Helper loading logic for CardRegistry.
 """

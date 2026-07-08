@@ -1,5 +1,5 @@
 """
-agents/value_network_helpers.py
+cb_agents/value_network_helpers.py
 Defines the PyTorch MLP Value Network architecture for CPU-only training/evals.
 Falls back to a pure-NumPy forward pass on Kaggle to avoid importing PyTorch.
 """

@@ -15,6 +15,7 @@ def load_dos(dos_file: Path) -> Dict[str, Any]:
     return {
         "deck_dos": [],
         "behavior_dos": [],
+        "setup_profiles": [],
         "deck_stats": {}
     }
 

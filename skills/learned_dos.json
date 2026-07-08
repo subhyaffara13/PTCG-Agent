@@ -1014,6 +1014,16 @@
       "card_id": 1202,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1203,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1208,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -2101,11 +2111,23 @@
       "player": "\u4e8e\u7b11\u975elilishyxf",
       "avg_setup_duration": 18.2,
       "avg_bench_density": 2.6
+    },
+    {
+      "player": "Topdecking is All You Need",
+      "avg_setup_duration": 58.4,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 13.0
-  }
+    "avg_pokemon_count": 24.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 8.0
+  },
+  "setup_profiles": [
+    {
+      "player": "Topdecking is All You Need",
+      "avg_setup_duration": 58.4,
+      "avg_bench_density": 4.0
+    }
+  ]
 }

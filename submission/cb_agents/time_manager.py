@@ -1,5 +1,5 @@
 """
-agents/time_manager.py
+cb_agents/time_manager.py
 ----------------------
 Monitors elapsed game time and enforces strict timeout-avoidance policy.
 

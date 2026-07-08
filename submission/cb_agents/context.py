@@ -1,5 +1,5 @@
 """
-agents/context.py
+cb_agents/context.py
 
 Provides SharedContext, a singleton cache manager for configuration files
 (priority_rules.json, strategy_profiles.json, card_scoring.json) to eliminate

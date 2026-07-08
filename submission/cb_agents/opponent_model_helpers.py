@@ -1,5 +1,5 @@
 """
-agents/opponent_model_helpers.py
+cb_agents/opponent_model_helpers.py
 
 Helper logic for OpponentModel: archetype classification and action predictions.
 """

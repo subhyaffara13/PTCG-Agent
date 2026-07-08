@@ -1,5 +1,5 @@
 """
-agents/log_flusher.py
+cb_agents/log_flusher.py
 
 Shared utility for flushing in-memory reasoning log buffers to JSON files.
 Handles reading existing logs, merging, and writing back atomically.

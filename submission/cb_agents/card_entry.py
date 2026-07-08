@@ -1,5 +1,5 @@
 """
-agents/card_entry.py
+cb_agents/card_entry.py
 
 Defines the CardEntry dataclass used for representing card metadata and scoring data.
 """

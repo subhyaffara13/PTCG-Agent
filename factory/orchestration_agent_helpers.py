@@ -71,12 +71,13 @@ def auto_submit_if_ready():
 
     if today_subs >= 5:
         return
-    if is_new_best and elapsed_hours >= 1.0:
-        reason = f"Breakthrough! {last_submitted:.2f} -> {current_best:.2f}"
-    elif elapsed_hours >= 4.5:
-        reason = f"Spacing: {elapsed_hours:.1f}h elapsed"
-    else:
+    if elapsed_hours < 4.5:
+        logger.info(f"Skipping auto-submit: only {elapsed_hours:.2f}h elapsed (requires 4.5h spacing).")
         return
+    if is_new_best:
+        reason = f"Breakthrough! {last_submitted:.2f} -> {current_best:.2f}"
+    else:
+        reason = f"Spacing: {elapsed_hours:.1f}h elapsed"
 
     logger.info(f"TRIGGERING SUBMISSION: {reason}")
     try:

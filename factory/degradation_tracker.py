@@ -31,7 +31,7 @@ class DegradationTracker:
         if self.learned_dos_file.exists():
             try: return json.loads(self.learned_dos_file.read_text(encoding="utf-8"))
             except json.JSONDecodeError: pass
-        return {"deck_dos": [], "behavior_dos": []}
+        return {"deck_dos": [], "behavior_dos": [], "setup_profiles": []}
 
     def _save_dos(self):
         try: self.learned_dos_file.write_text(json.dumps(self.learned_dos, indent=2), encoding="utf-8")

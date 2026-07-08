@@ -1,5 +1,5 @@
 """
-agents/strategy_helpers.py
+cb_agents/strategy_helpers.py
 
 Helper logic for StrategyAgent: trigger evaluation and strategy selection rules.
 """

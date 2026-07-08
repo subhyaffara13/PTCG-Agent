@@ -1,5 +1,5 @@
 """
-agents/lethal_detector.py
+cb_agents/lethal_detector.py
 Handles opponent damage threat scans and retreat scoring.
 """
 import logging

@@ -1,5 +1,5 @@
 """
-agents/belief_state.py
+cb_agents/belief_state.py
 
 Defines the BeliefState class for probabilistic tracking of opponent's hidden zones.
 """

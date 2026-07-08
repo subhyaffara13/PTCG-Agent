@@ -1,5 +1,5 @@
 """
-agents/preference_maps.py
+cb_agents/preference_maps.py
 Contains static energy card preference mappings for optimal Pokemon attachments.
 """
 

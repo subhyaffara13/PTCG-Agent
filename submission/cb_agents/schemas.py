@@ -1,5 +1,5 @@
 """
-agents/schemas.py
+cb_agents/schemas.py
 Centralized dataclass definitions for game state and board summaries.
 Replaces dict.get() boilerplate across worker files.
 """

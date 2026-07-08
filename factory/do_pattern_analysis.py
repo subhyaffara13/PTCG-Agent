@@ -51,7 +51,17 @@ def _process_replay_steps(steps, player_idx, card_counter, setup_durations, benc
             if obs and "players" in obs:
                 bench_sizes.append(len(obs["players"][player_idx].get("bench", [])))
             act = step[player_idx].get("action", [])
-            if act and isinstance(act, list) and len(act) > 0 and act[0] == 2 and setup_dur == len(steps):
+            obs_dict = step[player_idx].get("observation", {}) or {}
+            select = obs_dict.get("select") or {}
+            options = select.get("option", [])
+            is_attack = False
+            if act and isinstance(act, list) and len(act) > 0:
+                opt_idx = act[0]
+                if isinstance(opt_idx, int) and 0 <= opt_idx < len(options):
+                    chosen_opt = options[opt_idx]
+                    if chosen_opt and isinstance(chosen_opt, dict) and chosen_opt.get("type") == 13:
+                        is_attack = True
+            if is_attack and setup_dur == len(steps):
                 setup_dur = turn_idx
     setup_durations.append(setup_dur)
     if bench_sizes: bench_densities.append(sum(bench_sizes) / len(bench_sizes))
@@ -87,7 +97,8 @@ def run_winning_analysis(replay_paths: List[Path], player_name_or_id: str, extra
     if setup_durs:
         behavior_do = {"player": str(player_name_or_id), "avg_setup_duration": round(sum(setup_durs)/len(setup_durs), 1),
                        "avg_bench_density": round(sum(bench_dens)/len(bench_dens) if bench_dens else 0.0, 1)}
-        extractor.learned_dos["behavior_dos"] = [b for b in extractor.learned_dos["behavior_dos"] if b["player"] != str(player_name_or_id)] + [behavior_do]
+        extractor.learned_dos["behavior_dos"] = [b for b in extractor.learned_dos.get("behavior_dos", []) if b.get("player") != str(player_name_or_id)] + [behavior_do]
+        extractor.learned_dos["setup_profiles"] = [b for b in extractor.learned_dos.get("setup_profiles", []) if b.get("player") != str(player_name_or_id)] + [behavior_do]
 
     if p_counts:
         extractor.learned_dos["deck_stats"] = {"avg_pokemon_count": round(sum(p_counts)/len(p_counts), 1),

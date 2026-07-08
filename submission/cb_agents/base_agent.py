@@ -1,5 +1,5 @@
 """
-agents/base_agent.py
+cb_agents/base_agent.py
 
 Defines the BaseAgent class that all Player and Opponent modeling agents inherit from.
 This ensures a unified interface structure across the entire codebase.

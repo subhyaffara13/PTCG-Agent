@@ -1,5 +1,5 @@
 """
-agents/belief_helpers.py
+cb_agents/belief_helpers.py
 
 Helper functions for belief tracking: hypergeometric probabilities and state determinization.
 """
