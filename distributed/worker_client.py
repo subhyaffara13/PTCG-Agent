@@ -212,6 +212,12 @@ class WorkerClient:
                                     # Shutdown execution pool before restart to prevent leaks
                                     if hasattr(self.runner, '_executor') and self.runner._executor:
                                         self.runner._executor.shutdown(wait=False, cancel_futures=True)
+                                        try:
+                                            from factory.game_runner import GameRunner
+                                            GameRunner._executor = None
+                                        except Exception:
+                                            pass
+                                        self.runner._executor = None
                                     if sync_code(order.code_version):
                                         logger.info("Sync complete. Hot-restarting worker process...")
                                         restart_process()
@@ -289,6 +295,12 @@ class WorkerClient:
             logger.info("Worker shutdown: cleaning up ProcessPoolExecutor child processes...")
             if hasattr(self.runner, '_executor') and self.runner._executor:
                 self.runner._executor.shutdown(wait=False, cancel_futures=True)
+                try:
+                    from factory.game_runner import GameRunner
+                    GameRunner._executor = None
+                except Exception:
+                    pass
+                self.runner._executor = None
             logger.info("Worker client resources cleanly closed.")
 
 if __name__ == "__main__":

@@ -117,10 +117,22 @@ class GameRunner(BaseAgent):
             executor = GameRunner._executor
         assert executor is not None
 
-        futures = [
-            executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed)
-            for label, deck_a, deck_b, use_a, use_b, seed in games_config
-        ]
+        try:
+            futures = [
+                executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed)
+                for label, deck_a, deck_b, use_a, use_b, seed in games_config
+            ]
+        except RuntimeError as re:
+            if "after shutdown" in str(re):
+                logger.warning("GameRunner executor was previously shut down. Re-initializing new ProcessPoolExecutor...")
+                GameRunner._executor = ProcessPoolExecutor(max_workers=os.cpu_count() or 16)
+                executor = GameRunner._executor
+                futures = [
+                    executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed)
+                    for label, deck_a, deck_b, use_a, use_b, seed in games_config
+                ]
+            else:
+                raise
         for future in futures:
             try:
                 res = future.result()

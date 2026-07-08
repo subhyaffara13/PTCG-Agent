@@ -2116,18 +2116,28 @@
       "player": "Topdecking is All You Need",
       "avg_setup_duration": 58.4,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "mimi",
+      "avg_setup_duration": 46.0,
+      "avg_bench_density": 1.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 24.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   },
   "setup_profiles": [
     {
       "player": "Topdecking is All You Need",
       "avg_setup_duration": 58.4,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "mimi",
+      "avg_setup_duration": 46.0,
+      "avg_bench_density": 1.7
     }
   ]
 }

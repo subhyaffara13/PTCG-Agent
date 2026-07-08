@@ -10,6 +10,7 @@ from factory.teams.leaderboard_helper import (
     save_processed_players,
     log_to_decisions,
     process_team_episodes,
+    process_our_own_submissions,
 )
 
 logger = logging.getLogger("LeaderboardTeam")
@@ -57,32 +58,43 @@ class LeaderboardTeam:
                 logger.info(f"New top player identified: {team_name} (ID: {team_id})")
                 new_entries.append((team_id, team_name))
 
-        if not new_entries:
-            logger.info("No new players emerged in the top 10.")
-            return results
+        if new_entries:
+            for team_id, team_name in new_entries:
+                try:
+                    logger.info(f"Processing matches for {team_name} (ID: {team_id})...")
+                    wins, losses, sub_id = process_team_episodes(
+                        api, team_id, team_name, self.scraper, self.do_extractor, self.anti_extractor
+                    )
+                    if sub_id is None:
+                        continue
 
-        for team_id, team_name in new_entries:
-            try:
-                logger.info(f"Processing matches for {team_name} (ID: {team_id})...")
-                wins, losses, sub_id = process_team_episodes(
-                    api, team_id, team_name, self.scraper, self.do_extractor, self.anti_extractor
-                )
-                if sub_id is None:
-                    continue
+                    results["downloaded_wins"] += wins
+                    results["downloaded_losses"] += losses
+                    results["new_players_found"].append(team_name)
 
-                results["downloaded_wins"] += wins
-                results["downloaded_losses"] += losses
-                results["new_players_found"].append(team_name)
+                    self.processed_players[team_id] = {
+                        "team_name": team_name,
+                        "submission_id": sub_id,
+                        "wins_analyzed": wins,
+                        "losses_analyzed": losses,
+                    }
+                    save_processed_players(self.processed_file, self.processed_players)
+                    log_to_decisions(self.decisions_file, team_name, team_id, wins, losses)
+                except Exception as e:
+                    logger.error(f"Error processing team {team_name} (ID: {team_id}): {e}")
+        else:
+            logger.info("No new players emerged in the top 50.")
 
-                self.processed_players[team_id] = {
-                    "team_name": team_name,
-                    "submission_id": sub_id,
-                    "wins_analyzed": wins,
-                    "losses_analyzed": losses,
-                }
-                save_processed_players(self.processed_file, self.processed_players)
-                log_to_decisions(self.decisions_file, team_name, team_id, wins, losses)
-            except Exception as e:
-                logger.error(f"Error processing team {team_name} (ID: {team_id}): {e}")
+        # Also process our own submissions to learn from our own wins and losses on the ladder
+        try:
+            logger.info("Leaderboard Team processing our own submissions...")
+            our_wins, our_losses = process_our_own_submissions(
+                api, self.scraper, self.do_extractor, self.anti_extractor, competition_id
+            )
+            results["downloaded_wins"] += our_wins
+            results["downloaded_losses"] += our_losses
+            logger.info(f"Leaderboard Team successfully processed our own games: {our_wins} wins, {our_losses} losses analyzed.")
+        except Exception as e:
+            logger.error(f"Failed to process our own games in feedback loop: {e}")
 
         return results
