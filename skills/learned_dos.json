@@ -2141,12 +2141,17 @@
       "player": "hamuhei",
       "avg_setup_duration": 38.8,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "Yudai Ueno",
+      "avg_setup_duration": 73.4,
+      "avg_bench_density": 4.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 23.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   },
   "setup_profiles": [
     {
@@ -2178,6 +2183,11 @@
       "player": "hamuhei",
       "avg_setup_duration": 38.8,
       "avg_bench_density": 4.0
+    },
+    {
+      "player": "Yudai Ueno",
+      "avg_setup_duration": 73.4,
+      "avg_bench_density": 4.1
     }
   ]
 }
