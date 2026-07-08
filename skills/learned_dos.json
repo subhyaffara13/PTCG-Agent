@@ -1009,6 +1009,11 @@
       "card_id": 1253,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1202,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -2071,11 +2076,16 @@
       "player": "niyo",
       "avg_setup_duration": 31.4,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "Sota Uchiyama",
+      "avg_setup_duration": 18.6,
+      "avg_bench_density": 3.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
+    "avg_pokemon_count": 18.0,
     "avg_trainer_count": 32.0,
-    "avg_energy_count": 13.0
+    "avg_energy_count": 10.0
   }
 }
