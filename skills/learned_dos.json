@@ -2066,11 +2066,16 @@
       "player": "Bozo Boys",
       "avg_setup_duration": 29.6,
       "avg_bench_density": 3.2
+    },
+    {
+      "player": "niyo",
+      "avg_setup_duration": 31.4,
+      "avg_bench_density": 2.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 15.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 13.0
   }
 }
