@@ -10,6 +10,37 @@ void CardRegistry::loadFromFiles(const std::string& skillsDir) {
     clear();
     loadMetadata(skillsDir + "/card_metadata.json");
     loadScoring(skillsDir + "/card_scoring.json");
+    
+    std::ifstream csvFile(skillsDir + "/card_pool_raw.csv");
+    if (csvFile.is_open()) {
+        std::string csvLine;
+        std::getline(csvFile, csvLine); // Skip header
+        while (std::getline(csvFile, csvLine)) {
+            std::vector<std::string> fields;
+            std::string currentField = "";
+            bool inQuotes = false;
+            for (size_t i = 0; i < csvLine.size(); ++i) {
+                char c = csvLine[i];
+                if (c == '"') {
+                    inQuotes = !inQuotes;
+                } else if (c == ',' && !inQuotes) {
+                    fields.push_back(currentField);
+                    currentField = "";
+                } else {
+                    currentField += c;
+                }
+            }
+            fields.push_back(currentField);
+            
+            if (fields.size() > 15) {
+                std::string moveName = lowercase(fields[13]);
+                std::string damageStr = fields[15];
+                if (!moveName.empty() && moveName != "n/a") {
+                    moveDamage[moveName] = damageStr;
+                }
+            }
+        }
+    }
 }
 
 void CardRegistry::addCard(const Card& card) {
@@ -330,12 +361,32 @@ void apply_action(BoardState& state, const std::string& action) {
     }
     else if (act_type == "attack") {
         int actual_damage = 0;
-        auto active_card = CardRegistry::getInstance().getCard(state.me.active.id);
-        if (active_card) {
-            actual_damage = active_card->damage_output;
-        }
-        if (actual_damage <= 0) {
-            actual_damage = 100;
+        std::string move_name = target;
+        std::string dmg_str = CardRegistry::getInstance().getMoveDamage(move_name);
+        
+        if (!dmg_str.empty()) {
+            std::string lower_dmg = dmg_str;
+            std::transform(lower_dmg.begin(), lower_dmg.end(), lower_dmg.begin(), ::tolower);
+            if (lower_dmg.find('x') != std::string::npos || lower_dmg.find("×") != std::string::npos || lower_dmg.find('?') != std::string::npos) {
+                actual_damage = 0;
+            } else {
+                if (!lower_dmg.empty() && lower_dmg.back() == '+') {
+                    lower_dmg.pop_back();
+                }
+                std::string clean_dmg = "";
+                for (char c : lower_dmg) {
+                    if (std::isdigit(c)) clean_dmg += c;
+                }
+                actual_damage = clean_dmg.empty() ? 0 : std::stoi(clean_dmg);
+            }
+        } else {
+            auto active_card = CardRegistry::getInstance().getCard(state.me.active.id);
+            if (active_card) {
+                actual_damage = active_card->damage_output;
+            }
+            if (actual_damage <= 0) {
+                actual_damage = 100;
+            }
         }
         
         state.opponent.active.hp = std::max(0, state.opponent.active.hp - actual_damage);
