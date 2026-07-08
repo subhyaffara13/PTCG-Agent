@@ -2131,6 +2131,16 @@
       "player": "\ubc15\uac15\ucc2c",
       "avg_setup_duration": 64.8,
       "avg_bench_density": 4.1
+    },
+    {
+      "player": "hodumi",
+      "avg_setup_duration": 48.4,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "hamuhei",
+      "avg_setup_duration": 38.8,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
@@ -2158,6 +2168,16 @@
       "player": "\ubc15\uac15\ucc2c",
       "avg_setup_duration": 64.8,
       "avg_bench_density": 4.1
+    },
+    {
+      "player": "hodumi",
+      "avg_setup_duration": 48.4,
+      "avg_bench_density": 4.2
+    },
+    {
+      "player": "hamuhei",
+      "avg_setup_duration": 38.8,
+      "avg_bench_density": 4.0
     }
   ]
 }
