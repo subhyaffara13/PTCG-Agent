@@ -2086,11 +2086,21 @@
       "player": "Michael Long",
       "avg_setup_duration": 24.0,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "wkonishi",
+      "avg_setup_duration": 11.8,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "senkin13",
+      "avg_setup_duration": 15.2,
+      "avg_bench_density": 2.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 34.0,
+    "avg_pokemon_count": 12.0,
+    "avg_trainer_count": 41.0,
     "avg_energy_count": 7.0
   }
 }
