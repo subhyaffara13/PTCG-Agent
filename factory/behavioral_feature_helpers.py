@@ -47,22 +47,29 @@ def compute_from_steps(steps: List[Dict], player_idx: int) -> BehavioralVector:
             bench = p_data.get("bench", [])
             bench_counts.append(len(bench))
             
-            # Setup duration: first time an attack action is taken
-            action = player_state.get("action", "")
-            if action and "attack" in action.lower() and setup_duration == turns:
-                setup_duration = i
-                
+            # Setup duration and energy/trainer play tracking by parsing options at index
+            action_indices = player_state.get("action")
+            if isinstance(action_indices, list) and action_indices:
+                chosen_idx = action_indices[0]
+                select = obs_dict.get("select") or {}
+                options = select.get("option", [])
+                if isinstance(options, list) and 0 <= chosen_idx < len(options):
+                    chosen_option = options[chosen_idx]
+                    opt_type = chosen_option.get("type")
+                    if opt_type == 13: # Attack
+                        if setup_duration == turns:
+                            setup_duration = i
+                    elif opt_type == 9: # Energy attachment
+                        total_energy_attached += 1
+                    elif opt_type == 7: # Trainer play
+                        total_trainer_plays += 1
+                        opt_name = str(chosen_option.get("name", "")).lower()
+                        if any(k in opt_name for k in ["judge", "marnie", "red card", "hand disruption", "disrupt"]):
+                            disruptive_plays += 1
+                            
             # Hand consistency (we'll just use hand size as a proxy if scores aren't in steps)
             hand_size = len(p_data.get("hand", []))
             hand_scores.append(hand_size / 7.0)  # rough normalization
-            
-            # Energy/Trainer plays require parsing the action history more deeply
-            if action and "attach" in action.lower():
-                total_energy_attached += 1
-            if action and "trainer" in action.lower():
-                total_trainer_plays += 1
-                if "disrupt" in action.lower():
-                    disruptive_plays += 1
                     
         except Exception:
             pass
