@@ -28,6 +28,32 @@ class CardRegistry:
         self.evolution_predecessors: Dict[str, str] = {}
         load_metadata_helper(self.skills_dir, self.cards, self.evolution_predecessors)
         
+        self.move_damage = {}
+        import csv
+        try:
+            pool_path = self.skills_dir / "card_pool_raw.csv"
+            if pool_path.exists():
+                with open(pool_path, "r", encoding="utf-8") as f:
+                    reader = csv.reader(f)
+                    header = next(reader, None)
+                    if header:
+                        move_idx = -1
+                        dmg_idx = -1
+                        for idx, col in enumerate(header):
+                            if "Move Name" in col:
+                                move_idx = idx
+                            elif "Damage" in col:
+                                dmg_idx = idx
+                        if move_idx != -1 and dmg_idx != -1:
+                            for row in reader:
+                                if len(row) > max(move_idx, dmg_idx):
+                                    move = row[move_idx].strip()
+                                    dmg = row[dmg_idx].strip()
+                                    if move and move.lower() != "n/a":
+                                        self.move_damage[move.lower()] = dmg
+        except Exception as e:
+            logger.error(f"Failed to load card_pool_raw.csv moves: {e}")
+        
         # Load learned rules from crawler
         self.learned_dos = set()
         self.learned_donts = set()
