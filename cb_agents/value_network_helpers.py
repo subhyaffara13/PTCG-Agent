@@ -177,8 +177,13 @@ if is_kaggle:
 
         turn = float(game_state.get("turn_number", 0)) / 20.0
 
-        my_discard = game_state.get("my_discard_pile", [])
-        opp_discard = game_state.get("opponent_discard_pile", [])
+        my_discard = game_state.get("my_discard_pile")
+        if my_discard is None:
+            my_discard = game_state.get("my_discard", [])
+        opp_discard = game_state.get("opponent_discard_pile")
+        if opp_discard is None:
+            opp_discard = game_state.get("opponent_discard", [])
+            
         my_discard_size = float(len(my_discard) if isinstance(my_discard, list) else 0) / 60.0
         opp_discard_size = float(len(opp_discard) if isinstance(opp_discard, list) else 0) / 60.0
 
@@ -186,7 +191,9 @@ if is_kaggle:
 
         weakness_mult = 0.0
         resistance_mult = 0.0
-        opp_active = game_state.get("opponent_active_pokemon", {}) or {}
+        opp_active = game_state.get("opponent_active_pokemon")
+        if not opp_active or not isinstance(opp_active, dict):
+            opp_active = game_state.get("opponent_active", {})
         if isinstance(active, dict) and isinstance(opp_active, dict):
             my_type = active.get("element_type", "")
             opp_weakness = opp_active.get("weakness", "")
@@ -248,8 +255,13 @@ else:
             
             turn = game_state.get("turn_number", 0)
             
-            my_discard = game_state.get("my_discard_pile", [])
-            opp_discard = game_state.get("opponent_discard_pile", [])
+            my_discard = game_state.get("my_discard_pile")
+            if my_discard is None:
+                my_discard = game_state.get("my_discard", [])
+            opp_discard = game_state.get("opponent_discard_pile")
+            if opp_discard is None:
+                opp_discard = game_state.get("opponent_discard", [])
+                
             my_discard_size = len(my_discard) if isinstance(my_discard, list) else 0
             opp_discard_size = len(opp_discard) if isinstance(opp_discard, list) else 0
             
@@ -258,7 +270,9 @@ else:
             weakness_mult = 0.0
             resistance_mult = 0.0
             
-            opp_active = game_state.get("opponent_active_pokemon", {}) or {}
+            opp_active = game_state.get("opponent_active_pokemon")
+            if not opp_active or not isinstance(opp_active, dict):
+                opp_active = game_state.get("opponent_active", {})
             if isinstance(active, dict) and isinstance(opp_active, dict):
                 my_type = active.get("element_type", "")
                 opp_weakness = opp_active.get("weakness", "")

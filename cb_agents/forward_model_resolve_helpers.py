@@ -1,3 +1,5 @@
+import logging
+logger = logging.getLogger(__name__)
 from typing import Any
 
 def handle_retreat_helper(gs: dict, target: str, CardRegistry: Any) -> None:
@@ -19,11 +21,11 @@ def handle_retreat_helper(gs: dict, target: str, CardRegistry: Any) -> None:
         
         retreat_cost = 1
         try:
-            card = CardRegistry().get_card(old_active.get("id"))
+            card = CardRegistry().get(old_active.get("id"))
             if card is not None:
                 retreat_cost = getattr(card, "retreat_cost", 1)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Failed to retrieve card retreat cost: {e}")
             
         attached = list(old_active.get("attached", []))
         removed_energies = []

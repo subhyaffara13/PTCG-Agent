@@ -80,8 +80,14 @@ class NeuralValueNetwork(BaseValueNetwork):
             active_attached_sorted = sorted([str(x) for x in active.get("attached", [])]) if isinstance(active, dict) else []
             bench_strs = sorted([str(x) for x in game_state.get("my_bench", [])]) if isinstance(game_state.get("my_bench"), list) else []
             opp_bench_strs = sorted([str(x) for x in game_state.get("opponent_bench", [])]) if isinstance(game_state.get("opponent_bench"), list) else []
-            my_discard_size = len(game_state.get("my_discard_pile", [])) if isinstance(game_state.get("my_discard_pile"), list) else 0
-            opp_discard_size = len(game_state.get("opponent_discard_pile", [])) if isinstance(game_state.get("opponent_discard_pile"), list) else 0
+            my_discard = game_state.get("my_discard_pile")
+            if my_discard is None:
+                my_discard = game_state.get("my_discard", [])
+            opp_discard = game_state.get("opponent_discard_pile")
+            if opp_discard is None:
+                opp_discard = game_state.get("opponent_discard", [])
+            my_discard_size = len(my_discard) if isinstance(my_discard, list) else 0
+            opp_discard_size = len(opp_discard) if isinstance(opp_discard, list) else 0
             stadium = game_state.get("stadium_card")
             
             h = hash((str(hand_sorted),
@@ -105,7 +111,8 @@ class NeuralValueNetwork(BaseValueNetwork):
                 val = self._state_cache[h]
             if action: val += _action_score(action, game_state, 0.0)
             return max(-1.0, min(1.0, val))
-        except:
+        except Exception as e:
+            logger.warning(f"NeuralValueNetwork failed: {e}. Falling back to HeuristicValueNetwork.")
             from cb_agents.heuristic_value import HeuristicValueNetwork
             return HeuristicValueNetwork().evaluate(game_state, action, determinization)
 

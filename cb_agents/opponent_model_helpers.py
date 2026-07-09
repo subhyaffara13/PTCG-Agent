@@ -19,6 +19,18 @@ KEY_ID_TO_ARCHETYPE = {
     "1262": "combo"
 }
 
+from cb_agents.card_registry import CardRegistry
+_registry = None
+
+def get_card_identifier(card_id: Any) -> str:
+    global _registry
+    if _registry is None:
+        _registry = CardRegistry()
+    entry = _registry.get(card_id)
+    if entry:
+        return entry.card_name.lower().replace(" ", "-")
+    return str(card_id).lower()
+
 def identify_opponent_archetype(revealed_state: List[Any], archetypes: Dict[str, Any]) -> tuple[str, float]:
     """Identifies archetype and returns (archetype_name, confidence)."""
     # 1. Fast ID check
@@ -34,10 +46,18 @@ def identify_opponent_archetype(revealed_state: List[Any], archetypes: Dict[str,
     best_archetype = "unknown"
     
     for arch_name, arch_data in archetypes.items():
-        signature_cards = set(arch_data.get("signature_cards", []))
-        card_pool = set(arch_data.get("card_pool", []))
+        signature_cards = [sig.lower().replace(" ", "-") for sig in arch_data.get("signature_cards", [])]
+        card_pool = [cp.lower().replace(" ", "-") for cp in arch_data.get("card_pool", [])]
         
-        matches = sum(1 for c in revealed_state if c in signature_cards or c in card_pool)
+        matches = 0
+        for c in revealed_state:
+            ident = get_card_identifier(c)
+            raw_str = str(c).lower().replace(" ", "-")
+            is_sig = raw_str in signature_cards or any(ident in sig or sig in ident for sig in signature_cards)
+            is_pool = raw_str in card_pool or any(ident in cp or cp in ident for cp in card_pool)
+            if is_sig or is_pool:
+                matches += 1
+                
         if matches > best_match_count:
             best_match_count = matches
             best_archetype = arch_name

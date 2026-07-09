@@ -39,8 +39,8 @@ def _regenerate_legal_actions(gs: dict) -> None:
                     elif c and getattr(c.card_type, "name", "") == "TRAINER":
                         actions.append(f"play_trainer:{c.card_name}")
                         continue
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.debug(f"Action prior generator: card {card} resolution failed: {e}")
             actions.append(f"attach_energy:{card}")
             actions.append(f"bench:{card}")
     bench = gs.get("my_bench", [])
