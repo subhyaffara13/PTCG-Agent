@@ -57,8 +57,11 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
                 try:
                     steps_data = json.loads(steps_path.read_text("utf-8"))
                     if steps_data is None:
-                        steps_data = []
-                    s, a = _extract_all_steps(steps_data, aligner)
+                        steps_data = {}
+                    
+                    # Extract from the steps list in the Kaggle format dict
+                    actual_steps = steps_data.get("steps", []) if isinstance(steps_data, dict) else steps_data
+                    s, a = _extract_all_steps(actual_steps, aligner)
                     if not s:
                         continue
                     
@@ -77,22 +80,26 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
                     prev_p_mine, prev_p_opp = 6, 6
                     for t in range(game_len):
                         try:
-                            step_data = steps_data[t]
-                            players = step_data.get("players", [])
-                            if len(players) >= 2:
-                                p0_prize = len(players[0].get("observation", {}).get("prize", []))
-                                p1_prize = len(players[1].get("observation", {}).get("prize", []))
-                                p_mine = p0_prize
-                                p_opp = p1_prize
-                                
-                                # We took a prize card: +2.0
-                                if p_opp < prev_p_opp:
-                                    game_rew[t] += 2.0 * (prev_p_opp - p_opp)
-                                # Opponent took a prize card: -2.0
-                                if p_mine < prev_p_mine:
-                                    game_rew[t] -= 2.0 * (prev_p_mine - p_mine)
+                            # step_data is [player0_dict, player1_dict]
+                            step_data = actual_steps[t]
+                            if isinstance(step_data, list) and len(step_data) >= 2:
+                                p0 = step_data[0]
+                                obs = p0.get("observation", {})
+                                current = obs.get("current", {})
+                                players = current.get("players", [])
+                                if len(players) >= 2:
+                                    my_idx = current.get("yourIndex", 0)
+                                    p_mine = len(players[my_idx].get("prize", []))
+                                    p_opp = len(players[1 - my_idx].get("prize", []))
                                     
-                                prev_p_mine, prev_p_opp = p_mine, p_opp
+                                    # We took a prize card: +2.0
+                                    if p_opp < prev_p_opp:
+                                        game_rew[t] += 2.0 * (prev_p_opp - p_opp)
+                                    # Opponent took a prize card: -2.0
+                                    if p_mine < prev_p_mine:
+                                        game_rew[t] -= 2.0 * (prev_p_mine - p_mine)
+                                        
+                                    prev_p_mine, prev_p_opp = p_mine, p_opp
                         except Exception:
                             pass
                             
