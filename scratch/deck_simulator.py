@@ -152,7 +152,7 @@ def evaluate_single_candidate(args) -> float:
             if cnt > limit:
                 violations += (cnt - limit)
     
-    base_score = fit + multivariate_setup_prob(n_basics, n_energies, n_trainers) * 150.0 - evaluate_deck_synergy(cand, details) + simulate_goldfish_playout(cand, details)
+    base_score = fit + multivariate_setup_prob(n_basics, n_energies, n_trainers) * 150.0 + evaluate_deck_synergy(cand, details) + simulate_goldfish_playout(cand, details)
     ppo_score = get_ppo_setup_value(cand, details)
     
     # Scale PPO score (which ranges from -1.5 to 1.0) to have a meaningful impact on fitness

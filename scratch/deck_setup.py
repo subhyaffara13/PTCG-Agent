@@ -22,7 +22,9 @@ def load_optimizer_data(archetype: str = None):
     details = loader.parse_card_details(pool_cards)
     data = json.loads(Path("logs/kaggle_summary/scraped_decks.json").read_text(encoding="utf-8"))
     w_opp, w_us, l_us = data.get("opp_wins", {}), data.get("us_wins", {}), data.get("us_losses", {})
-    winning_decks = data.get("opp_win_decks", []) + data.get("us_win_decks", [])
+    
+    # Only use opponent leaderboard winning decks for empirical core to avoid local train feedback loops
+    winning_decks = data.get("opp_win_decks", [])
 
     opp_types = [details.get(str(cid), {}).get("element_type", "") for dk in data.get("opp_win_decks", []) for cid in dk]
     dominant_type = Counter(x for x in opp_types if x).most_common(1)
@@ -57,19 +59,21 @@ def load_optimizer_data(archetype: str = None):
         for cid, freq in winning_freq.most_common():
             if int(cid) not in engine_cards:
                 continue
+            card_dict = id_map.get(int(cid))
+            # Only lock universal Trainer cards (avoid locking Pokemon/Energy of multiple clashing archetypes)
+            if not card_dict or card_dict.get("card_type") != "Trainer":
+                continue
             avg_copies = round(freq / num_winners)
             if avg_copies > 0:
-                card_dict = id_map.get(int(cid))
-                if card_dict:
-                    limit = 99 if card_dict.get("card_type") == "Energy" and "Basic" in card_dict.get("card_name", "") else 4
-                    copies_to_add = min(avg_copies, limit)
-                    if locked_count + copies_to_add <= 40:
-                        locked_cards[int(cid)] = copies_to_add
-                        locked_count += copies_to_add
-                    else:
-                        locked_cards[int(cid)] = 40 - locked_count
-                        locked_count = 40
-                        break
+                limit = 4
+                copies_to_add = min(avg_copies, limit)
+                if locked_count + copies_to_add <= 40:
+                    locked_cards[int(cid)] = copies_to_add
+                    locked_count += copies_to_add
+                else:
+                    locked_cards[int(cid)] = 40 - locked_count
+                    locked_count = 40
+                    break
 
     flex_pool = []
     for c in pool_cards:
