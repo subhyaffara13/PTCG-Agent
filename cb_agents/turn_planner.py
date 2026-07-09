@@ -57,9 +57,24 @@ class TurnPlanner(BaseAgent):
             game_state = getattr(packet, "game_state", {}) or {}
             turn = getattr(packet, "turn", 1)
             profile = packet.priority_profile
-            if profile not in {"aggressive", "defensive", "tempo", "aggro_push", "setup", "disruption", "stall", "closing"}:
-                logger.warning(f"Unknown profile '{profile}', falling back to aggro_push")
-                profile = "aggro_push"
+            profile_map = {
+                "aggressive": "aggro_push",
+                "aggro": "aggro_push",
+                "prize_race": "aggro_push",
+                "aggro_push": "aggro_push",
+                "defensive": "stall",
+                "stall": "stall",
+                "energy_stall": "stall",
+                "bench_low": "stall",
+                "tempo": "setup",
+                "setup": "setup",
+                "hand_dead": "setup",
+                "control": "disruption",
+                "disruption": "disruption",
+                "endgame_close": "closing",
+                "closing": "closing"
+            }
+            profile = profile_map.get(profile, "aggro_push")
             game_state["priority_profile"] = profile
             game_state = _process_prize_tracker(game_state, self._prize_tracker, packet)
             game_state["has_searched_deck"] = game_state.get("prize_certainty", 0.0) > 0

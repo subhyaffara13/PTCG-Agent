@@ -147,9 +147,11 @@ py::dict boardstate_to_dict(const BoardState& s) {
     }
     d["my_bench"] = my_bench_list;
     d["my_discard"] = s.me.discard;
+    d["my_discard_pile"] = s.me.discard;
     d["my_deck"] = s.me.deck;
     d["my_deck_count"] = s.me.deck_count;
     d["my_prizes"] = s.me.prizes;
+    d["my_prizes_remaining"] = s.me.prizes;
     d["my_deck_out_loss"] = s.me.deck_out_loss;
     
     if (s.opponent.has_active) {
@@ -169,7 +171,9 @@ py::dict boardstate_to_dict(const BoardState& s) {
         opp_bench_list.append(pokemon_to_dict(p));
     }
     d["opponent_bench"] = opp_bench_list;
+    d["opponent_hand"] = s.opponent.hand;
     d["opponent_discard"] = s.opponent.discard;
+    d["opponent_discard_pile"] = s.opponent.discard;
     d["opponent_deck"] = s.opponent.deck;
     d["opponent_deck_count"] = s.opponent.deck_count;
     d["opponent_prizes"] = s.opponent.prizes;

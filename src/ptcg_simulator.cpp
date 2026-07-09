@@ -298,8 +298,6 @@ void apply_action(BoardState& state, const std::string& action) {
         std::string card_id = (second_colon == std::string::npos) ? target : target.substr(0, second_colon);
         std::string poke_id = (second_colon == std::string::npos) ? "" : target.substr(second_colon + 1);
         
-        remove_from_hand(state.me.hand, card_id);
-        
         std::vector<PokemonInstance*> valid_targets;
         if (state.me.has_active) {
             valid_targets.push_back(&state.me.active);
@@ -309,6 +307,7 @@ void apply_action(BoardState& state, const std::string& action) {
         }
         
         if (!valid_targets.empty()) {
+            remove_from_hand(state.me.hand, card_id);
             PokemonInstance* chosen = nullptr;
             if (!poke_id.empty()) {
                 for (auto* p : valid_targets) {
@@ -416,6 +415,7 @@ void apply_action(BoardState& state, const std::string& action) {
                 state.opponent.bench.erase(state.opponent.bench.begin());
             } else {
                 state.opponent.active.hp = 0;
+                state.opponent.has_active = false;
             }
         }
         state.turn_ended = true;
@@ -446,13 +446,17 @@ void apply_action(BoardState& state, const std::string& action) {
             }
         }
         if (found_card_id.empty()) {
-            remove_from_hand(state.me.hand, target);
+            if (suffix.empty()) {
+                remove_from_hand(state.me.hand, target);
+            }
         }
         
         if (!found_card_id.empty()) {
             state.me.discard.push_back(found_card_id);
         } else {
-            state.me.discard.push_back(target);
+            if (suffix.empty()) {
+                state.me.discard.push_back(target);
+            }
         }
         
         if (suffix != "_tails") {

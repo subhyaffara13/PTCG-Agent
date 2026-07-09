@@ -85,7 +85,7 @@ def select_new_strategy(
     elif state.opponent_prizes_remaining <= opponent_prizes_low:
         if state.my_prizes_remaining > state.opponent_prizes_remaining:
             return "aggro_push"
-        return "disruption"
+        return "control"
     elif state.my_prizes_remaining >= desperation_my_prizes_min and state.opponent_prizes_remaining <= desperation_opponent_prizes_max:
         return 'aggro_push'
     elif state.opponent_archetype == 'aggro' and state.my_prizes_remaining < state.opponent_prizes_remaining:
@@ -93,6 +93,6 @@ def select_new_strategy(
     elif state.my_active_hp < my_active_hp_critical and state.bench_has_attacker:
         return "setup"
     elif state.opponent_archetype == "control":
-        return "disruption"
+        return "control"
 
     return active_strategy
