@@ -122,24 +122,29 @@ def load_winning_decks(logs_dir="logs"):
         except Exception as e:
             logger.warning(f"Failed to load iteration results: {e}")
             
-    # 3. action_game_* files
+    # 3. action_game_* files (from genetic optimizer and local training games)
     for filepath in glob.glob(os.path.join(logs_dir, "action_game_*.json")):
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 if isinstance(data, dict):
-                    # check if we won
-                    winner = data.get("winner")
-                    # simple heuristic to find agent deck if it won
-                    if winner == "agent":
-                        # Needs actual parsing based on your log structure, maybe "agent_deck" exists
-                        if "agent_deck" in data:
+                    winner = data.get("winner", "")
+                    # Accept any of these winner identifiers for our agent's side
+                    is_agent_win = (
+                        winner == "agent"
+                        or winner == "player_a"
+                        or (isinstance(winner, str) and winner.startswith("opt_val_cand_"))
+                    )
+                    if is_agent_win:
+                        # Try agent_deck first, then deck_a as fallback
+                        raw_deck = data.get("agent_deck") or data.get("deck_a")
+                        if raw_deck:
                             parsed_deck = []
-                            for c in data["agent_deck"]:
+                            for c in raw_deck:
                                 if isinstance(c, dict) and "card_id" in c:
                                     parsed_deck.extend([c["card_id"]] * c.get("count", 1))
-                                elif isinstance(c, str):
-                                    parsed_deck.append(c)
+                                elif isinstance(c, (str, int)):
+                                    parsed_deck.append(str(c))
                             if parsed_deck:
                                 decks.append(parsed_deck)
         except Exception as e:

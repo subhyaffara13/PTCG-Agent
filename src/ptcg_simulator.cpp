@@ -583,24 +583,20 @@ void check_win_conditions(BoardState& state) {
 
 double score_state(const BoardState& state) {
     double v = 0.0;
+    // Prize delta — key indicator of who is winning
     v += 0.15 * (state.opponent.prizes - state.me.prizes);
-    v += 0.001 * (state.me.active.hp - state.opponent.active.hp);
-    
+    // HP delta — secondary indicator
+    if (state.me.has_active && state.opponent.has_active) {
+        v += 0.001 * (state.me.active.hp - state.opponent.active.hp);
+    }
+    // Evolution stage bonus — evolved board = better setup
     std::vector<const PokemonInstance*> all_p;
-    if (state.me.has_active) {
-        all_p.push_back(&state.me.active);
-    }
-    for (const auto& p : state.me.bench) {
-        all_p.push_back(&p);
-    }
+    if (state.me.has_active) all_p.push_back(&state.me.active);
+    for (const auto& p : state.me.bench) all_p.push_back(&p);
     int ec = 0;
     for (auto* p : all_p) {
         auto ce = CardRegistry::getInstance().getCard(p->id);
-        if (ce) {
-            if (ce->stage == CardStage::STAGE1 || ce->stage == CardStage::STAGE2) {
-                ec++;
-            }
-        }
+        if (ce && (ce->stage == CardStage::STAGE1 || ce->stage == CardStage::STAGE2)) ec++;
     }
     v += 0.05 * ec;
     return v;
@@ -608,86 +604,87 @@ double score_state(const BoardState& state) {
 
 double score_action(const std::string& action, const BoardState& state, double threat_penalty) {
     double v = 0.0;
-    int dc = state.me.deck_count;
-    int mp = state.me.prizes;
-    int ahp = state.me.active.hp;
-    int bn_size = state.me.bench.size();
-    
+    int dc  = state.me.deck_count;
+    int mp  = state.me.prizes;
+    int ahp = state.me.has_active ? state.me.active.hp : 100;
+    int bn_size = (int)state.me.bench.size();
+    int opp_hp  = state.opponent.has_active ? state.opponent.active.hp : 100;
+
     if (action.rfind("attack:", 0) == 0) {
-        v += 0.5;
-        if (mp <= 1) v += 0.5;
+        v += 1.2;  // attacks almost always best
+        if (mp <= 1) v += 1.0;  // game-winning attack
+        if (mp <= 2) v += 0.3;  // close to winning
+        // Type advantage
+        if (state.me.has_active && state.opponent.has_active) {
+            auto my_card = CardRegistry::getInstance().getCard(state.me.active.id);
+            auto opp_card = CardRegistry::getInstance().getCard(state.opponent.active.id);
+            // Simple proxy: check if we have type advantage via ev_score differential
+            if (my_card && opp_card && my_card->ev_score > opp_card->ev_score) {
+                v += 0.2;  // matchup advantage
+            }
+        }
+        // KO potential
+        if (state.me.has_active) {
+            auto my_card = CardRegistry::getInstance().getCard(state.me.active.id);
+            if (my_card && my_card->damage_output > 0 && my_card->damage_output >= opp_hp) {
+                v += 1.5;  // KO bonus — very likely the winning move
+            }
+        }
     }
     else if (action.rfind("evolve:", 0) == 0) {
-        v += 0.3;
+        v += 0.6;
     }
     else if (action.rfind("attach_energy:", 0) == 0) {
-        v += 0.2;
+        v += 0.45;  // energy is critical for enabling attacks
         if (state.me.has_active) {
             int need = 2;
             auto e = CardRegistry::getInstance().getCard(state.me.active.id);
-            if (e && e->energy_cost > 0) {
-                need = e->energy_cost;
-            }
-            int att = state.me.active.attached.size();
-            if (att >= need) {
+            if (e && e->energy_cost > 0) need = e->energy_cost;
+            int att = (int)state.me.active.attached.size();
+            if (att < need) {
+                v += 0.35;  // charging up underfunded active
+            } else {
+                // Check if it's a special card that can use extra energy
                 std::string an = e ? e->card_name : "";
                 std::transform(an.begin(), an.end(), an.begin(), ::tolower);
-                bool sc = false;
-                std::vector<std::string> special_cards = {
-                    "raging bolt", "iron hands", "chien pao", "ceruledge",
-                    "garchomp", "roaring moon", "groudon", "kyogre"
-                };
-                for (const auto& sc_name : special_cards) {
-                    if (an.find(sc_name) != std::string::npos) {
-                        sc = true;
-                        break;
-                    }
-                }
+                bool sc = (an.find("raging bolt") != std::string::npos
+                        || an.find("iron hands") != std::string::npos
+                        || an.find("chien pao") != std::string::npos
+                        || an.find("ceruledge") != std::string::npos
+                        || an.find("roaring moon") != std::string::npos);
                 bool nr = (ahp <= 50);
-                if (!sc && !nr) {
-                    v -= 0.15;
-                }
+                if (!sc && !nr) v -= 0.25;  // over-charging active
             }
         }
     }
     else if (action.rfind("bench:", 0) == 0) {
-        if (bn_size == 0) {
-            v += 0.8;
-        } else {
-            v += 0.15;
-            double tol = 0.15;
-            if (bn_size >= 4 && tol < 0) {
-                v += tol * bn_size * 0.3;
-            } else if (bn_size >= 5 && tol <= 0) {
-                v -= 0.4;
-            }
-        }
+        if (bn_size == 0)      v += 0.8;
+        else if (bn_size < 2)  v += 0.4;
+        else if (bn_size < 3)  v += 0.25;
+        else if (bn_size < 4)  v += 0.15;
+        else if (bn_size < 5)  v += 0.05;
+        else                   v -= 0.1;
     }
     else if (action.rfind("play_trainer:", 0) == 0) {
         v += 0.4;
         std::string tn = action.substr(13);
         std::transform(tn.begin(), tn.end(), tn.begin(), ::tolower);
         if (dc <= 5) {
-            if (tn.find("iono") != std::string::npos || tn.find("judge") != std::string::npos) {
+            if (tn.find("iono") != std::string::npos || tn.find("judge") != std::string::npos)
                 v += 0.8;
-            } else if (tn.find("research") != std::string::npos || tn.find("professor") != std::string::npos) {
+            else if (tn.find("research") != std::string::npos || tn.find("professor") != std::string::npos)
                 v -= 1.3;
-            }
         }
         if (dc > 30) {
-            std::vector<std::string> search_keys = {
+            const std::vector<std::string> search_keys = {
                 "nest ball", "ultra ball", "quick ball", "level ball",
                 "secret box", "mega signal", "team rocket's petrel"
             };
-            bool found_key = false;
             for (const auto& k : search_keys) {
                 if (tn.find(k) != std::string::npos) {
-                    found_key = true;
+                    v += std::min(0.25, dc * 0.005);
                     break;
                 }
-            }
-            if (found_key) {
-                v += std::min(0.25, dc * 0.005);
             }
         }
     }
@@ -695,22 +692,19 @@ double score_action(const std::string& action, const BoardState& state, double t
         std::string tn = action.substr(8);
         std::transform(tn.begin(), tn.end(), tn.begin(), ::tolower);
         v += 0.35;
-        if (dc <= 5 && (tn.find("colress") != std::string::npos || tn.find("concealed") != std::string::npos)) {
+        if (dc <= 5 && (tn.find("colress") != std::string::npos || tn.find("concealed") != std::string::npos))
             v -= 0.5;
-        }
     }
     else if (action.rfind("retreat:", 0) == 0) {
-        v += (ahp <= 60) ? 0.4 : -0.2;
+        v += (ahp <= 60) ? 0.4 : -0.5;  // -0.5 penalty for healthy retreat
     }
     else if (action == "pass") {
-        v -= 0.5;
+        v -= 1.0;  // strongly discourage passing
     }
-    
-    int hs = state.me.hand.size();
-    if (hs >= 2 && dc > 10) {
-        v += 0.03 * std::min(hs, 5);
-    }
-    
+
+    int hs = (int)state.me.hand.size();
+    if (hs >= 2 && dc > 10) v += 0.03 * std::min(hs, 5);
+
     return v;
 }
 

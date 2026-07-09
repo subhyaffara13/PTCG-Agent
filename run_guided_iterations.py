@@ -24,8 +24,9 @@ def get_archetype_for_iteration(i: int) -> str:
     return "aggro"
 
 def main():
-    # Enable warp speed fast simulation by bypassing MCTS in training iterations
-    os.environ["FAST_SIM_MODE"] = "true"
+    # Use the full MCTS + C++ + value-network pipeline during training.
+    # FAST_SIM_MODE is only activated on Kaggle when the C++ extension is missing.
+    os.environ.pop("FAST_SIM_MODE", None)  # ensure it is unset locally
     
     last_iter = get_last_iteration_id()
     start_iter = last_iter + 1
