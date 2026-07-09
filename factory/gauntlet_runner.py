@@ -57,6 +57,8 @@ class GauntletRunner:
             opp_deck = self._generate_real_deck(archetype)
             
             archetype_wins = 0
+            num_matchups = 3
+            total_stage_games = num_games_per_archetype * (num_matchups * 4 + 1)
             for i in range(num_games_per_archetype):
                 res = runner.run_iteration(
                     iteration_id=9999,
@@ -65,7 +67,8 @@ class GauntletRunner:
                     deck_base=candidate_deck,
                     deck_new=opp_deck,
                     reasoning_base={},
-                    reasoning_new={}
+                    reasoning_new={},
+                    num_matchups=num_matchups
                 )
                 
                 # Check if candidate won
@@ -76,7 +79,7 @@ class GauntletRunner:
                         total_wins += 1
                         archetype_wins += 1
                 
-            logger.info(f"Stage Result vs {archetype}: {archetype_wins} wins out of {num_games_per_archetype * 61} games played.")
+            logger.info(f"Stage Result vs {archetype}: {archetype_wins} wins out of {total_stage_games} games played.")
             
         win_rate = total_wins / max(total_games, 1)
         logger.info(f"Gauntlet Complete. Overall Win Rate: {win_rate*100:.1f}% ({total_wins}/{total_games} wins)")

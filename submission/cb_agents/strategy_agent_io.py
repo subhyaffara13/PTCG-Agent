@@ -57,10 +57,13 @@ def log_strategy(
 
 def board_signal_match(board_summary: dict[str, Any]) -> str | None:
     prizes     = board_summary.get("prizes")
+    if prizes is None: prizes = board_summary.get("my_prizes_remaining")
     bench      = board_summary.get("bench_count")
+    if bench is None: bench = board_summary.get("my_bench_count")
     score      = board_summary.get("hand_score")
     energy     = board_summary.get("energy_attached")
     opp_prizes = board_summary.get("opponent_prizes")
+    if opp_prizes is None: opp_prizes = board_summary.get("opponent_prizes_remaining")
     boss_prob  = board_summary.get("boss_prob", 0.0)
     iono_prob  = board_summary.get("iono_prob", 0.0)
 

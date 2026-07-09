@@ -113,8 +113,16 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
     def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         if not legal_actions:
             return "pass"
-        if os.environ.get("FAST_SIM_MODE") == "true" or len(legal_actions) == 1:
+        if len(legal_actions) == 1:
             return legal_actions[0]
+        if os.environ.get("FAST_SIM_MODE") == "true":
+            # Use heuristic scoring instead of random/first action
+            best_action, best_score = legal_actions[0], -float("inf")
+            for a in legal_actions:
+                s = pipeline.score_action(a, game_state)
+                if s > best_score:
+                    best_score, best_action = s, a
+            return best_action
 
         canonical_actions, _ = pipeline.mask_actions(legal_actions, game_state)
         if len(canonical_actions) <= 1:

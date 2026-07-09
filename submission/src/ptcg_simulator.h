@@ -23,12 +23,20 @@ public:
     const Card* getCard(const std::string& id) const;
     std::string getIdByName(const std::string& name) const;
     const std::unordered_map<std::string, Card>& getAllCards() const { return cards; }
-    void clear() { cards.clear(); nameToId.clear(); }
+    void clear() { cards.clear(); nameToId.clear(); moveDamage.clear(); }
+    std::string getMoveDamage(const std::string& name) const {
+        auto it = moveDamage.find(lowercase(name));
+        if (it != moveDamage.end()) {
+            return it->second;
+        }
+        return "";
+    }
 
 private:
     CardRegistry() = default;
     std::unordered_map<std::string, Card> cards;
     std::unordered_map<std::string, std::string> nameToId;
+    std::unordered_map<std::string, std::string> moveDamage;
 
     void loadMetadata(const std::string& path);
     void loadScoring(const std::string& path);

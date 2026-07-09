@@ -29,16 +29,9 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         # (e.g. forced to deck-out or trapped with bad optional cards), we always append
         # the "attack" phase options (which includes 'pass' and 'attack') so it can voluntarily
         # skip the current phase and proceed to combat if the current phase actions are bad.
-        selected_candidates = []
-        for phase in SequencingEngine.PHASE_ORDER:
-            if groups.get(phase):
-                selected_candidates = groups[phase].copy()
-                if phase != "attack" and groups.get("attack"):
-                    selected_candidates.extend(groups["attack"])
-                break
-                
-        if not selected_candidates:
-            selected_candidates = candidates
+        # If we have a reasonable number of candidates, let MCTS have a full view of the action space.
+        # Otherwise, restrict to the current phase + attacks to manage search depth/time.
+        selected_candidates = candidates
         if time_rem < 30.0:
             mcts_engine.num_simulations = 500
         elif time_rem < 80.0:

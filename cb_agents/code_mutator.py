@@ -158,26 +158,28 @@ def request_code_mutation_from_llm(file_path: Path, telemetry_issues: str) -> st
     Return ONLY the complete, corrected python code. Do not include markdown formatting or explanations.
     """
 
-    # 1. Try Google Gemini API if configured
     gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if gemini_key:
-        try:
-            logger.info("Connecting to Google Gemini API for mutation...")
-            import requests
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
-            headers = {"Content-Type": "application/json"}
-            payload = {
-                "contents": [{"parts": [{"text": prompt}]}]
-            }
-            res = requests.post(url, json=payload, headers=headers, timeout=60)
-            if res.status_code == 200:
-                text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
-                if text:
-                    return clean_code_response(text)
-            else:
-                logger.warning(f"Gemini API returned status code {res.status_code}: {res.text}")
-        except Exception as e:
-            logger.warning(f"Gemini API call failed: {e}")
+        import requests
+        models = ["gemini-2.5-pro", "gemini-2.5-flash"]
+        for model in models:
+            try:
+                logger.info(f"Connecting to Google Gemini API ({model}) for mutation...")
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
+                headers = {"Content-Type": "application/json"}
+                payload = {
+                    "contents": [{"parts": [{"text": prompt}]}]
+                }
+                res = requests.post(url, json=payload, headers=headers, timeout=60)
+                if res.status_code == 200:
+                    text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    if text:
+                        logger.info(f"Mutation generated successfully using {model}.")
+                        return clean_code_response(text)
+                else:
+                    logger.warning(f"Gemini API ({model}) returned status code {res.status_code}: {res.text}")
+            except Exception as e:
+                logger.warning(f"Gemini API ({model}) call failed: {e}")
 
     # 2. Try Local Ollama endpoint (Offline / Privacy-focused fallback)
     try:

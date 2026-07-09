@@ -106,7 +106,10 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 if target_id and str(act_id) != target_id:
                     # attaching to bench
                     hp = game_state.get("my_active_hp", 100)
-                    micro_rank -= 5 if (hp <= 50 or active_attached >= needed) else -2
+                    if hp <= 50 or active_attached >= needed:
+                        micro_rank -= 5  # Active is weak/charged, prefer bench energy
+                    else:
+                        micro_rank -= 2  # Slight preference for bench energy
                 else:
                     if act_id:
                         try:

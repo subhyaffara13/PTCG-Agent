@@ -17,36 +17,63 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     ahp = gs.get("my_active_hp", 100)
     bn = gs.get("my_bench", [])
     ac = gs.get("my_active_pokemon", {})
+    opp_hp = gs.get("opponent_active_hp", 100)
     if action.startswith("attack:"):
-        v += 0.5
-        if mp <= 1: v += 0.5
+        v += 1.2  # Attacks are almost always the best action
+        if mp <= 1: v += 1.0  # Game-winning attack
+        if mp <= 2: v += 0.3  # Close to winning
         opp_ac = gs.get("opponent_active_pokemon", {})
         if isinstance(ac, dict) and isinstance(opp_ac, dict):
             my_type = ac.get("element_type", "")
             opp_weak = opp_ac.get("weakness", "")
             if my_type and opp_weak and my_type.lower() == opp_weak.lower():
-                v += 0.4
-    elif action.startswith("evolve:"):
-        v += 0.3
-    elif action.startswith("attach_energy:"):
-        v += 0.2
+                v += 0.5  # Type advantage
+        # Check if we can KO
         if isinstance(ac, dict):
-            need = 2
-            try:
-                e = _registry.get_full_skill(ac.get("id"))
-                if e and e.energy_cost > 0: need = e.energy_cost
-            except: pass
-            att = len(ac.get("attached", []))
-            if att >= need:
-                an = ac.get("card_name", "").lower()
-                sc = any(sa in an for sa in {"raging bolt", "iron hands", "chien pao", "ceruledge", "garchomp", "roaring moon", "groudon", "kyogre"})
-                nr = ahp <= 50 or gs.get("my_active_status", "") in {"poisoned", "burned", "asleep", "paralyzed"}
-                if not sc and not nr: v -= 0.15
+            my_active_id = ac.get("id")
+            if my_active_id is not None:
+                try:
+                    card = _registry.get_full_skill(my_active_id)
+                    if card and card.damage_output >= opp_hp:
+                        v += 1.5  # KO bonus — this is likely the winning move
+                except:
+                    pass
+    elif action.startswith("evolve:"):
+        v += 0.6
+    elif action.startswith("attach_energy:"):
+        v += 0.45  # Energy attachment is important for enabling attacks
+        
+        parts = action.split(":")
+        target_id = parts[2] if len(parts) > 2 else ""
+        active_id = str(ac.get("id", "")) if isinstance(ac, dict) else ""
+        is_to_active = not target_id or target_id == active_id
+        
+        if is_to_active:
+            if isinstance(ac, dict):
+                need = 2
+                try:
+                    e = _registry.get_full_skill(ac.get("id"))
+                    if e and e.energy_cost > 0: need = e.energy_cost
+                except: pass
+                att = len(ac.get("attached", []))
+                if att < need:
+                    v += 0.35  # Stronger bonus for charging up active
+                elif att >= need:
+                    an = ac.get("card_name", "").lower()
+                    sc = any(sa in an for sa in {"raging bolt", "iron hands", "chien pao", "ceruledge", "garchomp", "roaring moon", "groudon", "kyogre"})
+                    nr = ahp <= 50 or gs.get("my_active_status", "") in {"poisoned", "burned", "asleep", "paralyzed"}
+                    if not sc and not nr: v -= 0.25  # Stronger penalty for over-charging active
+        else:
+            # Attaching to bench
+            v += 0.1  # Moderate priority for charging bench Pokemon
     elif action.startswith("bench:"):
         if not bn: v += 0.8
         else:
-            v += 0.15
             bs = len(bn)
+            if bs < 2: v += 0.4
+            elif bs < 3: v += 0.25
+            elif bs < 4: v += 0.15
+            else: v += 0.05
             pr = gs.get("priority_profile", "aggro_push")
             tol = {"aggro_push": 0.15, "closing": 0.10, "disruption": -0.05, "setup": 0.15, "stall": -0.15}.get(pr, 0.0)
             if bs >= 4 and tol < 0: v += tol * bs * 0.3
@@ -66,11 +93,29 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
         v += 0.35
         if dc <= 5 and any(d in tn for d in {"colress", "concealed"}): v -= 0.5
     elif action.startswith("retreat:"):
-        v += 0.4 if ahp <= 60 else -0.2
+        v += 0.4 if ahp <= 60 else -0.5
+        
+        # Heavy penalty if retreating to a useless zero-energy Pokemon when active is healthy
+        if ahp > 60:
+            try:
+                target_idx = -1
+                if ":" in action:
+                    target_idx = int(action.split(":", 1)[1])
+                bench = gs.get("my_bench", [])
+                if 0 <= target_idx < len(bench):
+                    target_poke = bench[target_idx]
+                    if isinstance(target_poke, dict):
+                        attached_list = target_poke.get("attached") or target_poke.get("energies") or []
+                        target_attached = len(attached_list)
+                        if target_attached == 0:
+                            v -= 0.8  # Penalty of -1.3 total, which is worse than pass (-1.0)
+            except Exception as ex:
+                logger.warning(f"Error parsing retreat target: {ex}")
+                    
         rsb = gs.get("retreat_score_boost", 0.0)
         if rsb > 0: v += rsb
     elif action == "pass":
-        v -= 0.5
+        v -= 1.0  # Strongly discourage passing
     hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
     if hs >= 2 and dc > 10: v += 0.03 * min(hs, 5)
     return v

@@ -18,6 +18,15 @@ def fast_clone_state(gs: dict) -> dict:
         clone["my_bench"] = [dict(p) if isinstance(p, dict) else p for p in clone["my_bench"]]
     if "legal_actions" in clone and isinstance(clone["legal_actions"], list):
         clone["legal_actions"] = list(clone["legal_actions"])
+    # Deep-clone active pokemon dicts to prevent MCTS rollout mutations
+    if "my_active_pokemon" in clone and isinstance(clone["my_active_pokemon"], dict):
+        clone["my_active_pokemon"] = dict(clone["my_active_pokemon"])
+        if "attached" in clone["my_active_pokemon"]:
+            clone["my_active_pokemon"]["attached"] = list(clone["my_active_pokemon"]["attached"])
+    if "opponent_active" in clone and isinstance(clone["opponent_active"], dict):
+        clone["opponent_active"] = dict(clone["opponent_active"])
+    if "opponent_active_pokemon" in clone and isinstance(clone["opponent_active_pokemon"], dict):
+        clone["opponent_active_pokemon"] = dict(clone["opponent_active_pokemon"])
     return clone
 
 def apply_action(game_state: dict, action: str) -> dict:

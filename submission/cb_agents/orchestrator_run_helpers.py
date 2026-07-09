@@ -26,13 +26,13 @@ def check_defensive_retreat_helper(game_state, board_summary) -> str:
 
 def update_opponent_model_helper(orchestrator, game_state):
     from router.bus import OpponentModelPacket
-    if game_state.opponent_last_play and game_state.opponent_revealed:
-        orchestrator.bus.dispatch("OpponentModel", OpponentModelPacket(
-            turn=orchestrator.current_turn, newly_played_cards=game_state.opponent_revealed,
-            revealed_active_pokemon=game_state.opponent_active,
-            revealed_bench_count=len(game_state.opponent_bench), revealed_hand_size=game_state.opponent_hand_count,
-            revealed_prizes_remaining=game_state.opponent_prizes, revealed_discard=game_state.opponent_discard,
-            game_phase="early" if orchestrator.current_turn < 5 else "mid"))
+    newly_played = game_state.opponent_revealed if game_state.opponent_revealed else []
+    orchestrator.bus.dispatch("OpponentModel", OpponentModelPacket(
+        turn=orchestrator.current_turn, newly_played_cards=newly_played,
+        revealed_active_pokemon=game_state.opponent_active,
+        revealed_bench_count=len(game_state.opponent_bench), revealed_hand_size=game_state.opponent_hand_count,
+        revealed_prizes_remaining=game_state.opponent_prizes, revealed_discard=game_state.opponent_discard,
+        game_phase="early" if orchestrator.current_turn < 5 else "mid"))
 
     arch = orchestrator.opponent_model.identified_archetype
     if arch != "unknown" and arch in orchestrator.opponent_model.archetypes:

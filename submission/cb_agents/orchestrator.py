@@ -91,12 +91,12 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
             try:
                 req_path = Path(self.log_dir) / "evolution_request.json"
                 # Find which agent file caused the traceback
-                target_file = "agents/turn_planner_sort.py"
+                target_file = "cb_agents/turn_planner_sort.py"
                 for line in tb_str.splitlines():
                     if "agents/" in line or "cb_agents/" in line:
                         for filename in ("turn_planner_sort.py", "turn_planner_resolve.py", "turn_planner_heuristics.py", "orchestrator_belief.py", "hand_analyst_helpers.py"):
                             if filename in line:
-                                target_file = f"agents/{filename}"
+                                target_file = f"cb_agents/{filename}"
                                 break
                 
                 req_data = {
@@ -111,7 +111,7 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
                 if os.environ.get("AUTO_EVOLVE") == "true":
                     sys.stderr.write(f"AUTO_EVOLVE is active. Spawning code_mutator for {target_file}...\n")
                     subprocess.Popen(
-                        [sys.executable, "-m", "agents.code_mutator", target_file],
+                        [sys.executable, "-m", "cb_agents.code_mutator", target_file],
                         stdout=subprocess.DEVNULL,
                         stderr=subprocess.DEVNULL,
                         close_fds=True

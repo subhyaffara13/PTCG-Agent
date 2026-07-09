@@ -67,9 +67,22 @@ class OrchestratorRunMixin:
             bench_has_attacker=game_state.bench_has_attacker, my_bench_count=len(game_state.my_bench),
             prized_probabilities=_get_f(hand_result, "prized_probabilities", {}))
 
+        # Compute energy attached for strategy matching
+        energy_attached = 0
+        my_active = game_state.my_active_pokemon
+        if isinstance(my_active, dict):
+            energy_attached += len(my_active.get("attached", []))
+        my_bench = game_state.my_bench
+        if isinstance(my_bench, list):
+            for p in my_bench:
+                if isinstance(p, dict):
+                    energy_attached += len(p.get("attached", []))
+
         board_summary_dict = board_summary.__dict__
         board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")
         board_summary_dict["iono_prob"] = self.belief_tracker.probability_opponent_holds("iono")
+        board_summary_dict["hand_score"] = _get_f(hand_result, "hand_score", 5.0)
+        board_summary_dict["energy_attached"] = energy_attached
 
         my_prizes, opponent_prizes = game_state.my_prizes, game_state.opponent_prizes
         trigger = "prize_gap" if (opponent_prizes - my_prizes) >= 2 else "none"
@@ -80,9 +93,11 @@ class OrchestratorRunMixin:
 
         defensive_retreat = self._check_defensive_retreat(game_state, board_summary)
         if defensive_retreat:
-            # We override if we are in danger, but strategy agent might have a say.
-            # Let's just return it as a defensive override.
-            return defensive_retreat
+            # Instead of short-circuiting, inject a strong retreat preference
+            # so the TurnPlanner can still play trainers/energy/evolve first.
+            gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
+            gs_dict["retreat_score_boost"] = gs_dict.get("retreat_score_boost", 0.0) + 1.5
+            gs_dict["retreat_target"] = defensive_retreat
 
         from cb_agents.sequencing_engine import SequencingEngine
         seq_engine = SequencingEngine()

@@ -149,7 +149,7 @@ with tarfile.open(tar_path, "w:gz") as tar:
             continue
         if "__pycache__" in str(f):
             continue
-        if f.suffix in (".pyc", ".pdf", ".pyd"):
+        if f.suffix in (".pyc", ".pdf"):
             continue
         if "submission/agents/" in str(f).replace("\\", "/"):
             continue

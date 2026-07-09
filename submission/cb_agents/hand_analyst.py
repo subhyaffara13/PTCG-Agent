@@ -42,6 +42,7 @@ class HandAnalyst:
         deck_remaining: int = packet.get("deck_remaining", 0)
         scored_cards        = self._score_hand(hand)
         hand_score          = self._mean_ev(scored_cards)
+        self.last_hand_score = hand_score
         priority_profile    = self._derive_profile(hand_score)
         top_play            = self._best_card(scored_cards)
         result = {

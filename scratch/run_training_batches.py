@@ -50,7 +50,7 @@ def check_file_line_counts() -> bool:
 
 def main():
     b = 0
-    batch_size = 1
+    batch_size = 10
 
     while True:
         b += 1

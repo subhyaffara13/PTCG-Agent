@@ -56,7 +56,8 @@ class GameRunner(BaseAgent):
 
     def run_iteration(self, iteration_id: int, version_n1: str, version_n2: str, 
                        deck_base: Any, deck_new: Any, 
-                       reasoning_base: dict, reasoning_new: dict) -> dict:
+                       reasoning_base: dict, reasoning_new: dict,
+                       num_matchups: int = 15) -> dict:
         d_base = deck_base.get("cards", DEFAULT_DECK) if isinstance(deck_base, dict) else deck_base
         d_new = deck_new.get("cards", DEFAULT_DECK) if isinstance(deck_new, dict) else deck_new
         if not isinstance(d_base, list): d_base = DEFAULT_DECK
@@ -67,14 +68,14 @@ class GameRunner(BaseAgent):
         league = LeagueManager()
         import random
 
-        # RUN 100 PLAYS IN PARALLEL: 50 deck tests and 50 variance tests
-        # Organized as 25 symmetric twin pairs (orig/swap) under shared seeds
+        # RUN PLAYS IN PARALLEL: deck tests and variance tests
+        # Organized as symmetric twin pairs (orig/swap) under shared seeds
         games_config: list[tuple[str, list[int], list[int], bool, bool, int | None]] = [
             ("reasoning_test", d_base, d_base, False, True, None)
         ]
         league_matchups = {}
 
-        for j in range(15):
+        for j in range(num_matchups):
             seed = 1000 + j
             
             # Determine opponent deck (30% chance to matchmake against a league exploiter/snapshot)

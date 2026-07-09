@@ -25,7 +25,7 @@ def get_archetype_for_iteration(i: int) -> str:
 
 def main():
     # Enable warp speed fast simulation by bypassing MCTS in training iterations
-    os.environ["FAST_SIM_MODE"] = "false"
+    os.environ["FAST_SIM_MODE"] = "true"
     
     last_iter = get_last_iteration_id()
     start_iter = last_iter + 1

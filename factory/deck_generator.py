@@ -61,6 +61,17 @@ class DeckGenerator(DeckMathMixin, DeckInjectionMixin, DeckBoundsMixin):
                 
         self.optimize_supporter_count(deck, copies, ctr, legal_cards)
         
+        # Hard enforce exactly 60 cards
+        if len(deck) > 60:
+            deck = deck[:60]
+        while len(deck) < 60:
+            if matching:
+                deck.append(dict(random.choice(matching)))
+            elif legal_cards:
+                deck.append(dict(random.choice(legal_cards)))
+            else:
+                break
+        
         return deck[:60]
 
     def optimize_supporter_count(self, deck: list, copies: dict, ctr: dict, legal_cards: list):
