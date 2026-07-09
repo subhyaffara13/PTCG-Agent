@@ -104,7 +104,7 @@ class OrchestratorRunMixin:
         legal_actions_list = seq_engine.sequence_actions(legal_actions_list, gs_dict)
 
         plan_result = self.bus.dispatch("TurnPlanner", TurnPlannerPacket(
-            hand_score=_get_f(hand_result, "hand_score", 0), priority_profile=_get_f(strategy_result, "new_strategy"),
+            hand_score=_get_f(hand_result, "hand_score", 0), priority_profile=_get_f(strategy_result, "strategy"),
             top_play=_get_f(hand_result, "top_play"), game_state=self.get_public_state(game_state),
             turn=self.current_turn, time_remaining=600.0 - time_elapsed))
         return _get_f(plan_result, "primary_action", "pass")

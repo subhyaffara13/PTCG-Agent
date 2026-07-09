@@ -255,7 +255,7 @@ def push_mutation_to_git(file_path: Path, issue_desc: str):
         msg = f"Auto-evolve: Mutated {file_path.name} to fix: {issue_desc}"
         subprocess.run(["git", "commit", "-m", msg], check=True, capture_output=True)
         
-        except Exception as e:
+    except Exception as e:
         logger.error(f"Failed to auto-push mutation to git: {e}")
 
 def run_evolution_cycle(target_file: str = "cb_agents/turn_planner_sort.py"):

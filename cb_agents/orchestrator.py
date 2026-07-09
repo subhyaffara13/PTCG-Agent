@@ -71,8 +71,8 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
             # Sync the belief tracker with the opponent's public state
             self.sync_belief_tracker(game_state)
             
-            plan_result  = _step_plan(game_state, hand_result, self._planner, self._router)
             strat_result = _step_strategy(game_state, self, self._router)
+            plan_result  = _step_plan(game_state, hand_result, strat_result, self._planner, self._router)
             opp_result   = _step_opponent(game_state, self._opponent, self._router)
             decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
             _log_orchestration(game_state, decision)

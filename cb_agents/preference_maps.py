@@ -9,10 +9,12 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-# Fallback static map if CSV cannot be loaded
 ENERGY_PREFERENCE_MAP = {
-    "957": "4", "87": "4", "734": "4", "733": "4", "950": "4",
-    "979": "6", "226": "6", "855": "2"
+    "957": "6", "87": "6", "734": "6", "733": "6", "950": "6",
+    "979": "6", "226": "6", "855": "2",
+    "62": "6",   # Koraidon (Fighting '6')
+    "63": "4",   # Raging Bolt ex (Lightning '4')
+    "231": "3"   # Tatsugiri ex (Water '3')
 }
 
 _DYNAMIC_PREFERENCE_MAP = None
@@ -30,7 +32,9 @@ def _initialize_preference_map():
     
     type_to_energy = {
         '{g}': '1', '{r}': '2', '{w}': '3', '{l}': '4',
-        '{p}': '5', '{f}': '6', '{d}': '7', '{m}': '8'
+        '{p}': '5', '{f}': '6', '{d}': '7', '{m}': '8',
+        '草': '1', '炎': '2', '水': '3', '雷': '4',
+        '超': '5', '闘': '6', '悪': '7', '鋼': '8'
     }
     
     csv_loaded = False

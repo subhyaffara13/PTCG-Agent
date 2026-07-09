@@ -59,6 +59,20 @@
       "actions": ["PLAY_TRAINER", "PASS"],
       "escalation": "PASS",
       "priority_profile": "defensive"
+    },
+    "stall": {
+      "trigger": "stall control disrupt delay",
+      "posture": "defensive",
+      "actions": ["PLAY_TRAINER", "ATTACH_ENERGY", "PASS"],
+      "escalation": "PASS",
+      "priority_profile": "defensive"
+    },
+    "aggro_push": {
+      "trigger": "aggro push pressure closing speed",
+      "posture": "aggressive",
+      "actions": ["ATTACK_KO", "ATTACH_ENERGY", "PLAY_TRAINER", "PASS"],
+      "escalation": "ATTACK_KO",
+      "priority_profile": "aggressive"
     }
   }
 }
