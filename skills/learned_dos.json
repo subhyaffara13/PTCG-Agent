@@ -2191,12 +2191,17 @@
       "player": "AyFukushima",
       "avg_setup_duration": 36.6,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "MPGaming",
+      "avg_setup_duration": 71.2,
+      "avg_bench_density": 3.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
+    "avg_pokemon_count": 14.0,
     "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_energy_count": 13.0
   },
   "setup_profiles": [
     {
@@ -2278,6 +2283,11 @@
       "player": "AyFukushima",
       "avg_setup_duration": 36.6,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "MPGaming",
+      "avg_setup_duration": 71.2,
+      "avg_bench_density": 3.0
     }
   ]
 }
