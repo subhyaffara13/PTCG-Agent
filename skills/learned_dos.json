@@ -2176,12 +2176,17 @@
       "player": "Gengar",
       "avg_setup_duration": 35.8,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "hiro094",
+      "avg_setup_duration": 47.0,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 23.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 18.0,
+    "avg_trainer_count": 29.0,
+    "avg_energy_count": 13.0
   },
   "setup_profiles": [
     {
@@ -2248,6 +2253,11 @@
       "player": "Gengar",
       "avg_setup_duration": 35.8,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "hiro094",
+      "avg_setup_duration": 47.0,
+      "avg_bench_density": 3.8
     }
   ]
 }
