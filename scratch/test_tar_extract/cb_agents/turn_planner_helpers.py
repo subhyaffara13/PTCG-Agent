@@ -38,7 +38,8 @@ def _process_prize_tracker(game_state: dict, prize_tracker: PrizeTracker, packet
     prized_enrich = prize_tracker.get_certainty_enrichment()
     if prized_enrich:
         game_state.update(prized_enrich)
-        logger.debug(f"Injected prized certainty into game_state: {len(prized_enrich.get('prized_card_ids', {}))} card types")
+        prized_card_types = len(prized_enrich.get('prized_card_ids', {}))
+        logger.debug(f"Injected prized certainty into game_state: {prized_card_types} card types")
     return game_state
 
 
@@ -47,13 +48,33 @@ def _check_lethal_and_update(game_state: dict) -> None:
     registry = CardRegistry()
     legal_attacks = game_state.get("legal_attacks", [])
     max_damage = 0
-    for att in legal_attacks:
-        try:
-            card = registry.get_full_skill(att)
-            if card and card.damage_output > max_damage:
-                max_damage = card.damage_output
-        except:
-            pass
+    if legal_attacks:
+        for att in legal_attacks:
+            dmg_val = 0
+            if hasattr(registry, "move_damage") and att.lower() in registry.move_damage:
+                try:
+                    dmg_str = registry.move_damage[att.lower()].strip().lower()
+                    if "x" in dmg_str or "×" in dmg_str or "?" in dmg_str:
+                        dmg_val = 0
+                    else:
+                        if dmg_str.endswith("+"):
+                            dmg_str = dmg_str[:-1]
+                        dmg_str = "".join(c for c in dmg_str if c.isdigit())
+                        dmg_val = int(dmg_str) if dmg_str else 0
+                except:
+                    pass
+            else:
+                my_active = game_state.get("my_active_pokemon")
+                if my_active:
+                    my_active_id = my_active.get("id") if isinstance(my_active, dict) else my_active
+                    if my_active_id is not None:
+                        try:
+                            card = registry.get_full_skill(my_active_id)
+                            if card:
+                                dmg_val = card.damage_output
+                        except:
+                            pass
+            max_damage = max(max_damage, dmg_val)
 
     lethal = pipeline.check_lethal(
         my_damage=max_damage,

@@ -36,13 +36,14 @@ class PPOTrainer:
                     self.model.load_state_dict(torch.load(model_path, map_location=self.device))
                     logger.info(f"Loaded existing PPO model from {model_path}")
                 except Exception as e:
-                    if "size mismatch" in str(e):
+                    err_str = str(e)
+                    if "size mismatch" in err_str or "Missing key" in err_str or "Unexpected key" in err_str:
                         import time
                         import shutil
                         bak_path = f"{model_path}.bak_shape_mismatch_{int(time.time())}"
                         try:
                             shutil.move(model_path, bak_path)
-                            logger.warning(f"Shape mismatch in {model_path}. Archived to {bak_path}. Initializing fresh model.")
+                            logger.warning(f"Architecture mismatch in {model_path}. Archived to {bak_path}. Initializing fresh model.")
                         except Exception as move_err:
                             logger.error(f"Failed to archive {model_path}: {move_err}")
                     else:

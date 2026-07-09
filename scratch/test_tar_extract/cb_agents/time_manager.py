@@ -81,6 +81,8 @@ class TimeManager:
         return min(1.0, max(0.0, time_elapsed / time_limit))
 
     def _log(self, packet, result, time_limit: float = 600.0):
+        time_el = packet.get("time_elapsed")
+        directive_val = result.get("directive") if isinstance(result, dict) else result
         entry: dict[str, Any] = {
             "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
             "agent":     "TimeManager",
@@ -88,7 +90,7 @@ class TimeManager:
             "reasoning": {
                 "threshold_fast":       time_limit - 60.0,
                 "threshold_force_pass": time_limit - 30.0,
-                "evaluation": f"time_elapsed={packet.get('time_elapsed')} -> directive={result['directive']}",
+                "evaluation": f"time_elapsed={time_el} -> directive={directive_val}",
             },
             "output": result,
         }

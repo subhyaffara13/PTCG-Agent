@@ -88,13 +88,14 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 energy_card = parts[1] if len(parts) > 1 else ""
                 target_id = parts[2] if len(parts) > 2 else ""
                 
-                pref_map = {
-                    "957": "4", "87": "4", "734": "4", "733": "4", "950": "4",
-                    "979": "6", "226": "6", "855": "2"
-                }
-                
-                if target_id and pref_map.get(target_id):
-                    if pref_map[target_id] != energy_card:
+                try:
+                    from cb_agents.preference_maps import get_energy_preference
+                except ImportError:
+                    from cb_agents.preference_maps import get_energy_preference
+                    
+                preferred_energy = get_energy_preference(target_id)
+                if target_id and preferred_energy:
+                    if preferred_energy != energy_card:
                         micro_rank = 25  # High penalty for wrong color
                         return cat_rank * 5 + micro_rank
                     else:
@@ -105,7 +106,10 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 if target_id and str(act_id) != target_id:
                     # attaching to bench
                     hp = game_state.get("my_active_hp", 100)
-                    micro_rank -= 5 if (hp <= 50 or active_attached >= needed) else -2
+                    if hp <= 50 or active_attached >= needed:
+                        micro_rank -= 5  # Active is weak/charged, prefer bench energy
+                    else:
+                        micro_rank -= 2  # Slight preference for bench energy
                 else:
                     if act_id:
                         try:

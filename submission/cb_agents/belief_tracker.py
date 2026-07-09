@@ -49,12 +49,14 @@ class BeliefTracker:
         self._recalculate_probabilities()
 
     def update_on_search(self, card_id: int):
+        card_id = int(card_id)
         self.state.deck_size = max(0, self.state.deck_size - 1)
         self.state.hand_size += 1
         self.state.known_in_hand[card_id] = self.state.known_in_hand.get(card_id, 0) + 1
         self._recalculate_probabilities()
 
     def update_on_discard(self, card_id: int):
+        card_id = int(card_id)
         self.state.known_in_discard[card_id] = self.state.known_in_discard.get(card_id, 0) + 1
         self._recalculate_probabilities()
 

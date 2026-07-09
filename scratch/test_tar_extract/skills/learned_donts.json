@@ -1,3 +1,9 @@
 {
-  "deck_donts": []
+  "deck_donts": [],
+  "behavior_donts": [
+    {
+      "condition": "setup_duration_gt_15",
+      "description": "Strategy taking >15 turns to attack is a losing pattern."
+    }
+  ]
 }

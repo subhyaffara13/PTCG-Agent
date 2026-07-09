@@ -15,21 +15,57 @@ from cb_agents.mcts_mast import MASTPolicy
 
 logger = logging.getLogger(__name__)
 
-# Try to import C++ extension module ptcg_core (disabled on Kaggle to avoid sandbox segfaults)
-is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
-if is_kaggle:
+try:
+    import ptcg_core  # type: ignore
+    HAS_CPP = True
+except Exception:
     ptcg_core = None
     HAS_CPP = False
-    logger.info("Running on Kaggle: Disabling C++ MCTS and using pure Python MCTS.")
-    os.environ["FAST_SIM_MODE"] = "true"
+
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
+if is_kaggle:
+    if HAS_CPP:
+        os.environ["FAST_SIM_MODE"] = "false"
+        logger.info("Running on Kaggle: C++ MCTS extension successfully loaded and activated.")
+    else:
+        os.environ["FAST_SIM_MODE"] = "true"
+        logger.info("Running on Kaggle: C++ MCTS extension not available. Bypassing search to avoid timeouts.")
 else:
-    try:
-        import ptcg_core  # type: ignore
-        HAS_CPP = True
-    except Exception:
-        ptcg_core = None
-        HAS_CPP = False
+    if not HAS_CPP:
         logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
+
+def _to_cpp_compatible_state(gs: dict) -> dict:
+    cpp_gs = gs.copy()
+    
+    def to_str_list(lst):
+        if not isinstance(lst, list):
+            return []
+        return [str(x) for x in lst if x is not None]
+        
+    def convert_pokemon(poke):
+        if not isinstance(poke, dict):
+            return poke
+        p = poke.copy()
+        if "id" in p and p["id"] is not None:
+            p["id"] = str(p["id"])
+        if "attached" in p:
+            p["attached"] = to_str_list(p["attached"])
+        return p
+
+    for key in ["my_hand", "my_discard", "my_deck", "opponent_discard", "opponent_deck"]:
+        if key in cpp_gs:
+            cpp_gs[key] = to_str_list(cpp_gs[key])
+            
+    for key in ["my_active_pokemon", "opponent_active", "opponent_active_pokemon"]:
+        if key in cpp_gs and cpp_gs[key] is not None:
+            cpp_gs[key] = convert_pokemon(cpp_gs[key])
+            
+    for key in ["my_bench", "opponent_bench"]:
+        if key in cpp_gs and isinstance(cpp_gs[key], list):
+            cpp_gs[key] = [convert_pokemon(p) for p in cpp_gs[key]]
+            
+    return cpp_gs
+
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
     def __init__(self, c_puct: float = 1.25, num_simulations: int = 50, belief_tracker=None,
@@ -77,8 +113,16 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
     def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         if not legal_actions:
             return "pass"
-        if os.environ.get("FAST_SIM_MODE") == "true" or len(legal_actions) == 1:
+        if len(legal_actions) == 1:
             return legal_actions[0]
+        if os.environ.get("FAST_SIM_MODE") == "true":
+            # Use heuristic scoring instead of random/first action
+            best_action, best_score = legal_actions[0], -float("inf")
+            for a in legal_actions:
+                s = pipeline.score_action(a, game_state)
+                if s > best_score:
+                    best_score, best_action = s, a
+            return best_action
 
         canonical_actions, _ = pipeline.mask_actions(legal_actions, game_state)
         if len(canonical_actions) <= 1:
@@ -87,8 +131,10 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         # Attempt to run C++ search
         if HAS_CPP and ptcg_core is not None:
             try:
-                time_limit = time_remaining - 0.5 if time_remaining else 1.0
-                return ptcg_core.mcts_search(game_state, time_limit, self.num_simulations, self.c_puct)
+                time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
+                state_dict = _to_cpp_compatible_state(game_state)
+                state_dict["legal_actions"] = canonical_actions
+                return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct)
             except Exception as e:
                 logger.error(f"C++ MCTS search failed: {e}. Falling back to Python MCTS.")
 
@@ -101,7 +147,8 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                     best_val, best = v, a
             return best or legal_actions[0]
 
-        root_hash = f"turn_{game_state.get('turn_number', 0)}"
+        turn_num = game_state.get('turn_number', 0)
+        root_hash = f"turn_{turn_num}"
         root = MCTSNode(state_hash=root_hash)
         mast_policy = MASTPolicy(exploration_weight=0.3)
         priors = self._get_action_priors(game_state, canonical_actions, mast_policy)

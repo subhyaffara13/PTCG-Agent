@@ -32,14 +32,29 @@ def auto_commit_and_push_if_changed():
     logger.info(f"Factory updates detected in: {files_to_add}. Preparing auto-commit and push...")
     try:
         # Add files
-        subprocess.run(["git", "add"] + files_to_add, check=True)
+        subprocess.run(["git", "add"] + files_to_add, check=True, capture_output=True, text=True)
         # Commit
         commit_msg = "Auto-update: Factory model/deck/skills update"
-        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+        subprocess.run(["git", "commit", "-m", commit_msg], check=True, capture_output=True, text=True)
         # Push
-        subprocess.run(["git", "push"], check=True)
+        subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
         logger.info("Factory updates committed and pushed successfully.")
     except subprocess.CalledProcessError as e:
+        err_out = getattr(e, 'stderr', '') or ''
+        std_out = getattr(e, 'stdout', '') or ''
+        full_out = (err_out + std_out).lower()
         logger.error(f"Git auto-push failed (will retry next check): {e}")
+        
+        # Auto-fix Git lock issues on master node
+        import os
+        if "another git process seems to be running" in full_out or "index.lock" in full_out:
+            logger.warning("Git lock detected on Master. Forcing lock removal...")
+            for lock_file in [".git/index.lock", ".git/FETCH_HEAD.lock"]:
+                if os.path.exists(lock_file):
+                    try:
+                        os.remove(lock_file)
+                        logger.info(f"Deleted stale lock file on Master: {lock_file}")
+                    except Exception as rm_err:
+                        logger.error(f"Failed to remove {lock_file}: {rm_err}")
     except Exception as e:
         logger.error(f"Unexpected error during Git auto-push: {e}")

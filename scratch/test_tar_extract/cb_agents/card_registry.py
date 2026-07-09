@@ -27,6 +27,58 @@ class CardRegistry:
         self.full_cards: Dict[Any, CardEntry] = {}
         self.evolution_predecessors: Dict[str, str] = {}
         load_metadata_helper(self.skills_dir, self.cards, self.evolution_predecessors)
+        
+        self.move_damage = {}
+        import csv
+        try:
+            pool_path = self.skills_dir / "card_pool_raw.csv"
+            if pool_path.exists():
+                with open(pool_path, "r", encoding="utf-8") as f:
+                    reader = csv.reader(f)
+                    header = next(reader, None)
+                    if header:
+                        move_idx = -1
+                        dmg_idx = -1
+                        for idx, col in enumerate(header):
+                            if "Move Name" in col:
+                                move_idx = idx
+                            elif "Damage" in col:
+                                dmg_idx = idx
+                        if move_idx != -1 and dmg_idx != -1:
+                            for row in reader:
+                                if len(row) > max(move_idx, dmg_idx):
+                                    move = row[move_idx].strip()
+                                    dmg = row[dmg_idx].strip()
+                                    if move and move.lower() != "n/a":
+                                        self.move_damage[move.lower()] = dmg
+        except Exception as e:
+            logger.error(f"Failed to load card_pool_raw.csv moves: {e}")
+        
+        # Load learned rules from crawler
+        self.learned_dos = set()
+        self.learned_donts = set()
+        import json
+        try:
+            dos_path = self.skills_dir / "learned_dos.json"
+            if dos_path.exists():
+                dos_data = json.loads(dos_path.read_text(encoding="utf-8"))
+                for item in dos_data.get("deck_dos", []):
+                    cid = item.get("card_id")
+                    if cid is not None:
+                        self.learned_dos.add(int(cid))
+        except Exception as e:
+            logger.error(f"Failed to load learned_dos.json: {e}")
+
+        try:
+            donts_path = self.skills_dir / "learned_donts.json"
+            if donts_path.exists():
+                donts_data = json.loads(donts_path.read_text(encoding="utf-8"))
+                for item in donts_data.get("deck_donts", []):
+                    cid = item.get("card_id")
+                    if cid is not None:
+                        self.learned_donts.add(int(cid))
+        except Exception as e:
+            logger.error(f"Failed to load learned_donts.json: {e}")
 
     def get(self, card_id: Any) -> Optional[CardEntry]:
         """Get lightweight metadata card entry."""

@@ -147,9 +147,11 @@ py::dict boardstate_to_dict(const BoardState& s) {
     }
     d["my_bench"] = my_bench_list;
     d["my_discard"] = s.me.discard;
+    d["my_discard_pile"] = s.me.discard;
     d["my_deck"] = s.me.deck;
     d["my_deck_count"] = s.me.deck_count;
     d["my_prizes"] = s.me.prizes;
+    d["my_prizes_remaining"] = s.me.prizes;
     d["my_deck_out_loss"] = s.me.deck_out_loss;
     
     if (s.opponent.has_active) {
@@ -169,7 +171,9 @@ py::dict boardstate_to_dict(const BoardState& s) {
         opp_bench_list.append(pokemon_to_dict(p));
     }
     d["opponent_bench"] = opp_bench_list;
+    d["opponent_hand"] = s.opponent.hand;
     d["opponent_discard"] = s.opponent.discard;
+    d["opponent_discard_pile"] = s.opponent.discard;
     d["opponent_deck"] = s.opponent.deck;
     d["opponent_deck_count"] = s.opponent.deck_count;
     d["opponent_prizes"] = s.opponent.prizes;
@@ -238,21 +242,51 @@ void add_card_py(py::dict c) {
     CardRegistry::getInstance().addCard(card);
 }
 
+// -----------------------------------------------------------------------
+// score_action / score_state wrappers for Python delegation
+// -----------------------------------------------------------------------
+py::object score_action_py(const py::dict& game_state, const std::string& action) {
+    BoardState state;
+    state.me = dict_to_player(game_state, "my");
+    state.opponent = dict_to_player(game_state, "opponent");
+    state.turn_number = game_state.contains("turn_number") ? game_state["turn_number"].cast<int>() : 1;
+    double score = score_action(action, state, 0.0);
+    return py::cast(score);
+}
+
+py::object score_state_py(const py::dict& game_state) {
+    BoardState state;
+    state.me = dict_to_player(game_state, "my");
+    state.opponent = dict_to_player(game_state, "opponent");
+    state.turn_number = game_state.contains("turn_number") ? game_state["turn_number"].cast<int>() : 1;
+    double score = score_state(state);
+    return py::cast(score);
+}
+
 PYBIND11_MODULE(ptcg_core, m) {
     m.doc() = "High-performance Pokemon TCG MCTS simulator engine";
-    
+
     m.def("apply_action", &apply_action_py, "Apply an action to the game state dictionary",
           py::arg("game_state"), py::arg("action"));
-          
+
     m.def("get_legal_actions", &get_legal_actions_py, "Get list of legal actions for the game state dictionary",
           py::arg("game_state"));
-          
+
     m.def("mcts_search", &mcts_search_py, "Run MCTS UCT search on game state dictionary",
           py::arg("game_state"), py::arg("time_limit_sec") = 1.0, py::arg("num_simulations") = 50, py::arg("c_puct") = 1.25);
-          
+
     m.def("initialize_registry", &initialize_registry_py, "Initialize card registry from skills directory",
           py::arg("skills_dir"));
-          
+
     m.def("add_card", &add_card_py, "Manually add/override card in registry",
           py::arg("card_dict"));
+
+    m.def("score_action", &score_action_py,
+          "Score an action string given game state — C++ port of heuristic_pipeline_eval.score_action()",
+          py::arg("game_state"), py::arg("action"));
+
+    m.def("score_state", &score_state_py,
+          "Score a board state — C++ port of heuristic_pipeline_eval.score_state()",
+          py::arg("game_state"));
 }
+

@@ -12,21 +12,26 @@ from cb_agents.forward_model_gen import _regenerate_legal_actions, _check_win_co
 
 def fast_clone_state(gs: dict) -> dict:
     clone = dict(gs)
-    if "my_hand" in clone and isinstance(clone["my_hand"], list):
-        clone["my_hand"] = list(clone["my_hand"])
-    if "my_bench" in clone and isinstance(clone["my_bench"], list):
-        clone["my_bench"] = [dict(p) if isinstance(p, dict) else p for p in clone["my_bench"]]
-    if "legal_actions" in clone and isinstance(clone["legal_actions"], list):
-        clone["legal_actions"] = list(clone["legal_actions"])
-    # Deep-clone active pokemon dicts to prevent MCTS rollout mutations
-    if "my_active_pokemon" in clone and isinstance(clone["my_active_pokemon"], dict):
-        clone["my_active_pokemon"] = dict(clone["my_active_pokemon"])
-        if "attached" in clone["my_active_pokemon"]:
-            clone["my_active_pokemon"]["attached"] = list(clone["my_active_pokemon"]["attached"])
-    if "opponent_active" in clone and isinstance(clone["opponent_active"], dict):
-        clone["opponent_active"] = dict(clone["opponent_active"])
-    if "opponent_active_pokemon" in clone and isinstance(clone["opponent_active_pokemon"], dict):
-        clone["opponent_active_pokemon"] = dict(clone["opponent_active_pokemon"])
+    # Hand, discards, and decks
+    for k in ["my_hand", "my_discard", "opponent_discard", "my_deck", "opponent_deck", "legal_actions"]:
+        if k in clone and isinstance(clone[k], list):
+            clone[k] = list(clone[k])
+            
+    # Active Pokemon dictionaries
+    for k in ["my_active_pokemon", "opponent_active", "opponent_active_pokemon"]:
+        if k in clone and isinstance(clone[k], dict):
+            clone[k] = dict(clone[k])
+            if "attached" in clone[k] and isinstance(clone[k]["attached"], list):
+                clone[k]["attached"] = list(clone[k]["attached"])
+                
+    # Bench dictionaries (deep copy bench lists and nested dictionaries)
+    for k in ["my_bench", "opponent_bench"]:
+        if k in clone and isinstance(clone[k], list):
+            clone[k] = [
+                {**p, "attached": list(p["attached"])} if (isinstance(p, dict) and "attached" in p)
+                else (dict(p) if isinstance(p, dict) else p)
+                for p in clone[k]
+            ]
     return clone
 
 def apply_action(game_state: dict, action: str) -> dict:

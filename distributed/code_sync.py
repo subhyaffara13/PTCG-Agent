@@ -23,7 +23,7 @@ def sync_code(master_version) -> bool:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
             # Fetch all updates from origin
-            subprocess.run(['git', 'fetch', '--all'], check=True)
+            subprocess.run(['git', 'fetch', '--all'], check=True, capture_output=True, text=True)
             
             # Remove local copies of auto-updated files to prevent conflicts if they are untracked/modified
             files_to_clean = [

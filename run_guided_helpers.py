@@ -13,7 +13,7 @@ from scratch.run_guided_refactor import get_last_iteration_id, execute_refactor_
 
 logger = logging.getLogger("run_guided_helpers")
 PPO_EPOCHS = 8
-PPO_BATCH_SIZE = 1024
+PPO_BATCH_SIZE = 256  # Reduced from 1024 to prevent Transformer OOM
 
 def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
     if os.environ.get("FAST_SIM_MODE") == "true":
@@ -113,7 +113,7 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
             
             total_steps = 0
             for s, a, r in game_trajectories:
-                if total_steps + len(s) > 8000:
+                if total_steps + len(s) > 4000:
                     break
                 states.extend(s)
                 actions.extend(a)

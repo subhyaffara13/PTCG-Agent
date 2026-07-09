@@ -17,19 +17,31 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     ahp = gs.get("my_active_hp", 100)
     bn = gs.get("my_bench", [])
     ac = gs.get("my_active_pokemon", {})
+    opp_hp = gs.get("opponent_active_hp", 100)
     if action.startswith("attack:"):
-        v += 0.5
-        if mp <= 1: v += 0.5
+        v += 1.2  # Attacks are almost always the best action
+        if mp <= 1: v += 1.0  # Game-winning attack
+        if mp <= 2: v += 0.3  # Close to winning
         opp_ac = gs.get("opponent_active_pokemon", {})
         if isinstance(ac, dict) and isinstance(opp_ac, dict):
             my_type = ac.get("element_type", "")
             opp_weak = opp_ac.get("weakness", "")
             if my_type and opp_weak and my_type.lower() == opp_weak.lower():
-                v += 0.4
+                v += 0.5  # Type advantage
+        # Check if we can KO
+        if isinstance(ac, dict):
+            my_active_id = ac.get("id")
+            if my_active_id is not None:
+                try:
+                    card = _registry.get_full_skill(my_active_id)
+                    if card and card.damage_output >= opp_hp:
+                        v += 1.5  # KO bonus — this is likely the winning move
+                except:
+                    pass
     elif action.startswith("evolve:"):
-        v += 0.3
+        v += 0.6
     elif action.startswith("attach_energy:"):
-        v += 0.2
+        v += 0.45  # Energy attachment is important for enabling attacks
         if isinstance(ac, dict):
             need = 2
             try:
@@ -37,7 +49,9 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
                 if e and e.energy_cost > 0: need = e.energy_cost
             except: pass
             att = len(ac.get("attached", []))
-            if att >= need:
+            if att < need:
+                v += 0.3  # Bonus for charging up active attacker
+            elif att >= need:
                 an = ac.get("card_name", "").lower()
                 sc = any(sa in an for sa in {"raging bolt", "iron hands", "chien pao", "ceruledge", "garchomp", "roaring moon", "groudon", "kyogre"})
                 nr = ahp <= 50 or gs.get("my_active_status", "") in {"poisoned", "burned", "asleep", "paralyzed"}
@@ -45,8 +59,11 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     elif action.startswith("bench:"):
         if not bn: v += 0.8
         else:
-            v += 0.15
             bs = len(bn)
+            if bs < 2: v += 0.4
+            elif bs < 3: v += 0.25
+            elif bs < 4: v += 0.15
+            else: v += 0.05
             pr = gs.get("priority_profile", "aggro_push")
             tol = {"aggro_push": 0.15, "closing": 0.10, "disruption": -0.05, "setup": 0.15, "stall": -0.15}.get(pr, 0.0)
             if bs >= 4 and tol < 0: v += tol * bs * 0.3
@@ -70,7 +87,7 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
         rsb = gs.get("retreat_score_boost", 0.0)
         if rsb > 0: v += rsb
     elif action == "pass":
-        v -= 0.5
+        v -= 1.0  # Strongly discourage passing
     hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
     if hs >= 2 and dc > 10: v += 0.03 * min(hs, 5)
     return v

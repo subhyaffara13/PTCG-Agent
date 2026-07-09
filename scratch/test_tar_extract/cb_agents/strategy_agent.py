@@ -14,12 +14,14 @@ class StrategyAgent:
 
     def __init__(self, **kwargs: Any) -> None:
         from cb_agents.strategy_agent_io import load_skill
+        self.current_posture = "tempo"
+        self.last_triggered_turn = 0
         try:
             self._profiles: dict[str, dict[str, Any]] = load_skill(kwargs.get("skills_dir"))
         except Exception as e:
             self._profiles = {}
 
-    def evaluate(self, packet: dict[str, Any]) -> dict[str, Any]:
+    def evaluate(self, packet: Any) -> dict[str, Any]:
         try:
             return self._evaluate_internal(packet)
         except Exception as e:
@@ -68,9 +70,15 @@ class StrategyAgent:
         profile_key, profile, confidence, match_reason = self._match_profile(
             trigger, board_summary
         )
+        posture_val = profile.get("posture", "tempo")
+        self.current_posture = posture_val
+        turn_num = board_summary.get("turn_number", packet.get("turn", 1))
+        if trigger.lower() != "none":
+            self.last_triggered_turn = turn_num
+            
         result: dict[str, Any] = {
             "strategy":   profile_key,
-            "posture":    profile.get("posture", "tempo"),
+            "posture":    posture_val,
             "actions":    profile.get("actions", ["PASS"]),
             "escalation": profile.get("escalation", "PASS"),
             "confidence": round(confidence, 4),

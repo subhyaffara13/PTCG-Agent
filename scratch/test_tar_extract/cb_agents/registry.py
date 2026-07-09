@@ -40,9 +40,10 @@ def register_agent(
 
     def decorator(cls: Type) -> Type:
         if bus_name in _AGENT_REGISTRY:
+            registered_cls = _AGENT_REGISTRY[bus_name]['cls'].__name__
             raise ValueError(
                 f"Duplicate agent registration: bus_name '{bus_name}' "
-                f"is already registered to {_AGENT_REGISTRY[bus_name]['cls'].__name__}"
+                f"is already registered to {registered_cls}"
             )
         _AGENT_REGISTRY[bus_name] = {
             "cls": cls,
