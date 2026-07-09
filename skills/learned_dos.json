@@ -52,7 +52,7 @@
     },
     {
       "card_id": 5,
-      "avg_count": 5.0,
+      "avg_count": 8.0,
       "reason": "High usage (3.0x avg) in winning matches of player nogu."
     },
     {
@@ -2196,12 +2196,22 @@
       "player": "MPGaming",
       "avg_setup_duration": 71.2,
       "avg_bench_density": 3.0
+    },
+    {
+      "player": "soyukke",
+      "avg_setup_duration": 55.2,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "\u304b\u3059\u307f\u3055\u3093\u3061",
+      "avg_setup_duration": 34.2,
+      "avg_bench_density": 2.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 18.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 12.0
   },
   "setup_profiles": [
     {
@@ -2288,6 +2298,16 @@
       "player": "MPGaming",
       "avg_setup_duration": 71.2,
       "avg_bench_density": 3.0
+    },
+    {
+      "player": "soyukke",
+      "avg_setup_duration": 55.2,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "\u304b\u3059\u307f\u3055\u3093\u3061",
+      "avg_setup_duration": 34.2,
+      "avg_bench_density": 2.9
     }
   ]
 }
