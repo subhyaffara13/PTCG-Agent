@@ -2181,12 +2181,22 @@
       "player": "hiro094",
       "avg_setup_duration": 47.0,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "kuromoka",
+      "avg_setup_duration": 31.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "AyFukushima",
+      "avg_setup_duration": 36.6,
+      "avg_bench_density": 3.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 18.0,
-    "avg_trainer_count": 29.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   },
   "setup_profiles": [
     {
@@ -2258,6 +2268,16 @@
       "player": "hiro094",
       "avg_setup_duration": 47.0,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "kuromoka",
+      "avg_setup_duration": 31.4,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "AyFukushima",
+      "avg_setup_duration": 36.6,
+      "avg_bench_density": 3.5
     }
   ]
 }
