@@ -2151,12 +2151,22 @@
       "player": "Alberto Bonsanto",
       "avg_setup_duration": 52.0,
       "avg_bench_density": 0.9
+    },
+    {
+      "player": "213tubo",
+      "avg_setup_duration": 53.6,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "OsElCoUn",
+      "avg_setup_duration": 60.4,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 12.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 7.0
   },
   "setup_profiles": [
     {
@@ -2198,6 +2208,16 @@
       "player": "Alberto Bonsanto",
       "avg_setup_duration": 52.0,
       "avg_bench_density": 0.9
+    },
+    {
+      "player": "213tubo",
+      "avg_setup_duration": 53.6,
+      "avg_bench_density": 3.1
+    },
+    {
+      "player": "OsElCoUn",
+      "avg_setup_duration": 60.4,
+      "avg_bench_density": 3.9
     }
   ]
 }
