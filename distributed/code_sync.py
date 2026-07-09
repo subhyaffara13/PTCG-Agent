@@ -42,8 +42,8 @@ def sync_code(master_version) -> bool:
             
             # Hard reset local branch to the master's exact version
             try:
-                subprocess.run(['git', 'reset', '--hard', master_version], check=True)
-            except subprocess.CalledProcessError:
+                subprocess.run(['git', 'reset', '--hard', master_version], check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as e:
                 # Fallback to origin's main if master_version is not yet known locally
                 subprocess.run(['git', 'reset', '--hard', 'origin/main'], check=True)
                 
@@ -55,7 +55,22 @@ def sync_code(master_version) -> bool:
             logging.info(f"Code synchronized successfully from {local_version} to {new_local_version}.")
             return True
         except subprocess.CalledProcessError as e:
-            logging.error(f"Failed to synchronize code: {e}")
+            err_output = getattr(e, 'stderr', '') or ''
+            out_output = getattr(e, 'stdout', '') or ''
+            full_out = (err_output + out_output).lower()
+            
+            logging.error(f"Failed to synchronize code: {e}. Output: {full_out}")
+            
+            # Auto-fix Git lock issues
+            if "another git process seems to be running" in full_out or "index.lock" in full_out:
+                logging.warning("Git lock detected. Forcing lock removal...")
+                for lock_file in [".git/index.lock", ".git/FETCH_HEAD.lock"]:
+                    if os.path.exists(lock_file):
+                        try:
+                            os.remove(lock_file)
+                            logging.info(f"Deleted stale lock file: {lock_file}")
+                        except Exception as rm_err:
+                            logging.error(f"Failed to remove {lock_file}: {rm_err}")
     else:
         logging.info(f"Code is already up to date at version: {local_version}")
     return False
