@@ -2246,12 +2246,17 @@
       "player": "taksai",
       "avg_setup_duration": 34.8,
       "avg_bench_density": 2.1
+    },
+    {
+      "player": "Tahsin Arafat",
+      "avg_setup_duration": 107.0,
+      "avg_bench_density": 2.4
     }
   ],
   "deck_stats": {
     "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 38.0,
-    "avg_energy_count": 9.0
+    "avg_trainer_count": 39.0,
+    "avg_energy_count": 8.0
   },
   "setup_profiles": [
     {
@@ -2368,6 +2373,11 @@
       "player": "taksai",
       "avg_setup_duration": 34.8,
       "avg_bench_density": 2.1
+    },
+    {
+      "player": "Tahsin Arafat",
+      "avg_setup_duration": 107.0,
+      "avg_bench_density": 2.4
     }
   ]
 }
