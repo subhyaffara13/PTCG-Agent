@@ -2256,12 +2256,22 @@
       "player": "fujiborozoukin",
       "avg_setup_duration": 48.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "Budew",
+      "avg_setup_duration": 96.2,
+      "avg_bench_density": 2.0
+    },
+    {
+      "player": "Pixegami",
+      "avg_setup_duration": 59.2,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 15.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   },
   "setup_profiles": [
     {
@@ -2388,6 +2398,16 @@
       "player": "fujiborozoukin",
       "avg_setup_duration": 48.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "Budew",
+      "avg_setup_duration": 96.2,
+      "avg_bench_density": 2.0
+    },
+    {
+      "player": "Pixegami",
+      "avg_setup_duration": 59.2,
+      "avg_bench_density": 3.7
     }
   ]
 }
