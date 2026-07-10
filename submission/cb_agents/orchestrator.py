@@ -119,6 +119,16 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
             except Exception as log_err:
                 sys.stderr.write(f"Failed to log/trigger evolution request: {log_err}\n")
                 
+            try:
+                legal = game_state.get("legal_actions", [])
+                if legal:
+                    return TurnDecision(
+                        action_sequence=[legal[0]],
+                        primary_action=legal[0],
+                        reasoning_chain="emergency_fallback",
+                        strategy_profile="aggro_push"
+                    )
+            except: pass
             return _emergency_pass(time_result)
 
     def start_game(self) -> None:

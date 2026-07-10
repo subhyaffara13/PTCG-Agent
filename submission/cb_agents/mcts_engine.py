@@ -24,12 +24,9 @@ except Exception:
 
 is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
 if is_kaggle:
-    if HAS_CPP:
-        os.environ["FAST_SIM_MODE"] = "false"
-        logger.info("Running on Kaggle: C++ MCTS extension successfully loaded and activated.")
-    else:
-        os.environ["FAST_SIM_MODE"] = "true"
-        logger.info("Running on Kaggle: C++ MCTS extension not available. Bypassing search to avoid timeouts.")
+    HAS_CPP = False
+    os.environ["FAST_SIM_MODE"] = "true"
+    logger.info("Running on Kaggle: Bypassing C++ OpenSpiel bindings to prevent crashes.")
 else:
     if not HAS_CPP:
         logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
@@ -100,15 +97,15 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         try:
             return self.value_network.evaluate(game_state, action, determinization)
         except Exception as e:
-            logger.error(f"_evaluate_state failed: {e}")
+            logger.exception(f"_evaluate_state failed: {e}")
             return 0.0
 
     def search(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         try:
             return self._search_internal(game_state, legal_actions, time_remaining)
         except Exception as e:
-            logger.error(f"search failed: {e}")
-            return "pass"
+            logger.exception(f"search failed: {e}")
+            return legal_actions[0] if legal_actions else "pass"
 
     def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         if not legal_actions:

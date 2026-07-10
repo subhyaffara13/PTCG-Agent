@@ -32,14 +32,25 @@ class PPOTrainer:
             self.model = ActorCritic(state_dim, 256, action_dim).to(self.device)
             self.optimizer = optim.Adam(self.model.parameters(), lr=1e-3)
             if os.path.exists(model_path):
-                try:
-                    self.model.load_state_dict(torch.load(model_path, map_location=self.device))
-                    logger.info(f"Loaded existing PPO model from {model_path}")
-                except Exception as e:
-                    err_str = str(e)
+                import time
+                import shutil
+                loaded = False
+                err_str = ""
+                for attempt in range(5):
+                    try:
+                        self.model.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
+                        logger.info(f"Loaded existing PPO model from {model_path}")
+                        loaded = True
+                        break
+                    except Exception as e:
+                        err_str = str(e)
+                        if "1224" in err_str or "1455" in err_str:
+                            time.sleep(2)
+                        else:
+                            break
+                
+                if not loaded:
                     if "size mismatch" in err_str or "Missing key" in err_str or "Unexpected key" in err_str:
-                        import time
-                        import shutil
                         bak_path = f"{model_path}.bak_shape_mismatch_{int(time.time())}"
                         try:
                             shutil.move(model_path, bak_path)
@@ -55,7 +66,7 @@ class PPOTrainer:
             self.model = None
 
     def update(self, states: List[List[float]], actions: List[int], old_log_probs: List[float],
-               rewards: List[float], epochs: int = 4, batch_size: int = 1024):
+               rewards: List[float], epochs: int = 4, batch_size: int = 256):
         if not TORCH_AVAILABLE or not states:
             logger.error("Cannot train: PyTorch missing or empty states.")
             return

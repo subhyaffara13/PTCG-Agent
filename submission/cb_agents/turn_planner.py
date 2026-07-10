@@ -106,7 +106,11 @@ class TurnPlanner(BaseAgent):
             return response
         except Exception as e:
             logger.error(f"TurnPlanner.receive failed: {e}", exc_info=True)
-            return {"action_sequence": ["pass"], "primary_action": "pass", "reasoning_chain": "error_fallback"}
+            fallback = "pass"
+            candidates = game_state.get("legal_actions", [])
+            if isinstance(candidates, list) and candidates:
+                fallback = candidates[0]
+            return {"action_sequence": [fallback], "primary_action": fallback, "reasoning_chain": "error_fallback"}
 
     def get_prize_tracker(self) -> PrizeTracker:
         return self._prize_tracker

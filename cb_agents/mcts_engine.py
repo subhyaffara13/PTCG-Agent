@@ -24,12 +24,9 @@ except Exception:
 
 is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
 if is_kaggle:
-    if HAS_CPP:
-        os.environ["FAST_SIM_MODE"] = "false"
-        logger.info("Running on Kaggle: C++ MCTS extension successfully loaded and activated.")
-    else:
-        os.environ["FAST_SIM_MODE"] = "true"
-        logger.info("Running on Kaggle: C++ MCTS extension not available. Bypassing search to avoid timeouts.")
+    HAS_CPP = False
+    os.environ["FAST_SIM_MODE"] = "true"
+    logger.info("Running on Kaggle: Bypassing C++ OpenSpiel bindings to prevent crashes.")
 else:
     if not HAS_CPP:
         logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
