@@ -2251,12 +2251,17 @@
       "player": "Tahsin Arafat",
       "avg_setup_duration": 107.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "fujiborozoukin",
+      "avg_setup_duration": 48.0,
+      "avg_bench_density": 2.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 39.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 15.0
   },
   "setup_profiles": [
     {
@@ -2377,6 +2382,11 @@
     {
       "player": "Tahsin Arafat",
       "avg_setup_duration": 107.0,
+      "avg_bench_density": 2.4
+    },
+    {
+      "player": "fujiborozoukin",
+      "avg_setup_duration": 48.0,
       "avg_bench_density": 2.4
     }
   ]
