@@ -2266,11 +2266,16 @@
       "player": "Pixegami",
       "avg_setup_duration": 59.2,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "MAMOOS",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 4.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 30.0,
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 27.0,
     "avg_energy_count": 10.0
   },
   "setup_profiles": [
@@ -2408,6 +2413,11 @@
       "player": "Pixegami",
       "avg_setup_duration": 59.2,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "MAMOOS",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 4.0
     }
   ]
 }
