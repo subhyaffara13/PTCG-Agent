@@ -2211,12 +2211,17 @@
       "player": "Xander",
       "avg_setup_duration": 25.4,
       "avg_bench_density": 1.4
+    },
+    {
+      "player": "\u3059\u30fc\u3071\u30fc\u3072\u3068\u3067",
+      "avg_setup_duration": 36.4,
+      "avg_bench_density": 1.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   },
   "setup_profiles": [
     {
@@ -2318,6 +2323,11 @@
       "player": "Xander",
       "avg_setup_duration": 25.4,
       "avg_bench_density": 1.4
+    },
+    {
+      "player": "\u3059\u30fc\u3071\u30fc\u3072\u3068\u3067",
+      "avg_setup_duration": 36.4,
+      "avg_bench_density": 1.9
     }
   ]
 }
