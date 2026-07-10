@@ -65,11 +65,16 @@ class MCTSParallelMixin:
                 node = root
                 search_path = [node]
                 current_gs = game_state
-                while node.is_expanded():
-                    node = self.select_child(node, self.c_puct)
-                    if node is None: break
-                    search_path.append(node)
+                depth = 0
+                while node.is_expanded() and depth < 50:
+                    depth += 1
+                    if getattr(node, "is_terminal", False):
+                        break
                     current_gs = apply_action(current_gs, node.action_taken)
+                    next_node = self.select_child(node, self.c_puct)
+                    if next_node is None: break
+                    node = next_node
+                    search_path.append(node)
                 if node is None: return 0
                 for path_node in search_path:
                     path_node.apply_virtual_loss()

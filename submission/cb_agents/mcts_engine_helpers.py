@@ -12,7 +12,7 @@ def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_act
     # Cap max time for Python MCTS fallback to 0.15s to prevent 20-minute stalls on worker nodes
     max_time = 0.15
     if time_remaining is not None:
-        max_time = min(max_time, time_remaining - 0.5)
+        max_time = max(0.01, min(max_time, time_remaining - 0.5))
         
     start_time = time.time()
     for _ in range(engine.num_simulations):
@@ -20,7 +20,7 @@ def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_act
         if time_remaining is not None and time_remaining - elapsed < 0.5:
             logger.debug(f"MCTS early abort: critical time ({_} sims, {elapsed:.2f}s)")
             break
-        if _ % 10 == 0 and elapsed > max_time:
+        if elapsed > max_time:
             logger.debug(f"MCTS early after {_} sims ({elapsed:.2f}s)")
             break
         det = engine.belief_tracker.sample_determinization() if engine.belief_tracker else None
@@ -30,7 +30,9 @@ def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_act
         if node is None: continue
         path.append(node)
         current_gs = game_state
-        while node.is_expanded():
+        depth = 0
+        while node.is_expanded() and depth < 50:
+            depth += 1
             if getattr(node, "is_terminal", False):
                 break
             current_gs = apply_action(current_gs, node.action_taken)

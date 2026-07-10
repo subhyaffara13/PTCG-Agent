@@ -56,6 +56,8 @@ class TurnPlanner(BaseAgent):
         try:
             game_state = getattr(packet, "game_state", {}) or {}
             turn = getattr(packet, "turn", 1)
+            if turn == 1:
+                self._consecutive_passes = 0
             profile = packet.priority_profile
             profile_map = {
                 "aggressive": "aggro_push",

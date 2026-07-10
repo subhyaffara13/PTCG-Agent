@@ -13,6 +13,9 @@ agent_dir = str(Path(__file__).parent.resolve()) if "__file__" in globals() and 
 if agent_dir not in sys.path:
     sys.path.insert(0, agent_dir)
 
+import time
+_GLOBAL_START_TIME = time.time()
+
 
 def compile_extension_on_kaggle(configuration=None):
     """Compiles the C++ ptcg_core extension on Kaggle at module load time or Step 0."""
@@ -98,12 +101,17 @@ def compile_extension_on_kaggle(configuration=None):
         
         # 5. Run compilation command
         sys.stderr.write("[compile] Compiling C++ ptcg_core extension on-the-fly...\n")
-        res = subprocess.run(
-            [sys.executable, "setup.py", "build_ext", "--inplace"],
-            cwd=str(build_dir),
-            capture_output=True,
-            text=True
-        )
+        try:
+            res = subprocess.run(
+                [sys.executable, "setup.py", "build_ext", "--inplace"],
+                cwd=str(build_dir),
+                capture_output=True,
+                text=True,
+                timeout=120
+            )
+        except subprocess.TimeoutExpired as e:
+            sys.stderr.write(f"[compile] Compilation timed out: {e}\n")
+            return False
         sys.stderr.write(f"[compile] Compilation stdout:\n{res.stdout}\n")
         sys.stderr.write(f"[compile] Compilation stderr:\n{res.stderr}\n")
         
@@ -591,15 +599,21 @@ def agent(observation, configuration=None):
         my_state = players[my_idx]
         opp_state = players[1 - my_idx] if len(players) > 1 else {}
 
+        def _get_active(state):
+            val = get_val(state, "active")
+            if not val: return None
+            if isinstance(val, list): return val[0]
+            return val
+
         # Safely convert CABT board state to simplified game_state dict expected by Orchestrator
         game_state = {
             "my_hand": [get_val(c, "id") for c in get_val(my_state, "hand", []) if c and get_val(c, "id") is not None] if get_val(my_state, "hand") else [],
             "my_deck_count": get_val(my_state, "deckCount", 60),
             "my_prizes": len(get_val(my_state, "prize", [])) if isinstance(get_val(my_state, "prize"), list) else 6,
-            "my_active_pokemon": _normalize_pokemon(get_val(my_state, "active", [None])[0]) if get_val(my_state, "active") else None,
+            "my_active_pokemon": _normalize_pokemon(_get_active(my_state)),
             "my_bench": [_normalize_pokemon(p) for p in get_val(my_state, "bench", [])] if get_val(my_state, "bench") else [],
             
-            "opponent_active": _normalize_pokemon(get_val(opp_state, "active", [None])[0]) if get_val(opp_state, "active") else None,
+            "opponent_active": _normalize_pokemon(_get_active(opp_state)),
             "opponent_bench": [_normalize_pokemon(p) for p in get_val(opp_state, "bench", [])] if get_val(opp_state, "bench") else [],
             "opponent_bench_count": len(get_val(opp_state, "bench", [])) if get_val(opp_state, "bench") else 0,
             "opponent_prizes": len(get_val(opp_state, "prize", [])) if isinstance(get_val(opp_state, "prize"), list) else 6,
@@ -608,6 +622,7 @@ def agent(observation, configuration=None):
             "opponent_last_play": None,
             
             "turn_number": get_val(current, "turn", 1),
+            "time_elapsed": time.time() - _GLOBAL_START_TIME,
             "my_active_hp": 100,
             "opponent_active_hp": 100,
             "bench_has_attacker": False

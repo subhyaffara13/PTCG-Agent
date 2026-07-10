@@ -5,25 +5,15 @@ from dataclasses import dataclass
 from pathlib import Path
 import os
 
-is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
-
-if is_kaggle:
+try:
+    import torch
+except ImportError:
     class MockNoGrad:
         def __enter__(self): return self
         def __exit__(self, *args): pass
     class MockTorch:
         no_grad = MockNoGrad
     torch = MockTorch()
-else:
-    try:
-        import torch
-    except ImportError:
-        class MockNoGrad:
-            def __enter__(self): return self
-            def __exit__(self, *args): pass
-        class MockTorch:
-            no_grad = MockNoGrad
-        torch = MockTorch()
 
 def __getattr__(name):
     if name == "HeuristicValueNetwork":
@@ -47,92 +37,116 @@ class NeuralValueNetwork(BaseValueNetwork):
     heuristic: Any
     model: Any
 
-    def __init__(self, weights_path="logs/model_weights.pth"):
-        agent_dir = Path(__file__).parent.parent.resolve()
-        self.weights_path = agent_dir / weights_path
-        self.heuristic = None
+    def __init__(self, model_path: str = "logs/model_weights.pth", device: str = "cpu"):
+        from cb_agents.value_network_helpers import ActorCritic, state_to_tensor, state_to_card_tokens, HAS_TORCH
+        from factory.state_dimensions import STATE_DIM
+
+        self.device = device
         self.model = None
-        self._state_cache = {}
-        from cb_agents.value_network_helpers import PTCGTransformerNet, PTCGValueMLP, load_weights
-        self.model = None
-        self.use_transformer = False
-        # Try to load Transformer first
-        if PTCGTransformerNet is not None and self.weights_path.exists():
+        self.state_to_tensor = state_to_tensor
+        self.state_to_card_tokens = state_to_card_tokens
+        self.has_torch = HAS_TORCH
+
+        if HAS_TORCH:
             try:
-                tnet = PTCGTransformerNet()
-                state_dict = load_weights(self.weights_path)
-                # Only load if keys match Transformer architecture
-                model_keys = set(state_dict.keys())
-                if any("card_embed" in k or "transformer" in k or "cls_token" in k for k in model_keys):
-                    tnet.load_state_dict(state_dict)
-                    tnet.eval()
+                import torch
+                tnet = ActorCritic(input_dim=STATE_DIM, hidden_dim=128, action_dim=3000)
+                tnet.to(self.device)
+                
+                if os.path.exists(model_path):
+                    state_dict = torch.load(model_path, map_location=self.device)
+                    model_keys = set(state_dict.keys())
+                    if any("encoder" in k or "actor" in k for k in model_keys):
+                        tnet.load_state_dict(state_dict, strict=False)
+                        self.model = tnet
+                        self.model.eval()
+                        logger.info(f"Loaded ActorCritic from {model_path} successfully.")
+                    else:
+                        logger.warning("Checkpoint keys do not match ActorCritic. Falling back to HeuristicValueNetwork.")
+                else:
+                    logger.warning(f"No checkpoint found at {model_path}. Using untutored ActorCritic.")
                     self.model = tnet
-                    self.use_transformer = True
-                    logger.info("NeuralValueNetwork: loaded PTCGTransformerNet from checkpoint.")
+                    self.model.eval()
             except Exception as e:
-                logger.warning(f"Transformer checkpoint load failed: {e}. Trying legacy MLP.")
+                logger.warning(f"ActorCritic load failed: {e}. Falling back to HeuristicValueNetwork.")
                 self.model = None
-        # Fall back to legacy MLP
-        if self.model is None and PTCGValueMLP is not None and self.weights_path.exists():
-            try:
-                mlp = PTCGValueMLP()
-                state_dict = load_weights(self.weights_path)
-                mlp.load_state_dict(state_dict)
-                mlp.eval()
-                self.model = mlp
-                logger.info("NeuralValueNetwork: loaded legacy PTCGValueMLP from checkpoint.")
-            except Exception as e:
-                logger.error(f"Failed to load neural value network: {e}")
-                self.model = None
-        if self.model is None:
-            from cb_agents.heuristic_value import HeuristicValueNetwork
-            self.heuristic = HeuristicValueNetwork()
 
     def evaluate(self, game_state: dict, action: str | None = None, determinization: dict | None = None) -> float:
         if game_state.get("game_over"):
             return 1.0 if game_state.get("winner") == "me" else -1.0
-        if self.heuristic: return self.heuristic.evaluate(game_state, action, determinization)
-        try:
-            if self.use_transformer:
-                from cb_agents.value_network_helpers import state_to_card_tokens
-                token_ids, zone_ids, scalars, pad_mask = state_to_card_tokens(game_state)
-                if token_ids is not None:
-                    with torch.no_grad():
-                        val = self.model(token_ids, zone_ids, scalars, pad_mask).item()
-                else:
-                    val = 0.0
-            else:
-                from cb_agents.value_network_helpers import state_to_tensor
-                hand_sorted = sorted([str(x) for x in game_state.get("my_hand", [])]) if isinstance(game_state.get("my_hand"), list) else []
-                active = game_state.get("my_active_pokemon", {})
-                active_id = str(active.get("id")) if isinstance(active, dict) else None
-                active_attached_sorted = sorted([str(x) for x in active.get("attached", [])]) if isinstance(active, dict) else []
-                bench_strs = sorted([str(x) for x in game_state.get("my_bench", [])]) if isinstance(game_state.get("my_bench"), list) else []
-                opp_bench_strs = sorted([str(x) for x in game_state.get("opponent_bench", [])]) if isinstance(game_state.get("opponent_bench"), list) else []
-                my_discard = game_state.get("my_discard_pile") or game_state.get("my_discard", [])
-                opp_discard = game_state.get("opponent_discard_pile") or game_state.get("opponent_discard", [])
-                my_discard_size = len(my_discard) if isinstance(my_discard, list) else 0
-                opp_discard_size = len(opp_discard) if isinstance(opp_discard, list) else 0
-                h = hash((str(hand_sorted), str(game_state.get("turn_number", 0)),
-                          str(active_id), str(active_attached_sorted),
-                          str(bench_strs), str(opp_bench_strs),
-                          str(my_discard_size), str(opp_discard_size),
-                          str(game_state.get("stadium_card")),
-                          game_state.get("my_active_damage", 0),
-                          game_state.get("my_prizes", 6), game_state.get("opponent_prizes", 6),
-                          game_state.get("opponent_active_hp", 100)))
-                if h not in self._state_cache:
-                    with torch.no_grad():
-                        self._state_cache[h] = self.model(state_to_tensor(game_state)).item()
-                val = self._state_cache[h]
-            if action:
-                from cb_agents.heuristic_pipeline import _action_score
-                val += _action_score(action, game_state, 0.0)
-            return max(-1.0, min(1.0, val))
-        except Exception as e:
-            logger.warning(f"NeuralValueNetwork failed: {e}. Falling back to HeuristicValueNetwork.")
+            
+        if self.model is None or not self.has_torch:
             from cb_agents.heuristic_value import HeuristicValueNetwork
             return HeuristicValueNetwork().evaluate(game_state, action, determinization)
+            
+        import torch
+        with torch.no_grad():
+            try:
+                t, z, s, m = self.state_to_card_tokens(game_state)
+                if t is not None:
+                    t = t.to(self.device)
+                    z = z.to(self.device)
+                    s = s.to(self.device)
+                    m = m.to(self.device)
+                    logits, value = self.model(x=None, token_ids=t, zone_ids=z, scalars=s, padding_mask=m)
+                    val = value.item()
+                else:
+                    legacy_tensor = self.state_to_tensor(game_state)
+                    if legacy_tensor is not None:
+                        legacy_tensor = legacy_tensor.to(self.device)
+                        logits, value = self.model(x=legacy_tensor)
+                        val = value.item()
+                    else:
+                        val = 0.0
+                        
+                if action:
+                    from cb_agents.heuristic_pipeline import _action_score
+                    val += _action_score(action, game_state, 0.0)
+                return max(-1.0, min(1.0, val))
+            except Exception as e:
+                logger.error(f"Neural evaluation failed: {e}")
+                
+        from cb_agents.heuristic_value import HeuristicValueNetwork
+        return HeuristicValueNetwork().evaluate(game_state, action, determinization)
+        
+    def get_action_priors(self, game_state: dict, candidates: list) -> dict:
+        if self.model is None or not self.has_torch or not candidates:
+            return {}
+            
+        import torch
+        from factory.data_alignment_helpers import normalize_action
+        with torch.no_grad():
+            try:
+                t, z, s, m = self.state_to_card_tokens(game_state)
+                if t is not None:
+                    t = t.to(self.device)
+                    z = z.to(self.device)
+                    s = s.to(self.device)
+                    m = m.to(self.device)
+                    logits, value = self.model(x=None, token_ids=t, zone_ids=z, scalars=s, padding_mask=m)
+                else:
+                    legacy_tensor = self.state_to_tensor(game_state)
+                    if legacy_tensor is not None:
+                        legacy_tensor = legacy_tensor.to(self.device)
+                        logits, value = self.model(x=legacy_tensor)
+                    else:
+                        return {}
+                        
+                probs = torch.softmax(logits.squeeze(0), dim=-1).cpu().numpy()
+                
+                priors = {}
+                for action_str in candidates:
+                    action_id = normalize_action(action_str, offset_play=0, offset_attack=1000, offset_other=2000)
+                    if 0 <= action_id < len(probs):
+                        priors[action_str] = float(probs[action_id])
+                    else:
+                        priors[action_str] = 0.0
+                        
+                return priors
+                
+            except Exception as e:
+                logger.error(f"Neural action prior extraction failed: {e}")
+                return {}
 
 class BasePolicyNetwork(ABC):
     @abstractmethod

@@ -138,8 +138,10 @@ def request_code_mutation_from_llm(file_path: Path, telemetry_issues: str) -> st
     CRITICAL ISSUES FOUND IN LOCAL SIMULATION:
     {telemetry_issues}
     
-    YOUR TASK:
-    Modify the file '{file_path.name}' to fix these issues. 
+    Provide the complete, updated Python code that fixes these issues and improves the agent's logic.
+    
+    CRITICAL RESTRICTION: DO NOT delete any existing rules, helper functions, or core logic unless you are specifically rewriting them to be strictly better. Do not truncate the file. If you delete random code, the agent will crash and lose the game.
+    
     - Leverage our MODULAR ARCHITECTURE: You can import and use helpers from:
       * `cb_agents.preference_maps` (fallback to `agents.preference_maps`): `get_energy_preference(card_id: str) -> str`
       * `cb_agents.lethal_detector` (fallback to `agents.lethal_detector`): `evaluate_active_danger(...) -> dict`

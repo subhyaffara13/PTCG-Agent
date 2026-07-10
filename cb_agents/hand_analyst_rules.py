@@ -30,6 +30,8 @@ class HandRulesMixin:
                 type_priority = 1
             return (ev, type_priority)
 
+        if not hand_cards_data:
+            return "none"
         hand_cards_data.sort(key=sort_key, reverse=True)
         top_play_card = hand_cards_data[0][0]
         return getattr(top_play_card, "card_name", getattr(top_play_card, "card_id", "none"))

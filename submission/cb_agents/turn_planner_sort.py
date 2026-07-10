@@ -38,6 +38,15 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
         active_attached = len(active.get("attached", []) or active.get("energies", [])) if isinstance(active, dict) else 0
         bench_size = len(game_state.get("my_bench", []))
         my_hand_size = len(game_state.get("my_hand", []))
+        
+        # 1. Fetch Neural Priors
+        neural_priors = {}
+        try:
+            from cb_agents.value_network import NeuralValueNetwork
+            nn = NeuralValueNetwork()
+            neural_priors = nn.get_action_priors(game_state, candidates)
+        except Exception as e:
+            logger.warning(f"Failed to fetch neural priors: {e}")
 
         def get_priority_rank(action: str) -> tuple:
             cat_rank = len(order)
@@ -98,33 +107,40 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                     if preferred_energy != energy_card:
                         micro_rank = 25  # High penalty for wrong color
                         return cat_rank * 5 + micro_rank
-                    else:
-                        micro_rank = -5  # Reward for correct color
                 
-                needed = 3
-                act_id = active.get("id") or active.get("card_id") if isinstance(active, dict) else None
-                if target_id and str(act_id) != target_id:
-                    # attaching to bench
-                    hp = game_state.get("my_active_hp", 100)
-                    if hp <= 50 or active_attached >= needed:
-                        micro_rank -= 5  # Active is weak/charged, prefer bench energy
+                if target_id == active.get("id", ""):
+                    # Determine how much energy active actually needs
+                    needed = 3
+                    act_id = active.get("id") or active.get("card_id") if isinstance(active, dict) else None
+                    if target_id and str(act_id) != target_id:
+                        pass # It's a bench pokemon
                     else:
-                        micro_rank -= 2  # Slight preference for bench energy
+                        hp = game_state.get("my_active_hp", 100)
+                        if hp <= 50 or active_attached >= needed:
+                            micro_rank += 10  # Active is dying or fully charged, heavy penalty for attaching more to it!
+                        elif active_attached == 0:
+                            micro_rank -= 2
+                        else:
+                            micro_rank -= 1
                 else:
-                    if act_id:
-                        try:
-                            card = _registry.get_full_skill(act_id)
-                            if card and card.energy_cost > 0:
-                                needed = card.energy_cost
-                        except ImportError:
-                            pass
-                    if active_attached >= needed:
-                        act_name = active.get("card_name", "").lower() if isinstance(active, dict) else ""
-                        is_scaling = any(sa in act_name for sa in _SCALING_ATTACKERS)
-                        if not is_scaling:
-                            cat_rank = order.index("attack:") + 1 if "attack:" in order else len(order)
-                            micro_rank += 10
-            return cat_rank * 5 + micro_rank
+                    # Attaching to bench
+                    micro_rank -= 3
+                    
+            elif action.startswith("evolve:"):
+                micro_rank -= 8
+                
+            elif action.startswith("attack:"):
+                micro_rank -= 10
+                
+            elif action == "pass":
+                micro_rank += 20
+                
+            # Blend Neural Prior
+            prior = neural_priors.get(action, 0.0)
+            # Subtracting from rank increases priority. A strong prior (e.g. 0.8) subtracts up to 16 from rank.
+            neural_bonus = prior * 20.0
+            
+            return cat_rank * 5 + micro_rank - neural_bonus
 
         return sorted(candidates, key=get_priority_rank)
     except Exception as e:

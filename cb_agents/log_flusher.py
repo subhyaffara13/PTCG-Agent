@@ -33,6 +33,8 @@ class FileLock:
                         self.lockfile.unlink(missing_ok=True)
                     except:
                         pass
+                    self.dummy = True
+                    return self
                 time.sleep(0.05)
             except Exception:
                 # If directory is read-only or permission is denied, fallback to dummy lock

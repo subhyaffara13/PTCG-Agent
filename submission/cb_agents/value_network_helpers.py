@@ -11,9 +11,24 @@ import os
 import numpy as np
 from sys import path as _syspath
 
-is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
-
-if is_kaggle:
+try:
+    import torch
+    import torch.nn as nn
+    import sys as _sys
+    import os as _os
+    # Make sure factory/ is importable for state_dimensions
+    _root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+    if _root not in _sys.path:
+        _sys.path.insert(0, _root)
+    from factory.state_dimensions import (
+        CARD_VOCAB_SIZE, CARD_EMBED_DIM, MAX_TOKENS,
+        SCALAR_FEATURES, TRANSFORMER_LAYERS, ATTN_HEADS, TRANSFORMER_FF_DIM,
+    )
+    
+    HAS_TORCH = True
+    
+except ImportError:
+    HAS_TORCH = False
     import zipfile, pickle, io, collections
     from pathlib import Path
 
@@ -24,6 +39,9 @@ if is_kaggle:
             return float(self.val)
         def __float__(self):
             return float(self.val)
+
+    PTCGTransformerNet = None
+    state_to_card_tokens = None
 
     class PTCGValueMLP:
         """Pure-NumPy replica of PTCGValueMLP (20 -> 64 -> 32 -> 1 + Tanh)."""
@@ -217,20 +235,7 @@ if is_kaggle:
 
         return np.array(features, dtype=np.float32).reshape(1, -1)
 
-else:
-    try:
-        import torch
-        import torch.nn as nn
-        import sys as _sys
-        import os as _os
-        # Make sure factory/ is importable for state_dimensions
-        _root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
-        if _root not in _sys.path:
-            _sys.path.insert(0, _root)
-        from factory.state_dimensions import (
-            CARD_VOCAB_SIZE, CARD_EMBED_DIM, MAX_TOKENS,
-            SCALAR_FEATURES, TRANSFORMER_LAYERS, ATTN_HEADS, TRANSFORMER_FF_DIM,
-        )
+if HAS_TORCH:
         PAD_TOKEN = 0
         CLS_TOKEN_ID = CARD_VOCAB_SIZE - 1
         SEP_TOKEN_ID = CARD_VOCAB_SIZE - 2
@@ -256,60 +261,71 @@ else:
                 return self.model(x)
 
         # -----------------------------------------------------------------
-        # Transformer-based value network
+        # Transformer-based Actor-Critic network
         # -----------------------------------------------------------------
-        class PTCGTransformerNet(nn.Module):
-            """
-            Multi-head self-attention over card token sequences.
-            - Encodes hand, active, bench, and discard cards as learned token embeddings.
-            - Adds zone-type embeddings (hand / active / bench / discard) to each token.
-            - Prepends a learnable [CLS] token; CLS output is the board representation.
-            - Concatenates 6 scalar features (prizes, HP, turn, weakness).
-            - Outputs a scalar state value via a small MLP head.
-            """
-            def __init__(self):
+        class CardTransformerEncoder(nn.Module):
+            ZONE_COUNT = 4
+            ZONE_HAND = 0
+            ZONE_ACTIVE = 1
+            ZONE_BENCH = 2
+            ZONE_DISCARD = 3
+
+            def __init__(self, hidden_dim: int = 128):
                 super().__init__()
                 self.card_embed = nn.Embedding(CARD_VOCAB_SIZE, CARD_EMBED_DIM, padding_idx=PAD_TOKEN)
-                self.zone_embed = nn.Embedding(4, CARD_EMBED_DIM)  # 4 zones
-                self.cls_token = nn.Parameter(torch.zeros(1, 1, CARD_EMBED_DIM))
-                nn.init.normal_(self.cls_token, std=0.02)
+                self.zone_embed = nn.Embedding(self.ZONE_COUNT, CARD_EMBED_DIM)
+                self.cls_embed = nn.Parameter(torch.zeros(1, 1, CARD_EMBED_DIM))
+                nn.init.normal_(self.cls_embed, std=0.02)
 
-                enc_layer = nn.TransformerEncoderLayer(
+                encoder_layer = nn.TransformerEncoderLayer(
                     d_model=CARD_EMBED_DIM,
                     nhead=ATTN_HEADS,
                     dim_feedforward=TRANSFORMER_FF_DIM,
                     dropout=0.1,
                     batch_first=True,
                 )
-                self.transformer = nn.TransformerEncoder(enc_layer, num_layers=TRANSFORMER_LAYERS)
-                combined_dim = CARD_EMBED_DIM + SCALAR_FEATURES
-                self.head = nn.Sequential(
-                    nn.Linear(combined_dim, 64),
-                    nn.ReLU(),
-                    nn.LayerNorm(64),
-                    nn.Linear(64, 1),
-                    nn.Tanh(),
-                )
+                self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=TRANSFORMER_LAYERS)
+                self.project = nn.Linear(CARD_EMBED_DIM + SCALAR_FEATURES, hidden_dim)
+                self.norm = nn.LayerNorm(hidden_dim)
 
             def forward(self, token_ids: torch.Tensor, zone_ids: torch.Tensor,
                         scalars: torch.Tensor, padding_mask: torch.Tensor) -> torch.Tensor:
-                """
-                Args:
-                    token_ids:    (B, T) int64 card IDs
-                    zone_ids:     (B, T) int64 zone indices
-                    scalars:      (B, SCALAR_FEATURES) float32
-                    padding_mask: (B, T+1) bool — True means ignore (includes CLS position)
-                Returns:
-                    (B, 1) scalar state value in [-1, 1]
-                """
                 B = token_ids.size(0)
-                x = self.card_embed(token_ids) + self.zone_embed(zone_ids)  # (B, T, D)
-                cls = self.cls_token.expand(B, -1, -1)                      # (B, 1, D)
-                x = torch.cat([cls, x], dim=1)                              # (B, T+1, D)
-                x = self.transformer(x, src_key_padding_mask=padding_mask)  # (B, T+1, D)
-                cls_out = x[:, 0, :]                                         # (B, D)
-                combined = torch.cat([cls_out, scalars], dim=-1)             # (B, D+S)
-                return self.head(combined)                                   # (B, 1)
+                x = self.card_embed(token_ids) + self.zone_embed(zone_ids)
+                cls = self.cls_embed.expand(B, -1, -1)
+                x = torch.cat([cls, x], dim=1)
+                x = self.transformer(x, src_key_padding_mask=padding_mask)
+                cls_out = x[:, 0, :]
+                combined = torch.cat([cls_out, scalars], dim=-1)
+                return self.norm(self.project(combined))
+
+        class ActorCritic(nn.Module):
+            def __init__(self, input_dim: int = 20, hidden_dim: int = 128, action_dim: int = 3000):
+                super().__init__()
+                self.encoder = CardTransformerEncoder(hidden_dim=hidden_dim)
+                self.flat_base = nn.Sequential(
+                    nn.Linear(input_dim, hidden_dim),
+                    nn.ReLU(),
+                    nn.LayerNorm(hidden_dim),
+                    nn.Linear(hidden_dim, hidden_dim // 2),
+                    nn.ReLU(),
+                    nn.LayerNorm(hidden_dim // 2),
+                )
+                self.actor = nn.Linear(hidden_dim, action_dim)
+                self.critic = nn.Linear(hidden_dim, 1)
+                self.flat_critic = nn.Linear(hidden_dim // 2, 1)
+                self.flat_actor = nn.Linear(hidden_dim // 2, action_dim)
+
+            def forward(self, x, token_ids=None, zone_ids=None, scalars=None, padding_mask=None):
+                if token_ids is not None:
+                    features = self.encoder(token_ids, zone_ids, scalars, padding_mask)
+                    logits = self.actor(features)
+                    value = self.critic(features)
+                else:
+                    features = self.flat_base(x)
+                    logits = self.flat_actor(features)
+                    value = self.flat_critic(features)
+                return logits, value
 
         def _safe_int_card_id(cid, vocab_size=CARD_VOCAB_SIZE - 3) -> int:
             """Clamp an arbitrary card ID to the safe token range [1, vocab_size-1]."""
@@ -437,20 +453,4 @@ else:
         def load_weights(path):
             return torch.load(str(path), map_location="cpu")
 
-    except ImportError:
-        class PTCGValueMLP:
-            def __init__(self, input_dim=20): pass
-            def load_state_dict(self, state_dict: dict): pass
-            def eval(self): pass
-            def __call__(self, x): pass
-        class PTCGTransformerNet:
-            def __init__(self): pass
-            def load_state_dict(self, state_dict: dict): pass
-            def eval(self): pass
-            def __call__(self, *args, **kwargs): pass
-        def state_to_tensor(game_state: dict):
-            return None
-        def state_to_card_tokens(game_state: dict):
-            return None, None, None, None
-        def load_weights(path):
-            raise NotImplementedError("PyTorch is not available.")
+

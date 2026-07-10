@@ -10,7 +10,7 @@ def calculate_prized_probabilities(initial_decklist: Dict[int, int], visible: Li
         total = sum(initial_decklist.values())
         visible_counts = Counter(visible)
         unseen_total = total - len(visible)
-        if unseen_total <= 0 or prizes_remaining <= 0:
+        if unseen_total < prizes_remaining or prizes_remaining <= 0:
             return {}
         probs = {}
         for cid, total_count in initial_decklist.items():

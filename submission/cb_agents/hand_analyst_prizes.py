@@ -35,7 +35,11 @@ class HandPrizesMixin:
                 rev_count = revealed_counts.get(cid_int, 0)
                 n_unrevealed = max(0, start_count - rev_count)
                 if n_unrevealed > 0:
-                    prob = 1.0 - (nCr(total_unrevealed - n_unrevealed, prize_remaining) / nCr(total_unrevealed, prize_remaining))
+                    denom = nCr(total_unrevealed, prize_remaining)
+                    if denom == 0:
+                        prized_probabilities[str(cid_int)] = 0.0
+                        continue
+                    prob = 1.0 - (nCr(total_unrevealed - n_unrevealed, prize_remaining) / denom)
                     prized_probabilities[str(cid_int)] = round(prob, 4)
                 else:
                     prized_probabilities[str(cid_int)] = 0.0
