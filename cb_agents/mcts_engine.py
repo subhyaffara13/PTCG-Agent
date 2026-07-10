@@ -100,15 +100,15 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         try:
             return self.value_network.evaluate(game_state, action, determinization)
         except Exception as e:
-            logger.error(f"_evaluate_state failed: {e}")
+            logger.exception(f"_evaluate_state failed: {e}")
             return 0.0
 
     def search(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         try:
             return self._search_internal(game_state, legal_actions, time_remaining)
         except Exception as e:
-            logger.error(f"search failed: {e}")
-            return "pass"
+            logger.exception(f"search failed: {e}")
+            return legal_actions[0] if legal_actions else "pass"
 
     def _search_internal(self, game_state: dict, legal_actions: List[str], time_remaining: float | None = None) -> str:
         if not legal_actions:

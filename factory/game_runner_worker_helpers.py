@@ -51,7 +51,12 @@ def setup_game_env(seed=None):
         # Suppress prints and stderr messages from kaggle_environments cleanly
         with silence_kaggle_warnings():
             from kaggle_environments import make
-            config = {}
+            # Inject strict Kaggle execution limits to simulate leaderboard environment
+            config = {
+                "actTimeout": 5.0,
+                "runTimeout": 1200,
+                "episodeSteps": 1000
+            }
             if seed is not None:
                 config["seed"] = seed
             env = make("cabt", configuration=config)

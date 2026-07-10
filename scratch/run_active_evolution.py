@@ -60,6 +60,8 @@ def main():
     - Plan multi-turn setups. Prioritize benching core attackers, attaching energy to the correct active/bench targets based on preference mappings.
     - Play high-value trainers (e.g., search/draw cards) early in the turn to expand options before choosing energy targets or attacking.
     - Ensure perfect syntax, no type mismatches, and avoid PEP 701 f-string nested quotes.
+    
+    CRITICAL RESTRICTION: DO NOT delete any existing rules, helper functions, or core logic unless you are specifically rewriting them to be strictly better. Do not truncate the file. If you delete random code, the agent will crash and lose the game.
     """
     
     mutated_code = request_code_mutation_from_llm(file_path, feedback)
@@ -67,9 +69,13 @@ def main():
         logger.error("Failed to fetch mutation from LLM.")
         sys.exit(1)
 
-    logger.info("Step 3: Creating backup of baseline code...")
-    backup_path = file_path.with_suffix(".py.bak")
+    logger.info("Step 3: Creating timestamped backup in .history directory...")
+    history_dir = PROJECT_ROOT / ".history"
+    history_dir.mkdir(exist_ok=True)
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    backup_path = history_dir / f"{file_path.stem}_{timestamp}.py.bak"
     shutil.copy2(file_path, backup_path)
+    logger.info(f"Backup saved to: {backup_path}. You can revert to this file at any time.")
 
     try:
         # Apply mutation

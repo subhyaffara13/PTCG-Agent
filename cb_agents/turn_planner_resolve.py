@@ -33,9 +33,10 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         # Otherwise, restrict to the current phase + attacks to manage search depth/time.
         selected_candidates = candidates
         has_cpp = getattr(mcts_engine, "HAS_CPP", False)
+        fast_sim = os.environ.get("FAST_SIM_MODE") == "true"
         orig_sims = getattr(mcts_engine, 'num_simulations', 50)
         try:
-            if has_cpp:
+            if has_cpp and not fast_sim:
                 if time_rem < 30.0:
                     mcts_engine.num_simulations = 500
                 elif time_rem < 80.0:
@@ -51,4 +52,5 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         return primary, f"MCTS selected {primary} ({orig_sims} -> {mcts_engine.num_simulations} sims). Profile: {profile}."
     except Exception as e:
         logger.error(f"resolve_action failed: {e}", exc_info=True)
-        return None, f"resolve_error: {e}"
+        fallback = candidates[0] if candidates else "pass"
+        return fallback, f"resolve_error: {e}"

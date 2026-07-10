@@ -32,11 +32,7 @@ def normalize_action(raw_action: str, offset_play: int, offset_attack: int, offs
     if raw_action.startswith("attack:"):
         return offset_attack + (hash(raw_action) % 1000)
         
-    if raw_action.startswith("play:"):
-        try:
-            card_id = int(raw_action.split(":")[1])
-            return offset_play + card_id
-        except:
-            pass
+    if raw_action.startswith("play:") or raw_action.startswith("play_") or raw_action.startswith("ability:") or raw_action.startswith("retreat:") or raw_action.startswith("attach_energy:") or raw_action.startswith("evolve:") or raw_action.startswith("bench:"):
+        return offset_play + (hash(raw_action) % 1000)
             
     return offset_other + 1
