@@ -1,6 +1,6 @@
 card_id,card_name,card_type,count
-5,Basic {P} Energy,Energy,9
-11,Mist Energy,Energy,3
+5,Basic {P} Energy,Energy,8
+11,Mist Energy,Energy,4
 19,Telepath Psychic Energy,Energy,4
 741,Abra,Pokemon,3
 743,Alakazam,Pokemon,1
@@ -12,7 +12,7 @@ card_id,card_name,card_type,count
 1182,Boss’s Orders,Trainer,4
 1086,Buddy-Buddy Poffin,Trainer,4
 1227,Lillie's Determination,Trainer,3
-1210,Brock’s Scouting,Trainer,1
+1127,Tera Orb,Trainer,1
 1097,Night Stretcher,Trainer,2
 1102,Dusk Ball,Trainer,1
 1115,Hop’s Bag,Trainer,1

@@ -507,7 +507,7 @@
     },
     {
       "card_id": 1161,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -1022,6 +1022,16 @@
     },
     {
       "card_id": 1208,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 817,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 818,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
@@ -2216,12 +2226,17 @@
       "player": "\u3059\u30fc\u3071\u30fc\u3072\u3068\u3067",
       "avg_setup_duration": 36.4,
       "avg_bench_density": 1.9
+    },
+    {
+      "player": "hikarimaru",
+      "avg_setup_duration": 70.4,
+      "avg_bench_density": 3.0
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 12.0,
+    "avg_trainer_count": 38.0,
+    "avg_energy_count": 10.0
   },
   "setup_profiles": [
     {
@@ -2328,6 +2343,11 @@
       "player": "\u3059\u30fc\u3071\u30fc\u3072\u3068\u3067",
       "avg_setup_duration": 36.4,
       "avg_bench_density": 1.9
+    },
+    {
+      "player": "hikarimaru",
+      "avg_setup_duration": 70.4,
+      "avg_bench_density": 3.0
     }
   ]
 }
