@@ -6,7 +6,7 @@ card_id,card_name,card_type,count
 741,Abra,Pokemon,3
 743,Alakazam,Pokemon,1
 879,Hop's Trevenant,Pokemon,1
-878,Hop's Phantump,Pokemon,2
+878,Hop's Phantump,Pokemon,3
 742,Kadabra,Pokemon,1
 1079,Rare Candy,Trainer,1
 1081,Enhanced Hammer,Trainer,1
@@ -14,8 +14,7 @@ card_id,card_name,card_type,count
 1086,Buddy-Buddy Poffin,Trainer,4
 1227,Lillie's Determination,Trainer,4
 1210,Brock’s Scouting,Trainer,1
-1215,Ethan's Adventure,Trainer,1
-1097,Night Stretcher,Trainer,1
+1097,Night Stretcher,Trainer,2
 1102,Dusk Ball,Trainer,1
 1115,Hop’s Bag,Trainer,1
 1120,Crushing Hammer,Trainer,1
@@ -25,7 +24,7 @@ card_id,card_name,card_type,count
 1141,Premium Power Pro,Trainer,1
 1142,Fighting Gong,Trainer,1
 1152,Poké Pad,Trainer,4
-1171,Hop’s Choice Band,Pokemon,4
+1171,Hop’s Choice Band,Pokemon,3
 1192,Carmine,Trainer,1
 1225,Hilda,Trainer,1
 1231,Dawn,Trainer,1
