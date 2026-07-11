@@ -78,10 +78,10 @@ class GameRunner(BaseAgent):
         for j in range(num_matchups):
             seed = 1000 + j
             
-            # Determine opponent deck (30% chance to matchmake against a league exploiter/snapshot)
+            # Determine opponent deck (65% chance to matchmake against a league exploiter/snapshot)
             opponent_deck = d_base
             opp_name = "main_agent"
-            if random.random() < 0.30:
+            if random.random() < 0.65:
                 opp_name = league.matchmake()
                 opp_deck_path = Path("skills/league") / f"{opp_name}.csv"
                 if opp_deck_path.exists():
@@ -96,8 +96,10 @@ class GameRunner(BaseAgent):
                             # Track that this game is a league matchup
                             league_matchups[f"deck_test_{j}_orig"] = opp_name
                             league_matchups[f"deck_test_{j}_swap"] = opp_name
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        logger.error(f"Failed to load league deck {opp_deck_path}: {e}")
+                else:
+                    logger.warning(f"League deck path {opp_deck_path} does not exist.")
 
             # Deck test twin pair: Player A (opponent_deck) vs Player B (d_new)
             games_config.extend([
