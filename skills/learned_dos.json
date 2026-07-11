@@ -2356,6 +2356,11 @@
       "player": "giacomovin",
       "avg_setup_duration": 33.2,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "Max Manushin",
+      "avg_setup_duration": 87.6,
+      "avg_bench_density": 2.9
     }
   ],
   "deck_stats": {
@@ -2583,6 +2588,11 @@
       "player": "giacomovin",
       "avg_setup_duration": 33.2,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "Max Manushin",
+      "avg_setup_duration": 87.6,
+      "avg_bench_density": 2.9
     }
   ]
 }
