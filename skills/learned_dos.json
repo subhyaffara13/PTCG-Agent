@@ -2351,11 +2351,16 @@
       "player": "S. B.",
       "avg_setup_duration": 21.0,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "giacomovin",
+      "avg_setup_duration": 33.2,
+      "avg_bench_density": 3.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 35.0,
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
     "avg_energy_count": 8.0
   },
   "setup_profiles": [
@@ -2572,6 +2577,11 @@
     {
       "player": "S. B.",
       "avg_setup_duration": 21.0,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "giacomovin",
+      "avg_setup_duration": 33.2,
       "avg_bench_density": 3.4
     }
   ]
