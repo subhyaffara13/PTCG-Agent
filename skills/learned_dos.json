@@ -2341,12 +2341,17 @@
       "player": "haggle",
       "avg_setup_duration": 49.8,
       "avg_bench_density": 3.2
+    },
+    {
+      "player": "yuya",
+      "avg_setup_duration": 78.8,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
     "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 7.0
   },
   "setup_profiles": [
     {
@@ -2553,6 +2558,11 @@
       "player": "haggle",
       "avg_setup_duration": 49.8,
       "avg_bench_density": 3.2
+    },
+    {
+      "player": "yuya",
+      "avg_setup_duration": 78.8,
+      "avg_bench_density": 3.9
     }
   ]
 }

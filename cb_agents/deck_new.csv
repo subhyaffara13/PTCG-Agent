@@ -1,10 +1,11 @@
 card_id,card_name,card_type,count
-5,Basic {P} Energy,Energy,9
-11,Mist Energy,Energy,3
+5,Basic {P} Energy,Energy,10
+11,Mist Energy,Energy,2
 19,Telepath Psychic Energy,Energy,4
 741,Abra,Pokemon,3
 878,Hop's Phantump,Pokemon,3
-742,Kadabra,Pokemon,2
+742,Kadabra,Pokemon,1
+743,Alakazam,Pokemon,1
 879,Hop's Trevenant,Pokemon,1
 1079,Rare Candy,Trainer,1
 1081,Enhanced Hammer,Trainer,1
