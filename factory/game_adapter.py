@@ -306,6 +306,7 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
         game_state["legal_trainers"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 7]
         game_state["legal_retreats"] = [str(i) for i, opt in enumerate(options) if opt.get("type") in (10, 12)]
         game_state["legal_abilities"] = [str(i) for i, opt in enumerate(options) if opt.get("type") in (11, 15)]
+        game_state["legal_prize_options"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 2]
         
         sel_type = select.get("type")
         sel_ctx = select.get("context")

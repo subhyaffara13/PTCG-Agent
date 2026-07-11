@@ -44,11 +44,20 @@ def get_mapped_indices(action_label: str, options: list, game_state: dict = None
                         card_id = str(my_hand[hand_idx])
                         if card_id == target_str:
                             return [i]
+
+    if action_label.startswith("take_prize:"):
+        target = action_label.split(":", 1)[1]
+        if target.isdigit():
+            idx = int(target)
+            if 0 <= idx < len(options):
+                return [idx]
+        return [0]
+
     if target.isdigit():
         idx = int(target)
         if 0 <= idx < len(options) and not any(o.get("type") in (7,8,9) for o in options):
             return [idx]
-            
+
     mapped_indices = []
     if action_label.startswith("attack:"):
         mapped_indices = [i for i, opt in enumerate(options) if opt.get("type") in (12, 13)]

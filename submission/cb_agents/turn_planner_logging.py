@@ -14,6 +14,13 @@ logger = logging.getLogger(__name__)
 
 def build_legal_candidates(game_state: dict) -> List[str]:
     """Build a list of legal action strings from game_state fields."""
+    if game_state.get("select_prize"):
+        prize_opts = game_state.get("legal_prize_options", [])
+        candidates = [f"take_prize:{v}" for v in prize_opts]
+        if not candidates:
+            candidates.append("pass")
+        return candidates
+
     candidates = []
 
     for k, prefix in [
