@@ -1007,7 +1007,7 @@
     },
     {
       "card_id": 1253,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage in winning matches."
     },
     {
@@ -1048,6 +1048,16 @@
     {
       "card_id": 1236,
       "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 906,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1176,
+      "avg_count": 2.0,
       "reason": "High usage in winning matches."
     }
   ],
@@ -2366,12 +2376,17 @@
       "player": "Haramball forever!",
       "avg_setup_duration": 31.2,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "shg195",
+      "avg_setup_duration": 49.6,
+      "avg_bench_density": 3.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 17.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 9.0
   },
   "setup_profiles": [
     {
@@ -2603,6 +2618,11 @@
       "player": "Haramball forever!",
       "avg_setup_duration": 31.2,
       "avg_bench_density": 1.6
+    },
+    {
+      "player": "shg195",
+      "avg_setup_duration": 49.6,
+      "avg_bench_density": 3.4
     }
   ]
 }
