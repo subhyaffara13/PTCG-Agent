@@ -45,8 +45,18 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
                         chosen = p
                         break
             if not chosen:
-                import random
-                chosen = random.choice(valid_targets)
+                best_target = None
+                max_attached = -1
+                active_poke = gs.get("my_active_pokemon")
+                active_id = active_poke.get("id") if isinstance(active_poke, dict) else None
+                for p in valid_targets:
+                    att_count = len(p.get("attached", []))
+                    is_active = (active_id is not None and p.get("id") == active_id)
+                    score = att_count + (0.1 if is_active else 0.0)
+                    if score > max_attached:
+                        max_attached = score
+                        best_target = p
+                chosen = best_target or valid_targets[0]
             attached = list(chosen.get("attached", []))
             attached.append(card_id)
             chosen["attached"] = attached

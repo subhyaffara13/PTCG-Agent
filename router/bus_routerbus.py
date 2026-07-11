@@ -26,7 +26,13 @@ class RouterBus:
         callback = self.registry.get(target_agent)
         if not callback:
             raise ValueError(f"No callback registered for agent: {target_agent}")
-        packet_class = type(packet).__name__
+        if isinstance(packet, dict):
+            packet_class = event_name + "Packet"
+            if event_name == "StrategyAgent":
+                packet_class = "StrategyPacket"
+        else:
+            packet_class = type(packet).__name__
+
         if packet_class in ("GameState", "OrchestratorState"):
             raise PermissionError(f"Agent {target_agent} is blocked from receiving full game state!")
         if packet_class not in ALLOWED_PACKETS.get(target_agent, set()):

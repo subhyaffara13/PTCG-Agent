@@ -19,7 +19,16 @@ class StrategyAgent:
         try:
             self._profiles: dict[str, dict[str, Any]] = load_skill(kwargs.get("skills_dir"))
         except Exception as e:
-            self._profiles = {}
+            import logging
+            logging.getLogger(__name__).exception(f"Failed to load strategy profiles: {e}")
+            self._profiles = {
+                "hand_dead": {
+                    "strategy": "hand_dead",
+                    "posture": "tempo",
+                    "actions": ["PASS"],
+                    "escalation": "PASS"
+                }
+            }
 
     def evaluate(self, packet: Any) -> dict[str, Any]:
         try:

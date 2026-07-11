@@ -27,6 +27,9 @@ from cb_agents.belief_tracker import BeliefTracker
 from cb_agents.deck_loader import load_deck_base_list
 
 
+import os
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
+
 class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
     def __init__(self, **kwargs: Any) -> None:
         self.skills_dir = Path(kwargs.get("skills_dir")) if kwargs.get("skills_dir") else Path("skills")
@@ -80,7 +83,6 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
         except Exception as e:
             logger.exception("CRITICAL: Exception in Orchestrator.orchestrate")
             import sys
-            import os
             import subprocess
             import json
             sys.stderr.write(f"CRITICAL: Exception in Orchestrator.orchestrate: {e}\n")
@@ -108,7 +110,7 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
                 req_path.parent.mkdir(parents=True, exist_ok=True)
                 req_path.write_text(json.dumps(req_data, indent=2), encoding="utf-8")
                 
-                if os.environ.get("AUTO_EVOLVE") == "true":
+                if os.environ.get("AUTO_EVOLVE") == "true" and not is_kaggle:
                     sys.stderr.write(f"AUTO_EVOLVE is active. Spawning code_mutator for {target_file}...\n")
                     subprocess.Popen(
                         [sys.executable, "-m", "cb_agents.code_mutator", target_file],
@@ -128,7 +130,8 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
                         reasoning_chain="emergency_fallback",
                         strategy_profile="aggro_push"
                     )
-            except: pass
+            except Exception as fallback_err:
+                logger.exception(f"Emergency fallback failed: {fallback_err}")
             return _emergency_pass(time_result)
 
     def start_game(self) -> None:
@@ -139,18 +142,23 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
     def flush_all_logs(self) -> None:
         try:
             self._timer.flush_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush time manager logs failed: {e}")
         try:
             self._analyst.flush_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush analyst logs failed: {e}")
         try:
             self._planner.flush_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush planner logs failed: {e}")
         try:
             from cb_agents.strategy_agent_io import flush_logs as flush_strategy_logs
             flush_strategy_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush strategy logs failed: {e}")
         try:
             from cb_agents.orchestrator_log import flush_logs as flush_orch_logs
             flush_orch_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush orchestrator logs failed: {e}")

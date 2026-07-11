@@ -23,8 +23,8 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     if _HAS_CPP_SCORE:
         try:
             return float(_ptcg_core.score_action(gs, action))
-        except Exception:
-            pass  # fall through to Python
+        except Exception as e:
+            logger.debug(f"C++ score_action failed: {e}. Falling back to Python.")
     return _score_action_python(action, gs, threat)
 
 
@@ -54,8 +54,8 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                     card = _registry.get_full_skill(my_active_id)
                     if card and card.damage_output >= opp_hp:
                         v += 1.5  # KO bonus — this is likely the winning move
-                except:
-                    pass
+                except Exception as e:
+                    logger.debug(f"KO check registry error: {e}")
     elif action.startswith("evolve:"):
         v += 0.6
     elif action.startswith("attach_energy:"):
@@ -72,8 +72,9 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                 try:
                     e = _registry.get_full_skill(ac.get("id"))
                     if e and e.energy_cost > 0: need = e.energy_cost
-                except: pass
-                att = len(ac.get("attached", []))
+                except Exception as e:
+                    logger.debug(f"Active pokemon energy cost check error: {e}")
+                att = len(ac.get("attached", []) or ac.get("energies", []))
                 if att < need:
                     v += 0.35  # Stronger bonus for charging up active
                 elif att >= need:
@@ -143,8 +144,8 @@ def score_state(gs: dict) -> float:
     if _HAS_CPP_SCORE:
         try:
             return float(_ptcg_core.score_state(gs))
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"C++ score_state failed: {e}. Falling back to Python.")
     v = 0.0
     v += 0.15 * (gs.get("opponent_prizes", 6) - gs.get("my_prizes", 6))
     v += 0.001 * (gs.get("my_active_hp", 100) - gs.get("opponent_active_hp", 100))
@@ -155,6 +156,7 @@ def score_state(gs: dict) -> float:
             try:
                 ce = _registry.get(p["id"])
                 if ce and ce.stage in (CardStage.STAGE1, CardStage.STAGE2): ec += 1
-            except: pass
+            except Exception as e:
+                logger.debug(f"Stage evolution registry check error: {e}")
     v += 0.05 * ec
     return v

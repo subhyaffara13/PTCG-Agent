@@ -4,8 +4,6 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-logger = logging.getLogger(__name__)
-
 from cb_agents.forward_model_resolve import _resolve_base
 from cb_agents.forward_model_gen import _regenerate_legal_actions, _check_win_conditions
 
@@ -20,16 +18,13 @@ def fast_clone_state(gs: dict) -> dict:
     # Active Pokemon dictionaries
     for k in ["my_active_pokemon", "opponent_active", "opponent_active_pokemon"]:
         if k in clone and isinstance(clone[k], dict):
-            clone[k] = dict(clone[k])
-            if "attached" in clone[k] and isinstance(clone[k]["attached"], list):
-                clone[k]["attached"] = list(clone[k]["attached"])
+            clone[k] = copy.deepcopy(clone[k])
                 
     # Bench dictionaries (deep copy bench lists and nested dictionaries)
     for k in ["my_bench", "opponent_bench"]:
         if k in clone and isinstance(clone[k], list):
             clone[k] = [
-                {**p, "attached": list(p["attached"])} if (isinstance(p, dict) and "attached" in p)
-                else (dict(p) if isinstance(p, dict) else p)
+                copy.deepcopy(p) if isinstance(p, dict) else p
                 for p in clone[k]
             ]
     return clone

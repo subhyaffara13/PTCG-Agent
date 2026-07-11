@@ -44,7 +44,8 @@ def dead_weight(candidates: list, gs: dict) -> bool:
                 if c.card_type.name == "TRAINER" and getattr(c, "trainer_subtype", None) and c.trainer_subtype.name == "SUPPORTER":
                     total_supporters += 1
                 elif c.stage and c.stage.name == "STAGE2": unplayable += 1
-            except: pass
+            except Exception as e:
+                logger.debug(f"Card check failed in dead_weight analysis for {cid}: {e}")
         if total_supporters > 1:
             unplayable += (total_supporters - 1)
         return unplayable >= 4

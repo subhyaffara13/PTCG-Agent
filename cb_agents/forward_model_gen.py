@@ -1,5 +1,8 @@
 import random
 from typing import Any
+import logging
+
+logger = logging.getLogger(__name__)
 
 _ABILITY_DRAW = {"colress", "concealed", "flower selecting", "shining arcana"}
 

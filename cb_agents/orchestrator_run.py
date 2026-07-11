@@ -1,7 +1,10 @@
 import time
+import logging
 from router.bus import HandAnalystPacket, TurnPlannerPacket, StrategyPacket, TimePacket, LethalPacket, OpponentModelPacket
 from cb_agents.schemas import GameState, BoardSummary
 from cb_agents.heuristic_pipeline import pipeline
+
+logger = logging.getLogger(__name__)
 
 class OrchestratorRunMixin:
     def _project_opponent_damage(self, game_state) -> int:
@@ -38,8 +41,10 @@ class OrchestratorRunMixin:
         active = game_state.opponent_active
         opp_active_id = None
         if active:
-            try: opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
-            except: pass
+            try: 
+                opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
+            except Exception as e:
+                logger.debug(f"Failed to parse opponent active ID: {e}")
 
         from cb_agents.orchestrator_run_helpers import check_lethal_helper
         lethal_result = check_lethal_helper(game_state)
@@ -71,12 +76,12 @@ class OrchestratorRunMixin:
         energy_attached = 0
         my_active = game_state.my_active_pokemon
         if isinstance(my_active, dict):
-            energy_attached += len(my_active.get("attached", []))
+            energy_attached += len(my_active.get("attached", []) or my_active.get("energies", []))
         my_bench = game_state.my_bench
         if isinstance(my_bench, list):
             for p in my_bench:
                 if isinstance(p, dict):
-                    energy_attached += len(p.get("attached", []))
+                    energy_attached += len(p.get("attached", []) or p.get("energies", []))
 
         board_summary_dict = board_summary.__dict__
         board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")

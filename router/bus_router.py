@@ -35,8 +35,6 @@ class Router:
         self.handlers = {}
         try:
             _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-            if not _LOG_PATH.exists() or _LOG_PATH.stat().st_size == 0:
-                _LOG_PATH.write_text("[]", encoding="utf-8")
         except Exception:
             pass
 
@@ -90,11 +88,7 @@ class Router:
         if detail:
             entry["detail"] = detail
         try:
-            try:
-                log: list[dict[str, Any]] = json.loads(_LOG_PATH.read_text(encoding="utf-8"))
-            except (json.JSONDecodeError, FileNotFoundError):
-                log = []
-            log.append(entry)
-            _LOG_PATH.write_text(json.dumps(log, indent=2), encoding="utf-8")
+            with open(_LOG_PATH, "a", encoding="utf-8") as f:
+                f.write(json.dumps(entry) + "\n")
         except Exception:
             pass

@@ -41,12 +41,13 @@ def _has_dead_weight(game_state: dict) -> bool:
                         basic_energy_count += 1
                     if card.stage and card.stage == CardStage.STAGE2:
                         stage2_count += 1
-            except:
-                pass
+            except Exception as e:
+                logger.debug(f"Dead weight card check failed for {cid_str}: {e}")
         dup_supporters = len(supporter_names) - len(set(supporter_names))
         return dup_supporters >= 2 or basic_energy_count >= 6 or stage2_count >= 2
-    except ImportError:
-        return len(hand) >= 7
+    except Exception as e:
+        logger.debug(f"Dead weight check execution failed: {e}")
+        return False
 
 def has_draw_remaining(candidates: List[str]) -> bool:
     for cand in candidates:

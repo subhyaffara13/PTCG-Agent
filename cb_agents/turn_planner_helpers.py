@@ -23,7 +23,8 @@ def _process_prize_tracker(game_state: dict, prize_tracker: PrizeTracker, packet
                     board_ids.append(int(aid) if not isinstance(aid, int) else aid)
                 for att in active.get("attached", []):
                     try: board_ids.append(int(att))
-                    except: pass
+                    except Exception as e:
+                        logger.debug(f"Attached active card ID parse failed: {e}")
             for poke in game_state.get("my_bench", []):
                 if isinstance(poke, dict):
                     pid = poke.get("id")
@@ -31,7 +32,8 @@ def _process_prize_tracker(game_state: dict, prize_tracker: PrizeTracker, packet
                         board_ids.append(int(pid) if not isinstance(pid, int) else pid)
                     for att in poke.get("attached", []):
                         try: board_ids.append(int(att))
-                        except: pass
+                        except Exception as e:
+                            logger.debug(f"Attached bench card ID parse failed: {e}")
             deck_contents = game_state.get("my_deck", [])
             deck_remaining = game_state.get("my_deck_count", 0)
             prize_tracker.on_deck_search(hand_ids, discard_ids, board_ids, deck_contents, deck_remaining)
@@ -61,8 +63,8 @@ def _check_lethal_and_update(game_state: dict) -> None:
                             dmg_str = dmg_str[:-1]
                         dmg_str = "".join(c for c in dmg_str if c.isdigit())
                         dmg_val = int(dmg_str) if dmg_str else 0
-                except:
-                    pass
+                except Exception as e:
+                    logger.debug(f"Parsing move_damage failed for {att}: {e}")
             else:
                 my_active = game_state.get("my_active_pokemon")
                 if my_active:
@@ -72,8 +74,8 @@ def _check_lethal_and_update(game_state: dict) -> None:
                             card = registry.get_full_skill(my_active_id)
                             if card:
                                 dmg_val = card.damage_output
-                        except:
-                            pass
+                        except Exception as e:
+                            logger.debug(f"Registry get_full_skill lookup failed for {my_active_id}: {e}")
             max_damage = max(max_damage, dmg_val)
 
     lethal = pipeline.check_lethal(

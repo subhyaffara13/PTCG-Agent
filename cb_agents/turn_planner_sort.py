@@ -21,6 +21,17 @@ def _has_evolution_target(card_name: str, decklist: dict) -> bool:
 
 _EARLY_BENCH_ORDER = ["play_trainer:", "ability:", "bench:", "retreat:", "attack:", "evolve:", "attach_energy:", "pass"]
 
+_nn_instance = None
+def _get_neural_network():
+    global _nn_instance
+    if _nn_instance is None:
+        try:
+            from cb_agents.value_network import NeuralValueNetwork
+            _nn_instance = NeuralValueNetwork()
+        except Exception as e:
+            logger.warning(f"Failed to instantiate NeuralValueNetwork: {e}")
+    return _nn_instance
+
 def sort_actions_heuristically(candidates: List[str], profile: str, game_state: dict) -> List[str]:
     try:
         profile_orders = {
@@ -41,12 +52,12 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
         
         # 1. Fetch Neural Priors
         neural_priors = {}
-        try:
-            from cb_agents.value_network import NeuralValueNetwork
-            nn = NeuralValueNetwork()
-            neural_priors = nn.get_action_priors(game_state, candidates)
-        except Exception as e:
-            logger.warning(f"Failed to fetch neural priors: {e}")
+        nn = _get_neural_network()
+        if nn is not None:
+            try:
+                neural_priors = nn.get_action_priors(game_state, candidates)
+            except Exception as e:
+                logger.warning(f"Failed to fetch neural priors: {e}")
 
         def get_priority_rank(action: str) -> tuple:
             cat_rank = len(order)
@@ -93,9 +104,9 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 elif my_hand_size < 3 and bench_size == 0:
                     micro_rank = -3
             elif action.startswith("attach_energy:"):
-                parts = action.split(":", 2)
+                parts = action.split(":")
                 energy_card = parts[1] if len(parts) > 1 else ""
-                target_id = parts[2] if len(parts) > 2 else ""
+                target_id = parts[2] if len(parts) > 2 else (parts[1] if len(parts) == 2 else "")
                 
                 try:
                     from cb_agents.preference_maps import get_energy_preference
@@ -106,22 +117,24 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 if target_id and preferred_energy:
                     if preferred_energy != energy_card:
                         micro_rank = 25  # High penalty for wrong color
-                        return cat_rank * 5 + micro_rank
                 
-                if target_id == active.get("id", ""):
+                is_active_target = False
+                if target_id:
+                    target_id_str = str(target_id).lower()
+                    active_id = str(active.get("id", "")).lower()
+                    if target_id_str in ("active", "my_active_pokemon") or (active_id and target_id_str == active_id):
+                        is_active_target = True
+                
+                if is_active_target:
                     # Determine how much energy active actually needs
                     needed = 3
-                    act_id = active.get("id") or active.get("card_id") if isinstance(active, dict) else None
-                    if target_id and str(act_id) != target_id:
-                        pass # It's a bench pokemon
+                    hp = game_state.get("my_active_hp", 100)
+                    if hp <= 50 or active_attached >= needed:
+                        micro_rank += 20  # Active is dying or fully charged, heavy penalty for attaching more to it!
+                    elif active_attached == 0:
+                        micro_rank -= 2
                     else:
-                        hp = game_state.get("my_active_hp", 100)
-                        if hp <= 50 or active_attached >= needed:
-                            micro_rank += 10  # Active is dying or fully charged, heavy penalty for attaching more to it!
-                        elif active_attached == 0:
-                            micro_rank -= 2
-                        else:
-                            micro_rank -= 1
+                        micro_rank -= 1
                 else:
                     # Attaching to bench
                     micro_rank -= 3

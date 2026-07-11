@@ -14,7 +14,23 @@ def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
                  opp_active_id, my_hp: int, legal_retreats: list,
                  my_attached: int = 0) -> dict:
     if legal_attacks and my_damage >= opp_hp and my_damage > 0:
-        best_attack = legal_attacks[0]
+        import re
+        best_attack = None
+        for attack in legal_attacks:
+            move_name = str(attack).replace("attack:", "").strip().lower()
+            dmg_str = _registry.move_damage.get(move_name, "0")
+            dmg_val = 0
+            try:
+                match = re.match(r"^(\d+)", dmg_str)
+                if match:
+                    dmg_val = int(match.group(1))
+            except Exception:
+                pass
+            if dmg_val >= opp_hp:
+                best_attack = attack
+                break
+        if best_attack is None:
+            best_attack = legal_attacks[0]
         reasoning = f"Lethal: my_damage {my_damage} >= opp_hp {opp_hp}"
         best_attack_name = str(best_attack).replace("attack:", "")
         return {"action_override": f"attack:{best_attack_name}", "reasoning_chain": reasoning}
