@@ -2306,12 +2306,22 @@
       "player": "RtoABC",
       "avg_setup_duration": 52.4,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "Eggplanck",
+      "avg_setup_duration": 72.6,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "HiroyukiSasaki",
+      "avg_setup_duration": 41.4,
+      "avg_bench_density": 2.2
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 22.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 15.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 11.0
   },
   "setup_profiles": [
     {
@@ -2483,6 +2493,16 @@
       "player": "RtoABC",
       "avg_setup_duration": 52.4,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "Eggplanck",
+      "avg_setup_duration": 72.6,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "HiroyukiSasaki",
+      "avg_setup_duration": 41.4,
+      "avg_bench_density": 2.2
     }
   ]
 }
