@@ -2316,12 +2316,22 @@
       "player": "HiroyukiSasaki",
       "avg_setup_duration": 41.4,
       "avg_bench_density": 2.2
+    },
+    {
+      "player": "Zhenyu Zhang",
+      "avg_setup_duration": 44.6,
+      "avg_bench_density": 2.5
+    },
+    {
+      "player": "MIRAI LAB",
+      "avg_setup_duration": 44.0,
+      "avg_bench_density": 2.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 15.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 11.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 9.0
   },
   "setup_profiles": [
     {
@@ -2503,6 +2513,16 @@
       "player": "HiroyukiSasaki",
       "avg_setup_duration": 41.4,
       "avg_bench_density": 2.2
+    },
+    {
+      "player": "Zhenyu Zhang",
+      "avg_setup_duration": 44.6,
+      "avg_bench_density": 2.5
+    },
+    {
+      "player": "MIRAI LAB",
+      "avg_setup_duration": 44.0,
+      "avg_bench_density": 2.4
     }
   ]
 }
