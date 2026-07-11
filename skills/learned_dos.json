@@ -2386,12 +2386,17 @@
       "player": "Hiro Nomo",
       "avg_setup_duration": 78.2,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "Eduardo Rocha de Andrade",
+      "avg_setup_duration": 99.4,
+      "avg_bench_density": 2.1
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 12.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 13.0
   },
   "setup_profiles": [
     {
@@ -2633,6 +2638,11 @@
       "player": "Hiro Nomo",
       "avg_setup_duration": 78.2,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "Eduardo Rocha de Andrade",
+      "avg_setup_duration": 99.4,
+      "avg_bench_density": 2.1
     }
   ]
 }
