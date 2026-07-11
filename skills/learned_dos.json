@@ -2336,12 +2336,17 @@
       "player": "tomo11111",
       "avg_setup_duration": 40.0,
       "avg_bench_density": 2.6
+    },
+    {
+      "player": "haggle",
+      "avg_setup_duration": 49.8,
+      "avg_bench_density": 3.2
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 14.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 15.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 33.0,
+    "avg_energy_count": 8.0
   },
   "setup_profiles": [
     {
@@ -2543,6 +2548,11 @@
       "player": "tomo11111",
       "avg_setup_duration": 40.0,
       "avg_bench_density": 2.6
+    },
+    {
+      "player": "haggle",
+      "avg_setup_duration": 49.8,
+      "avg_bench_density": 3.2
     }
   ]
 }
