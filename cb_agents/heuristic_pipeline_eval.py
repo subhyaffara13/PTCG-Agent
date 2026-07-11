@@ -31,6 +31,7 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
 def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     v = 0.0
     dc = gs.get("my_deck_count", 60)
+    opp_dc = gs.get("opponent_deck_count", 60)
     mp = gs.get("my_prizes", 6)
     ahp = gs.get("my_active_hp", 100)
     bn = gs.get("my_bench", [])
@@ -99,10 +100,14 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             elif bs >= 5 and tol <= 0: v -= 0.4
     elif action.startswith("play_trainer:"):
         v += 0.4
-        if dc <= 5:
+        if dc <= 7:
             tn = action.split(":", 1)[1].lower()
             if any(k in tn for k in {"iono", "judge"}): v += 0.8
-            elif any(k in tn for k in {"research", "professor"}): v -= 1.3
+            elif any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 2.5
+        elif dc <= 20 and dc < opp_dc - 3:
+            tn = action.split(":", 1)[1].lower()
+            if any(k in tn for k in {"iono", "judge"}): v += 0.4
+            elif any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 1.2
         if dc > 30:
             n = action.split(":", 1)[1].lower()
             sk = {"nest ball", "ultra ball", "quick ball", "level ball", "secret box", "mega signal", "team rocket's petrel"}
@@ -110,7 +115,8 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     elif action.startswith("ability:"):
         tn = action.split(":", 1)[1].lower()
         v += 0.35
-        if dc <= 5 and any(d in tn for d in {"colress", "concealed"}): v -= 0.5
+        if dc <= 7 and any(d in tn for d in {"colress", "concealed", "draw"}): v -= 2.0
+        elif dc <= 20 and dc < opp_dc - 3 and any(d in tn for d in {"colress", "concealed", "draw"}): v -= 0.8
     elif action.startswith("retreat:"):
         v += 0.4 if ahp <= 60 else -0.5
         

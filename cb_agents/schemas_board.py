@@ -12,6 +12,8 @@ class BoardSummary:
     opponent_archetype_confidence: float = 0.0
     bench_has_attacker: bool = False
     my_bench_count: int = 0
+    my_deck_count: int = 60
+    opponent_deck_count: int = 60
     prized_probabilities: Dict[str, float] = field(default_factory=dict)
 
     @classmethod
@@ -26,5 +28,7 @@ class BoardSummary:
             opponent_archetype_confidence=d.get("opponent_archetype_confidence", 0.0),
             bench_has_attacker=d.get("bench_has_attacker", False),
             my_bench_count=d.get("my_bench_count", 0),
+            my_deck_count=d.get("my_deck_count", 60),
+            opponent_deck_count=d.get("opponent_deck_count", 60),
             prized_probabilities=d.get("prized_probabilities", {}),
         )

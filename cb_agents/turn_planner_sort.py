@@ -89,8 +89,15 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 _discard_search = {"ultra ball", "earthen vessel"}
                 if has_dead and any(ds in name.lower() for ds in _discard_search):
                     micro_rank -= 6
-                elif "Research" in name or "Professor" in name or "Iono" in name:
-                    micro_rank -= 5
+                elif any(k in name for k in {"Research", "Professor", "Iono", "Carmine", "Lillie"}):
+                    dc = game_state.get("my_deck_count", 60)
+                    opp_dc = game_state.get("opponent_deck_count", 60)
+                    if dc <= 7 and not any(k in name for k in {"Iono", "Judge"}):
+                        micro_rank += 25  # Heavy penalty to prevent self-deckout
+                    elif dc <= 20 and dc < opp_dc - 3 and not any(k in name for k in {"Iono", "Judge"}):
+                        micro_rank += 12  # Moderate penalty to conserve deck size when running lower than opponent
+                    else:
+                        micro_rank -= 5
                 elif "Ball" in name:
                     micro_rank -= 1
             elif action.startswith("bench:"):

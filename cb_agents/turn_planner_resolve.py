@@ -34,6 +34,7 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         selected_candidates = candidates
         has_cpp = getattr(mcts_engine, "HAS_CPP", False)
         fast_sim = os.environ.get("FAST_SIM_MODE") == "true"
+        orig_sims = getattr(mcts_engine, "num_simulations", 150)
         actual_sims = orig_sims
         try:
             if has_cpp and not fast_sim:

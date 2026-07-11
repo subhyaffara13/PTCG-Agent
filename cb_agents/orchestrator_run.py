@@ -70,6 +70,7 @@ class OrchestratorRunMixin:
             turn_number=self.current_turn, opponent_archetype=self.opponent_model.identified_archetype,
             opponent_archetype_confidence=self.opponent_model.archetype_confidence,
             bench_has_attacker=game_state.bench_has_attacker, my_bench_count=len(game_state.my_bench),
+            my_deck_count=game_state.my_deck_count, opponent_deck_count=game_state.opponent_deck_count,
             prized_probabilities=_get_f(hand_result, "prized_probabilities", {}))
 
         # Compute energy attached for strategy matching

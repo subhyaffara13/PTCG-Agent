@@ -618,6 +618,7 @@ def agent(observation, configuration=None):
             "opponent_bench_count": len(get_val(opp_state, "bench", [])) if get_val(opp_state, "bench") else 0,
             "opponent_prizes": len(get_val(opp_state, "prize", [])) if isinstance(get_val(opp_state, "prize"), list) else 6,
             "opponent_discard": [get_val(c, "id") for c in get_val(opp_state, "discard", []) if c and get_val(c, "id") is not None] if get_val(opp_state, "discard") else [],
+            "opponent_deck_count": get_val(opp_state, "deckCount", 60),
             "opponent_revealed": [],
             "opponent_last_play": None,
             
