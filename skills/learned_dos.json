@@ -2381,12 +2381,17 @@
       "player": "shg195",
       "avg_setup_duration": 49.6,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "Hiro Nomo",
+      "avg_setup_duration": 78.2,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
+    "avg_pokemon_count": 19.0,
     "avg_trainer_count": 34.0,
-    "avg_energy_count": 9.0
+    "avg_energy_count": 7.0
   },
   "setup_profiles": [
     {
@@ -2623,6 +2628,11 @@
       "player": "shg195",
       "avg_setup_duration": 49.6,
       "avg_bench_density": 3.4
+    },
+    {
+      "player": "Hiro Nomo",
+      "avg_setup_duration": 78.2,
+      "avg_bench_density": 3.7
     }
   ]
 }
