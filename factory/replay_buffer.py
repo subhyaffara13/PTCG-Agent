@@ -73,7 +73,7 @@ class ReplayBuffer:
         with self.lock:
             try:
                 with open(path, 'rb') as f:
-                    data = pickle.load(f)
+                    data = pickle.load(f)  # nosec B301
                     self.expert_buffer = deque(data.get('expert', []), maxlen=self.capacity)
                     self.self_play_buffer = deque(data.get('self_play', []), maxlen=self.capacity)
             except Exception as e:

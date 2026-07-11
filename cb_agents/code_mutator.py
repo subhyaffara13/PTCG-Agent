@@ -294,10 +294,10 @@ def run_evolution_cycle(target_file: str = "cb_agents/turn_planner_sort.py"):
             logger.error("Failed to fetch mutation from LLM.")
             break
 
-        code_hash = hashlib.md5(mutated_code.encode("utf-8")).hexdigest()
+        code_hash = hashlib.sha256(mutated_code.encode("utf-8")).hexdigest()
         if code_hash in blacklist:
             logger.warning(f"Generated mutation {code_hash} is blacklisted (failed previously). Retrying with penalty feedback...")
-            feedback = f"The code you just generated was already blacklisted because it failed unit tests. Try a completely different logic approach."
+            feedback = "The code you just generated was already blacklisted because it failed unit tests. Try a completely different logic approach."
             continue
 
         try:

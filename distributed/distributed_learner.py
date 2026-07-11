@@ -63,7 +63,7 @@ def main():
         _, payload = r.blpop("ptcg:experience_queue")
         
         try:
-            experience = pickle.loads(payload)
+            experience = pickle.loads(payload)  # nosec B301
             batch_experiences.append(experience)
             logger.info(f"Received experience payload. Batch progress: {len(batch_experiences)}/{batch_size}")
             

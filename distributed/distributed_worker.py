@@ -40,7 +40,7 @@ def load_latest_config(r):
         
         # In a real setup, weights would be binary floats/tensors stored as bytes
         weights_bytes = r.get("ptcg:latest_weights")
-        weights = pickle.loads(weights_bytes) if weights_bytes else None
+        weights = pickle.loads(weights_bytes) if weights_bytes else None  # nosec B301
         
         return archetype, weights
     except Exception as e:

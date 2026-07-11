@@ -8,19 +8,7 @@ cwd = os.getcwd()
 if cwd not in sys.path:
     sys.path.insert(0, cwd)
 
-def ensure_dependencies():
-    # Purge any old colliding test_agents compiled bytecode cache files in root folder
-    try:
-        import pathlib
-        root_dir = pathlib.Path(__file__).parent.parent.resolve()
-        for p in root_dir.glob("__pycache__/test_agents*"):
-            if p.is_file():
-                p.unlink()
-        for p in root_dir.glob("test_agents*"):
-            if p.is_file() and p.suffix in (".pyc", ".pyo"):
-                p.unlink()
-    except Exception:
-        pass
+# First ensure_dependencies definition removed
 
 import contextlib
 
@@ -126,7 +114,6 @@ def ensure_dependencies():
 ensure_dependencies()
 
 import socket
-import time
 import logging
 import uuid
 from distributed.work_order import WorkOrder, GameResult

@@ -58,7 +58,7 @@ class PPOTrainer:
                         except Exception as move_err:
                             logger.error(f"Failed to archive {model_path}: {move_err}")
                     else:
-                        logger.warning(f"Could not load model: {e}")
+                        logger.warning(f"Could not load model: {err_str}")
                     self.model = ActorCritic(self.state_dim, 256, self.action_dim).to(self.device)
                     self.optimizer = optim.Adam(self.model.parameters(), lr=1e-3)
             logger.info(f"Initialized PPOTrainer on {self.device}")
@@ -76,7 +76,6 @@ class PPOTrainer:
 
 
 if __name__ == "__main__":
-    import os
     import sys
     cwd = os.getcwd()
     if cwd not in sys.path:
