@@ -1,5 +1,6 @@
 card_id,card_name,card_type,count
-5,Basic {P} Energy,Energy,11
+5,Basic {P} Energy,Energy,10
+11,Mist Energy,Energy,1
 20,Rock Fighting Energy,Energy,1
 19,Telepath Psychic Energy,Energy,4
 741,Abra,Pokemon,3

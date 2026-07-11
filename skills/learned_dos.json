@@ -2361,12 +2361,17 @@
       "player": "Max Manushin",
       "avg_setup_duration": 87.6,
       "avg_bench_density": 2.9
+    },
+    {
+      "player": "Haramball forever!",
+      "avg_setup_duration": 31.2,
+      "avg_bench_density": 1.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 33.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 35.0,
+    "avg_energy_count": 11.0
   },
   "setup_profiles": [
     {
@@ -2593,6 +2598,11 @@
       "player": "Max Manushin",
       "avg_setup_duration": 87.6,
       "avg_bench_density": 2.9
+    },
+    {
+      "player": "Haramball forever!",
+      "avg_setup_duration": 31.2,
+      "avg_bench_density": 1.6
     }
   ]
 }
