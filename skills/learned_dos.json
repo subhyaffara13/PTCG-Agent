@@ -137,7 +137,7 @@
     },
     {
       "card_id": 1252,
-      "avg_count": 2.0,
+      "avg_count": 3.0,
       "reason": "High usage (2.0x avg) in winning matches of player Praxel."
     },
     {
@@ -2326,12 +2326,22 @@
       "player": "MIRAI LAB",
       "avg_setup_duration": 44.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "pino 70122",
+      "avg_setup_duration": 51.8,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "tomo11111",
+      "avg_setup_duration": 40.0,
+      "avg_bench_density": 2.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 32.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 14.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 15.0
   },
   "setup_profiles": [
     {
@@ -2523,6 +2533,16 @@
       "player": "MIRAI LAB",
       "avg_setup_duration": 44.0,
       "avg_bench_density": 2.4
+    },
+    {
+      "player": "pino 70122",
+      "avg_setup_duration": 51.8,
+      "avg_bench_density": 3.2
+    },
+    {
+      "player": "tomo11111",
+      "avg_setup_duration": 40.0,
+      "avg_bench_density": 2.6
     }
   ]
 }
