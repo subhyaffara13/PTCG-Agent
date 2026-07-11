@@ -242,7 +242,7 @@
     },
     {
       "card_id": 1210,
-      "avg_count": 2.0,
+      "avg_count": 4.0,
       "reason": "High usage (2.0x avg) in winning matches of player charmq."
     },
     {
@@ -1042,6 +1042,11 @@
     },
     {
       "card_id": 1262,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1236,
       "avg_count": 4.0,
       "reason": "High usage in winning matches."
     }
@@ -2286,12 +2291,22 @@
       "player": "Legend Brothers",
       "avg_setup_duration": 95.6,
       "avg_bench_density": 1.4
+    },
+    {
+      "player": "skurita",
+      "avg_setup_duration": 48.0,
+      "avg_bench_density": 2.9
+    },
+    {
+      "player": "ktr",
+      "avg_setup_duration": 73.0,
+      "avg_bench_density": 0.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 11.0,
-    "avg_trainer_count": 36.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 17.0,
+    "avg_trainer_count": 29.0,
+    "avg_energy_count": 14.0
   },
   "setup_profiles": [
     {
@@ -2448,6 +2463,16 @@
       "player": "Legend Brothers",
       "avg_setup_duration": 95.6,
       "avg_bench_density": 1.4
+    },
+    {
+      "player": "skurita",
+      "avg_setup_duration": 48.0,
+      "avg_bench_density": 2.9
+    },
+    {
+      "player": "ktr",
+      "avg_setup_duration": 73.0,
+      "avg_bench_density": 0.5
     }
   ]
 }
