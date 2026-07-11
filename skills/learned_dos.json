@@ -2301,12 +2301,17 @@
       "player": "ktr",
       "avg_setup_duration": 73.0,
       "avg_bench_density": 0.5
+    },
+    {
+      "player": "RtoABC",
+      "avg_setup_duration": 52.4,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 17.0,
-    "avg_trainer_count": 29.0,
-    "avg_energy_count": 14.0
+    "avg_pokemon_count": 22.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 10.0
   },
   "setup_profiles": [
     {
@@ -2473,6 +2478,11 @@
       "player": "ktr",
       "avg_setup_duration": 73.0,
       "avg_bench_density": 0.5
+    },
+    {
+      "player": "RtoABC",
+      "avg_setup_duration": 52.4,
+      "avg_bench_density": 3.8
     }
   ]
 }
