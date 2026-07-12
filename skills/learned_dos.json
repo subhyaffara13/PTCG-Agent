@@ -2391,12 +2391,22 @@
       "player": "Eduardo Rocha de Andrade",
       "avg_setup_duration": 99.4,
       "avg_bench_density": 2.1
+    },
+    {
+      "player": "digimagi",
+      "avg_setup_duration": 86.0,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "yaki-imo",
+      "avg_setup_duration": 71.4,
+      "avg_bench_density": 3.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 12.0,
-    "avg_trainer_count": 35.0,
-    "avg_energy_count": 13.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 31.0,
+    "avg_energy_count": 10.0
   },
   "setup_profiles": [
     {
@@ -2643,6 +2653,16 @@
       "player": "Eduardo Rocha de Andrade",
       "avg_setup_duration": 99.4,
       "avg_bench_density": 2.1
+    },
+    {
+      "player": "digimagi",
+      "avg_setup_duration": 86.0,
+      "avg_bench_density": 3.4
+    },
+    {
+      "player": "yaki-imo",
+      "avg_setup_duration": 71.4,
+      "avg_bench_density": 3.5
     }
   ]
 }
