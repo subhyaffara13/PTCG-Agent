@@ -542,15 +542,23 @@ void regenerate_legal_actions(BoardState& state) {
             }
         }
         actions.push_back("attach_energy:" + card);
-        actions.push_back("bench:" + card);
+        if (state.me.bench.size() < 5) {
+            actions.push_back("bench:" + card);
+        }
     }
     
     for (size_t i = 0; i < state.me.bench.size(); ++i) {
         actions.push_back("retreat:" + std::to_string(i));
     }
     
-    if (state.opponent.active.hp > 0) {
-        actions.push_back("attack:strike");
+    if (state.opponent.active.hp > 0 && state.me.has_active) {
+        int attached_count = (int)state.me.active.attached.size();
+        auto card = CardRegistry::getInstance().getCard(state.me.active.id);
+        int min_cost = (card && card->energy_cost > 0) ? card->energy_cost : 1;
+        bool can_attack = attached_count >= min_cost;
+        if (can_attack) {
+            actions.push_back("attack:strike");
+        }
     }
     
     std::vector<std::string> unique_actions;
@@ -611,7 +619,19 @@ double score_action(const std::string& action, const BoardState& state, double t
     int opp_hp  = state.opponent.has_active ? state.opponent.active.hp : 100;
 
     if (action.rfind("attack:", 0) == 0) {
-        v += 1.2;  // attacks almost always best
+        // Check if attack is actually feasible
+        bool can_attack = false;
+        if (state.me.has_active) {
+            int attached_count = (int)state.me.active.attached.size();
+            auto card = CardRegistry::getInstance().getCard(state.me.active.id);
+            int min_cost = (card && card->energy_cost > 0) ? card->energy_cost : 1;
+            can_attack = attached_count >= min_cost;
+        }
+        if (!can_attack) {
+            v -= 0.5;  // Penalize attacks that can't be executed
+        } else {
+            v += 0.65;
+        }
         if (mp <= 1) v += 1.0;  // game-winning attack
         if (mp <= 2) v += 0.3;  // close to winning
         // Type advantage
@@ -731,6 +751,14 @@ std::vector<std::string> mask_illegal(const std::vector<std::string>& legal_acti
                         continue;
                     }
                 }
+                // Don't count impossible attacks as active plays
+                if (action.rfind("attack:", 0) == 0) {
+                    if (!state.me.has_active) continue;
+                    int attached_count = (int)state.me.active.attached.size();
+                    auto card = CardRegistry::getInstance().getCard(state.me.active.id);
+                    int min_cost = (card && card->energy_cost > 0) ? card->energy_cost : 1;
+                    if (attached_count < min_cost) continue;
+                }
                 has_active_plays = true;
                 break;
             }
@@ -754,6 +782,14 @@ std::vector<std::string> mask_illegal(const std::vector<std::string>& legal_acti
                 trainer_name.find("draw") != std::string::npos) {
                 continue;
             }
+        }
+        // Prune attacks when the active Pokemon lacks energy
+        if (action.rfind("attack:", 0) == 0) {
+            if (!state.me.has_active) continue;
+            int attached_count = (int)state.me.active.attached.size();
+            auto card = CardRegistry::getInstance().getCard(state.me.active.id);
+            int min_cost = (card && card->energy_cost > 0) ? card->energy_cost : 1;
+            if (attached_count < min_cost) continue;
         }
         filtered.push_back(action);
     }

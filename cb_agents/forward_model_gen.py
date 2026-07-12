@@ -57,7 +57,9 @@ def _regenerate_legal_actions(gs: dict) -> None:
                 except Exception as e:
                     logger.debug(f"Action prior generator: card {card} resolution failed: {e}")
             actions.append(f"attach_energy:{card}")
-            actions.append(f"bench:{card}")
+            bench_list = gs.get("my_bench", [])
+            if isinstance(bench_list, list) and len(bench_list) < 5:
+                actions.append(f"bench:{card}")
     bench = gs.get("my_bench", [])
     if isinstance(bench, list) and len(bench) > 0:
         for i in range(len(bench)):

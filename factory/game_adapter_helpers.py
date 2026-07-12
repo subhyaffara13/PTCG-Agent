@@ -44,6 +44,11 @@ def get_mapped_indices(action_label: str, options: list, game_state: dict = None
                         card_id = str(my_hand[hand_idx])
                         if card_id == target_str:
                             return [i]
+            # If card_target is a numeric option index, use it directly
+            if card_target.isdigit():
+                idx = int(card_target)
+                if 0 <= idx < len(options):
+                    return [idx]
 
     if action_label.startswith("take_prize:"):
         target = action_label.split(":", 1)[1]
