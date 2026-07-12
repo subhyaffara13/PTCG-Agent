@@ -1093,11 +1093,6 @@
       "avg_bench_density": 4.2
     },
     {
-      "player": "shu",
-      "avg_setup_duration": 21.2,
-      "avg_bench_density": 3.9
-    },
-    {
       "player": "nogu",
       "avg_setup_duration": 43.4,
       "avg_bench_density": 2.4
@@ -2431,12 +2426,32 @@
       "player": "\u61d2\u60f0\u7684\u91d1\u67aa\u9c7c",
       "avg_setup_duration": 57.2,
       "avg_bench_density": 2.5
+    },
+    {
+      "player": "shu",
+      "avg_setup_duration": 57.4,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Marshall Maximizer",
+      "avg_setup_duration": 54.4,
+      "avg_bench_density": 4.3
+    },
+    {
+      "player": "Marcha Watanabe",
+      "avg_setup_duration": 74.0,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "hukuda222",
+      "avg_setup_duration": 101.2,
+      "avg_bench_density": 1.2
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 13.0,
+    "avg_pokemon_count": 11.0,
     "avg_trainer_count": 34.0,
-    "avg_energy_count": 13.0
+    "avg_energy_count": 15.0
   },
   "setup_profiles": [
     {
@@ -2723,6 +2738,26 @@
       "player": "\u61d2\u60f0\u7684\u91d1\u67aa\u9c7c",
       "avg_setup_duration": 57.2,
       "avg_bench_density": 2.5
+    },
+    {
+      "player": "shu",
+      "avg_setup_duration": 57.4,
+      "avg_bench_density": 3.7
+    },
+    {
+      "player": "Marshall Maximizer",
+      "avg_setup_duration": 54.4,
+      "avg_bench_density": 4.3
+    },
+    {
+      "player": "Marcha Watanabe",
+      "avg_setup_duration": 74.0,
+      "avg_bench_density": 3.3
+    },
+    {
+      "player": "hukuda222",
+      "avg_setup_duration": 101.2,
+      "avg_bench_density": 1.2
     }
   ]
 }
