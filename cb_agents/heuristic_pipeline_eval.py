@@ -94,6 +94,8 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                 att = len(ac.get("attached", []) or ac.get("energies", []))
                 if att < need:
                     v += 0.35  # Stronger bonus for charging up active
+                    if att == need - 1:
+                        v += 0.2  # Extra bonus when one short of attack
                 elif att >= need:
                     an = ac.get("card_name", "").lower()
                     sc = any(sa in an for sa in {"raging bolt", "iron hands", "chien pao", "ceruledge", "garchomp", "roaring moon", "groudon", "kyogre"})
@@ -110,8 +112,13 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                         if isinstance(bp, dict) and str(bp.get("id", "")) == poke_id:
                             bench_att = len(bp.get("attached", []) or bp.get("energies", []))
                             bp_card = _registry.get_full_skill(poke_id)
-                            if bp_card and bp_card.energy_cost > 0 and bench_att >= bp_card.energy_cost:
-                                v -= 0.3  # Penalty for over-charging bench
+                            if bp_card and bp_card.energy_cost > 0:
+                                if bench_att < bp_card.energy_cost:
+                                    v += 0.2  # Charging up bench attacker
+                                    if bench_att == bp_card.energy_cost - 1:
+                                        v += 0.2  # One short of attacking
+                                else:
+                                    v -= 0.3  # Penalty for over-charging bench
                             break
                 except Exception:
                     pass
@@ -127,8 +134,22 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             tol = {"aggro_push": 0.15, "closing": 0.10, "disruption": -0.05, "setup": 0.15, "stall": -0.15}.get(pr, 0.0)
             if bs >= 4 and tol < 0: v += tol * bs * 0.3
             elif bs >= 5 and tol <= 0: v -= 0.4
+        # Bonus for benching strong Pokemon (evolution potential, high HP)
+        try:
+            bench_parts = action.split(":")
+            bench_card_id = int(bench_parts[1]) if len(bench_parts) > 1 and bench_parts[1].isdigit() else None
+            if bench_card_id is not None:
+                bc = _registry.get_full_skill(bench_card_id)
+                if bc:
+                    if bc.stage in (CardStage.STAGE1, CardStage.STAGE2):
+                        v += 0.2  # Evolution fodder is valuable
+                    if bc.hp and bc.hp > 120:
+                        v += 0.1  # Tanky basics
+        except Exception:
+            pass
     elif action.startswith("play_trainer:"):
         v += 0.4
+        hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
         if dc <= 7:
             tn = action.split(":", 1)[1].lower()
             if any(k in tn for k in {"iono", "judge"}): v += 0.8
@@ -141,6 +162,13 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             n = action.split(":", 1)[1].lower()
             sk = {"nest ball", "ultra ball", "quick ball", "level ball", "secret box", "mega signal", "team rocket's petrel"}
             if any(s in n for s in sk): v += min(0.25, dc * 0.005)
+        # Hand-size-aware draw supporter valuation
+        if hs > 5 and dc > 10:
+            tn = action.split(":", 1)[1].lower()
+            if any(k in tn for k in {"iono", "judge"}):
+                v += min(0.6, hs * 0.08)  # Big hand -> big shuffle value (draws up to hand-size cards)
+            if any(k in tn for k in {"research", "professor", "carmine"}):
+                v += min(0.4, hs * 0.05)  # Big hand -> more cards to discard with Research
     elif action.startswith("ability:"):
         tn = action.split(":", 1)[1].lower()
         v += 0.35
@@ -149,22 +177,27 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     elif action.startswith("retreat:"):
         v += 0.4 if ahp <= 60 else -0.5
         
-        # Heavy penalty if retreating to a useless zero-energy Pokemon when active is healthy
-        if ahp > 60:
-            try:
-                target_idx = -1
-                if ":" in action:
-                    target_idx = int(action.split(":", 1)[1])
-                bench = gs.get("my_bench", [])
-                if 0 <= target_idx < len(bench):
-                    target_poke = bench[target_idx]
-                    if isinstance(target_poke, dict):
-                        attached_list = target_poke.get("attached") or target_poke.get("energies") or []
-                        target_attached = len(attached_list)
-                        if target_attached == 0:
-                            v -= 0.8  # Penalty of -1.3 total, which is worse than pass (-1.0)
-            except Exception as ex:
-                logger.warning(f"Error parsing retreat target: {ex}")
+        # Reward switching to a better attacker instead of blanket penalty
+        try:
+            target_idx = -1
+            if ":" in action:
+                target_idx = int(action.split(":", 1)[1])
+            bench = gs.get("my_bench", [])
+            if 0 <= target_idx < len(bench):
+                target_poke = bench[target_idx]
+                if isinstance(target_poke, dict):
+                    attached_list = target_poke.get("attached") or target_poke.get("energies") or []
+                    target_attached = len(attached_list)
+                    target_id = target_poke.get("id")
+                    if target_id is not None:
+                        tc = _registry.get_full_skill(target_id)
+                        is_better_attacker = tc and tc.damage_output > 0 and target_attached >= max(1, tc.energy_cost)
+                        if is_better_attacker:
+                            v += 0.8  # Switching to a usable attacker is great
+                        elif target_attached == 0:
+                            v -= 0.8  # Penalty for zero-energy swap
+        except Exception as ex:
+            logger.warning(f"Error parsing retreat target: {ex}")
                     
         rsb = gs.get("retreat_score_boost", 0.0)
         if rsb > 0: v += rsb

@@ -16,13 +16,41 @@ def project_opponent_damage_helper(game_state) -> int:
             logging.getLogger(__name__).debug(f"project_opponent_damage failed: {e}")
     return max_dmg
 
+def _best_retreat_target(retreat_actions, game_state):
+    """Pick the retreat target that can attack back (has energy + highest damage)."""
+    from cb_agents.card_registry import CardRegistry
+    registry = CardRegistry()
+    bench = list(getattr(game_state, 'my_bench', []))
+    best_action = retreat_actions[0]
+    best_score = -999
+    for ra in retreat_actions:
+        try:
+            idx = int(ra.replace("retreat:", "").strip())
+            if 0 <= idx < len(bench):
+                bp = bench[idx]
+                if isinstance(bp, dict):
+                    ba = len(bp.get("attached", []) or bp.get("energies", []))
+                    bid = bp.get("id")
+                    if bid is not None:
+                        tc = registry.get_full_skill(bid)
+                        if tc:
+                            ec = max(1, tc.energy_cost) if tc.energy_cost else 1
+                            dmg = tc.damage_output or 0
+                            score = dmg if ba >= ec else (-10 - idx)
+                            if score > best_score:
+                                best_score = score
+                                best_action = ra
+        except Exception:
+            pass
+    return best_action
+
 def check_defensive_retreat_helper(game_state, board_summary) -> str:
     opponent_max_damage = project_opponent_damage_helper(game_state)
     my_hp = getattr(game_state, 'my_active_hp', 0)
     if opponent_max_damage > 0 and opponent_max_damage >= my_hp:
         retreat_actions = list(getattr(game_state, 'legal_retreats', []))
         if retreat_actions:
-            return retreat_actions[0]
+            return _best_retreat_target(retreat_actions, game_state)
     return None
 
 def update_opponent_model_helper(orchestrator, game_state):

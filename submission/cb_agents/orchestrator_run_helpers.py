@@ -11,9 +11,38 @@ def project_opponent_damage_helper(game_state) -> int:
             card = registry.get_full_skill(opp_active_id)
             if card:
                 max_dmg = card.damage_output
-        except:
-            pass
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).debug(f"project_opponent_damage failed: {e}")
     return max_dmg
+
+def _best_retreat_target(retreat_actions, game_state):
+    """Pick the retreat target that can attack back (has energy + highest damage)."""
+    from cb_agents.card_registry import CardRegistry
+    registry = CardRegistry()
+    bench = list(getattr(game_state, 'my_bench', []))
+    best_action = retreat_actions[0]
+    best_score = -999
+    for ra in retreat_actions:
+        try:
+            idx = int(ra.replace("retreat:", "").strip())
+            if 0 <= idx < len(bench):
+                bp = bench[idx]
+                if isinstance(bp, dict):
+                    ba = len(bp.get("attached", []) or bp.get("energies", []))
+                    bid = bp.get("id")
+                    if bid is not None:
+                        tc = registry.get_full_skill(bid)
+                        if tc:
+                            ec = max(1, tc.energy_cost) if tc.energy_cost else 1
+                            dmg = tc.damage_output or 0
+                            score = dmg if ba >= ec else (-10 - idx)
+                            if score > best_score:
+                                best_score = score
+                                best_action = ra
+        except Exception:
+            pass
+    return best_action
 
 def check_defensive_retreat_helper(game_state, board_summary) -> str:
     opponent_max_damage = project_opponent_damage_helper(game_state)
@@ -21,7 +50,7 @@ def check_defensive_retreat_helper(game_state, board_summary) -> str:
     if opponent_max_damage > 0 and opponent_max_damage >= my_hp:
         retreat_actions = list(getattr(game_state, 'legal_retreats', []))
         if retreat_actions:
-            return retreat_actions[0]
+            return _best_retreat_target(retreat_actions, game_state)
     return None
 
 def update_opponent_model_helper(orchestrator, game_state):
@@ -52,7 +81,7 @@ def update_opponent_model_helper(orchestrator, game_state):
 
 def check_lethal_helper(game_state):
     my_active = game_state.my_active_pokemon or {}
-    my_attached = len(my_active.get("attached", [])) if isinstance(my_active, dict) else 0
+    my_attached = len(my_active.get("attached", []) or my_active.get("energies", [])) if isinstance(my_active, dict) else 0
 
     from cb_agents.card_registry import CardRegistry
     registry = CardRegistry()
@@ -69,14 +98,18 @@ def check_lethal_helper(game_state):
             card = registry.get_full_skill(my_active_id)
             if card:
                 max_damage = card.damage_output
-        except:
-            pass
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).debug(f"Lethal helper active skill lookup failed: {e}")
     
     active = game_state.opponent_active
     opp_active_id = None
     if active:
-        try: opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
-        except: pass
+        try:
+            opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
+        except Exception as e:
+            import logging
+            logging.getLogger(__name__).debug(f"Lethal helper opponent active ID parse failed: {e}")
         
     lethal_result = pipeline.check_lethal(
         my_damage=max_damage, opp_hp=game_state.opponent_active_hp,

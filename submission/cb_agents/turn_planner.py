@@ -80,6 +80,10 @@ class TurnPlanner(BaseAgent):
             game_state["priority_profile"] = profile
             game_state = _process_prize_tracker(game_state, self._prize_tracker, packet)
             game_state["has_searched_deck"] = game_state.get("prize_certainty", 0.0) > 0
+            # Sync prize certainty to belief tracker for MCTS determinization
+            prized_ids = game_state.get("prized_card_ids")
+            if prized_ids and self.mcts.belief_tracker:
+                self.mcts.belief_tracker.lock_prizes(prized_ids)
             candidates = build_legal_candidates(game_state)
             if self._consecutive_passes >= 10 and "pass" in candidates and len(candidates) > 1:
                 logger.warning(f"10-Pass Hard Limit Reached. Forcefully removing 'pass' to break stalemate.")
