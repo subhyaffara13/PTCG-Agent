@@ -44,6 +44,15 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
     from router.bus import StrategyPacket
     
     board_summary = gs.get("board_summary")
+    if isinstance(board_summary, dict) and board_summary:
+        board_summary.setdefault("my_prizes_remaining", board_summary.get("prizes", 6))
+        board_summary.setdefault("opponent_prizes_remaining", board_summary.get("opponent_prizes", 6))
+        board_summary.setdefault("my_bench_count", board_summary.get("bench_count", 0))
+        board_summary.setdefault("opponent_archetype", "unknown")
+        board_summary.setdefault("opponent_archetype_confidence", 0.0)
+        board_summary.setdefault("my_active_hp", 100)
+        board_summary.setdefault("bench_has_attacker", board_summary.get("bench_count", 0) > 0)
+        board_summary.setdefault("priority_profile", gs.get("priority_profile", "balanced"))
     if not isinstance(board_summary, dict) or not board_summary:
         my_bench = gs.get("my_bench", [])
         bench_count = len(my_bench) if isinstance(my_bench, list) else 0
@@ -65,7 +74,20 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
         if hasattr(orchestrator, "belief_tracker") and orchestrator.belief_tracker:
             boss_prob = orchestrator.belief_tracker.probability_opponent_holds("boss's orders")
             iono_prob = orchestrator.belief_tracker.probability_opponent_holds("iono")
-            
+        
+        opponent_archetype = "unknown"
+        archetype_confidence = 0.0
+        if hasattr(orchestrator, "opponent_model"):
+            om = orchestrator.opponent_model
+            opponent_archetype = getattr(om, "identified_archetype", "unknown")
+            archetype_confidence = getattr(om, "archetype_confidence", 0.0)
+        
+        my_active_hp = 100
+        if isinstance(my_active, dict):
+            my_active_hp = my_active.get("hp", 100)
+        
+        bench_has_attacker = bench_count > 0
+        
         board_summary = {
             "prizes": gs.get("my_prizes", 6),
             "opponent_prizes": gs.get("opponent_prizes", 6),
@@ -75,6 +97,14 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
             "turn_number": gs.get("turn_number", 1),
             "boss_prob": boss_prob,
             "iono_prob": iono_prob,
+            "my_prizes_remaining": gs.get("my_prizes", 6),
+            "opponent_prizes_remaining": gs.get("opponent_prizes", 6),
+            "my_bench_count": bench_count,
+            "opponent_archetype": opponent_archetype,
+            "opponent_archetype_confidence": archetype_confidence,
+            "my_active_hp": my_active_hp,
+            "bench_has_attacker": bench_has_attacker,
+            "priority_profile": gs.get("priority_profile", "balanced"),
         }
         
     trigger = gs.get("trigger", "")
@@ -83,10 +113,30 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
         opp_p = int(board_summary.get("opponent_prizes", 6))
         trigger = "prize_gap" if (opp_p - my_p) >= 2 else "none"
         
-    return router.dispatch("StrategyAgent", StrategyPacket(
+    result = router.dispatch("StrategyAgent", StrategyPacket(
         trigger=trigger,
         board_summary=board_summary,
     ))
+    
+    try:
+        from cb_agents.strategy_helpers import check_should_trigger, select_new_strategy
+        strategy_thresholds = gs.get("strategy_thresholds", {})
+        last_priority = gs.get("last_priority_profile", None)
+        
+        should_trigger, sa_config = check_should_trigger(
+            board_summary, trigger, last_priority, strategy_thresholds
+        )
+        if should_trigger:
+            new_strategy = select_new_strategy(
+                board_summary,
+                result.get("strategy", "unknown"),
+                sa_config,
+            )
+            result["strategy"] = new_strategy
+    except Exception:
+        pass
+    
+    return result
 
 
 def _step_opponent(gs: dict[str, Any], opponent: OpponentModel, router: RouterBus) -> dict[str, Any]:
