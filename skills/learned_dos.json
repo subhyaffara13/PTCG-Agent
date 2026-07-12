@@ -2421,12 +2421,17 @@
       "player": "me and the lads",
       "avg_setup_duration": 50.6,
       "avg_bench_density": 2.9
+    },
+    {
+      "player": "kkkk",
+      "avg_setup_duration": 80.0,
+      "avg_bench_density": 2.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 39.0,
+    "avg_energy_count": 8.0
   },
   "setup_profiles": [
     {
@@ -2703,6 +2708,11 @@
       "player": "me and the lads",
       "avg_setup_duration": 50.6,
       "avg_bench_density": 2.9
+    },
+    {
+      "player": "kkkk",
+      "avg_setup_duration": 80.0,
+      "avg_bench_density": 2.8
     }
   ]
 }

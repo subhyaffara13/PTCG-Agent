@@ -4,28 +4,25 @@ card_id,card_name,card_type,count
 210,Pikachu ex,Pokemon,4
 1121,Ultra Ball,Trainer,1
 1152,Poké Pad,Trainer,4
-1189,Salvatore,Trainer,1
-1254,Levincia,Trainer,1
-1102,Dusk Ball,Trainer,1
+1189,Salvatore,Trainer,2
 1097,Night Stretcher,Trainer,3
-1146,Wondrous Patch,Trainer,2
+1102,Dusk Ball,Trainer,1
+1264,Battle Cage,Trainer,1
+1184,Lana’s Aid,Trainer,1
+1198,Crispin,Trainer,1
 1182,Boss’s Orders,Trainer,4
-1215,Ethan's Adventure,Trainer,1
-1256,Team Rocket's Watchtower,Trainer,1
+1139,Energy Recycler,Trainer,1
 1194,Colress’s Tenacity,Trainer,1
-1129,Sacred Ash,Trainer,1
-1230,Grimsley's Move,Trainer,1
-1245,Festival Grounds,Trainer,1
-1145,Mega Signal,Trainer,1
+1259,Spikemuth Gym,Trainer,1
+1252,Gravity Mountain,Trainer,1
+1235,Waitress,Trainer,1
+1215,Ethan's Adventure,Trainer,2
 1123,Switch,Trainer,1
 1086,Buddy-Buddy Poffin,Trainer,1
-1193,Hassel,Trainer,1
-1227,Lillie's Determination,Trainer,2
-1132,Team Rocket's Great Ball,Trainer,1
+1190,Bianca’s Devotion,Trainer,1
+1227,Lillie's Determination,Trainer,3
 1081,Enhanced Hammer,Trainer,2
 1122,Pokégear 3.0,Trainer,1
-1252,Gravity Mountain,Trainer,1
-6,Basic {F} Energy,Energy,8
+6,Basic {F} Energy,Energy,9
 20,Rock Fighting Energy,Energy,4
-13,Enriching Energy,Energy,1
-16,Prism Energy,Energy,1
+11,Mist Energy,Energy,1
