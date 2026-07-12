@@ -2,23 +2,16 @@ card_id,card_name,card_type,count
 957,Miraidon ex,Pokemon,4
 979,Koraidon ex,Pokemon,4
 210,Pikachu ex,Pokemon,4
-1121,Ultra Ball,Trainer,1
-1152,Poké Pad,Trainer,4
-1129,Sacred Ash,Trainer,1
+1121,Ultra Ball,Trainer,4
+1102,Dusk Ball,Trainer,4
+1213,Judge,Trainer,4
+1206,Larry’s Skill,Trainer,4
 1182,Boss’s Orders,Trainer,4
-1097,Night Stretcher,Trainer,3
-1102,Dusk Ball,Trainer,1
-1227,Lillie's Determination,Trainer,4
-1088,Prime Catcher,Trainer,1
-1194,Colress’s Tenacity,Trainer,2
-1201,Briar,Trainer,1
-1087,Hand Trimmer,Trainer,1
-1086,Buddy-Buddy Poffin,Trainer,3
-1252,Gravity Mountain,Trainer,2
-1134,Team Rocket's Transceiver,Trainer,1
-1204,Lisia’s Appeal,Trainer,1
-1123,Switch,Trainer,1
+1123,Switch,Trainer,4
+1116,Energy Switch,Trainer,2
+1118,Energy Retrieval,Trainer,2
 1081,Enhanced Hammer,Trainer,2
-1122,Pokégear 3.0,Trainer,1
-6,Basic {F} Energy,Energy,10
-20,Rock Fighting Energy,Energy,4
+1097,Night Stretcher,Trainer,2
+1122,Pokégear 3.0,Trainer,2
+6,Basic {F} Energy,Energy,8
+4,Basic {L} Energy,Energy,6

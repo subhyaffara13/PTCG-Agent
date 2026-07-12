@@ -9,7 +9,6 @@ def auto_commit_and_push_if_changed():
     # List of files we want to ensure stay synchronized across all nodes
     target_files = [
         "models/ppo_actor_critic.pt",
-        "cb_agents/deck_new.csv",
         "skills/learned_dos.json",
         "skills/predictor_feedback.json",
         "skills/predictor_weights.json"
