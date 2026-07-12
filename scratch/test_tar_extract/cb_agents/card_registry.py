@@ -26,6 +26,8 @@ class CardRegistry:
         self.cards: Dict[Any, CardEntry] = {}
         self.full_cards: Dict[Any, CardEntry] = {}
         self.evolution_predecessors: Dict[str, str] = {}
+        self.card_hp: Dict[int, int] = {}
+        self.card_retreat: Dict[int, int] = {}
         load_metadata_helper(self.skills_dir, self.cards, self.evolution_predecessors)
         
         self.move_damage = {}
@@ -39,18 +41,40 @@ class CardRegistry:
                     if header:
                         move_idx = -1
                         dmg_idx = -1
+                        hp_idx = -1
+                        retreat_idx = -1
+                        id_idx = -1
                         for idx, col in enumerate(header):
-                            if "Move Name" in col:
+                            low = col.strip().lower()
+                            if "move name" in low:
                                 move_idx = idx
-                            elif "Damage" in col:
+                            elif "damage" in low:
                                 dmg_idx = idx
-                        if move_idx != -1 and dmg_idx != -1:
-                            for row in reader:
-                                if len(row) > max(move_idx, dmg_idx):
-                                    move = row[move_idx].strip()
-                                    dmg = row[dmg_idx].strip()
-                                    if move and move.lower() != "n/a":
-                                        self.move_damage[move.lower()] = dmg
+                            elif low == "hp":
+                                hp_idx = idx
+                            elif "retreat" in low:
+                                retreat_idx = idx
+                            elif "card id" in low:
+                                id_idx = idx
+                        for row in reader:
+                            if len(row) > max(move_idx, dmg_idx):
+                                move = row[move_idx].strip()
+                                dmg = row[dmg_idx].strip()
+                                if move and move.lower() != "n/a":
+                                    self.move_damage[move.lower()] = dmg
+                            if id_idx != -1 and len(row) > id_idx:
+                                try:
+                                    cid = int(row[id_idx].strip())
+                                    if hp_idx != -1 and len(row) > hp_idx and cid not in self.card_hp:
+                                        hp_val = row[hp_idx].strip()
+                                        if hp_val and hp_val.lower() not in ("n/a", ""):
+                                            self.card_hp[cid] = int(hp_val)
+                                    if retreat_idx != -1 and len(row) > retreat_idx and cid not in self.card_retreat:
+                                        ret_val = row[retreat_idx].strip()
+                                        if ret_val and ret_val.lower() not in ("n/a", ""):
+                                            self.card_retreat[cid] = int(ret_val)
+                                except (ValueError, IndexError):
+                                    pass
         except Exception as e:
             logger.error(f"Failed to load card_pool_raw.csv moves: {e}")
         
@@ -120,6 +144,9 @@ class CardRegistry:
             if tag_enum:
                 combo_mask |= tag_enum
 
+        hp = int(card_data.get("hp", self.card_hp.get(int(base.card_id), 100)))
+        retreat_cost = int(card_data.get("retreat_cost", self.card_retreat.get(int(base.card_id), 1)))
+
         entry = CardEntry(
             card_id=base.card_id,
             card_name=base.card_name,
@@ -133,6 +160,8 @@ class CardRegistry:
             utility_score=float(card_data.get("utility_score", 0.0)),
             archetype=card_data.get("archetype", ""),
             previous_stage=base.previous_stage,
+            hp=hp,
+            retreat_cost=retreat_cost,
             is_full=True
         )
         

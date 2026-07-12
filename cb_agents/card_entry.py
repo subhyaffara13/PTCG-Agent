@@ -21,4 +21,6 @@ class CardEntry:
     utility_score: float = 0.0
     archetype: str = ""
     previous_stage: str = ""
+    hp: int = 100
+    retreat_cost: int = 1
     is_full: bool = False

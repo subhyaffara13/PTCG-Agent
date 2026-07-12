@@ -19,9 +19,9 @@ def handle_retreat_helper(gs: dict, target: str, CardRegistry: Any) -> None:
         
         retreat_cost = 1
         try:
-            card = CardRegistry().get_card(old_active.get("id"))
+            card = CardRegistry().get_full_skill(old_active.get("id"))
             if card is not None:
-                retreat_cost = getattr(card, "retreat_cost", 1)
+                retreat_cost = card.retreat_cost
         except Exception:
             pass
             

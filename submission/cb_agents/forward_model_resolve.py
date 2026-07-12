@@ -16,7 +16,14 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
         _remove_from_hand(hand, _int_or_str(target))
         gs["my_hand"] = hand
         bench = list(gs.get("my_bench", []))
-        bench.append({"id": _int_or_str(target), "hp": 100, "attached": []})
+        poke_hp = 100
+        try:
+            c = CardRegistry().get_full_skill(_int_or_str(target))
+            if c and c.hp:
+                poke_hp = c.hp
+        except Exception:
+            pass
+        bench.append({"id": _int_or_str(target), "hp": poke_hp, "attached": []})
         gs["my_bench"] = bench
 
     elif act_type == "evolve":
@@ -45,8 +52,28 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
                         chosen = p
                         break
             if not chosen:
-                import random
-                chosen = random.choice(valid_targets)
+                best_target = None
+                best_need = -1
+                active_poke = gs.get("my_active_pokemon")
+                active_id = active_poke.get("id") if isinstance(active_poke, dict) else None
+                for p in valid_targets:
+                    att_count = len(p.get("attached", []))
+                    poke_id = p.get("id")
+                    need = 3
+                    try:
+                        if poke_id is not None:
+                            pc = CardRegistry().get_full_skill(poke_id)
+                            if pc and pc.energy_cost > 0:
+                                need = pc.energy_cost
+                    except Exception:
+                        pass
+                    deficit = max(0, need - att_count)
+                    is_active = (active_id is not None and p.get("id") == active_id)
+                    score = deficit + (0.5 if is_active else 0.0)
+                    if score > best_need:
+                        best_need = score
+                        best_target = p
+                chosen = best_target or valid_targets[0]
             attached = list(chosen.get("attached", []))
             attached.append(card_id)
             chosen["attached"] = attached

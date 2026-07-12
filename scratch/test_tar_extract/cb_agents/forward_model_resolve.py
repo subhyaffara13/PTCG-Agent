@@ -16,7 +16,14 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
         _remove_from_hand(hand, _int_or_str(target))
         gs["my_hand"] = hand
         bench = list(gs.get("my_bench", []))
-        bench.append({"id": _int_or_str(target), "hp": 100, "attached": []})
+        poke_hp = 100
+        try:
+            c = CardRegistry().get_full_skill(_int_or_str(target))
+            if c and c.hp:
+                poke_hp = c.hp
+        except Exception:
+            pass
+        bench.append({"id": _int_or_str(target), "hp": poke_hp, "attached": []})
         gs["my_bench"] = bench
 
     elif act_type == "evolve":
