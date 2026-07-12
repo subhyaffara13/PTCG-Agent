@@ -2446,12 +2446,17 @@
       "player": "hukuda222",
       "avg_setup_duration": 101.2,
       "avg_bench_density": 1.2
+    },
+    {
+      "player": "Bulba-Zero",
+      "avg_setup_duration": 62.0,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 11.0,
+    "avg_pokemon_count": 19.0,
     "avg_trainer_count": 34.0,
-    "avg_energy_count": 15.0
+    "avg_energy_count": 7.0
   },
   "setup_profiles": [
     {
@@ -2758,6 +2763,11 @@
       "player": "hukuda222",
       "avg_setup_duration": 101.2,
       "avg_bench_density": 1.2
+    },
+    {
+      "player": "Bulba-Zero",
+      "avg_setup_duration": 62.0,
+      "avg_bench_density": 3.8
     }
   ]
 }
