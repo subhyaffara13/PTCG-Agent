@@ -118,7 +118,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 try:
                     from cb_agents.preference_maps import get_energy_preference
                 except ImportError:
-                    from cb_agents.preference_maps import get_energy_preference
+                    from preference_maps import get_energy_preference
                     
                 preferred_energy = get_energy_preference(target_id)
                 if target_id and preferred_energy:
@@ -133,8 +133,17 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                         is_active_target = True
                 
                 if is_active_target:
-                    # Determine how much energy active actually needs
+                    # Determine how much energy active actually needs from card metadata
                     needed = 3
+                    try:
+                        if isinstance(active, dict):
+                            active_card_id = active.get("id")
+                            if active_card_id is not None:
+                                c = _registry.get_full_skill(active_card_id)
+                                if c and c.energy_cost > 0:
+                                    needed = c.energy_cost
+                    except Exception:
+                        pass
                     hp = game_state.get("my_active_hp", 100)
                     if hp <= 50 or active_attached >= needed:
                         micro_rank += 20  # Active is dying or fully charged, heavy penalty for attaching more to it!
@@ -144,7 +153,20 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                         micro_rank -= 1
                 else:
                     # Attaching to bench
-                    micro_rank -= 3
+                    bench_penalty = -3
+                    try:
+                        if len(parts) > 2:  # Forward-model format: attach_energy:<energy>:<pokemon_id>
+                            poke_id = target_id
+                            for bp in game_state.get("my_bench", []):
+                                if isinstance(bp, dict) and str(bp.get("id", "")) == poke_id:
+                                    bench_att = len(bp.get("attached", []) or bp.get("energies", []))
+                                    bp_card = _registry.get_full_skill(poke_id)
+                                    if bp_card and bp_card.energy_cost > 0 and bench_att >= bp_card.energy_cost:
+                                        bench_penalty = 15  # Over-charging bench penalty
+                                    break
+                    except Exception:
+                        pass
+                    micro_rank += bench_penalty
                     
             elif action.startswith("evolve:"):
                 micro_rank -= 8

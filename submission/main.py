@@ -499,6 +499,60 @@ def make_smart_choice(select, observation, fallback_action):
 
             scored_options.append((idx, score))
 
+        # Context-aware rescoring for discards: learned_dos +12 dominates utility (0-0.86)
+        # so trainers always outscore Pokemon — but Pokemon win the game. Fix the balance.
+        if is_discard:
+            try:
+                current = get_val(observation, "current")
+                my_idx = get_val(current, "yourIndex", 0)
+                players = get_val(current, "players", [])
+                my_state = players[my_idx] if len(players) > my_idx else {}
+                bench_slots = len(get_val(my_state, "bench", []))
+                active_poke = get_val(my_state, "active", None)
+                has_active = bool(active_poke and len(active_poke) > 0 and active_poke[0])
+                my_hand = get_val(my_state, "hand", [])
+                hand_ids = [get_val(c, "id") for c in my_hand if c]
+                for i in range(len(scored_options)):
+                    idx, base_score = scored_options[i]
+                    opt = options[idx]
+                    cid = get_val(opt, "id")
+                    if cid is None:
+                        area = get_val(opt, "area")
+                        index = get_val(opt, "index")
+                        if area == 2 and len(my_hand) > index:
+                            cid = get_val(my_hand[index], "id")
+                    if cid is not None:
+                        card = registry.get_full_skill(cid)
+                        if card:
+                            ct = getattr(card, "card_type", None)
+                            ct_name = ct.name if ct else ""
+                            card_id_int = int(cid) if not isinstance(cid, int) else cid
+                            if ct_name == "POKEMON":
+                                count_in_hand = sum(1 for hid in hand_ids if str(hid) == str(cid))
+                                is_last_copy = count_in_hand <= 1
+                                bench_needed = (6 - bench_slots) if has_active else (6 - bench_slots - 1)
+                                if bench_needed > 0 and is_last_copy:
+                                    base_score += 25.0  # Strong survival bonus for last Pokemon copy
+                                elif bench_needed > 0:
+                                    base_score += 10.0
+                            elif ct_name == "ENERGY":
+                                total_on_board = 0
+                                if active_poke and len(active_poke) > 0:
+                                    total_on_board += len(get_val(active_poke[0], "attached", []))
+                                for b in get_val(my_state, "bench", []):
+                                    if b and len(b) > 0:
+                                        total_on_board += len(get_val(b[0], "attached", []))
+                                if total_on_board >= 8:
+                                    base_score -= 8.0  # Excess energy: more likely to discard
+                                elif total_on_board >= 5:
+                                    base_score -= 3.0
+                            elif ct_name == "TRAINER":
+                                if card_id_int in registry.learned_dos:
+                                    base_score -= 6.0  # Reduce learned_dos bonus for discards
+                            scored_options[i] = (idx, base_score)
+            except Exception:
+                pass
+        
         # Sort options: lowest scoring first for discards, highest first otherwise
         if is_discard:
             scored_options.sort(key=lambda x: x[1])
@@ -612,9 +666,6 @@ def agent(observation, configuration=None):
             "my_prizes": len(get_val(my_state, "prize", [])) if isinstance(get_val(my_state, "prize"), list) else 6,
             "my_active_pokemon": _normalize_pokemon(_get_active(my_state)),
             "my_bench": [_normalize_pokemon(p) for p in get_val(my_state, "bench", [])] if get_val(my_state, "bench") else [],
-            "my_discard": [get_val(c, "id") for c in get_val(my_state, "discard", []) if c and get_val(c, "id") is not None] if get_val(my_state, "discard") else [],
-            "my_board": [],
-            "my_active_damage": 0,
             
             "opponent_active": _normalize_pokemon(_get_active(opp_state)),
             "opponent_bench": [_normalize_pokemon(p) for p in get_val(opp_state, "bench", [])] if get_val(opp_state, "bench") else [],
@@ -629,14 +680,12 @@ def agent(observation, configuration=None):
             "time_elapsed": time.time() - _GLOBAL_START_TIME,
             "my_active_hp": 100,
             "opponent_active_hp": 100,
-            "bench_has_attacker": False,
-            "has_searched_deck": False,
+            "bench_has_attacker": False
         }
 
         # Parse legal candidates from options
         game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (13, "Attack", "attack")]
         game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy")]
-        game_state["legal_prize_options"] = [str(i) for i, opt in enumerate(options) if get_val(opt, "type") in (2, "Prize", "prize")]
         
         legal_bench = []
         legal_evolutions = []
@@ -677,14 +726,11 @@ def agent(observation, configuration=None):
             if active_pokemon:
                 game_state["opponent_active_hp"] = get_val(active_pokemon, "hp", 100)
 
-        # Check if we are at the Main Turn Menu (SelectType 0, Context 0) or Prize Selection
+        # Check if we are at the Main Turn Menu (SelectType 0, Context 0)
         sel_type = get_val(select, "type")
         sel_ctx = get_val(select, "context")
-        game_state["select_prize"] = sel_ctx in ("prize", "select_prize") or sel_type == 2
-        game_state["select_type"] = sel_type
-        game_state["select_context"] = sel_ctx
 
-        if sel_type == 0 and sel_ctx == 0 or game_state.get("select_prize"):
+        if sel_type == 0 and sel_ctx == 0:
             # Call orchestrator to determine action strategy string
             decision = orch.run_turn(game_state)
             action_label = (decision.primary_action.lower() 
@@ -693,15 +739,7 @@ def agent(observation, configuration=None):
 
             # Map orchestrator's prefix action labels to actual select options
             mapped_indices = []
-            if action_label.startswith("take_prize:"):
-                target = action_label.split(":", 1)[1]
-                if target.isdigit():
-                    idx = int(target)
-                    if 0 <= idx < len(options):
-                        mapped_indices = [idx]
-                if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (2, "Prize", "prize")]
-            elif action_label.startswith("attack:"):
+            if action_label.startswith("attack:"):
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (13, "Attack", "attack")]
             elif action_label.startswith("attach_energy:"):
                 parts = action_label.split(":")

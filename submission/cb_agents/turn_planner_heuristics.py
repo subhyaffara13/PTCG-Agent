@@ -31,6 +31,8 @@ def _has_dead_weight(game_state: dict) -> bool:
         supporter_names = []
         basic_energy_count = 0
         stage2_count = 0
+        search_count = 0
+        deck_count = game_state.get("my_deck_count", 60)
         for cid_str in hand:
             try:
                 card = _registry.get(int(cid_str))
@@ -41,12 +43,26 @@ def _has_dead_weight(game_state: dict) -> bool:
                         basic_energy_count += 1
                     if card.stage and card.stage == CardStage.STAGE2:
                         stage2_count += 1
-            except:
-                pass
+                    if card.card_type.name == "TRAINER" and getattr(card, "trainer_subtype", None) and card.trainer_subtype.name == "ITEM":
+                        name_lower = card.card_name.lower()
+                        if any(sk in name_lower for sk in ("ultra ball", "dusk ball", "pokegear", "energy search")):
+                            search_count += 1
+            except Exception as e:
+                logger.debug(f"Dead weight card check failed for {cid_str}: {e}")
         dup_supporters = len(supporter_names) - len(set(supporter_names))
-        return dup_supporters >= 2 or basic_energy_count >= 6 or stage2_count >= 2
-    except ImportError:
-        return len(hand) >= 7
+        score = 0
+        if dup_supporters >= 2:
+            score += dup_supporters
+        if basic_energy_count >= 5:
+            score += basic_energy_count - 4
+        if stage2_count >= 2:
+            score += stage2_count
+        if search_count >= 2 and deck_count <= 20:
+            score += search_count
+        return score >= 4
+    except Exception as e:
+        logger.debug(f"Dead weight check execution failed: {e}")
+        return False
 
 def has_draw_remaining(candidates: List[str]) -> bool:
     for cand in candidates:

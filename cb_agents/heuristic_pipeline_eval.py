@@ -86,6 +86,19 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         else:
             # Attaching to bench
             v += 0.1  # Moderate priority for charging bench Pokemon
+            # Check if the target bench Pokemon already has enough energy
+            if len(parts) > 2:
+                try:
+                    poke_id = parts[2]
+                    for bp in bn:
+                        if isinstance(bp, dict) and str(bp.get("id", "")) == poke_id:
+                            bench_att = len(bp.get("attached", []) or bp.get("energies", []))
+                            bp_card = _registry.get_full_skill(poke_id)
+                            if bp_card and bp_card.energy_cost > 0 and bench_att >= bp_card.energy_cost:
+                                v -= 0.3  # Penalty for over-charging bench
+                            break
+                except Exception:
+                    pass
     elif action.startswith("bench:"):
         if not bn: v += 0.8
         else:

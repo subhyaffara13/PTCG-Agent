@@ -94,3 +94,18 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
         name = target.lower() if target else ""
         if any(k in name for k in _ABILITY_DRAW):
             gs["my_hand"] = _draw_cards(hand, gs, 3)
+
+    elif act_type == "take_prize":
+        my_prizes = gs.get("my_prizes", [])
+        if isinstance(my_prizes, list) and my_prizes:
+            idx = int(target) if target.isdigit() else 0
+            if 0 <= idx < len(my_prizes):
+                taken = my_prizes.pop(idx)
+                hand.append(taken)
+                gs["my_hand"] = hand
+                gs["my_prizes"] = my_prizes
+        prize_count = gs.get("prize_count", 1) - 1
+        if prize_count <= 0:
+            gs["select_prize"] = False
+        else:
+            gs["prize_count"] = prize_count
