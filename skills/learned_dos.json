@@ -2451,6 +2451,11 @@
       "player": "Bulba-Zero",
       "avg_setup_duration": 62.0,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "lopunny's lovers",
+      "avg_setup_duration": 62.2,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
@@ -2768,6 +2773,11 @@
       "player": "Bulba-Zero",
       "avg_setup_duration": 62.0,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "lopunny's lovers",
+      "avg_setup_duration": 62.2,
+      "avg_bench_density": 3.9
     }
   ]
 }
