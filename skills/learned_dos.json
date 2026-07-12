@@ -2411,11 +2411,16 @@
       "player": "rick & shikitora",
       "avg_setup_duration": 63.2,
       "avg_bench_density": 3.3
+    },
+    {
+      "player": "Melvin Low",
+      "avg_setup_duration": 58.0,
+      "avg_bench_density": 3.6
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 21.0,
-    "avg_trainer_count": 32.0,
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 33.0,
     "avg_energy_count": 7.0
   },
   "setup_profiles": [
@@ -2683,6 +2688,11 @@
       "player": "rick & shikitora",
       "avg_setup_duration": 63.2,
       "avg_bench_density": 3.3
+    },
+    {
+      "player": "Melvin Low",
+      "avg_setup_duration": 58.0,
+      "avg_bench_density": 3.6
     }
   ]
 }
