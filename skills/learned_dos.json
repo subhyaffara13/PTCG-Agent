@@ -2401,12 +2401,17 @@
       "player": "yaki-imo",
       "avg_setup_duration": 71.4,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "Olegolas1",
+      "avg_setup_duration": 34.2,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 9.0
   },
   "setup_profiles": [
     {
@@ -2663,6 +2668,11 @@
       "player": "yaki-imo",
       "avg_setup_duration": 71.4,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "Olegolas1",
+      "avg_setup_duration": 34.2,
+      "avg_bench_density": 3.7
     }
   ]
 }
