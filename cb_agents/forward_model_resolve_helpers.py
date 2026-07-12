@@ -28,8 +28,12 @@ def handle_retreat_helper(gs: dict, target: str, CardRegistry: Any) -> None:
             logger.error(f"Failed to retrieve card retreat cost: {e}")
             
         attached = list(old_active.get("attached", []))
+        # Per game rules: retreat requires enough energy to pay retreat cost
+        if len(attached) < retreat_cost:
+            bench.insert(target_idx, new_active)
+            return
         removed_energies = []
-        for _ in range(min(retreat_cost, len(attached))):
+        for _ in range(retreat_cost):
             removed_energies.append(attached.pop(0))
         old_active["attached"] = attached
         gs["my_discard"] = gs.get("my_discard", []) + removed_energies
@@ -195,9 +199,6 @@ def handle_play_trainer_helper(gs: dict, hand: list, target: str, CardRegistry: 
         gs["my_hand"] = hand + [added1, added2]
         gs["my_deck_count"] = gs.get("my_deck_count", 60) - 2
     
-    # Boss's Orders: swap opponent active with a benched Pokemon
-    elif any(k in base_name for k in {"boss", "orders"}):
-        
     # Boss's Orders: swap opponent active with a benched Pokemon
     elif any(k in base_name for k in {"boss", "orders"}):
         opp_bench = gs.get("opponent_bench", [])
