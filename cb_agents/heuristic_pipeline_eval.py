@@ -38,7 +38,23 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     ac = gs.get("my_active_pokemon", {})
     opp_hp = gs.get("opponent_active_hp", 100)
     if action.startswith("attack:"):
-        v += 1.2  # Attacks are almost always the best action
+        # Check if attack is actually feasible: active must have enough energy
+        can_attack = False
+        if isinstance(ac, dict):
+            attached_count = len(ac.get("attached", []) or ac.get("energies", []))
+            active_id = ac.get("id")
+            if active_id is not None:
+                try:
+                    min_cost = _registry.get_min_energy_cost(active_id)
+                    can_attack = attached_count >= min_cost
+                except Exception:
+                    can_attack = attached_count >= 1
+            else:
+                can_attack = attached_count >= 1
+        if not can_attack:
+            v -= 0.5  # Penalize attacks that can't be executed (empty energy)
+        else:
+            v += 0.65  # Attacks are good when actually usable
         if mp <= 1: v += 1.0  # Game-winning attack
         if mp <= 2: v += 0.3  # Close to winning
         opp_ac = gs.get("opponent_active_pokemon", {})
