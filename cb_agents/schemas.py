@@ -37,6 +37,7 @@ class GameState:
     legal_evolutions: List[str] = field(default_factory=list)
     legal_trainers: List[str] = field(default_factory=list)
     legal_retreats: List[str] = field(default_factory=list)
+    legal_abilities: List[str] = field(default_factory=list)
     bench_has_attacker: bool = False
     has_searched_deck: bool = False
 
@@ -69,6 +70,7 @@ class GameState:
             legal_evolutions=d.get("legal_evolutions", []),
             legal_trainers=d.get("legal_trainers", []),
             legal_retreats=d.get("legal_retreats", []),
+            legal_abilities=d.get("legal_abilities", []),
             bench_has_attacker=d.get("bench_has_attacker", False),
             has_searched_deck=d.get("has_searched_deck", False),
         )

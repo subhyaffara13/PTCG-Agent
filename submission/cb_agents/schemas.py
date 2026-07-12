@@ -28,6 +28,7 @@ class GameState:
     opponent_revealed: List[Any] = field(default_factory=list)
     opponent_last_play: Optional[str] = None
     opponent_hand_count: int = 5
+    opponent_deck_count: int = 60
     opponent_active_hp: int = 100
     turn_number: int = 1
     legal_attacks: List[str] = field(default_factory=list)
@@ -36,6 +37,7 @@ class GameState:
     legal_evolutions: List[str] = field(default_factory=list)
     legal_trainers: List[str] = field(default_factory=list)
     legal_retreats: List[str] = field(default_factory=list)
+    legal_abilities: List[str] = field(default_factory=list)
     bench_has_attacker: bool = False
     has_searched_deck: bool = False
 
@@ -59,6 +61,7 @@ class GameState:
             opponent_revealed=d.get("opponent_revealed", []),
             opponent_last_play=d.get("opponent_last_play"),
             opponent_hand_count=d.get("opponent_hand_count", 5),
+            opponent_deck_count=d.get("opponent_deck_count", 60),
             opponent_active_hp=d.get("opponent_active_hp", 100),
             turn_number=d.get("turn_number", 1),
             legal_attacks=d.get("legal_attacks", []),
@@ -67,6 +70,7 @@ class GameState:
             legal_evolutions=d.get("legal_evolutions", []),
             legal_trainers=d.get("legal_trainers", []),
             legal_retreats=d.get("legal_retreats", []),
+            legal_abilities=d.get("legal_abilities", []),
             bench_has_attacker=d.get("bench_has_attacker", False),
             has_searched_deck=d.get("has_searched_deck", False),
         )

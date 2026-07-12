@@ -612,6 +612,9 @@ def agent(observation, configuration=None):
             "my_prizes": len(get_val(my_state, "prize", [])) if isinstance(get_val(my_state, "prize"), list) else 6,
             "my_active_pokemon": _normalize_pokemon(_get_active(my_state)),
             "my_bench": [_normalize_pokemon(p) for p in get_val(my_state, "bench", [])] if get_val(my_state, "bench") else [],
+            "my_discard": [get_val(c, "id") for c in get_val(my_state, "discard", []) if c and get_val(c, "id") is not None] if get_val(my_state, "discard") else [],
+            "my_board": [],
+            "my_active_damage": 0,
             
             "opponent_active": _normalize_pokemon(_get_active(opp_state)),
             "opponent_bench": [_normalize_pokemon(p) for p in get_val(opp_state, "bench", [])] if get_val(opp_state, "bench") else [],
@@ -626,12 +629,14 @@ def agent(observation, configuration=None):
             "time_elapsed": time.time() - _GLOBAL_START_TIME,
             "my_active_hp": 100,
             "opponent_active_hp": 100,
-            "bench_has_attacker": False
+            "bench_has_attacker": False,
+            "has_searched_deck": False,
         }
 
         # Parse legal candidates from options
         game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (13, "Attack", "attack")]
         game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy")]
+        game_state["legal_prize_options"] = [str(i) for i, opt in enumerate(options) if get_val(opt, "type") in (2, "Prize", "prize")]
         
         legal_bench = []
         legal_evolutions = []
@@ -672,11 +677,14 @@ def agent(observation, configuration=None):
             if active_pokemon:
                 game_state["opponent_active_hp"] = get_val(active_pokemon, "hp", 100)
 
-        # Check if we are at the Main Turn Menu (SelectType 0, Context 0)
+        # Check if we are at the Main Turn Menu (SelectType 0, Context 0) or Prize Selection
         sel_type = get_val(select, "type")
         sel_ctx = get_val(select, "context")
+        game_state["select_prize"] = sel_ctx in ("prize", "select_prize") or sel_type == 2
+        game_state["select_type"] = sel_type
+        game_state["select_context"] = sel_ctx
 
-        if sel_type == 0 and sel_ctx == 0:
+        if sel_type == 0 and sel_ctx == 0 or game_state.get("select_prize"):
             # Call orchestrator to determine action strategy string
             decision = orch.run_turn(game_state)
             action_label = (decision.primary_action.lower() 
@@ -685,7 +693,15 @@ def agent(observation, configuration=None):
 
             # Map orchestrator's prefix action labels to actual select options
             mapped_indices = []
-            if action_label.startswith("attack:"):
+            if action_label.startswith("take_prize:"):
+                target = action_label.split(":", 1)[1]
+                if target.isdigit():
+                    idx = int(target)
+                    if 0 <= idx < len(options):
+                        mapped_indices = [idx]
+                if not mapped_indices:
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (2, "Prize", "prize")]
+            elif action_label.startswith("attack:"):
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (13, "Attack", "attack")]
             elif action_label.startswith("attach_energy:"):
                 parts = action_label.split(":")
