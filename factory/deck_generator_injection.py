@@ -24,8 +24,8 @@ class DeckInjectionMixin:
             
         for sid in focus:
             s = str(sid)
-            if s in id_map: self.add_card(id_map[s], 3, deck, copies, ctr)
-            elif s.lower() in name_map: self.add_card(name_map[s.lower()], 3, deck, copies, ctr)
+            if s in id_map: self.add_card(id_map[s], 4, deck, copies, ctr)
+            elif s.lower() in name_map: self.add_card(name_map[s.lower()], 4, deck, copies, ctr)
             
         # Optional: pull some from the card pool if there's room, but don't force all of them
         c_pool = arch.get("card_pool", [])
@@ -37,17 +37,68 @@ class DeckInjectionMixin:
                 elif s.lower() in name_map: self.add_card(name_map[s.lower()], 2, deck, copies, ctr)
 
     def inject_evolution_pyramids(self, deck, details, name_map, copies, ctr):
+        # Build forward evolution maps: basic_name -> [stage1_cards], stage1_name -> [stage2_cards]
+        fwd_s1 = {}
+        fwd_s2 = {}
+        for cid, det in details.items():
+            prev = det.get("previous_stage")
+            if prev:
+                stage = det.get("stage")
+                prev_lower = prev.lower()
+                if stage == "Stage 1":
+                    fwd_s1.setdefault(prev_lower, []).append(cid)
+                elif stage == "Stage 2":
+                    s1_name = prev_lower
+                    fwd_s2.setdefault(s1_name, []).append(cid)
+        
+        processed = set()
         for pkmn in [c for c in deck if c.get("card_type") == "Pokemon"]:
             det = details.get(str(pkmn["card_id"]), {})
-            if det.get("stage") == "Stage 2":
+            stage = det.get("stage")
+            pkmn_name_lower = det.get("card_name", "").lower()
+            if pkmn_name_lower in processed:
+                continue
+            processed.add(pkmn_name_lower)
+            
+            if stage == "Basic":
+                # Forward: Basic -> add Stage 1 (3x) and Stage 2 (2x)
+                s1_ids = fwd_s1.get(pkmn_name_lower, [])
+                for s1_id in s1_ids:
+                    if s1_id in name_map:
+                        self.add_card(name_map[s1_id], 3, deck, copies, ctr)
+                        s1_name = details.get(s1_id, {}).get("card_name", "").lower()
+                        if s1_name:
+                            processed.add(s1_name)
+                        s2_ids = fwd_s2.get(s1_id, []) or fwd_s2.get(s1_name, [])
+                        for s2_id in s2_ids:
+                            if s2_id in name_map:
+                                self.add_card(name_map[s2_id], 2, deck, copies, ctr)
+                                s2_name = details.get(s2_id, {}).get("card_name", "").lower()
+                                if s2_name:
+                                    processed.add(s2_name)
+            elif stage == "Stage 1":
+                # Backward: add Basic (4x), forward: add Stage 2 (2x)
+                p0 = det.get("previous_stage")
+                if p0 and p0.lower() in name_map:
+                    self.add_card(name_map[p0.lower()], 4, deck, copies, ctr)
+                    processed.add(p0.lower())
+                s2_ids = fwd_s2.get(str(pkmn["card_id"]), []) or fwd_s2.get(pkmn_name_lower, [])
+                for s2_id in s2_ids:
+                    if s2_id in name_map:
+                        self.add_card(name_map[s2_id], 2, deck, copies, ctr)
+                        s2_name = details.get(s2_id, {}).get("card_name", "").lower()
+                        if s2_name:
+                            processed.add(s2_name)
+            elif stage == "Stage 2":
+                # Backward: add Basic (4x) and Stage 1 (3x)
                 p1 = det.get("previous_stage")
                 if p1 and p1.lower() in name_map:
                     self.add_card(name_map[p1.lower()], 3, deck, copies, ctr)
+                    processed.add(p1.lower())
                     p0 = details.get(str(name_map[p1.lower()]["card_id"]), {}).get("previous_stage")
-                    if p0 and p0.lower() in name_map: self.add_card(name_map[p0.lower()], 4, deck, copies, ctr)
-            elif det.get("stage") == "Stage 1":
-                p0 = det.get("previous_stage")
-                if p0 and p0.lower() in name_map: self.add_card(name_map[p0.lower()], 4, deck, copies, ctr)
+                    if p0 and p0.lower() in name_map:
+                        self.add_card(name_map[p0.lower()], 4, deck, copies, ctr)
+                        processed.add(p0.lower())
 
     def inject_consistency_trainers(self, deck, details, id_map, name_map, copies, ctr):
         ids = {"1121": 4, "ultra-ball-sv1-196": 4, "nest-ball-sv1-255": 4,
