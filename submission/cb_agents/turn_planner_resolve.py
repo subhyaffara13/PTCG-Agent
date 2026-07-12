@@ -34,7 +34,8 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         selected_candidates = candidates
         has_cpp = getattr(mcts_engine, "HAS_CPP", False)
         fast_sim = os.environ.get("FAST_SIM_MODE") == "true"
-        orig_sims = getattr(mcts_engine, 'num_simulations', 50)
+        orig_sims = getattr(mcts_engine, "num_simulations", 150)
+        actual_sims = orig_sims
         try:
             if has_cpp and not fast_sim:
                 if time_rem < 30.0:
@@ -44,12 +45,13 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
                 else:
                     mcts_engine.num_simulations = 2000
             else:
-                mcts_engine.num_simulations = min(orig_sims, 50)
+                mcts_engine.num_simulations = max(orig_sims, min(400, int(time_rem * 2)))
                 
+            actual_sims = mcts_engine.num_simulations
             primary = mcts_engine.search(game_state, selected_candidates, time_remaining=time_rem)
         finally:
             mcts_engine.num_simulations = orig_sims
-        return primary, f"MCTS selected {primary} ({orig_sims} -> {mcts_engine.num_simulations} sims). Profile: {profile}."
+        return primary, f"MCTS selected {primary} ({orig_sims} -> {actual_sims} sims). Profile: {profile}."
     except Exception as e:
         logger.error(f"resolve_action failed: {e}", exc_info=True)
         fallback = candidates[0] if candidates else "pass"

@@ -64,7 +64,7 @@ def _to_cpp_compatible_state(gs: dict) -> dict:
 
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
-    def __init__(self, c_puct: float = 1.25, num_simulations: int = 50, belief_tracker=None,
+    def __init__(self, c_puct: float = 1.25, num_simulations: int = 200, belief_tracker=None,
                  value_network: BaseValueNetwork | None = None, policy_network: BasePolicyNetwork | None = None):
         self.c_puct = c_puct
         self.num_simulations = num_simulations

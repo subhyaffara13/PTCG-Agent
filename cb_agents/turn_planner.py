@@ -34,7 +34,7 @@ class TurnPlanner(BaseAgent):
         except Exception as e:
             logger.error(f"Failed to get_config: {e}")
             self.rules = {"rules": []}
-        self.mcts = MCTSEngine(num_simulations=50, belief_tracker=belief_tracker)
+        self.mcts = MCTSEngine(num_simulations=200, belief_tracker=belief_tracker)
         self._logger = TurnPlannerLogger(self.log_dir)
         self._prize_tracker = PrizeTracker()
         self._consecutive_passes = 0

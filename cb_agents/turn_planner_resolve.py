@@ -45,7 +45,7 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
                 else:
                     mcts_engine.num_simulations = 2000
             else:
-                mcts_engine.num_simulations = min(orig_sims, 150)
+                mcts_engine.num_simulations = max(orig_sims, min(400, int(time_rem * 2)))
                 
             actual_sims = mcts_engine.num_simulations
             primary = mcts_engine.search(game_state, selected_candidates, time_remaining=time_rem)

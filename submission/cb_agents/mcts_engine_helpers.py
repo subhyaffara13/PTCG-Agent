@@ -9,8 +9,8 @@ from cb_agents.value_network import ActionPrior
 logger = logging.getLogger(__name__)
 
 def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: List[str], mast_policy, time_remaining: float | None):
-    # Cap max time for Python MCTS fallback to 0.15s to prevent 20-minute stalls on worker nodes
-    max_time = 0.15
+    # Cap max time for Python MCTS fallback to prevent stalls on worker nodes
+    max_time = 2.0
     if time_remaining is not None:
         max_time = max(0.01, min(max_time, time_remaining - 0.5))
         

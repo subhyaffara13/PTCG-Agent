@@ -25,8 +25,7 @@ except Exception:
 is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
 if is_kaggle:
     HAS_CPP = False
-    os.environ["FAST_SIM_MODE"] = "true"
-    logger.info("Running on Kaggle: Bypassing C++ OpenSpiel bindings to prevent crashes.")
+    logger.info("Running on Kaggle: Bypassing C++ bindings but KEEPING MCTS active to prevent auto-losing.")
 else:
     if not HAS_CPP:
         logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
@@ -65,7 +64,7 @@ def _to_cpp_compatible_state(gs: dict) -> dict:
 
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
-    def __init__(self, c_puct: float = 1.25, num_simulations: int = 50, belief_tracker=None,
+    def __init__(self, c_puct: float = 1.25, num_simulations: int = 200, belief_tracker=None,
                  value_network: BaseValueNetwork | None = None, policy_network: BasePolicyNetwork | None = None):
         self.c_puct = c_puct
         self.num_simulations = num_simulations
