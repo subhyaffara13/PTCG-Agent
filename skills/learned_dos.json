@@ -2416,11 +2416,16 @@
       "player": "Melvin Low",
       "avg_setup_duration": 58.0,
       "avg_bench_density": 3.6
+    },
+    {
+      "player": "me and the lads",
+      "avg_setup_duration": 50.6,
+      "avg_bench_density": 2.9
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 33.0,
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 34.0,
     "avg_energy_count": 7.0
   },
   "setup_profiles": [
@@ -2693,6 +2698,11 @@
       "player": "Melvin Low",
       "avg_setup_duration": 58.0,
       "avg_bench_density": 3.6
+    },
+    {
+      "player": "me and the lads",
+      "avg_setup_duration": 50.6,
+      "avg_bench_density": 2.9
     }
   ]
 }
