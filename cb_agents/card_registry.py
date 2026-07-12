@@ -28,10 +28,14 @@ class CardRegistry:
         self.evolution_predecessors: Dict[str, str] = {}
         self.card_hp: Dict[int, int] = {}
         self.card_retreat: Dict[int, int] = {}
+        self.card_attacks: Dict[int, list[dict]] = {}
+        self.card_weakness: Dict[int, str] = {}
+        self.card_resistance: Dict[int, str] = {}
+        self.card_poke_type: Dict[int, str] = {}
         load_metadata_helper(self.skills_dir, self.cards, self.evolution_predecessors)
         
         self.move_damage = {}
-        import csv
+        import csv, re
         try:
             pool_path = self.skills_dir / "card_pool_raw.csv"
             if pool_path.exists():
@@ -44,6 +48,10 @@ class CardRegistry:
                         hp_idx = -1
                         retreat_idx = -1
                         id_idx = -1
+                        cost_idx = -1
+                        weakness_idx = -1
+                        resistance_idx = -1
+                        type_idx = -1
                         for idx, col in enumerate(header):
                             low = col.strip().lower()
                             if "move name" in low:
@@ -56,6 +64,14 @@ class CardRegistry:
                                 retreat_idx = idx
                             elif "card id" in low:
                                 id_idx = idx
+                            elif "cost" in low:
+                                cost_idx = idx
+                            elif "weakness" in low:
+                                weakness_idx = idx
+                            elif "resistance" in low:
+                                resistance_idx = idx
+                            elif low == "type":
+                                type_idx = idx
                         for row in reader:
                             if len(row) > max(move_idx, dmg_idx):
                                 move = row[move_idx].strip()
@@ -64,7 +80,9 @@ class CardRegistry:
                                     self.move_damage[move.lower()] = dmg
                             if id_idx != -1 and len(row) > id_idx:
                                 try:
-                                    cid = int(row[id_idx].strip())
+                                    cid_val = row[id_idx].strip()
+                                    cid = int(cid_val)
+                                    
                                     if hp_idx != -1 and len(row) > hp_idx and cid not in self.card_hp:
                                         hp_val = row[hp_idx].strip()
                                         if hp_val and hp_val.lower() not in ("n/a", ""):
@@ -73,6 +91,37 @@ class CardRegistry:
                                         ret_val = row[retreat_idx].strip()
                                         if ret_val and ret_val.lower() not in ("n/a", ""):
                                             self.card_retreat[cid] = int(ret_val)
+                                    if weakness_idx != -1 and len(row) > weakness_idx and cid not in self.card_weakness:
+                                        wk = row[weakness_idx].strip()
+                                        if wk and wk.lower() not in ("n/a", ""):
+                                            self.card_weakness[cid] = wk
+                                    if resistance_idx != -1 and len(row) > resistance_idx and cid not in self.card_resistance:
+                                        rs = row[resistance_idx].strip()
+                                        if rs and rs.lower() not in ("n/a", ""):
+                                            self.card_resistance[cid] = rs
+                                    if type_idx != -1 and len(row) > type_idx and cid not in self.card_poke_type:
+                                        pt = row[type_idx].strip()
+                                        if pt and pt.lower() not in ("n/a", ""):
+                                            self.card_poke_type[cid] = pt
+                                    if move_idx != -1 and dmg_idx != -1 and cost_idx != -1 and len(row) > max(move_idx, dmg_idx, cost_idx):
+                                        move_name = row[move_idx].strip()
+                                        dmg_str = row[dmg_idx].strip()
+                                        cost_str = row[cost_idx].strip()
+                                        if move_name and move_name.lower() not in ("n/a", "") and dmg_str and dmg_str.lower() not in ("n/a", ""):
+                                            if cid not in self.card_attacks:
+                                                self.card_attacks[cid] = []
+                                            cost_chars = cost_str.count("{") + cost_str.count("\u25cf")
+                                            try:
+                                                dmg_val = int(re.sub(r'[^0-9]', '', dmg_str.split()[0]) if dmg_str.split() else 0)
+                                            except (ValueError, IndexError):
+                                                dmg_val = 0
+                                            self.card_attacks[cid].append({
+                                                "name": move_name,
+                                                "raw_damage": dmg_str,
+                                                "damage": dmg_val,
+                                                "cost": cost_chars,
+                                                "raw_cost": cost_str,
+                                            })
                                 except (ValueError, IndexError):
                                     pass
         except Exception as e:
@@ -168,6 +217,37 @@ class CardRegistry:
         self.full_cards[base.card_id] = entry
         self.full_cards[str(base.card_id)] = entry
         return entry
+
+    def get_best_attack_damage(self, card_id: Any, energy_attached: int = 0) -> int:
+        """Get the highest damage from an affordable attack, or max damage overall."""
+        try:
+            cid = int(card_id) if not isinstance(card_id, int) else card_id
+        except (ValueError, TypeError):
+            cid = card_id
+        attacks = self.card_attacks.get(cid, [])
+        if not attacks:
+            c = self.get_full_skill(cid)
+            return c.damage_output if c else 0
+        best = 0
+        for atk in attacks:
+            if energy_attached > 0 and atk["cost"] > 0 and atk["cost"] <= energy_attached:
+                if atk["damage"] > best:
+                    best = atk["damage"]
+            elif energy_attached == 0 and atk["damage"] > best:
+                best = atk["damage"]
+        if best == 0 and attacks:
+            best = max(a["damage"] for a in attacks)
+        return best
+
+    def get_min_energy_cost(self, card_id: Any) -> int:
+        """Get the minimum energy cost to use any attack on this card."""
+        try:
+            cid = int(card_id) if not isinstance(card_id, int) else card_id
+        except (ValueError, TypeError):
+            return 1
+        attacks = self.card_attacks.get(cid, [])
+        costs = [a["cost"] for a in attacks if a["cost"] > 0]
+        return min(costs) if costs else 1
 
     def get_evolution_predecessor(self, card_name: str) -> str:
         """Returns the name of the previous stage, or empty string."""
