@@ -41,25 +41,50 @@ def _regenerate_legal_actions(gs: dict) -> None:
                     valid_targets.append(str(p["id"]))
 
         for card in hand:
+            is_energy = False
+            is_trainer = False
             if CardRegistry is not None:
                 try:
                     c = CardRegistry().get(int(card) if not isinstance(card, int) else card)
-                    if c and getattr(c.card_type, "name", "") == "ENERGY":
-                        if valid_targets:
-                            for target in valid_targets:
-                                if target: actions.append(f"attach_energy:{card}:{target}")
-                        else:
-                            actions.append(f"attach_energy:{card}")
-                        continue
-                    elif c and getattr(c.card_type, "name", "") == "TRAINER":
-                        actions.append(f"play_trainer:{c.card_name}")
-                        continue
+                    if c:
+                        ct = getattr(c.card_type, "name", "")
+                        if ct == "ENERGY":
+                            is_energy = True
+                        elif ct == "TRAINER":
+                            is_trainer = True
                 except Exception as e:
                     logger.debug(f"Action prior generator: card {card} resolution failed: {e}")
-            actions.append(f"attach_energy:{card}")
+            if is_energy:
+                if valid_targets:
+                    for target in valid_targets:
+                        if target: actions.append(f"attach_energy:{card}:{target}")
+                else:
+                    actions.append(f"attach_energy:{card}")
+                continue
+            if is_trainer:
+                actions.append(f"play_trainer:{c.card_name}")
+                continue
+            # Card is a Pokemon (or unknown): bench it, never attach_energy
             bench_list = gs.get("my_bench", [])
             if isinstance(bench_list, list) and len(bench_list) < 5:
                 actions.append(f"bench:{card}")
+            # Check if this card can evolve anything on the field
+            if CardRegistry is not None and not is_energy and not is_trainer:
+                try:
+                    crd = CardRegistry().get(int(card) if not isinstance(card, int) else card)
+                    if crd and crd.previous_stage:
+                        prev_id = crd.previous_stage
+                        prev_id_str = str(prev_id)
+                        ap = gs.get("my_active_pokemon", {})
+                        if isinstance(ap, dict) and str(ap.get("id", "")) == prev_id_str:
+                            actions.append(f"evolve:{card}")
+                        else:
+                            for bp in gs.get("my_bench", []):
+                                if isinstance(bp, dict) and str(bp.get("id", "")) == prev_id_str:
+                                    actions.append(f"evolve:{card}")
+                                    break
+                except Exception:
+                    pass
     bench = gs.get("my_bench", [])
     if isinstance(bench, list) and len(bench) > 0:
         for i in range(len(bench)):
@@ -93,6 +118,9 @@ def _check_win_conditions(gs: dict) -> None:
     elif gs.get("deck_out_loss", False) or gs.get("my_deck_count", 60) < 0:
         gs["game_over"] = True
         gs["winner"] = "opponent"
+    elif gs.get("opponent_deck_out", False) or gs.get("opponent_deck_count", 60) < 0:
+        gs["game_over"] = True
+        gs["winner"] = "me"
     opp_hp = gs.get("opponent_active_hp", 100)
     opp_bench = gs.get("opponent_bench", [])
     if opp_hp <= 0 and not opp_bench:

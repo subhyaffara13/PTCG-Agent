@@ -12,10 +12,12 @@ _registry = CardRegistry()
 
 try:
     import ptcg_core as _ptcg_core  # type: ignore
-    _HAS_CPP_SCORE = hasattr(_ptcg_core, "score_action")
 except Exception:
     _ptcg_core = None
-    _HAS_CPP_SCORE = False
+# Force Python scoring: C++ score_action is stale (missing retreat better-attacker,
+# hand-size-aware supporters, one-short energy bonus, bench evolution scoring).
+# The C++ MCTS engine uses its own internal scoring (unaffected).
+_HAS_CPP_SCORE = False
 
 
 def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
@@ -216,6 +218,17 @@ def score_state(gs: dict) -> float:
     v = 0.0
     v += 0.15 * (gs.get("opponent_prizes", 6) - gs.get("my_prizes", 6))
     v += 0.001 * (gs.get("my_active_hp", 100) - gs.get("opponent_active_hp", 100))
+    # Deck-size awareness: penalize low own deck, reward low opponent deck
+    my_dc = gs.get("my_deck_count", 60)
+    opp_dc = gs.get("opponent_deck_count", 60)
+    if my_dc <= 3:
+        v -= 0.5  # Near deck-out panic
+    elif my_dc <= 8:
+        v -= 0.2
+    if opp_dc <= 3:
+        v += 0.3  # Opponent near deck-out
+    elif opp_dc <= 8:
+        v += 0.1
     all_p = gs.get("my_bench", []) + ([gs.get("my_active_pokemon", {})] if isinstance(gs.get("my_active_pokemon"), dict) and gs.get("my_active_pokemon") else [])
     ec = 0
     for p in all_p:
