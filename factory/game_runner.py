@@ -5,6 +5,7 @@ Runs parallel game playouts for iteration evaluations.
 import os
 import time
 import json
+import random
 import logging
 from datetime import datetime
 from pathlib import Path
@@ -80,7 +81,6 @@ class GameRunner(BaseAgent):
         # 1. Initialize League Manager
         from factory.league_manager import LeagueManager
         league = LeagueManager()
-        import random
 
         # RUN PLAYS IN PARALLEL: deck tests and variance tests
         # Organized as symmetric twin pairs (orig/swap) under shared seeds
