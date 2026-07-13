@@ -6,6 +6,7 @@ Delegates step logic to orchestrator_steps.py and logging to orchestrator_log.py
 from __future__ import annotations
 from typing import Any
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 
 import logging
 from router.bus import RouterBus
@@ -67,16 +68,22 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
         if time_result.get("directive") == "FORCE_PASS":
             return _emergency_pass(time_result)
         try:
-            hand_result  = _step_hand(game_state, self._analyst, self._router)
+            # Parallelize independent sub-agents (HandAnalyst, OpponentModel) + belief sync
+            hand_result = None
+            opp_result = None
+            with ThreadPoolExecutor(max_workers=3) as pool:
+                f_hand = pool.submit(_step_hand, game_state, self._analyst, self._router)
+                f_opp = pool.submit(_step_opponent, game_state, self._opponent, self._router)
+                f_sync = pool.submit(self.sync_belief_tracker, game_state)
+                hand_result = f_hand.result()
+                opp_result = f_opp.result()
+                f_sync.result()  # ensure belief sync completes before strategy uses it
+
             # Store hand_score dynamically into game_state dict
             game_state["hand_score"] = hand_result.get("hand_score", 0.0)
             
-            # Sync the belief tracker with the opponent's public state
-            self.sync_belief_tracker(game_state)
-            
             strat_result = _step_strategy(game_state, self, self._router)
             plan_result  = _step_plan(game_state, hand_result, strat_result, self._planner, self._router)
-            opp_result   = _step_opponent(game_state, self._opponent, self._router)
             decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
             _log_orchestration(game_state, decision)
             return decision

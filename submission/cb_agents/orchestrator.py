@@ -6,6 +6,7 @@ Delegates step logic to orchestrator_steps.py and logging to orchestrator_log.py
 from __future__ import annotations
 from typing import Any
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 
 import logging
 from router.bus import RouterBus
@@ -26,6 +27,9 @@ from cb_agents.orchestrator_state_public import OrchestratorStatePublicMixin
 from cb_agents.belief_tracker import BeliefTracker
 from cb_agents.deck_loader import load_deck_base_list
 
+
+import os
+is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
 
 class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
     def __init__(self, **kwargs: Any) -> None:
@@ -64,23 +68,28 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
         if time_result.get("directive") == "FORCE_PASS":
             return _emergency_pass(time_result)
         try:
-            hand_result  = _step_hand(game_state, self._analyst, self._router)
+            # Parallelize independent sub-agents (HandAnalyst, OpponentModel) + belief sync
+            hand_result = None
+            opp_result = None
+            with ThreadPoolExecutor(max_workers=3) as pool:
+                f_hand = pool.submit(_step_hand, game_state, self._analyst, self._router)
+                f_opp = pool.submit(_step_opponent, game_state, self._opponent, self._router)
+                f_sync = pool.submit(self.sync_belief_tracker, game_state)
+                hand_result = f_hand.result()
+                opp_result = f_opp.result()
+                f_sync.result()  # ensure belief sync completes before strategy uses it
+
             # Store hand_score dynamically into game_state dict
             game_state["hand_score"] = hand_result.get("hand_score", 0.0)
             
-            # Sync the belief tracker with the opponent's public state
-            self.sync_belief_tracker(game_state)
-            
             strat_result = _step_strategy(game_state, self, self._router)
             plan_result  = _step_plan(game_state, hand_result, strat_result, self._planner, self._router)
-            opp_result   = _step_opponent(game_state, self._opponent, self._router)
             decision     = _merge(game_state, time_result, hand_result, plan_result, strat_result, opp_result)
             _log_orchestration(game_state, decision)
             return decision
         except Exception as e:
             logger.exception("CRITICAL: Exception in Orchestrator.orchestrate")
             import sys
-            import os
             import subprocess
             import json
             sys.stderr.write(f"CRITICAL: Exception in Orchestrator.orchestrate: {e}\n")
@@ -108,7 +117,7 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
                 req_path.parent.mkdir(parents=True, exist_ok=True)
                 req_path.write_text(json.dumps(req_data, indent=2), encoding="utf-8")
                 
-                if os.environ.get("AUTO_EVOLVE") == "true":
+                if os.environ.get("AUTO_EVOLVE") == "true" and not is_kaggle:
                     sys.stderr.write(f"AUTO_EVOLVE is active. Spawning code_mutator for {target_file}...\n")
                     subprocess.Popen(
                         [sys.executable, "-m", "cb_agents.code_mutator", target_file],
@@ -128,7 +137,8 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
                         reasoning_chain="emergency_fallback",
                         strategy_profile="aggro_push"
                     )
-            except: pass
+            except Exception as fallback_err:
+                logger.exception(f"Emergency fallback failed: {fallback_err}")
             return _emergency_pass(time_result)
 
     def start_game(self) -> None:
@@ -139,18 +149,23 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
     def flush_all_logs(self) -> None:
         try:
             self._timer.flush_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush time manager logs failed: {e}")
         try:
             self._analyst.flush_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush analyst logs failed: {e}")
         try:
             self._planner.flush_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush planner logs failed: {e}")
         try:
             from cb_agents.strategy_agent_io import flush_logs as flush_strategy_logs
             flush_strategy_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush strategy logs failed: {e}")
         try:
             from cb_agents.orchestrator_log import flush_logs as flush_orch_logs
             flush_orch_logs()
-        except Exception: pass
+        except Exception as e:
+            logger.debug(f"Flush orchestrator logs failed: {e}")

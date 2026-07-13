@@ -59,13 +59,15 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
         
         my_active = gs.get("my_active_pokemon")
         
-        energy_attached = 0
-        if isinstance(my_active, dict):
-            energy_attached += len(my_active.get("attached", []))
-        if isinstance(my_bench, list):
-            for p in my_bench:
-                if isinstance(p, dict):
-                    energy_attached += len(p.get("attached", []))
+        # Use cached energy_attached if already computed in orchestrator_run.py
+        energy_attached = gs.get("_cached_energy_attached", 0)
+        if energy_attached == 0:
+            if isinstance(my_active, dict):
+                energy_attached += len(my_active.get("attached", []))
+            if isinstance(my_bench, list):
+                for p in my_bench:
+                    if isinstance(p, dict):
+                        energy_attached += len(p.get("attached", []))
                     
         hand_score = gs.get("hand_score", 5.0)
         
@@ -74,7 +76,7 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
         if hasattr(orchestrator, "belief_tracker") and orchestrator.belief_tracker:
             boss_prob = orchestrator.belief_tracker.probability_opponent_holds("boss's orders")
             iono_prob = orchestrator.belief_tracker.probability_opponent_holds("iono")
-            
+        
         opponent_archetype = "unknown"
         archetype_confidence = 0.0
         if hasattr(orchestrator, "opponent_model"):

@@ -12,6 +12,7 @@ class BeliefTracker:
         self.assumed_deck = initial_deck or {}
         self.locked_prize_ids: set = set()
         self.prize_guaranteed_counts: Dict[int, int] = {}
+        self._prob_cache: Dict[str, float] = {}
         self._initialize_probabilities()
 
     def _initialize_probabilities(self):
@@ -89,13 +90,11 @@ class BeliefTracker:
         return sample_determinization(self.state, self.assumed_deck, self.prize_guaranteed_counts)
 
     def probability_opponent_holds(self, card_name: str) -> float:
-        """
-        P(opponent has >=1 copy of card_name in hand).
-        Uses: P(X>=1) = 1 - C(N-D, H) / C(N, H)
-        where N = opponent deck size + hand size (unknown cards pool), D = remaining copies, H = opponent hand size.
-        """
+        key = card_name.lower().strip()
+        if key in self._prob_cache:
+            return self._prob_cache[key]
         from cb_agents.belief_tracker_opponent_holds import probability_opponent_holds_helper
-        return probability_opponent_holds_helper(
+        val = probability_opponent_holds_helper(
             card_name,
             self.assumed_deck,
             self.state.deck_size,
@@ -103,3 +102,5 @@ class BeliefTracker:
             self.state.known_in_play,
             self.state.known_in_discard
         )
+        self._prob_cache[key] = val
+        return val

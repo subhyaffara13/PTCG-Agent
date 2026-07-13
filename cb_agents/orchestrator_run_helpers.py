@@ -11,13 +11,17 @@ def project_opponent_damage_helper(game_state) -> int:
             card = registry.get_full_skill(opp_active_id)
             if card:
                 max_dmg = card.damage_output
+                # Only count damage if opponent actually has energy to use the attack
+                opp_attached = len(active.get("attached", []) or active.get("energies", [])) if isinstance(active, dict) else 0
+                if opp_attached < max(1, card.energy_cost):
+                    max_dmg = 0
         except Exception as e:
             import logging
             logging.getLogger(__name__).debug(f"project_opponent_damage failed: {e}")
     return max_dmg
 
-def _best_retreat_target(retreat_actions, game_state):
-    """Pick the retreat target that can attack back (has energy + highest damage)."""
+def _best_retreat_target(retreat_actions, game_state, opponent_max_damage=0):
+    """Pick the retreat target that balances attack capability and survivability."""
     from cb_agents.card_registry import CardRegistry
     registry = CardRegistry()
     bench = list(getattr(game_state, 'my_bench', []))
@@ -36,7 +40,16 @@ def _best_retreat_target(retreat_actions, game_state):
                         if tc:
                             ec = max(1, tc.energy_cost) if tc.energy_cost else 1
                             dmg = tc.damage_output or 0
+                            hp = tc.hp or 100
                             score = dmg if ba >= ec else (-10 - idx)
+                            # Penalize if retreat target would be one-shot KO'd
+                            if opponent_max_damage > 0 and hp < opponent_max_damage:
+                                score -= 5.0  # Target dies immediately — terrible retreat
+                            elif opponent_max_damage > 0 and hp <= opponent_max_damage * 1.5:
+                                score -= 1.0  # Target is in 2HKO range — suboptimal
+                            # Bonus for high HP that survives the hit
+                            if hp >= opponent_max_damage * 2:
+                                score += 1.5  # Safe tank — excellent retreat target
                             if score > best_score:
                                 best_score = score
                                 best_action = ra
@@ -50,7 +63,7 @@ def check_defensive_retreat_helper(game_state, board_summary) -> str:
     if opponent_max_damage > 0 and opponent_max_damage >= my_hp:
         retreat_actions = list(getattr(game_state, 'legal_retreats', []))
         if retreat_actions:
-            return _best_retreat_target(retreat_actions, game_state)
+            return _best_retreat_target(retreat_actions, game_state, opponent_max_damage)
     return None
 
 def update_opponent_model_helper(orchestrator, game_state):
@@ -79,7 +92,7 @@ def update_opponent_model_helper(orchestrator, game_state):
         if new_deck_dict:
             orchestrator.belief_tracker.assumed_deck = new_deck_dict
 
-def check_lethal_helper(game_state):
+def check_lethal_helper(game_state, boss_prob: float = 0.0):
     my_active = game_state.my_active_pokemon or {}
     my_attached = len(my_active.get("attached", []) or my_active.get("energies", [])) if isinstance(my_active, dict) else 0
 
@@ -115,7 +128,7 @@ def check_lethal_helper(game_state):
         my_damage=max_damage, opp_hp=game_state.opponent_active_hp,
         legal_attacks=game_state.legal_attacks, opp_active_id=opp_active_id,
         my_hp=game_state.my_active_hp, legal_retreats=game_state.legal_retreats,
-        my_attached=my_attached)
+        my_attached=my_attached, boss_prob=boss_prob)
     return lethal_result
 
 def handle_time_manager_helper(orchestrator, time_elapsed, legal_actions_list, game_state):

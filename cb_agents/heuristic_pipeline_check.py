@@ -10,9 +10,20 @@ logger = logging.getLogger(__name__)
 _registry = CardRegistry()
 
 
+def _get_prize_yield(card_name: str) -> int:
+    if not card_name:
+        return 1
+    n = card_name.lower()
+    if "vmax" in n:
+        return 3
+    if "vstar" in n or n.endswith(" v") or n.endswith(" ex") or " ex " in n or " v " in n:
+        return 2
+    return 1
+
+
 def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
                  opp_active_id, my_hp: int, legal_retreats: list,
-                 my_attached: int = 0) -> dict:
+                 my_attached: int = 0, boss_prob: float = 0.0) -> dict:
     if legal_attacks and my_damage >= opp_hp and my_damage > 0:
         import re
         best_attack = None
@@ -42,6 +53,11 @@ def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
                 if legal_retreats:
                     can_counter = my_damage >= opp_hp and my_attached > 0
                     if not can_counter:
+                        # Don't force retreat if opponent likely has Boss's Orders
+                        # (they'll just drag back the retreat target or something worse)
+                        if boss_prob > 0.5:
+                            reasoning = f"Opponent lethal threat but boss_prob={boss_prob:.2f}. Retreat may be wasted (Boss's back). Skip boost."
+                            return {"action_override": None, "reasoning_chain": reasoning}
                         tgt = legal_retreats[0]
                         reasoning = f"Opponent lethal threat (damage {opp_card.damage_output} >= HP {my_hp}). Boost retreat:{tgt} +1.0"
                         return {"action_override": None, "retreat_score_boost": 1.0, "retreat_target": tgt, "reasoning_chain": reasoning}

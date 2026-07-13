@@ -3,6 +3,7 @@ class OrchestratorBeliefMixin:
         """Synchronizes the belief tracker state with the current public game state.
         Calls update_on_* methods for detected opponent actions to keep known_in_hand accurate.
         """
+        self.belief_tracker._prob_cache.clear()
         def get_id(obj):
             if obj is None:
                 return None

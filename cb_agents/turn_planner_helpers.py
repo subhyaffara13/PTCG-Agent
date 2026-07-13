@@ -86,6 +86,7 @@ def _check_lethal_and_update(game_state: dict) -> None:
         my_hp=game_state.get("my_active_hp", 100),
         legal_retreats=game_state.get("legal_retreats", []),
         my_attached=len(game_state.get("my_active_pokemon", {}).get("attached", [])) if isinstance(game_state.get("my_active_pokemon"), dict) else 0,
+        boss_prob=game_state.get("boss_prob", 0.0),
     )
     if lethal.get("action_override"):
         game_state["lethal_action_override"] = lethal["action_override"]

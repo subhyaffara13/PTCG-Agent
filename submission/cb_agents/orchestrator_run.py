@@ -1,7 +1,10 @@
 import time
+import logging
 from router.bus import HandAnalystPacket, TurnPlannerPacket, StrategyPacket, TimePacket, LethalPacket, OpponentModelPacket
 from cb_agents.schemas import GameState, BoardSummary
 from cb_agents.heuristic_pipeline import pipeline
+
+logger = logging.getLogger(__name__)
 
 class OrchestratorRunMixin:
     def _project_opponent_damage(self, game_state) -> int:
@@ -38,11 +41,14 @@ class OrchestratorRunMixin:
         active = game_state.opponent_active
         opp_active_id = None
         if active:
-            try: opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
-            except: pass
+            try: 
+                opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
+            except Exception as e:
+                logger.debug(f"Failed to parse opponent active ID: {e}")
 
         from cb_agents.orchestrator_run_helpers import check_lethal_helper
-        lethal_result = check_lethal_helper(game_state)
+        boss_prob = self.belief_tracker.probability_opponent_holds("boss's orders") if hasattr(self, "belief_tracker") else 0.0
+        lethal_result = check_lethal_helper(game_state, boss_prob=boss_prob)
         if lethal_result.get("action_override") is not None: return lethal_result["action_override"]
         if lethal_result.get("retreat_score_boost"):
             gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
@@ -65,18 +71,20 @@ class OrchestratorRunMixin:
             turn_number=self.current_turn, opponent_archetype=self.opponent_model.identified_archetype,
             opponent_archetype_confidence=self.opponent_model.archetype_confidence,
             bench_has_attacker=game_state.bench_has_attacker, my_bench_count=len(game_state.my_bench),
+            my_deck_count=game_state.my_deck_count, opponent_deck_count=game_state.opponent_deck_count,
             prized_probabilities=_get_f(hand_result, "prized_probabilities", {}))
 
-        # Compute energy attached for strategy matching
+        # Compute energy attached for strategy matching (cache for _step_strategy reuse)
         energy_attached = 0
         my_active = game_state.my_active_pokemon
         if isinstance(my_active, dict):
-            energy_attached += len(my_active.get("attached", []))
+            energy_attached += len(my_active.get("attached", []) or my_active.get("energies", []))
         my_bench = game_state.my_bench
         if isinstance(my_bench, list):
             for p in my_bench:
                 if isinstance(p, dict):
-                    energy_attached += len(p.get("attached", []))
+                    energy_attached += len(p.get("attached", []) or p.get("energies", []))
+        gs_dict["_cached_energy_attached"] = energy_attached
 
         board_summary_dict = board_summary.__dict__
         board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")

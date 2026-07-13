@@ -20,6 +20,18 @@ except Exception:
 _HAS_CPP_SCORE = False
 
 
+def _get_prize_yield(card_name: str) -> int:
+    """Return the number of prize cards this card gives up when KO'd."""
+    if not card_name:
+        return 1
+    n = card_name.lower()
+    if "vmax" in n:
+        return 3
+    if "vstar" in n or n.endswith(" v") or n.endswith(" ex") or " ex " in n or " v " in n:
+        return 2
+    return 1
+
+
 def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     # Fast-path: delegate to C++ implementation (5-10x faster than Python)
     if _HAS_CPP_SCORE:
@@ -136,7 +148,6 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             tol = {"aggro_push": 0.15, "closing": 0.10, "disruption": -0.05, "setup": 0.15, "stall": -0.15}.get(pr, 0.0)
             if bs >= 4 and tol < 0: v += tol * bs * 0.3
             elif bs >= 5 and tol <= 0: v -= 0.4
-        # Bonus for benching strong Pokemon (evolution potential, high HP)
         try:
             bench_parts = action.split(":")
             bench_card_id = int(bench_parts[1]) if len(bench_parts) > 1 and bench_parts[1].isdigit() else None
@@ -147,6 +158,18 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                         v += 0.2  # Evolution fodder is valuable
                     if bc.hp and bc.hp > 120:
                         v += 0.1  # Tanky basics
+                    # Prize denial: penalize benching high-prize Pokemon when bench already has one
+                    py = _get_prize_yield(bc.card_name)
+                    if py >= 2:
+                        # How many high-prize Pokemon already on board?
+                        high_prize_count = 1 if _get_prize_yield(str(ac.get("card_name", "") if isinstance(ac, dict) else "")) >= 2 else 0
+                        for bp in bn:
+                            if isinstance(bp, dict):
+                                hp_name = bp.get("card_name", "")
+                                if _get_prize_yield(str(hp_name)) >= 2:
+                                    high_prize_count += 1
+                        if high_prize_count >= 1:
+                            v -= 0.3 * py  # Strongly penalize exposing more prizes
         except Exception:
             pass
     elif action.startswith("play_trainer:"):
@@ -154,12 +177,11 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
         if dc <= 7:
             tn = action.split(":", 1)[1].lower()
-            if any(k in tn for k in {"iono", "judge"}): v += 0.8
+            if any(k in tn for k in {"iono", "judge"}): v -= 2.5  # Iono can deck you out from 7
             elif any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 2.5
         elif dc <= 20 and dc < opp_dc - 3:
             tn = action.split(":", 1)[1].lower()
-            if any(k in tn for k in {"iono", "judge"}): v += 0.4
-            elif any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 1.2
+            if any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 1.2
         if dc > 30:
             n = action.split(":", 1)[1].lower()
             sk = {"nest ball", "ultra ball", "quick ball", "level ball", "secret box", "mega signal", "team rocket's petrel"}
@@ -205,6 +227,16 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         if rsb > 0: v += rsb
     elif action == "pass":
         v -= 1.0  # Strongly discourage passing
+    # Prefer attacking over drawing when near deck-out
+    if dc <= 8 and opp_hp > 0:
+        if action.startswith("play_trainer:"):
+            tn = action.split(":", 1)[1].lower()
+            if any(k in tn for k in {"research", "professor", "carmine", "lillie", "iono", "judge"}):
+                v -= 1.0  # Draw supporter when opponent is alive — risk deck-out
+        elif action.startswith("ability:"):
+            tn = action.split(":", 1)[1].lower()
+            if any(d in tn for d in {"colress", "concealed", "draw"}):
+                v -= 1.0  # Draw ability when opponent is alive — risk deck-out
     hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
     if hs >= 2 and dc > 10: v += 0.03 * min(hs, 5)
     return v
