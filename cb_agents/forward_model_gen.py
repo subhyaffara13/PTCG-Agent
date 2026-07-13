@@ -12,6 +12,29 @@ except ImportError:
     CardRegistry = None
 
 
+def _get_prize_yield(card_name: str) -> int:
+    if not card_name:
+        return 1
+    n = card_name.lower()
+    if "vmax" in n:
+        return 3
+    if "vstar" in n or n.endswith(" v") or n.endswith(" ex") or " ex " in n or " v " in n:
+        return 2
+    return 1
+
+def _count_high_prize_on_board(gs: dict) -> int:
+    """Count how many high-prize (prize_yield>=2) Pokemon are on our board."""
+    count = 0
+    active = gs.get("my_active_pokemon", {})
+    if isinstance(active, dict):
+        if _get_prize_yield(str(active.get("card_name", ""))) >= 2:
+            count += 1
+    for bp in gs.get("my_bench", []):
+        if isinstance(bp, dict):
+            if _get_prize_yield(str(bp.get("card_name", ""))) >= 2:
+                count += 1
+    return count
+
 def _regenerate_legal_actions(gs: dict) -> None:
     if gs.get("turn_ended"):
         gs["legal_actions"] = []
@@ -74,9 +97,20 @@ def _regenerate_legal_actions(gs: dict) -> None:
                 if not _skip:
                     actions.append(f"play_trainer:{c.card_name}")
                 continue
+            # Boss-aware bench protection: skip benching high-prize if opponent has Boss and we already expose one
+            _skip_bench = False
+            if CardRegistry is not None:
+                try:
+                    _cc = CardRegistry().get(int(card) if not isinstance(card, int) else card)
+                    if _cc and _get_prize_yield(_cc.card_name) >= 2:
+                        _boss_p = gs.get("boss_prob", 0.0)
+                        if _boss_p > 0.3 and _count_high_prize_on_board(gs) >= 1:
+                            _skip_bench = True
+                except Exception:
+                    pass
             # Card is a Pokemon (or unknown): bench it, never attach_energy
             bench_list = gs.get("my_bench", [])
-            if isinstance(bench_list, list) and len(bench_list) < 5:
+            if isinstance(bench_list, list) and len(bench_list) < 5 and not _skip_bench:
                 actions.append(f"bench:{card}")
             # Check if this card can evolve anything on the field
             if CardRegistry is not None and not is_energy and not is_trainer:

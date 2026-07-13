@@ -1,32 +1,89 @@
 from cb_agents.heuristic_pipeline import pipeline
 
-def project_opponent_damage_helper(game_state) -> int:
+def _get_prize_yield(card_name: str) -> int:
+    if not card_name:
+        return 1
+    n = card_name.lower()
+    if "vmax" in n:
+        return 3
+    if "vstar" in n or n.endswith(" v") or n.endswith(" ex") or " ex " in n or " v " in n:
+        return 2
+    return 1
+
+def _get_opponent_element_type(game_state) -> str:
+    """Get the opponent's active Pokemon's element type."""
+    try:
+        active = getattr(game_state, 'opponent_active', None)
+        if isinstance(active, dict):
+            return active.get("element_type", "") or active.get("type", "") or ""
+    except Exception:
+        pass
+    return ""
+
+def _get_poke_type_resistance(tc, opp_type: str) -> float:
+    """Score type matchup: +2 for resistance, -2 for weakness, 0 neutral."""
+    if not opp_type or not tc:
+        return 0.0
+    try:
+        if hasattr(tc, 'card_type') and tc.card_type:
+            poke_type = tc.card_type.name if hasattr(tc.card_type, 'name') else str(tc.card_type)
+        else:
+            return 0.0
+        weakness_map = {"fire": "water", "water": "electric", "electric": "fighting",
+                        "grass": "fire", "psychic": "dark", "dark": "psychic",
+                        "metal": "fire", "fairy": "metal", "dragon": "ice",
+                        "fighting": "psychic", "colorless": "fighting",
+                        "ice": "metal", "ground": "grass", "poison": "psychic"}
+        # Check if opponent type is weak to our type (we resist)
+        if weakness_map.get(opp_type.lower(), "") == poke_type.lower():
+            return 2.0  # We resist: opponent's attacks are less effective
+        # Check if our type is weak to opponent's type (we are weak)
+        if weakness_map.get(poke_type.lower(), "") == opp_type.lower():
+            return -2.0  # We are weak: opponent's attacks hit harder
+    except Exception:
+        pass
+    return 0.0
+
+def project_opponent_damage_helper(game_state) -> dict:
+    """Returns dict with 'max_damage' and 'can_2hko' (bool)."""
     from cb_agents.card_registry import CardRegistry
     registry = CardRegistry()
-    max_dmg = 0
+    result = {"max_damage": 0, "can_2hko": False, "opponent_type": ""}
     active = getattr(game_state, 'opponent_active', None)
     if active:
         try:
             opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
             card = registry.get_full_skill(opp_active_id)
             if card:
-                max_dmg = card.damage_output
-                # Only count damage if opponent actually has energy to use the attack
+                raw_dmg = card.damage_output
                 opp_attached = len(active.get("attached", []) or active.get("energies", [])) if isinstance(active, dict) else 0
                 if opp_attached < max(1, card.energy_cost):
-                    max_dmg = 0
+                    raw_dmg = 0
+                result["max_damage"] = raw_dmg
+                result["opponent_type"] = _get_opponent_element_type(game_state)
+                if isinstance(active, dict) and active.get("id") and raw_dmg > 0:
+                    my_hp = getattr(game_state, 'my_active_hp', 100)
+                    if raw_dmg < my_hp <= raw_dmg * 2:
+                        result["can_2hko"] = True
         except Exception as e:
             import logging
             logging.getLogger(__name__).debug(f"project_opponent_damage failed: {e}")
-    return max_dmg
+    return result
 
-def _best_retreat_target(retreat_actions, game_state, opponent_max_damage=0):
-    """Pick the retreat target that balances attack capability and survivability."""
+def _best_retreat_target(retreat_actions, game_state, opponent_max_damage=0, opponent_type=""):
+    """Pick the retreat target that balances attack capability, survivability, and type matchup."""
     from cb_agents.card_registry import CardRegistry
     registry = CardRegistry()
     bench = list(getattr(game_state, 'my_bench', []))
     best_action = retreat_actions[0]
     best_score = -999
+
+    # Check opponent's current energy for post-retreat evaluation
+    opp_attached_energy = 0
+    opp_active = getattr(game_state, 'opponent_active', None)
+    if isinstance(opp_active, dict):
+        opp_attached_energy = len(opp_active.get("attached", []) or opp_active.get("energies", []))
+
     for ra in retreat_actions:
         try:
             idx = int(ra.replace("retreat:", "").strip())
@@ -42,14 +99,29 @@ def _best_retreat_target(retreat_actions, game_state, opponent_max_damage=0):
                             dmg = tc.damage_output or 0
                             hp = tc.hp or 100
                             score = dmg if ba >= ec else (-10 - idx)
-                            # Penalize if retreat target would be one-shot KO'd
-                            if opponent_max_damage > 0 and hp < opponent_max_damage:
-                                score -= 5.0  # Target dies immediately — terrible retreat
-                            elif opponent_max_damage > 0 and hp <= opponent_max_damage * 1.5:
-                                score -= 1.0  # Target is in 2HKO range — suboptimal
-                            # Bonus for high HP that survives the hit
-                            if hp >= opponent_max_damage * 2:
-                                score += 1.5  # Safe tank — excellent retreat target
+                            # Survivability vs opponent max damage
+                            if opponent_max_damage > 0:
+                                if hp < opponent_max_damage:
+                                    score -= 5.0  # Target dies immediately
+                                elif hp <= opponent_max_damage * 1.5:
+                                    score -= 1.0  # 2HKO range
+                                if hp >= opponent_max_damage * 2:
+                                    score += 1.5  # Safe tank
+                            # Type resistance/weakness bonus
+                            type_score = _get_poke_type_resistance(tc, opponent_type)
+                            if type_score != 0.0:
+                                score += type_score * 0.5  # +/-1.0 for type matchup
+                            # Opponent energy check: can they KO the new active with existing energy?
+                            if opp_attached_energy > 0:
+                                opp_card = None
+                                if isinstance(opp_active, dict):
+                                    try:
+                                        opp_card = registry.get_full_skill(opp_active.get("id"))
+                                    except Exception:
+                                        pass
+                                if opp_card and opp_attached_energy >= max(1, opp_card.energy_cost):
+                                    if opponent_max_damage >= hp:
+                                        score -= 3.0  # Opponent already has energy to KO the swap-in
                             if score > best_score:
                                 best_score = score
                                 best_action = ra
@@ -58,12 +130,19 @@ def _best_retreat_target(retreat_actions, game_state, opponent_max_damage=0):
     return best_action
 
 def check_defensive_retreat_helper(game_state, board_summary) -> str:
-    opponent_max_damage = project_opponent_damage_helper(game_state)
+    dmg_info = project_opponent_damage_helper(game_state)
+    opponent_max_damage = dmg_info["max_damage"]
+    opponent_type = dmg_info.get("opponent_type", "")
     my_hp = getattr(game_state, 'my_active_hp', 0)
+    retreat_actions = list(getattr(game_state, 'legal_retreats', []))
+    if not retreat_actions:
+        return None
+    # One-shot lethal: strong retreat push
     if opponent_max_damage > 0 and opponent_max_damage >= my_hp:
-        retreat_actions = list(getattr(game_state, 'legal_retreats', []))
-        if retreat_actions:
-            return _best_retreat_target(retreat_actions, game_state, opponent_max_damage)
+        return _best_retreat_target(retreat_actions, game_state, opponent_max_damage, opponent_type)
+    # Preemptive 2HKO: softer retreat suggestion (lets other actions compete)
+    if dmg_info.get("can_2hko") and my_hp <= opponent_max_damage * 1.8:
+        return _best_retreat_target(retreat_actions, game_state, opponent_max_damage, opponent_type)
     return None
 
 def update_opponent_model_helper(orchestrator, game_state):

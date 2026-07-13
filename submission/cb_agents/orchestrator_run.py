@@ -7,7 +7,7 @@ from cb_agents.heuristic_pipeline import pipeline
 logger = logging.getLogger(__name__)
 
 class OrchestratorRunMixin:
-    def _project_opponent_damage(self, game_state) -> int:
+    def _project_opponent_damage(self, game_state) -> dict:
         from cb_agents.orchestrator_run_helpers import project_opponent_damage_helper
         return project_opponent_damage_helper(game_state)
 

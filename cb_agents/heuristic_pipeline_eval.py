@@ -169,7 +169,12 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                                 if _get_prize_yield(str(hp_name)) >= 2:
                                     high_prize_count += 1
                         if high_prize_count >= 1:
-                            v -= 0.3 * py  # Strongly penalize exposing more prizes
+                            penalty = 0.3 * py
+                            # Amplify penalty if opponent likely has Boss's Orders
+                            boss_prob = gs.get("boss_prob", 0.0)
+                            if boss_prob > 0.3:
+                                penalty *= min(3.0, 1.0 + boss_prob * 2.0)
+                            v -= penalty
         except Exception:
             pass
     elif action.startswith("play_trainer:"):
@@ -262,6 +267,17 @@ def score_state(gs: dict) -> float:
         v += 0.3  # Opponent near deck-out
     elif opp_dc <= 8:
         v += 0.1
+    # Turns-until-deckout: estimate remaining turns and penalize critically low
+    if my_dc > 0:
+        hand_size = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
+        avg_draw_per_turn = 1.5  # conservative: draw 1 + occasional supporter
+        turns_left = max(0, my_dc / avg_draw_per_turn)
+        if turns_left <= 1:
+            v -= 0.8  # Will deck out THIS turn
+        elif turns_left <= 2:
+            v -= 0.4  # 1-2 turns left
+        elif turns_left <= 3:
+            v -= 0.15  # 2-3 turns left
     all_p = gs.get("my_bench", []) + ([gs.get("my_active_pokemon", {})] if isinstance(gs.get("my_active_pokemon"), dict) and gs.get("my_active_pokemon") else [])
     ec = 0
     for p in all_p:
