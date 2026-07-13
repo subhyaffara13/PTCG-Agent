@@ -62,7 +62,17 @@ def _regenerate_legal_actions(gs: dict) -> None:
                     actions.append(f"attach_energy:{card}")
                 continue
             if is_trainer:
-                actions.append(f"play_trainer:{c.card_name}")
+                # Enforce one Supporter per turn in MCTS rollouts
+                _skip = False
+                if gs.get("supporter_played_this_turn"):
+                    try:
+                        _fc = CardRegistry().get_full_skill(int(card) if not isinstance(card, int) else card)
+                        if _fc and getattr(_fc, 'trainer_subtype', None) and _fc.trainer_subtype.name == "SUPPORTER":
+                            _skip = True
+                    except Exception:
+                        pass
+                if not _skip:
+                    actions.append(f"play_trainer:{c.card_name}")
                 continue
             # Card is a Pokemon (or unknown): bench it, never attach_energy
             bench_list = gs.get("my_bench", [])

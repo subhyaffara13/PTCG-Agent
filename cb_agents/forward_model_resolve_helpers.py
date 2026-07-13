@@ -122,6 +122,15 @@ def handle_attack_helper(gs: dict, hand: list, CardRegistry: Any) -> None:
 def handle_play_trainer_helper(gs: dict, hand: list, target: str, CardRegistry: Any, int_or_str: Any, remove_from_hand: Any, draw_cards: Any) -> None:
     name = target.lower() if target else ""
     base_name = name.replace("_tails", "").replace("_heads", "")
+    # Detect if this card is a SUPPORTER for one-per-turn enforcement
+    _is_supporter = False
+    if CardRegistry is not None:
+        try:
+            _c = CardRegistry().get_full_skill(target)
+            if _c and getattr(_c, 'trainer_subtype', None) and _c.trainer_subtype.name == "SUPPORTER":
+                _is_supporter = True
+        except Exception:
+            pass
 
     removed = False
     if CardRegistry is not None:
@@ -341,5 +350,6 @@ def handle_play_trainer_helper(gs: dict, hand: list, target: str, CardRegistry: 
             if trainer_ids:
                 gs["my_hand"] = hand + [random.choice(trainer_ids)]
                 gs["my_deck_count"] = gs.get("my_deck_count", 60) - 1
-    
+    if _is_supporter:
+        gs["supporter_played_this_turn"] = True
 

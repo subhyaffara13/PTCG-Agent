@@ -111,6 +111,10 @@ void CardRegistry::loadMetadata(const std::string& path) {
                 } else if (keyStr == "stage_type") {
                     std::string st = valStr;
                     std::transform(st.begin(), st.end(), st.begin(), ::tolower);
+                    if (st.find("supporter") != std::string::npos) currentCard.trainer_subtype = TrainerSubtype::SUPPORTER;
+                    else if (st.find("item") != std::string::npos) currentCard.trainer_subtype = TrainerSubtype::ITEM;
+                    else if (st.find("tool") != std::string::npos) currentCard.trainer_subtype = TrainerSubtype::TOOL;
+                    else if (st.find("stadium") != std::string::npos) currentCard.trainer_subtype = TrainerSubtype::STADIUM;
                     if (st.find("basic") != std::string::npos) currentCard.stage = CardStage::BASIC;
                     else if (st.find("stage 1") != std::string::npos) currentCard.stage = CardStage::STAGE1;
                     else if (st.find("stage 2") != std::string::npos) currentCard.stage = CardStage::STAGE2;
@@ -431,6 +435,17 @@ void apply_action(BoardState& state, const std::string& action) {
             trainer_name = trainer_name.substr(0, trainer_name.size() - 6);
         }
         
+        // Enforce one Supporter per turn
+        {
+            auto _sc = CardRegistry::getInstance().getCard(trainer_name);
+            if (_sc && _sc->trainer_subtype == TrainerSubtype::SUPPORTER) {
+                if (state.me.supporter_played_this_turn) {
+                    return;  // Illegal: already played a supporter this turn
+                }
+                state.me.supporter_played_this_turn = true;
+            }
+        }
+        
         std::string found_card_id = "";
         for (size_t i = 0; i < state.me.hand.size(); ++i) {
             const auto& cid = state.me.hand.at(i);
@@ -537,6 +552,9 @@ void regenerate_legal_actions(BoardState& state) {
                 }
                 continue;
             } else if (c->card_type == CardType::TRAINER) {
+                if (c->trainer_subtype == TrainerSubtype::SUPPORTER && state.me.supporter_played_this_turn) {
+                    continue;  // Only one Supporter per turn
+                }
                 actions.push_back("play_trainer:" + c->card_name);
                 continue;
             }

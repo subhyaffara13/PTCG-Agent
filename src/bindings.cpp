@@ -226,6 +226,10 @@ void add_card_py(py::dict c) {
     
     std::string stage_str = c.contains("stage_type") ? py::str(c["stage_type"]) : "";
     std::transform(stage_str.begin(), stage_str.end(), stage_str.begin(), ::tolower);
+    if (stage_str.find("supporter") != std::string::npos) card.trainer_subtype = TrainerSubtype::SUPPORTER;
+    else if (stage_str.find("item") != std::string::npos) card.trainer_subtype = TrainerSubtype::ITEM;
+    else if (stage_str.find("tool") != std::string::npos) card.trainer_subtype = TrainerSubtype::TOOL;
+    else if (stage_str.find("stadium") != std::string::npos) card.trainer_subtype = TrainerSubtype::STADIUM;
     if (stage_str.find("basic") != std::string::npos) card.stage = CardStage::BASIC;
     else if (stage_str.find("stage 1") != std::string::npos) card.stage = CardStage::STAGE1;
     else if (stage_str.find("stage 2") != std::string::npos) card.stage = CardStage::STAGE2;
