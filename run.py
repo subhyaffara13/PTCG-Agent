@@ -29,6 +29,8 @@ if __name__ == "__main__":
     # Ensure current directory is in path
     sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
     
+    print("[INFO] Starting PTCG Agent Orchestrator...")
+    
     try:
         # Forward arguments and call orchestration_agent main
         from factory.orchestration_agent import main
