@@ -209,7 +209,7 @@ class PPOPolicyNetwork(BasePolicyNetwork):
 
         try:
             import torch
-            ac = ActorCritic(input_dim=STATE_DIM, hidden_dim=128, action_dim=3000)
+            ac = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
             ac.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
             ac.to(self.device)
             ac.eval()
@@ -293,7 +293,7 @@ class PPOValueNetwork(BaseValueNetwork):
 
         try:
             import torch
-            ac = ActorCritic(input_dim=STATE_DIM, hidden_dim=128, action_dim=3000)
+            ac = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
             ac.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
             ac.to(self.device)
             ac.eval()
