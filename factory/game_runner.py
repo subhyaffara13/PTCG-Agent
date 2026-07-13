@@ -15,6 +15,20 @@ from concurrent.futures import ProcessPoolExecutor
 from cb_agents.base_agent import BaseAgent
 from factory.game_runner_worker import _parallel_game_worker
 
+
+def _mutate_deck(deck: list[int], mutation_rate: float = 0.05) -> list[int]:
+    if len(deck) != 60:
+        return deck
+    if random.random() > mutation_rate:
+        return deck
+    d = deck[:]
+    n_swaps = random.randint(2, 5)
+    for _ in range(n_swaps):
+        i = random.randrange(60)
+        j = random.randrange(60)
+        d[i], d[j] = d[j], d[i]
+    return d
+
 logger = logging.getLogger(__name__)
 
 def _load_optimized_deck(custom_path: str | None = None) -> list[int]:
@@ -101,10 +115,13 @@ class GameRunner(BaseAgent):
                 else:
                     logger.warning(f"League deck path {opp_deck_path} does not exist.")
 
-            # Deck test twin pair: Player A (opponent_deck) vs Player B (d_new)
+            # Apply soft deck mutation for training diversity (swap 2-5 cards)
+            mutated_new = _mutate_deck(d_new)
+
+            # Deck test twin pair: Player A (opponent_deck) vs Player B (mutated_new)
             games_config.extend([
-                (f"deck_test_{j}_orig", opponent_deck, d_new, False, False, seed),
-                (f"deck_test_{j}_swap", d_new, opponent_deck, False, False, seed)
+                (f"deck_test_{j}_orig", opponent_deck, mutated_new, False, False, seed),
+                (f"deck_test_{j}_swap", mutated_new, opponent_deck, False, False, seed)
             ])
             
             # Variance baseline twin pair: Player A (d_base) vs Player B (d_base)

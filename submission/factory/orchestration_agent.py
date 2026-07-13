@@ -39,6 +39,7 @@ prune_old_logs()
 _last_prune = time.time()
 
 def main():
+    global _last_prune
     import sys
     import os
 

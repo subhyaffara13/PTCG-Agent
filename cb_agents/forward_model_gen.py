@@ -1,4 +1,6 @@
 import random
+import json
+from pathlib import Path
 from typing import Any
 import logging
 
@@ -146,11 +148,39 @@ def _regenerate_legal_actions(gs: dict) -> None:
     gs["legal_actions"] = list(dict.fromkeys(actions))
 
 
+def _load_concede_thresholds() -> dict:
+    thresholds = {
+        "prize_gap_min": 3,
+        "deck_out_max": 2,
+        "prevent_prize_gap": 3,
+    }
+    try:
+        result_path = next(
+            (Path(p) / "iteration_result.json" for p in ["logs", "data", "."] if (Path(p) / "iteration_result.json").exists()),
+            None
+        )
+        if result_path and result_path.exists():
+            data = json.loads(result_path.read_text(encoding="utf-8"))
+            games = data.get("games", {})
+            deck_games = [g for k, g in games.items() if k.startswith("deck_test")]
+            if len(deck_games) >= 10:
+                wins = sum(1 for g in deck_games if g.get("winner") == "player_b")
+                wr = wins / len(deck_games)
+                if wr < 0.3:
+                    thresholds["prize_gap_min"] = 2
+                    thresholds["deck_out_max"] = 3
+                elif wr > 0.7:
+                    thresholds["prize_gap_min"] = 4
+    except Exception:
+        pass
+    return thresholds
+
+
 def _check_concede(gs: dict) -> bool:
-    """Detect hopeless positions and concede to save MCTS simulation time.
-    
-    Returns True if the position is unwinnable and the game should terminate early.
-    """
+    _concede_thresholds = _load_concede_thresholds()
+    prize_gap_min = _concede_thresholds["prize_gap_min"]
+    deck_out_max = _concede_thresholds["deck_out_max"]
+    prevent_prize_gap = _concede_thresholds["prevent_prize_gap"]
     my_prizes = gs.get("my_prizes", 6)
     opp_prizes = gs.get("opponent_prizes", 6)
     my_bench = gs.get("my_bench", [])
@@ -162,15 +192,15 @@ def _check_concede(gs: dict) -> bool:
         return True
 
     # Opponent has taken almost all prizes; we have taken none
-    if my_prizes <= 0 and opp_prizes >= 3:
+    if my_prizes <= 0 and opp_prizes >= prize_gap_min:
         return True
 
-    # Deck-out imminent with no realistic comeback (we need 3+ KOs, opponent needs 0)
-    if my_deck <= 2 and opp_prizes >= 3 and my_prizes >= 3:
+    # Deck-out imminent with no realistic comeback (we need multiple KOs, opponent needs 0)
+    if my_deck <= deck_out_max and opp_prizes >= prize_gap_min and my_prizes >= prevent_prize_gap:
         return True
 
     # Opponent about to take last prize and we can't prevent it
-    if opp_prizes <= 1 and my_prizes >= 3:
+    if opp_prizes <= 1 and my_prizes >= prevent_prize_gap:
         opp_hp = gs.get("opponent_active_hp", 100)
         if opp_hp > 0:
             return True

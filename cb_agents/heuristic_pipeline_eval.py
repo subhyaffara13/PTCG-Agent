@@ -246,6 +246,33 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                 v -= 1.0  # Draw ability when opponent is alive — risk deck-out
     hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
     if hs >= 2 and dc > 10: v += 0.03 * min(hs, 5)
+
+    # Inject learned_dos / learned_donts into action scoring
+    try:
+        cid = None
+        if action.startswith("bench:"):
+            parts = action.split(":")
+            if len(parts) > 1 and parts[1].lstrip("-").isdigit():
+                cid = int(parts[1])
+        elif action.startswith("evolve:"):
+            parts = action.split(":")
+            if len(parts) > 2 and parts[2].lstrip("-").isdigit():
+                cid = int(parts[2])
+        elif action.startswith("play_trainer:"):
+            tn = action.split(":", 1)[1].lower()
+            for store_id, store_card in getattr(_registry, "cards", {}).items():
+                if store_card.card_name.lower() == tn:
+                    cid = int(store_id) if not isinstance(store_id, int) else store_id
+                    break
+        if cid is not None:
+            dos = getattr(_registry, "learned_dos", set())
+            donts = getattr(_registry, "learned_donts", set())
+            if cid in dos:
+                v += 0.5
+            if cid in donts:
+                v -= 0.5
+    except Exception:
+        pass
     return v
 
 

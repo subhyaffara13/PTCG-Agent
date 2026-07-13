@@ -1,8 +1,12 @@
 import time
+import warnings
 import logging
 from distributed.worker_client import WorkerClient
 
 logger = logging.getLogger("orchestration_agent")
+
+# Suppress noisy litellm model cost map warning (harmless, model name not in cost registry)
+warnings.filterwarnings("ignore", message=".*not in built-in cost map.*")
 
 def run_worker_loop(master_ip: str, master_version: str | None):
     logger.info(f"Orchestration Agent (Worker Mode) started. Syncing to {master_version}...")
