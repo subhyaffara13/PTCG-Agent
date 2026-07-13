@@ -11,6 +11,7 @@ from cb_agents.turn_planner_heuristics import check_mcts_bypass, sort_actions_he
 from cb_agents.turn_planner_logging import build_legal_candidates, TurnPlannerLogger
 from cb_agents.turn_planner_resolve import resolve_action
 from cb_agents.turn_planner_helpers import _process_prize_tracker, _check_lethal_and_update
+from cb_agents.value_network import PPOPolicyNetwork, PPOValueNetwork
 from router.bus import TurnPlannerPacket
 
 logger = logging.getLogger(__name__)
@@ -34,7 +35,10 @@ class TurnPlanner(BaseAgent):
         except Exception as e:
             logger.error(f"Failed to get_config: {e}")
             self.rules = {"rules": []}
-        self.mcts = MCTSEngine(num_simulations=200, belief_tracker=belief_tracker)
+        self.mcts = MCTSEngine(
+            num_simulations=200, belief_tracker=belief_tracker,
+            value_network=PPOValueNetwork(), policy_network=PPOPolicyNetwork()
+        )
         self._logger = TurnPlannerLogger(self.log_dir)
         self._prize_tracker = PrizeTracker()
         self._consecutive_passes = 0
