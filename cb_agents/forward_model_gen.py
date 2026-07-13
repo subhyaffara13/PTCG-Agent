@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from typing import Any
 import logging
+from functools import lru_cache
 
 logger = logging.getLogger(__name__)
 
@@ -148,39 +149,30 @@ def _regenerate_legal_actions(gs: dict) -> None:
     gs["legal_actions"] = list(dict.fromkeys(actions))
 
 
-def _load_concede_thresholds() -> dict:
-    thresholds = {
-        "prize_gap_min": 3,
-        "deck_out_max": 2,
-        "prevent_prize_gap": 3,
-    }
+@lru_cache(maxsize=1)
+def _load_concede_thresholds() -> tuple:
     try:
-        result_path = next(
-            (Path(p) / "iteration_result.json" for p in ["logs", "data", "."] if (Path(p) / "iteration_result.json").exists()),
-            None
-        )
-        if result_path and result_path.exists():
-            data = json.loads(result_path.read_text(encoding="utf-8"))
-            games = data.get("games", {})
-            deck_games = [g for k, g in games.items() if k.startswith("deck_test")]
-            if len(deck_games) >= 10:
-                wins = sum(1 for g in deck_games if g.get("winner") == "player_b")
-                wr = wins / len(deck_games)
-                if wr < 0.3:
-                    thresholds["prize_gap_min"] = 2
-                    thresholds["deck_out_max"] = 3
-                elif wr > 0.7:
-                    thresholds["prize_gap_min"] = 4
+        for p in ["logs", "data", "."]:
+            rp = Path(p) / "iteration_result.json"
+            if rp.exists():
+                data = json.loads(rp.read_text(encoding="utf-8"))
+                games = data.get("games", {})
+                deck_games = [g for k, g in games.items() if k.startswith("deck_test")]
+                if len(deck_games) >= 10:
+                    wins = sum(1 for g in deck_games if g.get("winner") == "player_b")
+                    wr = wins / len(deck_games)
+                    if wr < 0.3:
+                        return (2, 3, 3)
+                    elif wr > 0.7:
+                        return (4, 2, 3)
+                break
     except Exception:
         pass
-    return thresholds
+    return (3, 2, 3)
 
 
 def _check_concede(gs: dict) -> bool:
-    _concede_thresholds = _load_concede_thresholds()
-    prize_gap_min = _concede_thresholds["prize_gap_min"]
-    deck_out_max = _concede_thresholds["deck_out_max"]
-    prevent_prize_gap = _concede_thresholds["prevent_prize_gap"]
+    prize_gap_min, deck_out_max, prevent_prize_gap = _load_concede_thresholds()
     my_prizes = gs.get("my_prizes", 6)
     opp_prizes = gs.get("opponent_prizes", 6)
     my_bench = gs.get("my_bench", [])
