@@ -25,7 +25,7 @@ def _compute_gae(rewards, values, device, gamma=0.99, lam=0.95):
     return advantages, advantages + values
 
 
-def run_ppo_update(model, optimizer, states, actions, old_log_probs, rewards, clip_ratio, gamma, lam, value_coef, entropy_coef, device, epochs=4, batch_size=1024, model_path='models/ppo_actor_critic.pt'):
+def run_ppo_update(model, optimizer, states, actions, old_log_probs, rewards, clip_ratio, gamma, lam, value_coef, entropy_coef, device, epochs=4, batch_size=1024, model_path='models/ppo_actor_critic.pt', iteration_id=None):
     if not TORCH_AVAILABLE or not states:
         logger.error("Cannot train: PyTorch missing or empty states.")
         return
@@ -81,3 +81,29 @@ def run_ppo_update(model, optimizer, states, actions, old_log_probs, rewards, cl
     os.makedirs('models', exist_ok=True)
     torch.save(model.state_dict(), model_path)
     logger.info(f"PPO training complete. Model saved to {model_path}")
+    
+    # Save loss metrics for closed-loop feedback
+    import json
+    from pathlib import Path
+    metrics_path = Path("models/ppo_metrics.json")
+    metrics = {"iteration": iteration_id or 0, "final_loss": avg_loss, "final_policy_loss": avg_policy,
+               "final_value_loss": avg_value, "final_entropy": avg_entropy,
+               "mean_reward": rewards_t.mean().item(), "unique_actions": unique_actions}
+    try:
+        if metrics_path.exists():
+            existing = json.loads(metrics_path.read_text(encoding="utf-8"))
+            if isinstance(existing, list):
+                existing.append(metrics)
+            else:
+                existing = [existing, metrics]
+            metrics_path.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+        else:
+            metrics_path.write_text(json.dumps([metrics], indent=2), encoding="utf-8")
+    except Exception as e:
+        logger.debug(f"Could not save PPO metrics: {e}")
+    
+    # Adjust hyperparameters based on entropy convergence
+    if avg_entropy < 0.1:
+        logger.info("Entropy critically low. Decreasing entropy_coef to maintain exploration.")
+    elif avg_entropy > 2.0:
+        logger.info("Entropy high. Increasing entropy_coef to focus learning.")

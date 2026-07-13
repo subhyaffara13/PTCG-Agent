@@ -66,13 +66,13 @@ class PPOTrainer:
             self.model = None
 
     def update(self, states: List[List[float]], actions: List[int], old_log_probs: List[float],
-               rewards: List[float], epochs: int = 4, batch_size: int = 256):
+               rewards: List[float], epochs: int = 4, batch_size: int = 256, iteration_id: int = None):
         if not TORCH_AVAILABLE or not states:
             logger.error("Cannot train: PyTorch missing or empty states.")
             return
         run_ppo_update(self.model, self.optimizer, states, actions, old_log_probs, rewards,
                        self.clip_ratio, self.gamma, self.lam, self.value_coef, self.entropy_coef,
-                       self.device, epochs, batch_size, self.model_path)
+                       self.device, epochs, batch_size, self.model_path, iteration_id=iteration_id)
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(level
 logger = logging.getLogger("run_guided_iterations")
 
 from run_factory import run_iteration
-from run_guided_helpers import get_last_iteration_id, execute_refactor_step, execute_ppo_step
+from run_guided_helpers import get_last_iteration_id, execute_refactor_step, execute_ppo_step, update_league_from_iteration
 
 def get_archetype_for_iteration(i: int) -> str:
     if i % 100 == 0: return ["aggro", "control", "combo", "utility"][(i // 100) % 4]
@@ -56,6 +56,7 @@ def main():
         os.environ["FAST_SIM_MODE"] = "false"
         try:
             execute_ppo_step(i)
+            update_league_from_iteration(i)
         finally:
             if orig_fast is not None:
                 os.environ["FAST_SIM_MODE"] = orig_fast
