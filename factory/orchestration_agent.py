@@ -9,6 +9,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 
 import time
+import threading
 import subprocess
 import json
 import logging
@@ -74,11 +75,14 @@ def main():
     last_seen_master_time = None
     last_known_master_ip = None
     
+    _prune_thread = None
+
     while True:
-        # Daily log pruning (every 24h)
-        if time.time() - _last_prune > 86400:
-            prune_old_logs()
+        # Daily log pruning (every 24h) — runs in background thread
+        if time.time() - _last_prune > 86400 and (_prune_thread is None or not _prune_thread.is_alive()):
             _last_prune = time.time()
+            _prune_thread = threading.Thread(target=prune_old_logs, daemon=True)
+            _prune_thread.start()
         try:
             listener = WorkerListener(interface_type="wifi")
             logger.info("[DISCOVERY] Listening for master...")
