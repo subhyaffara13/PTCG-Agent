@@ -28,11 +28,42 @@ def _count_high_prize_on_board(gs: dict) -> int:
                 count += 1
     return count
 
+_legal_actions_cache: dict = {}
+_legal_actions_cache_order: list = []
+_LEGAL_CACHE_MAX = 512
+
+def _cache_legal(key: tuple, actions: list):
+    if len(_legal_actions_cache_order) >= _LEGAL_CACHE_MAX:
+        old = _legal_actions_cache_order.pop(0)
+        _legal_actions_cache.pop(old, None)
+    if key not in _legal_actions_cache:
+        _legal_actions_cache[key] = actions
+        _legal_actions_cache_order.append(key)
+
+def _legal_cache_key(gs: dict) -> tuple:
+    return (
+        gs.get("turn_number"), gs.get("select_prize"),
+        gs.get("supporter_played_this_turn"),
+        gs.get("boss_prob", 0.0),
+        gs.get("prize_certainty", 0.0),
+        frozenset(gs.get("prized_card_ids", {}).items()),
+        tuple(sorted(gs.get("my_hand", []))),
+        tuple(sorted(
+            str(p.get("id")) for p in gs.get("my_bench", []) if isinstance(p, dict)
+        )),
+    )
+
 def _regenerate_legal_actions(gs: dict) -> None:
     if gs.get("turn_ended"):
         gs["legal_actions"] = []
         return
-    
+
+    ck = _legal_cache_key(gs)
+    cached = _legal_actions_cache.get(ck)
+    if cached is not None:
+        gs["legal_actions"] = list(cached)
+        return
+
     # Prize selection phase: only take_prize actions are legal
     if gs.get("select_prize"):
         my_prizes = gs.get("my_prizes", [])
@@ -42,6 +73,7 @@ def _regenerate_legal_actions(gs: dict) -> None:
         else:
             actions = [f"take_prize:{i}" for i in range(gs.get("prize_count", 1))]
         gs["legal_actions"] = actions
+        _cache_legal(ck, actions)
         return
     
     actions = ["pass"]
@@ -146,6 +178,7 @@ def _regenerate_legal_actions(gs: dict) -> None:
         if can_attack:
             actions.append("attack:strike")
     gs["legal_actions"] = list(dict.fromkeys(actions))
+    _cache_legal(ck, gs["legal_actions"])
 
 
 def _load_concede_thresholds() -> dict:
