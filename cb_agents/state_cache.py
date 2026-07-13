@@ -3,9 +3,30 @@ from typing import Tuple, Dict, Any
 
 logger = logging.getLogger(__name__)
 
+import hashlib
+import json
+
 def board_hash(hand_ids: Tuple[int, ...], board_ids: Tuple[int, ...], deck_remaining: int, turn: int) -> int:
     """Computes a hash for the current board state."""
     return hash((hand_ids, board_ids, deck_remaining, turn))
+
+def gs_hash(game_state: dict) -> int:
+    """Compute a deterministic hash for a game state dict for transposition detection."""
+    try:
+        key_parts = []
+        for k in sorted(game_state.keys()):
+            if k in ("legal_actions", "turn_ended", "game_over", "winner", "reasoning_chain"):
+                continue
+            v = game_state[k]
+            try:
+                json.dumps(v)
+                key_parts.append((k, str(v)))
+            except (TypeError, ValueError):
+                pass
+        return hash(tuple(key_parts))
+    except Exception:
+        return 0
+
 
 class CachedEvaluator:
     def __init__(self, evaluator_func):
@@ -41,3 +62,25 @@ class CachedEvaluator:
 
     def get_stats(self) -> Dict[str, int]:
         return {"hits": self.hits, "misses": self.misses}
+
+
+class TranspositionTable:
+    """Simple transposition table for MCTS: maps state hash -> shared node info."""
+
+    def __init__(self):
+        self._table: Dict[int, dict] = {}
+
+    def get_or_create(self, gs: dict, make_node) -> tuple:
+        """Returns (node, is_hit) for the given game state."""
+        h = gs_hash(gs)
+        if h == 0:
+            n = make_node()
+            return n, False
+        if h in self._table:
+            return self._table[h]["node"], True
+        n = make_node()
+        self._table[h] = {"node": n, "visits": 0}
+        return n, False
+
+    def clear(self):
+        self._table.clear()

@@ -1,5 +1,16 @@
 import math
+import logging
 from typing import Dict, Any
+
+logger = logging.getLogger(__name__)
+_registry = None
+
+def _get_registry():
+    global _registry
+    if _registry is None:
+        from cb_agents.card_registry import CardRegistry
+        _registry = CardRegistry()
+    return _registry
 
 def probability_opponent_holds_helper(
     card_name: str, 
@@ -9,8 +20,7 @@ def probability_opponent_holds_helper(
     known_in_play: Dict[int, int], 
     known_in_discard: Dict[int, int]
 ) -> float:
-    from cb_agents.card_registry import CardRegistry
-    registry = CardRegistry()
+    registry = _get_registry()
     
     target_ids = []
     for cid in assumed_deck.keys():
@@ -18,8 +28,8 @@ def probability_opponent_holds_helper(
             card = registry.get_full_skill(cid)
             if card and card.name.lower() == card_name.lower().replace("'", "").replace("’", ""):
                 target_ids.append(cid)
-        except:
-            pass
+        except Exception as e:
+            logger.debug(f"Opponent holds card match failed for ID {cid}: {e}")
             
     if not target_ids:
         return 0.0

@@ -50,15 +50,15 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guara
                  state.known_in_discard.get(card_id, 0))
         remaining = max(0, total_count - known)
         
-        # Lock guaranteed prizes
-        if prize_guaranteed_counts and card_id in prize_guaranteed_counts:
-            g_count = prize_guaranteed_counts[card_id]
+        # Lock guaranteed prizes (use int keys, not str)
+        if prize_guaranteed_counts and int(card_id) in prize_guaranteed_counts:
+            g_count = prize_guaranteed_counts[int(card_id)]
             for _ in range(g_count):
                 if remaining > 0:
                     remaining -= 1
                     sampled_prizes.append(card_id)
         elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
-            prob = state.prize_probabilities.get(str(card_id), 0.0)
+            prob = state.prize_probabilities.get(int(card_id), 0.0)
             if prob >= 1.0:
                 if remaining > 0:
                     remaining -= 1
@@ -69,6 +69,9 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guara
         # Force cards we KNOW are in hand
         for _ in range(state.known_in_hand.get(card_id, 0)):
             sampled_hand.append(card_id)
+
+    # Shuffle unseen pool for proper Monte Carlo sampling
+    random.shuffle(unseen_pool)
 
     # Fill the rest of the hand
     needed_hand = max(0, state.hand_size - len(sampled_hand))

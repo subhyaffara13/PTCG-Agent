@@ -64,13 +64,11 @@ class MCTSParallelMixin:
             with tree_lock:
                 node = root
                 search_path = [node]
-                current_gs = game_state
                 depth = 0
                 while node.is_expanded() and depth < 50:
                     depth += 1
                     if getattr(node, "is_terminal", False):
                         break
-                    current_gs = apply_action(current_gs, node.action_taken)
                     next_node = self.select_child(node, self.c_puct)
                     if next_node is None: break
                     node = next_node
@@ -79,7 +77,13 @@ class MCTSParallelMixin:
                 for path_node in search_path:
                     path_node.apply_virtual_loss()
 
-            next_gs = apply_action(current_gs, node.action_taken)
+            # Perform the expensive state transitions OUTSIDE the lock
+            current_gs = game_state
+            for path_node in search_path:
+                if path_node.action_taken is not None:
+                    current_gs = apply_action(current_gs, path_node.action_taken)
+
+            next_gs = current_gs
             value = self._evaluate_state(next_gs, node.action_taken, determinization)
 
             with tree_lock:

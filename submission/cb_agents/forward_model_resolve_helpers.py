@@ -1,8 +1,50 @@
 import logging
+import random
 logger = logging.getLogger(__name__)
 from typing import Any
 
+STATUS_APPLY_ATTACKS = {"poison", "burn", "sleep", "paralyze", "confuse", "toxic"}
+
+def _resolve_status_effects(gs: dict) -> None:
+    """Apply status condition tick effects at turn start/end (poison/burn)."""
+    status = gs.get("my_active_status", "")
+    if status == "poison":
+        hp = gs.get("my_active_hp", 100)
+        gs["my_active_hp"] = max(0, hp - 10)
+    elif status == "burn":
+        hp = gs.get("my_active_hp", 100)
+        gs["my_active_hp"] = max(0, hp - 20)
+    elif status == "asleep":
+        # Sleep recovery: 50% chance to wake (simplified: 1 turn)
+        if random.random() < 0.5:
+            gs["my_active_status"] = ""
+    elif status == "confused":
+        # Confusion recovery: 50% chance per turn
+        if random.random() < 0.5:
+            gs["my_active_status"] = ""
+
+def _apply_status_to_opponent(gs: dict, attack_name: str) -> None:
+    """Apply status conditions based on attack flavor text keywords."""
+    an = attack_name.lower() if attack_name else ""
+    if "poison" in an or "toxic" in an:
+        gs["opponent_active_status"] = "poisoned"
+    if "burn" in an:
+        gs["opponent_active_status"] = "burned"
+    if "sleep" in an or "spore" in an or "drowsy" in an:
+        gs["opponent_active_status"] = "asleep"
+    if "paralyze" in an or "stun" in an or "thunder wave" in an:
+        gs["opponent_active_status"] = "paralyzed"
+    if "confuse" in an or "tear" in an:
+        gs["opponent_active_status"] = "confused"
+
+def _status_blocks_retreat(status: str) -> bool:
+    """Return True if the status condition prevents retreat."""
+    return status in ("paralyzed", "asleep")
+
 def handle_retreat_helper(gs: dict, target: str, CardRegistry: Any) -> None:
+    # Check if status blocks retreat
+    if _status_blocks_retreat(gs.get("my_active_status", "")):
+        return
     bench = list(gs.get("my_bench", []))
     if bench:
         old_active = gs.get("my_active_pokemon", {})
@@ -50,11 +92,12 @@ def handle_attack_helper(gs: dict, hand: list, CardRegistry: Any) -> None:
         
     my_active = gs.get("my_active_pokemon", {})
     my_active_id = my_active.get("id") if isinstance(my_active, dict) else my_active
+    my_active_name = None
     if not actual_damage and my_active_id is not None and CardRegistry is not None:
         try:
             registry = CardRegistry()
             attached_count = len(my_active.get("attached", [])) if isinstance(my_active, dict) else 0
-            actual_damage = registry.get_best_attack_damage(my_active_id, attached_count)
+            actual_damage, my_active_name = registry.get_best_attack_damage_with_name(my_active_id, attached_count)
         except Exception:
             pass
     if not actual_damage:
@@ -63,8 +106,12 @@ def handle_attack_helper(gs: dict, hand: list, CardRegistry: Any) -> None:
                 card = CardRegistry().get_full_skill(my_active_id)
                 if card is not None:
                     actual_damage = int(card.damage_output)
+                    my_active_name = card.card_name
         except Exception:
             pass
+
+    # Apply status conditions based on attack name
+    _apply_status_to_opponent(gs, my_active_name or "")
             
     try:
         opp_hp = int(gs.get("opponent_active_hp", 100))
@@ -92,6 +139,20 @@ def handle_attack_helper(gs: dict, hand: list, CardRegistry: Any) -> None:
         except Exception:
             pass
         
+    # Check for bench snipe damage (attacks with "snipe" or "spread" in action name)
+    bench_damage = gs.get("my_active_bench_damage", 0)
+    if bench_damage > 0:
+        opp_bench = gs.get("opponent_bench", [])
+        if isinstance(opp_bench, list):
+            surviving_bench = []
+            for bp in opp_bench:
+                if isinstance(bp, dict):
+                    bp_hp = bp.get("hp", 100) - bench_damage
+                    if bp_hp > 0:
+                        bp["hp"] = bp_hp
+                        surviving_bench.append(bp)
+            gs["opponent_bench"] = surviving_bench
+        
     gs["opponent_active_hp"] = max(0, opp_hp - actual_damage)
     if gs["opponent_active_hp"] <= 0:
         prize_yield = 1
@@ -117,6 +178,8 @@ def handle_attack_helper(gs: dict, hand: list, CardRegistry: Any) -> None:
             gs["opponent_bench"] = opp_bench
         else:
             gs["opponent_active_hp"] = 0
+    # Clear active status after attack turn ends
+    gs["my_active_status"] = ""
     gs["turn_ended"] = True
 
 def handle_play_trainer_helper(gs: dict, hand: list, target: str, CardRegistry: Any, int_or_str: Any, remove_from_hand: Any, draw_cards: Any) -> None:
@@ -350,6 +413,47 @@ def handle_play_trainer_helper(gs: dict, hand: list, target: str, CardRegistry: 
             if trainer_ids:
                 gs["my_hand"] = hand + [random.choice(trainer_ids)]
                 gs["my_deck_count"] = gs.get("my_deck_count", 60) - 1
+    
+    # Pokemon Tool: attach to a Pokemon (equip)
+    elif any(k in base_name for k in {"choice belt", "bravery charm", "forest seal", "canceling cologne", "tool"}):
+        valid_targets = []
+        if isinstance(gs.get("my_active_pokemon"), dict) and gs["my_active_pokemon"]:
+            valid_targets.append("active")
+        for i, _ in enumerate(gs.get("my_bench", [])):
+            valid_targets.append(f"bench_{i}")
+        if valid_targets:
+            target = random.choice(valid_targets)
+            if target == "active":
+                poke = gs["my_active_pokemon"]
+            else:
+                idx = int(target.split("_")[1])
+                bench_pokes = list(gs.get("my_bench", []))
+                if 0 <= idx < len(bench_pokes):
+                    poke = bench_pokes[idx]
+                else:
+                    poke = gs.get("my_active_pokemon", {})
+            if isinstance(poke, dict):
+                tools = poke.get("tools", [])
+                tools.append(base_name)
+                poke["tools"] = tools
+                gs["my_active_pokemon"] = poke
+
+    # Stadium: replace the current stadium
+    elif any(k in base_name for k in {"stadium", "peak", "temple", "artazon", "watchtower", "mountain"}):
+        try:
+            if CardRegistry is not None:
+                c = CardRegistry().get_full_skill(target)
+                if c and getattr(c, 'trainer_subtype', None) and c.trainer_subtype.name == "STADIUM":
+                    gs["stadium_card"] = base_name
+        except Exception:
+            gs["stadium_card"] = base_name
+
+    # Potion / healing: restore HP
+    elif any(k in base_name for k in {"potion", "heal"}):
+        if isinstance(gs.get("my_active_pokemon"), dict):
+            current = gs["my_active_pokemon"]
+            max_hp = current.get("max_hp", 100)
+            current["hp"] = min(max_hp, current.get("hp", 100) + 30)
     if _is_supporter:
         gs["supporter_played_this_turn"] = True
 

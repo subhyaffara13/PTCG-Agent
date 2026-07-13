@@ -73,9 +73,13 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
         
         boss_prob = 0.0
         iono_prob = 0.0
+        path_prob = 0.0
+        hammer_prob = 0.0
         if hasattr(orchestrator, "belief_tracker") and orchestrator.belief_tracker:
             boss_prob = orchestrator.belief_tracker.probability_opponent_holds("boss's orders")
             iono_prob = orchestrator.belief_tracker.probability_opponent_holds("iono")
+            path_prob = orchestrator.belief_tracker.probability_opponent_holds("path to the peak")
+            hammer_prob = orchestrator.belief_tracker.probability_opponent_holds("crushing hammer")
         
         opponent_archetype = "unknown"
         archetype_confidence = 0.0
@@ -99,6 +103,8 @@ def _step_strategy(gs: dict[str, Any], orchestrator: Any, router: RouterBus) -> 
             "turn_number": gs.get("turn_number", 1),
             "boss_prob": boss_prob,
             "iono_prob": iono_prob,
+            "path_prob": path_prob,
+            "hammer_prob": hammer_prob,
             "my_prizes_remaining": gs.get("my_prizes", 6),
             "opponent_prizes_remaining": gs.get("opponent_prizes", 6),
             "my_bench_count": bench_count,

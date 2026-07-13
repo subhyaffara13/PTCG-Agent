@@ -94,6 +94,39 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
         name = target.lower() if target else ""
         if any(k in name for k in _ABILITY_DRAW):
             gs["my_hand"] = _draw_cards(hand, gs, 3)
+        elif "search" in name or "quick" in name:
+            # Search ability: find a Pokemon from deck
+            if gs.get("my_decklist"):
+                import random
+                pokemon_ids = [k for k, v in gs["my_decklist"].items() if str(v.get("card_type", "")).startswith("POKEMON")]
+                if pokemon_ids:
+                    gs["my_hand"] = hand + [random.choice(pokemon_ids)]
+                    gs["my_deck_count"] = gs.get("my_deck_count", 60) - 1
+        elif "snipe" in name or "shoot" in name:
+            # Snipe ability: do bench damage
+            opp_bench = gs.get("opponent_bench", [])
+            if isinstance(opp_bench, list) and opp_bench:
+                import random
+                target_bp = random.choice(opp_bench)
+                if isinstance(target_bp, dict):
+                    target_bp["hp"] = max(0, target_bp.get("hp", 100) - 20)
+        elif "protect" in name or "veil" in name or "guard" in name:
+            # Protection ability: reduce incoming damage next turn
+            gs["protection_active"] = True
+        elif "accelerate" in name or "charge" in name or "energy" in name:
+            # Energy acceleration: attach from discard to a Pokemon
+            my_discard = gs.get("my_discard", [])
+            energy_cards = [c for c in my_discard if str(c).isdigit() and int(c) in (4, 6)]
+            if energy_cards and isinstance(gs.get("my_active_pokemon"), dict):
+                moved = energy_cards[0]
+                try:
+                    my_discard.remove(moved)
+                except ValueError:
+                    pass
+                gs["my_discard"] = my_discard
+                attached = list(gs["my_active_pokemon"].get("attached", []))
+                attached.append(moved)
+                gs["my_active_pokemon"]["attached"] = attached
 
     elif act_type == "take_prize":
         my_prizes = gs.get("my_prizes", [])

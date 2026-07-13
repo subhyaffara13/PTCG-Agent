@@ -18,7 +18,8 @@ def probability_opponent_holds_helper(
     deck_size: int, 
     hand_size: int, 
     known_in_play: Dict[int, int], 
-    known_in_discard: Dict[int, int]
+    known_in_discard: Dict[int, int],
+    prize_size: int = 6
 ) -> float:
     registry = _get_registry()
     
@@ -33,8 +34,9 @@ def probability_opponent_holds_helper(
             
     if not target_ids:
         return 0.0
-        
-    N = deck_size + hand_size
+    
+    # Total unseen pool: deck + hand + prizes (all cards not yet in play/discard)
+    N = deck_size + hand_size + max(0, prize_size)
     H = hand_size
     if N <= 0 or H <= 0:
         return 0.0

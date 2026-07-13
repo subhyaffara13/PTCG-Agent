@@ -42,6 +42,9 @@ def identify_opponent_archetype(revealed_state: List[Any], archetypes: Dict[str,
     if total_revealed < 3 or not archetypes:
         return "unknown", 0.0
 
+    # Pre-compute card identifiers for all revealed cards once
+    revealed_idents = [(str(c).lower().replace(" ", "-"), get_card_identifier(c)) for c in revealed_state]
+
     best_match_count = 0
     best_archetype = "unknown"
     
@@ -50,11 +53,12 @@ def identify_opponent_archetype(revealed_state: List[Any], archetypes: Dict[str,
         card_pool = [cp.lower().replace(" ", "-") for cp in arch_data.get("card_pool", [])]
         
         matches = 0
-        for c in revealed_state:
-            ident = get_card_identifier(c)
-            raw_str = str(c).lower().replace(" ", "-")
-            is_sig = raw_str in signature_cards or any(ident in sig or sig in ident for sig in signature_cards)
-            is_pool = raw_str in card_pool or any(ident in cp or cp in ident for cp in card_pool)
+        for raw_str, ident in revealed_idents:
+            if raw_str in signature_cards or raw_str in card_pool:
+                matches += 1
+                continue
+            is_sig = any(ident in sig or sig in ident for sig in signature_cards)
+            is_pool = any(ident in cp or cp in ident for cp in card_pool)
             if is_sig or is_pool:
                 matches += 1
                 

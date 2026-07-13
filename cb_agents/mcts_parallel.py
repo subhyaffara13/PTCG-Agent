@@ -1,10 +1,11 @@
 import logging
 import threading
-from typing import List, Any
+from typing import List, Any, Optional
 from concurrent.futures import ThreadPoolExecutor
 from cb_agents.heuristic_pipeline import pipeline
 from cb_agents.mcts_node import MCTSNode
 from cb_agents.forward_model import apply_action
+from cb_agents.value_network import ActionPrior
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,9 @@ class MCTSParallelMixin:
     def select_child(self, node: Any, c_puct: float) -> Any:
         return None
 
-    def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int = 4, time_remaining: float | None = None) -> str:
+    def parallel_search(self, game_state: dict, legal_actions: List[str], num_threads: int = 4,
+                        time_remaining: float | None = None, root: Optional[MCTSNode] = None,
+                        mast_policy: Any = None) -> str:
         if not legal_actions:
             return "pass"
         if len(legal_actions) == 1:
@@ -33,11 +36,12 @@ class MCTSParallelMixin:
         if len(canonical_actions) == 1:
             return canonical_actions[0]
 
-        turn_num = game_state.get('turn_number', 0)
-        root_hash = f"turn_{turn_num}"
-        root = MCTSNode(state_hash=root_hash)
-        priors = self._get_action_priors(game_state, canonical_actions)
-        root.expand(priors)
+        if root is None:
+            turn_num = game_state.get('turn_number', 0)
+            root_hash = f"turn_{turn_num}"
+            root = MCTSNode(state_hash=root_hash)
+            priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
+            root.expand(priors)
 
         tree_lock = threading.Lock()
         abort_flag = [False]
@@ -47,15 +51,12 @@ class MCTSParallelMixin:
         def _single_simulation():
             if abort_flag[0]: return 0
             elapsed = time.time() - start_time
-            if time_remaining is not None and time_remaining < 2.0:
-                if time_remaining - elapsed < 0.5:
-                    abort_flag[0] = True
-                    return 0
-            else:
-                max_time = max(1.0, getattr(self, 'num_simulations', 50) * 0.02)
-                if elapsed > max_time:
-                    abort_flag[0] = True
-                    return 0
+            time_budget = 2.0
+            if time_remaining is not None:
+                time_budget = max(0.5, min(time_budget, time_remaining - 0.5))
+            if elapsed > time_budget:
+                abort_flag[0] = True
+                return 0
 
             determinization = None
             if self.belief_tracker:
@@ -77,7 +78,7 @@ class MCTSParallelMixin:
                 for path_node in search_path:
                     path_node.apply_virtual_loss()
 
-            # Perform the expensive state transitions OUTSIDE the lock
+            # State transitions OUTSIDE the lock
             current_gs = game_state
             for path_node in search_path:
                 if path_node.action_taken is not None:
@@ -87,24 +88,34 @@ class MCTSParallelMixin:
             value = self._evaluate_state(next_gs, node.action_taken, determinization)
 
             with tree_lock:
-                next_legal_actions = next_gs.get("legal_actions", [])
-                if not next_legal_actions:
-                    next_legal_actions = ["pass"]
-                new_priors = self._get_action_priors(next_gs, next_legal_actions)
-                if new_priors:
-                    node.expand(new_priors)
+                if getattr(node, "is_terminal", False):
+                    pass
+                else:
+                    next_legal_actions = next_gs.get("legal_actions", [])
+                    if not next_legal_actions:
+                        next_legal_actions = ["pass"]
+                    new_priors = self._get_action_priors(next_gs, next_legal_actions, mast_policy)
+                    if not new_priors and next_legal_actions == ["pass"]:
+                        new_priors = [ActionPrior(action="pass", prob=1.0)]
+                    if new_priors:
+                        node.expand(new_priors)
 
-                for path_node in reversed(search_path):
+                discount = 0.97
+                for i, path_node in enumerate(reversed(search_path)):
                     path_node.revert_virtual_loss()
                     path_node.visit_count += 1
-                    path_node.value_sum += value
+                    path_node.value_sum += value * (discount ** i)
                     if path_node.visit_count >= 10 and path_node.real_q_value < -0.8:
                         path_node.is_pruned = True
-                        logger.debug(f"Pruned branch {path_node.action_taken} with real Q {path_node.real_q_value}")
+
+                actions_played = [n.action_taken for n in search_path if getattr(n, "action_taken", None) is not None]
+                if mast_policy is not None:
+                    mast_policy.update(actions_played, won=(value > 0))
 
         executor = getattr(self, '_executor', None)
         if executor is None:
             executor = ThreadPoolExecutor(max_workers=max(num_threads, 4))
+            self._executor = executor
         futures = [executor.submit(_single_simulation) for _ in range(self.num_simulations)]
         for future in futures:
             try: future.result()
