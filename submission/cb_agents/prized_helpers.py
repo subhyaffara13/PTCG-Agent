@@ -1,6 +1,8 @@
+import logging
 from cb_agents.card_types import CardType
 from cb_agents.card_registry import CardRegistry
 
+logger = logging.getLogger(__name__)
 _registry = CardRegistry()
 
 def prized_pokemon_probs(prized_probabilities: dict, decklist: dict = None) -> list:
@@ -14,6 +16,7 @@ def prized_pokemon_probs(prized_probabilities: dict, decklist: dict = None) -> l
                     if count < 2:
                         continue
                 probs.append(prob)
-    except:
+    except Exception as e:
+        logger.debug(f"Prize filter failed: {e}")
         probs = list(prized_probabilities.values())
     return probs

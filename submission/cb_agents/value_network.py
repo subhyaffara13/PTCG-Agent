@@ -54,7 +54,7 @@ class NeuralValueNetwork(BaseValueNetwork):
                 tnet.to(self.device)
                 
                 if os.path.exists(model_path):
-                    state_dict = torch.load(model_path, map_location=self.device)
+                    state_dict = torch.load(model_path, map_location=self.device, weights_only=True)
                     model_keys = set(state_dict.keys())
                     if any("encoder" in k or "actor" in k for k in model_keys):
                         tnet.load_state_dict(state_dict, strict=False)

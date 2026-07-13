@@ -2,16 +2,28 @@ card_id,card_name,card_type,count
 957,Miraidon ex,Pokemon,4
 979,Koraidon ex,Pokemon,4
 210,Pikachu ex,Pokemon,4
-1121,Ultra Ball,Trainer,4
-1102,Dusk Ball,Trainer,4
-1213,Judge,Trainer,4
-1206,Larry’s Skill,Trainer,4
+1121,Ultra Ball,Trainer,1
+1227,Lillie's Determination,Trainer,3
+1210,Brock’s Scouting,Trainer,1
 1182,Boss’s Orders,Trainer,4
-1123,Switch,Trainer,4
-1116,Energy Switch,Trainer,2
-1118,Energy Retrieval,Trainer,2
-1081,Enhanced Hammer,Trainer,2
 1097,Night Stretcher,Trainer,2
-1122,Pokégear 3.0,Trainer,2
-6,Basic {F} Energy,Energy,8
-4,Basic {L} Energy,Energy,6
+1102,Dusk Ball,Trainer,1
+1152,Poké Pad,Trainer,4
+1260,Risky Ruins,Trainer,1
+1134,Team Rocket's Transceiver,Trainer,1
+1086,Buddy-Buddy Poffin,Trainer,4
+1197,Xerosic’s Machinations,Trainer,2
+1132,Team Rocket's Great Ball,Trainer,1
+1119,Energy Search,Trainer,1
+1123,Switch,Trainer,1
+1188,Ciphermaniac’s Codebreaking,Trainer,1
+1147,Jumbo Ice Cream,Trainer,1
+1199,Lacey,Trainer,1
+1267,Lumiose City,Trainer,1
+1212,Cook,Trainer,1
+1081,Enhanced Hammer,Trainer,1
+1122,Pokégear 3.0,Trainer,1
+6,Basic {F} Energy,Energy,7
+11,Mist Energy,Energy,1
+20,Rock Fighting Energy,Energy,4
+4,Basic {L} Energy,Energy,2

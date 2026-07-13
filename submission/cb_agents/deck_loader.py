@@ -19,8 +19,8 @@ def load_deck_base_list(skills_dir: Path) -> dict:
                     for row in reader:
                         deck_dict[int(row["card_id"])] = int(row["count"])
                 return deck_dict
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Deck CSV load failed for {path}: {e}")
     return {}
 
 def load_hand_analyst_configs(agent, shared_context):
@@ -40,5 +40,5 @@ def load_hand_analyst_configs(agent, shared_context):
         try:
             from cb_agents.context import SharedContext
             agent.strategy_thresholds = SharedContext().get_config(str(agent.skills_dir), "strategy_thresholds.json")
-        except:
-            pass
+        except Exception as e:
+            logger.debug(f"Failed to load strategy_thresholds from context fallback: {e}")

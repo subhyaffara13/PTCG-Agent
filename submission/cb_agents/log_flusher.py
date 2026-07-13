@@ -29,12 +29,7 @@ class FileLock:
                 return self
             except FileExistsError:
                 if time.time() - start > self.timeout:
-                    try:
-                        self.lockfile.unlink(missing_ok=True)
-                    except:
-                        pass
-                    self.dummy = True
-                    return self
+                    raise TimeoutError(f"Failed to acquire lock on {self.lockfile} within {self.timeout}s")
                 time.sleep(0.05)
             except Exception:
                 # If directory is read-only or permission is denied, fallback to dummy lock

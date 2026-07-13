@@ -1,5 +1,8 @@
 import json
+import logging
 from cb_agents.registry import get_registered_agents
+
+logger = logging.getLogger(__name__)
 
 class OrchestratorStateMixin:
     def load_delegation_map(self) -> dict:
@@ -8,8 +11,8 @@ class OrchestratorStateMixin:
             try:
                 data = json.loads(path.read_text(encoding="utf-8"))
                 return data.get("delegation", {})
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"Delegation map parse failed: {e}")
         return {
             "turn_start": "hand_analyst",
             "after_hand_analysis": "turn_planner",

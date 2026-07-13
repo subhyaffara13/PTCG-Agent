@@ -28,7 +28,7 @@ class CardRegistry:
         self.evolution_predecessors: Dict[str, str] = {}
         self.card_hp: Dict[int, int] = {}
         self.card_retreat: Dict[int, int] = {}
-        self.card_attacks: Dict[int, list] = {}
+        self.card_attacks: Dict[int, list[dict]] = {}
         self.card_weakness: Dict[int, str] = {}
         self.card_resistance: Dict[int, str] = {}
         self.card_poke_type: Dict[int, str] = {}
@@ -80,7 +80,9 @@ class CardRegistry:
                                     self.move_damage[move.lower()] = dmg
                             if id_idx != -1 and len(row) > id_idx:
                                 try:
-                                    cid = int(row[id_idx].strip())
+                                    cid_val = row[id_idx].strip()
+                                    cid = int(cid_val)
+                                    
                                     if hp_idx != -1 and len(row) > hp_idx and cid not in self.card_hp:
                                         hp_val = row[hp_idx].strip()
                                         if hp_val and hp_val.lower() not in ("n/a", ""):

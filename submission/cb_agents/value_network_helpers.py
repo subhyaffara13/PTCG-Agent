@@ -244,7 +244,7 @@ if HAS_TORCH:
         # -----------------------------------------------------------------
         # Legacy flat MLP — kept for checkpoint compatibility checks
         # -----------------------------------------------------------------
-        class PTCGValueMLP(nn.Module):
+        class PTCGValueMLP(nn.Module):  # noqa: F811
             """Legacy flat MLP (20-feature input). Kept so old checkpoints can load."""
             def __init__(self, input_dim=20):
                 super().__init__()
@@ -335,7 +335,7 @@ if HAS_TORCH:
             except (TypeError, ValueError):
                 return 1
 
-        def state_to_card_tokens(game_state: dict):
+        def state_to_card_tokens(game_state: dict):  # noqa: F811
             """
             Convert a game-state dict into (token_ids, zone_ids, scalars, padding_mask)
             tensors ready for PTCGTransformerNet.
@@ -406,7 +406,7 @@ if HAS_TORCH:
 
             return token_t, zone_t, scalar_t, pad_mask
 
-        def state_to_tensor(game_state: dict) -> torch.Tensor:
+        def state_to_tensor(game_state: dict) -> torch.Tensor:  # noqa: F811
             """Converts game state dictionary to a numeric tensor for the legacy MLP."""
             my_prizes = game_state.get("my_prizes", 6)
             opp_prizes = game_state.get("opponent_prizes", 6)
@@ -450,7 +450,7 @@ if HAS_TORCH:
             ] + [0.0] * 6
             return torch.tensor(features, dtype=torch.float32).unsqueeze(0)
 
-        def load_weights(path):
-            return torch.load(str(path), map_location="cpu")
+        def load_weights(path):  # noqa: F811
+            return torch.load(str(path), map_location="cpu", weights_only=True)
 
 
