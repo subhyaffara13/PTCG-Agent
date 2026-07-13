@@ -80,19 +80,19 @@ print("Creating package markers (__init__.py)...")
 for folder in ("cb_agents", "router", "skills"):
     (Path("submission") / folder / "__init__.py").touch(exist_ok=True)
 
-# Copy C++ binaries (*.pyd, *.so) to submission/cb_agents/
-for ext in ("*.pyd", "*.so"):
+# Copy C++ binaries (*.so) to submission/cb_agents/
+# Skip .pyd (Windows DLLs) - Kaggle runs Linux and compiles on-the-fly via main_template.py
+for ext in ("*.so",):
     for f in Path(".").glob(ext):
         if "ptcg_core" in f.name:
             dest = submission_cb_agents / f.name
             shutil.copy2(f, dest)
             print(f"Bundled extension: {f.name} -> {dest}")
-            if f.suffix == ".so":
-                try:
-                    subprocess.run(["strip", "--strip-unneeded", str(dest)], check=False)
-                    print(f"Stripped symbols from {dest.name}")
-                except Exception as e:
-                    pass
+            try:
+                subprocess.run(["strip", "--strip-unneeded", str(dest)], check=False)
+                print(f"Stripped symbols from {dest.name}")
+            except Exception as e:
+                pass
 
 # 3.4 Copy model weights checkpoint
 weights_src = Path("m71.pt")

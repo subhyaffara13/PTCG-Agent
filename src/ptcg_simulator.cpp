@@ -576,16 +576,36 @@ void check_win_conditions(BoardState& state) {
     if (state.me.prizes <= 0) {
         state.game_over = true;
         state.winner = "me";
-    } else if (state.me.deck_out_loss || state.me.deck_count < 0) {
+        return;
+    }
+    if (state.opponent.prizes <= 0) {
         state.game_over = true;
         state.winner = "opponent";
-    } else {
-        int opp_hp = state.opponent.active.hp;
-        bool opp_has_bench = !state.opponent.bench.empty();
-        if (opp_hp <= 0 && !opp_has_bench) {
-            state.game_over = true;
-            state.winner = "me";
-        }
+        return;
+    }
+    if (state.me.deck_out_loss || state.me.deck_count < 0) {
+        state.game_over = true;
+        state.winner = "opponent";
+        return;
+    }
+    if (state.opponent.deck_out_loss || state.opponent.deck_count < 0) {
+        state.game_over = true;
+        state.winner = "me";
+        return;
+    }
+    bool me_alive = !state.me.has_active || state.me.active.hp > 0;
+    bool me_has_bench = !state.me.bench.empty();
+    if (!me_alive && !me_has_bench) {
+        state.game_over = true;
+        state.winner = "opponent";
+        return;
+    }
+    int opp_hp = state.opponent.has_active ? state.opponent.active.hp : 0;
+    bool opp_has_bench = !state.opponent.bench.empty();
+    if (opp_hp <= 0 && !opp_has_bench) {
+        state.game_over = true;
+        state.winner = "me";
+        return;
     }
 }
 
