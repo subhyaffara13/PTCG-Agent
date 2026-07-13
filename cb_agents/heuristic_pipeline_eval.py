@@ -10,6 +10,8 @@ from cb_agents.card_types import CardStage
 logger = logging.getLogger(__name__)
 _registry = CardRegistry()
 
+from cb_agents.card_utils import _get_prize_yield
+
 try:
     import ptcg_core as _ptcg_core  # type: ignore
 except Exception:
@@ -18,18 +20,6 @@ except Exception:
 # hand-size-aware supporters, one-short energy bonus, bench evolution scoring).
 # The C++ MCTS engine uses its own internal scoring (unaffected).
 _HAS_CPP_SCORE = False
-
-
-def _get_prize_yield(card_name: str) -> int:
-    """Return the number of prize cards this card gives up when KO'd."""
-    if not card_name:
-        return 1
-    n = card_name.lower()
-    if "vmax" in n:
-        return 3
-    if "vstar" in n or n.endswith(" v") or n.endswith(" ex") or " ex " in n or " v " in n:
-        return 2
-    return 1
 
 
 def score_action(action: str, gs: dict, threat: float = 0.0) -> float:

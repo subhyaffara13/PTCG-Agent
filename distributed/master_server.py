@@ -41,6 +41,16 @@ class MasterServer:
         self.running = True
         self.handlers = MasterHandlers(self)
         
+    def _accept_with_timeout(self, timeout: float = 1.0):
+        """Accept a connection with a timeout so shutdown doesn't block forever."""
+        self.server_socket.settimeout(timeout)
+        try:
+            return self.server_socket.accept()
+        except socket.timeout:
+            return None, None
+        finally:
+            self.server_socket.settimeout(None)
+
     def start(self):
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -53,11 +63,14 @@ class MasterServer:
         
         try:
             while self.running:
-                conn, addr = self.server_socket.accept()
+                conn, addr = self._accept_with_timeout(1.0)
+                if conn is None:
+                    continue
                 logger.info(f"Worker connected from {addr}")
                 threading.Thread(target=self.handlers.handle_worker, args=(conn, addr), daemon=True).start()
         except Exception as e:
-            logger.error(f"Server error: {e}")
+            if self.running:
+                logger.error(f"Server error: {e}")
         finally:
             self.server_socket.close()
 

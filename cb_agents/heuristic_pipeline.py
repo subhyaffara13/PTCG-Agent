@@ -6,9 +6,7 @@ from cb_agents.heuristic_pipeline_search import thinning_value as _thinning_valu
 
 logger = logging.getLogger(__name__)
 
-_SEARCH_KEYWORDS = {"ultra", "nest", "level", "heavy", "quick", "pokeball", "signal", "secret box", "petrel", "earthen vessel"}
-_ABILITY_DRAW_KEYWORDS = {"colress", "concealed", "flower selecting", "shining arcana"}
-_DRAW_SUPPORTERS = {"research", "iono", "judge", "concealed cards", "flower selecting", "shining arcana", "colress"}
+from cb_agents.constants import SEARCH_KEYWORDS, ABILITY_DRAW, DRAW_SUPPORTERS
 
 
 class HeuristicPipeline:
@@ -37,12 +35,12 @@ class HeuristicPipeline:
                     for ca in candidates:
                         if ca.startswith("ability:"):
                             t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in _ABILITY_DRAW_KEYWORDS):
+                            if any(d in t for d in ABILITY_DRAW):
                                 logger.debug(f"Bypass: {ca} (ability draw - weak)"); return ca
                     for ca in candidates:
                         if ca.startswith("play_trainer:"):
                             t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in _DRAW_SUPPORTERS):
+                            if any(d in t for d in DRAW_SUPPORTERS):
                                 logger.debug(f"Bypass: {ca} (supporter draw - weak)"); return ca
                 elif hd:
                     bs = self.pick_best_search(candidates)
@@ -50,12 +48,12 @@ class HeuristicPipeline:
                     for ca in candidates:
                         if ca.startswith("ability:"):
                             t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in _ABILITY_DRAW_KEYWORDS):
+                            if any(d in t for d in ABILITY_DRAW):
                                 logger.debug(f"Bypass: {ca} (ability - dead={hd})"); return ca
                     for ca in candidates:
                         if ca.startswith("play_trainer:"):
                             t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in _DRAW_SUPPORTERS):
+                            if any(d in t for d in DRAW_SUPPORTERS):
                                 logger.debug(f"Bypass: {ca} (supporter - dead={hd})"); return ca
             if hs == "medium":
                 hp = gs.get("supporter_played_this_turn", False)
@@ -63,7 +61,7 @@ class HeuristicPipeline:
                     for ca in candidates:
                         if ca.startswith("ability:"):
                             t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in _ABILITY_DRAW_KEYWORDS):
+                            if any(d in t for d in ABILITY_DRAW):
                                 logger.debug(f"Bypass: {ca} (medium hand, ability draw)"); return ca
         except Exception as e:
             logger.error(f"check_bypass failed: {e}", exc_info=True)

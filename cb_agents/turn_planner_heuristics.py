@@ -6,13 +6,7 @@ from cb_agents.card_types import CardStage
 logger = logging.getLogger(__name__)
 _registry = CardRegistry()
 
-_ABILITY_DRAW_KEYWORDS = {"colress", "concealed cards", "shining arcana", "flower selecting"}
-
-_SEARCH_KEYWORDS = {"nest ball", "ultra ball", "quick ball", "level ball",
-                    "secret box", "mega signal", "team rocket's petrel", "surfing beach"}
-
-_SCALING_ATTACKERS = {"raging bolt", "iron hands", "chien pao", "ceruledge",
-                      "garchomp", "roaring moon", "groudon", "kyogre"}
+from cb_agents.constants import ABILITY_DRAW as _ABILITY_DRAW_KEYWORDS, SCALING_ATTACKERS
 
 def _hand_strength(game_state: dict) -> str:
     hand = game_state.get("my_hand", [])

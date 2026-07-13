@@ -111,8 +111,6 @@ def ensure_dependencies():
             time.sleep(60)
             sys.exit(1)
 
-ensure_dependencies()
-
 import socket
 import logging
 import uuid
@@ -133,11 +131,13 @@ class WorkerClient:
         
         from distributed.code_sync import get_local_version
         self.current_code_version = get_local_version()
+        self.failed_sync_versions = {}
         
         import os
         os.environ["IS_WORKER"] = "true"
         
     def start(self):
+        ensure_dependencies()
         logger.info(f"Worker {self.worker_id} starting (Current Code: {self.current_code_version})...")
         
         # Register Graceful Signal Handlers
@@ -188,8 +188,6 @@ class WorkerClient:
                         
                         # 2. Dynamic Git Synchronization on Code Version Mismatch
                         if order.code_version and order.code_version != self.current_code_version:
-                            if not hasattr(self, 'failed_sync_versions'):
-                                self.failed_sync_versions = {}
                             
                             last_failed_time = self.failed_sync_versions.get(order.code_version, 0)
                             if time.time() - last_failed_time > 300:  # 5 minutes cooldown

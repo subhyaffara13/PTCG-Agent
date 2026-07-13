@@ -32,11 +32,12 @@ class MasterHandlers:
                 if not msg_line: break
                 msg = msg_line.strip()
                 if msg == "GET_WORK":
-                    while self.server.work_queue.empty() and self.server.running:
-                        time.sleep(0.5)
-                    if not self.server.running: break
-                    
-                    order = self.server.work_queue.get()
+                    try:
+                        order = self.server.work_queue.get(timeout=1)
+                    except Exception:
+                        if not self.server.running:
+                            break
+                        continue
                     try:
                         conn.sendall((order.serialize() + "\n").encode('utf-8'))
                     except Exception as e:
