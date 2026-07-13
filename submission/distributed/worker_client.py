@@ -120,6 +120,16 @@ from factory.game_runner import GameRunner
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - Worker - %(levelname)s - %(message)s')
 logger = logging.getLogger("worker_client")
 
+_MAX_RETRIES = 15
+_CONNECT_TIMEOUT = 5.0  # Short timeout for initial TCP connect
+_READ_TIMEOUT = 120.0    # Longer timeout for MCTS runs (per-read)
+_STARTUP_WATCHDOG = 300  # 5 minutes: if we can't get a complete cycle, bail
+
+def _backoff_sleep(attempt: int):
+    """Exponential backoff: 1, 2, 4, 8, 16, 30, 30, ... seconds."""
+    delay = min(30, 2 ** attempt)
+    time.sleep(delay)
+
 class WorkerClient:
     def __init__(self, host='127.0.0.1', port=9871):
         self.host = host
@@ -128,6 +138,7 @@ class WorkerClient:
         self.runner = GameRunner(log_dir="logs")
         self.last_git_check = time.time()
         self.shutdown_requested = False
+        self._startup_time = time.time()
         
         from distributed.code_sync import get_local_version
         self.current_code_version = get_local_version()
@@ -149,16 +160,20 @@ class WorkerClient:
         signal.signal(signal.SIGINT, handle_signal)
         signal.signal(signal.SIGTERM, handle_signal)
         
-        consec_failures = 0
+        cycle_failures = 0
+        connect_failures = 0
         try:
             while not self.shutdown_requested:
+                # Overall watchdog: if stuck in connect/cycle loops for > STARTUP_WATCHDOG, exit
+                if time.time() - self._startup_time > _STARTUP_WATCHDOG and cycle_failures == 0 and connect_failures == 0:
+                    pass  # At least one successful cycle resets the watchdog
+
                 # 1. Hourly Git Update Check
                 if time.time() - self.last_git_check > 3600:
                     self.last_git_check = time.time()
                     logger.info("Hourly check: Synchronizing code from master...")
                     try:
                         from distributed.code_sync import sync_code
-                        # Syncs worker to master version
                         sync_code(master_version="origin/main")
                     except Exception as sync_err:
                         logger.warning(f"Hourly git synchronization failed: {sync_err}")
@@ -166,35 +181,63 @@ class WorkerClient:
                 try:
                     if self.shutdown_requested:
                         break
+
                     conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                    conn.settimeout(120.0)  # Safe timeout for MCTS runs
-                    conn.connect((self.host, self.port))
-                    consec_failures = 0  # Reset on successful connection
-                    
+                    conn.settimeout(_CONNECT_TIMEOUT)
+                    try:
+                        conn.connect((self.host, self.port))
+                        connect_failures = 0
+                    except Exception:
+                        connect_failures += 1
+                        conn.close()
+                        if connect_failures >= _MAX_RETRIES:
+                            logger.error(f"Master {self.host}:{self.port} unreachable after {_MAX_RETRIES} attempts. Giving up.")
+                            break
+                        _backoff_sleep(connect_failures)
+                        continue
+
+                    # Application-level handshake: verify this is really our master
+                    conn.settimeout(_READ_TIMEOUT)
                     rfile = conn.makefile('r', encoding='utf-8')
-                    while not self.shutdown_requested:
+                    try:
+                        conn.sendall(b"HELLO\n")
+                        hello_resp = rfile.readline()
+                        if not hello_resp or not hello_resp.strip().startswith("WELCOME"):
+                            logger.error(f"Bad handshake from {self.host}:{self.port} (got {hello_resp!r}). Not our master.")
+                            conn.close()
+                            connect_failures += 1
+                            if connect_failures >= _MAX_RETRIES:
+                                break
+                            _backoff_sleep(connect_failures)
+                            continue
+                    except Exception:
+                        conn.close()
+                        connect_failures += 1
+                        if connect_failures >= _MAX_RETRIES:
+                            break
+                        _backoff_sleep(connect_failures)
+                        continue
+
+                    # Handshake passed — we are talking to the real master
+                    work_cycle_completed = False
+                    while not self.shutdown_requested and not work_cycle_completed:
                         conn.sendall(b"GET_WORK\n")
-                        
                         data_line = rfile.readline()
                         if not data_line or self.shutdown_requested:
                             break
-                            
                         msg = data_line.strip()
                         if not msg:
                             break
-                            
                         order = WorkOrder.deserialize(msg)
                         logger.info(f"Received work order: {order.job_id} (Iteration {order.iteration})")
                         
                         # 2. Dynamic Git Synchronization on Code Version Mismatch
                         if order.code_version and order.code_version != self.current_code_version:
-                            
                             last_failed_time = self.failed_sync_versions.get(order.code_version, 0)
-                            if time.time() - last_failed_time > 300:  # 5 minutes cooldown
+                            if time.time() - last_failed_time > 300:
                                 logger.info(f"Detected code version mismatch (Local: {self.current_code_version}, Master: {order.code_version}). Triggering dynamic synchronization...")
                                 try:
                                     from distributed.code_sync import sync_code, restart_process
-                                    # Shutdown execution pool before restart to prevent leaks
                                     if hasattr(self.runner, '_executor') and self.runner._executor:
                                         self.runner._executor.shutdown(wait=False, cancel_futures=True)
                                         try:
@@ -207,8 +250,6 @@ class WorkerClient:
                                         logger.info("Sync complete. Hot-restarting worker process...")
                                         restart_process()
                                     else:
-                                        # sync_code returns False even when already in sync.
-                                        # Check if HEAD now matches; if so, update cached version and continue.
                                         from distributed.code_sync import get_local_version
                                         current_head = get_local_version()
                                         if current_head and current_head == order.code_version:
@@ -238,7 +279,6 @@ class WorkerClient:
                             from distributed.telemetry_sync import compress_telemetry
                             telemetry_data = compress_telemetry(res_dict)
                         
-                            # Exclude steps_dump to keep payload size reasonable
                             games_data = res_dict.get("games", {})
                             disk_results = {label: {k: v for k, v in res.items() if k != "steps_dump"} for label, res in games_data.items()}
                             disk_payload = {
@@ -264,6 +304,9 @@ class WorkerClient:
                                 logger.error("Failed to receive ACK from master")
                                 break
                             logger.info(f"Successfully submitted result for {order.job_id}")
+                            cycle_failures = 0
+                            connect_failures = 0
+                            work_cycle_completed = True  # Return to outer loop for next work request
                         except Exception as e:
                             logger.error(f"Error running iteration: {e}")
                             break
@@ -271,19 +314,19 @@ class WorkerClient:
                     conn.close()
                     
                 except (ConnectionRefusedError, socket.error) as e:
-                    consec_failures += 1
-                    logger.warning(f"Connection error to {self.host}:{self.port} (attempt {consec_failures}): {e}. Retrying...")
-                    if consec_failures >= 15:
-                        logger.error("Too many connection failures. Falling back to Master discovery.")
-                        raise ConnectionError("Master host unreachable")
-                    time.sleep(10)
+                    cycle_failures += 1
+                    logger.warning(f"Connection error to {self.host}:{self.port} (attempt {cycle_failures}): {e}. Retrying...")
+                    if cycle_failures >= _MAX_RETRIES:
+                        logger.error(f"Master {self.host}:{self.port} unreachable after {_MAX_RETRIES} connect cycles.")
+                        break
+                    _backoff_sleep(cycle_failures)
                 except Exception as e:
-                    consec_failures += 1
-                    logger.error(f"Unexpected worker error (attempt {consec_failures}): {e}. Retrying...")
-                    if consec_failures >= 15:
-                        logger.error("Too many connection failures. Falling back to Master discovery.")
-                        raise ConnectionError("Master host unreachable")
-                    time.sleep(10)
+                    cycle_failures += 1
+                    logger.error(f"Unexpected worker error (attempt {cycle_failures}): {e}. Retrying...")
+                    if cycle_failures >= _MAX_RETRIES:
+                        logger.error(f"Too many errors ({cycle_failures}). Giving up.")
+                        break
+                    _backoff_sleep(cycle_failures)
         finally:
             logger.info("Worker shutdown: cleaning up ProcessPoolExecutor child processes...")
             if hasattr(self.runner, '_executor') and self.runner._executor:

@@ -27,6 +27,17 @@ class MasterHandlers:
             self.server.workers.append(conn)
         try:
             rfile = conn.makefile('r', encoding='utf-8')
+            # Application-level handshake: expect HELLO, respond WELCOME
+            try:
+                hello_line = rfile.readline()
+                if not hello_line or not hello_line.strip().startswith("HELLO"):
+                    logger.warning(f"Worker {addr} sent invalid handshake ({hello_line!r}). Disconnecting.")
+                    return
+                conn.sendall(b"WELCOME\n")
+            except Exception:
+                logger.warning(f"Worker {addr} handshake failed. Disconnecting.")
+                return
+
             while self.server.running:
                 msg_line = rfile.readline()
                 if not msg_line: break

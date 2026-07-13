@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from queue import Queue
 from collections import deque
 from distributed.work_order import WorkOrder, GameResult
+from distributed.code_sync import get_local_version
 from factory.game_runner import GameRunner
 from distributed.master_handlers import MasterHandlers
 
@@ -60,6 +61,13 @@ class MasterServer:
         
         threading.Thread(target=self._hybrid_runner_loop, daemon=True).start()
         threading.Thread(target=self.handlers.process_results, daemon=True).start()
+        # Start UDP beacon so workers can auto-discover the master
+        try:
+            from distributed.discovery import MasterBeacon
+            self.beacon = MasterBeacon(code_version=get_local_version())
+            self.beacon.start()
+        except Exception as e:
+            logger.warning(f"Failed to start master beacon: {e}")
         
         try:
             while self.running:
