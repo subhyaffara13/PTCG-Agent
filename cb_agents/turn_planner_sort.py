@@ -99,6 +99,15 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                         micro_rank += 12  # Moderate penalty to conserve deck size when running lower than opponent
                     else:
                         micro_rank -= 5
+                # Mill pursuit: prioritize shuffle-mill when opponent will deck out before us
+                is_iono_judge = any(k in name for k in {"Iono", "Judge"})
+                if is_iono_judge:
+                    dc = game_state.get("my_deck_count", 60)
+                    opp_dc = game_state.get("opponent_deck_count", 60)
+                    if opp_dc < dc and opp_dc < 12:
+                        micro_rank -= 15  # High priority: accelerate opponent's deck-out
+                    elif opp_dc < 8:
+                        micro_rank -= 10  # Still valuable to shrink opponent deck
                 elif "Ball" in name:
                     micro_rank -= 1
             elif action.startswith("bench:"):
@@ -176,7 +185,12 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 micro_rank -= 10
                 
             elif action == "pass":
-                micro_rank += 20
+                dc = game_state.get("my_deck_count", 60)
+                opp_dc = game_state.get("opponent_deck_count", 60)
+                if opp_dc < dc and opp_dc < 8:
+                    micro_rank -= 12  # Stall: passing lets opponent draw closer to deck-out
+                else:
+                    micro_rank += 20
                 
             # Blend Neural Prior
             prior = neural_priors.get(action, 0.0)

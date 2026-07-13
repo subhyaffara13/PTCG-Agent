@@ -31,6 +31,22 @@ def apply_learned_rules(score: float, deck: list, counts: dict,
     # Deck-out risk penalty: too many draw supporters burn through the deck
     score -= _deck_out_risk(deck, counts)
 
+    # Attacker bonus: ensure deck can win by prizes, not just deck-out
+    attackers = counts.get("attackers", [])
+    num_attackers = len(attackers) if isinstance(attackers, list) else 0
+    if num_attackers >= 4:
+        score += 0.10  # Enough attackers to consistently take prizes
+    elif num_attackers >= 2:
+        score += 0.05  # Bare minimum attackers
+    elif num_attackers <= 0:
+        score -= 0.30  # No attackers! Can only win by deck-out — fragile strategy
+    # Reward attacker energy efficiency: attackers with cost <= 2 are faster
+    fast_attackers = sum(1 for a in (attackers if isinstance(attackers, list) else []) if getattr(a, 'energy_cost', 3) <= 2)
+    if fast_attackers >= 3:
+        score += 0.10
+    elif fast_attackers >= 1:
+        score += 0.05
+
     return score
 
 

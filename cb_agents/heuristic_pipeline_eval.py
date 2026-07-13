@@ -247,6 +247,31 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
     if hs >= 2 and dc > 10: v += 0.03 * min(hs, 5)
 
+    # Deck-out race pursuit: actively mill opponent when we have more deck remaining
+    _avg_draw = 1.5
+    my_turns_left = dc / _avg_draw if dc > 0 else 0
+    opp_turns_left = opp_dc / _avg_draw if opp_dc > 0 else 0
+    we_outlast = my_turns_left > opp_turns_left + 1
+    if action.startswith("play_trainer:"):
+        tn = action.split(":", 1)[1].lower()
+        is_shuffle = any(k in tn for k in {"iono", "judge"})
+        is_draw = any(k in tn for k in {"research", "professor", "carmine", "lillie"})
+        if (opp_dc < dc or (opp_dc < 10 and we_outlast)) and is_shuffle:
+            v += 1.2  # Shuffle-mill accelerates opponent deck-out
+        elif opp_dc < 8 and we_outlast:
+            if is_draw:
+                v -= 0.8  # Don't draw when opponent is nearly out — let them draw first
+            if "pass" in action or any(k in tn for k in {"potion", "heal", "switch", "scoop"}):
+                v += 0.6  # Stall to let opponent draw out
+    elif action in ("pass",) and opp_dc < 10 and we_outlast:
+        v += 0.8  # Passing is good when opponent will deck out before us
+    elif action.startswith("retreat:") and opp_dc < 10 and we_outlast:
+        v += 0.4  # Retreating to a tanky Pokemon also stalls
+    elif action.startswith("ability:"):
+        tn = action.split(":", 1)[1].lower()
+        if opp_dc < 10 and we_outlast and any(d in tn for d in {"heal", "protect", "barrier"}):
+            v += 0.5  # Stall abilities help survive until opponent decks out
+
     # Inject learned_dos / learned_donts into action scoring
     try:
         cid = None
@@ -356,6 +381,22 @@ def score_state(gs: dict) -> float:
         v += 0.3  # Opponent near deck-out
     elif opp_dc <= 8:
         v += 0.1
+
+    # Deck-out race comparison: who will deck out first?
+    if my_dc > 0 and opp_dc > 0:
+        avg_draw = 1.5
+        my_turns = my_dc / avg_draw
+        opp_turns = opp_dc / avg_draw
+        turns_diff = my_turns - opp_turns
+        if turns_diff > 3:
+            v += 0.4  # We clearly outlast opponent — stalling is winning
+            v += 0.05 * min(turns_diff, 8)
+        elif turns_diff > 1:
+            v += 0.15  # Slight edge in deck-out race
+        elif turns_diff < -3:
+            v -= 0.4  # Opponent outlasts us — must take prizes fast
+        elif turns_diff < -1:
+            v -= 0.15  # Slight deficit in deck-out race
     # Turns-until-deckout: estimate remaining turns and penalize critically low
     if my_dc > 0:
         hand_size = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
