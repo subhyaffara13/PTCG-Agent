@@ -207,7 +207,15 @@ class WorkerClient:
                                         logger.info("Sync complete. Hot-restarting worker process...")
                                         restart_process()
                                     else:
-                                        self.failed_sync_versions[order.code_version] = time.time()
+                                        # sync_code returns False even when already in sync.
+                                        # Check if HEAD now matches; if so, update cached version and continue.
+                                        from distributed.code_sync import get_local_version
+                                        current_head = get_local_version()
+                                        if current_head and current_head == order.code_version:
+                                            self.current_code_version = current_head
+                                            logger.info(f"Code already up-to-date at {current_head}. Updated cached version without restart.")
+                                        else:
+                                            self.failed_sync_versions[order.code_version] = time.time()
                                 except Exception as sync_err:
                                     logger.error(f"Dynamic synchronization failed: {sync_err}")
                                     self.failed_sync_versions[order.code_version] = time.time()
