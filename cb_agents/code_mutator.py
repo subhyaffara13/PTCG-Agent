@@ -224,21 +224,18 @@ def clean_code_response(text: str) -> str:
 
 def run_evaluation_match() -> float:
     """Run validation match vs baseline and return the reward score."""
-    logger.info("Running evaluation match for mutated code...")
+    logger.info("Running evaluation match for mutated code using the Gauntlet...")
     try:
         # Rebuild package first
         subprocess.run([sys.executable, "build_submission.py"], check=True, capture_output=True)
         
-        # Run local validation match
-        eval_path = _PROJECT_ROOT / "scratch" / "verify_mutated_match.py"
-        if not eval_path.exists():
-            eval_path = _PROJECT_ROOT / "verify_dynamic_behavior.py"
+        from factory.gauntlet_runner import GauntletRunner
+        from factory.game_runner import DEFAULT_DECK
         
-        if eval_path.exists():
-            res = subprocess.run([sys.executable, str(eval_path)], capture_output=True, text=True)
-            if "BEST" in res.stdout or "win" in res.stdout.lower() or res.returncode == 0:
-                return 1.0 # Success
-        return 1.0 # Default success if custom eval is not set up
+        runner = GauntletRunner()
+        # Run 2 games per gauntlet archetype
+        win_rate = runner.run_gauntlet(DEFAULT_DECK, num_games_per_archetype=2)
+        return float(win_rate)
     except Exception as e:
         logger.error(f"Evaluation match failed: {e}")
         return 0.0

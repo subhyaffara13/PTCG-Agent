@@ -44,25 +44,31 @@ def run_master_loop(enable_distributed=True):
     
     scripts = get_training_scripts(enable_distributed=enable_distributed)
     iteration = 0
+    # Outer try-except-finally block to ensure graceful shutdown of MasterBeacon
     try:
         while True:
             logger.info("--- [Train Phase] Starting distributed master and PPO workers ---" if enable_distributed else "--- [Train Phase] Starting local training processes ---")
             processes = launch_processes(scripts)
             try:
+                # Monitor processes for up to 60 minutes (60 * 60 seconds)
                 for _ in range(60):
                     monitor_and_restart(processes, scripts)
                     time.sleep(60)
             except KeyboardInterrupt:
-                logger.info("Loop manually interrupted. Shutting down gracefully...")
-                raise  # Re-raise to break out of the top-level while loop
+                logger.info("Train phase monitoring loop interrupted. Proceeding to training process cleanup and main loop exit.")
+                # When KeyboardInterrupt occurs here, we break out of the `while True` loop entirely.
+                # This ensures the 'Analytics Phase' and subsequent iterations are skipped for this run.
+                break
             finally:
                 logger.info("--- [Halt Phase] Stopping training processes ---")
                 try:
                     cleanup(processes)
                     time.sleep(2)
                 except KeyboardInterrupt:
-                    logger.info("Ignored extra Ctrl+C. Continuing safe shutdown...")
+                    logger.info("Ignored extra Ctrl+C during training process cleanup. Continuing safe shutdown.")
 
+            # These phases run only if the training loop completes its 60 iterations
+            # without a KeyboardInterrupt or other exception that breaks the loop earlier.
             logger.info("--- [Analytics Phase] Running synchronous checks ---")
             from factory.log_pruner import prune_logs
             prune_logs(max_files=1000)
@@ -77,8 +83,13 @@ def run_master_loop(enable_distributed=True):
                     logger.error(f"Git auto-push failed: {e}")
                 
             iteration += 1
+    except KeyboardInterrupt:
+        logger.info("Orchestration Agent (Master Mode) received KeyboardInterrupt. Initiating graceful shutdown.")
     except Exception as e:
-        logger.error(f"Loop crashed: {e}")
+        # Catch any other unexpected exceptions and log them with stack trace
+        logger.error(f"Orchestration Agent (Master Mode) crashed due to unhandled exception: {e}", exc_info=True)
     finally:
         if beacon:
+            logger.info("Stopping MasterBeacon...")
             beacon.stop()
+        logger.info("Orchestration Agent (Master Mode) shutdown complete.")

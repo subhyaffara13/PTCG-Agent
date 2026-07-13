@@ -2,9 +2,15 @@ import subprocess
 import os
 import logging
 
+def _run_git(args, **kwargs):
+    repo_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    safe_cwd = os.path.dirname(repo_dir)
+    git_args = ["git", "-C", repo_dir] + args[1:]
+    return subprocess.run(git_args, cwd=safe_cwd, **kwargs)
+
 def get_local_version():
     try:
-        result = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True, check=True)
+        result = _run_git(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True, check=True)
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         logging.error(f"Failed to get local git version: {e}")
@@ -23,7 +29,7 @@ def sync_code(master_version) -> bool:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
             # Fetch all updates from origin
-            subprocess.run(['git', 'fetch', '--all'], check=True, capture_output=True, text=True)
+            _run_git(['git', 'fetch', '--all'], check=True, capture_output=True, text=True)
             
             # Remove local copies of auto-updated files to prevent conflicts if they are untracked/modified
             files_to_clean = [
@@ -42,10 +48,10 @@ def sync_code(master_version) -> bool:
             
             # Hard reset local branch to the master's exact version
             try:
-                subprocess.run(['git', 'reset', '--hard', master_version], check=True, capture_output=True, text=True)
+                _run_git(['git', 'reset', '--hard', master_version], check=True, capture_output=True, text=True)
             except subprocess.CalledProcessError as e:
                 # Fallback to origin's main if master_version is not yet known locally
-                subprocess.run(['git', 'reset', '--hard', 'origin/main'], check=True)
+                _run_git(['git', 'reset', '--hard', 'origin/main'], check=True)
                 
             new_local_version = get_local_version()
             if new_local_version == local_version:

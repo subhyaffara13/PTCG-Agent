@@ -14,7 +14,7 @@ from run_factory_utils import run_team_pipeline as _run_team_pipeline
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
-def run_team_pipeline(iteration_id: int, forced_archetype: str = None, forced_escalation: dict = None):
+def run_team_pipeline(iteration_id: int, forced_archetype: str | None = None, forced_escalation: dict | None = None):
     return _run_team_pipeline(iteration_id, forced_archetype=forced_archetype, forced_escalation=forced_escalation)
 
 run_iteration = run_team_pipeline

@@ -15,7 +15,7 @@ class QATeam:
         self.peer_reviewer = PeerReviewAgent()
         self.gauntlet_runner = GauntletRunner()
 
-    def run_qa_pipeline(self, deck_candidate: str = None, logic_candidate: str = None) -> bool:
+    def run_qa_pipeline(self, deck_candidate: str | None = None, logic_candidate: str | None = None) -> bool:
         """Runs the QA pipeline sequentially."""
         logger.info("QA Team starting review pipeline...")
         

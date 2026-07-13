@@ -38,11 +38,11 @@ def main():
         pct = (i - start_iter) / (end_iter - start_iter + 1) * 100
         forced_archetype = get_archetype_for_iteration(i)
         forced_escalation = {"deck_architect": True, "builder_agent": False} if (i % 100 == 0 or i % 10 == 0) else None
-        logger.info(f"\n{'='*60}")
+        logger.info("\n" + "=" * 60)
         logger.info(f"  ITERATION {i}  [{pct:.0f}% complete]  archetype={forced_archetype}")
         if forced_escalation:
             logger.info(f"  Escalation: {forced_escalation}")
-        logger.info(f"{'='*60}")
+        logger.info("=" * 60)
         
         if i % 50 == 0: execute_refactor_step(i)
             
@@ -64,7 +64,7 @@ def main():
                 del os.environ["FAST_SIM_MODE"]
             
         should_build = (i == end_iter)
-        eval_report_path = Path("eval_report.json")
+        eval_report_path = Path("logs/eval_report.json")
         if eval_report_path.exists():
             try:
                 report_data = json.loads(eval_report_path.read_text(encoding="utf-8"))

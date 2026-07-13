@@ -103,7 +103,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                     p.prob /= total
         return priors
 
-    def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None = None) -> float:
+    def _evaluate_state(self, game_state: dict, action: str | None, determinization: dict | None = None) -> float:
         try:
             return self.value_network.evaluate(game_state, action, determinization)
         except Exception as e:
@@ -132,19 +132,20 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                 time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
                 state_dict = _to_cpp_compatible_state(game_state)
                 state_dict["legal_actions"] = canonical_actions
-                return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct)
+                
+                root_priors = {}
+                if self.policy_network is not None:
+                    try:
+                        priors = self.policy_network.get_priors(game_state, canonical_actions)
+                        root_priors = {p.action: p.prob for p in priors}
+                    except Exception as pe:
+                        logger.warning(f"Failed to get policy priors for C++ MCTS: {pe}")
+
+                return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct, root_priors)
             except Exception as e:
                 logger.error(f"C++ MCTS search failed: {e}. Falling back to Python MCTS.")
 
         # Fallback to Python search
-        if self.belief_tracker is None:
-            best, best_val = None, -float("inf")
-            for a in canonical_actions:
-                v = self._evaluate_state(game_state, a)
-                if v > best_val:
-                    best_val, best = v, a
-            return best or legal_actions[0]
-
         turn_num = game_state.get('turn_number', 0)
         root, is_transposition = self._transposition_table.get_or_create(
             game_state, lambda: MCTSNode(state_hash=f"turn_{turn_num}")

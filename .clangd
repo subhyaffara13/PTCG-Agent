@@ -1,0 +1,8 @@
+CompileFlags:
+  Add:
+    - -std=c++17
+    - -IC:/Users/subhy/.gemini/antigravity/scratch/ptcg-agent/src
+    - -IC:/Users/subhy/.gemini/antigravity/scratch/ptcg-agent/onnxruntime-win-x64-1.16.3/include
+    - -IC:/Users/subhy/.gemini/antigravity/scratch/ptcg-agent/.venv/Lib/site-packages/pybind11/include
+    - -IC:/Python312/include
+

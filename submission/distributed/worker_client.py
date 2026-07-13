@@ -2,6 +2,7 @@ import sys
 import os
 import subprocess
 import time
+import io
 
 # Ensure root directory is in python path for clean package imports
 cwd = os.getcwd()
@@ -12,9 +13,9 @@ if cwd not in sys.path:
 
 import contextlib
 
-class DummyStream:
+class DummyStream(io.StringIO):
     def write(self, s):
-        pass
+        return len(s)
     def flush(self):
         pass
 
@@ -31,7 +32,7 @@ def silence_kaggle_warnings():
     
     # Hide pyspiel module from python loader during import to bypass OpenSpiel C++ prints
     saved_pyspiel = sys.modules.get('pyspiel')
-    sys.modules['pyspiel'] = None
+    sys.modules['pyspiel'] = None  # type: ignore
     
     dummy_stream = DummyStream()
     try:
@@ -105,7 +106,7 @@ def ensure_dependencies():
             print("\n" + "="*80)
             print(f"CRITICAL ERROR: The following packages are still missing: {still_missing}")
             print("Please run manually on this machine:")
-            print(f"  pip install {' '.join(still_missing)}")
+            print("  pip install " + " ".join(still_missing))
             print("="*80 + "\n")
             print("Worker will pause for 60 seconds before exiting to prevent infinite crash loops...")
             time.sleep(60)

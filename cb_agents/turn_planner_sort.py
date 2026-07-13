@@ -128,7 +128,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 try:
                     from cb_agents.preference_maps import get_energy_preference
                 except ImportError:
-                    from preference_maps import get_energy_preference
+                    from preference_maps import get_energy_preference  # type: ignore
                     
                 preferred_energy = get_energy_preference(target_id)
                 if target_id and preferred_energy:
@@ -137,7 +137,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 
                 is_active_target = False
                 if target_id:
-                    target_id_str = str(target_id).lower()
+                    target_id_str = target_id.lower()
                     active_id = str(active.get("id", "")).lower()
                     if target_id_str in ("active", "my_active_pokemon") or (active_id and target_id_str == active_id):
                         is_active_target = True
@@ -181,8 +181,27 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
             elif action.startswith("evolve:"):
                 micro_rank -= 8
                 
-            elif action.startswith("attack:"):
-                micro_rank -= 10
+            elif action.startswith("retreat:"):
+                # Penalize retreat by default to rank it below passing, unless we have a specific reason
+                retreat_penalty = 35  # Heavily penalize by default to put it below pass (which is rank 55)
+                
+                # Check if we have defensive retreat boost
+                boost = game_state.get("retreat_score_boost", 0.0)
+                if boost > 0:
+                    retreat_penalty = -5
+                else:
+                    # Let's inspect target and active to see if it makes sense
+                    hp = game_state.get("my_active_hp", 100)
+                    if hp <= 40:
+                        # Active is close to KO, retreating is reasonable if we have another Pokemon
+                        retreat_penalty = 5
+                    else:
+                        # Active is healthy. Check if active has energy that would be discarded
+                        active_energy_count = len(active.get("attached", []) or active.get("energies", [])) if isinstance(active, dict) else 0
+                        if active_energy_count == 0:
+                            # 0 energy retreat is free, no energy lost
+                            retreat_penalty = 0
+                micro_rank += retreat_penalty
                 
             elif action == "pass":
                 dc = game_state.get("my_deck_count", 60)

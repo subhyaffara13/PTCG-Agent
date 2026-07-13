@@ -1,8 +1,8 @@
 {
-  "main_agent": 1099.162192958288,
-  "main_exploiter": 1230.5304984710244,
-  "aggro_exploiter": 1227.8739306203415,
+  "main_agent": 1233.4075373072292,
+  "main_exploiter": 1134.415688915669,
+  "aggro_exploiter": 1305.2295840525303,
   "control_exploiter": 1200,
-  "combo_exploiter": 1216.7717184123162,
-  "main_agent_snapshot": 1225.6616595380299
+  "combo_exploiter": 1204.1534105483715,
+  "main_agent_snapshot": 1122.7937791761997
 }

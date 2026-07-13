@@ -11,7 +11,7 @@ run_team_pipeline = _run_team_pipeline
 
 logger = logging.getLogger("run_factory")
 
-def run_iteration(iteration_id: int, forced_archetype: str = None, forced_escalation: dict = None):
+def run_iteration(iteration_id: int, forced_archetype: str | None = None, forced_escalation: dict | None = None):
     """Public entry point used by run_guided_iterations.py.
 
     Wraps run_team_pipeline, accepting optional forced_archetype and

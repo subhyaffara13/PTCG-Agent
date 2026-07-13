@@ -8,15 +8,16 @@ from __future__ import annotations
 from typing import Dict, List, Any
 
 
-# Map Pokemon IDs to archetypes for fast lookup
+# Map known competitive Pokemon IDs to archetypes for fast lookup
 KEY_ID_TO_ARCHETYPE = {
-    "1092": "setup",
     "721": "aggro",
     "722": "aggro",
+    "979": "aggro",
     "1145": "stall",
     "1163": "stall",
     "1121": "control",
-    "1262": "combo"
+    "1262": "combo",
+    "1260": "combo",
 }
 
 from cb_agents.card_registry import CardRegistry
@@ -57,8 +58,9 @@ def identify_opponent_archetype(revealed_state: List[Any], archetypes: Dict[str,
             if raw_str in signature_cards or raw_str in card_pool:
                 matches += 1
                 continue
-            is_sig = any(ident in sig or sig in ident for sig in signature_cards)
-            is_pool = any(ident in cp or cp in ident for cp in card_pool)
+            # Substring match only for longer identifiers (>4 chars) to avoid false positives
+            is_sig = any((len(ident) > 4 and (ident in sig or sig in ident)) for sig in signature_cards)
+            is_pool = any((len(ident) > 4 and (ident in cp or cp in ident)) for cp in card_pool)
             if is_sig or is_pool:
                 matches += 1
                 

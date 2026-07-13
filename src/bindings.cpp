@@ -201,13 +201,14 @@ py::list get_legal_actions_py(py::dict game_state) {
     return res;
 }
 
-std::string mcts_search_py(py::dict game_state, double time_limit_sec, int num_simulations, double c_puct) {
+std::string mcts_search_py(py::dict game_state, double time_limit_sec, int num_simulations, double c_puct,
+                           const std::unordered_map<std::string, double>& root_priors = {}) {
     BoardState state = dict_to_boardstate(game_state);
     if (state.legal_actions.empty()) {
         regenerate_legal_actions(state);
     }
     cpp_MCTSEngine engine(c_puct, num_simulations);
-    return engine.search(state, time_limit_sec);
+    return engine.search(state, time_limit_sec, root_priors);
 }
 
 void initialize_registry_py(const std::string& skills_dir) {
@@ -277,7 +278,8 @@ PYBIND11_MODULE(ptcg_core, m) {
           py::arg("game_state"));
 
     m.def("mcts_search", &mcts_search_py, "Run MCTS UCT search on game state dictionary",
-          py::arg("game_state"), py::arg("time_limit_sec") = 1.0, py::arg("num_simulations") = 50, py::arg("c_puct") = 1.25);
+          py::arg("game_state"), py::arg("time_limit_sec") = 1.0, py::arg("num_simulations") = 50, py::arg("c_puct") = 1.25,
+          py::arg("root_priors") = std::unordered_map<std::string, double>());
 
     m.def("initialize_registry", &initialize_registry_py, "Initialize card registry from skills directory",
           py::arg("skills_dir"));

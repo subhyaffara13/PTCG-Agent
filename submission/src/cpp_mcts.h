@@ -58,7 +58,7 @@ public:
     cpp_MCTSEngine(double cPuct = 1.25, int numSimulations = 50)
         : c_puct(cPuct), num_simulations(numSimulations) {}
 
-    std::string search(const BoardState& rootState, double timeLimitSec = 1.0);
+    std::string search(const BoardState& rootState, double timeLimitSec = 1.0, const std::unordered_map<std::string, double>& root_priors = {});
 
 private:
     double c_puct = 1.25;

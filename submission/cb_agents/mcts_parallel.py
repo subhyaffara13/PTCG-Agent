@@ -18,7 +18,7 @@ class MCTSParallelMixin:
     def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy: Any = None) -> List[Any]:
         return []
 
-    def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None = None) -> float:
+    def _evaluate_state(self, game_state: dict, action: str | None, determinization: dict | None = None) -> float:
         return 0.0
 
     def select_child(self, node: Any, c_puct: float) -> Any:
@@ -45,6 +45,7 @@ class MCTSParallelMixin:
             priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
             priors.sort(key=lambda p: p.prob, reverse=True)
             root.expand(priors[:PROGRESSIVE_TOP_K])
+            # Store remaining priors on the node for later progressive widening
             root._pending_priors = priors[PROGRESSIVE_TOP_K:]
 
         tree_lock = threading.Lock()

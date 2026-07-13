@@ -28,41 +28,38 @@ class HeuristicPipeline:
                 hs = "strong" if len(hand) >= 7 else ("medium" if len(hand) >= 4 else "weak")
             else:
                 hs = "weak"
-            if dc > 5:
-                if hs == "weak" and not hd:
+            # Only bypass MCTS when genuinely dead — empty bench + no basics in hand
+            if hs == "weak" and dc > 5:
+                bench = gs.get("my_bench", [])
+                has_basic_in_hand = False
+                if isinstance(hand, list):
+                    from cb_agents.card_registry import CardRegistry
+                    reg = CardRegistry()
+                    for cid in hand:
+                        try:
+                            c = reg.get(int(cid))
+                            if c and c.stage and c.stage.name == "BASIC":
+                                has_basic_in_hand = True
+                                break
+                        except Exception:
+                            pass
+                is_truly_dead = len(bench) == 0 and not has_basic_in_hand
+                if is_truly_dead:
                     bs = self.pick_best_search(candidates)
-                    if bs: logger.debug(f"Bypass: {bs} (search - weak)"); return bs
+                    if bs: logger.debug(f"Bypass: {bs} (dead hand, no bench)"); return bs
                     for ca in candidates:
                         if ca.startswith("ability:"):
                             t = ca.split(":", 1)[1].lower()
                             if any(d in t for d in ABILITY_DRAW):
-                                logger.debug(f"Bypass: {ca} (ability draw - weak)"); return ca
+                                logger.debug(f"Bypass: {ca} (ability - dead hand)"); return ca
                     for ca in candidates:
                         if ca.startswith("play_trainer:"):
                             t = ca.split(":", 1)[1].lower()
                             if any(d in t for d in DRAW_SUPPORTERS):
-                                logger.debug(f"Bypass: {ca} (supporter draw - weak)"); return ca
-                elif hd:
-                    bs = self.pick_best_search(candidates)
-                    if bs: logger.debug(f"Bypass: {bs} (search - dead={hd})"); return bs
-                    for ca in candidates:
-                        if ca.startswith("ability:"):
-                            t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in ABILITY_DRAW):
-                                logger.debug(f"Bypass: {ca} (ability - dead={hd})"); return ca
-                    for ca in candidates:
-                        if ca.startswith("play_trainer:"):
-                            t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in DRAW_SUPPORTERS):
-                                logger.debug(f"Bypass: {ca} (supporter - dead={hd})"); return ca
-            if hs == "medium":
-                hp = gs.get("supporter_played_this_turn", False)
-                if not hp:
-                    for ca in candidates:
-                        if ca.startswith("ability:"):
-                            t = ca.split(":", 1)[1].lower()
-                            if any(d in t for d in ABILITY_DRAW):
-                                logger.debug(f"Bypass: {ca} (medium hand, ability draw)"); return ca
+                                logger.debug(f"Bypass: {ca} (supporter - dead hand)"); return ca
+            elif hd and dc > 5:
+                bs = self.pick_best_search(candidates)
+                if bs: logger.debug(f"Bypass: {bs} (dead weight={hd})"); return bs
         except Exception as e:
             logger.error(f"check_bypass failed: {e}", exc_info=True)
         return None

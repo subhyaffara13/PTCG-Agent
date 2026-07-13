@@ -4,6 +4,7 @@ from typing import List, Any
 from dataclasses import dataclass
 from pathlib import Path
 import os
+from cb_agents.state_cache import gs_hash
 
 try:
     import torch
@@ -36,6 +37,8 @@ class BaseValueNetwork(ABC):
 class NeuralValueNetwork(BaseValueNetwork):
     heuristic: Any
     model: Any
+    state_to_tensor: Any
+    state_to_card_tokens: Any
 
     def __init__(self, model_path: str = "logs/model_weights.pth", device: str = "cpu"):
         from cb_agents.value_network_helpers import ActorCritic, state_to_tensor, state_to_card_tokens, HAS_TORCH
@@ -177,6 +180,14 @@ class HeuristicPolicyNetwork(BasePolicyNetwork):
 
 
 class PPOPolicyNetwork(BasePolicyNetwork):
+    model: Any
+    device: Any
+    _state_to_tensor: Any
+    _state_to_card_tokens: Any
+    _has_torch: Any
+    _heuristic_fallback: Any
+    _cache: Any
+
     def __init__(self, model_path="models/ppo_actor_critic.pt", device="cpu"):
         self.model = None
         self.device = device
@@ -184,6 +195,7 @@ class PPOPolicyNetwork(BasePolicyNetwork):
         self._state_to_card_tokens = None
         self._has_torch = False
         self._heuristic_fallback = HeuristicPolicyNetwork()
+        self._cache = {}
 
         try:
             import torch as _
@@ -209,18 +221,50 @@ class PPOPolicyNetwork(BasePolicyNetwork):
 
         try:
             import torch
-            ac = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
+            ac: Any = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
             ac.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
             ac.to(self.device)
             ac.eval()
             self.model = ac
             logger.info(f"Loaded PPO policy network from {model_path}")
+            
+            # Dynamically export to ONNX if it doesn't exist yet
+            onnx_path = model_path.replace(".pt", ".onnx")
+            if not os.path.exists(onnx_path):
+                try:
+                    dummy_token_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
+                    dummy_zone_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
+                    dummy_scalars = torch.zeros(1, 6, dtype=torch.float32, device=self.device)
+                    dummy_padding_mask = torch.zeros(1, 33, dtype=torch.bool, device=self.device)
+                    torch.onnx.export(
+                        ac,
+                        (None, dummy_token_ids, dummy_zone_ids, dummy_scalars, dummy_padding_mask),
+                        onnx_path,
+                        input_names=["x", "token_ids", "zone_ids", "scalars", "padding_mask"],
+                        output_names=["logits", "value"],
+                        dynamic_axes={
+                            "token_ids": {0: "batch_size"},
+                            "zone_ids": {0: "batch_size"},
+                            "scalars": {0: "batch_size"},
+                            "padding_mask": {0: "batch_size"},
+                            "logits": {0: "batch_size"},
+                            "value": {0: "batch_size"}
+                        },
+                        opset_version=14
+                    )
+                    logger.info(f"Dynamically exported ONNX model to {onnx_path}")
+                except Exception as ex:
+                    logger.warning(f"Dynamic ONNX export failed: {ex}")
         except Exception as e:
             logger.warning(f"PPO policy load failed: {e}. Using heuristic fallback.")
 
     def get_priors(self, game_state: dict, legal_actions: List[str]) -> List[ActionPrior]:
         if self.model is None or not self._has_torch or not legal_actions:
             return self._heuristic_fallback.get_priors(game_state, legal_actions)
+
+        h = gs_hash(game_state)
+        if h != 0 and h in self._cache:
+            return self._cache[h]
 
         import torch
         from factory.data_alignment_helpers import normalize_action
@@ -254,6 +298,8 @@ class PPOPolicyNetwork(BasePolicyNetwork):
                 if total > 0:
                     for p in priors:
                         p.prob /= total
+                if h != 0:
+                    self._cache[h] = priors
                 return priors
 
             except Exception as e:
@@ -262,6 +308,13 @@ class PPOPolicyNetwork(BasePolicyNetwork):
 
 
 class PPOValueNetwork(BaseValueNetwork):
+    model: Any
+    device: Any
+    _state_to_tensor: Any
+    _state_to_card_tokens: Any
+    _has_torch: Any
+    _cache: Any
+
     def __init__(self, model_path="models/ppo_actor_critic.pt", device="cpu"):
         self.model = None
         self.device = device
@@ -282,6 +335,7 @@ class PPOValueNetwork(BaseValueNetwork):
         self._has_torch = HAS_TORCH
         self._state_to_tensor = state_to_tensor
         self._state_to_card_tokens = state_to_card_tokens
+        self._cache = {}
 
         if not HAS_TORCH:
             logger.info("Torch helpers unavailable. PPOValueNetwork using heuristic fallback.")
@@ -293,7 +347,7 @@ class PPOValueNetwork(BaseValueNetwork):
 
         try:
             import torch
-            ac = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
+            ac: Any = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
             ac.load_state_dict(torch.load(model_path, map_location=self.device, weights_only=True))
             ac.to(self.device)
             ac.eval()
@@ -306,8 +360,18 @@ class PPOValueNetwork(BaseValueNetwork):
         if game_state.get("game_over"):
             return 1.0 if game_state.get("winner") == "me" else -1.0
 
+        from cb_agents.heuristic_value import HeuristicValueNetwork
+
+        h = gs_hash(game_state)
+        cache_key = (h, action)
+        if h != 0 and cache_key in self._cache:
+            return self._cache[cache_key]
+
         if self.model is None or not self._has_torch:
-            return HeuristicValueNetwork().evaluate(game_state, action, determinization)
+            res = HeuristicValueNetwork().evaluate(game_state, action, determinization)
+            if h != 0:
+                self._cache[cache_key] = res
+            return res
 
         import torch
         with torch.no_grad():
@@ -325,14 +389,23 @@ class PPOValueNetwork(BaseValueNetwork):
                         tensor = tensor.to(self.device)
                         _, val = self.model(x=tensor)
                     else:
-                        return HeuristicValueNetwork().evaluate(game_state, action, determinization)
+                        res = HeuristicValueNetwork().evaluate(game_state, action, determinization)
+                        if h != 0:
+                            self._cache[cache_key] = res
+                        return res
 
                 v = val.item()
                 if action:
                     from cb_agents.heuristic_pipeline import _action_score
                     v += _action_score(action, game_state, 0.0)
-                return max(-1.0, min(1.0, v))
+                res = max(-1.0, min(1.0, v))
+                if h != 0:
+                    self._cache[cache_key] = res
+                return res
 
             except Exception as e:
                 logger.error(f"PPO value inference failed: {e}")
-                return HeuristicValueNetwork().evaluate(game_state, action, determinization)
+                res = HeuristicValueNetwork().evaluate(game_state, action, determinization)
+                if h != 0:
+                    self._cache[cache_key] = res
+                return res

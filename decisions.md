@@ -19438,3 +19438,294 @@
 **Losing Matches Analyzed:** 5
 **Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
 ---
+
+## Leaderboard Feedback Loop — 2026-07-11 04:24:32
+**Processed New Player:** skurita (ID: 16421017)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 04:24:47
+**Processed New Player:** ktr (ID: 16375635)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 05:25:32
+**Processed New Player:** RtoABC (ID: 16371723)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 06:26:21
+**Processed New Player:** Eggplanck (ID: 16401957)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 06:26:32
+**Processed New Player:** HiroyukiSasaki (ID: 16392357)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 09:28:12
+**Processed New Player:** Zhenyu Zhang (ID: 16395176)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 09:28:23
+**Processed New Player:** MIRAI LAB (ID: 16411998)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 11:29:22
+**Processed New Player:** pino 70122 (ID: 16377244)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 11:29:34
+**Processed New Player:** tomo11111 (ID: 16515712)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 12:30:17
+**Processed New Player:** haggle (ID: 16441077)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 14:31:23
+**Processed New Player:** yuya (ID: 16391853)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 15:41:45
+**Processed New Player:** S. B. (ID: 16384286)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Iteration 0 — 2026-07-11 15:41:56
+**Action:** tuned_weights
+**Reasoning:** Normal operation. Tuning weights.
+**Next context:** analytics_feedback
+**Best version:** player_b
+---
+
+## BUILDER AGENT ERROR — 2026-07-11 15:41:56
+**Error:** No clear change pattern from weak metric.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 17:53:44
+**Processed New Player:** giacomovin (ID: 16512241)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 18:54:34
+**Processed New Player:** Max Manushin (ID: 16440334)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 20:55:58
+**Processed New Player:** Haramball forever! (ID: 16380547)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 22:31:17
+**Processed New Player:** shg195 (ID: 16374432)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-11 23:32:09
+**Processed New Player:** Hiro Nomo (ID: 16373169)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 02:34:02
+**Processed New Player:** Eduardo Rocha de Andrade (ID: 16461850)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 03:34:45
+**Processed New Player:** digimagi (ID: 16384892)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 03:35:02
+**Processed New Player:** yaki-imo (ID: 16384924)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 06:36:43
+**Processed New Player:** Olegolas1 (ID: 16513666)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 11:39:06
+**Processed New Player:** rick & shikitora (ID: 16411029)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 3
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 13:40:07
+**Processed New Player:** Melvin Low (ID: 16389869)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 4
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 14:40:59
+**Processed New Player:** me and the lads (ID: 16411724)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 17:07:53
+**Processed New Player:** kkkk (ID: 16387464)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 20:09:38
+**Processed New Player:** 懒惰的金枪鱼 (ID: 16386246)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 22:10:57
+**Processed New Player:** shu (ID: 16382426)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 22:11:16
+**Processed New Player:** Marshall Maximizer (ID: 16421599)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 22:11:33
+**Processed New Player:** Marcha Watanabe (ID: 16485604)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-12 22:11:50
+**Processed New Player:** hukuda222 (ID: 16373957)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 00:13:06
+**Processed New Player:** Bulba-Zero (ID: 16489356)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 02:42:36
+**Processed New Player:** lopunny's lovers (ID: 16374973)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 09:26:43
+**Processed New Player:** lolzpo smw (ID: 16371280)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 13:33:36
+**Processed New Player:** theredbluepill (ID: 16425934)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 2
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 13:33:54
+**Processed New Player:** e-toppo + kurupical (ID: 16371829)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 15:37:14
+**Processed New Player:** Lior Toledano (ID: 16473278)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 4
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 16:39:07
+**Processed New Player:** hpp sak (ID: 16382234)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 18:42:31
+**Processed New Player:** __Taichicchi__ (ID: 16400014)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 1
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 18:42:49
+**Processed New Player:** g-taniguchi (ID: 16535928)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## Leaderboard Feedback Loop — 2026-07-13 20:46:05
+**Processed New Player:** LumenLiquidity (ID: 16381624)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---

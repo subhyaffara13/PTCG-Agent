@@ -3,6 +3,40 @@
 #include <chrono>
 #include <algorithm>
 #include <cmath>
+#include <fstream>
+#include <onnxruntime_cxx_api.h>
+
+static Ort::Env* ort_env = nullptr;
+static Ort::Session* ort_session = nullptr;
+
+void init_onnx() {
+    if (ort_session) return;
+    try {
+        ort_env = new Ort::Env(ORT_LOGGING_LEVEL_WARNING, "ptcg_core");
+        Ort::SessionOptions session_options;
+        session_options.SetIntraOpNumThreads(1);
+        session_options.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_ALL);
+        
+        std::string model_path = "models/ppo_actor_critic.onnx";
+        std::ifstream f(model_path.c_str());
+        if (!f.good()) {
+            model_path = "../models/ppo_actor_critic.onnx";
+        }
+        std::ifstream f2(model_path.c_str());
+        if (!f2.good()) {
+            model_path = "submission/models/ppo_actor_critic.onnx";
+        }
+        
+        #ifdef _WIN32
+        std::wstring w_model_path(model_path.begin(), model_path.end());
+        ort_session = new Ort::Session(*ort_env, w_model_path.c_str(), session_options);
+        #else
+        ort_session = new Ort::Session(*ort_env, model_path.c_str(), session_options);
+        #endif
+    } catch (...) {
+        ort_session = nullptr;
+    }
+}
 
 void MASTPolicy::update(const std::vector<std::string>& actionsPlayed, bool won) {
     for (const auto& action : actionsPlayed) {
@@ -197,9 +231,105 @@ double cpp_MCTSEngine::evaluate_state(const BoardState& state, const std::string
     }
 
     double value = 0.0;
+    bool evaluated_by_onnx = false;
+
     if (state.game_over) {
         value = (state.winner == "me") ? 1.0 : -1.0;
+        evaluated_by_onnx = true;
     } else {
+        init_onnx();
+        if (ort_session) {
+            try {
+                std::vector<int64_t> token_ids(32, 0);
+                std::vector<int64_t> zone_ids(32, 0);
+                std::vector<float> scalars(6, 0.0f);
+                std::vector<uint8_t> padding_mask(33, 1); // 1 = padded/masked by default
+
+                int idx = 0;
+                // Fill hand
+                for (const auto& card_id_str : state.me.hand) {
+                    if (idx >= 32) break;
+                    try {
+                        token_ids[idx] = std::stoll(card_id_str);
+                        zone_ids[idx] = 0; // hand
+                        padding_mask[idx + 1] = 0;
+                        idx++;
+                    } catch(...) {}
+                }
+                // Fill active
+                if (state.me.has_active && idx < 32) {
+                    try {
+                        token_ids[idx] = std::stoll(state.me.active.id);
+                        zone_ids[idx] = 1; // active
+                        padding_mask[idx + 1] = 0;
+                        idx++;
+                    } catch(...) {}
+                }
+                // Fill bench
+                for (const auto& p : state.me.bench) {
+                    if (idx >= 32) break;
+                    try {
+                        token_ids[idx] = std::stoll(p.id);
+                        zone_ids[idx] = 2; // bench
+                        padding_mask[idx + 1] = 0;
+                        idx++;
+                    } catch(...) {}
+                }
+                // Fill discard
+                for (const auto& card_id_str : state.me.discard) {
+                    if (idx >= 32) break;
+                    try {
+                        token_ids[idx] = std::stoll(card_id_str);
+                        zone_ids[idx] = 3; // discard
+                        padding_mask[idx + 1] = 0;
+                        idx++;
+                    } catch(...) {}
+                }
+                // CLS token (index 0) is never masked
+                padding_mask[0] = 0;
+
+                // Fill scalars
+                scalars[0] = static_cast<float>(state.me.prizes);
+                scalars[1] = static_cast<float>(state.opponent.prizes);
+                scalars[2] = state.me.has_active ? static_cast<float>(state.me.active.hp) : 0.0f;
+                scalars[3] = state.opponent.has_active ? static_cast<float>(state.opponent.active.hp) : 0.0f;
+                scalars[4] = static_cast<float>(state.turn_number);
+                scalars[5] = 0.0f; // weakness flag placeholder
+
+                auto memory_info = Ort::MemoryInfo::CreateCpu(OrtDeviceAllocator, OrtMemTypeCPU);
+                
+                std::vector<int64_t> token_shape = {1, 32};
+                Ort::Value token_tensor = Ort::Value::CreateTensor<int64_t>(
+                    memory_info, token_ids.data(), token_ids.size(), token_shape.data(), token_shape.size());
+                
+                std::vector<int64_t> zone_shape = {1, 32};
+                Ort::Value zone_tensor = Ort::Value::CreateTensor<int64_t>(
+                    memory_info, zone_ids.data(), zone_ids.size(), zone_shape.data(), zone_shape.size());
+                
+                std::vector<int64_t> scalars_shape = {1, 6};
+                Ort::Value scalars_tensor = Ort::Value::CreateTensor<float>(
+                    memory_info, scalars.data(), scalars.size(), scalars_shape.data(), scalars_shape.size());
+                
+                std::vector<int64_t> mask_shape = {1, 33};
+                // ONNX Runtime expects bool tensors as bool/uint8/int8 array
+                Ort::Value mask_tensor = Ort::Value::CreateTensor<bool>(
+                    memory_info, reinterpret_cast<bool*>(padding_mask.data()), padding_mask.size(), mask_shape.data(), mask_shape.size());
+                
+                const char* input_names[] = {"token_ids", "zone_ids", "scalars", "padding_mask"};
+                Ort::Value inputs[] = {std::move(token_tensor), std::move(zone_tensor), std::move(scalars_tensor), std::move(mask_tensor)};
+                const char* output_names[] = {"logits", "value"};
+                
+                auto outputs = ort_session->Run(Ort::RunOptions{nullptr}, input_names, inputs, 4, output_names, 2);
+                float* value_out = outputs[1].GetTensorMutableData<float>();
+                value = static_cast<double>(value_out[0]);
+                evaluated_by_onnx = true;
+            } catch (...) {
+                evaluated_by_onnx = false;
+            }
+        }
+    }
+
+    if (!evaluated_by_onnx) {
         value = score_state(state);
         double threat_penalty = state.opponent.hand.size() * 0.01;
         value += score_action(action, state, threat_penalty);
@@ -253,7 +383,7 @@ double cpp_MCTSEngine::calculate_ucb(const cpp_MCTSNode* child, int parentVisits
     return q_value + u_value;
 }
 
-std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimitSec) {
+std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimitSec, const std::unordered_map<std::string, double>& root_priors) {
     state_value_cache.clear();
     state_prior_cache.clear();
 
@@ -266,6 +396,14 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
     
     MASTPolicy mastPolicy(0.3);
     auto initial_priors = get_action_priors(rootState, next_legal_actions, mastPolicy);
+    if (!root_priors.empty()) {
+        for (auto& ap : initial_priors) {
+            auto it = root_priors.find(ap.action);
+            if (it != root_priors.end()) {
+                ap.prob = it->second;
+            }
+        }
+    }
     root.expand(initial_priors);
     
     auto startTime = std::chrono::steady_clock::now();

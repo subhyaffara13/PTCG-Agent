@@ -16,7 +16,7 @@ from factory.trajectory_logger import TrajectoryLogger
 
 logger = logging.getLogger("run_factory")
 
-def run_team_pipeline(iteration_id: int, forced_archetype: str = None, forced_escalation: dict = None):
+def run_team_pipeline(iteration_id: int, forced_archetype: str | None = None, forced_escalation: dict | None = None):
     logger.info(f"=== STARTING ITERATION {iteration_id} (TEAM-BASED) ===")
 
     analytics_team = AnalyticsTeam()

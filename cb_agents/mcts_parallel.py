@@ -18,7 +18,7 @@ class MCTSParallelMixin:
     def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy: Any = None) -> List[Any]:
         return []
 
-    def _evaluate_state(self, game_state: dict, action: str, determinization: dict | None = None) -> float:
+    def _evaluate_state(self, game_state: dict, action: str | None, determinization: dict | None = None) -> float:
         return 0.0
 
     def select_child(self, node: Any, c_puct: float) -> Any:
@@ -55,13 +55,14 @@ class MCTSParallelMixin:
 
         def _single_simulation():
             if abort_flag[0]: return 0
-            elapsed = time.time() - start_time
-            time_budget = 2.0
-            if time_remaining is not None:
-                time_budget = max(0.5, min(time_budget, time_remaining - 0.5))
-            if elapsed > time_budget:
-                abort_flag[0] = True
-                return 0
+            if root.visit_count % 10 == 0:
+                elapsed = time.time() - start_time
+                time_budget = 2.0
+                if time_remaining is not None:
+                    time_budget = max(0.5, min(time_budget, time_remaining - 0.5))
+                if elapsed > time_budget:
+                    abort_flag[0] = True
+                    return 0
 
             determinization = None
             if self.belief_tracker:
@@ -71,7 +72,7 @@ class MCTSParallelMixin:
                 node = root
                 search_path = [node]
                 depth = 0
-                while node.is_expanded() and depth < 50:
+                while node.is_expanded() and depth < 30:
                     depth += 1
                     if getattr(node, "is_terminal", False):
                         break

@@ -4,6 +4,13 @@ from pathlib import Path
 
 logger = logging.getLogger("orchestrator_master_git")
 
+def _run_git(args, **kwargs):
+    import os
+    repo_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    safe_cwd = os.path.dirname(repo_dir)
+    git_args = ["git", "-C", repo_dir] + args[1:]
+    return subprocess.run(git_args, cwd=safe_cwd, **kwargs)
+
 def auto_commit_and_push_if_changed():
     """Checks for changes to key factory/logic files, commits, and pushes them to Git."""
     # List of files we want to ensure stay synchronized across all nodes
@@ -20,7 +27,7 @@ def auto_commit_and_push_if_changed():
         p = Path(file_str)
         if p.exists():
             # Check if git detects modification/untracked status for this file
-            res = subprocess.run(["git", "status", "--porcelain", file_str], capture_output=True, text=True)
+            res = _run_git(["git", "status", "--porcelain", file_str], capture_output=True, text=True)
             if res.stdout.strip():
                 files_to_add.append(file_str)
                 
@@ -31,12 +38,12 @@ def auto_commit_and_push_if_changed():
     logger.info(f"Factory updates detected in: {files_to_add}. Preparing auto-commit and push...")
     try:
         # Add files
-        subprocess.run(["git", "add"] + files_to_add, check=True, capture_output=True, text=True)
+        _run_git(["git", "add"] + files_to_add, check=True, capture_output=True, text=True)
         # Commit
         commit_msg = "Auto-update: Factory model/deck/skills update"
-        subprocess.run(["git", "commit", "-m", commit_msg], check=True, capture_output=True, text=True)
+        _run_git(["git", "commit", "-m", commit_msg], check=True, capture_output=True, text=True)
         # Push
-        subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
+        _run_git(["git", "push"], check=True, capture_output=True, text=True)
         logger.info("Factory updates committed and pushed successfully.")
     except subprocess.CalledProcessError as e:
         err_out = getattr(e, 'stderr', '') or ''

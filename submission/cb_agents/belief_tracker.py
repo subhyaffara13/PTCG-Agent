@@ -100,7 +100,8 @@ class BeliefTracker:
             self.state.deck_size,
             self.state.hand_size,
             self.state.known_in_play,
-            self.state.known_in_discard
+            self.state.known_in_discard,
+            prize_size=self.state.prize_size
         )
         self._prob_cache[key] = val
         return val

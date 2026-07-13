@@ -55,6 +55,23 @@ def log_strategy(
     _log_buffer.append(entry)
 
 
+def _opponent_archetype_signal(board_summary: dict[str, Any]) -> str | None:
+    """Adjust strategy based on opponent's identified archetype."""
+    arch = board_summary.get("opponent_archetype", "unknown")
+    conf = board_summary.get("opponent_archetype_confidence", 0.0)
+    if conf < 0.5 or arch == "unknown":
+        return None
+    prizes = int(board_summary.get("prizes", board_summary.get("my_prizes_remaining", 6)))
+    if arch == "aggro" and prizes <= 4:
+        return "stall"  # Opponent is aggressive — play defensively to control pace
+    if arch == "stall" and prizes >= 4:
+        return "aggro"  # Opponent stalls — pressure before they set up
+    if arch == "combo" and prizes <= 4:
+        return "aggro_push"  # Opponent is building combo — rush before it comes online
+    if arch == "control":
+        return "setup"  # Opponent controls — outvalue with more resources
+    return None
+
 def board_signal_match(board_summary: dict[str, Any]) -> str | None:
     prizes     = board_summary.get("prizes")
     if prizes is None: prizes = board_summary.get("my_prizes_remaining")
@@ -66,9 +83,19 @@ def board_signal_match(board_summary: dict[str, Any]) -> str | None:
     if opp_prizes is None: opp_prizes = board_summary.get("opponent_prizes_remaining")
     boss_prob  = board_summary.get("boss_prob", 0.0)
     iono_prob  = board_summary.get("iono_prob", 0.0)
+    path_prob  = board_summary.get("path_prob", 0.0)
+    hammer_prob = board_summary.get("hammer_prob", 0.0)
 
-    if boss_prob > 0.7 and bench is not None and int(bench) > 0: return "stall"
-    if iono_prob > 0.7 and score is not None and float(score) > 5.0: return "aggro_push"
+    # Opponent archetype overrides
+    arch_sig = _opponent_archetype_signal(board_summary)
+    if arch_sig is not None:
+        return arch_sig
+
+    # Disruption awareness (softer thresholds than before)
+    if boss_prob > 0.6 and bench is not None and int(bench) > 0: return "stall"
+    if iono_prob > 0.6 and score is not None and float(score) > 5.0: return "aggro_push"
+    if path_prob > 0.5: return "setup"  # Path blocks abilities — need to find stadium answer
+    if hammer_prob > 0.6: return "energy_stall"  # Energy removal risk — attach conservatively
     if prizes is not None and int(prizes) <= 2: return "endgame_close"
     if opp_prizes is not None and int(opp_prizes) <= 2: return "prize_race"
     if bench is not None and int(bench) <= 1: return "bench_low"

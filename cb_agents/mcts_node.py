@@ -3,7 +3,21 @@ from typing import Dict, List, Any
 from cb_agents.value_network import ActionPrior
 
 class MCTSNode:
-    def __init__(self, state_hash: str, parent=None, action_taken: str = None, prior_prob: float = 1.0, is_chance_node: bool = False):
+    state_hash: str
+    parent: Any
+    action_taken: str | None
+    children: Dict[str, 'MCTSNode']
+    visit_count: int
+    value_sum: float
+    prior_prob: float
+    is_chance_node: bool
+    is_pruned: bool
+    is_terminal: bool
+    virtual_loss: float
+    _pending_priors: List[Any]
+    _lock: Any
+
+    def __init__(self, state_hash: str, parent=None, action_taken: str | None = None, prior_prob: float = 1.0, is_chance_node: bool = False):
         self.state_hash = state_hash
         self.parent = parent
         self.action_taken = action_taken
@@ -15,6 +29,7 @@ class MCTSNode:
         self.is_pruned = False
         self.is_terminal = False
         self.virtual_loss = 0.0
+        self._pending_priors: List[Any] = []
         self._lock = threading.Lock()
 
     @property

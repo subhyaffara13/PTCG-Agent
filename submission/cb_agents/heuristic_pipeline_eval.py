@@ -47,7 +47,7 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
     cached = _score_action_cache.get(key)
     if cached is not None:
         return cached
-    if _HAS_CPP_SCORE:
+    if _HAS_CPP_SCORE and _ptcg_core is not None:
         try:
             val = float(_ptcg_core.score_action(gs, action))
             _cache_score(key, val)
@@ -241,7 +241,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         if dc <= 7 and any(d in tn for d in {"colress", "concealed", "draw"}): v -= 2.0
         elif dc <= 20 and dc < opp_dc - 3 and any(d in tn for d in {"colress", "concealed", "draw"}): v -= 0.8
     elif action.startswith("retreat:"):
-        v += 0.4 if ahp <= 60 else -0.5
+        v += 0.4 if ahp <= 60 else -1.2
         
         # Reward switching to a better attacker instead of blanket penalty
         try:
@@ -334,7 +334,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
 
 
 def score_state(gs: dict) -> float:
-    if _HAS_CPP_SCORE:
+    if _HAS_CPP_SCORE and _ptcg_core is not None:
         try:
             return float(_ptcg_core.score_state(gs))
         except Exception as e:
@@ -384,7 +384,9 @@ def score_state(gs: dict) -> float:
             opp_damage = int(opp_damage)
         except (TypeError, ValueError):
             opp_damage = 0
-    my_hp = gs.get("my_active_hp", 100)
+    my_hp = gs.get("my_active_hp")
+    if my_hp is None:
+        my_hp = 100
     if opp_damage > 0 and opp_damage >= my_hp:
         v -= 0.8  # One-shot lethal threat
     elif opp_damage > 0 and opp_damage >= my_hp * 0.6:
