@@ -86,9 +86,16 @@ class OrchestratorRunMixin:
                     energy_attached += len(p.get("attached", []) or p.get("energies", []))
         gs_dict["_cached_energy_attached"] = energy_attached
 
+        # Cache projected opponent damage for score_state
+        from cb_agents.orchestrator_run_helpers import project_opponent_damage_helper
+        dmg_info = project_opponent_damage_helper(game_state)
+        gs_dict["_projected_opponent_damage"] = dmg_info["max_damage"]
+
         board_summary_dict = board_summary.__dict__
         board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")
         board_summary_dict["iono_prob"] = self.belief_tracker.probability_opponent_holds("iono")
+        board_summary_dict["path_prob"] = self.belief_tracker.probability_opponent_holds("path to the peak")
+        board_summary_dict["hammer_prob"] = self.belief_tracker.probability_opponent_holds("crushing hammer")
         board_summary_dict["hand_score"] = _get_f(hand_result, "hand_score", 5.0)
         board_summary_dict["energy_attached"] = energy_attached
 

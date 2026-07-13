@@ -53,8 +53,11 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     opp_hp = gs.get("opponent_active_hp", 100)
     if action.startswith("attack:"):
         # Check if attack is actually feasible: active must have enough energy
-        can_attack = False
-        if isinstance(ac, dict):
+        # Also check if we are paralyzed or asleep (can't attack)
+        my_status = gs.get("my_active_status", "")
+        is_stunned = my_status in ("paralyzed", "asleep")
+        can_attack = not is_stunned
+        if isinstance(ac, dict) and not is_stunned:
             attached_count = len(ac.get("attached", []) or ac.get("energies", []))
             active_id = ac.get("id")
             if active_id is not None:
@@ -66,9 +69,12 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             else:
                 can_attack = attached_count >= 1
         if not can_attack:
-            v -= 0.5  # Penalize attacks that can't be executed (empty energy)
+            v -= 0.5 if not is_stunned else 0.8  # Extra penalty if stunned
         else:
             v += 0.65  # Attacks are good when actually usable
+        # Poison/burn tick damage: prefer attacking sooner
+        if my_status in ("poisoned", "burned"):
+            v += 0.2  # Push to attack before tick damage KOs us
         if mp <= 1: v += 1.0  # Game-winning attack
         if mp <= 2: v += 0.3  # Close to winning
         opp_ac = gs.get("opponent_active_pokemon", {})
@@ -78,7 +84,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             if my_type and opp_weak and my_type.lower() == opp_weak.lower():
                 v += 0.5  # Type advantage
         # Check if we can KO
-        if isinstance(ac, dict):
+        if isinstance(ac, dict) and not is_stunned:
             my_active_id = ac.get("id")
             if my_active_id is not None:
                 try:
@@ -87,6 +93,12 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                         v += 1.5  # KO bonus — this is likely the winning move
                 except Exception as e:
                     logger.debug(f"KO check registry error: {e}")
+        # Opponent status awareness: bonus if opponent is asleep/paralyzed (can't attack back)
+        opp_status = gs.get("opponent_active_status", "")
+        if opp_status in ("asleep", "paralyzed"):
+            v += 0.4  # Free hit — opponent can't retaliate
+        elif opp_status in ("poisoned", "burned", "confused"):
+            v += 0.15  # Slight edge: opponent is weakened
     elif action.startswith("evolve:"):
         v += 0.6
     elif action.startswith("attach_energy:"):
@@ -254,8 +266,68 @@ def score_state(gs: dict) -> float:
         except Exception as e:
             logger.debug(f"C++ score_state failed: {e}. Falling back to Python.")
     v = 0.0
-    v += 0.15 * (gs.get("opponent_prizes", 6) - gs.get("my_prizes", 6))
+    mp = gs.get("my_prizes", 6)
+    opp_p = gs.get("opponent_prizes", 6)
+    turn = gs.get("turn_number", 1)
+    v += 0.15 * (opp_p - mp)
     v += 0.001 * (gs.get("my_active_hp", 100) - gs.get("opponent_active_hp", 100))
+    
+    # Turn-number awareness: early game favors setup, late game favors aggression
+    if turn <= 3:
+        v += 0.1  # Early game: slightly positive for having drawn well
+    elif turn >= 10:
+        v += 0.2 * (gs.get("my_bench_count", 0) >= 3)  # Late game: reward board presence
+    
+    # KO-threat awareness: penalize if opponent can KO our active
+    opp_damage = gs.get("_projected_opponent_damage", None)
+    if opp_damage is None:
+        # Compute inline using registry if not prefilled
+        try:
+            opp_active = gs.get("opponent_active_pokemon", gs.get("opponent_active", {}))
+            if isinstance(opp_active, dict) and opp_active.get("id"):
+                from cb_agents.card_registry import CardRegistry
+                reg = CardRegistry()
+                oid = int(opp_active["id"]) if not isinstance(opp_active["id"], int) else opp_active["id"]
+                ocard = reg.get_full_skill(oid)
+                if ocard and ocard.damage_output:
+                    opp_att = len(opp_active.get("attached", []) or opp_active.get("energies", []))
+                    if opp_att >= max(1, ocard.energy_cost):
+                        opp_damage = ocard.damage_output
+                        atk_type = reg.card_poke_type.get(oid, "")
+                        my_active = gs.get("my_active_pokemon", {})
+                        if isinstance(my_active, dict) and my_active.get("id"):
+                            my_id = int(my_active["id"]) if not isinstance(my_active["id"], int) else my_active["id"]
+                            weak = reg.card_weakness.get(my_id, "")
+                            resist = reg.card_resistance.get(my_id, "")
+                            if atk_type and weak and atk_type == weak:
+                                opp_damage *= 2
+                            if atk_type and resist and atk_type == resist:
+                                opp_damage = max(0, opp_damage - 30)
+        except Exception:
+            opp_damage = 0
+    else:
+        try:
+            opp_damage = int(opp_damage)
+        except (TypeError, ValueError):
+            opp_damage = 0
+    my_hp = gs.get("my_active_hp", 100)
+    if opp_damage > 0 and opp_damage >= my_hp:
+        v -= 0.8  # One-shot lethal threat
+    elif opp_damage > 0 and opp_damage >= my_hp * 0.6:
+        v -= 0.3  # Significant damage threat
+    
+    # Status awareness
+    my_status = gs.get("my_active_status", "")
+    if my_status in ("poisoned", "burned"):
+        v -= 0.15  # Tick damage will wear us down
+    elif my_status in ("paralyzed", "asleep"):
+        v -= 0.3  # Can't act is very bad
+    opp_status = gs.get("opponent_active_status", "")
+    if opp_status in ("paralyzed", "asleep"):
+        v += 0.3  # Opponent can't act
+    elif opp_status in ("poisoned", "burned"):
+        v += 0.15  # Opponent taking tick damage
+    
     # Deck-size awareness: penalize low own deck, reward low opponent deck
     my_dc = gs.get("my_deck_count", 60)
     opp_dc = gs.get("opponent_deck_count", 60)
