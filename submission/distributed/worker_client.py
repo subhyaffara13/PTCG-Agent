@@ -150,6 +150,12 @@ class WorkerClient:
     def start(self):
         ensure_dependencies()
         logger.info(f"Worker {self.worker_id} starting (Current Code: {self.current_code_version})...")
+        from distributed.log_sync import TCPLogHandler
+        tcp_handler = TCPLogHandler(host=self.host, worker_id=self.worker_id)
+        tcp_handler.setLevel(logging.INFO)
+        root_logger = logging.getLogger()
+        root_logger.addHandler(tcp_handler)
+        logger.info(f"TCP log sync enabled to {self.host}:9872")
         
         # Register Graceful Signal Handlers
         import signal

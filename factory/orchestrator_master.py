@@ -39,6 +39,8 @@ def run_master_loop(enable_distributed=True):
         version = get_local_version() or "unknown"
         beacon = MasterBeacon(code_version=version)
         beacon.start()
+        from distributed.log_sync import LogCollectorServer
+        LogCollectorServer().start()
     
     scripts = get_training_scripts(enable_distributed=enable_distributed)
     iteration = 0
