@@ -2456,6 +2456,11 @@
       "player": "lopunny's lovers",
       "avg_setup_duration": 62.2,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "lolzpo smw",
+      "avg_setup_duration": 50.4,
+      "avg_bench_density": 2.6
     }
   ],
   "deck_stats": {
@@ -2778,6 +2783,11 @@
       "player": "lopunny's lovers",
       "avg_setup_duration": 62.2,
       "avg_bench_density": 3.9
+    },
+    {
+      "player": "lolzpo smw",
+      "avg_setup_duration": 50.4,
+      "avg_bench_density": 2.6
     }
   ]
 }
