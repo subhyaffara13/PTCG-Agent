@@ -9,7 +9,6 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 
 import time
-import threading
 import subprocess
 import json
 import logging
@@ -17,7 +16,7 @@ from factory.orchestration_agent_helpers import (
     auto_submit_if_ready, run_analytics_check, get_training_scripts
 )
 from factory.orchestration_process import (
-    launch_processes, monitor_and_restart, cleanup, script_log_path, prune_old_logs
+    launch_processes, monitor_and_restart, cleanup, script_log_path
 )
 
 os.makedirs("logs", exist_ok=True)
@@ -34,12 +33,7 @@ sh = logging.StreamHandler()
 sh.setFormatter(fmt)
 logger.addHandler(sh)
 
-# _last_prune tracks the last log cleanup time; initialized to 0 so the first
-# daily check in main() fires immediately, avoiding startup filesystem iteration.
-_last_prune = 0.0
-
 def main():
-    global _last_prune
     import sys
     import os
 
@@ -74,15 +68,8 @@ def main():
     
     last_seen_master_time = None
     last_known_master_ip = None
-    
-    _prune_thread = None
 
     while True:
-        # Daily log pruning (every 24h) — runs in background thread
-        if time.time() - _last_prune > 86400 and (_prune_thread is None or not _prune_thread.is_alive()):
-            _last_prune = time.time()
-            _prune_thread = threading.Thread(target=prune_old_logs, daemon=True)
-            _prune_thread.start()
         try:
             listener = WorkerListener(interface_type="wifi")
             logger.info("[DISCOVERY] Listening for master...")
