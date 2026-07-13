@@ -12,6 +12,7 @@ from cb_agents.mcts_node import MCTSNode
 from cb_agents.mcts_parallel import MCTSParallelMixin
 from cb_agents.mcts_selection import MCTSSelectionMixin
 from cb_agents.mcts_mast import MASTPolicy
+from cb_agents.state_cache import TranspositionTable
 
 logger = logging.getLogger(__name__)
 
@@ -71,6 +72,8 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         self.belief_tracker = belief_tracker
         self.value_network = value_network or HeuristicValueNetwork()
         self.policy_network = policy_network or HeuristicPolicyNetwork()
+        self._historical_best: dict[int, str] = {}  # turn_num -> best action from last search
+        self._transposition_table = TranspositionTable()
 
         # Initialize C++ registry if module loaded and skills/ exists
         if HAS_CPP and ptcg_core is not None:
@@ -83,6 +86,14 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
 
     def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy=None) -> List[ActionPrior]:
         priors = self.policy_network.get_priors(game_state, legal_actions)
+        # Historical action bias: boost the action that was best last turn
+        turn_num = game_state.get('turn_number', 0)
+        historical_pick = self._historical_best.get(turn_num - 1)
+        if historical_pick and historical_pick in legal_actions:
+            for p in priors:
+                if p.action == historical_pick:
+                    p.prob = max(p.prob, p.prob * 2.0)
+                    break
         if mast_policy:
             for p in priors:
                 p.prob = 0.7 * p.prob + 0.3 * mast_policy.get_action_prior(p.action)
@@ -135,13 +146,17 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
             return best or legal_actions[0]
 
         turn_num = game_state.get('turn_number', 0)
-        root_hash = f"turn_{turn_num}"
-        root = MCTSNode(state_hash=root_hash)
+        root, is_transposition = self._transposition_table.get_or_create(
+            game_state, lambda: MCTSNode(state_hash=f"turn_{turn_num}")
+        )
         mast_policy = MASTPolicy(exploration_weight=0.3)
-        priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
-        root.expand(priors)
+        if not (is_transposition and root.is_expanded()):
+            priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
+            root.expand(priors)
 
         # Use parallel search with shared root (falls back to single-threaded if num_threads=1)
-        return self.parallel_search(game_state, canonical_actions, num_threads=4,
-                                    time_remaining=time_remaining, root=root,
-                                    mast_policy=mast_policy)
+        best_action = self.parallel_search(game_state, canonical_actions, num_threads=4,
+                                           time_remaining=time_remaining, root=root,
+                                           mast_policy=mast_policy)
+        self._historical_best[turn_num] = best_action
+        return best_action

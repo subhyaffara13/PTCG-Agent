@@ -17,17 +17,17 @@ from cb_agents.base_agent import BaseAgent
 from factory.game_runner_worker import _parallel_game_worker
 
 
-def _mutate_deck(deck: list[int], mutation_rate: float = 0.05) -> list[int]:
+def _mutate_deck(deck: list[int], mutation_rate: float = 0.30) -> list[int]:
     if len(deck) != 60:
         return deck
     if random.random() > mutation_rate:
         return deck
-    d = deck[:]
-    n_swaps = random.randint(2, 5)
-    for _ in range(n_swaps):
+    d = list(deck)
+    pool = list(set(deck))
+    n_changes = random.randint(2, 5)
+    for _ in range(n_changes):
         i = random.randrange(60)
-        j = random.randrange(60)
-        d[i], d[j] = d[j], d[i]
+        d[i] = random.choice(pool)
     return d
 
 logger = logging.getLogger(__name__)
@@ -72,7 +72,7 @@ class GameRunner(BaseAgent):
     def run_iteration(self, iteration_id: int, version_n1: str, version_n2: str, 
                        deck_base: Any, deck_new: Any, 
                        reasoning_base: dict, reasoning_new: dict,
-                       num_matchups: int = 15) -> dict:
+                       num_matchups: int = 10) -> dict:
         d_base = deck_base.get("cards", DEFAULT_DECK) if isinstance(deck_base, dict) else deck_base
         d_new = deck_new.get("cards", DEFAULT_DECK) if isinstance(deck_new, dict) else deck_new
         if not isinstance(d_base, list): d_base = DEFAULT_DECK

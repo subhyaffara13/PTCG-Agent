@@ -22,14 +22,43 @@ except Exception:
 _HAS_CPP_SCORE = False
 
 
+_score_action_cache: dict = {}
+_score_action_cache_keys: list = []
+_SCORE_CACHE_MAX = 4096
+
+def _gs_cache_key(gs: dict) -> tuple:
+    return (
+        gs.get("turn_number"), gs.get("my_prizes"), gs.get("opponent_prizes"),
+        gs.get("my_active_hp"), gs.get("opponent_active_hp"),
+        gs.get("my_deck_count"), gs.get("opponent_deck_count"),
+        tuple(sorted(gs.get("my_hand", []))),
+        tuple(gs.get("my_bench", [])),
+        gs.get("stadium_card"),
+    )
+
 def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
-    # Fast-path: delegate to C++ implementation (5-10x faster than Python)
+    key = (action, _gs_cache_key(gs), threat)
+    cached = _score_action_cache.get(key)
+    if cached is not None:
+        return cached
     if _HAS_CPP_SCORE:
         try:
-            return float(_ptcg_core.score_action(gs, action))
+            val = float(_ptcg_core.score_action(gs, action))
+            _cache_score(key, val)
+            return val
         except Exception as e:
             logger.debug(f"C++ score_action failed: {e}. Falling back to Python.")
-    return _score_action_python(action, gs, threat)
+    val = _score_action_python(action, gs, threat)
+    _cache_score(key, val)
+    return val
+
+def _cache_score(key: tuple, val: float):
+    if len(_score_action_cache_keys) >= _SCORE_CACHE_MAX:
+        old = _score_action_cache_keys.pop(0)
+        _score_action_cache.pop(old, None)
+    if key not in _score_action_cache:
+        _score_action_cache[key] = val
+        _score_action_cache_keys.append(key)
 
 
 def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:

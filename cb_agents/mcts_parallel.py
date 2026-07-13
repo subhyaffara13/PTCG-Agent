@@ -36,12 +36,17 @@ class MCTSParallelMixin:
         if len(canonical_actions) == 1:
             return canonical_actions[0]
 
+        PROGRESSIVE_TOP_K = 5
+
         if root is None:
             turn_num = game_state.get('turn_number', 0)
             root_hash = f"turn_{turn_num}"
             root = MCTSNode(state_hash=root_hash)
             priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
-            root.expand(priors)
+            priors.sort(key=lambda p: p.prob, reverse=True)
+            root.expand(priors[:PROGRESSIVE_TOP_K])
+            # Store remaining priors on the node for later progressive widening
+            root._pending_priors = priors[PROGRESSIVE_TOP_K:]
 
         tree_lock = threading.Lock()
         abort_flag = [False]
@@ -98,7 +103,11 @@ class MCTSParallelMixin:
                     if not new_priors and next_legal_actions == ["pass"]:
                         new_priors = [ActionPrior(action="pass", prob=1.0)]
                     if new_priors:
-                        node.expand(new_priors)
+                        new_priors.sort(key=lambda p: p.prob, reverse=True)
+                        k = PROGRESSIVE_TOP_K + (node.visit_count // 5)
+                        k = min(k, len(new_priors))
+                        node.expand(new_priors[:k])
+                        node._pending_priors = new_priors[k:]
 
                 discount = 0.97
                 for i, path_node in enumerate(reversed(search_path)):

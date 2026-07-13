@@ -168,7 +168,7 @@ def _load_concede_thresholds() -> tuple:
                 break
     except Exception:
         pass
-    return (3, 2, 3)
+    return (2, 3, 2)
 
 
 def _check_concede(gs: dict) -> bool:
