@@ -120,10 +120,8 @@ class MasterServer:
                     local_order = self.work_queue.get()
                     t0 = time.time()
                     try:
-                        # Use FAST_SIM_MODE locally: skip MCTS, use heuristic sort (~1s per game instead of 2-10min)
-                        old_fast = os.environ.get("FAST_SIM_MODE")
-                        os.environ["FAST_SIM_MODE"] = "true"
                         # Reduce game count from 61 to 13 (num_matchups=3) when running without workers
+                        # MCTS runs within 5s actTimeout; concede logic aborts hopeless games early
                         res_dict = runner.run_iteration(
                             iteration_id=local_order.iteration,
                             version_n1="base", version_n2="new",
@@ -132,10 +130,6 @@ class MasterServer:
                             reasoning_base={}, reasoning_new={},
                             num_matchups=3
                         )
-                        if old_fast is not None:
-                            os.environ["FAST_SIM_MODE"] = old_fast
-                        else:
-                            os.environ.pop("FAST_SIM_MODE", None)
                         elapsed_iter = time.time() - t0
                         logger.info(f"Local iteration {local_order.iteration} completed in {elapsed_iter:.1f}s.")
                     except Exception as e:

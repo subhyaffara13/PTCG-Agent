@@ -146,6 +146,38 @@ def _regenerate_legal_actions(gs: dict) -> None:
     gs["legal_actions"] = list(dict.fromkeys(actions))
 
 
+def _check_concede(gs: dict) -> bool:
+    """Detect hopeless positions and concede to save MCTS simulation time.
+    
+    Returns True if the position is unwinnable and the game should terminate early.
+    """
+    my_prizes = gs.get("my_prizes", 6)
+    opp_prizes = gs.get("opponent_prizes", 6)
+    my_bench = gs.get("my_bench", [])
+    my_hp = gs.get("my_active_hp", 100) if gs.get("my_active_pokemon") else 0
+    my_deck = gs.get("my_deck_count", 60)
+
+    # No Pokemon left on board
+    if my_hp <= 0 and not my_bench:
+        return True
+
+    # Opponent has taken almost all prizes; we have taken none
+    if my_prizes <= 0 and opp_prizes >= 3:
+        return True
+
+    # Deck-out imminent with no realistic comeback (we need 3+ KOs, opponent needs 0)
+    if my_deck <= 2 and opp_prizes >= 3 and my_prizes >= 3:
+        return True
+
+    # Opponent about to take last prize and we can't prevent it
+    if opp_prizes <= 1 and my_prizes >= 3:
+        opp_hp = gs.get("opponent_active_hp", 100)
+        if opp_hp > 0:
+            return True
+
+    return False
+
+
 def _check_win_conditions(gs: dict) -> None:
     if gs.get("my_prizes", 6) <= 0:
         gs["game_over"] = True
@@ -174,6 +206,13 @@ def _check_win_conditions(gs: dict) -> None:
     if opp_hp <= 0 and not opp_bench:
         gs["game_over"] = True
         gs["winner"] = "me"
+        return
+
+    # Hopeless position check — concede to save simulation time
+    if _check_concede(gs):
+        gs["game_over"] = True
+        gs["winner"] = "opponent"
+        gs["conceded"] = True
 
 
 def _remove_from_hand(hand: list, card_id: Any) -> None:

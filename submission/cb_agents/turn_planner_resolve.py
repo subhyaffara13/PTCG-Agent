@@ -9,11 +9,6 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
     try:
         if "my_deck_count" not in game_state:
             return None, ""
-        if os.environ.get("FAST_SIM_MODE") == "true":
-            from cb_agents.turn_planner_heuristics import sort_actions_heuristically
-            sorted_cands = sort_actions_heuristically(candidates, profile, game_state)
-            return sorted_cands[0] if sorted_cands else "pass", "FAST_SIM_MODE: Heuristic bypass"
-            
         lethal_override = game_state.get("lethal_action_override")
         if lethal_override and lethal_override in candidates:
             return lethal_override, f"LETHAL BYPASS: Selected {lethal_override} for immediate win."
@@ -33,11 +28,10 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         # Otherwise, restrict to the current phase + attacks to manage search depth/time.
         selected_candidates = candidates
         has_cpp = getattr(mcts_engine, "HAS_CPP", False)
-        fast_sim = os.environ.get("FAST_SIM_MODE") == "true"
         orig_sims = getattr(mcts_engine, "num_simulations", 150)
         actual_sims = orig_sims
         try:
-            if has_cpp and not fast_sim:
+            if has_cpp:
                 if time_rem < 30.0:
                     mcts_engine.num_simulations = 500
                 elif time_rem < 80.0:

@@ -111,15 +111,6 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
             return "pass"
         if len(legal_actions) == 1:
             return legal_actions[0]
-        if os.environ.get("FAST_SIM_MODE") == "true":
-            # Use heuristic scoring instead of random/first action
-            best_action, best_score = legal_actions[0], -float("inf")
-            for a in legal_actions:
-                s = pipeline.score_action(a, game_state)
-                if s > best_score:
-                    best_score, best_action = s, a
-            return best_action
-
         canonical_actions, _ = pipeline.mask_actions(legal_actions, game_state)
         if len(canonical_actions) <= 1:
             return canonical_actions[0] if canonical_actions else "pass"
@@ -150,11 +141,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
         root.expand(priors)
 
-        from cb_agents.mcts_engine_helpers import run_mcts_simulations
-        run_mcts_simulations(self, root, game_state, canonical_actions, mast_policy, time_remaining)
-
-        best_action, mv = None, -1
-        for act, child in root.children.items():
-            if child.visit_count > mv:
-                mv, best_action = child.visit_count, act
-        return best_action or legal_actions[0]
+        # Use parallel search with shared root (falls back to single-threaded if num_threads=1)
+        return self.parallel_search(game_state, canonical_actions, num_threads=4,
+                                    time_remaining=time_remaining, root=root,
+                                    mast_policy=mast_policy)
