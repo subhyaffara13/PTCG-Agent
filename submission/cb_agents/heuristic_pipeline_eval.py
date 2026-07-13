@@ -10,6 +10,12 @@ from cb_agents.card_types import CardStage
 logger = logging.getLogger(__name__)
 _registry = CardRegistry()
 
+_CARD_NAME_TO_ID = {}
+_cards = getattr(_registry, "cards", None)
+if _cards:
+    for _sid, _sc in _cards.items():
+        _CARD_NAME_TO_ID[_sc.card_name.lower()] = int(_sid) if not isinstance(_sid, int) else _sid
+
 from cb_agents.card_utils import _get_prize_yield
 
 try:
@@ -314,10 +320,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                 cid = int(parts[2])
         elif action.startswith("play_trainer:"):
             tn = action.split(":", 1)[1].lower()
-            for store_id, store_card in getattr(_registry, "cards", {}).items():
-                if store_card.card_name.lower() == tn:
-                    cid = int(store_id) if not isinstance(store_id, int) else store_id
-                    break
+            cid = _CARD_NAME_TO_ID.get(tn)
         if cid is not None:
             dos = getattr(_registry, "learned_dos", set())
             donts = getattr(_registry, "learned_donts", set())

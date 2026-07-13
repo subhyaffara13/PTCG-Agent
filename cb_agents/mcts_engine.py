@@ -159,4 +159,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                                            time_remaining=time_remaining, root=root,
                                            mast_policy=mast_policy)
         self._historical_best[turn_num] = best_action
+        if len(self._historical_best) > 100:
+            cutoff = max(0, turn_num - 50)
+            self._historical_best = {k: v for k, v in self._historical_best.items() if k >= cutoff}
         return best_action

@@ -1,8 +1,6 @@
 import logging
 from typing import List
 from cb_agents.card_registry import CardRegistry
-from cb_agents.card_types import CardStage
-
 logger = logging.getLogger(__name__)
 _registry = CardRegistry()
 
@@ -16,47 +14,6 @@ def _hand_strength(game_state: dict) -> str:
     elif hand_size <= 4:
         return "medium"
     return "strong"
-
-def _has_dead_weight(game_state: dict) -> bool:
-    hand = game_state.get("my_hand", [])
-    if not isinstance(hand, list) or len(hand) < 4:
-        return False
-    try:
-        supporter_names = []
-        basic_energy_count = 0
-        stage2_count = 0
-        search_count = 0
-        deck_count = game_state.get("my_deck_count", 60)
-        for cid_str in hand:
-            try:
-                card = _registry.get(int(cid_str))
-                if card:
-                    if card.card_type.name == "TRAINER" and getattr(card, "trainer_subtype", None) and card.trainer_subtype.name == "SUPPORTER":
-                        supporter_names.append(card.card_name)
-                    if card.card_type.name == "ENERGY":
-                        basic_energy_count += 1
-                    if card.stage and card.stage == CardStage.STAGE2:
-                        stage2_count += 1
-                    if card.card_type.name == "TRAINER" and getattr(card, "trainer_subtype", None) and card.trainer_subtype.name == "ITEM":
-                        name_lower = card.card_name.lower()
-                        if any(sk in name_lower for sk in ("ultra ball", "dusk ball", "pokegear", "energy search")):
-                            search_count += 1
-            except Exception as e:
-                logger.debug(f"Dead weight card check failed for {cid_str}: {e}")
-        dup_supporters = len(supporter_names) - len(set(supporter_names))
-        score = 0
-        if dup_supporters >= 2:
-            score += dup_supporters
-        if basic_energy_count >= 5:
-            score += basic_energy_count - 4
-        if stage2_count >= 2:
-            score += stage2_count
-        if search_count >= 2 and deck_count <= 20:
-            score += search_count
-        return score >= 4
-    except Exception as e:
-        logger.debug(f"Dead weight check execution failed: {e}")
-        return False
 
 def has_draw_remaining(candidates: List[str]) -> bool:
     for cand in candidates:
