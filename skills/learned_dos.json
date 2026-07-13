@@ -2476,6 +2476,11 @@
       "player": "Lior Toledano",
       "avg_setup_duration": 59.8,
       "avg_bench_density": 3.1
+    },
+    {
+      "player": "hpp sak",
+      "avg_setup_duration": 23.8,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
@@ -2818,6 +2823,11 @@
       "player": "Lior Toledano",
       "avg_setup_duration": 59.8,
       "avg_bench_density": 3.1
+    },
+    {
+      "player": "hpp sak",
+      "avg_setup_duration": 23.8,
+      "avg_bench_density": 3.8
     }
   ]
 }
