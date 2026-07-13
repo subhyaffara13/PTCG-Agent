@@ -2481,12 +2481,22 @@
       "player": "hpp sak",
       "avg_setup_duration": 23.8,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "__Taichicchi__",
+      "avg_setup_duration": 67.2,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "g-taniguchi",
+      "avg_setup_duration": 78.4,
+      "avg_bench_density": 1.7
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 20.0,
-    "avg_trainer_count": 30.0,
-    "avg_energy_count": 10.0
+    "avg_pokemon_count": 13.0,
+    "avg_trainer_count": 39.0,
+    "avg_energy_count": 8.0
   },
   "setup_profiles": [
     {
@@ -2828,6 +2838,16 @@
       "player": "hpp sak",
       "avg_setup_duration": 23.8,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "__Taichicchi__",
+      "avg_setup_duration": 67.2,
+      "avg_bench_density": 4.0
+    },
+    {
+      "player": "g-taniguchi",
+      "avg_setup_duration": 78.4,
+      "avg_bench_density": 1.7
     }
   ]
 }
