@@ -43,6 +43,7 @@ def silence_kaggle_warnings():
 
 def setup_game_env(seed=None):
     os.environ["FAST_SIM_MODE"] = "false"
+    os.environ["SKIP_GAME_LOGS"] = "1"
     saved_path = list(sys.path)
     try:
         cwd_resolved = Path.cwd().resolve()
@@ -111,6 +112,8 @@ def run_early_prediction(deck_a: list, deck_b: list, steps_dump: list, winner: s
 
 def write_steps_file(log_dir: str, timestamp_str: str, label: str, v_a: str, v_b: str, steps_dump: list):
     steps_filename = f"steps_{timestamp_str}_{label}_v{v_a}_vs_v{v_b}.json"
+    if os.environ.get("SKIP_GAME_LOGS") == "1":
+        return steps_filename
     steps_path = Path(log_dir) / steps_filename
     
     final_rewards = [0.0, 0.0]
