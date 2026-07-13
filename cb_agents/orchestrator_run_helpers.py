@@ -21,31 +21,49 @@ def _get_opponent_element_type(game_state) -> str:
     return ""
 
 def _get_poke_type_resistance(tc, opp_type: str) -> float:
-    """Score type matchup: +2 for resistance, -2 for weakness, 0 neutral."""
+    """Score type matchup using registry weakness/resistance: +2 resist, -2 weak, 0 neutral."""
     if not opp_type or not tc:
         return 0.0
     try:
-        if hasattr(tc, 'card_type') and tc.card_type:
-            poke_type = tc.card_type.name if hasattr(tc.card_type, 'name') else str(tc.card_type)
-        else:
+        from cb_agents.card_registry import CardRegistry
+        registry = CardRegistry()
+        card_id = tc.id if hasattr(tc, 'id') else None
+        if card_id is None:
             return 0.0
-        weakness_map = {"fire": "water", "water": "electric", "electric": "fighting",
-                        "grass": "fire", "psychic": "dark", "dark": "psychic",
-                        "metal": "fire", "fairy": "metal", "dragon": "ice",
-                        "fighting": "psychic", "colorless": "fighting",
-                        "ice": "metal", "ground": "grass", "poison": "psychic"}
-        # Check if opponent type is weak to our type (we resist)
-        if weakness_map.get(opp_type.lower(), "") == poke_type.lower():
-            return 2.0  # We resist: opponent's attacks are less effective
-        # Check if our type is weak to opponent's type (we are weak)
-        if weakness_map.get(poke_type.lower(), "") == opp_type.lower():
-            return -2.0  # We are weak: opponent's attacks hit harder
+        poke_type = registry.card_poke_type.get(int(card_id), "")
+        if not poke_type:
+            return 0.0
+        # Check if our type resists opponent type (opponent's attack is not very effective)
+        weak_against_opp = registry.card_weakness.get(int(card_id), "")
+        resist_against_opp = registry.card_resistance.get(int(card_id), "")
+        opp_type_lower = opp_type.lower()
+        if resist_against_opp and resist_against_opp.lower() == opp_type_lower:
+            return 2.0  # We resist
+        if weak_against_opp and weak_against_opp.lower() == opp_type_lower:
+            return -2.0  # We are weak
     except Exception:
         pass
     return 0.0
 
+def _apply_weakness_resistance(damage: int, atk_type: str, defender_id, registry) -> int:
+    """Apply weakness (2x) and resistance (-30) to raw damage."""
+    if not atk_type or defender_id is None or damage <= 0:
+        return damage
+    try:
+        def_id = int(defender_id) if not isinstance(defender_id, int) else defender_id
+        weak = registry.card_weakness.get(def_id, "")
+        resist = registry.card_resistance.get(def_id, "")
+        if atk_type and weak and atk_type == weak:
+            damage *= 2
+        if atk_type and resist and atk_type == resist:
+            damage = max(0, damage - 30)
+    except Exception:
+        pass
+    return damage
+
+
 def project_opponent_damage_helper(game_state) -> dict:
-    """Returns dict with 'max_damage' and 'can_2hko' (bool)."""
+    """Returns dict with 'max_damage', 'can_2hko' (bool), and 'opponent_type' (str)."""
     from cb_agents.card_registry import CardRegistry
     registry = CardRegistry()
     result = {"max_damage": 0, "can_2hko": False, "opponent_type": ""}
@@ -59,6 +77,13 @@ def project_opponent_damage_helper(game_state) -> dict:
                 opp_attached = len(active.get("attached", []) or active.get("energies", [])) if isinstance(active, dict) else 0
                 if opp_attached < max(1, card.energy_cost):
                     raw_dmg = 0
+                # Apply weakness/resistance: opponent's attack type vs our active's type
+                if raw_dmg > 0:
+                    opp_type = registry.card_poke_type.get(opp_active_id, "")
+                    my_active = getattr(game_state, 'my_active_pokemon', None) or {}
+                    my_active_id = my_active.get("id") if isinstance(my_active, dict) else None
+                    if my_active_id is not None:
+                        raw_dmg = _apply_weakness_resistance(raw_dmg, opp_type, my_active_id, registry)
                 result["max_damage"] = raw_dmg
                 result["opponent_type"] = _get_opponent_element_type(game_state)
                 if isinstance(active, dict) and active.get("id") and raw_dmg > 0:
@@ -170,6 +195,22 @@ def update_opponent_model_helper(orchestrator, game_state):
             except (ValueError, TypeError): pass
         if new_deck_dict:
             orchestrator.belief_tracker.assumed_deck = new_deck_dict
+    elif not orchestrator.belief_tracker.assumed_deck:
+        # BUG 16: Before archetype is identified, seed with a generic prior
+        # based on revealed opponent cards so far
+        generic_deck = {}
+        for cid in getattr(orchestrator.opponent_model, 'revealed_state', []):
+            try:
+                cid_int = int(cid) if not isinstance(cid, int) else cid
+                generic_deck[cid_int] = generic_deck.get(cid_int, 0) + 1
+            except (ValueError, TypeError):
+                pass
+        # Add common Trainer counts seen in most decks
+        for basic_trainer_id in [1121, 1102, 1086, 1213]:  # Ultra Ball, Dusk Ball, Poffin, Judge
+            if basic_trainer_id not in generic_deck:
+                generic_deck[basic_trainer_id] = 2
+        if generic_deck:
+            orchestrator.belief_tracker.assumed_deck = generic_deck
 
 def check_lethal_helper(game_state, boss_prob: float = 0.0):
     my_active = game_state.my_active_pokemon or {}

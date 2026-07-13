@@ -28,6 +28,8 @@ class OrchestratorStatePublicMixin:
             "opponent_hand_count": game_state.opponent_hand_count,
             "opponent_deck_count": game_state.opponent_deck_count,
             "opponent_active_hp": game_state.opponent_active_hp,
+            "my_active_status": getattr(game_state, "my_active_status", ""),
+            "opponent_active_status": getattr(game_state, "opponent_active_status", ""),
             "turn_number": self.current_turn,
             "bench_has_attacker": game_state.bench_has_attacker,
             "has_searched_deck": game_state.has_searched_deck,
