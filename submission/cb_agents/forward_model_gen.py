@@ -4,23 +4,14 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-_ABILITY_DRAW = {"colress", "concealed", "flower selecting", "shining arcana"}
+from cb_agents.card_utils import _get_prize_yield, _int_or_str
+from cb_agents.constants import ABILITY_DRAW as _ABILITY_DRAW
 
 try:
     from cb_agents.card_registry import CardRegistry
 except ImportError:
     CardRegistry = None
 
-
-def _get_prize_yield(card_name: str) -> int:
-    if not card_name:
-        return 1
-    n = card_name.lower()
-    if "vmax" in n:
-        return 3
-    if "vstar" in n or n.endswith(" v") or n.endswith(" ex") or " ex " in n or " v " in n:
-        return 2
-    return 1
 
 def _count_high_prize_on_board(gs: dict) -> int:
     """Count how many high-prize (prize_yield>=2) Pokemon are on our board."""
@@ -183,13 +174,6 @@ def _check_win_conditions(gs: dict) -> None:
     if opp_hp <= 0 and not opp_bench:
         gs["game_over"] = True
         gs["winner"] = "me"
-
-
-def _int_or_str(val: Any) -> Any:
-    try:
-        return int(val)
-    except Exception:
-        return val
 
 
 def _remove_from_hand(hand: list, card_id: Any) -> None:

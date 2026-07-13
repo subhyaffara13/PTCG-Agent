@@ -1,6 +1,8 @@
 from typing import Any
 
-from cb_agents.forward_model_gen import _remove_from_hand, _int_or_str, _apply_evolve, _draw_cards, _ABILITY_DRAW
+from cb_agents.forward_model_gen import _remove_from_hand, _apply_evolve, _draw_cards
+from cb_agents.card_utils import _int_or_str
+from cb_agents.constants import ABILITY_DRAW
 from cb_agents.card_registry import CardRegistry
 
 
@@ -92,7 +94,7 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
 
     elif act_type == "ability":
         name = target.lower() if target else ""
-        if any(k in name for k in _ABILITY_DRAW):
+        if any(k in name for k in ABILITY_DRAW):
             gs["my_hand"] = _draw_cards(hand, gs, 3)
         elif "search" in name or "quick" in name:
             # Search ability: find a Pokemon from deck

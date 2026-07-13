@@ -1,6 +1,7 @@
 import logging
 from typing import List
-from cb_agents.turn_planner_heuristics import _registry, _SCALING_ATTACKERS
+from cb_agents.turn_planner_heuristics import _registry
+from cb_agents.constants import SCALING_ATTACKERS
 from cb_agents.heuristic_pipeline import _dead_weight_heuristic
 
 logger = logging.getLogger(__name__)
