@@ -16,7 +16,7 @@ from factory.orchestration_agent_helpers import (
     auto_submit_if_ready, run_analytics_check, get_training_scripts
 )
 from factory.orchestration_process import (
-    launch_processes, monitor_and_restart, cleanup, script_log_path
+    launch_processes, monitor_and_restart, cleanup, script_log_path, prune_old_logs
 )
 
 os.makedirs("logs", exist_ok=True)
@@ -33,10 +33,9 @@ sh = logging.StreamHandler()
 sh.setFormatter(fmt)
 logger.addHandler(sh)
 
-# Prune old per-game logs at startup
-from factory.orchestration_process import prune_old_logs
-prune_old_logs()
-_last_prune = time.time()
+# _last_prune tracks the last log cleanup time; initialized to 0 so the first
+# daily check in main() fires immediately, avoiding startup filesystem iteration.
+_last_prune = 0.0
 
 def main():
     global _last_prune
