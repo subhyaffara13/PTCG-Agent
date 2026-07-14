@@ -14,11 +14,14 @@ import subprocess
 import shutil
 import logging
 from pathlib import Path
+from dotenv import load_dotenv
 
 logger = logging.getLogger("code_mutator")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 _PROJECT_ROOT = Path("C:/Users/subhy/.gemini/antigravity/scratch/ptcg-agent")
+load_dotenv(dotenv_path=_PROJECT_ROOT / ".env")
+
 _REPLAY_PATH = _PROJECT_ROOT / "visualizer" / "data" / "local_match_replay.json"
 _LOG_PATH = _PROJECT_ROOT / "submission" / "logs" / "reasoning_log.json"
 _EVOLUTION_LOG = _PROJECT_ROOT / "logs" / "evolution_log.json"
@@ -157,27 +160,52 @@ def request_code_mutation_from_llm(file_path: Path, telemetry_issues: str) -> st
     ```
     
     INSTRUCTIONS:
-    Return ONLY the complete, corrected python code. Do not include markdown formatting or explanations.
+    Analyze the issues and provide the complete, corrected python code. You must output a JSON object containing 'reasoning' (your step-by-step analysis) and 'mutated_code' (the updated code).
     """
 
     gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if gemini_key:
         import requests
-        models = ["gemini-2.5-pro", "gemini-2.5-flash"]
+        models = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
         for model in models:
             try:
                 logger.info(f"Connecting to Google Gemini API ({model}) for mutation...")
                 url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
                 headers = {"Content-Type": "application/json"}
                 payload = {
-                    "contents": [{"parts": [{"text": prompt}]}]
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "generationConfig": {
+                        "responseMimeType": "application/json",
+                        "responseSchema": {
+                            "type": "OBJECT",
+                            "properties": {
+                                "reasoning": {
+                                    "type": "STRING",
+                                    "description": "Chain-of-thought analysis of the issues and the required code changes."
+                                },
+                                "mutated_code": {
+                                    "type": "STRING",
+                                    "description": "The complete, updated python code with all imports intact."
+                                }
+                            },
+                            "required": ["reasoning", "mutated_code"]
+                        }
+                    }
                 }
                 res = requests.post(url, json=payload, headers=headers, timeout=60)
                 if res.status_code == 200:
                     text = res.json()["candidates"][0]["content"]["parts"][0]["text"]
                     if text:
-                        logger.info(f"Mutation generated successfully using {model}.")
-                        return clean_code_response(text)
+                        try:
+                            data = json.loads(text)
+                            code = data.get("mutated_code", "")
+                            reason = data.get("reasoning", "")
+                            logger.info(f"Mutation generated successfully using {model}. Reasoning:\n{reason}")
+                            if code:
+                                return code
+                        except Exception as parse_e:
+                            logger.warning(f"Failed to parse JSON response: {parse_e}. Falling back to clean_code_response on raw text...")
+                            return clean_code_response(text)
                 else:
                     logger.warning(f"Gemini API ({model}) returned status code {res.status_code}: {res.text}")
             except Exception as e:
@@ -257,10 +285,11 @@ def push_mutation_to_git(file_path: Path, issue_desc: str):
     except Exception as e:
         logger.error(f"Failed to auto-push mutation to git: {e}")
 
-def run_evolution_cycle(target_file: str = "cb_agents/turn_planner_sort.py"):
+def run_evolution_cycle(target_file: str = "cb_agents/turn_planner_sort.py", telemetry: dict | None = None):
     """Orchestrates the entire code mutation and evolution cycle."""
-    telemetry = analyze_recent_match_replay()
-    if not telemetry["needs_fixing"]:
+    if telemetry is None:
+        telemetry = analyze_recent_match_replay()
+    if not telemetry.get("needs_fixing"):
         logger.info("Recent match telemetry shows optimal performance. Skipping evolution.")
         return
 

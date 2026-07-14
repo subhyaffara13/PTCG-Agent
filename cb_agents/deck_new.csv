@@ -1,27 +1,29 @@
 card_id,card_name,card_type,count
-957,Miraidon ex,Pokemon,4
+957,Miraidon ex,Pokemon,3
 979,Koraidon ex,Pokemon,4
-210,Pikachu ex,Pokemon,4
+117,Cornerstone Mask Ogerpon ex,Pokemon,2
+210,Pikachu ex,Pokemon,3
 1121,Ultra Ball,Trainer,1
 1227,Lillie's Determination,Trainer,4
+1184,Lana’s Aid,Trainer,2
 1266,Nighttime Mine,Trainer,2
 1145,Mega Signal,Trainer,1
-1088,Prime Catcher,Trainer,1
-1110,Max Rod,Trainer,1
+1254,Levincia,Trainer,1
+1126,Precious Trolley,Trainer,1
 1182,Boss’s Orders,Trainer,4
-1152,Poké Pad,Trainer,4
+1152,Poké Pad,Trainer,3
 1097,Night Stretcher,Trainer,2
-1184,Lana’s Aid,Trainer,1
-1190,Bianca’s Devotion,Trainer,1
+1206,Larry’s Skill,Trainer,1
 1102,Dusk Ball,Trainer,1
 1212,Cook,Trainer,1
 1198,Crispin,Trainer,2
 1086,Buddy-Buddy Poffin,Trainer,4
 1123,Switch,Trainer,1
-1254,Levincia,Trainer,1
+1257,Team Rocket's Factory,Trainer,1
 1081,Enhanced Hammer,Trainer,1
 1122,Pokégear 3.0,Trainer,1
-6,Basic {F} Energy,Energy,4
-17,Ignition Energy,Energy,2
-4,Basic {L} Energy,Energy,5
-20,Rock Fighting Energy,Energy,3
+6,Basic {F} Energy,Energy,5
+16,Prism Energy,Energy,1
+19,Telepath Psychic Energy,Energy,1
+4,Basic {L} Energy,Energy,6
+20,Rock Fighting Energy,Energy,1
