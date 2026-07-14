@@ -58,6 +58,32 @@ def run_hourly_checks(iteration: int):
 
 def run_master_loop(enable_distributed=True):
     logger.info("Orchestration Agent (Master Mode) started." if enable_distributed else "Orchestration Agent (Local Mode) started.")
+    
+    # Initialize and start centralized InferenceServer
+    inference_server = None
+    try:
+        from cb_agents.value_network_helpers import state_to_tensor, state_to_card_tokens, HAS_TORCH
+        if HAS_TORCH:
+            from factory.ppo_trainer_network import ActorCritic
+            from factory.state_dimensions import STATE_DIM
+            import torch
+            import os
+            
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+            model_path = "models/ppo_actor_critic.pt"
+            model = None
+            if os.path.exists(model_path):
+                model = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
+                model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
+                model.to(device)
+                logger.info("Loaded PPO model for InferenceServer.")
+                
+            from factory.inference_server import InferenceServer
+            inference_server = InferenceServer(model, device=device, state_to_tensor=state_to_tensor, state_to_card_tokens=state_to_card_tokens)
+            inference_server.start()
+    except Exception as e:
+        logger.warning(f"Failed to start InferenceServer: {e}")
+        
     beacon = None
     if enable_distributed:
         version = get_local_version() or "unknown"
@@ -108,6 +134,19 @@ def run_master_loop(enable_distributed=True):
             run_hourly_checks(iteration)
             run_analytics_check(iteration)
             
+            # Log league Elo ratings to TensorBoard
+            try:
+                from factory.league_manager import LeagueManager
+                from factory.tensorboard_logger import TBLogger
+                lm = LeagueManager()
+                tb = TBLogger.get()
+                for agent_name, rating in lm.ratings.items():
+                    tb.log_scalar(f"league_elo/{agent_name}", rating, iteration)
+                tb.flush()
+                logger.info("Logged league ELO ratings to TensorBoard.")
+            except Exception as e:
+                logger.debug(f"Failed to log ELO: {e}")
+            
             if enable_distributed:
                 try:
                     from factory.orchestrator_master_git import auto_commit_and_push_if_changed
@@ -126,4 +165,7 @@ def run_master_loop(enable_distributed=True):
         if beacon:
             logger.info("Stopping MasterBeacon...")
             beacon.stop()
+        if inference_server:
+            logger.info("Stopping InferenceServer...")
+            inference_server.stop()
         logger.info("Orchestration Agent (Master Mode) shutdown complete.")

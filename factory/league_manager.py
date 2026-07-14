@@ -70,7 +70,7 @@ class LeagueManager:
         """
         Selects an opponent for the active agent to play against next.
         Follows the AlphaStar matchmaking probability:
-        - 50% chance to play another Main Agent (past snapshot)
+        - 50% chance to play another Main Agent (past snapshot or neural checkpoint)
         - 25% chance to play the Main Exploiter
         - 25% chance to play an Archetype Exploiter (Aggro/Control/Combo)
         """
@@ -78,6 +78,20 @@ class LeagueManager:
         r = random.random()
         
         if r < 0.50:
+            try:
+                from factory.model_checkpoint_manager import ModelCheckpointManager
+                mcm = ModelCheckpointManager()
+                opp = mcm.load_random_opponent()
+                if opp:
+                    path, info = opp
+                    c_id = info["id"]
+                    # Register checkpoint in ratings if not already present
+                    if c_id not in self.ratings:
+                        self.ratings[c_id] = info.get("elo", 1200.0)
+                        self._save_ratings()
+                    return c_id
+            except Exception as e:
+                logger.debug(f"Failed to matchmake against neural checkpoint: {e}")
             return "main_agent_snapshot"
         elif r < 0.75:
             return "main_exploiter"
@@ -86,3 +100,15 @@ class LeagueManager:
             # Weight toward the exploiter with the highest Elo
             weights = [self.ratings.get(e, 1200) for e in exploiters]
             return random.choices(exploiters, weights=weights, k=1)[0]
+
+    def get_neural_opponent_path(self, checkpoint_id: str) -> str:
+        """Returns the file path for the neural checkpoint ID."""
+        try:
+            from factory.model_checkpoint_manager import ModelCheckpointManager
+            mcm = ModelCheckpointManager()
+            for c in mcm.registry:
+                if c["id"] == checkpoint_id:
+                    return c["path"]
+        except Exception:
+            pass
+        return None

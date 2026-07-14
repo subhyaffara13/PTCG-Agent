@@ -1,8 +1,0 @@
-{
-  "venvPath": "C:\\Users\\subhy\\.gemini\\antigravity\\scratch\\ptcg-agent",
-  "venv": ".venv",
-  "extraPaths": [
-    ".",
-    "submission"
-  ]
-}

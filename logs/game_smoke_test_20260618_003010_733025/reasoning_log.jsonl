@@ -1,1 +1,0 @@
-{"turn": 1, "strategy_active": "aggro", "hand_score": 0.74, "strategy_switch_considered": false, "opponent_archetype_confidence": 0.62, "reasoning_chain": "Hand score above threshold → maintain aggro.", "reasoning_fired": true, "reasoning_outcome": "positive"}

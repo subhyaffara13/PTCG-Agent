@@ -70,8 +70,38 @@ class PPOTrainer:
         if not TORCH_AVAILABLE or not states:
             logger.error("Cannot train: PyTorch missing or empty states.")
             return
+
+        # Load dynamic hyperparameters based on iteration_id
+        clip_ratio = self.clip_ratio
+        entropy_coef = self.entropy_coef
+        
+        if iteration_id is not None:
+            try:
+                from factory.hyperparam_scheduler import HyperparamScheduler
+                scheduler = HyperparamScheduler()
+                hparams = scheduler.get_all(iteration_id)
+                scheduler.save_state(iteration_id)
+                
+                # Update learning rate
+                new_lr = hparams["learning_rate"]
+                for g in self.optimizer.param_groups:
+                    g['lr'] = new_lr
+                
+                clip_ratio = hparams["clip_ratio"]
+                entropy_coef = hparams["entropy_coef"]
+                logger.info(f"Dynamic hyperparameters for iter {iteration_id}: lr={new_lr:.2e}, clip_ratio={clip_ratio:.2f}, entropy_coef={entropy_coef:.3f}")
+                
+                # Log hyperparameters to TensorBoard
+                from factory.tensorboard_logger import TBLogger
+                tb_logger = TBLogger.get()
+                tb_logger.log_scalar("hyperparams/learning_rate", new_lr, iteration_id)
+                tb_logger.log_scalar("hyperparams/clip_ratio", clip_ratio, iteration_id)
+                tb_logger.log_scalar("hyperparams/entropy_coef", entropy_coef, iteration_id)
+            except Exception as e:
+                logger.warning(f"Failed to apply hyperparameter scheduler: {e}")
+                
         run_ppo_update(self.model, self.optimizer, states, actions, old_log_probs, rewards,
-                       self.clip_ratio, self.gamma, self.lam, self.value_coef, self.entropy_coef,
+                       clip_ratio, self.gamma, self.lam, self.value_coef, entropy_coef,
                        self.device, epochs, batch_size, self.model_path, iteration_id=iteration_id)
 
 

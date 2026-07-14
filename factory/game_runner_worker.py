@@ -8,15 +8,16 @@ from factory.game_runner_worker_helpers import setup_game_env, extract_prizes, d
 logger = logging.getLogger(__name__)
 
 def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str, 
-                          deck_a: list[int], deck_b: list[int], use_staging_a: bool, use_staging_b: bool, seed: int | None = None) -> dict:
+                          deck_a: list[int], deck_b: list[int], use_staging_a: bool, use_staging_b: bool, seed: int | None = None,
+                          model_path_a: str = None, model_path_b: str = None) -> dict:
     env = setup_game_env(seed)
 
     start_time = time.time()
     g_logger = GameLogger(log_dir=log_dir)
     g_logger.timestamp_str = f"{g_logger.timestamp_str}_{label}"
 
-    agent_a = CABTAgentWrapper(f"{label}_player_a", "skills", deck_a, g_logger, use_staging=use_staging_a)
-    agent_b = CABTAgentWrapper(f"{label}_player_b", "skills", deck_b, g_logger, use_staging=use_staging_b)
+    agent_a = CABTAgentWrapper(f"{label}_player_a", "skills", deck_a, g_logger, use_staging=use_staging_a, model_path=model_path_a)
+    agent_b = CABTAgentWrapper(f"{label}_player_b", "skills", deck_b, g_logger, use_staging=use_staging_b, model_path=model_path_b)
 
     env.run([agent_a, agent_b])
     elapsed = time.time() - start_time

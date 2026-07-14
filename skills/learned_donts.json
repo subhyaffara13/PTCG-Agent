@@ -1,5 +1,426 @@
 {
-  "deck_donts": [],
+  "deck_donts": [
+    {
+      "condition": "excessive_stage2_pre_evolution",
+      "description": "Avoid running excessive counts of pre-evolutions (e.g., 4 Kadabra) for a Stage 2 Pok\u00e9mon when also using Rare Candy. This clogs your hand with unplayable cards and creates dead draws; optimize Stage 2 lines for efficiency, such as 4-1-4 or 3-1-3 with Rare Candy."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Do not run a critically low total energy count (e.g., 7 cards including specials) in a deck that relies on attacking, retreating, or specific energy-requiring abilities. This leads to severe energy droughts and stalled board states."
+    },
+    {
+      "condition": "inefficient_primary_draw_supporters",
+      "description": "Avoid using low-impact draw supporters like Hilda (draw 3) as your primary or sole draw engine. These do not provide sufficient card advantage to consistently set up a Stage 2 deck; opt for powerful draw cards such as Professor's Research, Iono, or Arven."
+    },
+    {
+      "condition": "excessive_high_variance_item_draw",
+      "description": "Do not include an excessive number of high-variance, tempo-losing items like Pok\u00e9 Pad (e.g., 4 copies). These cards consume turn actions and are unreliable, leading to inconsistent setup and frequent dead draws."
+    },
+    {
+      "condition": "imbalanced_disruption_offense",
+      "description": "Avoid over-committing to disruption cards (e.g., 3 Enhanced Hammer, 3 Xerosic\u2019s Machinations) without a robust engine for consistent setup, damage output, or strong win condition. This results in stalling the game without advancing your own board state effectively."
+    },
+    {
+      "condition": "inconsistent_single_stage1_ex",
+      "description": "Do not include a single copy of a Stage 1 Pok\u00e9mon ex (e.g., Fezandipiti ex) as a tech card without dedicated search, draw support, or a clear strategy for its consistent evolution and utilization. It will be rarely accessible and inconsistent in contributing to your game plan."
+    },
+    {
+      "condition": "redundant_slow_search_supporters",
+      "description": "Avoid including multiple copies of slow and inefficient search supporters like Dawn (search for 1 Basic Pok\u00e9mon and 1 Energy card) when more powerful and efficient item-based search (e.g., Buddy-Buddy Poffin) is available. This leads to wasted supporter usage and slower setup."
+    },
+    {
+      "condition": "unjustified_single_tech_energy",
+      "description": "Do not include single copies of highly situational special energy cards (e.g., Enriching Energy) without a clear, consistent strategy for their application or recovery. They are prone to being dead cards in hand."
+    },
+    {
+      "condition": "incomplete_evolution_line",
+      "description": "Do not include an evolved Pok\u00e9mon (like Fezandipiti ex) without its complete pre-evolution line in the deck. These cards are unplayable and create guaranteed dead draws, severely hindering your setup."
+    },
+    {
+      "condition": "insufficient_energy_count",
+      "description": "Avoid having an extremely low energy count (e.g., 7 energy cards total) in your deck, especially when running multiple evolution lines that require energy to attack or retreat. This cripples your ability to execute basic plays and win games."
+    },
+    {
+      "condition": "excessive_supporters_and_search",
+      "description": "Do not overload your deck with an excessive number of Supporters (e.g., 15) and Supporter-searching items (e.g., 4 Pok\u00e9 Pad). This creates inconsistent hands filled with unplayable cards and prevents you from setting up your board effectively."
+    },
+    {
+      "condition": "disruption_without_consistency",
+      "description": "Avoid including a high count of disruption cards (e.g., 3 Enhanced Hammer, 3 Xerosic's Machinations) when your deck fundamentally lacks consistency in its own setup (e.g., energy, basic Pok\u00e9mon, evolution pieces). Your deck must function reliably before it can effectively disrupt an opponent."
+    },
+    {
+      "condition": "incomplete_evolution_line",
+      "description": "Do not include Stage 1 or Stage 2 Pok\u00e9mon (like Fezandipiti ex) without their necessary pre-evolutions in the deck. This makes the card unplayable and a guaranteed dead draw."
+    },
+    {
+      "condition": "critical_energy_shortage",
+      "description": "Avoid running an critically low energy count (e.g., 7 total energy) in decks that rely on powering up multiple Stage 2 Pok\u00e9mon attackers (Alakazam, Fezandipiti ex). This will severely hinder your ability to attack and progress your game."
+    },
+    {
+      "condition": "inadequate_pokemon_search",
+      "description": "Do not neglect essential universal Pok\u00e9mon search cards (e.g., Ultra Ball, Nest Ball). Relying solely on Basic Pok\u00e9mon searchers like Buddy-Buddy Poffin makes it nearly impossible to consistently find crucial evolution pieces (Kadabra, Alakazam) and higher HP Basic Pok\u00e9mon."
+    },
+    {
+      "condition": "overinvested_stage2_line",
+      "description": "Avoid overinvesting in a Stage 2 evolution line (e.g., 4-4-4 Abra-Kadabra-Alakazam) without robust setup and drawing capabilities. This can lead to a hand full of unplayable Pok\u00e9mon and clog your deck."
+    },
+    {
+      "condition": "invalid_card_inclusion",
+      "description": "Do not include cards that are not officially recognized or valid in the Pok\u00e9mon TCG (e.g., 'Pok\u00e9 Pad'). This makes your deck unplayable in any official format."
+    },
+    {
+      "condition": "unbalanced_disruption_package",
+      "description": "Avoid including a high count of disruption cards (e.g., 3 Enhanced Hammer, 3 Xerosic\u2019s Machinations) if the deck lacks a consistent setup and a clear strategy to leverage them. These can become dead cards when you need to set up your own board."
+    },
+    {
+      "condition": "redundant_draw_supporters",
+      "description": "Do not run an excessive number of different types of max-count draw Supporters (e.g., 4 Hilda, 4 Dawn). While draw is important, this can lead to redundancy and reduce the deck's ability to find specific utility Supporters or other key cards."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Do not run a deck with a critically low energy count (7 cards). This severely hinders the ability to consistently power up Pok\u00e9mon and execute attacks, leading to repeated turns of inaction."
+    },
+    {
+      "condition": "unreliable_consistency_engine",
+      "description": "Do not rely on highly unreliable, coin-flip-dependent cards like Pok\u00e9 Pad (4 copies) as a primary method for accessing essential Supporter cards. This introduces too much variance and will lead to inconsistent setup turns."
+    },
+    {
+      "condition": "insufficient_stage2_acceleration",
+      "description": "Do not skimp on Stage 2 evolution acceleration. Running only 3 Rare Candy for a crucial 4-4-4 Alakazam line significantly reduces the consistency of bringing multiple Stage 2 Pok\u00e9mon into play."
+    },
+    {
+      "condition": "limited_pokemon_search",
+      "description": "Do not build a deck with limited and restricted Pok\u00e9mon search. Relying solely on Buddy-Buddy Poffin for Basic Pok\u00e9mon (and no general search for any Pok\u00e9mon or evolutions) makes it difficult to find and set up the necessary components of your board."
+    },
+    {
+      "condition": "excessive_disruptive_techs",
+      "description": "Do not include an excessive number of disruptive tech cards (e.g., 3 Enhanced Hammer, 3 Xerosic\u2019s Machinations) before ensuring the deck has a stable and consistent core setup. Such a high concentration of techs often results in dead draws when basic setup is failing."
+    },
+    {
+      "condition": "critical_low_energy_count",
+      "description": "Do not run an excessively low energy count (e.g., 6 total energy for a deck focused on Stage 2 Pok\u00e9mon). This drastically reduces your ability to attack and progress the game."
+    },
+    {
+      "condition": "unreliable_pokepad",
+      "description": "Avoid including Pok\u00e9 Pad in high counts (e.g., 4 copies). Its coin flip mechanic makes it highly unreliable for finding crucial Supporters and frequently leads to dead draws."
+    },
+    {
+      "condition": "lacking_consistent_draw_engine",
+      "description": "Do not rely on inconsistent methods (like Pok\u00e9 Pad) or an overabundance of niche Supporters for your primary draw engine. Ensure you have a robust and consistent set of draw Supporters (e.g., Professor's Research, Iono) or Pok\u00e9mon with draw abilities to cycle through your deck effectively."
+    },
+    {
+      "condition": "unsupported_tech_line",
+      "description": "Do not include evolution lines (e.g., Dunsparce/Dudunsparce) whose primary effect (like Weakness manipulation) is not directly supported by the main attackers or strategy of the deck. This leads to wasted deck space and dead draws."
+    },
+    {
+      "condition": "suboptimal_recovery_counts",
+      "description": "Avoid running single copies of critical recovery cards (e.g., Night Stretcher, Sacred Ash) unless they are easily searchable. Such low counts make them highly unreliable when needed."
+    },
+    {
+      "condition": "excessive_specific_disruption_supporters",
+      "description": "Do not include a high number of highly specific disruption Supporters (e.g., 3 Xerosic's Machinations) without a primary strategy that heavily relies on and can consistently leverage that disruption. This can reduce your consistency in other areas."
+    },
+    {
+      "condition": "incomplete_evolution_line",
+      "description": "Avoid including evolution lines (e.g., Grookey and Thwackey) without their final evolution stage (e.g., Rillaboom). This leads to dead-draws and wasted deck space."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Ensure an adequate number of energy cards (typically 10-15+) to reliably power attacks. A count of 5 Basic {G} Energy is critically low and will severely hinder your ability to attack."
+    },
+    {
+      "condition": "excessive_niche_supporters",
+      "description": "Limit the number of highly situational supporters (e.g., Kieran, Black Belt\u2019s Training, Lana\u2019s Aid). Prioritize consistent draw and setup supporters to maintain hand advantage and board presence."
+    },
+    {
+      "condition": "detrimental_stadium_choice",
+      "description": "Avoid stadiums (e.g., Festival Grounds) that can inadvertently benefit your opponent by healing their Pok\u00e9mon, unless your deck has a specific strategy to leverage it or counter its effects."
+    },
+    {
+      "condition": "insufficient_mobility",
+      "description": "Include a sufficient number of switching cards (e.g., Switch, Escape Rope, Air Balloon) to ensure your active Pok\u00e9mon can retreat freely and prevent being stranded by status conditions or high retreat costs."
+    },
+    {
+      "condition": "overinvested_basic_search_no_wincon",
+      "description": "While basic Pok\u00e9mon search cards (e.g., Buddy-Buddy Poffin, Bug Catching Set) are good for setup, avoid over-investing in them if your basic Pok\u00e9mon do not lead to a strong, coherent win condition or if key evolutions are missing."
+    },
+    {
+      "condition": "fragile_single_evolution_line",
+      "description": "Be wary of including 1-1 evolution lines (e.g., Rellor and Rabsca) without strong search support or a clear, high-impact role, as they are often too inconsistent to set up and utilize effectively."
+    },
+    {
+      "condition": "no_clear_win_condition",
+      "description": "Do not build a deck without a clear, powerful win condition or primary attacker. This deck includes multiple underpowered evolution lines (Thwackey, Dipplin, Rabsca) that lack the offensive power to consistently secure KOs and win games."
+    },
+    {
+      "condition": "inefficient_draw_search",
+      "description": "Avoid relying on extremely inefficient and slow draw/search cards like Pok\u00e9 Pad (x4) and Bug Catching Set (x4). These cards consume valuable turns and deck space without providing reliable setup or hand advantage."
+    },
+    {
+      "condition": "excessive_situational_cards",
+      "description": "Do not include an excessive number of highly situational Supporters (e.g., Kieran, Black Belt\u2019s Training, Lana\u2019s Aid) or Items (e.g., Night Stretcher, Festival Grounds) that do not contribute to your primary setup, draw, or attack strategy. They create dead draws and reduce consistency."
+    },
+    {
+      "condition": "critically_low_energy",
+      "description": "Never build a deck with a critically low energy count. With only 5 Basic Grass Energy, this deck will struggle severely to power up any Pok\u00e9mon, leading to frequent turn skips and inability to attack."
+    },
+    {
+      "condition": "unfocused_pokemon_lines",
+      "description": "Avoid including single, unsearchable copies of Pok\u00e9mon (e.g., Rellor, Rabsca, Shaymin) that dilute your deck's consistency. Focus on maximizing the effectiveness of a few strong Pok\u00e9mon lines rather than spreading resources across many weak ones."
+    },
+    {
+      "condition": "outdated_card_inclusion",
+      "description": "Ensure all cards in your deck are legal for the intended format. Cards like Lillie's Determination and Secret Box are likely out of rotation and will render the deck unplayable in competitive settings."
+    },
+    {
+      "condition": "dead_search_package",
+      "description": "Avoid including search cards like 'Bug Catching Set' that only apply to a minor, inconsistent portion of your deck (e.g., a 1-1 Rellor/Rabsca line), making them dead draws in most situations."
+    },
+    {
+      "condition": "critically_low_energy",
+      "description": "Do not run an extremely low energy count (e.g., 5 Basic {G} Energy) in a deck with multiple evolving Pok\u00e9mon that need to attack, as it will cause severe energy starvation and hinder setup."
+    },
+    {
+      "condition": "unsupported_evolution_line",
+      "description": "Do not include an evolution line (e.g., a 1-1 Rellor/Rabsca) that lacks sufficient copies, specific energy support (e.g., Rabsca needing Psychic energy when only Grass is present), or a clear role, making it inconsistent and often unplayable."
+    },
+    {
+      "condition": "insufficient_mobility",
+      "description": "Avoid running an extremely low count of switching cards (e.g., only 1 Switch), as it will frequently lead to Pok\u00e9mon being trapped in the Active Spot, preventing desired attackers from coming forward."
+    },
+    {
+      "condition": "diluted_strategy_too_many_lines",
+      "description": "Do not attempt to support too many distinct evolution lines (e.g., Grookey/Thwackey, Applin/Dipplin, Rellor/Rabsca) without adequate draw, evolution acceleration, and energy, as this dilutes your deck's focus and makes consistent setup nearly impossible."
+    },
+    {
+      "condition": "overreliance_situational_supporters",
+      "description": "Do not include an excessive number of highly situational Supporters (e.g., Kieran, Black Belt's Training, Lana's Aid) that do not consistently advance your board state or draw cards, especially when core draw/setup Supporters are underrepresented."
+    },
+    {
+      "condition": "missing_evolution_target",
+      "description": "Do not include a full line of Basic and Stage 1 Pok\u00e9mon (e.g., Grookey and Thwackey) without including their Stage 2 evolution (e.g., Rillaboom), as this makes the Stage 1 Pok\u00e9mon dead cards."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Avoid running an extremely low energy count (e.g., 5 Basic Grass Energy) in a deck that primarily relies on Pok\u00e9mon attacks, as it severely hinders your ability to power up attackers consistently."
+    },
+    {
+      "condition": "excessive_niche_items",
+      "description": "Do not include an excessive number of highly situational or niche item cards (e.g., 4 Pok\u00e9 Pad) as they can clog your hand and lead to dead draws."
+    },
+    {
+      "condition": "insufficient_mobility",
+      "description": "Ensure adequate mobility options; running only one Switch card makes it difficult to pivot your Active Pok\u00e9mon and can leave you vulnerable to being stuck."
+    },
+    {
+      "condition": "unreliable_1_1_evolution_line",
+      "description": "Avoid including a single, fragile 1-1 evolution line (e.g., Rellor and Rabsca) without dedicated search or recovery cards, as it is highly unreliable to set up."
+    },
+    {
+      "condition": "suboptimal_energy_search_ratio",
+      "description": "Do not include a high count of energy search cards (e.g., 4 Bug Catching Set) when the total energy count in the deck is critically low (e.g., 5 Basic Energy), as it drastically reduces the effectiveness of your search and makes the item card a potential dead draw for energy."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Do not include a critically low number of basic energy cards (e.g., 5 Basic Grass Energy in a 60-card deck). This severely hinders your ability to attack and progress your board state."
+    },
+    {
+      "condition": "no_clear_main_attacker_or_win_condition",
+      "description": "Do not construct a deck without a clear main attacker or a defined win condition. Committing multiple evolution lines without a powerful offensive or disruptive payoff is inefficient."
+    },
+    {
+      "condition": "bloated_evolution_lines_without_strong_output",
+      "description": "Do not dedicate significant deck space to multiple 4-4 evolution lines (e.g., Grookey/Thwackey and Applin/Dipplin) if the evolved Pok\u00e9mon do not provide substantial attack power, crucial abilities, or unique utility."
+    },
+    {
+      "condition": "excessive_healing_for_fragile_pokemon",
+      "description": "Do not include a high count of healing cards (e.g., Dawn, Lana's Aid, Festival Grounds) if your primary Pok\u00e9mon are low HP or easily Knocked Out, as they often won't survive to benefit from the healing."
+    },
+    {
+      "condition": "insufficient_consistent_draw_support",
+      "description": "Do not overly rely on a single draw Supporter (e.g., Lillie's Determination) without additional consistent draw power or robust search to maintain hand advantage throughout the game."
+    },
+    {
+      "condition": "unreliable_thin_or_off_type_evolution_lines",
+      "description": "Do not include thin (e.g., 1-1 Rellor/Rabsca) or off-theme evolution lines unless they provide absolutely critical and unique utility, as they are highly inconsistent and can be dead draws."
+    },
+    {
+      "condition": "insufficient_energy_for_primary_attacker",
+      "description": "Avoid running critically low counts of basic energy, especially when relying on a multi-Prize attacker or an evolution line. 6 total energy (2 basic, 4 special) is vastly insufficient for a 4-4-4 Alakazam line."
+    },
+    {
+      "condition": "weak_and_inconsistent_draw_engine",
+      "description": "Do not rely on low-impact draw supporters like Hilda (draw 3) or Dawn (select 2 from 5) as your primary draw engine. Modern decks require stronger draw consistency from cards like Professor's Research, Iono, or Arven to set up demanding evolution lines."
+    },
+    {
+      "condition": "overboard_disruption_package",
+      "description": "Avoid committing an excessive number of slots (e.g., 7 cards) to disruption tools like Enhanced Hammer and Xerosic\u2019s Machinations without a robust draw engine or clear strategy to leverage the disruption effectively. This often cripples your own setup."
+    },
+    {
+      "condition": "ineffective_trainer_search_item_count",
+      "description": "Do not include high counts of niche search items like Pok\u00e9 Pad (x4) unless your deck has a specific, consistent combo that absolutely requires finding any Trainer card every turn. It does not draw Pok\u00e9mon or Energy, severely hindering setup."
+    },
+    {
+      "condition": "suboptimal_stadium_choice",
+      "description": "Avoid including stadiums that do not significantly benefit your own strategy (e.g., Nighttime Mine with no beneficial effect) unless you specifically need a high count of stadium counters. These slots are better used for consistency or attack power."
+    },
+    {
+      "condition": "unsupported_tech_pokemon",
+      "description": "Do not include single copies of tech Pok\u00e9mon like Fezandipiti ex or Shaymin without strong search capabilities or a clear, consistent strategy to bring them out and utilize their abilities. They often become dead draws."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "The deck has an extremely low energy count (only 7 cards total). This is insufficient to consistently power up your Alakazam attackers, leading to frequent turns where you cannot attack or meet retreat costs."
+    },
+    {
+      "condition": "insufficient_stage2_acceleration",
+      "description": "Running only 3 Rare Candy for a crucial 4-4-4 Alakazam Stage 2 evolution line significantly hinders your setup consistency. A higher count is essential for reliable evolution and speed."
+    },
+    {
+      "condition": "over_indexed_on_disruption",
+      "description": "The deck heavily commits to energy and tool disruption (4 Enhanced Hammer, 3 Xerosic's Machinations). While disruption can be useful, this high count often sacrifices valuable deck slots that should be dedicated to your primary strategy's consistency, energy, or evolution acceleration."
+    },
+    {
+      "condition": "inconsistent_tech_pokemon",
+      "description": "Including single copies of Pok\u00e9mon like Fezandipiti ex and Shaymin without reliable search or immediate game-changing impact makes them highly inconsistent and prone to being dead draws, hindering overall deck flow."
+    },
+    {
+      "condition": "inefficient_secondary_evolution_line",
+      "description": "The 3-2 Dunsparce-Dudunsparce evolution line consumes significant deck space. If Dudunsparce does not provide critical support or a strong secondary attack, these slots are likely better used to improve the consistency or power of your main Alakazam strategy."
+    },
+    {
+      "condition": "inconsistent_recovery_options",
+      "description": "Single copies of recovery cards such as Night Stretcher, Sacred Ash, and Lana's Aid offer minimal consistency. If these effects are vital, you need more copies or dedicated search; otherwise, they frequently act as dead draws."
+    },
+    {
+      "condition": "insufficient_energy_stage2",
+      "description": "Do not run an insufficient number of energy cards (7 total) in a deck that relies on Stage 2 Pok\u00e9mon for attacking. This significantly reduces your ability to power up attackers and maintain momentum, leading to severe setup issues."
+    },
+    {
+      "condition": "over_reliant_on_disruption",
+      "description": "Do not dedicate an excessive number of slots (7 cards: 4 Enhanced Hammer, 3 Xerosic\u2019s Machinations) to specific disruption tools at the expense of core setup, draw, and energy consistency. This sacrifices your own board development for situational opponent disruption."
+    },
+    {
+      "condition": "inconsistent_draw_engine",
+      "description": "Do not rely heavily on highly inconsistent draw and search mechanisms like 4 Pok\u00e9 Pad, which is coin-flip reliant. Prioritize more reliable draw supporters and item-based search cards to ensure consistent access to necessary cards."
+    },
+    {
+      "condition": "unsupported_tech_pokemon",
+      "description": "Do not include single copies of Pok\u00e9mon like Fezandipiti ex that require specific synergy partners (e.g., the other 'Loyal Three' Pok\u00e9mon) to activate their abilities. Without support, these become dead draws and waste deck space."
+    },
+    {
+      "condition": "unbalanced_evolution_line",
+      "description": "Do not create an unbalanced evolution line (e.g., 3 Dunsparce, 2 Dudunsparce) where one or more Basic Pok\u00e9mon cannot evolve. This leads to wasted bench space or dead cards in hand, hindering efficient board development."
+    },
+    {
+      "condition": "niche_stadium_overcommitment",
+      "description": "Do not overcommit multiple stadium slots (e.g., 2 Nighttime Mine) to highly situational effects that may not be useful in many matchups. Prioritize stadiums that broadly support your strategy or improve consistency."
+    },
+    {
+      "condition": "poor_draw_engine",
+      "description": "Avoid using Supporters that only draw 3 cards (like Hilda or Dawn) as your primary draw engine. This leads to insufficient card advantage and severely hinders consistent setup and recovery."
+    },
+    {
+      "condition": "insufficient_basic_energy",
+      "description": "Do not run an extremely low count of basic energy (e.g., 2 Basic {P} Energy) in a deck that relies on energy-demanding Pok\u00e9mon, even if special energy is included. This will lead to frequent energy starvation and missed attacks."
+    },
+    {
+      "condition": "low_stage2_acceleration",
+      "description": "Avoid relying on Stage 2 Pok\u00e9mon with only 3 Rare Candy and poor draw support. This significantly reduces your ability to evolve consistently and establish your primary attackers in a timely manner."
+    },
+    {
+      "condition": "overreliance_on_pokepad",
+      "description": "Do not include 4 copies of Pok\u00e9 Pad as a primary method for finding Trainers. While flexible, it can be a dead draw early game and is generally less efficient than dedicated Pok\u00e9mon search or draw Supporters for consistency."
+    },
+    {
+      "condition": "inconsistent_tech_cards",
+      "description": "Do not include numerous single-copy tech cards (e.g., Shaymin, Enriching Energy, Night Stretcher, Sacred Ash, Lana's Aid) without robust draw or search capabilities. They are too inconsistent to be reliably drawn and impactful when needed."
+    },
+    {
+      "condition": "unsupported_pokemon_lines",
+      "description": "Avoid including small or single lines of Pok\u00e9mon (e.g., 1 Fezandipiti ex) that do not directly support the deck's main strategy or lack dedicated search/energy support. These often become dead draws."
+    },
+    {
+      "condition": "disruption_without_consistency",
+      "description": "Do not overcommit to disruption cards (e.g., 4 Enhanced Hammer, 3 Xerosic\n\t\t\t\t\u2019s Machinations) when your deck lacks consistent setup, evolution acceleration, and strong draw power. You will struggle to execute both your game plan and effective disruption."
+    },
+    {
+      "condition": "insufficient_energy_stage2",
+      "description": "Do not build a Stage 2 evolution deck aiming for multiple attackers with only 7 energy cards. This will severely hinder your ability to power up and attack consistently."
+    },
+    {
+      "condition": "inefficient_search_trainer",
+      "description": "Avoid relying on Pok\u00e9 Pad (x4) as a primary search engine. Its randomness and limited scope make it an inefficient use of deck space compared to more reliable search Trainers."
+    },
+    {
+      "condition": "weak_disruption_package",
+      "description": "Do not dedicate significant deck slots (e.g., 3 copies) to weak disruption Supporters like Xerosic\u2019s Machinations, as their impact on the opponent's game state is minimal."
+    },
+    {
+      "condition": "excessive_draw_supporters",
+      "description": "Avoid including an extremely high count of generic draw Supporters (e.g., 8 copies of Hilda/Dawn). This often leads to dead hands where you can only play one, limiting your actions."
+    },
+    {
+      "condition": "type_mismatch_attacker_no_support",
+      "description": "Do not include an off-type Basic Pok\u00e9mon ex (Fezandipiti ex is Dark-type) as an attacker in a mono-Psychic deck without providing its specific energy requirements or having an overwhelmingly powerful, type-agnostic ability."
+    },
+    {
+      "condition": "suboptimal_rare_candy_count",
+      "description": "For a deck running a heavy 4-4-4 Stage 2 evolution line, ensure you have at least 4 copies of Rare Candy to consistently set up your evolved Pok\u00e9mon quickly."
+    },
+    {
+      "condition": "redundant_situational_techs",
+      "description": "Avoid including multiple single-copy, highly situational recovery or disruption cards (e.g., Night Stretcher, Sacred Ash, Lana\u2019s Aid) that do not directly support the deck's core strategy, as they often become dead draws."
+    },
+    {
+      "condition": "slow_pokemon_draw_engine",
+      "description": "Do not rely solely on a slow Pok\u00e9mon draw engine like Dudunsparce's 'draw 1 card' ability, especially when combined with other inefficient draw and search options, as this significantly impedes deck consistency."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "The deck runs an extremely low energy count (7 total), making it nearly impossible to consistently power up your main attackers like Alakazam (requiring two Psychic energy) or Fezandipiti ex, leading to frequent dead draws and an inability to attack."
+    },
+    {
+      "condition": "excessive_disruption_lack_offense",
+      "description": "Too many slots are dedicated to energy and tool disruption (4 Enhanced Hammer, 3 Xerosic\u2019s Machinations) without a strong, consistent offensive engine. This creates a reactive deck that can annoy opponents but struggles to close out games due to its own resource issues."
+    },
+    {
+      "condition": "bulky_evolution_no_acceleration",
+      "description": "Attempting to run a 4-4-4 evolution line for Alakazam, combined with another evolution line (Dunsparce/Dudunsparce), requires a much stronger and more reliable draw engine, search capabilities, and energy acceleration than the current deck provides to ensure timely setups."
+    },
+    {
+      "condition": "inconsistent_single_tech_card",
+      "description": "Including a single copy of Fezandipiti ex without any specific search, acceleration, or additional copies makes it an inconsistent 'tech' card that will rarely be found or effectively utilized to impact the game."
+    },
+    {
+      "condition": "scattered_suboptimal_supporters",
+      "description": "The supporter line-up is highly fragmented, with multiple copies of potentially outdated or niche supporters (Hilda, Dawn, Lana's Aid) in addition to disruption supporters. This lack of focused, powerful draw support severely hampers consistency and board development."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Avoid decks with critically low energy counts (e.g., 7 or fewer total energy) as they will struggle to power up attacks consistently and maintain board presence."
+    },
+    {
+      "condition": "inefficient_draw_supporters",
+      "description": "Do not rely on low-impact draw Supporters (e.g., Hilda, Dawn) or weak Stadiums (e.g., Nighttime Mine) as your primary draw engine; these cards do not provide enough card advantage."
+    },
+    {
+      "condition": "dead_draw_search_package",
+      "description": "Avoid running a high count of Pok\u00e9 Pad to search for weak draw Supporters; this creates a dead-draw package that uses up valuable deck slots without significantly improving your hand."
+    },
+    {
+      "condition": "unfocused_pokemon_lines",
+      "description": "Do not include single, unsynergistic Pok\u00e9mon ex/V (e.g., Fezandipiti ex) or Pok\u00e9mon without a clear role (e.g., Shaymin) that do not support the deck's main strategy or contribute to a win condition."
+    },
+    {
+      "condition": "disruption_without_win_condition",
+      "description": "Avoid dedicating too many deck slots to energy disruption cards (e.g., Enhanced Hammer, Xerosic's Machinations) without a strong offensive plan or energy acceleration to capitalize on the disruption and secure knockouts."
+    },
+    {
+      "condition": "insufficient_stage2_acceleration",
+      "description": "Do not run fewer than 4 copies of Rare Candy when aiming to consistently evolve Stage 2 Pok\u00e9mon, as it severely reduces your chances of setting up critical attackers."
+    }
+  ],
   "behavior_donts": [
     {
       "condition": "setup_duration_gt_15",

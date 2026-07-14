@@ -50,10 +50,18 @@ class NeuralValueNetwork(BaseValueNetwork):
         self.state_to_card_tokens = state_to_card_tokens
         self.has_torch = HAS_TORCH
 
+        # Initialize TCP InferenceClient
+        try:
+            from factory.inference_client import InferenceClient
+            host = os.environ.get("MASTER_HOST", "127.0.0.1")
+            self.inference_client = InferenceClient(host=host, port=9999)
+        except Exception:
+            self.inference_client = None
+
         if HAS_TORCH:
             try:
                 import torch
-                tnet = ActorCritic(input_dim=STATE_DIM, hidden_dim=128, action_dim=3000)
+                tnet = ActorCritic(input_dim=STATE_DIM, hidden_dim=256, action_dim=3000)
                 tnet.to(self.device)
                 
                 if os.path.exists(model_path):
@@ -77,6 +85,18 @@ class NeuralValueNetwork(BaseValueNetwork):
     def evaluate(self, game_state: dict, action: str | None = None, determinization: dict | None = None) -> float:
         if game_state.get("game_over"):
             return 1.0 if game_state.get("winner") == "me" else -1.0
+
+        # Try batched inference server first
+        try:
+            if hasattr(self, 'inference_client') and self.inference_client and self.inference_client.is_available():
+                _, val = self.inference_client.evaluate(game_state)
+                if val is not None:
+                    if action:
+                        from cb_agents.heuristic_pipeline import _action_score
+                        val += _action_score(action, game_state, 0.0)
+                    return max(-1.0, min(1.0, val))
+        except Exception:
+            pass
             
         if self.model is None or not self.has_torch:
             from cb_agents.heuristic_value import HeuristicValueNetwork
@@ -113,8 +133,26 @@ class NeuralValueNetwork(BaseValueNetwork):
         return HeuristicValueNetwork().evaluate(game_state, action, determinization)
         
     def get_action_priors(self, game_state: dict, candidates: list) -> dict:
-        if self.model is None or not self.has_torch or not candidates:
+        if not candidates:
             return {}
+
+        # Try batched inference server first
+        try:
+            if hasattr(self, 'inference_client') and self.inference_client and self.inference_client.is_available():
+                logits, _ = self.inference_client.evaluate(game_state)
+                if logits is not None:
+                    import numpy as np
+                    from factory.data_alignment_helpers import normalize_action
+                    probs = np.exp(logits) / np.sum(np.exp(logits), axis=-1, keepdims=True)
+                    priors = {}
+                    for action_str in candidates:
+                        action_id = normalize_action(action_str, offset_play=0, offset_attack=1000, offset_other=2000)
+                        priors[action_str] = float(probs[action_id]) if 0 <= action_id < len(probs) else 0.0
+                    return priors
+        except Exception:
+            pass
+
+        if self.model is None or not self.has_torch:
             
         import torch
         from factory.data_alignment_helpers import normalize_action
@@ -196,6 +234,14 @@ class PPOPolicyNetwork(BasePolicyNetwork):
         self._has_torch = False
         self._heuristic_fallback = HeuristicPolicyNetwork()
         self._cache = {}
+        
+        # Initialize TCP InferenceClient
+        try:
+            from factory.inference_client import InferenceClient
+            host = os.environ.get("MASTER_HOST", "127.0.0.1")
+            self.inference_client = InferenceClient(host=host, port=9999)
+        except Exception:
+            self.inference_client = None
 
         try:
             import torch as _
@@ -265,12 +311,37 @@ class PPOPolicyNetwork(BasePolicyNetwork):
             logger.warning(f"PPO policy load failed: {e}. Using heuristic fallback.")
 
     def get_priors(self, game_state: dict, legal_actions: List[str]) -> List[ActionPrior]:
-        if self.model is None or not self._has_torch or not legal_actions:
-            return self._heuristic_fallback.get_priors(game_state, legal_actions)
+        if not legal_actions:
+            return []
 
         h = gs_hash(game_state)
         if h != 0 and h in self._cache:
             return self._cache[h]
+
+        # Try batched inference server first
+        try:
+            if hasattr(self, 'inference_client') and self.inference_client and self.inference_client.is_available():
+                logits, _ = self.inference_client.evaluate(game_state)
+                if logits is not None:
+                    import numpy as np
+                    from factory.data_alignment_helpers import normalize_action
+                    probs = np.exp(logits) / np.sum(np.exp(logits), axis=-1, keepdims=True)
+                    priors = []
+                    for action_str in legal_actions:
+                        action_id = normalize_action(action_str, offset_play=0, offset_attack=1000, offset_other=2000)
+                        prob = float(probs[action_id]) if 0 <= action_id < len(probs) else 0.0
+                        priors.append(ActionPrior(action=action_str, prob=prob))
+                    total = sum(p.prob for p in priors)
+                    if total > 0:
+                        for p in priors:
+                            p.prob /= total
+                    if h != 0:
+                        self._cache[h] = priors
+                    return priors
+        except Exception:
+            pass
+
+        if self.model is None or not self._has_torch:
 
         import torch
         from factory.data_alignment_helpers import normalize_action
@@ -327,6 +398,14 @@ class PPOValueNetwork(BaseValueNetwork):
         self._state_to_tensor = None
         self._state_to_card_tokens = None
         self._has_torch = False
+        
+        # Initialize TCP InferenceClient
+        try:
+            from factory.inference_client import InferenceClient
+            host = os.environ.get("MASTER_HOST", "127.0.0.1")
+            self.inference_client = InferenceClient(host=host, port=9999)
+        except Exception:
+            self.inference_client = None
 
         try:
             import torch as _
@@ -372,6 +451,21 @@ class PPOValueNetwork(BaseValueNetwork):
         cache_key = (h, action)
         if h != 0 and cache_key in self._cache:
             return self._cache[cache_key]
+
+        # Try batched inference server first
+        try:
+            if hasattr(self, 'inference_client') and self.inference_client and self.inference_client.is_available():
+                _, val = self.inference_client.evaluate(game_state)
+                if val is not None:
+                    if action:
+                        from cb_agents.heuristic_pipeline import _action_score
+                        val += _action_score(action, game_state, 0.0)
+                    res = max(-1.0, min(1.0, val))
+                    if h != 0:
+                        self._cache[cache_key] = res
+                    return res
+        except Exception:
+            pass
 
         if self.model is None or not self._has_torch:
             res = HeuristicValueNetwork().evaluate(game_state, action, determinization)

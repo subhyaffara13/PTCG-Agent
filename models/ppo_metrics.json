@@ -1,0 +1,182 @@
+[
+  {
+    "iteration": 0,
+    "final_loss": 2.9538704305887222,
+    "final_policy_loss": 0.0043842323357239366,
+    "final_value_loss": 7.179991006851196,
+    "final_entropy": 8.006366670131683,
+    "mean_reward": -0.00609601242467761,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.431977555155754,
+    "final_policy_loss": -0.002192999003455043,
+    "final_value_loss": 8.149359375238419,
+    "final_entropy": 8.006363868713379,
+    "mean_reward": -0.010170353576540947,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.614791825413704,
+    "final_policy_loss": 0.008625805960036814,
+    "final_value_loss": 8.493349730968475,
+    "final_entropy": 8.006361544132233,
+    "mean_reward": -0.014447884634137154,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.571712478995323,
+    "final_policy_loss": -0.002324180561117828,
+    "final_value_loss": 8.42909175157547,
+    "final_entropy": 8.006365597248077,
+    "mean_reward": -0.004572009202092886,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.2169793993234634,
+    "final_policy_loss": 0.00037256162613630295,
+    "final_value_loss": 7.7142322063446045,
+    "final_entropy": 8.006365597248077,
+    "mean_reward": 0.00503271259367466,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.437437415122986,
+    "final_policy_loss": 0.001173460274003446,
+    "final_value_loss": 8.153543889522552,
+    "final_entropy": 8.006349563598633,
+    "mean_reward": 0.01024590153247118,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.8429682552814484,
+    "final_policy_loss": -0.0030650217086076736,
+    "final_value_loss": 8.973082035779953,
+    "final_entropy": 8.006346702575684,
+    "mean_reward": -0.0010170353343710303,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.7690321505069733,
+    "final_policy_loss": -0.006206266058143228,
+    "final_value_loss": 8.83148717880249,
+    "final_entropy": 8.006315171718597,
+    "mean_reward": 0.011883234605193138,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.6764929741621017,
+    "final_policy_loss": -0.0008285640506073833,
+    "final_value_loss": 8.635658472776413,
+    "final_entropy": 8.006346642971039,
+    "mean_reward": 0.009713700972497463,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.7002860754728317,
+    "final_policy_loss": -0.0006505162455141544,
+    "final_value_loss": 8.682890474796295,
+    "final_entropy": 8.006359279155731,
+    "mean_reward": 0.01756587252020836,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 4.7483914494514465,
+    "final_policy_loss": 0.0006043481407687068,
+    "final_value_loss": 10.77659296989441,
+    "final_entropy": 8.006366968154907,
+    "mean_reward": 0.012528188526630402,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 4.318544909358025,
+    "final_policy_loss": 0.006540979258716106,
+    "final_value_loss": 9.90502616763115,
+    "final_entropy": 8.006364107131958,
+    "mean_reward": -0.03506135568022728,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.485892117023468,
+    "final_policy_loss": 0.0017061581602320075,
+    "final_value_loss": 8.249389320611954,
+    "final_entropy": 8.006359696388245,
+    "mean_reward": -0.026046987622976303,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.600217655301094,
+    "final_policy_loss": -0.0011113359942100942,
+    "final_value_loss": 8.48367527127266,
+    "final_entropy": 8.006358802318573,
+    "mean_reward": -0.024592220783233643,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.9625910371541977,
+    "final_policy_loss": 0.002881700696889311,
+    "final_value_loss": 9.200433492660522,
+    "final_entropy": 8.006342709064484,
+    "mean_reward": -0.028556859120726585,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 4.159360662102699,
+    "final_policy_loss": 0.001077249413356185,
+    "final_value_loss": 9.597580373287201,
+    "final_entropy": 8.006334483623505,
+    "mean_reward": -0.04185577481985092,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.391496106982231,
+    "final_policy_loss": 0.002202183415647596,
+    "final_value_loss": 8.05959290266037,
+    "final_entropy": 8.006281673908234,
+    "mean_reward": 0.005054334178566933,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.088639423251152,
+    "final_policy_loss": -0.0026001715450547636,
+    "final_value_loss": 7.46347764134407,
+    "final_entropy": 8.006240963935852,
+    "mean_reward": 0.023142196238040924,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 2.2303463593125343,
+    "final_policy_loss": 0.0014969618059694767,
+    "final_value_loss": 5.73870661854744,
+    "final_entropy": 8.006298840045929,
+    "mean_reward": 0.02268625982105732,
+    "unique_actions": 1
+  },
+  {
+    "iteration": 7694,
+    "final_loss": 3.092432454228401,
+    "final_policy_loss": 0.017794259707443416,
+    "final_value_loss": 7.430289752781391,
+    "final_entropy": 8.006332516670227,
+    "mean_reward": 0.037922076880931854,
+    "unique_actions": 1
+  }
+]

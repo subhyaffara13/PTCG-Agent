@@ -38,12 +38,11 @@ struct cpp_MCTSNode {
     bool is_terminal = false;
 
     std::unordered_map<std::string, std::unique_ptr<cpp_MCTSNode>> children;
-    std::vector<ActionPrior> unexpanded_priors;
     int visit_count = 0;
     double value_sum = 0.0;
 
-    double get_q_value(double fpu_value = 0.0) const {
-        if (visit_count == 0) return fpu_value;
+    double get_q_value() const {
+        if (visit_count == 0) return 0.0;
         return value_sum / visit_count;
     }
 
@@ -51,7 +50,7 @@ struct cpp_MCTSNode {
         return !children.empty() || is_terminal;
     }
 
-    void expand(const std::vector<ActionPrior>& actionPriors, int max_expand = -1);
+    void expand(const std::vector<ActionPrior>& actionPriors);
 };
 
 class cpp_MCTSEngine {
@@ -60,11 +59,8 @@ public:
         : c_puct(cPuct), num_simulations(numSimulations) {}
 
     std::string search(const BoardState& rootState, double timeLimitSec = 1.0, const std::unordered_map<std::string, double>& root_priors = {});
-    void advance_root(const std::string& action);
-    void reset_tree();
 
 private:
-    std::unique_ptr<cpp_MCTSNode> root;
     double c_puct = 1.25;
     int num_simulations = 50;
     std::mt19937 rng{std::random_device{}()};
@@ -77,7 +73,7 @@ private:
     double evaluate_state(const BoardState& state, const std::string& action);
     cpp_MCTSNode* select_child(cpp_MCTSNode* node);
     cpp_MCTSNode* sample_chance_child(cpp_MCTSNode* node);
-    double calculate_ucb(const cpp_MCTSNode* child, int parentVisits, double fpu_value) const;
+    double calculate_ucb(const cpp_MCTSNode* child, int parentVisits) const;
 };
 
 #endif // CPP_MCTS_H

@@ -75,7 +75,6 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         self.policy_network = policy_network or HeuristicPolicyNetwork()
         self._historical_best: dict[int, str] = {}  # turn_num -> best action from last search
         self._transposition_table = TranspositionTable()
-        self.cpp_engine = None
 
         # Initialize C++ registry if module loaded and skills/ exists
         if HAS_CPP and ptcg_core is not None:
@@ -83,9 +82,8 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                 skills_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "skills")
                 if os.path.exists(skills_path):
                     ptcg_core.initialize_registry(skills_path)
-                self.cpp_engine = ptcg_core.MCTSEngine(self.c_puct, self.num_simulations)
             except Exception as e:
-                logger.error(f"Failed to initialize C++ dependencies: {e}")
+                logger.error(f"Failed to initialize C++ CardRegistry: {e}")
 
     def _get_action_priors(self, game_state: dict, legal_actions: List[str], mast_policy=None) -> List[ActionPrior]:
         priors = self.policy_network.get_priors(game_state, legal_actions)
@@ -130,7 +128,7 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
             return canonical_actions[0] if canonical_actions else "pass"
 
         # Attempt to run C++ search
-        if self.cpp_engine is not None:
+        if HAS_CPP and ptcg_core is not None:
             try:
                 time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
                 state_dict = _to_cpp_compatible_state(game_state)
@@ -144,12 +142,9 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
                     except Exception as pe:
                         logger.warning(f"Failed to get policy priors for C++ MCTS: {pe}")
 
-                best_action = self.cpp_engine.search(state_dict, time_limit, root_priors)
-                self.cpp_engine.advance_root(best_action)
-                return best_action
+                return ptcg_core.mcts_search(state_dict, time_limit, self.num_simulations, self.c_puct, root_priors)
             except Exception as e:
                 logger.error(f"C++ MCTS search failed: {e}. Falling back to Python MCTS.")
-                self.cpp_engine.reset_tree()
 
         # Fallback to Python search
         turn_num = game_state.get('turn_number', 0)

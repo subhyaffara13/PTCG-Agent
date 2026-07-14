@@ -143,6 +143,20 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
             logger.info(f"Loaded {total_steps} sequential steps from {len(game_trajectories)} candidate trajectories.")
         except Exception as parse_err:
             logger.warning(f"Failed to parse iteration_result.json: {parse_err}")
+
+        # Phase 3: Load historical trajectories from trajectory files
+        try:
+            from factory.trajectory_reader import TrajectoryReader
+            reader = TrajectoryReader()
+            recent_records = reader.load_recent(max_files=5)
+            traj_data = reader.extract_training_data(recent_records)
+            for s, a, r in traj_data:
+                states.append(s)
+                actions.append(a)
+                rewards.append(r)
+            logger.info(f"Loaded {len(traj_data)} additional training samples from trajectory files.")
+        except Exception as e:
+            logger.warning(f"Failed to load trajectories: {e}")
             
         if not states:
             logger.error("No real trajectory data loaded. Skipping PPO update.")

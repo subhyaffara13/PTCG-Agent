@@ -232,26 +232,32 @@ class PPOPolicyNetwork(BasePolicyNetwork):
             onnx_path = model_path.replace(".pt", ".onnx")
             if not os.path.exists(onnx_path):
                 try:
+                    import contextlib
+                    import io
                     dummy_token_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
                     dummy_zone_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
                     dummy_scalars = torch.zeros(1, 6, dtype=torch.float32, device=self.device)
                     dummy_padding_mask = torch.zeros(1, 33, dtype=torch.bool, device=self.device)
-                    torch.onnx.export(
-                        ac,
-                        (None, dummy_token_ids, dummy_zone_ids, dummy_scalars, dummy_padding_mask),
-                        onnx_path,
-                        input_names=["x", "token_ids", "zone_ids", "scalars", "padding_mask"],
-                        output_names=["logits", "value"],
-                        dynamic_axes={
-                            "token_ids": {0: "batch_size"},
-                            "zone_ids": {0: "batch_size"},
-                            "scalars": {0: "batch_size"},
-                            "padding_mask": {0: "batch_size"},
-                            "logits": {0: "batch_size"},
-                            "value": {0: "batch_size"}
-                        },
-                        opset_version=14
-                    )
+                    
+                    # torch.onnx.export tries to print a \u274c (red cross emoji) on warnings,
+                    # which crashes the default Windows charmap encoder. We silence it here.
+                    with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                        torch.onnx.export(
+                            ac,
+                            (None, dummy_token_ids, dummy_zone_ids, dummy_scalars, dummy_padding_mask),
+                            onnx_path,
+                            input_names=["x", "token_ids", "zone_ids", "scalars", "padding_mask"],
+                            output_names=["logits", "value"],
+                            dynamic_axes={
+                                "token_ids": {0: "batch_size"},
+                                "zone_ids": {0: "batch_size"},
+                                "scalars": {0: "batch_size"},
+                                "padding_mask": {0: "batch_size"},
+                                "logits": {0: "batch_size"},
+                                "value": {0: "batch_size"}
+                            },
+                            opset_version=14
+                        )
                     logger.info(f"Dynamically exported ONNX model to {onnx_path}")
                 except Exception as ex:
                     logger.warning(f"Dynamic ONNX export failed: {ex}")

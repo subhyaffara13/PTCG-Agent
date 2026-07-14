@@ -84,8 +84,8 @@ class GameRunner(BaseAgent):
 
         # RUN PLAYS IN PARALLEL: deck tests and variance tests
         # Organized as symmetric twin pairs (orig/swap) under shared seeds
-        games_config: list[tuple[str, list[int], list[int], bool, bool, int | None]] = [
-            ("reasoning_test", d_base, d_base, False, True, None)
+        games_config: list[tuple[str, list[int], list[int], bool, bool, int | None, str | None, str | None]] = [
+            ("reasoning_test", d_base, d_base, False, True, None, None, None)
         ]
         league_matchups = {}
 
@@ -95,39 +95,46 @@ class GameRunner(BaseAgent):
             # Determine opponent deck (65% chance to matchmake against a league exploiter/snapshot)
             opponent_deck = d_base
             opp_name = "main_agent"
+            opponent_model_path = None
             if random.random() < 0.65:
                 opp_name = league.matchmake()
-                opp_deck_path = Path("skills/league") / f"{opp_name}.csv"
-                if opp_deck_path.exists():
-                    try:
-                        loaded_deck = []
-                        import csv
-                        with open(opp_deck_path, "r", encoding="utf-8") as f:
-                            for row in csv.DictReader(f):
-                                loaded_deck.extend([int(row["card_id"])] * int(row["count"]))
-                        if len(loaded_deck) == 60:
-                            opponent_deck = loaded_deck
-                            # Track that this game is a league matchup
-                            league_matchups[f"deck_test_{j}_orig"] = opp_name
-                            league_matchups[f"deck_test_{j}_swap"] = opp_name
-                    except Exception as e:
-                        logger.error(f"Failed to load league deck {opp_deck_path}: {e}")
+                if opp_name.startswith("checkpoint_"):
+                    opponent_deck = d_base
+                    opponent_model_path = league.get_neural_opponent_path(opp_name)
+                    league_matchups[f"deck_test_{j}_orig"] = opp_name
+                    league_matchups[f"deck_test_{j}_swap"] = opp_name
                 else:
-                    logger.warning(f"League deck path {opp_deck_path} does not exist.")
+                    opp_deck_path = Path("skills/league") / f"{opp_name}.csv"
+                    if opp_deck_path.exists():
+                        try:
+                            loaded_deck = []
+                            import csv
+                            with open(opp_deck_path, "r", encoding="utf-8") as f:
+                                for row in csv.DictReader(f):
+                                    loaded_deck.extend([int(row["card_id"])] * int(row["count"]))
+                            if len(loaded_deck) == 60:
+                                opponent_deck = loaded_deck
+                                # Track that this game is a league matchup
+                                league_matchups[f"deck_test_{j}_orig"] = opp_name
+                                league_matchups[f"deck_test_{j}_swap"] = opp_name
+                        except Exception as e:
+                            logger.error(f"Failed to load league deck {opp_deck_path}: {e}")
+                    else:
+                        logger.warning(f"League deck path {opp_deck_path} does not exist.")
 
             # Apply soft deck mutation for training diversity (swap 2-5 cards)
             mutated_new = _mutate_deck(d_new)
 
             # Deck test twin pair: Player A (opponent_deck) vs Player B (mutated_new)
             games_config.extend([
-                (f"deck_test_{j}_orig", opponent_deck, mutated_new, False, False, seed),
-                (f"deck_test_{j}_swap", mutated_new, opponent_deck, False, False, seed)
+                (f"deck_test_{j}_orig", opponent_deck, mutated_new, False, False, seed, opponent_model_path, None),
+                (f"deck_test_{j}_swap", mutated_new, opponent_deck, False, False, seed, None, opponent_model_path)
             ])
             
             # Variance baseline twin pair: Player A (d_base) vs Player B (d_base)
             games_config.extend([
-                (f"variance_baseline_{j}_orig", d_base, d_base, False, False, seed),
-                (f"variance_baseline_{j}_swap", d_base, d_base, False, False, seed)
+                (f"variance_baseline_{j}_orig", d_base, d_base, False, False, seed, None, None),
+                (f"variance_baseline_{j}_swap", d_base, d_base, False, False, seed, None, None)
             ])
 
         results = {}
@@ -139,8 +146,8 @@ class GameRunner(BaseAgent):
 
         try:
             futures = [
-                executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed)
-                for label, deck_a, deck_b, use_a, use_b, seed in games_config
+                executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b)
+                for label, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b in games_config
             ]
         except RuntimeError as re:
             if "after shutdown" in str(re):
@@ -148,8 +155,8 @@ class GameRunner(BaseAgent):
                 GameRunner._executor = ProcessPoolExecutor(max_workers=os.cpu_count() or 16)
                 executor = GameRunner._executor
                 futures = [
-                    executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed)
-                    for label, deck_a, deck_b, use_a, use_b, seed in games_config
+                    executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b)
+                    for label, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b in games_config
                 ]
             else:
                 raise
@@ -182,6 +189,15 @@ class GameRunner(BaseAgent):
             if res and res.get("winner") != "error":
                 winner = res.get("winner") # "player_a" (opp won), "player_b" (new agent won), or "draw"
                 league.update_elo(opp_name, "main_agent", winner)
+                if opp_name.startswith("checkpoint_"):
+                    try:
+                        from factory.model_checkpoint_manager import ModelCheckpointManager
+                        mcm = ModelCheckpointManager()
+                        result = 1.0 if winner == "player_a" else (0.0 if winner == "player_b" else 0.5)
+                        opponent_elo = league.ratings.get("main_agent", 1200.0)
+                        mcm.update_checkpoint_elo(opp_name, opponent_elo, result)
+                    except Exception as e:
+                        logger.debug(f"Failed to update checkpoint Elo: {e}")
 
         # Consolidate results for EvalAgent (average metrics across all parallel runs)
         for prefix, key in [("deck_test", "deck_test"), ("variance_baseline", "variance_baseline")]:

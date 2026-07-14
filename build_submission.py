@@ -94,15 +94,25 @@ for ext in ("*.so",):
             except Exception as e:
                 pass
 
-# 3.4 Copy model weights checkpoint
-weights_src = Path("m71.pt")
+# 3.4 Copy model weights checkpoint dynamically based on current STATE_DIM
+try:
+    import sys
+    sys.path.insert(0, str(Path(".").resolve()))
+    from factory.state_dimensions import STATE_DIM
+except Exception as e:
+    print(f"WARNING: Could not import STATE_DIM ({e}). Defaulting to 213.")
+    STATE_DIM = 213
+
+weight_filename = f"m{STATE_DIM}.pt"
+weights_src = Path(weight_filename)
+
 if weights_src.exists():
     weights_dest_dir = Path("submission/logs")
     weights_dest_dir.mkdir(parents=True, exist_ok=True)
     shutil.copy2(weights_src, weights_dest_dir / "model_weights.pth")
-    print("Bundled model weights checkpoint to submission/logs/model_weights.pth")
+    print(f"Bundled dynamically selected model weights ({weight_filename}) to submission/logs/model_weights.pth")
 else:
-    print("WARNING: m71.pt not found, skipping weights bundling!")
+    print(f"WARNING: {weight_filename} not found, skipping weights bundling!")
 
 # 3.5 Sync C++ source files and build scripts for Kaggle compilation
 print("Syncing C++ source files and build configurations for Kaggle compilation...")

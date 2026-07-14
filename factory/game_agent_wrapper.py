@@ -7,7 +7,7 @@ from factory.game_adapter import run_agent_turn
 logger = logging.getLogger(__name__)
 
 class CABTAgentWrapper:
-    def __init__(self, agent_id: str, skills_dir: str, deck: list[int], g_logger, staging_dir: str = "staging", use_staging: bool = False):
+    def __init__(self, agent_id: str, skills_dir: str, deck: list[int], g_logger, staging_dir: str = "staging", use_staging: bool = False, model_path: str = None):
         self.agent_id = agent_id
         self.skills_dir = Path(skills_dir)
         self.staging_dir = Path(staging_dir)
@@ -17,7 +17,7 @@ class CABTAgentWrapper:
 
         s_dir = self.staging_dir if (self.use_staging and ((self.staging_dir / "priority_rules.json").exists() or (self.staging_dir / "strategy_profiles.json").exists())) else self.skills_dir
 
-        self.orchestrator = Orchestrator(log_dir=f"logs/{agent_id}", skills_dir=str(s_dir))
+        self.orchestrator = Orchestrator(log_dir=f"logs/{agent_id}", skills_dir=str(s_dir), model_path=model_path)
         self.orchestrator.start_game()
         self.g_logger.register_with_bus(self.orchestrator.bus)
 
