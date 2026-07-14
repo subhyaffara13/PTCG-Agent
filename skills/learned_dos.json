@@ -2516,12 +2516,17 @@
       "player": "Swampert",
       "avg_setup_duration": 50.2,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "Oshbocker",
+      "avg_setup_duration": 23.4,
+      "avg_bench_density": 3.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 28.0,
+    "avg_energy_count": 9.0
   },
   "setup_profiles": [
     {
@@ -2897,6 +2902,11 @@
     {
       "player": "Swampert",
       "avg_setup_duration": 50.2,
+      "avg_bench_density": 3.8
+    },
+    {
+      "player": "Oshbocker",
+      "avg_setup_duration": 23.4,
       "avg_bench_density": 3.8
     }
   ]
