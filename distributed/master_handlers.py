@@ -25,6 +25,13 @@ class MasterHandlers:
     def handle_worker(self, conn, addr):
         with self.server.lock:
             self.server.workers.append(conn)
+            total_workers = len(self.server.workers)
+        
+        logger.info(f"\n==================================================")
+        logger.info(f" [WORKER JOINED] Connection established with {addr[0]}")
+        logger.info(f" Total Worker Nodes Connected: {total_workers}")
+        logger.info(f"==================================================\n")
+        
         try:
             rfile = conn.makefile('r', encoding='utf-8')
             # Application-level handshake: expect HELLO, respond WELCOME
@@ -66,11 +73,18 @@ class MasterHandlers:
                         logger.error(f"Error parsing result from {addr}: {e}")
                         break
         except Exception as e:
-            logger.info(f"Worker {addr} disconnected: {e}")
+            logger.info(f"Worker {addr[0]} disconnected: {e}")
         finally:
             with self.server.lock:
                 if conn in self.server.workers:
                     self.server.workers.remove(conn)
+                total_workers = len(self.server.workers)
+            
+            logger.info(f"\n==================================================")
+            logger.info(f" [WORKER LEFT] Connection dropped with {addr[0]}")
+            logger.info(f" Total Worker Nodes Connected: {total_workers}")
+            logger.info(f"==================================================\n")
+            
             conn.close()
  
     def process_results(self):
