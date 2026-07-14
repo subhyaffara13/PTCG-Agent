@@ -153,6 +153,7 @@ class NeuralValueNetwork(BaseValueNetwork):
             pass
 
         if self.model is None or not self.has_torch:
+            return {}
             
         import torch
         from factory.data_alignment_helpers import normalize_action
@@ -342,6 +343,7 @@ class PPOPolicyNetwork(BasePolicyNetwork):
             pass
 
         if self.model is None or not self._has_torch:
+            return self._heuristic_fallback.get_priors(game_state, legal_actions)
 
         import torch
         from factory.data_alignment_helpers import normalize_action

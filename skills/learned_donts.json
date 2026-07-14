@@ -419,6 +419,50 @@
     {
       "condition": "insufficient_stage2_acceleration",
       "description": "Do not run fewer than 4 copies of Rare Candy when aiming to consistently evolve Stage 2 Pok\u00e9mon, as it severely reduces your chances of setting up critical attackers."
+    },
+    {
+      "condition": "critically_low_energy_count",
+      "description": "Do not run critically low energy counts. Your deck has only 8 energy cards, which is insufficient for consistently powering up your main attackers, especially Stage 2 Pok\nmon like Alakazam that require 2 energy per attack."
+    },
+    {
+      "condition": "archaic_supporter_engine",
+      "description": "Avoid using outdated or low-impact Supporter cards. Hilda (draw 3) and Dawn (draw 2, shuffle 2) provide critically weak draw power, hindering setup and consistency. Always prioritize modern, powerful draw Supporters."
+    },
+    {
+      "condition": "detrimental_item_inclusion",
+      "description": "Do not include detrimental item cards that offer minimal impact or lead to dead draws. Four copies of Pok\n Pad heavily dilute your deck and waste crucial slots that could be used for consistent search, draw, or disruption."
+    },
+    {
+      "condition": "unfocused_tech_package_and_stadiums",
+      "description": "Ensure all tech cards and Stadiums support your core strategy. This deck includes a mix of situational disruption (Enhanced Hammer, Xerosic's Machinations) and a damage-placing Stadium (Nighttime Mine) without clear synergy with Alakazam's main attack, leading to an unfocused strategy."
+    },
+    {
+      "condition": "suboptimal_stage2_acceleration",
+      "description": "When building a Stage 2 deck, do not skimp on evolution acceleration. Running only 3 Rare Candy for a 4-copy Alakazam line significantly reduces your ability to consistently set up your main attacker."
+    },
+    {
+      "condition": "unplayable_stage2_mismatch",
+      "description": "Do not include single, unplayable Stage 2 Pok\u00e9mon (Fezandipiti ex) that lack their basic/Stage 1 evolution line and have a type mismatch with the deck's primary energy. These cards are dead draws that offer no utility."
+    },
+    {
+      "condition": "critically_low_energy_ratio",
+      "description": "Avoid critically low energy counts (7 cards for a Stage 2 attacker deck). This ratio is insufficient for powering up attacks and developing your board, leading to frequent energy starvation."
+    },
+    {
+      "condition": "inefficient_draw_engine",
+      "description": "Do not rely on weak draw Supporters (Hilda: draw 5, Dawn: draw 2) or Supporter-specific search items (Pok\u00e9 Pad) as your primary means of drawing cards. This will result in poor consistency and an inability to set up crucial Pok\u00e9mon like Alakazam."
+    },
+    {
+      "condition": "overboard_specific_disruption",
+      "description": "Avoid excessive inclusion of highly specific disruption cards (6 total for Special Energy disruption with Enhanced Hammer and Xerosic\u2019s Machinations). This clogs your hand, reduces overall deck consistency, and often takes the place of more impactful draw or setup cards."
+    },
+    {
+      "condition": "excessive_stadium_count",
+      "description": "Do not include three or more copies of the same Stadium card unless it's integral to your primary strategy. An excessive count increases the likelihood of drawing multiple dead Stadiums."
+    },
+    {
+      "condition": "inconsistent_single_tech_cards",
+      "description": "Do not include single copies of highly situational tech cards (Lana\u2019s Aid, Night Stretcher, Sacred Ash) in a deck with a weak draw engine. These cards will rarely be accessible when needed and serve as dead draws in the early to mid-game."
     }
   ],
   "behavior_donts": [
