@@ -15,12 +15,21 @@ def evaluate_deck_penalties(deck: list, details: dict) -> float:
     basic_energy_names = {en for en in e_names if "basic" in en}
     if len(basic_energy_names) > 2:
         penalty += SYNERGY_MULTI_BASIC_ENERGY_PENALTY * (len(basic_energy_names) - 2)
-    t_map = {"{R}": "fire", "{W}": "water", "{G}": "grass", "{L}": "lightning", "{F}": "fighting", "{P}": "psychic", "{D}": "darkness", "{M}": "metal"}
+    t_map = {
+        "{R}": ["{r}", "fire"],
+        "{W}": ["{w}", "water"],
+        "{G}": ["{g}", "grass"],
+        "{L}": ["{l}", "lightning"],
+        "{F}": ["{f}", "fighting"],
+        "{P}": ["{p}", "psychic"],
+        "{D}": ["{d}", "darkness"],
+        "{M}": ["{m}", "metal"]
+    }
     for pt in p_types:
-        exp = t_map.get(pt, "none")
-        if exp != "none":
+        keywords = t_map.get(pt, [])
+        if keywords:
             # Proportional energy check: must have at least 6 matching energy cards for each active type
-            matching_energy_count = sum(1 for c in deck if c.get("card_type") == "Energy" and exp in c.get("card_name", "").lower())
+            matching_energy_count = sum(1 for c in deck if c.get("card_type") == "Energy" and any(kw in c.get("card_name", "").lower() for kw in keywords))
             if matching_energy_count < 6:
                 penalty += 150.0 * (6 - matching_energy_count)
                 
