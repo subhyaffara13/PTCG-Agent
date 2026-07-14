@@ -18,8 +18,15 @@ class LLMBase:
         Dynamically selects the API based on available environment variables.
         Prefers OpenAI if OPENAI_API_KEY is present, otherwise falls back to Gemini.
         """
+        try:
+            from dotenv import load_dotenv
+            load_dotenv()
+        except ImportError:
+            pass
+            
         self.openai_key = os.environ.get("OPENAI_API_KEY")
         self.gemini_key = os.environ.get("GEMINI_API_KEY")
+        self.ollama_key = os.environ.get("OLLAMA_API_KEY")
         self.model_override = model_override
         
         if self.openai_key:
@@ -33,8 +40,16 @@ class LLMBase:
             import google.generativeai as genai
             genai.configure(api_key=self.gemini_key)
             self.client = genai.GenerativeModel(self.model)
+        elif self.ollama_key:
+            self.provider = "ollama"
+            self.model = self.model_override or "llama3"
+            import openai
+            # Often, cloud hosted Ollama (or OpenAI compatible Ollama endpoints) use the OpenAI client
+            # with a custom base_url. If a host isn't provided, we default to localhost or let the user override.
+            self.ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434/v1")
+            self.client = openai.OpenAI(api_key=self.ollama_key, base_url=self.ollama_host)
         else:
-            logger.warning("No OPENAI_API_KEY or GEMINI_API_KEY found in environment. LLM calls will fail.")
+            logger.warning("No OPENAI_API_KEY, GEMINI_API_KEY, or OLLAMA_API_KEY found in environment. LLM calls will fail.")
             self.provider = "none"
 
     def prompt(self, system_prompt: str, user_prompt: str, response_format: str = "text") -> str:
@@ -46,7 +61,7 @@ class LLMBase:
             raise ValueError("No LLM API keys configured.")
             
         try:
-            if self.provider == "openai":
+            if self.provider in ["openai", "ollama"]:
                 messages = [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
@@ -57,6 +72,7 @@ class LLMBase:
                     "temperature": 0.2
                 }
                 if response_format == "json_object":
+                    # Some Ollama providers support this native JSON mode
                     kwargs["response_format"] = { "type": "json_object" }
                     
                 response = self.client.chat.completions.create(**kwargs)

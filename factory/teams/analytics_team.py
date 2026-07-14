@@ -46,8 +46,7 @@ class AnalyticsTeam:
         from pathlib import Path
         from kaggle.api.kaggle_api_extended import KaggleApi
         from factory.kaggle_scraper import KaggleScraper
-        from cb_agents.code_mutator import run_evolution_cycle  # type: ignore
-
+        
         logger.info(f"Analytics Team fetching Kaggle submission {submission_id}...")
         try:
             api = KaggleApi()
@@ -139,48 +138,17 @@ class AnalyticsTeam:
                 
                 if "Traceback" in stderr_content:
                     reason_desc += f"\nPython crash detected! Traceback log:\n{stderr_content}"
-                    # Try to extract the file causing the crash from traceback
-                    # e.g., File "cb_agents/turn_planner_sort.py", line 45
                     matches = re.findall(r'File "([^"]+\.py)"', stderr_content)
                     if matches:
-                        # Find the first file in cb_agents/
                         for match in matches:
                             if "cb_agents/" in match:
                                 target_file = match
                                 break
 
-                # Also run AntiPatternExtractor on the replay
+                # Run AntiPatternExtractor on the replay to log the flaw for the DevelopmentTeam
                 self.anti_pattern_extractor.analyze_losing_replays([replay_path], team_id)
+                logger.info(f"[SECO] Extracted anti-patterns and logged flaws for episode {ep_id}. DevelopmentTeam will handle healing.")
 
-                # Trigger the Self-Healing Code Mutator (SECO) loop
-                logger.info(f"[SECO] Triggering auto-evolution for {target_file} based on episode {ep_id} feedback...")
-                telemetry = {
-                    "needs_fixing": True,
-                    "reason": reason_desc
-                }
-                healed = run_evolution_cycle(target_file=target_file, telemetry=telemetry)
-                if healed:
-                    logger.info(f"[SECO] Self-healing succeeded for {target_file}! Submitting emergency patch to Kaggle...")
-                    try:
-                        import subprocess
-                        import sys
-                        # 1. Build the submission bundle
-                        subprocess.run([sys.executable, "build_submission.py"], check=True)
-                        
-                        # 2. Upload to Kaggle immediately
-                        desc = f"SECO Emergency Patch: Fixed crash in episode {ep_id}."
-                        api.competition_submit("submission.tar.gz", desc, "pokemon-tcg-ai-battle")
-                        
-                        # 3. Update last submitted fitness to prevent standard scheduler overrides
-                        from factory.orchestration_agent_utils import read_fitness
-                        current_best = read_fitness("logs/best_fitness.json", "best_fitness")
-                        Path("logs/last_submitted_fitness.json").write_text(
-                            json.dumps({"last_submitted_fitness": current_best}), encoding="utf-8")
-                        
-                        logger.info("[SECO] Emergency patch successfully uploaded to Kaggle!")
-                    except Exception as submit_e:
-                        logger.error(f"[SECO] Failed to submit emergency patch: {submit_e}")
-                
             except Exception as e:
                 logger.error(f"Error analyzing episode {ep_id}: {e}")
 

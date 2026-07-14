@@ -97,14 +97,7 @@ def run_master_loop(enable_distributed=True):
             prune_logs(max_files=1000)
             
             # --- TRUE AUTOMATION: RL & EVOLUTION ---
-            try:
-                from factory.ppo_trainer import PPOTrainer
-                logger.info("Starting automated PPO Training on collected replays...")
-                trainer = PPOTrainer()
-                trainer.train()
-                logger.info("PPO Training complete. New weights generated.")
-            except Exception as e:
-                logger.error(f"Automated PPO Training failed: {e}", exc_info=True)
+            # --- TRUE AUTOMATION: RL & EVOLUTION ---
 
             try:
                 from factory.teams.development_team import DevelopmentTeam

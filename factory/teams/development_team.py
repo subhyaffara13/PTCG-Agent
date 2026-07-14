@@ -33,7 +33,7 @@ class DevelopmentTeam:
         # 1. Deck Evolution (Simulated Annealing)
         try:
             logger.info("Starting automated Deck Evolution...")
-            best_deck = self.deck_architect.optimize_deck()
+            best_deck = self.deck_architect.build({})
             logger.info("Deck Evolution complete. New deck written to cb_agents/deck_new.csv.")
         except Exception as e:
             logger.error(f"Deck Evolution failed: {e}", exc_info=True)
