@@ -2496,12 +2496,17 @@
       "player": "LumenLiquidity",
       "avg_setup_duration": 36.6,
       "avg_bench_density": 3.6
+    },
+    {
+      "player": "KawattaTaido",
+      "avg_setup_duration": 66.6,
+      "avg_bench_density": 2.8
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 21.0,
-    "avg_trainer_count": 31.0,
-    "avg_energy_count": 8.0
+    "avg_pokemon_count": 20.0,
+    "avg_trainer_count": 30.0,
+    "avg_energy_count": 10.0
   },
   "setup_profiles": [
     {
@@ -2858,6 +2863,11 @@
       "player": "LumenLiquidity",
       "avg_setup_duration": 36.6,
       "avg_bench_density": 3.6
+    },
+    {
+      "player": "KawattaTaido",
+      "avg_setup_duration": 66.6,
+      "avg_bench_density": 2.8
     }
   ]
 }
