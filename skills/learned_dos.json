@@ -2551,6 +2551,11 @@
       "player": "Daikon99",
       "avg_setup_duration": 66.4,
       "avg_bench_density": 3.6
+    },
+    {
+      "player": "Orion",
+      "avg_setup_duration": 110.4,
+      "avg_bench_density": 3.9
     }
   ],
   "deck_stats": {
@@ -2958,6 +2963,11 @@
       "player": "Daikon99",
       "avg_setup_duration": 66.4,
       "avg_bench_density": 3.6
+    },
+    {
+      "player": "Orion",
+      "avg_setup_duration": 110.4,
+      "avg_bench_density": 3.9
     }
   ]
 }
