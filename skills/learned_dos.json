@@ -3,7 +3,7 @@
     {
       "card_id": 19,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Telepath Psychic Energy is central to powering Alakazam's attacks or abilities, potentially offering additional effects like energy manipulation or drawing cards crucial for the deck's strategy."
     },
     {
       "card_id": 65,
@@ -18,32 +18,32 @@
     {
       "card_id": 741,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Abra serves as the basic Pok\u00e9mon for the Alakazam evolution line, vital for establishing the primary attacker or ability user on the board."
     },
     {
       "card_id": 742,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Kadabra is the middle stage of the Alakazam evolution line. While often bypassed by Rare Candy, its high count suggests redundancy for evolution paths or a specific utility provided by Kadabra itself."
     },
     {
       "card_id": 1086,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Buddy-Buddy Poffin is a critical search card for basic Pok\u00e9mon like Abra and Dunsparce, enabling a fast and consistent board setup in the early game."
     },
     {
       "card_id": 1152,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Pok\u00e9 Pad is used to recover discarded Trainer cards, especially powerful Supporters like Hilda, Dawn, or Boss's Orders, maximizing consistency and allowing for repeated use of key effects."
     },
     {
       "card_id": 1225,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Hilda is a cornerstone draw Supporter, essential for maintaining hand advantage, cycling through the deck, and finding crucial combo pieces to set up Alakazam and apply pressure."
     },
     {
       "card_id": 1231,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player nogu."
+      "reason": "Dawn is another powerful Supporter card, likely providing significant draw power or search capabilities, working in tandem with Hilda to ensure exceptional deck consistency and rapid setup."
     },
     {
       "card_id": 1264,
@@ -53,27 +53,27 @@
     {
       "card_id": 5,
       "avg_count": 8.0,
-      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+      "reason": "Basic {P} Energy provides foundational energy for Alakazam's attacks, complementing Telepath Psychic Energy and ensuring sufficient energy attachments for consistent offensive pressure."
     },
     {
       "card_id": 743,
       "avg_count": 4.0,
-      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+      "reason": "Alakazam is the deck's primary focal point, acting as the main attacker or an essential ability Pok\u00e9mon around which the entire deck strategy revolves, demanding its swift and consistent setup."
     },
     {
       "card_id": 1079,
       "avg_count": 4.0,
-      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+      "reason": "Rare Candy is crucial for accelerating the evolution of Abra directly into Alakazam, bypassing the Kadabra stage to bring the main Pok\u00e9mon online as quickly as possible."
     },
     {
       "card_id": 1081,
       "avg_count": 4.0,
-      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+      "reason": "Enhanced Hammer is a key disruption tool, used to remove Special Energy from the opponent's Pok\u00e9mon, hindering their energy acceleration and stalling their offensive capabilities."
     },
     {
       "card_id": 1182,
       "avg_count": 4.0,
-      "reason": "High usage (3.0x avg) in winning matches of player nogu."
+      "reason": "Boss's Orders is a staple Supporter for achieving strategic knockouts by allowing the player to choose an opponent's Benched Pok\u00e9mon and force it into the Active Spot."
     },
     {
       "card_id": 673,
@@ -148,7 +148,7 @@
     {
       "card_id": 305,
       "avg_count": 4.0,
-      "reason": "High usage (4.0x avg) in winning matches of player hiroingk."
+      "reason": "Dunsparce is included for its early-game utility, typically offering draw support or basic Pok\u00e9mon search to facilitate initial setup and hand replenishment before Alakazam is ready."
     },
     {
       "card_id": 1097,
@@ -163,7 +163,7 @@
     {
       "card_id": 1266,
       "avg_count": 4.0,
-      "reason": "High usage (3.0x avg) in winning matches of player \u30ab\u30c9\u30e9\u30d0 Kadoraba."
+      "reason": "Nighttime Mine is a Stadium card that likely provides continuous pressure or disruption throughout the game, such as damage output or hindering specific opponent actions, supporting the deck's control aspect."
     },
     {
       "card_id": 878,
@@ -353,7 +353,7 @@
     {
       "card_id": 1197,
       "avg_count": 4.0,
-      "reason": "High usage (3.0x avg) in winning matches of player yamy893."
+      "reason": "Xerosic's Machinations provides additional disruption by discarding an Item card or Special Energy from the opponent, further weakening their setup or energy resources."
     },
     {
       "card_id": 98,
@@ -2526,6 +2526,11 @@
       "player": "fuga doggo",
       "avg_setup_duration": 72.4,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "Benarg",
+      "avg_setup_duration": 43.0,
+      "avg_bench_density": 3.7
     }
   ],
   "deck_stats": {
@@ -2918,6 +2923,11 @@
       "player": "fuga doggo",
       "avg_setup_duration": 72.4,
       "avg_bench_density": 3.5
+    },
+    {
+      "player": "Benarg",
+      "avg_setup_duration": 43.0,
+      "avg_bench_density": 3.7
     }
   ]
 }
