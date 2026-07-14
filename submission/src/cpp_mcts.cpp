@@ -86,9 +86,19 @@ std::string MASTPolicy::selectRolloutAction(const std::vector<std::string>& lega
     return bestAction;
 }
 
-void cpp_MCTSNode::expand(const std::vector<ActionPrior>& actionPriors) {
+void cpp_MCTSNode::expand(const std::vector<ActionPrior>& actionPriors, int max_expand) {
+    if (actionPriors.empty()) return;
+    
+    std::vector<ActionPrior> sorted_priors = actionPriors;
+    std::sort(sorted_priors.begin(), sorted_priors.end(), [](const ActionPrior& a, const ActionPrior& b) {
+        return a.prob > b.prob;
+    });
+
+    int limit = (max_expand > 0 && max_expand < sorted_priors.size()) ? max_expand : sorted_priors.size();
     std::vector<std::string> chance_actions = {"crushing_hammer", "pokemon_catcher", "super_scoop_up", "pokeball"};
-    for (const auto& ap : actionPriors) {
+    
+    for (int i = 0; i < limit; ++i) {
+        auto& ap = sorted_priors[i];
         if (children.find(ap.action) == children.end()) {
             bool is_chance = false;
             std::string action_lower = ap.action;
@@ -132,6 +142,10 @@ void cpp_MCTSNode::expand(const std::vector<ActionPrior>& actionPriors) {
                 children[ap.action] = std::move(node);
             }
         }
+    }
+    
+    for (size_t i = limit; i < sorted_priors.size(); ++i) {
+        unexpanded_priors.push_back(sorted_priors[i]);
     }
 }
 
@@ -347,10 +361,22 @@ cpp_MCTSNode* cpp_MCTSEngine::select_child(cpp_MCTSNode* node) {
     if (node->is_chance_node) {
         return sample_chance_child(node);
     }
+    
+    // Progressive Widening
+    if (!node->unexpanded_priors.empty() && node->visit_count > node->children.size() * 5) {
+        std::vector<ActionPrior> next_batch;
+        int batch_size = std::min((int)node->unexpanded_priors.size(), 3);
+        for(int i=0; i<batch_size; i++) {
+            next_batch.push_back(node->unexpanded_priors.front());
+            node->unexpanded_priors.erase(node->unexpanded_priors.begin());
+        }
+        node->expand(next_batch);
+    }
     double bestScore = -1e9;
     cpp_MCTSNode* bestChild = nullptr;
+    double fpu_val = node->get_q_value(0.0);
     for (const auto& pair : node->children) {
-        double score = calculate_ucb(pair.second.get(), node->visit_count);
+        double score = calculate_ucb(pair.second.get(), node->visit_count, fpu_val);
         if (score > bestScore) {
             bestScore = score;
             bestChild = pair.second.get();
@@ -377,34 +403,57 @@ cpp_MCTSNode* cpp_MCTSEngine::sample_chance_child(cpp_MCTSNode* node) {
     return last_child;
 }
 
-double cpp_MCTSEngine::calculate_ucb(const cpp_MCTSNode* child, int parentVisits) const {
-    double q_value = child->get_q_value();
+double cpp_MCTSEngine::calculate_ucb(const cpp_MCTSNode* child, int parentVisits, double fpu_value) const {
+    double q_value = child->get_q_value(fpu_value);
     double u_value = c_puct * child->prior_prob * std::sqrt(parentVisits) / (1.0 + child->visit_count);
     return q_value + u_value;
 }
 
 std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimitSec, const std::unordered_map<std::string, double>& root_priors) {
-    state_value_cache.clear();
-    state_prior_cache.clear();
-
     std::vector<std::string> next_legal_actions = mask_illegal(rootState.legal_actions, rootState);
     if (next_legal_actions.empty()) return "pass";
     if (next_legal_actions.size() == 1) return next_legal_actions.at(0);
     
-    cpp_MCTSNode root;
-    root.state_hash = "turn_" + std::to_string(rootState.turn_number);
-    
     MASTPolicy mastPolicy(0.3);
-    auto initial_priors = get_action_priors(rootState, next_legal_actions, mastPolicy);
-    if (!root_priors.empty()) {
-        for (auto& ap : initial_priors) {
-            auto it = root_priors.find(ap.action);
-            if (it != root_priors.end()) {
-                ap.prob = it->second;
+    if (!root) {
+        root = std::make_unique<cpp_MCTSNode>();
+        root->state_hash = "turn_" + std::to_string(rootState.turn_number);
+        auto initial_priors = get_action_priors(rootState, next_legal_actions, mastPolicy);
+        if (!root_priors.empty()) {
+            for (auto& ap : initial_priors) {
+                auto it = root_priors.find(ap.action);
+                if (it != root_priors.end()) {
+                    ap.prob = it->second;
+                }
+            }
+        }
+        // Progressive Widening at root
+        root->expand(initial_priors, 5);
+        
+        // --- ROOT DIRICHLET NOISE ---
+        if (!root->children.empty()) {
+            double alpha = 0.3;
+            double epsilon = 0.25;
+            std::gamma_distribution<double> gamma(alpha, 1.0);
+            
+            double sum_noise = 0.0;
+            std::vector<double> noises;
+            noises.reserve(root->children.size());
+            
+            for (size_t i = 0; i < root->children.size(); ++i) {
+                double n = gamma(rng);
+                noises.push_back(n);
+                sum_noise += n;
+            }
+            
+            size_t idx = 0;
+            for (auto& pair : root->children) {
+                double n = sum_noise > 0 ? (noises[idx] / sum_noise) : 0.0;
+                pair.second->prior_prob = (1 - epsilon) * pair.second->prior_prob + epsilon * n;
+                idx++;
             }
         }
     }
-    root.expand(initial_priors);
     
     auto startTime = std::chrono::steady_clock::now();
     
@@ -416,9 +465,9 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
         
         BoardState current_gs = rootState;
         std::vector<cpp_MCTSNode*> path;
-        path.push_back(&root);
+        path.push_back(root.get());
         
-        cpp_MCTSNode* node = select_child(&root);
+        cpp_MCTSNode* node = select_child(root.get());
         if (!node) continue;
         path.push_back(node);
         
@@ -445,7 +494,7 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
             std::string state_key = get_state_key(next_gs);
             auto prior_it = state_prior_cache.find(state_key);
             if (prior_it != state_prior_cache.end()) {
-                node->expand(prior_it->second);
+                node->expand(prior_it->second, -1);
             } else {
                 regenerate_legal_actions(next_gs);
                 std::vector<std::string> canonical_next = mask_illegal(next_gs.legal_actions, next_gs);
@@ -454,7 +503,7 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
                     new_priors.push_back({"pass", 1.0});
                 }
                 if (!new_priors.empty()) {
-                    node->expand(new_priors);
+                    node->expand(new_priors, -1);
                     state_prior_cache[state_key] = new_priors;
                 }
             }
@@ -476,7 +525,7 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
     
     std::string bestAction = "";
     int maxVisits = -1;
-    for (const auto& pair : root.children) {
+    for (const auto& pair : root->children) {
         if (pair.second->visit_count > maxVisits) {
             maxVisits = pair.second->visit_count;
             bestAction = pair.first;
@@ -486,4 +535,20 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
         return next_legal_actions.at(0);
     }
     return bestAction;
+}
+
+void cpp_MCTSEngine::advance_root(const std::string& action) {
+    if (root && root->children.find(action) != root->children.end()) {
+        std::unique_ptr<cpp_MCTSNode> next_root = std::move(root->children[action]);
+        next_root->parent = nullptr;
+        root = std::move(next_root);
+    } else {
+        root.reset();
+    }
+}
+
+void cpp_MCTSEngine::reset_tree() {
+    root.reset();
+    state_value_cache.clear();
+    state_prior_cache.clear();
 }
