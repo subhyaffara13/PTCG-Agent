@@ -2521,12 +2521,17 @@
       "player": "Oshbocker",
       "avg_setup_duration": 23.4,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "fuga doggo",
+      "avg_setup_duration": 72.4,
+      "avg_bench_density": 3.5
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 23.0,
-    "avg_trainer_count": 28.0,
-    "avg_energy_count": 9.0
+    "avg_pokemon_count": 19.0,
+    "avg_trainer_count": 34.0,
+    "avg_energy_count": 7.0
   },
   "setup_profiles": [
     {
@@ -2908,6 +2913,11 @@
       "player": "Oshbocker",
       "avg_setup_duration": 23.4,
       "avg_bench_density": 3.8
+    },
+    {
+      "player": "fuga doggo",
+      "avg_setup_duration": 72.4,
+      "avg_bench_density": 3.5
     }
   ]
 }
