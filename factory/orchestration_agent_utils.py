@@ -13,7 +13,6 @@ def get_training_scripts(enable_distributed: bool) -> list:
             "distributed/status_server.py",
             "scratch/run_ppo_trainer_loop.py",
             "scratch/run_deck_optimizer_loop.py",
-            "scratch/run_evolution_worker.py",
             "scratch/run_bug_hunter.py",
         ]
     logger.info("Local training mode ENABLED.")
@@ -21,7 +20,6 @@ def get_training_scripts(enable_distributed: bool) -> list:
         "scratch/run_deck_optimizer_loop.py",
         "scratch/run_ppo_trainer_loop.py",
         "scratch/run_training_batches.py",
-        "scratch/run_evolution_worker.py",
         "scratch/run_bug_hunter.py",
     ]
 

@@ -163,6 +163,7 @@ class WorkerClient:
         def handle_signal(signum, frame):
             logger.info(f"Received signal {signum}. Initiating graceful worker shutdown...")
             self.shutdown_requested = True
+            raise KeyboardInterrupt("Signal received")
             
         signal.signal(signal.SIGINT, handle_signal)
         signal.signal(signal.SIGTERM, handle_signal)
@@ -334,6 +335,8 @@ class WorkerClient:
                         logger.error(f"Too many errors ({cycle_failures}). Giving up.")
                         break
                     _backoff_sleep(cycle_failures)
+        except KeyboardInterrupt:
+            logger.info("Worker gracefully exiting due to KeyboardInterrupt (Ctrl+C).")
         finally:
             logger.info("Worker shutdown: cleaning up ProcessPoolExecutor child processes...")
             if hasattr(self.runner, '_executor') and self.runner._executor:
