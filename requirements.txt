@@ -12,3 +12,4 @@ jsonschema
 flask
 urllib3
 
+onnxscript
