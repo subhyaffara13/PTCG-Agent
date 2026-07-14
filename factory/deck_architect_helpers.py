@@ -21,6 +21,23 @@ def write_deck_csv(deck: List[dict], dest: Path):
         for row in counts.values():
             writer.writerow([row["card_id"], row["card_name"], row["card_type"], row["count"], row["ev_score"]])
 
+def read_deck_csv(src: Path) -> List[dict]:
+    deck = []
+    if not src.exists():
+        return deck
+    with open(src, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            count = int(row.get("count", 1))
+            card = {
+                "card_id": row.get("card_id"),
+                "card_name": row.get("card_name"),
+                "card_type": row.get("card_type"),
+                "ev_score": float(row.get("ev_score", 0.0))
+            }
+            deck.extend([dict(card) for _ in range(count)])
+    return deck
+
 def write_deck_report(archetype: str, scores: dict, weak_metric: str, dest: Path):
     report = {
         "timestamp": datetime.now().isoformat(), "archetype": archetype,

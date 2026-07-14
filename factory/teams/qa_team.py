@@ -60,7 +60,7 @@ class QATeam:
         
         # 2. Peer Review
         logger.info("Evaluation complete. Handing off to Peer Review...")
-        is_approved = self.peer_reviewer.review_changes(eval_report)
+        is_approved = self.peer_reviewer.review_changes(eval_report, logic_candidate=logic_candidate)
         
         if not is_approved:
             logger.warning("QA Team rejected the changes. Returning to Development Team.")

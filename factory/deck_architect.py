@@ -62,17 +62,58 @@ class DeckArchitect(BaseAgent):
             log_error_to_decisions(f"Insufficient legal cards for archetype '{current_archetype}'", self.decisions_file)
             return {"status": "failed", "reason": "insufficient_cards"}
 
+        from factory.deck_architect_helpers import read_deck_csv
+        import math
+        import random
+
         generator = DeckGenerator(self.card_pool, self.card_details, self.archetypes_data)
         scorer = DeckScorer(self.card_details, self.learned_dos, self.learned_donts)
 
-        candidates = []
-        for _ in range(50):
-            cand = generator.generate_candidate(legal_cards, basic_pokemon, energy_cards, current_archetype)
-            score_data = scorer.score_candidate(cand, current_archetype)
-            candidates.append((cand, score_data))
+        # 1. Load seed decks
+        seed_paths = [self.skills_dir / f"league/{current_archetype}_exploiter.csv", Path("cb_agents/deck_new.csv")]
+        seed_decks = [read_deck_csv(p) for p in seed_paths if p.exists()]
+        seed_decks = [d for d in seed_decks if len(d) == 60]
 
-        candidates.sort(key=lambda x: (x[1]["deck_score"], x[1]["metrics"]["consistency_score"]), reverse=True)
-        best_deck, best_scores = candidates[0]
+        if seed_decks:
+            # Score seeds to find the best starting point
+            scored_seeds = [(d, scorer.score_candidate(d, current_archetype)) for d in seed_decks]
+            scored_seeds.sort(key=lambda x: x[1]["deck_score"], reverse=True)
+            current_deck, current_scores = scored_seeds[0]
+        else:
+            # Fallback
+            current_deck = generator.generate_candidate(legal_cards, basic_pokemon, energy_cards, current_archetype)
+            current_scores = scorer.score_candidate(current_deck, current_archetype)
+
+        best_deck = [dict(c) for c in current_deck]
+        best_scores = dict(current_scores)
+        current_score = current_scores["deck_score"]
+
+        # 2. Simulated Annealing
+        temp = 1.0
+        cooling_rate = 0.90
+        iterations = 100
+
+        for _ in range(iterations):
+            num_swaps = random.randint(1, 3)
+            candidate = generator.mutate_deck(current_deck, num_swaps, legal_cards, basic_pokemon)
+            cand_scores = scorer.score_candidate(candidate, current_archetype)
+            cand_score = cand_scores["deck_score"]
+
+            # Accept if better
+            if cand_score > current_score:
+                current_deck = candidate
+                current_score = cand_score
+                if cand_score > best_scores["deck_score"]:
+                    best_deck = [dict(c) for c in candidate]
+                    best_scores = cand_scores
+            else:
+                # Accept slightly worse occasionally to escape local maxima
+                acceptance_prob = math.exp((cand_score - current_score) / max(temp, 0.01))
+                if random.random() < acceptance_prob:
+                    current_deck = candidate
+                    current_score = cand_score
+
+            temp *= cooling_rate
 
         write_deck_csv(best_deck, self.staging_dir / "deck_new.csv")
         write_deck_report(current_archetype, best_scores, weak_metric, self.staging_dir / "deck_report.json")

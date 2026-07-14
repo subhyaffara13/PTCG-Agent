@@ -11,6 +11,39 @@ class DeckGenerator(DeckMathMixin, DeckInjectionMixin, DeckBoundsMixin):
         self.card_details = card_details
         self.archetypes_data = archetypes_data
 
+    def mutate_deck(self, seed_deck: List[Dict[str, Any]], num_swaps: int, legal_cards: list, basic_pokemon: list) -> List[Dict[str, Any]]:
+        """Mutate a seed deck by randomly swapping out cards while maintaining 60 cards and 4-copy rule."""
+        if not legal_cards or len(seed_deck) != 60:
+            return seed_deck
+        new_deck = [dict(c) for c in seed_deck]
+        
+        for _ in range(num_swaps):
+            # 1. Pick a card to remove
+            remove_idx = random.randint(0, len(new_deck) - 1)
+            new_deck.pop(remove_idx)
+            
+            # 2. Re-calculate counts
+            counts = {}
+            for c in new_deck:
+                cname = str(c.get("card_name", ""))
+                counts[cname] = counts.get(cname, 0) + 1
+            
+            # 3. Find valid replacements (must not violate 4-copy rule, unless basic energy)
+            valid_replacements = [c for c in legal_cards if (c.get("card_type") == "Energy" and "Basic" in c.get("card_name", "")) or counts.get(str(c.get("card_name", "")), 0) < 4]
+            if not valid_replacements:
+                valid_replacements = legal_cards
+            
+            new_card = random.choice(valid_replacements)
+            new_deck.append(dict(new_card))
+            
+        # Ensure at least one basic pokemon
+        has_basic = any(c.get("card_type") == "Pokemon" and self.card_details.get(str(c.get("card_id")), {}).get("stage") == "Basic" for c in new_deck)
+        if not has_basic and basic_pokemon:
+            new_deck.pop(random.randint(0, 59))
+            new_deck.append(dict(random.choice(basic_pokemon)))
+            
+        return new_deck
+
     def generate_candidate(self, legal_cards: list, basic_pokemon: list,
                            energy_cards: list, archetype: str) -> List[Dict[str, Any]]:
         """Build a 60-card deck for *archetype* from *legal_cards*."""

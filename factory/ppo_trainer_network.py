@@ -133,6 +133,22 @@ if TORCH_AVAILABLE:
                 value = self.flat_critic(features)
             return logits, value
 
+        def load_state_dict(self, state_dict, strict=True, assign=False):
+            # Map legacy MLP keys to the new 'flat_' keys for backward compatibility
+            mapped_dict = {}
+            for k, v in state_dict.items():
+                if k.startswith("base."):
+                    mapped_dict[k.replace("base.", "flat_base.", 1)] = v
+                elif k.startswith("actor.0."):
+                    mapped_dict[k.replace("actor.0.", "flat_actor.", 1)] = v
+                elif k.startswith("critic.0."):
+                    mapped_dict[k.replace("critic.0.", "flat_critic.", 1)] = v
+                else:
+                    mapped_dict[k] = v
+            # Use strict=False so the new Transformer (encoder) can start from scratch
+            return super().load_state_dict(mapped_dict, strict=False)
+
+
 else:
     class ActorCritic:
         def __init__(self, *args, **kwargs):

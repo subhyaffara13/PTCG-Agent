@@ -137,7 +137,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                 
                 is_active_target = False
                 if target_id:
-                    target_id_str = str(target_id).lower()
+                    target_id_str = target_id.lower()
                     active_id = str(active.get("id", "")).lower()
                     if target_id_str in ("active", "my_active_pokemon") or (active_id and target_id_str == active_id):
                         is_active_target = True
@@ -156,7 +156,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                         pass
                     hp = game_state.get("my_active_hp", 100)
                     if hp <= 50 or active_attached >= needed:
-                        micro_rank += 20  # Active is dying or fully charged, heavy penalty for attaching more to it!
+                        micro_rank += 40  # Active is dying or fully charged, heavy penalty for attaching more to it!
                     elif active_attached == 0:
                         micro_rank -= 2
                     else:

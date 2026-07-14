@@ -346,6 +346,21 @@ def score_state(gs: dict) -> float:
     v += 0.15 * (opp_p - mp)
     v += 0.001 * (gs.get("my_active_hp", 100) - gs.get("opponent_active_hp", 100))
     
+    # Reward state if we can KO opponent's active next turn
+    ac = gs.get("my_active_pokemon") or {}
+    opp_hp = gs.get("opponent_active_hp", 100)
+    if isinstance(ac, dict):
+        my_active_id = ac.get("id")
+        if my_active_id is not None:
+            try:
+                card = _registry.get_full_skill(my_active_id)
+                if card and card.damage_output >= opp_hp:
+                    attached_count = len(ac.get("attached", []) or ac.get("energies", []))
+                    if attached_count >= card.energy_cost:
+                        v += 0.5  # Heavy state reward for having a lethal threat ready
+            except Exception:
+                pass
+
     # Turn-number awareness: early game favors setup, late game favors aggression
     if turn <= 3:
         v += 0.1  # Early game: slightly positive for having drawn well
@@ -384,6 +399,8 @@ def score_state(gs: dict) -> float:
             opp_damage = int(opp_damage)
         except (TypeError, ValueError):
             opp_damage = 0
+    if opp_damage is None:
+        opp_damage = 0
     my_hp = gs.get("my_active_hp")
     if my_hp is None:
         my_hp = 100

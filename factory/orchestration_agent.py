@@ -55,6 +55,9 @@ def main():
         while True:
             try:
                 run_master_loop(enable_distributed=True)
+            except KeyboardInterrupt:
+                logger.info("Force Master loop terminated by user.")
+                break
             except Exception as e:
                 logger.error(f"Master loop crashed: {e}")
                 time.sleep(5)

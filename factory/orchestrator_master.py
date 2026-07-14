@@ -108,13 +108,10 @@ def run_master_loop(enable_distributed=True):
                 logger.error(f"Automated PPO Training failed: {e}", exc_info=True)
 
             try:
-                from factory.deck_architect import DeckArchitect
-                logger.info("Starting automated Deck Evolution (Simulated Annealing)...")
-                architect = DeckArchitect()
-                best_deck = architect.optimize_deck()
-                logger.info("Deck Evolution complete. New deck written to cb_agents/deck_new.csv.")
+                from factory.teams.development_team import DevelopmentTeam
+                DevelopmentTeam().run_development(iteration)
             except Exception as e:
-                logger.error(f"Automated Deck Evolution failed: {e}", exc_info=True)
+                logger.error(f"Development Team cycle failed: {e}", exc_info=True)
 
             run_hourly_checks(iteration)
             run_analytics_check(iteration)

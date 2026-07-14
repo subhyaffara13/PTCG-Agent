@@ -1,8 +1,9 @@
 #include "cpp_mcts.h"
 #include "ptcg_simulator.h"
 #include <chrono>
+#include <iostream>
 #include <algorithm>
-#include <cmath>
+#include <Python.h>
 #include <fstream>
 #include <onnxruntime_cxx_api.h>
 
@@ -458,6 +459,11 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
     auto startTime = std::chrono::steady_clock::now();
     
     for (int sim = 0; sim < num_simulations; ++sim) {
+        if (sim % 10 == 0 && PyErr_CheckSignals() != 0) {
+            // If Ctrl+C is pressed, gracefully exit the search loop
+            break;
+        }
+        
         auto elapsed = std::chrono::duration<double>(std::chrono::steady_clock::now() - startTime).count();
         if (elapsed >= timeLimitSec) {
             break;
