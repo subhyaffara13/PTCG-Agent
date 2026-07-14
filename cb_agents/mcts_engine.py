@@ -24,12 +24,13 @@ except Exception:
     HAS_CPP = False
 
 is_kaggle = any(k.startswith("KAGGLE") for k in os.environ) or not os.path.exists("build_submission.py")
-if is_kaggle:
-    HAS_CPP = False
-    logger.info("Running on Kaggle: Bypassing C++ bindings but KEEPING MCTS active to prevent auto-losing.")
-else:
-    if not HAS_CPP:
+if not HAS_CPP:
+    if is_kaggle:
+        logger.info("Running on Kaggle: C++ extension not found. Using pure Python MCTS fallback.")
+    else:
         logger.info("ptcg_core C++ extension not found. Using pure Python MCTS.")
+else:
+    logger.info("ptcg_core C++ extension successfully loaded. Running with fast C++ MCTS!")
 
 def _to_cpp_compatible_state(gs: dict) -> dict:
     cpp_gs = gs.copy()
