@@ -13,3 +13,5 @@ flask
 urllib3
 
 onnxscript
+google-generativeai
+openai
