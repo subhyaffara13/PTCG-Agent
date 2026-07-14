@@ -1059,6 +1059,16 @@
       "card_id": 1176,
       "avg_count": 2.0,
       "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 92,
+      "avg_count": 4.0,
+      "reason": "High usage in winning matches."
+    },
+    {
+      "card_id": 1191,
+      "avg_count": 2.0,
+      "reason": "High usage in winning matches."
     }
   ],
   "behavior_dos": [
@@ -2531,12 +2541,17 @@
       "player": "Benarg",
       "avg_setup_duration": 43.0,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "Jack",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 3.4
     }
   ],
   "deck_stats": {
-    "avg_pokemon_count": 19.0,
-    "avg_trainer_count": 34.0,
-    "avg_energy_count": 7.0
+    "avg_pokemon_count": 23.0,
+    "avg_trainer_count": 32.0,
+    "avg_energy_count": 5.0
   },
   "setup_profiles": [
     {
@@ -2928,6 +2943,11 @@
       "player": "Benarg",
       "avg_setup_duration": 43.0,
       "avg_bench_density": 3.7
+    },
+    {
+      "player": "Jack",
+      "avg_setup_duration": 30.0,
+      "avg_bench_density": 3.4
     }
   ]
 }
