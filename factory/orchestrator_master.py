@@ -80,9 +80,8 @@ def run_master_loop(enable_distributed=True):
                     time.sleep(60)
             except KeyboardInterrupt:
                 logger.info("Train phase monitoring loop interrupted. Proceeding to training process cleanup and main loop exit.")
-                # When KeyboardInterrupt occurs here, we break out of the `while True` loop entirely.
-                # This ensures the 'Analytics Phase' and subsequent iterations are skipped for this run.
-                break
+                # We re-raise to ensure the script actually terminates, instead of just breaking the inner loop.
+                raise
             finally:
                 logger.info("--- [Halt Phase] Stopping training processes ---")
                 try:
@@ -126,6 +125,7 @@ def run_master_loop(enable_distributed=True):
             iteration += 1
     except KeyboardInterrupt:
         logger.info("Orchestration Agent (Master Mode) received KeyboardInterrupt. Initiating graceful shutdown.")
+        raise
     except Exception as e:
         # Catch any other unexpected exceptions and log them with stack trace
         logger.error(f"Orchestration Agent (Master Mode) crashed due to unhandled exception: {e}", exc_info=True)
