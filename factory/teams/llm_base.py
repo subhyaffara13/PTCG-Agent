@@ -29,28 +29,41 @@ class LLMBase:
         self.ollama_key = os.environ.get("OLLAMA_API_KEY")
         self.model_override = model_override
         
+        self.provider = "none"
+        self.client = None
+        self.model = None
+        
         if self.openai_key:
-            self.provider = "openai"
-            self.model = self.model_override or "gpt-4o"
-            import openai
-            self.client = openai.OpenAI(api_key=self.openai_key)
-        elif self.gemini_key:
-            self.provider = "gemini"
-            self.model = self.model_override or "gemini-1.5-pro"
-            import google.generativeai as genai
-            genai.configure(api_key=self.gemini_key)
-            self.client = genai.GenerativeModel(self.model)
-        elif self.ollama_key:
-            self.provider = "ollama"
-            self.model = self.model_override or "llama3"
-            import openai
-            # Often, cloud hosted Ollama (or OpenAI compatible Ollama endpoints) use the OpenAI client
-            # with a custom base_url. If a host isn't provided, we default to localhost or let the user override.
-            self.ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434/v1")
-            self.client = openai.OpenAI(api_key=self.ollama_key, base_url=self.ollama_host)
-        else:
-            logger.warning("No OPENAI_API_KEY, GEMINI_API_KEY, or OLLAMA_API_KEY found in environment. LLM calls will fail.")
-            self.provider = "none"
+            try:
+                import openai
+                self.provider = "openai"
+                self.model = self.model_override or "gpt-4o"
+                self.client = openai.OpenAI(api_key=self.openai_key)
+            except ImportError:
+                logger.warning("OpenAI key found but 'openai' module is missing. Falling back...")
+
+        if self.provider == "none" and self.gemini_key:
+            try:
+                import google.generativeai as genai
+                self.provider = "gemini"
+                self.model = self.model_override or "gemini-1.5-pro"
+                genai.configure(api_key=self.gemini_key)
+                self.client = genai.GenerativeModel(self.model)
+            except ImportError:
+                logger.warning("Gemini key found but 'google.generativeai' module is missing. Falling back...")
+
+        if self.provider == "none" and self.ollama_key:
+            try:
+                import openai
+                self.provider = "ollama"
+                self.model = self.model_override or "llama3"
+                self.ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434/v1")
+                self.client = openai.OpenAI(api_key=self.ollama_key, base_url=self.ollama_host)
+            except ImportError:
+                logger.warning("Ollama key found but 'openai' module is missing. Cannot use Ollama.")
+
+        if self.provider == "none":
+            logger.warning("No valid OPENAI, GEMINI, or OLLAMA configuration found or dependencies missing. LLM calls will fail.")
 
     def prompt(self, system_prompt: str, user_prompt: str, response_format: str = "text") -> str:
         """
