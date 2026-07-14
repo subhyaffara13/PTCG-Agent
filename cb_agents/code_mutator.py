@@ -379,6 +379,7 @@ def run_evolution_cycle(target_file: str = "cb_agents/turn_planner_sort.py", tel
     if not success:
         logger.error(f"All 3 evolution attempts failed. Restoring stable baseline from {backup_path}")
         shutil.move(backup_path, file_path)
+    return success
 
 if __name__ == "__main__":
     target = sys.argv[1] if len(sys.argv) > 1 else "cb_agents/turn_planner_sort.py"

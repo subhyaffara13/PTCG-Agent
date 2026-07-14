@@ -158,7 +158,28 @@ class AnalyticsTeam:
                     "needs_fixing": True,
                     "reason": reason_desc
                 }
-                run_evolution_cycle(target_file=target_file, telemetry=telemetry)
+                healed = run_evolution_cycle(target_file=target_file, telemetry=telemetry)
+                if healed:
+                    logger.info(f"[SECO] Self-healing succeeded for {target_file}! Submitting emergency patch to Kaggle...")
+                    try:
+                        import subprocess
+                        import sys
+                        # 1. Build the submission bundle
+                        subprocess.run([sys.executable, "build_submission.py"], check=True)
+                        
+                        # 2. Upload to Kaggle immediately
+                        desc = f"SECO Emergency Patch: Fixed crash in episode {ep_id}."
+                        api.competition_submit("submission.tar.gz", desc, "pokemon-tcg-ai-battle")
+                        
+                        # 3. Update last submitted fitness to prevent standard scheduler overrides
+                        from factory.orchestration_agent_utils import read_fitness
+                        current_best = read_fitness("logs/best_fitness.json", "best_fitness")
+                        Path("logs/last_submitted_fitness.json").write_text(
+                            json.dumps({"last_submitted_fitness": current_best}), encoding="utf-8")
+                        
+                        logger.info("[SECO] Emergency patch successfully uploaded to Kaggle!")
+                    except Exception as submit_e:
+                        logger.error(f"[SECO] Failed to submit emergency patch: {submit_e}")
                 
             except Exception as e:
                 logger.error(f"Error analyzing episode {ep_id}: {e}")
