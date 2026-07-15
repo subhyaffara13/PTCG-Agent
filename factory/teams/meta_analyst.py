@@ -18,15 +18,24 @@ class MetaAnalyst(LLMBase):
         
     def analyze_logs(self, log_directory: str = "logs") -> List[Dict[str, Any]]:
         """
-        Reads recent match reports and uses the LLM to deduce anti-patterns.
+        Reads recent match reports, learned rules, and uses the LLM to deduce anti-patterns.
         """
         logger.info("MetaAnalyst analyzing match logs...")
         
-        # In a real environment, we would load recent loss logs or bandit_report.json
         bandit_report_path = Path("bandit_report.json")
         report_data = "{}"
         if bandit_report_path.exists():
             report_data = bandit_report_path.read_text(encoding="utf-8")
+            
+        # Read learned don'ts and do's
+        donts_path = Path("skills/learned_donts.json")
+        dos_path = Path("skills/learned_dos.json")
+        donts_data = "{}"
+        dos_data = "{}"
+        if donts_path.exists():
+            donts_data = donts_path.read_text(encoding="utf-8")
+        if dos_path.exists():
+            dos_data = dos_path.read_text(encoding="utf-8")
         
         system_prompt = (
             "You are an expert Data Scientist specializing in Pokémon TCG AlphaZero agents. "
@@ -35,7 +44,12 @@ class MetaAnalyst(LLMBase):
             "'issue_name' (string) and 'description' (string)."
         )
         
-        user_prompt = f"Here is the recent match data:\n\n{report_data}\n\nIdentify the top 3 anti-patterns."
+        user_prompt = (
+            f"Here is the recent match data:\n\n{report_data}\n\n"
+            f"Here are the recently extracted negative play anti-patterns (learned_donts):\n\n{donts_data}\n\n"
+            f"Here are the positive play patterns (learned_dos):\n\n{dos_data}\n\n"
+            "Identify the top 3 anti-patterns."
+        )
         
         try:
             results = self.prompt_json(system_prompt, user_prompt)

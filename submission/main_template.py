@@ -541,8 +541,34 @@ def make_smart_choice(select, observation, fallback_action):
                 
                 if sel_type == 3:
                     score += getattr(card, "ev_score", 0.0) + (getattr(card, "damage_output", 0) * 0.01)
-
             scored_options.append((idx, score))
+
+        # Value Network One-Step Lookahead Rescoring
+        orch = globals().get("orchestrator")
+        value_net = getattr(getattr(orch, "mcts", None), "value_network", None) if orch else None
+        if value_net:
+            try:
+                for i in range(len(scored_options)):
+                    idx, base_score = scored_options[i]
+                    opt = options[idx]
+                    cid = get_val(opt, "id")
+                    hyp_state = game_state.copy()
+                    if is_discard and cid is not None:
+                        cid_str = str(cid)
+                        if cid_str in hyp_state.get("my_hand", []):
+                            hand_copy = list(hyp_state["my_hand"])
+                            hand_copy.remove(cid_str)
+                            hyp_state["my_hand"] = hand_copy
+                    elif (context in ("draw", "search", "take")) and cid is not None:
+                        cid_str = str(cid)
+                        hand_copy = list(hyp_state.get("my_hand", []))
+                        hand_copy.append(cid_str)
+                        hyp_state["my_hand"] = hand_copy
+                    
+                    val_score = value_net.evaluate(hyp_state)
+                    scored_options[i] = (idx, base_score + 10.0 * val_score)
+            except Exception as val_err:
+                sys.stderr.write(f"[smart_choice] Value net evaluation failed: {val_err}\n")
 
         # Context-aware rescoring for discards: learned_dos +12 dominates utility (0-0.86)
         # so trainers always outscore Pokemon — but Pokemon win the game. Fix the balance.
