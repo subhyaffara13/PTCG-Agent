@@ -463,6 +463,198 @@
     {
       "condition": "inconsistent_single_tech_cards",
       "description": "Do not include single copies of highly situational tech cards (Lana\u2019s Aid, Night Stretcher, Sacred Ash) in a deck with a weak draw engine. These cards will rarely be accessible when needed and serve as dead draws in the early to mid-game."
+    },
+    {
+      "condition": "missing_pre_evolution",
+      "description": "Never include Mega Evolution Pok\u00e9mon (like Mega Kangaskhan ex) without their corresponding basic Pok\u00e9mon (e.g., Kangaskhan ex) to ensure they are playable and do not become dead cards in your hand."
+    },
+    {
+      "condition": "insufficient_basic_energy",
+      "description": "Do not run an extremely low count (e.g., 1) of a specific basic energy type when you have evolution lines (like Dwebble/Crustle) that require that energy for their attacks. This severely cripples your ability to power up your Pok\u00e9mon consistently."
+    },
+    {
+      "condition": "excessive_special_energy",
+      "description": "Avoid relying almost entirely on special energy cards (Mist, Spiky, Grow Grass) without specific reasons or strategies. This can make your energy susceptible to removal effects (like Xerosic's Machinations, which ironically is in this deck)."
+    },
+    {
+      "condition": "dead_card_packages",
+      "description": "Do not include a package of cards (e.g., 4 Jumbo Ice Cream, 1 Hero's Cape) that exclusively support a Pok\u00e9mon (Mega Kangaskhan ex) that cannot be played due to missing pre-evolutions. These cards become completely useless and clog your deck."
+    },
+    {
+      "condition": "misaligned_disruption_ratio",
+      "description": "Do not include an excessive number of niche disruption Supporters (e.g., 4 Xerosic's Machinations) at the expense of more essential draw consistency or attacker-specific supporters (like Boss's Orders, which is only at 2 copies here)."
+    },
+    {
+      "condition": "poor_draw_support",
+      "description": "Ensure a robust and consistent draw engine is present, rather than relying solely on less impactful or conditional draw supporters like Hilda and Lillie's Determination for your primary draw, especially without strong hand refreshers like Professor's Research or Iono."
+    },
+    {
+      "condition": "unsupported_pokemon_line",
+      "description": "Avoid dedicating significant deck slots to an evolution line (e.g., Dwebble/Crustle 4-4) without adequate energy support to consistently power up its attacks, rendering the line ineffective as a viable attacker."
+    },
+    {
+      "condition": "missing_basic_evolution",
+      "description": "Never include Mega Evolution Pok\u00e9mon without their corresponding Basic Pok\u00e9mon-EX. The Mega Evolution cards become dead draws without the prerequisite Basic form."
+    },
+    {
+      "condition": "insufficient_basic_energy",
+      "description": "Do not rely on a single basic energy card to power your Pok\u00e9mon, especially when your main attackers require that specific energy type. This severely cripples consistency."
+    },
+    {
+      "condition": "excessive_situational_supporters",
+      "description": "Avoid running too many copies of highly situational Supporter cards (like Xerosic\u2019s Machinations). Over-reliance on niche cards reduces overall deck consistency and draw power."
+    },
+    {
+      "condition": "inconsistent_draw_supporters",
+      "description": "Minimize the use of highly inconsistent draw Supporters (like Lillie's Determination) as a primary draw engine. Opt for more reliable draw options to maintain hand advantage."
+    },
+    {
+      "condition": "misaligned_stadium_synergy",
+      "description": "Select Stadium cards that directly benefit your deck's strategy and main Pok\u00e9mon. Battle Cage, which only impacts Basic Pok\u00e9mon, has limited synergy in an evolution-focused deck."
+    },
+    {
+      "condition": "suboptimal_healing_items",
+      "description": "Do not include low-impact healing items like Jumbo Ice Cream when more effective healing, protective, or disruptive cards could occupy those crucial deck slots."
+    },
+    {
+      "condition": "unclear_pokemon_role",
+      "description": "Ensure every Pok\u00e9mon in your deck has a clear, synergistic role. Avoid including single copies of non-essential Pok\u00e9mon that do not contribute significantly to your strategy or consistency."
+    },
+    {
+      "condition": "critically_low_energy_stage2",
+      "description": "Avoid critically low energy counts (e.g., 7 energy) when building a deck around a heavy Stage 2 evolution line that requires energy to attack, as it severely hinders power-up consistency."
+    },
+    {
+      "condition": "inefficient_discard_draw",
+      "description": "Do not rely on outdated or inefficient draw supporters (e.g., Hilda, Dawn) that require discarding multiple cards for minimal draws, as this depletes resources and creates constant hand disadvantage."
+    },
+    {
+      "condition": "excessive_coin_flip_recycle",
+      "description": "Refrain from including an excessive number of coin-flip reliant recycle cards (e.g., 4 Pok\u00e9 Pad). They are inconsistent, often dead draws early game, and consume vital deck space."
+    },
+    {
+      "condition": "unfocused_pokemon_lines",
+      "description": "Avoid unfocused Pok\u00e9mon lines where a heavy Stage 2 evolution package is diluted by non-synergistic, single-copy Pok\u00e9mon ex/V/EX that do not contribute to the primary strategy."
+    },
+    {
+      "condition": "overboard_tech_supporters",
+      "description": "Do not include an excessive number of niche tech supporters (e.g., 3 Xerosic's Machinations). They can clog your hand and prevent you from drawing into essential setup or consistent draw power."
+    },
+    {
+      "condition": "insufficient_stage2_acceleration",
+      "description": "Ensure your Stage 2 evolution deck has sufficient acceleration for both evolution (e.g., more Rare Candy, specific search) and energy attachment, as 3 Rare Candy and 7 energy are insufficient for a 4-4-4 line."
+    },
+    {
+      "condition": "unplayable_energy_mismatch",
+      "description": "Do not include Pok\u00e9mon that require a specific energy type to attack if you do not include that energy type in your deck, as they become unplayable dead cards."
+    },
+    {
+      "condition": "useless_ability_synergy",
+      "description": "Do not include Pok\u00e9mon with abilities that require specific card types (e.g., Fossil Items) if those required cards are not present in your deck, rendering the ability and the Pok\u00e9mon useless."
+    },
+    {
+      "condition": "overstacked_niche_stadium",
+      "description": "Do not include an excessive number (e.g., 4 copies) of a highly specific stadium that offers limited protection to your main evolution attacker, as it reduces consistency and clogs your hand."
+    },
+    {
+      "condition": "excessive_single_type_energy",
+      "description": "Do not include an extremely high count of a single basic energy type (e.g., 13) for a deck where your main attacker only requires 2-3 energy, as it drastically reduces the probability of drawing crucial non-energy cards."
+    },
+    {
+      "condition": "cluttered_consistency_engine",
+      "description": "Do not clutter your deck with niche, unplayable, or dead-draw cards, as this severely compromises your consistency engine and ability to set up your board."
+    },
+    {
+      "condition": "energy_type_mismatch",
+      "description": "Never include Pok\u00e9mon that require an energy type (e.g., Water) completely absent from your deck, as they are unplayable and create dead draws."
+    },
+    {
+      "condition": "excessive_specific_evolution_search",
+      "description": "Avoid having too many copies of highly specific evolution search Supporters (e.g., 4x Carmine). Once your key evolutions are on the board, these cards become dead draws, severely reducing your hand quality."
+    },
+    {
+      "condition": "overloaded_situational_cards",
+      "description": "Refrain from including excessive counts (e.g., 4x) of situational item or supporter cards like recovery (Night Stretcher) or discard retrieval (Pok\u00e9 Pad) that depend on specific board states or luck, as they can lead to bricked hands."
+    },
+    {
+      "condition": "poor_tech_pokemon_synergy",
+      "description": "Do not include tech Pok\u00e9mon (e.g., Relicanth) that lack clear synergy with your deck's primary strategy or do not significantly improve your setup, draw, or disruption capabilities."
+    },
+    {
+      "condition": "poor_draw_to_energy_ratio",
+      "description": "Avoid having a high basic energy count (e.g., 13) without sufficient, consistent draw support to cycle through your deck and find your essential Pok\u00e9mon and Trainers. This often results in 'brick' hands."
+    },
+    {
+      "condition": "element_type_mismatch",
+      "description": "Do not include Pok\u00e9mon that require an energy type not present in your deck (e.g., Team Rocket's Articuno requiring Water Energy in a Metal-only deck), as they become unplayable dead cards."
+    },
+    {
+      "condition": "non_synergistic_pokemon",
+      "description": "Avoid including Pok\u00e9mon that do not directly contribute to your main strategy or provide immediate utility (e.g., Relicanth without a clear discard strategy), as they can become dead draws."
+    },
+    {
+      "condition": "supporter_engine_bloat",
+      "description": "Do not over-commit deck slots to cards that only search for or recover Supporters (e.g., 4 Pok\u00e9gear 3.0, 4 Pok\u00e9 Pad) without a primary, consistent draw engine, as it can lead to clunky hands and inefficient setup."
+    },
+    {
+      "condition": "ineffective_supporter",
+      "description": "Avoid using Supporters that provide minimal impact (e.g., Xerosic\u2019s Machinations for minor hand disruption) at the cost of a valuable Supporter turn, hindering your setup and draw."
+    },
+    {
+      "condition": "excessive_stadiums",
+      "description": "Do not include an excessive number of Stadiums (e.g., 4 copies) unless the strategy heavily depends on it and you have ways to manage extras, as it can lead to drawing multiple copies and resource inefficiency."
+    },
+    {
+      "condition": "energy_flood_risk",
+      "description": "Be cautious with a high basic energy count (e.g., 13+) when the deck lacks a powerful and consistent draw engine, as it significantly increases the risk of drawing too many energies and bricking your hand."
+    },
+    {
+      "condition": "stadium_anti_synergy",
+      "description": "Do not include Stadium cards that negatively impact your own primary attacking Pok\u00e9mon. For example, Full Metal Lab reduces the damage of Metal Pok\u00e9mon attacks, which directly weakens Archaludon ex."
+    },
+    {
+      "condition": "inefficient_item_count",
+      "description": "Avoid playing multiple copies of highly inefficient Item cards like Pok\u00e9 Pad, which offer minimal draw or search power for their deck slot."
+    },
+    {
+      "condition": "supporter_overload",
+      "description": "Do not include an excessive number of Supporters (e.g., 14+ in a 60-card deck), especially when many perform similar draw or search functions, as this creates competition for your Supporter use and can lead to dead hands."
+    },
+    {
+      "condition": "missing_energy_acceleration",
+      "description": "Do not build decks with high-energy-cost attackers (e.g., 3+ energy) without including energy acceleration, recovery, or sufficient search to consistently power them up."
+    },
+    {
+      "condition": "unjustified_pokemon_techs",
+      "description": "Avoid including Pok\u00e9mon tech cards (like Team Rocket's Articuno or Relicanth) without a clear strategic purpose, strong synergy with your main attacker, or reliable methods to find them when needed."
+    },
+    {
+      "condition": "excessive_stadium_package",
+      "description": "Avoid running an excessive number of redundant Stadiums (4 Full Metal Lab) alongside a full playset of Stadium/Tool recovery (4 Pok\u00e9 Pad) when the Stadium provides minimal benefit and is highly situational."
+    },
+    {
+      "condition": "bloated_supporter_line",
+      "description": "Do not include an overly bloated Supporter line (e.g., 14 Supporters plus 4 Pok\u00e9gear 3.0) without a strong primary draw engine, as it severely reduces consistency and flexibility."
+    },
+    {
+      "condition": "dead_card_inclusion",
+      "description": "Never include cards with no strategic value, synergy, or competitive viability (e.g., Team Rocket's Articuno) as they are guaranteed dead draws that worsen consistency."
+    },
+    {
+      "condition": "redundant_defensive_abilities",
+      "description": "Avoid stacking redundant defensive abilities or effects (e.g., Archaludon ex's Metal Skin + Full Metal Lab) that provide diminishing returns and waste valuable deck slots."
+    },
+    {
+      "condition": "high_basic_energy_count_no_engine",
+      "description": "Do not run an excessively high count of basic energy (e.g., 13 Metal energy) without an efficient energy acceleration or discard/recovery engine to utilize it effectively."
+    },
+    {
+      "condition": "lack_of_primary_draw_engine",
+      "description": "Ensure your deck has a consistent, robust primary draw engine (e.g., Pok\u00e9mon with draw abilities, strong item-based draw) instead of solely relying on one-off Supporters and limited discard options."
+    },
+    {
+      "condition": "situational_tool_overload",
+      "description": "Avoid including highly situational or temporary tools (e.g., Xerosic's Machinations) in limited counts, especially if they are not searchable or recyclable, as they often become dead draws."
     }
   ],
   "behavior_donts": [

@@ -18,11 +18,12 @@ logger = logging.getLogger(__name__)
 
 @register_agent("turn_planner")
 class TurnPlanner(BaseAgent):
-    def __init__(self, log_dir="logs", skills_dir="skills", perspective_flag="player", shared_context=None, belief_tracker=None):
+    def __init__(self, log_dir="logs", skills_dir="skills", perspective_flag="player", shared_context=None, belief_tracker=None, model_path=None):
         super().__init__(perspective_flag)
         self.log_dir = Path(log_dir)
         self.skills_dir = Path(skills_dir)
         self.shared_context = shared_context
+        self.model_path = model_path or "models/ppo_actor_critic.pt"
         try:
             self.log_dir.mkdir(parents=True, exist_ok=True)
             self.skills_dir.mkdir(parents=True, exist_ok=True)
@@ -31,13 +32,14 @@ class TurnPlanner(BaseAgent):
 
         try:
             self.rules = (self.shared_context.get_config(str(self.skills_dir), "priority_rules.json")
-                          if self.shared_context else self._load_priority_rules())
+                           if self.shared_context else self._load_priority_rules())
         except Exception as e:
             logger.error(f"Failed to get_config: {e}")
             self.rules = {"rules": []}
         self.mcts = MCTSEngine(
             num_simulations=200, belief_tracker=belief_tracker,
-            value_network=PPOValueNetwork(), policy_network=PPOPolicyNetwork()
+            value_network=PPOValueNetwork(model_path=self.model_path),
+            policy_network=PPOPolicyNetwork(model_path=self.model_path)
         )
         self._logger = TurnPlannerLogger(self.log_dir)
         self._prize_tracker = PrizeTracker()

@@ -68,7 +68,20 @@ def _to_cpp_compatible_state(gs: dict) -> dict:
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
     def __init__(self, c_puct: float = 1.25, num_simulations: int = 200, belief_tracker=None,
                  value_network: BaseValueNetwork | None = None, policy_network: BasePolicyNetwork | None = None):
-        self.c_puct = c_puct
+        # Dynamically load c_puct from hyperparam state if present
+        loaded_c_puct = c_puct
+        try:
+            import json
+            from pathlib import Path
+            state_path = Path("models/hyperparam_state.json")
+            if state_path.exists():
+                hparams = json.loads(state_path.read_text(encoding="utf-8"))
+                if "c_puct" in hparams:
+                    loaded_c_puct = float(hparams["c_puct"])
+        except Exception:
+            pass
+            
+        self.c_puct = loaded_c_puct
         self.num_simulations = num_simulations
         self.belief_tracker = belief_tracker
         self.value_network = value_network or HeuristicValueNetwork()
