@@ -11,8 +11,8 @@ requests
 jsonschema
 flask
 urllib3
-
+openai
 onnxscript
 google-generativeai
-openai
 tensorboard
+torchvision

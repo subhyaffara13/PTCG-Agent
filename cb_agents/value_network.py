@@ -279,6 +279,7 @@ class PPOPolicyNetwork(BasePolicyNetwork):
             onnx_path = model_path.replace(".pt", ".onnx")
             if not os.path.exists(onnx_path):
                 try:
+                    import torch.onnx
                     import contextlib
                     import io
                     dummy_token_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
