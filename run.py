@@ -35,10 +35,14 @@ def check_and_install_dependencies():
         return
         
     try:
-        import pkg_resources
+        import importlib.metadata
+        import re
         requirements = req_file.read_text(encoding="utf-8").splitlines()
         requirements = [r.strip() for r in requirements if r.strip() and not r.startswith("#")]
-        pkg_resources.require(requirements)
+        for req in requirements:
+            package_name = re.split(r'[><=!~;\[]', req)[0].strip()
+            # Try to fetch version to check if installed
+            importlib.metadata.version(package_name)
         print("[INFO] All dependencies satisfied.")
         return
     except Exception:
