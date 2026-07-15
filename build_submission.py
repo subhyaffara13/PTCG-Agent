@@ -31,10 +31,46 @@ if promoted_deck.exists():
 else:
     print("WARNING: cb_agents/deck_new.csv not found!")
 
-# 2.5 Generate main.py from main_template.py
+# 2.5 Generate main.py from main_template.py with dynamic deck fallbacks injected
 if Path("submission/main_template.py").exists():
-    shutil.copy2("submission/main_template.py", "submission/main.py")
-    print("Generated submission/main.py from main_template.py")
+    deck_list = []
+    deck_csv = Path("submission/deck.csv")
+    if deck_csv.exists():
+        import csv
+        try:
+            with open(deck_csv, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    deck_list.extend([int(row["card_id"])] * int(row["count"]))
+            print(f"Loaded {len(deck_list)} cards from deck.csv for main.py injection.")
+        except Exception as e:
+            print(f"Error loading deck for injection: {e}")
+            
+    if len(deck_list) == 60:
+        import re
+        content = Path("submission/main_template.py").read_text(encoding="utf-8")
+        
+        # Format the 60-card list as a wrapped 10-per-line array for readability
+        deck_lines = []
+        for i in range(0, len(deck_list), 10):
+            deck_lines.append(", ".join(map(str, deck_list[i:i+10])))
+        deck_str = ",\n        ".join(deck_lines)
+        
+        content = re.sub(
+            r"DEFAULT_DECK\s*=\s*\[[^\]]+\]",
+            f"DEFAULT_DECK = [\n        {deck_str}\n    ]",
+            content
+        )
+        content = re.sub(
+            r"DEFAULT_DECK_FALLBACK\s*=\s*\[[^\]]+\]",
+            f"DEFAULT_DECK_FALLBACK = [\n        {deck_str}\n    ]",
+            content
+        )
+        Path("submission/main.py").write_text(content, encoding="utf-8")
+        print("Generated submission/main.py with synced fallback deck lists.")
+    else:
+        shutil.copy2("submission/main_template.py", "submission/main.py")
+        print("WARNING: Could not parse 60-card deck. Generated main.py without injection.")
 
 # 3. Sync all agents to submission/cb_agents and adjust imports
 print("Syncing agents to submission/cb_agents...")
