@@ -48,11 +48,18 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
             "OpponentModel": "opponent_model"
         }
         self.bus = self._router = RouterBus(delegation_map=delegation_map, log_dir=str(self.log_dir))
-        self.hand_analyst = self._analyst  = HandAnalyst(**kwargs)
-        self.turn_planner = self._planner  = TurnPlanner(belief_tracker=self.belief_tracker, **kwargs)
-        self.time_manager = self._timer    = TimeManager(**kwargs)
-        self.strategy_agent = self._strategy = StrategyAgent(**kwargs)
-        self.opponent_model = self._opponent = OpponentModel(**kwargs)
+        import inspect
+        def clean_kwargs(cls, kw):
+            sig = inspect.signature(cls.__init__)
+            if any(p.kind == inspect.Parameter.VAR_KEYWORD for p in sig.parameters.values()):
+                return kw
+            return {k: v for k, v in kw.items() if k in sig.parameters}
+            
+        self.hand_analyst = self._analyst  = HandAnalyst(**clean_kwargs(HandAnalyst, kwargs))
+        self.turn_planner = self._planner  = TurnPlanner(belief_tracker=self.belief_tracker, **clean_kwargs(TurnPlanner, kwargs))
+        self.time_manager = self._timer    = TimeManager(**clean_kwargs(TimeManager, kwargs))
+        self.strategy_agent = self._strategy = StrategyAgent(**clean_kwargs(StrategyAgent, kwargs))
+        self.opponent_model = self._opponent = OpponentModel(**clean_kwargs(OpponentModel, kwargs))
         self.context   = {}
         for agent in (self.hand_analyst, self.turn_planner, self.time_manager, self.strategy_agent, self.opponent_model):
             agent.shared_context = self.context

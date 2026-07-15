@@ -49,10 +49,10 @@ class OpponentModel(BaseAgent):
         if not isinstance(packet, dict):
             raise TypeError(f"OpponentModel received illegal packet type: {type(packet).__name__}.")
 
-        revealed_cards = packet.get("revealed_cards") or packet.get("newly_played_cards", [])
-        turn_number = packet.get("turn_number") or packet.get("turn", 1)
-        prizes_remaining = packet.get("prizes_remaining") or packet.get("revealed_prizes_remaining", 6)
-
+        revealed_cards = packet.get("revealed_cards") or packet.get("newly_played_cards") or []
+        if not isinstance(revealed_cards, (list, tuple)):
+            revealed_cards = []
+            
         for card in revealed_cards:
             if card not in self.revealed_state:
                 self.revealed_state.append(card)

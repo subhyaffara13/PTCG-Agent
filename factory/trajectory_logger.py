@@ -38,11 +38,12 @@ class TrajectoryLogger:
                 start_time = time.time()
                 if self.current_file is None or self.records_written_current >= self.max_records:
                     if self.current_file is not None: self.current_file.close()
-                    self.current_file = gzip.open(get_new_file_path(self.log_dir), 'at', encoding='utf-8')
+                    self.current_file = open(get_new_file_path(self.log_dir), 'at', encoding='utf-8')
                     self.records_written_current = 0
                 
                 json_str = json.dumps(record) + "\n"
                 self.current_file.write(json_str)
+                self.current_file.flush()
                 
                 self.records_written_current += 1
                 self.total_records_written += 1

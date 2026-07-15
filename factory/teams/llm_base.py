@@ -33,14 +33,26 @@ class LLMBase:
         self.client = None
         self.model = None
         
+        self.siliconflow_key = os.environ.get("SILICONFLOW_API_KEY")
+        
         if self.openai_key:
             try:
                 import openai
                 self.provider = "openai"
-                self.model = self.model_override or "gpt-4o"
-                self.client = openai.OpenAI(api_key=self.openai_key)
+                self.model = self.model_override or os.environ.get("OPENAI_MODEL", "gpt-4o")
+                base_url = os.environ.get("OPENAI_API_BASE") or os.environ.get("OPENAI_BASE_URL")
+                self.client = openai.OpenAI(api_key=self.openai_key, base_url=base_url)
             except ImportError:
                 logger.warning("OpenAI key found but 'openai' module is missing. Falling back...")
+
+        if self.provider == "none" and self.siliconflow_key:
+            try:
+                import openai
+                self.provider = "openai"
+                self.model = self.model_override or os.environ.get("SILICONFLOW_MODEL", "Qwen/Qwen2.5-72B-Instruct")
+                self.client = openai.OpenAI(api_key=self.siliconflow_key, base_url="https://api.siliconflow.cn/v1")
+            except ImportError:
+                logger.warning("SiliconFlow key found but 'openai' module is missing. Falling back...")
 
         if self.provider == "none" and self.gemini_key:
             try:
@@ -55,10 +67,17 @@ class LLMBase:
         if self.provider == "none" and self.ollama_key:
             try:
                 import openai
-                self.provider = "ollama"
-                self.model = self.model_override or "llama3"
-                self.ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434/v1")
-                self.client = openai.OpenAI(api_key=self.ollama_key, base_url=self.ollama_host)
+                # Auto-detect SiliconFlow API key formats configured as OLLAMA_API_KEY
+                if len(self.ollama_key) == 57 and "." in self.ollama_key:
+                    self.provider = "openai"
+                    self.model = self.model_override or os.environ.get("OLLAMA_MODEL") or os.environ.get("SILICONFLOW_MODEL", "Qwen/Qwen2.5-72B-Instruct")
+                    self.client = openai.OpenAI(api_key=self.ollama_key, base_url="https://api.siliconflow.cn/v1")
+                    logger.info(f"Auto-routed OLLAMA_API_KEY as SiliconFlow provider with model {self.model}")
+                else:
+                    self.provider = "ollama"
+                    self.model = self.model_override or os.environ.get("OLLAMA_MODEL", "llama3")
+                    self.ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11434/v1")
+                    self.client = openai.OpenAI(api_key=self.ollama_key, base_url=self.ollama_host)
             except ImportError:
                 logger.warning("Ollama key found but 'openai' module is missing. Cannot use Ollama.")
 

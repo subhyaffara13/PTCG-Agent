@@ -6,7 +6,7 @@ from typing import Dict, Any
 
 def get_new_file_path(log_dir: Path) -> Path:
     timestamp = int(time.time())
-    return log_dir / f"trajectory_{timestamp}.jsonl.gz"
+    return log_dir / f"trajectory_{timestamp}.jsonl"
 
 def prepare_match_record(record: Dict[str, Any]) -> Dict[str, Any]:
     if "elite_metrics" not in record:
