@@ -25,10 +25,40 @@ def log_crash(exctype, value, tb):
 
 sys.excepthook = log_crash
 
+def check_and_install_dependencies():
+    print("[INFO] Checking dependencies...")
+    import subprocess
+    from pathlib import Path
+    req_file = Path(__file__).parent / "requirements.txt"
+    if not req_file.exists():
+        print("[WARNING] requirements.txt not found. Skipping dependency check.")
+        return
+        
+    try:
+        import pkg_resources
+        requirements = req_file.read_text(encoding="utf-8").splitlines()
+        requirements = [r.strip() for r in requirements if r.strip() and not r.startswith("#")]
+        pkg_resources.require(requirements)
+        print("[INFO] All dependencies satisfied.")
+        return
+    except Exception:
+        pass
+        
+    print("[INFO] Installing/updating missing dependencies from requirements.txt...")
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", "-r", str(req_file)],
+            check=True
+        )
+        print("[INFO] Dependencies successfully installed.")
+    except Exception as e:
+        print(f"[ERROR] Failed to install dependencies: {e}")
+
 if __name__ == "__main__":
     # Ensure current directory is in path
     sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
     
+    check_and_install_dependencies()
     print("[INFO] Starting PTCG Agent Orchestrator...")
     
     try:
