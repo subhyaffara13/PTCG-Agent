@@ -42,11 +42,15 @@ class TrajectoryReader:
         for f in files:
             try:
                 if f.suffix == ".gz":
-                    with gzip.open(f, "rt", encoding="utf-8") as fh:
-                        for line in fh:
-                            line = line.strip()
-                            if line:
-                                records.append(json.loads(line))
+                    import zlib
+                    try:
+                        with gzip.open(f, "rt", encoding="utf-8") as fh:
+                            for line in fh:
+                                line = line.strip()
+                                if line:
+                                    records.append(json.loads(line))
+                    except (EOFError, zlib.error, Exception) as gzip_err:
+                        logger.warning(f"Gzip file {f.name} was truncated/corrupted. Loaded partial records: {gzip_err}")
                 else:
                     with open(f, "r", encoding="utf-8") as fh:
                         for line in fh:
