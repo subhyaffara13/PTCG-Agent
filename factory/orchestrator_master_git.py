@@ -46,8 +46,22 @@ def auto_commit_and_push_if_changed():
         commit_msg = "Auto-update: Factory model/deck/skills update"
         _run_git(["git", "commit", "-m", commit_msg], check=True, capture_output=True, text=True)
         # Push
-        _run_git(["git", "push"], check=True, capture_output=True, text=True)
-        logger.info("Factory updates committed and pushed successfully.")
+        try:
+            _run_git(["git", "push"], check=True, capture_output=True, text=True)
+            logger.info("Factory updates committed and pushed successfully.")
+        except subprocess.CalledProcessError as push_err:
+            push_err_out = (getattr(push_err, 'stderr', '') or '' + getattr(push_err, 'stdout', '') or '').lower()
+            if "fetch first" in push_err_out or "non-fast-forward" in push_err_out or "behind" in push_err_out:
+                logger.warning("Master push rejected due to remote changes. Attempting git pull --rebase...")
+                try:
+                    _run_git(["git", "pull", "--rebase"], check=True, capture_output=True, text=True)
+                    _run_git(["git", "push"], check=True, capture_output=True, text=True)
+                    logger.info("Factory updates rebased and pushed successfully.")
+                except Exception as rebase_err:
+                    logger.error(f"Git rebase/push recovery failed: {rebase_err}")
+                    raise
+            else:
+                raise
     except subprocess.CalledProcessError as e:
         err_out = getattr(e, 'stderr', '') or ''
         std_out = getattr(e, 'stdout', '') or ''
