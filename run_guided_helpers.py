@@ -104,22 +104,28 @@ def execute_ppo_step(iteration_id: int, iteration_result: dict = None):
                             step_data = actual_steps[t]
                             if isinstance(step_data, list) and len(step_data) >= 2:
                                 p0 = step_data[0]
-                                obs = p0.get("observation", {})
-                                current = obs.get("current", {})
-                                players = current.get("players", [])
-                                if len(players) >= 2:
-                                    my_idx = current.get("yourIndex", 0)
-                                    p_mine = len(players[my_idx].get("prize", []))
-                                    p_opp = len(players[1 - my_idx].get("prize", []))
-                                    
-                                    # We took a prize card: +2.0
-                                    if p_opp < prev_p_opp:
-                                        game_rew[t] += 2.0 * (prev_p_opp - p_opp)
-                                    # Opponent took a prize card: -2.0
-                                    if p_mine < prev_p_mine:
-                                        game_rew[t] -= 2.0 * (prev_p_mine - p_mine)
-                                        
-                                    prev_p_mine, prev_p_opp = p_mine, p_opp
+                                if isinstance(p0, dict):
+                                    obs = p0.get("observation")
+                                    if isinstance(obs, dict):
+                                        current = obs.get("current")
+                                        if isinstance(current, dict):
+                                            players = current.get("players", [])
+                                            if isinstance(players, list) and len(players) >= 2:
+                                                my_idx = current.get("yourIndex", 0)
+                                                if isinstance(my_idx, int) and my_idx < len(players):
+                                                    p_mine_list = players[my_idx].get("prize", [])
+                                                    p_opp_list = players[1 - my_idx].get("prize", [])
+                                                    p_mine = len(p_mine_list) if isinstance(p_mine_list, list) else 0
+                                                    p_opp = len(p_opp_list) if isinstance(p_opp_list, list) else 0
+                                                    
+                                                    # We took a prize card: +2.0
+                                                    if p_opp < prev_p_opp:
+                                                        game_rew[t] += 2.0 * (prev_p_opp - p_opp)
+                                                    # Opponent took a prize card: -2.0
+                                                    if p_mine < prev_p_mine:
+                                                        game_rew[t] -= 2.0 * (prev_p_mine - p_mine)
+                                                        
+                                                    prev_p_mine, prev_p_opp = p_mine, p_opp
                         except Exception:
                             pass
                             
