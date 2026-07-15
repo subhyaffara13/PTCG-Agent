@@ -52,6 +52,8 @@ class OpponentModel(BaseAgent):
         revealed_cards = packet.get("revealed_cards") or packet.get("newly_played_cards") or []
         if not isinstance(revealed_cards, (list, tuple)):
             revealed_cards = []
+        turn_number = packet.get("turn_number") or packet.get("turn", 1)
+        prizes_remaining = packet.get("prizes_remaining") or packet.get("revealed_prizes_remaining", 6)
             
         for card in revealed_cards:
             if card not in self.revealed_state:

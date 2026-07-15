@@ -281,6 +281,15 @@ class PPOPolicyNetwork(BasePolicyNetwork):
                 try:
                     import contextlib
                     import io
+                    
+                    class ONNXExportWrapper(torch.nn.Module):
+                        def __init__(self, model):
+                            super().__init__()
+                            self.model = model
+                        def forward(self, token_ids, zone_ids, scalars, padding_mask):
+                            return self.model(x=None, token_ids=token_ids, zone_ids=zone_ids, scalars=scalars, padding_mask=padding_mask)
+                            
+                    wrapper = ONNXExportWrapper(ac)
                     dummy_token_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
                     dummy_zone_ids = torch.zeros(1, 32, dtype=torch.long, device=self.device)
                     dummy_scalars = torch.zeros(1, 6, dtype=torch.float32, device=self.device)
@@ -290,10 +299,10 @@ class PPOPolicyNetwork(BasePolicyNetwork):
                     # which crashes the default Windows charmap encoder. We silence it here.
                     with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                         torch.onnx.export(
-                            ac,
-                            (None, dummy_token_ids, dummy_zone_ids, dummy_scalars, dummy_padding_mask),
+                            wrapper,
+                            (dummy_token_ids, dummy_zone_ids, dummy_scalars, dummy_padding_mask),
                             onnx_path,
-                            input_names=["x", "token_ids", "zone_ids", "scalars", "padding_mask"],
+                            input_names=["token_ids", "zone_ids", "scalars", "padding_mask"],
                             output_names=["logits", "value"],
                             dynamic_axes={
                                 "token_ids": {0: "batch_size"},
