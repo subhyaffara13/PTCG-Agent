@@ -63,7 +63,7 @@ if TORCH_AVAILABLE:
                 dropout=0.1,
                 batch_first=True,
             )
-            self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=TRANSFORMER_LAYERS)
+            self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=TRANSFORMER_LAYERS, enable_nested_tensor=False)
             self.project = nn.Linear(CARD_EMBED_DIM + SCALAR_FEATURES, hidden_dim)
             self.norm = nn.LayerNorm(hidden_dim)
 

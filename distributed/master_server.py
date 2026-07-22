@@ -140,6 +140,31 @@ class MasterServer:
                         )
                         elapsed_iter = time.time() - t0
                         logger.info(f"Local iteration {local_order.iteration} completed in {elapsed_iter:.1f}s.")
+                        
+                        from distributed.work_order import GameResult
+                        metrics = {"completed": 1.0}
+                        if "games" in res_dict and "deck_test" in res_dict["games"]:
+                            win = res_dict["games"]["deck_test"].get("winner")
+                            metrics["win_rate"] = 1.0 if win == "player_a" else 0.0
+
+                        games_data = res_dict.get("games", {})
+                        disk_results = {label: {k: v for k, v in res.items() if k != "steps_dump"} for label, res in games_data.items()}
+                        disk_payload = {
+                            "iteration": local_order.iteration,
+                            "timestamp": res_dict.get("timestamp"),
+                            "games": disk_results,
+                            "ready_for_eval": True
+                        }
+
+                        result = GameResult(
+                            job_id=local_order.job_id,
+                            iteration=local_order.iteration,
+                            worker_id="local_fallback",
+                            metrics=metrics,
+                            payload=disk_payload
+                        )
+                        self.results_queue.put(result)
+                        logger.info(f"Submitted local fallback GameResult to results_queue for iteration {local_order.iteration}")
                     except Exception as e:
                         logger.error(f"Local runner failed: {e}")
             else:
