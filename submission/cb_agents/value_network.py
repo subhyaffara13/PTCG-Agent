@@ -39,6 +39,7 @@ class NeuralValueNetwork(BaseValueNetwork):
     model: Any
     state_to_tensor: Any
     state_to_card_tokens: Any
+    inference_client: Any
 
     def __init__(self, model_path: str = "logs/model_weights.pth", device: str = "cpu"):
         from cb_agents.value_network_helpers import ActorCritic, state_to_tensor, state_to_card_tokens, HAS_TORCH
@@ -94,7 +95,7 @@ class NeuralValueNetwork(BaseValueNetwork):
                     if action:
                         from cb_agents.heuristic_pipeline import _action_score
                         val += _action_score(action, game_state, 0.0)
-                    return max(-1.0, min(1.0, val))
+                    return max(-10.0, min(10.0, val))
         except Exception:
             pass
             
@@ -125,7 +126,7 @@ class NeuralValueNetwork(BaseValueNetwork):
                 if action:
                     from cb_agents.heuristic_pipeline import _action_score
                     val += _action_score(action, game_state, 0.0)
-                return max(-1.0, min(1.0, val))
+                return max(-10.0, min(10.0, val))
             except Exception as e:
                 logger.error(f"Neural evaluation failed: {e}")
                 
@@ -226,6 +227,7 @@ class PPOPolicyNetwork(BasePolicyNetwork):
     _has_torch: Any
     _heuristic_fallback: Any
     _cache: Any
+    inference_client: Any
 
     def __init__(self, model_path="models/ppo_actor_critic.pt", device="cpu"):
         self.model = None
@@ -403,6 +405,7 @@ class PPOValueNetwork(BaseValueNetwork):
     _state_to_card_tokens: Any
     _has_torch: Any
     _cache: Any
+    inference_client: Any
 
     def __init__(self, model_path="models/ppo_actor_critic.pt", device="cpu"):
         self.model = None
@@ -472,7 +475,7 @@ class PPOValueNetwork(BaseValueNetwork):
                     if action:
                         from cb_agents.heuristic_pipeline import _action_score
                         val += _action_score(action, game_state, 0.0)
-                    res = max(-1.0, min(1.0, val))
+                    res = max(-10.0, min(10.0, val))
                     if h != 0:
                         self._cache[cache_key] = res
                     return res
@@ -510,7 +513,7 @@ class PPOValueNetwork(BaseValueNetwork):
                 if action:
                     from cb_agents.heuristic_pipeline import _action_score
                     v += _action_score(action, game_state, 0.0)
-                res = max(-1.0, min(1.0, v))
+                res = max(-10.0, min(10.0, v))
                 if h != 0:
                     self._cache[cache_key] = res
                 return res

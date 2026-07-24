@@ -89,7 +89,7 @@ class DevelopmentTeam:
                     from factory.deck_loader import DeckLoader
                     loader = DeckLoader(pathlib.Path("skills"))
                     cand_deck = [int(c.get("card_id", 1)) for c in loader.load_card_pool()[:60]]
-                    gauntlet_win_rate = GauntletRunner().run_gauntlet(cand_deck, num_games_per_archetype=1)
+                    gauntlet_win_rate = GauntletRunner().run_gauntlet(cand_deck, num_games_per_archetype=10)
                     if gauntlet_win_rate < 0.50:
                         logger.error(f"Gauntlet Guard Rejected LLM Patch: Win rate fell to {gauntlet_win_rate*100:.1f}%. Reverting...")
                         subprocess.run(["git", "restore", "submission/src/"], check=False)

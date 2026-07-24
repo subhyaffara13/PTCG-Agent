@@ -130,6 +130,10 @@ class CardRegistry:
         # Load learned rules from crawler
         self.learned_dos = set()
         self.learned_donts = set()
+        self.target_setup_duration = None
+        self.target_bench_density = None
+        self.target_deck_stats = {}
+        self.behavior_donts_rules = []
         import json
         try:
             dos_path = self.skills_dir / "learned_dos.json"
@@ -139,6 +143,13 @@ class CardRegistry:
                     cid = item.get("card_id")
                     if cid is not None:
                         self.learned_dos.add(int(cid))
+                for profile in dos_data.get("setup_profiles", []) + dos_data.get("behavior_dos", []):
+                    if isinstance(profile, dict):
+                        if "avg_setup_duration" in profile:
+                            self.target_setup_duration = float(profile["avg_setup_duration"])
+                        if "avg_bench_density" in profile:
+                            self.target_bench_density = float(profile["avg_bench_density"])
+                self.target_deck_stats = dos_data.get("deck_stats", {})
         except Exception as e:
             logger.error(f"Failed to load learned_dos.json: {e}")
 
@@ -150,6 +161,7 @@ class CardRegistry:
                     cid = item.get("card_id")
                     if cid is not None:
                         self.learned_donts.add(int(cid))
+                self.behavior_donts_rules = donts_data.get("behavior_donts", [])
         except Exception as e:
             logger.error(f"Failed to load learned_donts.json: {e}")
 

@@ -49,7 +49,7 @@ def score_action(action: str, gs: dict, threat: float = 0.0) -> float:
         return cached
     if _HAS_CPP_SCORE and _ptcg_core is not None:
         try:
-            val = float(_ptcg_core.score_action(gs, action))
+            val = _ptcg_core.score_action(gs, action)
             _cache_score(key, val)
             return val
         except Exception as e:
@@ -334,6 +334,32 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
                 v += 0.5
             if cid in donts:
                 v -= 0.5
+
+        # Behavioral profile scoring from learned_dos / learned_donts
+        turn = gs.get("turn_number", 1)
+        bench_size = len(gs.get("my_bench", [])) if isinstance(gs.get("my_bench"), list) else 0
+
+        target_setup = getattr(_registry, "target_setup_duration", None)
+        if target_setup and target_setup <= 3 and turn <= 3:
+            if action.startswith("attach_energy:"): v += 0.3
+            elif action.startswith("attack:") and turn >= 2: v += 0.4
+
+        target_bench = getattr(_registry, "target_bench_density", None)
+        if target_bench and bench_size < target_bench and turn <= 5:
+            if action.startswith("bench:"): v += 0.3
+            elif action.startswith("play_trainer:"):
+                tn = action.split(":", 1)[1].lower() if ":" in action else ""
+                if any(k in tn for k in {"poffin", "nest ball", "ball", "ultra"}): v += 0.25
+
+        for rule in getattr(_registry, "behavior_donts_rules", []):
+            if isinstance(rule, dict):
+                cond = rule.get("condition", "")
+                if cond == "setup_duration_gt_15" and turn > 12 and action == "pass":
+                    v -= 0.5
+                elif cond == "high_aggro_low_accel" and action.startswith("attack:"):
+                    ac = gs.get("my_active_pokemon", {})
+                    attached = len(ac.get("attached", []) or ac.get("energies", [])) if isinstance(ac, dict) else 0
+                    if attached < 2: v -= 0.3
     except Exception:
         pass
     return v
@@ -342,7 +368,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
 def score_state(gs: dict) -> float:
     if _HAS_CPP_SCORE and _ptcg_core is not None:
         try:
-            return float(_ptcg_core.score_state(gs))
+            return _ptcg_core.score_state(gs)
         except Exception as e:
             logger.debug(f"C++ score_state failed: {e}. Falling back to Python.")
     v = 0.0
@@ -372,6 +398,11 @@ def score_state(gs: dict) -> float:
         v += 0.1  # Early game: slightly positive for having drawn well
     elif turn >= 10:
         v += 0.2 * (gs.get("my_bench_count", 0) >= 3)  # Late game: reward board presence
+
+    target_bench = getattr(_registry, "target_bench_density", None)
+    bench_size = len(gs.get("my_bench", [])) if isinstance(gs.get("my_bench"), list) else 0
+    if target_bench and target_bench > 0:
+        v += 0.15 * min(1.0, bench_size / target_bench)
     
     # KO-threat awareness: penalize if opponent can KO our active
     opp_damage = gs.get("_projected_opponent_damage", None)

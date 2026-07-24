@@ -1,5 +1,5 @@
 import logging
-from cb_agents.turn_planner_heuristics import check_mcts_bypass
+from cb_agents.heuristic_pipeline import check_mcts_bypass
 from cb_agents.sequencing_engine import SequencingEngine
 
 logger = logging.getLogger(__name__)
@@ -18,14 +18,16 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
         seq_engine = SequencingEngine()
         groups = seq_engine.group_actions(candidates)
         
-        # We restore the professional phase order (Search -> Draw -> Board -> Attack)
-        # However, to prevent the AI from being forced into a suicidal or deadlock play
-        # (e.g. forced to deck-out or trapped with bad optional cards), we always append
-        # the "attack" phase options (which includes 'pass' and 'attack') so it can voluntarily
-        # skip the current phase and proceed to combat if the current phase actions are bad.
-        # If we have a reasonable number of candidates, let MCTS have a full view of the action space.
-        # Otherwise, restrict to the current phase + attacks to manage search depth/time.
+        MIN_CANDIDATES = 3
         selected_candidates = candidates
+        for phase in SequencingEngine.PHASE_ORDER:
+            phase_actions = groups.get(phase, [])
+            if phase_actions:
+                escape_actions = [a for a in candidates if a.startswith("attack:") or a == "pass"]
+                merged = list(dict.fromkeys(phase_actions + escape_actions))
+                if len(merged) >= MIN_CANDIDATES:
+                    selected_candidates = merged
+                    break
         has_cpp = getattr(mcts_engine, "HAS_CPP", False)
         orig_sims = getattr(mcts_engine, "num_simulations", 150)
         actual_sims = orig_sims

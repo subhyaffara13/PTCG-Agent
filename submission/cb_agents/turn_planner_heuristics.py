@@ -31,4 +31,10 @@ def has_draw_remaining(candidates: List[str]) -> bool:
             continue
     return False
 
-# Imports from turn_planner_sort deferred inside callers to prevent circular import
+def check_mcts_bypass(candidates: List[str], game_state: dict, rules: dict | None = None):
+    from cb_agents.heuristic_pipeline import check_mcts_bypass as _impl
+    return _impl(candidates, game_state, rules or {})
+
+def sort_actions_heuristically(candidates: List[str], profile: str, game_state: dict) -> List[str]:
+    from cb_agents.turn_planner_sort import sort_actions_heuristically as _impl
+    return _impl(candidates, profile, game_state)
