@@ -1527,6 +1527,38 @@
     {
       "condition": "lack_of_consistent_draw_supporters",
       "description": "Do not neglect consistent draw and setup Supporters in favor of situational disruption or weak search cards. An insufficient draw engine will lead to bricked hands and an inability to execute your strategy effectively."
+    },
+    {
+      "condition": "excessive_stadium_package",
+      "description": "Do not include an excessive number of copies for a non-critical Stadium card (e.g., 4 Spikemuth Gym) along with a full playset of cards dedicated to searching only for Stadiums (e.g., 4 Pok\u00e9 Pad). This significantly clogs your deck with often unplayable cards and severely reduces consistency."
+    },
+    {
+      "condition": "thin_evolution_lines",
+      "description": "Avoid running insufficient evolution lines and acceleration for your main attackers. A 2-2 line for a Stage 1 (Froslass) and a 4-3-3 line for a Stage 2 (Grimmsnarl ex) with only 3 Rare Candy is highly inconsistent and will struggle to get attackers into play reliably."
+    },
+    {
+      "condition": "inconsistent_tech_inclusion",
+      "description": "Do not dilute your deck with too many single copies of tech cards (e.g., Unfair Stamp, Pok\u00e9gear 3.0, Tool Scrapper, Dawn). While specific tech cards can be useful, relying on multiple 1-of cards makes your deck highly inconsistent, as you are unlikely to draw them when needed."
+    },
+    {
+      "condition": "overboard_hand_disruption",
+      "description": "Be cautious of including a full playset (4 copies) of highly disruptive Supporter cards like Team Rocket's Petrel without an exceptionally robust engine to quickly rebuild your own hand. This can frequently hinder your own setup and tempo as much as your opponent's."
+    },
+    {
+      "condition": "unjustified_basic_playset",
+      "description": "Avoid including a full playset (4 copies) of a Basic Pok\u00e9mon (e.g., Munkidori) that does not serve a clear and impactful role as a primary attacker, essential support, or a crucial pre-evolution. Excess copies of non-critical Basics consume valuable deck space and can lead to dead draws."
+    },
+    {
+      "condition": "element_type_mismatch",
+      "description": "Do not include Pok\u00e9mon evolution lines that require a different energy type than your primary attackers (e.g., Water-type Froslass in a Dark-type Grimmsnarl deck), as this creates dead cards and complicates energy consistency."
+    },
+    {
+      "condition": "weak_draw_engine_high_count",
+      "description": "Avoid running high counts of extremely low-impact draw and search cards like Pok\u00e9 Pad (which only finds energy) or Supporters like Team Rocket's Petrel (draw 2, minor disruption) and Lillie's Determination (discard 2 to draw 4, or draw 2), as these do not provide sufficient consistency for competitive play."
+    },
+    {
+      "condition": "self_detrimental_stadium",
+      "description": "Do not include Stadium cards like Spikemuth Gym that actively damage your own Pok\u00e9mon for attaching the energy type crucial to your deck's strategy, as this creates a severe self-inflicted disadvantage without a clear benefit."
     }
   ],
   "behavior_donts": [
