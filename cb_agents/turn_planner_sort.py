@@ -36,11 +36,11 @@ def _get_neural_network():
 def sort_actions_heuristically(candidates: List[str], profile: str, game_state: dict) -> List[str]:
     try:
         profile_orders = {
-            "setup": ["bench:", "evolve:", "attach_energy:", "play_trainer:", "ability:", "retreat:", "attack:", "pass"],
-            "aggro_push": ["bench:", "evolve:", "attach_energy:", "play_trainer:", "ability:", "retreat:", "attack:", "pass"],
-            "disruption": ["play_trainer:", "ability:", "retreat:", "attack:", "bench:", "evolve:", "attach_energy:", "pass"],
-            "stall": ["play_trainer:", "ability:", "retreat:", "attack:", "bench:", "evolve:", "attach_energy:", "pass"],
-            "closing": ["play_trainer:", "ability:", "retreat:", "attack:", "bench:", "evolve:", "attach_energy:", "pass"],
+            "setup": ["bench:", "evolve:", "play_trainer:", "ability:", "attach_energy:", "retreat:", "attack:", "pass"],
+            "aggro_push": ["attach_energy:", "bench:", "evolve:", "play_trainer:", "ability:", "attack:", "retreat:", "pass"],
+            "disruption": ["play_trainer:", "ability:", "attach_energy:", "bench:", "evolve:", "retreat:", "attack:", "pass"],
+            "stall": ["retreat:", "ability:", "play_trainer:", "attach_energy:", "bench:", "evolve:", "pass", "attack:"],
+            "closing": ["attack:", "play_trainer:", "ability:", "attach_energy:", "evolve:", "bench:", "retreat:", "pass"],
         }
         order = profile_orders.get(profile, profile_orders["aggro_push"])
         if "my_bench" in game_state and not game_state["my_bench"]:
@@ -220,7 +220,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
             # Subtracting from rank increases priority. A strong prior (e.g. 0.8) subtracts up to 16 from rank.
             neural_bonus = prior * 20.0
             
-            return cat_rank * 5 + micro_rank - neural_bonus
+            return cat_rank * 15 + micro_rank - neural_bonus
 
         return sorted(candidates, key=get_priority_rank)
     except Exception as e:

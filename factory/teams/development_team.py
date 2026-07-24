@@ -83,7 +83,21 @@ class DevelopmentTeam:
                 subprocess.run(["git", "restore", "submission/src/"], check=False)
                 subprocess.run(["git", "restore", "submission/cb_agents/"], check=False)
             else:
-                logger.info("LLM Code Patch compiled successfully! Keeping changes.")
+                logger.info("LLM Code Patch compiled successfully! Running Gauntlet Evaluation guard...")
+                try:
+                    from factory.gauntlet_runner import GauntletRunner
+                    from factory.deck_loader import DeckLoader
+                    loader = DeckLoader(pathlib.Path("skills"))
+                    cand_deck = [int(c.get("card_id", 1)) for c in loader.load_card_pool()[:60]]
+                    gauntlet_win_rate = GauntletRunner().run_gauntlet(cand_deck, num_games_per_archetype=1)
+                    if gauntlet_win_rate < 0.50:
+                        logger.error(f"Gauntlet Guard Rejected LLM Patch: Win rate fell to {gauntlet_win_rate*100:.1f}%. Reverting...")
+                        subprocess.run(["git", "restore", "submission/src/"], check=False)
+                        subprocess.run(["git", "restore", "submission/cb_agents/"], check=False)
+                    else:
+                        logger.info(f"Gauntlet Guard Passed! Win rate: {gauntlet_win_rate*100:.1f}%. Keeping patch.")
+                except Exception as g_err:
+                    logger.warning(f"Gauntlet evaluation guard encountered exception: {g_err}. Proceeding with caution.")
 
         except Exception as e:
             logger.error(f"LLM Meta-Learning Phase failed: {e}", exc_info=True)

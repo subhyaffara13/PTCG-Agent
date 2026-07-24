@@ -548,18 +548,24 @@ def make_smart_choice(select, observation, fallback_action):
         value_net = getattr(getattr(orch, "mcts", None), "value_network", None) if orch else None
         if value_net:
             try:
+                import sys
+                current_obs = get_val(observation, "current")
+                players_list = get_val(current_obs, "players", [])
+                my_idx_val = get_val(current_obs, "yourIndex", 0)
+                my_state_dict = players_list[my_idx_val] if len(players_list) > my_idx_val else {}
+                choice_ctx = str(get_val(select, "context", "")).lower()
                 for i in range(len(scored_options)):
                     idx, base_score = scored_options[i]
                     opt = options[idx]
                     cid = get_val(opt, "id")
-                    hyp_state = game_state.copy()
+                    hyp_state = my_state_dict.copy() if isinstance(my_state_dict, dict) else {}
                     if is_discard and cid is not None:
                         cid_str = str(cid)
                         if cid_str in hyp_state.get("my_hand", []):
                             hand_copy = list(hyp_state["my_hand"])
                             hand_copy.remove(cid_str)
                             hyp_state["my_hand"] = hand_copy
-                    elif (context in ("draw", "search", "take")) and cid is not None:
+                    elif (choice_ctx in ("draw", "search", "take")) and cid is not None:
                         cid_str = str(cid)
                         hand_copy = list(hyp_state.get("my_hand", []))
                         hand_copy.append(cid_str)
@@ -568,6 +574,7 @@ def make_smart_choice(select, observation, fallback_action):
                     val_score = value_net.evaluate(hyp_state)
                     scored_options[i] = (idx, base_score + 10.0 * val_score)
             except Exception as val_err:
+                import sys
                 sys.stderr.write(f"[smart_choice] Value net evaluation failed: {val_err}\n")
 
         # Context-aware rescoring for discards: learned_dos +12 dominates utility (0-0.86)

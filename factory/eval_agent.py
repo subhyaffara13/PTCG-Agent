@@ -74,7 +74,10 @@ class EvalAgent(BaseAgent):
             logger.error(f"Failed to save evaluation state: {e}")
 
         flag_deck, flag_logic = self.eval_state["consecutive_deck_failures"] >= 2, self.eval_state["consecutive_logic_failures"] >= 2
-        recommendation = "rebuild_both" if (flag_deck and flag_logic) else ("rebuild_deck" if flag_deck else ("rebuild_logic" if flag_logic else "tune"))
+        
+        # Regression Guard: if raw reasoning drops severely or logic delta is negative, flag revert
+        is_regression = (raw_reasoning < 0.40) or (logic_delta < -0.20) or stalemate_detected
+        recommendation = "revert_change" if is_regression else ("rebuild_both" if (flag_deck and flag_logic) else ("rebuild_deck" if flag_deck else ("rebuild_logic" if flag_logic else "tune")))
         player_a_score, player_b_score = adj_reasoning, adj_deck
 
         report = {
@@ -84,9 +87,9 @@ class EvalAgent(BaseAgent):
             "adjusted_scores": {"reasoning_test": round(adj_reasoning, 4), "deck_test": round(adj_deck, 4)},
             "metrics": {"logic_delta": round(logic_delta, 4), "deck_delta": round(deck_delta, 4), "variance_baseline": round(raw_variance, 4)},
             "consecutive_failures": {"deck": self.eval_state["consecutive_deck_failures"], "logic": self.eval_state["consecutive_logic_failures"]},
-            "flags": {"flag_deck_architect": flag_deck, "flag_builder_agent": flag_logic, "stalemate_detected": stalemate_detected},
+            "flags": {"flag_deck_architect": flag_deck, "flag_builder_agent": flag_logic, "stalemate_detected": stalemate_detected, "is_regression": is_regression},
             "recommendation": recommendation,
-            "version_scores": {"player_a": round(player_a_score, 4), "player_b": round(player_b_score, 4), "best_version": "player_b" if player_b_score > player_a_score else "player_a"}
+            "version_scores": {"player_a": round(player_a_score, 4), "player_b": round(player_b_score, 4), "best_version": "player_b" if (player_b_score > player_a_score and not is_regression) else "player_a"}
         }
         self.reporter.write_report(report)
         return report

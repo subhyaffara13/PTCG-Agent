@@ -56,12 +56,13 @@ class LLMBase:
 
         if self.provider == "none" and self.gemini_key:
             try:
-                from google import genai
+                import google.generativeai as genai  # type: ignore
                 self.provider = "gemini"
                 self.model = self.model_override or "gemini-1.5-pro"
-                self.client = genai.Client(api_key=self.gemini_key)
+                genai.configure(api_key=self.gemini_key)
+                self.client = genai
             except ImportError:
-                logger.warning("Gemini key found but 'google.genai' module is missing. Falling back...")
+                logger.warning("Gemini key found but 'google.generativeai' module is missing. Falling back...")
 
         if self.provider == "none" and self.ollama_key:
             try:
@@ -88,7 +89,7 @@ class LLMBase:
         Sends a prompt to the LLM and returns the raw string response.
         If response_format="json_object", attempts to force JSON output.
         """
-        if self.provider == "none":
+        if self.provider == "none" or self.client is None:
             raise ValueError("No LLM API keys configured.")
             
         try:
@@ -97,31 +98,27 @@ class LLMBase:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ]
-                kwargs = {
+                kwargs: Dict[str, Any] = {
                     "model": self.model,
                     "messages": messages,
                     "temperature": 0.2
                 }
                 if response_format == "json_object":
-                    # Some Ollama providers support this native JSON mode
                     kwargs["response_format"] = { "type": "json_object" }
                     
                 response = self.client.chat.completions.create(**kwargs)
-                return response.choices[0].message.content
+                return response.choices[0].message.content or ""
 
             elif self.provider == "gemini":
-                # Gemini doesn't strictly separate system/user in the simple generate_content API, 
-                # so we combine them cleanly.
                 combined_prompt = f"System Instructions:\n{system_prompt}\n\nUser Input:\n{user_prompt}"
                 if response_format == "json_object":
                     combined_prompt += "\n\nCRITICAL: You must return a raw valid JSON object. No markdown blocks."
                 
-                response = self.client.models.generate_content(
-                    model=self.model,
-                    contents=combined_prompt,
-                    config={"temperature": 0.2}
-                )
-                return response.text
+                model_obj = self.client.GenerativeModel(self.model)
+                response = model_obj.generate_content(combined_prompt)
+                return response.text or ""
+            else:
+                raise ValueError(f"Unsupported provider: {self.provider}")
 
         except Exception as e:
             logger.error(f"LLM API Call failed: {e}")
