@@ -29,7 +29,7 @@ class HeuristicPipeline:
             else:
                 hs = "weak"
             # Only bypass MCTS when genuinely dead — empty bench + no basics in hand
-            if hs == "weak" and dc > 5:
+            if hs == "weak" and dc > 8:
                 bench = gs.get("my_bench", [])
                 has_basic_in_hand = False
                 if isinstance(hand, list):
@@ -57,7 +57,7 @@ class HeuristicPipeline:
                             t = ca.split(":", 1)[1].lower()
                             if any(d in t for d in DRAW_SUPPORTERS):
                                 logger.debug(f"Bypass: {ca} (supporter - dead hand)"); return ca
-            elif hd and dc > 5:
+            elif hd and dc > 8:
                 bs = self.pick_best_search(candidates)
                 if bs: logger.debug(f"Bypass: {bs} (dead weight={hd})"); return bs
         except Exception as e:

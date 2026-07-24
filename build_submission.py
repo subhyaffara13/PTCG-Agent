@@ -187,6 +187,23 @@ manifest = {
 }
 (Path("submission") / "manifest.json").write_text(json.dumps(manifest, indent=2))
 
+# 4.5 Validate Python syntax across all submission files to prevent Kaggle runtime SyntaxErrors
+import py_compile
+print("Validating Python syntax in submission package...")
+syntax_errors = []
+for py_file in Path("submission").rglob("*.py"):
+    try:
+        py_compile.compile(str(py_file), doraise=True)
+    except Exception as err:
+        syntax_errors.append((py_file, str(err)))
+
+if syntax_errors:
+    print("\nCRITICAL BUILD FAILURE: Syntax Error(s) detected in submission files!")
+    for pf, err in syntax_errors:
+        print(f"  FAILED: {pf} -> {err}")
+    sys.exit(1)
+print("Syntax validation PASSED cleanly for all python submission files.")
+
 # 5. Build .tar.gz — exclude PDFs, pyc, pycache, and include .pyd/.so
 tar_path = Path("submission.tar.gz")
 with tarfile.open(tar_path, "w:gz") as tar:

@@ -21,12 +21,44 @@ def consistency_score(deck: List[CardState], ct: dict) -> float:
         if ct.get("item", 0) < ct.get("sup", 0) and ct.get("sup", 0) > 0: 
             cs = max(0.0, cs - 0.1)
             
-        atk3 = sum(1 for a in ct.get("attackers", []) if a.energy_cost >= 3)
-        accel = sum(1 for c in deck if "attach" in c.combo_tags)
-        
-        if atk3 > 0 and accel < 2: 
-            cs = max(0.0, cs - 0.25)
-            
+        # Check energy-type compatibility
+        # Get all energy types present in the deck
+        energies_in_deck = {c.card_name for c in deck if c.card_type == "Energy"}
+        # Map energy names to elemental types
+        has_fire = any("fire" in e.lower() or "{r}" in e.lower() for e in energies_in_deck)
+        has_lightning = any("lightning" in e.lower() or "{l}" in e.lower() for e in energies_in_deck)
+        has_grass = any("grass" in e.lower() or "{g}" in e.lower() for e in energies_in_deck)
+        has_fighting = any("fighting" in e.lower() or "{f}" in e.lower() for e in energies_in_deck)
+        has_water = any("water" in e.lower() or "{w}" in e.lower() for e in energies_in_deck)
+        has_psychic = any("psychic" in e.lower() or "{p}" in e.lower() for e in energies_in_deck)
+        has_metal = any("metal" in e.lower() or "{m}" in e.lower() for e in energies_in_deck)
+        has_dark = any("dark" in e.lower() or "{d}" in e.lower() for e in energies_in_deck)
+
+        # Check if any Pokemon has an energy cost but NO matching energy type in deck
+        mismatched_pokemon = 0
+        for c in deck:
+            if c.card_type == "Pokemon" and c.energy_cost > 0:
+                elem = (c.element_type or c.card_name).lower()
+                needs_grass = "grass" in elem or "{g}" in elem or "ogerpon" in c.card_name
+                needs_water = "water" in elem or "{w}" in elem
+                needs_psychic = "psychic" in elem or "{p}" in elem
+                needs_metal = "metal" in elem or "{m}" in elem
+                needs_dark = "dark" in elem or "{d}" in elem
+
+                if (needs_grass and not has_grass) or (needs_water and not has_water) or \
+                   (needs_psychic and not has_psychic) or (needs_metal and not has_metal) or \
+                   (needs_dark and not has_dark):
+                    mismatched_pokemon += 1
+
+        if mismatched_pokemon > 0:
+            cs = max(0.0, cs - 0.4 * mismatched_pokemon)  # Heavy penalty for unplayable attackers
+
+        # Check draw supporter deckout risk (excessive draw supporters without recovery)
+        draw_supporters_count = sum(1 for c in deck if c.card_type == "Trainer" and any(k in c.card_name.lower() for k in {"research", "lillie", "carmine", "professor"}))
+        has_recovery = any("pad" in c.card_name.lower() or "stretcher" in c.card_name.lower() or "rod" in c.card_name.lower() for c in deck)
+        if draw_supporters_count >= 4 and not has_recovery:
+            cs = max(0.0, cs - 0.2)  # Penalty for draw supporter spam risk
+
         return cs
     except Exception as e:
         return 0.0

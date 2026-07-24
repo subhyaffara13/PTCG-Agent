@@ -31,5 +31,4 @@ def has_draw_remaining(candidates: List[str]) -> bool:
             continue
     return False
 
-from cb_agents.heuristic_pipeline import _thinning_value, _pick_best_search, _dead_weight_heuristic, check_mcts_bypass
-from cb_agents.turn_planner_sort import _has_evolution_target, sort_actions_heuristically, _EARLY_BENCH_ORDER
+# Imports from turn_planner_sort deferred inside callers to prevent circular import

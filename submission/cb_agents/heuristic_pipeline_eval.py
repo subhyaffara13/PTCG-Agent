@@ -38,7 +38,7 @@ def _gs_cache_key(gs: dict) -> tuple:
         gs.get("my_active_hp"), gs.get("opponent_active_hp"),
         gs.get("my_deck_count"), gs.get("opponent_deck_count"),
         tuple(sorted(gs.get("my_hand", []))),
-        tuple(gs.get("my_bench", [])),
+        tuple(str(x) for x in gs.get("my_bench", [])),
         gs.get("stadium_card"),
     )
 
@@ -217,13 +217,17 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
     elif action.startswith("play_trainer:"):
         v += 0.4
         hs = len(gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else 0
-        if dc <= 7:
+        if dc <= 3:
             tn = action.split(":", 1)[1].lower()
-            if any(k in tn for k in {"iono", "judge"}): v -= 2.5  # Iono can deck you out from 7
-            elif any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 2.5
-        elif dc <= 20 and dc < opp_dc - 3:
+            if any(k in tn for k in {"iono", "judge", "research", "professor", "carmine", "lillie", "colress"}): v -= 10.0
+        elif dc <= 5:
             tn = action.split(":", 1)[1].lower()
-            if any(k in tn for k in {"research", "professor", "carmine", "lillie"}): v -= 1.2
+            if any(k in tn for k in {"research", "professor", "carmine", "lillie", "colress"}): v -= 5.0
+            elif any(k in tn for k in {"iono", "judge"}): v -= 3.0
+        elif dc <= 7:
+            tn = action.split(":", 1)[1].lower()
+            if any(k in tn for k in {"iono", "judge"}): v -= 2.5
+            elif any(k in tn for k in {"research", "professor", "carmine", "lillie", "colress"}): v -= 2.5
         if dc > 30:
             n = action.split(":", 1)[1].lower()
             sk = {"nest ball", "ultra ball", "quick ball", "level ball", "secret box", "mega signal", "team rocket's petrel"}
@@ -247,7 +251,9 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         try:
             target_idx = -1
             if ":" in action:
-                target_idx = int(action.split(":", 1)[1])
+                target_str = action.split(":", 1)[1]
+                if target_str.isdigit():
+                    target_idx = int(target_str)
             bench = gs.get("my_bench", [])
             if 0 <= target_idx < len(bench):
                 target_poke = bench[target_idx]

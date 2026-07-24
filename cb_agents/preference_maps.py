@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 ENERGY_PREFERENCE_MAP = {
     "957": "6", "87": "6", "734": "6", "733": "6", "950": "6",
-    "979": "6", "226": "6", "855": "2",
+    "979": "6", "226": "6", "855": "2", "37": "4",
     "62": "6",   # Koraidon (Fighting '6')
     "63": "4",   # Raging Bolt ex (Lightning '4')
     "231": "3"   # Tatsugiri ex (Water '3')

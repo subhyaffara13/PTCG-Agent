@@ -56,13 +56,12 @@ class LLMBase:
 
         if self.provider == "none" and self.gemini_key:
             try:
-                import google.generativeai as genai
+                from google import genai
                 self.provider = "gemini"
                 self.model = self.model_override or "gemini-1.5-pro"
-                genai.configure(api_key=self.gemini_key)
-                self.client = genai.GenerativeModel(self.model)
+                self.client = genai.Client(api_key=self.gemini_key)
             except ImportError:
-                logger.warning("Gemini key found but 'google.generativeai' module is missing. Falling back...")
+                logger.warning("Gemini key found but 'google.genai' module is missing. Falling back...")
 
         if self.provider == "none" and self.ollama_key:
             try:
@@ -117,9 +116,10 @@ class LLMBase:
                 if response_format == "json_object":
                     combined_prompt += "\n\nCRITICAL: You must return a raw valid JSON object. No markdown blocks."
                 
-                response = self.client.generate_content(
-                    combined_prompt,
-                    generation_config={"temperature": 0.2}
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=combined_prompt,
+                    config={"temperature": 0.2}
                 )
                 return response.text
 

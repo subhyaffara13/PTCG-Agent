@@ -214,6 +214,7 @@ if globals().get("orchestrator") is None:
 
 # Default deck from the competition environment if not already defined (single-file mode)
 _existing_deck = globals().get("DEFAULT_DECK")
+if _existing_deck is None:
     DEFAULT_DECK = [
         957, 957, 957, 957, 979, 979, 979, 979, 210, 210,
         210, 210, 1121, 1121, 1121, 1121, 1102, 1102, 1102, 1102,
