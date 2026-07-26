@@ -13,8 +13,21 @@ from distributed.code_sync import get_local_version
 from factory.game_runner import GameRunner
 from distributed.master_handlers import MasterHandlers
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - Master - %(levelname)s - %(message)s')
+from logging.handlers import RotatingFileHandler
+
+os.makedirs("logs", exist_ok=True)
 logger = logging.getLogger("master_server")
+logger.setLevel(logging.INFO)
+if not logger.handlers:
+    formatter = logging.Formatter('%(asctime)s - Master - %(levelname)s - %(message)s')
+    stream_h = logging.StreamHandler(sys.stdout)
+    stream_h.setFormatter(formatter)
+    logger.addHandler(stream_h)
+    
+    file_h = RotatingFileHandler("logs/master_server.log", maxBytes=10*1024*1024, backupCount=3, encoding="utf-8")
+    file_h.setFormatter(formatter)
+    logger.addHandler(file_h)
+
 
 def _load_deck(path: str) -> list:
     import csv

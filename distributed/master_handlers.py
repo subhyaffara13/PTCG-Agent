@@ -27,10 +27,7 @@ class MasterHandlers:
             self.server.workers.append(conn)
             total_workers = len(self.server.workers)
         
-        logger.info(f"\n==================================================")
-        logger.info(f" [WORKER JOINED] Connection established with {addr[0]}")
-        logger.info(f" Total Worker Nodes Connected: {total_workers}")
-        logger.info(f"==================================================\n")
+        logger.info(f"[WORKER JOINED] Connection established with {addr[0]} (Total Active Workers: {total_workers})")
         
         try:
             rfile = conn.makefile('r', encoding='utf-8')
@@ -52,16 +49,19 @@ class MasterHandlers:
                 if msg == "GET_WORK":
                     try:
                         order = self.server.work_queue.get(timeout=1)
+                        conn.sendall((order.serialize() + "\n").encode('utf-8'))
                     except Exception:
                         if not self.server.running:
                             break
-                        continue
+                        # Queue is empty: send NO_WORK so worker stays connected and sleeps gracefully
+                        try:
+                            conn.sendall(b"NO_WORK\n")
+                        except Exception:
+                            break
+                elif msg == "PING":
                     try:
-                        conn.sendall((order.serialize() + "\n").encode('utf-8'))
-                    except Exception as e:
-                        logger.error(f"Error sending work to {addr}: {e}")
-                        # Put work back on queue
-                        self.server.work_queue.put(order)
+                        conn.sendall(b"PONG\n")
+                    except Exception:
                         break
                 elif msg.startswith("RESULT:"):
                     result_data = msg[7:]
@@ -73,19 +73,22 @@ class MasterHandlers:
                         logger.error(f"Error parsing result from {addr}: {e}")
                         break
         except Exception as e:
-            logger.info(f"Worker {addr[0]} disconnected: {e}")
+            logger.info(f"Worker {addr[0]} session ended: {e}")
         finally:
             with self.server.lock:
                 if conn in self.server.workers:
                     self.server.workers.remove(conn)
                 total_workers = len(self.server.workers)
             
-            logger.info(f"\n==================================================")
-            logger.info(f" [WORKER LEFT] Connection dropped with {addr[0]}")
-            logger.info(f" Total Worker Nodes Connected: {total_workers}")
-            logger.info(f"==================================================\n")
+            logger.info(f"[WORKER LEFT] Connection closed with {addr[0]} (Total Active Workers: {total_workers})")
             
+            try:
+                import socket
+                conn.shutdown(socket.SHUT_RDWR)
+            except Exception:
+                pass
             conn.close()
+
  
     def process_results(self):
         from distributed.telemetry_sync import decompress_telemetry

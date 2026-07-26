@@ -227,8 +227,7 @@ class WorkerClient:
                         continue
 
                     # Handshake passed — we are talking to the real master
-                    work_cycle_completed = False
-                    while not self.shutdown_requested and not work_cycle_completed:
+                    while not self.shutdown_requested:
                         conn.sendall(b"GET_WORK\n")
                         data_line = rfile.readline()
                         if not data_line or self.shutdown_requested:
@@ -236,8 +235,14 @@ class WorkerClient:
                         msg = data_line.strip()
                         if not msg:
                             break
+                        if msg == "NO_WORK":
+                            # Master queue is empty: sleep on existing connection and try again
+                            time.sleep(5)
+                            continue
+                        
                         order = WorkOrder.deserialize(msg)
                         logger.info(f"Received work order: {order.job_id} (Iteration {order.iteration})")
+
                         
                         # 2. Dynamic Git Synchronization on Code Version Mismatch
                         if order.code_version and order.code_version != self.current_code_version:
@@ -314,12 +319,16 @@ class WorkerClient:
                             logger.info(f"Successfully submitted result for {order.job_id}")
                             cycle_failures = 0
                             connect_failures = 0
-                            work_cycle_completed = True  # Return to outer loop for next work request
                         except Exception as e:
                             logger.error(f"Error running iteration: {e}")
                             break
                             
+                    try:
+                        conn.shutdown(socket.SHUT_RDWR)
+                    except Exception:
+                        pass
                     conn.close()
+
                     
                 except (ConnectionRefusedError, socket.error) as e:
                     cycle_failures += 1
