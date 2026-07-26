@@ -24,7 +24,7 @@ if not logger.handlers:
     stream_h.setFormatter(formatter)
     logger.addHandler(stream_h)
     
-    file_h = RotatingFileHandler("logs/master_server.log", maxBytes=10*1024*1024, backupCount=3, encoding="utf-8")
+    file_h = RotatingFileHandler("logs/master_server.log", maxBytes=10*1024*1024, backupCount=3, encoding="utf-8", delay=True)
     file_h.setFormatter(formatter)
     logger.addHandler(file_h)
 
