@@ -819,36 +819,46 @@ def agent(observation, configuration=None):
                             if hasattr(decision, "primary_action") 
                             else str(decision).lower())
 
+            # Resolve card names into all options dynamically
+            if _registry is not None:
+                from cb_agents.option_resolver import resolve_option_names
+                my_idx = get_val(get_val(observation, "current", {}), "yourIndex", 0)
+                resolve_option_names(options, observation, my_idx, _registry)
+
             # Map orchestrator's prefix action labels to actual select options
             mapped_indices = []
             if action_label.startswith("attack:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (12, 13, "Attack", "attack")]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (12, 13)]
             elif action_label.startswith("attach_energy:"):
                 parts = action_label.split(":")
                 energy_name = parts[1] if len(parts) > 1 else ""
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, 9, "Attach", "attach", "Energy", "energy") and str(get_val(opt, "name", "")).lower() == energy_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8 and (not energy_name or str(get_val(opt, "name", "")).lower() == energy_name.lower())]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, 9, "Attach", "attach", "Energy", "energy")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 8]
             elif action_label.startswith("bench:") or action_label.startswith("evolve:"):
                 poke_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, 8, "Play", "play") and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, 8) and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, 8, "Play", "play")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, 8)]
             elif action_label.startswith("play_trainer:"):
                 trainer_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, "Play", "play") and str(get_val(opt, "name", "")).lower() == trainer_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7 and str(get_val(opt, "name", "")).lower() == trainer_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, "Play", "play")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 7]
             elif action_label.startswith("retreat:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (10, "Retreat", "retreat")]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") == 10]
             elif action_label.startswith("ability:"):
                 ability_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15, "Ability", "ability") and str(get_val(opt, "name", "")).lower() == ability_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15) and str(get_val(opt, "name", "")).lower() == ability_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15, "Ability", "ability")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15)]
 
-            # If multiple candidates exist or matching failed, use smart choice heuristic to rank candidates
-            if len(mapped_indices) > 1 or (not mapped_indices and action_label != "pass"):
+            # If multiple candidate options exist, use smart choice heuristic to rank within those candidates
+            if len(mapped_indices) > 1:
+                smart_order = make_smart_choice(select, observation, fallback_action)
+                # Sort mapped_indices based on smart_order ranking
+                mapped_indices.sort(key=lambda idx: smart_order.index(idx) if idx in smart_order else 999)
+            elif not mapped_indices and action_label != "pass":
                 smart_cand = make_smart_choice(select, observation, fallback_action)
                 if smart_cand:
                     mapped_indices = smart_cand
