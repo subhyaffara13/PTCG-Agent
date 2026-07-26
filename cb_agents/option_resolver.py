@@ -108,7 +108,34 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
         opt_type = get_val(opt, "type")
         if opt_type in (12, 13):  # Attack
             score += 50.0
-        elif opt_type in (8, 9) and "attach" in str(get_val(select, "context", "")).lower():  # Energy attach
+        elif opt_type == 8:  # Energy attach or Bench/Evolve
+            area = get_val(opt, "area")
+            in_play_area = get_val(opt, "inPlayArea")
+            # If attaching energy to active (inPlayArea == 4): check active HP
+            if in_play_area == 4:
+                try:
+                    players = get_val(current, "players", [])
+                    if len(players) > my_idx and players[my_idx]:
+                        act_list = get_val(players[my_idx], "active", [])
+                        if act_list and len(act_list) > 0 and isinstance(act_list[0], dict):
+                            act_hp = get_val(act_list[0], "hp", 100)
+                            if act_hp <= 30:
+                                score -= 30.0  # Avoid attaching energy to dying active
+                except Exception:
+                    pass
+            # If benched card choice: prevent bench over-filling with weak support
+            elif in_play_area == 5 or area == 12:
+                try:
+                    players = get_val(current, "players", [])
+                    if len(players) > my_idx and players[my_idx]:
+                        bench = get_val(players[my_idx], "bench", [])
+                        if len(bench) >= 3:
+                            # Bench has 3+ slots filled: heavily penalize non-essential support
+                            cname_lower = str(card_name).lower()
+                            if any(s in cname_lower for s in ("bidoof", "dunsparce", "snom", "remoraid")):
+                                score -= 25.0
+                except Exception:
+                    pass
             score += 20.0
 
         scored_options.append((idx, score))

@@ -61,7 +61,8 @@ class DeckInjectionMixin:
             processed.add(pkmn_name_lower)
             
             if stage == "Basic":
-                # Forward: Basic -> add Stage 1 (3x) and Stage 2 (2x)
+                # Forward: Basic (4x) -> add Stage 1 (3x) and Stage 2 (2x)
+                self.add_card(pkmn, 4, deck, copies, ctr)
                 s1_ids = fwd_s1.get(pkmn_name_lower, [])
                 for s1_id in s1_ids:
                     if s1_id in name_map:
@@ -82,6 +83,7 @@ class DeckInjectionMixin:
                 if p0 and p0.lower() in name_map:
                     self.add_card(name_map[p0.lower()], 4, deck, copies, ctr)
                     processed.add(p0.lower())
+                self.add_card(pkmn, 3, deck, copies, ctr)
                 s2_ids = fwd_s2.get(str(pkmn["card_id"]), []) or fwd_s2.get(pkmn_name_lower, [])
                 for s2_id in s2_ids:
                     if s2_id in name_map:
@@ -90,7 +92,8 @@ class DeckInjectionMixin:
                         if s2_name:
                             processed.add(s2_name)
             elif stage == "Stage 2":
-                # Backward: add Basic (4x) and Stage 1 (3x)
+                # Backward: add Basic (4x) and Stage 1 (3x), Stage 2 (2x)
+                self.add_card(pkmn, 2, deck, copies, ctr)
                 p1 = det.get("previous_stage")
                 if p1 and p1.lower() in name_map:
                     self.add_card(name_map[p1.lower()], 3, deck, copies, ctr)
