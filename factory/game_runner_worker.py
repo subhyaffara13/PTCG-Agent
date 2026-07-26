@@ -19,18 +19,30 @@ def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str,
     agent_a = CABTAgentWrapper(f"{label}_player_a", "skills", deck_a, g_logger, use_staging=use_staging_a, model_path=model_path_a)
     agent_b = CABTAgentWrapper(f"{label}_player_b", "skills", deck_b, g_logger, use_staging=use_staging_b, model_path=model_path_b)
 
-    env.run([agent_a, agent_b])
+    game_error = None
+    try:
+        env.run([agent_a, agent_b])
+    except Exception as err:
+        game_error = str(err)
+        logger.warning(f"Game '{label}' terminated with error/timeout: {err}")
+
     elapsed = time.time() - start_time
 
     for agent in [agent_a, agent_b]:
         try:
-            if hasattr(agent, 'orchestrator'):
+            if hasattr(agent, 'orchestrator') and agent.orchestrator:
                 agent.orchestrator.flush_all_logs()
         except Exception as e:
-            logger.warning(f"Failed to flush orchestrator logs: {e}")
+            pass
 
-    p1_state, p2_state = env.steps[-1][0], env.steps[-1][1]
-    winner = "player_a" if p1_state["reward"] == 1 else ("player_b" if p2_state["reward"] == 1 else "draw")
+    p1_state = env.steps[-1][0] if env.steps and env.steps[-1] else {}
+    p2_state = env.steps[-1][1] if env.steps and len(env.steps[-1]) > 1 else {}
+
+    reward_a = p1_state.get("reward", 0) if isinstance(p1_state, dict) else 0
+    reward_b = p2_state.get("reward", 0) if isinstance(p2_state, dict) else 0
+
+    winner = "player_a" if reward_a == 1 else ("player_b" if reward_b == 1 else "draw")
+
 
     prizes_a, prizes_b = extract_prizes(p1_state, p2_state)
     steps_dump = dump_steps(env.steps)

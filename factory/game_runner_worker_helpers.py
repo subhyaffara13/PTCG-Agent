@@ -42,7 +42,7 @@ def silence_kaggle_warnings():
             sys.modules.pop('pyspiel', None)
 
 def setup_game_env(seed=None):
-    os.environ["FAST_SIM_MODE"] = "false"
+    os.environ.pop("FAST_SIM_MODE", None)  # Ensure C++ ptcg_core acceleration is fully enabled
     os.environ["SKIP_GAME_LOGS"] = "1"
     saved_path = list(sys.path)
     try:
@@ -55,7 +55,7 @@ def setup_game_env(seed=None):
             # Inject strict Kaggle execution limits to simulate leaderboard environment
             config = {
                 "actTimeout": 5.0,
-                "runTimeout": 1200,
+                "runTimeout": 600,
                 "episodeSteps": 1000
             }
             if seed is not None:
