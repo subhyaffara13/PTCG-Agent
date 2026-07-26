@@ -389,6 +389,11 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
             else:
                 mapped_indices = get_mapped_indices(action_label, options, game_state)
                 
+            if len(mapped_indices) > 1 or (not mapped_indices and action_label != "pass"):
+                smart_cand = make_smart_choice(select, observation, fallback_action, str(orchestrator.skills_dir))
+                if smart_cand:
+                    mapped_indices = smart_cand
+
             if not mapped_indices: mapped_indices = [0]
 
             selected = []

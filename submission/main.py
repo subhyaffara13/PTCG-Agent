@@ -218,7 +218,7 @@ if _existing_deck is None:
     DEFAULT_DECK = [
         957, 957, 957, 979, 979, 979, 37, 37, 37, 210,
         210, 210, 1121, 1227, 1227, 1227, 1227, 1152, 1152, 1152,
-        1152, 1198, 1233, 1194, 1194, 1264, 1264, 1210, 1210, 1189,
+        1152, 1247, 1267, 1194, 1194, 1264, 1184, 1210, 1210, 1189,
         1097, 1097, 1097, 1097, 1182, 1182, 1182, 1182, 1102, 1086,
         1086, 1086, 1086, 1123, 1081, 1122, 6, 6, 6, 6,
         6, 6, 6, 6, 4, 4, 4, 4, 4, 4
@@ -660,7 +660,7 @@ def agent(observation, configuration=None):
     DEFAULT_DECK_FALLBACK = [
         957, 957, 957, 979, 979, 979, 37, 37, 37, 210,
         210, 210, 1121, 1227, 1227, 1227, 1227, 1152, 1152, 1152,
-        1152, 1198, 1233, 1194, 1194, 1264, 1264, 1210, 1210, 1189,
+        1152, 1247, 1267, 1194, 1194, 1264, 1184, 1210, 1210, 1189,
         1097, 1097, 1097, 1097, 1182, 1182, 1182, 1182, 1102, 1086,
         1086, 1086, 1086, 1123, 1081, 1122, 6, 6, 6, 6,
         6, 6, 6, 6, 4, 4, 4, 4, 4, 4
@@ -847,15 +847,19 @@ def agent(observation, configuration=None):
                 if not mapped_indices:
                     mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15, "Ability", "ability")]
 
-            # If no matches, or action is PASS, look for pass/done (Type 14)
+            # If multiple candidates exist or matching failed, use smart choice heuristic to rank candidates
+            if len(mapped_indices) > 1 or (not mapped_indices and action_label != "pass"):
+                smart_cand = make_smart_choice(select, observation, fallback_action)
+                if smart_cand:
+                    mapped_indices = smart_cand
+
+            # If still nothing, or action is PASS, look for pass/done (Type 14)
             if not mapped_indices or action_label == "pass":
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (14, "End", "pass")]
 
-            # If still nothing, fallback to first index
             if not mapped_indices:
                 mapped_indices = [0]
 
-            # Fill selected indices up to max_count
             selected = []
             for idx in (mapped_indices + list(range(len(options)))):
                 if idx not in selected:
@@ -864,8 +868,6 @@ def agent(observation, configuration=None):
                         break
             return selected
         else:
-            # Non-main choice (e.g. starting setup, coin flips, Yes/No, card selection from deck)
-            # Use smart heuristic selector instead of naive fallback
             return make_smart_choice(select, observation, fallback_action)
 
     except Exception as e:
