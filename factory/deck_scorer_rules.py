@@ -84,4 +84,8 @@ def _matches_condition(cond: str, e_c: int, t_c: int, p_c: int) -> bool:
         return True
     if cond == "energy_lt_12_trainer_lt_10" and e_c < 12 and t_c < 10:
         return True
+    if cond == "energy_lt_10" and e_c < 10:
+        return True
+    if cond == "energy_lt_12" and e_c < 12:
+        return True
     return False

@@ -1559,6 +1559,486 @@
     {
       "condition": "self_detrimental_stadium",
       "description": "Do not include Stadium cards like Spikemuth Gym that actively damage your own Pok\u00e9mon for attaching the energy type crucial to your deck's strategy, as this creates a severe self-inflicted disadvantage without a clear benefit."
+    },
+    {
+      "condition": "critically_low_energy",
+      "description": "Do not run an extremely low energy count (only 6 cards) in a deck that relies on a Stage 2 Pok\u00e9mon to attack; this will severely hinder your ability to power up Pok\u00e9mon consistently."
+    },
+    {
+      "condition": "excessive_draw_supporters",
+      "description": "Avoid including 8 primary draw Supporters (4 Hilda, 4 Dawn); this clogs your hand with too many Supporters and reduces space for other essential cards."
+    },
+    {
+      "condition": "inefficient_pokepad_strategy",
+      "description": "Do not rely on 4 copies of Pok\u00e9 Pad for Supporter search; its blind flip mechanism is highly inconsistent and often results in dead draws, wasting valuable deck space."
+    },
+    {
+      "condition": "inconsistent_single_copies",
+      "description": "Do not include numerous single copies of non-searchable or non-critical cards (e.g., Fezandipiti ex, Enriching Energy, Night Stretcher, Sacred Ash, Lana's Aid) as they will almost always be dead draws and cannot be relied upon."
+    },
+    {
+      "condition": "insufficient_rare_candy",
+      "description": "For a deck with a 4-4-4 Stage 2 evolution line like Alakazam, do not run only 3 Rare Candy; this is insufficient for consistent and timely setup of multiple Stage 2 Pok\u00e9mon."
+    },
+    {
+      "condition": "excessive_disruption_package",
+      "description": "Do not overcommit 7 card slots to energy disruption (4 Enhanced Hammer, 3 Xerosic's Machinations); this clogs your hand and sacrifices core deck consistency and setup."
+    },
+    {
+      "condition": "insufficient_energy_count",
+      "description": "Do not run an extremely low energy count (e.g., 7 total) in a deck that relies on attacks costing multiple specific energy types (like Psychic-Psychic) without any form of energy acceleration or recovery."
+    },
+    {
+      "condition": "poor_consistency_engine",
+      "description": "Do not neglect robust consistency cards; avoid relying on low-impact draw Supporters (like Hilda) or highly inconsistent coin-flip items (like Pok\u00e9 Pad) as your primary means of finding key cards and evolutions."
+    },
+    {
+      "condition": "anti_synergistic_cards",
+      "description": "Do not include cards that actively harm your own strategy, such as Stadiums (e.g., Nighttime Mine) that damage your own primary Psychic attackers, or unrelated Pok\u00e9mon lines (e.g., Dudunsparce, Fezandipiti ex) that offer no synergy and create dead draws."
+    },
+    {
+      "condition": "excessive_situational_disruption",
+      "description": "Do not over-commit deck space to niche disruption cards (e.g., 7 copies of Special Energy/Tool removal like Enhanced Hammer and Xerosic's Machinations) that are only useful against specific opponents and often become dead cards."
+    },
+    {
+      "condition": "lack_of_evolution_support",
+      "description": "Do not attempt to build a deck around a Stage 2 Pok\u00e9mon (like Alakazam) without sufficient copies of evolution accelerators (e.g., Rare Candy) and general Pok\u00e9mon search cards to reliably set it up."
+    },
+    {
+      "condition": "elemental_mismatch_dead_line",
+      "description": "Do not include Pok\u00e9mon evolution lines (e.g., Snorunt/Froslass) that require an energy type not present in your deck, as they become unplayable dead cards and waste valuable deck space."
+    },
+    {
+      "condition": "imbalanced_supporter_ratio",
+      "description": "Avoid running a supporter lineup heavily skewed towards disruption (e.g., 4 Team Rocket's Petrel) without sufficient general draw and consistency supporters (e.g., Professor's Research, Iono). This severely hinders your ability to set up and draw into essential cards."
+    },
+    {
+      "condition": "inadequate_stage2_consistency",
+      "description": "For Stage 2 Pok\u00e9mon lines, ensure robust consistency with 4 copies of Rare Candy and additional Pok\u00e9mon search cards (e.g., Nest Ball, Ultra Ball) to reliably evolve your main attackers."
+    },
+    {
+      "condition": "low_energy_count_evolution",
+      "description": "Do not include an insufficient number of basic energy cards (e.g., 10) for an evolution deck, especially when relying on a Stage 2 attacker. This can lead to energy starvation and inability to attack consistently."
+    },
+    {
+      "condition": "elemental_mismatch_dead_package",
+      "description": "Do not include Pok\u00e9mon evolution lines (e.g., Snorunt and Froslass) that require an energy type completely absent from your deck, as these cards will be unplayable and act as dead draws."
+    },
+    {
+      "condition": "unreliable_supporter_engine",
+      "description": "Avoid constructing your primary Supporter search and draw engine with highly unreliable cards like 4 copies of Pok\u00e9 Pad and single copies of Pok\u00e9gear 3.0 or niche Supporters (e.g., Dawn). This will severely cripple deck consistency."
+    },
+    {
+      "condition": "suboptimal_supporter_balance",
+      "description": "Do not run critically low counts (e.g., 2 copies) of essential gust Supporters like Boss's Orders, especially when running an excessive count (e.g., 4 copies) of a more situational disruption Supporter like Team Rocket's Petrel. This leads to imbalanced support."
+    },
+    {
+      "condition": "inadequate_stage2_acceleration",
+      "description": "For decks relying on Stage 2 Pok\u00e9mon (e.g., Grimmsnarl ex) as primary attackers, ensure adequate acceleration. A 4-3-3 evolution line combined with only 3 Rare Candy makes consistent and timely Stage 2 setup highly challenging."
+    },
+    {
+      "condition": "thin_stage2_evolution_line",
+      "description": "Avoid running an insufficient count for Stage 1 Pok\u00e9mon in a Stage 2 evolution line (e.g., 3 Morgrem for 4 Impidimp and 3 Grimmsnarl ex), as this significantly reduces the chances of evolving reliably, even with Rare Candy."
+    },
+    {
+      "condition": "irrelevant_pokemon_tech",
+      "description": "Do not include Pok\u00e9mon lines (e.g., Froslass) that do not directly contribute to your deck's core strategy, provide negligible utility, or are too thin (e.g., a 2-2 line) to be consistently set up when needed."
+    },
+    {
+      "condition": "outdated_weak_supporter",
+      "description": "Never include outdated or extremely weak Supporter cards (e.g., Dawn) that offer minimal drawing or searching power and are often not legal in current competitive formats, wasting a critical deck slot."
+    },
+    {
+      "condition": "ineffective_single_search_tech",
+      "description": "Avoid including single copies of inconsistent search cards (e.g., Pok\u00e9gear 3.0) when their effect is critical, as a single copy provides almost no increase in consistency and is often a dead draw."
+    },
+    {
+      "condition": "energy_type_mismatch",
+      "description": "Do not include Pok\u00e9mon like Froslass (Water-type attacks) and Munkidori (Psychic-type attacks) when your deck only contains Dark energy. These Pok\u00e9mon will be unable to attack."
+    },
+    {
+      "condition": "inefficient_draw_engine",
+      "description": "Avoid excessive reliance on inconsistent item cards like Pok\u00e9 Pad (x4) as your primary method for finding Supporters. Prioritize consistent draw Supporters instead."
+    },
+    {
+      "condition": "imbalanced_supporter_lineup",
+      "description": "Minimize highly situational Supporters like Dawn (x1) and consider reducing the count of disruptive-only Supporters like Team Rocket's Petrel (x4) if it compromises your ability to draw cards."
+    },
+    {
+      "condition": "excessive_stadium_count",
+      "description": "Do not run an excessive number of copies (x4) of a single stadium card, especially one like Spikemuth Gym that can negatively impact your own basic Pok\u00e9mon upon play."
+    },
+    {
+      "condition": "energy_type_mismatch",
+      "description": "Avoid including Pok\u00e9mon that require a different energy type than what is provided in the deck (e.g., Froslass requiring Water Energy but only Dark Energy is present). These Pok\u00e9mon will be unplayable."
+    },
+    {
+      "condition": "suboptimal_draw_engine",
+      "description": "Do not rely on weak draw cards like Pok\u00e9 Pad (take 1 of 4 cards) as your primary consistency engine. Instead, utilize stronger options like Professor's Research, Iono, or Arven to ensure you can consistently set up your board."
+    },
+    {
+      "condition": "self_disruptive_supporters",
+      "description": "Avoid running excessive copies (e.g., 4x) of Supporters like Team Rocket's Petrel that force you to discard your own hand for a limited draw, especially in evolution decks. This heavily disrupts your setup and consistency."
+    },
+    {
+      "condition": "inconsistent_tech_cards",
+      "description": "Avoid including single copies of critical search or disruption cards (e.g., Pok\u00e9gear 3.0, Unfair Stamp) if you need to reliably access them. These 'one-ofs' often become dead draws or are not available when required."
+    },
+    {
+      "condition": "insufficient_rare_candy",
+      "description": "When building around a critical Stage 2 Pok\u00e9mon like Grimmsnarl ex, prioritize running 4 copies of Rare Candy to maximize your chances of evolving quickly and consistently."
+    },
+    {
+      "condition": "thin_evolution_line",
+      "description": "Ensure your evolution lines are robust enough to be consistently set up. A 2-2 line for a Stage 1 Pok\u00e9mon like Snorunt/Froslass is often too thin and unreliable, especially for key support or attackers."
+    },
+    {
+      "condition": "element_type_mismatch",
+      "description": "Avoid including Pok\u00e9mon that require energy types (e.g., Fighting for Munkidori, Water for Froslass/Snorunt) that are not present in your deck. This creates 'dead' cards that cannot be played or utilized effectively, severely hindering your strategy and consistency."
+    },
+    {
+      "condition": "inefficient_draw_engine",
+      "description": "Do not build a deck around highly inefficient draw and search cards (e.g., 4 Pok\u00e9 Pad, 1 Dawn, 4 Team Rocket's Petrel as primary draw). These cards consume valuable deck space without providing reliable card advantage or consistent setup. Prioritize powerful draw supporters (e.g., Professor's Research, Iono) and robust Pok\u00e9mon search items (e.g., Ultra Ball, Nest Ball) for deck consistency."
+    },
+    {
+      "condition": "suboptimal_utility_ratios",
+      "description": "Avoid under-representing crucial utility cards (e.g., only 2 Boss's Orders) while including an excessive number of niche or situational cards (e.g., 4 Spikemuth Gym, 2 Handheld Fan). A competitive deck requires sufficient options to target opponent's Benched Pok\u00e9mon and manage the board state effectively, rather than relying on weak disruptions."
+    },
+    {
+      "condition": "elemental_type_mismatch",
+      "description": "Avoid including Pok\u00e9mon of a different elemental type (e.g., Water/Ice Froslass/Snorunt) that do not synergize with your main attacker (e.g., Dark-type Grimmsnarl ex), as this creates dead draws and dilutes your deck's focus."
+    },
+    {
+      "condition": "insufficient_consistent_draw_power",
+      "description": "Do not rely on inconsistent draw methods (e.g., 4 Pok\u00e9 Pad, Lillie's Determination requiring discards) or solely on disruption supporters. Instead, prioritize a robust and consistent draw engine (e.g., Professor's Research, Iono) to ensure reliable setup and access to key cards."
+    },
+    {
+      "condition": "overreliance_on_disruption_without_engine",
+      "description": "Do not include an excessive number of hand disruption supporters (e.g., 4 Team Rocket's Petrel) at the expense of your own setup. First, ensure your deck has a strong self-sustaining engine to consistently execute its strategy before heavily investing in opponent disruption."
+    },
+    {
+      "condition": "niche_suboptimal_trainers",
+      "description": "Avoid including highly niche or situational trainer cards (e.g., 4 Spikemuth Gym, 2 Handheld Fan) that lack broad utility or a clear, consistent synergy with your deck's primary strategy. These cards often become dead draws in most matchups."
+    },
+    {
+      "condition": "suboptimal_card_counts_and_missing_staples",
+      "description": "Do not run suboptimal counts of critical cards (e.g., 2 Boss's Orders, 3 Rare Candy for a Stage 2 line) or omit essential search and utility staples (e.g., Ultra Ball, Nest Ball, energy acceleration/recovery). This severely hampers setup consistency and late-game options."
+    },
+    {
+      "condition": "unjustified_4_of_basic",
+      "description": "Avoid including 4 copies of a basic Pok\u00e9mon (e.g., Munkidori) without a clear, synergistic role as an attacker, utility Pok\u00e9mon, or part of an engine for the deck. Such inclusions often result in dead draws and wasted deck space."
+    },
+    {
+      "condition": "element_type_mismatch",
+      "description": "Avoid including Pok\u00e9mon of disparate elemental types (e.g., Munkidori, Snorunt, Froslass) that do not contribute to the deck's primary strategy or energy requirements, as they serve as dead-draws."
+    },
+    {
+      "condition": "outdated_ineffective_items",
+      "description": "Do not include outdated Item cards like Pok\u00e9 Pad (x4) that offer inconsistent or extremely weak effects compared to modern search or utility cards."
+    },
+    {
+      "condition": "suboptimal_supporters_lack_draw",
+      "description": "Avoid using a high count of Supporters with minimal impact (e.g., Team Rocket's Petrel x4) and eschew outdated, weak draw Supporters (e.g., Lillie's Determination x4, Dawn x1). A robust and consistent modern draw engine is essential."
+    },
+    {
+      "condition": "anti_synergistic_stadium_control",
+      "description": "Do not include a high count of your own Stadium cards (e.g., Spikemuth Gym x4) while simultaneously including cards specifically designed to counter Stadiums (e.g., Handheld Fan x2). This creates anti-synergy and wasted deck slots."
+    },
+    {
+      "condition": "excessive_recovery_low_search",
+      "description": "Avoid an excessive number of specialized recovery cards like Night Stretcher (x3) when initial search and consistent setup mechanisms are severely lacking."
+    },
+    {
+      "condition": "insufficient_energy_stage2_attacker",
+      "description": "Do not run an insufficient number of basic energy cards (e.g., 10 Basic Darkness Energy) when piloting a Stage 2 attacker that requires multiple specific energy types for its attacks, especially without any energy acceleration."
+    },
+    {
+      "condition": "elemental_mismatch",
+      "description": "Do not include Pok\u00e9mon that require a specific energy type (e.g., Water/Ice) if your deck only contains a different energy type (e.g., Dark). This creates dead cards that cannot attack or use abilities, such as the Froslass and Snorunt line with only Basic {D} Energy."
+    },
+    {
+      "condition": "excessive_niche_trainers",
+      "description": "Avoid playing excessive copies of highly situational or niche item cards (e.g., 4x Pok\u00e9 Pad, 2x Handheld Fan). These cards often lead to dead draws, reduce overall deck consistency, and take up valuable slots that should be used for core draw, search, or consistency cards."
+    },
+    {
+      "condition": "disruption_over_draw",
+      "description": "Do not prioritize disruptive Supporters (e.g., 4x Team Rocket's Petrel) in high counts over consistent self-draw Supporters. A deck must first ensure its own setup and consistency before focusing heavily on opponent disruption, especially when its own draw is limited."
+    },
+    {
+      "condition": "lack_of_basic_attackers",
+      "description": "Do not rely solely on Stage 2 Pok\u00e9mon ex as your primary attackers without including strong basic or Stage 1 Pok\u00e9mon. These are crucial for establishing an early board, providing alternative attackers, or maintaining pressure while your main evolution lines are being set up."
+    },
+    {
+      "condition": "suboptimal_supporter_ratios",
+      "description": "Avoid suboptimal counts of essential Supporters like Boss's Orders (only 2 copies). Core cards vital for strategically winning games or closing out KOs should generally be played in higher counts (3-4) for better accessibility throughout the game."
+    },
+    {
+      "condition": "stadium_overload",
+      "description": "Do not include an excessive number of copies of the same Stadium card (e.g., 4x Spikemuth Gym) unless the deck has a clear strategy to continuously use, abuse, or discard them. High counts can lead to clogged hands, being unable to play other crucial cards, or frequently replacing your own Stadiums."
+    },
+    {
+      "condition": "element_type_mismatch",
+      "description": "Avoid including Pok\u00e9mon lines of a different elemental type (e.g., Froslass line) if you do not include the corresponding basic energy or special energy cards to power them, making them entirely unplayable and dead draws."
+    },
+    {
+      "condition": "poor_draw_supporter_lineup",
+      "description": "Do not rely on weak draw Supporters like Team Rocket's Petrel as your primary draw engine, especially at a high count. Prioritize strong, reliable draw Supporters (e.g., Professor's Research, Iono) to ensure consistent setup and hand refreshment."
+    },
+    {
+      "condition": "excessive_situational_cards",
+      "description": "Limit the number of highly situational 'tech' cards such as Handheld Fan, and avoid excessive counts of niche Stadiums like Spikemuth Gym or item-based Supporter search like Pok\u00e9 Pad. These cards consume valuable deck space that should be used for core consistency or stronger strategic pieces."
+    },
+    {
+      "condition": "slow_stage2_without_consistency",
+      "description": "When building a deck around a Stage 2 Pok\u00e9mon, ensure your deck includes robust Pok\u00e9mon search (beyond basic Poffin) and a consistent draw engine to reliably set up your evolutions. A lack of strong consistency cards will severely hinder your ability to get your main attacker into play."
+    },
+    {
+      "condition": "missing_essential_staples",
+      "description": "Do not overlook essential Trainer cards that provide mobility (e.g., Switch, Escape Rope, Switch Cart) or game-closing power (e.g., 3-4 copies of Boss's Orders). Insufficient counts of these staples can lead to being trapped Active or failing to secure crucial knockouts."
+    },
+    {
+      "condition": "type_mismatch_pokemon",
+      "description": "Avoid including Pok\u00e9mon of different types that do not contribute to the deck's main strategy or energy requirements. Froslass ({W}) and Munkidori ({G}) are off-type and cannot effectively utilize the deck's Dark Energy, leading to dead cards."
+    },
+    {
+      "condition": "outdated_draw_supporters",
+      "description": "Do not use outdated and inefficient draw Supporters like Lillie's Determination and Team Rocket's Petrel. These cards severely cripple hand consistency and cannot keep up with the pace of modern gameplay, leaving you with unplayable hands."
+    },
+    {
+      "condition": "suboptimal_item_search",
+      "description": "Refrain from including ineffective item cards like Pok\u00e9 Pad for drawing or searching. Four copies of this card consume valuable deck space and provide minimal card advantage compared to modern, more efficient alternatives."
+    },
+    {
+      "condition": "unsynergistic_evolution_line",
+      "description": "Ensure all Pok\u00e9mon in an evolution line contribute to the primary strategy. Snorunt and Froslass are included without a clear role and do not synergize with the main Dark-type attackers (Grimmsnarl ex), making them dead draws."
+    },
+    {
+      "condition": "excessive_disruption_no_draw",
+      "description": "Do not overcommit to disruptive Supporters (like Team Rocket's Petrel) or niche items (like Unfair Stamp or Tool Scrapper) at the expense of a robust and reliable draw engine. Your ability to set up your own board consistently is paramount."
+    },
+    {
+      "condition": "dead_draw_packages",
+      "description": "Avoid entire packages of cards that offer no synergy or utility to the deck's core strategy. The combination of Froslass, Munkidori, Lillie's Determination, Team Rocket's Petrel, and Pok\u00e9 Pad creates a large dead-draw package, severely reducing playable options and consistency."
+    },
+    {
+      "condition": "high_stadium_count_without_justification",
+      "description": "Be cautious with running too many copies of a single stadium card (e.g., 4 Spikemuth Gym). While disruptive, a high count can clog your hand and be less impactful if your opponent plays their own stadium, or if your primary strategy isn't solely reliant on its effect."
+    },
+    {
+      "condition": "energy_type_mismatch",
+      "description": "Do not include Pok\u00e9mon that require a specific energy type (e.g., Froslass requiring Water Energy) if that energy type is completely absent from the deck."
+    },
+    {
+      "condition": "detrimental_stadium_choice",
+      "description": "Avoid including Stadium cards (e.g., Spikemuth Gym) that actively damage or hinder your own evolving Pok\u00e9mon or general setup, as this undermines your strategy."
+    },
+    {
+      "condition": "excessive_self_deck_mill",
+      "description": "Do not include high counts of cards (e.g., 4 Pok\u00e9 Pad) that mill a significant portion of your own deck without clear, beneficial synergies for the discarded cards, as this can lead to decking out or losing key resources."
+    },
+    {
+      "condition": "suboptimal_draw_supporter_ratio",
+      "description": "Avoid relying heavily on draw Supporters (e.g., 4 Team Rocket's Petrel) that force discards without providing substantial card advantage or synergy with discard pile mechanics, as this can lead to a consistently smaller hand size."
+    },
+    {
+      "condition": "unplayable_evolution_line",
+      "description": "Do not include an evolution line (e.g., Snorunt-Froslass) if it cannot be powered up or consistently set up due to missing energy types or insufficient basic Pok\u00e9mon counts, making it dead weight in the deck."
+    },
+    {
+      "condition": "insufficient_basic_energy",
+      "description": "Ensure your deck includes an adequate number of basic energy cards (e.g., 10 Basic {D} Energy) to reliably meet the energy costs of your main attacking Pok\u00e9mon throughout the game, especially for Stage 2 evolutions without accelerated energy attachment."
+    },
+    {
+      "condition": "overcounted_niche_basic",
+      "description": "Be cautious of including an excessive number of basic Pok\u00e9mon (e.g., 4 Munkidori) that do not directly contribute to the primary win condition or provide essential support, as this can lead to frequent dead draws."
+    },
+    {
+      "condition": "energy_type_mismatch",
+      "description": "Do not include Pok\u00e9mon that require a different energy type to attack than what is provided in the deck (e.g., Water Pok\u00e9mon like Froslass with only Darkness energy), as they become dead cards."
+    },
+    {
+      "condition": "outdated_inefficient_search_items",
+      "description": "Avoid using outdated and highly inefficient search/draw Item cards like Pok\u00e9 Pad (x4) or Unfair Stamp (x1); they consume deck space without providing reliable consistency in modern play."
+    },
+    {
+      "condition": "poor_recovery_strategy",
+      "description": "Do not use outdated and restrictive recovery cards like Night Stretcher (x3); modern alternatives like Super Rod or Energy Retrieval offer far greater flexibility and utility for recycling cards from the discard pile."
+    },
+    {
+      "condition": "excessive_situational_supporters",
+      "description": "Avoid including an excessive number of highly situational or outdated Supporter cards like Team Rocket's Petrel (x4) or Dawn (x1); they hinder consistent draw and setup compared to modern, broad-impact Supporters."
+    },
+    {
+      "condition": "unsupported_stadium_count",
+      "description": "Do not run a high count (e.g., 4 copies) of a niche Stadium card like Spikemuth Gym without a clear, synergistic strategy that consistently leverages its effect; it often clogs hands otherwise."
+    },
+    {
+      "condition": "lack_of_modern_consistency",
+      "description": "Do not neglect modern, powerful consistency cards (e.g., Professor's Research, Iono, Arven, Ultra Ball) in favor of outdated or less efficient draw/search methods; this severely impacts setup speed and overall playability."
+    },
+    {
+      "condition": "wasteful_stadium_search",
+      "description": "Do not include an excessive number of stadium search cards (like Pok\u00e9 Pad) that require a discard cost when only a single type of stadium is run in high counts. This creates dead draws and wastes hand resources after the stadium is in play or not immediately needed."
+    },
+    {
+      "condition": "overboard_niche_disruption",
+      "description": "Avoid running four copies of a highly situational disruptive Supporter like Team Rocket's Petrel. These cards do not advance your board state or provide essential draw, leading to inconsistent setup and bricked hands."
+    },
+    {
+      "condition": "insufficient_core_draw",
+      "description": "Ensure your deck includes robust, unconditional draw Supporters (e.g., Professor's Research, Iono) to consistently cycle your hand and find key cards. Relying on situational draw or purely disruptive Supporters will lead to poor consistency."
+    },
+    {
+      "condition": "underpowered_energy_base",
+      "description": "Do not run only 10 basic energies for a deck focused on a Stage 2 EX Pok\u00e9mon that likely requires multiple energy attachments per attack. This count is too low to consistently power up attackers, especially without dedicated energy acceleration."
+    },
+    {
+      "condition": "unjustified_basic_inclusion",
+      "description": "Avoid including multiple copies of basic Pok\u00e9mon (like Munkidori) that have no clear strategic purpose, strong attack, or ability contributing to the deck's main game plan. They act as dead draws and dilute consistency."
+    },
+    {
+      "condition": "unjustified_thin_evolution_line",
+      "description": "Do not include thin, inconsistent evolution lines (e.g., 2 Snorunt, 2 Froslass) for Pok\u00e9mon that do not directly support the deck's core strategy or provide a critical tech. These lines add clutter and reduce overall consistency."
+    },
+    {
+      "condition": "multi_type_focus_dilution",
+      "description": "Avoid including multiple non-synergistic Pok\u00e9mon lines of different types (e.g., Dark, Water, Grass) that dilute your deck's focus and consistency. Prioritize a single, cohesive strategy around your main attacker."
+    },
+    {
+      "condition": "dead_draw_pokemon_package",
+      "description": "Do not include Pok\u00e9mon lines (e.g., Munkidori, Snorunt, Froslass) that do not contribute to your primary strategy, as they become dead draws and waste valuable deck space that could be used for consistency or stronger attacks."
+    },
+    {
+      "condition": "poor_supporter_consistency",
+      "description": "Avoid a fragmented Supporter lineup with too many 1-of tech cards (e.g., Dawn, Pok\u00e9gear 3.0) and an over-reliance on disruptive Supporters (e.g., 4 Team Rocket's Petrel) without sufficient dedicated draw support. Ensure a robust core of draw Supporters."
+    },
+    {
+      "condition": "excessive_pokepad_reliance",
+      "description": "Do not include 4 copies of Pok\u00e9 Pad to search for Supporters, especially when your Supporter lineup lacks consistency and depth. This is an inefficient and clunky way to find key Supporters."
+    },
+    {
+      "condition": "overboard_stadium_count",
+      "description": "Avoid running an excessive number of a single Stadium card (e.g., 4 Spikemuth Gym) as it can lead to dead draws or being replaced by your own Stadiums, and its effect might not always be relevant or beneficial."
+    },
+    {
+      "condition": "underpowered_energy_ratio",
+      "description": "Ensure your energy count (e.g., 10 Basic {D} Energy for a Stage 2 Dark-type attacker) is sufficient for your primary attackers, especially if there's no energy acceleration or search. Non-synergistic Pok\u00e9mon lines further strain this critical ratio."
+    },
+    {
+      "condition": "multi_type_no_energy",
+      "description": "Avoid including Pok\u00e9mon that require a specific energy type (e.g., Grass-type Roserade, Psychic-type Spiritomb) without any corresponding basic energy cards in the deck. This creates dead cards that cannot attack."
+    },
+    {
+      "condition": "split_evolutions_no_support",
+      "description": "Do not include multiple distinct evolutionary lines (e.g., Stage 2 Garchomp ex and Stage 1 Roserade) that demand different energy types and significant setup without sufficient energy, search, or consistency cards to reliably power up and evolve both. This dilutes the deck's focus and makes it inconsistent."
+    },
+    {
+      "condition": "low_energy_count_high_evolution",
+      "description": "Be wary of low energy counts (e.g., 9 energy for two evolutionary lines, including a Stage 2) in evolution-heavy decks. It severely limits your ability to power up attackers and sustain attacks throughout the game."
+    },
+    {
+      "condition": "excessive_pokepad",
+      "description": "Refrain from playing an excessive number of Pok\u00e9 Pad (e.g., 4 copies). While it offers Trainer search, its randomness and often low impact make it a poor consistency choice when played at high counts, consuming valuable deck space for more impactful cards."
+    },
+    {
+      "condition": "situational_one_ofs",
+      "description": "Avoid playing too many single copies of highly situational cards (e.g., Unfair Stamp, Xerosic\u2019s Machinations, Surfer). These cards are rarely drawn when needed and often become dead draws, hindering overall deck consistency and strategy."
+    },
+    {
+      "condition": "excessive_pokepad_inclusion",
+      "description": "Avoid including more than one copy of Pok\u00e9 Pad, as 4 copies severely clog hands, provide minimal early-game utility, and are highly situational, thus crippling deck consistency."
+    },
+    {
+      "condition": "insufficient_basic_energy",
+      "description": "Do not run fewer than 7-8 basic energy cards in a Stage 2 evolution deck that relies heavily on a specific basic energy type for its main attacker's energy requirements. 5 Basic {F} Energy for a Garchomp ex deck is critically low and will lead to frequent energy droughts."
+    },
+    {
+      "condition": "inconsistent_draw_engine",
+      "description": "Avoid a draw supporter lineup that includes single, weak draw cards (e.g., Surfer x1) and relies on potentially suboptimal or early-game specific effects (e.g., Lillie's Determination), as this leads to inconsistent late-game draw and an inability to set up or recover effectively."
+    },
+    {
+      "condition": "unjustified_niche_card_overload",
+      "description": "Do not include 4 copies of highly specific or unproven utility cards like 'Fighting Gong' without clear, overwhelming synergy with your primary strategy, as they often become dead draws that severely impact hand quality and consistency."
+    },
+    {
+      "condition": "element_type_mismatch_and_dead_line",
+      "description": "Do not include a significant evolution line (e.g., Roselia/Roserade x4-3) and a type-specific stadium (e.g., Forest of Vitality x2) that do not directly support or synergize with your main attacker's type (e.g., Grass cards in a Fighting/Ground Garchomp ex deck). These inclusions become dead draws and divert crucial deck space from the core strategy."
+    },
+    {
+      "condition": "ineffective_situational_one_ofs",
+      "description": "Avoid including single copies of highly situational disruption cards (e.g., Unfair Stamp x1, Xerosic\u2019s Machinations x1) that do not contribute to your core strategy or consistency, as they often become dead draws when not immediately relevant, rather than providing reliable disruption."
+    },
+    {
+      "condition": "elemental_energy_mismatch",
+      "description": "Do not include Pok\u00e9mon of an elemental type (e.g., Grass type Roselia/Roserade) or Stadium cards that specifically support that type (e.g., Forest of Vitality) if your deck contains no basic energy cards of that corresponding type. This makes those Pok\u00e9mon unable to attack and those support cards entirely ineffective, leading to dead draws and wasted deck space."
+    },
+    {
+      "condition": "low_energy_high_attack_cost",
+      "description": "Avoid running an insufficient total number of energy cards (e.g., 9 energy) for a deck that relies on a Stage 2 main attacker (e.g., Garchomp ex) with a high attack cost (e.g., 3 energy), especially in the absence of strong energy acceleration. This often results in inconsistent attack turns and energy starvation."
+    },
+    {
+      "condition": "overcounted_niche_item",
+      "description": "Do not include an excessive number of copies (e.g., 4 copies) of niche item cards (e.g., Pok\u00e9 Pad) that serve a very specific, situational purpose. This significantly increases the likelihood of drawing multiple copies unnecessarily, leading to dead draws and reduced deck efficiency."
+    },
+    {
+      "condition": "inconsistent_tech_cards",
+      "description": "Avoid including single, unsearchable copies of highly situational disruption or tech cards (e.g., Unfair Stamp, Xerosic\u2019s Machinations). Without reliable ways to search for them, these cards often become dead draws, failing to impact the game when needed and wasting valuable deck slots."
+    },
+    {
+      "condition": "elemental_stadium_mismatch",
+      "description": "Do not include Stadium cards that provide benefits for an energy type (e.g., Forest of Vitality for {G} Energy) that is completely absent from your deck's Pok\u00e9mon and Energy cards. These cards will be entirely dead draws and offer no utility."
+    },
+    {
+      "condition": "insufficient_energy_for_stage2_attacker",
+      "description": "Do not run an extremely low energy count (e.g., 9 total energy) in a deck that relies on a Stage 2 Pok\u00e9mon-ex as its primary attacker. This severely limits your ability to consistently power up attacks and recover from Energy discards."
+    },
+    {
+      "condition": "inefficient_item_based_consistency",
+      "description": "Avoid relying heavily on inefficient search or draw Items (e.g., 4 copies of Pok\u00e9 Pad) as your primary consistency engine. Prioritize cards that offer broader search, significant raw draw power, or direct evolution acceleration."
+    },
+    {
+      "condition": "no_evolution_acceleration_or_search",
+      "description": "Do not build a deck around a Stage 2 Pok\u00e9mon-ex without including robust search cards (e.g., Ultra Ball, Nest Ball) for your evolution lines or acceleration cards (e.g., Rare Candy) to quickly bring out your main attackers."
+    },
+    {
+      "condition": "overreliance_on_niche_defensive_tools",
+      "description": "Do not include an excessive number (e.g., 4 copies) of highly niche defensive Tools (e.g., Fighting Gong) unless your deck's strategy is entirely built around walling specific threats, and you have robust ways to discard them when irrelevant against other archetypes."
+    },
+    {
+      "condition": "unfocused_type_lines",
+      "description": "Avoid including full evolutionary lines of different elemental types (e.g., a Grass-type Roserade line in a Fighting-type Garchomp deck) without clear, cross-type synergy, as this dilutes consistency and strategic focus."
+    },
+    {
+      "condition": "insufficient_energy_count",
+      "description": "Ensure your deck contains a high enough number of basic and special energy cards (typically 10-14 or more for aggressive decks) to consistently power up your main attackers, especially when lacking energy acceleration."
+    },
+    {
+      "condition": "over_reliance_on_supporters_for_draw",
+      "description": "Do not solely rely on Supporters for draw power; incorporate consistent Pok\u00e9mon-based draw engines (e.g., Bibarel, Kirlia) to ensure continuous access to cards throughout the game and reduce dead hands."
+    },
+    {
+      "condition": "insufficient_boss_count",
+      "description": "Avoid running too few copies of critical disruption Supporters like Boss's Orders (minimum 3, ideally 4 in aggressive decks) to maintain consistent pressure on your opponent's bench and secure critical knockouts."
+    },
+    {
+      "condition": "high_count_of_situational_items",
+      "description": "Be cautious of including excessively high counts (e.g., 4 copies) of situational Item cards like Pok\u00e9 Pad or Fighting Gong, as they can lead to dead draws if their effect isn't consistently critical or beneficial throughout the game."
+    },
+    {
+      "condition": "unsupported_pokemon_lines",
+      "description": "Do not include Pok\u00e9mon lines (such as Snorunt/Froslass and Munkidori) that require energy types (Water, Grass) not present in your deck. These cards are completely unusable and act as dead draws, wasting valuable deck space."
+    },
+    {
+      "condition": "inefficient_draw_engine",
+      "description": "Avoid relying heavily on low-impact draw/search cards like Pok\u00e9 Pad (x4). A deck needs a robust and consistent draw engine (e.g., Professor's Research, Iono) to set up and maintain board presence effectively."
+    },
+    {
+      "condition": "imbalanced_supporter_mix",
+      "description": "Ensure your Supporter lineup provides consistent card advantage. While disruptive Supporters (like Team Rocket's Petrel) have their place, prioritize general draw Supporters (e.g., Professor's Research, Iono) over situational ones (like Lillie's Determination) or those focused solely on disruption, especially as the primary draw."
+    },
+    {
+      "condition": "bloated_non_core_pokemon",
+      "description": "Do not include a high count of Pok\u00e9mon that do not directly contribute to your primary win condition or cannot be properly powered up. The combined Snorunt/Froslass and Munkidori lines occupy too many slots without providing any functional benefit to the Grimmsnarl ex strategy."
     }
   ],
   "behavior_donts": [

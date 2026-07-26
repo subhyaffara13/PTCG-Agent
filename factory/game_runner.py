@@ -64,7 +64,12 @@ class GameRunner(BaseAgent):
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
         if GameRunner._executor is None:
-            GameRunner._executor = ProcessPoolExecutor(max_workers=os.cpu_count() or 16)
+            import os
+            os.environ["OPENBLAS_NUM_THREADS"] = "1"
+            os.environ["OMP_NUM_THREADS"] = "1"
+            os.environ["MKL_NUM_THREADS"] = "1"
+            max_w = min(2, os.cpu_count() or 2)
+            GameRunner._executor = ProcessPoolExecutor(max_workers=max_w)
 
     def receive(self, packet: Any) -> Any:
         raise NotImplementedError("GameRunner does not receive routed packets")

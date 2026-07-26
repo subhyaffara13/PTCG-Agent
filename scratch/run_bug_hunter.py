@@ -141,6 +141,7 @@ def hunt_bugs():
     except Exception as e:
         logger.error(f"Bug hunting failed: {e}")
     finally:
+        import sys
         if str(sandbox_dir) in sys.path:
             sys.path.remove(str(sandbox_dir))
         logger.info("Cleaning up isolated workspace...")

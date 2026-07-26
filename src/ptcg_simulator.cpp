@@ -363,6 +363,13 @@ void apply_action(BoardState& state, const std::string& action) {
         }
     }
     else if (act_type == "attack") {
+        // Verify energy requirement: Active Pokemon must have at least as many attached energy as cost
+        auto active_card = CardRegistry::getInstance().getCard(state.me.active.id);
+        int req_energy = active_card ? active_card->energy_cost : 1;
+        if ((int)state.me.active.attached.size() < req_energy) {
+            return; // Incomplete energy cost: attack cannot be executed
+        }
+
         int actual_damage = 0;
         std::string move_name = target;
         std::string dmg_str = CardRegistry::getInstance().getMoveDamage(move_name);

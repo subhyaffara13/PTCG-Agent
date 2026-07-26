@@ -24,9 +24,23 @@ class GauntletRunner:
         self.generator = DeckGenerator(self.card_pool, self.card_details, self.archetypes_data)
 
     def _generate_real_deck(self, archetype: str) -> list:
-        """Generates a realistic, competitive deck for the gauntlet opponent."""
+        """Loads a realistic, competitive deck for the gauntlet opponent from skills/league/ or card pool."""
         arch_lower = archetype.lower()
-        # Fallback to combo if archetype is setup or stall
+        league_file = self.skills_dir / f"league/{arch_lower}_exploiter.csv"
+        if league_file.exists():
+            import csv
+            try:
+                deck = []
+                with open(league_file, "r", encoding="utf-8") as f:
+                    for row in csv.DictReader(f):
+                        deck.extend([int(row["card_id"])] * int(row["count"]))
+                if len(deck) == 60:
+                    logger.info(f"Loaded real competitor deck from {league_file.name} for Gauntlet.")
+                    return deck
+            except Exception as e:
+                logger.warning(f"Failed to load {league_file.name}: {e}")
+
+        # Fallback to generator if league CSV is missing
         if arch_lower not in self.archetypes_data.get("archetypes", {}):
             arch_lower = "combo"
             
@@ -57,7 +71,7 @@ class GauntletRunner:
             opp_deck = self._generate_real_deck(archetype)
             
             archetype_wins = 0
-            num_matchups = 3
+            num_matchups = 1
             total_stage_games = num_games_per_archetype * (num_matchups * 4 + 1)
             for i in range(num_games_per_archetype):
                 res = runner.run_iteration(

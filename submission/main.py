@@ -218,8 +218,8 @@ if _existing_deck is None:
     DEFAULT_DECK = [
         957, 957, 957, 979, 979, 979, 37, 37, 37, 210,
         210, 210, 1121, 1227, 1227, 1227, 1227, 1152, 1152, 1152,
-        1152, 1198, 1198, 1213, 1264, 1264, 1194, 1197, 1184, 1097,
-        1097, 1097, 1097, 1210, 1182, 1182, 1182, 1182, 1102, 1086,
+        1152, 1198, 1233, 1194, 1194, 1264, 1264, 1210, 1210, 1189,
+        1097, 1097, 1097, 1097, 1182, 1182, 1182, 1182, 1102, 1086,
         1086, 1086, 1086, 1123, 1081, 1122, 6, 6, 6, 6,
         6, 6, 6, 6, 4, 4, 4, 4, 4, 4
     ]
@@ -660,8 +660,8 @@ def agent(observation, configuration=None):
     DEFAULT_DECK_FALLBACK = [
         957, 957, 957, 979, 979, 979, 37, 37, 37, 210,
         210, 210, 1121, 1227, 1227, 1227, 1227, 1152, 1152, 1152,
-        1152, 1198, 1198, 1213, 1264, 1264, 1194, 1197, 1184, 1097,
-        1097, 1097, 1097, 1210, 1182, 1182, 1182, 1182, 1102, 1086,
+        1152, 1198, 1233, 1194, 1194, 1264, 1264, 1210, 1210, 1189,
+        1097, 1097, 1097, 1097, 1182, 1182, 1182, 1182, 1102, 1086,
         1086, 1086, 1086, 1123, 1081, 1122, 6, 6, 6, 6,
         6, 6, 6, 6, 4, 4, 4, 4, 4, 4
     ]
@@ -766,13 +766,13 @@ def agent(observation, configuration=None):
         }
 
         # Parse legal candidates from options
-        game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (13, "Attack", "attack")]
-        game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy")]
+        game_state["legal_attacks"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (12, 13, "Attack", "attack")]
+        game_state["legal_attachments"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (8, 9, "Attach", "attach", "Energy", "energy")]
         
         legal_bench = []
         legal_evolutions = []
         for opt in options:
-            if get_val(opt, "type") in (8, "Play", "play"):
+            if get_val(opt, "type") in (7, 8, "Play", "play"):
                 name = get_val(opt, "name", "")
                 is_evo = False
                 if _registry is not None and name:
@@ -791,9 +791,9 @@ def agent(observation, configuration=None):
                     
         game_state["legal_bench"] = legal_bench
         game_state["legal_evolutions"] = legal_evolutions
-        game_state["legal_trainers"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (7, "Play", "play")]
-        game_state["legal_retreats"] = ["retreat"] if any(get_val(opt, "type") in (10, 12, "Retreat", "retreat") for opt in options) else []
-        game_state["legal_abilities"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (11, 15, "Ability", "ability")]
+        game_state["legal_trainers"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (7, "Play", "play", "Trainer", "trainer")]
+        game_state["legal_retreats"] = ["retreat"] if any(get_val(opt, "type") in (10, "Retreat", "retreat") for opt in options) else []
+        game_state["legal_abilities"] = [get_val(opt, "name", "") for opt in options if get_val(opt, "type") in (9, 11, 15, "Ability", "ability")]
 
         # Parse detailed active HP if present
         my_active = get_val(my_state, "active")
@@ -822,30 +822,30 @@ def agent(observation, configuration=None):
             # Map orchestrator's prefix action labels to actual select options
             mapped_indices = []
             if action_label.startswith("attack:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (13, "Attack", "attack")]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (12, 13, "Attack", "attack")]
             elif action_label.startswith("attach_energy:"):
                 parts = action_label.split(":")
                 energy_name = parts[1] if len(parts) > 1 else ""
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy") and str(get_val(opt, "name", "")).lower() == energy_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, 9, "Attach", "attach", "Energy", "energy") and str(get_val(opt, "name", "")).lower() == energy_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, "Attach", "attach", "Energy", "energy")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, 9, "Attach", "attach", "Energy", "energy")]
             elif action_label.startswith("bench:") or action_label.startswith("evolve:"):
                 poke_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, "Play", "play") and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, 8, "Play", "play") and str(get_val(opt, "name", "")).lower() == poke_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (8, "Play", "play")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, 8, "Play", "play")]
             elif action_label.startswith("play_trainer:"):
                 trainer_name = action_label.split(":", 1)[1]
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, "Play", "play") and str(get_val(opt, "name", "")).lower() == trainer_name.lower()]
                 if not mapped_indices:
                     mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (7, "Play", "play")]
             elif action_label.startswith("retreat:"):
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (10, 12, "Retreat", "retreat")]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (10, "Retreat", "retreat")]
             elif action_label.startswith("ability:"):
                 ability_name = action_label.split(":", 1)[1]
-                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (11, 15, "Ability", "ability") and str(get_val(opt, "name", "")).lower() == ability_name.lower()]
+                mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15, "Ability", "ability") and str(get_val(opt, "name", "")).lower() == ability_name.lower()]
                 if not mapped_indices:
-                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (11, 15, "Ability", "ability")]
+                    mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (9, 11, 15, "Ability", "ability")]
 
             # If no matches, or action is PASS, look for pass/done (Type 14)
             if not mapped_indices or action_label == "pass":
