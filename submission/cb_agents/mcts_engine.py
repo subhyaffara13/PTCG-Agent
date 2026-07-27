@@ -66,7 +66,7 @@ def _to_cpp_compatible_state(gs: dict) -> dict:
 
 
 class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
-    def __init__(self, c_puct: float = 1.25, num_simulations: int = 200, belief_tracker=None,
+    def __init__(self, c_puct: float = 1.25, num_simulations: int = 800, belief_tracker=None,
                  value_network: BaseValueNetwork | None = None, policy_network: BasePolicyNetwork | None = None):
         # Dynamically load c_puct from hyperparam state if present
         loaded_c_puct = c_puct
@@ -143,7 +143,12 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
         # Attempt to run C++ search
         if HAS_CPP and ptcg_core is not None:
             try:
-                time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
+                # Dynamic Time Banking: scale time limit up to 2.5s when overall time remaining > 15s
+                if time_remaining and time_remaining > 15.0:
+                    time_limit = min(2.5, time_remaining * 0.1)
+                else:
+                    time_limit = min(0.85, time_remaining - 0.5 if time_remaining else 0.85)
+                    
                 state_dict = _to_cpp_compatible_state(game_state)
                 state_dict["legal_actions"] = canonical_actions
                 

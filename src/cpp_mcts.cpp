@@ -427,8 +427,8 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
     
     auto startTime = std::chrono::steady_clock::now();
     
-    // Cap maximum time limit at 0.75s to guarantee no Kaggle MCTS timeouts
-    double effective_time_limit = std::min(timeLimitSec, 0.75);
+    // Cap maximum time limit dynamically up to 2.5s when time banking allows
+    double effective_time_limit = std::min(timeLimitSec, 2.5);
     
     for (int sim = 0; sim < num_simulations; ++sim) {
         auto elapsed = std::chrono::duration<double>(std::chrono::steady_clock::now() - startTime).count();
