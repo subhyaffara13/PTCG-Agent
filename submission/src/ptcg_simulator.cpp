@@ -399,6 +399,31 @@ void apply_action(BoardState& state, const std::string& action) {
             }
         }
         
+        // Apply Elemental Weakness (2x) and Resistance (-30)
+        auto attacker_card = CardRegistry::getInstance().getCard(state.me.active.id);
+        auto defender_card = CardRegistry::getInstance().getCard(state.opponent.active.id);
+        if (attacker_card && defender_card) {
+            std::string att_type = attacker_card->element_type;
+            std::string def_type = defender_card->element_type;
+            std::transform(att_type.begin(), att_type.end(), att_type.begin(), ::tolower);
+            std::transform(def_type.begin(), def_type.end(), def_type.begin(), ::tolower);
+            
+            // Check elemental weakness advantage:
+            // Water (water) -> Grass/Lightning
+            // Fire (fire) -> Water
+            // Lightning (lightning) -> Fighting
+            // Grass (grass) -> Fire
+            bool has_weakness = false;
+            if (def_type.find("water") != std::string::npos && (att_type.find("lightning") != std::string::npos || att_type.find("grass") != std::string::npos)) has_weakness = true;
+            else if (def_type.find("fire") != std::string::npos && att_type.find("water") != std::string::npos) has_weakness = true;
+            else if (def_type.find("lightning") != std::string::npos && att_type.find("fighting") != std::string::npos) has_weakness = true;
+            else if (def_type.find("grass") != std::string::npos && att_type.find("fire") != std::string::npos) has_weakness = true;
+            
+            if (has_weakness) {
+                actual_damage *= 2;
+            }
+        }
+
         state.opponent.active.hp = std::max(0, state.opponent.active.hp - actual_damage);
         if (state.opponent.active.hp <= 0) {
             int prize_yield = 1;

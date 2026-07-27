@@ -391,6 +391,25 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
     if (next_legal_actions.empty()) return "pass";
     if (next_legal_actions.size() == 1) return next_legal_actions.at(0);
     
+    // Prune redundant 'pass' if legal attacks or attachments are available
+    bool has_active_plays = false;
+    for (const auto& a : next_legal_actions) {
+        if (a.rfind("attack", 0) == 0 || a.rfind("attach_energy", 0) == 0 || a.rfind("bench", 0) == 0 || a.rfind("evolve", 0) == 0) {
+            has_active_plays = true;
+            break;
+        }
+    }
+    if (has_active_plays && next_legal_actions.size() > 1) {
+        std::vector<std::string> pruned_actions;
+        for (const auto& a : next_legal_actions) {
+            if (a != "pass") pruned_actions.push_back(a);
+        }
+        if (!pruned_actions.empty()) {
+            next_legal_actions = pruned_actions;
+        }
+    }
+    if (next_legal_actions.size() == 1) return next_legal_actions.at(0);
+    
     cpp_MCTSNode root;
     root.state_hash = "turn_" + std::to_string(rootState.turn_number);
     
@@ -408,9 +427,12 @@ std::string cpp_MCTSEngine::search(const BoardState& rootState, double timeLimit
     
     auto startTime = std::chrono::steady_clock::now();
     
+    // Cap maximum time limit at 0.75s to guarantee no Kaggle MCTS timeouts
+    double effective_time_limit = std::min(timeLimitSec, 0.75);
+    
     for (int sim = 0; sim < num_simulations; ++sim) {
         auto elapsed = std::chrono::duration<double>(std::chrono::steady_clock::now() - startTime).count();
-        if (elapsed >= timeLimitSec) {
+        if (elapsed >= effective_time_limit) {
             break;
         }
         

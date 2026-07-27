@@ -104,6 +104,21 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
                 if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
                     score -= 12.0
 
+        # Deck-Out Safeguard: check remaining deck count
+        try:
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                deck_count = get_val(players[my_idx], "deckCount", 60)
+                cname_lower = str(card_name).lower()
+                is_draw_card = any(d in cname_lower for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
+                if is_draw_card:
+                    if deck_count <= 3:
+                        score -= 500.0  # COMPLETE BAN: Never draw cards when 3 or fewer left
+                    elif deck_count <= 8:
+                        score -= 100.0  # HEAVY PENALTY: Avoid drawing cards when low on deck
+        except Exception:
+            pass
+
         # Type-specific scoring
         opt_type = get_val(opt, "type")
         if opt_type in (12, 13):  # Attack
