@@ -1,9 +1,9 @@
 {
-  "prize_weight": 0.49999999999999983,
-  "hand_weight": 0.2600000000000001,
-  "board_weight": 0.3400000000000001,
-  "energy_weight": 0.42000000000000015,
+  "prize_weight": 0.5999999999999999,
+  "hand_weight": 0.30000000000000016,
+  "board_weight": 0.40000000000000013,
+  "energy_weight": 0.5000000000000002,
   "active_hp_weight": 0.01,
-  "evolution_combo_weight": 0.2600000000000001,
-  "trainer_utility_weight": 0.18000000000000005
+  "evolution_combo_weight": 0.30000000000000016,
+  "trainer_utility_weight": 0.20000000000000007
 }
