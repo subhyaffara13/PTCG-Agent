@@ -858,12 +858,18 @@ def agent(observation, configuration=None):
                 smart_order = make_smart_choice(select, observation, fallback_action)
                 # Sort mapped_indices based on smart_order ranking
                 mapped_indices.sort(key=lambda idx: smart_order.index(idx) if idx in smart_order else 999)
-            elif not mapped_indices and action_label != "pass":
-                smart_cand = make_smart_choice(select, observation, fallback_action)
-                if smart_cand:
-                    mapped_indices = smart_cand
+            # If prefix matching yielded no indices and action is not explicitly PASS,
+            # query smart choice over all non-pass legal options first
+            if not mapped_indices and action_label != "pass":
+                non_pass_opts = [i for i, opt in enumerate(options) if get_val(opt, "type") not in (14, "End", "pass")]
+                if non_pass_opts:
+                    smart_cand = make_smart_choice(select, observation, fallback_action)
+                    if smart_cand:
+                        mapped_indices = [idx for idx in smart_cand if idx in non_pass_opts]
+                if not mapped_indices:
+                    mapped_indices = non_pass_opts
 
-            # If still nothing, or action is PASS, look for pass/done (Type 14)
+            # If still nothing, or action is explicitly PASS, look for pass/done (Type 14)
             if not mapped_indices or action_label == "pass":
                 mapped_indices = [i for i, opt in enumerate(options) if get_val(opt, "type") in (14, "End", "pass")]
 

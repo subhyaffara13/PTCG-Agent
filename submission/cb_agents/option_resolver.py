@@ -104,38 +104,26 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
                 if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
                     score -= 12.0
 
+        # Deck-Out Safeguard: check remaining deck count
+        try:
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                deck_count = get_val(players[my_idx], "deckCount", 60)
+                cname_lower = str(card_name).lower()
+                is_draw_card = any(d in cname_lower for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
+                if is_draw_card:
+                    if deck_count <= 3:
+                        score -= 500.0  # COMPLETE BAN: Never draw cards when 3 or fewer left
+                    elif deck_count <= 8:
+                        score -= 100.0  # HEAVY PENALTY: Avoid drawing cards when low on deck
+        except Exception:
+            pass
+
         # Type-specific scoring
         opt_type = get_val(opt, "type")
         if opt_type in (12, 13):  # Attack
             score += 50.0
         elif opt_type == 8:  # Energy attach or Bench/Evolve
-            area = get_val(opt, "area")
-            in_play_area = get_val(opt, "inPlayArea")
-            # If attaching energy to active (inPlayArea == 4): check active HP
-            if in_play_area == 4:
-                try:
-                    players = get_val(current, "players", [])
-                    if len(players) > my_idx and players[my_idx]:
-                        act_list = get_val(players[my_idx], "active", [])
-                        if act_list and len(act_list) > 0 and isinstance(act_list[0], dict):
-                            act_hp = get_val(act_list[0], "hp", 100)
-                            if act_hp <= 30:
-                                score -= 30.0  # Avoid attaching energy to dying active
-                except Exception:
-                    pass
-            # If benched card choice: prevent bench over-filling with weak support
-            elif in_play_area == 5 or area == 12:
-                try:
-                    players = get_val(current, "players", [])
-                    if len(players) > my_idx and players[my_idx]:
-                        bench = get_val(players[my_idx], "bench", [])
-                        if len(bench) >= 3:
-                            # Bench has 3+ slots filled: heavily penalize non-essential support
-                            cname_lower = str(card_name).lower()
-                            if any(s in cname_lower for s in ("bidoof", "dunsparce", "snom", "remoraid")):
-                                score -= 25.0
-                except Exception:
-                    pass
             score += 20.0
 
         scored_options.append((idx, score))

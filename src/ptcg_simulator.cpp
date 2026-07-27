@@ -120,6 +120,8 @@ void CardRegistry::loadMetadata(const std::string& path) {
                     else if (st.find("stage 2") != std::string::npos) currentCard.stage = CardStage::STAGE2;
                 } else if (keyStr == "previous_stage") {
                     currentCard.previous_stage = valStr;
+                } else if (keyStr == "element_type") {
+                    currentCard.element_type = valStr;
                 }
             }
         }

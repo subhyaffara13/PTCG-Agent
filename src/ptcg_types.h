@@ -39,6 +39,7 @@ struct Card {
     int energy_cost = 0;
     float utility_score = 0.0f;
     std::string archetype;
+    std::string element_type;
     std::string previous_stage;
     bool is_full = false;
 };
