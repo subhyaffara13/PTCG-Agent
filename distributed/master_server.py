@@ -85,6 +85,9 @@ class MasterServer:
         except Exception as e:
             logger.warning(f"Failed to start master beacon: {e}")
         
+        # Start process_results background thread to collect worker results and trigger PPO trainer
+        threading.Thread(target=self.handlers.process_results, daemon=True).start()
+
         try:
             while self.running:
                 conn, addr = self._accept_with_timeout(1.0)
