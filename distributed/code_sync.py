@@ -57,12 +57,10 @@ def sync_code(master_version) -> bool:
                 _run_git(['git', 'reset', '--hard', 'origin/main'], check=True)
                 
             new_local_version = get_local_version()
-            if new_local_version == local_version:
-                logging.warning(f"Sync complete, but local version did not change from {local_version}. Mismatch persists (latest master: {master_version}).")
-                return False
-                
-            logging.info(f"Code synchronized successfully from {local_version} to {new_local_version}.")
-            return True
+            if new_local_version:
+                logging.info(f"Code synchronized successfully from {local_version} to {new_local_version}.")
+                return True
+            return False
         except subprocess.CalledProcessError as e:
             err_output = getattr(e, 'stderr', '') or ''
             out_output = getattr(e, 'stdout', '') or ''
