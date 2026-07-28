@@ -137,13 +137,27 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
             players = get_val(current, "players", [])
             if len(players) > my_idx and players[my_idx]:
                 deck_count = get_val(players[my_idx], "deckCount", 60)
-                cname_lower = str(card_name).lower()
                 is_draw_card = any(d in cname_lower for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
                 if is_draw_card:
                     if deck_count <= 3:
                         score -= 500.0  # COMPLETE BAN: Never draw cards when 3 or fewer left
                     elif deck_count <= 8:
                         score -= 100.0  # HEAVY PENALTY: Avoid drawing cards when low on deck
+        except Exception:
+            pass
+
+        # Status Effect Counter-Play (Sleep, Paralysis, Confusion, Poison, Burn, Lock)
+        # Prioritize Switch/Retreat/Cleanse cards when Active Pokémon is status afflicted
+        try:
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                active_poke = get_val(players[my_idx], "active", {})
+                status_list = get_val(active_poke, "specialConditions", []) or get_val(active_poke, "status", [])
+                if status_list:
+                    cname_low = str(card_name).lower()
+                    is_cleanse_switch = any(sw in cname_low for sw in ("switch", "rope", "cart", "scoop", "turo", "curler", "bird keeper"))
+                    if is_cleanse_switch:
+                        score += 35.0  # High priority to switch out of Asleep/Paralyzed/Confused state!
         except Exception:
             pass
 
