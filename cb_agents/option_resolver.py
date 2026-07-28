@@ -100,9 +100,22 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
             card_id_int = getattr(card, "card_id", None)
             if card_id_int is not None and hasattr(registry, "learned_dos"):
                 if int(card_id_int) in registry.learned_dos:
-                    score += 12.0
+                    score += 8.0  # Equalized DO boost
                 if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
-                    score -= 12.0
+                    score -= 8.0  # Equalized DON'T penalty
+
+        # Dynamic Bench Density & Setup Duration Wiring from Harvested Metadata
+        try:
+            target_bench = getattr(registry, "target_bench_density", None)
+            if target_bench and target_bench > 0:
+                players = get_val(current, "players", [])
+                if len(players) > my_idx and players[my_idx]:
+                    bench = get_val(players[my_idx], "bench", [])
+                    # If bench count is below target density, award extra priority to benched cards
+                    if len(bench) < int(target_bench) and get_val(opt, "inPlayArea") in (5, 12):
+                        score += 15.0
+        except Exception:
+            pass
 
         # Deck-Out Safeguard: check remaining deck count
         try:

@@ -84,6 +84,14 @@ def extract_deck_anti_patterns(deck: List[int], learned_donts: dict, save_donts_
                     if rule not in learned_donts["deck_donts"]:
                         learned_donts["deck_donts"].append(rule)
                         changed = True
+                # Also extract specific un-synergistic card_ids into deck_donts
+                from collections import Counter
+                losing_cids = [cid for cid, cnt in Counter(deck).items() if cnt >= 3]
+                for lcid in losing_cids:
+                    cid_rule = {"card_id": int(lcid), "reason": "Losing match card over-presence"}
+                    if cid_rule not in learned_donts["deck_donts"]:
+                        learned_donts["deck_donts"].append(cid_rule)
+                        changed = True
                 if changed:
                     save_donts_fn()
                     logger.info(f"Extracted {len(donts)} LLM-derived deck anti-patterns successfully.")
