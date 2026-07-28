@@ -83,63 +83,35 @@ class GameRunner(BaseAgent):
         if not isinstance(d_base, list): d_base = DEFAULT_DECK
         if not isinstance(d_new, list): d_new = DEFAULT_DECK
 
-        # 1. Initialize League Manager
+        # 1. Initialize League Manager & Gauntlet Runner
         from factory.league_manager import LeagueManager
+        from factory.gauntlet_runner import GauntletRunner
         league = LeagueManager()
+        gauntlet = GauntletRunner(str(self.log_dir.parent / "skills"))
 
-        # RUN PLAYS IN PARALLEL: deck tests and variance tests
-        # Organized as symmetric twin pairs (orig/swap) under shared seeds
+        # RUN GAUNTLET ITERATION: 9 Total Games (1 Reasoning + 4 Archetype Twin Pairs)
         games_config: list[tuple[str, list[int], list[int], bool, bool, int | None, str | None, str | None]] = [
             ("reasoning_test", d_base, d_base, False, True, None, None, None)
         ]
         league_matchups = {}
 
-        for j in range(num_matchups):
-            seed = 1000 + j
-            
-            # Determine opponent deck (65% chance to matchmake against a league exploiter/snapshot)
-            opponent_deck = d_base
-            opp_name = "main_agent"
-            opponent_model_path = None
-            if random.random() < 0.65:
-                opp_name = league.matchmake()
-                if opp_name.startswith("checkpoint_"):
-                    opponent_deck = d_base
-                    opponent_model_path = league.get_neural_opponent_path(opp_name)
-                    league_matchups[f"deck_test_{j}_orig"] = opp_name
-                    league_matchups[f"deck_test_{j}_swap"] = opp_name
-                else:
-                    opp_deck_path = Path("skills/league") / f"{opp_name}.csv"
-                    if opp_deck_path.exists():
-                        try:
-                            loaded_deck = []
-                            import csv
-                            with open(opp_deck_path, "r", encoding="utf-8") as f:
-                                for row in csv.DictReader(f):
-                                    loaded_deck.extend([int(row["card_id"])] * int(row["count"]))
-                            if len(loaded_deck) == 60:
-                                opponent_deck = loaded_deck
-                                # Track that this game is a league matchup
-                                league_matchups[f"deck_test_{j}_orig"] = opp_name
-                                league_matchups[f"deck_test_{j}_swap"] = opp_name
-                        except Exception as e:
-                            logger.error(f"Failed to load league deck {opp_deck_path}: {e}")
-                    else:
-                        logger.warning(f"League deck path {opp_deck_path} does not exist.")
+        # 4 Core Meta-Archetypes: Aggro (Lightning), Water (Baxcalibur), Fire (Charizard), Control (Pidgeot)
+        core_archetypes = ["Aggro", "Control", "Setup", "Stall"]
+        mutated_new = _mutate_deck(d_new)
 
-            # Apply soft deck mutation for training diversity (swap 2-5 cards)
-            mutated_new = _mutate_deck(d_new)
-
-            # Deck test twin pair: Player A (opponent_deck) vs Player B (mutated_new)
-            games_config.extend([
-                (f"deck_test_{j}_orig", opponent_deck, mutated_new, False, False, seed, opponent_model_path, None),
-                (f"deck_test_{j}_swap", mutated_new, opponent_deck, False, False, seed, None, opponent_model_path)
-            ])
+        for idx, arch in enumerate(core_archetypes):
+            seed = 2000 + idx
+            opp_deck = gauntlet._generate_real_deck(arch)
+            opp_name = f"gauntlet_{arch}"
             
-            # Variance baseline twin pair: Player A (d_base) vs Player B (d_base)
+            # Record matchup for Elo tracking
+            league_matchups[f"deck_test_{idx}_orig"] = opp_name
+            league_matchups[f"deck_test_{idx}_swap"] = opp_name
+            
+            # Symmetric Twin Pair against Real League Archetype
             games_config.extend([
-                (f"variance_baseline_{j}_orig", d_base, d_base, False, False, seed, None, None),
-                (f"variance_baseline_{j}_swap", d_base, d_base, False, False, seed, None, None)
+                (f"deck_test_{idx}_orig", opp_deck, mutated_new, False, False, seed, None, None),
+                (f"deck_test_{idx}_swap", mutated_new, opp_deck, False, False, seed, None, None)
             ])
 
         results = {}
