@@ -104,16 +104,31 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
                 if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
                     score -= 8.0  # Equalized DON'T penalty
 
-        # Dynamic Bench Density & Setup Duration Wiring from Harvested Metadata
+        # Dynamic Bench Density & Bench Reserve (Keep 1 Slot Open for Tech Drops)
         try:
-            target_bench = getattr(registry, "target_bench_density", None)
-            if target_bench and target_bench > 0:
-                players = get_val(current, "players", [])
-                if len(players) > my_idx and players[my_idx]:
-                    bench = get_val(players[my_idx], "bench", [])
-                    # If bench count is below target density, award extra priority to benched cards
-                    if len(bench) < int(target_bench) and get_val(opt, "inPlayArea") in (5, 12):
-                        score += 15.0
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                bench = get_val(players[my_idx], "bench", [])
+                bench_count = len(bench) if isinstance(bench, list) else 0
+                opt_area = get_val(opt, "inPlayArea")
+                # Bench Overcrowding Penalty: if bench already has 4 Pokémon, reserve the 5th slot for tech Pokémon!
+                if bench_count >= 4 and opt_area in (5, 12):
+                    cname_low = str(card_name).lower()
+                    is_tech_drop = any(t in cname_low for t in ("fezandipiti", "squawkabilly", "lumi", "rotom", "mew"))
+                    if not is_tech_drop:
+                        score -= 20.0  # Reserve slot for tech Pokémon
+        except Exception:
+            pass
+
+        # Stadium Counter-Play: Save Stadium cards to overwrite opponent's Stadium
+        try:
+            cname_low = str(card_name).lower()
+            if "stadium" in cname_low or any(st in cname_low for st in ("court", "path", "temple", "beach", "chamber")):
+                opp_stadium = get_val(current, "stadium", None)
+                if not opp_stadium:
+                    score -= 10.0  # Hold Stadium in hand until opponent plays theirs
+                else:
+                    score += 15.0  # Overwrite opponent's Stadium!
         except Exception:
             pass
 

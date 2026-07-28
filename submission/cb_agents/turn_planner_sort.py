@@ -130,14 +130,22 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                         micro_rank += 12  # Moderate penalty to conserve deck size when running lower than opponent
                     else:
                         micro_rank -= 5
-                # Mill pursuit: prioritize shuffle-mill when opponent will deck out before us
+                # Mill pursuit & Hand-Lock Disruption: smart Iono/Judge timing
                 is_iono_judge = any(k in name for k in {"Iono", "Judge"})
                 if is_iono_judge:
                     dc = game_state.get("my_deck_count", 60)
                     opp_dc = game_state.get("opponent_deck_count", 60)
-                    if opp_dc < dc and opp_dc < 12:
-                        micro_rank -= 15  # High priority: accelerate opponent's deck-out
+                    opp_searched = game_state.get("opponent_searched_last_turn", False)
+                    opp_passed_empty = game_state.get("opponent_passed_empty_last_turn", False)
+                    
+                    if opp_searched:
+                        micro_rank -= 15  # Disrupt opponent after they searched for a winning piece
+                    elif opp_passed_empty:
+                        micro_rank += 25  # PENALTY: Opponent is hand-locked/bricked — don't give them fresh cards!
+                    elif opp_dc < dc and opp_dc < 12:
+                        micro_rank -= 15  # Accelerate opponent's deck-out
                     elif opp_dc < 8:
+                        micro_rank += 50  # Avoid giving opponent cards when near deckout
                         micro_rank -= 10  # Still valuable to shrink opponent deck
                 elif "Ball" in name:
                     micro_rank -= 1

@@ -59,10 +59,14 @@ class OpponentModel(BaseAgent):
             if card not in self.revealed_state:
                 self.revealed_state.append(card)
 
-        # IDENTIFY ARCHETYPE
+        # IDENTIFY ARCHETYPE & TRACK OPPONENT ENERGY POOL
         self.identified_archetype, self.archetype_confidence = identify_opponent_archetype(
             self.revealed_state, self.archetypes
         )
+        
+        # Count opponent energy cards in revealed state (board/discard)
+        opp_energy_count = sum(1 for c in self.revealed_state if any(e_kw in str(c).lower() for e_kw in ("energy", "grass", "fire", "water", "lightning", "psychic", "fighting", "darkness", "metal")))
+        self.opponent_energy_starved = opp_energy_count >= 6  # Opponent running ~8 energy has used 6+
 
         # FILL INFERRED STATE
         if self.identified_archetype != "unknown" and self.identified_archetype in self.archetypes:

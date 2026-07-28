@@ -1,9 +1,14 @@
 from typing import List, Dict
 
 class SequencingEngine:
-    PHASE_ORDER = ["search", "draw", "board", "attack"]
+    PHASE_ORDER = ["zero_cost_draw", "search", "draw", "board", "attack"]
     
     def get_phase(self, action: str) -> str:
+        # Zero-cost draw abilities (Concealed Cards, Refinement, Trade) run BEFORE deck search!
+        if action.startswith("ability:"):
+            target = action.split(":", 1)[1].lower()
+            if any(dk in target for dk in ("concealed", "refinement", "trade", "shining arcana", "draw")):
+                return "zero_cost_draw"
         if action.startswith("play_trainer:"):
             action_suffix = action[13:].replace("_", " ").replace("'", "").lower()
             from cb_agents.card_registry import CardRegistry
