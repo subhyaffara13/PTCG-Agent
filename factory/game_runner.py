@@ -171,6 +171,14 @@ class GameRunner(BaseAgent):
                 results[res["label"]] = res
             except Exception as e:
                 logger.error(f"Process execution crashed: {e}", exc_info=True)
+                if "BrokenProcessPool" in type(e).__name__ or "terminated abruptly" in str(e):
+                    logger.warning("Worker process pool broken. Resetting GameRunner executor...")
+                    try:
+                        if GameRunner._executor:
+                            GameRunner._executor.shutdown(wait=False)
+                    except Exception:
+                        pass
+                    GameRunner._executor = None
 
         # Normalize swapped twin games:
         # In swap configurations, deck_a was d_new and deck_b was opponent_deck.
