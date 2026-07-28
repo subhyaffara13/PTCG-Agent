@@ -26,7 +26,9 @@ class GauntletRunner:
     def _generate_real_deck(self, archetype: str) -> list:
         """Loads a realistic, competitive deck for the gauntlet opponent from skills/league/ or card pool."""
         arch_lower = archetype.lower()
-        league_file = self.skills_dir / f"league/{arch_lower}_exploiter.csv"
+        arch_map = {"setup": "combo", "stall": "control"}
+        file_key = arch_map.get(arch_lower, arch_lower)
+        league_file = self.skills_dir / f"league/{file_key}_exploiter.csv"
         if league_file.exists():
             import csv
             try:
@@ -54,7 +56,8 @@ class GauntletRunner:
             return [int(c["card_id"]) for c in cand]
         except Exception as e:
             logger.warning(f"Failed to generate real deck for {archetype}: {e}. Falling back to default.")
-            return [1]*12 + [100]*10 + [200]*38
+            from factory.game_runner import DEFAULT_DECK
+            return list(DEFAULT_DECK)
 
     def run_gauntlet(self, candidate_deck: list, num_games_per_archetype: int = 3) -> bool:
         """
