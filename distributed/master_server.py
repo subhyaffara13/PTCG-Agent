@@ -24,9 +24,12 @@ if not logger.handlers:
     stream_h.setFormatter(formatter)
     logger.addHandler(stream_h)
     
-    file_h = RotatingFileHandler("logs/master_server.log", maxBytes=10*1024*1024, backupCount=3, encoding="utf-8", delay=True)
-    file_h.setFormatter(formatter)
-    logger.addHandler(file_h)
+    try:
+        file_h = logging.FileHandler("logs/master_server.log", mode="a", encoding="utf-8")
+        file_h.setFormatter(formatter)
+        logger.addHandler(file_h)
+    except Exception:
+        pass
 
 
 def _load_deck(path: str) -> list:
