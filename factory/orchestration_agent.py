@@ -119,6 +119,9 @@ def main():
                             logger.warning(f"[SYNC] Code synchronization failed: {sync_e}")
                             
                         run_worker_loop(winner_ip, m_version)
+        except KeyboardInterrupt:
+            logger.info("Orchestration Agent received KeyboardInterrupt (Ctrl+C). Terminating...")
+            sys.exit(0)
         except Exception as e:
             logger.error(f"Critical error in Orchestration Agent loop: {e}")
             time.sleep(5)
