@@ -138,7 +138,12 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                     opp_searched = game_state.get("opponent_searched_last_turn", False)
                     opp_passed_empty = game_state.get("opponent_passed_empty_last_turn", False)
                     
-                    if opp_searched:
+                    opp_prizes = game_state.get("opponent_prizes", 6)
+                    opp_hand_count = game_state.get("opponent_hand_count", 0)
+                    
+                    if opp_prizes <= 2 and opp_hand_count >= 4:
+                        micro_rank -= 30  # CRITICAL HAND-LOCK: Opponent is near victory with large hand — shrink hand to 1-2 cards!
+                    elif opp_searched:
                         micro_rank -= 15  # Disrupt opponent after they searched for a winning piece
                     elif opp_passed_empty:
                         micro_rank += 25  # PENALTY: Opponent is hand-locked/bricked — don't give them fresh cards!

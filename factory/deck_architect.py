@@ -47,7 +47,22 @@ class DeckArchitect(BaseAgent):
         return {key: []}
 
     def build(self, improvement_notes: dict) -> dict:
-        current_archetype = improvement_notes.get("next_eval_context", "aggro")
+        # Read metagame distribution report if available to auto-select counter archetype
+        meta_dist_path = self.log_dir / "metagame_distribution.json"
+        if meta_dist_path.exists():
+            try:
+                meta_info = json.loads(meta_dist_path.read_text(encoding="utf-8"))
+                dominant_meta = meta_info.get("dominant_meta", "")
+                if dominant_meta == "Fire":
+                    current_archetype = "combo"  # Water beats Fire 2x
+                elif dominant_meta == "Lightning":
+                    current_archetype = "aggro"  # Fighting/Aggro counter
+                elif dominant_meta == "Control":
+                    current_archetype = "aggro"  # Fast Aggro counters Control
+            except Exception:
+                pass
+
+        current_archetype = improvement_notes.get("next_eval_context", current_archetype)
         if "test" in current_archetype:
             current_archetype = current_archetype.replace("_test", "")
         if current_archetype not in ("aggro", "control", "combo", "utility"):
