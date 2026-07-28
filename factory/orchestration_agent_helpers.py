@@ -95,7 +95,8 @@ def auto_submit_if_ready():
         
         if candidate_deck:
             gauntlet = GauntletRunner()
-            passed = gauntlet.run_gauntlet(candidate_deck, num_games_per_archetype=2)
+            res = gauntlet.run_gauntlet(candidate_deck, num_games_per_archetype=2)
+            passed = res.get("passed", False) if isinstance(res, dict) else bool(res)
             if not passed:
                 logger.info("REJECTING AUTO-SUBMIT: Failed Gauntlet gate (win rate < 50%)")
                 return

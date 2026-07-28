@@ -96,9 +96,15 @@ class GauntletRunner:
             logger.info(f"Stage Result vs {archetype}: {archetype_wins} wins out of {total_stage_games} games played.")
             
         win_rate = total_wins / max(total_games, 1)
-        logger.info(f"Gauntlet Complete. Overall Win Rate: {win_rate*100:.1f}% ({total_wins}/{total_games} wins)")
+        passed = win_rate >= 0.50
+        logger.info(f"Gauntlet Complete. Overall Win Rate: {win_rate*100:.1f}% ({total_wins}/{total_games} wins) - Passed: {passed}")
         
-        return win_rate
+        return {
+            "passed": passed,
+            "win_rate": float(win_rate),
+            "total_wins": int(total_wins),
+            "total_games": int(total_games)
+        }
 
 
 if __name__ == "__main__":

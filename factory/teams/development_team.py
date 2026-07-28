@@ -89,13 +89,14 @@ class DevelopmentTeam:
                     from factory.deck_loader import DeckLoader
                     loader = DeckLoader(pathlib.Path("skills"))
                     cand_deck = [int(c.get("card_id", 1)) for c in loader.load_card_pool()[:60]]
-                    gauntlet_win_rate = GauntletRunner().run_gauntlet(cand_deck, num_games_per_archetype=10)
-                    if gauntlet_win_rate < 0.50:
-                        logger.error(f"Gauntlet Guard Rejected LLM Patch: Win rate fell to {gauntlet_win_rate*100:.1f}%. Reverting...")
+                    res = GauntletRunner().run_gauntlet(cand_deck, num_games_per_archetype=10)
+                    win_rate = res.get("win_rate", 0.0) if isinstance(res, dict) else float(res)
+                    if win_rate < 0.50:
+                        logger.error(f"Gauntlet Guard Rejected LLM Patch: Win rate fell to {win_rate*100:.1f}%. Reverting...")
                         subprocess.run(["git", "restore", "submission/src/"], check=False)
                         subprocess.run(["git", "restore", "submission/cb_agents/"], check=False)
                     else:
-                        logger.info(f"Gauntlet Guard Passed! Win rate: {gauntlet_win_rate*100:.1f}%. Keeping patch.")
+                        logger.info(f"Gauntlet Guard Passed! Win rate: {win_rate*100:.1f}%. Keeping patch.")
                 except Exception as g_err:
                     logger.warning(f"Gauntlet evaluation guard encountered exception: {g_err}. Proceeding with caution.")
 
