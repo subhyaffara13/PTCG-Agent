@@ -167,18 +167,19 @@ class GameRunner(BaseAgent):
                 raise
         for future in futures:
             try:
-                res = future.result()
+                # Enforce a 120s max timeout per evaluation game future to prevent hung workers
+                res = future.result(timeout=120.0)
                 results[res["label"]] = res
             except Exception as e:
-                logger.error(f"Process execution crashed: {e}", exc_info=True)
-                if "BrokenProcessPool" in type(e).__name__ or "terminated abruptly" in str(e):
-                    logger.warning("Worker process pool broken. Resetting GameRunner executor...")
-                    try:
-                        if GameRunner._executor:
-                            GameRunner._executor.shutdown(wait=False)
-                    except Exception:
-                        pass
-                    GameRunner._executor = None
+                logger.error(f"Process execution crashed or timed out: {e}")
+                # Reset executor on timeout or pool breakage so hung child processes are killed and recreated cleanly
+                logger.warning("Resetting GameRunner worker pool to clear hung processes...")
+                try:
+                    if GameRunner._executor:
+                        GameRunner._executor.shutdown(wait=False, cancel_futures=True)
+                except Exception:
+                    pass
+                GameRunner._executor = None
 
         # Normalize swapped twin games:
         # In swap configurations, deck_a was d_new and deck_b was opponent_deck.
