@@ -47,6 +47,7 @@ class DeckArchitect(BaseAgent):
         return {key: []}
 
     def build(self, improvement_notes: dict) -> dict:
+        current_archetype = improvement_notes.get("next_eval_context", "aggro")
         # Read metagame distribution report if available to auto-select counter archetype
         meta_dist_path = self.log_dir / "metagame_distribution.json"
         if meta_dist_path.exists():
@@ -61,8 +62,6 @@ class DeckArchitect(BaseAgent):
                     current_archetype = "aggro"  # Fast Aggro counters Control
             except Exception:
                 pass
-
-        current_archetype = improvement_notes.get("next_eval_context", current_archetype)
         if "test" in current_archetype:
             current_archetype = current_archetype.replace("_test", "")
         if current_archetype not in ("aggro", "control", "combo", "utility"):
@@ -84,10 +83,15 @@ class DeckArchitect(BaseAgent):
         generator = DeckGenerator(self.card_pool, self.card_details, self.archetypes_data)
         scorer = DeckScorer(self.card_details, self.learned_dos, self.learned_donts)
 
-        # 1. Load seed decks
+        # 1. Load seed decks (only if all cards are present in current card pool)
+        card_pool_ids = {str(c.get("card_id")) for c in self.card_pool}
         seed_paths = [self.skills_dir / f"league/{current_archetype}_exploiter.csv", Path("cb_agents/deck_new.csv")]
-        seed_decks = [read_deck_csv(p) for p in seed_paths if p.exists()]
-        seed_decks = [d for d in seed_decks if len(d) == 60]
+        seed_decks = []
+        for p in seed_paths:
+            if p.exists():
+                d = read_deck_csv(p)
+                if len(d) == 60 and all(str(c.get("card_id")) in card_pool_ids for c in d):
+                    seed_decks.append(d)
 
         if seed_decks:
             # Score seeds to find the best starting point

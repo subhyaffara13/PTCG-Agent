@@ -43,7 +43,7 @@ class GameLogger(BaseAgent):
 
     def log_action(self, turn: int, agent_called: str, action_taken: str, 
                    game_state_before: Dict[str, Any], game_state_after: Dict[str, Any]):
-        if os.environ.get("SKIP_GAME_LOGS") == "1" or os.environ.get("FAST_SIM_MODE") == "true": return
+        if os.environ.get("SKIP_GAME_LOGS") == "1" or os.environ.get("FAST_SIM_MODE", "").lower() == "true": return
         self.action_logs.append({
             "turn": turn, "agent_called": agent_called, "action_taken": action_taken,
             "game_state_before": game_state_before, "game_state_after": game_state_after,
@@ -53,7 +53,7 @@ class GameLogger(BaseAgent):
     def log_reasoning(self, turn: int, strategy_active: str, hand_score: float, 
                       strategy_switch_considered: bool, opponent_archetype_confidence: float, 
                       reasoning_chain: str, reasoning_fired: bool, reasoning_outcome: str):
-        if os.environ.get("SKIP_GAME_LOGS") == "1" or os.environ.get("FAST_SIM_MODE") == "true": return
+        if os.environ.get("SKIP_GAME_LOGS") == "1" or os.environ.get("FAST_SIM_MODE", "").lower() == "true": return
         self.reasoning_logs.append({
             "turn": turn, "strategy_active": strategy_active, "hand_score": hand_score,
             "strategy_switch_considered": strategy_switch_considered,
@@ -64,7 +64,7 @@ class GameLogger(BaseAgent):
 
     def log_variance(self, turn: int, event_type: str, expected_outcome: str, 
                      actual_outcome: str, impact_score: float):
-        if os.environ.get("SKIP_GAME_LOGS") == "1" or os.environ.get("FAST_SIM_MODE") == "true": return
+        if os.environ.get("SKIP_GAME_LOGS") == "1" or os.environ.get("FAST_SIM_MODE", "").lower() == "true": return
         self.variance_logs.append({
             "turn": turn, "event_type": event_type if event_type in {"bad_draw", "coin_flip", "prize_card"} else "coin_flip",
             "expected_outcome": expected_outcome, "actual_outcome": actual_outcome, "impact_score": impact_score

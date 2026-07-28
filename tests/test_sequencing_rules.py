@@ -30,7 +30,7 @@ def test_energy_over_attachment_prevention(tmp_path):
         "my_active_pokemon": CHARGED_ACTIVE
     }, turn=1)
     seq = planner.receive(packet)["action_sequence"]
-    assert seq.index("attach_energy:Active") > seq.index("attack:Thunderbolt")
+    assert seq.index("attack:Thunderbolt") < seq.index("attach_energy:Active")
 
 def test_prized_attacker_strategy_switch(tmp_path):
     setup_skills_dir(tmp_path, "strategy_profiles.json", STRATEGY_PROFILES_EMPTY)
