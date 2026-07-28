@@ -124,13 +124,28 @@ class DeckGenerator(DeckMathMixin, DeckInjectionMixin, DeckBoundsMixin):
             self.add_card(random.choice(supp_pool), 1, deck, copies, ctr)
 
     def _matching_energies(self, deck, energy_cards):
-        """Find basic energies matching the element types in the deck."""
-        req = {self.card_details.get(str(c["card_id"]), {}).get("element_type", "")
-               for c in deck if c.get("card_type") == "Pokemon"}
-        req.discard("")
-        if not req:
-            req.add("{W}")
-        basic_e = [c for c in energy_cards if "Basic" in c.get("card_name", "")]
-        return ([e for e in basic_e if any(r in e.get("card_name", "") for r in req)]
-                or basic_e
-                or [{"card_id": "1", "card_name": "Basic Energy", "card_type": "Energy", "ev_score": 0.5}])
+        """Find basic energies matching the element types of Pokémon in the deck."""
+        element_to_energy_keyword = {
+            "{G}": "Grass", "{R}": "Fire", "{W}": "Water", "{L}": "Lightning",
+            "{P}": "Psychic", "{F}": "Fighting", "{D}": "Darkness", "{M}": "Metal",
+            "Grass": "Grass", "Fire": "Fire", "Water": "Water", "Lightning": "Lightning",
+            "Psychic": "Psychic", "Fighting": "Fighting", "Darkness": "Darkness", "Metal": "Metal"
+        }
+        
+        req_types = set()
+        for c in deck:
+            if c.get("card_type") == "Pokemon":
+                det = self.card_details.get(str(c.get("card_id")), {})
+                elem = det.get("element_type", "") or c.get("element_type", "")
+                if elem:
+                    kw = element_to_energy_keyword.get(elem) or element_to_energy_keyword.get(elem.strip())
+                    if kw:
+                        req_types.add(kw)
+        
+        if not req_types:
+            req_types.add("Lightning")  # Default fallback for Miraidon/Lightning decks
+            
+        basic_e = [c for c in energy_cards if c.get("card_type") == "Energy"]
+        matched = [e for e in basic_e if any(kw.lower() in e.get("card_name", "").lower() for kw in req_types)]
+        
+        return matched or basic_e or [{"card_id": 6, "card_name": "Basic Lightning Energy", "card_type": "Energy", "ev_score": 0.5}]
