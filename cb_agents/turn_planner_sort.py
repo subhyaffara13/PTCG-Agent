@@ -1,11 +1,24 @@
 import logging
+import json
 from typing import List
+from pathlib import Path
 from cb_agents.turn_planner_heuristics import _registry
 from cb_agents.constants import SCALING_ATTACKERS
 from cb_agents.heuristic_pipeline import _dead_weight_heuristic
 
 logger = logging.getLogger(__name__)
 _evo_cache = {}
+
+# Load priority_rules.json for strategic action ordering overrides
+_PRIORITY_RULES = []
+try:
+    for _pr_path in [Path("skills/priority_rules.json"), Path(__file__).resolve().parent.parent / "skills" / "priority_rules.json"]:
+        if _pr_path.exists():
+            _pr_data = json.loads(_pr_path.read_text(encoding="utf-8"))
+            _PRIORITY_RULES = _pr_data.get("rules", [])
+            break
+except Exception:
+    pass
 
 def _has_evolution_target(card_name: str, decklist: dict) -> bool:
     k = (card_name, frozenset(decklist.keys()))
@@ -67,6 +80,20 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                     cat_rank = rank
                     break
             micro_rank = 0
+            
+            # Apply priority_rules.json overrides for high-impact strategic patterns
+            if _PRIORITY_RULES:
+                action_lower = action.lower()
+                # Boss KO engine rule: if Boss's Orders can KO opponent's engine, max priority
+                if action.startswith("play_trainer:") and "boss" in action_lower:
+                    opp_bench = game_state.get("opponent_bench", [])
+                    engine_names = {"bibarel", "baxcalibur", "pidgeot", "kirlia", "gardevoir"}
+                    has_engine_target = any(
+                        isinstance(bp, dict) and any(en in str(bp.get("card_name", "")).lower() for en in engine_names)
+                        for bp in opp_bench
+                    ) if isinstance(opp_bench, list) else False
+                    if has_engine_target:
+                        micro_rank -= 20  # Highest priority: KO opponent's engine
             
             # Combo tag priority logic
             card_id = None

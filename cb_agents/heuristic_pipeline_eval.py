@@ -106,16 +106,27 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         if isinstance(ac, dict) and isinstance(opp_ac, dict):
             my_type = ac.get("element_type", "")
             opp_weak = opp_ac.get("weakness", "")
-            if my_type and opp_weak and my_type.lower() == opp_weak.lower():
-                v += 0.5  # Type advantage
+            has_weakness = my_type and opp_weak and my_type.lower() == opp_weak.lower()
+            if has_weakness:
+                v += 0.8  # Type advantage — strong attack bonus
         # Check if we can KO
         if isinstance(ac, dict) and not is_stunned:
             my_active_id = ac.get("id")
             if my_active_id is not None:
                 try:
                     card = _registry.get_full_skill(my_active_id)
-                    if card and card.damage_output >= opp_hp:
-                        v += 1.5  # KO bonus — this is likely the winning move
+                    if card:
+                        effective_dmg = card.damage_output
+                        # Apply 2x weakness if type advantage exists
+                        try:
+                            my_type_str = ac.get("element_type", "")
+                            opp_weak_str = opp_ac.get("weakness", "") if isinstance(opp_ac, dict) else ""
+                            if my_type_str and opp_weak_str and my_type_str.lower() == opp_weak_str.lower():
+                                effective_dmg *= 2
+                        except Exception:
+                            pass
+                        if effective_dmg >= opp_hp:
+                            v += 1.5  # KO bonus — this is likely the winning move
                 except Exception as e:
                     logger.debug(f"KO check registry error: {e}")
         # Opponent status awareness: bonus if opponent is asleep/paralyzed (can't attack back)

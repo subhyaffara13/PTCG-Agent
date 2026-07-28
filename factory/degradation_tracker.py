@@ -46,8 +46,37 @@ class DegradationTracker:
             self.win_rate_history.pop(0)
             self.diversity_history.pop(0)
 
+    def check_kaggle_score_trend(self) -> Dict[str, Any]:
+        try:
+            from kaggle.api.kaggle_api_extended import KaggleApi
+            api = KaggleApi()
+            api.authenticate()
+            subs = api.competition_submissions("pokemon-tcg-ai-battle")
+            if not subs:
+                return {'divergence_detected': False}
+            
+            recent_subs = [s for s in subs if getattr(s, 'publicScore', None) is not None][:5]
+            if len(recent_subs) < 3:
+                return {'divergence_detected': False}
+                
+            scores = [float(s.publicScore) for s in recent_subs]
+            if scores[0] < scores[1] and scores[1] < scores[2]:
+                return {'divergence_detected': True, 'trend': 'declining', 'scores': scores}
+            return {'divergence_detected': False}
+        except Exception as e:
+            logger.error(f"Failed to check kaggle score trend: {e}")
+            return {'divergence_detected': False}
+
     def evaluate_health(self) -> DegradationReport:
         res = evaluate_degradation_health(self.win_rate_history, self.diversity_history)
+        
+        kaggle_check = self.check_kaggle_score_trend()
+        if kaggle_check.get('divergence_detected'):
+            res["is_degraded"] = True
+            res["health_score"] -= 20.0
+            res["reasons"].append(f"Kaggle public score is strictly declining: {kaggle_check.get('scores')}")
+            res["suggested_action"] = "ROLLBACK_AND_BRANCH"
+
         return DegradationReport(
             is_degraded=res["is_degraded"],
             health_score=res["health_score"],

@@ -161,7 +161,10 @@ class CardRegistry:
                     cid = item.get("card_id")
                     if cid is not None:
                         self.learned_donts.add(int(cid))
-                self.behavior_donts_rules = donts_data.get("behavior_donts", [])
+                    elif item.get("condition"):
+                        # Condition-only entries (from LLM analysis) go into behavioral rules
+                        self.behavior_donts_rules.append(item)
+                self.behavior_donts_rules.extend(donts_data.get("behavior_donts", []))
         except Exception as e:
             logger.error(f"Failed to load learned_donts.json: {e}")
 

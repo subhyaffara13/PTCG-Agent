@@ -79,6 +79,29 @@ def auto_submit_if_ready():
     else:
         reason = f"Spacing: {elapsed_hours:.1f}h elapsed"
 
+    try:
+        from factory.gauntlet_runner import GauntletRunner
+        import csv
+        
+        candidate_deck = []
+        deck_file = Path("deck.csv")
+        if deck_file.exists():
+            with open(deck_file, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    count = int(row.get("count", 1))
+                    card_id = row.get("card_id", "")
+                    candidate_deck.extend([card_id] * count)
+        
+        if candidate_deck:
+            gauntlet = GauntletRunner()
+            passed = gauntlet.run_gauntlet(candidate_deck, num_games_per_archetype=2)
+            if not passed:
+                logger.info("REJECTING AUTO-SUBMIT: Failed Gauntlet gate (win rate < 50%)")
+                return
+    except Exception as e:
+        logger.error(f"Gauntlet gate crashed, skipping: {e}")
+
     logger.info(f"TRIGGERING SUBMISSION: {reason}")
     try:
         subprocess.run([sys.executable, "build_submission.py"], check=True)

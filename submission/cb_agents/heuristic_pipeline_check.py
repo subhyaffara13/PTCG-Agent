@@ -14,8 +14,20 @@ from cb_agents.card_utils import _get_prize_yield
 
 def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
                  opp_active_id, my_hp: int, legal_retreats: list,
-                 my_attached: int = 0, boss_prob: float = 0.0) -> dict:
-    if legal_attacks and my_damage >= opp_hp and my_damage > 0:
+                 my_attached: int = 0, boss_prob: float = 0.0,
+                 my_active_id=None) -> dict:
+    # Apply elemental weakness: check if our type is super-effective against opponent
+    effective_damage = my_damage
+    try:
+        if my_active_id is not None and opp_active_id is not None:
+            my_type = _registry.card_poke_type.get(int(my_active_id), "")
+            opp_weakness = _registry.card_weakness.get(int(opp_active_id), "")
+            if my_type and opp_weakness and my_type.lower() == opp_weakness.lower():
+                effective_damage = my_damage * 2  # 2x weakness multiplier
+    except Exception:
+        pass
+
+    if legal_attacks and effective_damage >= opp_hp and effective_damage > 0:
         import re
         best_attack = None
         for attack in legal_attacks:
@@ -28,12 +40,21 @@ def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
                     dmg_val = int(match.group(1))
             except Exception:
                 pass
+            # Apply weakness to individual move damage check too
+            try:
+                if my_active_id is not None and opp_active_id is not None:
+                    my_type = _registry.card_poke_type.get(int(my_active_id), "")
+                    opp_weakness = _registry.card_weakness.get(int(opp_active_id), "")
+                    if my_type and opp_weakness and my_type.lower() == opp_weakness.lower():
+                        dmg_val *= 2
+            except Exception:
+                pass
             if dmg_val >= opp_hp:
                 best_attack = attack
                 break
         if best_attack is None:
             best_attack = legal_attacks[0]
-        reasoning = f"Lethal: my_damage {my_damage} >= opp_hp {opp_hp}"
+        reasoning = f"Lethal: effective_damage {effective_damage} >= opp_hp {opp_hp} (weakness applied)"
         best_attack_name = str(best_attack).replace("attack:", "")
         return {"action_override": f"attack:{best_attack_name}", "reasoning_chain": reasoning}
     if opp_active_id is not None:

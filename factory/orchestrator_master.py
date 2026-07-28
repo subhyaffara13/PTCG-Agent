@@ -56,6 +56,17 @@ def run_hourly_checks(iteration: int):
     except Exception as e:
         logger.error(f"Error running AnalyticsTeam Kaggle self-healing audit: {e}")
 
+    try:
+        from factory.deep_replay_inspector import DeepReplayInspector
+        inspector = DeepReplayInspector()
+        if 'sub_id' in locals() and sub_id:
+            logger.info(f"Triggering DeepReplayInspector for latest losses in submission {sub_id}...")
+            inspector.inspect_latest_losses(submission_id=sub_id)
+    except ImportError:
+        pass
+    except Exception as e:
+        logger.error(f"Error running DeepReplayInspector: {e}")
+
 def run_master_loop(enable_distributed=True):
     logger.info("Orchestration Agent (Master Mode) started." if enable_distributed else "Orchestration Agent (Local Mode) started.")
     
