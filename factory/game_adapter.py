@@ -392,7 +392,11 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
             if len(mapped_indices) > 1 or (not mapped_indices and action_label != "pass"):
                 smart_cand = make_smart_choice(select, observation, fallback_action, str(orchestrator.skills_dir))
                 if smart_cand:
-                    mapped_indices = smart_cand
+                    # Filter smart choice order to prioritize indices matching the MCTS action target
+                    if mapped_indices:
+                        mapped_indices = [idx for idx in smart_cand if idx in mapped_indices] + [idx for idx in smart_cand if idx not in mapped_indices]
+                    else:
+                        mapped_indices = smart_cand
 
             if not mapped_indices: mapped_indices = [0]
 
