@@ -35,7 +35,7 @@ logger = logging.getLogger(__name__)
 def _load_optimized_deck(custom_path: str | None = None) -> list[int]:
     """Load the best deck from the optimizer pipeline output."""
     import csv
-    paths = [custom_path] if custom_path else ["staging/deck_new.csv", "cb_agents/deck_new.csv"]
+    paths = [custom_path] if custom_path else ["submission/deck.csv", "staging/deck_new.csv", "cb_agents/deck_new.csv", "deck.csv"]
     for deck_path in paths:
         p = Path(deck_path)
         if p.exists():
@@ -50,7 +50,7 @@ def _load_optimized_deck(custom_path: str | None = None) -> list[int]:
             except Exception as e:
                 logger.warning("Failed to load deck from %s: %s", deck_path, e)
     logger.warning("No optimized deck found, using fallback")
-    return [957]*4 + [734]*4 + [979]*4 + [855]*4 + [87]*2 + [226]*2 + [1121]*4 + [4]*3 + [2]*3 + [6]*4 + [733]*4 + [950]*4 + [1102]*4 + [1086]*4 + [1213]*4 + [1079]*4 + [1123]*2
+    return [957]*3 + [979]*3 + [37]*3 + [210]*3 + [1121]*1 + [1227]*4 + [1152]*4 + [1210]*3 + [1194]*3 + [1198]*1 + [1229]*1 + [1134]*1 + [1097]*4 + [1182]*4 + [1102]*1 + [1086]*4 + [1123]*1 + [1081]*1 + [1122]*1 + [6]*8 + [4]*6
 
 
 DEFAULT_DECK = _load_optimized_deck()
