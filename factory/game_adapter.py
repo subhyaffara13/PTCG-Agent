@@ -318,8 +318,8 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
         game_state = build_game_state(my_state, opp_state, current)
 
         # Parse legal candidates from options using their exact index in the array
-        game_state["legal_attacks"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 13]
-        game_state["legal_attachments"] = [str(i) for i, opt in enumerate(options) if opt.get("type") == 9]
+        game_state["legal_attacks"] = [str(i) for i, opt in enumerate(options) if opt.get("type") in (12, 13)]
+        game_state["legal_attachments"] = [str(i) for i, opt in enumerate(options) if opt.get("type") in (8, 9)]
         
         # Load registry for evolution checking
         global _registry
