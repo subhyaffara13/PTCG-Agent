@@ -29,6 +29,18 @@ def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
     # Sort files by modification time (oldest first)
     all_files.sort(key=os.path.getmtime)
 
+    # Truncate oversized process log files (e.g. master_server.log, run_ppo_trainer_loop.log) if larger than 10MB
+    for log_name in ["master_server.log", "run_ppo_trainer_loop.log", "run_deck_optimizer_loop.log"]:
+        f_path = os.path.join(log_dir, log_name)
+        if os.path.exists(f_path):
+            try:
+                if os.path.getsize(f_path) > 10 * 1024 * 1024:  # 10 MB
+                    with open(f_path, "w", encoding="utf-8") as f:
+                        f.write(f"--- Log truncated by LogPruner at size limit (10MB) ---\n")
+                    logger.info(f"Log Pruner: Truncated oversized log {log_name}.")
+            except Exception as e:
+                logger.warning(f"Could not truncate {log_name}: {e}")
+
     # If we have more files than allowed, prune the oldest ones
     if len(all_files) > max_files:
         files_to_delete = all_files[:-max_files]
