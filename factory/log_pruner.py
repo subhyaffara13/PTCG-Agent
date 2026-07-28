@@ -34,25 +34,17 @@ def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
     os.makedirs(archive_dir, exist_ok=True)
 
     # Truncate oversized process log files (e.g. master_server.log, run_ppo_trainer_loop.log) if larger than 10MB
+    # Note: Repeated error logs are PURGED immediately without archiving to prevent storing error spam!
     for log_name in ["master_server.log", "run_ppo_trainer_loop.log", "run_deck_optimizer_loop.log"]:
         f_path = os.path.join(log_dir, log_name)
         if os.path.exists(f_path):
             try:
                 if os.path.getsize(f_path) > 10 * 1024 * 1024:  # 10 MB
-                    # Archive log before truncating
-                    import zipfile
-                    import time
-                    arc_name = f"{os.path.splitext(log_name)[0]}_{int(time.time())}.zip"
-                    arc_path = os.path.join(archive_dir, arc_name)
-                    with zipfile.ZipFile(arc_path, "w", zipfile.ZIP_DEFLATED) as zf:
-                        zf.write(f_path, arcname=log_name)
-                    logger.info(f"Log Pruner: Archived {log_name} -> {arc_name}")
-
                     with open(f_path, "w", encoding="utf-8") as f:
-                        f.write(f"--- Log truncated by LogPruner at size limit (10MB) ---\n")
-                    logger.info(f"Log Pruner: Truncated oversized log {log_name}.")
+                        f.write(f"--- Log purged & truncated by LogPruner at size limit (10MB) ---\n")
+                    logger.info(f"Log Pruner: Purged & truncated oversized process log {log_name} (error spam discarded).")
             except Exception as e:
-                logger.warning(f"Could not archive/truncate {log_name}: {e}")
+                logger.warning(f"Could not purge/truncate {log_name}: {e}")
 
     # If we have more files than allowed, archive and prune the oldest ones
     if len(all_files) > max_files:
