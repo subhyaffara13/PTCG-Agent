@@ -58,7 +58,7 @@ class LLMBase:
             try:
                 import google.generativeai as genai  # type: ignore
                 self.provider = "gemini"
-                self.model = self.model_override or "gemini-1.5-pro"
+                self.model = self.model_override or os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
                 genai.configure(api_key=self.gemini_key)
                 self.client = genai
             except ImportError:

@@ -111,8 +111,8 @@ def run_master_loop(enable_distributed=True):
             logger.info("--- [Train Phase] Starting distributed master and PPO workers ---" if enable_distributed else "--- [Train Phase] Starting local training processes ---")
             processes = launch_processes(scripts)
             try:
-                # Monitor processes for up to 60 minutes (60 * 60 seconds)
-                for _ in range(60):
+                # Monitor processes for up to 10 minutes (10 * 60 seconds)
+                for _ in range(10):
                     monitor_and_restart(processes, scripts)
                     time.sleep(60)
             except KeyboardInterrupt:
@@ -127,13 +127,11 @@ def run_master_loop(enable_distributed=True):
                 except KeyboardInterrupt:
                     logger.info("Ignored extra Ctrl+C during training process cleanup. Continuing safe shutdown.")
 
-            # These phases run only if the training loop completes its 60 iterations
-            # without a KeyboardInterrupt or other exception that breaks the loop earlier.
+            # These phases run every 10 minutes to trigger continuous LLM meta-learning, replay analysis, and evolution
             logger.info("--- [Analytics Phase] Running synchronous checks ---")
             from factory.log_pruner import prune_logs
             prune_logs(max_files=1000)
             
-            # --- TRUE AUTOMATION: RL & EVOLUTION ---
             # --- TRUE AUTOMATION: RL & EVOLUTION ---
 
             try:
