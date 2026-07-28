@@ -29,23 +29,49 @@ def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
     # Sort files by modification time (oldest first)
     all_files.sort(key=os.path.getmtime)
 
+    # Archive old logs before deletion into compressed zip archives in logs/archive/
+    archive_dir = os.path.join(log_dir, "archive")
+    os.makedirs(archive_dir, exist_ok=True)
+
     # Truncate oversized process log files (e.g. master_server.log, run_ppo_trainer_loop.log) if larger than 10MB
     for log_name in ["master_server.log", "run_ppo_trainer_loop.log", "run_deck_optimizer_loop.log"]:
         f_path = os.path.join(log_dir, log_name)
         if os.path.exists(f_path):
             try:
                 if os.path.getsize(f_path) > 10 * 1024 * 1024:  # 10 MB
+                    # Archive log before truncating
+                    import zipfile
+                    import time
+                    arc_name = f"{os.path.splitext(log_name)[0]}_{int(time.time())}.zip"
+                    arc_path = os.path.join(archive_dir, arc_name)
+                    with zipfile.ZipFile(arc_path, "w", zipfile.ZIP_DEFLATED) as zf:
+                        zf.write(f_path, arcname=log_name)
+                    logger.info(f"Log Pruner: Archived {log_name} -> {arc_name}")
+
                     with open(f_path, "w", encoding="utf-8") as f:
                         f.write(f"--- Log truncated by LogPruner at size limit (10MB) ---\n")
                     logger.info(f"Log Pruner: Truncated oversized log {log_name}.")
             except Exception as e:
-                logger.warning(f"Could not truncate {log_name}: {e}")
+                logger.warning(f"Could not archive/truncate {log_name}: {e}")
 
-    # If we have more files than allowed, prune the oldest ones
+    # If we have more files than allowed, archive and prune the oldest ones
     if len(all_files) > max_files:
         files_to_delete = all_files[:-max_files]
-        logger.info(f"Log Pruner active: Found {len(all_files)} logs. Deleting oldest {len(files_to_delete)} to maintain sliding window of {max_files}.")
+        logger.info(f"Log Pruner active: Found {len(all_files)} logs. Archiving & deleting oldest {len(files_to_delete)} to maintain sliding window of {max_files}.")
         
+        import zipfile
+        import time
+        game_arc_name = f"game_logs_{int(time.time())}.zip"
+        game_arc_path = os.path.join(archive_dir, game_arc_name)
+        
+        try:
+            with zipfile.ZipFile(game_arc_path, "w", zipfile.ZIP_DEFLATED) as zf:
+                for fpath in files_to_delete:
+                    zf.write(fpath, arcname=os.path.basename(fpath))
+            logger.info(f"Log Pruner: Compressed {len(files_to_delete)} game logs into archive {game_arc_name}")
+        except Exception as e:
+            logger.warning(f"Failed to create zip archive: {e}")
+
         deleted_count = 0
         for fpath in files_to_delete:
             try:
@@ -54,6 +80,6 @@ def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
             except Exception as e:
                 logger.warning(f"Failed to delete {fpath}: {e}")
                 
-        logger.info(f"Log Pruner finished. Deleted {deleted_count} files.")
+        logger.info(f"Log Pruner finished. Archived and deleted {deleted_count} files.")
     else:
         logger.info(f"Log Pruner: {len(all_files)} logs found. Well under the {max_files} limit. No pruning needed.")
