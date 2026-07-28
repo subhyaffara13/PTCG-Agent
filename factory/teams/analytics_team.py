@@ -23,15 +23,24 @@ class AnalyticsTeam:
         if decks is None:
             decks = {}
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             future_macro = executor.submit(self.data_analyst.run_analysis, iteration_id)
             future_anti = executor.submit(self.anti_pattern_extractor.analyze_iteration, iteration_result, {}, decks)
             future_deg = executor.submit(self.degradation_tracker.evaluate_health)
             
+            # DeepReplayInspector replay loss analysis
+            try:
+                from factory.deep_replay_inspector import DeepReplayInspector
+                future_dri = executor.submit(DeepReplayInspector().inspect_latest_losses)
+            except Exception:
+                future_dri = None
+
             try:
                 results["macro_analysis"] = future_macro.result()
                 future_anti.result()
                 results["degradation"] = future_deg.result()
+                if future_dri:
+                    results["deep_replay_flaws"] = future_dri.result()
             except Exception as e:
                 logger.error(f"Analytics Team encountered an error during parallel execution: {e}")
                 

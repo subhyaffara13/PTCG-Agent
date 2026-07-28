@@ -27,20 +27,38 @@ class ArchitectureTeam:
             current_weights = dict(DEFAULT_ARCHETYPE_WEIGHTS)
             adjusted = False
 
-            # Example logic: if the opponent win rate is high, shift weights towards consistency
+            # Read real-time metagame distribution report from LeaderboardTeam
+            meta_dist_path = Path("logs/metagame_distribution.json")
+            if meta_dist_path.exists():
+                try:
+                    meta_data = json.loads(meta_dist_path.read_text(encoding="utf-8"))
+                    dominant_meta = meta_data.get("dominant_meta", "")
+                    if dominant_meta:
+                        logger.info(f"Architecture Team adapting weights to counter dominant meta: {dominant_meta}")
+                        for arch in current_weights:
+                            w = list(current_weights[arch])
+                            # If meta is Lightning, boost Fighting/grounding counter-weights; if Fire, boost Water; etc.
+                            if dominant_meta == "Lightning" and arch == "aggro_push":
+                                w[0] = min(0.7, w[0] + 0.1)  # Consistency boost
+                                w[2] = min(0.5, w[2] + 0.1)  # Synergy/Counter boost
+                            elif dominant_meta == "Fire" and arch == "aggro_push":
+                                w[1] = min(0.6, w[1] + 0.1)  # Prize efficiency boost
+                            total = sum(w)
+                            current_weights[arch] = tuple(round(x / total, 3) for x in w)
+                            adjusted = True
+                except Exception as dist_err:
+                    logger.warning(f"Failed to parse metagame_distribution.json: {dist_err}")
+
             anti_patterns = meta_summary.get("anti_patterns", [])
             for pattern in anti_patterns:
                 if "brick" in str(pattern).lower() or "timeout" in str(pattern).lower():
                     logger.info("Architecture Team detected 'brick/timeout' meta. Bumping consistency weights.")
                     for arch in current_weights:
                         w = list(current_weights[arch])
-                        # Bump consistency (index 0), lower others slightly
                         w[0] = min(0.8, w[0] + 0.05)
                         w[1] = max(0.05, w[1] - 0.02)
                         w[2] = max(0.05, w[2] - 0.02)
                         w[3] = max(0.05, w[3] - 0.01)
-                        
-                        # Normalize to sum to 1.0
                         total = sum(w)
                         current_weights[arch] = tuple(round(x / total, 3) for x in w)
                         adjusted = True
