@@ -85,16 +85,25 @@ class LeaderboardTeam:
         else:
             logger.info("No new players emerged in the top 50.")
 
-        # Also process our own submissions to learn from our own wins and losses on the ladder
+        # Metagame Distribution Analysis & Dynamic Counter-Deck Selection
         try:
-            logger.info("Leaderboard Team processing our own submissions...")
-            our_wins, our_losses = process_our_own_submissions(
-                api, self.scraper, self.do_extractor, self.anti_extractor, competition_id
-            )
-            results["downloaded_wins"] += our_wins
-            results["downloaded_losses"] += our_losses
-            logger.info(f"Leaderboard Team successfully processed our own games: {our_wins} wins, {our_losses} losses analyzed.")
+            logger.info("Leaderboard Team analyzing metagame archetype distribution...")
+            meta_counts = {}
+            for entry in top_10[:20]:
+                t_name = getattr(entry, 'team_name', getattr(entry, 'teamName', '')).lower()
+                if "lightning" in t_name or "miraidon" in t_name: meta_counts["Lightning"] = meta_counts.get("Lightning", 0) + 1
+                elif "water" in t_name or "bax" in t_name: meta_counts["Water"] = meta_counts.get("Water", 0) + 1
+                elif "fire" in t_name or "zard" in t_name: meta_counts["Fire"] = meta_counts.get("Fire", 0) + 1
+                else: meta_counts["Control"] = meta_counts.get("Control", 0) + 1
+            
+            dominant_meta = max(meta_counts, key=meta_counts.get) if meta_counts else "Lightning"
+            logger.info(f"Metagame Analysis Complete. Dominant Meta: {dominant_meta} ({meta_counts.get(dominant_meta, 0)}/20 top decks)")
+            results["dominant_metagame"] = dominant_meta
+            
+            # Save metagame distribution report for DeckArchitect
+            meta_file = self.log_dir / "metagame_distribution.json"
+            meta_file.write_text(json.dumps({"dominant_meta": dominant_meta, "distribution": meta_counts}, indent=2), encoding="utf-8")
         except Exception as e:
-            logger.error(f"Failed to process our own games in feedback loop: {e}")
+            logger.error(f"Metagame distribution analysis failed: {e}")
 
         return results

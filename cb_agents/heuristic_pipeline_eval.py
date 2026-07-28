@@ -453,7 +453,22 @@ def score_state(gs: dict) -> float:
     if my_hp is None:
         my_hp = 100
     if opp_damage > 0 and opp_damage >= my_hp:
-        v -= 0.8  # One-shot lethal threat
+        # Prize Baiting Check: if our active is a 1-prizer, opponent taking 1 prize sets up an aggressive Iono comeback!
+        my_active_card_id = ac.get("id") if isinstance(ac, dict) else None
+        is_one_prizer = True
+        if my_active_card_id:
+            try:
+                card = _registry.get_full_skill(my_active_card_id)
+                if card and any(t in card.card_name.lower() for t in (" ex", " v", "vstar", "vmax", "ex")):
+                    is_one_prizer = False
+            except Exception:
+                pass
+        
+        has_iono = any("iono" in str(c).lower() for c in gs.get("my_hand", [])) if isinstance(gs.get("my_hand"), list) else False
+        if is_one_prizer and has_iono and mp > 2:
+            v += 0.2  # Prize Baiting: losing 1 prize sets up devastating Iono hand-lock next turn!
+        else:
+            v -= 0.8  # Standard lethal threat penalty
     elif opp_damage > 0 and opp_damage >= my_hp * 0.6:
         v -= 0.3  # Significant damage threat
     
