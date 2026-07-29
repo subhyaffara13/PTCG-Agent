@@ -201,6 +201,42 @@ def run_winning_analysis(replay_paths: List[Path], player_name_or_id: str, extra
                 except Exception as e:
                     logger.warning(f"OpenAI synergy extraction failed: {e}.")
 
+            # Try OpenRouter Free Models fallback if previous attempts failed
+            openrouter_key = os.environ.get("OPENROUTER_API_KEY")
+            if not llm_success and openrouter_key:
+                logger.info("DoPatternAnalysis: Querying OpenRouter Free Model endpoint for winning deck synergies...")
+                or_payload = {
+                    "model": "google/gemini-2.5-flash:free",
+                    "messages": [
+                        {"role": "system", "content": "You are a Pokemon TCG AI analyst. Return JSON object with key 'deck_dos' containing an array of objects with 'card_id' (int), 'avg_count' (float), and 'reason' (str)."},
+                        {"role": "user", "content": prompt}
+                    ]
+                }
+                try:
+                    headers = {"Authorization": f"Bearer {openrouter_key}", "Content-Type": "application/json"}
+                    res = requests.post("https://openrouter.ai/api/v1/chat/completions", json=or_payload, headers=headers, timeout=30)
+                    if res.status_code == 200:
+                        content_str = res.json()["choices"][0]["message"]["content"]
+                        # Extract JSON string if wrapped in markdown block
+                        if "```json" in content_str:
+                            content_str = content_str.split("```json")[1].split("```")[0].strip()
+                        elif "```" in content_str:
+                            content_str = content_str.split("```")[1].split("```")[0].strip()
+                        parsed = json.loads(content_str)
+                        new_dos = parsed.get("deck_dos", [])
+                        deck_dos = new_dos
+                        for item in new_dos:
+                            existing = next((x for x in extractor.learned_dos["deck_dos"] if int(x.get("card_id", 0)) == int(item["card_id"])), None)
+                            if existing:
+                                existing["avg_count"] = max(existing.get("avg_count", 0), item["avg_count"])
+                                existing["reason"] = item["reason"]
+                            else:
+                                extractor.learned_dos["deck_dos"].append(item)
+                        logger.info(f"Successfully merged {len(new_dos)} OpenRouter-derived card synergies into learned_dos.")
+                        llm_success = True
+                except Exception as e:
+                    logger.warning(f"OpenRouter synergy extraction failed: {e}.")
+
     # 2. Baseline Frequency Checker Fallback
     if not llm_success:
         deck_dos = [{"card_id": int(cid), "avg_count": round(cnt / total_wins, 2), "reason": f"High usage in winning matches."}
