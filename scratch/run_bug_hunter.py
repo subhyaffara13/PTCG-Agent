@@ -91,8 +91,9 @@ def hunt_bugs():
     
     try:
         # Import mutator from sandbox to avoid locking main files
-        sys_path_backup = list(sys.path)
-        sys.path.insert(0, str(sandbox_dir))
+        import sys as _sys
+        sys_path_backup = list(_sys.path)
+        _sys.path.insert(0, str(sandbox_dir))
         
         from cb_agents.code_mutator import request_code_mutation_from_llm  # type: ignore
         

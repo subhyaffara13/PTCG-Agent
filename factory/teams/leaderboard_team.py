@@ -1,3 +1,5 @@
+from typing import Any
+import json
 import logging
 from pathlib import Path
 from kaggle.api.kaggle_api_extended import KaggleApi
@@ -36,7 +38,7 @@ class LeaderboardTeam:
 
     def run_leaderboard_feedback_loop(self, competition_id: str = "pokemon-tcg-ai-battle") -> dict:
         logger.info("Leaderboard Team starting feedback loop...")
-        results = {"new_players_found": [], "downloaded_wins": 0, "downloaded_losses": 0}
+        results: dict[str, Any] = {"new_players_found": [], "downloaded_wins": 0, "downloaded_losses": 0}
 
         try:
             api = KaggleApi()
@@ -96,7 +98,7 @@ class LeaderboardTeam:
                 elif "fire" in t_name or "zard" in t_name: meta_counts["Fire"] = meta_counts.get("Fire", 0) + 1
                 else: meta_counts["Control"] = meta_counts.get("Control", 0) + 1
             
-            dominant_meta = max(meta_counts, key=meta_counts.get) if meta_counts else "Lightning"
+            dominant_meta = max(meta_counts, key=lambda k: meta_counts[k]) if meta_counts else "Lightning"
             logger.info(f"Metagame Analysis Complete. Dominant Meta: {dominant_meta} ({meta_counts.get(dominant_meta, 0)}/20 top decks)")
             results["dominant_metagame"] = dominant_meta
             

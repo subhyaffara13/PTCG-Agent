@@ -123,7 +123,7 @@ class GameRunner(BaseAgent):
 
         try:
             futures = [
-                executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b)
+                executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed, model_path_a or "", model_path_b or "")
                 for label, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b in games_config
             ]
         except RuntimeError as re:
@@ -132,7 +132,7 @@ class GameRunner(BaseAgent):
                 GameRunner._executor = ProcessPoolExecutor(max_workers=os.cpu_count() or 16)
                 executor = GameRunner._executor
                 futures = [
-                    executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b)
+                    executor.submit(_parallel_game_worker, str(self.log_dir), label, version_n1, version_n2, deck_a, deck_b, use_a, use_b, seed, model_path_a or "", model_path_b or "")
                     for label, deck_a, deck_b, use_a, use_b, seed, model_path_a, model_path_b in games_config
                 ]
             else:

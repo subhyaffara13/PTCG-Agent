@@ -59,10 +59,10 @@ class GauntletRunner:
             from factory.game_runner import DEFAULT_DECK
             return list(DEFAULT_DECK)
 
-    def run_gauntlet(self, candidate_deck: list, num_games_per_archetype: int = 3) -> bool:
+    def run_gauntlet(self, target_deck: list, num_games_per_stage: int = 5) -> dict:
         """
-        Runs candidate_deck against multiple real archetypes. 
-        Returns True if candidate_deck achieves > 50% win rate across the entire Gauntlet.
+        Runs target_deck against multiple real archetypes. 
+        Returns True if target_deck achieves > 50% win rate across the entire Gauntlet.
         """
         logger.info(f"Starting Gauntlet Evaluation against {len(self.archetypes)} real archetypes...")
         total_wins = 0
@@ -75,13 +75,13 @@ class GauntletRunner:
             
             archetype_wins = 0
             num_matchups = 1
-            total_stage_games = num_games_per_archetype * (num_matchups * 4 + 1)
-            for i in range(num_games_per_archetype):
+            total_stage_games = num_games_per_stage * (num_matchups * 4 + 1)
+            for i in range(num_games_per_stage):
                 res = runner.run_iteration(
                     iteration_id=9999,
                     version_n1="candidate",
                     version_n2=f"gauntlet_{archetype}",
-                    deck_base=candidate_deck,
+                    deck_base=target_deck,
                     deck_new=opp_deck,
                     reasoning_base={},
                     reasoning_new={},
@@ -104,9 +104,9 @@ class GauntletRunner:
         
         return {
             "passed": passed,
-            "win_rate": float(win_rate),
-            "total_wins": int(total_wins),
-            "total_games": int(total_games)
+            "win_rate": win_rate,
+            "total_wins": total_wins,
+            "total_games": total_games
         }
 
 

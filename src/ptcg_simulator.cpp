@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <cctype>
 
 void CardRegistry::loadFromFiles(const std::string& skillsDir) {
