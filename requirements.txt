@@ -16,3 +16,5 @@ onnxscript
 google-generativeai
 tensorboard
 torchvision
+optuna
+onnxruntime
