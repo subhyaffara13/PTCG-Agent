@@ -69,6 +69,7 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
         self.bus.register_agent("turn_planner", self._planner.receive)
         self.bus.register_agent("strategy_agent", self._strategy.evaluate)
         self.bus.register_agent("opponent_model", self._opponent.receive, perspective_flag="opponent")
+        self._executor = ThreadPoolExecutor(max_workers=3)
 
     def orchestrate(self, game_state: dict[str, Any]) -> TurnDecision:
         time_result = _step_time(game_state, self._timer, self._router)
@@ -78,13 +79,12 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
             # Parallelize independent sub-agents (HandAnalyst, OpponentModel) + belief sync
             hand_result = None
             opp_result = None
-            with ThreadPoolExecutor(max_workers=3) as pool:
-                f_hand = pool.submit(_step_hand, game_state, self._analyst, self._router)
-                f_opp = pool.submit(_step_opponent, game_state, self._opponent, self._router)
-                f_sync = pool.submit(self.sync_belief_tracker, game_state)
-                hand_result = f_hand.result()
-                opp_result = f_opp.result()
-                f_sync.result()  # ensure belief sync completes before strategy uses it
+            f_hand = self._executor.submit(_step_hand, game_state, self._analyst, self._router)
+            f_opp = self._executor.submit(_step_opponent, game_state, self._opponent, self._router)
+            f_sync = self._executor.submit(self.sync_belief_tracker, game_state)
+            hand_result = f_hand.result()
+            opp_result = f_opp.result()
+            f_sync.result()  # ensure belief sync completes before strategy uses it
 
             # Store hand_score dynamically into game_state dict
             game_state["hand_score"] = hand_result.get("hand_score", 0.0)

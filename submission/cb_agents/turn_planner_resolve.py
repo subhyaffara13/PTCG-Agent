@@ -40,7 +40,11 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
                 else:
                     mcts_engine.num_simulations = 2000
             else:
-                mcts_engine.num_simulations = max(orig_sims, min(400, int(time_rem * 2)))
+                import os
+                if os.environ.get("IS_WORKER") == "true" or os.environ.get("SKIP_GAME_LOGS") == "1":
+                    mcts_engine.num_simulations = min(120, max(40, int(time_rem * 0.4)))
+                else:
+                    mcts_engine.num_simulations = max(orig_sims, min(300, int(time_rem * 1.5)))
                 
             actual_sims = mcts_engine.num_simulations
             primary = mcts_engine.search(game_state, selected_candidates, time_remaining=time_rem)

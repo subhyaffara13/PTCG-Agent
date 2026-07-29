@@ -373,7 +373,12 @@ def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int
         is_energy_attach = (sel_type == 7)
 
         if is_main_turn or game_state["select_prize"]:
+            import time
+            step_start_time = time.time()
             action_label = orchestrator.run_turn(game_state)
+            if time.time() - step_start_time > 1.2:
+                logger.warning(f"Step decision took {time.time() - step_start_time:.2f}s (exceeding 1.2s latency guard). Triggering fast fallback.")
+                return make_smart_choice(select, observation, fallback_action, str(orchestrator.skills_dir))
             if hasattr(action_label, 'primary_action'):
                 action_label = action_label.primary_action
 

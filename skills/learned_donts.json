@@ -2927,6 +2927,198 @@
     {
       "condition": "overboard_situational_recovery",
       "description": "Avoid including an excessive number of situational recovery cards (e.g., 3 'Night Stretcher'). These cards are often dead draws in the early game and consume valuable deck space that could be used for setup or draw consistency."
+    },
+    {
+      "condition": "scattered_energy_line",
+      "description": "Avoid including many different basic energy types (e.g., Grass, Water, Fighting, Darkness) without sufficient counts for each type or reliable multi-energy acceleration. This leads to inconsistent energy draws and prevents Pok\u00e9mon from attacking effectively."
+    },
+    {
+      "condition": "pokemon_energy_mismatch",
+      "description": "Do not include Pok\u00e9mon that require a specific energy type (e.g., Munkidori requiring Psychic, Crustle requiring Fighting, Articuno requiring Water) when that energy type is completely absent or insufficiently present in the deck to reliably power up attacks."
+    },
+    {
+      "condition": "dead_draw_pokemon_package",
+      "description": "Do not include a full package of Pok\u00e9mon (e.g., 4x Munkidori) that cannot be powered up or effectively utilized within the deck's energy or strategy framework. These become guaranteed dead draws and clog your hand."
+    },
+    {
+      "condition": "excessive_supporter_count",
+      "description": "Avoid including an excessive number of Supporter cards (e.g., 15+) as this can lead to 'supporter lock' hands where you draw multiple supporters without the necessary Pok\u00e9mon or energy to progress your board state, resulting in a dead draw."
+    },
+    {
+      "condition": "lack_of_strategic_cohesion",
+      "description": "Ensure all cards contribute to a clear, cohesive deck strategy. Avoid including defensive items (e.g., Jumbo Ice Cream) or niche supporters (e.g., Pok\u00e9 Pad) that do not strongly synergize with your main attackers or overall game plan, especially when basic setup and energy consistency are lacking."
+    },
+    {
+      "card_id": 1,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 16,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 344,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 345,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 1147,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 1198,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 1210,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "card_id": 1236,
+      "reason": "Losing match card over-presence"
+    },
+    {
+      "condition": "inconsistent_multi_energy",
+      "description": "Avoid including multiple basic energy types with only 1-3 copies each without clear energy acceleration or flexible energy options. This leads to inconsistent energy attachments and dead draws."
+    },
+    {
+      "condition": "misused_special_energy",
+      "description": "Do not include Special Energy cards like Prism Energy if their provided types do not align with the Pok\u00e9mon's attack costs in the deck. This creates dead cards in hand as none of the listed Pok\u00e9mon use the types Prism Energy provides."
+    },
+    {
+      "condition": "outdated_pokemon",
+      "description": "Avoid using Pok\u00e9mon from vastly different eras (e.g., vintage cards like Team Rocket's Articuno) in modern formats. Their HP, attacks, and abilities are typically too weak and get easily outclassed."
+    },
+    {
+      "condition": "dead_supporter_condition",
+      "description": "Do not include Supporters that have a beneficial effect conditioned on specific Pok\u00e9mon types (e.g., Lillie's Determination requiring a Psychic Pok\u00e9mon) if those Pok\u00e9mon types are not present in your deck. This severely limits the card's effectiveness and creates dead draws."
+    },
+    {
+      "condition": "suboptimal_draw_engine",
+      "description": "Avoid relying on multiple weak draw/search Supporters (e.g., Crispin, Brock's Scouting, Urbain) instead of focusing on a few powerful, consistent options (e.g., Professor's Research, Iono, Arven, Colress). This hinders deck consistency and card velocity."
+    },
+    {
+      "condition": "ineffective_items",
+      "description": "Do not include Item cards with minimal impact (e.g., Jumbo Ice Cream's low healing) or items that recycle low-impact cards (e.g., Pok\u00e9 Pad without high-value targets). These slots are better used for consistency or higher-impact cards."
+    },
+    {
+      "condition": "mismatched_pokemon_and_energy",
+      "description": "Do not mix multiple Pok\u00e9mon types and their corresponding energy requirements without strong universal energy acceleration or a clear synergistic reason. This dilutes the deck's focus and makes it difficult to power up attackers consistently."
+    },
+    {
+      "condition": "multi_type_energy_scatter",
+      "description": "Do not include a wide variety of basic energy types in low counts without a unified energy acceleration system or specific Pok\u00e9mon to effectively utilize them; this leads to inconsistent energy attachments."
+    },
+    {
+      "condition": "fragmented_pokemon_synergy",
+      "description": "Avoid including multiple Pok\u00e9mon evolution lines or primary attackers (e.g., Grass, Fighting, Water) that lack direct synergy or a cohesive strategy, as this dilutes your deck's focus and makes setup inconsistent."
+    },
+    {
+      "condition": "over_commitment_niche_items",
+      "description": "Refrain from including excessive copies of highly situational or niche item cards (like Jumbo Ice Cream for healing or Pok\u00e9 Pad for Supporter recovery) that do not consistently advance your primary win condition, as they often become dead draws."
+    },
+    {
+      "condition": "excessive_supporter_reliance",
+      "description": "Do not overload your deck with an extremely high number of Supporters (e.g., 15+ cards) and Supporter recovery cards; this often leads to slow setups, a lack of consistent item-based options, and awkward draws, especially with hand-disrupting Supporters like Crispin."
+    },
+    {
+      "condition": "unfocused_win_condition",
+      "description": "Avoid building a deck without a clear and consistent win condition or a primary attacker strategy; a deck composed of disparate elements without a unified goal will perform poorly due to lack of focus and efficiency."
+    },
+    {
+      "condition": "excessive_elemental_type_diversity",
+      "description": "Avoid building a deck that attempts to power up more than two distinct elemental Pok\u00e9mon types. This deck includes Grass, Water, Fighting, and Darkness attackers, resulting in an inconsistent energy base and frequent dead draws of unusable energy cards."
+    },
+    {
+      "condition": "inefficient_draw_supporters",
+      "description": "Do not rely on a high count of weak draw Supporters (e.g., Crispin, Urbain, Draw 3/Discard 2 types) that provide minimal card advantage. Prioritize powerful draw Supporters like Professor's Research or Iono to ensure consistent hand refresh and setup."
+    },
+    {
+      "condition": "ineffective_healing_item_spam",
+      "description": "Avoid including multiple copies of low-impact item cards like Jumbo Ice Cream that offer minimal strategic value. Dedicate item slots to cards that accelerate setup, draw, search, or provide significant disruption/control."
+    },
+    {
+      "condition": "overkill_supporter_recursion",
+      "description": "Do not include excessive copies of Supporter recursion cards like Pok\u00e9 Pad, especially when your primary Supporters are already weak. Over-investing in recursion for subpar cards leads to clogged hands and wasted turns."
+    },
+    {
+      "condition": "unfocused_pokemon_strategy",
+      "description": "Avoid including multiple, unrelated evolution lines and basic Pok\u00e9mon (e.g., Ogerpon ex, Articuno, Crustle, Munkidori) without a clear main attacker or synergistic strategy. This dilutes your deck's focus and makes consistent execution impossible."
+    },
+    {
+      "condition": "multi_type_no_synergy",
+      "description": "Do not include more than two primary elemental types in a deck without a clear strategy for consistent energy acceleration and attack execution for each type. This deck attempts to run {G}, {W}, {F}, and {D} Pok\u00e9mon without adequate energy consistency or synergistic benefits."
+    },
+    {
+      "condition": "poor_draw_engine",
+      "description": "Avoid building a deck with an inconsistent or inefficient draw supporter line. Cards like Crispin (x4), Lillie's Determination (x4) as primary draw, Urbain (x3), and especially Pok\u00e9 Pad (x4) are too slow, niche, or detrimental for consistent card advantage. Focus on reliable 3-5+ card draw supporters."
+    },
+    {
+      "condition": "excessive_healing_no_tank",
+      "description": "Do not include a high count of dedicated healing cards (e.g., Jumbo Ice Cream x4) without strong tanking Pok\u00e9mon or a specific stall strategy that benefits heavily from healing. Healing 60 damage is often not enough to change the outcome of a typical Pok\u00e9mon TCG attack."
+    },
+    {
+      "condition": "inefficient_trainer_search",
+      "description": "Do not rely on inefficient trainer search items like Pok\u00e9 Pad (x4). Deck space is valuable and should be used for cards that offer direct, powerful consistency or offensive/defensive capabilities rather than slow, random searches."
+    },
+    {
+      "condition": "no_clear_attacker_strategy",
+      "description": "Do not build a deck without a clear primary attacker or a cohesive strategy for how to win the game. This deck features multiple Pok\u00e9mon types and evolution lines but lacks a central focus on which Pok\u00e9mon will be taking knockouts consistently."
+    },
+    {
+      "condition": "suboptimal_supporter_choices",
+      "description": "Avoid using Supporters like Urbain (x3) that force discards from the top of your deck, as this can be detrimental by discarding essential resources. Prioritize Supporters that provide consistent card advantage without significant drawbacks."
+    },
+    {
+      "condition": "niche_stadium_without_synergy",
+      "description": "Do not include niche Stadiums like Battle Cage (x2) if they do not directly synergize with your deck's core strategy (e.g., damage spread or tanking/healing). Stadiums should support your game plan, not just react to opponent's KOs passively."
+    },
+    {
+      "condition": "unplayable_pokemon_line_missing_energy_type",
+      "description": "Avoid including Pok\u00e9mon lines (e.g., Snorunt and Froslass) that require an energy type (Water) not present in your deck. These cards become unplayable 'dead draws' and reduce deck consistency."
+    },
+    {
+      "condition": "suboptimal_supporter_for_draw",
+      "description": "Do not rely on extremely weak draw Supporters like Dawn (which draws only 2 cards). Prioritize more robust draw support (e.g., Professor's Research, Iono) to maintain hand advantage and deck consistency."
+    },
+    {
+      "condition": "niche_single_copy_items",
+      "description": "Be cautious with including single copies of highly situational Item cards (e.g., Unfair Stamp, Pok\u00e9gear 3.0). Unless crucial for a specific combo, they often serve as dead draws and hinder overall deck flow."
+    },
+    {
+      "condition": "insufficient_basic_energy_count",
+      "description": "Ensure your deck contains an adequate number of basic energy cards. 10 Basic {D} Energy may be insufficient to consistently power up a Stage 2 attacker like Grimmsnarl ex, leading to energy starvation."
+    },
+    {
+      "condition": "unsupported_pokemon_types",
+      "description": "Do not include Pok\u00e9mon that require energy types not present in your deck. For example, Froslass and Munkidori cannot attack without Water and Psychic energy, respectively, making them unplayable 'dead draws' and wasting valuable deck slots."
+    },
+    {
+      "condition": "incoherent_deck_strategy",
+      "description": "Avoid including multiple, disparate Pok\u00e9mon lines that do not synergize or are not fully supported. A focused deck with a clear strategy and consistent support for its chosen attackers is far more effective than a collection of unrelated cards."
+    },
+    {
+      "condition": "inadequate_draw_engine",
+      "description": "Ensure your deck has a robust and consistent draw engine, using reliable supporters (e.g., Professor's Research, Iono) or Pok\u00e9mon abilities, rather than relying solely on conditional draw (e.g., Lillie's Determination) or high-variance search (e.g., Pok\u00e9 Pad) as primary methods to find key cards."
+    },
+    {
+      "condition": "insufficient_stage2_acceleration",
+      "description": "When building around a Stage 2 Pok\u00e9mon like Grimmsnarl ex, ensure you have a strong evolution acceleration package (e.g., at least 4 Rare Candy) and sufficient search cards to consistently establish multiple attackers throughout the game, especially when draw support is limited."
+    },
+    {
+      "condition": "elemental_mismatch_unplayable",
+      "description": "Do not include Pok\u00e9mon that require different energy types (e.g., Water/Colorless Pok\u00e9mon like Froslass/Snorunt or Grass/Psychic like Munkidori) in a deck that only provides a single energy type (e.g., Basic {D} Energy). These Pok\u00e9mon are unplayable and waste valuable deck space."
+    },
+    {
+      "condition": "unreliable_draw_recovery",
+      "description": "Avoid relying on highly unreliable cards like Pok\u00e9 Pad (x4) for Supporter retrieval. Its low success rate due to coin flips makes it an inconsistent and often dead draw, wasting valuable deck slots that could be used for more reliable draw or search options."
+    },
+    {
+      "condition": "misaligned_stadium_ratio",
+      "description": "Do not include a high count (e.g., four copies) of a stadium card like Spikemuth Gym if its effect does not directly synergize with or significantly benefit your primary attackers or deck strategy. This can lead to dead draws and hinder consistent board development."
     }
   ],
   "behavior_donts": [

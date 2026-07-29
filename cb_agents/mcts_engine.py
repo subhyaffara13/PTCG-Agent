@@ -174,8 +174,9 @@ class MCTSEngine(MCTSSelectionMixin, MCTSParallelMixin):
             priors = self._get_action_priors(game_state, canonical_actions, mast_policy)
             root.expand(priors)
 
-        # Use parallel search with shared root (falls back to single-threaded if num_threads=1)
-        best_action = self.parallel_search(game_state, canonical_actions, num_threads=4,
+        # Use parallel search with shared root (single-threaded under worker process pool to prevent GIL thrashing)
+        worker_threads = 1 if (os.environ.get("IS_WORKER") == "true" or os.environ.get("SKIP_GAME_LOGS") == "1") else 4
+        best_action = self.parallel_search(game_state, canonical_actions, num_threads=worker_threads,
                                            time_remaining=time_remaining, root=root,
                                            mast_policy=mast_policy)
         self._historical_best[turn_num] = best_action

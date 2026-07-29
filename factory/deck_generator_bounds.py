@@ -2,14 +2,20 @@ import random
 
 class DeckBoundsMixin:
     def enforce_bounds(self, legal, basics, name_map, deck, copies, ctr, pool, details):
-        """Ensure minimum counts for discard recovery, Pokémon, and supporters."""
+        """Ensure minimum counts for discard recovery, Pokémon, supporters, and basic Pokémon."""
         self._enforce_discard(legal, pool, deck, copies, ctr)
         self._enforce_pokemon(legal, pool, name_map, deck, copies, ctr, details)
         self._enforce_supporters(legal, pool, deck, copies, ctr)
-        # Guarantee at least one Basic
-        if not any(details.get(str(c["card_id"]), {}).get("stage") == "Basic"
-                   for c in deck if c.get("card_type") == "Pokemon") and basics:
-            self.add_card(random.choice(basics), 3, deck, copies, ctr)
+        # Guarantee at least 12 Basics to ensure >= 90% setup probability
+        core_elements = {details.get(str(c.get("card_id")), {}).get("element_type", "") for c in deck if c.get("card_type") == "Pokemon"}
+        core_elements.discard("")
+        legal_b = [b for b in basics if b in legal or details.get(str(b.get("card_id")), {}).get("element_type") in core_elements]
+        usable_basics = legal_b or basics
+        basics_count = sum(1 for c in deck if c.get("card_type") == "Pokemon"
+                           and details.get(str(c.get("card_id")), {}).get("stage") == "Basic")
+        if basics_count < 12 and usable_basics:
+            for _ in range(min(12 - basics_count, max(0, 60 - len(deck)))):
+                self.add_card(random.choice(usable_basics), 1, deck, copies, ctr)
 
     def _enforce_discard(self, legal, pool, deck, copies, ctr):
         src = [c for c in legal if "discard" in c.get("combo_tags", [])] or \
@@ -96,7 +102,7 @@ class DeckBoundsMixin:
                      and details.get(str(d["card_id"]), {}).get("stage") == "Stage 1")
             s2 = sum(1 for d in deck if d.get("card_type") == "Pokemon"
                      and details.get(str(d["card_id"]), {}).get("stage") == "Stage 2")
-            if (stg == "Stage 2" and s2 + 1 >= s1) or (stg == "Stage 1" and s1 + 1 >= bc) or ctr["pkmn"] >= 18:
+            if (stg == "Stage 2" and s2 + 1 > s1) or (stg == "Stage 1" and s1 + 1 > bc) or ctr["pkmn"] >= 18:
                 return False
         elif ct == "Energy" and ctr["energy"] >= 12:
             return False
@@ -106,3 +112,4 @@ class DeckBoundsMixin:
             prev = det.get("previous_stage")
             return not prev or any(d.get("card_name", "").lower() == prev.lower() for d in deck)
         return True
+
