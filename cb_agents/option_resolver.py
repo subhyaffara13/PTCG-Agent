@@ -136,8 +136,8 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
         try:
             players = get_val(current, "players", [])
             if len(players) > my_idx and players[my_idx]:
-                deck_count = get_val(players[my_idx], "deckCount", 60)
-                is_draw_card = any(d in cname_lower for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
+                cname_low = str(card_name).lower()
+                is_draw_card = any(d in cname_low for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
                 if is_draw_card:
                     if deck_count <= 3:
                         score -= 500.0  # COMPLETE BAN: Never draw cards when 3 or fewer left

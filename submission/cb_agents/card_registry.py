@@ -14,10 +14,10 @@ class CardRegistry:
     _instance = None
 
     def __new__(cls, skills_dir: str = "skills"):
-        if not cls._instance:
+        resolved = Path(skills_dir).resolve()
+        if not cls._instance or getattr(cls._instance, "_resolved_skills_path", None) != resolved:
             cls._instance = super(CardRegistry, cls).__new__(cls)
-            cls._instance._initialize(skills_dir)
-        elif cls._instance.skills_dir != Path(skills_dir):
+            cls._instance._resolved_skills_path = resolved
             cls._instance._initialize(skills_dir)
         return cls._instance
 

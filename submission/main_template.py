@@ -565,9 +565,28 @@ def make_smart_choice(select, observation, fallback_action):
                 # 1. Boost based on learned rules from Kaggle champions
                 card_id_int = getattr(card, "card_id", None)
                 if card_id_int is not None:
-                    if hasattr(registry, "learned_dos") and int(card_id_int) in registry.learned_dos:
+                    dos_set = getattr(registry, "_learned_dos_set", None)
+                    if dos_set is None and hasattr(registry, "learned_dos"):
+                        dos_data = getattr(registry, "learned_dos", {})
+                        if isinstance(dos_data, dict):
+                            dos_list = dos_data.get("deck_dos", [])
+                            dos_set = {int(x.get("card_id")) for x in dos_list if isinstance(x, dict) and "card_id" in x}
+                        else:
+                            dos_set = set()
+                        registry._learned_dos_set = dos_set
+                    donts_set = getattr(registry, "_learned_donts_set", None)
+                    if donts_set is None and hasattr(registry, "learned_donts"):
+                        donts_data = getattr(registry, "learned_donts", {})
+                        if isinstance(donts_data, dict):
+                            donts_list = donts_data.get("deck_donts", [])
+                            donts_set = {int(x.get("card_id")) for x in donts_list if isinstance(x, dict) and "card_id" in x}
+                        else:
+                            donts_set = set()
+                        registry._learned_donts_set = donts_set
+
+                    if dos_set and int(card_id_int) in dos_set:
                         score += 12.0
-                    if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
+                    if donts_set and int(card_id_int) in donts_set:
                         score -= 12.0
                 
                 # 2. Boost if evolution predecessor is on board

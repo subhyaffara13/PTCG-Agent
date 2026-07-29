@@ -21,6 +21,8 @@ _DYNAMIC_PREFERENCE_MAP = None
 
 def _initialize_preference_map():
     global _DYNAMIC_PREFERENCE_MAP
+    if _DYNAMIC_PREFERENCE_MAP is not None:
+        return
     _DYNAMIC_PREFERENCE_MAP = {}
     
     # Try locating card_pool_raw.csv
