@@ -95,9 +95,11 @@ def run_winning_analysis(replay_paths: List[Path], player_name_or_id: str, extra
     
     load_dotenv()
     gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    openai_key = os.environ.get("OPENAI_API_KEY")
+    openai_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1") + "/chat/completions"
     llm_success = False
     
-    if gemini_key and card_counter:
+    if (gemini_key or openai_key) and card_counter:
         reg = CardRegistry()
         frequent_card_names = []
         for cid, cnt in card_counter.most_common(15):
@@ -106,7 +108,6 @@ def run_winning_analysis(replay_paths: List[Path], player_name_or_id: str, extra
                 frequent_card_names.append(f"{c.card_name} (card_id: {cid}, count_in_wins: {cnt})")
                 
         if frequent_card_names:
-            logger.info("DoPatternAnalysis: Querying Google Gemini for winning deck synergies...")
             prompt = f"""
             You are an expert Pokémon TCG Deck Architect.
             We have analyzed a batch of winning replays for a top leaderboard player (team name: {player_name_or_id}).
@@ -120,50 +121,85 @@ def run_winning_analysis(replay_paths: List[Path], player_name_or_id: str, extra
             - 'avg_count' (float, recommended copies in deck)
             - 'reason' (string, detailing the exact synergy, combo, or strategic use case of this card in the winning build).
             """
-            payload = {
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {
-                    "responseMimeType": "application/json",
-                    "responseSchema": {
-                        "type": "OBJECT",
-                        "properties": {
-                            "deck_dos": {
-                                "type": "ARRAY",
-                                "items": {
-                                    "type": "OBJECT",
-                                    "properties": {
-                                        "card_id": {"type": "INTEGER", "description": "The exact integer card_id from the prompt list."},
-                                        "avg_count": {"type": "NUMBER", "description": "Recommended average number of copies in the deck."},
-                                        "reason": {"type": "STRING", "description": "Details of the synergy, combo, or strategy behind this card choice."}
-                                    },
-                                    "required": ["card_id", "avg_count", "reason"]
+            
+            # Try Gemini first if available
+            if gemini_key:
+                logger.info("DoPatternAnalysis: Querying Google Gemini for winning deck synergies...")
+                payload = {
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "generationConfig": {
+                        "responseMimeType": "application/json",
+                        "responseSchema": {
+                            "type": "OBJECT",
+                            "properties": {
+                                "deck_dos": {
+                                    "type": "ARRAY",
+                                    "items": {
+                                        "type": "OBJECT",
+                                        "properties": {
+                                            "card_id": {"type": "INTEGER", "description": "The exact integer card_id from the prompt list."},
+                                            "avg_count": {"type": "NUMBER", "description": "Recommended average number of copies in the deck."},
+                                            "reason": {"type": "STRING", "description": "Details of the synergy, combo, or strategy behind this card choice."}
+                                        },
+                                        "required": ["card_id", "avg_count", "reason"]
+                                    }
                                 }
-                            }
-                        },
-                        "required": ["deck_dos"]
+                            },
+                            "required": ["deck_dos"]
+                        }
                     }
                 }
-            }
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={gemini_key}"
-                res = requests.post(url, json=payload, headers={"Content-Type": "application/json"}, timeout=30)
-                if res.status_code == 200:
-                    data = res.json()["candidates"][0]["content"]["parts"][0]["text"]
-                    parsed = json.loads(data)
-                    new_dos = parsed.get("deck_dos", [])
-                    deck_dos = new_dos
-                    
-                    for item in new_dos:
-                        existing = next((x for x in extractor.learned_dos["deck_dos"] if int(x.get("card_id", 0)) == int(item["card_id"])), None)
-                        if existing:
-                            existing["avg_count"] = max(existing.get("avg_count", 0), item["avg_count"])
-                            existing["reason"] = item["reason"]
-                        else:
-                            extractor.learned_dos["deck_dos"].append(item)
-                    logger.info(f"Successfully merged {len(new_dos)} LLM-derived card synergies into learned_dos.")
-                    llm_success = True
-            except Exception as e:
-                logger.warning(f"LLM winning synergy extraction failed: {e}. Falling back to baseline frequency check.")
+                try:
+                    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={gemini_key}"
+                    res = requests.post(url, json=payload, headers={"Content-Type": "application/json"}, timeout=30)
+                    if res.status_code == 200:
+                        data = res.json()["candidates"][0]["content"]["parts"][0]["text"]
+                        parsed = json.loads(data)
+                        new_dos = parsed.get("deck_dos", [])
+                        deck_dos = new_dos
+                        
+                        for item in new_dos:
+                            existing = next((x for x in extractor.learned_dos["deck_dos"] if int(x.get("card_id", 0)) == int(item["card_id"])), None)
+                            if existing:
+                                existing["avg_count"] = max(existing.get("avg_count", 0), item["avg_count"])
+                                existing["reason"] = item["reason"]
+                            else:
+                                extractor.learned_dos["deck_dos"].append(item)
+                        logger.info(f"Successfully merged {len(new_dos)} Gemini-derived card synergies into learned_dos.")
+                        llm_success = True
+                except Exception as e:
+                    logger.warning(f"Gemini synergy extraction failed: {e}.")
+
+            # Try OpenAI fallback if Gemini was not available or failed
+            if not llm_success and openai_key:
+                logger.info("DoPatternAnalysis: Querying OpenAI LLM for winning deck synergies...")
+                openai_payload = {
+                    "model": "gpt-4o-mini",
+                    "response_format": {"type": "json_object"},
+                    "messages": [
+                        {"role": "system", "content": "You are a Pokemon TCG AI analyst. Return JSON with key 'deck_dos' containing an array of objects with 'card_id' (int), 'avg_count' (float), and 'reason' (str)."},
+                        {"role": "user", "content": prompt}
+                    ]
+                }
+                try:
+                    headers = {"Authorization": f"Bearer {openai_key}", "Content-Type": "application/json"}
+                    res = requests.post(openai_url, json=openai_payload, headers=headers, timeout=30)
+                    if res.status_code == 200:
+                        content_str = res.json()["choices"][0]["message"]["content"]
+                        parsed = json.loads(content_str)
+                        new_dos = parsed.get("deck_dos", [])
+                        deck_dos = new_dos
+                        for item in new_dos:
+                            existing = next((x for x in extractor.learned_dos["deck_dos"] if int(x.get("card_id", 0)) == int(item["card_id"])), None)
+                            if existing:
+                                existing["avg_count"] = max(existing.get("avg_count", 0), item["avg_count"])
+                                existing["reason"] = item["reason"]
+                            else:
+                                extractor.learned_dos["deck_dos"].append(item)
+                        logger.info(f"Successfully merged {len(new_dos)} OpenAI-derived card synergies into learned_dos.")
+                        llm_success = True
+                except Exception as e:
+                    logger.warning(f"OpenAI synergy extraction failed: {e}.")
 
     # 2. Baseline Frequency Checker Fallback
     if not llm_success:
