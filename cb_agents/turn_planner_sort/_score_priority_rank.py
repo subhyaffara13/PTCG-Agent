@@ -1,4 +1,6 @@
-from . import _EARLY_BENCH_ORDER, _PRIORITY_RULES, _registry
+from cb_agents.turn_planner_sort._sort_constants import _EARLY_BENCH_ORDER
+from cb_agents.turn_planner_sort._sort_constants import _PRIORITY_RULES
+from cb_agents.turn_planner_heuristics import _registry
 from ._score_play_trainer_rank import _score_play_trainer_rank
 from ._score_bench_rank import _score_bench_rank
 from ._score_attach_energy_rank import _score_attach_energy_rank

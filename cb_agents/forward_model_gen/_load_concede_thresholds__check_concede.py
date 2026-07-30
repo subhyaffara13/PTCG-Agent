@@ -1,4 +1,6 @@
-from . import Path, json, lru_cache
+from pathlib import Path
+import json
+from functools import lru_cache
 
 def _load_concede_thresholds() -> tuple:
     try:

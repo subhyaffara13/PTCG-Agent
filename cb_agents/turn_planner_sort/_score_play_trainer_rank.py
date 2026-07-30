@@ -1,4 +1,5 @@
-from . import _dead_weight_heuristic, _registry
+from cb_agents.heuristic_pipeline import _dead_weight_heuristic
+from cb_agents.turn_planner_heuristics import _registry
 
 def _score_play_trainer_rank(action, game_state):
     micro = 0

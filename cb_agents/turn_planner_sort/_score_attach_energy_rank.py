@@ -1,4 +1,4 @@
-from . import _registry
+from cb_agents.turn_planner_heuristics import _registry
 
 def _score_attach_energy_rank(action, game_state, active_attached, active):
     micro = 0

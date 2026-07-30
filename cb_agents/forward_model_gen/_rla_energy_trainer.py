@@ -1,4 +1,9 @@
-from . import CardRegistry, logger
+try:
+    from cb_agents.card_registry import CardRegistry
+except ImportError:
+    CardRegistry = None
+import logging
+logger = logging.getLogger(__name__)
 
 def _rla_add_energy_trainer_actions(gs, card, actions):
     if CardRegistry is None:

@@ -1,4 +1,7 @@
-from . import CardRegistry
+try:
+    from cb_agents.card_registry import CardRegistry
+except ImportError:
+    CardRegistry = None
 
 def _rla_add_retreat_attack(gs, actions):
     bench = gs.get("my_bench", [])

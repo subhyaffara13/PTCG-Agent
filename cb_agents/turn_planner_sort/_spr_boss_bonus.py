@@ -1,5 +1,5 @@
 def _score_boss_bonus(action, game_state):
-    from . import _PRIORITY_RULES
+from cb_agents.turn_planner_sort._sort_constants import _PRIORITY_RULES
     bonus = 0
     if _PRIORITY_RULES:
         action_lower = action.lower()

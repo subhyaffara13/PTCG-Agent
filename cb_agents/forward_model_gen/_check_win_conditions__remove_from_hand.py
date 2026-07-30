@@ -1,4 +1,4 @@
-from . import Any
+from typing import Any
 from ._load_concede_thresholds__check_concede import _check_concede
 
 def _check_win_conditions(gs: dict) -> None:

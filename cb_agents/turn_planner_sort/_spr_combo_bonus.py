@@ -1,5 +1,5 @@
 def _score_combo_bonus(action, game_state):
-    from . import _registry
+from cb_agents.turn_planner_heuristics import _registry
     bonus = 0
     if ":" not in action:
         return bonus

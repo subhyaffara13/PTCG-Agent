@@ -1,4 +1,10 @@
-from . import List, _EARLY_BENCH_ORDER, _PRIORITY_RULES, _dead_weight_heuristic, _registry, logger
+from typing import List
+from cb_agents.turn_planner_sort._sort_constants import _EARLY_BENCH_ORDER
+from cb_agents.turn_planner_sort._sort_constants import _PRIORITY_RULES
+from cb_agents.heuristic_pipeline import _dead_weight_heuristic
+from cb_agents.turn_planner_heuristics import _registry
+import logging
+logger = logging.getLogger(__name__)
 from ._has_evolution_target__get_neural_network import _get_neural_network
 
 def sort_actions_heuristically(candidates: List[str], profile: str, game_state: dict) -> List[str]:

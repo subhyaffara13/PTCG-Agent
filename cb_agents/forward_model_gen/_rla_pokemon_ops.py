@@ -1,4 +1,10 @@
-from . import CardRegistry, _get_prize_yield, logger
+try:
+    from cb_agents.card_registry import CardRegistry
+except ImportError:
+    CardRegistry = None
+from cb_agents.card_utils import _get_prize_yield
+import logging
+logger = logging.getLogger(__name__)
 from ._count_high_prize_on_board__cache_legal__legal_cache_key import _count_high_prize_on_board
 
 def _rla_add_pokemon_actions(gs, card, actions, valid_targets):

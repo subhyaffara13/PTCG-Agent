@@ -1,4 +1,11 @@
-from . import CardRegistry, _get_prize_yield, _legal_actions_cache, logger
+try:
+    from cb_agents.card_registry import CardRegistry
+except ImportError:
+    CardRegistry = None
+from cb_agents.card_utils import _get_prize_yield
+from cb_agents.forward_model_gen._cache_legal_helpers import _legal_actions_cache
+import logging
+logger = logging.getLogger(__name__)
 from ._count_high_prize_on_board__cache_legal__legal_cache_key import _cache_legal, _count_high_prize_on_board, _legal_cache_key
 
 def _regenerate_legal_actions(gs: dict) -> None:

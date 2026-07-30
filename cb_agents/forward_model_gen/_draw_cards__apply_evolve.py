@@ -1,4 +1,8 @@
-from . import Any, CardRegistry
+from typing import Any
+try:
+    from cb_agents.card_registry import CardRegistry
+except ImportError:
+    CardRegistry = None
 from ._check_win_conditions__remove_from_hand import _remove_from_hand
 
 def _draw_cards(hand: list, gs: dict, n: int) -> list:
