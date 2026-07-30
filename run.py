@@ -11,5 +11,6 @@ if __name__ == "__main__":
     elif "--test" in sys.argv:
         import run_integration_test
     else:
-        from run_factory import run_team_pipeline
-        run_team_pipeline(1)
+        # Default zero-argument execution: Auto-Discovery Election Mode
+        from factory.orchestration_agent import main as auto_discovery_main
+        auto_discovery_main()
