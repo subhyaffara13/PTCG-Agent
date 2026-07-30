@@ -56,7 +56,10 @@ class LLMBase:
 
         if self.provider == "none" and self.gemini_key:
             try:
-                import google.generativeai as genai  # type: ignore
+                import warnings
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore", category=FutureWarning)
+                    import google.generativeai as genai  # type: ignore
                 self.provider = "gemini"
                 self.model = self.model_override or os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
                 genai.configure(api_key=self.gemini_key)

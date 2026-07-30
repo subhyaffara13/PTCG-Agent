@@ -10,11 +10,17 @@ class EvalReporter:
         self.skills_dir = skills_dir
 
     def load_rubric(self) -> dict:
-        try:
-            return json.loads((self.skills_dir / "eval_rubric.json").read_text(encoding="utf-8"))
-        except Exception as e:
-            logger.error(f"Failed to load evaluation rubric: {e}")
-            return {"contexts": {}}
+        path = self.skills_dir / "eval_rubric.json"
+        if path.exists():
+            try:
+                return json.loads(path.read_text(encoding="utf-8"))
+            except Exception as e:
+                logger.warning(f"Failed to read eval_rubric.json: {e}")
+        return {
+            "version": "1.0",
+            "weights": {"win_weight": 0.40, "prize_weight": 0.30, "logic_weight": 0.20, "efficiency_weight": 0.10},
+            "contexts": {}
+        }
 
     def load_theoretical_min(self) -> int:
         try:

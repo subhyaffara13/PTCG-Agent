@@ -91,9 +91,8 @@ def hunt_bugs():
     
     try:
         # Import mutator from sandbox to avoid locking main files
-        import sys as _sys
-        sys_path_backup = list(_sys.path)
-        _sys.path.insert(0, str(sandbox_dir))
+        sys_path_backup = list(sys.path)
+        sys.path.insert(0, str(sandbox_dir))
         
         from cb_agents.code_mutator import request_code_mutation_from_llm  # type: ignore
         
@@ -142,7 +141,6 @@ def hunt_bugs():
     except Exception as e:
         logger.error(f"Bug hunting failed: {e}")
     finally:
-        import sys
         if str(sandbox_dir) in sys.path:
             sys.path.remove(str(sandbox_dir))
         logger.info("Cleaning up isolated workspace...")
