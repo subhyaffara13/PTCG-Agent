@@ -86,4 +86,8 @@ class CABTAgentWrapper:
         except Exception as e:
             logger.error(f"Failed to log variance: {e}")
 
-        return selected
+        if isinstance(selected, list):
+            return [int(x) for x in selected if x is not None]
+        elif selected is not None:
+            return [int(selected)]
+        return []

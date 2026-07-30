@@ -23,13 +23,20 @@ class DevelopmentTeam:
         self.meta_analyst = MetaAnalyst()
         self.code_architect = CodeArchitect()
 
-    def run_development(self, iteration: int):
+    def run_development(self, iteration=0):
         """
         Unified entry point to evolve the agent.
         Runs Deck Evolution every time, and LLM Code Evolution every 10 iterations.
         """
         logger.info("Development Team starting evolution cycle...")
         
+        iter_num = 0
+        if isinstance(iteration, int):
+            iter_num = iteration
+        elif isinstance(iteration, dict):
+            iter_num = iteration.get("iteration_id", 0)
+
+        best_deck = None
         # 1. Deck Evolution (Simulated Annealing)
         try:
             logger.info("Starting automated Deck Evolution...")
@@ -39,8 +46,14 @@ class DevelopmentTeam:
             logger.error(f"Deck Evolution failed: {e}", exc_info=True)
 
         # 2. Code Evolution (LLM Meta-Learning Phase)
-        if iteration > 0 and iteration % 10 == 0:
-            self._run_llm_code_mutation()
+        logic_candidate = None
+        if iter_num > 0 and iter_num % 10 == 0:
+            logic_candidate = self._run_llm_code_mutation()
+
+        return {
+            "deck_candidate": best_deck,
+            "logic_candidate": logic_candidate
+        }
 
     def _run_llm_code_mutation(self):
         """

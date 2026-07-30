@@ -1,4 +1,4 @@
-from . import os
+import os
 
 def _load_deck(path: str) -> list:
     import csv

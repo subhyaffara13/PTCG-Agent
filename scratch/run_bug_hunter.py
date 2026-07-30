@@ -85,7 +85,7 @@ def hunt_bugs():
         shutil.rmtree(sandbox_dir, ignore_errors=True)
     
     def ignore_patterns(path, names):
-        return [n for n in names if n in ("logs", "models", ".git", ".env", "temp", "__pycache__", ".venv")]
+        return [n for n in names if n in ("logs", "models", ".git", ".env", "temp", "__pycache__", ".venv", ".pytest_tmp", ".pytest_cache", "build", "dist")]
 
     shutil.copytree(main_dir, sandbox_dir, ignore=ignore_patterns)
     
@@ -149,6 +149,9 @@ def hunt_bugs():
 if __name__ == "__main__":
     logger.info("Starting Autonomous Bug Hunter Worker...")
     while True:
-        hunt_bugs()
+        try:
+            hunt_bugs()
+        except Exception as e:
+            logger.error(f"BugHunter encountered unexpected error: {e}", exc_info=True)
         logger.info("Sleeping for 30 minutes before next sweep...")
         time.sleep(1800)

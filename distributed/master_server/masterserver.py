@@ -1,5 +1,12 @@
-from . import GameResult, GameRunner, MasterHandlers, Queue, WorkOrder, deque, get_local_version, logger, socket, threading, time
-from ._load_deck import _load_deck
+try:
+    from . import GameResult, GameRunner, MasterHandlers, Queue, WorkOrder, deque, get_local_version, logger, socket, threading, time
+    from ._load_deck import _load_deck
+except ImportError:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+    from distributed.master_server import GameResult, GameRunner, MasterHandlers, Queue, WorkOrder, deque, get_local_version, logger, socket, threading, time
+    from distributed.master_server._load_deck import _load_deck
 
 class MasterServer:
     def __init__(self, port=9871):
@@ -141,4 +148,8 @@ class MasterServer:
                         logger.error(f"Local runner failed: {e}")
             else:
                 time.sleep(1)
+
+if __name__ == "__main__":
+    server = MasterServer()
+    server.start()
 

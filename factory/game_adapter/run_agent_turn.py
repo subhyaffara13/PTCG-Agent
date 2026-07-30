@@ -3,10 +3,11 @@ from .make_smart_choice import make_smart_choice
 
 def run_agent_turn(orchestrator, observation: dict, deck: list[int]) -> list[int]:
     """Interactions adapter mapping CABT observations to Orchestrator and actions back to options."""
+    safe_deck = [int(x) for x in deck] if isinstance(deck, list) else []
     if not isinstance(observation, dict):
-        return deck
+        return safe_deck
     select = observation.get("select")
-    if select is None: return deck
+    if select is None: return safe_deck
 
     options = select.get("option", [])
     max_count = select.get("maxCount", 1)
