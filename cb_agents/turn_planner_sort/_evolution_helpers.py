@@ -1,4 +1,9 @@
-from . import _evo_cache, _nn_instance, _registry, logger
+import logging
+from cb_agents.turn_planner_heuristics import _registry
+
+logger = logging.getLogger(__name__)
+_evo_cache = {}
+_nn_instance = None
 
 def _has_evolution_target(card_name: str, decklist: dict) -> bool:
     k = (card_name, frozenset(decklist.keys()))

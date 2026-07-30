@@ -1,4 +1,8 @@
-from . import _LEGAL_CACHE_MAX, _get_prize_yield, _legal_actions_cache, _legal_actions_cache_order
+from cb_agents.card_utils import _get_prize_yield
+
+_legal_actions_cache: dict = {}
+_legal_actions_cache_order: list = []
+_LEGAL_CACHE_MAX = 512
 
 def _count_high_prize_on_board(gs: dict) -> int:
     """Count how many high-prize (prize_yield>=2) Pokemon are on our board."""

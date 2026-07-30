@@ -11,9 +11,8 @@ try:
     from cb_agents.card_registry import CardRegistry
 except ImportError:
     CardRegistry = None
-_legal_actions_cache: dict = {}
-_legal_actions_cache_order: list = []
 _LEGAL_CACHE_MAX = 512
+from ._cache_legal_helpers import _legal_actions_cache, _legal_actions_cache_order
 
 from ._cache_legal_helpers import _count_high_prize_on_board
 from ._cache_legal_helpers import _cache_legal
