@@ -20184,3 +20184,11 @@
 **Losing Matches Analyzed:** 1
 **Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
 ---
+
+## DECK ARCHITECT ERROR — 2026-07-30 05:36:08
+**Error:** Insufficient legal cards for archetype 'aggro'
+---
+
+## DECK ARCHITECT ERROR — 2026-07-30 05:47:22
+**Error:** Insufficient legal cards for archetype 'aggro'
+---

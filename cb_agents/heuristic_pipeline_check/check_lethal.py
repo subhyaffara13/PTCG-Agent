@@ -1,0 +1,67 @@
+from . import CardRegistry, _registry, logger
+
+def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
+                 opp_active_id, my_hp: int, legal_retreats: list,
+                 my_attached: int = 0, boss_prob: float = 0.0,
+                 my_active_id=None) -> dict:
+    # Apply elemental weakness: check if our type is super-effective against opponent
+    effective_damage = my_damage
+    try:
+        if my_active_id is not None and opp_active_id is not None:
+            my_type = _registry.card_poke_type.get(int(my_active_id), "")
+            opp_weakness = _registry.card_weakness.get(int(opp_active_id), "")
+            if my_type and opp_weakness and my_type.lower() == opp_weakness.lower():
+                effective_damage = my_damage * 2  # 2x weakness multiplier
+    except Exception:
+        pass
+
+    if legal_attacks and effective_damage >= opp_hp and effective_damage > 0:
+        import re
+        best_attack = None
+        for attack in legal_attacks:
+            move_name = str(attack).replace("attack:", "").strip().lower()
+            dmg_str = _registry.move_damage.get(move_name, "0")
+            dmg_val = 0
+            try:
+                match = re.match(r"^(\d+)", dmg_str)
+                if match:
+                    dmg_val = int(match.group(1))
+            except Exception:
+                pass
+            # Apply weakness to individual move damage check too
+            try:
+                if my_active_id is not None and opp_active_id is not None:
+                    my_type = _registry.card_poke_type.get(int(my_active_id), "")
+                    opp_weakness = _registry.card_weakness.get(int(opp_active_id), "")
+                    if my_type and opp_weakness and my_type.lower() == opp_weakness.lower():
+                        dmg_val *= 2
+            except Exception:
+                pass
+            if dmg_val >= opp_hp:
+                best_attack = attack
+                break
+        if best_attack is None:
+            best_attack = legal_attacks[0]
+        reasoning = f"Lethal: effective_damage {effective_damage} >= opp_hp {opp_hp} (weakness applied)"
+        best_attack_name = str(best_attack).replace("attack:", "")
+        return {"action_override": f"attack:{best_attack_name}", "reasoning_chain": reasoning}
+    if opp_active_id is not None:
+        try:
+            from cb_agents.card_registry import CardRegistry
+            opp_card = CardRegistry().get_full_skill(opp_active_id)
+            if opp_card and opp_card.damage_output >= my_hp and opp_card.damage_output > 0:
+                if legal_retreats:
+                    can_counter = my_damage >= opp_hp and my_attached > 0
+                    if not can_counter:
+                        # Don't force retreat if opponent likely has Boss's Orders
+                        # (they'll just drag back the retreat target or something worse)
+                        if boss_prob > 0.5:
+                            reasoning = f"Opponent lethal threat but boss_prob={boss_prob:.2f}. Retreat may be wasted (Boss's back). Skip boost."
+                            return {"action_override": None, "reasoning_chain": reasoning}
+                        tgt = legal_retreats[0]
+                        reasoning = f"Opponent lethal threat (damage {opp_card.damage_output} >= HP {my_hp}). Boost retreat:{tgt} +1.0"
+                        return {"action_override": None, "retreat_score_boost": 1.0, "retreat_target": tgt, "reasoning_chain": reasoning}
+        except Exception as e:
+            logger.error(f"check_lethal registry error: {e}")
+    return {"action_override": None, "reasoning_chain": "No lethal found."}
+

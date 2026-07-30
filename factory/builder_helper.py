@@ -47,6 +47,7 @@ def modify_python(content: str, change_type: str) -> tuple[str, list[int], str]:
     lines = content.splitlines()
     modified = False
     lines_modified = []
+    desc = ""
     
     for idx, line in enumerate(lines):
         if "threshold" in line.lower() and "=" in line and not modified:

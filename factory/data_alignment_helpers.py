@@ -3,7 +3,7 @@ import random
 from typing import List
 
 def _deterministic_hash(s: str) -> int:
-    return int(hashlib.md5(s.encode()).hexdigest(), 16)
+    return int(hashlib.md5(s.encode(), usedforsecurity=False).hexdigest(), 16)
 
 def apply_symmetry_augmentation(state_tensor: List[float], stack_size: int, single_state_dim: int, max_hand: int, max_board: int) -> List[float]:
     """

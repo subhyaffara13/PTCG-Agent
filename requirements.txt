@@ -18,3 +18,10 @@ tensorboard
 torchvision
 optuna
 onnxruntime
+
+pylint
+mypy
+bandit
+radon
+
+pybind11

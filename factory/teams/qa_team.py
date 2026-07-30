@@ -46,7 +46,7 @@ class QATeam:
         if len(deck_ids) != 60:
             deck_ids = (deck_ids + [1] * 60)[:60]
             
-        res = self.gauntlet_runner.run_gauntlet(deck_ids, num_games_per_archetype=3)
+        res = self.gauntlet_runner.run_gauntlet(deck_ids, num_games_per_stage=3)
         gauntlet_win_rate = res.get("win_rate", 0.0) if isinstance(res, dict) else float(res)
 
         eval_report = {

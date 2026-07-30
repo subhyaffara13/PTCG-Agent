@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ptcg-agent"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "torch",
+    "kaggle",
+    "python-dotenv",
+    "pytest",
+    "redis",
+    "pydantic",
+    "pokerkit",
+    "requests",
+    "jsonschema",
+    "flask",
+    "urllib3",
+    "openai",
+    "onnxscript",
+    "google-generativeai",
+    "tensorboard",
+    "torchvision",
+    "optuna",
+    "onnxruntime",
+]
+
+[project.scripts]
+run = "run.__main__:main"
+
+[tool.pyright]
+include = ["cb_agents", "factory", "src", "tests"]
+executionEnvironments = [
+  { root = "." }
+]

@@ -1,0 +1,129 @@
+from .get_val_resolve_option_names import get_val, resolve_option_names
+
+def make_smart_choice_unified(select: dict, observation: dict, fallback_action: list, registry) -> list:
+    """Evaluates option choices using utility scores, evolution predecessors, and smart discard inversion."""
+    options = get_val(select, "option", [])
+    if not options:
+        return fallback_action
+
+    max_count = get_val(select, "maxCount", 1)
+    sel_type = get_val(select, "type")
+
+    if not registry:
+        return fallback_action
+
+    current = get_val(observation, "current", {})
+    my_idx = get_val(current, "yourIndex", 0)
+    
+    # Resolve names into all options
+    resolve_option_names(options, observation, my_idx, registry)
+
+    # Detect discard choice
+    is_discard = False
+    if sel_type in (1, 2, 4):
+        if sel_type == 4 or str(get_val(select, "context", "")).lower() in ("discard", "energy_discard"):
+            is_discard = True
+
+    # Score options
+    scored_options = []
+    for idx, opt in enumerate(options):
+        score = 0.0
+        card_name = get_val(opt, "name", "")
+        card_id = get_val(opt, "id")
+        
+        card = None
+        if card_id is not None:
+            card = registry.get_full_skill(card_id)
+        if card is None and card_name:
+            card = registry.get_full_skill(card_name)
+
+        if card:
+            score = getattr(card, "utility_score", 0.0)
+            card_id_int = getattr(card, "card_id", None)
+            if card_id_int is not None and hasattr(registry, "learned_dos"):
+                if int(card_id_int) in registry.learned_dos:
+                    score += 8.0  # Equalized DO boost
+                if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts:
+                    score -= 8.0  # Equalized DON'T penalty
+
+        # Dynamic Bench Density & Bench Reserve (Keep 1 Slot Open for Tech Drops)
+        try:
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                bench = get_val(players[my_idx], "bench", [])
+                bench_count = len(bench) if isinstance(bench, list) else 0
+                opt_area = get_val(opt, "inPlayArea")
+                # Bench Overcrowding Penalty: if bench already has 4 Pokémon, reserve the 5th slot for tech Pokémon!
+                if bench_count >= 4 and opt_area in (5, 12):
+                    cname_low = str(card_name).lower()
+                    is_tech_drop = any(t in cname_low for t in ("fezandipiti", "squawkabilly", "lumi", "rotom", "mew"))
+                    if not is_tech_drop:
+                        score -= 20.0  # Reserve slot for tech Pokémon
+        except Exception:
+            pass
+
+        # Stadium Counter-Play: Save Stadium cards to overwrite opponent's Stadium
+        try:
+            cname_low = str(card_name).lower()
+            if "stadium" in cname_low or any(st in cname_low for st in ("court", "path", "temple", "beach", "chamber")):
+                opp_stadium = get_val(current, "stadium", None)
+                if not opp_stadium:
+                    score -= 10.0  # Hold Stadium in hand until opponent plays theirs
+                else:
+                    score += 15.0  # Overwrite opponent's Stadium!
+        except Exception:
+            pass
+
+        # Deck-Out Safeguard: check remaining deck count
+        try:
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                cname_low = str(card_name).lower()
+                is_draw_card = any(d in cname_low for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
+                if is_draw_card:
+                    if deck_count <= 3:
+                        score -= 500.0  # COMPLETE BAN: Never draw cards when 3 or fewer left
+                    elif deck_count <= 8:
+                        score -= 100.0  # HEAVY PENALTY: Avoid drawing cards when low on deck
+        except Exception:
+            pass
+
+        # Status Effect Counter-Play (Sleep, Paralysis, Confusion, Poison, Burn, Lock)
+        # Prioritize Switch/Retreat/Cleanse cards when Active Pokémon is status afflicted
+        try:
+            players = get_val(current, "players", [])
+            if len(players) > my_idx and players[my_idx]:
+                active_poke = get_val(players[my_idx], "active", {})
+                status_list = get_val(active_poke, "specialConditions", []) or get_val(active_poke, "status", [])
+                if status_list:
+                    cname_low = str(card_name).lower()
+                    is_cleanse_switch = any(sw in cname_low for sw in ("switch", "rope", "cart", "scoop", "turo", "curler", "bird keeper"))
+                    if is_cleanse_switch:
+                        score += 35.0  # High priority to switch out of Asleep/Paralyzed/Confused state!
+        except Exception:
+            pass
+
+        # Type-specific scoring
+        opt_type = get_val(opt, "type")
+        if opt_type in (12, 13):  # Attack
+            score += 50.0
+        elif opt_type == 8:  # Energy attach or Bench/Evolve
+            score += 20.0
+
+        scored_options.append((idx, score))
+
+    # Discard inversion: lowest scoring cards get picked for discard
+    if is_discard:
+        scored_options.sort(key=lambda x: x[1])
+    else:
+        scored_options.sort(key=lambda x: x[1], reverse=True)
+
+    selected = [idx for idx, _ in scored_options[:max_count]]
+    if len(selected) < max_count:
+        for idx in range(len(options)):
+            if idx not in selected:
+                selected.append(idx)
+                if len(selected) == max_count:
+                    break
+    return selected
+
