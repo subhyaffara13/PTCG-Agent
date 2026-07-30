@@ -19,6 +19,15 @@ def run_team_pipeline(iteration_id: int, forced_archetype: str | None = None, fo
 
 run_iteration = run_team_pipeline
 
+import signal
+import os
+
+def _instant_signal_handler(sig, frame):
+    logging.info("Ctrl+C received. Terminating immediately...")
+    os._exit(0)
+
+signal.signal(signal.SIGINT, _instant_signal_handler)
+
 if __name__ == "__main__":
     start_iter = 1
     try:

@@ -91,9 +91,11 @@ class TurnPlanner(BaseAgent):
             if prized_ids and self.mcts.belief_tracker:
                 self.mcts.belief_tracker.lock_prizes(prized_ids)
             candidates = build_legal_candidates(game_state)
-            if self._consecutive_passes >= 10 and "pass" in candidates and len(candidates) > 1:
-                logger.warning(f"10-Pass Hard Limit Reached. Forcefully removing 'pass' to break stalemate.")
-                candidates.remove("pass")
+            if self._consecutive_passes >= 10 and "pass" in candidates:
+                non_pass = [c for c in candidates if c != "pass"]
+                if non_pass:
+                    logger.warning(f"10-Pass Hard Limit Reached. Forcefully removing 'pass' to break stalemate.")
+                    candidates = non_pass
             time_rem = getattr(packet, "time_remaining", 600.0)
             _check_lethal_and_update(game_state)
             primary, reasoning = resolve_action(candidates, game_state, profile, time_rem, self.mcts, self.rules)

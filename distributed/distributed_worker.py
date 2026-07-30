@@ -23,8 +23,7 @@ logger = logging.getLogger("DistributedWorker")
 try:
     import redis
 except ImportError:
-    logger.error("redis-py is not installed. Please run: pip install redis")
-    sys.exit(1)
+    redis = None
 
 from factory.game_runner import GameRunner, DEFAULT_DECK
 
@@ -33,24 +32,30 @@ REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
 REDIS_DB = int(os.getenv("REDIS_DB", 0))
 
 def load_latest_config(r):
-    """Fetch the latest archetype and model weights from Redis."""
+    """Fetch the latest archetype and model weights from Redis or local cache."""
+    if not r:
+        return "aggro", None
     try:
         archetype = r.get("ptcg:latest_archetype")
         archetype = archetype.decode("utf-8") if archetype else "aggro"
-        
-        # In a real setup, weights would be binary floats/tensors stored as bytes
         weights_bytes = r.get("ptcg:latest_weights")
         weights = pickle.loads(weights_bytes) if weights_bytes else None  # nosec B301
-        
         return archetype, weights
     except Exception as e:
-        logger.warning(f"Failed to load latest configuration from Redis: {e}")
+        logger.warning(f"Failed to load configuration from Redis: {e}")
         return "aggro", None
 
 def main():
     os.environ["IS_WORKER"] = "true"
-    logger.info(f"Connecting to Redis at {REDIS_HOST}:{REDIS_PORT}...")
-    r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
+    r = None
+    if redis is not None:
+        try:
+            client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB, socket_timeout=2)
+            client.ping()
+            r = client
+            logger.info(f"Connected to central Redis at {REDIS_HOST}:{REDIS_PORT}")
+        except Exception as e:
+            logger.warning(f"Redis unavailable ({e}). Operating in local multi-process self-play worker mode.")
     
     runner = GameRunner()
     
@@ -74,13 +79,16 @@ def main():
             )
             
             # 3. Serialize and push rollout trajectories to central queue
-            payload = pickle.dumps({
-                "archetype": archetype,
-                "result": iteration_result,
-                "timestamp": time.time()
-            })
-            r.rpush("ptcg:experience_queue", payload)
-            logger.info("Successfully pushed rollout trajectory to experience queue.")
+            if r:
+                payload = pickle.dumps({
+                    "archetype": archetype,
+                    "result": iteration_result,
+                    "timestamp": time.time()
+                })
+                r.rpush("ptcg:experience_queue", payload)
+                logger.info("Successfully pushed rollout trajectory to experience queue.")
+            else:
+                logger.info("Simulation completed cleanly in local worker mode.")
             
         except Exception as e:
             logger.error(f"Error during simulation run: {e}", exc_info=True)

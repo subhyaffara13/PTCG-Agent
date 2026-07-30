@@ -75,20 +75,9 @@ async def train(ctx, iterations: int = 10):
     except Exception as e:
         await ctx.send(f"Failed to launch training: {e}")
 
-@bot.command(name="run_cmd")
-async def run_cmd(ctx, *, command: str):
-    await ctx.send(f"💻 Running command: `{command}`...")
-    try:
-        process = await asyncio.create_subprocess_shell(
-            command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-        )
-        stdout, stderr = await process.communicate()
-        await ctx.send(format_command_output(process.returncode, stdout, stderr))
-    except Exception as e:
-        await ctx.send(f"Error executing command: {e}")
-
 if __name__ == "__main__":
     if not TOKEN:
         print("Error: DISCORD_TOKEN is missing in the .env file.")
     else:
         bot.run(TOKEN)
+

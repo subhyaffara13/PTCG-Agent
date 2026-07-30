@@ -50,7 +50,7 @@ def auto_commit_and_push_if_changed():
             _run_git(["git", "push"], check=True, capture_output=True, text=True)
             logger.info("Factory updates committed and pushed successfully.")
         except subprocess.CalledProcessError as push_err:
-            push_err_out = (getattr(push_err, 'stderr', '') or '' + getattr(push_err, 'stdout', '') or '').lower()
+            push_err_out = ((getattr(push_err, 'stderr', '') or '') + (getattr(push_err, 'stdout', '') or '')).lower()
             if "fetch first" in push_err_out or "non-fast-forward" in push_err_out or "behind" in push_err_out:
                 logger.warning("Master push rejected due to remote changes. Attempting git pull --rebase...")
                 try:

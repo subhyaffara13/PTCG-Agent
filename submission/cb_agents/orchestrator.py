@@ -123,17 +123,9 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
                 }
                 req_path.parent.mkdir(parents=True, exist_ok=True)
                 req_path.write_text(json.dumps(req_data, indent=2), encoding="utf-8")
-                
-                if os.environ.get("AUTO_EVOLVE") == "true" and not is_kaggle:
-                    sys.stderr.write(f"AUTO_EVOLVE is active. Spawning code_mutator for {target_file}...\n")
-                    subprocess.Popen(
-                        [sys.executable, "-m", "cb_agents.code_mutator", target_file],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL,
-                        close_fds=True
-                    )
             except Exception as log_err:
-                sys.stderr.write(f"Failed to log/trigger evolution request: {log_err}\n")
+                sys.stderr.write(f"Failed to log evolution request: {log_err}\n")
+
                 
             try:
                 legal = game_state.get("legal_actions", [])

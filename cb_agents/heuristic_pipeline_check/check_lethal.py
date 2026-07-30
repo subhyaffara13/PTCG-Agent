@@ -10,8 +10,11 @@ def check_lethal(my_damage: int, opp_hp: int, legal_attacks: list,
         if my_active_id is not None and opp_active_id is not None:
             my_type = _registry.card_poke_type.get(int(my_active_id), "")
             opp_weakness = _registry.card_weakness.get(int(opp_active_id), "")
+            opp_resistance = _registry.card_resistance.get(int(opp_active_id), "") if hasattr(_registry, "card_resistance") else ""
             if my_type and opp_weakness and my_type.lower() == opp_weakness.lower():
                 effective_damage = my_damage * 2  # 2x weakness multiplier
+            elif my_type and opp_resistance and my_type.lower() == opp_resistance.lower():
+                effective_damage = max(0, my_damage - 30)  # -30 resistance reduction
     except Exception:
         pass
 

@@ -104,9 +104,11 @@ void CardRegistry::loadMetadata(const std::string& path) {
                 } else if (keyStr == "card_name") {
                     currentCard.card_name = valStr;
                 } else if (keyStr == "card_type") {
-                    if (valStr == "Pokemon" || valStr == "pokemon") currentCard.card_type = CardType::POKEMON;
-                    else if (valStr == "Trainer" || valStr == "trainer") currentCard.card_type = CardType::TRAINER;
-                    else if (valStr == "Energy" || valStr == "energy") currentCard.card_type = CardType::ENERGY;
+                    std::string ct = valStr;
+                    std::transform(ct.begin(), ct.end(), ct.begin(), ::tolower);
+                    if (ct == "pokemon") currentCard.card_type = CardType::POKEMON;
+                    else if (ct == "trainer") currentCard.card_type = CardType::TRAINER;
+                    else if (ct == "energy") currentCard.card_type = CardType::ENERGY;
                 } else if (keyStr == "stage_type") {
                     std::string st = valStr;
                     std::transform(st.begin(), st.end(), st.begin(), ::tolower);
@@ -409,19 +411,33 @@ void apply_action(BoardState& state, const std::string& action) {
             std::transform(att_type.begin(), att_type.end(), att_type.begin(), ::tolower);
             std::transform(def_type.begin(), def_type.end(), def_type.begin(), ::tolower);
             
-            // Check elemental weakness advantage:
-            // Water (water) -> Grass/Lightning
-            // Fire (fire) -> Water
-            // Lightning (lightning) -> Fighting
-            // Grass (grass) -> Fire
+            // Check complete elemental weakness advantage (2x damage):
             bool has_weakness = false;
             if (def_type.find("water") != std::string::npos && (att_type.find("lightning") != std::string::npos || att_type.find("grass") != std::string::npos)) has_weakness = true;
             else if (def_type.find("fire") != std::string::npos && att_type.find("water") != std::string::npos) has_weakness = true;
             else if (def_type.find("lightning") != std::string::npos && att_type.find("fighting") != std::string::npos) has_weakness = true;
             else if (def_type.find("grass") != std::string::npos && att_type.find("fire") != std::string::npos) has_weakness = true;
+            else if (def_type.find("fighting") != std::string::npos && (att_type.find("grass") != std::string::npos || att_type.find("psychic") != std::string::npos)) has_weakness = true;
+            else if (def_type.find("psychic") != std::string::npos && (att_type.find("darkness") != std::string::npos || att_type.find("dark") != std::string::npos)) has_weakness = true;
+            else if ((def_type.find("darkness") != std::string::npos || def_type.find("dark") != std::string::npos) && (att_type.find("grass") != std::string::npos || att_type.find("fighting") != std::string::npos)) has_weakness = true;
+            else if (def_type.find("metal") != std::string::npos && att_type.find("fire") != std::string::npos) has_weakness = true;
+            else if (def_type.find("colorless") != std::string::npos && att_type.find("fighting") != std::string::npos) has_weakness = true;
+            else if (def_type.find("dragon") != std::string::npos && (att_type.find("dragon") != std::string::npos || att_type.find("fairy") != std::string::npos)) has_weakness = true;
             
             if (has_weakness) {
                 actual_damage *= 2;
+            }
+
+            // Check elemental resistance (-30 damage reduction):
+            bool has_resistance = false;
+            if (def_type.find("grass") != std::string::npos && att_type.find("fighting") != std::string::npos) has_resistance = true;
+            else if (def_type.find("metal") != std::string::npos && att_type.find("grass") != std::string::npos) has_resistance = true;
+            else if (def_type.find("fighting") != std::string::npos && att_type.find("lightning") != std::string::npos) has_resistance = true;
+            else if (def_type.find("psychic") != std::string::npos && att_type.find("fighting") != std::string::npos) has_resistance = true;
+            else if ((def_type.find("darkness") != std::string::npos || def_type.find("dark") != std::string::npos) && att_type.find("fighting") != std::string::npos) has_resistance = true;
+
+            if (has_resistance) {
+                actual_damage = std::max(0, actual_damage - 30);
             }
         }
 

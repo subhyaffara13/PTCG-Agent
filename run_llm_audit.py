@@ -5,8 +5,8 @@ from concurrent.futures import ThreadPoolExecutor
 from openai import OpenAI
 
 # Initialize the OpenAI client.
-# Assuming the user has OPENAI_API_KEY in their environment (from MCP config).
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+api_key = os.environ.get("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key) if api_key else None
 
 def get_codebase_files():
     files = []
@@ -44,6 +44,8 @@ def agent_1_architect(code_chunk):
         "Be concise. If you find nothing critical, just say 'No major architectural issues found.'\n\n"
         f"CODE:\n{code_chunk}"
     )
+    if not client:
+        return "Agent 1 Error: OPENAI_API_KEY environment variable is not set."
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
@@ -65,6 +67,8 @@ def agent_2_resilience(code_chunk):
         "Be concise. If you find nothing critical, just say 'No major logic/resilience issues found.'\n\n"
         f"CODE:\n{code_chunk}"
     )
+    if not client:
+        return "Agent 2 Error: OPENAI_API_KEY environment variable is not set."
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",

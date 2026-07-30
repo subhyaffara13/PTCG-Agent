@@ -5,7 +5,7 @@ except ImportError:
 
 def _rla_add_retreat_attack(gs, actions):
     bench = gs.get("my_bench", [])
-    if isinstance(bench, list) and len(bench) > 0:
+    if isinstance(bench, list) and len(bench) > 0 and not gs.get("retreated_this_turn", False):
         for i in range(len(bench)):
             actions.append(f"retreat:{i}")
     opp_hp = gs.get("opponent_active_hp", 100)

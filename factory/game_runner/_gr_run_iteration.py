@@ -11,13 +11,13 @@ def _gr_run_iteration(self, iteration_id, version_n1, version_n2, deck_base, dec
     from factory.league_manager import LeagueManager
     from factory.gauntlet_runner import GauntletRunner
     league = LeagueManager(); gauntlet = GauntletRunner(str(self.log_dir.parent / "skills"))
-    games_config = [("reasoning_test", d_base, d_base, False, True, None, None, None)]
+    games_config: list[tuple] = [("reasoning_test", version_n1, version_n2, d_base, d_base, False, True, None, None, None)]
     league_matchups = {}
     core_archetypes = ["Aggro", "Control", "Setup", "Stall"]
     mutated_new = _mutate_deck(d_new)
     for idx, arch in enumerate(core_archetypes):
         seed = 2000 + idx; opp_deck = gauntlet._generate_real_deck(arch); opp_name = f"gauntlet_{arch}"
         league_matchups[f"deck_test_{idx}_orig"] = opp_name; league_matchups[f"deck_test_{idx}_swap"] = opp_name
-        games_config.extend([(f"deck_test_{idx}_orig", opp_deck, mutated_new, False, False, seed, None, None),
-                             (f"deck_test_{idx}_swap", mutated_new, opp_deck, False, False, seed, None, None)])
+        games_config.extend([(f"deck_test_{idx}_orig", version_n1, version_n2, opp_deck, mutated_new, False, False, seed, None, None),
+                             (f"deck_test_{idx}_swap", version_n1, version_n2, mutated_new, opp_deck, False, False, seed, None, None)])
     return _execute_games(self, iteration_id, version_n1, version_n2, games_config, league, league_matchups)

@@ -23,10 +23,12 @@ class OpponentModel(BaseAgent):
 
         self.reasoning_log_file = self.log_dir / "opponent_model_reasoning.json"
         self._reasoning_buffer = []
+        loaded_arch = {}
         if self.shared_context:
-            self.archetypes = self.shared_context.get_config(str(self.skills_dir), "deck_archetypes.json").get("archetypes", {})
-        else:
-            self.archetypes = self._load_deck_archetypes()
+            loaded_arch = self.shared_context.get_config(str(self.skills_dir), "deck_archetypes.json").get("archetypes", {})
+        if not loaded_arch:
+            loaded_arch = self._load_deck_archetypes()
+        self.archetypes = loaded_arch
         self.revealed_state = []
         self.inferred_state = {}
         self.archetype_confidence = 0.0
@@ -34,14 +36,33 @@ class OpponentModel(BaseAgent):
         self.opponent_searched_last_turn = False
 
     def _load_deck_archetypes(self) -> dict:
+        DEFAULT_ARCHETYPES = {
+            "combo": {
+                "signature_cards": ["charizard", "pidgeot", "rare candy", "baxcalibur", "gardevoir"],
+                "card_pool": ["charizard-ex", "pidgeot-ex", "rare-candy", "baxcalibur", "frigibax", "gardevoir-ex"]
+            },
+            "aggro": {
+                "signature_cards": ["miraidon", "iron hands", "roaring moon", "raging bolt", "chien-pao"],
+                "card_pool": ["miraidon-ex", "iron-hands-ex", "roaring-moon-ex", "raging-bolt-ex", "chien-pao-ex"]
+            },
+            "control": {
+                "signature_cards": ["snorlax", "block", "pidgeot v", "erika's invitation", "miss fortune sisters"],
+                "card_pool": ["snorlax", "pidgeot-v", "erika's-invitation", "miss-fortune-sisters"]
+            },
+            "stall": {
+                "signature_cards": ["radiant tsareena", "crushing hammer", "blissey"],
+                "card_pool": ["radiant-tsareena", "crushing-hammer", "blissey-ex"]
+            }
+        }
         path = self.skills_dir / "deck_archetypes.json"
         if path.exists():
             try:
                 data = json.loads(path.read_text(encoding="utf-8"))
-                return data.get("archetypes", {})
+                loaded = data.get("archetypes", {})
+                if loaded: return loaded
             except Exception as e:
                 logger.error(f"Failed to read deck_archetypes.json: {e}")
-        return {}
+        return DEFAULT_ARCHETYPES
 
     def receive(self, packet: Any) -> dict:
         if hasattr(packet, "_asdict"): packet = packet._asdict()

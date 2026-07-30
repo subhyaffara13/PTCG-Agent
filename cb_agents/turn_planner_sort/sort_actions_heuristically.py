@@ -5,7 +5,7 @@ from cb_agents.heuristic_pipeline import _dead_weight_heuristic
 from cb_agents.turn_planner_heuristics import _registry
 import logging
 logger = logging.getLogger(__name__)
-from ._has_evolution_target__get_neural_network import _get_neural_network
+from ._evolution_helpers import _get_neural_network, _has_evolution_target
 
 def sort_actions_heuristically(candidates: List[str], profile: str, game_state: dict) -> List[str]:
     try:
@@ -161,7 +161,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
                         pass
                     hp = game_state.get("my_active_hp", 100)
                     if hp <= 50 or active_attached >= needed:
-                        micro_rank += 40  # Active is dying or fully charged, heavy penalty for attaching more to it!
+                        micro_rank += 600  # Active is dying or fully charged, heavy penalty for attaching more to it!
                     elif active_attached == 0:
                         micro_rank -= 2
                     else:

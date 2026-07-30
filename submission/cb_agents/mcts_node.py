@@ -35,7 +35,7 @@ class MCTSNode:
     @property
     def q_value(self) -> float:
         if self.visit_count == 0: return 0.0
-        return (self.value_sum + self.virtual_loss) / self.visit_count
+        return self.value_sum / self.visit_count
 
     @property
     def real_q_value(self) -> float:

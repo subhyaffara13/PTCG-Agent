@@ -11,6 +11,10 @@ class SequencingEngine:
                 return "zero_cost_draw"
         if action.startswith("play_trainer:"):
             action_suffix = action[13:].replace("_", " ").replace("'", "").lower()
+            if any(k in action_suffix for k in ("ball", "search", "poffin", "vip pass", "carrier", "earthen", "secret box")):
+                return "search"
+            if any(k in action_suffix for k in ("research", "professor", "carmine", "iono", "judge", "colress", "lillie")):
+                return "draw"
             from cb_agents.card_registry import CardRegistry
             from cb_agents.card_types import ComboTag
             registry = CardRegistry()

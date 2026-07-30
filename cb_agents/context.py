@@ -50,11 +50,11 @@ class LazyDict(Mapping):
 
 class SharedContext:
     _instance = None
-    _caches: Dict[str, Dict[str, Any]] = {}
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(SharedContext, cls).__new__(cls, *args, **kwargs)
+            cls._instance._caches = {}
         return cls._instance
 
     def get_config(self, skills_dir: str, config_name: str) -> dict:

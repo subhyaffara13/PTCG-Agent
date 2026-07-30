@@ -35,6 +35,7 @@ class BeliefTracker:
             self.state.prize_probabilities[card_id] = prob_in_prizes
 
     def update_on_play(self, card_id: int):
+        self._prob_cache.clear()
         card_id = int(card_id)
         self.state.hand_size = max(0, self.state.hand_size - 1)
         self.state.known_in_play[card_id] = self.state.known_in_play.get(card_id, 0) + 1
@@ -45,11 +46,13 @@ class BeliefTracker:
         self._recalculate_probabilities()
 
     def update_on_draw(self, n: int):
+        self._prob_cache.clear()
         self.state.deck_size = max(0, self.state.deck_size - n)
         self.state.hand_size += n
         self._recalculate_probabilities()
 
     def update_on_search(self, card_id: int):
+        self._prob_cache.clear()
         card_id = int(card_id)
         self.state.deck_size = max(0, self.state.deck_size - 1)
         self.state.hand_size += 1
@@ -57,6 +60,7 @@ class BeliefTracker:
         self._recalculate_probabilities()
 
     def update_on_discard(self, card_id: int):
+        self._prob_cache.clear()
         card_id = int(card_id)
         self.state.hand_size = max(0, self.state.hand_size - 1)
         self.state.known_in_discard[card_id] = self.state.known_in_discard.get(card_id, 0) + 1

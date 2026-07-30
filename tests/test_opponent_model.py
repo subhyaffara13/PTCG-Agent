@@ -37,15 +37,15 @@ class TestOpponentModel:
             model.receive("not a packet")
 
     def test_confidence_limit_under_3_cards(self):
-        # Confidence remains 0.0 until at least 3 cards are revealed
+        # Confidence remains 0.0 until at least 3 cards are revealed (for non-signature pool cards)
         model = OpponentModel()
         
         # Mock some archetypes data
         model.archetypes = {
-            "aggro": {"signature_cards": ["1", "2", "3"], "card_pool": []}
+            "aggro": {"signature_cards": ["1", "2", "3"], "card_pool": ["10", "20", "30"]}
         }
         
-        packet = make_packet(newly_played_cards=["1", "2"])
+        packet = make_packet(newly_played_cards=["10", "20"])
         res = model.receive(packet)
         assert res["archetype_confidence"] == 0.0
 

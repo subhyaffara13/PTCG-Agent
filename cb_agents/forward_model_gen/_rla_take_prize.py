@@ -1,4 +1,3 @@
-from cb_agents.forward_model_gen._cache_legal_helpers import _legal_actions_cache
 from ._cache_legal_helpers import _cache_legal
 
 def _rla_handle_take_prize(gs, ck):

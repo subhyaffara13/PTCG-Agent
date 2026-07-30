@@ -84,6 +84,7 @@ class OrchestratorRunMixin:
             for p in my_bench:
                 if isinstance(p, dict):
                     energy_attached += len(p.get("attached", []) or p.get("energies", []))
+        gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
         gs_dict["_cached_energy_attached"] = energy_attached
 
         # Cache projected opponent damage for score_state
@@ -103,14 +104,12 @@ class OrchestratorRunMixin:
         trigger = "prize_gap" if (opponent_prizes - my_prizes) >= 2 else "none"
         strategy_result = self.bus.dispatch("StrategyAgent", StrategyPacket(trigger=trigger, board_summary=board_summary_dict))
 
-        gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
         self.sync_belief_tracker(gs_dict)
 
         defensive_retreat = self._check_defensive_retreat(game_state, board_summary)
         if defensive_retreat:
             # Instead of short-circuiting, inject a strong retreat preference
             # so the TurnPlanner can still play trainers/energy/evolve first.
-            gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
             gs_dict["retreat_score_boost"] = gs_dict.get("retreat_score_boost", 0.0) + 1.5
             gs_dict["retreat_target"] = defensive_retreat
 

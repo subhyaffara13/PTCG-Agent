@@ -68,9 +68,9 @@ class DeckArchitect(BaseAgent):
             current_archetype = "aggro"
 
         weak_metric = improvement_notes.get("reasoning", "low deck delta")
-        legal_cards = [c for c in self.card_pool if c.get("archetype") == current_archetype or c.get("card_type") == "Energy" or c.get("card_type") == "Trainer"]
-        basic_pokemon = [c for c in self.card_pool if c.get("card_type") == "Pokemon" and self.card_details.get(str(c.get("card_id")), {}).get("stage") == "Basic"]
-        energy_cards = [c for c in self.card_pool if c.get("card_type") == "Energy"]
+        legal_cards = [c for c in self.card_pool if not c.get("archetype") or c.get("archetype") in (current_archetype, "all", "utility", "") or str(c.get("card_type", "")).upper() in ("ENERGY", "TRAINER")]
+        basic_pokemon = [c for c in self.card_pool if str(c.get("card_type", "")).upper() == "POKEMON" and self.card_details.get(str(c.get("card_id")), {}).get("stage") == "Basic"]
+        energy_cards = [c for c in self.card_pool if str(c.get("card_type", "")).upper() == "ENERGY"]
 
         if len(legal_cards) < 3:
             log_error_to_decisions(f"Insufficient legal cards for archetype '{current_archetype}'", self.decisions_file)

@@ -6,6 +6,7 @@ def __getattr__(name):
         return HeuristicValueNetwork
     raise AttributeError(f"module {__name__} no attr {name}")
 
+@dataclass
 class ActionPrior:
     action: str
     prob: float

@@ -5,8 +5,12 @@ def check_security_and_time(staged_path: Path, content: str) -> tuple[int, str]:
     lines = content.splitlines()
 
     # Router Bus Boundaries (Check 4)
+    state_pattern = re.compile(r'\b(GameState|OrchestratorState)\b')
     for idx, line in enumerate(lines, start=1):
-        if "GameState" in line or "OrchestratorState" in line:
+        stripped = line.strip()
+        if stripped.startswith("#"):
+            continue
+        if state_pattern.search(line):
             return 4, f"Access to full state object found on line {idx}"
         if "RouterBus." in line and not (".dispatch(" in line):
             return 4, f"Direct access to RouterBus internals on line {idx}"

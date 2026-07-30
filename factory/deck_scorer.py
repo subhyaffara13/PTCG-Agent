@@ -10,7 +10,7 @@ from typing import List, Dict
 from factory.deck_scorer_rules import apply_learned_rules
 from factory.configs import DEFAULT_ARCHETYPE_WEIGHTS
 from factory.deck_scorer_state import CardState
-from scratch.deck_synergy_graph import get_global_synergy_graph, score_deck_synergy
+from factory.deck_synergy_graph import get_global_synergy_graph, score_deck_synergy
 
 from factory.deck_scorer_consistency import consistency_score, recovery_score
 from factory.deck_scorer_efficiency import prize_efficiency

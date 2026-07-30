@@ -176,13 +176,25 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
             n = action.split(":", 1)[1].lower()
             sk = {"nest ball", "ultra ball", "quick ball", "level ball", "secret box", "mega signal", "team rocket's petrel"}
             if any(s in n for s in sk): v += min(0.25, dc * 0.005)
-        # Hand-size-aware draw supporter valuation
-        if hs > 5 and dc > 10:
-            tn = action.split(":", 1)[1].lower()
-            if any(k in tn for k in {"iono", "judge"}):
-                v += min(0.6, hs * 0.08)  # Big hand -> big shuffle value (draws up to hand-size cards)
-            if any(k in tn for k in {"research", "professor", "carmine"}):
-                v += min(0.4, hs * 0.05)  # Big hand -> more cards to discard with Research
+        # Prize-aware draw supporter valuation
+        tn = action.split(":", 1)[1].lower()
+        opp_prizes_val = gs.get("opponent_prizes", 6)
+        opp_hand_val = gs.get("opponent_hand_count", 5)
+        if "iono" in tn:
+            if opp_prizes_val <= 2 and opp_hand_val >= 3:
+                v += 1.5
+            elif opp_prizes_val <= 3 and opp_hand_val >= 4:
+                v += 0.8
+            if mp <= 2 and hs >= 4:
+                v -= 1.0
+        elif "judge" in tn:
+            if opp_hand_val >= 5:
+                v += 0.5
+            if hs < 4 and dc > 10:
+                v += 0.3
+        elif any(k in tn for k in {"research", "professor", "carmine"}):
+            if hs > 5 and dc > 10:
+                v += min(0.4, hs * 0.05)
     elif action.startswith("ability:"):
         tn = action.split(":", 1)[1].lower()
         v += 0.35

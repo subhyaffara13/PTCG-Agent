@@ -20192,3 +20192,22 @@
 ## DECK ARCHITECT ERROR — 2026-07-30 05:47:22
 **Error:** Insufficient legal cards for archetype 'aggro'
 ---
+
+## DECK ARCHITECT ERROR — 2026-07-30 20:02:41
+**Error:** Insufficient legal cards for archetype 'aggro'
+---
+
+## Leaderboard Feedback Loop — 2026-07-30 20:03:06
+**Processed New Player:** Octavi Grau (ID: 16374074)
+**Winning Matches Analyzed:** 5
+**Losing Matches Analyzed:** 5
+**Updated Skills:** Added extracted rules to `learned_dos.json` and `learned_donts.json`.
+---
+
+## DECK ARCHITECT ERROR — 2026-07-30 21:40:39
+**Error:** Insufficient legal cards for archetype 'aggro'
+---
+
+## DECK ARCHITECT ERROR — 2026-07-30 21:41:34
+**Error:** Insufficient legal cards for archetype 'aggro'
+---

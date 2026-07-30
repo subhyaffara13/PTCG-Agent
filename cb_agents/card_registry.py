@@ -13,6 +13,10 @@ logger = logging.getLogger(__name__)
 class CardRegistry:
     _instance = None
 
+    @classmethod
+    def reset(cls):
+        cls._instance = None
+
     def __new__(cls, skills_dir: str = "skills"):
         resolved = Path(skills_dir).resolve()
         if not cls._instance or getattr(cls._instance, "_resolved_skills_path", None) != resolved:

@@ -60,11 +60,11 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
                 active_id = active_poke.get("id") if isinstance(active_poke, dict) else None
                 for p in valid_targets:
                     att_count = len(p.get("attached", []))
-                    poke_id = p.get("id")
+                    iter_poke_id = p.get("id")
                     need = 3
                     try:
-                        if poke_id is not None:
-                            pc = CardRegistry().get_full_skill(poke_id)
+                        if iter_poke_id is not None:
+                            pc = CardRegistry().get_full_skill(iter_poke_id)
                             if pc and pc.energy_cost > 0:
                                 need = pc.energy_cost
                     except Exception:
@@ -79,10 +79,12 @@ def _resolve_base(gs: dict, hand: list, action: str) -> None:
             attached = list(chosen.get("attached", []))
             attached.append(card_id)
             chosen["attached"] = attached
+        gs["energy_attached_this_turn"] = True
 
     elif act_type == "retreat":
         from cb_agents.forward_model_resolve_helpers import handle_retreat_helper
         handle_retreat_helper(gs, target, CardRegistry)
+        gs["retreated_this_turn"] = True
 
     elif act_type == "attack":
         from cb_agents.forward_model_resolve_helpers import handle_attack_helper

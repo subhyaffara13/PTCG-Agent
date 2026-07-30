@@ -8,8 +8,8 @@ import json
 
 def board_hash(hand_ids: Tuple[int, ...], board_ids: Tuple[int, ...], deck_remaining: int, turn: int) -> int:
     """Computes a deterministic hash for the current board state."""
-    digest = hashlib.md5(f"{hand_ids}|{board_ids}|{deck_remaining}|{turn}".encode()).hexdigest()
-    return int(digest, 16)
+    digest = hashlib.sha256(f"{hand_ids}|{board_ids}|{deck_remaining}|{turn}".encode()).hexdigest()
+    return int(digest[:16], 16)
 
 def gs_hash(game_state: dict) -> int:
     """Compute a deterministic hash for a game state dict for transposition detection."""
@@ -24,7 +24,7 @@ def gs_hash(game_state: dict) -> int:
                 key_parts.append((k, str(v)))
             except (TypeError, ValueError):
                 pass
-        return int(hashlib.md5(str(tuple(key_parts)).encode()).hexdigest(), 16)
+        return int(hashlib.sha256(str(tuple(key_parts)).encode()).hexdigest()[:16], 16)
     except Exception:
         return 0
 

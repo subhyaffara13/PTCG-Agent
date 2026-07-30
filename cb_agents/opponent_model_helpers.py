@@ -40,36 +40,43 @@ def identify_opponent_archetype(revealed_state: List[Any], archetypes: Dict[str,
             return KEY_ID_TO_ARCHETYPE[str(card)], 0.99
             
     total_revealed = len(revealed_state)
-    if total_revealed < 3 or not archetypes:
+    if total_revealed < 1 or not archetypes:
         return "unknown", 0.0
 
     # Pre-compute card identifiers for all revealed cards once
     revealed_idents = [(str(c).lower().replace(" ", "-"), get_card_identifier(c)) for c in revealed_state]
 
-    best_match_count = 0
+    best_score = 0.0
     best_archetype = "unknown"
+    has_sig_match = False
     
     for arch_name, arch_data in archetypes.items():
         signature_cards = [sig.lower().replace(" ", "-") for sig in arch_data.get("signature_cards", [])]
         card_pool = [cp.lower().replace(" ", "-") for cp in arch_data.get("card_pool", [])]
         
-        matches = 0
+        score = 0.0
+        arch_has_sig = False
         for raw_str, ident in revealed_idents:
-            if raw_str in signature_cards or raw_str in card_pool:
-                matches += 1
+            is_sig = (raw_str in signature_cards) or any((len(ident) > 4 and (ident in sig or sig in ident)) for sig in signature_cards)
+            if is_sig:
+                score += 2.0
+                arch_has_sig = True
                 continue
-            # Substring match only for longer identifiers (>4 chars) to avoid false positives
-            is_sig = any((len(ident) > 4 and (ident in sig or sig in ident)) for sig in signature_cards)
-            is_pool = any((len(ident) > 4 and (ident in cp or cp in ident)) for cp in card_pool)
-            if is_sig or is_pool:
-                matches += 1
+            is_pool = (raw_str in card_pool) or any((len(ident) > 4 and (ident in cp or cp in ident)) for cp in card_pool)
+            if is_pool:
+                score += 1.0
                 
-        if matches > best_match_count:
-            best_match_count = matches
+        if score > best_score:
+            best_score = score
             best_archetype = arch_name
+            has_sig_match = arch_has_sig
             
-    if best_match_count > 0:
-        return best_archetype, round(best_match_count / total_revealed, 4)
+    if best_score > 0.0:
+        if has_sig_match:
+            confidence = min(0.95, 0.80 + (best_score * 0.05))
+        else:
+            confidence = round(best_score / (total_revealed * 2.0), 4) if total_revealed >= 3 else 0.0
+        return best_archetype, confidence
         
     return "unknown", 0.0
 

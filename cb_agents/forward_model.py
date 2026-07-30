@@ -21,9 +21,12 @@ def _fast_poke_clone(p: dict) -> dict:
 
 def fast_clone_state(gs: dict) -> dict:
     clone = dict(gs)
-    for k in ["my_hand", "my_discard", "opponent_discard", "my_deck", "opponent_deck", "legal_actions"]:
+    for k in ["my_hand", "my_discard", "opponent_discard", "my_deck", "opponent_deck", "my_prizes", "legal_actions"]:
         if k in clone and isinstance(clone[k], list):
             clone[k] = list(clone[k])
+
+    if "my_decklist" in clone and isinstance(clone["my_decklist"], dict):
+        clone["my_decklist"] = dict(clone["my_decklist"])
 
     for k in ["my_active_pokemon", "opponent_active", "opponent_active_pokemon"]:
         if k in clone and isinstance(clone[k], dict):
@@ -37,13 +40,6 @@ def fast_clone_state(gs: dict) -> dict:
 def apply_action(game_state: dict, action: str) -> dict:
     gs = fast_clone_state(game_state)
     hand = list(gs.get("my_hand", []))
-
-    if action.endswith("_heads") or action.endswith("_tails"):
-        _resolve_base(gs, hand, action)
-        gs.pop("legal_actions", None)
-        _regenerate_legal_actions(gs)
-        _check_win_conditions(gs)
-        return gs
 
     _resolve_base(gs, hand, action)
     gs.pop("legal_actions", None)

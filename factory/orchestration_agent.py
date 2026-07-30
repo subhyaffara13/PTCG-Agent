@@ -120,8 +120,8 @@ def main():
                             
                         run_worker_loop(winner_ip, m_version)
         except KeyboardInterrupt:
-            logger.info("Orchestration Agent received KeyboardInterrupt (Ctrl+C). Terminating...")
-            sys.exit(0)
+            logger.info("Orchestration Agent received KeyboardInterrupt (Ctrl+C). Terminating immediately...")
+            os._exit(0)
         except Exception as e:
             logger.error(f"Critical error in Orchestration Agent loop: {e}")
             time.sleep(5)
@@ -131,5 +131,4 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         logger.info("Agent fully terminated by user.")
-        import sys
-        sys.exit(0)
+        os._exit(0)

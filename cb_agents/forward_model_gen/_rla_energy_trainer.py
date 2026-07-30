@@ -15,16 +15,17 @@ def _rla_add_energy_trainer_actions(gs, card, actions):
     except Exception: pass
     if not c: return False
     if ct == "ENERGY":
-        valid_targets = [str(gs.get("my_active_pokemon", {}).get("id", ""))] if isinstance(gs.get("my_active_pokemon"), dict) else []
-        bench = gs.get("my_bench", [])
-        if isinstance(bench, list):
-            for p in bench:
-                tid = str(p.get("id", "")) if isinstance(p, dict) else ""
-                if tid: valid_targets.append(tid)
-        if valid_targets:
-            for target in valid_targets:
-                if target: actions.append(f"attach_energy:{card}:{target}")
-        else: actions.append(f"attach_energy:{card}")
+        if not gs.get("energy_attached_this_turn", False):
+            valid_targets = [str(gs.get("my_active_pokemon", {}).get("id", ""))] if isinstance(gs.get("my_active_pokemon"), dict) else []
+            bench = gs.get("my_bench", [])
+            if isinstance(bench, list):
+                for p in bench:
+                    tid = str(p.get("id", "")) if isinstance(p, dict) else ""
+                    if tid: valid_targets.append(tid)
+            if valid_targets:
+                for target in valid_targets:
+                    if target: actions.append(f"attach_energy:{card}:{target}")
+            else: actions.append(f"attach_energy:{card}")
         return True
     if ct == "TRAINER":
         skip = False

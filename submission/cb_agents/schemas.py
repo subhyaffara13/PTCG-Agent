@@ -31,6 +31,7 @@ class GameState:
     opponent_deck_count: int = 60
     opponent_active_hp: int = 100
     turn_number: int = 1
+    legal_actions: List[str] = field(default_factory=list)
     legal_attacks: List[str] = field(default_factory=list)
     legal_attachments: List[str] = field(default_factory=list)
     legal_bench: List[str] = field(default_factory=list)
@@ -64,6 +65,7 @@ class GameState:
             opponent_deck_count=d.get("opponent_deck_count", 60),
             opponent_active_hp=d.get("opponent_active_hp", 100),
             turn_number=d.get("turn_number", 1),
+            legal_actions=d.get("legal_actions", []),
             legal_attacks=d.get("legal_attacks", []),
             legal_attachments=d.get("legal_attachments", []),
             legal_bench=d.get("legal_bench", []),

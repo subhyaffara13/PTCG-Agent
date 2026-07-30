@@ -13,6 +13,8 @@ except ImportError:
         def __exit__(self, *args): pass
     class MockTorch:
         no_grad = MockNoGrad
+        def __getattr__(self, name):
+            raise ImportError(f"PyTorch is not installed. Cannot access torch.{name}")
     torch = MockTorch()
 logger = logging.getLogger(__name__)
 

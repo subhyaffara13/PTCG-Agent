@@ -9,12 +9,39 @@ class DeckLoader:
         self.skills_dir = skills_dir
 
     def load_card_pool(self) -> list:
-        path = self.skills_dir / "card_scoring.json"
-        if path.exists():
-            try:
-                return json.loads(path.read_text(encoding="utf-8")).get("cards", [])
-            except Exception as e:
-                logger.error(f"Failed to read card_scoring.json: {e}")
+        paths = [self.skills_dir / "card_scoring.json", Path("skills/card_scoring.json")]
+        for path in paths:
+            if path.exists():
+                try:
+                    res = json.loads(path.read_text(encoding="utf-8")).get("cards", [])
+                    if res: return res
+                except Exception as e:
+                    logger.error(f"Failed to read {path}: {e}")
+                    
+        # Fallback to card_pool_raw.csv
+        csv_paths = [self.skills_dir / "card_pool_raw.csv", Path("skills/card_pool_raw.csv")]
+        for cp in csv_paths:
+            if cp.exists():
+                try:
+                    import csv
+                    cards = []
+                    with open(cp, mode="r", encoding="utf-8") as f:
+                        reader = csv.DictReader(f)
+                        reader.fieldnames = [h.strip() for h in reader.fieldnames] if reader.fieldnames else []
+                        for idx, row in enumerate(reader):
+                            cid = row.get("Card ID", "").strip() or f"{idx+1}"
+                            cname = row.get("Name", "").strip() or f"Card {cid}"
+                            ctype = row.get("Supertype", "").strip() or "Trainer"
+                            cards.append({
+                                "card_id": cid,
+                                "card_name": cname,
+                                "card_type": ctype,
+                                "archetype": "all",
+                                "ev_score": 0.5
+                            })
+                    if cards: return cards
+                except Exception as e:
+                    logger.error(f"Failed to load fallback card pool from {cp}: {e}")
         return []
 
     def load_deck_rubric(self) -> dict:
