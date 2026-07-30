@@ -34,6 +34,7 @@ run = "run.__main__:main"
 
 [tool.pyright]
 include = ["cb_agents", "factory", "src", "tests"]
+extraPaths = ["."]
 executionEnvironments = [
   { root = "." }
 ]
