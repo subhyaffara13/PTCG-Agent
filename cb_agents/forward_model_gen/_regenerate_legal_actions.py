@@ -6,7 +6,7 @@ from cb_agents.card_utils import _get_prize_yield
 from cb_agents.forward_model_gen._cache_legal_helpers import _legal_actions_cache
 import logging
 logger = logging.getLogger(__name__)
-from ._count_high_prize_on_board__cache_legal__legal_cache_key import _cache_legal, _count_high_prize_on_board, _legal_cache_key
+from ._cache_legal_helpers import _cache_legal, _count_high_prize_on_board, _legal_cache_key
 
 def _regenerate_legal_actions(gs: dict) -> None:
     if gs.get("turn_ended"):
@@ -46,6 +46,7 @@ def _regenerate_legal_actions(gs: dict) -> None:
         for card in hand:
             is_energy = False
             is_trainer = False
+            c = None
             if CardRegistry is not None:
                 try:
                     c = CardRegistry().get(int(card) if not isinstance(card, int) else card)
@@ -67,14 +68,14 @@ def _regenerate_legal_actions(gs: dict) -> None:
             if is_trainer:
                 # Enforce one Supporter per turn in MCTS rollouts
                 _skip = False
-                if gs.get("supporter_played_this_turn"):
+                if gs.get("supporter_played_this_turn") and CardRegistry is not None:
                     try:
                         _fc = CardRegistry().get_full_skill(int(card) if not isinstance(card, int) else card)
                         if _fc and getattr(_fc, 'trainer_subtype', None) and _fc.trainer_subtype.name == "SUPPORTER":
                             _skip = True
                     except Exception:
                         pass
-                if not _skip:
+                if not _skip and c is not None:
                     actions.append(f"play_trainer:{c.card_name}")
                 continue
             # Boss-aware bench protection: skip benching high-prize if opponent has Boss and we already expose one
@@ -98,7 +99,7 @@ def _regenerate_legal_actions(gs: dict) -> None:
                     crd = CardRegistry().get(int(card) if not isinstance(card, int) else card)
                     if crd and crd.previous_stage:
                         prev_id = crd.previous_stage
-                        prev_id_str = str(prev_id)
+                        prev_id_str = prev_id
                         ap = gs.get("my_active_pokemon", {})
                         if isinstance(ap, dict) and str(ap.get("id", "")) == prev_id_str:
                             actions.append(f"evolve:{card}")

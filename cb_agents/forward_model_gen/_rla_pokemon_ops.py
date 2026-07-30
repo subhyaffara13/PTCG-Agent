@@ -5,7 +5,7 @@ except ImportError:
 from cb_agents.card_utils import _get_prize_yield
 import logging
 logger = logging.getLogger(__name__)
-from ._count_high_prize_on_board__cache_legal__legal_cache_key import _count_high_prize_on_board
+from ._cache_legal_helpers import _count_high_prize_on_board
 
 def _rla_add_pokemon_actions(gs, card, actions, valid_targets):
     is_energy = False
@@ -37,7 +37,7 @@ def _rla_add_pokemon_actions(gs, card, actions, valid_targets):
             crd = CardRegistry().get(int(card) if not isinstance(card, int) else card)
             if crd and crd.previous_stage:
                 prev_id = crd.previous_stage
-                prev_id_str = str(prev_id)
+                prev_id_str = prev_id
                 ap = gs.get("my_active_pokemon", {})
                 if isinstance(ap, dict) and str(ap.get("id", "")) == prev_id_str:
                     actions.append(f"evolve:{card}")

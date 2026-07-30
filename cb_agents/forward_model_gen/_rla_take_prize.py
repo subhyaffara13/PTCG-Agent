@@ -1,5 +1,5 @@
 from cb_agents.forward_model_gen._cache_legal_helpers import _legal_actions_cache
-from ._count_high_prize_on_board__cache_legal__legal_cache_key import _cache_legal
+from ._cache_legal_helpers import _cache_legal
 
 def _rla_handle_take_prize(gs, ck):
     my_prizes = gs.get("my_prizes", [])
