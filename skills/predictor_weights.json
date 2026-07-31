@@ -1,5 +1,5 @@
 {
-  "prize_weight": 0.1,
+  "prize_weight": 0.10000000000000002,
   "hand_weight": 0.1,
   "board_weight": 0.1,
   "energy_weight": 0.1,
