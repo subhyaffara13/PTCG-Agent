@@ -1,12 +1,12 @@
 {
-  "main_agent": 1173.5921493858082,
+  "main_agent": 1151.9155303695934,
   "main_exploiter": 1161.903548012105,
   "aggro_exploiter": 1462.968607623146,
   "control_exploiter": 1198.4542971017484,
   "combo_exploiter": 1069.087646010986,
   "main_agent_snapshot": 1178.8351792216292,
-  "gauntlet_Aggro": 1167.575102180049,
-  "gauntlet_Control": 1202.602662318178,
-  "gauntlet_Stall": 1198.4095462017565,
-  "gauntlet_Setup": 1186.5712619445937
+  "gauntlet_Aggro": 1168.1037254123755,
+  "gauntlet_Control": 1216.0127142068243,
+  "gauntlet_Stall": 1193.9613171139952,
+  "gauntlet_Setup": 1198.7574349275972
 }
