@@ -85,8 +85,8 @@ class GameRunner(BaseAgent):
                 raise
         for future in futures:
             try:
-                # Enforce a 210s max timeout per evaluation game future to exceed the 180s Kaggle engine timeout
-                res = future.result(timeout=210.0)
+                # Enforce a 330s max timeout per evaluation game future to exceed the 300s Kaggle engine timeout
+                res = future.result(timeout=330.0)
                 results[res["label"]] = res
             except Exception as e:
                 logger.error(f"Process execution crashed or timed out: {e}")
