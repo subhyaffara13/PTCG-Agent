@@ -10,10 +10,10 @@ from ._evolution_helpers import _get_neural_network, _has_evolution_target
 def sort_actions_heuristically(candidates: List[str], profile: str, game_state: dict) -> List[str]:
     try:
         profile_orders = {
-            "setup": ["bench:", "evolve:", "play_trainer:", "ability:", "attach_energy:", "retreat:", "attack:", "pass"],
+            "setup": ["bench:", "evolve:", "play_trainer:", "ability:", "attach_energy:", "attack:", "retreat:", "pass"],
             "aggro_push": ["attach_energy:", "bench:", "evolve:", "play_trainer:", "ability:", "attack:", "retreat:", "pass"],
-            "disruption": ["play_trainer:", "ability:", "attach_energy:", "bench:", "evolve:", "retreat:", "attack:", "pass"],
-            "stall": ["retreat:", "ability:", "play_trainer:", "attach_energy:", "bench:", "evolve:", "attack:", "pass"],
+            "disruption": ["play_trainer:", "ability:", "attach_energy:", "bench:", "evolve:", "attack:", "retreat:", "pass"],
+            "stall": ["ability:", "play_trainer:", "attach_energy:", "bench:", "evolve:", "attack:", "retreat:", "pass"],
             "closing": ["attack:", "play_trainer:", "ability:", "attach_energy:", "evolve:", "bench:", "retreat:", "pass"],
         }
         order = profile_orders.get(profile, profile_orders["aggro_push"])
