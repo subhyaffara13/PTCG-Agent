@@ -27,7 +27,12 @@ class SynergyGraph:
                     self.co_occurrence[(c1, c2)] += 1
         self.pmi_cache.clear()
 
-    def get_pmi(self, card_a: int, card_b: int) -> float:
+    def get_pmi(self, card_a: int | str, card_b: int | str) -> float:
+        try:
+            card_a = int(card_a)
+            card_b = int(card_b)
+        except (ValueError, TypeError):
+            return 0.0
         if card_a > card_b:
             card_a, card_b = card_b, card_a
         
@@ -105,7 +110,15 @@ def compute_jaccard(card_a: int, card_b: int, graph: SynergyGraph) -> float:
 
 def score_deck_synergy(deck: list, graph: SynergyGraph) -> float:
     total_pmi = 0.0
-    card_ids = [str(c["card_id"]) for c in deck if "card_id" in c]
+    card_ids = []
+    for c in deck:
+        if isinstance(c, dict) and "card_id" in c:
+            try:
+                card_ids.append(int(c["card_id"]))
+            except Exception:
+                pass
+        elif isinstance(c, (int, str)) and str(c).isdigit():
+            card_ids.append(int(c))
     n = len(card_ids)
     
     for i in range(n):

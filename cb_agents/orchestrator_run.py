@@ -1,5 +1,7 @@
+from __future__ import annotations
 import time
 import logging
+from typing import Any, Dict, Optional
 from router.bus import HandAnalystPacket, TurnPlannerPacket, StrategyPacket, TimePacket, LethalPacket, OpponentModelPacket
 from cb_agents.schemas import GameState, BoardSummary
 from cb_agents.heuristic_pipeline import pipeline
@@ -7,27 +9,44 @@ from cb_agents.heuristic_pipeline import pipeline
 logger = logging.getLogger(__name__)
 
 class OrchestratorRunMixin:
-    def _project_opponent_damage(self, game_state) -> dict:
+    time_start: Optional[float]
+    current_turn: int
+    bus: Any
+    opponent_model: Any
+    belief_tracker: Any
+    skills_dir: Any
+    log_dir: Any
+    game_state: dict
+
+    def sync_belief_tracker(self, game_state: dict) -> None:
+        pass
+
+    def get_public_state(self, game_state: Any) -> dict:
+        return {}
+
+    def _project_opponent_damage(self, game_state: Any) -> dict:
         from cb_agents.orchestrator_run_helpers import project_opponent_damage_helper
         return project_opponent_damage_helper(game_state)
 
-    def _check_defensive_retreat(self, game_state, board_summary) -> str:
+    def _check_defensive_retreat(self, game_state: Any, board_summary: Any) -> str:
         from cb_agents.orchestrator_run_helpers import check_defensive_retreat_helper
         return check_defensive_retreat_helper(game_state, board_summary)
 
-    def execute_orchestrator_turn(self, game_state) -> str:
-        if self.time_start is None:
-            raise RuntimeError("start_game() must be called before first run_turn()")
+    def execute_orchestrator_turn(self, game_state: Any) -> str:
+        start_t = getattr(self, "time_start", None)
+        if start_t is None:
+            start_t = time.time()
+            self.time_start = start_t
 
-        def _get_f(obj, k, default=None):
+        def _get_f(obj: Any, k: str, default: Any = None) -> Any:
             if isinstance(obj, dict): return obj.get(k, default)
             return getattr(obj, k, default)
 
         if isinstance(game_state, dict):
             game_state = GameState.from_dict(game_state)
         self.game_state = game_state.__dict__
-        self.current_turn += 1
-        time_elapsed = time.time() - self.time_start
+        self.current_turn = getattr(self, "current_turn", 0) + 1
+        time_elapsed = max(0.0, time.time() - float(start_t))
 
         from cb_agents.orchestrator_run_helpers import update_opponent_model_helper
         update_opponent_model_helper(self, game_state)
@@ -40,16 +59,16 @@ class OrchestratorRunMixin:
         legal_actions_list = list(legal_actions)
         active = game_state.opponent_active
         opp_active_id = None
-        if active:
+        if active and isinstance(active, dict) and active.get("id") is not None:
             try: 
-                opp_active_id = int(active.get("id") if isinstance(active, dict) else active)
+                opp_active_id = int(active.get("id"))
             except Exception as e:
                 logger.debug(f"Failed to parse opponent active ID: {e}")
 
         from cb_agents.orchestrator_run_helpers import check_lethal_helper
-        boss_prob = self.belief_tracker.probability_opponent_holds("boss's orders") if hasattr(self, "belief_tracker") else 0.0
+        boss_prob = self.belief_tracker.probability_opponent_holds("boss's orders") if hasattr(self, "belief_tracker") and self.belief_tracker else 0.0
         lethal_result = check_lethal_helper(game_state, boss_prob=boss_prob)
-        if lethal_result.get("action_override") is not None: return lethal_result["action_override"]
+        if lethal_result.get("action_override") is not None: return str(lethal_result["action_override"])
         if lethal_result.get("retreat_score_boost"):
             gs_dict = game_state.__dict__ if not isinstance(game_state, dict) else game_state
             gs_dict["retreat_score_boost"] = lethal_result["retreat_score_boost"]
@@ -58,21 +77,25 @@ class OrchestratorRunMixin:
         from cb_agents.orchestrator_run_helpers import handle_time_manager_helper
         time_result_action = handle_time_manager_helper(self, time_elapsed, legal_actions_list, game_state)
         if time_result_action is not None:
-            return time_result_action
+            return str(time_result_action)
 
         hand_result = self.bus.dispatch("HandAnalyst", HandAnalystPacket(
             hand=game_state.my_hand, deck_remaining=game_state.my_deck_count,
             discard=game_state.my_discard, board=game_state.my_board,
             has_searched_deck=game_state.has_searched_deck))
 
+        opp_arch = getattr(self.opponent_model, "identified_archetype", "unknown") if hasattr(self, "opponent_model") and self.opponent_model else "unknown"
+        opp_conf = getattr(self.opponent_model, "archetype_confidence", 0.0) if hasattr(self, "opponent_model") and self.opponent_model else 0.0
+        prized_probs = _get_f(hand_result, "prized_probabilities", {}) or {}
+
         board_summary = BoardSummary(
             my_prizes_remaining=game_state.my_prizes, opponent_prizes_remaining=game_state.opponent_prizes,
             my_active_hp=game_state.my_active_hp, opponent_active_hp=game_state.opponent_active_hp,
-            turn_number=self.current_turn, opponent_archetype=self.opponent_model.identified_archetype,
-            opponent_archetype_confidence=self.opponent_model.archetype_confidence,
+            turn_number=self.current_turn, opponent_archetype=opp_arch,
+            opponent_archetype_confidence=opp_conf,
             bench_has_attacker=game_state.bench_has_attacker, my_bench_count=len(game_state.my_bench),
             my_deck_count=game_state.my_deck_count, opponent_deck_count=game_state.opponent_deck_count,
-            prized_probabilities=_get_f(hand_result, "prized_probabilities", {}))
+            prized_probabilities=prized_probs)
 
         # Compute energy attached for strategy matching (cache for _step_strategy reuse)
         energy_attached = 0
@@ -93,10 +116,16 @@ class OrchestratorRunMixin:
         gs_dict["_projected_opponent_damage"] = dmg_info["max_damage"]
 
         board_summary_dict = board_summary.__dict__
-        board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")
-        board_summary_dict["iono_prob"] = self.belief_tracker.probability_opponent_holds("iono")
-        board_summary_dict["path_prob"] = self.belief_tracker.probability_opponent_holds("path to the peak")
-        board_summary_dict["hammer_prob"] = self.belief_tracker.probability_opponent_holds("crushing hammer")
+        if hasattr(self, "belief_tracker") and self.belief_tracker:
+            board_summary_dict["boss_prob"] = self.belief_tracker.probability_opponent_holds("boss's orders")
+            board_summary_dict["iono_prob"] = self.belief_tracker.probability_opponent_holds("iono")
+            board_summary_dict["path_prob"] = self.belief_tracker.probability_opponent_holds("path to the peak")
+            board_summary_dict["hammer_prob"] = self.belief_tracker.probability_opponent_holds("crushing hammer")
+        else:
+            board_summary_dict["boss_prob"] = 0.0
+            board_summary_dict["iono_prob"] = 0.0
+            board_summary_dict["path_prob"] = 0.0
+            board_summary_dict["hammer_prob"] = 0.0
         board_summary_dict["hand_score"] = _get_f(hand_result, "hand_score", 5.0)
         board_summary_dict["energy_attached"] = energy_attached
 
@@ -104,7 +133,8 @@ class OrchestratorRunMixin:
         trigger = "prize_gap" if (opponent_prizes - my_prizes) >= 2 else "none"
         strategy_result = self.bus.dispatch("StrategyAgent", StrategyPacket(trigger=trigger, board_summary=board_summary_dict))
 
-        self.sync_belief_tracker(gs_dict)
+        if hasattr(self, "sync_belief_tracker"):
+            self.sync_belief_tracker(gs_dict)
 
         defensive_retreat = self._check_defensive_retreat(game_state, board_summary)
         if defensive_retreat:
@@ -117,8 +147,16 @@ class OrchestratorRunMixin:
         seq_engine = SequencingEngine()
         legal_actions_list = seq_engine.sequence_actions(legal_actions_list, gs_dict)
 
+        h_score = float(_get_f(hand_result, "hand_score", 0.0) or 0.0)
+        p_profile: Any = _get_f(strategy_result, "strategy", "aggro_push") or "aggro_push"
+        if isinstance(p_profile, dict):
+            p_profile = p_profile.get("strategy") or "aggro_push"
+        top_p = str(_get_f(hand_result, "top_play", "") or "")
+        pub_state = self.get_public_state(game_state) if hasattr(self, "get_public_state") else {}
+
         plan_result = self.bus.dispatch("TurnPlanner", TurnPlannerPacket(
-            hand_score=_get_f(hand_result, "hand_score", 0), priority_profile=_get_f(strategy_result, "strategy"),
-            top_play=_get_f(hand_result, "top_play"), game_state=self.get_public_state(game_state),
+            hand_score=h_score, priority_profile=p_profile,
+            top_play=top_p, game_state=pub_state,
             turn=self.current_turn, time_remaining=600.0 - time_elapsed))
-        return _get_f(plan_result, "primary_action", "pass")
+        res_act = _get_f(plan_result, "primary_action", "pass")
+        return str(res_act) if res_act is not None else "pass"

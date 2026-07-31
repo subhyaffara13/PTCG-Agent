@@ -153,3 +153,12 @@ else:
     class ActorCritic:
         def __init__(self, *args, **kwargs):
             pass
+        def to(self, *args, **kwargs):
+            return self
+        def load_state_dict(self, *args, **kwargs):
+            pass
+        def eval(self, *args, **kwargs):
+            return self
+        def __call__(self, *args, **kwargs):
+            return None, None
+

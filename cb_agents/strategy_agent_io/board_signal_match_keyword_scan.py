@@ -28,7 +28,10 @@ def board_signal_match(board_summary: dict[str, Any]) -> str | None:
     if prizes is not None and int(prizes) <= 2: return "endgame_close"
     if opp_prizes is not None and int(opp_prizes) <= 2: return "prize_race"
     if bench is not None and int(bench) <= 1: return "bench_low"
-    if energy is not None and int(energy) == 0: return "energy_stall"
+    if energy is not None and int(energy) == 0:
+        turn_num = board_summary.get("turn_number", 1)
+        if turn_num > 2:
+            return "energy_stall"
     if score is not None and float(score) < 2.0: return "hand_dead"
         
     p_val = int(prizes) if prizes is not None else 6

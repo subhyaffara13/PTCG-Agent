@@ -201,7 +201,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         if dc <= 7 and any(d in tn for d in {"colress", "concealed", "draw"}): v -= 2.0
         elif dc <= 20 and dc < opp_dc - 3 and any(d in tn for d in {"colress", "concealed", "draw"}): v -= 0.8
     elif action.startswith("retreat:"):
-        v += 0.4 if ahp <= 60 else -1.2
+        v += 0.4 if ahp <= 60 else -1.5
         
         # Reward switching to a better attacker instead of blanket penalty
         try:
@@ -230,7 +230,7 @@ def _score_action_python(action: str, gs: dict, threat: float = 0.0) -> float:
         rsb = gs.get("retreat_score_boost", 0.0)
         if rsb > 0: v += rsb
     elif action == "pass":
-        v -= 1.0  # Strongly discourage passing
+        v -= 1.5  # Strongly discourage passing — attack or play cards instead
     # Prefer attacking over drawing when near deck-out
     if dc <= 8 and opp_hp > 0:
         if action.startswith("play_trainer:"):

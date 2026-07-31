@@ -21,7 +21,7 @@ class HandAnalystPacket:
 @dataclass(frozen=True)
 class TurnPlannerPacket:
     hand_score: float
-    priority_profile: Dict[str, Any]
+    priority_profile: Any
     top_play: str = ""
     game_state: Optional[Dict[str, Any]] = None
     turn: int = 1

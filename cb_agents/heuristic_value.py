@@ -18,9 +18,13 @@ class HeuristicValueNetwork(BaseValueNetwork):
                 from factory.state_dimensions import STATE_DIM
                 from factory.ppo_trainer_network import ActorCritic
                 dev = torch.device("cpu")
-                model = ActorCritic(STATE_DIM, 256, 3000).to(dev)
-                model.load_state_dict(torch.load(model_path, map_location=dev, weights_only=True))
-                model.eval()
+                model = ActorCritic(STATE_DIM, 256, 3000)
+                if hasattr(model, "to"):
+                    model = model.to(dev)
+                if hasattr(model, "load_state_dict"):
+                    model.load_state_dict(torch.load(model_path, map_location=dev, weights_only=True))
+                if hasattr(model, "eval"):
+                    model.eval()
                 self._nn_model = model
         except Exception:
             pass

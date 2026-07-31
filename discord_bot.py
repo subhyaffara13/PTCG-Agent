@@ -9,8 +9,15 @@ import os
 import sys
 import asyncio
 from pathlib import Path
-import discord
-from discord.ext import commands
+try:
+    import discord  # type: ignore # pyright: ignore
+    from discord.ext import commands  # type: ignore # pyright: ignore
+    DISCORD_AVAILABLE = True
+except Exception:
+    discord = None
+    commands = None
+    DISCORD_AVAILABLE = False
+
 from dotenv import load_dotenv
 
 from discord_bot_utils import format_status_report, format_decisions, format_log_entries, run_subprocess, format_command_output
@@ -18,10 +25,22 @@ from discord_bot_utils import format_status_report, format_decisions, format_log
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
-intents = discord.Intents.default()
-intents.message_content = True
-
-bot = commands.Bot(command_prefix="!", intents=intents)
+if DISCORD_AVAILABLE and commands is not None and discord is not None:
+    intents = discord.Intents.default()
+    intents.message_content = True
+    bot = commands.Bot(command_prefix="!", intents=intents)
+else:
+    class DummyUser:
+        name = "dummy"
+        id = 0
+    class DummyBot:
+        user = DummyUser()
+        def event(self, func): return func
+        def command(self, *args, **kwargs):
+            def decorator(func): return func
+            return decorator
+        def run(self, token): pass
+    bot = DummyBot()
 
 @bot.event
 async def on_ready():

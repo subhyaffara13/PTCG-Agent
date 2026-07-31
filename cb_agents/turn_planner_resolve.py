@@ -50,6 +50,33 @@ def resolve_action(candidates, game_state, profile, time_rem, mcts_engine, rules
             primary = mcts_engine.search(game_state, selected_candidates, time_remaining=time_rem)
         finally:
             mcts_engine.num_simulations = orig_sims
+
+        # HARD RULE: Never pass or retreat when an attack is available and feasible
+        if primary in ("pass",) or (primary is not None and primary.startswith("retreat:")):
+            attack_candidates = [c for c in candidates if c.startswith("attack:")]
+            if attack_candidates:
+                # Check if active has enough energy to actually attack
+                ac = game_state.get("my_active_pokemon", {})
+                can_attack = True
+                if isinstance(ac, dict):
+                    attached_count = len(ac.get("attached", []) or ac.get("energies", []))
+                    active_id = ac.get("id")
+                    if active_id is not None:
+                        try:
+                            from cb_agents.turn_planner_heuristics import _registry
+                            min_cost = _registry.get_min_energy_cost(active_id)
+                            can_attack = attached_count >= min_cost
+                        except Exception:
+                            can_attack = attached_count >= 1
+                    else:
+                        can_attack = attached_count >= 1
+                my_status = game_state.get("my_active_status", "")
+                if my_status in ("paralyzed", "asleep"):
+                    can_attack = False
+                if can_attack:
+                    primary = attack_candidates[0]
+                    return primary, f"ATTACK OVERRIDE: Forced {primary} over pass/retreat. Profile: {profile}."
+
         return primary, f"MCTS selected {primary} ({orig_sims} -> {actual_sims} sims). Profile: {profile}."
     except Exception as e:
         logger.error(f"resolve_action failed: {e}", exc_info=True)

@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 class CardRegistry:
     _instance = None
+    _resolved_skills_path: Optional[Path] = None
 
     @classmethod
     def reset(cls):
@@ -212,8 +213,8 @@ class CardRegistry:
             if tag_enum:
                 combo_mask |= tag_enum
 
-        hp = int(card_data.get("hp", self.card_hp.get(int(base.card_id), 100)))
-        retreat_cost = int(card_data.get("retreat_cost", self.card_retreat.get(int(base.card_id), 1)))
+        hp = int(card_data.get("hp", self.card_hp.get(base.card_id, 100)))
+        retreat_cost = int(card_data.get("retreat_cost", self.card_retreat.get(base.card_id, 1)))
 
         entry = CardEntry(
             card_id=base.card_id,

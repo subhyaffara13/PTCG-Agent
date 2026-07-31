@@ -62,7 +62,7 @@ class Orchestrator(OrchestratorBeliefMixin, OrchestratorStatePublicMixin):
         self.opponent_model = self._opponent = OpponentModel(**clean_kwargs(OpponentModel, kwargs))
         self.context   = {}
         for agent in (self.hand_analyst, self.turn_planner, self.time_manager, self.strategy_agent, self.opponent_model):
-            agent.shared_context = self.context
+            setattr(agent, "shared_context", self.context)
 
         self.bus.register_agent("time_manager", self._timer.tick)
         self.bus.register_agent("hand_analyst", self._analyst.analyse)
