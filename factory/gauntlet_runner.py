@@ -119,7 +119,7 @@ class GauntletRunner:
 
                 for fut, target_player in futures:
                     try:
-                        res = fut.result(timeout=240.0)
+                        res = fut.result(timeout=360.0)
                         archetype_games += 1
                         total_games += 1
                         if res.get("winner") == target_player:
