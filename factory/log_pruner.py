@@ -46,10 +46,11 @@ def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
             except Exception as e:
                 logger.warning(f"Could not purge/truncate {log_name}: {e}")
 
-    # If we have more files than allowed, archive and prune the oldest ones
-    if len(all_files) > max_files:
-        files_to_delete = all_files[:-max_files]
-        logger.info(f"Log Pruner active: Found {len(all_files)} logs. Archiving & deleting oldest {len(files_to_delete)} to maintain sliding window of {max_files}.")
+    # If we reach or exceed the limit, archive and prune oldest files down to buffer size
+    if len(all_files) >= max_files:
+        keep_count = max(100, max_files - 100)
+        files_to_delete = all_files[:-keep_count]
+        logger.info(f"Log Pruner active: Found {len(all_files)} logs. Archiving & deleting oldest {len(files_to_delete)} to maintain sliding window below limit of {max_files}.")
         
         import zipfile
         import time
@@ -74,4 +75,4 @@ def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
                 
         logger.info(f"Log Pruner finished. Archived and deleted {deleted_count} files.")
     else:
-        logger.info(f"Log Pruner: {len(all_files)} logs found. Well under the {max_files} limit. No pruning needed.")
+        logger.info(f"Log Pruner: {len(all_files)} logs found (below limit of {max_files}). No pruning needed.")

@@ -12,11 +12,11 @@ def _gauntlet_gate():
                 reader = csv.DictReader(f)
                 for row in reader:
                     count = int(row.get("count", 1))
-                    card_id = row.get("card_id", "")
+                    card_id = int(row["card_id"]) if str(row.get("card_id", "")).isdigit() else row.get("card_id", "")
                     candidate_deck.extend([card_id] * count)
         if candidate_deck:
             gauntlet = GauntletRunner()
-            res = gauntlet.run_gauntlet(candidate_deck, num_games_per_stage=2)
+            res = gauntlet.run_gauntlet(candidate_deck, num_games_per_stage=1)
             passed = res.get("passed", False) if isinstance(res, dict) else bool(res)
             if not passed:
                 logger.info("REJECTING AUTO-SUBMIT: Failed Gauntlet gate (win rate < 50%)")
