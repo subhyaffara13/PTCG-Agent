@@ -41,9 +41,12 @@ def _opponent_archetype_signal(board_summary: dict[str, Any]) -> str | None:
     conf = board_summary.get("opponent_archetype_confidence", 0.0)
     if conf < 0.5 or arch == "unknown":
         return None
-    prizes = int(board_summary.get("prizes", board_summary.get("my_prizes_remaining", 6)))
+    raw_prizes = board_summary.get("prizes")
+    if raw_prizes is None:
+        raw_prizes = board_summary.get("my_prizes_remaining")
+    prizes = int(raw_prizes) if raw_prizes is not None else 6
     if arch == "aggro" and prizes <= 4:
-        return "stall"  # Opponent is aggressive — play defensively to control pace
+        return "disruption"  # Opponent is aggressive — disrupt hand and energy while building counter-push
     if arch == "stall" and prizes >= 4:
         return "aggro"  # Opponent stalls — pressure before they set up
     if arch == "combo" and prizes <= 4:

@@ -13,7 +13,7 @@ def sort_actions_heuristically(candidates: List[str], profile: str, game_state: 
             "setup": ["bench:", "evolve:", "play_trainer:", "ability:", "attach_energy:", "retreat:", "attack:", "pass"],
             "aggro_push": ["attach_energy:", "bench:", "evolve:", "play_trainer:", "ability:", "attack:", "retreat:", "pass"],
             "disruption": ["play_trainer:", "ability:", "attach_energy:", "bench:", "evolve:", "retreat:", "attack:", "pass"],
-            "stall": ["retreat:", "ability:", "play_trainer:", "attach_energy:", "bench:", "evolve:", "pass", "attack:"],
+            "stall": ["retreat:", "ability:", "play_trainer:", "attach_energy:", "bench:", "evolve:", "attack:", "pass"],
             "closing": ["attack:", "play_trainer:", "ability:", "attach_energy:", "evolve:", "bench:", "retreat:", "pass"],
         }
         order = profile_orders.get(profile, profile_orders["aggro_push"])
