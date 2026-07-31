@@ -54,14 +54,18 @@ def auto_submit_if_ready():
         import csv
         
         candidate_deck = []
-        deck_file = Path("deck.csv")
-        if deck_file.exists():
-            with open(deck_file, "r", encoding="utf-8") as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    count = int(row.get("count", 1))
-                    card_id = int(row["card_id"]) if str(row.get("card_id", "")).isdigit() else row.get("card_id", "")
-                    candidate_deck.extend([card_id] * count)
+        paths = ["submission/deck.csv", "staging/deck_new.csv", "cb_agents/deck_new.csv", "deck.csv"]
+        for p_str in paths:
+            deck_file = Path(p_str)
+            if deck_file.exists():
+                with open(deck_file, "r", encoding="utf-8") as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        count = int(row.get("count", 1))
+                        card_id = int(row["card_id"]) if str(row.get("card_id", "")).isdigit() else row.get("card_id", "")
+                        candidate_deck.extend([card_id] * count)
+                if len(candidate_deck) == 60:
+                    break
         
         if candidate_deck:
             gauntlet = GauntletRunner()

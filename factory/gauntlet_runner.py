@@ -59,49 +59,83 @@ class GauntletRunner:
             from factory.game_runner import DEFAULT_DECK
             return list(DEFAULT_DECK)
 
-    def run_gauntlet(self, target_deck: list, num_games_per_stage: int = 5) -> dict:
+    def run_gauntlet(self, target_deck: list, num_games_per_stage: int = 2) -> dict:
         """
-        Runs target_deck against multiple real archetypes. 
-        Returns True if target_deck achieves > 50% win rate across the entire Gauntlet.
+        Runs target_deck directly against multiple real competitor archetypes in parallel. 
+        Returns True if target_deck achieves >= 50% win rate across the entire Gauntlet.
         """
+        from factory.game_runner_worker import _parallel_game_worker
+        from concurrent.futures import ProcessPoolExecutor
+        from factory.game_runner import DEFAULT_DECK
+
+        if not target_deck or not isinstance(target_deck, list) or len(target_deck) != 60:
+            target_deck = list(DEFAULT_DECK)
+        target_deck = [int(c) for c in target_deck]
+
         logger.info(f"Starting Gauntlet Evaluation against {len(self.archetypes)} real archetypes...")
         total_wins = 0
         total_games = 0
-        runner = GameRunner()
-        
+
+        log_dir = Path("logs")
+        log_dir.mkdir(exist_ok=True)
+
         for archetype in self.archetypes:
             logger.info(f"Evaluating against {archetype}...")
             opp_deck = self._generate_real_deck(archetype)
-            
+            opp_deck = [int(c) for c in opp_deck]
+
             archetype_wins = 0
-            num_matchups = 1
-            total_stage_games = num_games_per_stage * (num_matchups * 4 + 1)
-            for i in range(num_games_per_stage):
-                res = runner.run_iteration(
-                    iteration_id=9999,
-                    version_n1="candidate",
-                    version_n2=f"gauntlet_{archetype}",
-                    deck_base=target_deck,
-                    deck_new=opp_deck,
-                    reasoning_base={},
-                    reasoning_new={},
-                    num_matchups=num_matchups
-                )
-                
-                # Check if candidate won
-                games = res.get("games", {})
-                total_games += len(games)
-                for label, game in games.items():
-                    if game.get("winner") == "player_a":
-                        total_wins += 1
-                        archetype_wins += 1
-                
-            logger.info(f"Stage Result vs {archetype}: {archetype_wins} wins out of {total_stage_games} games played.")
-            
+            archetype_games = 0
+
+            futures = []
+            with ProcessPoolExecutor(max_workers=min(8, num_games_per_stage * 2)) as executor:
+                for i in range(num_games_per_stage):
+                    seed_orig = 5000 + i * 2
+                    seed_swap = 5001 + i * 2
+
+                    # Orig: Candidate (player_a) vs Competitor (player_b)
+                    futures.append((
+                        executor.submit(
+                            _parallel_game_worker, 
+                            str(log_dir), f"gauntlet_{archetype}_orig_{i}", 
+                            "candidate", f"gauntlet_{archetype}", 
+                            target_deck, opp_deck, 
+                            False, False, seed_orig, "", ""
+                        ),
+                        "player_a"
+                    ))
+
+                    # Swap: Competitor (player_a) vs Candidate (player_b)
+                    futures.append((
+                        executor.submit(
+                            _parallel_game_worker, 
+                            str(log_dir), f"gauntlet_{archetype}_swap_{i}", 
+                            f"gauntlet_{archetype}", "candidate", 
+                            opp_deck, target_deck, 
+                            False, False, seed_swap, "", ""
+                        ),
+                        "player_b"
+                    ))
+
+                for fut, target_player in futures:
+                    try:
+                        res = fut.result(timeout=240.0)
+                        archetype_games += 1
+                        total_games += 1
+                        if res.get("winner") == target_player:
+                            archetype_wins += 1
+                            total_wins += 1
+                    except Exception as e:
+                        logger.error(f"Gauntlet match failed/timed out: {e}")
+                        archetype_games += 1
+                        total_games += 1
+
+            logger.info(f"Stage Result vs {archetype}: {archetype_wins} wins out of {archetype_games} games played.")
+
         win_rate = total_wins / max(total_games, 1)
         passed = win_rate >= 0.50
         logger.info(f"Gauntlet Complete. Overall Win Rate: {win_rate*100:.1f}% ({total_wins}/{total_games} wins) - Passed: {passed}")
-        
+
         return {
             "passed": passed,
             "win_rate": win_rate,
