@@ -15,8 +15,8 @@ def setup_game_env(seed=None):
             # Inject strict Kaggle execution limits to simulate leaderboard environment
             config = {
                 "actTimeout": 2.0,
-                "runTimeout": 300,
-                "episodeSteps": 250
+                "runTimeout": 600,
+                "episodeSteps": 100
             }
             if seed is not None:
                 config["seed"] = seed
