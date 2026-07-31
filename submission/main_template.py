@@ -435,7 +435,7 @@ def get_mapped_indices(action_label: str, options: list, game_state: dict = None
 def make_smart_choice(select, observation, fallback_action):
     global _registry
     try:
-        options = get_val(select, "option", [])
+        options = get_val(select, "options") or get_val(select, "option") or []
         if not options:
             return fallback_action
             
@@ -573,7 +573,7 @@ def make_smart_choice(select, observation, fallback_action):
                             dos_set = {int(x.get("card_id")) for x in dos_list if isinstance(x, dict) and "card_id" in x}
                         else:
                             dos_set = set()
-                        registry._learned_dos_set = dos_set
+                        setattr(registry, "_learned_dos_set", dos_set)
                     donts_set = getattr(registry, "_learned_donts_set", None)
                     if donts_set is None and hasattr(registry, "learned_donts"):
                         donts_data = getattr(registry, "learned_donts", {})
@@ -582,7 +582,7 @@ def make_smart_choice(select, observation, fallback_action):
                             donts_set = {int(x.get("card_id")) for x in donts_list if isinstance(x, dict) and "card_id" in x}
                         else:
                             donts_set = set()
-                        registry._learned_donts_set = donts_set
+                        setattr(registry, "_learned_donts_set", donts_set)
 
                     if dos_set and int(card_id_int) in dos_set:
                         score += 12.0
@@ -808,7 +808,7 @@ def agent(observation, configuration=None):
                 return DEFAULT_DECK_FALLBACK
             return []
 
-        options = get_val(select, "option", [])
+        options = get_val(select, "options") or get_val(select, "option") or []
         max_count = get_val(select, "maxCount", 1)
         fallback_action = list(range(min(max_count, len(options)))) if options else [0]
 
@@ -828,7 +828,12 @@ def agent(observation, configuration=None):
             return fallback_action
 
         # Dynamically resolve card names for Trainer, Bench and Energy options in hand
-        resolve_option_names(options, observation, my_idx)
+        if _registry is not None:
+            try:
+                from cb_agents.option_resolver import resolve_option_names
+                resolve_option_names(options, observation, my_idx, _registry)
+            except Exception:
+                pass
 
         def _normalize_pokemon(p):
             if not p or not isinstance(p, dict):

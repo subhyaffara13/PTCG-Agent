@@ -52,7 +52,7 @@ def compute_from_steps(steps: List[Dict], player_idx: int) -> BehavioralVector:
             if isinstance(action_indices, list) and action_indices:
                 chosen_idx = action_indices[0]
                 select = obs_dict.get("select") or {}
-                options = select.get("option", [])
+                options = select.get("options") or select.get("option") or []
                 if isinstance(options, list) and 0 <= chosen_idx < len(options):
                     chosen_option = options[chosen_idx]
                     opt_type = chosen_option.get("type")

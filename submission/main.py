@@ -435,7 +435,7 @@ def get_mapped_indices(action_label: str, options: list, game_state: dict = None
 def make_smart_choice(select, observation, fallback_action):
     global _registry
     try:
-        options = get_val(select, "option", [])
+        options = get_val(select, "options") or get_val(select, "option") or []
         if not options:
             return fallback_action
             
@@ -808,7 +808,7 @@ def agent(observation, configuration=None):
                 return DEFAULT_DECK_FALLBACK
             return []
 
-        options = get_val(select, "option", [])
+        options = get_val(select, "options") or get_val(select, "option") or []
         max_count = get_val(select, "maxCount", 1)
         fallback_action = list(range(min(max_count, len(options)))) if options else [0]
 

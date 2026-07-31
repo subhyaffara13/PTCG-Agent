@@ -15,7 +15,8 @@ def _detect_is_discard(select, observation):
         return False
     my_hand_ids = [c.get("id") for c in players[my_idx].get("hand", []) if c and c.get("id") is not None]
     option_card_ids = []
-    for opt in select.get("option", []):
+    opts = select.get("options") or select.get("option") or []
+    for opt in opts:
         opt_id = opt.get("id")
         if opt_id is None:
             area = opt.get("area")

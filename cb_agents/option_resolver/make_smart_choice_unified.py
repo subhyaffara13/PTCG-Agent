@@ -2,7 +2,7 @@ from .get_val_resolve_option_names import get_val, resolve_option_names
 
 def make_smart_choice_unified(select: dict, observation: dict, fallback_action: list, registry) -> list:
     """Evaluates option choices using utility scores, evolution predecessors, and smart discard inversion."""
-    options = get_val(select, "option", [])
+    options = get_val(select, "options") or get_val(select, "option") or []
     if not options:
         return fallback_action
 
@@ -81,6 +81,7 @@ def make_smart_choice_unified(select: dict, observation: dict, fallback_action: 
                 cname_low = str(card_name).lower()
                 is_draw_card = any(d in cname_low for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
                 if is_draw_card:
+                    deck_count = get_val(players[my_idx], "deckCount", 60)
                     if deck_count <= 3:
                         score -= 500.0  # COMPLETE BAN: Never draw cards when 3 or fewer left
                     elif deck_count <= 8:

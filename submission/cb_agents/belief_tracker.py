@@ -1,5 +1,6 @@
+from __future__ import annotations
 import logging
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from cb_agents.belief_state import BeliefState
 from cb_agents.belief_helpers import hypergeometric_prob, sample_determinization
 from cb_agents.belief_tracker_recalc import recalculate_probabilities
@@ -7,16 +8,28 @@ from cb_agents.belief_tracker_recalc import recalculate_probabilities
 logger = logging.getLogger(__name__)
 
 class BeliefTracker:
-    def __init__(self, initial_deck: Dict[int, int] = None):
+    def __init__(self, initial_deck: Optional[Dict[int, int] | List[int]] = None):
         self.state = BeliefState()
-        self.assumed_deck = initial_deck or {}
+        if isinstance(initial_deck, list):
+            freq: Dict[int, int] = {}
+            for cid in initial_deck:
+                try:
+                    c = cid
+                    freq[c] = freq.get(c, 0) + 1
+                except Exception:
+                    pass
+            self.assumed_deck: Dict[int, int] = freq
+        elif isinstance(initial_deck, dict):
+            self.assumed_deck = initial_deck
+        else:
+            self.assumed_deck = {}
         self.locked_prize_ids: set = set()
         self.prize_guaranteed_counts: Dict[int, int] = {}
         self._prob_cache: Dict[str, float] = {}
         self._initialize_probabilities()
 
     def _initialize_probabilities(self):
-        total_cards = sum(self.assumed_deck.values()) if self.assumed_deck else 60
+        total_cards = sum(self.assumed_deck.values())
         if total_cards == 0:
             return
 
@@ -34,15 +47,15 @@ class BeliefTracker:
             prob_in_prizes = hypergeometric_prob(total_cards, count, 6)
             self.state.prize_probabilities[card_id] = prob_in_prizes
 
-    def update_on_play(self, card_id: int):
+    def update_on_play(self, card_id: Any):
         self._prob_cache.clear()
-        card_id = int(card_id)
+        card_id_int = int(card_id)
         self.state.hand_size = max(0, self.state.hand_size - 1)
-        self.state.known_in_play[card_id] = self.state.known_in_play.get(card_id, 0) + 1
-        if card_id in self.state.known_in_hand:
-            self.state.known_in_hand[card_id] -= 1
-            if self.state.known_in_hand[card_id] <= 0:
-                del self.state.known_in_hand[card_id]
+        self.state.known_in_play[card_id_int] = self.state.known_in_play.get(card_id_int, 0) + 1
+        if card_id_int in self.state.known_in_hand:
+            self.state.known_in_hand[card_id_int] -= 1
+            if self.state.known_in_hand[card_id_int] <= 0:
+                del self.state.known_in_hand[card_id_int]
         self._recalculate_probabilities()
 
     def update_on_draw(self, n: int):
@@ -51,19 +64,19 @@ class BeliefTracker:
         self.state.hand_size += n
         self._recalculate_probabilities()
 
-    def update_on_search(self, card_id: int):
+    def update_on_search(self, card_id: Any):
         self._prob_cache.clear()
-        card_id = int(card_id)
+        card_id_int = int(card_id)
         self.state.deck_size = max(0, self.state.deck_size - 1)
         self.state.hand_size += 1
-        self.state.known_in_hand[card_id] = self.state.known_in_hand.get(card_id, 0) + 1
+        self.state.known_in_hand[card_id_int] = self.state.known_in_hand.get(card_id_int, 0) + 1
         self._recalculate_probabilities()
 
-    def update_on_discard(self, card_id: int):
+    def update_on_discard(self, card_id: Any):
         self._prob_cache.clear()
-        card_id = int(card_id)
+        card_id_int = int(card_id)
         self.state.hand_size = max(0, self.state.hand_size - 1)
-        self.state.known_in_discard[card_id] = self.state.known_in_discard.get(card_id, 0) + 1
+        self.state.known_in_discard[card_id_int] = self.state.known_in_discard.get(card_id_int, 0) + 1
         self._recalculate_probabilities()
 
     def _recalculate_probabilities(self):

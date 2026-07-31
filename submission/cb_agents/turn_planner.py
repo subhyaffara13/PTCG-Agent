@@ -64,7 +64,10 @@ class TurnPlanner(BaseAgent):
             turn = getattr(packet, "turn", 1)
             if turn == 1:
                 self._consecutive_passes = 0
-            profile = packet.priority_profile
+            raw_profile = packet.priority_profile
+            if isinstance(raw_profile, dict):
+                raw_profile = raw_profile.get("strategy") or raw_profile.get("profile") or raw_profile.get("posture") or "aggro_push"
+            profile_str = str(raw_profile) if raw_profile else "aggro_push"
             profile_map = {
                 "aggressive": "aggro_push",
                 "aggro": "aggro_push",
@@ -72,8 +75,8 @@ class TurnPlanner(BaseAgent):
                 "aggro_push": "aggro_push",
                 "defensive": "stall",
                 "stall": "stall",
-                "energy_stall": "stall",
-                "bench_low": "stall",
+                "energy_stall": "setup",
+                "bench_low": "setup",
                 "tempo": "setup",
                 "setup": "setup",
                 "hand_dead": "setup",
@@ -82,7 +85,7 @@ class TurnPlanner(BaseAgent):
                 "endgame_close": "closing",
                 "closing": "closing"
             }
-            profile = profile_map.get(profile, "aggro_push")
+            profile = profile_map.get(profile_str, "aggro_push")
             game_state["priority_profile"] = profile
             game_state = _process_prize_tracker(game_state, self._prize_tracker, packet)
             game_state["has_searched_deck"] = game_state.get("prize_certainty", 0.0) > 0
@@ -119,7 +122,8 @@ class TurnPlanner(BaseAgent):
         except Exception as e:
             logger.error(f"TurnPlanner.receive failed: {e}", exc_info=True)
             fallback = "pass"
-            candidates = game_state.get("legal_actions", [])
+            current_gs = locals().get("game_state", {}) or {}
+            candidates = current_gs.get("legal_actions", []) if isinstance(current_gs, dict) else []
             if isinstance(candidates, list) and candidates:
                 fallback = candidates[0]
             return {"action_sequence": [fallback], "primary_action": fallback, "reasoning_chain": "error_fallback"}

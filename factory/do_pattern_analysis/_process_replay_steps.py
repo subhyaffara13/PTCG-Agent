@@ -17,7 +17,7 @@ def _process_replay_steps(steps, player_idx, card_counter, setup_durations, benc
             act = step[player_idx].get("action", [])
             obs_dict = step[player_idx].get("observation", {}) or {}
             select = obs_dict.get("select") or {}
-            options = select.get("option", [])
+            options = select.get("options") or select.get("option") or []
             is_attack = False
             if act and isinstance(act, list) and len(act) > 0:
                 opt_idx = act[0]

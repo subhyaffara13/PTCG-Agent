@@ -3,7 +3,7 @@ from . import _registry, logger
 def make_smart_choice(select: dict, observation: dict, fallback_action: list[int], skills_dir: str) -> list[int]:
     global _registry
     try:
-        options = select.get("option", [])
+        options = select.get("options") or select.get("option") or []
         if not options:
             return fallback_action
             
