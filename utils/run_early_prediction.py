@@ -1,3 +1,8 @@
+import os
+import random
+import logging
+
+logger = logging.getLogger(__name__)
 
 def run_early_prediction(deck_a: list, deck_b: list, steps_dump: list, winner: str) -> str:
     prediction = "n/a"
@@ -11,4 +16,3 @@ def run_early_prediction(deck_a: list, deck_b: list, steps_dump: list, winner: s
     except Exception as e:
         logger.error(f"EarlyWinPredictor failed: {e}")
     return prediction
-

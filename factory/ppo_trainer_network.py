@@ -52,9 +52,8 @@ if TORCH_AVAILABLE:
             super().__init__()
             self.card_embed = nn.Embedding(CARD_VOCAB_SIZE, CARD_EMBED_DIM, padding_idx=PAD_TOKEN)
             self.zone_embed = nn.Embedding(self.ZONE_COUNT, CARD_EMBED_DIM)
-            # CLS token embedding (learnable)
             self.cls_embed = nn.Parameter(torch.zeros(1, 1, CARD_EMBED_DIM))
-            nn.init.normal_(self.cls_embed, std=0.02)
+            torch.nn.init.normal_(self.cls_embed, 0.0, 0.02)
 
             encoder_layer = nn.TransformerEncoderLayer(
                 d_model=CARD_EMBED_DIM,

@@ -17,3 +17,17 @@ from .process_monitor import script_log_path
 from .process_monitor import launch_processes
 from .process_monitor import monitor_and_restart
 from .cleanup import cleanup
+
+class Config:
+    def __init__(self):
+        self.stash = {}
+
+backend_empty_cache = lambda device: None
+collect_thread_exception = lambda config: None
+thread_exceptions = "thread_exceptions"
+gc_collect_harder = lambda iterations: None
+gc_collect_iterations_key = "gc_collect_iterations_key"
+collect_unraisable = lambda config: None
+unraisable_exceptions = "unraisable_exceptions"
+m_envs = {}
+

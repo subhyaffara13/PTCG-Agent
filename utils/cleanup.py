@@ -2,7 +2,7 @@ from __future__ import annotations
 import gc
 import threading
 import sys
-from typing import Callable, List
+from typing import Callable, List, Any
 import torch
 
 from typing import TYPE_CHECKING
@@ -52,46 +52,45 @@ def cleanup_device(device: str, gc_collect: bool = False):
     """
     if gc_collect:
         gc.collect()
-    from factory.orchestration_process import backend_empty_cache
-    backend_empty_cache(device)
-    torch.compiler.reset()
-
-def cleanup_config(*, config: Config, prev_hook: Callable[[threading.ExceptHookArgs], object]):
-    """Restore the original threading exception hook and clean up the config stash.
-
-    This mirrors the original overload that dealt with thread‑exception handling.
-    """
-    from factory.orchestration_process import collect_thread_exception, thread_exceptions
     try:
+        from factory.orchestration_process import backend_empty_cache
+        backend_empty_cache(device)
+    except (ImportError, AttributeError):
+        pass
+    if hasattr(torch, "compiler") and hasattr(torch.compiler, "reset"):
+        torch.compiler.reset()
+
+def cleanup_config(*, config: Any, prev_hook: Callable[[threading.ExceptHookArgs], object]):
+    """Restore the original threading exception hook and clean up the config stash."""
+    try:
+        from factory.orchestration_process import collect_thread_exception, thread_exceptions
         try:
             collect_thread_exception(config)
         finally:
             threading.excepthook = prev_hook
-    finally:
-        del config.stash[thread_exceptions]
+    except (ImportError, AttributeError):
+        threading.excepthook = prev_hook
 
-def cleanup_config_unraisable(*, config: Config, prev_hook: Callable[[sys.UnraisableHookArgs], object]):
-    """Handle unraisable exceptions and perform a forced GC pass.
-
-    The number of GC passes depends on the interpreter (5 for PyPy, 1 for CPython).
-    """
-    from factory.orchestration_process import gc_collect_harder, gc_collect_iterations_key, collect_unraisable, unraisable_exceptions
-    _default = 5 if sys.implementation.name == "pypy" else 1
-    iterations = config.stash.get(gc_collect_iterations_key, _default)
+def cleanup_config_unraisable(*, config: Any, prev_hook: Callable[[sys.UnraisableHookArgs], object]):
+    """Handle unraisable exceptions and perform a forced GC pass."""
     try:
+        from factory.orchestration_process import gc_collect_harder, gc_collect_iterations_key, collect_unraisable, unraisable_exceptions
+        _default = 5 if sys.implementation.name == "pypy" else 1
+        iterations = getattr(config, "stash", {}).get(gc_collect_iterations_key, _default)
         try:
             gc_collect_harder(iterations)
             collect_unraisable(config)
         finally:
             sys.unraisablehook = prev_hook
-    finally:
-        del config.stash[unraisable_exceptions]
+    except (ImportError, AttributeError):
+        sys.unraisablehook = prev_hook
 
 def cleanup_env(env):
-    """Remove an environment entry from the global ``m_envs`` dict.
+    """Remove an environment entry from the global ``m_envs`` dict."""
+    try:
+        import factory.orchestration_process as _op
+        if hasattr(_op, "m_envs"):
+            del _op.m_envs[env.configuration.id]
+    except (ImportError, AttributeError, KeyError):
+        pass
 
-    Args:
-        env: An environment object that has a ``configuration.id`` attribute.
-    """
-    import factory.orchestration_process as _op
-    del _op.m_envs[env.configuration.id]
