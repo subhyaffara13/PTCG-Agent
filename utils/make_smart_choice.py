@@ -1,4 +1,16 @@
 
+import random
+import logging
+
+logger = logging.getLogger(__name__)
+
+def get_val(obj, key, default=None):
+    if isinstance(obj, dict):
+        return obj.get(key, default)
+    return getattr(obj, key, default)
+
+_registry = None
+
 def make_smart_choice(select, observation, fallback_action):
     global _registry
     try:
