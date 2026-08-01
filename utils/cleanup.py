@@ -1,23 +1,14 @@
-import logging
+from __future__ import annotations
 import gc
 import threading
 import sys
 from typing import Callable, List
 import torch
 
-from factory.orchestration_process import (
-    Config,
-    logger,
-    submodules,
-    backend_empty_cache,
-    collect_thread_exception,
-    gc_collect_harder,
-    collect_unraisable,
-    gc_collect_iterations_key,
-    unraisable_exceptions,
-    thread_exceptions,
-    m_envs,
-)
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from factory.orchestration_process import Config
+# Lazy imports are performed within functions to avoid circular imports.
 
 def cleanup_processes(processes: List[tuple]):
     """Terminate and clean up subprocesses.
@@ -26,6 +17,7 @@ def cleanup_processes(processes: List[tuple]):
         processes: Iterable of (process, file) tuples where ``process`` is a
             ``subprocess.Popen`` object and ``file`` is an optional file handle.
     """
+    from factory.orchestration_process import logger
     logger.info("Cleaning up sub‑tasks...")
     # First, ask all processes to terminate.
     for p, f in processes:
@@ -60,6 +52,7 @@ def cleanup_device(device: str, gc_collect: bool = False):
     """
     if gc_collect:
         gc.collect()
+    from factory.orchestration_process import backend_empty_cache
     backend_empty_cache(device)
     torch.compiler.reset()
 
@@ -68,6 +61,7 @@ def cleanup_config(*, config: Config, prev_hook: Callable[[threading.ExceptHookA
 
     This mirrors the original overload that dealt with thread‑exception handling.
     """
+    from factory.orchestration_process import collect_thread_exception, thread_exceptions
     try:
         try:
             collect_thread_exception(config)
@@ -81,6 +75,7 @@ def cleanup_config_unraisable(*, config: Config, prev_hook: Callable[[sys.Unrais
 
     The number of GC passes depends on the interpreter (5 for PyPy, 1 for CPython).
     """
+    from factory.orchestration_process import gc_collect_harder, gc_collect_iterations_key, collect_unraisable, unraisable_exceptions
     _default = 5 if sys.implementation.name == "pypy" else 1
     iterations = config.stash.get(gc_collect_iterations_key, _default)
     try:
@@ -98,5 +93,5 @@ def cleanup_env(env):
     Args:
         env: An environment object that has a ``configuration.id`` attribute.
     """
-    global m_envs
-    del m_envs[env.configuration.id]
+    import factory.orchestration_process as _op
+    del _op.m_envs[env.configuration.id]

@@ -1,11 +1,3 @@
-from . import contextlib, io, sys
+from utils.silence_kaggle_warnings import silence_kaggle_warnings, DummyStream
 
-class DummyStream(io.StringIO):
-    def write(self, s):
-        return len(s)
-    def flush(self):
-        pass
-
-@contextlib.contextmanager
-from utils.silence_kaggle_warnings import silence_kaggle_warnings
-
+__all__ = ["silence_kaggle_warnings", "DummyStream"]

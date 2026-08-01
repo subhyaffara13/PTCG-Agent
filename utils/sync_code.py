@@ -1,3 +1,8 @@
+import os
+import logging
+import subprocess
+from utils._run_git import _run_git
+from utils.get_local_version import get_local_version
 
 def sync_code(master_version) -> bool:
     local_version = get_local_version()
@@ -8,10 +13,7 @@ def sync_code(master_version) -> bool:
     if local_version != master_version:
         logging.info(f"Version mismatch. Local: {local_version}, Master: {master_version}. Pulling...")
         try:
-            # Fetch all updates from origin
             _run_git(['git', 'fetch', '--all'], check=True, capture_output=True, text=True)
-            
-            # Remove local copies of auto-updated files to prevent conflicts if they are untracked/modified
             files_to_clean = [
                 "models/ppo_actor_critic.pt",
                 "cb_agents/deck_new.csv",
@@ -26,11 +28,9 @@ def sync_code(master_version) -> bool:
                     except Exception as clean_err:
                         logging.warning(f"Could not remove {f} before reset: {clean_err}")
             
-            # Hard reset local branch to the master's exact version
             try:
                 _run_git(['git', 'reset', '--hard', master_version], check=True, capture_output=True, text=True)
-            except subprocess.CalledProcessError as e:
-                # Fallback to origin's main if master_version is not yet known locally
+            except subprocess.CalledProcessError:
                 _run_git(['git', 'reset', '--hard', 'origin/main'], check=True)
                 
             new_local_version = get_local_version()
@@ -45,7 +45,6 @@ def sync_code(master_version) -> bool:
             
             logging.error(f"Failed to synchronize code: {e}. Output: {full_out}")
             
-            # Auto-fix Git lock issues
             if "another git process seems to be running" in full_out or "index.lock" in full_out:
                 logging.warning("Git lock detected. Forcing lock removal...")
                 for lock_file in [".git/index.lock", ".git/FETCH_HEAD.lock"]:
@@ -58,4 +57,3 @@ def sync_code(master_version) -> bool:
     else:
         logging.info(f"Code is already up to date at version: {local_version}")
     return False
-

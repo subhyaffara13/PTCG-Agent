@@ -1,3 +1,6 @@
+import logging
+
+logger = logging.getLogger("orchestration_agent")
 
 def get_training_scripts(enable_distributed: bool) -> list:
     if enable_distributed:
@@ -16,4 +19,3 @@ def get_training_scripts(enable_distributed: bool) -> list:
         "scratch/run_training_batches.py",
         "scratch/run_bug_hunter.py",
     ]
-

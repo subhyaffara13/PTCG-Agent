@@ -1,3 +1,17 @@
+import time
+import logging
+from utils.get_local_version import get_local_version
+from factory.orchestration_agent_helpers import (
+    auto_submit_if_ready, run_analytics_check, get_training_scripts
+)
+from factory.orchestration_process import (
+    launch_processes, monitor_and_restart, cleanup, script_log_path
+)
+
+logger = logging.getLogger("orchestration_agent")
+
+def run_hourly_checks(iteration: int):
+    pass
 
 def run_master_loop(enable_distributed=True):
     logger.info("Orchestration Agent (Master Mode) started." if enable_distributed else "Orchestration Agent (Local Mode) started.")
@@ -29,11 +43,10 @@ def run_master_loop(enable_distributed=True):
         
     beacon = None
     if enable_distributed:
+        from distributed.discovery import MasterBeacon
         version = get_local_version() or "unknown"
         beacon = MasterBeacon(code_version=version)
         beacon.start()
-        from distributed.log_sync import LogCollectorServer
-        LogCollectorServer().start()
     
     scripts = get_training_scripts(enable_distributed=enable_distributed)
     iteration = 0
@@ -49,7 +62,6 @@ def run_master_loop(enable_distributed=True):
                     time.sleep(60)
             except KeyboardInterrupt:
                 logger.info("Train phase monitoring loop interrupted. Proceeding to training process cleanup and main loop exit.")
-                # We re-raise to ensure the script actually terminates, instead of just breaking the inner loop.
                 raise
             finally:
                 logger.info("--- [Halt Phase] Stopping training processes ---")
@@ -59,13 +71,13 @@ def run_master_loop(enable_distributed=True):
                 except KeyboardInterrupt:
                     logger.info("Ignored extra Ctrl+C during training process cleanup. Continuing safe shutdown.")
 
-            # These phases run every 10 minutes to trigger continuous LLM meta-learning, replay analysis, and evolution
             logger.info("--- [Analytics Phase] Running synchronous checks ---")
-            from factory.log_pruner import prune_logs
-            prune_logs(max_files=1000)
+            try:
+                from factory.log_pruner import prune_logs
+                prune_logs(max_files=1000)
+            except Exception:
+                pass
             
-            # --- TRUE AUTOMATION: RL & EVOLUTION ---
-
             try:
                 from factory.teams.development_team import DevelopmentTeam
                 DevelopmentTeam().run_development(iteration)
@@ -75,7 +87,6 @@ def run_master_loop(enable_distributed=True):
             run_hourly_checks(iteration)
             run_analytics_check(iteration)
             
-            # Log league Elo ratings to TensorBoard
             try:
                 from factory.league_manager import LeagueManager
                 from factory.tensorboard_logger import TBLogger
@@ -100,7 +111,6 @@ def run_master_loop(enable_distributed=True):
         logger.info("Orchestration Agent (Master Mode) received KeyboardInterrupt. Initiating graceful shutdown.")
         raise
     except Exception as e:
-        # Catch any other unexpected exceptions and log them with stack trace
         logger.error(f"Orchestration Agent (Master Mode) crashed due to unhandled exception: {e}", exc_info=True)
     finally:
         if beacon:
@@ -110,4 +120,3 @@ def run_master_loop(enable_distributed=True):
             logger.info("Stopping InferenceServer...")
             inference_server.stop()
         logger.info("Orchestration Agent (Master Mode) shutdown complete.")
-

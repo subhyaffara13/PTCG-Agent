@@ -1,3 +1,5 @@
+from typing import Any, Dict, List
+import random
 
 def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
     """
@@ -8,30 +10,37 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guara
     sampled_prizes = []
     sampled_deck = []
     
+    hand_size = getattr(state, "hand_size", 0)
+    prize_size = getattr(state, "prize_size", 0)
+    deck_size = getattr(state, "deck_size", 0)
+
     if not assumed_deck:
         return {
-            "hand": [0] * state.hand_size,
-            "prizes": [0] * state.prize_size,
-            "deck": [0] * state.deck_size
+            "hand": [0] * hand_size,
+            "prizes": [0] * prize_size,
+            "deck": [0] * deck_size
         }
 
-    # Build a pool of all unseen cards
+    known_in_hand = getattr(state, "known_in_hand", {})
+    known_in_play = getattr(state, "known_in_play", {})
+    known_in_discard = getattr(state, "known_in_discard", {})
+    prize_probabilities = getattr(state, "prize_probabilities", {})
+
     unseen_pool = []
     for card_id, total_count in assumed_deck.items():
-        known = (state.known_in_hand.get(card_id, 0) + 
-                 state.known_in_play.get(card_id, 0) + 
-                 state.known_in_discard.get(card_id, 0))
+        known = (known_in_hand.get(card_id, 0) + 
+                 known_in_play.get(card_id, 0) + 
+                 known_in_discard.get(card_id, 0))
         remaining = max(0, total_count - known)
         
-        # Lock guaranteed prizes (use int keys, not str)
         if prize_guaranteed_counts and int(card_id) in prize_guaranteed_counts:
             g_count = prize_guaranteed_counts[int(card_id)]
             for _ in range(g_count):
                 if remaining > 0:
                     remaining -= 1
                     sampled_prizes.append(card_id)
-        elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
-            prob = state.prize_probabilities.get(int(card_id), 0.0)
+        elif prize_probabilities:
+            prob = prize_probabilities.get(int(card_id), 0.0)
             if prob >= 1.0:
                 if remaining > 0:
                     remaining -= 1
@@ -39,24 +48,19 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guara
                     
         unseen_pool.extend([card_id] * remaining)
         
-        # Force cards we KNOW are in hand
-        for _ in range(state.known_in_hand.get(card_id, 0)):
+        for _ in range(known_in_hand.get(card_id, 0)):
             sampled_hand.append(card_id)
 
-    # Shuffle unseen pool for proper Monte Carlo sampling
     random.shuffle(unseen_pool)
 
-    # Fill the rest of the hand
-    needed_hand = max(0, state.hand_size - len(sampled_hand))
+    needed_hand = max(0, hand_size - len(sampled_hand))
     sampled_hand.extend(unseen_pool[:needed_hand])
     unseen_pool = unseen_pool[needed_hand:]
 
-    # Fill remaining prizes
-    needed_prizes = max(0, state.prize_size - len(sampled_prizes))
+    needed_prizes = max(0, prize_size - len(sampled_prizes))
     sampled_prizes.extend(unseen_pool[:needed_prizes])
     unseen_pool = unseen_pool[needed_prizes:]
     
-    # The rest is the deck
     sampled_deck.extend(unseen_pool)
     
     return {
@@ -64,253 +68,3 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guara
         "prizes": sampled_prizes,
         "deck": sampled_deck
     }
-
-
-def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
-    sampled_hand = []
-    sampled_prizes = []
-    sampled_deck = []
-
-    if not assumed_deck:
-        return {
-            "hand": [0] * state.hand_size,
-            "prizes": [0] * state.prize_size,
-            "deck": [0] * state.deck_size
-        }
-
-    unseen_pool = []
-    for card_id, total_count in assumed_deck.items():
-        known = (state.known_in_hand.get(card_id, 0) +
-                 state.known_in_play.get(card_id, 0) +
-                 state.known_in_discard.get(card_id, 0))
-        remaining = max(0, total_count - known)
-
-        if prize_guaranteed_counts and int(card_id) in prize_guaranteed_counts:
-            g_count = prize_guaranteed_counts[int(card_id)]
-            for _ in range(g_count):
-                if remaining > 0:
-                    remaining -= 1
-                    sampled_prizes.append(card_id)
-        elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
-            prob = state.prize_probabilities.get(int(card_id), 0.0)
-            if prob >= 1.0:
-                if remaining > 0:
-                    remaining -= 1
-                    sampled_prizes.append(card_id)
-
-        unseen_pool.extend([card_id] * remaining)
-
-        for _ in range(state.known_in_hand.get(card_id, 0)):
-            sampled_hand.append(card_id)
-
-    random.shuffle(unseen_pool)
-
-    needed_hand = max(0, state.hand_size - len(sampled_hand))
-    sampled_hand.extend(unseen_pool[:needed_hand])
-    unseen_pool = unseen_pool[needed_hand:]
-
-    needed_prizes = max(0, state.prize_size - len(sampled_prizes))
-    sampled_prizes.extend(unseen_pool[:needed_prizes])
-    unseen_pool = unseen_pool[needed_prizes:]
-
-    sampled_deck.extend(unseen_pool)
-
-    return {
-        "hand": sampled_hand,
-        "prizes": sampled_prizes,
-        "deck": sampled_deck
-    }
-
-
-def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
-    """
-    Samples a concrete 'imagined' state of the opponent's hidden zones 
-    based on the current belief state.
-    """
-    sampled_hand = []
-    sampled_prizes = []
-    sampled_deck = []
-    
-    if not assumed_deck:
-        return {
-            "hand": [0] * state.hand_size,
-            "prizes": [0] * state.prize_size,
-            "deck": [0] * state.deck_size
-        }
-
-    # Build a pool of all unseen cards
-    unseen_pool = []
-    for card_id, total_count in assumed_deck.items():
-        known = (state.known_in_hand.get(card_id, 0) + 
-                 state.known_in_play.get(card_id, 0) + 
-                 state.known_in_discard.get(card_id, 0))
-        remaining = max(0, total_count - known)
-        
-        # Lock guaranteed prizes (use int keys, not str)
-        if prize_guaranteed_counts and int(card_id) in prize_guaranteed_counts:
-            g_count = prize_guaranteed_counts[int(card_id)]
-            for _ in range(g_count):
-                if remaining > 0:
-                    remaining -= 1
-                    sampled_prizes.append(card_id)
-        elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
-            prob = state.prize_probabilities.get(int(card_id), 0.0)
-            if prob >= 1.0:
-                if remaining > 0:
-                    remaining -= 1
-                    sampled_prizes.append(card_id)
-                    
-        unseen_pool.extend([card_id] * remaining)
-        
-        # Force cards we KNOW are in hand
-        for _ in range(state.known_in_hand.get(card_id, 0)):
-            sampled_hand.append(card_id)
-
-    # Shuffle unseen pool for proper Monte Carlo sampling
-    random.shuffle(unseen_pool)
-
-    # Fill the rest of the hand
-    needed_hand = max(0, state.hand_size - len(sampled_hand))
-    sampled_hand.extend(unseen_pool[:needed_hand])
-    unseen_pool = unseen_pool[needed_hand:]
-
-    # Fill remaining prizes
-    needed_prizes = max(0, state.prize_size - len(sampled_prizes))
-    sampled_prizes.extend(unseen_pool[:needed_prizes])
-    unseen_pool = unseen_pool[needed_prizes:]
-    
-    # The rest is the deck
-    sampled_deck.extend(unseen_pool)
-    
-    return {
-        "hand": sampled_hand,
-        "prizes": sampled_prizes,
-        "deck": sampled_deck
-    }
-
-
-def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
-    sampled_hand = []
-    sampled_prizes = []
-    sampled_deck = []
-
-    if not assumed_deck:
-        return {
-            "hand": [0] * state.hand_size,
-            "prizes": [0] * state.prize_size,
-            "deck": [0] * state.deck_size
-        }
-
-    unseen_pool = []
-    for card_id, total_count in assumed_deck.items():
-        known = (state.known_in_hand.get(card_id, 0) +
-                 state.known_in_play.get(card_id, 0) +
-                 state.known_in_discard.get(card_id, 0))
-        remaining = max(0, total_count - known)
-
-        if prize_guaranteed_counts and int(card_id) in prize_guaranteed_counts:
-            g_count = prize_guaranteed_counts[int(card_id)]
-            for _ in range(g_count):
-                if remaining > 0:
-                    remaining -= 1
-                    sampled_prizes.append(card_id)
-        elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
-            prob = state.prize_probabilities.get(int(card_id), 0.0)
-            if prob >= 1.0:
-                if remaining > 0:
-                    remaining -= 1
-                    sampled_prizes.append(card_id)
-
-        unseen_pool.extend([card_id] * remaining)
-
-        for _ in range(state.known_in_hand.get(card_id, 0)):
-            sampled_hand.append(card_id)
-
-    random.shuffle(unseen_pool)
-
-    needed_hand = max(0, state.hand_size - len(sampled_hand))
-    sampled_hand.extend(unseen_pool[:needed_hand])
-    unseen_pool = unseen_pool[needed_hand:]
-
-    needed_prizes = max(0, state.prize_size - len(sampled_prizes))
-    sampled_prizes.extend(unseen_pool[:needed_prizes])
-    unseen_pool = unseen_pool[needed_prizes:]
-
-    sampled_deck.extend(unseen_pool)
-
-    return {
-        "hand": sampled_hand,
-        "prizes": sampled_prizes,
-        "deck": sampled_deck
-    }
-
-
-def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
-    """
-    Samples a concrete 'imagined' state of the opponent's hidden zones 
-    based on the current belief state.
-    """
-    sampled_hand = []
-    sampled_prizes = []
-    sampled_deck = []
-    
-    if not assumed_deck:
-        return {
-            "hand": [0] * state.hand_size,
-            "prizes": [0] * state.prize_size,
-            "deck": [0] * state.deck_size
-        }
-
-    # Build a pool of all unseen cards
-    unseen_pool = []
-    for card_id, total_count in assumed_deck.items():
-        known = (state.known_in_hand.get(card_id, 0) + 
-                 state.known_in_play.get(card_id, 0) + 
-                 state.known_in_discard.get(card_id, 0))
-        remaining = max(0, total_count - known)
-        unseen_pool.extend([card_id] * remaining)
-        
-        # Force cards we KNOW are in hand
-        for _ in range(state.known_in_hand.get(card_id, 0)):
-            sampled_hand.append(card_id)
-
-    # Shuffle the unseen pool
-    random.shuffle(unseen_pool)
-    
-    # Lock guaranteed prizes into opponent's prized pool
-    if prize_guaranteed_counts:
-        for cid, count in prize_guaranteed_counts.items():
-            for _ in range(count):
-                if cid in unseen_pool:
-                    unseen_pool.remove(cid)
-                    sampled_prizes.append(cid)
-    elif hasattr(state, 'prize_probabilities') and state.prize_probabilities:
-        for cid_str, prob in state.prize_probabilities.items():
-            if prob >= 1.0:
-                try:
-                    cid = int(cid_str)
-                    if cid in unseen_pool:
-                        unseen_pool.remove(cid)
-                        sampled_prizes.append(cid)
-                except ValueError:
-                    pass
-
-    # Fill the rest of the hand
-    needed_hand = max(0, state.hand_size - len(sampled_hand))
-    sampled_hand.extend(unseen_pool[:needed_hand])
-    unseen_pool = unseen_pool[needed_hand:]
-
-    # Fill remaining prizes
-    needed_prizes = max(0, state.prize_size - len(sampled_prizes))
-    sampled_prizes.extend(unseen_pool[:needed_prizes])
-    unseen_pool = unseen_pool[needed_prizes:]
-    
-    # The rest is the deck
-    sampled_deck.extend(unseen_pool)
-    
-    return {
-        "hand": sampled_hand,
-        "prizes": sampled_prizes,
-        "deck": sampled_deck
-    }
-

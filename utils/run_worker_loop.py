@@ -1,3 +1,8 @@
+import time
+import logging
+from distributed.worker_client import WorkerClient
+
+logger = logging.getLogger("orchestration_agent")
 
 def run_worker_loop(master_ip: str, master_version: str | None):
     logger.info(f"Orchestration Agent (Worker Mode) started. Syncing to {master_version}...")
@@ -19,4 +24,3 @@ def run_worker_loop(master_ip: str, master_version: str | None):
         logger.error(f"Worker client crashed: {e}. Restarting discovery...")
     finally:
         time.sleep(2)
-

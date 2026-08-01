@@ -1,6 +1,3 @@
-import os
-from . import contextlib, sys
+from utils.silence_kaggle_warnings import silence_kaggle_warnings, DummyStream
 
-@contextlib.contextmanager
-from utils.silence_kaggle_warnings import silence_kaggle_warnings
-
+__all__ = ["silence_kaggle_warnings", "DummyStream"]

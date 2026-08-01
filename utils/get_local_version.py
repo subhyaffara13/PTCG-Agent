@@ -1,3 +1,6 @@
+import os
+import logging
+from utils._run_git import _run_git
 
 def get_local_version():
     try:
@@ -25,4 +28,3 @@ def get_local_version():
     except Exception as e:
         logging.warning(f"Git version fallback check skipped: {e}")
         return None
-
