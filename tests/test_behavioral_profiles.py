@@ -32,7 +32,7 @@ def test_profile_orders_are_distinct():
     
     # Assert that distinct profiles produce distinct action rankings
     assert order_closing[0] == "attack:Attack1"
-    assert order_stall[0] == "retreat:1" or order_stall[-1] == "attack:Attack1"
+    assert order_stall[0] == "play_trainer:Lillie's Determination" or order_stall[-1] == "pass"
     assert order_setup != order_closing
 
 def test_value_network_clipping_allows_negative_heuristics():

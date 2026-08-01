@@ -9,9 +9,27 @@ def _score_option_mscu(opt, registry, current, my_idx, sel_type, select):
     if card:
         score = getattr(card, "utility_score", 0.0)
         card_id_int = getattr(card, "card_id", None)
-        if card_id_int is not None and hasattr(registry, "learned_dos"):
-            if int(card_id_int) in registry.learned_dos: score += 8.0
-            if hasattr(registry, "learned_donts") and int(card_id_int) in registry.learned_donts: score -= 8.0
+        if card_id_int is not None and registry:
+            dos_set = getattr(registry, "_learned_dos_set", None)
+            if dos_set is None and hasattr(registry, "learned_dos"):
+                dos_data = getattr(registry, "learned_dos", {})
+                if isinstance(dos_data, dict):
+                    dos_list = dos_data.get("deck_dos", [])
+                    dos_set = {int(x.get("card_id")) for x in dos_list if isinstance(x, dict) and "card_id" in x}
+                else:
+                    dos_set = set()
+                setattr(registry, "_learned_dos_set", dos_set)
+            donts_set = getattr(registry, "_learned_donts_set", None)
+            if donts_set is None and hasattr(registry, "learned_donts"):
+                donts_data = getattr(registry, "learned_donts", {})
+                if isinstance(donts_data, dict):
+                    donts_list = donts_data.get("deck_donts", [])
+                    donts_set = {int(x.get("card_id")) for x in donts_list if isinstance(x, dict) and "card_id" in x}
+                else:
+                    donts_set = set()
+                setattr(registry, "_learned_donts_set", donts_set)
+            if dos_set and int(card_id_int) in dos_set: score += 12.0
+            if donts_set and int(card_id_int) in donts_set: score -= 12.0
     try:
         players = get_val(current, "players", [])
         if len(players) > my_idx and players[my_idx]:
@@ -35,7 +53,9 @@ def _score_option_mscu(opt, registry, current, my_idx, sel_type, select):
             cname_low = str(card_name).lower()
             is_draw_card = any(d in cname_low for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
             if is_draw_card:
-                deck_count = len(get_val(players[my_idx], "deck", []))
+                deck_count = get_val(players[my_idx], "deckCount")
+                if deck_count is None or not isinstance(deck_count, (int, float)):
+                    deck_count = len(get_val(players[my_idx], "deck", [])) or 60
                 if deck_count <= 3: score -= 500.0
                 elif deck_count <= 8: score -= 100.0
     except Exception: pass
