@@ -1,0 +1,6 @@
+
+def get_package_data(name, version):
+    url = '%s/%s/package-%s.json' % (name[0].upper(), name, version)
+    url = urljoin(_external_data_base_url, url)
+    return _get_external_data(url)
+

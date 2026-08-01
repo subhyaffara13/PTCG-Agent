@@ -6,27 +6,9 @@ logger = logging.getLogger(__name__)
 import hashlib
 import json
 
-def board_hash(hand_ids: Tuple[int, ...], board_ids: Tuple[int, ...], deck_remaining: int, turn: int) -> int:
-    """Computes a deterministic hash for the current board state."""
-    digest = hashlib.sha256(f"{hand_ids}|{board_ids}|{deck_remaining}|{turn}".encode()).hexdigest()
-    return int(digest[:16], 16)
+from utils.board_hash import board_hash
 
-def gs_hash(game_state: dict) -> int:
-    """Compute a deterministic hash for a game state dict for transposition detection."""
-    try:
-        key_parts = []
-        for k in sorted(game_state.keys()):
-            if k in ("legal_actions", "turn_ended", "game_over", "winner", "reasoning_chain"):
-                continue
-            v = game_state[k]
-            try:
-                json.dumps(v)
-                key_parts.append((k, str(v)))
-            except (TypeError, ValueError):
-                pass
-        return int(hashlib.sha256(str(tuple(key_parts)).encode()).hexdigest()[:16], 16)
-    except Exception:
-        return 0
+from utils.gs_hash import gs_hash
 
 
 class CachedEvaluator:

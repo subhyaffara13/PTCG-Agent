@@ -20,97 +20,9 @@ class DummyStream(io.StringIO):
         pass
 
 @contextlib.contextmanager
-def silence_kaggle_warnings():
-    import builtins
-    import sys
-    orig_print = builtins.print
-    def dummy_print(*args, **kwargs):
-        if args and isinstance(args[0], str) and ("Loading environment" in args[0] and "failed" in args[0]):
-            return
-        orig_print(*args, **kwargs)
-    builtins.print = dummy_print
-    
-    # Hide pyspiel module from python loader during import to bypass OpenSpiel C++ prints
-    saved_pyspiel = sys.modules.get('pyspiel')
-    sys.modules['pyspiel'] = None  # type: ignore
-    
-    dummy_stream = DummyStream()
-    try:
-        with contextlib.redirect_stderr(dummy_stream), contextlib.redirect_stdout(dummy_stream):
-            yield
-    finally:
-        builtins.print = orig_print
-        if saved_pyspiel is not None:
-            sys.modules['pyspiel'] = saved_pyspiel
-        else:
-            sys.modules.pop('pyspiel', None)
+from utils.silence_kaggle_warnings import silence_kaggle_warnings
 
-def ensure_dependencies():
-    # Purge any old colliding test_agents compiled bytecode cache files in root folder
-    try:
-        import pathlib
-        root_dir = pathlib.Path(__file__).parent.parent.resolve()
-        for p in root_dir.glob("__pycache__/test_agents*"):
-            if p.is_file():
-                p.unlink()
-        for p in root_dir.glob("test_agents*"):
-            if p.is_file() and p.suffix in (".pyc", ".pyo"):
-                p.unlink()
-    except Exception:
-        pass
-
-    required_packages = ["numpy", "pydantic", "pokerkit", "dotenv", "kaggle_environments"]
-    missing = False
-    for pkg in required_packages:
-        try:
-            if pkg == "dotenv":
-                import dotenv
-            else:
-                with silence_kaggle_warnings():
-                    __import__(pkg)
-        except ImportError:
-            missing = True
-            break
-            
-    if missing:
-        print("Missing dependencies detected. Satisfying requirements...")
-        try:
-            # 1. Install kaggle-environments with --no-deps to completely bypass pygame build errors!
-            print("Installing kaggle-environments without dependencies (avoids compiling pygame)...")
-            subprocess.run([sys.executable, "-m", "pip", "install", "kaggle-environments", "--no-deps"], check=True)
-            
-            # 2. Locate and install other dependencies via requirements.txt
-            req_path = os.path.join(os.getcwd(), "requirements.txt")
-            if os.path.exists(req_path):
-                print("Installing requirements.txt...")
-                subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_path], check=True)
-            else:
-                subprocess.run([sys.executable, "-m", "pip", "install", "numpy", "pandas", "torch", "redis", "pydantic", "pokerkit", "python-dotenv", "requests", "jsonschema", "flask", "urllib3"], check=True)
-            print("Dependencies successfully installed!")
-        except Exception as e:
-            print(f"Failed to auto-install dependencies: {e}.")
-            
-        # Verify if everything was resolved
-        still_missing = []
-        for pkg in required_packages:
-            try:
-                if pkg == "dotenv":
-                    import dotenv
-                else:
-                    with silence_kaggle_warnings():
-                        __import__(pkg)
-            except ImportError:
-                still_missing.append(pkg)
-                
-        if still_missing:
-            print("\n" + "="*80)
-            print(f"CRITICAL ERROR: The following packages are still missing: {still_missing}")
-            print("Please run manually on this machine:")
-            print("  pip install " + " ".join(still_missing))
-            print("="*80 + "\n")
-            print("Worker will pause for 60 seconds before exiting to prevent infinite crash loops...")
-            time.sleep(60)
-            sys.exit(1)
+from utils.ensure_dependencies import ensure_dependencies
 
 import socket
 import logging
@@ -126,10 +38,7 @@ _CONNECT_TIMEOUT = 5.0  # Short timeout for initial TCP connect
 _READ_TIMEOUT = 120.0    # Longer timeout for MCTS runs (per-read)
 _STARTUP_WATCHDOG = 300  # 5 minutes: if we can't get a complete cycle, bail
 
-def _backoff_sleep(attempt: int):
-    """Exponential backoff: 1, 2, 4, 8, 16, 30, 30, ... seconds."""
-    delay = min(30, 2 ** attempt)
-    time.sleep(delay)
+from utils._backoff_sleep import _backoff_sleep
 
 class WorkerClient:
     def __init__(self, host='127.0.0.1', port=9871):

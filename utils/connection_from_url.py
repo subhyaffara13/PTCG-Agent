@@ -1,0 +1,58 @@
+
+def connection_from_url(url: str, **kw: typing.Any) -> HTTPConnectionPool:
+    """
+    Given a url, return an :class:`.ConnectionPool` instance of its host.
+
+    This is a shortcut for not having to parse out the scheme, host, and port
+    of the url before creating an :class:`.ConnectionPool` instance.
+
+    :param url:
+        Absolute URL string that must include the scheme. Port is optional.
+
+    :param \\**kw:
+        Passes additional parameters to the constructor of the appropriate
+        :class:`.ConnectionPool`. Useful for specifying things like
+        timeout, maxsize, headers, etc.
+
+    Example::
+
+        >>> conn = connection_from_url('http://google.com/')
+        >>> r = conn.request('GET', '/')
+    """
+    scheme, _, host, port, *_ = parse_url(url)
+    scheme = scheme or "http"
+    port = port or port_by_scheme.get(scheme, 80)
+    if scheme == "https":
+        return HTTPSConnectionPool(host, port=port, **kw)  # type: ignore[arg-type]
+    else:
+        return HTTPConnectionPool(host, port=port, **kw)  # type: ignore[arg-type]
+
+
+def connection_from_url(url: str, **kw: typing.Any) -> HTTPConnectionPool:
+    """
+    Given a url, return an :class:`.ConnectionPool` instance of its host.
+
+    This is a shortcut for not having to parse out the scheme, host, and port
+    of the url before creating an :class:`.ConnectionPool` instance.
+
+    :param url:
+        Absolute URL string that must include the scheme. Port is optional.
+
+    :param \\**kw:
+        Passes additional parameters to the constructor of the appropriate
+        :class:`.ConnectionPool`. Useful for specifying things like
+        timeout, maxsize, headers, etc.
+
+    Example::
+
+        >>> conn = connection_from_url('http://google.com/')
+        >>> r = conn.request('GET', '/')
+    """
+    scheme, _, host, port, *_ = parse_url(url)
+    scheme = scheme or "http"
+    port = port or port_by_scheme.get(scheme, 80)
+    if scheme == "https":
+        return HTTPSConnectionPool(host, port=port, **kw)  # type: ignore[arg-type]
+    else:
+        return HTTPConnectionPool(host, port=port, **kw)  # type: ignore[arg-type]
+

@@ -1,18 +1,3 @@
-def _read_data_files():
-    from pathlib import Path
-    bandit_report_path = Path("bandit_report.json")
-    report_data = "{}"
-    if bandit_report_path.exists():
-        report_data = bandit_report_path.read_text(encoding="utf-8")
-    donts_path = Path("skills/learned_donts.json")
-    dos_path = Path("skills/learned_dos.json")
-    donts_data = "{}"; dos_data = "{}"
-    if donts_path.exists(): donts_data = donts_path.read_text(encoding="utf-8")
-    if dos_path.exists(): dos_data = dos_path.read_text(encoding="utf-8")
-    return report_data, donts_data, dos_data
+from utils._read_data_files import _read_data_files
 
-def _parse_llm_results(results):
-    if isinstance(results, dict) and "anti_patterns" in results:
-        return results["anti_patterns"]
-    elif isinstance(results, list): return results
-    return [{"issue_name": "Parsing Error", "description": "LLM did not return a list."}]
+from utils._parse_llm_results import _parse_llm_results

@@ -2,11 +2,7 @@ import json
 import unicodedata
 import re
 
-def normalize(text):
-    text = unicodedata.normalize("NFKD", text)
-    text = re.sub(r"[^\x00-\x7F]+", "", text)
-    text = re.sub(r"[^a-z0-9']+", " ", text.lower())
-    return text.strip()
+from utils.normalize import normalize
 
 priority = [
     "Boss's Orders", "Professor's Research", "Iono", "Arven",

@@ -1,0 +1,51 @@
+
+def get_option(pat: str) -> Any:
+    """
+    Retrieve the value of the specified option.
+
+    This method allows users to query the current value of a given option
+    in the pandas configuration system. Options control various display,
+    performance, and behavior-related settings within pandas.
+
+    Parameters
+    ----------
+    pat : str
+        Regexp which should match a single option.
+
+        .. warning::
+
+            Partial matches are supported for convenience, but unless you use the
+            full option name (e.g. x.y.z.option_name), your code may break in future
+            versions if new options with similar names are introduced.
+
+    Returns
+    -------
+    Any
+        The value of the option.
+
+    Raises
+    ------
+    OptionError : if no such option exists
+
+    See Also
+    --------
+    set_option : Set the value of the specified option or options.
+    reset_option : Reset one or more options to their default value.
+    describe_option : Print the description for one or more registered options.
+
+    Notes
+    -----
+    For all available options, please view the :ref:`User Guide <options.available>`
+    or use ``pandas.describe_option()``.
+
+    Examples
+    --------
+    >>> pd.get_option("display.max_columns")  # doctest: +SKIP
+    4
+    """
+    key = _get_single_key(pat)
+
+    # walk the nested dict
+    root, k = _get_root(key)
+    return root[k]
+

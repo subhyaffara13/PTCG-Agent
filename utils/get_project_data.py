@@ -1,0 +1,7 @@
+
+def get_project_data(name):
+    url = '%s/%s/project.json' % (name[0].upper(), name)
+    url = urljoin(_external_data_base_url, url)
+    result = _get_external_data(url)
+    return result
+

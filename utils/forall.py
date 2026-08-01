@@ -1,0 +1,5 @@
+
+def forall(results_: _Sequence[_ods_ir.Type], dynamic_lower_bound: _Sequence[_ods_ir.Value[_ods_ir.IndexType]], dynamic_upper_bound: _Sequence[_ods_ir.Value[_ods_ir.IndexType]], dynamic_step: _Sequence[_ods_ir.Value[_ods_ir.IndexType]], static_lower_bound: _Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr], static_upper_bound: _Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr], static_step: _Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr], outputs: _Sequence[_ods_ir.Value[_ods_ir.RankedTensorType]], *, mapping: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _Union[_ods_ir.OpResult, _ods_ir.OpResultList, ForallOp]:
+  op = ForallOp(results_=results_, dynamicLowerBound=dynamic_lower_bound, dynamicUpperBound=dynamic_upper_bound, dynamicStep=dynamic_step, staticLowerBound=static_lower_bound, staticUpperBound=static_upper_bound, staticStep=static_step, outputs=outputs, mapping=mapping, loc=loc, ip=ip); results = op.results
+  return results if len(results) > 1 else (results[0] if len(results) == 1 else op)
+

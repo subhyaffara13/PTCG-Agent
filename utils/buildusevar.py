@@ -1,0 +1,28 @@
+
+def buildusevar(name, realname, vars, usemodulename):
+    outmess('\t\t\tConstructing wrapper function for variable '
+            f'"{name}=>{realname}"...\n')
+    ret = {}
+    vrd = {'name': name,
+           'realname': realname,
+           'REALNAME': realname.upper(),
+           'usemodulename': usemodulename,
+           'USEMODULENAME': usemodulename.upper(),
+           'texname': name.replace('_', '\\_'),
+           'begintitle': gentitle(f'{name}=>{realname}'),
+           'endtitle': gentitle(f'end of {name}=>{realname}'),
+           'apiname': f'#modulename#_use_{realname}_from_{usemodulename}'
+           }
+    nummap = {0: 'Ro', 1: 'Ri', 2: 'Rii', 3: 'Riii', 4: 'Riv',
+              5: 'Rv', 6: 'Rvi', 7: 'Rvii', 8: 'Rviii', 9: 'Rix'}
+    vrd['texnamename'] = name
+    for i in nummap.keys():
+        vrd['texnamename'] = vrd['texnamename'].replace(repr(i), nummap[i])
+    if hasnote(vars[realname]):
+        vrd['note'] = vars[realname]['note']
+    rd = dictappend({}, vrd)
+
+    print(name, realname, vars[realname])
+    ret = applyrules(usemodule_rules, rd)
+    return ret
+

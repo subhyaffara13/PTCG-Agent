@@ -1,0 +1,31 @@
+
+def test_axline_setters():
+    fig, ax = plt.subplots()
+    line1 = ax.axline((.1, .1), slope=0.6)
+    line2 = ax.axline((.1, .1), (.8, .4))
+    # Testing xy1, xy2 and slope setters.
+    # This should not produce an error.
+    line1.set_xy1((.2, .3))
+    line1.set_slope(2.4)
+    line2.set_xy1((.3, .2))
+    line2.set_xy2((.6, .8))
+    # Testing xy1, xy2 and slope getters.
+    # Should return the modified values.
+    assert line1.get_xy1() == (.2, .3)
+    assert line1.get_slope() == 2.4
+    assert line2.get_xy1() == (.3, .2)
+    assert line2.get_xy2() == (.6, .8)
+    with pytest.warns(mpl.MatplotlibDeprecationWarning):
+        line1.set_xy1(.2, .3)
+    with pytest.warns(mpl.MatplotlibDeprecationWarning):
+        line2.set_xy2(.6, .8)
+    # Testing setting xy2 and slope together.
+    # These test should raise a ValueError
+    with pytest.raises(ValueError,
+                       match="Cannot set an 'xy2' value while 'slope' is set"):
+        line1.set_xy2(.2, .3)
+
+    with pytest.raises(ValueError,
+                       match="Cannot set a 'slope' value while 'xy2' is set"):
+        line2.set_slope(3)
+

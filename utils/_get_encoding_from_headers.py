@@ -1,0 +1,11 @@
+
+def _get_encoding_from_headers(headers: ResponseHeaders) -> str | None:
+    """Determine if we have any encoding information in our headers."""
+    if headers and "Content-Type" in headers:
+        m = email.message.Message()
+        m["content-type"] = headers["Content-Type"]
+        charset = m.get_param("charset")
+        if charset:
+            return str(charset)
+    return None
+

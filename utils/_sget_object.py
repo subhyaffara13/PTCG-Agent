@@ -1,0 +1,4 @@
+
+def _sget_object(val):
+    return val.__getstate__()
+

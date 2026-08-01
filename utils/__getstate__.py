@@ -1,0 +1,8 @@
+
+def __getstate__() -> dict[str, Any]:
+    state = {}
+    g = globals()
+    for k, v in _state_vars.items():
+        state[k] = g['_sget_' + v](g[k])
+    return state
+

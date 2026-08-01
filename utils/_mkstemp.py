@@ -1,0 +1,11 @@
+
+def _mkstemp(*args, **kw):
+    old_open = os.open
+    try:
+        # temporarily bypass sandboxing
+        os.open = os_open
+        return tempfile.mkstemp(*args, **kw)
+    finally:
+        # and then put it back
+        os.open = old_open
+

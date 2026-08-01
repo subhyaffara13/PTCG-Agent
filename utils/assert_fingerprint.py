@@ -1,0 +1,68 @@
+
+def assert_fingerprint(cert: bytes | None, fingerprint: str) -> None:
+    """
+    Checks if given fingerprint matches the supplied certificate.
+
+    :param cert:
+        Certificate as bytes object.
+    :param fingerprint:
+        Fingerprint as string of hexdigits, can be interspersed by colons.
+    """
+
+    if cert is None:
+        raise SSLError("No certificate for the peer.")
+
+    fingerprint = fingerprint.replace(":", "").lower()
+    digest_length = len(fingerprint)
+    if digest_length not in HASHFUNC_MAP:
+        raise SSLError(f"Fingerprint of invalid length: {fingerprint}")
+    hashfunc = HASHFUNC_MAP.get(digest_length)
+    if hashfunc is None:
+        raise SSLError(
+            f"Hash function implementation unavailable for fingerprint length: {digest_length}"
+        )
+
+    # We need encode() here for py32; works on py2 and p33.
+    fingerprint_bytes = unhexlify(fingerprint.encode())
+
+    cert_digest = hashfunc(cert).digest()
+
+    if not hmac.compare_digest(cert_digest, fingerprint_bytes):
+        raise SSLError(
+            f'Fingerprints did not match. Expected "{fingerprint}", got "{cert_digest.hex()}"'
+        )
+
+
+def assert_fingerprint(cert: bytes | None, fingerprint: str) -> None:
+    """
+    Checks if given fingerprint matches the supplied certificate.
+
+    :param cert:
+        Certificate as bytes object.
+    :param fingerprint:
+        Fingerprint as string of hexdigits, can be interspersed by colons.
+    """
+
+    if cert is None:
+        raise SSLError("No certificate for the peer.")
+
+    fingerprint = fingerprint.replace(":", "").lower()
+    digest_length = len(fingerprint)
+    if digest_length not in HASHFUNC_MAP:
+        raise SSLError(f"Fingerprint of invalid length: {fingerprint}")
+    hashfunc = HASHFUNC_MAP.get(digest_length)
+    if hashfunc is None:
+        raise SSLError(
+            f"Hash function implementation unavailable for fingerprint length: {digest_length}"
+        )
+
+    # We need encode() here for py32; works on py2 and p33.
+    fingerprint_bytes = unhexlify(fingerprint.encode())
+
+    cert_digest = hashfunc(cert).digest()
+
+    if not hmac.compare_digest(cert_digest, fingerprint_bytes):
+        raise SSLError(
+            f'Fingerprints did not match. Expected "{fingerprint}", got "{cert_digest.hex()}"'
+        )
+

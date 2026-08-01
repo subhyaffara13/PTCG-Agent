@@ -1,0 +1,41 @@
+
+def masked_outside(x, v1, v2, copy=True):
+    """
+    Mask an array outside a given interval.
+
+    Shortcut to ``masked_where``, where `condition` is True for `x` outside
+    the interval [v1,v2] (x < v1)|(x > v2).
+    The boundaries `v1` and `v2` can be given in either order.
+
+    See Also
+    --------
+    masked_where : Mask where a condition is met.
+
+    Notes
+    -----
+    The array `x` is prefilled with its filling value.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> import numpy.ma as ma
+    >>> x = [0.31, 1.2, 0.01, 0.2, -0.4, -1.1]
+    >>> ma.masked_outside(x, -0.3, 0.3)
+    masked_array(data=[--, --, 0.01, 0.2, --, --],
+                 mask=[ True,  True, False, False,  True,  True],
+           fill_value=1e+20)
+
+    The order of `v1` and `v2` doesn't matter.
+
+    >>> ma.masked_outside(x, 0.3, -0.3)
+    masked_array(data=[--, --, 0.01, 0.2, --, --],
+                 mask=[ True,  True, False, False,  True,  True],
+           fill_value=1e+20)
+
+    """
+    if v2 < v1:
+        (v1, v2) = (v2, v1)
+    xf = filled(x)
+    condition = (xf < v1) | (xf > v2)
+    return masked_where(condition, x, copy=copy)
+

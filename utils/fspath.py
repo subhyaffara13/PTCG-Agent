@@ -1,0 +1,21 @@
+
+def fspath(path: AnyStr | os.PathLike[AnyStr]) -> AnyStr:
+    if isinstance(path, (str, bytes)):
+        return path
+
+    path_type = type(path)
+    try:
+        path_repr = path_type.__fspath__(path)  # type: ignore[arg-type]
+    except AttributeError:
+        if hasattr(path_type, "__fspath__"):
+            raise
+        raise TypeError(
+            f"expected str, bytes or os.PathLike object, not {path_type.__name__}",
+        ) from None
+    if isinstance(path_repr, (str, bytes)):
+        return path_repr  # type: ignore[return-value]
+    raise TypeError(
+        f"expected {path_type.__name__}.__fspath__() to return str or bytes, "
+        f"not {type(path_repr).__name__}",
+    )
+

@@ -1,0 +1,4 @@
+
+def async_load(source: _ods_ir.Value[_ods_ir.MemRefType], destination: _ods_ir.Value[_ods_ir.MemRefType], barrier: _ods_ir.Value[_ods_ir.MemRefType], indices: _Sequence[_ods_ir.Value], slice_lengths: _Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr], collective: _Union[_Any, _ods_ir.ArrayAttr], *, leader_tracked: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, predicate: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, oob_fill_mode: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> AsyncLoadOp:
+  return AsyncLoadOp(source=source, destination=destination, barrier=barrier, indices=indices, slice_lengths=slice_lengths, collective=collective, leader_tracked=leader_tracked, predicate=predicate, oob_fill_mode=oob_fill_mode, loc=loc, ip=ip)
+

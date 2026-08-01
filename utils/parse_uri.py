@@ -1,0 +1,22 @@
+
+def parse_uri(uri: str) -> tuple[str, str, str, str, str]:
+    """Parses a URI using the regex given in Appendix B of RFC 3986.
+
+    (scheme, authority, path, query, fragment) = parse_uri(uri)
+    """
+    match = URI.match(uri)
+    assert match is not None
+    groups = match.groups()
+    return (groups[1], groups[3], groups[4], groups[6], groups[8])
+
+
+def parse_uri(uri: str) -> tuple[str, str, str, str, str]:
+    """Parses a URI using the regex given in Appendix B of RFC 3986.
+
+    (scheme, authority, path, query, fragment) = parse_uri(uri)
+    """
+    match = URI.match(uri)
+    assert match is not None
+    groups = match.groups()
+    return (groups[1], groups[3], groups[4], groups[6], groups[8])
+

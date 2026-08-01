@@ -1,0 +1,11 @@
+
+def _handle_no_binary(
+    option: Option, opt_str: str, value: str, parser: OptionParser
+) -> None:
+    existing = _get_format_control(parser.values, option)
+    FormatControl.handle_mutual_excludes(
+        value,
+        existing.no_binary,
+        existing.only_binary,
+    )
+

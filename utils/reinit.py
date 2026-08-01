@@ -1,0 +1,7 @@
+
+def reinit():
+    if wrapped_stdout is not None:
+        sys.stdout = wrapped_stdout
+    if wrapped_stderr is not None:
+        sys.stderr = wrapped_stderr
+

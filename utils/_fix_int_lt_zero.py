@@ -1,0 +1,28 @@
+
+def _fix_int_lt_zero(x):
+    """Convert `x` to double if it has real, negative components.
+
+    Otherwise, output is just the array version of the input (via asarray).
+
+    Parameters
+    ----------
+    x : array_like
+
+    Returns
+    -------
+    array
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> np.lib.scimath._fix_int_lt_zero([1,2])
+    array([1, 2])
+
+    >>> np.lib.scimath._fix_int_lt_zero([-1,2])
+    array([-1.,  2.])
+    """
+    x = asarray(x)
+    if any(isreal(x) & (x < 0)):
+        x = x * 1.0
+    return x
+

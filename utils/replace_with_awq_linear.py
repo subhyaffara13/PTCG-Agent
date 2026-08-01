@@ -1,0 +1,66 @@
+
+def replace_with_awq_linear(
+    model,
+    modules_to_not_convert=None,
+    quantization_config=None,
+    device_map: str | dict | None = None,
+) -> bool:
+    """
+    Public method that replaces the linear layers of the given model with awq quantized layers.
+
+    Args:
+        model (`torch.nn.Module`):
+            The model to convert, can be any `torch.nn.Module` instance.
+        quantization_config (`AwqConfig`):
+            The quantization config object that contains the quantization parameters.
+        modules_to_not_convert (`list[str]`, *optional*, defaults to `None`):
+            A list of nn.Linear weights to not convert. If a parameter path is in the list (e.g. `lm_head.weight`), the corresponding module will not be
+            converted.
+        device_map (`Union[str, dict]`, *optional*, defaults to `None`):
+            The device map that maps the parameters to the device
+    """
+    from gptqmodel.quantization import METHOD
+    from gptqmodel.utils.importer import hf_select_quant_linear_v2
+
+    target_cls = hf_select_quant_linear_v2(
+        bits=quantization_config.bits,
+        group_size=quantization_config.group_size,
+        desc_act=False,
+        sym=False,
+        format=quantization_config.format,
+        backend=quantization_config.backend,
+        device_map=device_map,
+        quant_method=METHOD.AWQ,
+        zero_point=quantization_config.zero_point,
+        pack=False,
+    )
+
+    for module_name, module in model.named_modules():
+        if not should_convert_module(module_name, modules_to_not_convert):
+            continue
+        with torch.device("meta"):
+            if isinstance(module, nn.Linear):
+                new_module = target_cls(
+                    bits=quantization_config.bits,
+                    sym=quantization_config.sym,
+                    desc_act=quantization_config.desc_act,
+                    group_size=quantization_config.group_size,
+                    in_features=module.in_features,
+                    out_features=module.out_features,
+                    bias=module.bias is not None,
+                    dev=module.weight.device,
+                    register_buffers=True,
+                )
+                new_module.requires_grad_(False)
+                model.set_submodule(module_name, new_module)
+                has_been_replaced = True
+
+    if not has_been_replaced:
+        logger.warning(
+            "You are loading your model using eetq but no linear modules were found in your model."
+            " Please double check your model architecture, or submit an issue on github if you think this is"
+            " a bug."
+        )
+
+    return model
+

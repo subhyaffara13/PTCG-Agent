@@ -16,19 +16,7 @@ _LOG_PATH     = _PROJECT_ROOT / "logs" / "reasoning_log.json"
 _log_buffer: list[dict[str, Any]] = []
 
 
-def flush_logs() -> None:
-    try:
-        _LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    except Exception:
-        pass
-    flush_reasoning_logs(_log_buffer, _LOG_PATH, logger)
+from utils.flush_logs import flush_logs
 
 
-def _log_orchestration(gs: dict[str, Any], decision: Any) -> None:
-    entry: dict[str, Any] = {
-        "timestamp":  datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
-        "agent":      "Orchestrator",
-        "input_keys": sorted(gs.keys()),
-        "output":     asdict(decision),
-    }
-    _log_buffer.append(entry)
+from utils._log_orchestration import _log_orchestration

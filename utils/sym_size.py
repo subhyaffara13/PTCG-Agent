@@ -1,0 +1,8 @@
+
+def sym_size(a, dim):
+    val = V.graph.current_node.meta["val"]
+    if isinstance(val, torch.SymInt):
+        return val.node.expr
+    else:
+        return int(val)
+

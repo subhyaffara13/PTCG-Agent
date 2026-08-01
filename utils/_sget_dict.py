@@ -1,0 +1,4 @@
+
+def _sget_dict(val):
+    return val.copy()
+

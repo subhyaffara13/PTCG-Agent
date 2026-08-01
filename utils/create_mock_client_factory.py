@@ -1,0 +1,182 @@
+
+def create_mock_client_factory(config: MockClientConfig):
+    """
+    Factory function that creates mock client functions based on configuration.
+
+    Returns:
+        tuple: (create_mock_client_func, should_use_mock_func)
+    """
+    # Store original methods for restoration
+    _original_async_handler_post = None
+    _original_sync_client_post = None
+    _original_http_handler_post = None
+    _mocks_initialized = False
+
+    # Calculate mock latency
+    import os
+
+    latency_env = f"{config.name.upper()}_MOCK_LATENCY_MS"
+    _MOCK_LATENCY_SECONDS = (
+        float(os.getenv(latency_env, str(config.default_latency_ms))) / 1000.0
+    )
+
+    # Create URL matcher function
+    def _is_mock_url(url) -> bool:
+        # url_matchers is guaranteed to be a list after __post_init__
+        return _is_url_match(url, cast(List[str], config.url_matchers))
+
+    # Create async handler mock
+    async def _mock_async_handler_post(
+        self,
+        url,
+        data=None,
+        json=None,
+        params=None,
+        headers=None,
+        timeout=None,
+        stream=False,
+        logging_obj=None,
+        files=None,
+        content=None,
+    ):
+        """Monkey-patched AsyncHTTPHandler.post that intercepts API calls."""
+        if isinstance(url, str) and _is_mock_url(url):
+            verbose_logger.info(f"[{config.name} MOCK] POST to {url}")
+            await asyncio.sleep(_MOCK_LATENCY_SECONDS)
+            return MockResponse(
+                status_code=config.default_status_code,
+                json_data=config.default_json_data,
+                url=url,
+                elapsed_seconds=_MOCK_LATENCY_SECONDS,
+            )
+        if _original_async_handler_post is not None:
+            return await _original_async_handler_post(
+                self,
+                url=url,
+                data=data,
+                json=json,
+                params=params,
+                headers=headers,
+                timeout=timeout,
+                stream=stream,
+                logging_obj=logging_obj,
+                files=files,
+                content=content,
+            )
+        raise RuntimeError("Original AsyncHTTPHandler.post not available")
+
+    # Create sync client mock
+    def _mock_sync_client_post(self, url, **kwargs):
+        """Monkey-patched httpx.Client.post that intercepts API calls."""
+        if _is_mock_url(url):
+            verbose_logger.info(f"[{config.name} MOCK] POST to {url} (sync)")
+            return MockResponse(
+                status_code=config.default_status_code,
+                json_data=config.default_json_data,
+                url=url,
+                elapsed_seconds=_MOCK_LATENCY_SECONDS,
+            )
+        if _original_sync_client_post is not None:
+            return _original_sync_client_post(self, url, **kwargs)
+
+    # Create HTTPHandler mock (for sync calls that use HTTPHandler.post)
+    def _mock_http_handler_post(
+        self,
+        url,
+        data=None,
+        json=None,
+        params=None,
+        headers=None,
+        timeout=None,
+        stream=False,
+        files=None,
+        content=None,
+        logging_obj=None,
+    ):
+        """Monkey-patched HTTPHandler.post that intercepts API calls."""
+        if isinstance(url, str) and _is_mock_url(url):
+            verbose_logger.info(f"[{config.name} MOCK] POST to {url}")
+            import time
+
+            time.sleep(_MOCK_LATENCY_SECONDS)
+            return MockResponse(
+                status_code=config.default_status_code,
+                json_data=config.default_json_data,
+                url=url,
+                elapsed_seconds=_MOCK_LATENCY_SECONDS,
+            )
+        if _original_http_handler_post is not None:
+            return _original_http_handler_post(
+                self,
+                url=url,
+                data=data,
+                json=json,
+                params=params,
+                headers=headers,
+                timeout=timeout,
+                stream=stream,
+                files=files,
+                content=content,
+                logging_obj=logging_obj,
+            )
+        raise RuntimeError("Original HTTPHandler.post not available")
+
+    # Create mock client initialization function
+    def create_mock_client():
+        """Initialize the mock client by patching HTTP handlers."""
+        nonlocal _original_async_handler_post, _original_sync_client_post, _original_http_handler_post, _mocks_initialized
+
+        if _mocks_initialized:
+            return
+
+        verbose_logger.debug(
+            f"[{config.name} MOCK] Initializing {config.name} mock client..."
+        )
+
+        if config.patch_async_handler and _original_async_handler_post is None:
+            from litellm.llms.custom_httpx.http_handler import AsyncHTTPHandler
+
+            _original_async_handler_post = AsyncHTTPHandler.post
+            AsyncHTTPHandler.post = _mock_async_handler_post  # type: ignore
+            verbose_logger.debug(f"[{config.name} MOCK] Patched AsyncHTTPHandler.post")
+
+        if config.patch_sync_client and _original_sync_client_post is None:
+            _original_sync_client_post = httpx.Client.post
+            httpx.Client.post = _mock_sync_client_post  # type: ignore
+            verbose_logger.debug(f"[{config.name} MOCK] Patched httpx.Client.post")
+
+        if config.patch_http_handler and _original_http_handler_post is None:
+            from litellm.llms.custom_httpx.http_handler import HTTPHandler
+
+            _original_http_handler_post = HTTPHandler.post
+            HTTPHandler.post = _mock_http_handler_post  # type: ignore
+            verbose_logger.debug(f"[{config.name} MOCK] Patched HTTPHandler.post")
+
+        verbose_logger.debug(
+            f"[{config.name} MOCK] Mock latency set to {_MOCK_LATENCY_SECONDS*1000:.0f}ms"
+        )
+        verbose_logger.debug(
+            f"[{config.name} MOCK] {config.name} mock client initialization complete"
+        )
+
+        _mocks_initialized = True
+
+    # Create should_use_mock function
+    def should_use_mock() -> bool:
+        """Determine if mock mode should be enabled."""
+        import os
+        from litellm.secret_managers.main import str_to_bool
+
+        mock_mode = os.getenv(config.env_var, "false")
+        result = str_to_bool(mock_mode)
+        result = bool(result) if result is not None else False
+
+        if result:
+            verbose_logger.info(
+                f"{config.name} Mock Mode: ENABLED - API calls will be mocked"
+            )
+
+        return result
+
+    return create_mock_client, should_use_mock
+

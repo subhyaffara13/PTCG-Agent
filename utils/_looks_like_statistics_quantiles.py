@@ -1,0 +1,26 @@
+
+def _looks_like_statistics_quantiles(node: nodes.Call) -> bool:
+    """Check if this is a call to statistics.quantiles."""
+    match node.func:
+        case nodes.Attribute(expr=nodes.Name(name="statistics"), attrname="quantiles"):
+            # Case 1: statistics.quantiles(...)
+            return True
+        case nodes.Name(name="quantiles"):
+            # Case 2: from statistics import quantiles; quantiles(...)
+            # Check if quantiles was imported from statistics
+            try:
+                frame = node.frame()
+                if "quantiles" in frame.locals:
+                    # Look for import from statistics
+                    for stmt in frame.body:
+                        if (
+                            isinstance(stmt, nodes.ImportFrom)
+                            and stmt.modname == "statistics"
+                            and any(name[0] == "quantiles" for name in stmt.names or [])
+                        ):
+                            return True
+            except (AttributeError, TypeError):
+                # If we can't determine the import context, be conservative
+                pass
+    return False
+

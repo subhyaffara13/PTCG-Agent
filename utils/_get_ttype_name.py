@@ -1,0 +1,12 @@
+
+def _get_ttype_name(ttype):
+    fname = STANDARD_TYPES.get(ttype)
+    if fname:
+        return fname
+    aname = ''
+    while fname is None:
+        aname = ttype[-1] + aname
+        ttype = ttype.parent
+        fname = STANDARD_TYPES.get(ttype)
+    return fname + aname
+

@@ -1,0 +1,11 @@
+
+def backup_dir(dir: str, ext: str = ".bak") -> str:
+    """Figure out the name of a directory to back up the given dir to
+    (adding .bak, .bak2, etc)"""
+    n = 1
+    extension = ext
+    while os.path.exists(dir + extension):
+        n += 1
+        extension = ext + str(n)
+    return dir + extension
+

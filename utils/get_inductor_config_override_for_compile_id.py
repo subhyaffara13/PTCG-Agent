@@ -1,0 +1,17 @@
+
+def get_inductor_config_override_for_compile_id(
+    compile_id: CompileId | None,
+    config_str: str,
+) -> dict[str, Any] | None:
+    """
+    Get the inductor config override for a given CompileId.
+
+    Returns a dict of config patches to apply, or None if no override applies.
+    """
+    return _get_override_for_compile_id(
+        compile_id,
+        config_str,
+        _create_inductor_config_router,  # type: ignore[arg-type]
+        "inductor config",
+    )
+

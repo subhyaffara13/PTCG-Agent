@@ -1,0 +1,5 @@
+
+def inline_asm(res: _Optional[_ods_ir.Type], operands_: _Sequence[_ods_ir.Value], asm_string: _Union[str, _ods_ir.StringAttr], constraints: _Union[str, _ods_ir.StringAttr], *, has_side_effects: _Optional[bool] = None, is_align_stack: _Optional[bool] = None, tail_call_kind: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, asm_dialect: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, operand_attrs: _Optional[_Union[_Sequence[_ods_ir.Attribute], _ods_ir.ArrayAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _Union[_ods_ir.OpResult, _ods_ir.OpResultList, InlineAsmOp]:
+  op = InlineAsmOp(res=res, operands_=operands_, asm_string=asm_string, constraints=constraints, has_side_effects=has_side_effects, is_align_stack=is_align_stack, tail_call_kind=tail_call_kind, asm_dialect=asm_dialect, operand_attrs=operand_attrs, loc=loc, ip=ip); results = op.results
+  return results if len(results) > 1 else (results[0] if len(results) == 1 else op)
+

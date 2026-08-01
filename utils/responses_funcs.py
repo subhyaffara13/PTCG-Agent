@@ -1,0 +1,60 @@
+
+def responses_funcs() -> nodes.Module:
+    return parse(
+        """
+        DELETE = "DELETE"
+        GET = "GET"
+        HEAD = "HEAD"
+        OPTIONS = "OPTIONS"
+        PATCH = "PATCH"
+        POST = "POST"
+        PUT = "PUT"
+        response_callback = None
+
+        def reset():
+            return
+
+        def add(
+            method=None,  # method or ``Response``
+            url=None,
+            body="",
+            adding_headers=None,
+            *args,
+            **kwargs
+        ):
+            return
+
+        def add_passthru(prefix):
+            return
+
+        def remove(method_or_response=None, url=None):
+            return
+
+        def replace(method_or_response=None, url=None, body="", *args, **kwargs):
+            return
+
+        def add_callback(
+            method, url, callback, match_querystring=False, content_type="text/plain"
+        ):
+            return
+
+        calls = []
+
+        def __enter__():
+            return
+
+        def __exit__(type, value, traceback):
+            success = type is None
+            return success
+
+        def activate(func):
+            return func
+
+        def start():
+            return
+
+        def stop(allow_assert=True):
+            return
+        """
+    )
+

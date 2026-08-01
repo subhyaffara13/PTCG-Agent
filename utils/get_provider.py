@@ -1,0 +1,19 @@
+
+def get_provider(moduleOrReq: str) -> IResourceProvider: ...
+
+
+def get_provider(moduleOrReq: Requirement) -> Distribution: ...
+
+
+def get_provider(moduleOrReq: str | Requirement) -> IResourceProvider | Distribution:
+    """Return an IResourceProvider for the named module or requirement"""
+    if isinstance(moduleOrReq, Requirement):
+        return working_set.find(moduleOrReq) or require(str(moduleOrReq))[0]
+    try:
+        module = sys.modules[moduleOrReq]
+    except KeyError:
+        __import__(moduleOrReq)
+        module = sys.modules[moduleOrReq]
+    loader = getattr(module, '__loader__', None)
+    return _find_adapter(_provider_factories, loader)(module)
+

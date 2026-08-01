@@ -1,0 +1,8 @@
+
+def select_and_scatter(result: _ods_ir.Type, operand: _ods_ir.Value[_ods_ir.RankedTensorType], source: _ods_ir.Value[_ods_ir.RankedTensorType], init_value: _ods_ir.Value[_ods_ir.RankedTensorType], *, window_dimensions: _Optional[_Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr]] = None, window_strides: _Optional[_Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr]] = None, padding: _Optional[_Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.RankedTensorType]:
+  return SelectAndScatterOp(result=result, operand=operand, source=source, init_value=init_value, window_dimensions=window_dimensions, window_strides=window_strides, padding=padding, loc=loc, ip=ip).result
+
+
+def select_and_scatter(result: _ods_ir.Type, operand: _ods_ir.Value[_ods_ir.RankedTensorType], source: _ods_ir.Value[_ods_ir.RankedTensorType], init_value: _ods_ir.Value[_ods_ir.RankedTensorType], *, window_dimensions: _Optional[_Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr]] = None, window_strides: _Optional[_Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr]] = None, padding: _Optional[_Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.RankedTensorType]:
+  return SelectAndScatterOp(result=result, operand=operand, source=source, init_value=init_value, window_dimensions=window_dimensions, window_strides=window_strides, padding=padding, loc=loc, ip=ip).result
+

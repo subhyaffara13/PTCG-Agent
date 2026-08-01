@@ -1,0 +1,10 @@
+
+def _disassemble_key(name: str) -> list[str]:
+    if "." not in name:
+        error_message = (
+            "Key does not contain dot separated section and key. "
+            f"Perhaps you wanted to use 'global.{name}' instead?"
+        )
+        raise ConfigurationError(error_message)
+    return name.split(".", 1)
+

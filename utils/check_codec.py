@@ -1,0 +1,17 @@
+
+def check_codec(feature: str) -> bool:
+    """
+    Checks if a codec is available.
+
+    :param feature: The codec to check for.
+    :returns: ``True`` if available, ``False`` otherwise.
+    :raises ValueError: If the codec is not defined in this version of Pillow.
+    """
+    if feature not in codecs:
+        msg = f"Unknown codec {feature}"
+        raise ValueError(msg)
+
+    codec, lib = codecs[feature]
+
+    return f"{codec}_encoder" in dir(Image.core)
+

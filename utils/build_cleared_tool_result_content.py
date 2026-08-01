@@ -1,0 +1,9 @@
+
+def build_cleared_tool_result_content(
+    original_content: Any,
+) -> Union[str, List[dict]]:
+    """Return a string or single text block list, matching ``original_content`` shape."""
+    if isinstance(original_content, list):
+        return [{"type": "text", "text": CLEARED_TOOL_RESULT_PLACEHOLDER}]
+    return CLEARED_TOOL_RESULT_PLACEHOLDER
+

@@ -1,0 +1,33 @@
+
+def test_tensor_product_null():
+    null = nx.null_graph()
+    empty10 = nx.empty_graph(10)
+    K3 = nx.complete_graph(3)
+    K10 = nx.complete_graph(10)
+    P3 = nx.path_graph(3)
+    P10 = nx.path_graph(10)
+    # null graph
+    G = nx.tensor_product(null, null)
+    assert nx.is_isomorphic(G, null)
+    # null_graph X anything = null_graph and v.v.
+    G = nx.tensor_product(null, empty10)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(null, K3)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(null, K10)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(null, P3)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(null, P10)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(empty10, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(K3, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(K10, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(P3, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.tensor_product(P10, null)
+    assert nx.is_isomorphic(G, null)
+

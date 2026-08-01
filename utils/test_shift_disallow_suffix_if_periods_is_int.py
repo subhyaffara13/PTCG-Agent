@@ -1,0 +1,9 @@
+
+def test_shift_disallow_suffix_if_periods_is_int():
+    # GH#44424
+    data = {"a": [1, 2, 3, 4, 5, 6], "b": [0, 0, 0, 1, 1, 1]}
+    df = DataFrame(data)
+    msg = "Cannot specify `suffix` if `periods` is an int."
+    with pytest.raises(ValueError, match=msg):
+        df.groupby("b").shift(1, suffix="fails")
+

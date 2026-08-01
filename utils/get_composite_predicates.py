@@ -1,0 +1,19 @@
+
+def get_composite_predicates():
+    # To reduce the complexity of sat solver, these predicates are
+    # transformed into the combination of primitive predicates.
+    return {
+        Q.real : Q.negative | Q.zero | Q.positive,
+        Q.integer : Q.even | Q.odd,
+        Q.nonpositive : Q.negative | Q.zero,
+        Q.nonzero : Q.negative | Q.positive,
+        Q.nonnegative : Q.zero | Q.positive,
+        Q.extended_real : Q.negative_infinite | Q.negative | Q.zero | Q.positive | Q.positive_infinite,
+        Q.extended_positive: Q.positive | Q.positive_infinite,
+        Q.extended_negative: Q.negative | Q.negative_infinite,
+        Q.extended_nonzero: Q.negative_infinite | Q.negative | Q.positive | Q.positive_infinite,
+        Q.extended_nonpositive: Q.negative_infinite | Q.negative | Q.zero,
+        Q.extended_nonnegative: Q.zero | Q.positive | Q.positive_infinite,
+        Q.complex : Q.algebraic | Q.transcendental
+    }
+

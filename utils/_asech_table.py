@@ -1,0 +1,31 @@
+
+def _asech_table():
+        return {
+            I: - (pi*I / 2) + log(1 + sqrt(2)),
+            -I: (pi*I / 2) + log(1 + sqrt(2)),
+            (sqrt(6) - sqrt(2)): pi / 12,
+            (sqrt(2) - sqrt(6)): 11*pi / 12,
+            sqrt(2 - 2/sqrt(5)): pi / 10,
+            -sqrt(2 - 2/sqrt(5)): 9*pi / 10,
+            2 / sqrt(2 + sqrt(2)): pi / 8,
+            -2 / sqrt(2 + sqrt(2)): 7*pi / 8,
+            2 / sqrt(3): pi / 6,
+            -2 / sqrt(3): 5*pi / 6,
+            (sqrt(5) - 1): pi / 5,
+            (1 - sqrt(5)): 4*pi / 5,
+            sqrt(2): pi / 4,
+            -sqrt(2): 3*pi / 4,
+            sqrt(2 + 2/sqrt(5)): 3*pi / 10,
+            -sqrt(2 + 2/sqrt(5)): 7*pi / 10,
+            S(2): pi / 3,
+            -S(2): 2*pi / 3,
+            sqrt(2*(2 + sqrt(2))): 3*pi / 8,
+            -sqrt(2*(2 + sqrt(2))): 5*pi / 8,
+            (1 + sqrt(5)): 2*pi / 5,
+            (-1 - sqrt(5)): 3*pi / 5,
+            (sqrt(6) + sqrt(2)): 5*pi / 12,
+            (-sqrt(6) - sqrt(2)): 7*pi / 12,
+            I*S.Infinity: -pi*I / 2,
+            I*S.NegativeInfinity: pi*I / 2,
+        }
+

@@ -1,0 +1,25 @@
+
+def test_pcolormesh_small():
+    n = 3
+    x = np.linspace(-1.5, 1.5, n)
+    y = np.linspace(-1.5, 1.5, n*2)
+    X, Y = np.meshgrid(x, y)
+    Qx = np.cos(Y) - np.cos(X)
+    Qz = np.sin(Y) + np.sin(X)
+    Qx = (Qx + 1.1)
+    Z = np.hypot(X, Y) / 5
+    Z = (Z - Z.min()) / np.ptp(Z)
+    Zm = ma.masked_where(np.abs(Qz) < 0.5 * np.max(Qz), Z)
+    Zm2 = ma.masked_where(Qz < -0.5 * np.max(Qz), Z)
+
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
+    ax1.pcolormesh(Qx, Qz, Zm[:-1, :-1], lw=0.5, edgecolors='k')
+    ax2.pcolormesh(Qx, Qz, Zm[:-1, :-1], lw=2, edgecolors=['b', 'w'])
+    # gouraud with Zm yields a blank plot; there are no unmasked triangles.
+    ax3.pcolormesh(Qx, Qz, Zm, shading="gouraud")
+    # Reduce the masking to get a plot.
+    ax4.pcolormesh(Qx, Qz, Zm2, shading="gouraud")
+
+    for ax in fig.axes:
+        ax.set_axis_off()
+

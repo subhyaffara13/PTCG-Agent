@@ -1,0 +1,4 @@
+
+def cumavg(whatever):
+    pass
+

@@ -1,0 +1,12 @@
+
+def _platform_tags() -> Iterator[str]:
+    """
+    Provides the platform tags for this installation.
+    """
+    if platform.system() == "Darwin":
+        return mac_platforms()
+    elif platform.system() == "Linux":
+        return _linux_platforms()
+    else:
+        return _generic_platforms()
+

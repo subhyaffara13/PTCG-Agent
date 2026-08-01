@@ -1,0 +1,18 @@
+
+def array_green(surface):
+    """pygame.surfarray.array_green(Surface): return array
+
+    copy pixel green into a 2d array
+
+    Copy the pixel green values from a Surface into a 2D array. This will work
+    for any type of Surface format.
+
+    This function will temporarily lock the Surface as pixels are copied
+    (see the Surface.lock - lock the Surface memory for pixel access
+    method).
+    """
+    size = surface.get_size()
+    array = numpy.empty(size, numpy.uint8)
+    surface_to_array(array, surface, "G")
+    return array
+

@@ -1,0 +1,7 @@
+
+def zip_item_is_executable(info: ZipInfo) -> bool:
+    mode = info.external_attr >> 16
+    # if mode and regular file and any execute permissions for
+    # user/group/world?
+    return bool(mode and stat.S_ISREG(mode) and mode & 0o111)
+

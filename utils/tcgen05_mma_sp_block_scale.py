@@ -1,0 +1,4 @@
+
+def tcgen05_mma_sp_block_scale(kind: _Union[_Any, _ods_ir.Attribute], cta_group: _Union[_Any, _ods_ir.Attribute], matrix_d: _ods_ir.Value, matrix_a: _ods_ir.Value, matrix_b: _ods_ir.Value[_ods_ir.IntegerType], idesc: _ods_ir.Value[_ods_ir.IntegerType], enable_input_d: _ods_ir.Value[_ods_ir.IntegerType], sparse_metadata: _ods_ir.Value, scale_a: _ods_ir.Value, scale_b: _ods_ir.Value, *, block_scale: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, collector_op: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> Tcgen05MMASparseBlockScaleOp:
+  return Tcgen05MMASparseBlockScaleOp(kind=kind, ctaGroup=cta_group, matrixD=matrix_d, matrixA=matrix_a, matrixB=matrix_b, idesc=idesc, enableInputD=enable_input_d, sparseMetadata=sparse_metadata, scaleA=scale_a, scaleB=scale_b, blockScale=block_scale, collectorOp=collector_op, loc=loc, ip=ip)
+

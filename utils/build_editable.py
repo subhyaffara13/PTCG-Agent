@@ -1,0 +1,21 @@
+
+def build_editable(wheel_directory, config_settings, metadata_directory=None):
+    """Invoke the optional build_editable hook.
+
+    If a wheel was already built in the
+    prepare_metadata_for_build_editable fallback, this
+    will copy it rather than rebuilding the wheel.
+    """
+    backend = _build_backend()
+    try:
+        hook = backend.build_editable
+    except AttributeError:
+        raise HookMissing()
+    else:
+        prebuilt_whl = _find_already_built_wheel(metadata_directory)
+        if prebuilt_whl:
+            shutil.copy2(prebuilt_whl, wheel_directory)
+            return os.path.basename(prebuilt_whl)
+
+        return hook(wheel_directory, config_settings, metadata_directory)
+

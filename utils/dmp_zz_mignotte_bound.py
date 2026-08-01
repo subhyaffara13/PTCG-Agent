@@ -1,0 +1,9 @@
+
+def dmp_zz_mignotte_bound(f, u, K):
+    """Mignotte bound for multivariate polynomials in `K[X]`. """
+    a = dmp_max_norm(f, u, K)
+    b = abs(dmp_ground_LC(f, u, K))
+    n = sum(dmp_degree_list(f, u))
+
+    return K.sqrt(K(n + 1))*2**n*a*b
+

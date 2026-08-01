@@ -4,19 +4,7 @@ from distributed.work_order import GameResult
 
 logger = logging.getLogger("master_server")
 
-def _read_line(conn):
-    buf = bytearray()
-    while True:
-        try:
-            chunk = conn.recv(65536)
-            if not chunk:
-                return None
-            buf.extend(chunk)
-            if b'\n' in chunk:
-                break
-        except Exception:
-            return None
-    return buf.decode('utf-8')
+from utils._read_line import _read_line
 
 class MasterHandlers:
     def __init__(self, server):

@@ -1,0 +1,44 @@
+
+def module_key(
+    module_name: str,
+    config: Config,
+    sub_imports: bool = False,
+    ignore_case: bool = False,
+    section_name: Any | None = None,
+    straight_import: bool | None = False,
+) -> str:
+    match = re.match(r"^(\.+)\s*(.*)", module_name)
+    if match:
+        sep = " " if config.reverse_relative else "_"
+        module_name = sep.join(match.groups())
+
+    prefix = ""
+    if ignore_case:
+        module_name = str(module_name).lower()
+    else:
+        module_name = str(module_name)
+
+    if sub_imports and config.order_by_type:
+        if module_name in config.constants:
+            prefix = "A"
+        elif module_name in config.classes:
+            prefix = "B"
+        elif module_name in config.variables:
+            prefix = "C"
+        elif module_name.isupper() and len(module_name) > 1:  # see issue #376
+            prefix = "A"
+        elif module_name in config.classes or module_name[0:1].isupper():
+            prefix = "B"
+        else:
+            prefix = "C"
+    if not config.case_sensitive:
+        module_name = module_name.lower()
+
+    length_sort = (
+        config.length_sort
+        or (config.length_sort_straight and straight_import)
+        or str(section_name).lower() in config.length_sort_sections
+    )
+    _length_sort_maybe = (str(len(module_name)) + ":" + module_name) if length_sort else module_name
+    return f"{(module_name in config.force_to_top and 'A') or 'B'}{prefix}{_length_sort_maybe}"
+

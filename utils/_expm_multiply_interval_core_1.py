@@ -1,0 +1,29 @@
+
+def _expm_multiply_interval_core_1(A, X, h, mu, m_star, s, q, tol):
+    """
+    A helper function, for the case q > s and q % s == 0.
+    """
+    d = q // s
+    input_shape = X.shape[1:]
+    K_shape = (m_star + 1, ) + input_shape
+    K = np.empty(K_shape, dtype=X.dtype)
+    for i in range(s):
+        Z = X[i*d]
+        K[0] = Z
+        high_p = 0
+        for k in range(1, d+1):
+            F = K[0]
+            c1 = _exact_inf_norm(F)
+            for p in range(1, m_star+1):
+                if p > high_p:
+                    K[p] = h * A.dot(K[p-1]) / float(p)
+                coeff = float(pow(k, p))
+                F = F + coeff * K[p]
+                inf_norm_K_p_1 = _exact_inf_norm(K[p])
+                c2 = coeff * inf_norm_K_p_1
+                if c1 + c2 <= tol * _exact_inf_norm(F):
+                    break
+                c1 = c2
+            X[k + i*d] = np.exp(k*h*mu) * F
+    return X, 1
+

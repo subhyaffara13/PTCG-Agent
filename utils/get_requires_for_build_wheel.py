@@ -1,0 +1,14 @@
+
+def get_requires_for_build_wheel(config_settings):
+    """Invoke the optional get_requires_for_build_wheel hook
+
+    Returns [] if the hook is not defined.
+    """
+    backend = _build_backend()
+    try:
+        hook = backend.get_requires_for_build_wheel
+    except AttributeError:
+        return []
+    else:
+        return hook(config_settings)
+

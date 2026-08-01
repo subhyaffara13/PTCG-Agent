@@ -1,0 +1,8 @@
+
+def _check_no_input(message: str) -> None:
+    """Raise an error if no input is allowed."""
+    if os.environ.get("PIP_NO_INPUT"):
+        raise Exception(
+            f"No input was expected ($PIP_NO_INPUT set); question: {message}"
+        )
+

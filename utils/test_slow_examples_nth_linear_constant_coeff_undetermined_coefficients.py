@@ -1,0 +1,4 @@
+
+def test_slow_examples_nth_linear_constant_coeff_undetermined_coefficients():
+    _ode_solver_test(_get_examples_ode_sol_nth_linear_undetermined_coefficients, run_slow_test=True)
+

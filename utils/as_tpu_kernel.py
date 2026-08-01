@@ -1,0 +1,53 @@
+
+def as_tpu_kernel(
+    module: ir.Module,
+    out_type: Any,
+    *,
+    cost_estimate: CostEstimate | None = None,
+    kernel_name: str | None = None,
+    vmem_limit_bytes: int | None = None,
+    flags: dict[str, bool | int | float] | None = None,
+    allow_input_fusion: Sequence[bool] | None = None,
+    input_output_aliases: tuple[tuple[int, int], ...] = (),
+    internal_scratch_in_bytes: int | None = None,
+    collective_id: int | None = None,
+    has_side_effects: TpuSideEffectType = TpuSideEffectType.PURE,
+    serialization_format: int | None = 1,
+    output_memory_spaces: tuple[MemorySpace | None, ...] | None = None,
+    disable_bounds_checks: bool = False,
+    disable_semaphore_checks: bool = False,
+    input_memory_spaces: tuple[MemorySpace | None, ...] | None = None,
+    shape_invariant_numerics: bool = False,
+    needs_layout_passes: bool | None = None,
+    metadata: Any | None = None,
+    tiling: Tiling | None = None,
+    _ir_version: int | None = None,
+) -> Callable[..., Any]:
+  """Turns an MLIR Mosaic kernel into a JAX-compatible function."""
+  config = _lower_to_custom_call_config(
+      module,
+      vmem_limit_bytes=vmem_limit_bytes,
+      cost_estimate=cost_estimate,
+      flags=flags,
+      allow_input_fusion=allow_input_fusion,
+      internal_scratch_in_bytes=internal_scratch_in_bytes,
+      collective_id=collective_id,
+      serialization_format=serialization_format,
+      output_memory_spaces=output_memory_spaces,
+      disable_bounds_checks=disable_bounds_checks,
+      disable_semaphore_checks=disable_semaphore_checks,
+      input_memory_spaces=input_memory_spaces,
+      shape_invariant_numerics=shape_invariant_numerics,
+      needs_layout_passes=needs_layout_passes,
+      ir_version=_ir_version,
+      tiling=tiling,
+  )
+  return _as_jax_callable(
+      config,
+      has_side_effects,
+      out_type,
+      kernel_name=kernel_name,
+      input_output_aliases=input_output_aliases,
+      metadata=metadata,
+  )
+

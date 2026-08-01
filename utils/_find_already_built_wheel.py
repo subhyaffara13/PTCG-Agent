@@ -1,0 +1,23 @@
+
+def _find_already_built_wheel(metadata_directory):
+    """Check for a wheel already built during the get_wheel_metadata hook."""
+    if not metadata_directory:
+        return None
+    metadata_parent = os.path.dirname(metadata_directory)
+    if not os.path.isfile(pjoin(metadata_parent, WHEEL_BUILT_MARKER)):
+        return None
+
+    whl_files = glob(os.path.join(metadata_parent, "*.whl"))
+    if not whl_files:
+        print("Found wheel built marker, but no .whl files")
+        return None
+    if len(whl_files) > 1:
+        print(
+            "Found multiple .whl files; unspecified behaviour. "
+            "Will call build_wheel."
+        )
+        return None
+
+    # Exactly one .whl file
+    return whl_files[0]
+

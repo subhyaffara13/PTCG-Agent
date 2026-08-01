@@ -1,0 +1,17 @@
+
+def is_opaque_reference_type(cls: Any) -> bool:
+    """
+    Checks if the given type is an opaque **reference** type.
+    See Note [Opaque Objects] for more information.
+    """
+    if not is_opaque_type(cls):
+        return False
+
+    if isinstance(cls, str):
+        return _OPAQUE_TYPES_BY_NAME[cls].opaque_typ == "reference"
+
+    info = _resolve_opaque_type_info(cls)
+    if info is None:
+        return False
+    return info.opaque_typ == "reference"
+

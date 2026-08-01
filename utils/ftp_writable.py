@@ -1,0 +1,24 @@
+
+def ftp_writable(tmpdir):
+    """
+    Fixture providing a writable FTP filesystem.
+    """
+    pytest.importorskip("pyftpdlib")
+
+    d = str(tmpdir)
+    with open(os.path.join(d, "out"), "wb") as f:
+        f.write(b"hello" * 10000)
+    P = subprocess.Popen(
+        [sys.executable, "-m", "pyftpdlib", "-d", d, "-u", "user", "-P", "pass", "-w"]
+    )
+    try:
+        time.sleep(1)
+        yield "localhost", 2121, "user", "pass"
+    finally:
+        P.terminate()
+        P.wait()
+        try:
+            shutil.rmtree(tmpdir)
+        except Exception:
+            pass
+

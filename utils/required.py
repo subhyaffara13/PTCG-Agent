@@ -1,0 +1,8 @@
+
+def required(validator, required, instance, schema):
+    if not validator.is_type(instance, "object"):
+        return
+    for property in required:
+        if property not in instance:
+            yield ValidationError(f"{property!r} is a required property")
+

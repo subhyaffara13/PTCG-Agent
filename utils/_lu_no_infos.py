@@ -1,0 +1,17 @@
+
+def _lu_no_infos(A, pivot=True, get_infos=False, out=None):
+    # type: (Tensor, bool, bool, Optional[tuple[Tensor, Tensor]]) -> tuple[Tensor, Tensor]
+    # need to check for torch_function here so that we exit if
+    if has_torch_function_unary(A):
+        return handle_torch_function(
+            lu, (A,), A, pivot=pivot, get_infos=get_infos, out=out
+        )
+    result = _lu_impl(A, pivot, get_infos, out)
+    if out is not None:
+        _check_list_size(len(out), get_infos, out)
+        for i in range(len(out)):
+            out[i].resize_as_(result[i]).copy_(result[i])
+        return out
+    else:
+        return result[0], result[1]  # A_LU, pivots
+

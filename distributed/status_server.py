@@ -69,14 +69,7 @@ class StatusHandler(http.server.SimpleHTTPRequestHandler):
         else:
             self.send_error(404)
 
-def start_status_server():
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("0.0.0.0", PORT), StatusHandler) as httpd:
-        logger.info(f"Serving HTTP status dashboard on port {PORT}")
-        try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            pass
+from utils.start_status_server import start_status_server
 
 if __name__ == "__main__":
     start_status_server()

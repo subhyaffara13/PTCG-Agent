@@ -1,0 +1,12 @@
+
+def _svg_hash(svg_main_code: str) -> str:
+    """Returns a unique hash for the given SVG main code.
+
+    Args:
+        svg_main_code (str): The content we're going to inject in the SVG envelope.
+
+    Returns:
+        str: a hash of the given content
+    """
+    return str(zlib.adler32(svg_main_code.encode()))
+

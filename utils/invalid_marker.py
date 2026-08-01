@@ -1,0 +1,14 @@
+
+def invalid_marker(text: str) -> SyntaxError | Literal[False]:
+    """
+    Validate text as a PEP 508 environment marker; return an exception
+    if invalid or False otherwise.
+    """
+    try:
+        evaluate_marker(text)
+    except SyntaxError as e:
+        e.filename = None
+        e.lineno = None
+        return e
+    return False
+

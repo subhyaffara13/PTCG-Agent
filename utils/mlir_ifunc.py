@@ -1,0 +1,4 @@
+
+def mlir_ifunc(sym_name: _Union[str, _ods_ir.StringAttr], i_func_type: _Union[_ods_ir.Type, _ods_ir.TypeAttr], resolver: _Union[str, _ods_ir.FlatSymbolRefAttr], resolver_type: _Union[_ods_ir.Type, _ods_ir.TypeAttr], linkage: _Union[_Any, _ods_ir.Attribute], *, dso_local: _Optional[bool] = None, address_space: _Optional[_Union[int, _ods_ir.IntegerAttr]] = None, unnamed_addr: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, visibility_: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> IFuncOp:
+  return IFuncOp(sym_name=sym_name, i_func_type=i_func_type, resolver=resolver, resolver_type=resolver_type, linkage=linkage, dso_local=dso_local, address_space=address_space, unnamed_addr=unnamed_addr, visibility_=visibility_, loc=loc, ip=ip)
+

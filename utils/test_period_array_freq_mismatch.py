@@ -1,0 +1,10 @@
+
+def test_period_array_freq_mismatch():
+    arr = period_array(["2000", "2001"], freq="D")
+    with pytest.raises(IncompatibleFrequency, match="freq"):
+        PeriodArray(arr, dtype="period[M]")
+
+    dtype = pd.PeriodDtype(pd.tseries.offsets.MonthEnd())
+    with pytest.raises(IncompatibleFrequency, match="freq"):
+        PeriodArray(arr, dtype=dtype)
+

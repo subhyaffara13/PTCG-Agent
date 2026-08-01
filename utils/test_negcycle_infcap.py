@@ -1,0 +1,13 @@
+
+def test_negcycle_infcap():
+    G = nx.DiGraph()
+    G.add_node("s", demand=-5)
+    G.add_node("t", demand=5)
+    G.add_edge("s", "a", weight=1, capacity=3)
+    G.add_edge("a", "b", weight=3)
+    G.add_edge("c", "a", weight=-6)
+    G.add_edge("b", "d", weight=1)
+    G.add_edge("d", "c", weight=-2)
+    G.add_edge("d", "t", weight=1, capacity=3)
+    pytest.raises(nx.NetworkXUnfeasible, nx.network_simplex, G)
+

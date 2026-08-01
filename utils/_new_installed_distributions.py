@@ -1,0 +1,27 @@
+
+def _new_installed_distributions(local: bool, paths: List[os.PathLike]):
+    list_args = ["list", "-v", "--format=json"]
+    if local:
+        list_args.append("--local")
+    for path in paths:
+        list_args.extend(["--path", str(path)])
+    result = call(*list_args)
+
+    ret = {}
+
+    # The returned JSON is an array of objects, each of which looks like this:
+    # { "name": "some-package", "version": "0.0.1", "location": "/path/", ... }
+    # The location key was introduced with pip 10.0.0b1, so we don't assume its
+    # presence. The editable_project_location key was introduced with pip 21.3,
+    # so we also don't assume its presence.
+    for raw_dist in json.loads(result):
+        dist = Distribution(
+            raw_dist["name"],
+            raw_dist["version"],
+            raw_dist.get("location"),
+            raw_dist.get("editable_project_location"),
+        )
+        ret[dist.name] = dist
+
+    return ret
+

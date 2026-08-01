@@ -1,0 +1,15 @@
+
+def _combining_class(cp: int) -> int:
+    v = unicodedata.combining(chr(cp))
+    if v == 0 and not unicodedata.name(chr(cp)):
+        raise ValueError("Unknown character in unicodedata")
+    return v
+
+
+def _combining_class(cp: int) -> int:
+    v = unicodedata.combining(chr(cp))
+    if v == 0:
+        if not unicodedata.name(chr(cp)):
+            raise ValueError("Unknown character in unicodedata")
+    return v
+

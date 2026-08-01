@@ -1,0 +1,5 @@
+
+def reset_all():
+    if AnsiToWin32 is not None:    # Issue #74: objects might become None at exit
+        AnsiToWin32(orig_stdout).reset_all()
+

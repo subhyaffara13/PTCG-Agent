@@ -1,0 +1,34 @@
+
+def no_binary() -> Option:
+    return Option(
+        "--no-binary",
+        dest="no_binary",
+        action="append",
+        default=[],
+        type="str",
+        help="Do not use binary packages. Can be supplied multiple times, and "
+        'each time adds to the existing value. Accepts either ":all:" to '
+        'disable all binary packages, ":none:" to empty the set (notice '
+        "the colons), or one or more package names with commas between "
+        "them (no colons). Note that some packages are tricky to compile "
+        "and may fail to install when this option is used on them.",
+    )
+
+
+def no_binary() -> Option:
+    format_control = FormatControl(set(), set())
+    return Option(
+        "--no-binary",
+        dest="format_control",
+        action="callback",
+        callback=_handle_no_binary,
+        type="str",
+        default=format_control,
+        help="Do not use binary packages. Can be supplied multiple times, and "
+        'each time adds to the existing value. Accepts either ":all:" to '
+        'disable all binary packages, ":none:" to empty the set (notice '
+        "the colons), or one or more package names with commas between "
+        "them (no colons). Note that some packages are tricky to compile "
+        "and may fail to install when this option is used on them.",
+    )
+

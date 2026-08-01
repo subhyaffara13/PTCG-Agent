@@ -45,40 +45,7 @@ class FileLock:
 
 
 
-def flush_reasoning_logs(
-    buffer: List[dict],
-    filepath: Path,
-    log: logging.Logger,
-) -> None:
-    """
-    Write all buffered log entries to *filepath*, merging with any
-    existing entries already on disk.  Clears *buffer* on success.
-    Protected by atomic file locking.
-    """
-    if not buffer:
-        return
-
-    with FileLock(filepath):
-        try:
-            logs = _read_existing_logs(filepath)
-            logs.extend(buffer)
-            filepath.write_text(json.dumps(logs, indent=2), encoding="utf-8")
-            buffer.clear()
-        except Exception as e:
-            log.error(f"Failed to flush reasoning logs to {filepath}: {e}")
+from utils.flush_reasoning_logs import flush_reasoning_logs
 
 
-def _read_existing_logs(filepath: Path) -> list:
-    """Return the list of log entries already stored in *filepath*."""
-    if not filepath.exists():
-        return []
-
-    content = filepath.read_text(encoding="utf-8").strip()
-    if not content:
-        return []
-
-    try:
-        data = json.loads(content)
-        return data if isinstance(data, list) else [data]
-    except json.JSONDecodeError:
-        return []
+from utils._read_existing_logs import _read_existing_logs

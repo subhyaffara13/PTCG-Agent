@@ -1,0 +1,18 @@
+
+def install_req_extend_extras(
+    ireq: InstallRequirement,
+    extras: Collection[str],
+) -> InstallRequirement:
+    """
+    Returns a copy of an installation requirement with some additional extras.
+    Makes a shallow copy of the ireq object.
+    """
+    result = copy.copy(ireq)
+    result.extras = {*ireq.extras, *extras}
+    result.req = (
+        _set_requirement_extras(ireq.req, result.extras)
+        if ireq.req is not None
+        else None
+    )
+    return result
+

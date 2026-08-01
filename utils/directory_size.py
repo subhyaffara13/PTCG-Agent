@@ -1,0 +1,9 @@
+
+def directory_size(path: str) -> int | float:
+    size = 0.0
+    for root, _dirs, files in os.walk(path):
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            size += file_size(file_path)
+    return size
+

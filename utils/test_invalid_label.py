@@ -1,0 +1,9 @@
+
+def test_invalid_label():
+    assert_raises(LookupError, decode, b'\xEF\xBB\xBF\xc3\xa9', 'invalid')
+    assert_raises(LookupError, encode, 'é', 'invalid')
+    assert_raises(LookupError, iter_decode, [], 'invalid')
+    assert_raises(LookupError, iter_encode, [], 'invalid')
+    assert_raises(LookupError, IncrementalDecoder, 'invalid')
+    assert_raises(LookupError, IncrementalEncoder, 'invalid')
+

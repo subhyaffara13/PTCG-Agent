@@ -1,0 +1,12 @@
+
+def _is_torch_array(x):
+    """Return whether *x* is a PyTorch Tensor."""
+    try:
+        # We're intentionally not attempting to import torch. If somebody
+        # has created a torch array, torch should already be in sys.modules.
+        tp = sys.modules.get("torch").Tensor
+    except AttributeError:
+        return False  # Module not imported or a nonstandard module with no Tensor attr.
+    return (isinstance(tp, type)  # Just in case it's a very nonstandard module.
+            and isinstance(x, tp))
+

@@ -1,0 +1,7 @@
+
+def _is_egg_path(path):
+    """
+    Determine if given path appears to be an egg.
+    """
+    return _is_zip_egg(path) or _is_unpacked_egg(path)
+

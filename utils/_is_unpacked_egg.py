@@ -1,0 +1,9 @@
+
+def _is_unpacked_egg(path):
+    """
+    Determine if given path appears to be an unpacked egg.
+    """
+    return path.lower().endswith('.egg') and os.path.isfile(
+        os.path.join(path, 'EGG-INFO', 'PKG-INFO')
+    )
+

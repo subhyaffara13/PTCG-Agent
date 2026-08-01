@@ -1,0 +1,32 @@
+
+def resolve_ssl_version(candidate: None | int | str) -> int:
+    """
+    like resolve_cert_reqs
+    """
+    if candidate is None:
+        return PROTOCOL_TLS
+
+    if isinstance(candidate, str):
+        res = getattr(ssl, candidate, None)
+        if res is None:
+            res = getattr(ssl, "PROTOCOL_" + candidate)
+        return typing.cast(int, res)
+
+    return candidate
+
+
+def resolve_ssl_version(candidate: None | int | str) -> int:
+    """
+    like resolve_cert_reqs
+    """
+    if candidate is None:
+        return PROTOCOL_TLS
+
+    if isinstance(candidate, str):
+        res = getattr(ssl, candidate, None)
+        if res is None:
+            res = getattr(ssl, "PROTOCOL_" + candidate)
+        return typing.cast(int, res)
+
+    return candidate
+

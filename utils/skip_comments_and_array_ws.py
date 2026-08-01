@@ -1,0 +1,45 @@
+
+def skip_comments_and_array_ws(src: str, pos: Pos) -> Pos:
+    while True:
+        pos_before_skip = pos
+        pos = skip_chars(src, pos, TOML_WS_AND_NEWLINE)
+        pos = skip_comment(src, pos)
+        if pos == pos_before_skip:
+            return pos
+
+
+def skip_comments_and_array_ws(src: str, pos: Pos) -> Pos:
+    while True:
+        pos_before_skip = pos
+        pos = skip_chars(src, pos, TOML_WS_AND_NEWLINE)
+        pos = skip_comment(src, pos)
+        if pos == pos_before_skip:
+            return pos
+
+
+def skip_comments_and_array_ws(src: str, pos: Pos) -> Pos:
+    while True:
+        pos_before_skip = pos
+        pos = skip_chars(src, pos, TOML_WS_AND_NEWLINE)
+        pos = skip_comment(src, pos)
+        if pos == pos_before_skip:
+            return pos
+
+
+def skip_comments_and_array_ws(src: str, pos: Pos) -> Pos:
+    while True:
+        pos_before_skip = pos
+        pos = skip_chars(src, pos, TOML_WS_AND_NEWLINE)
+        pos = skip_comment(src, pos)
+        if pos == pos_before_skip:
+            return pos
+
+
+def skip_comments_and_array_ws(src: str, pos: Pos) -> Pos:
+    while True:
+        pos_before_skip = pos
+        pos = skip_chars(src, pos, TOML_WS_AND_NEWLINE)
+        pos = skip_comment(src, pos)
+        if pos == pos_before_skip:
+            return pos
+

@@ -1,0 +1,14 @@
+
+def raise_option_error(parser: OptionParser, option: Option, msg: str) -> None:
+    """
+    Raise an option parsing error using parser.error().
+
+    Args:
+      parser: an OptionParser instance.
+      option: an Option instance.
+      msg: the error text.
+    """
+    msg = f"{option} error: {msg}"
+    msg = textwrap.fill(" ".join(msg.split()))
+    parser.error(msg)
+

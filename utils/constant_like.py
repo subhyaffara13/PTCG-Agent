@@ -1,0 +1,8 @@
+
+def constant_like(fill_value):
+    return create_tensor_like(tensor_constructor(fill_value))
+
+
+def constant_like(value: _Union[_Any, _ods_ir.Attribute], operand: _ods_ir.Value, *, results: _Optional[_Sequence[_ods_ir.Type]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult:
+  return ConstantLikeOp(value=value, operand=operand, results=results, loc=loc, ip=ip).result
+

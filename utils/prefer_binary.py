@@ -1,0 +1,13 @@
+
+def prefer_binary() -> Option:
+    return Option(
+        "--prefer-binary",
+        dest="prefer_binary",
+        action="store_true",
+        default=False,
+        help=(
+            "Prefer binary packages over source packages, even if the "
+            "source packages are newer."
+        ),
+    )
+

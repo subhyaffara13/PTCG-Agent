@@ -1,0 +1,15 @@
+
+def user_downloads_path() -> Path:
+    """:returns: downloads path tied to the user"""
+    return PlatformDirs().user_downloads_path
+
+
+def user_downloads_path() -> Path:
+    """:returns: downloads path tied to the user"""
+    return PlatformDirs().user_downloads_path
+
+
+def user_downloads_path() -> Path:
+    """:returns: downloads path tied to the user"""
+    return PlatformDirs().user_downloads_path
+

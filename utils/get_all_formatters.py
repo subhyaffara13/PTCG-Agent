@@ -1,0 +1,22 @@
+
+def get_all_formatters():
+    """Return a generator for all formatter classes."""
+    # NB: this returns formatter classes, not info like get_all_lexers().
+    for info in FORMATTERS.values():
+        if info[1] not in _formatter_cache:
+            _load_formatters(info[0])
+        yield _formatter_cache[info[1]]
+    for _, formatter in find_plugin_formatters():
+        yield formatter
+
+
+def get_all_formatters():
+    """Return a generator for all formatter classes."""
+    # NB: this returns formatter classes, not info like get_all_lexers().
+    for info in FORMATTERS.values():
+        if info[1] not in _formatter_cache:
+            _load_formatters(info[0])
+        yield _formatter_cache[info[1]]
+    for _, formatter in find_plugin_formatters():
+        yield formatter
+

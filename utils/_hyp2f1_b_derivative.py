@@ -1,0 +1,26 @@
+
+def _hyp2f1_b_derivative(a, b, c, x):
+  """
+  Define it as a serie using :
+  https://functions.wolfram.com/HypergeometricFunctions/Hypergeometric2F1/20/01/02/
+  """
+
+  precision = dtypes.finfo(x.dtype).eps
+
+  def body(state):
+    serie, k, term = state
+    serie += term * (digamma(b + k) - digamma(b))
+    term *= (a + k) * (b + k) / (c + k) / (k + 1) * x
+    k += 1
+
+    return serie, k, term
+
+  def cond(state):
+    serie, k, term = state
+
+    return (k < 250) & (lax.abs(term) / lax.abs(serie) > precision)
+
+  init = 0, 1, a * b / c * x
+
+  return lax.while_loop(cond, body, init)[0]
+

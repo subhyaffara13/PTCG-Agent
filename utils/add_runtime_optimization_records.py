@@ -1,0 +1,4 @@
+
+def AddRuntimeOptimizationRecords(builder, runtimeOptimizationRecords):
+    RuntimeOptimizationRecordContainerEntryAddRuntimeOptimizationRecords(builder, runtimeOptimizationRecords)
+

@@ -1,0 +1,5 @@
+
+def test_nostrictio_handlefmode():
+    bench(False, dill.HANDLE_FMODE, False)
+    teardown_module()
+

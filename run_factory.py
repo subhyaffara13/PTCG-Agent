@@ -14,17 +14,14 @@ from run_factory_utils import run_team_pipeline as _run_team_pipeline
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
-def run_team_pipeline(iteration_id: int, forced_archetype: str | None = None, forced_escalation: dict | None = None):
-    return _run_team_pipeline(iteration_id, forced_archetype=forced_archetype, forced_escalation=forced_escalation)
+from utils.run_team_pipeline import run_team_pipeline
 
 run_iteration = run_team_pipeline
 
 import signal
 import os
 
-def _instant_signal_handler(sig, frame):
-    logging.info("Ctrl+C received. Terminating immediately...")
-    os._exit(0)
+from utils._instant_signal_handler import _instant_signal_handler
 
 signal.signal(signal.SIGINT, _instant_signal_handler)
 

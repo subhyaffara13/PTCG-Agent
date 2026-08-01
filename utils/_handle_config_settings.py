@@ -1,0 +1,19 @@
+
+def _handle_config_settings(
+    option: Option, opt_str: str, value: str, parser: OptionParser
+) -> None:
+    key, sep, val = value.partition("=")
+    if sep != "=":
+        parser.error(f"Arguments to {opt_str} must be of the form KEY=VAL")
+    dest = getattr(parser.values, option.dest)
+    if dest is None:
+        dest = {}
+        setattr(parser.values, option.dest, dest)
+    if key in dest:
+        if isinstance(dest[key], list):
+            dest[key].append(val)
+        else:
+            dest[key] = [dest[key], val]
+    else:
+        dest[key] = val
+

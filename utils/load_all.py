@@ -1,0 +1,13 @@
+
+def load_all(stream, Loader):
+    """
+    Parse all YAML documents in a stream
+    and produce corresponding Python objects.
+    """
+    loader = Loader(stream)
+    try:
+        while loader.check_data():
+            yield loader.get_data()
+    finally:
+        loader.dispose()
+

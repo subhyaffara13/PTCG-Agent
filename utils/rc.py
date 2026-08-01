@@ -1,0 +1,82 @@
+
+def rc(group: RcGroupKeyType, **kwargs) -> None:
+    matplotlib.rc(group, **kwargs)
+
+
+def rc(group, **kwargs):
+    """
+    Set the current `.rcParams`.  *group* is the grouping for the rc, e.g.,
+    for ``lines.linewidth`` the group is ``lines``, for
+    ``axes.facecolor``, the group is ``axes``, and so on.  Group may
+    also be a list or tuple of group names, e.g., (*xtick*, *ytick*).
+    *kwargs* is a dictionary attribute name/value pairs, e.g.,::
+
+      rc('lines', linewidth=2, color='r')
+
+    sets the current `.rcParams` and is equivalent to::
+
+      rcParams['lines.linewidth'] = 2
+      rcParams['lines.color'] = 'r'
+
+    The following aliases are available to save typing for interactive users:
+
+    ======  =================
+    Alias   Property
+    ======  =================
+    'lw'    'linewidth'
+    'ls'    'linestyle'
+    'c'     'color'
+    'fc'    'facecolor'
+    'ec'    'edgecolor'
+    'mew'   'markeredgewidth'
+    'aa'    'antialiased'
+    'sans'  'sans-serif'
+    ======  =================
+
+    Thus you could abbreviate the above call as::
+
+          rc('lines', lw=2, c='r')
+
+    Note you can use python's kwargs dictionary facility to store
+    dictionaries of default parameters.  e.g., you can customize the
+    font rc as follows::
+
+      font = {'family' : 'monospace',
+              'weight' : 'bold',
+              'size'   : 'large'}
+      rc('font', **font)  # pass in the font dict as kwargs
+
+    This enables you to easily switch between several configurations.  Use
+    ``matplotlib.style.use('default')`` or :func:`~matplotlib.rcdefaults` to
+    restore the default `.rcParams` after changes.
+
+    Notes
+    -----
+    Similar functionality is available by using the normal dict interface, i.e.
+    ``rcParams.update({"lines.linewidth": 2, ...})`` (but ``rcParams.update``
+    does not support abbreviations or grouping).
+    """
+
+    aliases = {
+        'lw':  'linewidth',
+        'ls':  'linestyle',
+        'c':   'color',
+        'fc':  'facecolor',
+        'ec':  'edgecolor',
+        'mew': 'markeredgewidth',
+        'aa':  'antialiased',
+        'sans': 'sans-serif',
+        }
+
+    if isinstance(group, str):
+        group = (group,)
+    for g in group:
+        for k, v in kwargs.items():
+            name = aliases.get(k) or k
+            key = f'{g}.{name}'
+            try:
+                rcParams[key] = v
+            except KeyError as err:
+                raise KeyError(('Unrecognized key "%s" for group "%s" and '
+                                'name "%s"') % (key, g, name)) from err
+

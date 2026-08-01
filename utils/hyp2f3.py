@@ -1,0 +1,4 @@
+
+def hyp2f3(ctx,a1,a2,b1,b2,b3,z,**kwargs):
+    return ctx.hyper([a1,a2],[b1,b2,b3],z,**kwargs)
+

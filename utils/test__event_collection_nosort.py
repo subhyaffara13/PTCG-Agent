@@ -1,0 +1,7 @@
+
+def test_EventCollection_nosort():
+    # Check that EventCollection doesn't modify input in place
+    arr = np.array([3, 2, 1, 10])
+    coll = EventCollection(arr)
+    np.testing.assert_array_equal(arr, np.array([3, 2, 1, 10]))
+

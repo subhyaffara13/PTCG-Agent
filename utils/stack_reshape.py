@@ -1,0 +1,73 @@
+
+def stack_reshape(
+    frame: DataFrame, level: list[int], set_levels: set[int], stack_cols: Index
+) -> Series | DataFrame:
+    """Reshape the data of a frame for stack.
+
+    This function takes care of most of the work that stack needs to do. Caller
+    will sort the result once the appropriate index is set.
+
+    Parameters
+    ----------
+    frame: DataFrame
+        DataFrame that is to be stacked.
+    level: list of ints.
+        Levels of the columns to stack.
+    set_levels: set of ints.
+        Same as level, but as a set.
+    stack_cols: Index.
+        Columns of the result when the DataFrame is stacked.
+
+    Returns
+    -------
+    The data of behind the stacked DataFrame.
+    """
+    # non-MultIndex takes a fast path.
+    assert isinstance(frame.columns, MultiIndex)
+    # If we need to drop `level` from columns, it needs to be in descending order
+    drop_levnums = sorted(level, reverse=True)
+
+    # Grab data for each unique index to be stacked
+    buf = []
+    for idx in stack_cols.unique():
+        if len(frame.columns) == 1:
+            data = frame.copy(deep=False)
+        else:
+            # Take the data from frame corresponding to this idx value
+            if len(level) == 1:
+                idx = (idx,)
+            gen = iter(idx)
+            column_indexer = tuple(
+                next(gen) if k in set_levels else slice(None)
+                for k in range(frame.columns.nlevels)
+            )
+            data = frame.loc[:, column_indexer]
+
+        if len(level) < frame.columns.nlevels:
+            data.columns = data.columns._drop_level_numbers(drop_levnums)
+        elif stack_cols.nlevels == 1:
+            if data.ndim == 1:
+                data.name = 0
+            else:
+                data.columns = default_index(len(data.columns))
+        buf.append(data)
+
+    if len(buf) > 0 and not frame.empty:
+        result = concat(buf, ignore_index=True)
+    else:
+        # input is empty
+        if len(level) < frame.columns.nlevels:
+            # concat column order may be different from dropping the levels
+            new_columns = frame.columns._drop_level_numbers(drop_levnums).unique()
+        else:
+            new_columns = [0]
+        result = DataFrame(columns=new_columns, dtype=frame._values.dtype)
+
+    if len(level) < frame.columns.nlevels:
+        # concat column order may be different from dropping the levels
+        desired_columns = frame.columns._drop_level_numbers(drop_levnums).unique()
+        if not result.columns.equals(desired_columns):
+            result = result[desired_columns]
+
+    return result
+

@@ -1,0 +1,34 @@
+
+def test_get_outputs(tmpdir_cwd):
+    jaraco.path.build(EXAMPLE_ARBITRARY_MAPPING)
+    dist = Distribution({"script_name": "%test%"})
+    dist.parse_config_files()
+
+    build_py = dist.get_command_obj("build_py")
+    build_py.editable_mode = True
+    build_py.ensure_finalized()
+    build_lib = build_py.build_lib.replace(os.sep, "/")
+    outputs = {x.replace(os.sep, "/") for x in build_py.get_outputs()}
+    assert outputs == {
+        f"{build_lib}/mypkg/__init__.py",
+        f"{build_lib}/mypkg/resource_file.txt",
+        f"{build_lib}/mypkg/sub1/__init__.py",
+        f"{build_lib}/mypkg/sub1/mod1.py",
+        f"{build_lib}/mypkg/sub2/mod2.py",
+        f"{build_lib}/mypkg/sub2/nested/__init__.py",
+        f"{build_lib}/mypkg/sub2/nested/mod3.py",
+    }
+    mapping = {
+        k.replace(os.sep, "/"): v.replace(os.sep, "/")
+        for k, v in build_py.get_output_mapping().items()
+    }
+    assert mapping == {
+        f"{build_lib}/mypkg/__init__.py": "src/mypkg/__init__.py",
+        f"{build_lib}/mypkg/resource_file.txt": "src/mypkg/resource_file.txt",
+        f"{build_lib}/mypkg/sub1/__init__.py": "src/mypkg/sub1/__init__.py",
+        f"{build_lib}/mypkg/sub1/mod1.py": "src/mypkg/sub1/mod1.py",
+        f"{build_lib}/mypkg/sub2/mod2.py": "src/mypkg/_sub2/mod2.py",
+        f"{build_lib}/mypkg/sub2/nested/__init__.py": "other/__init__.py",
+        f"{build_lib}/mypkg/sub2/nested/mod3.py": "other/mod3.py",
+    }
+

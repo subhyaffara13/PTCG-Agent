@@ -1,0 +1,11 @@
+
+def test_polar_no_data():
+    plt.subplot(projection="polar")
+    ax = plt.gca()
+    assert ax.get_rmin() == 0 and ax.get_rmax() == 1
+    plt.close("all")
+    # Used to behave differently (by triggering an autoscale with no data).
+    plt.polar()
+    ax = plt.gca()
+    assert ax.get_rmin() == 0 and ax.get_rmax() == 1
+

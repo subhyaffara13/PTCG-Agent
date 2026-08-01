@@ -20,15 +20,23 @@ try:
     _root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
     if _root not in _sys.path:
         _sys.path.insert(0, _root)
-    from factory.state_dimensions import (
-        CARD_VOCAB_SIZE, CARD_EMBED_DIM, MAX_TOKENS,
-        SCALAR_FEATURES, TRANSFORMER_LAYERS, ATTN_HEADS, TRANSFORMER_FF_DIM,
-    )
+    try:
+        from cb_agents.state_dimensions import (
+            CARD_VOCAB_SIZE, CARD_EMBED_DIM, MAX_TOKENS,
+            SCALAR_FEATURES, TRANSFORMER_LAYERS, ATTN_HEADS, TRANSFORMER_FF_DIM,
+        )
+    except ImportError:
+        from factory.state_dimensions import (
+            CARD_VOCAB_SIZE, CARD_EMBED_DIM, MAX_TOKENS,
+            SCALAR_FEATURES, TRANSFORMER_LAYERS, ATTN_HEADS, TRANSFORMER_FF_DIM,
+        )
     
     HAS_TORCH = True
     
 except ImportError:
     HAS_TORCH = False
+    CARD_VOCAB_SIZE = 4096; CARD_EMBED_DIM = 32; MAX_TOKENS = 32
+    SCALAR_FEATURES = 6; TRANSFORMER_LAYERS = 2; ATTN_HEADS = 4; TRANSFORMER_FF_DIM = 64
     import zipfile, pickle, io, collections
     from pathlib import Path
 

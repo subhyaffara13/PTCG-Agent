@@ -1,0 +1,32 @@
+
+def test_funcmatrix_creation():
+    i, j, k = symbols('i j k')
+    assert FunctionMatrix(2, 2, Lambda((i, j), 0))
+    assert FunctionMatrix(0, 0, Lambda((i, j), 0))
+
+    raises(ValueError, lambda: FunctionMatrix(-1, 0, Lambda((i, j), 0)))
+    raises(ValueError, lambda: FunctionMatrix(2.0, 0, Lambda((i, j), 0)))
+    raises(ValueError, lambda: FunctionMatrix(2j, 0, Lambda((i, j), 0)))
+    raises(ValueError, lambda: FunctionMatrix(0, -1, Lambda((i, j), 0)))
+    raises(ValueError, lambda: FunctionMatrix(0, 2.0, Lambda((i, j), 0)))
+    raises(ValueError, lambda: FunctionMatrix(0, 2j, Lambda((i, j), 0)))
+
+    raises(ValueError, lambda: FunctionMatrix(2, 2, Lambda(i, 0)))
+    raises(SympifyError, lambda: FunctionMatrix(2, 2, lambda i, j: 0))
+    raises(ValueError, lambda: FunctionMatrix(2, 2, Lambda((i,), 0)))
+    raises(ValueError, lambda: FunctionMatrix(2, 2, Lambda((i, j, k), 0)))
+    raises(ValueError, lambda: FunctionMatrix(2, 2, i+j))
+    assert FunctionMatrix(2, 2, "lambda i, j: 0") == \
+        FunctionMatrix(2, 2, Lambda((i, j), 0))
+
+    m = FunctionMatrix(2, 2, KroneckerDelta)
+    assert m.as_explicit() == Identity(2).as_explicit()
+    assert m.args[2].dummy_eq(Lambda((i, j), KroneckerDelta(i, j)))
+
+    n = symbols('n')
+    assert FunctionMatrix(n, n, Lambda((i, j), 0))
+    n = symbols('n', integer=False)
+    raises(ValueError, lambda: FunctionMatrix(n, n, Lambda((i, j), 0)))
+    n = symbols('n', negative=True)
+    raises(ValueError, lambda: FunctionMatrix(n, n, Lambda((i, j), 0)))
+

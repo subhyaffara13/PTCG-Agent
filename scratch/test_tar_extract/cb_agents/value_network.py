@@ -25,11 +25,7 @@ else:
             no_grad = MockNoGrad
         torch = MockTorch()
 
-def __getattr__(name):
-    if name == "HeuristicValueNetwork":
-        from cb_agents.heuristic_value import HeuristicValueNetwork
-        return HeuristicValueNetwork
-    raise AttributeError(f"module {__name__} no attr {name}")
+from utils.__getattr__ import __getattr__
 
 logger = logging.getLogger(__name__)
 

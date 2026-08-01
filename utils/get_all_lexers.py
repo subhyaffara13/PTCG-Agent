@@ -1,0 +1,28 @@
+
+def get_all_lexers(plugins=True):
+    """Return a generator of tuples in the form ``(name, aliases,
+    filenames, mimetypes)`` of all know lexers.
+
+    If *plugins* is true (the default), plugin lexers supplied by entrypoints
+    are also returned.  Otherwise, only builtin ones are considered.
+    """
+    for item in LEXERS.values():
+        yield item[1:]
+    if plugins:
+        for lexer in find_plugin_lexers():
+            yield lexer.name, lexer.aliases, lexer.filenames, lexer.mimetypes
+
+
+def get_all_lexers(plugins=True):
+    """Return a generator of tuples in the form ``(name, aliases,
+    filenames, mimetypes)`` of all know lexers.
+
+    If *plugins* is true (the default), plugin lexers supplied by entrypoints
+    are also returned.  Otherwise, only builtin ones are considered.
+    """
+    for item in LEXERS.values():
+        yield item[1:]
+    if plugins:
+        for lexer in find_plugin_lexers():
+            yield lexer.name, lexer.aliases, lexer.filenames, lexer.mimetypes
+

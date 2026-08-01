@@ -1,0 +1,12 @@
+
+def _dist_info_files(whl_zip):
+    """Identify the .dist-info folder inside a wheel ZipFile."""
+    res = []
+    for path in whl_zip.namelist():
+        m = re.match(r"[^/\\]+-[^/\\]+\.dist-info/", path)
+        if m:
+            res.append(path)
+    if res:
+        return res
+    raise Exception("No .dist-info folder found in wheel")
+

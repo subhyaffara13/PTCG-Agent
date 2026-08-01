@@ -1,0 +1,64 @@
+
+def hermgrid3d(x, y, z, c):
+    """
+    Evaluate a 3-D Hermite series on the Cartesian product of x, y, and z.
+
+    This function returns the values:
+
+    .. math:: p(a,b,c) = \\sum_{i,j,k} c_{i,j,k} * H_i(a) * H_j(b) * H_k(c)
+
+    where the points ``(a, b, c)`` consist of all triples formed by taking
+    `a` from `x`, `b` from `y`, and `c` from `z`. The resulting points form
+    a grid with `x` in the first dimension, `y` in the second, and `z` in
+    the third.
+
+    The parameters `x`, `y`, and `z` are converted to arrays only if they
+    are tuples or a lists, otherwise they are treated as a scalars. In
+    either case, either `x`, `y`, and `z` or their elements must support
+    multiplication and addition both with themselves and with the elements
+    of `c`.
+
+    If `c` has fewer than three dimensions, ones are implicitly appended to
+    its shape to make it 3-D. The shape of the result will be c.shape[3:] +
+    x.shape + y.shape + z.shape.
+
+    Parameters
+    ----------
+    x, y, z : array_like, compatible objects
+        The three dimensional series is evaluated at the points in the
+        Cartesian product of `x`, `y`, and `z`.  If `x`, `y`, or `z` is a
+        list or tuple, it is first converted to an ndarray, otherwise it is
+        left unchanged and, if it isn't an ndarray, it is treated as a
+        scalar.
+    c : array_like
+        Array of coefficients ordered so that the coefficients for terms of
+        degree i,j are contained in ``c[i,j]``. If `c` has dimension
+        greater than two the remaining indices enumerate multiple sets of
+        coefficients.
+
+    Returns
+    -------
+    values : ndarray, compatible object
+        The values of the two dimensional polynomial at points in the Cartesian
+        product of `x` and `y`.
+
+    See Also
+    --------
+    hermval, hermval2d, hermgrid2d, hermval3d
+
+    Examples
+    --------
+    >>> from numpy.polynomial.hermite import hermgrid3d
+    >>> x = [1, 2]
+    >>> y = [4, 5]
+    >>> z = [6, 7]
+    >>> c = [[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]]
+    >>> hermgrid3d(x, y, z, c)
+    array([[[ 40077.,  54117.],
+            [ 49293.,  66561.]],
+           [[ 72375.,  97719.],
+            [ 88975., 120131.]]])
+
+    """
+    return pu._gridnd(hermval, c, x, y, z)
+

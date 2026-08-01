@@ -1,0 +1,4 @@
+
+def async_store(source: _ods_ir.Value[_ods_ir.MemRefType], destination: _ods_ir.Value[_ods_ir.MemRefType], indices: _Sequence[_ods_ir.Value], slice_lengths: _Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr], *, predicate: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, gmem_peer_id: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, commit_group: _Optional[_Union[bool, _ods_ir.BoolAttr]] = None, reduction_op: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, is_global_broadcast: _Optional[_Union[bool, _ods_ir.BoolAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> AsyncStoreOp:
+  return AsyncStoreOp(source=source, destination=destination, indices=indices, slice_lengths=slice_lengths, predicate=predicate, gmem_peer_id=gmem_peer_id, commit_group=commit_group, reduction_op=reduction_op, is_global_broadcast=is_global_broadcast, loc=loc, ip=ip)
+

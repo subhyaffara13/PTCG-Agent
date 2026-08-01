@@ -1,0 +1,10 @@
+
+def maybe_iterable_to_list(obj: Iterable[T] | T) -> Collection[T] | T:
+    """
+    If obj is Iterable but not list-like, consume into list.
+    """
+    if isinstance(obj, abc.Iterable) and not isinstance(obj, abc.Sized):
+        return list(obj)
+    obj = cast(Collection, obj)
+    return obj
+

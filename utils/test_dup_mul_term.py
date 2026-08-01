@@ -1,0 +1,17 @@
+
+def test_dup_mul_term():
+    f = dup_normal([], ZZ)
+
+    assert dup_mul_term(f, ZZ(2), 3, ZZ) == dup_normal([], ZZ)
+
+    f = dup_normal([1, 1], ZZ)
+
+    assert dup_mul_term(f, ZZ(0), 3, ZZ) == dup_normal([], ZZ)
+
+    f = dup_normal([1, 2, 3], ZZ)
+
+    assert dup_mul_term(f, ZZ(2), 0, ZZ) == dup_normal([2, 4, 6], ZZ)
+    assert dup_mul_term(f, ZZ(2), 1, ZZ) == dup_normal([2, 4, 6, 0], ZZ)
+    assert dup_mul_term(f, ZZ(2), 2, ZZ) == dup_normal([2, 4, 6, 0, 0], ZZ)
+    assert dup_mul_term(f, ZZ(2), 3, ZZ) == dup_normal([2, 4, 6, 0, 0, 0], ZZ)
+

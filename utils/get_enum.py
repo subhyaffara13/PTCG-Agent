@@ -1,0 +1,20 @@
+
+def get_enum(reduction: str) -> int:
+    if reduction == "none":
+        ret = 0
+    elif reduction == "mean":
+        ret = 1
+    elif reduction == "elementwise_mean":
+        warnings.warn(
+            "reduction='elementwise_mean' is deprecated. "
+            "Please use reduction='mean' instead.",
+            stacklevel=2,
+        )
+        ret = 1
+    elif reduction == "sum":
+        ret = 2
+    else:
+        ret = -1  # TODO: remove once JIT exceptions support control flow
+        raise ValueError(f"{reduction} is not a valid value for reduction")
+    return ret
+

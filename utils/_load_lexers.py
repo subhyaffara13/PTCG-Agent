@@ -1,0 +1,16 @@
+
+def _load_lexers(module_name):
+    """Load a lexer (and all others in the module too)."""
+    mod = __import__(module_name, None, None, ['__all__'])
+    for lexer_name in mod.__all__:
+        cls = getattr(mod, lexer_name)
+        _lexer_cache[cls.name] = cls
+
+
+def _load_lexers(module_name):
+    """Load a lexer (and all others in the module too)."""
+    mod = __import__(module_name, None, None, ['__all__'])
+    for lexer_name in mod.__all__:
+        cls = getattr(mod, lexer_name)
+        _lexer_cache[cls.name] = cls
+

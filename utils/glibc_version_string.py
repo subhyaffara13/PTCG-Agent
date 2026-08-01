@@ -1,0 +1,5 @@
+
+def glibc_version_string() -> str | None:
+    "Returns glibc version string, or None if not using glibc."
+    return glibc_version_string_confstr() or glibc_version_string_ctypes()
+

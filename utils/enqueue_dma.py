@@ -1,0 +1,4 @@
+
+def enqueue_dma(source: _ods_ir.Value[_ods_ir.MemRefType], target: _ods_ir.Value[_ods_ir.MemRefType], *, source_semaphore: _Optional[_ods_ir.Value[_ods_ir.MemRefType]] = None, target_semaphore: _Optional[_ods_ir.Value[_ods_ir.MemRefType]] = None, device_id: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, core_id: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, subcore_id: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, priority: _Optional[_Union[int, _ods_ir.IntegerAttr]] = None, strict_ordering: _Optional[_Union[bool, _ods_ir.BoolAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> EnqueueDMAOp:
+  return EnqueueDMAOp(source=source, target=target, source_semaphore=source_semaphore, target_semaphore=target_semaphore, device_id=device_id, core_id=core_id, subcore_id=subcore_id, priority=priority, strict_ordering=strict_ordering, loc=loc, ip=ip)
+

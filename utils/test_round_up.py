@@ -1,0 +1,10 @@
+
+def test_round_up():
+    assert from_man_exp(0, -4, 4, round_up)[:3] == (0, 0, 0)
+    assert from_man_exp(0xf0, -4, 4, round_up)[:3] == (0, 15, 0)
+    assert from_man_exp(0xf1, -4, 4, round_up)[:3] == (0, 1, 4)
+    assert from_man_exp(0xff, -4, 4, round_up)[:3] == (0, 1, 4)
+    assert from_man_exp(-0xf0, -4, 4, round_up)[:3] == (1, 15, 0)
+    assert from_man_exp(-0xf1, -4, 4, round_up)[:3] == (1, 1, 4)
+    assert from_man_exp(-0xff, -4, 4, round_up)[:3] == (1, 1, 4)
+

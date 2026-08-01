@@ -1,0 +1,12 @@
+
+def compute_tagline(tags: list[str]) -> str:
+    """Compute a tagline from a list of tags.
+
+    :param tags: A list of tags
+    :return: A tagline
+    """
+    impls = sorted({tag.split("-")[0] for tag in tags})
+    abivers = sorted({tag.split("-")[1] for tag in tags})
+    platforms = sorted({tag.split("-")[2] for tag in tags})
+    return "-".join([".".join(impls), ".".join(abivers), ".".join(platforms)])
+

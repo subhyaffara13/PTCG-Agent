@@ -1,0 +1,23 @@
+
+def async_to_custom_raw_response_wrapper(
+    func: Callable[P, Awaitable[object]],
+    response_cls: type[_AsyncAPIResponseT],
+) -> Callable[P, Awaitable[_AsyncAPIResponseT]]:
+    """Higher order function that takes one of our bound API methods and an `APIResponse` class
+    and wraps the method to support returning the given response class directly.
+
+    Note: the given `response_cls` *must* be concrete, e.g. `class BinaryAPIResponse(APIResponse[bytes])`
+    """
+
+    @functools.wraps(func)
+    def wrapped(*args: P.args, **kwargs: P.kwargs) -> Awaitable[_AsyncAPIResponseT]:
+        extra_headers: dict[str, Any] = {**(cast(Any, kwargs.get("extra_headers")) or {})}
+        extra_headers[RAW_RESPONSE_HEADER] = "raw"
+        extra_headers[OVERRIDE_CAST_TO_HEADER] = response_cls
+
+        kwargs["extra_headers"] = extra_headers
+
+        return cast(Awaitable[_AsyncAPIResponseT], func(*args, **kwargs))
+
+    return wrapped
+

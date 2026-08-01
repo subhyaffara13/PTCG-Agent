@@ -1,0 +1,4 @@
+
+def get_mac_version(run_lambda):
+    return run_and_parse_first_match(run_lambda, "sw_vers -productVersion", r"(.*)")
+

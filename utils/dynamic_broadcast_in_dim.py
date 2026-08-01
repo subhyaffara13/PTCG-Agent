@@ -1,0 +1,8 @@
+
+def dynamic_broadcast_in_dim(result: _ods_ir.Type, operand: _ods_ir.Value[_ods_ir.RankedTensorType], output_dimensions: _ods_ir.Value[_ods_ir.RankedTensorType], broadcast_dimensions: _Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr], *, known_expanding_dimensions: _Optional[_Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr]] = None, known_nonexpanding_dimensions: _Optional[_Union[_Union[_Sequence[int], _Buffer], _ods_ir.DenseIntElementsAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.RankedTensorType]:
+  return DynamicBroadcastInDimOp(result=result, operand=operand, output_dimensions=output_dimensions, broadcast_dimensions=broadcast_dimensions, known_expanding_dimensions=known_expanding_dimensions, known_nonexpanding_dimensions=known_nonexpanding_dimensions, loc=loc, ip=ip).result
+
+
+def dynamic_broadcast_in_dim(result: _ods_ir.Type, operand: _ods_ir.Value[_ods_ir.RankedTensorType], output_dimensions: _ods_ir.Value[_ods_ir.RankedTensorType], broadcast_dimensions: _Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr], *, known_expanding_dimensions: _Optional[_Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr]] = None, known_nonexpanding_dimensions: _Optional[_Union[_Sequence[int], _ods_ir.DenseI64ArrayAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.RankedTensorType]:
+  return DynamicBroadcastInDimOp(result=result, operand=operand, output_dimensions=output_dimensions, broadcast_dimensions=broadcast_dimensions, known_expanding_dimensions=known_expanding_dimensions, known_nonexpanding_dimensions=known_nonexpanding_dimensions, loc=loc, ip=ip).result
+

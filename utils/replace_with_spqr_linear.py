@@ -1,0 +1,50 @@
+
+def replace_with_spqr_linear(model, modules_to_not_convert: list[str] | None = None, quantization_config=None):
+    """
+    Public method that replaces the Linear layers of the given model with SPQR quantized layers.
+
+    Args:
+        model (`torch.nn.Module`):
+            The model to convert, can be any `torch.nn.Module` instance.
+        modules_to_not_convert (`list[str]`, *optional*, defaults to `None`):
+            A list of nn.Linear weights to not convert. If a parameter path is in the list (e.g. `lm_head.weight`), the corresponding module will not be
+            converted.
+        quantization_config (`SpQRConfig`):
+            The quantization config object that contains the quantization parameters.
+    """
+    if is_spqr_available():
+        from spqr_quant import QuantizedLinear
+
+    has_been_replaced = False
+    # we need this to correctly materialize the weights during quantization
+    for module_name, module in model.named_modules():
+        if not should_convert_module(module_name, modules_to_not_convert):
+            continue
+        with torch.device("meta"):
+            if isinstance(module, nn.Linear):
+                shapes = quantization_config.shapes
+
+                new_module = QuantizedLinear.create_placehodler(
+                    rows=module.out_features,
+                    cols=module.in_features,
+                    bits=quantization_config.bits,
+                    beta1=quantization_config.beta1,
+                    beta2=quantization_config.beta2,
+                    dense_weights_shape=shapes[f"{module_name}.dense_weights.shape"],
+                    row_offsets_shape=shapes[f"{module_name}.row_offsets.shape"],
+                    col_vals_shape=shapes[f"{module_name}.col_vals.shape"],
+                    in_perm_shape=shapes[f"{module_name}.in_perm.shape"],
+                )
+                # Force requires grad to False to avoid unexpected errors
+                model._modules[module_name].requires_grad_(False)
+                model.set_submodule(module_name, new_module)
+                has_been_replaced = True
+    if not has_been_replaced:
+        logger.warning(
+            "You are loading your model using eetq but no linear modules were found in your model."
+            " Please double check your model architecture, or submit an issue on github if you think this is"
+            " a bug."
+        )
+
+    return model
+

@@ -1,0 +1,4 @@
+
+def tcgen05_mma_ws(kind: _Union[_Any, _ods_ir.Attribute], matrix_d: _ods_ir.Value, matrix_a: _ods_ir.Value, matrix_b: _ods_ir.Value[_ods_ir.IntegerType], idesc: _ods_ir.Value[_ods_ir.IntegerType], enable_input_d: _ods_ir.Value[_ods_ir.IntegerType], *, collector_b_buffer: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, collector_op: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, zero_col_mask: _Optional[_ods_ir.Value[_ods_ir.IntegerType]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> Tcgen05MMAWsOp:
+  return Tcgen05MMAWsOp(kind=kind, matrixD=matrix_d, matrixA=matrix_a, matrixB=matrix_b, idesc=idesc, enableInputD=enable_input_d, collectorBBuffer=collector_b_buffer, collectorOp=collector_op, zeroColMask=zero_col_mask, loc=loc, ip=ip)
+

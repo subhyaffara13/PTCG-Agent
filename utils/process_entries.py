@@ -1,0 +1,33 @@
+
+def process_entries():
+    try:
+        from importlib.metadata import entry_points
+    except ImportError:
+        return
+    if entry_points is not None:
+        try:
+            eps = entry_points()
+        except TypeError:
+            pass  # importlib-metadata < 0.8
+        else:
+            if hasattr(eps, "select"):  # Python 3.10+ / importlib_metadata >= 3.9.0
+                specs = eps.select(group="fsspec.specs")
+            else:
+                specs = eps.get("fsspec.specs", [])
+            registered_names = {}
+            for spec in specs:
+                err_msg = f"Unable to load filesystem from {spec}"
+                name = spec.name
+                if name in registered_names:
+                    continue
+                registered_names[name] = True
+                register_implementation(
+                    name,
+                    spec.value.replace(":", "."),
+                    errtxt=err_msg,
+                    # We take our implementations as the ones to overload with if
+                    # for some reason we encounter some, may be the same, already
+                    # registered
+                    clobber=True,
+                )
+

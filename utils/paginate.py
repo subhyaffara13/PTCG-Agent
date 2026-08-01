@@ -1,0 +1,24 @@
+
+def paginate(path: str, params: dict | list[tuple[str, Any]], headers: dict, timeout: float | None = None) -> Iterable:
+    """Fetch a list of models/datasets/spaces and paginate through results.
+
+    This is using the same "Link" header format as GitHub.
+    See:
+    - https://requests.readthedocs.io/en/latest/api/#requests.Response.links
+    - https://docs.github.com/en/rest/guides/traversing-with-pagination#link-header
+    """
+    session = get_session()
+    r = session.get(path, params=params, headers=headers, timeout=timeout)
+    hf_raise_for_status(r)
+    yield from r.json()
+
+    # Follow pages
+    # Next link already contains query params
+    next_page = _get_next_page(r)
+    while next_page is not None:
+        logger.debug(f"Pagination detected. Requesting next page: {next_page}")
+        r = http_backoff("GET", next_page, headers=headers, timeout=timeout)
+        hf_raise_for_status(r)
+        yield from r.json()
+        next_page = _get_next_page(r)
+

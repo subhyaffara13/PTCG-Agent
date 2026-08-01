@@ -1,0 +1,10 @@
+
+def suppressed_cache_errors() -> Generator[None, None, None]:
+    """If we can't access the cache then we can just skip caching and process
+    requests as if caching wasn't enabled.
+    """
+    try:
+        yield
+    except OSError:
+        pass
+

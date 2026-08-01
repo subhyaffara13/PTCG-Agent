@@ -1,5 +1,13 @@
 import sys
 import os
+import signal
+
+from utils._sigint_handler import _sigint_handler
+
+try:
+    signal.signal(signal.SIGINT, _sigint_handler)
+except Exception:
+    pass
 
 if __name__ == "__main__":
     if "--worker" in sys.argv:

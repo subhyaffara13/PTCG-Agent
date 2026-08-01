@@ -1,0 +1,5 @@
+
+def deactivate() -> None:
+    """Deactivate internationalisation."""
+    _CURRENT.locale = None
+

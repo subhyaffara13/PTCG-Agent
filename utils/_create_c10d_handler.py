@@ -1,0 +1,8 @@
+
+def _create_c10d_handler(params: RendezvousParameters) -> RendezvousHandler:
+    from .c10d_rendezvous_backend import create_backend
+
+    backend, store = create_backend(params)
+
+    return create_handler(store, backend, params)
+

@@ -1,35 +1,4 @@
 from typing import Dict, Any
 from cb_agents.schemas import GameState
 
-def game_state_from_dict(d: Dict[str, Any]) -> "GameState":
-    return GameState(
-        my_hand=d.get("my_hand", []),
-        my_deck_count=d.get("my_deck_count", 60),
-        my_prizes=d.get("my_prizes", 6),
-        my_active_pokemon=d.get("my_active_pokemon"),
-        my_bench=d.get("my_bench", []),
-        my_discard=d.get("my_discard", []),
-        my_board=d.get("my_board", []),
-        my_active_damage=d.get("my_active_damage", 0),
-        my_active_hp=d.get("my_active_hp", 100),
-        opponent_active=d.get("opponent_active"),
-        opponent_bench=d.get("opponent_bench", []),
-        opponent_bench_count=d.get("opponent_bench_count", 0),
-        opponent_prizes=d.get("opponent_prizes", 6),
-        opponent_discard=d.get("opponent_discard", []),
-        opponent_revealed=d.get("opponent_revealed", []),
-        opponent_last_play=d.get("opponent_last_play"),
-        opponent_hand_count=d.get("opponent_hand_count", 5),
-        opponent_deck_count=d.get("opponent_deck_count", 60),
-        opponent_active_hp=d.get("opponent_active_hp", 100),
-        turn_number=d.get("turn_number", 1),
-        legal_attacks=d.get("legal_attacks", []),
-        legal_attachments=d.get("legal_attachments", []),
-        legal_bench=d.get("legal_bench", []),
-        legal_evolutions=d.get("legal_evolutions", []),
-        legal_trainers=d.get("legal_trainers", []),
-        legal_retreats=d.get("legal_retreats", []),
-        legal_abilities=d.get("legal_abilities", []),
-        bench_has_attacker=d.get("bench_has_attacker", False),
-        has_searched_deck=d.get("has_searched_deck", False),
-    )
+from utils.game_state_from_dict import game_state_from_dict

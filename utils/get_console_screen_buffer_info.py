@@ -1,0 +1,32 @@
+
+def GetConsoleScreenBufferInfo(
+    std_handle: wintypes.HANDLE,
+) -> CONSOLE_SCREEN_BUFFER_INFO:
+    """Retrieves information about the specified console screen buffer.
+
+    Args:
+        std_handle (wintypes.HANDLE): A handle to the console input buffer or the console screen buffer.
+
+    Returns:
+        CONSOLE_SCREEN_BUFFER_INFO: A CONSOLE_SCREEN_BUFFER_INFO ctype struct contain information about
+            screen size, cursor position, colour attributes, and more."""
+    console_screen_buffer_info = CONSOLE_SCREEN_BUFFER_INFO()
+    _GetConsoleScreenBufferInfo(std_handle, byref(console_screen_buffer_info))
+    return console_screen_buffer_info
+
+
+def GetConsoleScreenBufferInfo(
+    std_handle: wintypes.HANDLE,
+) -> CONSOLE_SCREEN_BUFFER_INFO:
+    """Retrieves information about the specified console screen buffer.
+
+    Args:
+        std_handle (wintypes.HANDLE): A handle to the console input buffer or the console screen buffer.
+
+    Returns:
+        CONSOLE_SCREEN_BUFFER_INFO: A CONSOLE_SCREEN_BUFFER_INFO ctype struct contain information about
+            screen size, cursor position, colour attributes, and more."""
+    console_screen_buffer_info = CONSOLE_SCREEN_BUFFER_INFO()
+    _GetConsoleScreenBufferInfo(std_handle, byref(console_screen_buffer_info))
+    return console_screen_buffer_info
+

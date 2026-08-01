@@ -1,0 +1,34 @@
+
+def test_ratsimpmodprime():
+    a = y**5 + x + y
+    b = x - y
+    F = [x*y**5 - x - y]
+    assert ratsimpmodprime(a/b, F, x, y, order='lex') == \
+        (-x**2 - x*y - x - y) / (-x**2 + x*y)
+
+    a = x + y**2 - 2
+    b = x + y**2 - y - 1
+    F = [x*y - 1]
+    assert ratsimpmodprime(a/b, F, x, y, order='lex') == \
+        (1 + y - x)/(y - x)
+
+    a = 5*x**3 + 21*x**2 + 4*x*y + 23*x + 12*y + 15
+    b = 7*x**3 - y*x**2 + 31*x**2 + 2*x*y + 15*y + 37*x + 21
+    F = [x**2 + y**2 - 1]
+    assert ratsimpmodprime(a/b, F, x, y, order='lex') == \
+        (1 + 5*y - 5*x)/(8*y - 6*x)
+
+    a = x*y - x - 2*y + 4
+    b = x + y**2 - 2*y
+    F = [x - 2, y - 3]
+    assert ratsimpmodprime(a/b, F, x, y, order='lex') == \
+        Rational(2, 5)
+
+    # Test a bug where denominators would be dropped
+    assert ratsimpmodprime(x, [y - 2*x], order='lex') == \
+        y/2
+
+    a = (x**5 + 2*x**4 + 2*x**3 + 2*x**2 + x + 2/x + x**(-2))
+    assert ratsimpmodprime(a, [x + 1], domain=GF(2)) == 1
+    assert ratsimpmodprime(a, [x + 1], domain=GF(3)) == -1
+

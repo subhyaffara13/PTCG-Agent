@@ -1,0 +1,21 @@
+
+def test_compound_pspace():
+    X = Normal('X', 2, 4)
+    Y = Normal('Y', 3, 6)
+    assert not isinstance(Y.pspace, CompoundPSpace)
+    N = NormalDistribution(1, 2)
+    D = PoissonDistribution(3)
+    B = BernoulliDistribution(0.2, 1, 0)
+    pspace1 = CompoundPSpace('N', N)
+    pspace2 = CompoundPSpace('D', D)
+    pspace3 = CompoundPSpace('B', B)
+    assert not isinstance(pspace1, CompoundPSpace)
+    assert not isinstance(pspace2, CompoundPSpace)
+    assert not isinstance(pspace3, CompoundPSpace)
+    M = MultivariateNormalDistribution([1, 2], [[2, 1], [1, 2]])
+    raises(ValueError, lambda: CompoundPSpace('M', M))
+    Y = Normal('Y', X, 6)
+    assert isinstance(Y.pspace, CompoundPSpace)
+    assert Y.pspace.distribution == CompoundDistribution(NormalDistribution(X, 6))
+    assert Y.pspace.domain.set == Interval(-oo, oo)
+

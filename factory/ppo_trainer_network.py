@@ -137,7 +137,9 @@ if TORCH_AVAILABLE:
             # Map legacy MLP keys to the new 'flat_' keys for backward compatibility
             mapped_dict = {}
             for k, v in state_dict.items():
-                if k.startswith("base."):
+                if k.startswith("transformer_encoder."):
+                    mapped_dict[k.replace("transformer_encoder.", "encoder.", 1)] = v
+                elif k.startswith("base."):
                     mapped_dict[k.replace("base.", "flat_base.", 1)] = v
                 elif k.startswith("actor.0."):
                     mapped_dict[k.replace("actor.0.", "flat_actor.", 1)] = v
@@ -159,6 +161,8 @@ else:
             pass
         def eval(self, *args, **kwargs):
             return self
+        def parameters(self, *args, **kwargs):
+            return []
         def __call__(self, *args, **kwargs):
             return None, None
 

@@ -1,0 +1,33 @@
+
+def test_strong_product_null():
+    null = nx.null_graph()
+    empty10 = nx.empty_graph(10)
+    K3 = nx.complete_graph(3)
+    K10 = nx.complete_graph(10)
+    P3 = nx.path_graph(3)
+    P10 = nx.path_graph(10)
+    # null graph
+    G = nx.strong_product(null, null)
+    assert nx.is_isomorphic(G, null)
+    # null_graph X anything = null_graph and v.v.
+    G = nx.strong_product(null, empty10)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(null, K3)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(null, K10)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(null, P3)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(null, P10)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(empty10, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(K3, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(K10, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(P3, null)
+    assert nx.is_isomorphic(G, null)
+    G = nx.strong_product(P10, null)
+    assert nx.is_isomorphic(G, null)
+

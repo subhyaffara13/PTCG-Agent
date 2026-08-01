@@ -1,0 +1,7 @@
+
+def enable_diag(diag_enum: Diagnostics) -> None:
+    """
+    Enable a global pyparsing diagnostic flag (see :class:`Diagnostics`).
+    """
+    __diag__.enable(diag_enum.name)
+

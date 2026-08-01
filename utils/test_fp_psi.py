@@ -1,0 +1,23 @@
+
+def test_fp_psi():
+    assert ae(fp.psi(0, 3.7), 1.1671535393615114409)
+    assert ae(fp.psi(0, 0.5), -1.9635100260214234794)
+    assert ae(fp.psi(0, 1), -0.57721566490153286061)
+    assert ae(fp.psi(0, -2.5), 1.1031566406452431872)
+    assert ae(fp.psi(0, 12.9), 2.5179671503279156347)
+    assert ae(fp.psi(0, 100), 4.6001618527380874002)
+    assert ae(fp.psi(0, 2500.3), 7.8239660143238547877)
+    assert ae(fp.psi(0, 1e40), 92.103403719761827391)
+    assert ae(fp.psi(0, 1e200), 460.51701859880913677)
+    assert ae(fp.psi(0, 3.7+0j), (1.1671535393615114409 + 0.0j))
+    assert ae(fp.psi(1, 3), 0.39493406684822643647)
+    assert ae(fp.psi(3, 2+3j), (-0.05383196209159972116 + 0.0076890935247364805218j))
+    assert ae(fp.psi(4, -0.5+1j), (1.2719531355492328195 - 18.211833410936276774j))
+    assert ae(fp.harmonic(0), 0.0)
+    assert ae(fp.harmonic(1), 1.0)
+    assert ae(fp.harmonic(2), 1.5)
+    assert ae(fp.harmonic(100), 5.1873775176396202608)
+    assert ae(fp.harmonic(-2.5), 1.2803723055467760478)
+    assert ae(fp.harmonic(2+3j), (1.9390425294578375875 + 0.87336044981834544043j))
+    assert ae(fp.harmonic(-5-4j), (2.3725754822349437733 - 2.4160904444801621j))
+

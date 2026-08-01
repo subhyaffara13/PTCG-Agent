@@ -1,0 +1,13 @@
+
+def _bypass_ensure_directory(path) -> None:
+    """Sandbox-bypassing version of ensure_directory()"""
+    if not WRITE_SUPPORT:
+        raise OSError('"os.mkdir" not supported on this platform.')
+    dirname, filename = split(path)
+    if dirname and filename and not isdir(dirname):
+        _bypass_ensure_directory(dirname)
+        try:
+            mkdir(dirname, 0o755)
+        except FileExistsError:
+            pass
+

@@ -72,90 +72,17 @@ class SynergyGraph:
         return engines
 
 
-def compute_pmi(card_a: int, card_b: int, graph: SynergyGraph) -> float:
-    if card_a > card_b:
-        card_a, card_b = card_b, card_a
-        
-    co_occur = graph.co_occurrence.get((card_a, card_b), 0)
-    if co_occur == 0:
-        return 0.0
-        
-    p_a = graph.card_counts.get(card_a, 0) / graph.total_decks
-    p_b = graph.card_counts.get(card_b, 0) / graph.total_decks
-    p_ab = co_occur / graph.total_decks
-    
-    if p_a == 0 or p_b == 0:
-        return 0.0
-        
-    return math.log2(p_ab / (p_a * p_b))
+from utils.compute_pmi import compute_pmi
 
 
-def compute_jaccard(card_a: int, card_b: int, graph: SynergyGraph) -> float:
-    if card_a > card_b:
-        card_a, card_b = card_b, card_a
-        
-    co_occur = graph.co_occurrence.get((card_a, card_b), 0)
-    if co_occur == 0:
-        return 0.0
-        
-    count_a = graph.card_counts.get(card_a, 0)
-    count_b = graph.card_counts.get(card_b, 0)
-    
-    union = count_a + count_b - co_occur
-    if union == 0:
-        return 0.0
-        
-    return co_occur / union
+from utils.compute_jaccard import compute_jaccard
 
 
-def score_deck_synergy(deck: list, graph: SynergyGraph) -> float:
-    total_pmi = 0.0
-    card_ids = []
-    for c in deck:
-        if isinstance(c, dict) and "card_id" in c:
-            try:
-                card_ids.append(int(c["card_id"]))
-            except Exception:
-                pass
-        elif isinstance(c, (int, str)) and str(c).isdigit():
-            card_ids.append(int(c))
-    n = len(card_ids)
-    
-    for i in range(n):
-        for j in range(i + 1, n):
-            total_pmi += graph.get_pmi(card_ids[i], card_ids[j])
-            
-    return total_pmi
+from utils.score_deck_synergy import score_deck_synergy
 
 
-def load_corpus() -> List[List[int]]:
-    corpus = []
-    try:
-        with open("logs/kaggle_summary/scraped_decks.json", "r") as f:
-            data = json.load(f)
-            if "opp_win_decks" in data:
-                corpus.extend(data["opp_win_decks"])
-            if "us_win_decks" in data:
-                corpus.extend(data["us_win_decks"])
-    except FileNotFoundError:
-        pass
-    
-    try:
-        with open("logs/iteration_result.json", "r") as f:
-            data = json.load(f)
-            pass
-    except FileNotFoundError:
-        pass
-        
-    return corpus
+from utils.load_corpus import load_corpus
 
 _GLOBAL_GRAPH = None
 
-def get_global_synergy_graph() -> SynergyGraph:
-    global _GLOBAL_GRAPH
-    if _GLOBAL_GRAPH is None:
-        _GLOBAL_GRAPH = SynergyGraph()
-        corpus = load_corpus()
-        if corpus:
-            _GLOBAL_GRAPH.build_from_corpus(corpus)
-    return _GLOBAL_GRAPH
+from utils.get_global_synergy_graph import get_global_synergy_graph

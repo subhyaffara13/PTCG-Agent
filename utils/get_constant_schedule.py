@@ -1,0 +1,21 @@
+
+def get_constant_schedule(optimizer: Optimizer, last_epoch: int = -1):
+    """
+    Create a schedule with a constant learning rate, using the learning rate set in optimizer.
+
+    Args:
+        optimizer ([`~torch.optim.Optimizer`]):
+            The optimizer for which to schedule the learning rate.
+        last_epoch (`int`, *optional*, defaults to -1):
+            The index of the last epoch when resuming training.
+
+    Return:
+        `torch.optim.lr_scheduler.LambdaLR` with the appropriate schedule.
+    """
+
+    return LambdaLR(optimizer, _get_constant_lambda, last_epoch=last_epoch)
+
+
+def get_constant_schedule(*args, **kwargs):
+    requires_backends(get_constant_schedule, ["torch"])
+

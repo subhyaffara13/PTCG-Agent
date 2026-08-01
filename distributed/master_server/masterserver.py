@@ -149,7 +149,8 @@ class MasterServer:
             else:
                 time.sleep(1)
 
+from utils.main import main
+
 if __name__ == "__main__":
-    server = MasterServer()
-    server.start()
+    main()
 

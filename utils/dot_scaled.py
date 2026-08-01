@@ -1,0 +1,4 @@
+
+def dot_scaled(d: _ods_ir.Type, a: _ods_ir.Value[_ods_ir.RankedTensorType], b: _ods_ir.Value[_ods_ir.RankedTensorType], c: _ods_ir.Value[_ods_ir.RankedTensorType], a_elem_type: _Union[_Any, _ods_ir.Attribute], b_elem_type: _Union[_Any, _ods_ir.Attribute], fast_math: _Union[bool, _ods_ir.BoolAttr], *, a_scale: _Optional[_ods_ir.Value[_ods_ir.RankedTensorType]] = None, b_scale: _Optional[_ods_ir.Value[_ods_ir.RankedTensorType]] = None, lhs_k_pack: _Optional[_Union[bool, _ods_ir.BoolAttr]] = None, rhs_k_pack: _Optional[_Union[bool, _ods_ir.BoolAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.RankedTensorType]:
+  return DotScaledOp(d=d, a=a, b=b, c=c, a_elem_type=a_elem_type, b_elem_type=b_elem_type, fastMath=fast_math, a_scale=a_scale, b_scale=b_scale, lhs_k_pack=lhs_k_pack, rhs_k_pack=rhs_k_pack, loc=loc, ip=ip).result
+

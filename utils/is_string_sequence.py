@@ -1,0 +1,11 @@
+
+def is_string_sequence(seq):
+    result = True
+    i = None
+    for i, s in enumerate(seq):
+        if not isinstance(s, string_types):
+            result = False
+            break
+    assert i is not None
+    return result
+

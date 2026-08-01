@@ -1,0 +1,7 @@
+
+def _validate_weights(w, dtype=np.float64):
+    w = _validate_vector(w, dtype=dtype)
+    if np.any(w < 0):
+        raise ValueError("Input weights should be all non-negative")
+    return w
+

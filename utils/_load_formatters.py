@@ -1,0 +1,16 @@
+
+def _load_formatters(module_name):
+    """Load a formatter (and all others in the module too)."""
+    mod = __import__(module_name, None, None, ['__all__'])
+    for formatter_name in mod.__all__:
+        cls = getattr(mod, formatter_name)
+        _formatter_cache[cls.name] = cls
+
+
+def _load_formatters(module_name):
+    """Load a formatter (and all others in the module too)."""
+    mod = __import__(module_name, None, None, ['__all__'])
+    for formatter_name in mod.__all__:
+        cls = getattr(mod, formatter_name)
+        _formatter_cache[cls.name] = cls
+

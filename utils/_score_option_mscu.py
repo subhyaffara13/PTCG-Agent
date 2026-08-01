@@ -1,0 +1,150 @@
+
+def _score_option_mscu(opt, registry, current, my_idx, sel_type, select):
+    score = 0.0
+    card_name = get_val(opt, "name", ""); card_id = get_val(opt, "id")
+    card = None
+    if card_id is not None: card = registry.get_full_skill(card_id)
+    if card is None and card_name: card = registry.get_full_skill(card_name)
+    if card:
+        score = getattr(card, "utility_score", 0.0)
+        card_id_int = getattr(card, "card_id", None)
+        if card_id_int is not None and registry:
+            dos_set = getattr(registry, "_learned_dos_set", None)
+            if dos_set is None and hasattr(registry, "learned_dos"):
+                dos_data = getattr(registry, "learned_dos", {})
+                if isinstance(dos_data, dict):
+                    dos_list = dos_data.get("deck_dos", [])
+                    dos_set = {int(x.get("card_id")) for x in dos_list if isinstance(x, dict) and "card_id" in x}
+                else:
+                    dos_set = set()
+                setattr(registry, "_learned_dos_set", dos_set)
+            donts_set = getattr(registry, "_learned_donts_set", None)
+            if donts_set is None and hasattr(registry, "learned_donts"):
+                donts_data = getattr(registry, "learned_donts", {})
+                if isinstance(donts_data, dict):
+                    donts_list = donts_data.get("deck_donts", [])
+                    donts_set = {int(x.get("card_id")) for x in donts_list if isinstance(x, dict) and "card_id" in x}
+                else:
+                    donts_set = set()
+                setattr(registry, "_learned_donts_set", donts_set)
+            if dos_set and int(card_id_int) in dos_set: score += 12.0
+            if donts_set and int(card_id_int) in donts_set: score -= 12.0
+    try:
+        players = get_val(current, "players", [])
+        if len(players) > my_idx and players[my_idx]:
+            bench = get_val(players[my_idx], "bench", []); bench_count = len(bench) if isinstance(bench, list) else 0
+            opt_area = get_val(opt, "inPlayArea")
+            if bench_count >= 4 and opt_area in (5, 12):
+                cname_low = str(card_name).lower()
+                is_tech_drop = any(t in cname_low for t in ("fezandipiti", "squawkabilly", "lumi", "rotom", "mew"))
+                if not is_tech_drop: score -= 20.0
+    except Exception: pass
+    try:
+        cname_low = str(card_name).lower()
+        if "stadium" in cname_low or any(st in cname_low for st in ("court", "path", "temple", "beach", "chamber")):
+            opp_stadium = get_val(current, "stadium", None)
+            if not opp_stadium: score -= 10.0
+            else: score += 15.0
+    except Exception: pass
+    try:
+        players = get_val(current, "players", [])
+        if len(players) > my_idx and players[my_idx]:
+            cname_low = str(card_name).lower()
+            is_draw_card = any(d in cname_low for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
+            if is_draw_card:
+                deck_count = get_val(players[my_idx], "deckCount")
+                if deck_count is None or not isinstance(deck_count, (int, float)):
+                    deck_count = len(get_val(players[my_idx], "deck", [])) or 60
+                if deck_count <= 3: score -= 500.0
+                elif deck_count <= 8: score -= 100.0
+    except Exception: pass
+    try:
+        players = get_val(current, "players", [])
+        if len(players) > my_idx and players[my_idx]:
+            active_poke = get_val(players[my_idx], "active", {})
+            status_list = get_val(active_poke, "specialConditions", []) or get_val(active_poke, "status", [])
+            if status_list:
+                cname_low = str(card_name).lower()
+                is_cleanse = any(sw in cname_low for sw in ("switch", "rope", "cart", "scoop", "turo", "curler", "bird keeper"))
+                if is_cleanse: score += 35.0
+    except Exception: pass
+    opt_type = get_val(opt, "type")
+    if opt_type in (12, 13): score += 50.0
+    elif opt_type == 8: score += 20.0
+    return score
+
+
+def _score_option_mscu(opt, registry, current, my_idx, sel_type, select):
+    score = 0.0
+    card_name = get_val(opt, "name", ""); card_id = get_val(opt, "id")
+    card = None
+    if card_id is not None: card = registry.get_full_skill(card_id)
+    if card is None and card_name: card = registry.get_full_skill(card_name)
+    if card:
+        score = getattr(card, "utility_score", 0.0)
+        card_id_int = getattr(card, "card_id", None)
+        if card_id_int is not None and registry:
+            dos_set = getattr(registry, "_learned_dos_set", None)
+            if dos_set is None and hasattr(registry, "learned_dos"):
+                dos_data = getattr(registry, "learned_dos", {})
+                if isinstance(dos_data, dict):
+                    dos_list = dos_data.get("deck_dos", [])
+                    dos_set = {int(x.get("card_id")) for x in dos_list if isinstance(x, dict) and "card_id" in x}
+                else:
+                    dos_set = set()
+                setattr(registry, "_learned_dos_set", dos_set)
+            donts_set = getattr(registry, "_learned_donts_set", None)
+            if donts_set is None and hasattr(registry, "learned_donts"):
+                donts_data = getattr(registry, "learned_donts", {})
+                if isinstance(donts_data, dict):
+                    donts_list = donts_data.get("deck_donts", [])
+                    donts_set = {int(x.get("card_id")) for x in donts_list if isinstance(x, dict) and "card_id" in x}
+                else:
+                    donts_set = set()
+                setattr(registry, "_learned_donts_set", donts_set)
+            if dos_set and int(card_id_int) in dos_set: score += 12.0
+            if donts_set and int(card_id_int) in donts_set: score -= 12.0
+    try:
+        players = get_val(current, "players", [])
+        if len(players) > my_idx and players[my_idx]:
+            bench = get_val(players[my_idx], "bench", []); bench_count = len(bench) if isinstance(bench, list) else 0
+            opt_area = get_val(opt, "inPlayArea")
+            if bench_count >= 4 and opt_area in (5, 12):
+                cname_low = str(card_name).lower()
+                is_tech_drop = any(t in cname_low for t in ("fezandipiti", "squawkabilly", "lumi", "rotom", "mew"))
+                if not is_tech_drop: score -= 20.0
+    except Exception: pass
+    try:
+        cname_low = str(card_name).lower()
+        if "stadium" in cname_low or any(st in cname_low for st in ("court", "path", "temple", "beach", "chamber")):
+            opp_stadium = get_val(current, "stadium", None)
+            if not opp_stadium: score -= 10.0
+            else: score += 15.0
+    except Exception: pass
+    try:
+        players = get_val(current, "players", [])
+        if len(players) > my_idx and players[my_idx]:
+            cname_low = str(card_name).lower()
+            is_draw_card = any(d in cname_low for d in ("research", "colress", "iono", "lillie", "draw", "pokégear", "trekking"))
+            if is_draw_card:
+                deck_count = get_val(players[my_idx], "deckCount")
+                if deck_count is None or not isinstance(deck_count, (int, float)):
+                    deck_count = len(get_val(players[my_idx], "deck", [])) or 60
+                if deck_count <= 3: score -= 500.0
+                elif deck_count <= 8: score -= 100.0
+    except Exception: pass
+    try:
+        players = get_val(current, "players", [])
+        if len(players) > my_idx and players[my_idx]:
+            active_poke = get_val(players[my_idx], "active", {})
+            status_list = get_val(active_poke, "specialConditions", []) or get_val(active_poke, "status", [])
+            if status_list:
+                cname_low = str(card_name).lower()
+                is_cleanse = any(sw in cname_low for sw in ("switch", "rope", "cart", "scoop", "turo", "curler", "bird keeper"))
+                if is_cleanse: score += 35.0
+    except Exception: pass
+    opt_type = get_val(opt, "type")
+    if opt_type in (12, 13): score += 50.0
+    elif opt_type == 8: score += 20.0
+    return score
+

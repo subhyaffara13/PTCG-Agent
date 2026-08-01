@@ -1,0 +1,29 @@
+
+def railroad_to_html(diagrams: list[NamedDiagram], embed=False, **kwargs) -> str:
+    """
+    Given a list of :class:`NamedDiagram`, produce a single HTML string
+    that visualises those diagrams.
+
+    :params kwargs: kwargs to be passed in to the template
+    """
+    data = []
+    for diagram in diagrams:
+        if diagram.diagram is None:
+            continue
+        io = StringIO()
+        try:
+            css = kwargs.get("css")
+            diagram.diagram.writeStandalone(io.write, css=css)
+        except AttributeError:
+            diagram.diagram.writeSvg(io.write)
+        title = diagram.name
+        if diagram.index == 0:
+            title += " (root)"
+        data.append(
+            {
+                "title": title, "text": "", "svg": io.getvalue(), "bookmark": diagram.bookmark
+            }
+        )
+
+    return template.render(diagrams=data, embed=embed, **kwargs)
+

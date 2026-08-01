@@ -1,0 +1,10 @@
+
+def new_and_old_dlpack():
+
+    class OldDLPack(np.ndarray):
+        # Support only the "old" version
+        def __dlpack__(self, stream=None):
+            return super().__dlpack__(stream=None)
+
+    return [np.arange(5), np.arange(5).view(OldDLPack)]
+

@@ -1,0 +1,8 @@
+
+def _set_parent_ns(packageName) -> None:
+    parts = packageName.split('.')
+    name = parts.pop()
+    if parts:
+        parent = '.'.join(parts)
+        setattr(sys.modules[parent], name, sys.modules[packageName])
+

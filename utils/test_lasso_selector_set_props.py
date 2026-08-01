@@ -1,0 +1,14 @@
+
+def test_lasso_selector_set_props(ax):
+    onselect = mock.Mock(spec=noop, return_value=None)
+
+    tool = widgets.LassoSelector(ax, onselect=onselect,
+                                 props=dict(color='b', alpha=0.2))
+
+    artist = tool._selection_artist
+    assert mcolors.same_color(artist.get_color(), 'b')
+    assert artist.get_alpha() == 0.2
+    tool.set_props(color='r', alpha=0.3)
+    assert mcolors.same_color(artist.get_color(), 'r')
+    assert artist.get_alpha() == 0.3
+

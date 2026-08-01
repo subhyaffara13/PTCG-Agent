@@ -36,17 +36,8 @@ ARCHETYPES_DATA = {
     }
 }
 
-def make_skills_dir(tmp_path):
-    skills_dir = tmp_path / "skills"
-    skills_dir.mkdir()
-    return skills_dir
+from utils.make_skills_dir import make_skills_dir
 
-def make_decisions_file(tmp_path):
-    decisions_file = tmp_path / "decisions.md"
-    decisions_file.write_text("# Decisions\n", encoding="utf-8")
-    return decisions_file
+from utils.make_decisions_file import make_decisions_file
 
-def make_staging_dir(tmp_path):
-    staging_dir = tmp_path / "staging"
-    staging_dir.mkdir()
-    return staging_dir
+from utils.make_staging_dir import make_staging_dir

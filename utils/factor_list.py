@@ -1,0 +1,17 @@
+
+def factor_list(f, *gens, **args):
+    """
+    Compute a list of irreducible factors of ``f``.
+
+    Examples
+    ========
+
+    >>> from sympy import factor_list
+    >>> from sympy.abc import x, y
+
+    >>> factor_list(2*x**5 + 2*x**4*y + 4*x**3 + 4*x**2*y + 2*x + 2*y)
+    (2, [(x + y, 1), (x**2 + 1, 2)])
+
+    """
+    return _generic_factor_list(f, gens, args, method='factor')
+

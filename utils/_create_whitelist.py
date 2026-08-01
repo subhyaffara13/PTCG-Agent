@@ -1,0 +1,17 @@
+
+def _create_whitelist(
+    would_be_installed: set[NormalizedName], package_set: PackageSet
+) -> set[NormalizedName]:
+    packages_affected = set(would_be_installed)
+
+    for package_name in package_set:
+        if package_name in packages_affected:
+            continue
+
+        for req in package_set[package_name].dependencies:
+            if canonicalize_name(req.name) in packages_affected:
+                packages_affected.add(package_name)
+                break
+
+    return packages_affected
+

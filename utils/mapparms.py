@@ -1,0 +1,48 @@
+
+def mapparms(old, new):
+    """
+    Linear map parameters between domains.
+
+    Return the parameters of the linear map ``offset + scale*x`` that maps
+    `old` to `new` such that ``old[i] -> new[i]``, ``i = 0, 1``.
+
+    Parameters
+    ----------
+    old, new : array_like
+        Domains. Each domain must (successfully) convert to a 1-d array
+        containing precisely two values.
+
+    Returns
+    -------
+    offset, scale : scalars
+        The map ``L(x) = offset + scale*x`` maps the first domain to the
+        second.
+
+    See Also
+    --------
+    getdomain, mapdomain
+
+    Notes
+    -----
+    Also works for complex numbers, and thus can be used to calculate the
+    parameters required to map any line in the complex plane to any other
+    line therein.
+
+    Examples
+    --------
+    >>> from numpy.polynomial import polyutils as pu
+    >>> pu.mapparms((-1,1),(-1,1))
+    (0.0, 1.0)
+    >>> pu.mapparms((1,-1),(-1,1))
+    (-0.0, -1.0)
+    >>> i = complex(0,1)
+    >>> pu.mapparms((-i,-1),(1,i))
+    ((1+1j), (1-0j))
+
+    """
+    oldlen = old[1] - old[0]
+    newlen = new[1] - new[0]
+    off = (old[1] * new[0] - old[0] * new[1]) / oldlen
+    scl = newlen / oldlen
+    return off, scl
+

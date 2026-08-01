@@ -1,0 +1,12 @@
+
+def plotModelFromMasters(model, masterValues, fig, **kwargs):
+    """Plot a variation model and set of master values corresponding
+    to the locations to the model into a pyplot figure.  Variation
+    model must have axisOrder of size 1 or 2."""
+    if len(model.axisOrder) == 1:
+        _plotModelFromMasters2D(model, masterValues, fig, **kwargs)
+    elif len(model.axisOrder) == 2:
+        _plotModelFromMasters3D(model, masterValues, fig, **kwargs)
+    else:
+        raise ValueError("Only 1 or 2 axes are supported")
+

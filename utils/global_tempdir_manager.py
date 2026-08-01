@@ -1,0 +1,10 @@
+
+def global_tempdir_manager() -> Generator[None, None, None]:
+    global _tempdir_manager
+    with ExitStack() as stack:
+        old_tempdir_manager, _tempdir_manager = _tempdir_manager, stack
+        try:
+            yield
+        finally:
+            _tempdir_manager = old_tempdir_manager
+

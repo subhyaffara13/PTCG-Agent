@@ -1,0 +1,45 @@
+
+def imshow(
+    X: ArrayLike | PIL.Image.Image,
+    cmap: str | Colormap | None = None,
+    norm: str | Normalize | None = None,
+    *,
+    aspect: Literal["equal", "auto"] | float | None = None,
+    interpolation: str | None = None,
+    alpha: float | ArrayLike | None = None,
+    vmin: float | None = None,
+    vmax: float | None = None,
+    colorizer: Colorizer | None = None,
+    origin: Literal["upper", "lower"] | None = None,
+    extent: tuple[float, float, float, float] | None = None,
+    interpolation_stage: Literal["data", "rgba", "auto"] | None = None,
+    filternorm: bool = True,
+    filterrad: float = 4.0,
+    resample: bool | None = None,
+    url: str | None = None,
+    data: DataParamType = None,
+    **kwargs,
+) -> AxesImage:
+    __ret = gca().imshow(
+        X,
+        cmap=cmap,
+        norm=norm,
+        aspect=aspect,
+        interpolation=interpolation,
+        alpha=alpha,
+        vmin=vmin,
+        vmax=vmax,
+        colorizer=colorizer,
+        origin=origin,
+        extent=extent,
+        interpolation_stage=interpolation_stage,
+        filternorm=filternorm,
+        filterrad=filterrad,
+        resample=resample,
+        url=url,
+        **({"data": data} if data is not None else {}),
+        **kwargs,
+    )
+    sci(__ret)
+    return __ret
+

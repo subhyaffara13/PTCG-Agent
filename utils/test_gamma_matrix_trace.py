@@ -1,0 +1,118 @@
+
+def test_gamma_matrix_trace():
+    g = LorentzIndex.metric
+
+    m0, m1, m2, m3, m4, m5, m6 = tensor_indices('m0:7', LorentzIndex)
+    n0, n1, n2, n3, n4, n5 = tensor_indices('n0:6', LorentzIndex)
+
+    # working in D=4 dimensions
+    D = 4
+
+    # traces of odd number of gamma matrices are zero:
+    t = G(m0)
+    t1 = gamma_trace(t)
+    assert t1.equals(0)
+
+    t = G(m0)*G(m1)*G(m2)
+    t1 = gamma_trace(t)
+    assert t1.equals(0)
+
+    t = G(m0)*G(m1)*G(-m0)
+    t1 = gamma_trace(t)
+    assert t1.equals(0)
+
+    t = G(m0)*G(m1)*G(m2)*G(m3)*G(m4)
+    t1 = gamma_trace(t)
+    assert t1.equals(0)
+
+    # traces without internal contractions:
+    t = G(m0)*G(m1)
+    t1 = gamma_trace(t)
+    assert _is_tensor_eq(t1, 4*g(m0, m1))
+
+    t = G(m0)*G(m1)*G(m2)*G(m3)
+    t1 = gamma_trace(t)
+    t2 = -4*g(m0, m2)*g(m1, m3) + 4*g(m0, m1)*g(m2, m3) + 4*g(m0, m3)*g(m1, m2)
+    assert _is_tensor_eq(t1, t2)
+
+    t = G(m0)*G(m1)*G(m2)*G(m3)*G(m4)*G(m5)
+    t1 = gamma_trace(t)
+    t2 = t1*g(-m0, -m5)
+    t2 = t2.contract_metric(g)
+    assert _is_tensor_eq(t2, D*gamma_trace(G(m1)*G(m2)*G(m3)*G(m4)))
+
+    # traces of expressions with internal contractions:
+    t = G(m0)*G(-m0)
+    t1 = gamma_trace(t)
+    assert t1.equals(4*D)
+
+    t = G(m0)*G(m1)*G(-m0)*G(-m1)
+    t1 = gamma_trace(t)
+    assert t1.equals(8*D - 4*D**2)
+
+    t = G(m0)*G(m1)*G(m2)*G(m3)*G(m4)*G(-m0)
+    t1 = gamma_trace(t)
+    t2 = (-4*D)*g(m1, m3)*g(m2, m4) + (4*D)*g(m1, m2)*g(m3, m4) + \
+                 (4*D)*g(m1, m4)*g(m2, m3)
+    assert _is_tensor_eq(t1, t2)
+
+    t = G(-m5)*G(m0)*G(m1)*G(m2)*G(m3)*G(m4)*G(-m0)*G(m5)
+    t1 = gamma_trace(t)
+    t2 = (32*D + 4*(-D + 4)**2 - 64)*(g(m1, m2)*g(m3, m4) - \
+            g(m1, m3)*g(m2, m4) + g(m1, m4)*g(m2, m3))
+    assert _is_tensor_eq(t1, t2)
+
+    t = G(m0)*G(m1)*G(-m0)*G(m3)
+    t1 = gamma_trace(t)
+    assert t1.equals((-4*D + 8)*g(m1, m3))
+
+#    p, q = S1('p,q')
+#    ps = p(m0)*G(-m0)
+#    qs = q(m0)*G(-m0)
+#    t = ps*qs*ps*qs
+#    t1 = gamma_trace(t)
+#    assert t1 == 8*p(m0)*q(-m0)*p(m1)*q(-m1) - 4*p(m0)*p(-m0)*q(m1)*q(-m1)
+
+    t = G(m0)*G(m1)*G(m2)*G(m3)*G(m4)*G(m5)*G(-m0)*G(-m1)*G(-m2)*G(-m3)*G(-m4)*G(-m5)
+    t1 = gamma_trace(t)
+    assert t1.equals(-4*D**6 + 120*D**5 - 1040*D**4 + 3360*D**3 - 4480*D**2 + 2048*D)
+
+    t = G(m0)*G(m1)*G(n1)*G(m2)*G(n2)*G(m3)*G(m4)*G(-n2)*G(-n1)*G(-m0)*G(-m1)*G(-m2)*G(-m3)*G(-m4)
+    t1 = gamma_trace(t)
+    tresu = -7168*D + 16768*D**2 - 14400*D**3 + 5920*D**4 - 1232*D**5 + 120*D**6 - 4*D**7
+    assert t1.equals(tresu)
+
+    # checked with Mathematica
+    # In[1]:= <<Tracer.m
+    # In[2]:= Spur[l];
+    # In[3]:= GammaTrace[l, {m0},{m1},{n1},{m2},{n2},{m3},{m4},{n3},{n4},{m0},{m1},{m2},{m3},{m4}]
+    t = G(m0)*G(m1)*G(n1)*G(m2)*G(n2)*G(m3)*G(m4)*G(n3)*G(n4)*G(-m0)*G(-m1)*G(-m2)*G(-m3)*G(-m4)
+    t1 = gamma_trace(t)
+#    t1 = t1.expand_coeff()
+    c1 = -4*D**5 + 120*D**4 - 1200*D**3 + 5280*D**2 - 10560*D + 7808
+    c2 = -4*D**5 + 88*D**4 - 560*D**3 + 1440*D**2 - 1600*D + 640
+    assert _is_tensor_eq(t1, c1*g(n1, n4)*g(n2, n3) + c2*g(n1, n2)*g(n3, n4) + \
+            (-c1)*g(n1, n3)*g(n2, n4))
+
+    p, q = tensor_heads('p,q', [LorentzIndex])
+    ps = p(m0)*G(-m0)
+    qs = q(m0)*G(-m0)
+    p2 = p(m0)*p(-m0)
+    q2 = q(m0)*q(-m0)
+    pq = p(m0)*q(-m0)
+    t = ps*qs*ps*qs
+    r = gamma_trace(t)
+    assert _is_tensor_eq(r, 8*pq*pq - 4*p2*q2)
+    t = ps*qs*ps*qs*ps*qs
+    r = gamma_trace(t)
+    assert _is_tensor_eq(r, -12*p2*pq*q2 + 16*pq*pq*pq)
+    t = ps*qs*ps*qs*ps*qs*ps*qs
+    r = gamma_trace(t)
+    assert _is_tensor_eq(r, -32*pq*pq*p2*q2 + 32*pq*pq*pq*pq + 4*p2*p2*q2*q2)
+
+    t = 4*p(m1)*p(m0)*p(-m0)*q(-m1)*q(m2)*q(-m2)
+    assert _is_tensor_eq(gamma_trace(t), t)
+    t = ps*ps*ps*ps*ps*ps*ps*ps
+    r = gamma_trace(t)
+    assert r.equals(4*p2*p2*p2*p2)
+

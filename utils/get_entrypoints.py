@@ -1,0 +1,11 @@
+
+def get_entrypoints(dist: BaseDistribution) -> tuple[dict[str, str], dict[str, str]]:
+    console_scripts = {}
+    gui_scripts = {}
+    for entry_point in dist.iter_entry_points():
+        if entry_point.group == "console_scripts":
+            console_scripts[entry_point.name] = entry_point.value
+        elif entry_point.group == "gui_scripts":
+            gui_scripts[entry_point.name] = entry_point.value
+    return console_scripts, gui_scripts
+

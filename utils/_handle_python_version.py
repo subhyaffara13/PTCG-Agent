@@ -1,0 +1,14 @@
+
+def _handle_python_version(
+    option: Option, opt_str: str, value: str, parser: OptionParser
+) -> None:
+    """
+    Handle a provided --python-version value.
+    """
+    version_info, error_msg = _convert_python_version(value)
+    if error_msg is not None:
+        msg = f"invalid --python-version value: {value!r}: {error_msg}"
+        raise_option_error(parser, option=option, msg=msg)
+
+    parser.values.python_version = version_info
+

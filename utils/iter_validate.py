@@ -1,0 +1,63 @@
+
+def iter_validate(
+    nbdict=None,
+    ref=None,
+    version=None,
+    version_minor=None,
+    relax_add_props=False,
+    nbjson=None,
+    strip_invalid_metadata=False,
+):
+    """Checks whether the given notebook dict-like object conforms to the
+    relevant notebook format schema.
+
+    Returns a generator of all ValidationErrors if not valid.
+
+    Notes
+    -----
+    To fix: For security reasons, this function should *never* mutate its `nbdict` argument, and
+    should *never* try to validate a mutated or modified version of its notebook.
+
+    """
+    # backwards compatibility for nbjson argument
+    if nbdict is not None:
+        pass
+    elif nbjson is not None:
+        nbdict = nbjson
+    else:
+        msg = "iter_validate() missing 1 required argument: 'nbdict'"
+        raise TypeError(msg)
+
+    if version is None:
+        version, version_minor = get_version(nbdict)
+
+    if ref:
+        try:
+            errors = _get_errors(
+                nbdict,
+                version,
+                version_minor,
+                relax_add_props,
+                {"$ref": "#/definitions/%s" % ref},
+            )
+        except ValidationError as e:
+            yield e
+            return
+
+    else:
+        if strip_invalid_metadata:
+            _strip_invalida_metadata(nbdict, version, version_minor, relax_add_props)
+
+        # Validate one more time to ensure that us removing metadata
+        # didn't cause another complex validation issue in the schema.
+        # Also to ensure that higher-level errors produced by individual metadata validation
+        # failures are removed.
+        try:
+            errors = _get_errors(nbdict, version, version_minor, relax_add_props)
+        except ValidationError as e:
+            yield e
+            return
+
+    for error in errors:
+        yield better_validation_error(error, version, version_minor)
+

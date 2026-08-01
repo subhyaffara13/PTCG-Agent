@@ -1,0 +1,7 @@
+
+def _safe_segment(segment):
+    """Convert an arbitrary string into a safe segment"""
+    segment = re.sub('[^A-Za-z0-9.]+', '-', segment)
+    segment = re.sub('-[^A-Za-z0-9]+', '-', segment)
+    return re.sub(r'\.[^A-Za-z0-9]+', '.', segment).strip(".-")
+

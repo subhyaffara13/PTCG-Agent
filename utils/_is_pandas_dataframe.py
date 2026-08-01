@@ -1,0 +1,12 @@
+
+def _is_pandas_dataframe(x):
+    """Check if *x* is a Pandas DataFrame."""
+    try:
+        # We're intentionally not attempting to import Pandas. If somebody
+        # has created a Pandas DataFrame, Pandas should already be in sys.modules.
+        tp = sys.modules.get("pandas").DataFrame
+    except AttributeError:
+        return False  # Module not imported or a nonstandard module with no Array attr.
+    return (isinstance(tp, type)  # Just in case it's a very nonstandard module.
+            and isinstance(x, tp))
+

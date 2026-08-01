@@ -1,0 +1,39 @@
+
+def add_type_promotion(
+    info: TypeInfo, module_names: SymbolTable, options: Options, builtin_names: SymbolTable
+) -> None:
+    """Setup extra, ad-hoc subtyping relationships between classes (promotion).
+
+    This includes things like 'int' being compatible with 'float'.
+    """
+    defn = info.defn
+    promote_targets: list[ProperType] = []
+    for decorator in defn.decorators:
+        if isinstance(decorator, CallExpr):
+            analyzed = decorator.analyzed
+            if isinstance(analyzed, PromoteExpr):
+                # _promote class decorator (undocumented feature).
+                promote_targets.append(analyzed.type)
+    if not promote_targets:
+        if defn.fullname in TYPE_PROMOTIONS:
+            target_sym = module_names.get(TYPE_PROMOTIONS[defn.fullname])
+            if defn.fullname == "builtins.bytearray" and options.disable_bytearray_promotion:
+                target_sym = None
+            elif defn.fullname == "builtins.memoryview" and options.disable_memoryview_promotion:
+                target_sym = None
+            # With test stubs, the target may not exist.
+            if target_sym:
+                target_info = target_sym.node
+                assert isinstance(target_info, TypeInfo)
+                promote_targets.append(Instance(target_info, []))
+    # Special case the promotions between 'int' and native integer types.
+    # These have promotions going both ways, such as from 'int' to 'i64'
+    # and 'i64' to 'int', for convenience.
+    if defn.fullname in MYPYC_NATIVE_INT_NAMES:
+        int_sym = builtin_names["int"]
+        assert isinstance(int_sym.node, TypeInfo)
+        int_sym.node._promote.append(Instance(defn.info, []))
+        defn.info.alt_promote = Instance(int_sym.node, [])
+    if promote_targets:
+        defn.info._promote.extend(promote_targets)
+

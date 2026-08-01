@@ -1,0 +1,20 @@
+
+def zpk2ss(z, p, k):
+    """Zero-pole-gain representation to state-space representation.
+
+    Parameters
+    ----------
+    z, p : sequence
+        Zeros and poles.
+    k : float
+        System gain.
+
+    Returns
+    -------
+    A, B, C, D : ndarray
+        State space representation of the system, in controller canonical
+        form.
+
+    """
+    return tf2ss(*zpk2tf(z, p, k))
+

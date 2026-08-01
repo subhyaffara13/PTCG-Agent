@@ -1,0 +1,5 @@
+
+def call_intrinsic(results_: _Optional[_ods_ir.Type], intrin: _Union[str, _ods_ir.StringAttr], args: _Sequence[_ods_ir.Value], op_bundle_operands: _Sequence[_ods_ir.Value], op_bundle_sizes: _Union[_Sequence[int], _ods_ir.DenseI32ArrayAttr], *, fastmath_flags: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, op_bundle_tags: _Optional[_Union[_Sequence[_ods_ir.Attribute], _ods_ir.ArrayAttr]] = None, arg_attrs: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, res_attrs: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _Union[_ods_ir.OpResult, _ods_ir.OpResultList, CallIntrinsicOp]:
+  op = CallIntrinsicOp(results_=results_, intrin=intrin, args=args, op_bundle_operands=op_bundle_operands, op_bundle_sizes=op_bundle_sizes, fastmathFlags=fastmath_flags, op_bundle_tags=op_bundle_tags, arg_attrs=arg_attrs, res_attrs=res_attrs, loc=loc, ip=ip); results = op.results
+  return results if len(results) > 1 else (results[0] if len(results) == 1 else op)
+

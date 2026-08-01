@@ -1,0 +1,30 @@
+
+def test_linear():
+    assert diop_solve(x) == (0,)
+    assert diop_solve(1*x) == (0,)
+    assert diop_solve(3*x) == (0,)
+    assert diop_solve(x + 1) == (-1,)
+    assert diop_solve(2*x + 1) == (None,)
+    assert diop_solve(2*x + 4) == (-2,)
+    assert diop_solve(y + x) == (t_0, -t_0)
+    assert diop_solve(y + x + 0) == (t_0, -t_0)
+    assert diop_solve(y + x - 0) == (t_0, -t_0)
+    assert diop_solve(0*x - y - 5) == (-5,)
+    assert diop_solve(3*y + 2*x - 5) == (3*t_0 - 5, -2*t_0 + 5)
+    assert diop_solve(2*x - 3*y - 5) == (3*t_0 - 5, 2*t_0 - 5)
+    assert diop_solve(-2*x - 3*y - 5) == (3*t_0 + 5, -2*t_0 - 5)
+    assert diop_solve(7*x + 5*y) == (5*t_0, -7*t_0)
+    assert diop_solve(2*x + 4*y) == (-2*t_0, t_0)
+    assert diop_solve(4*x + 6*y - 4) == (3*t_0 - 2, -2*t_0 + 2)
+    assert diop_solve(4*x + 6*y - 3) == (None, None)
+    assert diop_solve(0*x + 3*y - 4*z + 5) == (4*t_0 + 5, 3*t_0 + 5)
+    assert diop_solve(4*x + 3*y - 4*z + 5) == (t_0, 8*t_0 + 4*t_1 + 5, 7*t_0 + 3*t_1 + 5)
+    assert diop_solve(4*x + 3*y - 4*z + 5, None) == (0, 5, 5)
+    assert diop_solve(4*x + 2*y + 8*z - 5) == (None, None, None)
+    assert diop_solve(5*x + 7*y - 2*z - 6) == (t_0, -3*t_0 + 2*t_1 + 6, -8*t_0 + 7*t_1 + 18)
+    assert diop_solve(3*x - 6*y + 12*z - 9) == (2*t_0 + 3, t_0 + 2*t_1, t_1)
+    assert diop_solve(6*w + 9*x + 20*y - z) == (t_0, t_1, t_1 + t_2, 6*t_0 + 29*t_1 + 20*t_2)
+
+    # to ignore constant factors, use diophantine
+    raises(TypeError, lambda: diop_solve(x/2))
+

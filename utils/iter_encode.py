@@ -1,0 +1,16 @@
+
+def iter_encode(input, encoding=UTF8, errors='strict'):
+    """
+    “Pull”-based encoder.
+
+    :param input: An iterable of Unicode strings.
+    :param encoding: An :class:`Encoding` object or a label string.
+    :param errors: Type of error handling. See :func:`codecs.register`.
+    :raises: :exc:`~exceptions.LookupError` for an unknown encoding label.
+    :returns: An iterable of byte strings.
+
+    """
+    # Fail early if `encoding` is an invalid label.
+    encode = IncrementalEncoder(encoding, errors).encode
+    return _iter_encode_generator(input, encode)
+

@@ -1,0 +1,4 @@
+
+def intr_memcpy(dst: _ods_ir.Value, src: _ods_ir.Value, len: _ods_ir.Value[_ods_ir.IntegerType], is_volatile: _Union[bool, _ods_ir.BoolAttr], *, access_groups: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, alias_scopes: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, noalias_scopes: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, tbaa: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, arg_attrs: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, res_attrs: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> MemcpyOp:
+  return MemcpyOp(dst=dst, src=src, len=len, isVolatile=is_volatile, access_groups=access_groups, alias_scopes=alias_scopes, noalias_scopes=noalias_scopes, tbaa=tbaa, arg_attrs=arg_attrs, res_attrs=res_attrs, loc=loc, ip=ip)
+

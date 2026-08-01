@@ -1,0 +1,16 @@
+
+def proceed(prompt, allowed_chars, error_prompt=None, default=None):
+    p = prompt
+    while True:
+        s = raw_input(p)
+        p = prompt
+        if not s and default:
+            s = default
+        if s:
+            c = s[0].lower()
+            if c in allowed_chars:
+                break
+            if error_prompt:
+                p = '%c: %s\n%s' % (c, error_prompt, prompt)
+    return c
+

@@ -1,0 +1,31 @@
+
+def create_main_parser() -> ConfigOptionParser:
+    """Creates and returns the main parser for pip's CLI"""
+
+    parser = ConfigOptionParser(
+        usage="\n%prog <command> [options]",
+        add_help_option=False,
+        formatter=UpdatingDefaultsHelpFormatter(),
+        name="global",
+        prog=get_prog(),
+    )
+    parser.disable_interspersed_args()
+
+    parser.version = get_pip_version()
+
+    # add the general options
+    gen_opts = cmdoptions.make_option_group(cmdoptions.general_group, parser)
+    parser.add_option_group(gen_opts)
+
+    # so the help formatter knows
+    parser.main = True  # type: ignore
+
+    # create command listing for description
+    description = [""] + [
+        f"[optparse.longargs]{name:27}[/] {escape(command_info.summary)}"
+        for name, command_info in commands_dict.items()
+    ]
+    parser.description = "\n".join(description)
+
+    return parser
+

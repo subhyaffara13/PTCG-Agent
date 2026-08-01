@@ -72,14 +72,17 @@ if Path("submission/main_template.py").exists():
         shutil.copy2("submission/main_template.py", "submission/main.py")
         print("WARNING: Could not parse 60-card deck. Generated main.py without injection.")
 
-# 3. Sync all agents to submission/cb_agents and adjust imports
+# 3. Sync all agents and subpackages recursively to submission/cb_agents and adjust imports
 print("Syncing agents to submission/cb_agents...")
 submission_cb_agents = Path("submission/cb_agents")
 submission_cb_agents.mkdir(parents=True, exist_ok=True)
-for f in Path("cb_agents").glob("*.py"):
-    if f.name == "code_mutator.py":
+
+for f in Path("cb_agents").rglob("*.py"):
+    if f.name == "code_mutator.py" or "__pycache__" in f.parts:
         continue
-    dest = submission_cb_agents / f.name
+    rel_path = f.relative_to(Path("cb_agents"))
+    dest = submission_cb_agents / rel_path
+    dest.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(f, dest)
     content = dest.read_text(encoding="utf-8")
     content = content.replace("from cb_agents.", "from cb_agents.")
@@ -90,31 +93,41 @@ for f in Path("cb_agents").glob("*.py"):
 if promoted_deck.exists():
     shutil.copy2(promoted_deck, Path("submission/cb_agents/deck_new.csv"))
 
-# 3.1 Sync all router files to submission/router and adjust imports
+# 3.1 Sync all router files recursively to submission/router and adjust imports
 print("Syncing router files to submission/router...")
 submission_router = Path("submission/router")
 submission_router.mkdir(parents=True, exist_ok=True)
-for f in Path("router").glob("*.py"):
-    dest = submission_router / f.name
+for f in Path("router").rglob("*.py"):
+    if "__pycache__" in f.parts: continue
+    rel_path = f.relative_to(Path("router"))
+    dest = submission_router / rel_path
+    dest.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(f, dest)
     content = dest.read_text(encoding="utf-8")
     content = content.replace("from cb_agents.", "from cb_agents.")
     content = content.replace("import cb_agents.", "import cb_agents.")
     dest.write_text(content, encoding="utf-8")
 
-# 3.2 Sync all skills files to submission/skills (excluding reference PDF)
+# 3.2 Sync all skills files recursively to submission/skills (excluding reference PDF)
 print("Syncing skills files to submission/skills...")
 submission_skills = Path("submission/skills")
 submission_skills.mkdir(parents=True, exist_ok=True)
-for f in Path("skills").glob("*"):
-    if f.is_file() and f.suffix not in (".pdf", ".pyc"):
-        dest = submission_skills / f.name
+for f in Path("skills").rglob("*"):
+    if f.is_file() and f.suffix not in (".pdf", ".pyc") and "__pycache__" not in f.parts:
+        rel_path = f.relative_to(Path("skills"))
+        dest = submission_skills / rel_path
+        dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(f, dest)
 
 # 3.3 Create package marker __init__.py files for all subpackages
 print("Creating package markers (__init__.py)...")
 for folder in ("cb_agents", "router", "skills"):
-    (Path("submission") / folder / "__init__.py").touch(exist_ok=True)
+    base_folder = Path("submission") / folder
+    base_folder.mkdir(parents=True, exist_ok=True)
+    (base_folder / "__init__.py").touch(exist_ok=True)
+    for sub_dir in base_folder.rglob("*"):
+        if sub_dir.is_dir() and "__pycache__" not in sub_dir.parts:
+            (sub_dir / "__init__.py").touch(exist_ok=True)
 
 # Copy C++ binaries (*.so) to submission/cb_agents/
 # Skip .pyd (Windows DLLs) - Kaggle runs Linux and compiles on-the-fly via main_template.py
@@ -134,21 +147,29 @@ for ext in ("*.so",):
 try:
     import sys
     sys.path.insert(0, str(Path(".").resolve()))
-    from factory.state_dimensions import STATE_DIM
+    try:
+        from cb_agents.state_dimensions import STATE_DIM
+    except ImportError:
+        from factory.state_dimensions import STATE_DIM
 except Exception as e:
-    print(f"WARNING: Could not import STATE_DIM ({e}). Defaulting to 213.")
-    STATE_DIM = 213
+    print(f"WARNING: Could not import STATE_DIM ({e}). Defaulting to 210.")
+    STATE_DIM = 210
 
 weight_filename = f"m{STATE_DIM}.pt"
 weights_src = Path(weight_filename)
+if not weights_src.exists():
+    for alt in ("models/ppo_actor_critic.pt", "m213.pt", "m71.pt"):
+        if Path(alt).exists():
+            weights_src = Path(alt)
+            break
 
 if weights_src.exists():
     weights_dest_dir = Path("submission/logs")
     weights_dest_dir.mkdir(parents=True, exist_ok=True)
     shutil.copy2(weights_src, weights_dest_dir / "model_weights.pth")
-    print(f"Bundled dynamically selected model weights ({weight_filename}) to submission/logs/model_weights.pth")
+    print(f"Bundled dynamically selected model weights ({weights_src}) to submission/logs/model_weights.pth")
 else:
-    print(f"WARNING: {weight_filename} not found, skipping weights bundling!")
+    print(f"WARNING: No model weights found, skipping weights bundling!")
 
 # 3.5 Sync C++ source files and build scripts for Kaggle compilation
 print("Syncing C++ source files and build configurations for Kaggle compilation...")
@@ -221,3 +242,7 @@ with tarfile.open(tar_path, "w:gz") as tar:
         print(f"  + {arcname}")
 
 print(f"\nTar created: {tar_path}  ({tar_path.stat().st_size:,} bytes)")
+
+# Auto‑refactor added utils package for extracted functions
+
+# Auto‑refactor added utils package for extracted functions

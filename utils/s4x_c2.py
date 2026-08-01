@@ -1,0 +1,15 @@
+
+def S4xC2():
+    """
+    Return a representation of the (S4 x C2) transitive subgroup of S6.
+
+    Notes
+    =====
+
+    This was computed using :py:func:`~.find_transitive_subgroups_of_S6`.
+
+    """
+    return PermutationGroup(
+        Permutation(1, 4, 5, 3), Permutation(0, 4)(1, 5)(2, 3),
+        Permutation(1, 4)(3, 5))
+

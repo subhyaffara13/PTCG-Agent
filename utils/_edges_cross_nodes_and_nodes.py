@@ -1,0 +1,16 @@
+
+def _edges_cross_nodes_and_nodes(G, H):
+    if G.is_multigraph():
+        for u, v, k, d in G.edges(data=True, keys=True):
+            for x in H:
+                for y in H:
+                    yield (u, x), (v, y), k, d
+    else:
+        for u, v, d in G.edges(data=True):
+            for x in H:
+                for y in H:
+                    if H.is_multigraph():
+                        yield (u, x), (v, y), None, d
+                    else:
+                        yield (u, x), (v, y), d
+

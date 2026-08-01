@@ -1,0 +1,5 @@
+
+def running_under_virtualenv() -> bool:
+    """True if we're running inside a virtual environment, False otherwise."""
+    return _running_under_venv() or _running_under_legacy_virtualenv()
+

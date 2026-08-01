@@ -1,0 +1,34 @@
+
+def _build_one(
+    req: InstallRequirement,
+    output_dir: str,
+    verify: bool,
+    editable: bool,
+) -> str | None:
+    """Build one wheel.
+
+    :return: The filename of the built wheel, or None if the build failed.
+    """
+    artifact = "editable" if editable else "wheel"
+    try:
+        ensure_dir(output_dir)
+    except OSError as e:
+        logger.warning(
+            "Building %s for %s failed: %s",
+            artifact,
+            req.name,
+            e,
+        )
+        return None
+
+    # Install build deps into temporary directory (PEP 518)
+    with req.build_env:
+        wheel_path = _build_one_inside_env(req, output_dir, editable)
+    if wheel_path and verify:
+        try:
+            _verify_one(req, wheel_path)
+        except (InvalidWheelFilename, UnsupportedWheel) as e:
+            logger.warning("Built %s for %s is invalid: %s", artifact, req.name, e)
+            return None
+    return wheel_path
+

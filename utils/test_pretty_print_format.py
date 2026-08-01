@@ -1,0 +1,10 @@
+
+def test_pretty_print_format():
+    locator = MaxNLocator()
+    locs, nloc, factor = locator(0, 100)
+
+    fmt = FormatterPrettyPrint()
+
+    assert fmt("left", None, locs) == \
+        [r'$\mathdefault{%d}$' % (l, ) for l in locs]
+

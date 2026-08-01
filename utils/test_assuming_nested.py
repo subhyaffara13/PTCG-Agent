@@ -1,0 +1,15 @@
+
+def test_assuming_nested():
+    assert not ask(Q.integer(x))
+    assert not ask(Q.integer(y))
+    with assuming(Q.integer(x)):
+        assert ask(Q.integer(x))
+        assert not ask(Q.integer(y))
+        with assuming(Q.integer(y)):
+            assert ask(Q.integer(x))
+            assert ask(Q.integer(y))
+        assert ask(Q.integer(x))
+        assert not ask(Q.integer(y))
+    assert not ask(Q.integer(x))
+    assert not ask(Q.integer(y))
+

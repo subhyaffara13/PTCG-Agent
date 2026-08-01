@@ -1,0 +1,40 @@
+
+def ioff() -> AbstractContextManager:
+    """
+    Disable interactive mode.
+
+    See `.pyplot.isinteractive` for more details.
+
+    See Also
+    --------
+    ion : Enable interactive mode.
+    isinteractive : Whether interactive mode is enabled.
+    show : Show all figures (and maybe block).
+    pause : Show all figures, and block for a time.
+
+    Notes
+    -----
+    For a temporary change, this can be used as a context manager::
+
+        # if interactive mode is on
+        # then figures will be shown on creation
+        plt.ion()
+        # This figure will be shown immediately
+        fig = plt.figure()
+
+        with plt.ioff():
+            # interactive mode will be off
+            # figures will not automatically be shown
+            fig2 = plt.figure()
+            # ...
+
+    To enable optional usage as a context manager, this function returns a
+    context manager object, which is not intended to be stored or
+    accessed by the user.
+    """
+    stack = ExitStack()
+    stack.callback(ion if isinteractive() else ioff)
+    matplotlib.interactive(False)
+    uninstall_repl_displayhook()
+    return stack
+

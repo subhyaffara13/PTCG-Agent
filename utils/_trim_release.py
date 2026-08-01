@@ -1,0 +1,16 @@
+
+def _trim_release(release: tuple[int, ...]) -> tuple[int, ...]:
+    """Strip trailing zeros from a release tuple for normalized comparison."""
+    end = len(release)
+    while end > 1 and release[end - 1] == 0:
+        end -= 1
+    return release if end == len(release) else release[:end]
+
+
+def _trim_release(release: tuple[int, ...]) -> tuple[int, ...]:
+    """Strip trailing zeros from a release tuple for normalized comparison."""
+    end = len(release)
+    while end > 1 and release[end - 1] == 0:
+        end -= 1
+    return release if end == len(release) else release[:end]
+

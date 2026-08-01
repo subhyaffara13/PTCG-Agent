@@ -9,15 +9,7 @@ from run.handler import log_crash
 sys.excepthook = log_crash
 
 
-def main():
-    check_and_install_dependencies()
-    print("[INFO] Starting PTCG Agent Orchestrator...")
-    try:
-        from factory.orchestration_agent import main as orch_main
-        orch_main()
-    except KeyboardInterrupt:
-        print("\n[INFO] Process terminated by user (Ctrl+C). Exiting gracefully...")
-        sys.exit(0)
+from utils.main import main
 
 
 if __name__ == "__main__":

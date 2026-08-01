@@ -1,0 +1,46 @@
+
+def run_election(timeout=10):
+    local_ip = get_local_ip()
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    sock.bind(('', ELECTION_PORT))
+    sock.settimeout(2)
+
+    peers = set([local_ip])
+    end_time = time.time() + timeout
+
+    def broadcast_election():
+        while time.time() < end_time:
+            current_ip = get_local_ip()
+            msg = json.dumps({'type': 'election', 'ip': current_ip})
+            try:
+                sock.sendto(msg.encode(), ('<broadcast>', ELECTION_PORT))
+            except:
+                pass
+            time.sleep(1)
+
+    threading.Thread(target=broadcast_election, daemon=True).start()
+
+    while time.time() < end_time:
+        try:
+            data, addr = sock.recvfrom(1024)
+            msg = json.loads(data.decode())
+            if msg.get('type') == 'election':
+                peers.add(msg['ip'])
+        except socket.timeout:
+            continue
+        except Exception:
+            pass
+            
+    sock.close()
+    
+    # Always inject the latest local IP into the peer list for the final vote
+    final_ip = get_local_ip()
+    peers.add(final_ip)
+    
+    # Lowest IP wins
+    sorted_peers = sorted(list(peers))
+    winner = sorted_peers[0]
+    
+    return winner == final_ip, winner
+

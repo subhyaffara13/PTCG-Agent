@@ -1,0 +1,19 @@
+
+def _script_names(
+    bin_dir: str, script_name: str, is_gui: bool
+) -> Generator[str, None, None]:
+    """Create the fully qualified name of the files created by
+    {console,gui}_scripts for the given ``dist``.
+    Returns the list of file names
+    """
+    exe_name = os.path.join(bin_dir, script_name)
+    yield exe_name
+    if not WINDOWS:
+        return
+    yield f"{exe_name}.exe"
+    yield f"{exe_name}.exe.manifest"
+    if is_gui:
+        yield f"{exe_name}-script.pyw"
+    else:
+        yield f"{exe_name}-script.py"
+

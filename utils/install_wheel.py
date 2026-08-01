@@ -1,0 +1,24 @@
+
+def install_wheel(
+    name: str,
+    wheel_path: str,
+    scheme: Scheme,
+    req_description: str,
+    pycompile: bool = True,
+    warn_script_location: bool = True,
+    direct_url: DirectUrl | None = None,
+    requested: bool = False,
+) -> None:
+    with ZipFile(wheel_path, allowZip64=True) as z:
+        with req_error_context(req_description):
+            _install_wheel(
+                name=name,
+                wheel_zip=z,
+                wheel_path=wheel_path,
+                scheme=scheme,
+                pycompile=pycompile,
+                warn_script_location=warn_script_location,
+                direct_url=direct_url,
+                requested=requested,
+            )
+

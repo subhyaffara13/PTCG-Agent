@@ -1,0 +1,11 @@
+
+def test_cosh_rewrite():
+    x = Symbol('x')
+    assert cosh(x).rewrite(exp) == (exp(x) + exp(-x))/2 \
+        == cosh(x).rewrite('tractable')
+    assert cosh(x).rewrite(sinh) == -I*sinh(x + I*pi/2, evaluate=False)
+    tanh_half = tanh(S.Half*x)**2
+    assert cosh(x).rewrite(tanh) == (1 + tanh_half)/(1 - tanh_half)
+    coth_half = coth(S.Half*x)**2
+    assert cosh(x).rewrite(coth) == (coth_half + 1)/(coth_half - 1)
+

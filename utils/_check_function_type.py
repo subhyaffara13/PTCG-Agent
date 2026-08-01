@@ -1,0 +1,48 @@
+
+def _check_function_type(function: object) -> None:
+    """Check if the input function is a supported type for `validate_call`."""
+    if isinstance(function, _generate_schema.VALIDATE_CALL_SUPPORTED_TYPES):
+        try:
+            _typing_extra.signature_no_eval(cast(_generate_schema.ValidateCallSupportedTypes, function))
+        except (ValueError, TypeError):
+            raise PydanticUserError(
+                f"Input function `{function}` doesn't have a valid signature", code=_INVALID_TYPE_ERROR_CODE
+            )
+
+        if isinstance(function, partial):
+            try:
+                assert not isinstance(partial.func, partial), 'Partial of partial'
+                _check_function_type(function.func)
+            except PydanticUserError as e:
+                raise PydanticUserError(
+                    f'Partial of `{function.func}` is invalid because the type of `{function.func}` is not supported by `validate_call`',
+                    code=_INVALID_TYPE_ERROR_CODE,
+                ) from e
+
+        return
+
+    if isinstance(function, BuiltinFunctionType):
+        raise PydanticUserError(f'Input built-in function `{function}` is not supported', code=_INVALID_TYPE_ERROR_CODE)
+    if isinstance(function, (classmethod, staticmethod, property)):
+        name = type(function).__name__
+        raise PydanticUserError(
+            f'The `@{name}` decorator should be applied after `@validate_call` (put `@{name}` on top)',
+            code=_INVALID_TYPE_ERROR_CODE,
+        )
+
+    if inspect.isclass(function):
+        raise PydanticUserError(
+            f'Unable to validate {function}: `validate_call` should be applied to functions, not classes (put `@validate_call` on top of `__init__` or `__new__` instead)',
+            code=_INVALID_TYPE_ERROR_CODE,
+        )
+    if callable(function):
+        raise PydanticUserError(
+            f'Unable to validate {function}: `validate_call` should be applied to functions, not instances or other callables. Use `validate_call` explicitly on `__call__` instead.',
+            code=_INVALID_TYPE_ERROR_CODE,
+        )
+
+    raise PydanticUserError(
+        f'Unable to validate {function}: `validate_call` should be applied to one of the following: function, method, partial, or lambda',
+        code=_INVALID_TYPE_ERROR_CODE,
+    )
+

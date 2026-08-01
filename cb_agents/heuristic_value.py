@@ -15,8 +15,12 @@ class HeuristicValueNetwork(BaseValueNetwork):
             if not os.path.exists(model_path):
                 model_path = "logs/model_weights.pth"
             if os.path.exists(model_path):
-                from factory.state_dimensions import STATE_DIM
-                from factory.ppo_trainer_network import ActorCritic
+                try:
+                    from cb_agents.state_dimensions import STATE_DIM
+                    from cb_agents.ppo_trainer_network import ActorCritic
+                except ImportError:
+                    from factory.state_dimensions import STATE_DIM
+                    from factory.ppo_trainer_network import ActorCritic
                 dev = torch.device("cpu")
                 model = ActorCritic(STATE_DIM, 256, 3000)
                 if hasattr(model, "to"):

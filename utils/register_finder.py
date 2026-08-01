@@ -1,0 +1,16 @@
+
+def register_finder(
+    importer_type: type[_T], distribution_finder: _DistFinderType[_T]
+) -> None:
+    """Register `distribution_finder` to find distributions in sys.path items
+
+    `importer_type` is the type or class of a PEP 302 "Importer" (sys.path item
+    handler), and `distribution_finder` is a callable that, passed a path
+    item and the importer instance, yields ``Distribution`` instances found on
+    that path item.  See ``pkg_resources.find_on_path`` for an example."""
+    _distribution_finders[importer_type] = distribution_finder
+
+
+def register_finder(loader, finder_maker):
+    _finder_registry[type(loader)] = finder_maker
+

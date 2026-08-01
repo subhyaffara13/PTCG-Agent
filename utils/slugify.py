@@ -1,0 +1,129 @@
+
+def slugify(
+    text: str,
+    entities: bool = True,
+    decimal: bool = True,
+    hexadecimal: bool = True,
+    max_length: int = 0,
+    word_boundary: bool = False,
+    separator: str = DEFAULT_SEPARATOR,
+    save_order: bool = False,
+    stopwords: Iterable[str] = (),
+    regex_pattern: re.Pattern[str] | str | None = None,
+    lowercase: bool = True,
+    replacements: Iterable[Iterable[str]] = (),
+    allow_unicode: bool = False,
+) -> str:
+    """
+    Make a slug from the given text.
+    :param text (str): initial text
+    :param entities (bool): converts html entities to unicode
+    :param decimal (bool): converts html decimal to unicode
+    :param hexadecimal (bool): converts html hexadecimal to unicode
+    :param max_length (int): output string length
+    :param word_boundary (bool): truncates to complete word even if length ends up shorter than max_length
+    :param save_order (bool): if parameter is True and max_length > 0 return whole words in the initial order
+    :param separator (str): separator between words
+    :param stopwords (iterable): words to discount
+    :param regex_pattern (str): regex pattern for disallowed characters
+    :param lowercase (bool): activate case sensitivity by setting it to False
+    :param replacements (iterable): list of replacement rules e.g. [['|', 'or'], ['%', 'percent']]
+    :param allow_unicode (bool): allow unicode characters
+    :return (str):
+    """
+
+    # user-specific replacements
+    if replacements:
+        for old, new in replacements:
+            text = text.replace(old, new)
+
+    # ensure text is unicode
+    if not isinstance(text, str):
+        text = str(text, 'utf-8', 'ignore')
+
+    # replace quotes with dashes - pre-process
+    text = QUOTE_PATTERN.sub(DEFAULT_SEPARATOR, text)
+
+    # normalize text, convert to unicode if required
+    if allow_unicode:
+        text = unicodedata.normalize('NFKC', text)
+    else:
+        text = unicodedata.normalize('NFKD', text)
+        text = unidecode.unidecode(text)
+
+    # ensure text is still in unicode
+    if not isinstance(text, str):
+        text = str(text, 'utf-8', 'ignore')
+
+    # character entity reference
+    if entities:
+        text = CHAR_ENTITY_PATTERN.sub(lambda m: chr(name2codepoint[m.group(1)]), text)
+
+    # decimal character reference
+    if decimal:
+        try:
+            text = DECIMAL_PATTERN.sub(lambda m: chr(int(m.group(1))), text)
+        except Exception:
+            pass
+
+    # hexadecimal character reference
+    if hexadecimal:
+        try:
+            text = HEX_PATTERN.sub(lambda m: chr(int(m.group(1), 16)), text)
+        except Exception:
+            pass
+
+    # re normalize text
+    if allow_unicode:
+        text = unicodedata.normalize('NFKC', text)
+    else:
+        text = unicodedata.normalize('NFKD', text)
+
+    # make the text lowercase (optional)
+    if lowercase:
+        text = text.lower()
+
+    # remove generated quotes -- post-process
+    text = QUOTE_PATTERN.sub('', text)
+
+    # cleanup numbers
+    text = NUMBERS_PATTERN.sub('', text)
+
+    # replace all other unwanted characters
+    if allow_unicode:
+        pattern = regex_pattern or DISALLOWED_UNICODE_CHARS_PATTERN
+    else:
+        pattern = regex_pattern or DISALLOWED_CHARS_PATTERN
+
+    text = re.sub(pattern, DEFAULT_SEPARATOR, text)
+
+    # remove redundant
+    text = DUPLICATE_DASH_PATTERN.sub(DEFAULT_SEPARATOR, text).strip(DEFAULT_SEPARATOR)
+
+    # remove stopwords
+    if stopwords:
+        if lowercase:
+            stopwords_lower = [s.lower() for s in stopwords]
+            words = [w for w in text.split(DEFAULT_SEPARATOR) if w not in stopwords_lower]
+        else:
+            words = [w for w in text.split(DEFAULT_SEPARATOR) if w not in stopwords]
+        text = DEFAULT_SEPARATOR.join(words)
+
+    # finalize user-specific replacements
+    if replacements:
+        for old, new in replacements:
+            text = text.replace(old, new)
+
+    # smart truncate if requested
+    if max_length > 0:
+        text = smart_truncate(text, max_length, word_boundary, DEFAULT_SEPARATOR, save_order)
+
+    if separator != DEFAULT_SEPARATOR:
+        text = text.replace(DEFAULT_SEPARATOR, separator)
+
+    return text
+
+
+def slugify(title: str) -> str:
+    return re.sub(r"[^\w\u4e00-\u9fff\- ]", "", title.strip().lower().replace(" ", "-"))
+

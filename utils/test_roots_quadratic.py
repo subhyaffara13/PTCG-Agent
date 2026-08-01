@@ -1,0 +1,34 @@
+
+def test_roots_quadratic():
+    assert roots_quadratic(Poly(2*x**2, x)) == [0, 0]
+    assert roots_quadratic(Poly(2*x**2 + 3*x, x)) == [Rational(-3, 2), 0]
+    assert roots_quadratic(Poly(2*x**2 + 3, x)) == [-I*sqrt(6)/2, I*sqrt(6)/2]
+    assert roots_quadratic(Poly(2*x**2 + 4*x + 3, x)) == [-1 - I*sqrt(2)/2, -1 + I*sqrt(2)/2]
+    _check(Poly(2*x**2 + 4*x + 3, x).all_roots())
+
+    f = x**2 + (2*a*e + 2*c*e)/(a - c)*x + (d - b + a*e**2 - c*e**2)/(a - c)
+    assert roots_quadratic(Poly(f, x)) == \
+        [-e*(a + c)/(a - c) - sqrt(a*b + c*d - a*d - b*c + 4*a*c*e**2)/(a - c),
+         -e*(a + c)/(a - c) + sqrt(a*b + c*d - a*d - b*c + 4*a*c*e**2)/(a - c)]
+
+    # check for simplification
+    f = Poly(y*x**2 - 2*x - 2*y, x)
+    assert roots_quadratic(f) == \
+        [-sqrt(2*y**2 + 1)/y + 1/y, sqrt(2*y**2 + 1)/y + 1/y]
+    f = Poly(x**2 + (-y**2 - 2)*x + y**2 + 1, x)
+    assert roots_quadratic(f) == \
+        [1,y**2 + 1]
+
+    f = Poly(sqrt(2)*x**2 - 1, x)
+    r = roots_quadratic(f)
+    assert r == _nsort(r)
+
+    # issue 8255
+    f = Poly(-24*x**2 - 180*x + 264)
+    assert [w.n(2) for w in f.all_roots(radicals=True)] == \
+           [w.n(2) for w in f.all_roots(radicals=False)]
+    for _a, _b, _c in product((-2, 2), (-2, 2), (0, -1)):
+        f = Poly(_a*x**2 + _b*x + _c)
+        roots = roots_quadratic(f)
+        assert roots == _nsort(roots)
+

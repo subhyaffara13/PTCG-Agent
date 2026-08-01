@@ -3,9 +3,7 @@ from typing import Tuple, Dict, Any
 
 logger = logging.getLogger(__name__)
 
-def board_hash(hand_ids: Tuple[int, ...], board_ids: Tuple[int, ...], deck_remaining: int, turn: int) -> int:
-    """Computes a hash for the current board state."""
-    return hash((hand_ids, board_ids, deck_remaining, turn))
+from utils.board_hash import board_hash
 
 class CachedEvaluator:
     def __init__(self, evaluator_func):
