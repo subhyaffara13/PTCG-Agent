@@ -1,3 +1,4 @@
+from typing import Any
 
 def initialize_lazy_module(
     tx: "InstructionTranslator",

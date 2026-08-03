@@ -1,3 +1,5 @@
+import json
+from typing import Any, Optional, Tuple
 
 def _serialize_http_exception_detail(
     detail: Any,

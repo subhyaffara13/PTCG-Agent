@@ -1,3 +1,4 @@
+import os
 
 def extract_suffixes(iter: Iterable[os.DirEntry[str]], prefix: str) -> Iterator[str]:
     """Return the parts of the paths following the prefix.

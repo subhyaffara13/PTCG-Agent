@@ -1,3 +1,4 @@
+from typing import Callable
 
 def build_conditional_library(
     lib: typing.Any,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_mm_like_fn(snode: BaseSchedulerNode) -> Callable[[Any], Any] | None:
     if not isinstance(snode, ExternKernelSchedulerNode):

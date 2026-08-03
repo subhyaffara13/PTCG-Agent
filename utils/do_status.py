@@ -1,3 +1,4 @@
+import sys
 
 def do_status(args: argparse.Namespace) -> None:
     """Print daemon status.

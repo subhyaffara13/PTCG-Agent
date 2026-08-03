@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def trace_triton_kernel_wrapper(
     proxy_mode: ProxyTorchDispatchMode,

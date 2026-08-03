@@ -1,3 +1,4 @@
+from typing import Callable
 
 def specialize_dunder(name: str, typ: RType) -> Callable[[DunderSpecializer], DunderSpecializer]:
     """Decorator to register a function as being a dunder specializer.

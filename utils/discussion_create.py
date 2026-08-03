@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def discussion_create(
     repo_id: RepoIdArg,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_mod_type(
     fn: _score_mod_signature | _mask_mod_signature | Callable[..., Any],

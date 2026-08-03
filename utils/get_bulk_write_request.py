@@ -1,3 +1,4 @@
+import json
 
 def get_bulk_write_request(
     location_path: str,

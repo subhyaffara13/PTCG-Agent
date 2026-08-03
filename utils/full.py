@@ -1,3 +1,4 @@
+from typing import Any
 
 def full(size, fill_value, *args, **kwargs):
     dtype = kwargs.get("dtype")

@@ -1,3 +1,4 @@
+import sys
 
 def fetch_data(dataset_name, data_fetcher=data_fetcher):
     if data_fetcher is None:

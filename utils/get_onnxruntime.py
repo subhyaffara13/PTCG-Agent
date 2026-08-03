@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_onnxruntime():
     version = "1.16.3"

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def getfslineno(obj: object) -> tuple[str | Path, int]:
     """Return source location (path, lineno) for the given object.

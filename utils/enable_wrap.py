@@ -1,3 +1,4 @@
+from typing import Any
 
 def enable_wrap(
     *, wrapper_cls: Any, **wrapper_kwargs: Any

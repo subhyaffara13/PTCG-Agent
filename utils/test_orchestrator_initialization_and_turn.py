@@ -1,3 +1,4 @@
+import json
 
 def test_orchestrator_initialization_and_turn(tmp_path):
     skills_dir = tmp_path / "skills"

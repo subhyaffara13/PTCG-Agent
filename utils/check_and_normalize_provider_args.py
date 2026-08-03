@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_and_normalize_provider_args(
     providers: Sequence[str | tuple[str, dict[Any, Any]]] | None,

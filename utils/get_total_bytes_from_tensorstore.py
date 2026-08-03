@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_total_bytes_from_tensorstore(
     metrics: Sequence[dict[str, Any]], direction: types.IoDirection

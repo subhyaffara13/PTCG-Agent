@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_autocast_states() -> list[Any]:
     return [

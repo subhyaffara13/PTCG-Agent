@@ -1,3 +1,4 @@
+from typing import Any
 
 def svd(a: ArrayLike, full_matrices=True, compute_uv=True, hermitian=False):
     a = _atleast_float_1(a)

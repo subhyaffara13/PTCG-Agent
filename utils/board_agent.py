@@ -1,3 +1,5 @@
+import sys
+from typing import Callable, Dict
 
 def board_agent(agent: Callable[[Board], None]):
     """

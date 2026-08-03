@@ -1,3 +1,4 @@
+import re
 
 def write_podspec(f, rules, args):
   """Writes a podspec from given rules and args."""

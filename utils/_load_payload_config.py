@@ -1,3 +1,4 @@
+import json
 
 def _load_payload_config(
     archive_reader: PT2ArchiveReader,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _all_gather_lowering(ctx, x, *, all_gather_dimension, axis_name,
                          axis_index_groups, axis_size, tiled,

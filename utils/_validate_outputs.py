@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _validate_outputs(outputs: Any, func: Callable) -> None:
     if isinstance(outputs, Tensor):

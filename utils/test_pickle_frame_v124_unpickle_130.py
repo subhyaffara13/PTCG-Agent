@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_pickle_frame_v124_unpickle_130(datapath):
     # GH#42345 DataFrame created in 1.2.x, unpickle in 1.3.x

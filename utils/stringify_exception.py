@@ -1,3 +1,4 @@
+import sys
 
 def stringify_exception(
     exc: BaseException, include_subexception_msg: bool = True

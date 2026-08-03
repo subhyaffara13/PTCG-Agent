@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unsafe_set_version_counter_functional(
     ctx: AbstractContextManager[Any],

@@ -1,3 +1,4 @@
+import itertools
 
 def _greedy_path(input_sets, output_set, idx_dict, memory_limit):
     """

@@ -1,3 +1,4 @@
+import random
 
 def get_inputs(input_data_path: str) -> list[torch.Tensor]:
     """

@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def enum_class_state(
     name: str,

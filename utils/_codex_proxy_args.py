@@ -1,3 +1,4 @@
+from typing import List
 
 def _codex_proxy_args(base_url: str) -> List[str]:
     """Codex `-c` overrides that point it at the proxy.

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def is_prompt_caching_valid_prompt(
     model: str,

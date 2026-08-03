@@ -1,3 +1,4 @@
+from typing import Callable
 
 def run_state_reference(f: Callable[..., None]):
   def wrapped(args):

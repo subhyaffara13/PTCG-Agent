@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_fn_code(fn_var: Any) -> types.CodeType | None:
     if isinstance(fn_var, UserFunctionVariable):

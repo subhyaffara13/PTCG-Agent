@@ -1,3 +1,4 @@
+from typing import Any
 
 def max_or_none(values: Iterable[Any], key: Any = None) -> Any:
     """Get the maximum value while ignoring ``None`` values.

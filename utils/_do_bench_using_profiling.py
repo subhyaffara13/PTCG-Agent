@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _do_bench_using_profiling(
     fn: Callable[[], Any],

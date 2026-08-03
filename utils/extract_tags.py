@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def extract_tags(
     opik_metadata: Dict[str, Any],

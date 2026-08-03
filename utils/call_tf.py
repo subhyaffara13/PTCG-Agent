@@ -1,3 +1,4 @@
+from typing import Callable
 
 def call_tf(
     callable_tf: Callable,

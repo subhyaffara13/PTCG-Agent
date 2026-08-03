@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_tensor_inputs(
     args: tuple[Any, ...],

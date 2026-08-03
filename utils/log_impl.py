@@ -1,3 +1,4 @@
+import re
 
 def log_impl(self: ComplexTensor) -> ComplexTensor:
     out_dt, (self,) = promote_tensors(self)

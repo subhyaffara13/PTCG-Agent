@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_preference_path() -> Path:
     """:returns: preference path tied to the user"""

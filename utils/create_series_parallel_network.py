@@ -1,3 +1,4 @@
+import random
 
 def create_series_parallel_network(num_network_in_series,
                                    time_step_length=1,

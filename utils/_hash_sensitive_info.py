@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def _hash_sensitive_info(data: Union[dict, list]) -> Union[dict, list, str]:
     """

@@ -1,3 +1,4 @@
+import sys
 
 def create_device(interface=None, lazy_init: bool = False):
     if sys.platform == "win32" or interface is None:

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def allowed_route_check_inside_route(
     user_api_key_dict: UserAPIKeyAuth,

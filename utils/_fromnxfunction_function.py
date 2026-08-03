@@ -1,3 +1,4 @@
+import functools
 
 def _fromnxfunction_function(_fromnxfunction):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def redistribute_fw_outputs(
     local_outs: Any, all_placements: Any, mesh: Any, num_activations: int

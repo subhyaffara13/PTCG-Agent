@@ -1,3 +1,4 @@
+import os
 
 def _maybe_auto_initialize_arize_phoenix(_in_memory_loggers: list) -> None:
     """

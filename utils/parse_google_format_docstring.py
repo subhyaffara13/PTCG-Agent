@@ -1,3 +1,4 @@
+import re
 
 def parse_google_format_docstring(docstring: str) -> tuple[str | None, dict | None, str | None]:
     """

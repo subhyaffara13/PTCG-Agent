@@ -1,3 +1,4 @@
+import functools
 
 def bf16_compress_hook(
     process_group: dist.ProcessGroup,

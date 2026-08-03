@@ -1,3 +1,4 @@
+import re
 
 def generate_gml(G, stringizer=None):
     r"""Generate a single entry of the graph `G` in GML format.

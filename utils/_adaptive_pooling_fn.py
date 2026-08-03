@@ -1,3 +1,4 @@
+import itertools
 
 def _adaptive_pooling_fn(
     start_index, end_index, kernel_maxes, in_sizes, out_sizes, pooling_fn

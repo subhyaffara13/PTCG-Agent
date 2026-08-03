@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_content_length(scope: Scope) -> Optional[int]:
     headers = dict(scope.get("headers") or [])

@@ -1,3 +1,4 @@
+import os
 
 def has_visible_nvidia_gpu() -> bool:
   """True if there's a visible nvidia gpu available on device, False otherwise."""

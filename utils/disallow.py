@@ -1,3 +1,4 @@
+from typing import Callable
 
 def disallow(nodes: set[str]) -> Callable[[type[_T]], type[_T]]:
     """

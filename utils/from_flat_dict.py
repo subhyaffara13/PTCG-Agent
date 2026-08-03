@@ -1,3 +1,4 @@
+from typing import Optional
 
 def from_flat_dict(
     flat_dict: PyTree,

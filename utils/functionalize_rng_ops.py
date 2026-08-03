@@ -1,3 +1,5 @@
+import copy
+import itertools
 
 def functionalize_rng_ops(
     joint_module: fx.GraphModule,

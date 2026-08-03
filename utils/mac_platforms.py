@@ -1,3 +1,6 @@
+import subprocess
+import sys
+from typing import Optional
 
 def mac_platforms(
     version: AppleVersion | None = None, arch: str | None = None

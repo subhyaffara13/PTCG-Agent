@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _propagate_metadata(
     parent_litellm_metadata: Optional[Dict[str, Any]],

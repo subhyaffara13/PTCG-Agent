@@ -1,3 +1,4 @@
+import os
 
 def _cutlass_include_paths() -> list[str]:
     cutlass_path = _cutlass_path()

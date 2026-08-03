@@ -1,3 +1,4 @@
+import functools
 
 def _simple_scan(
   f, f_unbound, *,

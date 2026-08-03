@@ -1,3 +1,4 @@
+from typing import Callable
 
 def dtype_to_type_ctor(dtype: torch.dtype) -> Callable[[NumberType], NumberType]:
     """

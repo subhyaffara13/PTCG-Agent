@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _patch_einops_symint_compat(einops_mod: Any) -> None:
     """Backport the SymInt lru_cache fix from einops 0.7.0 into einops <= 0.6.1."""

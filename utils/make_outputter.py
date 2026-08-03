@@ -1,3 +1,4 @@
+from typing import Union
 
 def make_outputter(bom: 'Bom', output_format: Literal[OutputFormat.JSON],
                    schema_version: SchemaVersion) -> 'JsonOutputter':

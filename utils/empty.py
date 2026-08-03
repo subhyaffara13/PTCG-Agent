@@ -1,3 +1,4 @@
+from typing import Any
 
 def empty(shape, dtype=None, order='C'):
     """Return a new matrix of given shape and type, without initializing entries.

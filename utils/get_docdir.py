@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_docdir():
     parents = Path(__file__).resolve().parents

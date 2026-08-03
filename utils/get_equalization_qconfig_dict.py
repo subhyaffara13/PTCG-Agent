@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_equalization_qconfig_dict(
     layer_sqnr_dict: dict[str, float], num_layers_to_equalize: int

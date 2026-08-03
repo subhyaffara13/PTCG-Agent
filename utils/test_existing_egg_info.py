@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_existing_egg_info(tmpdir_cwd, monkeypatch):
     """When provided with the ``existing_egg_info_dir`` attribute, build_py should not

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_3982():
     a = [3, 2.0]

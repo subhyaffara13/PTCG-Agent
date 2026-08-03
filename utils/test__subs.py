@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Subs():
     assert Subs(1, (), ()) is S.One

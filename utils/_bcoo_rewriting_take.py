@@ -1,3 +1,4 @@
+import functools
 
 def _bcoo_rewriting_take(arr, idx, indices_are_sorted=False, unique_indices=False,
                            mode=None, fill_value=None):

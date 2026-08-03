@@ -1,3 +1,4 @@
+import os
 
 def test_directories_in_package_data_glob(tmpdir_cwd):
     """

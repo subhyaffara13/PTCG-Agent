@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def run_hourly_checks(iteration: int):
     """Runs leaderboard checks and auto-submission logic."""

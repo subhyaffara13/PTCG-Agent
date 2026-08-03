@@ -1,3 +1,4 @@
+import os
 
 def _empty_dir(dir_: _P) -> _P:
     """Create a directory ensured to be empty. Existing files may be removed."""

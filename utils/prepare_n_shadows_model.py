@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def prepare_n_shadows_model(
     model: torch.nn.Module,

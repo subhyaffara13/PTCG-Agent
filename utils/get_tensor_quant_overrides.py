@@ -1,3 +1,4 @@
+import json
 
 def get_tensor_quant_overrides(file):
     # TODO: Enhance the function to handle more real cases of json file

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def extract_logger_info(
     model_a: nn.Module,

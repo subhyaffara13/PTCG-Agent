@@ -1,3 +1,4 @@
+import os
 
 def get_node_local_rank(fallback_rank: int | None = None) -> int:
     """

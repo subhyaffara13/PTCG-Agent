@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def str_validator(v: Any) -> Union[str]:
     if isinstance(v, str):

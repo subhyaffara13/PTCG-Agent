@@ -1,3 +1,5 @@
+import re
+import sys
 
 def _is_clang(cpp_compiler: str) -> bool:
     # Mac OS apple clang maybe named as gcc, need check compiler info.

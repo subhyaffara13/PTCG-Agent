@@ -1,3 +1,4 @@
+import time
 
 def verify_parity(
     args: argparse.Namespace,

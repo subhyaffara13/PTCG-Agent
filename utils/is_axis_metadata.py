@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_axis_metadata(val: Any) -> bool:
   """Returns whether the argument is an instance of AxisMetadata."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _analyse_packet(packet: dict[str, Any], _scoring_db: dict) -> tuple:
     hand: list[str] = packet["hand"]

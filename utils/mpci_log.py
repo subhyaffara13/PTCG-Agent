@@ -1,3 +1,4 @@
+import re
 
 def mpci_log(z, prec):
     x, y = z

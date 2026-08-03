@@ -1,3 +1,4 @@
+import logging
 
 def check_shapes(graph: onnx.GraphProto, logger: logging.Logger | None = None):
     """

@@ -1,3 +1,4 @@
+import os
 
 def is_short_mcp_tool_prefix_enabled() -> bool:
     """Return True when the short-ID tool prefix mode is enabled.

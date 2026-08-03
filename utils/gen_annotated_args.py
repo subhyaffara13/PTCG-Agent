@@ -1,3 +1,4 @@
+from typing import Any
 
 def gen_annotated_args(f: NativeFunction) -> str:
     def _get_kwargs_func_exclusion_list() -> list[str]:

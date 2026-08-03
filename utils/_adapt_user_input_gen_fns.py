@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _adapt_user_input_gen_fns(
     inputs: list[Any],

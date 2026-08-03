@@ -1,3 +1,4 @@
+import os
 
 def _file_exists(path: str) -> bool:
     try:

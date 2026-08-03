@@ -1,3 +1,4 @@
+import os
 
 def make_tarball(
     base_name: str,

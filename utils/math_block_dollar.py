@@ -1,3 +1,4 @@
+from typing import Callable
 
 def math_block_dollar(
     allow_labels: bool = True,

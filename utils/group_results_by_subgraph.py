@@ -1,3 +1,4 @@
+from typing import Any
 
 def group_results_by_subgraph(results: NSResultsType) -> Any:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_checkify_rule(primitive: core.Primitive, error: Error,
                           enabled_errors, *invals: core.Value,

@@ -1,3 +1,4 @@
+import re
 
 def build_gitlab_purl(url):
     """

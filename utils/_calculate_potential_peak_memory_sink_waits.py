@@ -1,3 +1,4 @@
+import itertools
 
 def _calculate_potential_peak_memory_sink_waits(
     candidate: BaseSchedulerNode,

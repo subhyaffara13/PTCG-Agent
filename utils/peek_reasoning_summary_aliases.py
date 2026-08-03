@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def peek_reasoning_summary_aliases(optional_params: dict) -> Optional[Any]:
     """Read AI-SDK-style reasoning summary from optional_params or nested extra_body.

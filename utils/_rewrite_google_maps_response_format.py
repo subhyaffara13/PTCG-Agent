@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _rewrite_google_maps_response_format(data: RequestBody) -> None:
     generation_config = cast(Optional[GenerationConfig], data.get("generationConfig"))

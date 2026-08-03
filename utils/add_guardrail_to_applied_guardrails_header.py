@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def add_guardrail_to_applied_guardrails_header(
     request_data: Dict, guardrail_name: Optional[str]

@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _row_to_model(row: Union[dict, Any]) -> LiteLLM_ToolTableRow:
     """Convert a Prisma model instance or dict to LiteLLM_ToolTableRow."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_full_rank(d: dict[int, Any], nprocs: int, what: str):
     actual_keys = set(d.keys())

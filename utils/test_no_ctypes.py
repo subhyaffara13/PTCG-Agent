@@ -1,3 +1,4 @@
+import sys
 
 def test_no_ctypes(monkeypatch) -> None:
     def _fake_import(name: str, *args, **kwargs):

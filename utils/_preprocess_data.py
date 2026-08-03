@@ -1,3 +1,4 @@
+import functools
 
 def _preprocess_data(func=None, *, replace_names=None, label_namer=None):
     """

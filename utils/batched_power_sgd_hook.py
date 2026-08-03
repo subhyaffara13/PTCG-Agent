@@ -1,3 +1,5 @@
+import math
+
 
 def batched_powerSGD_hook(
     state: PowerSGDState, bucket: dist.GradBucket

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def pretty_repr(
     _object: Any,

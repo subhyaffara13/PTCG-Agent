@@ -1,3 +1,4 @@
+import os
 
 def _macos_vers():
     version = platform.mac_ver()[0]

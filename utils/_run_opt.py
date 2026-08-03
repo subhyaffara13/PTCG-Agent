@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _run_opt(
     opt: base.GradientTransformationExtraArgs,

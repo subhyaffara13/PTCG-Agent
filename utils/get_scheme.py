@@ -1,3 +1,6 @@
+import os
+import pathlib
+import sys
 
 def get_scheme(
     dist_name: str,

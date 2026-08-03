@@ -1,3 +1,4 @@
+import os
 
 def build_editable(wheel_directory, config_settings, metadata_directory=None):
     """Invoke the optional build_editable hook.

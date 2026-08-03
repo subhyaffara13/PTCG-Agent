@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def create_calibrator(
     model: str | Path,

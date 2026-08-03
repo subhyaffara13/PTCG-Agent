@@ -1,3 +1,4 @@
+from typing import List
 
 def log_epoch_data(epoch: int, agents: List[OpponentShapingAgent], eval_batch):
   """Logs data to wandb and prints it to the console.

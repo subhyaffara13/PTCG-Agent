@@ -1,3 +1,5 @@
+import math
+
 
 def quantizeRect(rect, factor=1):
     """

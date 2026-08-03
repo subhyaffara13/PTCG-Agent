@@ -1,3 +1,4 @@
+from typing import Any
 
 def _device_id_to_logical(
     ctx: LoweringRuleContext, device_id,

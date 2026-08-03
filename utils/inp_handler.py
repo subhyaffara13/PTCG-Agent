@@ -1,3 +1,5 @@
+import random
+import time
 
 def inp_handler(name):
     from pynput.keyboard import Controller as KeyboardController

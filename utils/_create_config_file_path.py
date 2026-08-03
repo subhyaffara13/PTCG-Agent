@@ -1,3 +1,4 @@
+import pathlib
 
 def _create_config_file_path(
     model_path_or_dir: pathlib.Path,

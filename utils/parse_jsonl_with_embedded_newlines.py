@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def parse_jsonl_with_embedded_newlines(content: str) -> List[dict]:
     """

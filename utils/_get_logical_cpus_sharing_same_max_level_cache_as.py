@@ -1,3 +1,4 @@
+import os
 
 def _get_logical_cpus_sharing_same_max_level_cache_as(
     *, logical_cpu_index: int

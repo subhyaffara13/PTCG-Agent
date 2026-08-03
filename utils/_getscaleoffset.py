@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _getscaleoffset(
     expr: Callable[[ImagePointTransform], ImagePointTransform | float],

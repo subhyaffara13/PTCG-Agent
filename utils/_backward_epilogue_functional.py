@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _backward_epilogue_functional(
     metadata: ViewAndMutationMeta,

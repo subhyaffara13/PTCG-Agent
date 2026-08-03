@@ -1,3 +1,4 @@
+import re
 
 def notebooks_in_git_index(fmt):
     """Return the list of modified and deleted ipynb files in the git index that match the given format"""

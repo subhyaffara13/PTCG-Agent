@@ -1,3 +1,4 @@
+from typing import Set
 
 def extract_key(message: dict, fallback_index: int, used_keys: Set[str]) -> str:
     """

@@ -1,3 +1,4 @@
+import logging
 
 def add_handler(handler: logging.Handler) -> None:
     """adds a handler to the HuggingFace Transformers's root logger."""

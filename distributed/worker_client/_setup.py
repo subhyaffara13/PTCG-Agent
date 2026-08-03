@@ -1,3 +1,4 @@
+import sys
 from .workerclient import WorkerClient
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+from typing import List
 
 def get_all_pattern_names() -> List[str]:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def module_to_nested_dict(module: torch.nn.Module) -> dict[str, Any]:
     """Recursively converts an nn.Module into a nested dictionary with explicit 'parameters' and 'modules' keys."""

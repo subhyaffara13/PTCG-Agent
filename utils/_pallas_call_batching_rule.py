@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _pallas_call_batching_rule(
     axis_data,

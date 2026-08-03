@@ -1,3 +1,4 @@
+import os
 
 def _infer_home() -> str:
     """Try to find a home for the current platform."""

@@ -1,3 +1,4 @@
+import sys
 
 def register_prompt_template(
     model: str,

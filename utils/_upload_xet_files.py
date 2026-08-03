@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def _upload_xet_files(
     *,

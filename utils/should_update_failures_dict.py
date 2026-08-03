@@ -1,3 +1,4 @@
+import os
 
 def should_update_failures_dict() -> bool:
     key = "PYTORCH_OPCHECK_ACCEPT"

@@ -1,3 +1,4 @@
+import sys
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
     if NOGIL_BUILD and not gil_enabled_at_start and sys._is_gil_enabled():

@@ -1,3 +1,4 @@
+import os
 
 def fspath(path: AnyStr | os.PathLike[AnyStr]) -> AnyStr:
     if isinstance(path, (str, bytes)):

@@ -1,3 +1,4 @@
+import sys
 
 def locate_app(
     module_name: str, app_name: str | None, raise_if_not_found: t.Literal[True] = True

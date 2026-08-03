@@ -1,3 +1,4 @@
+import itertools
 
 def exponential_backoff(factor: float) -> typing.Iterator[float]:
     """

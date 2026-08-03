@@ -1,3 +1,4 @@
+from typing import Any
 
 def getattr_recursive(obj: Any, target: str) -> Any:
     target_atoms = target.split(".")

@@ -1,3 +1,4 @@
+import re
 
 def test_plot_bar_label_count_expected_fail():
     df = DataFrame(

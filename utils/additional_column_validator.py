@@ -1,3 +1,4 @@
+from typing import Any
 
 def additional_column_validator(df: pd.DataFrame, fields: list[str] = ["prompt", "completion"]) -> Remediation:
     """

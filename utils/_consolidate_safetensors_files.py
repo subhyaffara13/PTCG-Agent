@@ -1,3 +1,4 @@
+import os
 
 def _consolidate_safetensors_files(
     input_dir: str,

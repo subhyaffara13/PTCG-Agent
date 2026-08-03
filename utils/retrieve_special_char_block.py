@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def retrieve_special_char_block(text: str,
                                 special_chars: Tuple[str, ...] = ('*',),

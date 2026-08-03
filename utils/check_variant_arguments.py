@@ -1,3 +1,4 @@
+import functools
 
 def check_variant_arguments(variant_fn):
   """Raises `ValueError` if `variant_fn` got an unknown argument."""

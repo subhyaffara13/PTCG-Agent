@@ -1,3 +1,4 @@
+import time
 
 def test_no_track_times(temp_h5_path):
     # GH 32682

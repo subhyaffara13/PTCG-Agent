@@ -1,3 +1,4 @@
+import re
 
 def get_required_header(headers: HeadersLike, header: str) -> str:
     lower_header = header.lower()

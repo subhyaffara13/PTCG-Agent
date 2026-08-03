@@ -1,3 +1,5 @@
+import functools
+import time
 
 def is_flaky(max_attempts: int = 5, wait_before_retry: float | None = None, description: str | None = None):
     """

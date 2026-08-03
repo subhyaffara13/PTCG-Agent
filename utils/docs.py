@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def docs(session: nox.Session) -> None:
     """

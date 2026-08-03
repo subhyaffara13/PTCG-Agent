@@ -1,3 +1,5 @@
+import copy
+import random
 
 def bombardment_test(env, cycles=10000):
     print("Starting bombardment test")

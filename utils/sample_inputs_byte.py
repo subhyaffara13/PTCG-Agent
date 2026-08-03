@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_byte(op_info, device, dtype, requires_grad, **kwargs):
     make_arg = partial(make_tensor, dtype=dtype, device=device, low=0, high=255, requires_grad=requires_grad)

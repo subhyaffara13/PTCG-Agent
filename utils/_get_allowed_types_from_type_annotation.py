@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_allowed_types_from_type_annotation(
     type_: TypeAnnotationValue,

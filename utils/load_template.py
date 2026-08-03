@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def load_template(name: str, template_dir: Path) -> str:
     """Load a template file and return its content."""

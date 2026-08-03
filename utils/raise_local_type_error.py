@@ -1,3 +1,4 @@
+from typing import Any
 
 def raise_local_type_error(obj: Any) -> NoReturn:
     raise TypeError(

@@ -1,3 +1,4 @@
+import re
 
 def _sanitize_prometheus_label_name(label: str) -> str:
     """

@@ -1,3 +1,5 @@
+import math
+
 
 def _intSecAtan(x):
     # In : sympy.integrate(sp.sec(sp.atan(x)))

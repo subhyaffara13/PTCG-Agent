@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compare_onnx_pytorch_outputs(
     onnx_outs: _OutputsType,

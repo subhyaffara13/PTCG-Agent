@@ -1,3 +1,4 @@
+import copy
 
 def modules_to_mkldnn(nodes: list[fx.Node], modules: dict[str, nn.Module]):
     """

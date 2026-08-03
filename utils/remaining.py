@@ -1,3 +1,4 @@
+import itertools
 
 def remaining(original, *removed_lists):
   removed = set(itertools.chain(*removed_lists))

@@ -1,3 +1,4 @@
+import sys
 
 def safe_print(text: str) -> None:
     """Print a text replacing chars not representable in stdout encoding."""

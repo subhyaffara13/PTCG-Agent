@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_lomo_optimizer(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get LOMO optimizer."""

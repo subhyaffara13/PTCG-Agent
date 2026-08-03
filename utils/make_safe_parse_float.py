@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_safe_parse_float(parse_float: ParseFloat) -> ParseFloat:
     """A decorator to make `parse_float` safe.

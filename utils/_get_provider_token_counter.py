@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _get_provider_token_counter(
     deployment: dict, model_to_use: str

@@ -1,3 +1,4 @@
+import os
 
 def normpath(path: str, options: Options) -> str:
     """Convert path to absolute; but to relative in bazel mode.

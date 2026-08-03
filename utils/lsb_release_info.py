@@ -1,3 +1,4 @@
+from typing import Dict
 
 def lsb_release_info() -> Dict[str, str]:
     """

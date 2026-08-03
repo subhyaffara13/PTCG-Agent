@@ -1,3 +1,4 @@
+import os
 
 def get_completion_inspect_parameters() -> tuple[ParamMeta, ParamMeta]:
     completion_init()

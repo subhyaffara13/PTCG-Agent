@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def with_native_function(func: Callable[[F], T]) -> Callable[[F], T]:
     @functools.wraps(func)

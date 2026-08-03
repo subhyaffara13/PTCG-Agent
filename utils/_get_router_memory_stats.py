@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict
 
 def _get_router_memory_stats(llm_router) -> Dict[str, Any]:
     """Get memory usage statistics for LiteLLM router."""

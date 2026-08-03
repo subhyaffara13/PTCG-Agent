@@ -1,3 +1,4 @@
+from typing import Any
 
 def log_runtime_and_tensor_meta(node_runtimes: Sequence[tuple[Any, float]]) -> None:
     """Log per-op runtime estimates and output tensor metadata for TLParse."""

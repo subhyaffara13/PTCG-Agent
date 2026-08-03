@@ -1,3 +1,4 @@
+import re
 
 def test_quaternion_multiplication():
     q1 = Quaternion(3 + 4*I, 2 + 5*I, 0, 7 + 8*I, real_field = False)

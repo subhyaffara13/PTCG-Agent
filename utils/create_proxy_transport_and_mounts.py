@@ -1,3 +1,4 @@
+import os
 
 def create_proxy_transport_and_mounts():
     proxies = {

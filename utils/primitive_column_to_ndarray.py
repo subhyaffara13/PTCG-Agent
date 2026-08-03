@@ -1,3 +1,4 @@
+from typing import Any
 
 def primitive_column_to_ndarray(col: Column) -> tuple[np.ndarray, Any]:
     """

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _infer_prefix() -> str:
     """Try to find a prefix scheme for the current platform.

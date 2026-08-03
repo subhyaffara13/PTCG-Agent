@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _insert_dtype_cast_after_node(
     node_a: Node,

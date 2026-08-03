@@ -1,3 +1,4 @@
+from typing import Optional
 
 def shorten_message_to_fit_limit(
     message, tokens_needed, model: Optional[str], raise_error_on_max_limit: bool = False

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_children(node: Any, children_with_keys: dict[Any, Any]) -> Any:
   """Set children of a node.

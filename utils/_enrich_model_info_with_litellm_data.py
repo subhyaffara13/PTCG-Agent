@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _enrich_model_info_with_litellm_data(
     model: Dict[str, Any], debug: bool = False, llm_router: Optional[Router] = None

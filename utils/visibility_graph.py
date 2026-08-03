@@ -1,3 +1,4 @@
+import itertools
 
 def visibility_graph(series):
     """

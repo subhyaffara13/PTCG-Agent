@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _simplify_patterns_and3():
     """ Three-term patterns for And."""

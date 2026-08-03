@@ -1,3 +1,4 @@
+from typing import Any
 
 def scalar_type_to_dtype(typ: type, value: Any = None) -> DType:
   """Return the numpy dtype for the given scalar type.

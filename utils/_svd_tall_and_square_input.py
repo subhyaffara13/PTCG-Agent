@@ -1,3 +1,4 @@
+from typing import Any
 
 def _svd_tall_and_square_input(
     a: Any,

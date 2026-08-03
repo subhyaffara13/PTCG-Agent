@@ -1,3 +1,4 @@
+import re
 
 def test_real_functions():
     # trigonometric functions

@@ -1,3 +1,4 @@
+import os
 
 def get_class_from_dynamic_module(
     class_reference: str,

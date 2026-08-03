@@ -1,3 +1,4 @@
+from typing import Any
 
 def validateFontInfoVersion2ValueForAttribute(attr: str, value: Any) -> bool:
     """

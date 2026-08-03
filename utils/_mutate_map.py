@@ -1,3 +1,4 @@
+import random
 
 def _mutate_map(map_rows, seed, num_mutations=_MUTATIONS_PER_MAP):
     """Apply small symmetric tile flips to a built-in map for variety.

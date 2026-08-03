@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_and_maybe_log_recompilation_reasons(
     cache_entry: CacheEntry | None,

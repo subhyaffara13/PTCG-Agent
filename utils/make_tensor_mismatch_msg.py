@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_tensor_mismatch_msg(
     actual: torch.Tensor,

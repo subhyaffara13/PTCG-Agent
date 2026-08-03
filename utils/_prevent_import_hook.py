@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prevent_import_hook(name: str, args: tuple[Any, ...]) -> None:
     if name != "import":

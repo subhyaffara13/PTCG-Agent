@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_custom_call_target(
     name: str,

@@ -1,3 +1,7 @@
+import random
+import sys
+from pathlib import Path
+
 
 def analyze(
     csv_path: Path,

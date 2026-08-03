@@ -1,3 +1,4 @@
+import logging
 
 def log_retry_error(details):
     exception = details.get("exception")

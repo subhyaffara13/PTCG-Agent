@@ -1,3 +1,5 @@
+import copy
+from typing import Callable
 
 def _aot_stage2b_bw_compile(
     bw_module: torch.fx.GraphModule,

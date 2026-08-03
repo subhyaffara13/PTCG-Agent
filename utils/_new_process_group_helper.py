@@ -1,3 +1,4 @@
+import os
 
 def _new_process_group_helper(
     group_size,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def mark_stream(stream: torch.cuda.Stream, annotation: str | dict[str, Any]):
     """Switch to stream, inject its ID into annotation, and mark kernels.

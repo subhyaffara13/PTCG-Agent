@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def constant_renumber(expr, variables=None, newconstants=None):
     r"""

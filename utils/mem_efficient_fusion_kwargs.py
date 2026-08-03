@@ -1,3 +1,4 @@
+from typing import Any
 
 def mem_efficient_fusion_kwargs(use_decomps: bool) -> dict[str, Any]:
     from functorch.compile import (

@@ -1,3 +1,4 @@
+import time
 
 def process_stale_scc_implementation(
     graph: Graph, stale: list[str], manager: BuildManager, meta_files: list[str]

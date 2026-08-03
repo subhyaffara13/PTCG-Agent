@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _counter_to_reservation_entry(
     counter: _BudgetCounter,

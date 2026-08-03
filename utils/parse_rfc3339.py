@@ -1,3 +1,4 @@
+import time
 
 def parse_rfc3339(string: str) -> datetime | date | time:
     m = RFC_3339_DATETIME.match(string)

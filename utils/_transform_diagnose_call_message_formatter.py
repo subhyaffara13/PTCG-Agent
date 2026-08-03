@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _transform_diagnose_call_message_formatter(
     run: Callable,

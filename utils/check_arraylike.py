@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_arraylike(fun_name: str, *args: Any, emit_warning=False, stacklevel=3):
   """Check if all args fit JAX's definition of arraylike."""

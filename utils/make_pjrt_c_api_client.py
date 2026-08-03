@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_pjrt_c_api_client(
     plugin_name: str,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_to_fresh_input(idx: int, t: Any, meta: "ViewAndMutationMeta") -> Any:
     if not isinstance(t, torch.Tensor):

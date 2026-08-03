@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_fake_value(x: Union[VariableTracker, Proxy, "FakeTensor"]) -> "FakeTensor":
     if isinstance(x, variables.VariableTracker):

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def find_jupytext_configuration_file(path: typing.Union[str, Path], search_parent_dirs=True) -> str:
     """Return the first jupytext configuration file in the current directory, or any parent directory"""

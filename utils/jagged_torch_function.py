@@ -1,3 +1,4 @@
+import functools
 
 def jagged_torch_function(func, *args, **kwargs):
     # SDPA has special kernels that handle nested tensors.

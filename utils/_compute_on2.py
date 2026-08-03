@@ -1,3 +1,4 @@
+import json
 
 def _compute_on2(f, *, compute_type, out_memory_spaces, compiler_options):
   if not isinstance(compute_type, str):

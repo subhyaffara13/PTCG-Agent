@@ -1,3 +1,4 @@
+from typing import Optional
 
 def huber_loss(input, target, delta: float = 1.0):
     errors = torch.abs(input - target)  # shape (batch_size,)

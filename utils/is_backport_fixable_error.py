@@ -1,3 +1,4 @@
+import sys
 
 def is_backport_fixable_error(e: TypeError) -> bool:
     msg = str(e)

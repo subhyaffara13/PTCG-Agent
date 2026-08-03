@@ -1,3 +1,4 @@
+import copy
 
 def _hash_serialized_compile_options(hash_obj, compile_options_obj,
                                      strip_device_assignment=False):

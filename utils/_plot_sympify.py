@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _plot_sympify(args):
     """This function recursively loop over the arguments passed to the plot

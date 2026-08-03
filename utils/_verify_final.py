@@ -1,3 +1,4 @@
+from typing import Any
 
 def _verify_final(
     stub: nodes.TypeInfo, runtime: type[Any], object_path: list[str]

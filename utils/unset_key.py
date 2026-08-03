@@ -1,3 +1,5 @@
+import os
+from typing import Optional, Tuple
 
 def unset_key(
     dotenv_path: StrPath,

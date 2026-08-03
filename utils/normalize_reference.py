@@ -1,3 +1,4 @@
+import re
 
 def normalizeReference(string: str) -> str:
     """Helper to unify [reference labels]."""

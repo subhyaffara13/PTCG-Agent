@@ -1,3 +1,4 @@
+from typing import Any
 
 def encode_default(dft: Any) -> Any:
     from pydantic.v1.main import BaseModel

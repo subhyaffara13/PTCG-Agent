@@ -1,3 +1,4 @@
+import re
 
 def has_vertically_truncated_repr(df):
     r = repr(df)

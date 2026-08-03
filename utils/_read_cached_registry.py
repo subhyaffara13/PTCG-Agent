@@ -1,3 +1,6 @@
+import json
+import os
+import time
 
 def _read_cached_registry(path: str, max_age: int | None) -> Registry | None:
     """Return the cached registry, or `None` if missing/stale/unreadable."""

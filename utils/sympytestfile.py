@@ -1,3 +1,4 @@
+import os
 
 def sympytestfile(filename, module_relative=True, name=None, package=None,
              globs=None, verbose=None, report=True, optionflags=0,

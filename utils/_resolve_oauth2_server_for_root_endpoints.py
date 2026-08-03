@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_oauth2_server_for_root_endpoints(
     client_ip: Optional[str] = None,

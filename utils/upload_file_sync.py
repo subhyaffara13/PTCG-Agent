@@ -1,3 +1,5 @@
+import uuid
+from typing import Optional
 
 def upload_file_sync(
     image_url: str,

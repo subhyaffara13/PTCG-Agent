@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _build_file_citation_annotations(
     results: List[VectorStoreSearchResult],

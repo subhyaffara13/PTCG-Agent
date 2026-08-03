@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def tree_reduce(function: Callable[[T, Any], T],
                 tree: Any,

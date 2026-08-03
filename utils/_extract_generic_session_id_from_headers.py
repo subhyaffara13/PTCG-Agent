@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _extract_generic_session_id_from_headers(
     normalized: Dict[str, str],

@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def sign_oci_request(
     headers: dict,

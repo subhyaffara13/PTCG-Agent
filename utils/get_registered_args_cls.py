@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def get_registered_args_cls(
     handler: Union[Type[CheckpointHandler], CheckpointHandler]

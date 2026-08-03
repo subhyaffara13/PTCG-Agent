@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_module_imports_are_direct():
     my_filename = abspath(inspect.getfile(inspect.currentframe()))

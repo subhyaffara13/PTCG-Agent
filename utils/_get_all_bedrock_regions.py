@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_all_bedrock_regions() -> List[str]:
     """Get all Bedrock regions, cached at module level."""

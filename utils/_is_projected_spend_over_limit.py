@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_projected_spend_over_limit(
     current_spend: float, soft_budget_limit: Optional[float]

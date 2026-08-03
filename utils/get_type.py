@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def get_type(obj):
     '''Determine the type of the object if among some of the built-in ones.'''

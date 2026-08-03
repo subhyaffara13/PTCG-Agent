@@ -1,3 +1,4 @@
+from typing import Any
 
 def config_of(
     args: list[KernelArgType],

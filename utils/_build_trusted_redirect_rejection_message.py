@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _build_trusted_redirect_rejection_message(
     redirect_uri: str,

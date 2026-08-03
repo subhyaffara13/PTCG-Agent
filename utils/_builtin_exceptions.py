@@ -1,3 +1,4 @@
+from typing import Any
 
 def _builtin_exceptions() -> set[str]:
     def predicate(obj: Any) -> bool:

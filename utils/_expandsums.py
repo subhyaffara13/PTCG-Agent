@@ -1,3 +1,4 @@
+import itertools
 
 def _expandsums(args: list[sympy.Expr]) -> tuple[sympy.Expr, bool]:
     """

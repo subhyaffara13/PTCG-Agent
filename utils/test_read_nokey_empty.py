@@ -1,3 +1,4 @@
+import re
 
 def test_read_nokey_empty(temp_h5_path):
     store = HDFStore(temp_h5_path)

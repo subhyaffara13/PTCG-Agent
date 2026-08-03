@@ -1,3 +1,4 @@
+import os
 
 def _get_email_logger_class():
     """

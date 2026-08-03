@@ -1,3 +1,5 @@
+import math
+
 
 def is_memref_transposed(ref: ir.MemRefType) -> bool:
   strides, _ = ref.get_strides_and_offset()

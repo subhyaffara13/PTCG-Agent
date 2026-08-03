@@ -1,3 +1,4 @@
+import functools
 
 def _register_pre_forward_hook(
     state: _FSDPState,

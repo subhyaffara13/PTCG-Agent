@@ -1,3 +1,4 @@
+import functools
 
 def _make_str_method(*args, **kwargs):
     """

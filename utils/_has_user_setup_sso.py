@@ -1,3 +1,4 @@
+import os
 
 def _has_user_setup_sso():
     """

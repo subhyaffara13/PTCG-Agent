@@ -1,3 +1,4 @@
+import itertools
 
 def discharge_state(
     closed_jaxpr: core.ClosedJaxpr,

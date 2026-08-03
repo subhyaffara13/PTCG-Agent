@@ -1,3 +1,4 @@
+from typing import Any
 
 def vertical_grid_grouped(**interface: Any) -> str:
     return (

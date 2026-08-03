@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _to_dlpack(x: Array, stream: int | Any | None,
                src_device: _jax.Device | None = None,

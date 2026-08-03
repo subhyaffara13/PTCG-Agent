@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_content_finite_sets():
     assert mathml(FiniteSet(a)) == '<set><ci>a</ci></set>'

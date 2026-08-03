@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def _tree_leaves_with_named_tuple_path(
     tree: base.PyTree,

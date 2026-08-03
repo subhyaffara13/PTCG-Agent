@@ -1,3 +1,7 @@
+import itertools
+import pathlib
+import re
+import sys
 
 def warn_external(message, category=None):
     """

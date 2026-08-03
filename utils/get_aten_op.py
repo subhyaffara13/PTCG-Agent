@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_aten_op(fn: Callable, name: str):
     """

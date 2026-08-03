@@ -1,3 +1,4 @@
+import itertools
 
 def construct_xpk_command(
     workload_name: str, workload_command: str

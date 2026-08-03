@@ -1,3 +1,4 @@
+from typing import Any
 
 def _index_to_start_size_stride(
     idx: Any, cast_to_index: bool

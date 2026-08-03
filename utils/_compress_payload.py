@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _compress_payload(data: bytes, compression: CompressionType) -> Tuple[bytes, List[Tuple[str, str]]]:
     headers = [('Content-Type', CONTENT_TYPE_PLAIN_0_0_4)]

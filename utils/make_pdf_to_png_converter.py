@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def make_pdf_to_png_converter():
     """Return a function that converts a pdf file to a png file."""

@@ -1,3 +1,4 @@
+import os
 
 def test_eval_file():
     filename = os.path.join(os.path.dirname(__file__), "test_eval_call.py")

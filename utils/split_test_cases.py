@@ -1,3 +1,4 @@
+import re
 
 def split_test_cases(
     parent: DataFileCollector, suite: DataSuite, file: str

@@ -1,3 +1,4 @@
+from typing import Any
 
 def with_info_plain_validator_function(
     function: WithInfoValidatorFunction,

@@ -1,3 +1,5 @@
+import math
+
 
 def compute_relative_buckets(num_buckets, max_distance, relative_positions, is_bidirectional=False):
     """

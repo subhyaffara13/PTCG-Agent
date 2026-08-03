@@ -1,3 +1,4 @@
+from typing import Optional
 
 def setup_sharded_pytree(
     pytree: Optional[pytree_checkpoint_handler.PyTree] = None,

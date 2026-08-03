@@ -1,3 +1,4 @@
+from typing import Callable
 
 def spawn_tp_materialize(
     thread_pool: ThreadPoolExecutor | None, tensor: torch.Tensor, sharding_method, tensor_idx, device=None, dtype=None

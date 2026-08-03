@@ -1,3 +1,5 @@
+import math
+
 
 def _prime_factors(x: int) -> list[int]:
   # find prime factors of axis sizes to help efficiently find divisor chunks

@@ -1,3 +1,4 @@
+from typing import Union
 
 def error_unexpected_behavior(
     detail: str, api: CheckerPluginInterface | SemanticAnalyzerPluginInterface, context: Context

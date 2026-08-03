@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def map_leaves(
     f: Callable[..., Any | Placeholder],

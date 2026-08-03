@@ -1,3 +1,4 @@
+import os
 
 def listdir(path):
   if io_mode == BackendMode.DEFAULT:

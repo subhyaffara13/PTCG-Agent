@@ -1,3 +1,5 @@
+import math
+
 
 def next_power_of_two(n):
     if n <= 0:

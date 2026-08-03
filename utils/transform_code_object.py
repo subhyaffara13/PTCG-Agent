@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def transform_code_object(
     code: types.CodeType,

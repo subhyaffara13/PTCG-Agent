@@ -1,3 +1,4 @@
+import re
 
 def test_merge_datetime_and_timedelta(how):
     left = DataFrame({"key": Series([1, None], dtype="datetime64[ns]")})

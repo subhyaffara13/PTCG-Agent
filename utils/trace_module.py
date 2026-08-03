@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def trace_module(
     mod,

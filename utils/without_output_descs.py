@@ -1,3 +1,4 @@
+from typing import Callable
 
 def without_output_descs(f: Callable[_P, tuple[_T, _S]]) -> Callable[_P, _T]:
     @wraps(f)

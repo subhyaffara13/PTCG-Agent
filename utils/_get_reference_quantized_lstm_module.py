@@ -1,3 +1,4 @@
+import copy
 
 def _get_reference_quantized_lstm_module(
     observed_lstm: torch.ao.nn.quantizable.LSTM,

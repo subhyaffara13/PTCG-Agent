@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def _traverse_ot_data(
     root: otBase.BaseTable, root_accessor: str, add_to_frontier_fn: AddToFrontierFn

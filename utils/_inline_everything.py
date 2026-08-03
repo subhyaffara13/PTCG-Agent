@@ -1,3 +1,4 @@
+import functools
 
 def _inline_everything(fn):
     @functools.wraps(fn)

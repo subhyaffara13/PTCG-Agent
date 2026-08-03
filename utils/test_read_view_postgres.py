@@ -1,3 +1,4 @@
+import uuid
 
 def test_read_view_postgres(conn, request):
     # GH 52969

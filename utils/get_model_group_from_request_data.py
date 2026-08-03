@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_model_group_from_request_data(data: dict) -> Optional[str]:
     _metadata = data.get("metadata", None) or {}

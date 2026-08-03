@@ -1,3 +1,4 @@
+from typing import Any
 
 def serialize_pytreedef(node) -> dict[str, Any]:
   builder = flatbuffers.Builder(65536)

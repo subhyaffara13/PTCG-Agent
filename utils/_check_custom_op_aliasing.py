@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_custom_op_aliasing(
     name: str, args: tuple[Any, ...], kwargs: dict[str, Any], result: Any

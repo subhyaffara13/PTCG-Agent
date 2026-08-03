@@ -1,3 +1,4 @@
+from typing import List
 
 def get_messages_interceptors() -> List[MessagesInterceptor]:
     """Return the list of active MessagesInterceptors.

@@ -1,3 +1,4 @@
+import functools
 
 def copy_func(f):
     """Returns a copy of a function f."""

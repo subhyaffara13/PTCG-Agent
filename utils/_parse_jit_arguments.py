@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _parse_jit_arguments(fun: Callable, *, in_shardings: Any,
                          out_shardings: Any,

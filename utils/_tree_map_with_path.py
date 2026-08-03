@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _tree_map_with_path(
     func: Callable[..., Any],

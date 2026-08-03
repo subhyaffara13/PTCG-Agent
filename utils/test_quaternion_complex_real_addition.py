@@ -1,3 +1,4 @@
+import re
 
 def test_quaternion_complex_real_addition():
     a = symbols("a", complex=True)

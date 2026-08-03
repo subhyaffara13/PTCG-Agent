@@ -1,3 +1,4 @@
+import functools
 
 def _dynamo_disable(func):
     """Disable dynamo tracing for FSDP hooks."""

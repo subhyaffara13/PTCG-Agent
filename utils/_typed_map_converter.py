@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _typed_map_converter(
     init_val: Mapping[str, Callable[[TypeChecker, Any], bool]],

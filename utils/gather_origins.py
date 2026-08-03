@@ -1,3 +1,4 @@
+import itertools
 
 def gather_origins(
     args: Sequence[IRNode], kwargs: dict[str, IRNode]

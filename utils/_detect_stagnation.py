@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _detect_stagnation(prev_asst: Optional[str], curr_asst: Optional[str]) -> bool:
     """Fires when consecutive assistant messages are near-duplicates."""

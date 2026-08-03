@@ -1,3 +1,4 @@
+import json
 
 def raw(rawmode: str, data: Sequence[int] | bytes | bytearray) -> ImagePalette:
     palette = ImagePalette()

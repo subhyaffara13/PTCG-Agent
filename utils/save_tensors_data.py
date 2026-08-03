@@ -1,3 +1,7 @@
+import json
+import os
+from pathlib import Path
+
 
 def save_tensors_data(tensors_data: "TensorsData", path: "str | Path", *, smooth_quant: bool = False) -> None:
     """Serialize calibration tensor ranges to a JSON file at *path*.

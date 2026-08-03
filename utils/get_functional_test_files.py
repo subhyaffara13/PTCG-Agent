@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_functional_test_files(
     root_directory: Path,

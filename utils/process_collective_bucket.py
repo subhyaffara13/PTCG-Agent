@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def process_collective_bucket(
     g: torch.fx.Graph,

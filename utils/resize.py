@@ -1,3 +1,6 @@
+from typing import Optional
+import math
+
 
 def resize(
     image: np.ndarray,

@@ -1,3 +1,5 @@
+import math
+
 
 def get_image_size_fit_to_canvas(
     image_height: int,

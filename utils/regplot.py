@@ -1,3 +1,4 @@
+import copy
 
 def regplot(
     data=None, *, x=None, y=None,

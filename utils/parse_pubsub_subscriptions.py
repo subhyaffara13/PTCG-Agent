@@ -1,3 +1,4 @@
+from typing import Any
 
 def parse_pubsub_subscriptions(
     args: tuple[Any, ...], kwargs: Mapping[str, PubSubHandler]

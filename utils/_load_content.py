@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _load_content(content: str | Path | bytes) -> bytes:
     """Load the content of an entry as bytes.

@@ -1,3 +1,4 @@
+import functools
 
 def memoize_when_activated(fun):
     """A memoize decorator which is disabled by default. It can be

@@ -1,3 +1,4 @@
+import copy
 
 def mask_or(m1, m2, copy=False, shrink=True):
     """

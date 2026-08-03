@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sparse_coo_tensor_with_dims_and_tensors(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

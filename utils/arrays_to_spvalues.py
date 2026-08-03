@@ -1,3 +1,4 @@
+from typing import Any
 
 def arrays_to_spvalues(
     spenv: SparsifyEnv,

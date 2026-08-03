@@ -1,3 +1,4 @@
+import re
 
 def test_engine_kwargs(tmp_excel, engine_kwargs):
     # GH 42286

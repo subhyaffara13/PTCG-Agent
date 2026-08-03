@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def extract_text_from_a2a_message(message: Any) -> str:
     return A2ARequestUtils.extract_text_from_message(message)

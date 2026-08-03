@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_all_reduce(new_all_reduce: Callable):
     orig_all_reduce = dist.all_reduce

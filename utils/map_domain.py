@@ -1,3 +1,4 @@
+from typing import Callable
 
 def map_domain(string: str, fn: Callable[[str], str]) -> str:
     parts = string.split("@")

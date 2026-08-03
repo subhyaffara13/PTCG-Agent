@@ -1,3 +1,4 @@
+import functools
 
 def _logged_cached(fmt, func=None):
     """

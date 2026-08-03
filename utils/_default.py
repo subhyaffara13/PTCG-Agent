@@ -1,3 +1,4 @@
+import uuid
 
 def _default(o: t.Any) -> t.Any:
     if isinstance(o, date):

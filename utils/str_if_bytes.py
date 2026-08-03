@@ -1,3 +1,4 @@
+from typing import Union
 
 def str_if_bytes(value: Union[str, bytes]) -> str:
     return (

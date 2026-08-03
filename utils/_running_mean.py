@@ -1,3 +1,4 @@
+import functools
 
 def _running_mean() -> Accumulator:
   """An Accumulator that computes the running mean of microbatched outputs."""

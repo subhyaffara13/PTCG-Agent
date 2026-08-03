@@ -1,3 +1,4 @@
+from typing import Any
 
 def _list_remote_files(api: "HfApi", bucket_id: str, prefix: str) -> Iterator[tuple[str, int, float, Any]]:
     """List all files in a bucket with a given prefix.

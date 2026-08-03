@@ -1,3 +1,4 @@
+from typing import List, Tuple, Union
 
 def _seg_15() -> List[Union[Tuple[int, str], Tuple[int, str, str]]]:
     return [

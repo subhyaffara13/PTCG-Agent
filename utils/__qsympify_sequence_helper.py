@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def __qsympify_sequence_helper(seq):
     """

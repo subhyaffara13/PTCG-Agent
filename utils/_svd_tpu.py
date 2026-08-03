@@ -1,3 +1,4 @@
+import functools
 
 def _svd_tpu(a, *, full_matrices, compute_uv, subset_by_index, algorithm=None):
   if algorithm is not None and algorithm != lax_linalg.SvdAlgorithm.DEFAULT:

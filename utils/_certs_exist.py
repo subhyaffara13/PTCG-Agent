@@ -1,3 +1,4 @@
+import os
 
 def _certs_exist(mds_mtls_config: MdsMtlsConfig):
     """Checks if the mTLS certificates exist."""

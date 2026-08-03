@@ -1,3 +1,4 @@
+from typing import Union
 
 def safe_squeeze(
     tensor: Union[np.ndarray, "torch.Tensor"], axis: int | None = None

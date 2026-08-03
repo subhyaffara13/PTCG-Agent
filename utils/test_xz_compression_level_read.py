@@ -1,3 +1,4 @@
+import os
 
 def test_xz_compression_level_read(obj, method, temp_file):
     path = temp_file

@@ -1,3 +1,4 @@
+import re
 
 def mpc_is_infnan(z):
     """Check if either real or imaginary part is infinite or nan"""

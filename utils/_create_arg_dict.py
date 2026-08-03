@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_arg_dict(self: TracerBase, a: dict[Any, Any]) -> dict[Any, Argument]:
     r: dict[Any, Argument] = {}

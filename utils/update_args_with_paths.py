@@ -1,3 +1,6 @@
+import os
+import pathlib
+from typing import List, Optional, Tuple
 
 def update_args_with_paths(
     paths: List[str],

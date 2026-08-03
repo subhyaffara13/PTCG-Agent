@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _try_parse_embedded_python_dict(message: str) -> Optional[Dict[str, Any]]:
     """

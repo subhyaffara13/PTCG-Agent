@@ -1,3 +1,4 @@
+import sys
 
 def test_str_encode(errors, encoding, exp):
     ser = pd.Series(["abc", None], dtype=ArrowDtype(pa.string()))

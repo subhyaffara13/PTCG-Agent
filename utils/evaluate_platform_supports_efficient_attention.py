@@ -1,3 +1,4 @@
+import os
 
 def evaluate_platform_supports_efficient_attention():
     if TEST_WITH_ROCM:

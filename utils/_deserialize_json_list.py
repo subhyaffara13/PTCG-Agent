@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, List, Optional
 
 def _deserialize_json_list(data: Any) -> Optional[List[Dict[str, Any]]]:
     """Deserialize a JSON array stored in the DB (``env_vars`` and friends).

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def are_tuples_overlapping(
     left: Type, right: Type, is_overlapping: Callable[[Type, Type], bool]

@@ -1,3 +1,4 @@
+import os
 
 def _create_temp_file(content: bytes):
     """Creates a temporary file with the given content.

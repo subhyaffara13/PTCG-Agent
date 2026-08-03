@@ -1,3 +1,4 @@
+import json
 
 def _decode_jwt_segment(encoded_section):
     """Decodes a single JWT segment."""

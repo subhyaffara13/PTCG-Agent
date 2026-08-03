@@ -1,3 +1,4 @@
+import os
 
 def _raise_on_image_difference(expected, actual, tol):
     __tracebackhide__ = True

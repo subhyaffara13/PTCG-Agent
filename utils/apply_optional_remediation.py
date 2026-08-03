@@ -1,3 +1,4 @@
+import sys
 
 def apply_optional_remediation(
     df: pd.DataFrame, remediation: Remediation, auto_accept: bool

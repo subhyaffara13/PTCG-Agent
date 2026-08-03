@@ -1,3 +1,4 @@
+import copy
 
 def register_symm_mem_lowerings():
     """

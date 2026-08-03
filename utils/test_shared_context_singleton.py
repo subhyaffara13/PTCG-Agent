@@ -1,3 +1,4 @@
+import json
 
 def test_shared_context_singleton(tmp_path):
     skills_dir = tmp_path / "skills"

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def prepare_test_env():
     test_subdir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]

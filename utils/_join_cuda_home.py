@@ -1,3 +1,4 @@
+import os
 
 def _join_cuda_home(*paths) -> str:
     """

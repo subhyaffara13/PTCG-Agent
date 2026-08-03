@@ -1,3 +1,4 @@
+from typing import Callable
 
 def condition(
     cond: Callable[[_T], bool], rule: Callable[[_T], _T]

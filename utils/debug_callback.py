@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def debug_callback(
     callback: Callable[..., None],

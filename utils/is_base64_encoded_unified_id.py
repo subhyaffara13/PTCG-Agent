@@ -1,3 +1,4 @@
+from typing import Union
 
 def is_base64_encoded_unified_id(
     resource_id: str,

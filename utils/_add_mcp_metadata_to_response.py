@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def _add_mcp_metadata_to_response(
     response: Union[ModelResponse, CustomStreamWrapper],

@@ -1,3 +1,4 @@
+import random
 
 def shuffle_roles_inplace(config):
     agents = config["agents"]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_module_stack(node: fx.Node) -> list[tuple[str, type[Any]]]:
     nn_stack = node.meta.get("nn_module_stack", "")

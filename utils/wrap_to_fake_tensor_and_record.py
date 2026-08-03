@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def wrap_to_fake_tensor_and_record(
     e: Any,

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _copy_flag_dict(flag: flags.Flag) -> dict[str, Any]:
   """Returns a copy of the flag object's ``__dict__``.

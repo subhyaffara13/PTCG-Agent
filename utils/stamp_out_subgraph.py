@@ -1,3 +1,4 @@
+from typing import Any
 
 def stamp_out_subgraph(
     tx: "InstructionTranslator",

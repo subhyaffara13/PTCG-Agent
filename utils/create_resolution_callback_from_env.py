@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def createResolutionCallbackFromEnv(lookup_base: HasGetattr) -> Callable[[str], Any]:
     """

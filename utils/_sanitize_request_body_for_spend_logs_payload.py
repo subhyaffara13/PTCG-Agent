@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _sanitize_request_body_for_spend_logs_payload(
     request_body: dict,

@@ -1,3 +1,4 @@
+import sys
 
 def _prompt_login_method() -> str:
     """Ask the user how to log in: "browser" (default) or "token". Never prompts without a TTY."""

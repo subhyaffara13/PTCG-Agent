@@ -1,3 +1,4 @@
+import re
 
 def test_flags_kwarg(any_string_dtype):
     data = {

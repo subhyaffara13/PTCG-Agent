@@ -1,3 +1,4 @@
+import functools
 
 def between_ops() -> list[AHOperation]:
     dims = ["m", "k", "n"]

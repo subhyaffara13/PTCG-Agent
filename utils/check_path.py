@@ -1,3 +1,5 @@
+import math
+
 
 def checkPath(filename, reporter=None):
     """

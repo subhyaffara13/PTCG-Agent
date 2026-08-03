@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _iter_module_paths() -> t.Iterator[str]:
     """Find the filesystem paths associated with imported modules."""

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def file_from_path(path: str) -> FileTypes:
     contents = Path(path).read_bytes()

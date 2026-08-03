@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def item(value: bool, _parent: Item | None = ..., _sort_keys: bool = ...) -> Bool: ...  # type: ignore[overload-overlap]
 

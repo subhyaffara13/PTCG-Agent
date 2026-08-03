@@ -1,3 +1,4 @@
+import time
 
 def _decode_asr(tokenizer, model_outputs, *, return_timestamps, return_language, time_precision, segment_size=1500):
     """

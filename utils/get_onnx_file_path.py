@@ -1,3 +1,4 @@
+import os
 
 def get_onnx_file_path(
     onnx_dir: str,

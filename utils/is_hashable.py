@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_hashable(x: VariableTracker) -> bool:
     # NB - performing isinstance check on a LazVT realizes the VT, accidentally

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_qconv_prepack_op(conv_op: Callable) -> Callable:
     prepack_ops = {

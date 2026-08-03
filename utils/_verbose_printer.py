@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _verbose_printer(verbose: bool | None) -> Callable[..., None]:
     """Prints messages based on `verbose`."""

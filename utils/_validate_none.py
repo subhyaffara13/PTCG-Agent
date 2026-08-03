@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_none(name: str, value: Any) -> None:
     """Validate None type.

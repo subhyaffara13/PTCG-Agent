@@ -1,3 +1,4 @@
+import os
 
 def initsysfonts_win32():
     """initialize fonts dictionary on Windows"""

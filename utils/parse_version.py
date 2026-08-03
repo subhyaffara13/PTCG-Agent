@@ -1,3 +1,5 @@
+import re
+from typing import Union
 
 def parse_version(v: str | float) -> tuple[int, int]:
     m = re.match(r"\A(\d)\.(\d+)\Z", str(v))

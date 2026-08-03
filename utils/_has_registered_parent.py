@@ -1,3 +1,4 @@
+import logging
 
 def _has_registered_parent(log_qname) -> bool:
     cur_log = logging.getLogger(log_qname)

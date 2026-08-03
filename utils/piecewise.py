@@ -1,3 +1,4 @@
+from typing import Callable
 
 def piecewise(x, condlist, funclist, *args, **kw):
     """

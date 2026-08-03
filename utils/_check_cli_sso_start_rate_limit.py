@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_cli_sso_start_rate_limit(
     request: Request,

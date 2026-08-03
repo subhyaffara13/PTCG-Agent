@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _build_function_tool(vector_store_ids: List[str]) -> Dict[str, Any]:
     """

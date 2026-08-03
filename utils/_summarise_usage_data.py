@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _summarise_usage_data(data: Dict[str, Any]) -> str:
     meta = data.get("metadata", {})

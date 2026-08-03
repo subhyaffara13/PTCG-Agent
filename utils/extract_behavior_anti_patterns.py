@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_behavior_anti_patterns(bv: Any, learned_donts: dict, save_donts_fn) -> bool:
     """Identifies bad behavioral thresholds."""

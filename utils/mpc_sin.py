@@ -1,3 +1,4 @@
+import re
 
 def mpc_sin(z, prec, rnd=round_fast):
     """Complex sine. We have sin(a+bi) = sin(a)*cosh(b) +

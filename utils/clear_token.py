@@ -1,3 +1,4 @@
+import os
 
 def clear_token() -> None:
     """Clear stored token"""

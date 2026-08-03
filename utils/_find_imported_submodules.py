@@ -1,3 +1,4 @@
+import sys
 
 def _find_imported_submodules(code, top_level_dependencies):
     """Find currently imported submodules used by a function.

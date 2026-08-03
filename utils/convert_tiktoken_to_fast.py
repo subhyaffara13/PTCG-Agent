@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def convert_tiktoken_to_fast(encoding: Any, output_dir: str):
     """

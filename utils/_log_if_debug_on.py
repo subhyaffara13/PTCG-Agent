@@ -1,3 +1,4 @@
+import functools
 
 def _log_if_debug_on(meth):
     """

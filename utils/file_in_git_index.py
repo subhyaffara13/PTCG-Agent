@@ -1,3 +1,4 @@
+import os
 
 def file_in_git_index(path):
     if not os.path.isfile(path):

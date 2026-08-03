@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lazy_import_utils(name: str) -> Any:
     """Handler for utils module attributes (ModelResponse, token_counter, etc.)"""

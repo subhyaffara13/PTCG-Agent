@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoPostscriptBluesValidator(values: Any) -> bool:
     """

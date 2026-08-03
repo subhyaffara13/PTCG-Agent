@@ -1,3 +1,6 @@
+import itertools
+import random
+from typing import Any
 
 def sample_inputs_cross_entropy(op_info, device, dtype, requires_grad, **kwargs):
     batch_size, num_classes = shape = (2, 3)

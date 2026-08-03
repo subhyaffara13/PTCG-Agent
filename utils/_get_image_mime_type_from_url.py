@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_image_mime_type_from_url(url: str) -> Optional[str]:
     """

@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _serialize_metadata_for_prisma(metadata: Any) -> str:
     """

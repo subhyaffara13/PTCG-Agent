@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _is_setup_py(path: Path) -> bool:
     if path.name != "setup.py":

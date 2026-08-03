@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def test_backend_fallback_headless_invalid_backend(tmp_path):
     env = {**os.environ,

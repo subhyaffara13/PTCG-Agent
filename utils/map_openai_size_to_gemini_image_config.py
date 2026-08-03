@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def map_openai_size_to_gemini_image_config(
     size: str, model: str

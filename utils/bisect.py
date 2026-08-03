@@ -1,3 +1,4 @@
+from typing import Any
 
 def bisect(shape_env):
     from torch.fx.experimental.recording import (

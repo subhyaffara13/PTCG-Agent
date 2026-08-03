@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def doesnt_support_saved_tensors_hooks(f: Callable[_P, _R]) -> Callable[_P, _R]:
     message = (

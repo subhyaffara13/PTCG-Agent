@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_it_copes_with_dotfiles(ignored_relative_path):
     """

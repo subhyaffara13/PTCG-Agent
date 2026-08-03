@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_sequence(name: str, value: Any, args: tuple[Any, ...]) -> None:
     """Validate Sequence or Sequence[T] type."""

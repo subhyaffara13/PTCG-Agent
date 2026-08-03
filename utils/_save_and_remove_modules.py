@@ -1,3 +1,4 @@
+import sys
 
 def _save_and_remove_modules(names: set[str]) -> dict[str, ModuleType]:
     orig_modules = {}

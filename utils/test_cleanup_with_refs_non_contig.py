@@ -1,3 +1,4 @@
+import sys
 
 def test_cleanup_with_refs_non_contig():
     # Regression test, leaked the dtype (but also good for rest)

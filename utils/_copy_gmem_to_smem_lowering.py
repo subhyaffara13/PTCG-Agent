@@ -1,3 +1,5 @@
+import math
+
 
 def _copy_gmem_to_smem_lowering(
     ctx: lowering.LoweringRuleContext,

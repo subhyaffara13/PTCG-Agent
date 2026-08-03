@@ -1,3 +1,4 @@
+from typing import Any
 
 def _freeze_attr(val: Any) -> Any:
   """Recursively wrap the given attribute `var` in ``FrozenDict``."""

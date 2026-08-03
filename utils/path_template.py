@@ -1,3 +1,4 @@
+from typing import Any
 
 def path_template(template: str, /, **kwargs: Any) -> str:
     """Interpolate {name} placeholders in `template` from keyword arguments.

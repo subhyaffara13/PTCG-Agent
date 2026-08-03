@@ -1,3 +1,4 @@
+from typing import Set
 
 def subset_elements(el: etree.Element, retained_ids: Set[str]) -> bool:
     # Keep elements if their id is in the subset, or any of their children's id is.

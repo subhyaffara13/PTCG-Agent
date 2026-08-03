@@ -1,3 +1,5 @@
+import math
+
 
 def test_lazy_import_basics():
     math = lazy._lazy_import("math")

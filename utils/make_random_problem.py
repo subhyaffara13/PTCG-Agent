@@ -1,3 +1,4 @@
+import random
 
 def make_random_problem(num_variables=2, num_constraints=2, sparsity=.1, rational=True,
                         disable_strict = False, disable_nonstrict=False, disable_equality=False):

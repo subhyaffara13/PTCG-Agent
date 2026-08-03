@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Tuple, Union
 
 def make_sync_call(
     client: Optional[HTTPHandler],  # module-level client

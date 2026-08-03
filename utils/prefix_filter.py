@@ -1,3 +1,4 @@
+from typing import Any
 
 def prefix_filter(include: str, excludes: tuple[str, ...] = ()):
   """Builds a filter that only defines aliases within a given prefix."""

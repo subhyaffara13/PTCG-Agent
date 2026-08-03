@@ -1,3 +1,4 @@
+from typing import Optional
 
 def momo_adam(
     learning_rate: base.ScalarOrSchedule = 1e-2,

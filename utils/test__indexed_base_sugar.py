@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_IndexedBase_sugar():
     i, j = symbols('i j', integer=True)

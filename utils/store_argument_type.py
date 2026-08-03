@@ -1,3 +1,4 @@
+from typing import Callable
 
 def store_argument_type(
     defn: FuncItem, i: int, typ: CallableType, named_type: Callable[[str, list[Type]], Instance]

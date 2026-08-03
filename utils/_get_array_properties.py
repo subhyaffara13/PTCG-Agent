@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_array_properties(info: dict[str, Any]) -> tuple[tuple[int, ...], Any]:
   """Parses shape and `dtype` from a safetensors tensor header."""

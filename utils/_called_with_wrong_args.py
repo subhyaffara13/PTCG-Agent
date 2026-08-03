@@ -1,3 +1,4 @@
+import sys
 
 def _called_with_wrong_args(f: t.Callable[..., Flask]) -> bool:
     """Check whether calling a function raised a ``TypeError`` because

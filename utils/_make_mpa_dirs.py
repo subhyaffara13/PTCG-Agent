@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _make_mpa_dirs(
   mpa_targets: list[tuple[MultiprocessArrayType, str]], tmp_path: str

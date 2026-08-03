@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _add_loggers_impl(
     name_a: str,

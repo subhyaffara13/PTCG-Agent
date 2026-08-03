@@ -1,3 +1,4 @@
+import re
 
 def extract_static_func_decls(funcs):
     """Get declarations for static functions that are called across sub-files."""

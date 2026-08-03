@@ -1,3 +1,4 @@
+import re
 
 def _add_vector_store_id_from_path(request_data: dict, request: Request) -> None:
     """

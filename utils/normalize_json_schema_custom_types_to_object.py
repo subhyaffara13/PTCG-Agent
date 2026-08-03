@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def normalize_json_schema_custom_types_to_object(schema: dict) -> None:
     """

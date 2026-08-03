@@ -1,3 +1,4 @@
+import random
 
 def shor(N):
     """This function implements Shor's factoring algorithm on the Integer N

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _fixed_indexer(
     size: Sequence[int],

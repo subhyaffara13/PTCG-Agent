@@ -1,3 +1,5 @@
+import json
+from typing import Any, Callable
 
 def create_agent_fn(
     game_harness: GameHarness,

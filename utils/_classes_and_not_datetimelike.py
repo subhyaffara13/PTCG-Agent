@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _classes_and_not_datetimelike(*klasses) -> Callable:
     """

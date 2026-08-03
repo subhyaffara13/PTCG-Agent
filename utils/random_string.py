@@ -1,3 +1,5 @@
+import os
+import random
 
 def random_string() -> str:
     return binascii.hexlify(os.urandom(8)).decode("ascii")

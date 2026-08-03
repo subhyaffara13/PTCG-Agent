@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_pt2_compliant_op(
     output_graph: OutputGraph, kind: str, target: Any, args: Any, kwargs: Any

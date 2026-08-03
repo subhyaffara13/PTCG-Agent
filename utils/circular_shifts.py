@@ -1,3 +1,5 @@
+import math
+
 
 def circular_shifts(iterable, steps=1):
     """Yield the circular shifts of *iterable*.

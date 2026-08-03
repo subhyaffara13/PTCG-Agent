@@ -1,3 +1,4 @@
+import os
 
 def _update_log_state_from_env() -> None:
     global log_state

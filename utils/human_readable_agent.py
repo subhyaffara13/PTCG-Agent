@@ -1,3 +1,4 @@
+from typing import Callable, Dict, List
 
 def human_readable_agent(agent: Callable[[Dict], Action]):
     """

@@ -1,3 +1,4 @@
+import itertools
 
 def test_form_qTu():
     # We want to ensure that all of the code paths through this function are

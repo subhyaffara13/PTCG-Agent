@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_attrs(value: Any) -> Any:
     """Convert Token.attrs set as ``None`` or ``[[key, value], ...]`` to a dict.

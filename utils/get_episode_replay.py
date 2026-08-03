@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_episode_replay(episode_id: int) -> dict[str, Any]:
     body = {"EpisodeId": episode_id}

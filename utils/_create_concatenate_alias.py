@@ -1,3 +1,4 @@
+import sys
 
 def _create_concatenate_alias(origin, parameters):
     if parameters[-1] is ... and sys.version_info < (3, 9, 2):

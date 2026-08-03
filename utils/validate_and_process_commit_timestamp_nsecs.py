@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_and_process_commit_timestamp_nsecs(
     commit_timestamp_nsecs: Any,

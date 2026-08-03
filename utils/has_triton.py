@@ -1,3 +1,4 @@
+from typing import Any
 
 def has_triton() -> bool:
     if not has_triton_package():

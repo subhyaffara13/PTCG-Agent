@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _reconstruct_closure_fn(stripped, extracted_leaves, closure_spec):
     """Rebuild a function from a _StrippedClosure and flattened extracted leaves."""

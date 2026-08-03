@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def assert_path(pkg, expected):
     # __path__ is not guaranteed to exist, so we have to account for that

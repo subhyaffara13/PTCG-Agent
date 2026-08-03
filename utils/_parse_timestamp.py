@@ -1,3 +1,5 @@
+import math
+
 
 def _parse_timestamp(timestamp):
     timestamp = ''.join(timestamp)

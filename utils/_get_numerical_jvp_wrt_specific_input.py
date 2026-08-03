@@ -1,3 +1,4 @@
+import functools
 
 def _get_numerical_jvp_wrt_specific_input(
     fn, input_idx, inputs, u, eps, is_forward_ad=False

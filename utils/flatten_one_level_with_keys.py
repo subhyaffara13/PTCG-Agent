@@ -1,3 +1,4 @@
+from typing import Any
 
 def flatten_one_level_with_keys(
     tree: Any,

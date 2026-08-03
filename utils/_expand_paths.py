@@ -1,3 +1,4 @@
+import os
 
 def _expand_paths(path, name_function, num):
     if isinstance(path, str):

@@ -1,3 +1,5 @@
+import math
+
 
 def _linalg_vector_norm_helper(
     g: jit_utils.GraphContext,

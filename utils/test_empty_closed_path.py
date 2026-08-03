@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_empty_closed_path():
     path = Path(np.zeros((0, 2)), closed=True)

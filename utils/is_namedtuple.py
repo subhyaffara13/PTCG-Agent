@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_namedtuple(obj: Any, /) -> bool:
     """Return whether the argument is a named tuple type.

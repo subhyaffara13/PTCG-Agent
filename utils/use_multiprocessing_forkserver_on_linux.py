@@ -1,3 +1,4 @@
+import sys
 
 def use_multiprocessing_forkserver_on_linux():
     if sys.platform != "linux":

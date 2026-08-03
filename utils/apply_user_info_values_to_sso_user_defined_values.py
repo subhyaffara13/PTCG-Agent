@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def apply_user_info_values_to_sso_user_defined_values(
     user_info: Optional[Union[LiteLLM_UserTable, NewUserResponse]],

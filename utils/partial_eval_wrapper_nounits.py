@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def partial_eval_wrapper_nounits(
     f: Callable,

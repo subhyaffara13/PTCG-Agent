@@ -1,3 +1,4 @@
+import re
 
 def test_replace_compiled_regex(any_string_dtype):
     # GH 15446

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def group_filter_overloads(
     pairs: Sequence[PythonSignatureNativeFunctionPair],

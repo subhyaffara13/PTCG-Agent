@@ -1,3 +1,5 @@
+import os
+import re
 
 def cpu_count_logical():
     """Return the number of logical CPUs in the system."""

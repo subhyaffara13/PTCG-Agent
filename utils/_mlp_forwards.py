@@ -1,3 +1,4 @@
+from typing import List
 
 def _mlp_forwards(mlp_hidden_sizes: List[int]) -> hk.Transformed:
   """Returns a haiku transformation of the MLP model to be used in optimizer.

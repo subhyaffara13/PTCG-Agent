@@ -1,3 +1,4 @@
+from typing import Any
 
 def _aot_stage2a_partition(
     fx_g: torch.fx.GraphModule,

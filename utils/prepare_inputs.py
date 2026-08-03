@@ -1,3 +1,4 @@
+import sys
 
 def prepare_inputs(bsr, *dense_tensors):
     # Introduce fake batch dimension if not present for convenience.

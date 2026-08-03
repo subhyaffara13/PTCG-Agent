@@ -1,3 +1,4 @@
+from typing import List
 
 def _write_back_texts(
     guardrailed_texts: List[str],

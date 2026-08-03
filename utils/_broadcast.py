@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def _broadcast(input, src, tag, ranks, group_size):
     group_name = c10d._resolve_group_name_by_ranks_and_tag(ranks, tag)

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def with_native_function_and_indices(
     func: Callable[[F, dict[DispatchKey, BackendIndex]], T],

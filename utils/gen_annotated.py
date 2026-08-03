@@ -1,3 +1,4 @@
+import os
 
 def gen_annotated(
     native_yaml_path: str, tags_yaml_path: str, out: str, autograd_dir: str

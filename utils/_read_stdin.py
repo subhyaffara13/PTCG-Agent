@@ -1,3 +1,4 @@
+import sys
 
 def _read_stdin() -> str:
     # See https://github.com/python/typeshed/pull/5623 for rationale behind assertion

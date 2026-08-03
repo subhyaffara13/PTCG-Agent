@@ -1,3 +1,4 @@
+import json
 
 def downgrade_output(output):
     """downgrade a single code cell output to v3 from v4

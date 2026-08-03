@@ -1,3 +1,6 @@
+import uuid
+from pathlib import Path
+
 
 def maybe_delete_a_numbered_dir(path: Path) -> None:
     """Remove a numbered directory if its lock can be obtained and it does

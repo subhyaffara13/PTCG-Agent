@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_str_to_export_dim(
     dynamic_shapes: dict[str, Any] | tuple[Any, ...] | list[Any] | None,

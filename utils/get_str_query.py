@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def get_str_query(*args: Any, **kwargs: Any) -> str | None:
     """Return a query string from supported args."""

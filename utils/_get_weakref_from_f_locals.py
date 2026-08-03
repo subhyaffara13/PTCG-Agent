@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_weakref_from_f_locals(
     frame: DynamoFrameType, local_name: str

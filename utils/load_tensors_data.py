@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def load_tensors_data(path: "str | Path") -> "TensorsData":
     """Load calibration tensor ranges from a JSON file written by save_tensors_data()."""

@@ -1,3 +1,4 @@
+import os
 
 def _parse_repo_info(github):
     if ":" in github:

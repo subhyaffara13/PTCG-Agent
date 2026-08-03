@@ -1,3 +1,5 @@
+import json
+import os
 
 def is_timm_local_checkpoint(pretrained_model_path: str) -> bool:
     """

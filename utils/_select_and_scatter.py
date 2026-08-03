@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _select_and_scatter(operand: Array, select: Callable,
                         window_dimensions: core.Shape,

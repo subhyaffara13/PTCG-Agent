@@ -1,3 +1,4 @@
+import os
 
 def make_nspkg_sdist(dist_path, distname, version):
     """

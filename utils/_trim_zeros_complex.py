@@ -1,3 +1,4 @@
+import re
 
 def _trim_zeros_complex(str_complexes: ArrayLike, decimal: str = ".") -> list[str]:
     """

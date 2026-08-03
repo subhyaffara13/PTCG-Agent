@@ -1,3 +1,5 @@
+import math
+
 
 def lineLineIntersections(s1, e1, s2, e2):
     """Finds intersections between two line segments.

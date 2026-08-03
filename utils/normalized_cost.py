@@ -1,3 +1,4 @@
+from typing import List
 
 def normalized_cost(model_cost: float, all_costs: List[float]) -> float:
     """

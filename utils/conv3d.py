@@ -1,3 +1,4 @@
+from typing import Optional
 
 def conv3d(
     input: list[int],

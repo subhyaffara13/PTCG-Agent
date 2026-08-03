@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_gen_rand_values_fn(random_calls: Any) -> Callable[[], list[Any]]:
     def _gen_rand_values() -> list[Any]:

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_inline_func(rule: RuleDictType) -> Callable[[StateInline, bool], bool]:
     def _func(state: StateInline, silent: bool) -> bool:

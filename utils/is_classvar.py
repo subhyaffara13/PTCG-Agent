@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_classvar(ann_type: Type[Any]) -> bool:
     if _check_classvar(ann_type) or _check_classvar(get_origin(ann_type)):

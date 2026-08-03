@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def run_empirical_verification():
     print("=== Empirical Verification of Dynamic Configuration (Task 1) ===")

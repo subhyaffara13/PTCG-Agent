@@ -1,3 +1,4 @@
+from typing import Optional
 
 def piecewise_constant_schedule(
     init_value: jax.typing.ArrayLike,  # float

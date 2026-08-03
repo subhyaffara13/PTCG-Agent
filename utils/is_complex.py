@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_complex(t: Type) -> bool:
     t = get_proper_type(t)

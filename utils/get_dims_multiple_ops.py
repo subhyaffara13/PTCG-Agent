@@ -1,3 +1,4 @@
+import functools
 
 def get_dims_multiple_ops() -> list[AHOperation]:
     multiples = [2, 4, 8, 16, 32]

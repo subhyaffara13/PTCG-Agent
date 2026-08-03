@@ -1,3 +1,4 @@
+import functools
 
 def _without_jit(fn, **unused_kwargs):
   """Variant that does not apply `jax.jit` to a fn (identity)."""

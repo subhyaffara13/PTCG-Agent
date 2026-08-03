@@ -1,3 +1,5 @@
+import os
+import sys
 
 def format_filename(
     filename: str | bytes | os.PathLike[str] | os.PathLike[bytes],

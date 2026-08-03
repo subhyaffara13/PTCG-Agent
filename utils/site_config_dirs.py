@@ -1,3 +1,5 @@
+import os
+import sys
 
 def site_config_dirs(appname: str) -> list[str]:
     if sys.platform == "darwin":

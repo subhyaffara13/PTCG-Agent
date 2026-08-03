@@ -1,3 +1,4 @@
+from typing import Any
 
 def ffi_batching_rule(
     prim,

@@ -1,3 +1,5 @@
+import math
+
 
 def atan2(a, b):
     return prims.atan2(a, b)

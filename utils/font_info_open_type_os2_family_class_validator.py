@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoOpenTypeOS2FamilyClassValidator(values: Any) -> bool:
     """

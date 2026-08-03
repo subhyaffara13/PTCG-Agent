@@ -1,3 +1,4 @@
+import itertools
 
 def _eval_indefinite_integral(F, a, b, xp):
     """

@@ -1,3 +1,5 @@
+import math
+
 
 def _split_on_one_axis(op_shape, new_sizes):
   if len(new_sizes) <= len(op_shape):

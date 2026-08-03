@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def with_jax_dtype_defaults(func: Callable[..., Any], use_defaults: bool = True):
   """Return a version of a function with outputs that match JAX's default dtypes.

@@ -1,3 +1,4 @@
+import re
 
 def test_conjugate():
     M = OperationsOnlyMatrix([[0, I, 5],

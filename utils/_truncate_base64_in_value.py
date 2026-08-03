@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Union
 
 def _truncate_base64_in_value(value: Any) -> Any:
     """Iteratively truncate base64 data URIs in a JSON-like value (str/list/dict).

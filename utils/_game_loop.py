@@ -1,3 +1,4 @@
+import time
 
 def _game_loop(city: CityData, cur_row: int, cur_col: int) -> None:
     tile_map: dict[tuple[int, int], TileInfo] = {(t.grid_row, t.grid_col): t for t in city.tiles}

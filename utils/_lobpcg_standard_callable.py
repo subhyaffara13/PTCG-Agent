@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _lobpcg_standard_callable(
     A: Callable[[jax.Array], jax.Array],

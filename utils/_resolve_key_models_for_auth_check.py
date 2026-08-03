@@ -1,3 +1,4 @@
+from typing import List
 
 def _resolve_key_models_for_auth_check(valid_token: UserAPIKeyAuth) -> List[str]:
     """

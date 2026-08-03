@@ -1,3 +1,4 @@
+import functools
 
 def rms_norm(
     input: Tensor,

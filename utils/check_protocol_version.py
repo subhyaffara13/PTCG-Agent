@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def check_protocol_version(
     protocol: Optional[Union[str, int]], expected_version: int = 3

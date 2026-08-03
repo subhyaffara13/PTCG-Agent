@@ -1,3 +1,5 @@
+import math
+
 
 def query_var(v: SimpleQuery) -> str:
     """Convert a query variable to a string.

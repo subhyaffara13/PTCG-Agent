@@ -1,3 +1,4 @@
+import os
 
 def parse_udiff(diff, patterns=None, parent='.'):
     """Return a dictionary of matching lines."""

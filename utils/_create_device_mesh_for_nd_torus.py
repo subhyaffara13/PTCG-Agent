@@ -1,3 +1,4 @@
+import itertools
 
 def _create_device_mesh_for_nd_torus(
     physical_mesh: np.ndarray,

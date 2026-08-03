@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _reverse_args(func: UnflattenFn) -> OpTreeUnflattenFn:
     @functools.wraps(func)

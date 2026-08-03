@@ -1,3 +1,4 @@
+import os
 
 def _get_openmp_args(
     cpp_compiler: str,

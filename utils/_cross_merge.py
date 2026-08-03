@@ -1,3 +1,4 @@
+import uuid
 
 def _cross_merge(
     left: DataFrame,

@@ -1,3 +1,6 @@
+import copy
+import sys
+from typing import Any
 
 def patch_base_fields(cls: type[Any]) -> Generator[None]:
     """Temporarily patch the stdlib dataclasses bases of `cls` if the Pydantic `Field()` function is used.

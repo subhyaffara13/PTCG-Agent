@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable, List, Optional, Union
 
 def make(env_id: str, **env_kwargs):
     """A JAX-version of OpenAI's infamous env.make(env_name).

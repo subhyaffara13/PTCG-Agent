@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _convert_watsonx_messages_core(
     model: str,

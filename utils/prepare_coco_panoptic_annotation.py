@@ -1,3 +1,4 @@
+import pathlib
 
 def prepare_coco_panoptic_annotation(
     image: torch.Tensor,

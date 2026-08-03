@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_func_at_runtime_with_args(
     f: Callable[..., Any],

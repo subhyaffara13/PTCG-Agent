@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def convert_tool_call_to_json_mode(
     tool_calls: List[ChatCompletionMessageToolCall],

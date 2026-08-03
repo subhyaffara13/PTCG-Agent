@@ -1,3 +1,5 @@
+from factory.deck_synergy_graph import SynergyGraph
+
 
 def compute_jaccard(card_a: int, card_b: int, graph: SynergyGraph) -> float:
     if card_a > card_b:

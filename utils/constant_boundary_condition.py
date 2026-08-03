@@ -1,3 +1,4 @@
+import functools
 
 def constant_boundary_condition(
     x, fill_value, padding=None, pad_fill_value=1.0, dim=None

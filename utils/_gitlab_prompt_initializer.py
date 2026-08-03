@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _gitlab_prompt_initializer(
     litellm_params: PromptLiteLLMParams,

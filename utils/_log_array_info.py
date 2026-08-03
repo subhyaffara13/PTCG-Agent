@@ -1,3 +1,4 @@
+import logging
 
 def _log_array_info(name: str, arr: jax.Array):
   logging.info(

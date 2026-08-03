@@ -1,3 +1,4 @@
+import sys
 
 def get_package_version_without_import(name: str) -> str | None:
     """For given package name, try to find the version without importing it

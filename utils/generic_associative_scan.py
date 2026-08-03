@@ -1,3 +1,4 @@
+import functools
 
 def generic_associative_scan(operator, leaves, dim=0, additional_inputs=()):
     r"""

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_bedrock_output_config_effort_ceiling(
     model: str,

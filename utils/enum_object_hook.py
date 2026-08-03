@@ -1,3 +1,4 @@
+from typing import Any
 
 def enum_object_hook(obj: dict[str, Any]) -> Enum | dict[str, Any]:
     if "__enum__" in obj:

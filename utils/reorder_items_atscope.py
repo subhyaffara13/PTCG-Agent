@@ -1,3 +1,4 @@
+import sys
 
 def reorder_items_atscope(
     items: OrderedSet[nodes.Item],

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_register_post_backward_hook_backward(new_backward: Callable):
     orig_backward = RegisterPostBackwardFunction.backward

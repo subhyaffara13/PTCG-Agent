@@ -1,3 +1,5 @@
+import math
+
 
 def _alignment_transformation(segment):
     # Returns a transformation which aligns a segment horizontally at the

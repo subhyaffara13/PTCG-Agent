@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ascii_board_from_state(state: Mapping[str, Any]) -> str:
     board = state.get("ascii_board")

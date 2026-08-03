@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_level_lengths(
     levels: Any, sentinel: bool | object | str = ""

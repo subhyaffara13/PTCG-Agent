@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_hashes(hashes: Mapping[str, Any]) -> Mapping[str, Any]:
     if not hashes:

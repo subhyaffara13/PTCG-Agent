@@ -1,3 +1,4 @@
+import re
 
 def add_test_name_suffix(name: str, suffix: str) -> str:
     # Find magic suffix of form "-foobar" (used for things like "-skip").

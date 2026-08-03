@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_pyplot_up_to_date(tmp_path):
     pytest.importorskip("black", minversion="24.1")

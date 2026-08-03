@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def parse_replay_to_history(replay_path) -> List[Dict[str, Any]]:
     import json, logging

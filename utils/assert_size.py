@@ -1,3 +1,4 @@
+from typing import Union
 
 def assert_size(
     inputs: Union[Scalar, Union[Array, Sequence[Array]]],

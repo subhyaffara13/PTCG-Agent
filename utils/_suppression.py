@@ -1,3 +1,4 @@
+from typing import Union
 
 def _suppression(expr: Union[ParserElement, str]) -> ParserElement:
     # internal helper to avoid wrapping Suppress inside another Suppress

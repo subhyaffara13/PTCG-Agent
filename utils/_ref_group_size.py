@@ -1,3 +1,5 @@
+import math
+
 
 def _ref_group_size(refs: _GPUMemoryRefTree) -> int:
   size = 0

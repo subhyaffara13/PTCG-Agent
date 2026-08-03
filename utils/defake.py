@@ -1,3 +1,4 @@
+from typing import Any
 
 def defake(x: Any) -> Any:
     if not isinstance(x, FakeTensor):

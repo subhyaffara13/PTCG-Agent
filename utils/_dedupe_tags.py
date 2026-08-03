@@ -1,3 +1,4 @@
+from typing import List
 
 def _dedupe_tags(tags: List[str]) -> List[str]:
     seen = set()

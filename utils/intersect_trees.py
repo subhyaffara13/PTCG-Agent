@@ -1,3 +1,4 @@
+from typing import Optional
 
 def intersect_trees(*trees: PyTree, target: Optional[PyTree] = None) -> PyTree:
   """Intersects the provided trees, dropping any keys not in common between all.

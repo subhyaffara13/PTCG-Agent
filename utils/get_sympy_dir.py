@@ -1,3 +1,4 @@
+import os
 
 def get_sympy_dir():
     """

@@ -1,3 +1,4 @@
+import random
 
 def deterministic_agent(obs):
     raw_obs = get_raw_observation(obs)

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def root_module_when_exporting_non_strict(
     flat_fn: Callable[..., Any],

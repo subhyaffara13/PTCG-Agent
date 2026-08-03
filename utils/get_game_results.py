@@ -1,3 +1,5 @@
+import os
+from typing import List, Optional
 
 def get_game_results(
     input_dir: str, preserve_full_record: bool = False, max_workers: Optional[int] = None

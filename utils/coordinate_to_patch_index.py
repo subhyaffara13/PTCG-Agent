@@ -1,3 +1,5 @@
+import math
+
 
 def coordinate_to_patch_index(bbox: tuple[float, float, float, float], num_patches_per_side: int) -> tuple[int, int]:
     """Convert a bounding box to a pair of patch indices.

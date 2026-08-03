@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def lookup_complex(
     func: OpOverload, *args: Any, **kwargs: Any

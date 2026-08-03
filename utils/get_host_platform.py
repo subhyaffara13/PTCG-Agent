@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def get_host_platform() -> str:
     """

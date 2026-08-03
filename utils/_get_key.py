@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_key(key: _KeyEntry) -> Union[int, str]:
   """Convert a ``KeyEntry``` to a usual type."""

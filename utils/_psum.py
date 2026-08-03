@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _psum(xs: Any) -> Any:
   return jax.tree.map(lambda x: jnp.sum(x, dtype=x.dtype, axis=0), xs)

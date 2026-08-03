@@ -1,3 +1,4 @@
+import os
 
 def path_to_cache_dir(path, use_abspath=True):
     """

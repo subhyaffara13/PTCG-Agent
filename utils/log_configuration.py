@@ -1,3 +1,5 @@
+import os
+import sys
 
 def log_configuration(manager: BuildManager, sources: list[BuildSource]) -> None:
     """Output useful configuration information to LOG and TRACE"""

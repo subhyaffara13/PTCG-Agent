@@ -1,3 +1,4 @@
+from typing import Any
 
 def _canonicalize_bool_expr_impl(expr: SympyBoolean) -> SympyBoolean:
     """

@@ -1,3 +1,4 @@
+from typing import List
 
 def _is_url_match(url, matchers: List[str]) -> bool:
     """Check if URL matches any of the provided matchers."""

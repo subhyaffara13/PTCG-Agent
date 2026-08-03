@@ -1,3 +1,4 @@
+from typing import Any
 
 def _populate_param_buffer_metadata_to_new_gm(
     params_buffers_to_node_meta: dict[str, Any],

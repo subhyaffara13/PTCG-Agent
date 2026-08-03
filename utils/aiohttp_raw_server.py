@@ -1,3 +1,4 @@
+from typing import Any
 
 def aiohttp_raw_server(loop: asyncio.AbstractEventLoop) -> Iterator[AiohttpRawServer]:
     """Factory to create a RawTestServer instance, given a web handler.

@@ -1,3 +1,4 @@
+import uuid
 
 def _raw_device_uuid_amdsmi() -> list[str] | None:
     from ctypes import byref, c_int, c_void_p, CDLL, create_string_buffer

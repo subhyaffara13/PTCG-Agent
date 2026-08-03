@@ -1,3 +1,4 @@
+import sys
 
 def remove_jump_if_none(instructions: list[Instruction]) -> None:
     new_insts = []

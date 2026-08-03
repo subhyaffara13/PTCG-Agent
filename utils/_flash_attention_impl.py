@@ -1,3 +1,4 @@
+import functools
 
 def _flash_attention_impl(
     q,

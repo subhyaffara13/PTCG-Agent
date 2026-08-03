@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def pdf_repr(x: Any) -> bytes:
     if x is True:

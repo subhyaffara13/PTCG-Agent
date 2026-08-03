@@ -1,3 +1,4 @@
+import pathlib
 
 def check_coreml_partitions(model: onnx.ModelProto, require_fixed_input_sizes: bool, config_filename: str):
     # if we're running in the ORT python package the file should be local. otherwise assume we're running from the

@@ -1,3 +1,4 @@
+import time
 
 def whoami():
     """Show current authentication status"""

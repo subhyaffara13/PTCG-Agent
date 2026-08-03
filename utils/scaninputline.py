@@ -1,3 +1,5 @@
+import os
+import sys
 
 def scaninputline(inputline):
     files, skipfuncs, onlyfuncs, debug = [], [], [], []

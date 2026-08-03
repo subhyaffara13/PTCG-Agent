@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_markeval_namespace(  # type:ignore[empty-body]
     config: Config,

@@ -1,3 +1,4 @@
+import subprocess
 
 def is_ninja_available() -> bool:
     r"""

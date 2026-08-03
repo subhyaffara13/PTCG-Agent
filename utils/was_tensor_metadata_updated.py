@@ -1,3 +1,4 @@
+from typing import Any
 
 def was_tensor_metadata_updated(arg: Any, new_arg: Any) -> bool:
     if is_traceable_wrapper_subclass(arg):

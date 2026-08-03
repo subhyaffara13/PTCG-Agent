@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def _path_with_self() -> list[str]:
     """Put `jupyter`'s dir at the front of PATH

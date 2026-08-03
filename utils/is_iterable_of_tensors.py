@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_iterable_of_tensors(iterable: Iterable[Any]) -> bool:
     # Tensor itself is iterable so we check this first

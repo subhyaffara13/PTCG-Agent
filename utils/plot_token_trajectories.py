@@ -1,3 +1,4 @@
+import os
 
 def plot_token_trajectories(trajectories_data, output_dir):
     """

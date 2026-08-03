@@ -1,3 +1,4 @@
+import os
 
 def peek_filelike_length(stream: typing.Any) -> int | None:
     """

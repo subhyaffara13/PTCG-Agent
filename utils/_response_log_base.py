@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def _response_log_base(logger: logging.Logger, parsed_response: Any) -> None:
     """

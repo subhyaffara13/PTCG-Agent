@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def frompyfunc(func: Callable[..., Any], /, nin: int, nout: int,
                *, identity: Any = None) -> ufunc:

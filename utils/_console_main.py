@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _console_main() -> int:
     """The CLI entry point of pytest (internal).

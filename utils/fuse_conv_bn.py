@@ -1,3 +1,4 @@
+import copy
 
 def fuse_conv_bn(gm: torch.fx.GraphModule, inplace=False) -> torch.fx.GraphModule:
     """

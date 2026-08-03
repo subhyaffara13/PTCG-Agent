@@ -1,3 +1,4 @@
+import sys
 
 def get_instruction_source_311(code: types.CodeType, inst: Instruction) -> str:
     """

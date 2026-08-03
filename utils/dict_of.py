@@ -1,3 +1,4 @@
+from typing import Dict
 
 def dict_of(key: ParserElement, value: ParserElement) -> Dict:
     """Helper to easily and clearly define a dictionary by specifying

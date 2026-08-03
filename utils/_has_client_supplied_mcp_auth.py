@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _has_client_supplied_mcp_auth(
     mcp_auth_header: Optional[str],

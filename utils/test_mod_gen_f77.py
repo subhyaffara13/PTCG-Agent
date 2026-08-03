@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_mod_gen_f77(capfd, hello_world_f90, monkeypatch):
     """Checks the generation of files based on a module name

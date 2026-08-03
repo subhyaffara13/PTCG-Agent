@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _batch_space_dict(space: Dict, n: int = 1):
     return Dict(

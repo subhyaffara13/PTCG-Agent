@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fully_expand_region_group(
     regions: list[Region],

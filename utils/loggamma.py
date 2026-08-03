@@ -1,3 +1,4 @@
+import re
 
 def loggamma(x):
     if type(x) not in (float, complex):

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _readAdvance(glyphObject: Optional[Any], advance: ElementType) -> None:
     width = _number(advance.get("width", 0))

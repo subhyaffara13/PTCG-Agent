@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _flatten_bwd(f: Callable,
                  in_tree: PyTreeDef,

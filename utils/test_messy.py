@@ -1,3 +1,4 @@
+import re
 
 def test_messy():
     from sympy.functions.elementary.hyperbolic import (acosh, acoth)

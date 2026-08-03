@@ -1,3 +1,4 @@
+from typing import Optional
 
 def max_pool1d_with_indices(
     input: Tensor,

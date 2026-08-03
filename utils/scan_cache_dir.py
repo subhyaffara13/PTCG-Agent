@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def scan_cache_dir(cache_dir: str | Path | None = None) -> HFCacheInfo:
     """Scan the entire HF cache-system and return a [`~HFCacheInfo`] structure.

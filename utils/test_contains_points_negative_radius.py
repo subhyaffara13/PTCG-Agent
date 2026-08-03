@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_contains_points_negative_radius():
     path = Path.unit_circle()

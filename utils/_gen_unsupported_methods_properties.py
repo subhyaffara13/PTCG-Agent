@@ -1,3 +1,4 @@
+from typing import Any
 
 def _gen_unsupported_methods_properties():
     tensor_attrs = set(filter(lambda x: x[0] != "_", dir(torch.Tensor)))

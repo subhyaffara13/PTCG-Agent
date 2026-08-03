@@ -1,3 +1,4 @@
+from typing import Any, List, Tuple
 
 def _truncate_evidence_payload(
     evidence: Any, max_bytes: int = MAX_PILLAR_HEADER_VALUE_BYTES

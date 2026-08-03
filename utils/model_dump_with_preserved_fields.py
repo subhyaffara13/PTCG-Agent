@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def model_dump_with_preserved_fields(
     obj: Any,

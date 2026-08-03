@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict, Optional
 
 def parse_toml(config_file: str) -> dict[str, Any] | None:
     """Returns a dict of config keys to values.

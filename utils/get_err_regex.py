@@ -1,3 +1,4 @@
+import re
 
 def get_err_regex(message: str) -> str:
   """Constructs a regexp for the exception message.

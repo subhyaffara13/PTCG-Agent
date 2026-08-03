@@ -1,3 +1,5 @@
+import math
+
 
 def _get_prime_factors(x: int) -> list[int]:
   """Returns a sorted list of prime factors for the given number."""

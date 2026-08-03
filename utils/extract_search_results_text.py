@@ -1,3 +1,4 @@
+import json
 
 def extract_search_results_text(search_results: object) -> str:
     """

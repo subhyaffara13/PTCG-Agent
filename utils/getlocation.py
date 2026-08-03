@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def getlocation(function, curdir: str | os.PathLike[str] | None = None) -> str:
     function = get_real_func(function)

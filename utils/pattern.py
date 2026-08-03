@@ -1,3 +1,4 @@
+import re
 
 def pattern(validator, patrn, instance, schema):
     if (

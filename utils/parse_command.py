@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def parse_command(response, **options):
     commands = {}

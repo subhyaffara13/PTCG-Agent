@@ -1,3 +1,4 @@
+import os
 
 def ensure_dir(path: str) -> None:
     """os.path.makedirs without EEXIST."""

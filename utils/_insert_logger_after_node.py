@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _insert_logger_after_node(
     node: Node,

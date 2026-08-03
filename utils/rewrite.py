@@ -1,3 +1,6 @@
+import os
+import pathlib
+from typing import Optional, Tuple
 
 def rewrite(
     path: StrPath,

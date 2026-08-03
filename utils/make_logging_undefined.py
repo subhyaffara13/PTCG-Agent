@@ -1,3 +1,4 @@
+import sys
 
 def make_logging_undefined(
     logger: t.Optional["logging.Logger"] = None, base: t.Type[Undefined] = Undefined

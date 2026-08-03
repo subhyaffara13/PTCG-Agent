@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_type(
     name: str, kind: type

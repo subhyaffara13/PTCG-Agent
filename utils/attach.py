@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any, Callable
 
 def attach(module_name, submodules=None, submod_attrs=None):
     """Attach lazily loaded submodules, and functions or other attributes.

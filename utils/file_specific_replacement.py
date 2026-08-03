@@ -1,3 +1,4 @@
+import re
 
 def file_specific_replacement(filepath, search_string, replace_string, strict=False) -> None:
     with openf(filepath, "r+") as f:

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _hook_then_optimizer(
     hook: Callable[[Any, dist.GradBucket], torch.futures.Future[torch.Tensor]],

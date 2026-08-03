@@ -1,3 +1,4 @@
+from typing import Callable
 
 def call_and_report(
     item: Item, when: Literal["setup", "call", "teardown"], log: bool = True, **kwds

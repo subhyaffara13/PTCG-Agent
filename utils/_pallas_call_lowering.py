@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pallas_call_lowering(
     ctx: mlir.LoweringRuleContext, *in_nodes, interpret: Any, **params

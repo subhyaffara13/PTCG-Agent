@@ -1,3 +1,4 @@
+import os
 
 def _walk_to_root(path: str) -> Iterator[str]:
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_doc_object(
     obj,

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _batch_space_tuple(space: Tuple, n: int = 1):
     return Tuple(

@@ -1,3 +1,4 @@
+from typing import Union
 
 def cast_exception_status_to_int(exception_status: Union[str, int]) -> int:
     if isinstance(exception_status, str):

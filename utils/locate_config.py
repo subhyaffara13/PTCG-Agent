@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def locate_config(
     invocation_dir: Path,

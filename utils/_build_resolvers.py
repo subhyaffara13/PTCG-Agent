@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_resolvers(paths: Iterable[str]) -> dict[str, Any]:
     resolvers = {}

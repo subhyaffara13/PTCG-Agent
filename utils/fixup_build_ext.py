@@ -1,3 +1,5 @@
+import os
+import sys
 
 def fixup_build_ext(cmd):
     """Function needed to make build_ext tests pass.

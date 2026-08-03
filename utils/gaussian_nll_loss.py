@@ -1,3 +1,5 @@
+import math
+
 
 def gaussian_nll_loss(
     input: Tensor,

@@ -1,3 +1,4 @@
+import itertools
 
 def _check_triton_bf16_support(graph: GraphLowering) -> None:
     def warn_and_skip(device: torch.device | None) -> Never:

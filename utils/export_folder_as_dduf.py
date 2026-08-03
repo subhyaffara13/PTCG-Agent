@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def export_folder_as_dduf(dduf_path: str | os.PathLike, folder_path: str | os.PathLike) -> None:
     """

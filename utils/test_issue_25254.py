@@ -1,3 +1,5 @@
+import math
+
 
 def test_issue_25254():
     # calculating the inverse cached the norm which caused problems

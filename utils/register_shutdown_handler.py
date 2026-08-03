@@ -1,3 +1,4 @@
+from typing import Optional
 
 def register_shutdown_handler(output_file: Optional[str] = None) -> None:
     """Register a shutdown handler to collect line_profiler stats.

@@ -1,3 +1,4 @@
+import os
 
 def make_archive(
     base_name: str,

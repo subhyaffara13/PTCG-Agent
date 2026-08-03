@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_recursive_remove_dequantize(arg: Any, node: Node, graph: Graph) -> None:
     """If the arg is a dequantize Node, or a list/tuple/dict of dequantize Node,

@@ -1,3 +1,4 @@
+import itertools
 
 def is_sorted_and_consecutive(arr: list[int]) -> bool:
     # check if the array is sorted

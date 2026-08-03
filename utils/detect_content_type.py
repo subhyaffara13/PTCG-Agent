@@ -1,3 +1,4 @@
+import json
 
 def detect_content_type(content: str) -> str:
     """

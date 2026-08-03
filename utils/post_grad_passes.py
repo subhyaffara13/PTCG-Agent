@@ -1,3 +1,4 @@
+import functools
 
 def post_grad_passes(gm: torch.fx.GraphModule, is_inference: bool):
     """

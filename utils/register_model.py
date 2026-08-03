@@ -1,3 +1,4 @@
+from typing import Union
 
 def register_model(model_cost: Union[str, dict]):
     """

@@ -1,3 +1,4 @@
+import re
 
 def _eigh_qdwh_impl(x, *, lower, sort_eigenvalues, subset_by_index):
   """QDWH-based eigendecomposition for TPU."""

@@ -1,3 +1,4 @@
+import os
 
 def compile_link_import_py_ext(sources, extname=None, build_dir='.', compile_kwargs=None,
                                link_kwargs=None, extra_objs=None):

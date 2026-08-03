@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def autograd_function_forward_rewritten(
     original_forward: Callable[_P, _R],

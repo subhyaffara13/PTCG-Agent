@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def select_partitions_to_drop(
     partitions: List[Tuple[str, Optional[datetime]]], cutoff: datetime

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_postorder_traversal():
     x, y, z, w = symbols('x y z w')

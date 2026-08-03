@@ -1,3 +1,4 @@
+import re
 
 def test_cosh():
     R, x, y = ring('x, y', QQ)

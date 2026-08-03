@@ -1,3 +1,5 @@
+import re
+import sys
 
 def assemble(instructions: list[Instruction], firstlineno: int) -> tuple[bytes, bytes]:
     """Do the opposite of dis.get_instructions()"""

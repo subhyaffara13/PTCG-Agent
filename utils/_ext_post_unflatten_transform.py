@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ext_post_unflatten_transform(
     tensor: torch.Tensor,

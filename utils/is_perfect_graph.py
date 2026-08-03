@@ -1,3 +1,4 @@
+import itertools
 
 def is_perfect_graph(G):
     r"""Return True if G is a perfect graph, else False.

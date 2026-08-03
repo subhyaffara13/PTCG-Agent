@@ -1,3 +1,5 @@
+import math
+
 
 def fail_after(
     delay: float | None, shield: bool = False

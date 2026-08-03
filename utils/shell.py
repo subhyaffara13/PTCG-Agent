@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def shell(command, cwd=None, env=None, stdout=None, stderr=None, timeout=None):
     sys.stdout.flush()

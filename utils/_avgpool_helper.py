@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _avgpool_helper(
     tuple_fn: Callable[[Any], Sequence[int]],

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_print_SetOp():
     f1 = FiniteSet(x, 1, 3)

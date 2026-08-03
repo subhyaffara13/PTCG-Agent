@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_cleanup_closepoly():
     # if the first connected component of a Path ends in a CLOSEPOLY, but that

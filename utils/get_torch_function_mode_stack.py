@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_torch_function_mode_stack() -> list[Any]:
     return [

@@ -1,3 +1,4 @@
+import os
 
 def _list_local_files(local_path: str) -> Iterator[tuple[str, int, float]]:
     """List all files in a local directory.

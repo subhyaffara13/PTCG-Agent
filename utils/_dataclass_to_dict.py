@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _dataclass_to_dict(obj):
     if isinstance(obj, _Union):

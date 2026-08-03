@@ -1,3 +1,4 @@
+from typing import Callable
 
 def calculate_mro(info: TypeInfo, obj_type: Callable[[], Instance] | None = None) -> None:
     """Calculate and set mro (method resolution order).

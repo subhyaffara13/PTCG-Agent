@@ -1,3 +1,4 @@
+import re
 
 def test_OneMatrix():
     from sympy.matrices.expressions.special import OneMatrix

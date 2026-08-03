@@ -1,3 +1,4 @@
+import logging
 
 def init_logging() -> None:
     """Register our VerboseLogger and VERBOSE log level.

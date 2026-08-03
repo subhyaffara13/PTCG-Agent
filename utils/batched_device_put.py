@@ -1,3 +1,4 @@
+from typing import Any
 
 def batched_device_put(aval: core.ShapedArray,
                        sharding: JSharding, xs: Sequence[Any],

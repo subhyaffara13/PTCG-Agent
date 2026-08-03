@@ -1,3 +1,4 @@
+from typing import Any
 
 def clean_up_dead_vars(eqn: JaxprEqn, env: dict[Var, Any],
                        last_used: dict[Var, JaxprEqn | None]):

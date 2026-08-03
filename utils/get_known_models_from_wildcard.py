@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_known_models_from_wildcard(
     wildcard_model: str, litellm_params: Optional[LiteLLM_Params] = None

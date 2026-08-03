@@ -1,3 +1,4 @@
+import re
 
 def _to_header(name: str) -> str:
     """Convert a camelCase or PascalCase string to SCREAMING_SNAKE_CASE."""

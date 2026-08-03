@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _obsolete_line_fold(lines: Iterable[bytes]) -> Iterable[bytes]:
     it = iter(lines)

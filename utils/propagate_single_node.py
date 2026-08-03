@@ -1,3 +1,4 @@
+import logging
 
 def propagate_single_node(
     queue: Queue, fwd_filter: dict[Node, bool], bwd_filter: dict[Node, bool], node: Node

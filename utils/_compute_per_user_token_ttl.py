@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _compute_per_user_token_ttl(server: "MCPServer", expires_in: Optional[int]) -> int:
     """Compute Redis TTL for a per-user token.

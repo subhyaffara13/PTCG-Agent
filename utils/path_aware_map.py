@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def path_aware_map(
   f: Callable[[PathParts, Any], Any], nested_dict: VariableDict

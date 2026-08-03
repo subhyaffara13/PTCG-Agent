@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_col_name(keypath: tp.Sequence[Any]) -> str:
   """Given the keypath of a Flax variable type, return its Linen collection name."""

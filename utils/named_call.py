@@ -1,3 +1,4 @@
+import functools
 
 def named_call(
     fun: F,

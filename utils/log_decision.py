@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def log_decision(decisions_file: Path, iteration: int, target: str, change_type: str, 
                  weak_metric: str, description: str, lines: list):

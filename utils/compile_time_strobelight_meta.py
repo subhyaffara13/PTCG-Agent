@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def compile_time_strobelight_meta(
     phase_name: str,

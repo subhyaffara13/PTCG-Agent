@@ -1,3 +1,5 @@
+import math
+
 
 def sample_inputs_addr(op_info, device, dtype, requires_grad, **kwargs):
     make_arg = partial(

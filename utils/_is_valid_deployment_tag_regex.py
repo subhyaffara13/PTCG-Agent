@@ -1,3 +1,5 @@
+import re
+from typing import List, Optional
 
 def _is_valid_deployment_tag_regex(
     tag_regexes: List[str],

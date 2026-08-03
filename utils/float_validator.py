@@ -1,3 +1,4 @@
+from typing import Any
 
 def float_validator(v: Any) -> float:
     if isinstance(v, float):

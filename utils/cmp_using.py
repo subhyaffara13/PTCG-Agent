@@ -1,3 +1,4 @@
+import functools
 
 def cmp_using(
     eq=None,

@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def compatible_tags(
     python_version: PythonVersion | None = None,

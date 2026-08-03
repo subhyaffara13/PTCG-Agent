@@ -1,3 +1,4 @@
+import sys
 
 def test_cstruct(get_module):
 

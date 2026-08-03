@@ -1,3 +1,5 @@
+import copy
+import sys
 
 def _check_device(bare_xp: Namespace, device: Device) -> None:  # pyright: ignore[reportUnusedFunction]
     """

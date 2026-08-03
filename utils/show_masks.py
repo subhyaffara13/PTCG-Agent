@@ -1,3 +1,4 @@
+import os
 
 def show_masks(
     image,

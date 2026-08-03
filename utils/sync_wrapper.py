@@ -1,3 +1,4 @@
+import functools
 
 def sync_wrapper(func, obj=None):
     """Given a function, make so can be called in blocking contexts

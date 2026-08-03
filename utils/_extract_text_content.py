@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_text_content(content: Any) -> str:
     """Return the plain-text representation of a message content value."""

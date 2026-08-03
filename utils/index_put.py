@@ -1,3 +1,4 @@
+import sys
 
 def index_put(x, indices, values, accumulate=False):
     return index_put_impl_(

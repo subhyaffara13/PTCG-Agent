@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _sympifyit(arg, retval=None) -> Callable[[Callable[[T1, T2], T3]], Callable[[T1, T2], T3]]:
     """

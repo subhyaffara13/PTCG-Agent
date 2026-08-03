@@ -1,3 +1,4 @@
+import os
 
 def generate_stub_for_c_module(
     module_name: str,

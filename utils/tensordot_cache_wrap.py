@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def tensordot_cache_wrap(tensordot: Any) -> Any:
     """Decorates a ``tensordot()`` implementation to be memoized inside a

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _spec_rank_error(
     error_type: SpecErrorType, f: Callable, tree: PyTreeDef, specs: Specs,

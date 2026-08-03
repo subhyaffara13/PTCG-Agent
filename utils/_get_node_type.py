@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_node_type(tree: Any) -> Any:
     node_type = type(tree)

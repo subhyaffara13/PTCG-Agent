@@ -1,3 +1,4 @@
+from typing import List
 
 def _find_disconnected_subgraphs(inputs: List[FrozenSet[int]], output: FrozenSet[int]) -> List[FrozenSet[int]]:
     """Finds disconnected subgraphs in the given list of inputs. Inputs are

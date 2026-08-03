@@ -1,3 +1,4 @@
+import os
 
 def _path_starts_with(path: str, path_prefix: str) -> bool:
   path = os.path.abspath(path)

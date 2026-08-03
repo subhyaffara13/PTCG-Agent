@@ -1,3 +1,4 @@
+import os
 
 def _terminate_process_handler(signum: int, frame: FrameType | None) -> None:
     """Termination handler that raises exceptions on the main process.

@@ -1,3 +1,4 @@
+import os
 
 def get_megatron_sharded_states(args, tp_size, pp_size, pp_rank):
     """

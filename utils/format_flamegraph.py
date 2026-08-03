@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def format_flamegraph(flamegraph_lines, flamegraph_script=None):
     if flamegraph_script is None:

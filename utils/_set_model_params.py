@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _set_model_params(span: "Span", model_params: Optional[dict], span_attrs) -> None:
     if not model_params:

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _concatenate_dict(
     space: Dict, items: Iterable, out: dict[str, Any]

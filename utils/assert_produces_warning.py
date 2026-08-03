@@ -1,3 +1,4 @@
+from typing import Union
 
 def assert_produces_warning(
     expected_warning: type[Warning] | bool | tuple[type[Warning], ...] | None = Warning,

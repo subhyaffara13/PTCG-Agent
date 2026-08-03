@@ -1,3 +1,6 @@
+import os
+import pathlib
+import sys
 
 def get_bin_prefix() -> str:
     # XXX: In old virtualenv versions, sys.prefix can contain '..' components,

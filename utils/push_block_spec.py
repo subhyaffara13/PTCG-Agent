@@ -1,3 +1,4 @@
+from typing import Callable
 
 def push_block_spec(
     f: Callable,

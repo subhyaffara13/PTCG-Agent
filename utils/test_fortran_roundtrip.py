@@ -1,3 +1,4 @@
+import os
 
 def test_fortran_roundtrip(tmpdir, io_lock):
     filename = path.join(str(tmpdir), str(threading.get_native_id()),

@@ -1,3 +1,4 @@
+from typing import Union
 
 def load_images(
     images: Union[list, tuple, str, "PIL.Image.Image"], timeout: float | None = None

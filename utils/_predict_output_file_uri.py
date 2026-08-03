@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _predict_output_file_uri(
     output_prefix: str, input_uri: str, job_id: Optional[str]

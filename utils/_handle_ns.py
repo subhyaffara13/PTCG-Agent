@@ -1,3 +1,4 @@
+import sys
 
 def _handle_ns(packageName, path_item):
     """Ensure that named package includes a subpath of path_item (if needed)"""

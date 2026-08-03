@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_9877():
     ucode_str1 = '(2, 3) ∪ ([1, 2] \\ {x})'

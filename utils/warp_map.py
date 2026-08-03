@@ -1,3 +1,4 @@
+from typing import Callable
 
 def warp_map(operands, *, loc=None, ip=None) -> WarpMapOp:
   return WarpMapOp(operands, loc=loc, ip=ip)

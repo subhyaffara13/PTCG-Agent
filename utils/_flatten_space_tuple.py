@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def _flatten_space_tuple(space: Tuple) -> Box | Tuple:
     if space.is_np_flattenable:

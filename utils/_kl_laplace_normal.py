@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_laplace_normal(p, q):
     var_normal = q.scale.pow(2)

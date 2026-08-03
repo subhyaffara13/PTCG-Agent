@@ -1,3 +1,4 @@
+import os
 
 def infer_compression(filename: str) -> str | None:
     """Infer compression, if available, from filename.

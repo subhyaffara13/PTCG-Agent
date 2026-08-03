@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def generate_arguments_schema(
     func: Callable[..., Any],

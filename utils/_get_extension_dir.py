@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_extension_dir(short_name: str) -> Path:
     safe_name = _validate_extension_short_name(short_name, original_input=short_name)

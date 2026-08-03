@@ -1,3 +1,4 @@
+from typing import Any
 
 def any_class_validator(v: Any) -> Type[T]:
     if isinstance(v, type):

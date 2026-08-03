@@ -1,3 +1,4 @@
+import copy
 
 def _sequence_to_dt64(
     data: ArrayLike,

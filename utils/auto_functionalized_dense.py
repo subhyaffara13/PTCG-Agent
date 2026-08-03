@@ -1,3 +1,4 @@
+from typing import Any
 
 def auto_functionalized_dense(
     _mutable_op: OpOverload,

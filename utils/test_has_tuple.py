@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_has_tuple():
     assert Tuple(x, y).has(x)

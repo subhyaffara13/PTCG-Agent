@@ -1,3 +1,4 @@
+import os
 
 def mypy_options(stubgen_options: Options) -> MypyOptions:
     """Generate mypy options using the flag passed by user."""

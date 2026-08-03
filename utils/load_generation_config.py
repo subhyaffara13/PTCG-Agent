@@ -1,3 +1,4 @@
+import os
 
 def load_generation_config(generation_config: str | None) -> GenerationConfig:
     if generation_config is None:

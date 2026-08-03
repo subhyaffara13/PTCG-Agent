@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def _config(
     path: Path | None = None, config: Config = DEFAULT_CONFIG, **config_kwargs: Any

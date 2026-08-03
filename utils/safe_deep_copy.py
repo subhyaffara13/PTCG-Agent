@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def safe_deep_copy(data):
     """

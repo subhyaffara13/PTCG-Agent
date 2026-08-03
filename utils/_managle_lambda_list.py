@@ -1,3 +1,4 @@
+from typing import Any
 
 def _managle_lambda_list(aggfuncs: Sequence[Any]) -> Sequence[Any]:
     """

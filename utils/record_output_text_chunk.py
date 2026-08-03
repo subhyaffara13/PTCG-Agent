@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def record_output_text_chunk(
     parsed_chunk: Dict[str, Any],

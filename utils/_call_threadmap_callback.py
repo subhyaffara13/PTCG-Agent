@@ -1,3 +1,4 @@
+import functools
 
 def _call_threadmap_callback(token, device_id, jaxpr, num_threads, consts,
                              invals, use_ordered_callback, on_exception):

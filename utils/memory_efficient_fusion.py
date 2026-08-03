@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def memory_efficient_fusion(
     fn: Callable[_P, _R] | nn.Module,

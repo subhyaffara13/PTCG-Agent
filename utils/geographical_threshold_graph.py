@@ -1,3 +1,5 @@
+import math
+
 
 def geographical_threshold_graph(
     n,

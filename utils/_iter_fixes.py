@@ -1,3 +1,4 @@
+import re
 
 def _iter_fixes(
     testcase: DataDrivenTestCase, actual: list[str], *, incremental_step: int

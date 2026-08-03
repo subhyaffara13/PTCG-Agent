@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fw_compiler_freezing(
     aot_autograd_model: GraphModule,

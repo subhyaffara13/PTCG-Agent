@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def make_crossref_functionalize(
     op: torch._ops.OpOverload[_P, _T], final_key: DispatchKey

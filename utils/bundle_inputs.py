@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def bundle_inputs(
         model: torch.jit.ScriptModule,

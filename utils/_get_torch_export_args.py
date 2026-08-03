@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_torch_export_args(
     args: tuple[Any, ...],

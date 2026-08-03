@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _validate_public_image_url(value: Optional[str], field_name: str) -> None:
     """

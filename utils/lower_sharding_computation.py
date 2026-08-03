@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_sharding_computation(
     closed_jaxpr: core.ClosedJaxpr,

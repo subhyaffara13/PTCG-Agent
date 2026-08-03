@@ -1,3 +1,4 @@
+from typing import Any
 
 def kernel_to_hlo_jaxpr(
     jaxpr: jax_core.Jaxpr, consts: Sequence[Any], grid_mapping: GridMapping

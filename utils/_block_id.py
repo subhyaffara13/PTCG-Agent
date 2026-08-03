@@ -1,3 +1,5 @@
+import math
+
 
 def _block_id(ctx: LoweringRuleContext, dim: gpu_dialect.Dimension) -> ir.Value:
   result = gpu_dialect.block_id(dim)

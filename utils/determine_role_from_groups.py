@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def determine_role_from_groups(
     user_groups: List[str],

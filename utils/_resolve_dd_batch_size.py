@@ -1,3 +1,4 @@
+import os
 
 def _resolve_dd_batch_size() -> int:
     raw = os.getenv("DD_BATCH_SIZE")

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def skip_comment(src: str, pos: Pos) -> Pos:
     try:

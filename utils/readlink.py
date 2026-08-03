@@ -1,3 +1,4 @@
+import os
 
 def readlink(path):
     """Wrapper around os.readlink()."""

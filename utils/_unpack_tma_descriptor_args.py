@@ -1,3 +1,4 @@
+import re
 
 def _unpack_tma_descriptor_args(var_name: str, sig_type: str) -> list[str]:
     """Unpack a StableTMADescriptor into kernel launch args.

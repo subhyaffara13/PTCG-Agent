@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_mapping_pre_post_grad_nodes(
     pre_grad_graph_id: int | None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_preset_hands(configuration: dict[str, Any]) -> list[list[int]]:
     preset_hands = configuration.get("presetHands")

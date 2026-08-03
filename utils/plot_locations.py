@@ -1,3 +1,5 @@
+import math
+
 
 def plotLocations(locations, fig, names=None, **kwargs):
     n = len(locations)

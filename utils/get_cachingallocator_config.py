@@ -1,3 +1,4 @@
+import os
 
 def get_cachingallocator_config() -> _Dict[str, str]:
     """Return the caching allocator configuration from environment variables.

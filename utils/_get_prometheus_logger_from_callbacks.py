@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_prometheus_logger_from_callbacks() -> Optional[PrometheusLogger]:
     """

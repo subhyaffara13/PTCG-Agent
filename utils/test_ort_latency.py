@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_ort_latency(
     device,

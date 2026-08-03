@@ -1,3 +1,4 @@
+import re
 
 def test_complex_parts():
     assert fabs('3') == 3

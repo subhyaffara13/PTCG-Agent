@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def flat_out_axes(
     f: lu.WrappedFun, out_spec: Any

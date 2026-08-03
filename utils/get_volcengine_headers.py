@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_volcengine_headers(api_key: str, extra_headers: Optional[dict] = None) -> dict:
     """

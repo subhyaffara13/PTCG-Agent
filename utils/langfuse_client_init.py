@@ -1,3 +1,4 @@
+import os
 
 def langfuse_client_init(
     langfuse_public_key=None,

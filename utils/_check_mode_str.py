@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_mode_str(mode: Any) -> bool:
     # check type

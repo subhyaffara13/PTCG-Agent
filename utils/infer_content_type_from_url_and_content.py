@@ -1,3 +1,4 @@
+from typing import Optional
 
 def infer_content_type_from_url_and_content(
     url: str,

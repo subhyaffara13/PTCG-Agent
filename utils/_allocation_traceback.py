@@ -1,3 +1,4 @@
+from typing import Any
 
 def _allocation_traceback(data_ptr: int) -> list[dict[str, Any]] | None:
     r"""Return the allocation traceback for a currently-allocated CUDA pointer,

@@ -1,3 +1,4 @@
+import re
 
 def test_im():
     x, y = symbols('x,y')

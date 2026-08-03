@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def _saved_ttx_files(
     filepath_a: Text,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_fwd_bwd_interactions(
     fwd_graph: fx.Graph,

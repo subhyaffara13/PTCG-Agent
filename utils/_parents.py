@@ -1,3 +1,5 @@
+import itertools
+import os
 
 def _parents(path):
     """

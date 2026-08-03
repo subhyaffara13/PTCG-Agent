@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _dyn_args_fun(fun: Callable, static_argnums: frozenset[int],
                   static_args: tuple[WrapHashably, ...], nargs: int):

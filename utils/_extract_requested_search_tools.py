@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _extract_requested_search_tools(object_permission: Optional[dict]) -> List[str]:
     """Return search_tool_name values from a key's object_permission dict."""

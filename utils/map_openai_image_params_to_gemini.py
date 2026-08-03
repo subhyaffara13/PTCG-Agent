@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, Optional
 
 def map_openai_image_params_to_gemini(
     params: Dict[str, Any],

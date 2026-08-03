@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def _decode_req_file(data: bytes, url: str) -> str:
     for bom, encoding in BOMS:

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _closed_jaxpr_partial_eval_custom_cached(
     jaxpr: ClosedJaxpr, unks_in: tuple[bool, ...], inst_in: tuple[bool, ...],

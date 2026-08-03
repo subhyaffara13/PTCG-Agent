@@ -1,3 +1,4 @@
+import copy
 
 def import_statement(
     import_start: str,

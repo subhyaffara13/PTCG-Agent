@@ -1,3 +1,4 @@
+from typing import Any
 
 def unsafe_eval(expression: str, **kw: Any) -> Any:
     """

@@ -1,3 +1,4 @@
+import os
 
 def _dump(self, file, protocol=2):
     if hasattr(file, 'write'):

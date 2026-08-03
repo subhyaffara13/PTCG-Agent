@@ -1,3 +1,4 @@
+import functools
 
 def _compat_get_offset(meth):
     """

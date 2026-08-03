@@ -1,3 +1,7 @@
+import copy
+from typing import Any, Callable
+from pathlib import Path
+
 
 def get_qdq_config(
     model_input: str | Path | onnx.ModelProto,

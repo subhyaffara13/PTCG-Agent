@@ -1,3 +1,4 @@
+from typing import Callable
 
 def webhook_endpoint(path: str | None = None) -> Callable:
     """Decorator to start a [`WebhooksServer`] and register the decorated function as a webhook endpoint.

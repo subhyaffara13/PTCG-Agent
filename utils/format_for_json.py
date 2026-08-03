@@ -1,3 +1,4 @@
+import json
 
 def format_for_json(packages: _ProcessedDists, options: Values) -> str:
     data = []

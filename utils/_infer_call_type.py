@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _infer_call_type(
     call_type: Optional[CallTypesLiteral], completion_response: Any

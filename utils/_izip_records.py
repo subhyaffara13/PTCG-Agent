@@ -1,3 +1,4 @@
+import itertools
 
 def _izip_records(seqarrays, fill_value=None, flatten=True):
     """

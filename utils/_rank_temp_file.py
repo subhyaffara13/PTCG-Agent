@@ -1,3 +1,4 @@
+import os
 
 def _rank_temp_file():
     if dist.get_rank() == 0:

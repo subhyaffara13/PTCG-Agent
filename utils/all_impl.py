@@ -1,3 +1,4 @@
+from typing import Any
 
 def all_impl(self: ComplexTensor, *args: Any, **kwargs: Any) -> torch.Tensor:
     x, y = split_complex_tensor(self)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def smoothly_deprecate_legacy_arguments(fn_name: str, kwargs: dict[str, Any]) -> dict[str, Any]:
     """Smoothly deprecate legacy arguments in the `huggingface_hub` codebase.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_token_counter_new() -> Any:
     """

@@ -1,3 +1,4 @@
+import json
 
 def get_intel_gpu_onboard(run_lambda):
     lst: list[str] = []

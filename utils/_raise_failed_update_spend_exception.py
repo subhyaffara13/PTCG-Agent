@@ -1,3 +1,4 @@
+import time
 
 def _raise_failed_update_spend_exception(
     e: Exception, start_time: float, proxy_logging_obj: ProxyLogging

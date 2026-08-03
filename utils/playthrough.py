@@ -1,3 +1,4 @@
+from typing import Optional
 
 def playthrough(game_string,
                 action_sequence,

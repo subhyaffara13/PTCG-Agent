@@ -1,3 +1,6 @@
+from typing import Union
+import math
+
 
 def get_resize_output_image_size(
     input_image: np.ndarray,

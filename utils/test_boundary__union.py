@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_boundary_Union():
     assert (Interval(0, 1) + Interval(2, 3)).boundary == FiniteSet(0, 1, 2, 3)

@@ -1,3 +1,4 @@
+import logging
 
 def is_valid_logger(logger: abstract_logger.AbstractLogger):
   if not isinstance(logger, abstract_logger.AbstractLogger):

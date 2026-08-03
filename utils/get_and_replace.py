@@ -1,3 +1,6 @@
+from typing import Union
+from pathlib import Path
+
 
 def get_and_replace(
     filename: Path, binary: bool = False, **opts: str

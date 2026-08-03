@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_point_array(points: Any) -> None:
     if not isinstance(points, np.ndarray):

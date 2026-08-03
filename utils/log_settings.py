@@ -1,3 +1,4 @@
+import os
 
 def log_settings(settings):
     exit_stack = contextlib.ExitStack()

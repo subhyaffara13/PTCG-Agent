@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_dataclass_as_pytree_node(
     cls: type[Any],

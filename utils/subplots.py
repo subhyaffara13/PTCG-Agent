@@ -1,3 +1,4 @@
+from typing import Any
 
 def subplots(
     nrows: Literal[1] = ...,

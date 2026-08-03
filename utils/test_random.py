@@ -1,3 +1,4 @@
+import random
 
 def test_random():
     M = randMatrix(3, 3)

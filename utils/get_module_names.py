@@ -1,3 +1,4 @@
+import sys
 
 def get_module_names(
     restrict: py_utils.StrOrStrList, *, recursive: bool = True

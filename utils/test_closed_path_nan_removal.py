@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_closed_path_nan_removal(fig_test, fig_ref):
     ax_test = fig_test.subplots(2, 2).flatten()

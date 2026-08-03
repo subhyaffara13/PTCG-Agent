@@ -1,3 +1,4 @@
+import json
 
 def test_orchestrator_context_injection(tmp_path):
     skills_dir = tmp_path / "skills"

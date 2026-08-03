@@ -1,3 +1,4 @@
+import itertools
 
 def average_node_connectivity(G, flow_func=None):
     r"""Returns the average connectivity of a graph G.

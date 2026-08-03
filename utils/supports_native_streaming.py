@@ -1,3 +1,4 @@
+from typing import Optional
 
 def supports_native_streaming(model: str, custom_llm_provider: Optional[str]) -> bool:
     """

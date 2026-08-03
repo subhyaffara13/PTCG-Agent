@@ -1,3 +1,4 @@
+import json
 
 def _isolation_key(ischema: IsolationSchema = _DEFAULT_ISOLATION_SCHEMA) -> str:
     """Generate a unique key for the given isolation schema.

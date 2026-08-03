@@ -1,3 +1,4 @@
+from typing import Any
 
 def act_agent(args: tuple[Agent | None, dict[str, Any], dict[str, Any], Any]) -> tuple[Any, dict[str, Any]]:
     agent, state, configuration, none_action = args

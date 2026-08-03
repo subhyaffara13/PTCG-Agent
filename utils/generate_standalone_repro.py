@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_standalone_repro(
     gm: torch.fx.GraphModule,

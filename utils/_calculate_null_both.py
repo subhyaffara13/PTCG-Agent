@@ -1,3 +1,5 @@
+import math
+
 
 def _calculate_null_both(data, statistic, n_permutations, batch,
                          rng=None, *, xp):

@@ -1,3 +1,4 @@
+from typing import Union
 
 def cast_as_primitive_value_type(value) -> Union[str, bool, int, float]:
     """

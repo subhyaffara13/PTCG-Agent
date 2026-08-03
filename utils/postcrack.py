@@ -1,3 +1,4 @@
+import copy
 
 def postcrack(block, args=None, tab=''):
     """

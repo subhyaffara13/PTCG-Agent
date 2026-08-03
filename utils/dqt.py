@@ -1,3 +1,4 @@
+import sys
 
 def DQT(self: JpegImageFile, marker: int) -> None:
     #

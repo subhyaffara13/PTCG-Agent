@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def getStatLocations(doc: DesignSpaceDocument, userRegion: Region) -> List[Dict]:
     """Return a list of location dicts suitable for use as the ``locations``

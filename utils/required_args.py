@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def required_args(*variants: Sequence[str]) -> Callable[[CallableT], CallableT]:
     """Decorator to enforce a given set of arguments or variants of arguments are passed to the decorated function.

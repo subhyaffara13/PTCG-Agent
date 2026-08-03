@@ -1,3 +1,4 @@
+import random
 
 def random_sparse_pd_matrix(matrix_size, density=0.01, **kwargs):
     """Return random sparse positive-definite matrix with given density.

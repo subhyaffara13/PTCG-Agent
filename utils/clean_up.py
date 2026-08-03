@@ -1,3 +1,5 @@
+import os
+import re
 
 def clean_up(app, exception):  # noqa: ARG001
     (DIR / "readme.rst").unlink()

@@ -1,3 +1,4 @@
+import os
 
 def _package_constants(
     model_name: str,

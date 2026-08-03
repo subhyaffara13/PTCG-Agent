@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def buildPaletteLabels(
     labels: Iterable[_OptionalLocalizedString], nameTable: _n_a_m_e.table__n_a_m_e

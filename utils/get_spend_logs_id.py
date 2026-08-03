@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_spend_logs_id(
     call_type: str, response_obj: dict, kwargs: dict

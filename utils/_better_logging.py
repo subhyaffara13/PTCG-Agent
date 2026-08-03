@@ -1,3 +1,4 @@
+import sys
 
 def _better_logging() -> None:
   """Modify Python logging (internal)."""

@@ -1,3 +1,5 @@
+import math
+
 
 def to_linear(c):
     a = 0.055

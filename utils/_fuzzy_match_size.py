@@ -1,3 +1,4 @@
+import re
 
 def _fuzzy_match_size(config_name: str) -> str | None:
     """

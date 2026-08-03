@@ -1,3 +1,4 @@
+import itertools
 
 def entry_points(**params) -> EntryPoints:
     """Return EntryPoint objects for all installed packages.

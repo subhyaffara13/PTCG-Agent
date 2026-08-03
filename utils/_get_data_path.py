@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_data_path(*args):
     """

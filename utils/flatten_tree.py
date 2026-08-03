@@ -1,3 +1,4 @@
+import os
 
 def flatten_tree(tree):
     """Flatten nested dicts and lists into a full list of paths"""

@@ -1,3 +1,4 @@
+import os
 
 def update_env_context_manager(**changes: str) -> Generator[None, None, None]:
     target = os.environ

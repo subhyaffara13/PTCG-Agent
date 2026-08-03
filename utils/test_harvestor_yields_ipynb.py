@@ -1,3 +1,4 @@
+import os
 
 def test_harvestor_yields_ipynb(log_mock):
     '''Test that Harvester will try ipynb files when configured'''

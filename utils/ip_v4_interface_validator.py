@@ -1,3 +1,4 @@
+from typing import Any
 
 def ip_v4_interface_validator(v: Any) -> IPv4Interface:
     if isinstance(v, IPv4Interface):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def cmp_ge(a: Any, b: Any) -> bool:
     # Check if __ge__ is overridden

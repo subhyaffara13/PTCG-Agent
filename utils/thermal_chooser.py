@@ -1,3 +1,5 @@
+import math
+
 
 def thermal_chooser(queue, remaining, nbranch=8, temperature=1, rel_temperature=True):
     """A contraction 'chooser' that weights possible contractions using a

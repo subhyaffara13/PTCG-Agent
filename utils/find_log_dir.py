@@ -1,3 +1,4 @@
+import os
 
 def find_log_dir(log_dir=None):
   """Returns the most suitable directory to put log files into.

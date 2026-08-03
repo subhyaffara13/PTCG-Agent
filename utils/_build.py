@@ -1,3 +1,4 @@
+import sys
 
 def _build(tmpdir, ext, compiler_verbose=0, debug=None):
     # XXX compact but horrible :-(

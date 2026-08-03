@@ -1,3 +1,4 @@
+import os
 
 def _macos_user_config_dir(appname: str, roaming: bool = True) -> str:
     # Use ~/Application Support/pip, if the directory exists.

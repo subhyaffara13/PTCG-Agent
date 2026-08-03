@@ -1,3 +1,4 @@
+import functools
 
 def dyn_dot(x, y):
   assert len(x) == len(y)

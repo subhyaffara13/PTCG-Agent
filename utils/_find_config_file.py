@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _find_config_file(
     stderr: TextIO | None = None,

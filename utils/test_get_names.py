@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_get_names() -> None:
     names: tuple[str | Any, ...]

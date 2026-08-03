@@ -1,3 +1,4 @@
+import os
 
 def purge_old_log_files() -> None:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def tolist(x) -> list[Any]:
     if isinstance(x, list):

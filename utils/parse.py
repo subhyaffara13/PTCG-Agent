@@ -1,3 +1,7 @@
+import json
+import re
+import sys
+from typing import Any, Callable, Optional, Union
 
 def parse(version: str) -> "LegacyVersion":
     """

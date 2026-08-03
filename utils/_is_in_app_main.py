@@ -1,3 +1,4 @@
+import sys
 
 def _is_in_app_main() -> bool:
   """Returns True iff app.run is active."""

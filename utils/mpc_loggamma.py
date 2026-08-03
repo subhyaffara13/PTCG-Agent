@@ -1,3 +1,4 @@
+import re
 
 def mpc_loggamma(z, prec, rnd='d'):
     a, b = z

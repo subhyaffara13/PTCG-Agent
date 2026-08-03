@@ -1,3 +1,4 @@
+from typing import List
 
 def _sync_streaming(
     response: httpx.Response,

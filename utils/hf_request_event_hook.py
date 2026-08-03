@@ -1,3 +1,4 @@
+import uuid
 
 def hf_request_event_hook(request: httpx.Request) -> None:
     """

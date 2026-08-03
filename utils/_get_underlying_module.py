@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_underlying_module(
     module_or_method: torch.nn.Module | Callable[..., Any],

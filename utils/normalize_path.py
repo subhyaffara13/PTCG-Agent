@@ -1,3 +1,4 @@
+import os
 
 def normalize_path(path: str, parent: str = os.curdir) -> str:
     """Normalize a single-path.

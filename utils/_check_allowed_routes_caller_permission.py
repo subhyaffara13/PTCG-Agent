@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_allowed_routes_caller_permission(
     allowed_routes: Optional[list],

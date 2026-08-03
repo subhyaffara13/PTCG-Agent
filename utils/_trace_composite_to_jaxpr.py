@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _trace_composite_to_jaxpr(fun: Callable,
                               in_tree: tree_util.PyTreeDef,

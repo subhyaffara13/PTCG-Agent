@@ -1,3 +1,4 @@
+import re
 
 def test_derivatives_issue_4757():
     x = Symbol('x', real=True)

@@ -1,3 +1,4 @@
+import functools
 
 def _preprocess_backward(out, do, lse, block_q: int,
                          debug: bool, interpret: bool):

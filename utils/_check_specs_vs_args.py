@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _check_specs_vs_args(
     f: Callable, mesh: Mesh | AbstractMesh, in_tree: PyTreeDef, in_specs: Specs,

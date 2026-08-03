@@ -1,3 +1,4 @@
+from typing import Union
 
 def test__solveset_multi():
     from sympy.solvers.solveset import _solveset_multi

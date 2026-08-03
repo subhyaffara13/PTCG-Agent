@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_size(size: Any) -> None:
     """

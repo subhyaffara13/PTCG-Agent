@@ -1,3 +1,4 @@
+import logging
 
 def pretty_log_mesh(msg: str, mesh: jax.sharding.Mesh):
   """Logs the mesh in a pretty format."""

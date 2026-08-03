@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_backend_fallback_headless_auto_backend(tmp_path):
     # specify a headless mpl environment, but request a graphical (tk) backend

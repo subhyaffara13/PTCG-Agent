@@ -1,3 +1,4 @@
+import sys
 
 def write_exports(exports, stream):
     if sys.version_info[0] >= 3:

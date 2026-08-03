@@ -1,3 +1,5 @@
+import json
+from typing import List, Optional, Union
 
 def convert_to_gemini_tool_call_result(
     message: Union[ChatCompletionToolMessage, ChatCompletionFunctionMessage],

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Union
 
 def _cli_poll_attribution_metadata_from_session(
     session_data: Dict[str, Any],

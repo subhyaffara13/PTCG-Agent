@@ -1,3 +1,6 @@
+import os
+import pathlib
+from typing import Any
 
 def rc_context(
     rc: dict[RcKeyType, Any] | None = None,

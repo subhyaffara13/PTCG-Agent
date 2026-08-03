@@ -1,3 +1,4 @@
+from typing import Any
 
 def unpack_lenient_weakvaluedict(d: dict[str, Any] | None) -> dict[str, Any] | None:
     """Inverts the transform performed by `build_lenient_weakvaluedict`."""

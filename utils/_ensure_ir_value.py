@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ensure_ir_value(x: Any, dtype: jnp.dtype) -> ir.Value:
   if isinstance(x, ir.Value):

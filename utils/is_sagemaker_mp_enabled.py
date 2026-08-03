@@ -1,3 +1,5 @@
+import json
+import os
 
 def is_sagemaker_mp_enabled() -> bool:
     # Get the sagemaker specific mp parameters from smp_options variable.

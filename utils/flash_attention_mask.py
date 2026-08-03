@@ -1,3 +1,4 @@
+from typing import Callable
 
 def flash_attention_mask(
     batch_size: int,

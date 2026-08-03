@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def ensure_extended_length_path(path: Path) -> Path:
     """Get the extended-length version of a path (Windows).

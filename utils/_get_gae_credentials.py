@@ -1,3 +1,4 @@
+import os
 
 def _get_gae_credentials():
     """Gets Google App Engine App Identity credentials and project ID."""

@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def try_import_ck_lib() -> tuple[
     str | None, Callable[[], list[Any]], Callable[[], list[Any]], type[Any]

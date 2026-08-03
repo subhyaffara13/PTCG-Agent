@@ -1,3 +1,4 @@
+from typing import Any
 
 def prepare_qat_fx(
     model: torch.nn.Module,

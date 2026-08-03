@@ -1,3 +1,4 @@
+import os
 
 def _process_flash_attention_kwargs(
     query_length: int,

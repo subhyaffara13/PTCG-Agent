@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def safe_norm(
     x: jax.typing.ArrayLike,

@@ -1,3 +1,4 @@
+import functools
 
 def reference_flatten(input, start_dim=0, end_dim=-1):
     in_shape = input.shape

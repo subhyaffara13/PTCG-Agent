@@ -1,3 +1,4 @@
+import re
 
 def mpci_square(x, prec):
     a, b = x

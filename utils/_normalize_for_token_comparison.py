@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_for_token_comparison(value: Any) -> str:
     """Stringify ``value`` for token-rule comparison.

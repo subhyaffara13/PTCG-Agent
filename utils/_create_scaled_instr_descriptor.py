@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _create_scaled_instr_descriptor(
     get_input_encoding: Callable[[ir.Type], int],

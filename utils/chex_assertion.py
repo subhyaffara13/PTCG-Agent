@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Optional
 
 def chex_assertion(
     assert_fn: TAssertFn,

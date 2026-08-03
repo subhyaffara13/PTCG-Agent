@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_clipping_out_of_bounds():
     # Should work on a Path *without* codes.

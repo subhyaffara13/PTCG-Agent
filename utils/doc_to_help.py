@@ -1,3 +1,4 @@
+import re
 
 def doc_to_help(doc: str) -> str:
   """Takes a __doc__ string and reformats it as help."""

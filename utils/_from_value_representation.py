@@ -1,3 +1,4 @@
+from typing import Any
 
 def _from_value_representation(x: _ValueRepresentation) -> Any:
   if isinstance(x, _ArrayRepresentation):

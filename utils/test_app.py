@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_app(req: Request) -> Response:
     """Simple test application that dumps the environment.  You can use

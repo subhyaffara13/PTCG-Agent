@@ -1,3 +1,4 @@
+import os
 
 def _open_setup_script(setup_script):
     if not os.path.exists(setup_script):

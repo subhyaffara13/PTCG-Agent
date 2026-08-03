@@ -1,3 +1,4 @@
+import time
 
 def test_dt_time_preserve_unit(unit):
     ser = pd.Series(

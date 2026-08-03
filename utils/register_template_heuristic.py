@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_template_heuristic(
     template_name: str,

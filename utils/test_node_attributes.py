@@ -1,3 +1,4 @@
+import copy
 
 def test_node_attributes(store_contraction_as, copy, selfloops):
     """Tests that node contraction preserves node attributes."""

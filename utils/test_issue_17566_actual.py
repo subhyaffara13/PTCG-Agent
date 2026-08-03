@@ -1,3 +1,4 @@
+import sys
 
 def test_issue_17566_actual():
     sys = [2**x + 2**y - 3, 4**x + 9**y - 5]

@@ -1,3 +1,4 @@
+import json
 
 def _format_chat_completion_stream_output(
     line: str,

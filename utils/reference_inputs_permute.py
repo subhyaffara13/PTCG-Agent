@@ -1,3 +1,4 @@
+import itertools
 
 def reference_inputs_permute(op, device, dtype, requires_grad, **kwargs):
     yield from sample_inputs_permute(op, device, dtype, requires_grad, **kwargs)

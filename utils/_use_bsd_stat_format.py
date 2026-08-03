@@ -1,3 +1,4 @@
+import os
 
 def _use_bsd_stat_format():
     try:

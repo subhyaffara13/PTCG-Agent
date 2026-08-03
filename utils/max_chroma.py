@@ -1,3 +1,5 @@
+import math
+
 
 def max_chroma(L, H):
     hrad = math.radians(H)

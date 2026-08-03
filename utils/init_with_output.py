@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def init_with_output(
   fn: Callable[..., Any],

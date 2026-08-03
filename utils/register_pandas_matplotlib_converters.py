@@ -1,3 +1,4 @@
+import functools
 
 def register_pandas_matplotlib_converters(func: F) -> F:
     """

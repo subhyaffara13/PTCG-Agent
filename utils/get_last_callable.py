@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Callable
 
 def get_last_callable(raw: str, fallback: Callable | None = None, path: str | None = None) -> Callable:
     orig_out = sys.stdout

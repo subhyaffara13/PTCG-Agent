@@ -1,3 +1,5 @@
+import math
+
 
 def bcoo_update_layout(mat: BCOO, *, n_batch: int | None = None, n_dense: int | None = None,
                        on_inefficient: str | None = 'error') -> BCOO:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_fqn_to_example_inputs(
     model: torch.nn.Module, example_inputs: tuple[Any, ...]

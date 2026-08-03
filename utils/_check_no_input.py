@@ -1,3 +1,4 @@
+import os
 
 def _check_no_input(message: str) -> None:
     """Raise an error if no input is allowed."""

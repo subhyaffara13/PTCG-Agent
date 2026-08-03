@@ -1,3 +1,4 @@
+import os
 
 def split_template_path(template: str) -> t.List[str]:
     """Split a path into segments and perform a sanity check.  If it detects

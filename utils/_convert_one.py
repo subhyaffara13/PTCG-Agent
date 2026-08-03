@@ -1,3 +1,4 @@
+import sys
 
 def _convert_one(domain: str, mode: str, uts46: bool) -> bool:
     """Convert ``domain`` and write the result; return ``False`` on failure."""

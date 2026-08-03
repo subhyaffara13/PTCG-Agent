@@ -1,3 +1,4 @@
+from typing import Set
 
 def tree_all_pairs_lowest_common_ancestor(G, root=None, pairs=None):
     r"""Yield the lowest common ancestor for sets of pairs in a tree.

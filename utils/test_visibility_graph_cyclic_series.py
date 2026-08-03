@@ -1,3 +1,4 @@
+import itertools
 
 def test_visibility_graph_cyclic_series():
     series = list(itertools.islice(itertools.cycle((2, 1, 3)), 17))  # It's so bumpy!

@@ -1,3 +1,4 @@
+import re
 
 def mangle_test_address(address: str) -> list[str]:
     path, possible_open_bracket, params = address.partition("[")

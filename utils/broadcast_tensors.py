@@ -1,3 +1,4 @@
+import functools
 
 def broadcast_tensors(*tensors):
     r"""broadcast_tensors(*tensors) -> List of Tensors

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _saved_tensor_hook_context(state: dict[str, Any]) -> Generator[None, None, None]:
     previous_state = getattr(_thread_local, "state", None)

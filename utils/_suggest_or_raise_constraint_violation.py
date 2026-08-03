@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def _suggest_or_raise_constraint_violation(
     module_to_trace: torch.nn.Module,

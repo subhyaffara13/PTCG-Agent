@@ -1,3 +1,5 @@
+import math
+
 
 def _build_axis_index_lowering_hlo(ctx, axis_name, axis_ctx):
   from jax._src.shard_map import shard_map  # pyrefly: ignore[missing-import]

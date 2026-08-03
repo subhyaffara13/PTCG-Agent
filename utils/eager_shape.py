@@ -1,3 +1,5 @@
+import math
+
 
 def eager_shape(x: Array, /, axis: int | None = None) -> tuple[int, ...]:
     """

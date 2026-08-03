@@ -1,3 +1,4 @@
+from typing import Any
 
 def fraction_validator(input_value: Any, /) -> Fraction:
     if isinstance(input_value, Fraction):

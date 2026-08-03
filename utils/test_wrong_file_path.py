@@ -1,3 +1,4 @@
+import os
 
 def test_wrong_file_path(parser, geom_df):
     path = "/my/fake/path/output.xml"

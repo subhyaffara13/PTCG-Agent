@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _match_static_pattern_with_two_inputs(
     node: Node,

@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def call_execute_device_local_memory_transfer(
     *,

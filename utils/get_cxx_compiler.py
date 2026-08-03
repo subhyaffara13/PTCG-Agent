@@ -1,3 +1,4 @@
+import os
 
 def get_cxx_compiler():
     if IS_WINDOWS:

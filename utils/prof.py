@@ -1,3 +1,4 @@
+import time
 
 def prof(fn=None, group: str = "torchelastic"):
     r"""

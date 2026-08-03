@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_list2dseries_interactive():
     if not np:

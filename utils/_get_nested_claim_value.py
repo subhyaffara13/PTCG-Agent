@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_nested_claim_value(data: Dict[str, Any], claim_path: str) -> Any:
     """Resolve a dot-notation claim path against an SSO result dict.

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def load_path(filename: str | bytes) -> ImageFont:
     """

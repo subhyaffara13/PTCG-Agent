@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _argnums_partial(_fun: Callable,
                      _dyn_argnums: Sequence[int],

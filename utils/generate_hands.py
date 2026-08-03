@@ -1,3 +1,4 @@
+import random
 
 def generate_hands(
     rng: random.Random,

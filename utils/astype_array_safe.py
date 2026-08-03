@@ -1,3 +1,4 @@
+import copy
 
 def astype_array_safe(
     values: ArrayLike, dtype, copy: bool = False, errors: IgnoreRaise = "raise"

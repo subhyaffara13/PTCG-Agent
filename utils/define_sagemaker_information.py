@@ -1,3 +1,5 @@
+import json
+import os
 
 def define_sagemaker_information():
     try:

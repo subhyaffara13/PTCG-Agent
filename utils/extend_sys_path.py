@@ -1,3 +1,5 @@
+import os
+import sys
 
 def ExtendSysPath(path: str | os.PathLike) -> Iterator[None]:
     """

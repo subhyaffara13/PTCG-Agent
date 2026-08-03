@@ -1,3 +1,4 @@
+import re
 
 def _is_agent_identity_certificate(cert):
     """Checks if a certificate is an Agent Identity certificate.

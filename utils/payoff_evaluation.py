@@ -1,3 +1,4 @@
+import itertools
 
 def payoff_evaluation(
     cv_calc: coalitional_game.CoalitionalGame,

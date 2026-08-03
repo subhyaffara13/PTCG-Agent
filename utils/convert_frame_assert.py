@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_frame_assert(
     compiler_fn: CompilerFn,

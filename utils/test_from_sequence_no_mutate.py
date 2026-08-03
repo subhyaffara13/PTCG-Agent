@@ -1,3 +1,4 @@
+import copy
 
 def test_from_sequence_no_mutate(copy, cls, dtype):
     nan_arr = np.array(["a", np.nan], dtype=object)

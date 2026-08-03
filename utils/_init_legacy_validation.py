@@ -1,3 +1,4 @@
+import os
 
 def _init_legacy_validation() -> bool:
     """Retrieve name validation setting from environment."""

@@ -1,3 +1,4 @@
+import subprocess
 
 def list_credential_helpers(folder: str | None = None) -> list[str]:
     """Return the list of git credential helpers configured.

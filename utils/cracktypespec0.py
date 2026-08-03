@@ -1,3 +1,4 @@
+import re
 
 def cracktypespec0(typespec, ll):
     selector = None

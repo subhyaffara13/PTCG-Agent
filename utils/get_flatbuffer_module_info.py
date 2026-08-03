@@ -1,3 +1,4 @@
+import os
 
 def get_flatbuffer_module_info(path_or_file):
     r"""Get some information regarding a model file in flatbuffer format.

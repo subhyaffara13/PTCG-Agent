@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _common_pointwise_single_dim_strategy(
     partial_extra_rules: list[list[Placement | _ShardingPlaceholder]] | None = None,

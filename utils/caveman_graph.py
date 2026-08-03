@@ -1,3 +1,4 @@
+import itertools
 
 def caveman_graph(l, k):
     """Returns a caveman graph of `l` cliques of size `k`.

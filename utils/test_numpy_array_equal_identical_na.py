@@ -1,3 +1,4 @@
+import copy
 
 def test_numpy_array_equal_identical_na(nulls_fixture):
     a = np.array([nulls_fixture], dtype=object)

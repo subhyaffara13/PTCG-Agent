@@ -1,3 +1,4 @@
+from typing import Union
 
 def decimal_encoder(dec_value: Decimal) -> Union[int, float]:
     """Encodes a Decimal as int of there's no exponent, otherwise float.

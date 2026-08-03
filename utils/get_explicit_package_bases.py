@@ -1,3 +1,4 @@
+import os
 
 def get_explicit_package_bases(options: Options) -> list[str] | None:
     """Returns explicit package bases to use if the option is enabled, or None if disabled.

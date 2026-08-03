@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _coerce_datetime(value: Any) -> Optional[datetime]:
     if value is None:

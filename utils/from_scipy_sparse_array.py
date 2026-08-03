@@ -1,3 +1,4 @@
+import itertools
 
 def from_scipy_sparse_array(
     A, parallel_edges=False, create_using=None, edge_attribute="weight"

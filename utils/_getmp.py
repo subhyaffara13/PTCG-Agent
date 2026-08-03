@@ -1,3 +1,4 @@
+from typing import Any
 
 def _getmp(self: JpegImageFile) -> dict[int, Any] | None:
     # Extract MP information.  This method was inspired by the "highly

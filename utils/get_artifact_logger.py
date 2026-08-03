@@ -1,3 +1,4 @@
+import logging
 
 def getArtifactLogger(module_qname, artifact_name) -> logging.Logger:
     if artifact_name not in log_registry.artifact_names:

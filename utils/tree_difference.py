@@ -1,3 +1,4 @@
+from typing import Callable
 
 def tree_difference(
     a: PyTree,

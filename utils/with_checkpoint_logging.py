@@ -1,3 +1,5 @@
+import logging
+from typing import Any, Callable
 
 def with_checkpoint_logging(
     func: Callable | None = None,

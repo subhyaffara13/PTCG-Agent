@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 def _use_gateway(
         method: str,

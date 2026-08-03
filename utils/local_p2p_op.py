@@ -1,3 +1,4 @@
+from typing import Callable
 
 def local_p2p_op(
     dst: torch.SymInt,

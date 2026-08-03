@@ -1,3 +1,4 @@
+import subprocess
 
 def vars():
     return lambda n: [var() for i in range(n)]

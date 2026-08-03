@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_first_fqn(
     const_attrs: ConstantAttrMap,

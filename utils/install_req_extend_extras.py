@@ -1,3 +1,4 @@
+import copy
 
 def install_req_extend_extras(
     ireq: InstallRequirement,

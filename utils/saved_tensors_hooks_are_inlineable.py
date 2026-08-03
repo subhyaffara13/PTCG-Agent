@@ -1,3 +1,4 @@
+from typing import Any
 
 def saved_tensors_hooks_are_inlineable(hooks: Any) -> bool:
     if not hooks:

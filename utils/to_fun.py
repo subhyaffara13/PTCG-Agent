@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_fun(t: object) -> Any:
     if isinstance(t, Tensor):

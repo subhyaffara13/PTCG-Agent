@@ -1,3 +1,4 @@
+import re
 
 def _playthrough_match(filename, regex):
   """Returns the specified value fromm the playthrough."""

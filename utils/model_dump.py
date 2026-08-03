@@ -1,3 +1,4 @@
+from typing import Any
 
 def model_dump(
     model: pydantic.BaseModel,

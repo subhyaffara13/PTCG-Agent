@@ -1,3 +1,5 @@
+import os
+import re
 
 def default_cache_dir() -> str:
     sanitized_username = re.sub(r'[\\/:*?"<>|]', "_", getpass.getuser())

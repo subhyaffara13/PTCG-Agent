@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ext_pre_flatten_transform(
     tensor: torch.Tensor,

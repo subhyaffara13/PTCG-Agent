@@ -1,3 +1,5 @@
+import json
+import os
 
 def load_credentials_from_file(
     filename, scopes=None, default_scopes=None, quota_project_id=None, request=None

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _copy_state_dict(
     state_dict: dict[str, Any],

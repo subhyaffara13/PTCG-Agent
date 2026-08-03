@@ -1,3 +1,5 @@
+import logging
+import time
 
 def log_io_metrics(
     size: int,

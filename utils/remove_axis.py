@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_axis(tree: Any, index: int, params: dict[Any, Any]) -> Any:
   """Remove an axis from each AxisMetadata node in a PyTree."""

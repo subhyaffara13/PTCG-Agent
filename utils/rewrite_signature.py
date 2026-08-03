@@ -1,3 +1,4 @@
+from typing import Any
 
 def rewrite_signature(
     f_sig: inspect.Signature,

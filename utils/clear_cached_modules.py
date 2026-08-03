@@ -1,3 +1,4 @@
+import sys
 
 def clear_cached_modules(
     modules: py_utils.StrOrStrList,

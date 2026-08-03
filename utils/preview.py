@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def preview(expr, output='png', viewer=None, euler=True, packages=(),
             filename=None, outputbuffer=None, preamble=None, dvioptions=None,

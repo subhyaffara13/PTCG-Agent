@@ -1,3 +1,4 @@
+import re
 
 def hip_header_magic(input_string):
     """If the file makes kernel builtin calls and does not include the cuda_runtime.h header,

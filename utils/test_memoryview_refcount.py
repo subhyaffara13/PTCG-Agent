@@ -1,3 +1,4 @@
+import sys
 
 def test_memoryview_refcount(method):
     buf = b"\x0a\x0b\x0c\x0d"

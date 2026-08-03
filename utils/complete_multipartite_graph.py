@@ -1,3 +1,4 @@
+import itertools
 
 def complete_multipartite_graph(*subset_sizes):
     """Returns the complete multipartite graph with the specified subset sizes.

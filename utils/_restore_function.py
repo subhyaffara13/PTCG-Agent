@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _restore_function(fn: Callable, fn_module: types.ModuleType) -> None:
     """Restore the function that is replaced by _distribute_function."""

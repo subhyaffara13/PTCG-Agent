@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def get_module_ns_of(obj: Any) -> dict[str, Any]:
     """Get the namespace of the module where the object is defined.

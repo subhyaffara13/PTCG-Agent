@@ -1,3 +1,4 @@
+import time
 
 def run_tensorrt_static_xl(
     work_dir: str,

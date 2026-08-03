@@ -1,3 +1,4 @@
+import itertools
 
 def invoke_quant_tracer(subgraph_fn: ir.Subgraph, *operands, scheme=None):
     output = None

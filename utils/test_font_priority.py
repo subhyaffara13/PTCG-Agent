@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_font_priority():
     with rc_context(rc={

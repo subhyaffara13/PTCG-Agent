@@ -1,3 +1,4 @@
+from typing import Union
 
 def parse_color_value(value: Union[int, str], max_val: int = 255) -> float:
     """Parse the color value provided and return a number between 0 and 1.

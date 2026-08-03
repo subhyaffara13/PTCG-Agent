@@ -1,3 +1,4 @@
+import copy
 
 def masked_inside(x, v1, v2, copy=True):
     """

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def map_aggregate(a: ArgumentT, fn: Callable[[Argument], Argument]) -> ArgumentT:
     """

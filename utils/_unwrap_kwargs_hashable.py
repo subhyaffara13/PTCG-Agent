@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unwrap_kwargs_hashable(kwargs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
   unwrapped_kwargs: dict[str, Any] = {}

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_protected_namespaces(
     protected_namespaces: tuple[str | Pattern[str], ...],

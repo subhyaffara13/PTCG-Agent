@@ -1,3 +1,4 @@
+from typing import Any
 
 def noqa(**interface: Any) -> str:
     _imports = ", ".join(interface["imports"])

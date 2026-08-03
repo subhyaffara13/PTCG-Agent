@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_is_finiteset():
     for s in [S.Naturals, S.Naturals0, S.Integers, S.Rationals, S.Reals,

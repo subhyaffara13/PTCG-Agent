@@ -1,3 +1,4 @@
+from typing import Union
 
 def _solve_as_poly(f, symbol, domain=S.Complexes):
     """

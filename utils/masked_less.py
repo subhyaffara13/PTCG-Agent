@@ -1,3 +1,4 @@
+import copy
 
 def masked_less(x, value, copy=True):
     """

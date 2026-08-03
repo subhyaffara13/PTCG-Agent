@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def convert_slow_checkpoint_to_fast(tokenizer_name, checkpoint_name, dump_path, force_download):
     if tokenizer_name is not None and tokenizer_name not in TOKENIZER_CLASSES:

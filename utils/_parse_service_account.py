@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_service_account(
     data: Mapping[str, Any], config: tiering_service_pb2.ServerConfig

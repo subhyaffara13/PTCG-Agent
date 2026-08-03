@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def add_retry_headers_to_response(
     response: Any,

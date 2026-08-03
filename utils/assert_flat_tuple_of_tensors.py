@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_flat_tuple_of_tensors(elts: Any, api: str, argname: str) -> None:
     if not isinstance(elts, tuple):

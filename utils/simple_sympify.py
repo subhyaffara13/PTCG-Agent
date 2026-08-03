@@ -1,3 +1,5 @@
+import math
+
 
 def simple_sympify(e):
     if isinstance(e, bool):

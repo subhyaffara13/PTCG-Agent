@@ -1,3 +1,4 @@
+from typing import List
 
 def cumulate_average_policy(infostates: List[InfostateNode],
                             weight: int = 1) -> None:

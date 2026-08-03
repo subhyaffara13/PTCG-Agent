@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_transformed_path():
     points = [(0, 0), (1, 0), (1, 1), (0, 1)]

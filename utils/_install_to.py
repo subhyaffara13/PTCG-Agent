@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _install_to(skills_dir: Path, skill_name: str, force: bool) -> Path:
     """Install a marketplace skill into a skills directory. Returns the installed path."""

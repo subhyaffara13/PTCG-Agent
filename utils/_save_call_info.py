@@ -1,3 +1,4 @@
+import functools
 
 def _save_call_info(counter, tracer_args, f, node_stats, compute_flops, compute_vjp_flops, seen):
   "Wrap a function to save its arguments"

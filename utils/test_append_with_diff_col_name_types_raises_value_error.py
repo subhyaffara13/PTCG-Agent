@@ -1,3 +1,4 @@
+import re
 
 def test_append_with_diff_col_name_types_raises_value_error(temp_hdfstore):
     df = DataFrame(np.random.default_rng(2).standard_normal((10, 1)))

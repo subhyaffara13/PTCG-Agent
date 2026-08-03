@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_qualified_name(func: Callable[..., Any]) -> str:
     # things like getattr just appear in builtins

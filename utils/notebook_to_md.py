@@ -1,3 +1,4 @@
+import os
 
 def notebook_to_md(notebook):
     """Convert a notebook to its Markdown representation, using Pandoc"""

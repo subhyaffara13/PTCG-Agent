@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _sparsify_with_tracer(fun: Callable):
   """Implementation of sparsify() using tracers."""

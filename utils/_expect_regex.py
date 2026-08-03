@@ -1,3 +1,4 @@
+import re
 
 def _expect_regex(controller, regex):
   """Reads a line from the controller, parses it using the regular expression."""

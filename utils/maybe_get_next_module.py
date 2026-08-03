@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_get_next_module(
     node: Node,

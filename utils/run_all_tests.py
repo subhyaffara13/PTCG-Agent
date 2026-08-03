@@ -1,3 +1,4 @@
+import sys
 
 def run_all_tests(test_args=(), test_kwargs=None,
                   doctest_args=(), doctest_kwargs=None,

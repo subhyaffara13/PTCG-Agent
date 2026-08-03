@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _start_cli_sso_flow(base_url: str) -> Dict[str, Any]:
     response = requests.post(f"{base_url}/sso/cli/start", timeout=10)

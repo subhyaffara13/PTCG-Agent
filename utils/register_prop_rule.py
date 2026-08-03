@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_prop_rule(
     op: torch._ops.OpOverload | list[torch._ops.OpOverload],

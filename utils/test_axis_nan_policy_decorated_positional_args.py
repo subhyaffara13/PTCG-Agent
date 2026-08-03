@@ -1,3 +1,4 @@
+import re
 
 def test_axis_nan_policy_decorated_positional_args():
     # Test for correct behavior of function decorated with

@@ -1,3 +1,4 @@
+from typing import Any
 
 def bind_args_cached(
     func: FunctionType,

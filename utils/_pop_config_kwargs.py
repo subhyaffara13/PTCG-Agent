@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pop_config_kwargs(config: dict[str, Any]) -> dict[str, Any]:
     """Extract triton.Config options that should become kwargs"""

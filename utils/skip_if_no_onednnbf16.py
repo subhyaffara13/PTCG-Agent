@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoONEDNNBF16(fn):
     reason = "Quantized operations require BF16 support."

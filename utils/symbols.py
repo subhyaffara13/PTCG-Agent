@@ -1,3 +1,4 @@
+from typing import Any
 
 def symbols(names, *, cls=Symbol, **args) -> Any:
     r"""

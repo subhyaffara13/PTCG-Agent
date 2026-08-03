@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _check_dynamic_azure_params(
     azure_client_params: dict,

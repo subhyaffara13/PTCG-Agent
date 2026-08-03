@@ -1,3 +1,4 @@
+from typing import Callable
 
 def tryit(rule: Callable[[_T], _T], exception) -> Callable[[_T], _T]:
     """ Return original expr if rule raises exception """

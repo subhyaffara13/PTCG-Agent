@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_colocated_options(options: Any) -> None:
   """Rejects RCM options not yet supported by worker-side colocated MTC."""

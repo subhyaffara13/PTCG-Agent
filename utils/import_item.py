@@ -1,3 +1,4 @@
+from typing import Any
 
 def import_item(name):
     """Import and return ``bar`` given the string ``foo.bar``.

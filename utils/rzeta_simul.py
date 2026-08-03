@@ -1,3 +1,5 @@
+import math
+
 
 def Rzeta_simul(ctx, s, der=0):
     # First we take the value of ctx.prec

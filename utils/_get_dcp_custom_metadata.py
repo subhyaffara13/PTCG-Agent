@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _get_dcp_custom_metadata(metadata: Any) -> Any | None:
     if DEFAULT_EXTRA_METADATA_KEY in metadata:

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_tables_argument_list(table_list: Optional[List[Text]]) -> Optional[List[Text]]:
     """Converts a list of OpenType table string into a Python list or

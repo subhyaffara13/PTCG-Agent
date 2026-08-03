@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_plot_sympify():
     x, y = symbols("x, y")

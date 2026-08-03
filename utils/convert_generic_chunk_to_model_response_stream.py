@@ -1,3 +1,4 @@
+import uuid
 
 def convert_generic_chunk_to_model_response_stream(
     chunk: GChunk,

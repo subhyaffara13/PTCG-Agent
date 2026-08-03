@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def get_origin(v: Any) -> Any:
     pydantic_generic_metadata: PydanticGenericMetadata | None = getattr(v, '__pydantic_generic_metadata__', None)

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _optimize_sd_pipeline(
     source_dir: Path,

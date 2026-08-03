@@ -1,3 +1,4 @@
+from typing import Any
 
 def install_pathways_colocated_serialization_patch() -> None:
   """Installs a Pathways-aware colocated-python serialization patch.

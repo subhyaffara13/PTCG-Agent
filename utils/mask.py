@@ -1,3 +1,4 @@
+from typing import List
 
 def mask(cfvalues: np.ndarray, infoset: List[InfostateNode], num_actions: int,
          batch_size: int) -> np.ndarray:

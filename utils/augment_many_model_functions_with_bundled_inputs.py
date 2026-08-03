@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def augment_many_model_functions_with_bundled_inputs(
         model: torch.jit.ScriptModule,

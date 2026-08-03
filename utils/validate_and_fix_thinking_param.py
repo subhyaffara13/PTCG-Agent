@@ -1,3 +1,4 @@
+from typing import Optional
 
 def validate_and_fix_thinking_param(
     thinking: Optional["AnthropicThinkingParam"],

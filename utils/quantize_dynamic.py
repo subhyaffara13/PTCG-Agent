@@ -1,3 +1,8 @@
+import copy
+import itertools
+import logging
+from pathlib import Path
+
 
 def quantize_dynamic(
     model, qconfig_spec=None, dtype=torch.qint8, mapping=None, inplace=False

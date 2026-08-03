@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _constructor_accepts_keyword(constructor: Callable[..., object], name: str) -> bool:
     try:

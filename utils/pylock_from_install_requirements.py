@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pylock_from_install_requirements(
     install_requirements: Iterable[InstallRequirement], base_dir: Path

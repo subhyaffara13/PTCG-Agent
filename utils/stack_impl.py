@@ -1,3 +1,4 @@
+from typing import Any
 
 def stack_impl(self: list[ComplexTensor], *args: Any, **kwargs: Any) -> ComplexTensor:
     re_im_tuples = [split_complex_arg(self_i) for self_i in self]

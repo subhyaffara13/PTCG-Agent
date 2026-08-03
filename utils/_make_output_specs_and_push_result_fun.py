@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _make_output_specs_and_push_result_fun(
     info: FunctionInfo,

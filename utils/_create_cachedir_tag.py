@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _create_cachedir_tag(cache_dir: Path) -> None:
     """Create a CACHEDIR.TAG file in ``cache_dir`` if one does not already exist.

@@ -1,3 +1,4 @@
+import functools
 
 def _get_loop_body(fn_list):
     if all(isinstance(fn, LoopBody) for fn in fn_list):

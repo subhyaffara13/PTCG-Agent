@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def unwrap_fake_args(
     *arg_names: str,

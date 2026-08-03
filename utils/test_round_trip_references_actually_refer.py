@@ -1,3 +1,4 @@
+import copy
 
 def test_round_trip_references_actually_refer(m):
     # Need to create a copy that matches the type on the C side

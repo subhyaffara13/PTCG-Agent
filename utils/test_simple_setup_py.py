@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def test_simple_setup_py(monkeypatch, tmpdir, parallel, std):
     monkeypatch.chdir(tmpdir)

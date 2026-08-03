@@ -1,3 +1,4 @@
+import os
 
 def _get_github_oidc_token(audience: str) -> str:
     """Mint an OIDC id token from the GitHub Actions runtime.

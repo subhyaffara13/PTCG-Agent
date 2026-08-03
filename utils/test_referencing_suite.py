@@ -1,3 +1,4 @@
+import json
 
 def test_referencing_suite(test_path, subtests):
     dialect_id = DIALECT_IDS[test_path.relative_to(SUITE).parts[0]]

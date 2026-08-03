@@ -1,3 +1,4 @@
+from typing import Any
 
 def slugify_params(args: argparse.Namespace) -> dict[str, Any]:
     return dict(

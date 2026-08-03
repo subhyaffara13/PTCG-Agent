@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def map_arg(a: ArgumentT, fn: Callable[[Node], Argument]) -> ArgumentT:
     """

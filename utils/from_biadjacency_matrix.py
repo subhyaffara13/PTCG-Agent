@@ -1,3 +1,4 @@
+import itertools
 
 def from_biadjacency_matrix(
     A,

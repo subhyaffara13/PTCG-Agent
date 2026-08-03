@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _collect_stream_delta_text_holders(delta: Any) -> List[_DeltaHolder]:
     """

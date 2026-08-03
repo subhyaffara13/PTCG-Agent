@@ -1,3 +1,4 @@
+import os
 
 def _get_shell(cmd, *args):
     if cmd.startswith("-"):  # Login shell! Let's use this.

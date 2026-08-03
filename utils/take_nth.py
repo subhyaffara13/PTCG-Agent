@@ -1,3 +1,4 @@
+import itertools
 
 def take_nth(n, seq):
     """ Every nth item in seq

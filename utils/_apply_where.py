@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_where(  # numpydoc ignore=PR01,RT01
     cond: Array,

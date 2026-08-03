@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_old_trig_issues():
     # issues #9606 / #9531:

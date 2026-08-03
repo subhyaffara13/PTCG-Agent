@@ -1,3 +1,4 @@
+import re
 
 def urlize(
     text: str,

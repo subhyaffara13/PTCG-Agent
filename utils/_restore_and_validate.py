@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def _restore_and_validate(
     manager: emergency_checkpoint_manager.CheckpointManager,

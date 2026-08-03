@@ -1,3 +1,4 @@
+import itertools
 
 def strategy_smallest_last(G, colors):
     """Returns a deque of the nodes of ``G``, "smallest" last.

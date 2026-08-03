@@ -1,3 +1,4 @@
+import copy
 
 def test_array_array():
     from sys import byteorder

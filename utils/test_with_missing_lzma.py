@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_with_missing_lzma():
     """Tests if import pandas works when lzma is not present."""

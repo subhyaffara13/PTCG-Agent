@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_getattr_from_value(
     module: torch.nn.Module,

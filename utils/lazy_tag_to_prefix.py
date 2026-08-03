@@ -1,3 +1,4 @@
+from typing import Dict
 
 def lazy_tag_to_prefix() -> Dict[str, str]:
     """feature.name -> first prefix, used by the Swagger warmup JS plugin.

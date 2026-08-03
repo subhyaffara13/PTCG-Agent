@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any, Callable
 
 def _unique(
     fake_mode: FakeTensorMode,

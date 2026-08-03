@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _process_export_inputs(
     mod: torch.nn.Module,

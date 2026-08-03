@@ -1,3 +1,4 @@
+import random
 
 def serial(*layers):
   """Combinator for composing layers in serial.

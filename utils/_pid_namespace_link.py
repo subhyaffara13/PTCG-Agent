@@ -1,3 +1,4 @@
+import os
 
 def _pid_namespace_link(pid: int | None = None) -> str:
     """Returns the link to the process's namespace, example: pid:[4026531836]"""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def dim_reduction_with_indices_strategy(
     op: torch._ops.OpOverload,

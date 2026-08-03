@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_hf_task_embedding_for_model(
     model: str, task_type: Optional[str], api_base: str

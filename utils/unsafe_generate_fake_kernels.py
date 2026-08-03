@@ -1,3 +1,4 @@
+from typing import Callable
 
 def unsafe_generate_fake_kernels(op_profiles: dict[str, set[OpProfile]]) -> Generator:
     """

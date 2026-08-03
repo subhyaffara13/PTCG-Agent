@@ -1,3 +1,4 @@
+from typing import Any
 
 def calculate_equities(
         hole_ranges: Iterable[Iterable[Iterable[Card]]],

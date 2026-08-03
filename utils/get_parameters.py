@@ -1,3 +1,5 @@
+import copy
+import re
 
 def get_parameters(vars, global_params={}):
     params = copy.copy(global_params)

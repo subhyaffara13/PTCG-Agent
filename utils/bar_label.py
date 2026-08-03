@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bar_label(
     container: BarContainer,

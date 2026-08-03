@@ -1,3 +1,5 @@
+import pathlib
+from typing import Callable
 
 def _get_html_renderer_content(
     open_spiel_short_name: str, base_path_for_custom_renderers: pathlib.Path, default_renderer_func: Callable[[], str]

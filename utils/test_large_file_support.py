@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_large_file_support(tmpdir):
     if (sys.platform == 'win32' or sys.platform == 'cygwin'):

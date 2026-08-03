@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _resolve_installed_executable_path(short_name: str) -> Path:
     extension_dir = _get_extension_dir(short_name)

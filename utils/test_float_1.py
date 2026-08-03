@@ -1,3 +1,5 @@
+import math
+
 
 def test_float_1():
     z = 1.0

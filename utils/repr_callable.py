@@ -1,3 +1,4 @@
+from typing import Callable
 
 def repr_callable(fun: Callable[[BaseExcT_1], bool]) -> str:
     """Get the repr of a ``check`` parameter.

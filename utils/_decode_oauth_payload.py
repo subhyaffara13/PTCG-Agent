@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, Optional
 
 def _decode_oauth_payload(stored: str) -> Optional[Dict[str, Any]]:
     """Return the OAuth2 payload dict if ``stored`` holds one, else ``None``.

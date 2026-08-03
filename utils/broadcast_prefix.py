@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def broadcast_prefix(
     prefix_tree: PyTree,

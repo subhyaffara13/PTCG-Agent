@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def _get_usage_object(
     completion_response: Any,

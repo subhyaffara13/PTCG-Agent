@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_observation_saveable(
     env: AECEnv[AgentID, Any, Any] | ParallelEnv[AgentID, Any, Any], agent: AgentID

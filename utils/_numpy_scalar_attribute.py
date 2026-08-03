@@ -1,3 +1,4 @@
+from typing import Any
 
 def _numpy_scalar_attribute(val: Any) -> ir.Attribute:
   mlir_type = dtype_to_ir_type(val.dtype)

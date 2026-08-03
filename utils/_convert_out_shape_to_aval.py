@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_out_shape_to_aval(out_shape: Any) -> jax_core.AbstractValue:
   match out_shape:

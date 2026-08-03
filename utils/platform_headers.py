@@ -1,3 +1,4 @@
+from typing import Dict
 
 def platform_headers(version: str, *, platform: Platform | None) -> Dict[str, str]:
     return {

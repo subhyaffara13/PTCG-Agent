@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_points_for_player(
     board: Sequence[Mapping[str, Any] | None],

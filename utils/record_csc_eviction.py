@@ -1,3 +1,4 @@
+from typing import Optional
 
 def record_csc_eviction(
     count: int,

@@ -1,3 +1,6 @@
+from typing import Optional
+import math
+
 
 def _compute_llama3_parameters(
     config: "PreTrainedConfig",

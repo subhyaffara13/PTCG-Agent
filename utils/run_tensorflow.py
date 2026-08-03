@@ -1,3 +1,4 @@
+import random
 
 def run_tensorflow(
     use_gpu,

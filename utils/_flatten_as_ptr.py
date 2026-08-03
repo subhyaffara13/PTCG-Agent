@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _flatten_as_ptr(
     tensors: Dict[str, torch.Tensor], keep_alive_buffer: List

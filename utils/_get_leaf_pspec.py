@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_leaf_pspec(x: Any) -> jax.sharding.PartitionSpec | None:
   if hasattr(x, 'get_partition_spec'):

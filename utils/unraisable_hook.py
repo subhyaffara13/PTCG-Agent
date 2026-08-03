@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def unraisable_hook(
     unraisable: sys.UnraisableHookArgs,

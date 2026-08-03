@@ -1,3 +1,4 @@
+import itertools
 
 def minimum_node_cut(G, s=None, t=None, flow_func=None):
     r"""Returns a set of nodes of minimum cardinality that disconnects G.

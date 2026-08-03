@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_cudagraph_segments(pool_id: tuple[int, int]) -> Any:
     segments = torch.cuda.memory_snapshot()

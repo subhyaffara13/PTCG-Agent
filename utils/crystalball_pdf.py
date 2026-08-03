@@ -1,3 +1,5 @@
+import math
+
 
 def crystalball_pdf(x, b, m):
     if x > -b:

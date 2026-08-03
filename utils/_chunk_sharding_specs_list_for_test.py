@@ -1,3 +1,5 @@
+import copy
+import random
 
 def _chunk_sharding_specs_list_for_test(sharding_dims, seed=0):
     spec_list = []

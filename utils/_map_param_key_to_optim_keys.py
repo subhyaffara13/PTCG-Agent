@@ -1,3 +1,4 @@
+from typing import Any
 
 def _map_param_key_to_optim_keys(
     optim_state_dict: dict[str, Any],

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _get_venv_extension_executable_path(venv_dir: Path, short_name: str) -> Path:
     executable_name = _get_executable_name(short_name)

@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_f2cmap(capfd, f2cmap_f90, monkeypatch):
     """Check that Fortran-to-Python KIND specs can be passed

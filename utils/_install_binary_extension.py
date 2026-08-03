@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _install_binary_extension(
     *, owner: str, repo_name: str, short_name: str, extension_dir: Path, binary: bytes

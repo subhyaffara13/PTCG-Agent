@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _make_node_magic(method: str, func: Callable[..., sympy.Basic]) -> None:
     func = lru_cache(256)(func)

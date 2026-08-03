@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_upgrader_bytecode_function_to_index_map(
     upgrader_dict: list[dict[str, Any]],

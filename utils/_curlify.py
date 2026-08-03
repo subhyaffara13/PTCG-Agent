@@ -1,3 +1,4 @@
+from typing import Any
 
 def _curlify(request: httpx.Request) -> str:
     """Convert a `httpx.Request` into a curl command (str).

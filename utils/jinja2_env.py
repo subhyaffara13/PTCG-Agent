@@ -1,3 +1,4 @@
+from typing import Any
 
 def jinja2_env() -> Any:
     try:

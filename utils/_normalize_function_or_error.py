@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _normalize_function_or_error(
     target: Callable[..., Any],

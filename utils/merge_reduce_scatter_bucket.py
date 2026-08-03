@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_reduce_scatter_bucket(
     g: torch.fx.Graph,

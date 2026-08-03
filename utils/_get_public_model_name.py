@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_public_model_name(
     patch_data: updateDeployment,

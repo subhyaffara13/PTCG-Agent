@@ -1,3 +1,4 @@
+from typing import Any
 
 def _getdecoder(
     mode: str, decoder_name: str, args: Any, extra: tuple[Any, ...] = ()

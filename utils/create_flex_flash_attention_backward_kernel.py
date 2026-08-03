@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_flex_flash_attention_backward_kernel(
     query: TensorBox,

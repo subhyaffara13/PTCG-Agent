@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _create_rearrange_callable(
     tensor_ndim: int, pattern: str, **axes_lengths: int

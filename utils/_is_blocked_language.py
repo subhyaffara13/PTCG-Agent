@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _is_blocked_language(
     tag: str,

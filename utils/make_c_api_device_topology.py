@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_c_api_device_topology(
     c_api: Any, topology_name: str = '', **kwargs

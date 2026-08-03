@@ -1,3 +1,5 @@
+import math
+
 
 def swap_lstm_gates(weights, input_size, hidden_size, num_layers, bidirectional):
   """Swaps the weights for the input and output gates for an LSTM model."""

@@ -1,3 +1,4 @@
+import os
 
 def get_engine_paths(
     work_dir: str, pipeline_info: PipelineInfo, engine_type: EngineType, framework_model_dir: str | None = None

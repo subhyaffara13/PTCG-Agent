@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_compatible_tags_selector(
     tags: Iterable[Tag],

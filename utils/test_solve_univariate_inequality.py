@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_solve_univariate_inequality():
     assert isolve(x**2 >= 4, x, relational=False) == Union(Interval(-oo, -2),

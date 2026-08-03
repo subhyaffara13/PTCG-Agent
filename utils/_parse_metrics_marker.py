@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _parse_metrics_marker(
     marker: Optional[object],

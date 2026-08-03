@@ -1,3 +1,4 @@
+import re
 
 def _updateUniqueIdNameRecord(varfont, nameIDs, platform):
     nametable = varfont["name"]

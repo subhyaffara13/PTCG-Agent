@@ -1,3 +1,5 @@
+import os
+from typing import Dict, Tuple
 
 def key_images() -> Tuple[pg.Surface, Dict[str, pg.Rect]]:
     """Return a keyboard keys image strip and a mapping of image locations

@@ -1,3 +1,4 @@
+import time
 
 def run_ort_pipeline(
     pipe,

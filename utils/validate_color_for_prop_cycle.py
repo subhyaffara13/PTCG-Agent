@@ -1,3 +1,4 @@
+import re
 
 def validate_color_for_prop_cycle(s):
     # N-th color cycle syntax can't go into the color cycle.

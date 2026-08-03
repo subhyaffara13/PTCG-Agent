@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _parse_csv_ids(raw: Optional[str]) -> Optional[List[str]]:
     if not raw:

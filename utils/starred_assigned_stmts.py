@@ -1,3 +1,4 @@
+from typing import Any
 
 def starred_assigned_stmts(  # noqa: C901
     self: nodes.Starred,

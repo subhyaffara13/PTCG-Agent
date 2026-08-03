@@ -1,3 +1,4 @@
+from typing import Any
 
 def _glance_inventory(inventory: Any | None) -> list[str]:
   """Renders the checkpoint inventory block (folded in from the scorecard)."""

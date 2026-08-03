@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_effects(
     allow_token_discovery: bool,

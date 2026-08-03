@@ -1,3 +1,4 @@
+from typing import Any
 
 def inline_invoke_subgraph(gm: GraphModule) -> GraphModule:
     """Inline all invoke_subgraph HOPs, producing a flat FX graph.

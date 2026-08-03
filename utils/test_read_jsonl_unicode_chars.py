@@ -1,3 +1,4 @@
+import json
 
 def test_read_jsonl_unicode_chars():
     # GH15132: non-ascii unicode characters

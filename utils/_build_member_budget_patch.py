@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _build_member_budget_patch(data: TeamMemberUpdateRequest) -> Dict[str, Any]:
     """Map the budget fields the request actually set (merge-patch: a sent

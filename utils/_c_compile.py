@@ -1,3 +1,4 @@
+import sys
 
 def _c_compile(cfile, outputfilename, include_dirs, libraries,
                library_dirs):

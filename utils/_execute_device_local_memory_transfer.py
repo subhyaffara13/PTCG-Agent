@@ -1,3 +1,4 @@
+from typing import Any
 
 def _execute_device_local_memory_transfer(
     *,

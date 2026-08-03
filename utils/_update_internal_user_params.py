@@ -1,3 +1,4 @@
+from typing import Union
 
 def _update_internal_user_params(
     data_json: dict, data: Union[UpdateUserRequest, UpdateUserRequestNoUserIDorEmail]

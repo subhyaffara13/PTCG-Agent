@@ -1,3 +1,4 @@
+import os
 
 def check_imports(filename: str | os.PathLike) -> list[str]:
     """

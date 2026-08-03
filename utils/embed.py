@@ -1,3 +1,4 @@
+import json
 
 def embed(model: onnx.ModelProto, tuning_results: list[TuningResults], overwrite=False):
     idx = _find_tuning_results_in_props(model.metadata_props)

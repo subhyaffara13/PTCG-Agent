@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_example_value(node: torch.fx.Node, example_value: Any) -> None:
     # NB: example_value is a bit of a misnomer, because this is always a fake

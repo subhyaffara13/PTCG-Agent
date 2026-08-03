@@ -1,3 +1,4 @@
+from typing import Any
 
 def tensor_always_has_static_shape(
     tensor: torch.Tensor | Any,

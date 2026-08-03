@@ -1,3 +1,6 @@
+import os
+import pathlib
+import sys
 
 def make_dynamic_shape_fixed_helper():
     parser = argparse.ArgumentParser(

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _batch_spaces_undefined(spaces: list[Graph | Text | Sequence | OneOf]):
     return Tuple(

@@ -1,3 +1,4 @@
+from typing import Any
 
 def eval_result_entries_to_yaml(entries: list[EvalResultEntry]) -> list[dict[str, Any]]:
     """Convert a list of [`EvalResultEntry`] objects to a YAML-serializable list of dicts.

@@ -1,3 +1,4 @@
+import re
 
 def _escape_latex_math(s: str) -> str:
     r"""

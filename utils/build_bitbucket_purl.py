@@ -1,3 +1,4 @@
+import re
 
 def build_bitbucket_purl(url):
     """

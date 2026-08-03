@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_trim(
     template: PyTreeOf[Any],

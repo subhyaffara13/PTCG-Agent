@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_10113():
     f = x**2/(x**2 - 4)

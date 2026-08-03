@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_path_cls(
     path_cls_or_uri_prefix: str | list[str] | tuple[str, ...]

@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _messages_to_sap_template(messages: List[Dict[str, str]]) -> list:  # type: ignore[type-arg]
     template = []

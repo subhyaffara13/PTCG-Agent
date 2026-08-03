@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _getAxisLabelsForUserLocation(
     axes: list[Union[AxisDescriptor, DiscreteAxisDescriptor]],

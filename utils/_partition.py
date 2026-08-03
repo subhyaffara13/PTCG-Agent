@@ -1,3 +1,5 @@
+import math
+
 
 def _partition(n: int) -> int:
     """ Calculate the partition function P(n)

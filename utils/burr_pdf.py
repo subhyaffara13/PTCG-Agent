@@ -1,3 +1,5 @@
+import math
+
 
 def burr_pdf(x, cc, dd):
     # note: we use np.exp instead of math.exp, otherwise an overflow

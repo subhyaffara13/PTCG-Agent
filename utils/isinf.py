@@ -1,3 +1,4 @@
+import re
 
 def isinf(x):
     if is_integer_type(x):

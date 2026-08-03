@@ -1,3 +1,4 @@
+from typing import List
 
 def get_tokens_from_messages(messages: List[dict]):
     total = 0

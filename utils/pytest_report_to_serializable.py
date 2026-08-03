@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_report_to_serializable(
     config: Config,

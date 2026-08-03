@@ -1,3 +1,4 @@
+from typing import Callable
 
 def add_bounded_compute_mapping(
     operator_schema: str, lower_bound_func: Callable, upper_bound_func: Callable

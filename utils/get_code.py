@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_code(fn: Callable[P, _T], *args: P.args, **kwargs: P.kwargs) -> list[str]:
     """Get the inductor-generated code, but skip any actual compilation or running."""

@@ -1,3 +1,6 @@
+import os
+import time
+from typing import Any
 
 def read_dir(args: argparse.Namespace) -> tuple[dict[str, dict[str, Any]], str]:
     gc.disable()

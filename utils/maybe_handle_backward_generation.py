@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def maybe_handle_backward_generation(
     compiled_graph: CompiledFxGraph,

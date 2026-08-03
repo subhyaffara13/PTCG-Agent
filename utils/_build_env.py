@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _build_env(game_string: str) -> dict[str, Any]:
     game = pyspiel.load_game(game_string)

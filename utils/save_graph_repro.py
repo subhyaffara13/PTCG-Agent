@@ -1,3 +1,4 @@
+from typing import Any
 
 def save_graph_repro(
     fd: IO[Any],

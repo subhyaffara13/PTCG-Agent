@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _reject_url_valued_destinations(data: Dict[str, Any]) -> None:
     """Reject URL-valued ``model``/``file_id`` unless admin-allowlisted.

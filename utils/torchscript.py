@@ -1,3 +1,4 @@
+from typing import Any
 
 def torchscript(model: Any, example_inputs: Any, verbose: bool = False) -> Any:
     if is_jit_model(model):

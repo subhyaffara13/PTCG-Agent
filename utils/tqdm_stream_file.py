@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def tqdm_stream_file(path: Path | str) -> Iterator[io.BufferedReader]:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def scale_by_dowg(
     init_estim_sq_dist: Optional[jax.typing.ArrayLike] = None,

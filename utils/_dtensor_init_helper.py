@@ -1,3 +1,4 @@
+import random
 
 def _dtensor_init_helper(  # type: ignore[no-untyped-def]
     init_op,

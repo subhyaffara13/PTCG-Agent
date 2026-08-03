@@ -1,3 +1,4 @@
+import sys
 
 def create_swap(n: int) -> list[Instruction]:
     if sys.version_info >= (3, 11):

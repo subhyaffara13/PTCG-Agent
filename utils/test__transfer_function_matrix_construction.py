@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_TransferFunctionMatrix_construction():
     tf5 = TransferFunction(a1*s**2 + a2*s - a0, s + a0, s)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def device_put_replicated(x: Any, devices: Sequence[xc.Device]):  # noqa: F811
   """Transfer array(s) to each specified device and form Array(s).

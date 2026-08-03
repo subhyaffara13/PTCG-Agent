@@ -1,3 +1,4 @@
+from typing import Union
 
 def _addName(
     ttFont: TTFont,

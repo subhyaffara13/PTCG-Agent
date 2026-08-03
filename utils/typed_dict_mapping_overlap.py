@@ -1,3 +1,4 @@
+from typing import Callable
 
 def typed_dict_mapping_overlap(
     left: Type, right: Type, overlapping: Callable[[Type, Type], bool]

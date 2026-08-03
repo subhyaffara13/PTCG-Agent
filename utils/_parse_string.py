@@ -1,3 +1,4 @@
+import re
 
 def _parse_string(
     data: str, type_comments: bool = True, modname: str | None = None

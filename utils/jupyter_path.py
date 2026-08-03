@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def jupyter_path(*subdirs: str) -> list[str]:
     """Return a list of directories to search for data files.

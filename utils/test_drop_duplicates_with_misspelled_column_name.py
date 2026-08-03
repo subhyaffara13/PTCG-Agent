@@ -1,3 +1,4 @@
+import re
 
 def test_drop_duplicates_with_misspelled_column_name(subset):
     # GH 19730

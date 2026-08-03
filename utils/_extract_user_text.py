@@ -1,3 +1,4 @@
+from typing import List
 
 def _extract_user_text(messages: List) -> str:
     """Extract the latest user message text."""

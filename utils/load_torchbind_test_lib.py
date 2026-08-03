@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def load_torchbind_test_lib():
     import unittest

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_alias_generator_to_field_info(
     alias_generator: Callable[[str], str] | AliasGenerator, field_name: str, field_info: FieldInfo

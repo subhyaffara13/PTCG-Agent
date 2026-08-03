@@ -1,3 +1,4 @@
+import time
 
 def format_literal(obj: object, ctx: Context, *, nest_level: int = 0) -> str:
     if isinstance(obj, bool):

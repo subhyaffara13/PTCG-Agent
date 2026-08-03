@@ -1,3 +1,4 @@
+import os
 
 def resolve_trust_remote_code(
     trust_remote_code, model_name, has_local_code, has_remote_code, error_message=None, upstream_repo=None

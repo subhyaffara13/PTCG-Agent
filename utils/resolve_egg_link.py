@@ -1,3 +1,4 @@
+import os
 
 def resolve_egg_link(path):
     """

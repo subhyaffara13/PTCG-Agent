@@ -1,3 +1,4 @@
+from typing import Any
 
 def split_into_chunks(iterable: Sequence[Any], chunk_sizes: list[int]) -> list[Any]:
     if sum(chunk_sizes) != len(iterable):

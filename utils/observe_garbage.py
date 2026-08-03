@@ -1,3 +1,4 @@
+import sys
 
 def observe_garbage(observer):
     enabled = True

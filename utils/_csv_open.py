@@ -1,3 +1,4 @@
+import sys
 
 def _csv_open(fn, mode, **kwargs):
     if sys.version_info[0] < 3:

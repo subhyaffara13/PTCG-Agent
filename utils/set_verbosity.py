@@ -1,3 +1,4 @@
+import logging
 
 def set_verbosity(verbosity: int) -> None:
     """

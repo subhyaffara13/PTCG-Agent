@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _parse_ld_musl_from_elf(f: IO[bytes]) -> Optional[str]:
     """Detect musl libc location by parsing the Python executable.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_non_native_lazy_ir_nodes(
     non_native: list[dict[str, Any]], gen_lazy_ir: GenLazyIR

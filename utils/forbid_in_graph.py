@@ -1,3 +1,4 @@
+from typing import Any
 
 def forbid_in_graph(fn: Any) -> Any:
     """

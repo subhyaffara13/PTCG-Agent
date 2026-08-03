@@ -1,3 +1,4 @@
+import sys
 
 def save_values(monkeypatch):
     monkeypatch.setattr(sys, 'platform', sys.platform)

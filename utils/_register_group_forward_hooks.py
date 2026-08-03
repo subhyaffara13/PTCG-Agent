@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _register_group_forward_hooks(
     modules: Sequence[nn.Module],

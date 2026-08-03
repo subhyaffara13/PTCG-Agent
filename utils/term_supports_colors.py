@@ -1,3 +1,4 @@
+import sys
 
 def term_supports_colors(file=sys.stdout):  # pragma: no cover
     if not hasattr(file, "isatty") or not file.isatty():

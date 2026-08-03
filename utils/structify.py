@@ -1,3 +1,4 @@
+from typing import Any
 
 def structify(o: Any) -> Any:
     if isinstance(o, list):

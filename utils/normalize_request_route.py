@@ -1,3 +1,4 @@
+import re
 
 def normalize_request_route(route: str) -> str:
     """

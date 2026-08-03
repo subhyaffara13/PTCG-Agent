@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_azure_ad_token_from_username_password(
     client_id: str,

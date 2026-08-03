@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_safe_cli_sso_scalar_claim_value(value: Any) -> bool:
     if not isinstance(value, _CLI_SSO_SCALAR_TYPES):

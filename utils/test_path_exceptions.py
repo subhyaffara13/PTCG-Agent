@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def test_path_exceptions():
     bad_verts1 = np.arange(12).reshape(4, 3)

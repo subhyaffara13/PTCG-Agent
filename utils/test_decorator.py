@@ -1,3 +1,5 @@
+import functools
+import sys
 
 def test_decorator(func):
     @functools.wraps(func)

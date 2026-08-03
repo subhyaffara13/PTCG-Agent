@@ -1,3 +1,5 @@
+import math
+
 
 def npu_flash_attn_varlen_func(
     q,

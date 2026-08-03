@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def transformation_with_aux2(
     gen, fun: WrappedFun, *gen_static_args, use_eq_store: bool = False,

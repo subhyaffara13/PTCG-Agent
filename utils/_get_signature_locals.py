@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_signature_locals(f: Callable, loc: dict[str, Any]) -> dict[str, Any]:
     """Get local keyword arguments

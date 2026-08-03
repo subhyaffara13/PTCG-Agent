@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_sorted_gpu_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
     sorted_gpu_events: list[dict[str, Any]] = []

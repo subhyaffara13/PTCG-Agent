@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_from_torch(obj: Any) -> bool:
     module_name = getattr(obj, "__module__", None)

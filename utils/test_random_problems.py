@@ -1,3 +1,4 @@
+import itertools
 
 def test_random_problems():
     z3 = import_module("z3")

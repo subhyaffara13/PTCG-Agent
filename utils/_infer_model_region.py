@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _infer_model_region(litellm_params: LiteLLM_Params) -> Optional[AllowedModelRegion]:
     """

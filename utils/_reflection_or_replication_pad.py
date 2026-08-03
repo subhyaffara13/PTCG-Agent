@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _reflection_or_replication_pad(
     a: Tensor,

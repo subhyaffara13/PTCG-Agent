@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_storage_options(
     options: dict[str, Any], inherited: dict[str, Any] | None = None

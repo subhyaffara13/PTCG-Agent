@@ -1,3 +1,4 @@
+import re
 
 def finalize_complex(re: MPF_TUP, im: MPF_TUP, prec: int) -> TMP_RES:
     if re == fzero and im == fzero:

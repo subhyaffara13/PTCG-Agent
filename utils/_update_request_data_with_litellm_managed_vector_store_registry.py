@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _update_request_data_with_litellm_managed_vector_store_registry(
     data: Dict,

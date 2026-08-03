@@ -1,3 +1,4 @@
+from typing import Any
 
 def new_eqn_recipe(trace: JaxprTrace,
                    in_tracers: Sequence[JaxprTracer],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_scalar_array_like(
     value: Any, like: jax.Array, *, dtype: Any

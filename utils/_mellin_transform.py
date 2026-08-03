@@ -1,3 +1,4 @@
+import re
 
 def _mellin_transform(f, x, s_, integrator=_default_integrator, simplify=True):
     """ Backend function to compute Mellin transforms. """

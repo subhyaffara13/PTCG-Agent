@@ -1,3 +1,5 @@
+import json
+from typing import Optional, Union
 
 def get_first_json_object(file_source: Union[bytes, BinaryIO]) -> Optional[dict]:
     try:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def parse_fuzzy_test(source, info, case_flags):
     saved_pos = source.pos

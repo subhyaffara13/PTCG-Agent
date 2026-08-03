@@ -1,3 +1,4 @@
+import os
 
 def exist_added_packages(suppressed: list[str], manager: BuildManager) -> bool:
     """Find if there are any newly added packages that were previously suppressed.

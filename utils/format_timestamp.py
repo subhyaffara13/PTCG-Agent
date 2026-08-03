@@ -1,3 +1,4 @@
+from typing import Optional
 
 def format_timestamp(timestamp: Optional[int]) -> str:
     """Format a Unix timestamp (integer) to human-readable date with minute resolution."""

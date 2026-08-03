@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_CodeBlock():
     c = CodeBlock(Assignment(x, 1), Assignment(y, x + 1))

@@ -1,3 +1,4 @@
+import sys
 
 def reinit():
     if wrapped_stdout is not None:

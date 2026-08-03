@@ -1,3 +1,4 @@
+from typing import Any
 
 def _leaf_to_numpy(leaf: Any) -> np.ndarray:
   """Materialises a leaf to a contiguous numpy array for hashing.

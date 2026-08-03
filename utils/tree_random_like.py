@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Union
 
 def tree_random_like(
     rng_key: base.PRNGKey,

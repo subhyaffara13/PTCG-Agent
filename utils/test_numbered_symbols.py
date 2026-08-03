@@ -1,3 +1,4 @@
+import itertools
 
 def test_numbered_symbols():
     s = numbered_symbols(cls=Dummy)

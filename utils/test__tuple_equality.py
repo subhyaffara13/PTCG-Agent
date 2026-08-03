@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple_equality():
     assert not isinstance(Tuple(1, 2), tuple)

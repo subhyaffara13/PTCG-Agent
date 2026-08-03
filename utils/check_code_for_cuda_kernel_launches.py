@@ -1,3 +1,4 @@
+import sys
 
 def check_code_for_cuda_kernel_launches(code, filename=None):
     """Checks code for CUDA kernel launches without cuda error checks.

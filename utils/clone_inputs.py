@@ -1,3 +1,4 @@
+from typing import Any
 
 def clone_inputs(
     example_inputs: dict[str, T | tuple[T, ...]],

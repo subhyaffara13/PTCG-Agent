@@ -1,3 +1,4 @@
+from typing import Optional
 
 def href_local_target(el: etree.Element) -> Optional[str]:
     if XLINK_HREF in el.attrib:

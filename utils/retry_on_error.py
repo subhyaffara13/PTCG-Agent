@@ -1,3 +1,5 @@
+import time
+from typing import Any, Callable
 
 def retry_on_error(func: Callable[[], Any], max_wait: float = 1.0) -> None:
     """Retry callback with exponential backoff when it raises OSError.

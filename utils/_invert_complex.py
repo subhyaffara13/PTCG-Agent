@@ -1,3 +1,4 @@
+from typing import Union
 
 def _invert_complex(f, g_ys, symbol):
     """Helper function for _invert."""

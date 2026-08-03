@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _construct_wrap_fn(
     root_module: nn.Module,

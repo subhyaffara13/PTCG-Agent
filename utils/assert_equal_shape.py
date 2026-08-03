@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def assert_equal_shape(
     inputs: Sequence[Array],

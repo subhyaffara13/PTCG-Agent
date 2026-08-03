@@ -1,3 +1,4 @@
+from typing import Any
 
 def _render_board(board: Sequence[Sequence[str]]) -> str:
     """Render the board with column letters and row numbers around the edges."""

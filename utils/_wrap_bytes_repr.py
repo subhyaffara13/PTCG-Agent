@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_bytes_repr(object: Any, width: int, allowance: int) -> Iterator[str]:
     current = b""

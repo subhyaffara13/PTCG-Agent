@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def get_compiler_version_info(compiler: str) -> str:
     env = os.environ.copy()

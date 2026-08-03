@@ -1,3 +1,4 @@
+from typing import Any
 
 def _n_shadows_compare_weights(
     model: torch.nn.Module,

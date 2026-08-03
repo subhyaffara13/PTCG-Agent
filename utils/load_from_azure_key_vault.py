@@ -1,3 +1,4 @@
+import os
 
 def load_from_azure_key_vault(use_azure_key_vault: bool = False):
     if use_azure_key_vault is False:

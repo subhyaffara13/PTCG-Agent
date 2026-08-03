@@ -1,3 +1,4 @@
+import pathlib
 
 def check_round_trip(
     df,

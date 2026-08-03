@@ -1,3 +1,4 @@
+from typing import Callable
 
 def for_loop_helper_with_index(
     builder: IRBuilder,

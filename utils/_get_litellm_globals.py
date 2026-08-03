@@ -1,3 +1,4 @@
+import sys
 
 def _get_litellm_globals() -> dict:
     """

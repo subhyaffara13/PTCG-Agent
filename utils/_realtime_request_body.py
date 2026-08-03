@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _realtime_request_body(model: Optional[str]) -> bytes:
     """

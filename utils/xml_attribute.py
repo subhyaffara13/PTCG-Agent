@@ -1,3 +1,4 @@
+from typing import Callable
 
 def xml_attribute() -> Callable[[_F], _F]:
     """Decorator"""

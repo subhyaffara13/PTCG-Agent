@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_solve_trig_hyp_symbolic():
     # actual solver: invert_trig_hyp

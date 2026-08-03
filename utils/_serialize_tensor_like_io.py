@@ -1,3 +1,4 @@
+import os
 
 def _serialize_tensor_like_io(
     value, debug_path: str | None = None, use_repr: bool = True, path_to_value: str | None = None

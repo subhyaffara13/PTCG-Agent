@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def structure(tree: Any,
               is_leaf: None | (Callable[[Any], bool]) = None) -> tree_util.PyTreeDef:

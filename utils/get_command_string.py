@@ -1,3 +1,4 @@
+import os
 
 def get_command_string(command):
   """Returns an escaped string that can be used as a shell command.

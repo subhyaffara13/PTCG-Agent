@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _build_custom_pricing_entry(
     custom_llm_provider: str,

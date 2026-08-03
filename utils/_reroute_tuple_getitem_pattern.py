@@ -1,3 +1,4 @@
+import copy
 
 def _reroute_tuple_getitem_pattern(graph: Graph):
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_subprocess(pid: int, port: int) -> Callable[[], None]:
   """Registers a subprocess's profiler server to be profiled alongside the current process.

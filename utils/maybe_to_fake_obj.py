@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_to_fake_obj(
     fake_mode,

@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def _get_macos_fonts():
     """Cache and list the font paths known to ``system_profiler SPFontsDataType``."""

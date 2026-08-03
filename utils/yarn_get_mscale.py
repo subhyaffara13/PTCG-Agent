@@ -1,3 +1,5 @@
+import math
+
 
 def yarn_get_mscale(scale=1, mscale=1):
     if scale <= 1:

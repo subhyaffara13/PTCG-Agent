@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _init_logs(log_file_name=None) -> None:
     global GET_DTRACE_STRUCTURED

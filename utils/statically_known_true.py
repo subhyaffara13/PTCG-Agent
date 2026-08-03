@@ -1,3 +1,4 @@
+from typing import Any
 
 def statically_known_true(
     shape_env: ShapeEnv,

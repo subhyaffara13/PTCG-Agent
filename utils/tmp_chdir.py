@@ -1,3 +1,4 @@
+import os
 
 def tmp_chdir() -> Iterator[str]:
     "Prepare and enter a temporary directory, cleanup when done"

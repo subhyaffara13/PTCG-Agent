@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pbroadcast_lowering(ctx, x, *, axis_name, source):
   replica_groups = _replica_groups(ctx.module_context.axis_context, axis_name, None)

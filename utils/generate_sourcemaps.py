@@ -1,3 +1,4 @@
+import os
 
 def generate_sourcemaps(
     f,

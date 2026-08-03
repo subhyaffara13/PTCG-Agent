@@ -1,3 +1,4 @@
+from typing import Union
 
 def _event_hook_from_mode(
     mode: str | list[str] | Mode,

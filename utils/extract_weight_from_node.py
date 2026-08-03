@@ -1,3 +1,4 @@
+from typing import Callable
 
 def extract_weight_from_node(
     node: Node,

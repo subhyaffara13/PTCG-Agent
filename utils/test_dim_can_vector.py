@@ -1,3 +1,4 @@
+import time
 
 def test_dim_can_vector():
     dimsys = DimensionSystem(

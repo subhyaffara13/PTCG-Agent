@@ -1,3 +1,4 @@
+import random
 
 def test_random_unlabeled_rooted_forest():
     with pytest.raises(ValueError):

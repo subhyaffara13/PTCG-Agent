@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def round_trip_pickle(obj: Any, tmp_path: Path) -> DataFrame | Series:
     """

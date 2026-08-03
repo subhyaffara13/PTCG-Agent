@@ -1,3 +1,11 @@
+import functools
+import itertools
+import os
+import pathlib
+import re
+import sys
+import time
+from typing import Any, Dict, Optional
 
 def load(file, **kwds):
     """load an object that was stored with dill.temp.dump

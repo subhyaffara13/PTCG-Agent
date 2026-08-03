@@ -1,3 +1,4 @@
+import logging
 
 def _add_to_handler_registry_from_global_registry(
     registry: handler_registration.CheckpointHandlerRegistry,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_env_id(ns: str | None, name: str, version: int | None) -> str:
     """Get the full env ID given a name and (optional) version and namespace. Inverse of :meth:`parse_env_id`.

@@ -1,3 +1,4 @@
+import os
 
 def _set_debug(ctx: click.Context, param: click.Option, value: bool) -> bool | None:
     # If the flag isn't provided, it will default to False. Don't use

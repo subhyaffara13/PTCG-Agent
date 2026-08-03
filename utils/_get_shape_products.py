@@ -1,3 +1,5 @@
+import math
+
 
 def _get_shape_products(
     x: jax.Array, dim_nums: MuonDimensionNumbers

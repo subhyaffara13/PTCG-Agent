@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_for_coroutine(
     func: Callable[[Unpack[PosArgsT]], Coroutine[Any, Any, T_co]],

@@ -1,3 +1,4 @@
+from typing import List
 
 def get_comma_header(headers: Headers, name: bytes) -> List[bytes]:
     # Should only be used for headers whose value is a list of

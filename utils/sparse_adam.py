@@ -1,3 +1,5 @@
+import math
+
 
 def sparse_adam(
     params: list[Tensor],

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _extract_metadata_tools(metadata: Optional[Any]) -> Optional[list]:
     if not isinstance(metadata, dict):

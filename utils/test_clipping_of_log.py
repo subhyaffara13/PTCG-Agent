@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_clipping_of_log():
     # issue 804

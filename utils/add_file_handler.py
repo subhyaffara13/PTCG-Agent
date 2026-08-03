@@ -1,3 +1,5 @@
+import logging
+import os
 
 def add_file_handler() -> contextlib.ExitStack:
     log_path = os.path.join(get_debug_dir(), "torchdynamo")

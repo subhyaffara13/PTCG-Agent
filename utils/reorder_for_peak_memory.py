@@ -1,3 +1,4 @@
+from typing import Callable
 
 def reorder_for_peak_memory(
     nodes: list[BaseSchedulerNode],

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def dm_obs2gym_obs(obs) -> np.ndarray | dict[str, Any]:
     """Converts a dm_env observation to a gymnasium observation.

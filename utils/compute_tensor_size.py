@@ -1,3 +1,4 @@
+from typing import Any
 
 def compute_tensor_size(*args: Any, count_bytes: bool = True, **kwargs: Any) -> int:
     """

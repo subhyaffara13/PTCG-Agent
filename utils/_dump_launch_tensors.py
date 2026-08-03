@@ -1,3 +1,4 @@
+import os
 
 def _dump_launch_tensors(args, kernel_path, kernel_hash, kernel_name):
     tensor_list = [arg for arg in args if isinstance(arg, torch.Tensor)]

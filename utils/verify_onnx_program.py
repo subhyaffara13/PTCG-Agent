@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_onnx_program(
     onnx_program: _onnx_program.ONNXProgram,

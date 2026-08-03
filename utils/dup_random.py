@@ -1,3 +1,4 @@
+import random
 
 def dup_random(n, a, b, K):
     """

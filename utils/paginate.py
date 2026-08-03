@@ -1,3 +1,4 @@
+from typing import Any
 
 def paginate(path: str, params: dict | list[tuple[str, Any]], headers: dict, timeout: float | None = None) -> Iterable:
     """Fetch a list of models/datasets/spaces and paginate through results.

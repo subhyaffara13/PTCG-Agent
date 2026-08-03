@@ -1,3 +1,4 @@
+import random
 
 def _fold_in_static(
   rng: PRNGKey, data: typing.Collection[PRNGFoldable]

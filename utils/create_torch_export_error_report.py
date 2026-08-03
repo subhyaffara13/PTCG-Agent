@@ -1,3 +1,4 @@
+import os
 
 def create_torch_export_error_report(
     filename: str | os.PathLike,

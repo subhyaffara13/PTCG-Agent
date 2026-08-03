@@ -1,3 +1,4 @@
+from typing import Any
 
 def _private_setattr_handler(model: BaseModel, name: str, val: Any) -> None:
     if getattr(model, '__pydantic_private__', None) is None:

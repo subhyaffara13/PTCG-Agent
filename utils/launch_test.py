@@ -1,3 +1,4 @@
+from typing import Any
 
 def launch_test(model_setting, test_setting, perf_results, all_inputs, intra_op_num_threads):
     process = multiprocessing.Process(

@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def create_gcp_iam_redis_connect_func(
     service_account: str,

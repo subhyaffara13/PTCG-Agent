@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _snippet_str(text: Any, max_len: int = 200) -> Optional[str]:
     if text is None:

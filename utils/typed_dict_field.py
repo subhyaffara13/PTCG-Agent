@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def typed_dict_field(
     schema: CoreSchema,

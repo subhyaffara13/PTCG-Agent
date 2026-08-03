@@ -1,3 +1,4 @@
+import os
 
 def find_eggs_in_zip(
     importer: zipimport.zipimporter, path_item: str, only: bool = False

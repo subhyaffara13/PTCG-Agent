@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _apply_recursively_over_nested_lists(func, arr):
     if isinstance(arr, (tuple, list, Tuple)):

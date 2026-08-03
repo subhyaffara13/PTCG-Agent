@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def xla_backend_helper(
     model: fx.GraphModule, fake_tensor_inputs: list[torch.Tensor], boxed: bool = False

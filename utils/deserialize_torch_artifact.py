@@ -1,3 +1,4 @@
+from typing import Any
 
 def deserialize_torch_artifact(
     serialized: dict[str, Any] | tuple[Any, ...] | bytes,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def optimize_assert(*args: Any, **kwargs: Any) -> OptimizeContext:
     if "rebuild_ctx" in kwargs and kwargs["rebuild_ctx"] is not None:

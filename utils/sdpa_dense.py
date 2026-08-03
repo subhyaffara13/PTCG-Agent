@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def sdpa_dense(
     query: torch.Tensor,

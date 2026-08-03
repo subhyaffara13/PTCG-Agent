@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_data_iter(value: Any):
   """Checks if data_iter is valid."""

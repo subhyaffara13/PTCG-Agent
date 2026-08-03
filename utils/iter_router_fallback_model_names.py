@@ -1,3 +1,4 @@
+from typing import Any
 
 def iter_router_fallback_model_names(fallbacks: Any) -> Iterator[str]:
     """Yield leaf model names from any of the supported fallbacks shapes.

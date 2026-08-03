@@ -1,3 +1,4 @@
+import json
 
 def test_eval_agent_context_resolution(tmp_path):
     skills_dir = tmp_path / "skills"

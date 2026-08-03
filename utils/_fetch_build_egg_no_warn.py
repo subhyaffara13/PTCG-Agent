@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def _fetch_build_egg_no_warn(dist, req):  # noqa: C901  # is too complex (16)  # FIXME
     # Ignore environment markers; if supplied, it is required.

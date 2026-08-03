@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def getattr_from_fqn(obj: Any, fqn: str) -> Any:
     """

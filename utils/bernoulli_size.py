@@ -1,3 +1,5 @@
+import math
+
 
 def bernoulli_size(n):
     """Accurately estimate the size of B_n (even n > 2 only)"""

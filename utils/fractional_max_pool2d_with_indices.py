@@ -1,3 +1,4 @@
+from typing import Optional
 
 def fractional_max_pool2d_with_indices(
     input: Tensor,

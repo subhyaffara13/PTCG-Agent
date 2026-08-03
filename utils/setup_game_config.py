@@ -1,3 +1,4 @@
+import random
 
 def setup_game_config(max_turns: int, base_config: dict, model_name: str):
     """

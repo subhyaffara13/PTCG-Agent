@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_azure_ad_token_from_entra_id(
     tenant_id: str,

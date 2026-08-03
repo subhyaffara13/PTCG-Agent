@@ -1,3 +1,4 @@
+import os
 
 def _samepath(path1, path2):
     # TODO on python3+, there's os.path.samefile

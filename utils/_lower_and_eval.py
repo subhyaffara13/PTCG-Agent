@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lower_and_eval(
     name: str, jaxpr: core.ClosedJaxpr, args: Sequence[Any]

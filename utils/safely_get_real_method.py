@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def safely_get_real_method(
     obj: Any, method_name: str

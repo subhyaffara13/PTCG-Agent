@@ -1,3 +1,4 @@
+import sys
 
 def do_stop(args: argparse.Namespace) -> None:
     """Stop daemon via a 'stop' request."""

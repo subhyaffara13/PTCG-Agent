@@ -1,3 +1,4 @@
+from typing import Any
 
 def specialize_symnode(arg: Any) -> Any:
     from .variables import ConstantVariable, LazyVariableTracker, SymNodeVariable

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_global_header(im: Image.Image, info: dict[str, Any]) -> list[bytes]:
     """Return a list of strings representing a GIF header"""

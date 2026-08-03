@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _close_dangling_otel_server_span(
     request: Request, status_code: int, exc: Optional[Exception] = None

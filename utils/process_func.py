@@ -1,3 +1,4 @@
+from typing import Callable
 
 def process_func(func: Callable):
     if func not in script_func_map:

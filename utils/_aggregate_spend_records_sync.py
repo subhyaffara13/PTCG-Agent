@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _aggregate_spend_records_sync(
     *,

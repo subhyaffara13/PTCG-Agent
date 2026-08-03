@@ -1,3 +1,4 @@
+import os
 
 def disk_partitions(all=False):
     """Return system disk partitions."""

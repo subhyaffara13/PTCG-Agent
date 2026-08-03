@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_smooth_quant_int_mm_pattern():
     """

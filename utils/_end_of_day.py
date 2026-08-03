@@ -1,3 +1,4 @@
+import random
 
 def _end_of_day(state, env, day):
     obs0 = state[0].observation

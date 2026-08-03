@@ -1,3 +1,4 @@
+import logging
 
 def _enable_debug_logging(logger_name):
   """Makes the specified logger log everything to stderr.

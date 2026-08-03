@@ -1,3 +1,4 @@
+import os
 
 def record_missing_stub_packages(cache_dir: str, missing_stub_packages: set[str]) -> None:
     """Write a file containing missing stub packages.

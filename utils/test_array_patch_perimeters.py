@@ -1,3 +1,4 @@
+import itertools
 
 def test_array_patch_perimeters():
     # This compares the old implementation as a reference for the

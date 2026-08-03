@@ -1,3 +1,4 @@
+import os
 
 def is_caffe2_gpu_file(rel_filepath):
     _deprecated("is_caffe2_gpu_file")

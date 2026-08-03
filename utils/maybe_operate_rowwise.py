@@ -1,3 +1,4 @@
+import functools
 
 def maybe_operate_rowwise(func: F) -> F:
     """

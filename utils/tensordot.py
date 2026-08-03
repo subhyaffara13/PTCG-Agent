@@ -1,3 +1,6 @@
+import sys
+import math
+
 
 def tensordot(  # noqa: F811
     a,

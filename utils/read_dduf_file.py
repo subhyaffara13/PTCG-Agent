@@ -1,3 +1,7 @@
+import json
+import os
+from pathlib import Path
+
 
 def read_dduf_file(dduf_path: os.PathLike | str) -> dict[str, DDUFEntry]:
     """

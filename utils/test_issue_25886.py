@@ -1,3 +1,5 @@
+import math
+
 
 def test_issue_25886():
     # https://github.com/sympy/sympy/issues/25886

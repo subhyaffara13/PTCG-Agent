@@ -1,3 +1,4 @@
+import logging
 
 def test_verbosity_level(tmp_path, monkeypatch, flags, expected_level):
     """Make sure the correct verbosity level is set (issue #3038)"""

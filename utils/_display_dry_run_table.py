@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _display_dry_run_table(source_keys: List[Dict[str, Any]]) -> None:
     """Display a table of keys that would be imported in dry-run mode."""

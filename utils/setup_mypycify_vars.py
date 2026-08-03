@@ -1,3 +1,4 @@
+import sys
 
 def setup_mypycify_vars() -> None:
     """Rewrite a bunch of config vars in pretty dubious ways."""

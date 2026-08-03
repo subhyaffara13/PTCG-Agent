@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_vertex_ai_ocr_config(model: str) -> Optional["BaseOCRConfig"]:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Tuple
 
 def _slice_around_compaction_block(
     messages: List[Dict[str, Any]],

@@ -1,3 +1,4 @@
+import re
 
 def myst_role(state: StateInline, silent: bool) -> bool:
     # check name

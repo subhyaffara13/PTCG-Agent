@@ -1,3 +1,4 @@
+import sys
 
 def mpl_test_settings(request):
     from matplotlib.testing.decorators import _cleanup_cm

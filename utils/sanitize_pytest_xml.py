@@ -1,3 +1,4 @@
+import re
 
 def sanitize_pytest_xml(xml_file: str):
     # pytext xml is different from unittext xml, this function makes pytest xml more similar to unittest xml

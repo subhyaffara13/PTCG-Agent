@@ -1,3 +1,4 @@
+import time
 
 def build_deployment_health_states(
     healthy_endpoints: list,

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _src_path_is_module(src_path: Path, module_name: str) -> bool:
     return (

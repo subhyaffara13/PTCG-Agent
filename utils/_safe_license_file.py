@@ -1,3 +1,4 @@
+import os
 
 def _safe_license_file(file):
     # XXX: Do we need this after the deprecation discussed in #4892, #4896??

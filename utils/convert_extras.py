@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def convert_extras(extras: Optional[str]) -> Set[str]:
     if not extras:

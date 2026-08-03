@@ -1,3 +1,4 @@
+import os
 
 def _check_invalid_requirement(req):
     if os.path.sep in req:

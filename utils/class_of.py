@@ -1,3 +1,4 @@
+from typing import Any
 
 def class_of(value: Any) -> Any:
     """Returns a string of the value's type with an indefinite article.

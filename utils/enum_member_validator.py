@@ -1,3 +1,4 @@
+from typing import Any
 
 def enum_member_validator(v: Any, field: 'ModelField', config: 'BaseConfig') -> Enum:
     try:

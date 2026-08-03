@@ -1,3 +1,4 @@
+import os
 
 def test_fill_package_dir(tmp_path, files, where, expected_package_dir):
     write_files({k: "" for k in files}, tmp_path)

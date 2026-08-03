@@ -1,3 +1,4 @@
+import itertools
 
 def combine_markers(cls):
     """

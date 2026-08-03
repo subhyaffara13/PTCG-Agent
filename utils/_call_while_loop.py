@@ -1,3 +1,4 @@
+from typing import Union
 
 def _call_while_loop(
     self: Union[

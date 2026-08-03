@@ -1,3 +1,4 @@
+import os
 
 def get_ckpt_prefix_path(ckpt_dir):
     # get prefix

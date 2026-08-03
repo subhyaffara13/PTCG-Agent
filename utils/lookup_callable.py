@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def lookup_callable(obj: Callable[..., Any]) -> type[VariableTracker] | None:
     if not hashable(obj):

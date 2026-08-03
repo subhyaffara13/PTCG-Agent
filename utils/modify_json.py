@@ -1,3 +1,4 @@
+import json
 
 def modify_json(content: str, change_type: str) -> tuple[str, list[int], str]:
     data = json.loads(content)

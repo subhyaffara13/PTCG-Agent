@@ -1,3 +1,4 @@
+import os
 
 def check_file_version(notebook, source_path, outputs_path):
     """Raise if file version in source file would override outputs"""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _rand_sparse(shape: Sequence[int], dtype: DTypeLike, *,
                  rng: np.random.RandomState, rand_method: Callable[..., Any],

@@ -1,3 +1,4 @@
+import os
 
 def _get_cmdclass(pkg_source_path):
   from setuptools.command.build_py import build_py as build_py_orig  # pyrefly: ignore[missing-source-for-stubs]

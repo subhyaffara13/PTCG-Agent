@@ -1,3 +1,4 @@
+import copy
 
 def _construct_from_dt64_naive(
     data: np.ndarray, *, tz: tzinfo | None, copy: bool, ambiguous: TimeAmbiguous

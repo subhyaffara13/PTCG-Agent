@@ -1,3 +1,5 @@
+import os
+import re
 
 def munge_exc(e, *, suppress_suffix=True, suppress_prefix=True, file=None, skip=0):
     from torch._dynamo.trace_rules import _as_posix_path

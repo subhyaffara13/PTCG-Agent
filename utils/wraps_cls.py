@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wraps_cls(wrapped: type[Any]) -> Callable[[_Cls], _Cls]:
   """Equivalent of `functools.wraps` but for classes."""

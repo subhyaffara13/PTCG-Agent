@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_fslocation_from_item(node: Node) -> tuple[str | Path, int | None]:
     """Try to extract the actual location from a node, depending on available attributes:

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_autowrap_custom_printer():
     has_module('Cython')

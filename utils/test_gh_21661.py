@@ -1,3 +1,5 @@
+import math
+
 
 def test_gh_21661(xp, n):
     one = xp.asarray(1.0)

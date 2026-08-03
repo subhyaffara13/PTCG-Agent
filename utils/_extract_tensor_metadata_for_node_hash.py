@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _extract_tensor_metadata_for_node_hash(
     x: torch.Tensor,

@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional
 
 def _diff_with_saved_ttx_files(
     filepath_a: Text,

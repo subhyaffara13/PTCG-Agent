@@ -1,3 +1,4 @@
+from typing import Callable
 
 def test_not_supported():
     f = Function('f')

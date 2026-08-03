@@ -1,3 +1,4 @@
+from typing import Any
 
 def ensure_classmethod_based_on_signature(function: AnyDecoratorCallable) -> Any:
     """Apply the `@classmethod` decorator on the function.

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_aten_op_for_sample(
     op: Callable[..., Any], sample: SampleInput, op_name: str = ""

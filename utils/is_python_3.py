@@ -1,3 +1,4 @@
+import sys
 
 def is_python_3():
     """Check if the Python interpreter is Python 2 or 3.

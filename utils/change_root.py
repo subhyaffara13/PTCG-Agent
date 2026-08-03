@@ -1,3 +1,4 @@
+import os
 
 def change_root(
     new_root: AnyStr | os.PathLike[AnyStr], pathname: AnyStr | os.PathLike[AnyStr]

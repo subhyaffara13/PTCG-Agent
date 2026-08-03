@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def get_async_httpx_client(
     llm_provider: Union[LlmProviders, httpxSpecialProvider],

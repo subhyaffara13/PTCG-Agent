@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _safe_get_request_parsed_body(request: Optional[Request]) -> Optional[dict]:
     if request is None:

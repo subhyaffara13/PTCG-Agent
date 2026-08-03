@@ -1,3 +1,4 @@
+from typing import Any
 
 def _v5e_create_device_mesh(
     mesh_shape: Sequence[int], devices: Sequence[Any], **unused_kwargs

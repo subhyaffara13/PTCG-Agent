@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def factor_system(eqs: Sequence[Expr | complex], gens: Sequence[Expr] = (), **kwargs: Any) -> list[list[Expr]]:
     """

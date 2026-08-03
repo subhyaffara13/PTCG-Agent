@@ -1,3 +1,4 @@
+import functools
 
 def apply_runtime_assertion_pass(gm: torch.fx.GraphModule, graph_signature):
     from torch._export.passes._node_metadata_hook import (

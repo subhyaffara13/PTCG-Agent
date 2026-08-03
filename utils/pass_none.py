@@ -1,3 +1,4 @@
+import functools
 
 def pass_none(func):
     """

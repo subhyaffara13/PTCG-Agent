@@ -1,3 +1,4 @@
+import functools
 
 def custom_jvp_call_rule(in_err: Error,
                          enabled_errors: set, *in_vals, num_consts,

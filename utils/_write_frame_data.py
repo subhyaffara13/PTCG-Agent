@@ -1,3 +1,4 @@
+from typing import Any
 
 def _write_frame_data(
     fp: IO[bytes],

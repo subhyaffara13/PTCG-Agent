@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def get_librt_path(experimental: bool = True, opt_level: str = "0") -> str:
     """Get path to librt built from the repository, building and caching if necessary.

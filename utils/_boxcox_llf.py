@@ -1,3 +1,5 @@
+import math
+
 
 def _boxcox_llf(data, axis=0, *, lmb):
     xp = array_namespace(data)

@@ -1,3 +1,5 @@
+import logging
+import os
 
 def cleanup_hns_folders(path: epath.Path) -> None:
   """For a hierarchical namespace bucket, delete empty folders recursively."""

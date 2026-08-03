@@ -1,3 +1,4 @@
+import sys
 
 def test_f2py_skip(capfd, retreal_f77, monkeypatch):
     """Tests that functions can be skipped

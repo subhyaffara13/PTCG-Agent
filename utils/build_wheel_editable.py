@@ -1,3 +1,4 @@
+import os
 
 def build_wheel_editable(
     name: str,

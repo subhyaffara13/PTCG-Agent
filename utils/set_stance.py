@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def set_stance(
     stance: str = "default",

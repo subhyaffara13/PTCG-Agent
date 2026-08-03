@@ -1,3 +1,4 @@
+import pathlib
 
 def check_nnapi_partitions(model, require_fixed_input_sizes: bool):
     # if we're running in the ORT python package the file should be local. otherwise assume we're running from the

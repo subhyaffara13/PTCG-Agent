@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def signature(obj: Callable[..., Any]) -> Signature:
     """Return signature without evaluating annotations."""

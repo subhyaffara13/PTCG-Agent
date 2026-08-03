@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _detect_and_normalize_assert_statement(
     self: InstructionTranslatorBase,

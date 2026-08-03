@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_a2a_model_info(a2a_client: Any, kwargs: Dict[str, Any]) -> str:
     """

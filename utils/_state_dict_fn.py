@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _state_dict_fn(obj: nn.Module | torch.optim.Optimizer, api: str) -> Callable:
     call = getattr(obj, api)

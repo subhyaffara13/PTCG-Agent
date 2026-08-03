@@ -1,3 +1,4 @@
+import os
 
 def get_lock_dir() -> str:
     lock_dir = os.path.join(cache_dir(), "locks")

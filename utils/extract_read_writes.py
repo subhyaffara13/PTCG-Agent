@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def extract_read_writes(
     fn: Callable[..., Any],

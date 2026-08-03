@@ -1,3 +1,4 @@
+import json
 
 def _parse_token_data(token_content, format_type="text", subject_token_field_name=None):
     if format_type == "text":

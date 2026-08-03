@@ -1,3 +1,4 @@
+import re
 
 def test_contains_compiled_regex_flags(any_string_dtype):
     # ensure other (than ignorecase) flags are respected

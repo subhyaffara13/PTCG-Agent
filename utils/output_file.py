@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def output_file(url: str, download_dir: Path = DOWNLOAD_DIR) -> Path:
     file_name = url.strip()

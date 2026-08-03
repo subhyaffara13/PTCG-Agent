@@ -1,3 +1,4 @@
+import os
 
 def latin1_fail():
     try:

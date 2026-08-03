@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _shard_map_batch(
     trace: batching.BatchTrace, prim: core.Primitive, fun: Callable,

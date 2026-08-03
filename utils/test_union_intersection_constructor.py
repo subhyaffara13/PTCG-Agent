@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_union_intersection_constructor():
     # The actual exception does not matter here, so long as these fail

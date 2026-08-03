@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_clipping_full():
     p = Path([[1e30, 1e30]] * 5)

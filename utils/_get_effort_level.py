@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _get_effort_level(value: Union[str, dict, None]) -> Optional[str]:
     """Extract the effective effort level from reasoning_effort (string or dict).

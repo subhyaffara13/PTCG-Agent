@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def strip_thinking_blocks_from_anthropic_messages_request_dict(
     data: Dict[str, Any],

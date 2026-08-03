@@ -1,3 +1,4 @@
+import logging
 
 def enable_explicit_format() -> None:
     """

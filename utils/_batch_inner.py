@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _batch_inner(f: Callable, axis_data, out_dim_dests, sum_match, tag, in_dims, *in_vals):
   in_dims = in_dims() if callable(in_dims) else in_dims

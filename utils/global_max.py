@@ -1,3 +1,4 @@
+import functools
 
 def global_max(values: list[int]) -> list[int]:
   """Computes the global max of a list of integers across all hosts."""

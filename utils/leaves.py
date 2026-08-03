@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def leaves(tree: Any,
            is_leaf: Callable[[Any], bool] | None = None

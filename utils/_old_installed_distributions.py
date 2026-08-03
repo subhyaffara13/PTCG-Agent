@@ -1,3 +1,4 @@
+import re
 
 def _old_installed_distributions(local: bool):
     list_args = ["list"]

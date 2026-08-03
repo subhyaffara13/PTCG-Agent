@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _container_generic_inference(
     node: nodes.Call,

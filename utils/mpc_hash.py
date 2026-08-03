@@ -1,3 +1,5 @@
+import re
+import sys
 
 def mpc_hash(z):
     if sys.version_info >= (3, 2):

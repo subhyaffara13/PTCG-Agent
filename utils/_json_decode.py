@@ -1,3 +1,4 @@
+import os
 
 def _json_decode(o):
     cls = o.pop('__class__', None)

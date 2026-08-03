@@ -1,3 +1,4 @@
+from typing import Optional
 
 def upload_bytes_sync(
     raw_bytes: bytes,

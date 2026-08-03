@@ -1,3 +1,4 @@
+import functools
 
 def call_cudnn_fusion(f, *args, **kwargs):
   """Creates a new cudnn_fusion corresponding to calling

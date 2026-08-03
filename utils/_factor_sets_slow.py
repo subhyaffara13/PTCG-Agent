@@ -1,3 +1,4 @@
+import sys
 
 def _factor_sets_slow(eqs: list[list]) -> set[frozenset]:
     """

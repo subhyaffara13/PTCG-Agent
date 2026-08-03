@@ -1,3 +1,4 @@
+import functools
 
 def delegate_xp(delegator, module_name):
     def inner(func):

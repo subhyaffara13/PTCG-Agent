@@ -1,3 +1,4 @@
+from typing import Callable
 
 def use_cpp_method(is_enabled: bool = True) -> Callable[[T], T]:
   """A decorator excluding methods from the set that are forwarded to C++ class."""

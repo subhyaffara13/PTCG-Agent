@@ -1,3 +1,4 @@
+import itertools
 
 def test_Range_set():
     empty = Range(0)

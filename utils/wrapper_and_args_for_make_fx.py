@@ -1,3 +1,4 @@
+from typing import Callable
 
 def wrapper_and_args_for_make_fx(
     func: Callable[..., R], args: tuple[object, ...], kwargs: dict[str, object]

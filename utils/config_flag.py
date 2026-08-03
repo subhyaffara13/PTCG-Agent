@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def config_flag(name: str) -> Callable[[Match], Any]:
     """Function for extra_check to put pass behind a flag"""

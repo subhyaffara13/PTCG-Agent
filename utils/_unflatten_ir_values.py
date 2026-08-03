@@ -1,3 +1,5 @@
+import math
+
 
 def _unflatten_ir_values(
     flat_values: Sequence[ir.Value], templates: Sequence[_VectorTemplate | None]

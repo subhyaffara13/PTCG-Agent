@@ -1,3 +1,4 @@
+from typing import Any
 
 def _detach_traced_inputs(flat_args: Any) -> Any:
     if detect_fake_mode():

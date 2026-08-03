@@ -1,3 +1,5 @@
+import math
+
 
 def _prepare_panther_paths(
     G,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_model_class(cls: Any) -> TypeGuard[type[BaseModel]]:
     """Returns true if cls is a _proper_ subclass of BaseModel, and provides proper type-checking,

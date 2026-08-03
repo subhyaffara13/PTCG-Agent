@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tracing_state_functions() -> dict[Callable[[], Any], bool | None]:
     # Defined as a function to avoid circular import like torch.onnx

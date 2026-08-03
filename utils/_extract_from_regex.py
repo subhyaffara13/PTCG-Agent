@@ -1,3 +1,5 @@
+import re
+from typing import Tuple
 
 def _extract_from_regex(duration: str) -> Tuple[int, str]:
     match = re.match(r"(\d+)(mo|[smhdw]?)", duration)

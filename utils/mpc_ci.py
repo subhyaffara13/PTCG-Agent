@@ -1,3 +1,4 @@
+import re
 
 def mpc_ci(z, prec, rnd=round_fast):
     re, im = z

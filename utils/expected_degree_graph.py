@@ -1,3 +1,5 @@
+import math
+
 
 def expected_degree_graph(w, seed=None, selfloops=True):
     r"""Returns a random graph with given expected degrees.

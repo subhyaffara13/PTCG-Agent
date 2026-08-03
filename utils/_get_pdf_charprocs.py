@@ -1,3 +1,6 @@
+import math
+from pathlib import Path
+
 
 def _get_pdf_charprocs(font_path, glyph_indices):
     font = get_font(font_path)

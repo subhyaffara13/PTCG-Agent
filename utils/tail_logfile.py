@@ -1,3 +1,6 @@
+import os
+import time
+from typing import Callable
 
 def tail_logfile(
     header: str,

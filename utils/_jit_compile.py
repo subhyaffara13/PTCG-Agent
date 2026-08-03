@@ -1,3 +1,4 @@
+import os
 
 def _jit_compile(name,
                  sources,

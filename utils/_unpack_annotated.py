@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unpack_annotated(
     annotation: Any, /, *, unpack_type_aliases: Literal['skip', 'lenient', 'eager'] = 'eager'

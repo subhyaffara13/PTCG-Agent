@@ -1,3 +1,4 @@
+from typing import Union
 
 def _is_base64_encoded_unified_file_id(b64_uid: str) -> Union[str, Literal[False]]:
     # Ensure b64_uid is a string and not a mock object

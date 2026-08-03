@@ -1,3 +1,5 @@
+import math
+
 
 def cheb2ap(N, rs, *, xp=None, device=None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def sanitize_gm_for_cache(
     gm: torch.fx.GraphModule,

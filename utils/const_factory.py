@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Set, Tuple
 
 def const_factory(value: Any) -> ConstFactoryResult:
     """Return an astroid node for a python value."""

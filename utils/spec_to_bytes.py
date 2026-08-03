@@ -1,3 +1,5 @@
+import math
+
 
 def spec_to_bytes(spec: "dtensor_spec.DTensorSpec") -> int:
     if spec.tensor_meta is None:

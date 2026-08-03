@@ -1,3 +1,4 @@
+import time
 
 def asctime(t=None):
     """

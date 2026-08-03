@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_response_from_batch_job_output_file(batch_job_output_file: dict) -> Any:
     """

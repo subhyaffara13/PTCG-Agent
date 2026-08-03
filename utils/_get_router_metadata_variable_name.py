@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_router_metadata_variable_name(function_name: Optional[str]) -> str:
     """

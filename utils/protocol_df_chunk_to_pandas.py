@@ -1,3 +1,4 @@
+from typing import Any
 
 def protocol_df_chunk_to_pandas(df: DataFrameXchg) -> pd.DataFrame:
     """

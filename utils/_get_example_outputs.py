@@ -1,3 +1,4 @@
+import copy
 
 def _get_example_outputs(model, args):
     input_args = copy.deepcopy(args)

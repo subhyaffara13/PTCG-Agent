@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _maybe_wrap_and_compile_fx_main(
     model_: GraphModule,

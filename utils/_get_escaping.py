@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_escaping(accept_header: List[str]) -> str:
     """Return the escaping scheme from the Accept header.

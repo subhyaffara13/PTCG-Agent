@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def scale_by_muon(
     ns_coeffs: Union[

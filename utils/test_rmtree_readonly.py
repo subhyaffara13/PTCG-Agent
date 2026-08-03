@@ -1,3 +1,4 @@
+import sys
 
 def test_rmtree_readonly(monkeypatch, tmp_path):
     """Verify onerr works as expected"""

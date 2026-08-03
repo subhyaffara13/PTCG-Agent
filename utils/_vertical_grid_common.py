@@ -1,3 +1,4 @@
+from typing import Any
 
 def _vertical_grid_common(need_trailing_char: bool, **interface: Any) -> str:
     if not interface["imports"]:

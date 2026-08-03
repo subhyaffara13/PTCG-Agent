@@ -1,3 +1,5 @@
+import math
+
 
 def halstead_visitor_report(visitor):
     """Return a HalsteadReport from a HalsteadVisitor instance."""

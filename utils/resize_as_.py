@@ -1,3 +1,4 @@
+from typing import Any
 
 def resize_as_(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

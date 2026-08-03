@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def load_test_case(dir: str) -> tuple[bytes, Any, Any]:
     """Load a self contained ONNX test case from a directory.

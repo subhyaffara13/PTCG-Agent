@@ -1,3 +1,4 @@
+import os
 
 def _typecheck_param(prim, param, name, msg_required, pred):
   if not pred:

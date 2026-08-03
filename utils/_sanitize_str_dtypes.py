@@ -1,3 +1,4 @@
+import copy
 
 def _sanitize_str_dtypes(
     result: np.ndarray, data, dtype: np.dtype | None, copy: bool

@@ -1,3 +1,4 @@
+import re
 
 def _unquote_replace(m: re.Match[str]) -> str:
     """

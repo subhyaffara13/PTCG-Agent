@@ -1,3 +1,8 @@
+import json
+import os
+import subprocess
+import sys
+from typing import Any
 
 def run_tests(needs: str | tuple[str, ...] = ()) -> None:
     from torch.testing._internal.common_utils import run_tests

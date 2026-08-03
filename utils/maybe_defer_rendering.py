@@ -1,3 +1,5 @@
+import uuid
+from typing import Callable
 
 def maybe_defer_rendering(
     main_thunk: Callable[

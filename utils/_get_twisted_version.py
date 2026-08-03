@@ -1,3 +1,4 @@
+import sys
 
 def _get_twisted_version() -> TwistedVersion:
     # We need to check if "twisted.trial.unittest" is specifically present in sys.modules.

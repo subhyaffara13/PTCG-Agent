@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def strobelight(
     profiler: StrobelightCLIFunctionProfiler | None = None, **kwargs: Any

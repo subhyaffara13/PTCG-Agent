@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_booleans():
     """ test basic unions and intersections """

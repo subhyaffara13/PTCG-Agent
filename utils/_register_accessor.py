@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _register_accessor(
     name: str, cls: type[NDFrame | Index]

@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def adapter_completion(
     *, adapter_id: str, **kwargs

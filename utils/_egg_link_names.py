@@ -1,3 +1,4 @@
+import re
 
 def _egg_link_names(raw_name: str) -> list[str]:
     """

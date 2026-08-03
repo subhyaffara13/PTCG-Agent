@@ -1,3 +1,4 @@
+import os
 
 def to_string(s, encoding: str = "utf-8"):
     if isinstance(s, str):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_groups_memberships(
     pg_config: Any,

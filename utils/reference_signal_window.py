@@ -1,3 +1,4 @@
+from typing import Callable
 
 def reference_signal_window(fn: Callable):
     r"""Wrapper for scipy signal window references.

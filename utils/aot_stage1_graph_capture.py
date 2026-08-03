@@ -1,3 +1,4 @@
+from typing import Any
 
 def aot_stage1_graph_capture(
     aot_state: AOTState,

@@ -1,3 +1,4 @@
+import os
 
 def _add_oauth_routes(app: "fastapi.FastAPI", route_prefix: str) -> None:
     """Add OAuth routes to the FastAPI app (login, callback handler and logout)."""

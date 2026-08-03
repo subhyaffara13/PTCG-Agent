@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_not_empty_in():
     assert not_empty_in(FiniteSet(x, 2*x).intersect(Interval(1, 2, True, False)), x) == \

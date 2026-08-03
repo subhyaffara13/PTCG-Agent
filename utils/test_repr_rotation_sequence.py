@@ -1,3 +1,5 @@
+import math
+
 
 def test_repr_rotation_sequence(xp):
     q = xp.asarray([[0.0, 1, 0, 1], [0, 0, 1, 1]]) / math.sqrt(2)

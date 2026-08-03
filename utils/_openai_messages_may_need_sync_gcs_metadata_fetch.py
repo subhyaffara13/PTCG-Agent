@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _openai_messages_may_need_sync_gcs_metadata_fetch(
     messages: List[AllMessageValues],

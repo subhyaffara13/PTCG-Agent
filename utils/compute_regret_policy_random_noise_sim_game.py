@@ -1,3 +1,4 @@
+import time
 
 def compute_regret_policy_random_noise_sim_game(game,
                                                 policy,

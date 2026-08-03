@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Tuple, Union
 
 def _make_handler(
         url: str,

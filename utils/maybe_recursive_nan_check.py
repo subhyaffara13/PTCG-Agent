@@ -1,3 +1,4 @@
+from typing import Callable
 
 def maybe_recursive_nan_check(
     e: Exception, fun: Callable, args, kwargs

@@ -1,3 +1,5 @@
+import math
+
 
 def simulated_annealing_tsp(
     G,

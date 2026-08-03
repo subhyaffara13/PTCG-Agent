@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def get_local_safetensors_metadata(path: str | Path) -> SafetensorsRepoMetadata:
     """

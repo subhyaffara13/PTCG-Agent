@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_user_update_authz(
     user_request: UpdateUserRequest,

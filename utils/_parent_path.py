@@ -1,3 +1,4 @@
+import os
 
 def _parent_path(pkg, pkg_path):
     """Infer the parent path containing a package, that if added to ``sys.path`` would

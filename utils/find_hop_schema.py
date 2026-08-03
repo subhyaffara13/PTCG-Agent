@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_hop_schema(
     gm: torch.fx.GraphModule, target: Target

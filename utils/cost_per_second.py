@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def cost_per_second(
     model: str, custom_llm_provider: Optional[str], duration: float = 0.0

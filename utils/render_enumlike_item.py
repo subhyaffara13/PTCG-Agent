@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_enumlike_item(
     object_type: type[Any],

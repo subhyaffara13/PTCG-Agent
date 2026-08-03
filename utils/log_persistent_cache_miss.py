@@ -1,3 +1,4 @@
+import logging
 
 def log_persistent_cache_miss(module_name: str, cache_key: str) -> None:
   miss_log_priority = (logging.WARNING

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def make_process_name_useful():
   """Sets the process name to something better than 'python' if possible."""

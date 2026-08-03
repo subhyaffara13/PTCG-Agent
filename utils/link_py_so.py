@@ -1,3 +1,4 @@
+import sys
 
 def link_py_so(obj_files, so_file=None, cwd=None, libraries=None,
                cplus=False, fort=False, extra_objs=None, **kwargs):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _reduction_init_val(a: Array, init_val: Any) -> np.ndarray:
   # This function uses np.* functions because lax pattern matches against the

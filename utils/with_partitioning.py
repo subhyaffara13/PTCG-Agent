@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def with_partitioning(
     fn: Callable[..., Any],

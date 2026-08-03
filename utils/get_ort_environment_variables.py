@@ -1,3 +1,4 @@
+import os
 
 def get_ort_environment_variables():
     # Environment variables might impact ORT performance on transformer models. Note that they are for testing only.

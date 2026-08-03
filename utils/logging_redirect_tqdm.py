@@ -1,3 +1,4 @@
+import logging
 
 def logging_redirect_tqdm(
     loggers=None,  # type: Optional[List[logging.Logger]],

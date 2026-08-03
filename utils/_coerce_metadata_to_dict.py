@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _coerce_metadata_to_dict(value: Any) -> Optional[Dict[str, Any]]:
     """Return ``value`` as a dict, parsing it from JSON if delivered as a string.

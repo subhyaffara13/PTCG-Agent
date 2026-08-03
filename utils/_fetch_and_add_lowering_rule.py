@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fetch_and_add_lowering_rule(ctx: sc_lowering.LoweringRuleContext, *args):
   del ctx  # Unused.

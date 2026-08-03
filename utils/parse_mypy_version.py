@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_mypy_version(version: str) -> tuple[int, int, int]:
     """Parse `mypy` string version to a 3-tuple of ints.

@@ -1,3 +1,4 @@
+from typing import List
 
 def has_tool_call_blocks(messages: List[AllMessageValues]) -> bool:
     """

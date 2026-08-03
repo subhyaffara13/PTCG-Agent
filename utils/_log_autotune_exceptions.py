@@ -1,3 +1,5 @@
+import json
+import re
 
 def _log_autotune_exceptions(
     exceptions: list[tuple[ChoiceCaller, BaseException]],

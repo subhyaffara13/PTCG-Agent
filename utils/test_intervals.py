@@ -1,3 +1,4 @@
+import re
 
 def test_intervals():
     assert intervals(0) == []

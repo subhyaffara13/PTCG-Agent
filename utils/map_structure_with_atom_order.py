@@ -1,3 +1,4 @@
+import copy
 
 def map_structure_with_atom_order(in_list: list, first_call: bool = True) -> list:
     # Maps strings in a nested list structure to their corresponding index in atom_order

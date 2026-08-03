@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _lower_as_gpu_kernel(
     body,

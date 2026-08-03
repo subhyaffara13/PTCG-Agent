@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_item_or_attribute(config, field,
                            field_path: Optional[str] = None):

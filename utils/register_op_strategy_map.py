@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_op_strategy_map(
     aten_op_overload: torch._ops.OpOverload,

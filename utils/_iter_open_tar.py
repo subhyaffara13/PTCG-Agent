@@ -1,3 +1,4 @@
+import os
 
 def _iter_open_tar(tar_obj, extract_dir, progress_filter):
     """Emit member-destination pairs from a tar archive."""

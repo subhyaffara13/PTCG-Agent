@@ -1,3 +1,4 @@
+import itertools
 
 def assign_layouts(solution: dict[ValueSite, cs.Constant]) -> None:
   """Assigns the layouts in `solution` to the MLIR ops they belong to.

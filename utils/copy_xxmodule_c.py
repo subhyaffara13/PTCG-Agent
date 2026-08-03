@@ -1,3 +1,4 @@
+import os
 
 def copy_xxmodule_c(directory):
     """Helper for tests that need the xxmodule.c source file.

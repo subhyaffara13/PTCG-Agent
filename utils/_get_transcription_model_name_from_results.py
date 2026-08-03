@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_transcription_model_name_from_results(
     results: OpenAIRealtimeStreamList,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _vector_store_op_lowering_rule(
     ctx: LoweringContext, op: mgpu.VectorStoreOp

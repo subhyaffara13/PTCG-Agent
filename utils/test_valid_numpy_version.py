@@ -1,3 +1,4 @@
+import re
 
 def test_valid_numpy_version():
     # Verify that the numpy version is a valid one (no .post suffix or other

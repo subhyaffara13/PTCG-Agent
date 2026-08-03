@@ -1,3 +1,4 @@
+from typing import Callable, Tuple
 
 def _checkpoint_without_reentrant_generator(
     fn,

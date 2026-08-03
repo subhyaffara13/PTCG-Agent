@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def make_functional_with_buffers_deprecated_v1(
     model: nn.Module,

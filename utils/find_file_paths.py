@@ -1,3 +1,4 @@
+import os
 
 def find_file_paths(dir_paths: list[str], files_to_exclude: set[str]) -> set[str]:
     """

@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _report_to_json(report: BaseReport) -> dict[str, Any]:
     """Return the contents of this report as a dict of builtin entries,

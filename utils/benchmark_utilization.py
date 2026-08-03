@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def benchmark_utilization(
     f: Callable[[tuple[Any, ...]], _R],

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _replace_attributes(gm: GraphModule, replacement: torch.nn.Module) -> None:
     gm.delete_all_unused_submodules()

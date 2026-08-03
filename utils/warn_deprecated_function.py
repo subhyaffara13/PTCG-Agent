@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable, Optional
 
 def warn_deprecated_function(
     fun: Callable[..., Any],

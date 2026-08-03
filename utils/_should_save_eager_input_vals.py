@@ -1,3 +1,4 @@
+from typing import Any
 
 def _should_save_eager_input_vals(
     target: Any,

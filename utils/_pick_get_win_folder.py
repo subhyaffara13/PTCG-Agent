@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _pick_get_win_folder() -> Callable[[str], str]:
     """Select the best method to resolve Windows folder paths: ctypes, then registry, then environment variables."""

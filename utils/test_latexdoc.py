@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_latexdoc(capfd, hello_world_f90, monkeypatch):
     """Ensures that TeX documentation is written out

@@ -1,3 +1,4 @@
+import os
 
 def available_steps(
   ckpt_dir: str | os.PathLike,

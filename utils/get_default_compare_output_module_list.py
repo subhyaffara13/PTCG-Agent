@@ -1,3 +1,5 @@
+import copy
+from typing import Callable
 
 def get_default_compare_output_module_list() -> set[Callable]:
     """Get list of module class types that we will record output

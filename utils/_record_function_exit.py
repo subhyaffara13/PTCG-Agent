@@ -1,3 +1,4 @@
+from typing import Any
 
 def _record_function_exit(
     fake_mode: FakeTensorMode, func: OpOverload, handle: Any

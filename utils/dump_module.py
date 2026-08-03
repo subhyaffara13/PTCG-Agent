@@ -1,3 +1,5 @@
+import os
+from typing import Optional, Union
 
 def dump_module(
     filename: Union[str, os.PathLike] = None,

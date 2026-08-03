@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_kernel_cache() -> dict[str, Any]:
     """Build the kernel name -> kernel object cache."""

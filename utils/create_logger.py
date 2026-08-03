@@ -1,3 +1,4 @@
+import logging
 
 def create_logger(app: App) -> logging.Logger:
     """Get the Flask app's logger and configure it if needed.

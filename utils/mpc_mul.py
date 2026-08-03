@@ -1,3 +1,4 @@
+import re
 
 def mpc_mul(z, w, prec, rnd=round_fast):
     """

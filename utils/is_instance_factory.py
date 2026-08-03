@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def is_instance_factory(_type: type | tuple[type, ...]) -> Callable[[Any], None]:
     """

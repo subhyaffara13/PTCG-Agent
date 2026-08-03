@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def interp(x, xp, fp, left=None, right=None, period=None):
     """

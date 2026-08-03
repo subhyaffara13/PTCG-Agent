@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def check_for_mutable_operation(
     target: Callable[..., Any],

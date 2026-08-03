@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def cpp_compiler_search(search: str) -> str:
     from torch._inductor.codecache import get_lock_dir, LOCK_TIMEOUT

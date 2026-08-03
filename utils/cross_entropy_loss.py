@@ -1,3 +1,4 @@
+from typing import Optional
 
 def cross_entropy_loss(
     self: list[int],

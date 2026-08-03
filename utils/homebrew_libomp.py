@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def homebrew_libomp() -> tuple[bool, str]:
     try:

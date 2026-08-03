@@ -1,3 +1,5 @@
+import math
+
 
 def _get_color_table_size(palette_bytes: bytes) -> int:
     # calculate the palette size for the header

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_fusion_pattern_to_fuse_handler_cls(
     backend_config: BackendConfig,

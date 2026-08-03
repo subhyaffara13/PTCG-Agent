@@ -1,3 +1,7 @@
+import itertools
+import os
+import sys
+from typing import Callable
 
 def modpath_from_file_with_callback(
     filename: str,

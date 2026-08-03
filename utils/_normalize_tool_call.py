@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, Optional
 
 def _normalize_tool_call(tool_call: dict) -> dict:
     """Normalize a parsed tool call to ``{"name": str, "arguments": str}``.

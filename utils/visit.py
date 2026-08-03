@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def visit(
     path: str | os.PathLike[str], recurse: Callable[[os.DirEntry[str]], bool]

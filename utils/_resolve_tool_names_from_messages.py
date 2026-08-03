@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _resolve_tool_names_from_messages(messages: List[dict]) -> Dict[str, str]:
     """

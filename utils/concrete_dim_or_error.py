@@ -1,3 +1,4 @@
+from typing import Any
 
 def concrete_dim_or_error(val: Any, context=""):
   """Like concrete_or_error(operator.index), allowing symbolic dimensions."""

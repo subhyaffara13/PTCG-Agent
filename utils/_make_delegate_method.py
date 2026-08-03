@@ -1,3 +1,4 @@
+import functools
 
 def _make_delegate_method(attr_name):
     async def method(self, *args, **kwargs):

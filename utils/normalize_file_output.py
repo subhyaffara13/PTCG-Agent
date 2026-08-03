@@ -1,3 +1,4 @@
+import re
 
 def normalize_file_output(content: list[str], current_abs_path: str) -> list[str]:
     """Normalize file output for comparison."""

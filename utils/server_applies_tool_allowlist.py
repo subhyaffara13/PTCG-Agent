@@ -1,3 +1,4 @@
+from typing import Any
 
 def server_applies_tool_allowlist(mcp_server: Any) -> bool:
     """Whether server-level allowed_tools whitelist filtering is active."""

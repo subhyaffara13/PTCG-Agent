@@ -1,3 +1,4 @@
+import os
 
 def test_session_main(refimported):
     """test dump/load_module() for __main__, both in this process and in a subprocess"""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_torch_function(
     tx: "InstructionTranslator",

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _check_output_dims(
     func: Callable,

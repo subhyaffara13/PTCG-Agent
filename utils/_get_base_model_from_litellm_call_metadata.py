@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_base_model_from_litellm_call_metadata(
     metadata: Optional[dict],

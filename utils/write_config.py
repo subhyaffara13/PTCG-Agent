@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def write_config(path: Path, content: str | None = None) -> None:
     if path.suffix == ".toml":

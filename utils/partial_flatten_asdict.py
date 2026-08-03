@@ -1,3 +1,4 @@
+from typing import Any
 
 def partial_flatten_asdict(obj: object) -> Any:
     if dataclasses.is_dataclass(obj):

@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def _set_cooldown_deployments(
     litellm_router_instance: LitellmRouter,

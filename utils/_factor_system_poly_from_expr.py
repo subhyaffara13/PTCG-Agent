@@ -1,3 +1,4 @@
+from typing import Any
 
 def _factor_system_poly_from_expr(
         eqs: Sequence[Expr | complex], gens: Sequence[Expr], **kwargs: Any

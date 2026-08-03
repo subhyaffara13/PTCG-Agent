@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_proxy_slot(
     obj: Tensor,

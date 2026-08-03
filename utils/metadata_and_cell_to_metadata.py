@@ -1,3 +1,4 @@
+import logging
 
 def metadata_and_cell_to_metadata(nb, fmt, unsupported_keys=None):
     # new metadata from filtered nb.metadata

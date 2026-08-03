@@ -1,3 +1,5 @@
+import math
+
 
 def bitwidth_impl(ty: ir.Type):
   # The actual width of TF32 is 19 bits. However, we need to treat it as

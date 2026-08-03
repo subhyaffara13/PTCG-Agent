@@ -1,3 +1,4 @@
+from typing import Any
 
 def hanging_indent(**interface: Any) -> str:
     if not interface["imports"]:

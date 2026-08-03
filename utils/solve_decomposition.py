@@ -1,3 +1,4 @@
+from typing import Union
 
 def solve_decomposition(f, symbol, domain):
     """

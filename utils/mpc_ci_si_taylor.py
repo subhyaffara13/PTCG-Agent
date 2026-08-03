@@ -1,3 +1,4 @@
+import re
 
 def mpc_ci_si_taylor(re, im, wp, which=0):
     # The following code is only designed for small arguments,

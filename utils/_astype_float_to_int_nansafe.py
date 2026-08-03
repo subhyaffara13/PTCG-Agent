@@ -1,3 +1,4 @@
+import copy
 
 def _astype_float_to_int_nansafe(
     values: np.ndarray, dtype: np.dtype, copy: bool

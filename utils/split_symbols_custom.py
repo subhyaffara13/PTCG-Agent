@@ -1,3 +1,4 @@
+from typing import Callable
 
 def split_symbols_custom(predicate: Callable[[str], bool]):
     """Creates a transformation that splits symbol names.

@@ -1,3 +1,4 @@
+import sys
 
 def _get_so_suffixes():
     suffixes = _extension_suffixes()

@@ -1,3 +1,4 @@
+from typing import Any
 
 def tuple_positional_schema(
     items_schema: list[CoreSchema],

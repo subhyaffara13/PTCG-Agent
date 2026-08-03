@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _gen_mingw_import_lib(dll_path: str, def_path: str, import_lib_path: str) -> None:
     """Generate a MinGW import library (.a) from a DLL using gendef and dlltool."""

@@ -1,3 +1,4 @@
+import copy
 
 def set_clipboard(clipboard):
     """

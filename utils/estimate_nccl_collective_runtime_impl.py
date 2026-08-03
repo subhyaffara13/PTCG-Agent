@@ -1,3 +1,5 @@
+import math
+
 
 def estimate_nccl_collective_runtime_impl(
     tensor_storage_size_bytes: int, group_size: int, coll: NCCL_COLL

@@ -1,3 +1,4 @@
+import random
 
 def _func_field_modgcd_p(f, g, minpoly, p):
     r"""

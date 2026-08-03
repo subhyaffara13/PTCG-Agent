@@ -1,3 +1,5 @@
+import math
+
 
 def _get_inverse_sqrt_schedule_lr_lambda(current_step: int, *, num_warmup_steps: int, timescale: int | None = None):
     if current_step < num_warmup_steps:

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_data_path():
     """Return the path to Matplotlib data."""

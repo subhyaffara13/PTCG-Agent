@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_grid_sample(op_info, device, dtype, requires_grad, **kwargs):
     # We get better tests if we change the range of the values to something like [-2,2]

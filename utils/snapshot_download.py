@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def snapshot_download(
     repo_id: str,

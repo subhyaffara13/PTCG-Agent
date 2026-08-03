@@ -1,3 +1,4 @@
+from typing import Any
 
 def _team_metadata_dict(value: object) -> Mapping[str, Any] | None:
     """The team's free-form metadata as a raw mapping, or ``None`` when missing

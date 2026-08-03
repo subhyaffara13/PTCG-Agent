@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_build_directory(name: str, verbose: bool) -> str:
     """

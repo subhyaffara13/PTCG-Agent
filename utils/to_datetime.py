@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def to_datetime(
     arg: DatetimeScalar,

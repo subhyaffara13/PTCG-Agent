@@ -1,3 +1,4 @@
+import subprocess
 
 def have_git() -> bool:
     """Can we run the git executable?"""

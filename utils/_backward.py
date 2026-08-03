@@ -1,3 +1,4 @@
+from typing import Any
 
 def _backward(
     ctx: Any, grad_out: torch.Tensor, grad_lse: torch.Tensor, grad_rng: torch.Tensor

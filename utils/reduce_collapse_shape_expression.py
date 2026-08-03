@@ -1,3 +1,5 @@
+import math
+
 
 def reduce_collapse_shape_expression(
     expr: CollapseShape, assignments: dict[Variable, Constant]

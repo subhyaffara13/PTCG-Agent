@@ -1,3 +1,4 @@
+from typing import Any
 
 def remap_unwrapped_subclass_arg_indices(
     wrapped_args: list[Any], static_input_indices: list[int]

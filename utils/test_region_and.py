@@ -1,3 +1,4 @@
+import os
 
 def test_region_and():
     matplotlib = import_module('matplotlib', min_module_version='1.1.0', catch=(RuntimeError,))

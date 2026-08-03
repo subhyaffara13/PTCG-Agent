@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def try_makedirs(cache_dir: Path) -> bool:
     """Attempt to create the given directory and sub-directories exist.

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _decompose_type(t, to_list=True):
     if isinstance(t, TypeVar):

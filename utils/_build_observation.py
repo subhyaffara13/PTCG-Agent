@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_observation(state: pyspiel.State) -> dict[str, Any]:
     """Build a harness-style observation dict from a pyspiel connect_four state."""

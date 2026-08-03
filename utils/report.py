@@ -1,3 +1,7 @@
+import json
+import os
+import re
+import sys
 
 def report() -> None:  # pragma: no cover
     """Print a report to the terminal with debugging information"""

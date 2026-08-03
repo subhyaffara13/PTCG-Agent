@@ -1,3 +1,4 @@
+import logging
 
 def propagate_scale_by(nodes_with_chunking_meta: Sequence[Node]) -> None:
     """

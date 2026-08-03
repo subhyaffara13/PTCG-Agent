@@ -1,3 +1,4 @@
+import re
 
 def test_arg():
     assert arg(0) is nan

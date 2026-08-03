@@ -1,3 +1,5 @@
+import json
+from typing import Dict, List
 
 def generate_analysis_report(results: List[Dict], top_k: int = 5, report_file: str = "analysis_report.json"):
     if not results:

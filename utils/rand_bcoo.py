@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def rand_bcoo(rng: np.random.RandomState,
               rand_method: Callable[..., Any]=jtu.rand_default,

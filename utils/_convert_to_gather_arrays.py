@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_to_gather_arrays(indexer: indexing.NDIndexer) -> tuple[Array, ...]:
   # This is the general gather case. We need to create the gather arrays.

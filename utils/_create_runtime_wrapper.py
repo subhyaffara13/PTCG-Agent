@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _create_runtime_wrapper(
     compiled_fn: Callable[..., Any],

@@ -1,3 +1,4 @@
+import copy
 
 def assert_equal_tensor_ref(mat, writeable=True, modified=None):
     assert mat.flags.writeable == writeable

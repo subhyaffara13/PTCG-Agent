@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _build_judge_prompt(
     criteria: List[Dict[str, Any]],

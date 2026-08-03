@@ -1,3 +1,4 @@
+import re
 
 def test_pickle_simple_callable():
     assert m.simple_callable() == 20220426

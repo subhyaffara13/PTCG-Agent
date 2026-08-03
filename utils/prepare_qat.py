@@ -1,3 +1,4 @@
+import copy
 
 def prepare_qat(model, mapping=None, inplace=False):
     r"""

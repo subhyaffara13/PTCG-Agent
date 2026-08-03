@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def auto_hq(
     inputs: List[ArrayIndexType],

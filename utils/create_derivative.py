@@ -1,3 +1,4 @@
+import re
 
 def create_derivative(
     f: NativeFunction,

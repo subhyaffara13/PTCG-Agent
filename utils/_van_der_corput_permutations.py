@@ -1,3 +1,5 @@
+import math
+
 
 def _van_der_corput_permutations(
     base: IntNumber, *, rng: SeedType = None

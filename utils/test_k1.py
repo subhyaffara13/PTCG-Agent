@@ -1,3 +1,4 @@
+import re
 
 def test_K1():
     z1, z2 = symbols('z1, z2', complex=True)

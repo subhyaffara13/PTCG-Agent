@@ -1,3 +1,5 @@
+import math
+
 
 def alpha_dropout(
     input: Tensor,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_provider_beta_header(
     anthropic_beta_header: str,

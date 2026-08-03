@@ -1,3 +1,4 @@
+import re
 
 def _get_single_group_name(regex: re.Pattern) -> Hashable:
     if regex.groupindex:

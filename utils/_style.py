@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _style(message: str, **kwargs: Any) -> str:
     """Wrapper around mypy.util for fancy formatting."""

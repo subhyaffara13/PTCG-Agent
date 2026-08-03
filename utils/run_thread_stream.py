@@ -1,3 +1,4 @@
+from typing import Optional
 
 def run_thread_stream(
     *,

@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def _mask_callable(
     mask: Union[base.PyTree, Callable[[base.Params], base.PyTree]],

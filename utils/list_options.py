@@ -1,3 +1,4 @@
+from typing import Any
 
 def list_options() -> list[str]:
     r"""Returns a dictionary describing the optimizations and debug configurations

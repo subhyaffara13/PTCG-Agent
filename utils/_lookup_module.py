@@ -1,3 +1,4 @@
+import sys
 
 def _lookup_module(modmap, name, obj, main_module):
     """lookup name or id of obj if module is imported"""

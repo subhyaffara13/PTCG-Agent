@@ -1,3 +1,4 @@
+from typing import Any
 
 def interp_pool_1out_2in_strategy(
     op: torch._ops.OpOverload,

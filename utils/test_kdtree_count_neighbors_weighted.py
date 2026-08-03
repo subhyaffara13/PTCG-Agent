@@ -1,3 +1,4 @@
+import itertools
 
 def test_kdtree_count_neighbors_weighted(kdtree_class):
     rng = np.random.RandomState(1234)

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _geq_decision(e1: DimSize, e2: DimSize, cmp_str: Callable[[], str]) -> bool:
   """Implements `e1 >= e2`.

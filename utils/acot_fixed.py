@@ -1,3 +1,5 @@
+import math
+
 
 def acot_fixed(a, prec, hyperbolic):
     """

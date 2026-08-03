@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _compiler_config_for_logging() -> str | None:
     def clean_for_json(d: dict[str, Any]) -> dict[str, Any]:

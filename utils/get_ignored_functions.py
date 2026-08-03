@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def get_ignored_functions() -> set[Callable]:
     """

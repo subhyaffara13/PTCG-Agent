@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bucket_fsdp_all_gather(
     gm: torch.fx.GraphModule,

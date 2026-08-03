@@ -1,3 +1,4 @@
+import os
 
 def _is_installable_dir(path):
     if not os.path.isdir(path):

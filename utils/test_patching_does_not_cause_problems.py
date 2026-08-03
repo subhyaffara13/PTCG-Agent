@@ -1,3 +1,4 @@
+import logging
 
 def test_patching_does_not_cause_problems():
     # Ensure `dist.log` is only patched if necessary

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def convert_type(ty: None, default: None = None) -> StringParamType: ...
 

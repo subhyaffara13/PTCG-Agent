@@ -1,3 +1,4 @@
+import itertools
 
 def get_method_tuple_linespecs(method):
   """Gets plot linespecs for the specified ResponseGraphUCB method."""

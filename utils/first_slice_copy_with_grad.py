@@ -1,3 +1,4 @@
+from typing import Any
 
 def first_slice_copy_with_grad(li: Iterable[Any]) -> list[Any]:
     # First_slice_copy does not keep the original requires_grad flag,

@@ -1,3 +1,7 @@
+import os
+import re
+from pathlib import Path
+
 
 def test_all_classes_are_tested():
     this = os.path.split(__file__)[0]

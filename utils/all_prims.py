@@ -1,3 +1,4 @@
+from typing import Any
 
 def all_prims() -> set[Any]:
     """

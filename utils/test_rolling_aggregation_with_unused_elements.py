@@ -1,3 +1,4 @@
+import sys
 
 def test_rolling_aggregation_with_unused_elements(rolling_aggregation):
     # GH-45647

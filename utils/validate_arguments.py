@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def validate_arguments(
     func: None = None, *, config: 'ConfigType' = None

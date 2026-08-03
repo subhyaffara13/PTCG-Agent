@@ -1,3 +1,4 @@
+import os
 
 def test_fortran_eof_broken_record(tmpdir):
     filename = path.join(str(tmpdir), str(threading.get_native_id()),

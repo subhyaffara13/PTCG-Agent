@@ -1,3 +1,4 @@
+from typing import Callable
 
 def phase_spectrum(
     x: ArrayLike,

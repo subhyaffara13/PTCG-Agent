@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_ipython_extension(ipython):
     """Register the %dotenv magic."""

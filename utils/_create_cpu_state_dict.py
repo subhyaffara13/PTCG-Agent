@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _create_cpu_state_dict(
     state_dict: dict[str, Any], pin_memory: bool = False, share_memory: bool = False

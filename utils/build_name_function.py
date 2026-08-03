@@ -1,3 +1,6 @@
+from typing import Callable
+import math
+
 
 def build_name_function(max_int: float) -> Callable[[int], str]:
     """Returns a function that receives a single integer

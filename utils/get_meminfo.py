@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def get_meminfo() -> dict[str, Any]:
     res: dict[str, Any] = {}

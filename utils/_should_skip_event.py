@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _should_skip_event(kwargs: Dict[str, Any]) -> bool:
     """Check if event should be skipped due to missing standard_logging_object."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_asgi_app(registry: Collector = REGISTRY, disable_compression: bool = False) -> Callable:
     """Create a ASGI app which serves the metrics from a registry."""

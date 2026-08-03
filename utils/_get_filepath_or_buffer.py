@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_filepath_or_buffer(
     filepath_or_buffer: FilePath | BaseBuffer,

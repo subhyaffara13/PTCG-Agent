@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def format_status_report(report_file: Path) -> str:
     report = json.loads(report_file.read_text(encoding="utf-8"))

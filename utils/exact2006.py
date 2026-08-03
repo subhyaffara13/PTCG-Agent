@@ -1,3 +1,5 @@
+import math
+
 
 def exact2006(exact):
     mu0 = 4e-7 * math.pi

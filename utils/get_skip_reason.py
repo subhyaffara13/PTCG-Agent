@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_skip_reason(obj: Any) -> str:
     """Compute a descriptive skip reason for a callable. Only called on graph break."""

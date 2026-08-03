@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_TupleKind():
     kind = TupleKind(NumberKind, MatrixKind(NumberKind))

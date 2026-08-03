@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def get_tristate_env(name: str, default: Any = None) -> bool | None:
     value = os.environ.get(name)

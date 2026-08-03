@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def _cuda_path() -> str | None:
   def _try_cuda_root_environment_variable() -> str | None:

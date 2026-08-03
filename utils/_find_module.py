@@ -1,3 +1,4 @@
+import os
 
 def _find_module(
     module_name: str, package_dir: Mapping[str, str] | None, root_dir: StrPath

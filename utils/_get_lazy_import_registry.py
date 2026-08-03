@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_lazy_import_registry() -> dict[str, Callable[[str], Any]]:
     """

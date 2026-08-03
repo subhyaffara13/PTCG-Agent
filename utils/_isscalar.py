@@ -1,3 +1,4 @@
+from typing import Any
 
 def _isscalar(x):
     """Check whether x is if a scalar type, or 0-dim"""

@@ -1,3 +1,4 @@
+import os
 
 def test_pdf_pages_metadata_check(monkeypatch, system):
     # Basically the same as test_pdf_pages, but we keep it separate to leave

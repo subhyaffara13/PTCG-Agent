@@ -1,3 +1,5 @@
+import math
+
 
 def _find_chunk_dim_after_reshape(
     old_shape: Sequence[int], new_shape: Sequence[int], chunk_dim: int

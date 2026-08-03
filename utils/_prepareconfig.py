@@ -1,3 +1,4 @@
+import os
 
 def _prepareconfig(
     args: list[str] | os.PathLike[str],

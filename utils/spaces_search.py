@@ -1,3 +1,4 @@
+import itertools
 
 def spaces_search(
     query: Annotated[str, typer.Argument(help="Search query.")],

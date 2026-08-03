@@ -1,3 +1,4 @@
+from typing import Callable
 
 def all_frames(
     im: Image.Image | list[Image.Image],

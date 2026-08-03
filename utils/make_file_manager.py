@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def make_file_manager(
     options: Namespace,

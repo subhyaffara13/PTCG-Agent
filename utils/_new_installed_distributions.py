@@ -1,3 +1,6 @@
+import json
+import os
+from typing import List
 
 def _new_installed_distributions(local: bool, paths: List[os.PathLike]):
     list_args = ["list", "-v", "--format=json"]

@@ -1,3 +1,4 @@
+import sys
 
 def _emit_pkg_resources_deprecation_if_needed() -> None:
     if sys.version_info < (3, 11):

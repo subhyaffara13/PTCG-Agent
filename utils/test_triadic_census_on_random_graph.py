@@ -1,3 +1,4 @@
+import itertools
 
 def test_triadic_census_on_random_graph(N):
     G = nx.binomial_graph(N, 0.3, directed=True, seed=42)

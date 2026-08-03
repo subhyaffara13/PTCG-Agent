@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _compute_dynamic_ntk_parameters(
     config: Optional["PreTrainedConfig"] = None,

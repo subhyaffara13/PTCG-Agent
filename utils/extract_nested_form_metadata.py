@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def extract_nested_form_metadata(
     form_data: Dict[str, Any], prefix: str = "litellm_metadata["

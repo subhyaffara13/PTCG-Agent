@@ -1,3 +1,7 @@
+import functools
+from typing import Any, Callable
+import math
+
 
 def emit_pipeline_warp_specialized(
     body: Callable[..., None],

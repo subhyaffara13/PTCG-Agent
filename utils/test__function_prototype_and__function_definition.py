@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_FunctionPrototype_and_FunctionDefinition():
     vx = Variable(x, type=real)

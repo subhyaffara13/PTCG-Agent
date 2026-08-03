@@ -1,3 +1,6 @@
+import copy
+import re
+from typing import Any
 
 def prepare(app):
     with open(DIR.parent / "README.rst") as f:

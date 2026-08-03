@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _set_triton_libdevice_path_impl() -> None:
     try:

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _reached_desired_step(step: int, until_step: Optional[int]) -> bool:
   if step is None:

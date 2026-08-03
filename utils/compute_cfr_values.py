@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def compute_cfr_values(cfr_game_tree: GameTree,
                        steps: int) -> Tuple[List[float], List[float]]:

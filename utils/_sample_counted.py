@@ -1,3 +1,4 @@
+import random
 
 def _sample_counted(population, k, counts, strict):
     element = None

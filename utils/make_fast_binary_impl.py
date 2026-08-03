@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_fast_binary_impl(
     slow_ref: Callable[..., Any],

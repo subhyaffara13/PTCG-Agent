@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_args_for_reloading() -> list[str]:
     """Determine how the script was executed, and return the args needed

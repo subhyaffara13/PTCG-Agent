@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_param_to_param_id_from_optim_input(
     model: nn.Module,

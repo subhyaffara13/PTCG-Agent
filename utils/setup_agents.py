@@ -1,3 +1,4 @@
+from typing import List
 
 def setup_agents(
     env: Environment, rng: hk.PRNGSequence

@@ -1,3 +1,4 @@
+import re
 
 def _build_pretty_email_regex() -> re.Pattern[str]:
     name_chars = r'[\w!#$%&\'*+\-/=?^_`{|}~]'

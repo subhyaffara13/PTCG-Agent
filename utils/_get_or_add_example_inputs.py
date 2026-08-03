@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_or_add_example_inputs(frame: DynamoFrameType) -> list[Any]:
     key = frame.f_code.co_filename + str(frame.f_code.co_firstlineno)

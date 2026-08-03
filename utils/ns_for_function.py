@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def ns_for_function(obj: Callable[..., Any], parent_namespace: MappingNamespace | None = None) -> NamespacesTuple:
     """Return the global and local namespaces to be used when evaluating annotations for the provided function.

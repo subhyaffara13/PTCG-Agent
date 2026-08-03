@@ -1,3 +1,4 @@
+import sys
 
 def _should_pickle_by_reference(obj, name=None):
     """Test whether an function or a class should be pickled by reference

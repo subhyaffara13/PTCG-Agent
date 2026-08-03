@@ -1,3 +1,4 @@
+from typing import Any
 
 def json_schema(
     schema: CoreSchema | None = None,

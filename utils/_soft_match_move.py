@@ -1,3 +1,4 @@
+import re
 
 def _soft_match_move(
     candidate: str,

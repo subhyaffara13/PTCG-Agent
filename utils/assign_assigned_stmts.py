@@ -1,3 +1,4 @@
+from typing import Any
 
 def assign_assigned_stmts(
     self: nodes.AugAssign | nodes.Assign | nodes.AnnAssign | nodes.TypeAlias,

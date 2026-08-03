@@ -1,3 +1,5 @@
+import os
+import sys
 
 def new_compiler(
     plat: str | None = None,

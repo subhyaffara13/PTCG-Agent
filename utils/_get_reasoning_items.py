@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_reasoning_items(
     msg: "AllMessageValues",

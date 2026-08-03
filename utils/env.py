@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def env(
     accelerate_config_file: Annotated[

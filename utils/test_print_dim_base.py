@@ -1,3 +1,4 @@
+import time
 
 def test_print_dim_base():
     mksa = DimensionSystem(

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Optional, Union
 
 def _fake_pmap(fn,
                axis_name: Optional[Any] = None,

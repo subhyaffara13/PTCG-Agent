@@ -1,3 +1,4 @@
+from typing import Optional
 
 def detect_local_image_media_type(header: bytes) -> Optional[str]:
     """Return a browser image media type for supported local image signatures."""

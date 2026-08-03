@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _load_fontmanager(*, try_read_cache=True):
     fm_path = Path(

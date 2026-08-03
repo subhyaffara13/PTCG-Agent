@@ -1,3 +1,4 @@
+import functools
 
 def _block_info_recursion(arrays, max_depth, result_ndim, depth=0):
     """

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_configdir_uses_userprofile_on_windows_if_exists(tmp_path):
     """

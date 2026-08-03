@@ -1,3 +1,5 @@
+import random
+import time
 
 def performance_benchmark(env):
     print("Starting performance benchmark")

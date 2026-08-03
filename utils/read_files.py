@@ -1,3 +1,4 @@
+import os
 
 def read_files(
     filepaths: StrPath | Iterable[StrPath], root_dir: StrPath | None = None

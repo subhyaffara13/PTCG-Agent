@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _axisLabelToStatLocation(
     label: AxisLabelDescriptor,

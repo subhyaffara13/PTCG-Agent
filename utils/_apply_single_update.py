@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _apply_single_update(api, skill_dir: Path, marketplace_skills: dict[str, MarketplaceSkill]) -> SkillUpdateInfo:
     base = SkillUpdateInfo(name=skill_dir.name, skill_dir=skill_dir, status="unmanaged")

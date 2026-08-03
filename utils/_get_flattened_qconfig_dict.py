@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_flattened_qconfig_dict(
     qconfig_mapping: QConfigMapping,

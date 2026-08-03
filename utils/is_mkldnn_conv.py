@@ -1,3 +1,4 @@
+import functools
 
 def is_mkldnn_conv(node: Node) -> bool:
     # When mkldnn_fusion is enabled, conv will be replaced by the lowering pattern function.

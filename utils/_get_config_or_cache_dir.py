@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def _get_config_or_cache_dir(xdg_base_getter):
     configdir = os.environ.get('MPLCONFIGDIR')

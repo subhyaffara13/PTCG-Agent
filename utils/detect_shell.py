@@ -1,3 +1,4 @@
+import os
 
 def detect_shell(pid=None, max_depth=10):
     name = os.name

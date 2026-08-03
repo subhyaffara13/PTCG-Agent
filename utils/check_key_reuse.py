@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def check_key_reuse(fun: Callable[..., Any], /, *args: Any) -> None:
   """Function to statically check key reuse."""

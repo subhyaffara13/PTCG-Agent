@@ -1,3 +1,4 @@
+from typing import Any
 
 def _read_arrays(array_store_path: str | PathLike[str], arr_leaf_ids: list[int],
                  ts_specs: list[Any], shardings: list[Any]):

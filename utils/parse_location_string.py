@@ -1,3 +1,4 @@
+import re
 
 def parse_location_string(location_string: str) -> tuple[str, list[RawFrame]]:
   """Parses a serialized MLIR location.

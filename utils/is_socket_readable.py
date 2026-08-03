@@ -1,3 +1,4 @@
+import sys
 
 def is_socket_readable(sock: socket.socket | None) -> bool:
     """

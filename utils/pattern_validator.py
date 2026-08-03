@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def pattern_validator(v: Any) -> Pattern[str]:
     if isinstance(v, Pattern):

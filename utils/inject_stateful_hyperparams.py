@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Union
 
 def inject_stateful_hyperparams(
     inner_factory: Callable[..., base.GradientTransformation],

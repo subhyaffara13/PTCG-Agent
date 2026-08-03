@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_async_checkpointer(
     config: CheckpointerConfig = CheckpointerConfig(),

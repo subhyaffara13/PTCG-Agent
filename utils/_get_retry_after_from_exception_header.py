@@ -1,3 +1,5 @@
+import time
+from typing import Optional
 
 def _get_retry_after_from_exception_header(
     response_headers: Optional[httpx.Headers] = None,

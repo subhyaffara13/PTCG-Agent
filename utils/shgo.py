@@ -1,3 +1,4 @@
+import logging
 
 def shgo(
     func, bounds, args=(), constraints=None, n=100, iters=1, callback=None,

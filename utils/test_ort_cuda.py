@@ -1,3 +1,4 @@
+import time
 
 def test_ort_cuda(
     pipeline,

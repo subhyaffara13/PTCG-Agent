@@ -1,3 +1,4 @@
+from typing import Any
 
 def transform_ft(
     details: dict[str, dict[str, Any]], group_world_size: int

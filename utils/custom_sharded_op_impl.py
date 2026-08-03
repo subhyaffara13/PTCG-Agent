@@ -1,3 +1,4 @@
+import functools
 
 def custom_sharded_op_impl(func):
     """

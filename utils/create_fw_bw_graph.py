@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_fw_bw_graph(
     score_mod: Callable,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _getattr_no_parents(obj: Any, attribute: str) -> Any:
     """Returns the attribute value without attempting to look up attributes from parent types."""

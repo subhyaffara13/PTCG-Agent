@@ -1,3 +1,10 @@
+import logging
+import os
+import pathlib
+import subprocess
+import sys
+import time
+from typing import Any
 
 def _main():
     """Parse options and run checks on Python source."""

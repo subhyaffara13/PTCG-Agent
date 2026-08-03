@@ -1,3 +1,4 @@
+import random
 
 def _resolve_seed(env):
     """Resolve the episode seed from env.info / configuration, then scrub.

@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def merge_agent_headers(
     *,

@@ -1,3 +1,4 @@
+import os
 
 def _clear_status(status_dir: str, cell: GameCell) -> None:
     if not status_dir:

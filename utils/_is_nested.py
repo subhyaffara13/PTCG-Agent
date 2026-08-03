@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _is_nested(pkg: str, pkg_path: str, parent: str, parent_path: str) -> bool:
     """

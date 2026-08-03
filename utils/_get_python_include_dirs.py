@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_python_include_dirs() -> list[str]:
     include_dir = Path(sysconfig.get_path("include"))

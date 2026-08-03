@@ -1,3 +1,5 @@
+import os
+import sys
 
 def fnmatch_ex(pattern: str, path: str | os.PathLike[str]) -> bool:
     """A port of FNMatcher from py.path.common which works with PurePath() instances.

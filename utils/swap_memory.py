@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def swap_memory():
     """Swap system memory as a (total, used, free, sin, sout) tuple."""

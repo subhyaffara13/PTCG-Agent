@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_onnx_model_size(onnx_path: str, use_external_data_format: bool):
     if not use_external_data_format:

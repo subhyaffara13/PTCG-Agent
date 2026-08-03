@@ -1,3 +1,4 @@
+import re
 
 def test_array_newton_failures():
     """Test that array newton fails as expected"""

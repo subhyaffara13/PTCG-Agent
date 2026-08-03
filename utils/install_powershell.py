@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def install_powershell(*, prog_name: str, complete_var: str, shell: str) -> Path:
     subprocess.run(

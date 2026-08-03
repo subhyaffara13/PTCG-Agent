@@ -1,3 +1,4 @@
+from typing import Callable
 
 def tree_is_leaf(
     tree: PyTree,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_choice_type_function(choices: list) -> Callable[[str], Any]:
     """

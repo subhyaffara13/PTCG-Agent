@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_possible_handlers(
     registry: CheckpointableHandlerRegistry,

@@ -1,3 +1,4 @@
+import sys
 
 def create_call_method(nargs: int) -> list[Instruction]:
     if sys.version_info >= (3, 12):

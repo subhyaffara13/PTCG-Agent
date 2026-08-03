@@ -1,3 +1,5 @@
+import re
+from typing import Callable
 
 def _parse_stack_trace(
     stack_trace: str, filter_fn: Callable[[str, str, str], bool] | None = None

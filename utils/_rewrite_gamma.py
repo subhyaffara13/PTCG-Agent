@@ -1,3 +1,4 @@
+import re
 
 def _rewrite_gamma(f, s, a, b):
     """

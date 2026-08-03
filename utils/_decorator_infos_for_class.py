@@ -1,3 +1,4 @@
+from typing import Any
 
 def _decorator_infos_for_class(
     typ: type[Any],

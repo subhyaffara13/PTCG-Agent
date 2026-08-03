@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_type(obj: Any, field_type: type[Any] | Sequence[type[Any]]):
   if isinstance(field_type, Sequence):

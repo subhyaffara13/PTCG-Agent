@@ -1,3 +1,4 @@
+import pathlib
 
 def transparent_hugepages_enabled() -> bool:
   # See https://docs.kernel.org/admin-guide/mm/transhuge.html for more

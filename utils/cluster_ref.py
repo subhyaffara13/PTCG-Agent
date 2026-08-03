@@ -1,3 +1,4 @@
+from typing import Any
 
 def cluster_ref(
     ref: _Ref,

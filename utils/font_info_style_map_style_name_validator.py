@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoStyleMapStyleNameValidator(value: Any) -> bool:
     """

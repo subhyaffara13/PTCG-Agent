@@ -1,3 +1,4 @@
+from typing import Any
 
 def process_schema(schema: Any, data: Any, use_default: bool = True) -> tuple[str | None, Any]:
     error = None

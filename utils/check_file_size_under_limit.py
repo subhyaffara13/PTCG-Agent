@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_file_size_under_limit(
     request_data: dict,

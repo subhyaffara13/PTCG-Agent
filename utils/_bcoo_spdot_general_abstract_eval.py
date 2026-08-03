@@ -1,3 +1,5 @@
+import math
+
 
 def _bcoo_spdot_general_abstract_eval(lhs_data, lhs_indices, rhs_data, rhs_indices, *, lhs_spinfo: SparseInfo, rhs_spinfo: SparseInfo,
                                       dimension_numbers, preferred_element_type):

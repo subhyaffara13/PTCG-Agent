@@ -1,3 +1,4 @@
+from typing import Callable
 
 def attach_out_of_memory_observer(
     observer: Callable[[int, int, int, int], None],

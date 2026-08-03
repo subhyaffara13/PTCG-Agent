@@ -1,3 +1,4 @@
+import pathlib
 
 def xpdf_distill(tmpfile, eps=False, ptype='letter', bbox=None, rotated=False):
     """

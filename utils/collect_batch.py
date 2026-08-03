@@ -1,3 +1,4 @@
+from typing import List
 
 def collect_batch(
     env: Environment, agents: List[OpponentShapingAgent], eval_mode: bool

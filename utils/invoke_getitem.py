@@ -1,3 +1,4 @@
+from typing import Any
 
 def invoke_getitem(iinfo: IndexingInfo) -> Any:
     if iinfo.advanced_indexing:

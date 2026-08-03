@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def unset(ctx: click.Context, key: Any) -> None:
     """

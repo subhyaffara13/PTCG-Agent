@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def pallas_call_hlo_interpret(
     *args,

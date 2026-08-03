@@ -1,3 +1,4 @@
+from typing import Optional, Set, Tuple
 
 def parse_editable(editable_req: str) -> Tuple[Optional[str], str, Set[str]]:
     """Parses an editable requirement into:

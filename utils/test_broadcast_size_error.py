@@ -1,3 +1,4 @@
+import random
 
 def test_broadcast_size_error():
     mu = np.ones(3)

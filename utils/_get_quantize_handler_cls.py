@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_quantize_handler_cls(
     observation_type: ObservationType,

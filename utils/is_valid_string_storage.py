@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_valid_string_storage(value: Any) -> None:
     legal_values = ["auto", "python", "pyarrow"]

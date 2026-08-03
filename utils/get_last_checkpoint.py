@@ -1,3 +1,4 @@
+import os
 
 def get_last_checkpoint(folder):
     content = os.listdir(folder)

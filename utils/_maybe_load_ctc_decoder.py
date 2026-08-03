@@ -1,3 +1,4 @@
+import os
 
 def _maybe_load_ctc_decoder(model_name, hub_kwargs, kwargs, pretrained_model_name_or_path):
     """Attach a pyctcdecode decoder when the loaded feature extractor declares an LM-backed processor."""

@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def _convert_space(space: gym.Space) -> gymnasium.Space:
     """Converts a gym space to a gymnasium space.

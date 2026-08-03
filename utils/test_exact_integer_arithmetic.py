@@ -1,3 +1,4 @@
+import random
 
 def test_exact_integer_arithmetic():
     # XXX: re-fix this so that all operations are tested with all rounding modes

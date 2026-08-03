@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def mirror_from(
     origin_name: str, methods: Iterable[str]

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def equality_errors(
     tree1: Any, tree2: Any, is_leaf: Callable[[Any], bool] | None = None,

@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _wrap_tma_args(args: list[Any], kernel_fn: CachingAutotuner) -> list[Any]:
     """Wrap tensor args with TMA descriptors where the signature requires them."""

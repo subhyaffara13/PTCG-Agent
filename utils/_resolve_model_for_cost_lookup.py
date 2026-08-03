@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _resolve_model_for_cost_lookup(model: str) -> Tuple[str, Optional[str]]:
     """

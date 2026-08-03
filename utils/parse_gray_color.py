@@ -1,3 +1,4 @@
+import sys
 
 def parse_gray_color(cup: bytes) -> str:
     """Reproduce a gray color in ANSI escape sequence"""

@@ -1,3 +1,4 @@
+import copy
 
 def reshape(array, newshape):
     """

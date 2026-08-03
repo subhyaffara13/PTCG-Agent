@@ -1,3 +1,4 @@
+from typing import Callable
 
 def parallel_loop(
     lower: jax.typing.ArrayLike,

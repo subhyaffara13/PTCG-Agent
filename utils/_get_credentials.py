@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_credentials() -> Optional[str]:
     """Get GigaChat credentials from environment."""

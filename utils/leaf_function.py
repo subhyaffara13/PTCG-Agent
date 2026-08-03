@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def leaf_function(fn: Callable[_P, _R]) -> Callable[_P, _R]: ...
 

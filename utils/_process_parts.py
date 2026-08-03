@@ -1,3 +1,4 @@
+import os
 
 def _process_parts(*parts: PathLike) -> tuple[PathLike, ...]:
   """Supports the `xx://` prefix."""

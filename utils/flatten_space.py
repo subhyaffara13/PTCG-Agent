@@ -1,3 +1,4 @@
+from typing import Any, Dict, Tuple, Union
 
 def flatten_space(space: Space[Any]) -> Box | Dict | Sequence | Tuple | Graph:
     """Flatten a space into a space that is as flat as possible.

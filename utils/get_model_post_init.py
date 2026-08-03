@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_model_post_init(namespace: dict[str, Any], bases: tuple[type[Any], ...]) -> Callable[..., Any] | None:
     """Get the `model_post_init` method from the namespace or the class bases, or `None` if not defined."""

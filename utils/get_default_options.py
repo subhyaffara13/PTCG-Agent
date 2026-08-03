@@ -1,3 +1,4 @@
+import os
 
 def get_default_options() -> list[str]:
     """Read config file and return list of options."""

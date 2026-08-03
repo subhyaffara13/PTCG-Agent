@@ -1,3 +1,4 @@
+from typing import Any
 
 def _toqclass_helper(im: Image.Image | str | QByteArray) -> dict[str, Any]:
     data = None

@@ -1,3 +1,4 @@
+import time
 
 def wait_until_owners_and_forks_on_rank(
     num_owners: int, num_forks: int, rank: int, timeout: int = 20

@@ -1,3 +1,5 @@
+import sys
+from typing import Union
 
 def test_trig_system_fail():
     # fails because solveset trig solver is not much smart.

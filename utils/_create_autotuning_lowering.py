@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _create_autotuning_lowering(
     processed_configs: list[CustomOpConfig],

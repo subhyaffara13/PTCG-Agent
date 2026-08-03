@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def estimate_cost(fun, *args, **kwargs) -> pallas_core.CostEstimate:
   """Computes a cost estimate for the given function.

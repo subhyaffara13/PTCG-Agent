@@ -1,3 +1,5 @@
+import math
+
 
 def python_bitcount(n):
     """Calculate bit size of the nonnegative integer n."""

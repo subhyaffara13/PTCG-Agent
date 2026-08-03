@@ -1,3 +1,4 @@
+import time
 
 def _store_based_barrier(
     rank,

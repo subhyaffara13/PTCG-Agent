@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_no_input_mutation(
     flat_args: tuple[Any, ...],

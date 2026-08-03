@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_onnx_op(op: Any) -> bool:
     """Whether the op overload is an ONNX custom op implemented with PyTorch."""

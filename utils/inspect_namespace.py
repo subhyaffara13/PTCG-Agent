@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def inspect_namespace(  # noqa C901
     namespace: dict[str, Any],

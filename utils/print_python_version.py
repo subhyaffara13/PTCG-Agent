@@ -1,3 +1,4 @@
+import sys
 
 def print_python_version() -> None:
   # Having this in the test output logs by default helps debugging when all

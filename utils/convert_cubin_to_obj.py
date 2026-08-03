@@ -1,3 +1,5 @@
+import re
+import subprocess
 
 def convert_cubin_to_obj(
     cubin_file: str,

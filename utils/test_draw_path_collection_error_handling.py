@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_draw_path_collection_error_handling():
     fig, ax = plt.subplots()

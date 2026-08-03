@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_clean_triton(
     input_path: Path,

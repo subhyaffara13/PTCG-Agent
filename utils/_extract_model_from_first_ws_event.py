@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _extract_model_from_first_ws_event(first_event: Any) -> Optional[str]:
     """Extract model from a response.create WS event, handling flat and nested formats.

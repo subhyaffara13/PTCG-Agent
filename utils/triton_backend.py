@@ -1,3 +1,4 @@
+from typing import Any
 
 def triton_backend() -> Any:
     from triton.compiler.compiler import make_backend

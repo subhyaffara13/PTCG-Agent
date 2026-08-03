@@ -1,3 +1,4 @@
+from typing import Callable
 
 def are_typed_dicts_overlapping(
     left: TypedDictType, right: TypedDictType, is_overlapping: Callable[[Type, Type], bool]

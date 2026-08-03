@@ -1,3 +1,4 @@
+import os
 
 def _atomic_create_marker(name: str, token: str, *, dir_fd: int | None = None) -> None:
     # O_NOFOLLOW blocks the symlink-overwrite attack where an attacker pre-creates the marker path as a

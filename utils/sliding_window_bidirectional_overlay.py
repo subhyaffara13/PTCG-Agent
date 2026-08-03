@@ -1,3 +1,4 @@
+from typing import Callable
 
 def sliding_window_bidirectional_overlay(sliding_window: int) -> Callable:
     """

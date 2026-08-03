@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _should_skip_budget_checks(
     request_data: dict,

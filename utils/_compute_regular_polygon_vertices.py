@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_regular_polygon_vertices(
     bounding_circle: Sequence[Sequence[float] | float], n_sides: int, rotation: float

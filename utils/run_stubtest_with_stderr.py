@@ -1,3 +1,4 @@
+import os
 
 def run_stubtest_with_stderr(
     stub: str,

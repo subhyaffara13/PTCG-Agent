@@ -1,3 +1,4 @@
+import itertools
 
 def _deserialize_exported(exp: ser_flatbuf.Exported) -> _export.Exported:
   scope = shape_poly.SymbolicScope(())  # TODO(necula): serialize the constraints

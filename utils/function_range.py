@@ -1,3 +1,4 @@
+from typing import Union
 
 def function_range(f, symbol, domain):
     """

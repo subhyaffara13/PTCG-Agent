@@ -1,3 +1,4 @@
+import os
 
 def get_redis_url_from_environment():
     if "REDIS_URL" in os.environ:

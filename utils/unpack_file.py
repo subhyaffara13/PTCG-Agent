@@ -1,3 +1,4 @@
+import os
 
 def unpack_file(
     filename: str,

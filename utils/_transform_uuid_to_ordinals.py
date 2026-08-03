@@ -1,3 +1,4 @@
+import uuid
 
 def _transform_uuid_to_ordinals(candidates: list[str], uuids: list[str]) -> list[int]:
     r"""Given the set of partial uuids and list of known uuids builds a set of ordinals excluding ambiguous partials IDs."""

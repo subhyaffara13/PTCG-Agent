@@ -1,3 +1,4 @@
+import json
 
 def _summarize_tool_calls_for_output(tool_calls) -> str:
     """Render a tool_calls list as a compact JSON string for OUTPUT_VALUE.

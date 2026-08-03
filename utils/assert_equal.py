@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_equal(actual, expected_data, expected_dtype):
     np.testing.assert_equal(actual, np.array(expected_data, dtype=expected_dtype))

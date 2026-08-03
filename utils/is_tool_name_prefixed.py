@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_tool_name_prefixed(
     tool_name: str,

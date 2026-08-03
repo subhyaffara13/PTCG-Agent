@@ -1,3 +1,4 @@
+import os
 
 def test_large_archive(tmpdir):
     # Regression test for product of saving arrays with dimensions of array

@@ -1,3 +1,4 @@
+import os
 
 def _which_dirs(cmd):
     result = set()

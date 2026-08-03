@@ -1,3 +1,4 @@
+from typing import Any
 
 def replace_params_with_constants(
     gm: torch.fx.GraphModule,

@@ -1,3 +1,4 @@
+import re
 
 def test_to_html_with_col_space_units(unit):
     # GH 25941

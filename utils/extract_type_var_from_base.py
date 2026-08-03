@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_type_var_from_base(
     typ: type,

@@ -1,3 +1,4 @@
+import time
 
 def process_stale_scc(graph: Graph, ascc: SCC, manager: BuildManager) -> None:
     """Process the modules in one SCC from source code."""

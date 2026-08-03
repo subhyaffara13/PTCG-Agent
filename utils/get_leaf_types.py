@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_leaf_types(hint: TypeForm) -> list[type[Any]]:
   """Extract the inner list of the types (`Optional[A] -> [A, None]`)."""

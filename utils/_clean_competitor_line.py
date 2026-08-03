@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _clean_competitor_line(line: str) -> Optional[str]:
     """Strip numbering, bullets, and whitespace from a competitor name line."""

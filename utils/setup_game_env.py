@@ -1,4 +1,9 @@
 
+import os
+import sys
+from pathlib import Path
+from utils.silence_kaggle_warnings import silence_kaggle_warnings
+
 def setup_game_env(seed=None):
     os.environ.pop("FAST_SIM_MODE", None)  # Ensure C++ ptcg_core acceleration is fully enabled
     os.environ["SKIP_GAME_LOGS"] = "1"
@@ -9,7 +14,7 @@ def setup_game_env(seed=None):
         
         # Suppress prints and stderr messages from kaggle_environments cleanly
         with silence_kaggle_warnings():
-            from kaggle_environments import make
+            import kaggle_environments
             # Inject strict Kaggle execution limits to simulate leaderboard environment
             config = {
                 "actTimeout": 2.0,
@@ -18,7 +23,7 @@ def setup_game_env(seed=None):
             }
             if seed is not None:
                 config["seed"] = seed
-            env = make("cabt", configuration=config)
+            env = kaggle_environments.make("cabt", configuration=config)
     finally:
         sys.path = saved_path
     return env

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_tools_id(node: Any) -> int | None:
     """Return the toolsId for a graph node, or None if unavailable."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_sequence(
     d: Mapping[str, Any], expected_item_type: type[_T], key: str

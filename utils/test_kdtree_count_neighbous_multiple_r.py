@@ -1,3 +1,4 @@
+import itertools
 
 def test_kdtree_count_neighbous_multiple_r(kdtree_type):
     n = 2000

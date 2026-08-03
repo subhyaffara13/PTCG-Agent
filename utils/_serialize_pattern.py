@@ -1,3 +1,4 @@
+from typing import Any
 
 def _serialize_pattern(
     unique_name: str,

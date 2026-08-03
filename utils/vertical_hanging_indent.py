@@ -1,3 +1,4 @@
+from typing import Any
 
 def vertical_hanging_indent(**interface: Any) -> str:
     _line_with_comments = isort.comments.add_to_line(

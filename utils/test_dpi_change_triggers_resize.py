@@ -1,3 +1,4 @@
+import sys
 
 def test_dpi_change_triggers_resize():
     """

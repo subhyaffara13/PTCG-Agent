@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_litellm_gateway_api_key(
     expected_base_url: Optional[str] = None,

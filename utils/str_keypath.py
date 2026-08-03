@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def str_keypath(keypath: Tuple[Any, ...]) -> Tuple[str, ...]:
   """Returns the parameter name for a keypath."""

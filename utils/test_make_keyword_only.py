@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_make_keyword_only() -> None:
     @_api.make_keyword_only("3.0", "arg")

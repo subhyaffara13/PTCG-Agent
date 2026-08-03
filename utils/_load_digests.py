@@ -1,3 +1,5 @@
+import json
+import logging
 
 def _load_digests(path: epath.PathLike) -> dict[str, str] | None:
   """Loads a per-host digests JSON file, or None if absent/unreadable."""

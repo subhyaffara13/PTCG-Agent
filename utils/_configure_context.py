@@ -1,3 +1,4 @@
+import os
 
 def _configure_context(ctx: ssl.SSLContext) -> typing.Iterator[None]:
     check_hostname = ctx.check_hostname

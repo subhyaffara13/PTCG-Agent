@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_custom_module_class_keys(
     custom_module_mapping: dict[QuantType, dict[type, type]],

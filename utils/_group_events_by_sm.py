@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _group_events_by_sm(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """

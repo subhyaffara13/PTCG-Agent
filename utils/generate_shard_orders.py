@@ -1,3 +1,4 @@
+import itertools
 
 def generate_shard_orders(mesh, tensor_rank):
     # Generate all possible sharding placement of tensor with rank

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dict_map(
     fn: Callable[[T], Any], dic: dict[Any, dict | list | tuple | T], leaf_type: type[T]

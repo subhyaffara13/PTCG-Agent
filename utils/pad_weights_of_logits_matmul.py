@@ -1,3 +1,5 @@
+import math
+
 
 def pad_weights_of_logits_matmul(onnx_path: str, use_external_data_format: bool = True) -> bool:
     """Pad the logits MatMul weight in the provided decoder model, which will be overwritten.

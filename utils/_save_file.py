@@ -1,3 +1,4 @@
+import sys
 
 def _save_file(pickler, obj, open_):
     if obj.closed:

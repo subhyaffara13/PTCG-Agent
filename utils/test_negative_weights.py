@@ -1,3 +1,4 @@
+import random
 
 def test_negative_weights(method):
     SP = shortest_path(directed_negative_weighted_G, method, directed=True)

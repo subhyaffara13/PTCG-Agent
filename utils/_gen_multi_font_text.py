@@ -1,3 +1,4 @@
+import itertools
 
 def _gen_multi_font_text():
     """

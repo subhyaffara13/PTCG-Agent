@@ -1,3 +1,4 @@
+from typing import Any
 
 def _iter_enabled_fusions(fusion_config: Mapping[str, bool | Mapping[str, Any]]) -> list[str]:
     """Validate `fusion_config` and return enabled fusion names in user-specified order."""

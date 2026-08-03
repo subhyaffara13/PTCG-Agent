@@ -1,3 +1,4 @@
+import json
 
 def treespec_dumps(treespec: TreeSpec, protocol: int | None = None) -> str:
     """Serialize a treespec to a JSON string."""

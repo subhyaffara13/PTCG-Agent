@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_inspect_signature(runtime: Any) -> inspect.Signature | None:
     if (

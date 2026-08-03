@@ -1,3 +1,4 @@
+import functools
 
 def physicalize_closed_jaxpr(jaxpr: core.ClosedJaxpr) -> core.ClosedJaxpr:
   """Replaces all extended dtypes with physical types in a jaxpr."""

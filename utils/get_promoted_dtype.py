@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_promoted_dtype(
     *args: Sequence[tuple[torch.dtype, bool]],

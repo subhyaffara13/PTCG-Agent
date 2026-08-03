@@ -1,3 +1,4 @@
+from typing import List
 
 def any_assistant_message_has_thinking_blocks(
     messages: List[AllMessageValues],

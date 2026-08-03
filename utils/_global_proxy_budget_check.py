@@ -1,3 +1,6 @@
+from typing import Optional
+import math
+
 
 def _global_proxy_budget_check(
     global_proxy_spend: Optional[float], skip_budget_checks: bool, route: str

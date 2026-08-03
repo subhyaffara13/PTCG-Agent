@@ -1,3 +1,6 @@
+import copy
+import math
+
 
 def populate_board(state, env):
     obs = state[0].observation

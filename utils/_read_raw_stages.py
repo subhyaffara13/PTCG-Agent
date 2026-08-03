@@ -1,3 +1,4 @@
+import logging
 
 def _read_raw_stages(raw_path):
     import csv

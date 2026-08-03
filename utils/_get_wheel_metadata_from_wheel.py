@@ -1,3 +1,4 @@
+import os
 
 def _get_wheel_metadata_from_wheel(whl_basename, metadata_directory, config_settings):
     """Extract the metadata from a wheel.

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def convert_peft_config_for_transformers(peft_config, model: torch.nn.Module, conversions: list[Any] | None):
     """

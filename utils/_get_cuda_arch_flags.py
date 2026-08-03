@@ -1,3 +1,5 @@
+import os
+import re
 
 def _get_cuda_arch_flags(cflags: list[str] | None = None) -> list[str]:
     """

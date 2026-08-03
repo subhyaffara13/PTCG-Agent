@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_semantic_analyzer_patches(patches: list[tuple[int, Callable[[], None]]]) -> None:
     """Call patch callbacks in the right order.

@@ -1,3 +1,4 @@
+import re
 
 def test_torch_complexes():
     assert torch_code(re(x)) == "torch.real(x)"

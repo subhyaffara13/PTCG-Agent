@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def commonpath(path1: Path, path2: Path) -> Path | None:
     """Return the common part shared with the other path, or None if there is

@@ -1,3 +1,4 @@
+import sys
 
 def _find_spec_with_path(
     search_path: Sequence[str],

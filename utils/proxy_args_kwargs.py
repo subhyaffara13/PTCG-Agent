@@ -1,3 +1,4 @@
+from typing import Any
 
 def proxy_args_kwargs(args: Any, kwargs: Any) -> tuple[tuple[Any, ...], dict[str, Any]]:
     try:

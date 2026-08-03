@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_op_node_and_weight_eq_obs(
     input_eq_obs_node: Node, model: GraphModule, modules: dict[str, nn.Module]

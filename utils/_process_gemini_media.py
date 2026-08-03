@@ -1,3 +1,5 @@
+import os
+from typing import Any, Dict, Optional
 
 def _process_gemini_media(
     image_url: str,

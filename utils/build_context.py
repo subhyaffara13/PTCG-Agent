@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_context(observation: Mapping[str, Any]) -> PromptContext:
     """Parse the observation into a :class:`PromptContext`.

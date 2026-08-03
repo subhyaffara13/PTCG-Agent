@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_code_objects_with_reflection(
     node: Any,

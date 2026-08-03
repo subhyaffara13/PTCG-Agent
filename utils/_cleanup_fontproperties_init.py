@@ -1,3 +1,4 @@
+import functools
 
 def _cleanup_fontproperties_init(init_method):
     """

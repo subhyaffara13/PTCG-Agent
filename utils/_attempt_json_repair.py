@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _attempt_json_repair(s: str) -> Optional[Any]:
     """

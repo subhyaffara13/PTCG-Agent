@@ -1,3 +1,4 @@
+from typing import Any
 
 def pallas_permute(x, perm):
     """Permute array x according to perm, working around Mosaic TPU bugs.

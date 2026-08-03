@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def _reduce_to_lowest_terms(expr: sympy.Expr) -> sympy.Expr:
     """

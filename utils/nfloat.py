@@ -1,3 +1,4 @@
+from typing import Dict
 
 def nfloat(expr, n=15, exponent=False, dkeys=False):
     """Make all Rationals in expr Floats except those in exponents

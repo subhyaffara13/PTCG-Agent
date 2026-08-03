@@ -1,3 +1,4 @@
+from typing import Any
 
 def redux(x: ir.Value, mask: ir.Value, kind: ReductionKind):
   i32 = ir.IntegerType.get_signless(32)

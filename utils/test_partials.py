@@ -1,3 +1,4 @@
+import copy
 
 def test_partials():
     assert copy(SubMachine(), byref=True)

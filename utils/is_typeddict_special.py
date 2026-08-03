@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_typeddict_special(type_: Any) -> bool:
     """

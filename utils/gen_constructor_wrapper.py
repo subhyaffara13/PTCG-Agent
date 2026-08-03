@@ -1,3 +1,4 @@
+import functools
 
 def gen_constructor_wrapper(target):
     @functools.wraps(target)

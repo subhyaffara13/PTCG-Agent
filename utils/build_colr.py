@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def buildCOLR(
     colorGlyphs: _ColorGlyphsDict,

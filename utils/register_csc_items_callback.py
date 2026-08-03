@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def register_csc_items_callback(
     callback: Callable,

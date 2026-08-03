@@ -1,3 +1,9 @@
+import json
+import logging
+from pathlib import Path
+
+logger = logging.getLogger(__name__)
+
 
 def load_baseline_score(history_file: Path) -> float:
     if history_file.exists():

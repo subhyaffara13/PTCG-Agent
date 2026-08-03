@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_numpy(a: Any) -> torch.Tensor:
     # If not numpy array, piggy back on e.g. tensor guards to check type

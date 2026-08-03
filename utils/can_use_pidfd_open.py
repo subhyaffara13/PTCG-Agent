@@ -1,3 +1,4 @@
+import os
 
 def can_use_pidfd_open():
     # Availability: Linux >= 5.3, Python >= 3.9

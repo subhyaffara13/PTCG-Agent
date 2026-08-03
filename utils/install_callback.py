@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def install_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any:
     if not value or ctx.resilient_parsing:

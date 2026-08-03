@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_progress_tqdm_class(callback: Callable, model_id: str) -> type:
     """Create a tqdm subclass that routes progress to a callback.

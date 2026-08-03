@@ -1,3 +1,4 @@
+import itertools
 
 def leiden_communities(G, weight="weight", resolution=1, max_level=None, seed=None):
     r"""Find a best partition of `G` using Leiden Community Detection (backend required)

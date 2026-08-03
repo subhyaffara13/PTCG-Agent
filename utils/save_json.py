@@ -1,3 +1,4 @@
+import json
 
 def save_json(data, path: str) -> None:
     with open(path, "w") as f:

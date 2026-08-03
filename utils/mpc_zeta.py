@@ -1,3 +1,4 @@
+import re
 
 def mpc_zeta(s, prec, rnd=round_fast, alt=0, force=False):
     re, im = s

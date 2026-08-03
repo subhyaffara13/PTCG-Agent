@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def mha_forward_kernel(
     q_ref,

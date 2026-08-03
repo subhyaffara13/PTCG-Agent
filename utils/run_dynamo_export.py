@@ -1,3 +1,4 @@
+import os
 
 def run_dynamo_export(
     args: argparse.Namespace, l_config: AutoConfig, llama: AutoModelForCausalLM, rank: int = 0, world_size: int = 1

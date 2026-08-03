@@ -1,3 +1,4 @@
+import functools
 
 def _convert2ma(funcname: str, np_ret: str, np_ma_ret: str,
                 params: dict[str, str] | None = None):

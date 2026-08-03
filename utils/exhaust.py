@@ -1,3 +1,4 @@
+from typing import Callable
 
 def exhaust(rule: Callable[[_T], _T]) -> Callable[[_T], _T]:
     """ Apply a rule repeatedly until it has no effect """

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _lazy_apply_wrapper(  # numpydoc ignore=PR01,RT01
     func: Callable[..., Array | ArrayLike | Sequence[Array | ArrayLike]],

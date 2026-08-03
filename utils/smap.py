@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def smap(f: F, /, *,
          in_axes: int | None | InferFromArgs | tuple[Any, ...] = ...,

@@ -1,3 +1,4 @@
+import os
 
 def test_moduledict_where_not_main():
     try:

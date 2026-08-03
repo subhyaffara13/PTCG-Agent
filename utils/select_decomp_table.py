@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def select_decomp_table() -> dict[Any, Callable[..., Any]]:
     """decomps can change based on config"""

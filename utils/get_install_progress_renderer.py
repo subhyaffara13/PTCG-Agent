@@ -1,3 +1,4 @@
+import functools
 
 def get_install_progress_renderer(
     *, bar_type: BarType, total: int

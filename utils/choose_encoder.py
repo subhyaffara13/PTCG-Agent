@@ -1,3 +1,4 @@
+from typing import Callable, Tuple
 
 def choose_encoder(accept_header: str) -> Tuple[Callable[[Collector], bytes], str]:
     # Python client library accepts a narrower range of content-types than

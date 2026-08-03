@@ -1,3 +1,5 @@
+import pathlib
+import sys
 
 def is_namespace(specobj: spec.ModuleSpec) -> bool:
     return specobj.type == spec.ModuleType.PY_NAMESPACE

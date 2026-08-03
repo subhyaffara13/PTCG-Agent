@@ -1,3 +1,4 @@
+import sys
 
 def _is_little_endian(tensor: np.ndarray) -> bool:
     byteorder = tensor.dtype.byteorder

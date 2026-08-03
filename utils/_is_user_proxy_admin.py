@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_user_proxy_admin(user_obj: Optional[LiteLLM_UserTable]):
     if user_obj is None:

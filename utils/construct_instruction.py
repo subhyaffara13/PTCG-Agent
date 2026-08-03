@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_instruction(instruction_list_from_yaml: list[Any]) -> str:
     instruction_list_part = [

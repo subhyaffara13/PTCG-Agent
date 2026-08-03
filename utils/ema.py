@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def ema(
     decay: jax.typing.ArrayLike,  # float

@@ -1,3 +1,4 @@
+from typing import Any
 
 def restore_flag_values(
     saved_flag_values: Mapping[str, dict[str, Any]],

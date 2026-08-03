@@ -1,3 +1,4 @@
+from typing import Any
 
 def randn_like(self: torch.Tensor, **kwargs: Any) -> torch.Tensor:
     return _rand_like(torch.randn, self, **kwargs)

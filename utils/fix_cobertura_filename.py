@@ -1,3 +1,4 @@
+import re
 
 def fix_cobertura_filename(line: str) -> str:
     r"""Changes filename paths to Linux paths in Cobertura output files.

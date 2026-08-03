@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def resolve_pkg_root_and_module_name(
     path: Path, *, consider_namespace_packages: bool = False

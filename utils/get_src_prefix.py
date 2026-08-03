@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_src_prefix() -> str:
     if running_under_virtualenv():

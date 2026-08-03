@@ -1,3 +1,4 @@
+import sys
 
 def ask_whether_to_apply_changes_to_file(file_path: str) -> bool:
     answer = None

@@ -1,3 +1,4 @@
+import copy
 
 def maybe_convert_dtype(data, copy: bool, tz: tzinfo | None = None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_partition_spec(tree: Any) -> Any:
   """Extracts a PartitionSpec tree from a PyTree containing ``Partitioned`` values."""

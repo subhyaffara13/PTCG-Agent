@@ -1,3 +1,4 @@
+from typing import Set, Union
 
 def test_SymmetricDifference():
     A = FiniteSet(0, 1, 2, 3, 4, 5)

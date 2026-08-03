@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _get_cost_breakdown_from_logging_obj(
     litellm_logging_obj: Optional[LiteLLMLoggingObj],

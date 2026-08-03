@@ -1,3 +1,4 @@
+from typing import Callable
 
 def cos_table() -> dict[int, Callable[[], Expr]]:
     r"""Lazily evaluated table for $\cos \frac{\pi}{n}$ in square roots for

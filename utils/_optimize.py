@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def _optimize(
     rebuild_ctx: Callable[[], OptimizeContext | _NullDecorator],

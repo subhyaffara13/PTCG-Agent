@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_union_boundary_of_joining_sets():
     """ Testing the boundary of unions is a hard problem """

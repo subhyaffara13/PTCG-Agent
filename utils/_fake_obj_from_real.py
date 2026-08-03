@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fake_obj_from_real(fake_mode, x) -> Any:
     fake_class = _find_fake_class_for_script_object(x)

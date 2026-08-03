@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _set_nested_metadata_value(
     metadata: Dict[str, Any], key_path: str, value: Any

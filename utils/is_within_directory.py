@@ -1,3 +1,4 @@
+import os
 
 def is_within_directory(directory: str, target: str) -> bool:
     """

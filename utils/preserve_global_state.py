@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def preserve_global_state(fn: Callable[_P, _T]) -> Callable[_P, _T]:
     """

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def read_download_metadata(local_dir: Path, filename: str) -> LocalDownloadFileMetadata | None:
     """Read metadata about a file in the local directory related to a download process.

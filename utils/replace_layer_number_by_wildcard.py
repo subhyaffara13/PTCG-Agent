@@ -1,3 +1,4 @@
+import re
 
 def replace_layer_number_by_wildcard(name: str) -> str:
     """

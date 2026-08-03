@@ -1,3 +1,4 @@
+import os
 
 def _build_one_inside_env(
     req: InstallRequirement,

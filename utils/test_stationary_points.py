@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_stationary_points():
     assert stationary_points(sin(x), x, Interval(-pi/2, pi/2)

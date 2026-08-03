@@ -1,3 +1,4 @@
+from typing import Any
 
 def _why_alive(ignore_ids: set[int], x: Any) -> str:
   parents = lambda x: [r for r in gc.get_referrers(x) if id(r) not in ignore_ids]

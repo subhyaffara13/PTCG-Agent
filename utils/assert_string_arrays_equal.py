@@ -1,3 +1,4 @@
+import sys
 
 def assert_string_arrays_equal(
     expected: list[str],

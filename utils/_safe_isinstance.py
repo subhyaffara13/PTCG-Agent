@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def _safe_isinstance(
     obj: object, class_or_tuple: Union[type, Tuple[type, ...]]

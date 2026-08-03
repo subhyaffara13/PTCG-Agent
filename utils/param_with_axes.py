@@ -1,3 +1,4 @@
+from typing import Optional
 
 def param_with_axes(
     name: str,

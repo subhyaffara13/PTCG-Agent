@@ -1,3 +1,4 @@
+import sys
 
 def _check_system(system):
     """Function to check whether the dynamical system passed for plots is

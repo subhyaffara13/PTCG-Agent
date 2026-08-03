@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_create_ranges():
     x, y = symbols("x, y")

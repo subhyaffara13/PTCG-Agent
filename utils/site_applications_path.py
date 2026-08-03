@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def site_applications_path(
     multipath: bool = False,  # noqa: FBT001, FBT002

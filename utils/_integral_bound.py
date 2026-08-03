@@ -1,3 +1,5 @@
+import math
+
 
 def _integral_bound(f, a, b, step, args, constants, xp):
     # Estimate the sum with integral approximation

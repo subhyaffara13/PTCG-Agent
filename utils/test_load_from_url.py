@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_load_from_url():
     path = Path(__file__).parent / "baseline_images/pngsuite/basn3p04.png"

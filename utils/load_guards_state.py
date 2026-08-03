@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_guards_state(guards_state: bytes) -> Any:
     try:

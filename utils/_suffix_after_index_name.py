@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def _suffix_after_index_name(request_path: str, index_name: str) -> Optional[str]:
     """Return the path suffix after ``/indexes/{index_name}``, or None if absent."""

@@ -1,3 +1,5 @@
+import math
+
 
 def _check_symint(
     symint: int | torch.SymInt,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_leaves_with_path(
     tree: PyTree,

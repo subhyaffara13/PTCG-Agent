@@ -1,3 +1,4 @@
+import os
 
 def remove(path):
   """Remove the file at path. Might fail if used on a directory path."""

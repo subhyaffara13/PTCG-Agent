@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_api_route_allowed(
     route: str,

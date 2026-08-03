@@ -1,3 +1,5 @@
+import math
+
 
 def frequency_to_midi(frequency):
     """converts a frequency into a MIDI note.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_attribute_for_modules(module: nn.Module, key: str, value: Any):
     """

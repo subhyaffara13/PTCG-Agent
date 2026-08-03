@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def _wrap_editor_return(raw: Any, *, fallback_system: Any) -> PolyfillResult:
     """Coerce an editor's native return shape into a ``PolyfillResult``.

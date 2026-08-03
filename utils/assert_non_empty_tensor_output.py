@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_non_empty_tensor_output(output: list[Any], api: str) -> None:
     if (len(output) == 1 and output[0] is None) or len(output) < 1:

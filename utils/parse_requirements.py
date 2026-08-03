@@ -1,3 +1,5 @@
+import os
+from typing import Any, Dict, Optional, Union
 
 def parse_requirements(
     filename: str,

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def get_skipped_module_name_and_classes(
     prepare_custom_config: PrepareCustomConfig, is_standalone_module: bool

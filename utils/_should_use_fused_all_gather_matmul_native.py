@@ -1,3 +1,6 @@
+import os
+import math
+
 
 def _should_use_fused_all_gather_matmul_native(
     A_shard: torch.Tensor,

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_no_timezone_data():
     # https://github.com/pandas-dev/pandas/pull/63335

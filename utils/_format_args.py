@@ -1,3 +1,5 @@
+import itertools
+from typing import Tuple
 
 def _format_args(
     args, defaults=None, annotations=None, skippable_names: set[str] | None = None

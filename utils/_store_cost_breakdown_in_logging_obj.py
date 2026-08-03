@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _store_cost_breakdown_in_logging_obj(
     litellm_logging_obj: Optional[LitellmLoggingObject],

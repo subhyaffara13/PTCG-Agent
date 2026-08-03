@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_external_object_by_index(index: int, value: Any) -> None:
     """Update an entry in the external object registry at runtime."""

@@ -1,3 +1,4 @@
+import time
 
 def space_to_depth(frames: torch.Tensor, temporal_block_size: int = 1, spatial_block_size: int = 1) -> torch.Tensor:
     """

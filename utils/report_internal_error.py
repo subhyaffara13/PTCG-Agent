@@ -1,3 +1,4 @@
+import sys
 
 def report_internal_error(
     err: Exception,

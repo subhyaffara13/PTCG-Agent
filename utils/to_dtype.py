@@ -1,3 +1,4 @@
+import copy
 
 def to_dtype(
     x: TensorBox, dtype: torch.dtype, copy: bool = False, use_compute_types: bool = True

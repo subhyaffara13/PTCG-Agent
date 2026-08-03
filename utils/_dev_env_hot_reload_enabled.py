@@ -1,3 +1,4 @@
+import os
 
 def _dev_env_hot_reload_enabled() -> bool:
     """The proxy exports this flag when started with ``--reload``. A reloaded

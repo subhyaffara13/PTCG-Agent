@@ -1,3 +1,4 @@
+import functools
 
 def _wrap_setattr(setattr_fn):
   """`__setattr__` wrapper."""

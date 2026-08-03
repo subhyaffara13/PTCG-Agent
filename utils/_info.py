@@ -1,3 +1,4 @@
+import sys
 
 def _info(obj, output=None):
     """Provide information about ndarray obj.

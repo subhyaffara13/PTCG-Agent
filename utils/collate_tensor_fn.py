@@ -1,3 +1,4 @@
+from typing import Callable
 
 def collate_tensor_fn(
     batch,

@@ -1,3 +1,5 @@
+import copy
+from typing import Callable
 
 def get_default_qconfig_propagation_list() -> set[Callable]:
     """Get the default list of module types that we'll attach qconfig

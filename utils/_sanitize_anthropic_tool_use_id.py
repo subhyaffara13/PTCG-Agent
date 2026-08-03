@@ -1,3 +1,4 @@
+import re
 
 def _sanitize_anthropic_tool_use_id(tool_use_id: str) -> str:
     """

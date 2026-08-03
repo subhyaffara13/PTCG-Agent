@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_union_contains():
     x = Symbol('x')

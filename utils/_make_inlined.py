@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _make_inlined(
     tx: InstructionTranslator, f: Callable[..., Any]

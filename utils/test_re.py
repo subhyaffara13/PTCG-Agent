@@ -1,3 +1,4 @@
+import re
 
 def test_re():
     x, y = symbols('x,y')

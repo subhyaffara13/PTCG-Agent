@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_position_ids(model_kwargs: dict[str, Any], new_length: int, is_encoder_decoder: bool) -> dict[str, Any]:
     """Expands or crops the model's position ids for decoding purposes, to the defined length"""

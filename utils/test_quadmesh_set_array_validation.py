@@ -1,3 +1,4 @@
+import re
 
 def test_quadmesh_set_array_validation(pcfunc):
     x = np.arange(11)

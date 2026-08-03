@@ -1,3 +1,4 @@
+import sys
 
 def run_pylint(argv: Sequence[str] | None = None) -> None:
     """Run pylint.

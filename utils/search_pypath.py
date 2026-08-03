@@ -1,3 +1,4 @@
+import os
 
 def search_pypath(
     module_name: str, *, consider_namespace_packages: bool = False

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def flex_attention_backward_fake_tensor_mode(
     query: torch.Tensor,

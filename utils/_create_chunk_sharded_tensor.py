@@ -1,3 +1,6 @@
+import itertools
+import math
+
 
 def _create_chunk_sharded_tensor(
     tensor: torch.Tensor,

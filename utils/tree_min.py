@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_min(tree: Any) -> jax.typing.ArrayLike:
   """Compute the min of all the elements in a pytree.

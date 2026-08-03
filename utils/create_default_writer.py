@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_default_writer(logdir: Optional[str] = None,
                           just_logging: bool = False,

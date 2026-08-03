@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def quadratic_to_curves(
     quads: List[List[Point]],

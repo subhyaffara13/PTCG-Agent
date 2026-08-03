@@ -1,3 +1,8 @@
+import os
+import subprocess
+import sys
+from pathlib import Path
+
 
 def test_freethreading_compatible(hello_world_f90, monkeypatch):
     """

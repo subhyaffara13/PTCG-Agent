@@ -1,3 +1,4 @@
+import random
 
 def get_results_n_player_sequential_game(seq_game, policy):
   state = seq_game.new_initial_state()

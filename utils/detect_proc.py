@@ -1,3 +1,4 @@
+import os
 
 def detect_proc():
     """Detect /proc filesystem style.

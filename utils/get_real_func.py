@@ -1,3 +1,4 @@
+import functools
 
 def get_real_func(obj):
     """Get the real function object of the (possibly) wrapped object by

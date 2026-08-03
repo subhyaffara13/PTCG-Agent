@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prune_linear_activation_linear(
     linear1: nn.Linear,

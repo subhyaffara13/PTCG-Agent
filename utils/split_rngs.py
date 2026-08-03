@@ -1,3 +1,4 @@
+import functools
 
 def split_rngs(
     node: tp.Any,

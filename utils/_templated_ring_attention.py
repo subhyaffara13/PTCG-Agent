@@ -1,3 +1,4 @@
+from typing import Any
 
 def _templated_ring_attention(
     group: dist.ProcessGroup,

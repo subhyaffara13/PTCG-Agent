@@ -1,3 +1,4 @@
+import os
 
 def _get_python_inc_posix_python(plat_specific):
     """

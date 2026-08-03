@@ -1,3 +1,5 @@
+import math
+
 
 def buttord(wp, ws, gpass, gstop, analog=False, fs=None):
     """Butterworth filter order selection.

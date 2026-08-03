@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def unwrap_tensor_subclasses(
     wrapped_args: list[FxValue],

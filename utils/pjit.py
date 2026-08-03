@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def pjit(
     fun: Callable,

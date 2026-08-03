@@ -1,3 +1,5 @@
+import re
+from typing import Any, Optional, Tuple
 
 def normalize(text):
     text = unicodedata.normalize("NFKD", text)

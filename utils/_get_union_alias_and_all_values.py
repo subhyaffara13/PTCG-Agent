@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _get_union_alias_and_all_values(
     union_type: Type[Any], discriminator_key: str

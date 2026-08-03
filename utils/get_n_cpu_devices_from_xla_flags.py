@@ -1,3 +1,5 @@
+import os
+import re
 
 def get_n_cpu_devices_from_xla_flags() -> int:
   """Parses number of CPUs from the XLA environment flags."""

@@ -1,3 +1,4 @@
+import json
 
 def _cached_compile_jinja_template(chat_template):
     if not is_jinja_available():

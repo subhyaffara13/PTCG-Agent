@@ -1,3 +1,4 @@
+from typing import Callable
 
 def barrier(
     group: ProcessGroup | None = GroupMember.WORLD,

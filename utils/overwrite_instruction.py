@@ -1,3 +1,4 @@
+import copy
 
 def overwrite_instruction(
     old_inst: Instruction, new_insts: list[Instruction]

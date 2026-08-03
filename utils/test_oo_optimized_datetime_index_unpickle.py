@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_oo_optimized_datetime_index_unpickle():
     # GH 42866

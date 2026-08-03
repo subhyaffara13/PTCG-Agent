@@ -1,3 +1,4 @@
+import itertools
 
 def test_sharing_modulo_commutativity(eq: str, backend: BackendType) -> None:
     ops = tuple(to_backend[backend](x) for x in build_views(eq))

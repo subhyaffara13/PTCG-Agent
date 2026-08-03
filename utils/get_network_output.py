@@ -1,3 +1,4 @@
+from typing import List
 
 def get_network_output(net_apply: ApplyFn, net_params: Params,
                        net_input: np.ndarray, illegal_actions: List[int],

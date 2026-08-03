@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_over_axes(func, a, axes):
     """

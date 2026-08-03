@@ -1,3 +1,4 @@
+import re
 
 def getblocks(object, lstrip=False, enclosing=False, locate=False):
     """Return a list of source lines and starting line number for an object.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_fsdp_all_gather_copy_in(func: Any) -> bool:
     """

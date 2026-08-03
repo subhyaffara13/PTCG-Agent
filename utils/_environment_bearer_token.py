@@ -1,3 +1,4 @@
+import os
 
 def _environment_bearer_token() -> str:
     token = os.environ.get("AWS_BEARER_TOKEN_BEDROCK")

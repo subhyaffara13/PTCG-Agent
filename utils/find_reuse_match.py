@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_reuse_match(
     tx: "InstructionTranslator",

@@ -1,3 +1,4 @@
+import itertools
 
 def gen_broadcasting_constraints(
     e1: TVar, e2: TVar, symbols: _SymbolDict, counter: int, output_var: TVar

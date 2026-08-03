@@ -1,3 +1,5 @@
+import functools
+import json
 
 def _splash_attention_bwd_dkv(
     q,

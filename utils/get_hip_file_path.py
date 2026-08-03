@@ -1,3 +1,4 @@
+import os
 
 def get_hip_file_path(rel_filepath, is_pytorch_extension=False):
     """

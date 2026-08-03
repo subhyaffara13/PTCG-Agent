@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_dim(node: Any):
     assert isinstance(node, torch.fx.Node)

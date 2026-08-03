@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_cluemaster_board(observation: Mapping[str, Any]) -> str:
     """Board state for Cluemaster (full visibility)."""

@@ -1,3 +1,4 @@
+import os
 
 def _get_login_shell(proc_cmd):
     """Form shell information from SHELL environ if possible."""

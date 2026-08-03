@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def pie(
     x: ArrayLike,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def import_models(
     ctx: click.Context,

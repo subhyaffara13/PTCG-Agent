@@ -1,3 +1,4 @@
+from typing import Any
 
 def save_model_architecture_to_file(model: Any, output_dir: str):
     with open(f"{output_dir}/model_architecture.txt", "w+") as f:

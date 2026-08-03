@@ -1,3 +1,4 @@
+from typing import Callable
 
 def onnx_symbolic(
     name: str,

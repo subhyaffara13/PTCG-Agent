@@ -1,3 +1,4 @@
+from typing import Any
 
 def boxed_nop_preserve_node_meta(
     gm: torch.fx.GraphModule, example_inputs: Sequence[InputType]

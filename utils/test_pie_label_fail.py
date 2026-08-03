@@ -1,3 +1,4 @@
+import re
 
 def test_pie_label_fail():
     sizes = 15, 30, 45, 10

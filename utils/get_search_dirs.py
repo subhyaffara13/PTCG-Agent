@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def get_search_dirs(python_executable: str | None) -> tuple[list[str], list[str]]:
     """Find package directories for given python. Guaranteed to return absolute paths.

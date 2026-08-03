@@ -1,3 +1,4 @@
+import itertools
 
 def combine_hash_arrays(
     arrays: Iterator[np.ndarray], num_items: int

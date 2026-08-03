@@ -1,3 +1,4 @@
+import os
 
 def isEndOfStream(substrate):
     """Check whether we have reached the end of a stream.

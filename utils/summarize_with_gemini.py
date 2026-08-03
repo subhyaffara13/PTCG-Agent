@@ -1,3 +1,6 @@
+import random
+import time
+from typing import Optional
 
 def summarize_with_gemini(transcript: str, model_id: str = "gemini-3-pro-preview", max_retries: int = 10) -> Optional[GameAnalysis]:
     project = get_gcloud_project()

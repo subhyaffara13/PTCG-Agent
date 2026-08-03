@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_jit_graph(
     model: torch.nn.Module | torch.jit.ScriptFunction, args: Sequence[Any]

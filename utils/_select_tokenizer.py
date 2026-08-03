@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _select_tokenizer(
     model: str, custom_tokenizer: Optional[CustomHuggingfaceTokenizer] = None

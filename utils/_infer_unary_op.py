@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_unary_op(obj: Any, op: str) -> ConstFactoryResult:
     """Perform unary operation on `obj`, unless it is `NotImplemented`.

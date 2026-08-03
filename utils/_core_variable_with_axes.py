@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _core_variable_with_axes(
     scope,

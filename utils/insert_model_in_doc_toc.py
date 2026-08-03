@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def insert_model_in_doc_toc(
     repo_path: Path, old_lowercase_name: str, new_lowercase_name: str, new_model_paper_name: str

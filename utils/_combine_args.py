@@ -1,3 +1,4 @@
+from typing import Any
 
 def _combine_args(f, args, kwargs) -> dict[str, Any]:
     # combine args and kwargs following the signature of f, as it happens

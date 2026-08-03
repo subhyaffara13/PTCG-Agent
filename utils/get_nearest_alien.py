@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def get_nearest_alien(
     pos: int, alien_map: chex.Array

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _standalone_context(gm: GraphModule, dynamic_shapes: Any, aot: bool):
     from torch.compiler._cache import CacheArtifactManager

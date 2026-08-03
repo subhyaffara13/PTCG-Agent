@@ -1,3 +1,4 @@
+from typing import Callable
 
 def nd_loop(
     grid: Sequence[int | jax.Array],

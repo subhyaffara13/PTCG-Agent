@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prune_conv2d_activation_conv2d(
     conv2d_1: nn.Conv2d,

@@ -1,3 +1,4 @@
+import time
 
 def do_check(args: argparse.Namespace) -> None:
     """Ask the daemon to check a list of files."""

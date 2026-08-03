@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _index_dim_strategy(
     args_schema: ArgsType,

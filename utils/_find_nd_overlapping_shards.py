@@ -1,3 +1,4 @@
+import sys
 
 def _find_nd_overlapping_shards(
     shards: list[ShardMetadata], sharded_dims: list[int]

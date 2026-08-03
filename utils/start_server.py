@@ -1,3 +1,4 @@
+import sys
 
 def start_server(args: argparse.Namespace, allow_sources: bool = False) -> None:
     """Start the server from command arguments and wait for it."""

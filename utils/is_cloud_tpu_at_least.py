@@ -1,3 +1,4 @@
+import re
 
 def is_cloud_tpu_at_least(year: int, month: int, day: int) -> bool:
   date = datetime.date(year, month, day)

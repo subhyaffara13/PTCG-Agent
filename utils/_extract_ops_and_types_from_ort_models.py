@@ -1,3 +1,4 @@
+import pathlib
 
 def _extract_ops_and_types_from_ort_models(model_files: typing.Iterable[pathlib.Path], enable_type_reduction: bool):
     required_ops = {}

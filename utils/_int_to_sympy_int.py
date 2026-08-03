@@ -1,3 +1,5 @@
+import math
+
 
 def _int_to_sympy_int(val: int | None, default) -> sympy.Expr:
     # Convert concrete int into simple sympy Integers

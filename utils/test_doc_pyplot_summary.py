@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_doc_pyplot_summary():
     """Test that pyplot_summary lists all the plot functions."""

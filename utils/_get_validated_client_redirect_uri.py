@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_validated_client_redirect_uri(
     request: Request, state_data: Dict[str, Any]

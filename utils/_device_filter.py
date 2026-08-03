@@ -1,3 +1,4 @@
+import functools
 
 def _device_filter(predicate, skip_reason=None):
   def skip(test_method):

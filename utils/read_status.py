@@ -1,3 +1,5 @@
+import json
+import os
 
 def read_status(status_file: str) -> dict[str, object]:
     """Read status file.

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def decrypt_global_env_var_values(env_vars: Optional[Iterable[Any]]) -> None:
     """Decrypt ``scope="global"`` env var values in place after reading the DB.

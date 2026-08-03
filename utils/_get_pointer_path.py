@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _get_pointer_path(storage_folder: str, revision: str, relative_filename: str) -> str:
     # Using `os.path.abspath` instead of `Path.resolve()` to avoid resolving symlinks

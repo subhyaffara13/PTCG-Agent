@@ -1,3 +1,4 @@
+import os
 
 def _find_rocm_home() -> str | None:
     """Find the ROCm install path."""

@@ -1,3 +1,4 @@
+import os
 
 def make_dirs(path):
     """ Create directories (equivalent of ``mkdir -p``). """

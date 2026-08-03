@@ -1,3 +1,4 @@
+from typing import Any
 
 def flatten_mapping(xs: Mapping[Any, Any],
                     /,

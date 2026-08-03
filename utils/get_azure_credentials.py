@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_azure_credentials(
     api_base: Optional[str] = None,

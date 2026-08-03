@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def safe_get_annotations(obj: Any) -> dict[str, Any]:
     """Get the annotations for the provided object, accounting for potential deferred forward references.

@@ -1,3 +1,4 @@
+import functools
 
 def _check_wrt_arg_passed(f: F) -> F:
   @functools.wraps(f)

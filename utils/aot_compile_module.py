@@ -1,3 +1,4 @@
+from typing import Callable
 
 def aot_compile_module(
     model: torch.nn.Module,

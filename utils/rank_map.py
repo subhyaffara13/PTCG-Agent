@@ -1,3 +1,4 @@
+from typing import Callable
 
 def rank_map(cb: Callable[[int], Tensor]) -> Tensor:
     """

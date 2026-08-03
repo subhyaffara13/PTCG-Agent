@@ -1,3 +1,4 @@
+import sys
 
 def _reload_python_module(
     key: str, path: str, set_sys_modules: bool = True

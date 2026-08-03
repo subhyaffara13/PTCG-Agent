@@ -1,3 +1,4 @@
+import os
 
 def _derive_module_name(depth: int = 1) -> str | None:
     """

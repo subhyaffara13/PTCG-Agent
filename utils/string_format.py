@@ -1,3 +1,4 @@
+from typing import Callable
 
 def string_format(format_: str) -> Callable[[_F], _F]:
     """Decorator"""

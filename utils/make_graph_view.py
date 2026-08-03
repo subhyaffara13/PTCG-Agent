@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_graph_view(
     graph: fx.Graph,

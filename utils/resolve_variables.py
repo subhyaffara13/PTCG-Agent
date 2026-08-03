@@ -1,3 +1,5 @@
+import os
+from typing import Dict, Optional, Tuple
 
 def resolve_variables(
     values: Iterable[Tuple[str, Optional[str]]],

@@ -1,3 +1,4 @@
+from typing import Any, List, Union
 
 def build_cleared_tool_result_content(
     original_content: Any,

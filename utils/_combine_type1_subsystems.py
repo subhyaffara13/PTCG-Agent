@@ -1,3 +1,4 @@
+import sys
 
 def _combine_type1_subsystems(subsystem, funcs, t):
     indices = [i for i, sys in enumerate(zip(subsystem, funcs)) if _is_type1(sys, t)]

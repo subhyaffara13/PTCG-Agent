@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_latex_union():
     assert latex(Union(Interval(0, 1), Interval(2, 3))) == \

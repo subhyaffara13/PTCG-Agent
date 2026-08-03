@@ -1,3 +1,4 @@
+import os
 
 def _read_pyproject(archive):
     contents = (

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def stripped_lines(
     lines: Iterable[str],

@@ -1,3 +1,4 @@
+import functools
 
 def error_inputs_view_reshape(op, device, **kwargs):
 

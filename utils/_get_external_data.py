@@ -1,3 +1,4 @@
+import json
 
 def _get_external_data(url):
     result = {}

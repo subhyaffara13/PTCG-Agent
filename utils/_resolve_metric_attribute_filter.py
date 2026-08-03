@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _resolve_metric_attribute_filter(
     attributes: Optional[OTELMetricAttributeFilter],

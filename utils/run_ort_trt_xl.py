@@ -1,3 +1,4 @@
+import time
 
 def run_ort_trt_xl(
     work_dir: str,

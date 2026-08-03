@@ -1,3 +1,4 @@
+from typing import Any
 
 def vertical(**interface: Any) -> str:
     if not interface["imports"]:

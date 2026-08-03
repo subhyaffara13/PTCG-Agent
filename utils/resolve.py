@@ -1,3 +1,4 @@
+import sys
 
 def resolve(name: str) -> object:
     # Simplified from zope.dottedname.

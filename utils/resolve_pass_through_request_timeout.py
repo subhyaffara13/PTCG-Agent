@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def resolve_pass_through_request_timeout(
     endpoint_timeout: Optional[float] = None,

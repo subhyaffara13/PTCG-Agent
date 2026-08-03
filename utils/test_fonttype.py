@@ -1,3 +1,4 @@
+import re
 
 def test_fonttype(fonttype):
     mpl.rcParams["ps.fonttype"] = fonttype

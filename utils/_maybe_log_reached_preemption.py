@@ -1,3 +1,4 @@
+import logging
 
 def _maybe_log_reached_preemption(
     step: int, preemption_sync_point_reached: bool

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_kwargs_hashable(kwargs: dict[str, Any]) -> Sequence[tuple[str, Any]]:
   hashable_kwargs: list[tuple[str, Any]] = []

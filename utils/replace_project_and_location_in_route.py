@@ -1,3 +1,4 @@
+import re
 
 def replace_project_and_location_in_route(
     requested_route: str, vertex_project: str, vertex_location: str

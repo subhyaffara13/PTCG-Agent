@@ -1,3 +1,5 @@
+import math
+
 
 def reduce_reduce_expression(
     expr: Reduce, assignments: dict[Variable, Constant]

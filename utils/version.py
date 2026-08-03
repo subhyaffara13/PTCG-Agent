@@ -1,3 +1,4 @@
+from typing import Callable
 
 def version(pretty: bool = False, best: bool = False) -> str:
     """

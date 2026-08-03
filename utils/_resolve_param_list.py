@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _resolve_param_list(
     raw: List[Dict[str, Any]], component_params: Dict[str, Any]

@@ -1,3 +1,4 @@
+import sys
 
 def local_sys_path_set() -> Iterator[None]:
     """Temporary insert current directory into sys.path.

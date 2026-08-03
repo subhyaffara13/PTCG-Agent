@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_usage_for_ocr_call(response_obj: Any, response_obj_dict: dict) -> dict:
     """

@@ -1,3 +1,4 @@
+import sys
 
 def create_print_on_stack(depth: int) -> list[Instruction]:
     return [

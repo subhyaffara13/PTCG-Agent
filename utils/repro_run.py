@@ -1,3 +1,4 @@
+from typing import Any
 
 def repro_run(options: Any, mod: nn.Module, load_args: Any) -> None:
     from torch._inductor.compile_fx import compile_fx_inner

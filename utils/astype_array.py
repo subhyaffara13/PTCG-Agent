@@ -1,3 +1,4 @@
+import copy
 
 def astype_array(values: ArrayLike, dtype: DtypeObj, copy: bool = False) -> ArrayLike:
     """

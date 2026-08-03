@@ -1,3 +1,4 @@
+import os
 
 def print_loaded_libraries(cuda_related_only=True):
     import psutil  # noqa: PLC0415

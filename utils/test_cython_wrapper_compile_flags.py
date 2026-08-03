@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_cython_wrapper_compile_flags():
     from sympy.core.relational import Equality

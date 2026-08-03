@@ -1,3 +1,4 @@
+from typing import Union
 
 def reorder_images(
     processed_images: dict[tuple[int, int], "torch.Tensor"],

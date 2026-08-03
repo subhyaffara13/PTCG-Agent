@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _keep_float(
     f: Callable[[Unpack[_Ts]], _T],

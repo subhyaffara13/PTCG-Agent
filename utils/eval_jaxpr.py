@@ -1,3 +1,4 @@
+from typing import Any
 
 def eval_jaxpr(jaxpr: Jaxpr, consts, *args, propagate_source_info=True) -> list[Any]:
   def read(v: Atom) -> Any:

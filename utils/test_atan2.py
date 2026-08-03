@@ -1,3 +1,4 @@
+import re
 
 def test_atan2():
     assert solve(atan2(x, 2) - pi/3, x) == [2*sqrt(3)]

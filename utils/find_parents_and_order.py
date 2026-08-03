@@ -1,3 +1,4 @@
+import itertools
 
 def find_parents_and_order(glyphsets, locations, *, discrete_axes=set()):
     parents = [None] + list(range(len(glyphsets) - 1))

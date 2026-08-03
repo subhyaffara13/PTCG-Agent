@@ -1,3 +1,4 @@
+import sys
 
 def catch_warnings_for_item(
     config: Config,

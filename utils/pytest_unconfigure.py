@@ -1,3 +1,5 @@
+import os
+import sys
 
 def pytest_unconfigure() -> None:
     global RUNNER_CLASS

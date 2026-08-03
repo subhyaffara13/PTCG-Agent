@@ -1,3 +1,6 @@
+import functools
+import os
+from typing import Any, Callable
 
 def generate_opcheck_tests(
     testcase: Any,

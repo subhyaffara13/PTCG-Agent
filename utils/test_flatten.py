@@ -1,3 +1,4 @@
+import copy
 
 def test_flatten():
     assert flatten((1, (1,))) == [1, 1]

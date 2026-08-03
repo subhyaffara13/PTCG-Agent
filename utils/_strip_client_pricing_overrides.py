@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _strip_client_pricing_overrides(data: Dict[str, Any]) -> None:
     """Drop pricing overrides from the request body and any metadata variant.

@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def maybe_parse_reset_bounds(
     options: dict | None, default_low: float, default_high: float

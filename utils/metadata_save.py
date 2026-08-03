@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def metadata_save(local_path: str | Path, data: dict) -> None:
     """

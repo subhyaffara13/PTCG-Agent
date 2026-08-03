@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_offsets_from_indices(
     block_info: BlockInfo, nd_indexer: NDIndexer

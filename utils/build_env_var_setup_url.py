@@ -1,3 +1,4 @@
+import os
 
 def build_env_var_setup_url(server_id: str) -> str:
     """The frontend URL where a user can fill in their per-user env vars."""

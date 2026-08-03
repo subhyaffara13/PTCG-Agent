@@ -1,3 +1,4 @@
+from typing import Any
 
 def prod_impl(self: ComplexTensor, *args: Any, **kwargs: Any) -> ComplexTensor:
     out_dt, (self,) = promote_tensors(self)

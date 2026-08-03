@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def generate_enum_convertor(enum: type[Enum]) -> Callable[[Any], Any]:
     val_map = {str(val.value): val for val in enum}

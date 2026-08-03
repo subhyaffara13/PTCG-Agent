@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _get_or_create_logger(destination: str = _DEFAULT_DESTINATION) -> logging.Logger:
     logging_handler, log_handler_name = _get_logging_handler(destination)

@@ -1,3 +1,4 @@
+import logging
 
 def _turn_on_debug():
     verbose_logger.setLevel(level=logging.DEBUG)  # set package log to debug

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def extract_text_from_pdf(file_content: bytes) -> Optional[str]:
     """

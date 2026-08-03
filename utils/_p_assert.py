@@ -1,3 +1,4 @@
+from typing import Any
 
 def _p_assert(cond: Any, s: str, raise_assertion_error: bool = True) -> None:
     """Alternate to ``assert`` when in the backward context to print the error message ``s`` since otherwise, it is swallowed."""

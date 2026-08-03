@@ -1,3 +1,5 @@
+import math
+
 
 def _xp_searchsorted(x, y, *, side='left', xp=None):
     # Vectorized xp.searchsorted. Search is performed along last axis. The shape of the

@@ -1,3 +1,5 @@
+import json
+import os
 
 def _validate_not_a_forked_repo(repo_owner, repo_name, ref):
     # Use urlopen to avoid depending on local git.

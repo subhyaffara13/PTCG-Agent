@@ -1,3 +1,4 @@
+import copy
 
 def translate_opinfo(op):
     new_op = copy(op)

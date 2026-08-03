@@ -1,3 +1,4 @@
+import sys
 
 def ios_platforms(
     version: AppleVersion | None = None, multiarch: str | None = None

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def getdata(
     im: Image.Image, offset: tuple[int, int] = (0, 0), **params: Any

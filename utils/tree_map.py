@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_map(fn: Callable[[T], Any], tree: T, leaf_type: type[T]) -> Any: ...
 

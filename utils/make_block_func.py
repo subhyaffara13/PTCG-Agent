@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_block_func(rule: RuleDictType) -> Callable[[StateBlock, int, int, bool], bool]:
     def _func(state: StateBlock, begLine: int, endLine: int, silent: bool) -> bool:

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _detect_poles_symbolic_helper(expr, symb, start, end):
     """Attempts to compute symbolic discontinuities.

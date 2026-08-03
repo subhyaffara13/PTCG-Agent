@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _read_trace(path: str) -> dict[str, Any]:
     """Read trace data from a JSON file (gzipped or not)."""

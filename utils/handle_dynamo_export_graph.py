@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def handle_dynamo_export_graph(
     gm: GraphModule,

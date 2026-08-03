@@ -1,3 +1,4 @@
+from typing import Union
 
 def check_label(label: Union[str, bytes, bytearray]) -> None:
     """Run the full set of IDNA 2008 validity checks on a single label.

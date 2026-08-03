@@ -1,3 +1,4 @@
+import functools
 
 def _searchsorted_scan_impl(
     sorted_arr: Array, query: Array, side: str, dtype: np.dtype, unrolled: bool

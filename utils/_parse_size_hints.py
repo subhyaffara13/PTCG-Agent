@@ -1,3 +1,4 @@
+import re
 
 def _parse_size_hints(kernel_module_code: str, kernel_category: str) -> str | None:
     if kernel_category == "foreach":

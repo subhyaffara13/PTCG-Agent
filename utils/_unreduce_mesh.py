@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _unreduce_mesh(
     mesh_device_ids: np.ndarray, axis_names: Any, axis_types: Any

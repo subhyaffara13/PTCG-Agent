@@ -1,3 +1,4 @@
+import os
 
 def _looks_like_wheel(location: str) -> bool:
     if not location.endswith(WHEEL_EXTENSION):

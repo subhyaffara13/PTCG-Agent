@@ -1,3 +1,4 @@
+from typing import Any
 
 def _deserialize_triton_kernel(kernel_info: tuple[str, str]) -> Any:
     """

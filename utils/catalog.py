@@ -1,3 +1,4 @@
+import pathlib
 
 def catalog(request, tmp_path):
     # the catalog stores the full path of data files, so the catalog needs to be

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def run_scoped(
     f: Callable[..., Any],

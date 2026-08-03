@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def nonstrict_trace(traceable_fn: Callable[_P, _R]) -> Callable[_P, _R]:
     """

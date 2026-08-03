@@ -1,3 +1,5 @@
+import sys
+import time
 
 def _run_in_process(target, *args, **kwargs):
     test_fn = target if len(args) == 0 else args[0]

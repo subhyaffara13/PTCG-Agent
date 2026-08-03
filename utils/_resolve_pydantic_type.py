@@ -1,3 +1,4 @@
+from typing import List, Union
 
 def _resolve_pydantic_type(typ) -> List:
     """Resolve the actual TypedDict class from a potentially wrapped type."""

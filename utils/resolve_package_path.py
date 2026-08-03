@@ -1,3 +1,6 @@
+import itertools
+from pathlib import Path
+
 
 def resolve_package_path(path: Path) -> Path | None:
     """Return the Python package path by looking for the last

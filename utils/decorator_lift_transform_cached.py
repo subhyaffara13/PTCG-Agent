@@ -1,3 +1,4 @@
+import functools
 
 def decorator_lift_transform_cached(transform, class_fn, **trafo_kwargs):
   """Decorator for lifted transform.

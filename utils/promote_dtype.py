@@ -1,3 +1,4 @@
+from typing import Any
 
 def promote_dtype(*args, dtype=None, inexact=True) -> list[Any]:
   """ "Promotes input arguments to a specified or inferred dtype.

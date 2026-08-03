@@ -1,3 +1,4 @@
+from typing import Any
 
 def _no_mutation(self: Any, *args: Any, **kwargs: Any) -> NoReturn:
     raise TypeError(

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def embed_headers(
     fname: str, include_dirs: Sequence[str] | Sequence[Path] | str | None = None

@@ -1,3 +1,4 @@
+import itertools
 
 def average_parameters(
     params: Iterator[torch.nn.Parameter], process_group: ProcessGroup

@@ -1,3 +1,4 @@
+import re
 
 def test_to_offset_invalid(freqstr):
     # see gh-13930

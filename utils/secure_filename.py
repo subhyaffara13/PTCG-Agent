@@ -1,3 +1,4 @@
+import os
 
 def secure_filename(filename: str) -> str:
     r"""Pass it a filename and it will return a secure version of it.  This

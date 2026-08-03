@@ -1,3 +1,4 @@
+import time
 
 def test_string_to_time_parsing_cast():
     # GH 56463

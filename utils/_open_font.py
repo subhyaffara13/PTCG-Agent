@@ -1,3 +1,4 @@
+import os
 
 def _open_font(path, master_finder=lambda s: s):
     # load TTFont masters from given 'path': this can be either a .TTX or an

@@ -1,3 +1,4 @@
+import random
 
 def t(self: list[int]):
     if len(self) > 2:

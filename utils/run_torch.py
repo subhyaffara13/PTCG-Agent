@@ -1,3 +1,4 @@
+import time
 
 def run_torch(config: TestConfig):
     device_type = config.device.type

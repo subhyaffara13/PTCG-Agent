@@ -1,3 +1,5 @@
+import itertools
+import logging
 
 def add_new_policies(
     per_player_new_policies,

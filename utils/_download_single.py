@@ -1,3 +1,4 @@
+import os
 
 def _download_single(api: HfApi, uri: HfUri, local_path: str) -> None:
     """Download a single file (repo or bucket) to ``local_path``.

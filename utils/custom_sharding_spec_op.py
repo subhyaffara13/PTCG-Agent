@@ -1,3 +1,4 @@
+import functools
 
 def custom_sharding_spec_op(sharding_spec_class, func):
     """

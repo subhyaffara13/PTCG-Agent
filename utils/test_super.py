@@ -1,3 +1,4 @@
+import copy
 
 def test_super():
     assert copy(obj1(), byref=True)

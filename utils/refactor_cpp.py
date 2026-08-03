@@ -1,3 +1,4 @@
+import re
 
 def refactor_cpp(filepath):
     with open(filepath, encoding='utf-8') as f:

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_difference():
     assert Interval(1, 3) - Interval(1, 2) == Interval(2, 3, True)

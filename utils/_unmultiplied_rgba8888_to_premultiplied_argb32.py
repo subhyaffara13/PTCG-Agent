@@ -1,3 +1,4 @@
+import sys
 
 def _unmultiplied_rgba8888_to_premultiplied_argb32(rgba8888):
     """

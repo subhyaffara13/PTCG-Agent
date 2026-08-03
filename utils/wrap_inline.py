@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def wrap_inline(fn: Callable[_P, _R]) -> Callable[_P, _R]:
     """

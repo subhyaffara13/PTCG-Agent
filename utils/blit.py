@@ -1,3 +1,5 @@
+import math
+
 
 def blit(photoimage, aggimage, offsets, bbox=None):
     """

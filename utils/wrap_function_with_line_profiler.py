@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_function_with_line_profiler(module: Any, function_name: str) -> bool:
     """Dynamically wrap a function with line_profiler.

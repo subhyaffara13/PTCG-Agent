@@ -1,3 +1,4 @@
+import time
 
 def test_quantity_postprocessing():
     q1 = Quantity('q1')

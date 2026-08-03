@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_request_ip_address(
     request: Request, use_x_forwarded_for: Optional[bool] = False

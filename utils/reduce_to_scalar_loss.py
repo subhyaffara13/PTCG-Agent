@@ -1,3 +1,4 @@
+from typing import Any
 
 def reduce_to_scalar_loss(out: torch.Tensor) -> torch.Tensor: ...
 

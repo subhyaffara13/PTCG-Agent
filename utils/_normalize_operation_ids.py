@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _normalize_operation_ids(paths: Dict[str, Dict]) -> None:
     """Make FastAPI-generated operation IDs stable for multi-method routes.

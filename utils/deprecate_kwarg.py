@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def deprecate_kwarg(
     old_name: str,

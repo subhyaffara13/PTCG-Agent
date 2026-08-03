@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoOpenTypeOS2WeightClassValidator(value: Any) -> bool:
     """

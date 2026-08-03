@@ -1,3 +1,4 @@
+import os
 
 def write_local_impl(cache_key: str, pickled_code: bytes) -> tuple[str, int] | None:
     path = code_state_path(cache_key)

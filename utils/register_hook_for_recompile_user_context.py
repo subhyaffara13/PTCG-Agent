@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_hook_for_recompile_user_context(hook: Callable[[], str]) -> None:
     """

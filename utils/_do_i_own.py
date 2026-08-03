@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _do_i_own(path: str) -> bool:
     """Return whether the current user owns the given path"""

@@ -1,3 +1,4 @@
+import subprocess
 
 def _get_git_hash() -> str:
     global _cached_git_hash

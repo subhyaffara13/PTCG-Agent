@@ -1,3 +1,4 @@
+import os
 
 def sensors_battery():
     """Return battery information.

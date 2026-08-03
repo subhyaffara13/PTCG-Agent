@@ -1,3 +1,4 @@
+from typing import Any
 
 def reinplace_inplaceable_ops_core(graph: torch.fx.Graph) -> None:
     """

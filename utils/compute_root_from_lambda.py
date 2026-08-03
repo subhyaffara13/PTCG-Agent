@@ -1,3 +1,5 @@
+import math
+
 
 def compute_root_from_lambda(lamb):
     tmp = math.sqrt(3 + 144 * lamb)

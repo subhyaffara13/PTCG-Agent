@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_activation_checkpointing_logging_structure_payload(
     joint_graph: Graph,

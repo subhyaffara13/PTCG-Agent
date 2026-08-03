@@ -1,3 +1,4 @@
+import os
 
 def test_interactive_timers(env):
     if env["MPLBACKEND"] == "gtk3cairo" and os.getenv("CI"):

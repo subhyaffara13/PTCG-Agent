@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_foreach_all_gather(new_foreach_all_gather: Callable):
     orig_foreach_all_gather = (

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_safe_globals() -> list[Callable | tuple[Callable, str]]:
     """

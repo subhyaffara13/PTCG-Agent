@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_nested():
     """#328: first member in a class can't be used in operators"""

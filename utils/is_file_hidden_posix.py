@@ -1,3 +1,7 @@
+import os
+from typing import Any
+from pathlib import Path
+
 
 def is_file_hidden_posix(abs_path: str | Path, stat_res: Any | None = None) -> bool:
     """Is a file hidden?

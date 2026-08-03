@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_fusion_candidates(
     rule: GroupBatchFusionBase,

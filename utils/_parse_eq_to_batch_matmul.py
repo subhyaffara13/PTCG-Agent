@@ -1,3 +1,4 @@
+import functools
 
 def _parse_eq_to_batch_matmul(eq, shape_a, shape_b):
     """Cached parsing of a two term einsum equation into the necessary

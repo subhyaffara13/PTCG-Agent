@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_opik_config_variable(
     key: str, user_value: Optional[str] = None, default_value: Optional[str] = None

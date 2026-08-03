@@ -1,3 +1,4 @@
+import re
 
 def tests_raises_on_nuisance(test_frame, using_infer_string):
     df = test_frame

@@ -1,3 +1,4 @@
+from typing import Any
 
 def unwrap_batched(args: Any, level: int) -> tuple[Any, Any]:
     flat_args, spec = tree_flatten(args)

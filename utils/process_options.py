@@ -1,3 +1,5 @@
+import os
+import sys
 
 def process_options(arglist=None, parse_argv=False, config_file=None,
                     parser=None, verbose=None):

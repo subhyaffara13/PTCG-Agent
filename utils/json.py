@@ -1,3 +1,4 @@
+import uuid
 
 def json(value: Json, expanded: bool = False) -> None:
   """Display the Json `dict` / `list` interactivelly (with collapsible elems).

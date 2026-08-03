@@ -1,3 +1,4 @@
+from typing import Any
 
 def buildOutlineFormat2(
     glyphObject: Any,

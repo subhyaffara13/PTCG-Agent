@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_failed_team_key_update(
     token: str,

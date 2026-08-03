@@ -1,3 +1,4 @@
+import re
 
 def parse_mypy_args(line: str) -> list[str]:
     m = re.match("# flags: (.*)$", line)

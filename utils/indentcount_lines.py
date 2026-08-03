@@ -1,3 +1,4 @@
+import sys
 
 def indentcount_lines(lines: Iterable[str]) -> int:
     """Minimum indent for all lines in line list

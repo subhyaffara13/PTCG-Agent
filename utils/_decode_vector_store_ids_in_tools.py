@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _decode_vector_store_ids_in_tools(
     tools: Optional[List[Dict[str, Any]]],

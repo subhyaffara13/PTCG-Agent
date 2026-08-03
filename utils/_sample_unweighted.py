@@ -1,3 +1,4 @@
+import random
 
 def _sample_unweighted(iterator, k, strict):
     # Algorithm L in the 1994 paper by Kim-Hung Li:

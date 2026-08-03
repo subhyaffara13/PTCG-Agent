@@ -1,3 +1,4 @@
+from typing import Any
 
 def _jax_internal_node_to_dict(node: Any) -> _FlattenedNode:
   """Converts JAX internal node to dict with clean keys and returns key mapping and tree_def."""

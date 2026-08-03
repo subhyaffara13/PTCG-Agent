@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unflatten_sequence(space: Sequence, x: tuple[Any, ...]) -> tuple[Any, ...] | Any:
     if space.stack:

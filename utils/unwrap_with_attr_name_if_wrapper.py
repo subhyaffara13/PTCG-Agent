@@ -1,3 +1,4 @@
+from typing import Any
 
 def unwrap_with_attr_name_if_wrapper(fn: Any) -> tuple[Any, str | None]:
     # TODO(anijain2305) - Investigate if we can get rid of this function

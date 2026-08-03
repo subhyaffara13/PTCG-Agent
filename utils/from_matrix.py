@@ -1,3 +1,4 @@
+import copy
 
 def from_matrix(matrix: Array, normalize: bool = True, copy: bool = True) -> Array:
     xp = array_namespace(matrix)

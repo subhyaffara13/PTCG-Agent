@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_proxy_server_request_headers(litellm_params: Optional[dict]) -> dict:
     """

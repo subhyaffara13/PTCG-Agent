@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _resolve_provider_from_router_alias(
     model: str,

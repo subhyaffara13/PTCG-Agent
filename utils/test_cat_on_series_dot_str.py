@@ -1,3 +1,4 @@
+import re
 
 def test_cat_on_series_dot_str():
     # GH 28277

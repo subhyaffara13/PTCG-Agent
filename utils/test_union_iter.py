@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_union_iter():
     # Use Range because it is ordered

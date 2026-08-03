@@ -1,3 +1,4 @@
+import copy
 
 def getETreeBuilder(ElementTreeImplementation, fullTree=False):
     ElementTree = ElementTreeImplementation

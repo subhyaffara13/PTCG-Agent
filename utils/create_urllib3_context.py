@@ -1,3 +1,5 @@
+import os
+import sys
 
 def create_urllib3_context(
     ssl_version: int | None = None,

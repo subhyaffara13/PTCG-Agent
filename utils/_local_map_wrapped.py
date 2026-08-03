@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _local_map_wrapped(
     func: Callable,

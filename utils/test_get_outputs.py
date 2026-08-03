@@ -1,3 +1,4 @@
+import os
 
 def test_get_outputs(tmpdir_cwd):
     jaraco.path.build(EXAMPLE_ARBITRARY_MAPPING)

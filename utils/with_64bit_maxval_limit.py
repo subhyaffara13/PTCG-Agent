@@ -1,3 +1,5 @@
+import functools
+import random
 
 def with_64bit_maxval_limit(maxval_limit=None, random=False, fixed_dtype=None,
                             downcast_maxval=None, assert_32bit=False):

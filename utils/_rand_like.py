@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _rand_like(
     rand_fn: Callable[..., torch.Tensor],

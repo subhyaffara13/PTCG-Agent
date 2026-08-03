@@ -1,3 +1,4 @@
+import os
 
 def _get_metadata_ip_root(use_mtls: bool):
     """Returns the metadata server IP root URL."""

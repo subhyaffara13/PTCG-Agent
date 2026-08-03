@@ -1,3 +1,5 @@
+import math
+
 
 def _slice_smem(
     result: ir.Type,

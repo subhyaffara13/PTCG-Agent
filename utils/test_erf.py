@@ -1,3 +1,4 @@
+import re
 
 def test_erf():
     assert erf(nan) is nan

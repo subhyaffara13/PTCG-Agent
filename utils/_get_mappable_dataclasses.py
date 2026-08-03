@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_mappable_dataclasses(test_type):
   """Generates shallow and nested mappable dataclasses."""

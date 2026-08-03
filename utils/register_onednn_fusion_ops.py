@@ -1,3 +1,4 @@
+import functools
 
 def register_onednn_fusion_ops():
     if torch._C._has_mkldnn:

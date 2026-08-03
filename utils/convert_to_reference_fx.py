@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_to_reference_fx(
     graph_module: GraphModule,

@@ -1,3 +1,4 @@
+import os
 
 def get_cudnn_version(run_lambda):
     """Return a list of libcudnn.so; it's hard to tell which one is being used."""

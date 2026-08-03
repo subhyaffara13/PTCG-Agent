@@ -1,3 +1,4 @@
+import functools
 
 def autocast_decorator(autocast_instance, func):
     @functools.wraps(func)

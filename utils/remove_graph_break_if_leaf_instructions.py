@@ -1,3 +1,4 @@
+import itertools
 
 def remove_graph_break_if_leaf_instructions(instructions: list[Instruction]) -> None:
     new_insts = []

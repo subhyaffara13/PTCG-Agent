@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_symbol_table(self: SymbolTable, cfg: Config) -> Json:
     data: dict[str, Any] = {".class": "SymbolTable"}

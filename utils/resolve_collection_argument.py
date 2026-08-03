@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def resolve_collection_argument(
     invocation_path: Path,

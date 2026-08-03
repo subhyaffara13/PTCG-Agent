@@ -1,3 +1,4 @@
+import json
 
 def test_strategy_agent_triggers(tmp_path):
     skills_dir = tmp_path / "skills"

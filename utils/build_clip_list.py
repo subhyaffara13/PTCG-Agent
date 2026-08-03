@@ -1,3 +1,4 @@
+from typing import Dict
 
 def buildClipList(clipBoxes: Dict[str, _ClipBoxInput]) -> ot.ClipList:
     clipList = ot.ClipList()

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _private_register_pytree_node(
     cls: type[Any],

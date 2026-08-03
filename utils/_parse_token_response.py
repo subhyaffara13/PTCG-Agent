@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _parse_token_response(response: httpx.Response) -> Tuple[str, int]:
     """Parse OAuth token response."""

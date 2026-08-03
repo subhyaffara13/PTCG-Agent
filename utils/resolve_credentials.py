@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def resolve_credentials(sources: List[Source]) -> Dict[str, str]:
     """Extract credentials from the first source that has any defined."""

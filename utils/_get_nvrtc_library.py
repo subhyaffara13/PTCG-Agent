@@ -1,3 +1,4 @@
+import sys
 
 def _get_nvrtc_library() -> ctypes.CDLL:
     major_version = int(torch.version.cuda.split(".")[0])  # type: ignore[union-attr]

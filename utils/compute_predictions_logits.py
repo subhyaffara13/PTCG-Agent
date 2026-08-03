@@ -1,3 +1,4 @@
+import json
 
 def compute_predictions_logits(
     all_examples,

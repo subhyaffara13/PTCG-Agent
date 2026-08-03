@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def gen_pattern_and_search_gm(
     search_fn: SearchFn,

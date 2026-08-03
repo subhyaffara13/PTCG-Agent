@@ -1,3 +1,4 @@
+from typing import Any
 
 def _resolve_opaque_type_info(cls: Any) -> _OpaqueTypeInfo | None:
     if cls in _OPAQUE_TYPES:

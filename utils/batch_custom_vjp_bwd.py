@@ -1,3 +1,4 @@
+from typing import Callable
 
 def batch_custom_vjp_bwd(bwd: lu.WrappedFun, tag: core.TraceTag,
                          axis_data: AxisData,

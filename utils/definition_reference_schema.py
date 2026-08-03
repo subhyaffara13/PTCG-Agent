@@ -1,3 +1,4 @@
+from typing import Any
 
 def definition_reference_schema(
     schema_ref: str,

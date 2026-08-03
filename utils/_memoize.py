@@ -1,3 +1,4 @@
+from typing import Any
 
 def _memoize(key: CacheKeyType, fn: Any, *args: Any, **kwargs: Any) -> ArrayType:
     """Memoize ``fn(*args, **kwargs)`` using the given ``key``.

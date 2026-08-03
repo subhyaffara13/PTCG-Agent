@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_directory(root: str | PathLike[str], overwrite: bool,
                        pytreedef_repr: dict[str, Any], distinct_locations: bool,

@@ -1,3 +1,4 @@
+import logging
 
 def initialize_distributed_to_device_ids():
   """Initializes the device index mapping."""

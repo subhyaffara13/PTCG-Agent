@@ -1,3 +1,4 @@
+import os
 
 def _error_inputs_sparse(
     maybe_failing_sample_inputs, validate_sample_input, op_info, *args, **kwargs

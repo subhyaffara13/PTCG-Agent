@@ -1,3 +1,4 @@
+import logging
 
 def play_bot_in_scenarios(game, bots, scenarios=None):
   """Plays a bot against a number of scenarios.

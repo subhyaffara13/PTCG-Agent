@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _generate_key_paths(
     key_path: KeyPath,

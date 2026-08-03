@@ -1,3 +1,4 @@
+import os
 
 def get_load_dotenv(default: bool = True) -> bool:
     """Get whether the user has disabled loading default dotenv files by

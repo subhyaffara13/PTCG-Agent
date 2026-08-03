@@ -1,3 +1,4 @@
+import random
 
 def _resolve_status_effects(gs: dict) -> None:
     """Apply status condition tick effects at turn start/end (poison/burn)."""

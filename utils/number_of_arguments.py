@@ -1,3 +1,4 @@
+import functools
 
 def number_of_arguments(func):
     """

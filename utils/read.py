@@ -1,3 +1,6 @@
+import copy
+import os
+import sys
 
 def read(fp, as_version=nbformat.NO_CONVERT, fmt=None, config=None, **kwargs):
     """Read a notebook from a file name or a file object

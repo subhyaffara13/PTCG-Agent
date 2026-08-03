@@ -1,3 +1,4 @@
+import itertools
 
 def _extract_fwd_bwd_modules(
     joint_module: fx.GraphModule,

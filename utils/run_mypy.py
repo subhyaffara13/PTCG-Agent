@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def run_mypy() -> None:
     """Clears the cache and run mypy before running any of the typing tests.

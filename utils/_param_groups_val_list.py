@@ -1,3 +1,4 @@
+from typing import Any
 
 def _param_groups_val_list(optimizer: Optimizer, key: str) -> list[Any]:
     """Create a list containing group[key] for each optimizer param_group.

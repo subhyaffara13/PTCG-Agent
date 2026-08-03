@@ -1,3 +1,4 @@
+import sys
 
 def test_step_response():
     if not numpy:

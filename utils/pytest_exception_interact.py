@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_exception_interact() -> None:
     """Cancel any traceback dumping due to an interactive exception being

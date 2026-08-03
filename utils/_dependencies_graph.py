@@ -1,3 +1,4 @@
+import os
 
 def _dependencies_graph(filename: str, dep_info: dict[str, set[str]]) -> str:
     """Write dependencies as a dot (graphviz) file."""

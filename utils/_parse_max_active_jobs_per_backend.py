@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_max_active_jobs_per_backend(
     data: Mapping[str, Any], config: tiering_service_pb2.ServerConfig

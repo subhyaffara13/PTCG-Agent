@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_boxed_compiler(
     compiler: Callable[..., Any],

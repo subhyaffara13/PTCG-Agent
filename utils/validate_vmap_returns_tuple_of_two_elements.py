@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_vmap_returns_tuple_of_two_elements(result: Any) -> None:
     base_error_msg = (

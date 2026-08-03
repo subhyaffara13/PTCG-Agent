@@ -1,3 +1,4 @@
+import pathlib
 
 def _warn_mismatched(old: pathlib.Path, new: pathlib.Path, *, key: str) -> None:
     issue_url = "https://github.com/pypa/pip/issues/10151"

@@ -1,3 +1,4 @@
+import os
 
 def _pid_namespace(pid: int | None = None) -> int:
     """Returns the process's namespace id"""

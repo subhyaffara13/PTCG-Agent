@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_inputs_and_attributes(
     node: torch.fx.Node,

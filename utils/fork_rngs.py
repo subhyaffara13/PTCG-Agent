@@ -1,3 +1,4 @@
+import functools
 
 def fork_rngs(module: Module):
   """Context manager to fork rngs in a module."""

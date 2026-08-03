@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def generate_outputs_files(model_path, dummy_inputs, outputs_path, use_gpu):
     dir_path = Path(outputs_path)

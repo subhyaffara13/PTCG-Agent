@@ -1,3 +1,4 @@
+import re
 
 def get_protocol(url: str) -> str:
     url = stringify_path(url)

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_Union_of_ProductSets_shares():
     line = Interval(0, 2)

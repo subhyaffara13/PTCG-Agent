@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def load_pth(path):
     """Load a PyTorch state_dict from a .pth/.pt file into numpy arrays.

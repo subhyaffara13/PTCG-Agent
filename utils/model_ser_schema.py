@@ -1,3 +1,4 @@
+from typing import Any
 
 def model_ser_schema(cls: type[Any], schema: CoreSchema) -> ModelSerSchema:
     """

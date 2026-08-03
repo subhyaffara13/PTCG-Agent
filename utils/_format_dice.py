@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_dice(dice: Sequence[Mapping[str, Any]]) -> str:
     """Render the dice as ``"3, 5"`` (omit dice already consumed)."""

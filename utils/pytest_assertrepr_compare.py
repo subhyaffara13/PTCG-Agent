@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_assertrepr_compare(op, left, right):  # noqa: ARG001
     """Hook to insert custom failure explanation"""

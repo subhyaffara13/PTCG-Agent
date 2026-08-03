@@ -1,3 +1,4 @@
+from typing import Any
 
 def min_or_none(values: Iterable[Any], key: Any = None) -> Any:
     """Get the minimum value while ignoring ``None`` values.

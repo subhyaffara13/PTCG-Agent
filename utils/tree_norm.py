@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_norm(tree: Any,
               ord: int | str | float | None = None,  # pylint: disable=redefined-builtin

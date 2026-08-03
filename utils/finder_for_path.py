@@ -1,3 +1,5 @@
+import os
+import sys
 
 def finder_for_path(path):
     """

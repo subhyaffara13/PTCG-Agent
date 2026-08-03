@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def should_use_polling_for_request(
     background_mode: bool,

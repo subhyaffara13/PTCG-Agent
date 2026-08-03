@@ -1,3 +1,4 @@
+import logging
 
 def print_iteration(actions, state):
   """Print actions and state."""

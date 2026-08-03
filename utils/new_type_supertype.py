@@ -1,3 +1,4 @@
+from typing import Any
 
 def new_type_supertype(type_: Type[Any]) -> Type[Any]:
     while hasattr(type_, '__supertype__'):

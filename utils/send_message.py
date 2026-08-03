@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def send_message(
     a2a_client: "A2AClientType",

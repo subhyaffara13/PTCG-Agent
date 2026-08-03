@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def parse_tournament_csv(path: str) -> List[Dict]:
     """Parse pro match logs in CSV format."""

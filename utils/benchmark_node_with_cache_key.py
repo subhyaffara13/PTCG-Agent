@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def benchmark_node_with_cache_key(
     n: fx.Node,

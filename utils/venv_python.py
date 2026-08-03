@@ -1,3 +1,4 @@
+import os
 
 def venv_python(tmp_path):
     run([*VIRTUALENV, str(tmp_path / ".venv")])

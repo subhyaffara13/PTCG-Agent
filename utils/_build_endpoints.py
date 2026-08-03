@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _build_endpoints(raw: Dict[str, Any]) -> List[Dict[str, Any]]:
     """Transform raw provider_endpoints_support_backup.json into the response shape."""

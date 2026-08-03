@@ -1,3 +1,4 @@
+import json
 
 def _parse_metadata(raw_metadata: object) -> dict:
     """Parse metadata that may be a dict, JSON string, or None."""

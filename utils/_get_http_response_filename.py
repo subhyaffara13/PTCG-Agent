@@ -1,3 +1,4 @@
+import os
 
 def _get_http_response_filename(resp: Response, link: Link) -> str:
     """Get an ideal filename from the given HTTP response, falling back to

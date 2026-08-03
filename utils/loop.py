@@ -1,3 +1,4 @@
+from typing import Callable
 
 def loop(
     loop_factory: Callable[[], asyncio.AbstractEventLoop],

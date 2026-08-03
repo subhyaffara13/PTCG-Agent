@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_empty_value_from_typestr(
     typestr: str, pytree_metadata_options: PyTreeMetadataOptions

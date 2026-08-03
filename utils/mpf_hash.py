@@ -1,3 +1,4 @@
+import sys
 
 def mpf_hash(s):
     # Duplicate the new hash algorithm introduces in Python 3.2.

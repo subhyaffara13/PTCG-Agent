@@ -1,3 +1,4 @@
+from typing import Optional
 
 def adafactor(
     params: list[Tensor],

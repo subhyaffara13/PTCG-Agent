@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _arrayfy(a):
     from sympy.matrices import MatrixBase

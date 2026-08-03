@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _remove_existing(path: Path, force: bool) -> None:
     """Remove existing file/directory/symlink if force is True, otherwise raise an error."""

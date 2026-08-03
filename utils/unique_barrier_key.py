@@ -1,3 +1,4 @@
+from typing import Optional
 
 def unique_barrier_key(
     key: str,

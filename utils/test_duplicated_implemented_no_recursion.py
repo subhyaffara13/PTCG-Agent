@@ -1,3 +1,4 @@
+import sys
 
 def test_duplicated_implemented_no_recursion():
     # gh-21524

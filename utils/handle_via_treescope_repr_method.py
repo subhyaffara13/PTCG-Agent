@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_via_treescope_repr_method(
     node: Any,

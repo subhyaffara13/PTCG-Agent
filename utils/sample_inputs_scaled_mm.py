@@ -1,3 +1,6 @@
+import random
+import math
+
 
 def sample_inputs_scaled_mm(op_info, device, dtype, requires_grad, **kwargs):
     def to_fp8_saturated(x: torch.Tensor, fp8_dtype: torch.dtype) -> torch.Tensor:

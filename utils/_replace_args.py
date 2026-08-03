@@ -1,3 +1,4 @@
+from typing import Any
 
 def _replace_args(
     old_args: tuple[Any, ...], new_args: tuple[Any, ...], argnums: argnums_t

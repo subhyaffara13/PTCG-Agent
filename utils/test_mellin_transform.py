@@ -1,3 +1,4 @@
+import re
 
 def test_mellin_transform():
     from sympy.functions.elementary.miscellaneous import (Max, Min)

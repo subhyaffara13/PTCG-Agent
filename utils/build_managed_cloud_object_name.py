@@ -1,3 +1,5 @@
+import uuid
+from typing import Optional
 
 def build_managed_cloud_object_name(
     prefix: str, filename: Optional[str], fallback_filename: str = "file"

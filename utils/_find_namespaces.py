@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _find_namespaces(
     packages: list[str], pkg_roots: dict[str, str]

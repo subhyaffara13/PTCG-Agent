@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_xchg(x_ref_or_view, idx, val, *, mask: Any | None = None):
   """Atomically exchanges the given value with the value at the given index.

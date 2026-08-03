@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _normalize_cidr_ranges(configured_ranges: Any, *, setting_name: str) -> List[str]:
     if not configured_ranges:

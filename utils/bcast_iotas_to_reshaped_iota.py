@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bcast_iotas_to_reshaped_iota(
     add: Callable[[ir.Value, ir.Value], ir.Value],

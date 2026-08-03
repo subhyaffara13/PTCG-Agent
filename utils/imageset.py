@@ -1,3 +1,4 @@
+from typing import Set
 
 def imageset(*args):
     r"""

@@ -1,3 +1,6 @@
+import random
+import math
+
 
 def init_star(steps=-1):
     "creates new star values"

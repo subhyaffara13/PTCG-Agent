@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _build_user_info_response(
     user_id: Optional[str],

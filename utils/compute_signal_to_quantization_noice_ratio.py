@@ -1,3 +1,5 @@
+import math
+
 
 def compute_signal_to_quantization_noice_ratio(
     x: Sequence[numpy.ndarray] | numpy.ndarray, y: Sequence[numpy.ndarray] | numpy.ndarray

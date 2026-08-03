@@ -1,3 +1,4 @@
+from typing import Set
 
 def test_theano_with_constants(constants: Set[int]) -> None:
     np = pytest.importorskip("numpy")

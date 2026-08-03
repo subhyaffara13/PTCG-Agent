@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_blobs_same(x: Any, y: Any, trail: tuple[Any, ...]) -> None:
     """Compare two blobs of IR as best we can.

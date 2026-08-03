@@ -1,3 +1,4 @@
+import os
 
 def _get_in_shardings_from_xla(
     xla_executable, device_list: xc.DeviceList, num_in_avals: int,

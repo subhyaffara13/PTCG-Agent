@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def eval_shape(fun: Callable, *args, **kwargs):
   """Compute the shape/dtype of ``fun`` without any FLOPs.

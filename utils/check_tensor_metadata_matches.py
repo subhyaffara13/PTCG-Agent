@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_tensor_metadata_matches(
     nv: torch.Tensor, rv: torch.Tensor, desc: Callable[[], str]

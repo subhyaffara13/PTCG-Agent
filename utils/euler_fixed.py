@@ -1,3 +1,5 @@
+import math
+
 
 def euler_fixed(prec):
     extra = 30

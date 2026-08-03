@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _aot_stage2b_fw_compile(
     fw_module: torch.fx.GraphModule,

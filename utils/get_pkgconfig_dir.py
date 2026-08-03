@@ -1,3 +1,4 @@
+import os
 
 def get_pkgconfig_dir() -> str:
     """

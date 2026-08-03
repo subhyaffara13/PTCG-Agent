@@ -1,3 +1,4 @@
+import sys
 
 def pytest_make_collect_report(collector: Collector) -> CollectReport | None:
     """Perform :func:`collector.collect() <pytest.Collector.collect>` and return

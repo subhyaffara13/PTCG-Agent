@@ -1,3 +1,4 @@
+from typing import Optional
 
 def organization_role_based_access_check(
     request_body: dict,

@@ -1,3 +1,4 @@
+import re
 
 def parse_all_signatures(lines: Sequence[str]) -> tuple[list[Sig], list[Sig]]:
     """Parse all signatures in a given reST document.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_extern_mapping(
     data: dict[str, Any],

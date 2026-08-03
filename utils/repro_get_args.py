@@ -1,3 +1,4 @@
+from typing import Any
 
 def repro_get_args(
     options: Any, mod: nn.Module, load_args: Any

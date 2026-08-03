@@ -1,3 +1,4 @@
+import functools
 
 def update_error(error, pred, code, metadata, payload, effect_type):
   err_of_type = error._pred.get(effect_type, False)

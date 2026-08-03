@@ -1,3 +1,4 @@
+from typing import List
 
 def _separate_terms(word: str) -> List[str]:
     """

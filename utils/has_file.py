@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def has_file(
     path_or_repo: str | os.PathLike,

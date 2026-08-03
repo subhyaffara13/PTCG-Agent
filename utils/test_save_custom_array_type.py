@@ -1,3 +1,4 @@
+import os
 
 def test_save_custom_array_type(tmpdir):
     class CustomArray:

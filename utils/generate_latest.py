@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def generate_latest(registry: Collector = REGISTRY, escaping: str = openmetrics.UNDERSCORES) -> bytes:
     """

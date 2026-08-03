@@ -1,3 +1,5 @@
+import os
+import sys
 
 def find_gitignores(dir: str) -> list[tuple[str, GitIgnoreSpec]]:
     parent_dir = os.path.dirname(dir)

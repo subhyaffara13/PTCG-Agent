@@ -1,3 +1,4 @@
+import re
 
 def mpc_sqrt(z, prec, rnd=round_fast):
     """Complex square root (principal branch).

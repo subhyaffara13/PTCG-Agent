@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _extract_max_media_resolution_from_messages(
     messages: List[AllMessageValues],

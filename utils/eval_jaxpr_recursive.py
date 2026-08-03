@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def eval_jaxpr_recursive(
     jaxpr: jax_core.Jaxpr,

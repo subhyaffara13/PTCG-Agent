@@ -1,3 +1,5 @@
+import os
+import sys
 
 def run_setup_py(cmd, pypath=None, path=None, data_stream=0, env=None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _estimate_json_bytes(obj: Any) -> int:
     """Estimate the JSON-serialised byte size of ``obj`` without materialising

@@ -1,3 +1,4 @@
+import functools
 
 def _get_decomp_for_cia(op: "OperatorBase"):
     # [NOTE] Separating out func.decompose

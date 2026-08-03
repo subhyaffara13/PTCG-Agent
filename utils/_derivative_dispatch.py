@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _derivative_dispatch(expr, *variables, **kwargs):
     from sympy.matrices.matrixbase import MatrixBase

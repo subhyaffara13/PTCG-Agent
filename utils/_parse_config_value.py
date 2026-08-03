@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _parse_config_value(raw: Any) -> Dict[str, Any]:
     """Parse a config_value from DB (may be JSON string or dict)."""

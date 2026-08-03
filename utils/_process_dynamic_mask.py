@@ -1,3 +1,5 @@
+import math
+
 
 def _process_dynamic_mask(
     mask: jax.Array,

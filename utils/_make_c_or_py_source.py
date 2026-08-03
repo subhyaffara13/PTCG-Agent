@@ -1,3 +1,4 @@
+import os
 
 def _make_c_or_py_source(ffi, module_name, preamble, target_file, verbose):
     if verbose:

@@ -1,3 +1,4 @@
+import json
 
 def create_structured_trace_for_min_cut_info(
     joint_graph: Graph,

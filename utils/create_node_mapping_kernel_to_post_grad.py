@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_node_mapping_kernel_to_post_grad(
     triton_kernel_to_post_grad_json: dict[str, Any],

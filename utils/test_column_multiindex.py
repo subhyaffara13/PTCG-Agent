@@ -1,3 +1,4 @@
+import re
 
 def test_column_multiindex(temp_hdfstore, using_infer_string):
     # GH 4710

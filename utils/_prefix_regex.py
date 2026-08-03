@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _prefix_regex() -> list[str]:
     raw_paths = (

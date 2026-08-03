@@ -1,3 +1,4 @@
+import time
 
 def update_module_isolated(
     module: str,

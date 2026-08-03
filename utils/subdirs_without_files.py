@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def subdirs_without_files(path: str) -> Generator[Path]:
     """Yields every subdirectory of +path+ that has no files under it."""

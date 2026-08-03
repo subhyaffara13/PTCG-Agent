@@ -1,3 +1,5 @@
+import math
+
 
 def get_tensor_shard(param, empty_param, device_mesh, rank, dim, tensor_idx: int | None = None):
     """

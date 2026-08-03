@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _set_object_metadata_field(
     object_data: Union[

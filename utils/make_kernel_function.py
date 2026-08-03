@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_kernel_function(
     jaxpr: core.Jaxpr,

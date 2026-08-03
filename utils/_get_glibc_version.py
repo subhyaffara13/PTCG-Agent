@@ -1,3 +1,5 @@
+import os
+from typing import Tuple
 
 def _get_glibc_version() -> _GLibCVersion:
     version_str = _glibc_version_string()

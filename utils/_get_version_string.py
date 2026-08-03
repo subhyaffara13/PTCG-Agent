@@ -1,3 +1,4 @@
+import os
 
 def _get_version_string() -> str:
   # The build/source distribution for jax & jaxlib overwrites _release_version.

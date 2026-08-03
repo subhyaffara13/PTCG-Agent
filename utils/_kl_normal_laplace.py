@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_normal_laplace(p, q):
     loc_diff = p.loc - q.loc

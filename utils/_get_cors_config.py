@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _get_cors_config(
     cors_origins_env: Optional[str] = None,

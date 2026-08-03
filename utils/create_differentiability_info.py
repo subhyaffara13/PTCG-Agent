@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def create_differentiability_info(
     defn_dict: dict[Any, Any],

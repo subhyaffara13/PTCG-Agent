@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_func(func: str, backend: str = "numpy", default: Any = None) -> Any:
     """Return ``{backend}.{func}``, e.g. ``numpy.einsum``,

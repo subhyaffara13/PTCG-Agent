@@ -1,3 +1,4 @@
+from typing import Union
 
 def normalize_and_validate(headers: Headers, _parsed: Literal[True]) -> Headers:
     ...

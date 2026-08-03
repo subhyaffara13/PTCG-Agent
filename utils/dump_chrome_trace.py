@@ -1,3 +1,5 @@
+import time
+from typing import Any, Callable
 
 def dump_chrome_trace(
     f: Callable[[tuple[Any, ...]], _R],

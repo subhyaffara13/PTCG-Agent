@@ -1,3 +1,4 @@
+import os
 
 def create_onnx_export_report(
     filename: str | os.PathLike,

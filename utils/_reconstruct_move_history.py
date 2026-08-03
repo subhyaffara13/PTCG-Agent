@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _reconstruct_move_history(observation: Mapping[str, Any]) -> list[str]:
     """Rebuild the full-game move history from the serialized pyspiel state.

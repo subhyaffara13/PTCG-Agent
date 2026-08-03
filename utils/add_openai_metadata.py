@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def add_openai_metadata(
     metadata: Optional[Mapping[str, Any]],

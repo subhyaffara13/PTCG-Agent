@@ -1,3 +1,4 @@
+from typing import Any
 
 def _reduce_scatter_lowering(
     prim, ctx, x,

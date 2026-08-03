@@ -1,3 +1,4 @@
+from typing import Any
 
 def _replace_grad_tensors(
     output: Any, tensor_iter: Iterator[torch.Tensor], _depth: int = 0

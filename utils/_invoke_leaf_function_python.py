@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _invoke_leaf_function_python(
     real_impl: Callable[..., Any],

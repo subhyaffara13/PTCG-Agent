@@ -1,3 +1,4 @@
+import functools
 
 def _register_post_forward_hook(
     state: _FSDPState,

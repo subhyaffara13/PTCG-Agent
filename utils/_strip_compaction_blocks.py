@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _strip_compaction_blocks(
     messages: List[Dict[str, Any]],

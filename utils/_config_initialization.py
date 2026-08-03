@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def _config_initialization(  # pylint: disable=too-many-statements
     linter: PyLinter,

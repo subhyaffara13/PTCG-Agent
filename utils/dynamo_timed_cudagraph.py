@@ -1,3 +1,4 @@
+from typing import Any
 
 def dynamo_timed_cudagraph(
     name: str,

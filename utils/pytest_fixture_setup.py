@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_fixture_setup(fixturedef):  # type: ignore[no-untyped-def]
     """Set up pytest fixture.

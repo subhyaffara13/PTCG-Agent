@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_mod_gen_gh25263(capfd, hello_world_f77, monkeypatch):
     """Check that pyf files are correctly generated with module structure

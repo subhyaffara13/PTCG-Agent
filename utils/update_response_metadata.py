@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def update_response_metadata(
     result: Any,

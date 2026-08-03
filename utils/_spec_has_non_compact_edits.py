@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _spec_has_non_compact_edits(
     *,

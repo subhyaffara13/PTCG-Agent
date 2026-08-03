@@ -1,3 +1,4 @@
+from typing import Any
 
 def _emit_tpu_python_callback(
     backend: xc.Client,

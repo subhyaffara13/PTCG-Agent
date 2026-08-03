@@ -1,3 +1,4 @@
+import sys
 
 def pretty_try_use_unicode():
     """See if unicode output is available and leverage it if possible"""

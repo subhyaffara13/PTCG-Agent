@@ -1,3 +1,4 @@
+import re
 
 def _check_has_dynamic_shape(
     self: TestCase,

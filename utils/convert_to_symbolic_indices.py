@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def convert_to_symbolic_indices(seq, start=None, gen=None, qubit_map=None):
     """Returns the circuit with symbolic indices and the

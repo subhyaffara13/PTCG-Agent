@@ -1,3 +1,4 @@
+from typing import Any, Optional, Set, Union
 
 def readGlyphFromString(
     aString: Union[str, bytes],

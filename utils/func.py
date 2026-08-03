@@ -1,3 +1,4 @@
+from typing import Any
 
 def func():
     class Test(trampoline_module.test_override_cache_helper):

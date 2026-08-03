@@ -1,3 +1,5 @@
+import math
+
 
 def copy_tiled(src: ir.Value, dst: ir.Value, swizzle: int = 16):
   """Copy the data from the src reference to the dst reference.

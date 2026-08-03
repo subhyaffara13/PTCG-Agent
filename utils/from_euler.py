@@ -1,3 +1,4 @@
+import re
 
 def from_euler(seq: str, angles: Array, degrees: bool = False) -> Array:
     xp = array_namespace(angles)

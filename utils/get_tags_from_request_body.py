@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def get_tags_from_request_body(request_body: dict) -> List[str]:
     """

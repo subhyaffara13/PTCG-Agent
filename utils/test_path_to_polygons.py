@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_path_to_polygons():
     data = [[10, 10], [20, 20]]

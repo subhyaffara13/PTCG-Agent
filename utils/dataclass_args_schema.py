@@ -1,3 +1,4 @@
+from typing import Any
 
 def dataclass_args_schema(
     dataclass_name: str,

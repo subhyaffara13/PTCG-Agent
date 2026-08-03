@@ -1,3 +1,5 @@
+import re
+from typing import Union
 
 def canonicalize_version(
     version: Version | str, *, strip_trailing_zero: bool = True

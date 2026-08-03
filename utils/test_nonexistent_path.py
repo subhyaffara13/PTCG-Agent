@@ -1,3 +1,4 @@
+import uuid
 
 def test_nonexistent_path(all_parsers):
     # gh-2428: pls no segfault

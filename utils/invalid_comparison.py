@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def invalid_comparison(
     left: ArrayLike,

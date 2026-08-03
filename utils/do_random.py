@@ -1,3 +1,4 @@
+import random
 
 def do_random(context: "Context", seq: "t.Sequence[V]") -> "t.Union[V, Undefined]":
     """Return a random item from the sequence."""

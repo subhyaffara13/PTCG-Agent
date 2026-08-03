@@ -1,3 +1,4 @@
+from typing import Optional, Tuple, Union
 
 def _compute_mean_std_sem(data: np.ndarray, axis: Optional[int] = None) -> Tuple[Union[float, np.ndarray], Union[float, np.ndarray], Union[float, np.ndarray]]:
     """Unified logic for computing mean, StdDev and SEM, handling edge cases consistently.

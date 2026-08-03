@@ -1,3 +1,5 @@
+import re
+from typing import Any, Callable
 
 def register_option(
     key: str,

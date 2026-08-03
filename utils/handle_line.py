@@ -1,3 +1,4 @@
+from typing import Union
 
 def handle_line(parsed_line: ParsedLine
 ) -> Iterator[Union[ParsedRequirement, OptionLine, InvalidRequirementLine]]:

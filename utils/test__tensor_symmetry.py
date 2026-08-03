@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_TensorSymmetry():
     assert TensorSymmetry.fully_symmetric(2) == \

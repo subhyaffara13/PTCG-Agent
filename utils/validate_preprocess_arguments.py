@@ -1,3 +1,4 @@
+from typing import Union
 
 def validate_preprocess_arguments(
     do_rescale: bool | None = None,

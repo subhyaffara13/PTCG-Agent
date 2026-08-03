@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def detach_variable(inputs: Tuple[Any, ...]) -> Tuple[torch.Tensor, ...]:
     if isinstance(inputs, tuple):

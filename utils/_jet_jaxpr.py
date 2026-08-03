@@ -1,3 +1,4 @@
+from typing import Any
 
 def _jet_jaxpr(
     jaxpr: core.ClosedJaxpr, order: int, primals_and_series_avals, in_tree_def

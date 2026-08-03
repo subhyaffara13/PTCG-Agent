@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _health_endpoint_resolve_target_model_name(
     model: Optional[str],

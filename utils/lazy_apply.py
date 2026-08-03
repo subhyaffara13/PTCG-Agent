@@ -1,3 +1,6 @@
+from typing import Callable
+import math
+
 
 def lazy_apply(  # type: ignore[valid-type]
     func: Callable[P, Array | ArrayLike],

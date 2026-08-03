@@ -1,3 +1,4 @@
+import functools
 
 def _custom_op_with_schema(qualname, schema, needs_fixed_stride_order=True):
     ns, name = qualname.split("::")

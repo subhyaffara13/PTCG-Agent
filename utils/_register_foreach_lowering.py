@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _register_foreach_lowering(
     aten_fn: torch._ops.OpOverload, decomp_fn: Callable[..., Any]

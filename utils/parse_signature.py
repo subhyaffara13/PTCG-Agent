@@ -1,3 +1,4 @@
+import re
 
 def parse_signature(sig: str) -> tuple[str, list[str], list[str]] | None:
     """Split function signature into its name, positional an optional arguments.

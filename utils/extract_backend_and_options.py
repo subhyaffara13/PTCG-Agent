@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_backend_and_options(backend: object) -> tuple[str, dict[str, Any]]:
     if isinstance(backend, str):

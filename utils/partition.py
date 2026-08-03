@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def partition(n, seq, pad=no_pad):
     """ Partition sequence into tuples of length n

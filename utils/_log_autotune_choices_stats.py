@@ -1,3 +1,5 @@
+import json
+import sys
 
 def _log_autotune_choices_stats(
     event_name: str, timings: dict[ChoiceCaller, float]

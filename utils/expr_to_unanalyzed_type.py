@@ -1,3 +1,4 @@
+from typing import Callable
 
 def expr_to_unanalyzed_type(
     expr: Expression,

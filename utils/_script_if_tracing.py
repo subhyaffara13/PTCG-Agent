@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _script_if_tracing(fn: Callable[P, R]) -> Callable[P, R]:
     @functools.wraps(fn)

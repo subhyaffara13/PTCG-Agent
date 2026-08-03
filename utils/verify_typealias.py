@@ -1,3 +1,5 @@
+import re
+from typing import Any, Union
 
 def verify_typealias(
     stub: nodes.TypeAlias, runtime: MaybeMissing[Any], object_path: list[str]

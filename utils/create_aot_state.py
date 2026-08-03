@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_aot_state(
     stack: contextlib.ExitStack,

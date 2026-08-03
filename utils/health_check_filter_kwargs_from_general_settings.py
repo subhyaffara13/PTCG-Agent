@@ -1,3 +1,4 @@
+from typing import Optional
 
 def health_check_filter_kwargs_from_general_settings(
     general_settings: Optional[dict],

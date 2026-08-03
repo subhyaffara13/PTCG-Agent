@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _auto_install_official_extension(short_name: str) -> Path | None:
     """Try to auto-install huggingface/hf-<name>. Returns executable path or None."""

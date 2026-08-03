@@ -1,3 +1,4 @@
+import random
 
 def tschirnhausen_transformation(T, max_coeff=10, max_tries=30, history=None,
                                  fixed_order=True):

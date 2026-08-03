@@ -1,3 +1,4 @@
+import functools
 
 def _free_unbacked_symbols_with_path(
     a: object,

@@ -1,3 +1,4 @@
+import json
 
 def integer_digitbox(
     value: int, *, label: str | None = None, size: str = "1em"

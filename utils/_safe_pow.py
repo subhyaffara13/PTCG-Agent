@@ -1,3 +1,4 @@
+import sys
 
 def _safe_pow(base, exponent):
     if exponent < 0:

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_make_compound_path_empty():
     # We should be able to make a compound path with no arguments.

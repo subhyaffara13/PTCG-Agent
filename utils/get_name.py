@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_name() -> str:
     r"""Return Metal device name"""

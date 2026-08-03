@@ -1,3 +1,4 @@
+import json
 
 def handle_error_response(response_body):
     """Translates an error response from an OAuth operation into an

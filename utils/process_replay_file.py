@@ -1,3 +1,5 @@
+import json
+import os
 
 def process_replay_file(input_path, output_dir, config_path, tts_provider, prompt_path, cache_path, disable_llm,
                         debug_audio=False, tqdm_kwargs=None):

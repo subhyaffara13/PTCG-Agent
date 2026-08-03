@@ -1,3 +1,4 @@
+import itertools
 
 def test_nextafter_0():
     for t, direction in itertools.product(np._core.sctypes['float'], (1, -1)):

@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _create_dict_shared_memory(space: Dict, n: int = 1, ctx=mp):
     return {

@@ -1,3 +1,4 @@
+import sys
 
 def _patch_for_embedding(patchlist):
     if sys.platform == 'win32':

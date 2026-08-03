@@ -1,3 +1,4 @@
+from typing import Any
 
 def lookup(tag: int, group: int | None = None) -> TagInfo:
     """

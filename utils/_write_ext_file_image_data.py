@@ -1,3 +1,4 @@
+import os
 
 def _writeExtFileImageData(strikeIndex, glyphName, bitmapObject, writer, ttFont):
     try:

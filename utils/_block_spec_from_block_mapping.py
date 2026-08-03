@@ -1,3 +1,5 @@
+import functools
+import itertools
 
 def _block_spec_from_block_mapping(
     bm: pallas_core.BlockMapping,

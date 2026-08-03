@@ -1,3 +1,4 @@
+from typing import Any
 
 def constant_fold_uniform_value(gm: torch.fx.GraphModule):
     """Runs constant folding and replaces constants which can be constructed with a single `full` call. Calls into remove_no_ops."""

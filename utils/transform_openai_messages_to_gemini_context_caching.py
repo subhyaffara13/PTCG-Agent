@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def transform_openai_messages_to_gemini_context_caching(
     model: str,

@@ -1,3 +1,4 @@
+import time
 
 def bench_discrete_log(data_set, algo=None):
     if algo is None:

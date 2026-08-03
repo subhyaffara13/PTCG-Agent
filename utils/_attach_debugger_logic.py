@@ -1,3 +1,5 @@
+import functools
+import os
 
 def _attach_debugger_logic(
     model,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def ffi_call_lowering(
     ctx: mlir.LoweringRuleContext,

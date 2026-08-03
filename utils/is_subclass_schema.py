@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_subclass_schema(
     cls: type[Any],

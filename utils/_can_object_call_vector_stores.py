@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _can_object_call_vector_stores(
     object_type: Literal["key", "team", "org"],

@@ -1,3 +1,4 @@
+import os
 
 def _get_immediate_subdirectories(a_dir):
     return [

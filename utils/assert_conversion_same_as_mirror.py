@@ -1,3 +1,4 @@
+import os
 
 def assert_conversion_same_as_mirror(nb_file, fmt, mirror_name, compare_notebook=False):
     """This function is used in the tests"""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def dm_env_step2gym_step(timestep) -> tuple[Any, float, bool, bool, dict[str, Any]]:
     """Converts a dm_env timestep to the required return info from Gymnasium step() function.

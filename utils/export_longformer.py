@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def export_longformer(model: LongformerModel, onnx_model_path: str, export_padding: bool):
     """Export longformer model to ONNX

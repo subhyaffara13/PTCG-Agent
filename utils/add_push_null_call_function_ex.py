@@ -1,3 +1,4 @@
+import sys
 
 def add_push_null_call_function_ex(
     inst_or_insts: Instruction | list[Instruction],

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_closed_path_clipping(fig_test, fig_ref):
     vertices = []

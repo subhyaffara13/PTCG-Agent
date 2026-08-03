@@ -1,3 +1,4 @@
+import random
 
 def _handle_energy_utils(gs, hand, base_name, CardRegistry, int_or_str, draw_cards):
     if any(k in base_name for k in {"energy search", "energy-search"}):

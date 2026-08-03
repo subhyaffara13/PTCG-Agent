@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _doctest(*paths, **kwargs):
     """

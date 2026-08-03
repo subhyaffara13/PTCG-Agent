@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _assistant_content_and_tool_calls(response_obj: Any) -> tuple:
     """Return (assistant_text, tool_calls_list) extracted from a ModelResponse-ish object."""

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_sampling_request(
     raw_headers: Optional[Dict[str, str]] = None,

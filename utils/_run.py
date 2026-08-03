@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict
 
 def _run(main_wrapper: Callable[[TextIO, TextIO], None]) -> tuple[str, str, int]:
     stdout = StringIO()

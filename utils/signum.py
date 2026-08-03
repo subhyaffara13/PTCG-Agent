@@ -1,3 +1,4 @@
+from typing import Any
 
 def signum(a: int) -> int:
     return bool(a > 0) - bool(a < 0)

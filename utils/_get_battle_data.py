@@ -1,3 +1,4 @@
+import json
 
 def _get_battle_data() -> dict:
     """Retrieve the current state.

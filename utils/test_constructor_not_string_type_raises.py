@@ -1,3 +1,4 @@
+import re
 
 def test_constructor_not_string_type_raises(array_lib, chunked):
     pa = pytest.importorskip("pyarrow")

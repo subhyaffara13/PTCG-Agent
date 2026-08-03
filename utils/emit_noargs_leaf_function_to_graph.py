@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def emit_noargs_leaf_function_to_graph(
     tx: "InstructionTranslator",

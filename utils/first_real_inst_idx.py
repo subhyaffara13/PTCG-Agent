@@ -1,3 +1,4 @@
+import sys
 
 def first_real_inst_idx(code: CodeType) -> int:
     if sys.version_info < (3, 11):

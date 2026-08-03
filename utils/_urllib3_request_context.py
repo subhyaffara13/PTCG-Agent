@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _urllib3_request_context(
     request: PreparedRequest,

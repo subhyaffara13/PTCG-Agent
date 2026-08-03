@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _extract_grpc_details(error: Any) -> Optional[str]:
     """Best-effort extraction of a human-readable detail string from a gRPC error."""

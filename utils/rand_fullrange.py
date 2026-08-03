@@ -1,3 +1,5 @@
+import math
+
 
 def rand_fullrange(rng, standardize_nans=False):
   """Random numbers that span the full range of available bits."""

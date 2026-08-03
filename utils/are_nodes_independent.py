@@ -1,3 +1,4 @@
+import itertools
 
 def are_nodes_independent(nodes: list[Node]):
     """

@@ -1,3 +1,4 @@
+import re
 
 def replace_regex(
     values: ArrayLike, rx: re.Pattern, value, mask: npt.NDArray[np.bool_] | None

@@ -1,3 +1,4 @@
+import re
 
 def _valid_user_id(user_id: str) -> bool:
     """

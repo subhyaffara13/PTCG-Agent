@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_agentops_exporter(spec: ExporterSpec) -> Any:
     """Factory for the ``agentops`` exporter kind: a lazy-auth OTLP/HTTP exporter."""

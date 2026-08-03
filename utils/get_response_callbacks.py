@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def get_response_callbacks(
     user_protocol: Optional[int],

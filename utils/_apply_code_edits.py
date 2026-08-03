@@ -1,3 +1,4 @@
+import pathlib
 
 def _apply_code_edits(edits):
     for edit in edits.get("files_to_edit", []):

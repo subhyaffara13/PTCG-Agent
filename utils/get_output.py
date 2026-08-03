@@ -1,3 +1,4 @@
+import subprocess
 
 def get_output(command: list[str]) -> str:
     """Run a command and return raw output

@@ -1,3 +1,4 @@
+from typing import Any
 
 def collect_model_fields(  # noqa: C901
     cls: type[BaseModel],

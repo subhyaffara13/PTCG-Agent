@@ -1,3 +1,4 @@
+import functools
 
 def _wrap_fn(old_fn, new_fn):
   # Recover the original function (to support colab reload)

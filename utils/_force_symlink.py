@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _force_symlink(root: Path, target: str | PurePath, link_to: str | Path) -> None:
     """Helper to create the current symlink.

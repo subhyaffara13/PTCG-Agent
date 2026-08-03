@@ -1,3 +1,4 @@
+import itertools
 
 def scatter_upon_const_tensor_extra_check(m):
     if not config.optimize_scatter_upon_const_tensor:

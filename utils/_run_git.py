@@ -1,3 +1,4 @@
+import subprocess
 
 def _run_git(args, **kwargs):
     repo_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))

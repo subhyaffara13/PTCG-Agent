@@ -1,3 +1,5 @@
+import os
+import re
 
 def substitute_env_variables(value: str) -> str:
     """

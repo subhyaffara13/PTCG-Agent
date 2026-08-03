@@ -1,3 +1,4 @@
+from typing import Any
 
 def scalar_type_of(x: Any) -> type:
   """Return the scalar type associated with a JAX value."""

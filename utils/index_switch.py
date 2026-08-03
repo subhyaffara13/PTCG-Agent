@@ -1,3 +1,4 @@
+from typing import Union
 
 def index_switch(
     results,

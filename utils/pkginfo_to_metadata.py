@@ -1,3 +1,4 @@
+import os
 
 def pkginfo_to_metadata(egg_info_path: str, pkginfo_path: str) -> Message:
     """

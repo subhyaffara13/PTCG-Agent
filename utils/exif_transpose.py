@@ -1,3 +1,4 @@
+import re
 
 def exif_transpose(image: Image.Image, *, in_place: Literal[True]) -> None: ...
 

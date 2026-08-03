@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_opaque_value_type(cls: type[Any] | str) -> bool:
     """

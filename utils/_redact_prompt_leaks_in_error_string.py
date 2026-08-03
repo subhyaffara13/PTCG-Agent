@@ -1,3 +1,4 @@
+from typing import List
 
 def _redact_prompt_leaks_in_error_string(text: str) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def deserialize_bundled_cache_entry(
     entry: BundledAOTAutogradResult[Any],

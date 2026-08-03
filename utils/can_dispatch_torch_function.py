@@ -1,3 +1,4 @@
+from typing import Any
 
 def can_dispatch_torch_function(
     tx: "InstructionTranslator", args: Iterable[Any], kwargs: dict[str, Any]

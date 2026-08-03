@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def cache_on_self_and_args(
     class_name: str,

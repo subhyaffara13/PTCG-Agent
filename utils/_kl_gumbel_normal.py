@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_gumbel_normal(p, q):
     param_ratio = p.scale / q.scale

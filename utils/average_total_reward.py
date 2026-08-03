@@ -1,3 +1,4 @@
+import random
 
 def average_total_reward(
     env: AECEnv, max_episodes: int = 100, max_steps: int = 10000000000

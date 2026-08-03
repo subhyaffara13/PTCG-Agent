@@ -1,3 +1,4 @@
+import os
 
 def test_writable_dir(path: str) -> bool:
     """Check if a directory is writable.

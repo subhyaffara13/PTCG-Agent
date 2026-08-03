@@ -1,3 +1,4 @@
+import functools
 
 def decorator_lift_transform(
   transform, class_fn, *trafo_args, multi_scope=True, **trafo_kwargs

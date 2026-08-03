@@ -1,3 +1,4 @@
+import os
 
 def get_vendor_version_from_module(module_name: str) -> str | None:
     module = get_module_from_module_name(module_name)

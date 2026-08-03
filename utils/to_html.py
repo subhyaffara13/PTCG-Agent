@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_html(node: Any) -> str | None:
   """Extracts a rich HTML representation of node using _repr_html_."""

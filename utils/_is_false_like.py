@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_false_like(value: Any) -> bool:
     if isinstance(value, bool):

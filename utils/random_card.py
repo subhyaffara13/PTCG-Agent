@@ -1,3 +1,4 @@
+import random
 
 def random_card(key):
     """Draws a randowm card (with replacement)."""

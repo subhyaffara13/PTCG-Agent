@@ -1,3 +1,4 @@
+import sys
 
 def find_module_paths_using_imports(
     modules: list[str], packages: list[str], verbose: bool, quiet: bool

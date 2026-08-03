@@ -1,3 +1,4 @@
+from typing import Callable
 
 def record_property(request: FixtureRequest) -> Callable[[str, object], None]:
     """Add extra properties to the calling test.

@@ -1,3 +1,5 @@
+import math
+
 
 def make_opaque_unary_fn(name):
     class OpaqueUnaryFn(sympy.Function):

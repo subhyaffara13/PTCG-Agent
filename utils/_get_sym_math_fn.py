@@ -1,3 +1,6 @@
+from typing import Callable
+import math
+
 
 def _get_sym_math_fn(name):
     def fn(a):

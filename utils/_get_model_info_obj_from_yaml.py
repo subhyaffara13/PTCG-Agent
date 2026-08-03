@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_model_info_obj_from_yaml(model: dict[str, Any]) -> ModelYamlInfo:
     """Extract model info from a model dict and return as ModelYamlInfo dataclass."""

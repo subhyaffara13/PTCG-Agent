@@ -1,3 +1,6 @@
+import sys
+import time
+from typing import Any, Callable
 
 def _spectral_helper(x, y=None, NFFT=None, Fs=None, detrend_func=None,
                      window=None, noverlap=None, pad_to=None,

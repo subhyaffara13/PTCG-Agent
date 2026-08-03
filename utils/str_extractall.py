@@ -1,3 +1,4 @@
+import re
 
 def str_extractall(arr, pat, flags: int = 0) -> DataFrame:
     regex = re.compile(pat, flags=flags)

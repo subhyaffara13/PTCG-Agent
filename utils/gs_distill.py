@@ -1,3 +1,4 @@
+import os
 
 def gs_distill(tmpfile, eps=False, ptype='letter', bbox=None, rotated=False):
     """

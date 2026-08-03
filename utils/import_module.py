@@ -1,3 +1,4 @@
+import sys
 
 def import_module(module, min_module_version=None, min_python_version=None,
         warn_not_installed=None, warn_old_version=None,

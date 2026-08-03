@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def get_command_stderr(command, env=None, close_fds=True):
   """Runs the given shell command and returns a tuple.

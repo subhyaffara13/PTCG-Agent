@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_all_args(
     args: Iterable[Any], kwargs: dict[str, Any]

@@ -1,3 +1,5 @@
+import math
+
 
 def _adjust_lr(lr: float, adjust_lr_fn: str | None, param_shape: torch.Size) -> float:
     """Default learning rate adjustment used by Muon."""

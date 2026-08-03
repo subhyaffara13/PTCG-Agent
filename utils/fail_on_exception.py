@@ -1,3 +1,4 @@
+import functools
 
 def fail_on_exception(func):
   @functools.wraps(func)

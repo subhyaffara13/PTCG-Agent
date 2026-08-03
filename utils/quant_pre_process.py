@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def quant_pre_process(
     input_model: str | Path | onnx.ModelProto | None = None,

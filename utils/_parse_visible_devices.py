@@ -1,3 +1,4 @@
+import os
 
 def _parse_visible_devices() -> list[int] | list[str]:
     r"""Parse CUDA_VISIBLE_DEVICES environment variable."""

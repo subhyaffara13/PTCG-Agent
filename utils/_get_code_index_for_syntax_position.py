@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_code_index_for_syntax_position(
     newlines_offsets: Sequence[int], position: SyntaxPosition

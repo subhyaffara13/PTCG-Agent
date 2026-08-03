@@ -1,3 +1,4 @@
+from typing import Union
 
 def _handle_finite_sets(op, x, y, commutative):
     # Handle finite sets:

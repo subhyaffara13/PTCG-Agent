@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def gqa(
     q,                # [batch_size, num_q_heads, head_dim]

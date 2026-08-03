@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_all_gather(new_all_gather_into_tensor: Callable):
     orig_all_gather = dist.all_gather_into_tensor

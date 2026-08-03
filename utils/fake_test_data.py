@@ -1,3 +1,4 @@
+import random
 
 def fake_test_data(
     batch_size: int,

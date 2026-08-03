@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_fx_from_snodes(snodes: list[BaseSchedulerNode]) -> fx.Graph:
     """

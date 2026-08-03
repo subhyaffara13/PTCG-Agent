@@ -1,3 +1,4 @@
+from typing import Any
 
 def host_memory_stats() -> dict[str, Any]:
     r"""Return a dictionary of pinned (host) allocator statistics.

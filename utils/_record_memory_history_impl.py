@@ -1,3 +1,4 @@
+import sys
 
 def _record_memory_history_impl(
     enabled: str | None = "all",

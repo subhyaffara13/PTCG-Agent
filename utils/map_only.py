@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def map_only(type_or_types_or_pred: type[T], /) -> MapOnlyFn[Fn[T, Any]]: ...
 

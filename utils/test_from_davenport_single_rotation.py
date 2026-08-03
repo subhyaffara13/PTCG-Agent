@@ -1,3 +1,5 @@
+import math
+
 
 def test_from_davenport_single_rotation(xp):
     axis = xp.asarray([0, 0, 1])

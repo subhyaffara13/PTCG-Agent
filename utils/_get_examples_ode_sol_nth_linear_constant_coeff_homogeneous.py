@@ -1,3 +1,4 @@
+import re
 
 def _get_examples_ode_sol_nth_linear_constant_coeff_homogeneous():
     # From Exercise 20, in Ordinary Differential Equations,

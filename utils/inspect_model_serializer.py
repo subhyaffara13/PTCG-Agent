@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def inspect_model_serializer(serializer: Callable[..., Any], mode: Literal['plain', 'wrap']) -> bool:
     """Look at a model serializer function and determine whether it takes an info argument.

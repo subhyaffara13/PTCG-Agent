@@ -1,3 +1,6 @@
+import random
+import sys
+from typing import Any
 
 def _play_game(game, bots, initial_actions):
   """Plays one game."""

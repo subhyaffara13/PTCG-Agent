@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional, Union
 
 def filter_web_search_deployments(
     healthy_deployments: Union[List[Dict], Dict],

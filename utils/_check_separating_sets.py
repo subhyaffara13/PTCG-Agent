@@ -1,3 +1,4 @@
+import itertools
 
 def _check_separating_sets(G):
     for cc in nx.connected_components(G):

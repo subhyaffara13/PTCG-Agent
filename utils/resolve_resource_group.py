@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def resolve_resource_group(sources: List[Source]) -> Optional[str]:
     """Find resource_group from the first source that defines it."""

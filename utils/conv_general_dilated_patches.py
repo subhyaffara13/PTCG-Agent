@@ -1,3 +1,5 @@
+import math
+
 
 def conv_general_dilated_patches(
     lhs: ArrayLike,

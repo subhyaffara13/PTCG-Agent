@@ -1,3 +1,4 @@
+import functools
 
 def assert_trees_all_equal_comparator(equality_comparator: _ai.TLeavesEqCmpFn,
                                       error_msg_fn: _ai.TLeavesEqCmpErrorFn,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def sliding_min_max(
     values: np.ndarray,

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def wrap_method_once(fun: Callable[..., Any]) -> Callable[..., Any]:
   """Manages Module state for a given user-defined method.

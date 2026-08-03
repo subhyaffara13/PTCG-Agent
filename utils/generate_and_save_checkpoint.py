@@ -1,3 +1,4 @@
+import logging
 
 def generate_and_save_checkpoint(
     config: configs.CheckpointConfig,

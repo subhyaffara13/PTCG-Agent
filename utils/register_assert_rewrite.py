@@ -1,3 +1,4 @@
+import sys
 
 def register_assert_rewrite(*names: str) -> None:
     """Register one or more module names to be rewritten on import.

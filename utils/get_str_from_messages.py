@@ -1,3 +1,4 @@
+from typing import List
 
 def get_str_from_messages(messages: List[AllMessageValues]) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def handle_torch_function(
     public_api: Callable[_P, _R],

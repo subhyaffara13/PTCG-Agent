@@ -1,3 +1,4 @@
+import os
 
 def test_findall_missing_symlink(tmpdir):
     with tmpdir.as_cwd():

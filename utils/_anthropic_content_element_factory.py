@@ -1,3 +1,4 @@
+from typing import Union
 
 def _anthropic_content_element_factory(
     image_chunk: GenericImageParsingChunk,

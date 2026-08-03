@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_iterable_is_sequence():
     ordered = [[], (), Tuple(), Matrix([[]])]

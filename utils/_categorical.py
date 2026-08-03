@@ -1,3 +1,5 @@
+import math
+
 
 def _categorical(key, logits_arr, shape, batch_shape, axis, replace, mode) -> Array:
   shape_prefix = shape[:len(shape)-len(batch_shape)]

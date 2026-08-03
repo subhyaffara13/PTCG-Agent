@@ -1,3 +1,4 @@
+import os
 
 def find_sources(
     paths: list[str], options: Options, fscache: FileSystemCache

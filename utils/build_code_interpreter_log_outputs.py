@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def build_code_interpreter_log_outputs(
     content: Any,

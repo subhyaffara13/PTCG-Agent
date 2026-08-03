@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_device_capability(device: _device_t = None, /) -> dict[str, Any]:
     r"""Return the capability of the currently selected device.

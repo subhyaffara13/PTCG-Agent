@@ -1,3 +1,4 @@
+from typing import Any
 
 def temporarily_restore_interpreter_stack(
     stack: list[Any] | None,

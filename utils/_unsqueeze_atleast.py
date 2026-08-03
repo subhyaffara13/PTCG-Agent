@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _unsqueeze_atleast(
     at_least_fn: Callable, dim: int, arg: TensorLikeType

@@ -1,3 +1,4 @@
+import os
 
 def get_report_path(argv=None, pytest=False):
     if argv is None:

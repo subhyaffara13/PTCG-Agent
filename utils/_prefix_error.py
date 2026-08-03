@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _prefix_error(
     key_path: KeyPath,

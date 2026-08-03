@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_getattr(mod_name: str) -> Callable:
     """

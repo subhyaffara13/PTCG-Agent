@@ -1,3 +1,4 @@
+import itertools
 
 def test_performance():
     # Compare performance results to those listed in

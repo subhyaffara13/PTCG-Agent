@@ -1,3 +1,4 @@
+import sys
 
 def test_sdot_bug_8577():
     # Regression test that loading certain other libraries does not

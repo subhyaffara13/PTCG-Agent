@@ -1,3 +1,4 @@
+import itertools
 
 def _extract_shape_env_and_assert_equal(
     args: tuple[object, ...] | list[object], kwargs: dict[str, object]

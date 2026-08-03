@@ -1,3 +1,4 @@
+import os
 
 def _get_mobile_model_contained_types(f_input) -> int:
     r"""Take a file-like object and return a set of string, like ("int", "Optional").

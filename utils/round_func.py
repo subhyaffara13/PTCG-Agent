@@ -1,3 +1,4 @@
+import functools
 
 def roundFunc(tolerance, round=otRound):
     if tolerance < 0:

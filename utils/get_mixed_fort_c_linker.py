@@ -1,3 +1,4 @@
+import os
 
 def get_mixed_fort_c_linker(vendor=None, cplus=False, cwd=None):
     vendor = vendor or os.environ.get('SYMPY_COMPILER_VENDOR', 'gnu')

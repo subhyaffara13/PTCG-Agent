@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def _test_cython_extension(tmp_path, srcdir):
     """

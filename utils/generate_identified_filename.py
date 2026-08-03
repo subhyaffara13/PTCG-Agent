@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def generate_identified_filename(filename: Path, identifier: str) -> Path:
     """

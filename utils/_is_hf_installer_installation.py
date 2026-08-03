@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def _is_hf_installer_installation() -> bool:
     """Return `True` if the current environment was set up via the official hf installer script.

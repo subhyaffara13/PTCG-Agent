@@ -1,3 +1,4 @@
+from typing import Optional
 
 def key_generation_check(
     team_table: Optional[LiteLLM_TeamTableCachedObj],

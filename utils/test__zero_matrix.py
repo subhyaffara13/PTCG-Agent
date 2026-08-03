@@ -1,3 +1,4 @@
+import re
 
 def test_ZeroMatrix():
     from sympy.matrices.expressions.special import ZeroMatrix

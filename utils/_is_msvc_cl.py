@@ -1,3 +1,4 @@
+import subprocess
 
 def _is_msvc_cl(cpp_compiler: str) -> bool:
     if not _IS_WINDOWS:

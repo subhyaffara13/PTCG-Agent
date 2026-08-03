@@ -1,3 +1,4 @@
+from typing import Any
 
 def head(path: str, handler: _HandlerType, **kwargs: Any) -> RouteDef:
     return route(hdrs.METH_HEAD, path, handler, **kwargs)

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_cython_func(arg: Callable) -> str | None:
     """

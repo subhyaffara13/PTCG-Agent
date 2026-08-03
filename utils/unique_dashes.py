@@ -1,3 +1,4 @@
+import itertools
 
 def unique_dashes(n):
     """Build an arbitrarily long list of unique dash styles for lines.

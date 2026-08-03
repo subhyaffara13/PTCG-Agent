@@ -1,3 +1,4 @@
+import time
 
 def _purge_expired_codes() -> None:
     now = time.time()

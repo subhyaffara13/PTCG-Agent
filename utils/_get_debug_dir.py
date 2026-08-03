@@ -1,3 +1,4 @@
+import os
 
 def _get_debug_dir(root_dir: str) -> str:
     dir_name = (

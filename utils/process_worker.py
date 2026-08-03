@@ -1,3 +1,5 @@
+import os
+import sys
 
 def process_worker() -> None:
     # Redirect standard streams to os.devnull so that user code won't interfere with the

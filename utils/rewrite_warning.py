@@ -1,3 +1,4 @@
+import re
 
 def rewrite_warning(
     target_message: str,

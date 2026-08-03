@@ -1,3 +1,4 @@
+import re
 
 def is_active(ext, metadata, default=True):
     """Is the cell active for the given file extension?"""

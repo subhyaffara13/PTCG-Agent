@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_param_completion(
     callback: Callable[..., Any] | None = None,

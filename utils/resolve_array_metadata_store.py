@@ -1,3 +1,4 @@
+import logging
 
 def resolve_array_metadata_store(
     type_handler_registry: types.TypeHandlerRegistry,

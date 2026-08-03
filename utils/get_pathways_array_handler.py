@@ -1,3 +1,4 @@
+import logging
 
 def get_pathways_array_handler(
     use_single_replica_array_handler: bool = False,

@@ -1,3 +1,4 @@
+import re
 
 def mpci_div(x, y, prec):
     # TODO: optimize for real/imag cases

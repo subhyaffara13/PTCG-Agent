@@ -1,3 +1,4 @@
+import copy
 
 def _copy_graph_module_and_signature(
     ep: torch.export.ExportedProgram,

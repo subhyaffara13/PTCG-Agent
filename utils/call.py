@@ -1,3 +1,7 @@
+import os
+import subprocess
+import sys
+from typing import Any, Callable
 
 def call(libname, flag, encoding=sys.getfilesystemencoding()):
     """Calls pkg-config and returns the output if found

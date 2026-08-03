@@ -1,3 +1,4 @@
+from typing import Any
 
 def with_font_size(
     subfigure: Any, size: str | float

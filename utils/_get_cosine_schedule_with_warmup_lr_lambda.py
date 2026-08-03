@@ -1,3 +1,5 @@
+import math
+
 
 def _get_cosine_schedule_with_warmup_lr_lambda(
     current_step: int, *, num_warmup_steps: int, num_training_steps: int, num_cycles: float

@@ -1,3 +1,4 @@
+import re
 
 def markdown_compatible(text: str) -> str:
     """

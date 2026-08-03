@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_anthropic_oauth_key(value: Optional[str]) -> bool:
     """Check if a value contains an Anthropic OAuth token (sk-ant-oat*)."""

@@ -1,3 +1,5 @@
+import math
+
 
 def reduce_reshape_expression(
     reshape: Reshape, assignments: dict[Variable, Constant]

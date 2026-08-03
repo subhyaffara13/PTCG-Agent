@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def get_pattern_metadata() -> List[Dict[str, str]]:
     """

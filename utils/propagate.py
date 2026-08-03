@@ -1,3 +1,4 @@
+import logging
 
 def propagate(amplifier_node: Node) -> None:
     log.debug("amplifier_node is %s", amplifier_node.format_node())

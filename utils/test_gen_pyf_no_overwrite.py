@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_gen_pyf_no_overwrite(capfd, hello_world_f90, monkeypatch):
     """Ensures that the CLI refuses to overwrite signature files

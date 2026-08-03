@@ -1,3 +1,6 @@
+import itertools
+import sys
+from typing import Any
 
 def _get_code_source(code: types.CodeType) -> tuple[str, str]:
     """

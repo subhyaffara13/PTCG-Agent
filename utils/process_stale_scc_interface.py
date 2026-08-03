@@ -1,3 +1,4 @@
+import time
 
 def process_stale_scc_interface(
     graph: Graph, ascc: SCC, manager: BuildManager, from_cache: set[str]

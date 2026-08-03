@@ -1,3 +1,4 @@
+import sys
 
 def run_commands(dist):
     """Given a Distribution object run all the commands,

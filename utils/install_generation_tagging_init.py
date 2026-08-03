@@ -1,3 +1,4 @@
+from typing import Any
 
 def install_generation_tagging_init() -> None:
     """

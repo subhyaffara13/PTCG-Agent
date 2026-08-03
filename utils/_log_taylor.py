@@ -1,3 +1,4 @@
+from typing import Any
 
 def _log_taylor(primals_in, series_in, **_):
   x, = primals_in

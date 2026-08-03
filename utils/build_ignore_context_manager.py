@@ -1,3 +1,5 @@
+import copy
+import re
 
 def build_ignore_context_manager(ctx, stmt):
     InputType = namedtuple("InputType", ["name", "ann"])

@@ -1,3 +1,4 @@
+import os
 
 def test_orc_reader_empty(dirpath, using_infer_string):
     columns = [

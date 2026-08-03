@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _should_strip_caller_authorization(
     mcp_server: MCPServer,

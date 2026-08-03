@@ -1,3 +1,4 @@
+from typing import Any
 
 def assign_origin_node(result: Any, n: torch.fx.Node) -> None:
     # This is not complete, but it doesn't have to be: origin_node

@@ -1,3 +1,4 @@
+import os
 
 def wipe_directory(directory: str) -> None:
     """Delete all .db files in the directory. Called once before workers fork."""

@@ -1,3 +1,4 @@
+import re
 
 def find_and_remove_repl_patterns(astr):
     names = find_repl_patterns(astr)

@@ -1,3 +1,4 @@
+import os
 
 def get_mm_log_filename() -> str | None:
     mm_file_name = os.environ.get("TORCHINDUCTOR_MM_LOGGING_FILE", None)

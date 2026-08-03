@@ -1,3 +1,4 @@
+from typing import Callable
 
 def test_inplace_ops(
     op: Callable, expected_values: list[object], expected_str: str

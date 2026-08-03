@@ -1,3 +1,4 @@
+import os
 
 def _exec(obj):
     # exec on PyQt6, exec_ elsewhere.

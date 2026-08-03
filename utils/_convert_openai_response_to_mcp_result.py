@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _convert_openai_response_to_mcp_result(
     response: Any,

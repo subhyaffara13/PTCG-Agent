@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def pop_vertex_request_labels(
     optional_params: Optional[dict],

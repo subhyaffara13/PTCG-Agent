@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _get_custom_logger_settings_from_proxy_server(callback_name: str) -> Dict:
     """

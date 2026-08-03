@@ -1,3 +1,5 @@
+import math
+
 
 def pollard_pm1(n, B=10, a=2, retries=0, seed=1234):
     """

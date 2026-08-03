@@ -1,3 +1,4 @@
+from typing import Any
 
 def backslash_grid(**interface: Any) -> str:
     interface["indent"] = interface["white_space"][:-1]

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _interpolate(name, dim, interpolate_mode):
     @symbolic_helper.quantized_args(True, False, False)

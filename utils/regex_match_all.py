@@ -1,3 +1,4 @@
+import re
 
 def regex_match_all(text: str, pattern: str, flags: int = 0) -> bool:
     """

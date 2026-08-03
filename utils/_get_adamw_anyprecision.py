@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_adamw_anyprecision(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get AnyPrecision AdamW optimizer."""

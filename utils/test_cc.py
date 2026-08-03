@@ -1,3 +1,4 @@
+import sys
 
 def test_cc(mocker, log_mock):
     harv_mock = mocker.patch('radon.cli.CCHarvester')

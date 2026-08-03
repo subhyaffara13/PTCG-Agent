@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _serialize_mcp_content_item(item: object) -> Dict[str, Any]:
     """Serialize an MCP content item to a JSON-friendly dict.

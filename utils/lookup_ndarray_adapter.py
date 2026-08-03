@@ -1,3 +1,4 @@
+from typing import Any
 
 def lookup_ndarray_adapter(
     possible_array: Any,

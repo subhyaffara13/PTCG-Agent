@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_attribute(
     node: nodes.AssignAttr | nodes.Attribute,

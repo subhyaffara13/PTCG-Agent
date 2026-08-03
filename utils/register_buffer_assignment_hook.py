@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_buffer_assignment_hook(
     mod: torch.nn.Module, assigned_buffers: dict[str, str]

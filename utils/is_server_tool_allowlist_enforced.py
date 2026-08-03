@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_server_tool_allowlist_enforced(mcp_server: Any) -> bool:
     mcp_info = _parse_mcp_info_dict(getattr(mcp_server, "mcp_info", None))

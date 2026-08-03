@@ -1,3 +1,4 @@
+import re
 
 def split_package_version(package_version_str) -> tuple[str, str, str]:
     pattern = r"([a-zA-Z0-9_-]+)([!<>=~]+)([0-9.]+)"

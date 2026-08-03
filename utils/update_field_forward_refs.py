@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_field_forward_refs(field: 'ModelField', globalns: Any, localns: Any) -> None:
     """

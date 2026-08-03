@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_named_tuple(
     t,

@@ -1,3 +1,7 @@
+import logging
+import os
+import sys
+from typing import Any
 
 def setup(app):
     # Add hook for building doxygen xml when needed

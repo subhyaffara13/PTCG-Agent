@@ -1,3 +1,4 @@
+from typing import Any
 
 def infer_protocol_value(
     value: Any,

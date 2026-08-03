@@ -1,3 +1,4 @@
+from typing import List
 
 def get_batched_input(input_list: List[jax.Array],
                       infostate_list: List[InfostateNode],

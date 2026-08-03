@@ -1,3 +1,4 @@
+import re
 
 def test_no_placement_new(capture):
     """Prior to 2.2, `py::init<...>` relied on the type supporting placement

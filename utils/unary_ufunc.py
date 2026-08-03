@@ -1,3 +1,4 @@
+from typing import Callable
 
 def unary_ufunc(func: Callable[[ArrayLike], Array]) -> ufunc:
   """An internal helper function for defining unary ufuncs."""

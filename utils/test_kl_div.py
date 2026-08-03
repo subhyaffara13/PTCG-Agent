@@ -1,3 +1,4 @@
+import itertools
 
 def test_kl_div():
     def xfunc(x, y):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_subclass_metadata(value: Any, metadata: tuple[Any, ...]) -> bool:
     saved_metadata, cls, has_custom_guard = metadata

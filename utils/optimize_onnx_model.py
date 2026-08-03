@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def optimize_onnx_model(
     onnx_model_path,

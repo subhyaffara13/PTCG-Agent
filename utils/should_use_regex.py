@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def should_use_regex(regex: bool, to_replace: Any) -> bool:
     """

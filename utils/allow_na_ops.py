@@ -1,3 +1,4 @@
+from typing import Any
 
 def allow_na_ops(obj: Any) -> bool:
     """Whether to skip test cases including NaN"""

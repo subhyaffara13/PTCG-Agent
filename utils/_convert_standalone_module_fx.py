@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_standalone_module_fx(
     graph_module: GraphModule,

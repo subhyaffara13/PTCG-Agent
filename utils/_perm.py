@@ -1,3 +1,4 @@
+from typing import Any
 
 def _perm(primal_counts: Sequence[int], tangent_counts: Sequence[int],
           lst: Sequence[Any]) -> Sequence[Any]:

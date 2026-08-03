@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_masked_tensor(obj: Any, /) -> TypeIs["MaskedTensor"]:
     r"""Returns True if the input is a MaskedTensor, else False

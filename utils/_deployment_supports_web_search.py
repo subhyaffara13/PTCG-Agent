@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _deployment_supports_web_search(deployment: Dict) -> bool:
     """

@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _benchmark_collective_with_cuda_events_impl(
     n: torch.fx.Node,

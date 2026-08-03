@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bucket_all_gather_by_mb(
     gm: torch.fx.GraphModule,

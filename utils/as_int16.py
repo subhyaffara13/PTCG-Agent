@@ -1,3 +1,5 @@
+import math
+
 
 def asInt16(array):
     """Round a list of floats to 16-bit signed integers.

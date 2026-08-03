@@ -1,3 +1,4 @@
+from typing import Callable
 
 def gen_functionalization_view_meta_classes_base(
     selector: SelectiveBuilder,

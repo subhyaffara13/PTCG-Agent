@@ -1,3 +1,7 @@
+import functools
+import os
+import re
+import sys
 
 def git_pieces_from_vcs(tag_prefix, root, verbose, runner=run_command):
     """Get version from 'git describe' in the root of the source tree.

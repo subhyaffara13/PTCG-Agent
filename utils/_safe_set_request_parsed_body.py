@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _safe_set_request_parsed_body(
     request: Optional[Request],

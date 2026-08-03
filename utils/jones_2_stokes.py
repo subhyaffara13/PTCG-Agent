@@ -1,3 +1,4 @@
+import re
 
 def jones_2_stokes(e):
     """Return the Stokes vector for a Jones vector ``e``.

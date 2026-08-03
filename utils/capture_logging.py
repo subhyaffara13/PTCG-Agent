@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def capture_logging() -> Generator[StringIO, None, None]:
     """Capture all pip logs in a buffer temporarily."""

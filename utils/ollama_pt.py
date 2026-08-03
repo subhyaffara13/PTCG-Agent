@@ -1,3 +1,5 @@
+import json
+from typing import Union
 
 def ollama_pt(
     model: str, messages: list

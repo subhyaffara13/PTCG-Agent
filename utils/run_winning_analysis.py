@@ -1,3 +1,7 @@
+import json
+from typing import List
+from pathlib import Path
+
 
 def run_winning_analysis(replay_paths: List[Path], player_name_or_id: str, extractor) -> None:
     card_counter = Counter()

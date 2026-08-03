@@ -1,3 +1,4 @@
+from typing import Any
 
 def repro_load_args(load_args: Any, save_dir: str | None) -> tuple[Any]:
     if not hasattr(load_args, "_version"):

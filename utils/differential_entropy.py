@@ -1,3 +1,5 @@
+import math
+
 
 def differential_entropy(
     values: np.typing.ArrayLike,

@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def magic_trace(
     output: str = "trace.fxt", magic_trace_cache: str = "/tmp/magic-trace"

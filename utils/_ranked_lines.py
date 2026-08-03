@@ -1,3 +1,4 @@
+from typing import Callable, Dict, List
 
 def _ranked_lines(
     totals: Dict[str, Dict[str, float]],

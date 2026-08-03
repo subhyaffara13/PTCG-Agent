@@ -1,3 +1,4 @@
+from typing import Any
 
 def ones_like(
     a: ArrayLike,

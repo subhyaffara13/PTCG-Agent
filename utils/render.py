@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, List, Optional, Tuple, Union
 
 def render(args: Any, env: Any) -> Any:
     mode = args.display if args.display is not None else utils.get(args.render, str, "json", path=["mode"])

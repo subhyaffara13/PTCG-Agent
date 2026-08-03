@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_videos_path() -> Path:
     """:returns: videos path tied to the user"""

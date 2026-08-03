@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_optional_params_transcription(
     model: str,

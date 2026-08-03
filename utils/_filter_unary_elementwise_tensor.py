@@ -1,3 +1,5 @@
+import math
+
 
 def _filter_unary_elementwise_tensor(a, *, op):
     # short-circuits for boolean tensors

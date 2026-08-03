@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_empty_container(value: Any) -> bool:
   return (

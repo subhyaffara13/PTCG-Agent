@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_spec(func: FunctionType) -> FunctionSpec:
     spec = _spec_cache.get(func)

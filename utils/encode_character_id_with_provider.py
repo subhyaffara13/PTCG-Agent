@@ -1,3 +1,4 @@
+from typing import Optional
 
 def encode_character_id_with_provider(
     character_id: str, provider: str, model_id: Optional[str] = None

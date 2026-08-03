@@ -1,3 +1,4 @@
+from typing import Callable
 
 def buffer_callback(
     callback: Callable[..., None],

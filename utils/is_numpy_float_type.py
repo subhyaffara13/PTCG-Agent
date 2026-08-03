@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_numpy_float_type(value: Any) -> bool:
     if not np:

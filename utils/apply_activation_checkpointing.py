@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_activation_checkpointing(
     model,

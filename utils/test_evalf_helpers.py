@@ -1,3 +1,5 @@
+import math
+
 
 def test_evalf_helpers():
     from mpmath.libmp import finf

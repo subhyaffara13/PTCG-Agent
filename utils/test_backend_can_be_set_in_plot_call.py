@@ -1,3 +1,4 @@
+import sys
 
 def test_backend_can_be_set_in_plot_call(monkeypatch, restore_backend, dummy_backend):
     monkeypatch.setitem(sys.modules, "pandas_dummy_backend", dummy_backend)

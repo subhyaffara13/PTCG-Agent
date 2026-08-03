@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_type(to_patch: Any, pattern: type, __torch_function__: Callable) -> None:
     wrap_method = _py_wrap_method

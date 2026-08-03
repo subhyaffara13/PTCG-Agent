@@ -1,3 +1,6 @@
+import itertools
+import math
+
 
 def wgmma_m64(
     acc: np.ndarray,  # of register Values

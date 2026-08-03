@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _find_libcudart_static(path: str) -> Path | None:
     lib_dirs = list(Path(path).rglob("libcudart_static.a"))

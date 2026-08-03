@@ -1,3 +1,4 @@
+from typing import Any
 
 def _buildOutlinePointsFormat1(
     pen: AbstractPointPen, contour: list[dict[str, Any]]

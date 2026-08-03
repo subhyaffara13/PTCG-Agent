@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _get_token_base_cost(
     model_info: ModelInfo, usage: Usage, service_tier: Optional[str] = None

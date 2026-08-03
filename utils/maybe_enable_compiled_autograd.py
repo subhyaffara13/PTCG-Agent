@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_enable_compiled_autograd(
     should_enable: bool, fullgraph: bool = True, dynamic: bool = True

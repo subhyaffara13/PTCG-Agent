@@ -1,3 +1,4 @@
+import functools
 
 def sym_numel(t):
     return functools.reduce(operator.mul, t.shape, 1)

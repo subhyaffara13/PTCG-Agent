@@ -1,3 +1,4 @@
+from typing import Any
 
 def pass_scalars_as_refs(
     jaxpr: jax_core.Jaxpr,

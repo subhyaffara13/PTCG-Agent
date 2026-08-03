@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def parse_local_safetensors_file_metadata(path: str | Path) -> SafetensorsFileMetadata:
     """

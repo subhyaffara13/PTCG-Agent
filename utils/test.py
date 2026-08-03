@@ -1,3 +1,7 @@
+import os
+import subprocess
+import sys
+import time
 
 def test(*paths, subprocess=True, rerun=0, **kwargs):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_missing(
     stub: Missing, runtime: MaybeMissing[Any], object_path: list[str]

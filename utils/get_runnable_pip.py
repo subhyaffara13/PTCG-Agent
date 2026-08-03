@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def get_runnable_pip() -> str:
     """Get a file to pass to a Python executable, to run the currently-running pip.

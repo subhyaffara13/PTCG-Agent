@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_set_budget_value(value: Any) -> bool:
     if value is None:

@@ -1,3 +1,4 @@
+import re
 
 def _rename_without_collisions(
     name_map: dict[str, str],

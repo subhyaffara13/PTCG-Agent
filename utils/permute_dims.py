@@ -1,3 +1,4 @@
+import copy
 
 def permute_dims(A, axes=None, copy=False):
     """Permute the axes of the sparse array `A` to the order `axes`.

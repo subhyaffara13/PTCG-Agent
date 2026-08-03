@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_framework_stack(
     num_frames: int = 25, cpp: bool = False

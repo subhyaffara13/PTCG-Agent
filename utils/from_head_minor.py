@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_head_minor(vals: tuple[Any, ...], layout: QKVLayout):
   if layout == QKVLayout.HEAD_DIM_MINOR:

@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def _header_value_allowed(
     header_name: str,

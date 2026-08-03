@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _remat_opt_jvp(
     primals,

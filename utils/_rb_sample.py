@@ -1,3 +1,4 @@
+import random
 
 def _rb_sample(self, batch_size):
     with self.lock:

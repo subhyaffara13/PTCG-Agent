@@ -1,3 +1,4 @@
+import time
 
 def mean_field_fictitious_play(mfg_game,
                                number_of_iterations,

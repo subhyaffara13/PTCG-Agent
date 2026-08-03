@@ -1,3 +1,4 @@
+from typing import Any, Set
 
 def get_interpret_effects(interpret: Any) -> Set[effects.Effect]:
   if (mosaic_tpu_interpret is not None

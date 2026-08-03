@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _create_realize_and_forward(
     name: str,

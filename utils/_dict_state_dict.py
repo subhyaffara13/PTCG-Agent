@@ -1,3 +1,4 @@
+from typing import Any
 
 def _dict_state_dict(xs: dict[str, Any]) -> dict[str, Any]:
   str_keys = {str(k) for k in xs.keys()}

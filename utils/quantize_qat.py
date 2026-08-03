@@ -1,3 +1,4 @@
+import copy
 
 def quantize_qat(model, run_fn, run_args, inplace=False):
     r"""Do quantization aware training and output a quantized model

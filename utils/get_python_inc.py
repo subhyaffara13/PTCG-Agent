@@ -1,3 +1,4 @@
+import os
 
 def get_python_inc(plat_specific: bool = False, prefix: str | None = None) -> str:
     """Return the directory containing installed Python header files.

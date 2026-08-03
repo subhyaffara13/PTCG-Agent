@@ -1,3 +1,5 @@
+import pathlib
+from typing import Any
 
 def _norm_path(path: str | PathLike[str]) -> Any:
   if _is_remote_path(path):

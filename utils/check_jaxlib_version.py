@@ -1,3 +1,4 @@
+import re
 
 def check_jaxlib_version(jax_version: str, jaxlib_version: str,
                          minimum_jaxlib_version: str) -> tuple[int, ...]:

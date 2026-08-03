@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_graph(objects, *, context=None, filter=None):
     if context is None:

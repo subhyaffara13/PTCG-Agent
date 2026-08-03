@@ -1,3 +1,5 @@
+import os
+from typing import Dict, Optional
 
 def list_fine_tuning_jobs(
     after: Optional[str] = None,

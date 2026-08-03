@@ -1,3 +1,4 @@
+import sys
 
 def _can_use_color() -> bool:
   try:

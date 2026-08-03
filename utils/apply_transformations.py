@@ -1,3 +1,6 @@
+import logging
+import re
+from typing import Optional
 
 def apply_transformations(original_tree: PyTree,
                           transformations: PyTree,

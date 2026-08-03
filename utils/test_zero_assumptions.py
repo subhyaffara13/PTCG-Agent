@@ -1,3 +1,4 @@
+import re
 
 def test_zero_assumptions():
     nr = Symbol('nonreal', real=False, finite=True)

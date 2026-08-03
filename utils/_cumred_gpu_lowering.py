@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _cumred_gpu_lowering(
     reduce_window_fn: Callable,

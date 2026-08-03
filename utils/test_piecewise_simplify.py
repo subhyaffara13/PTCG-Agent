@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_piecewise_simplify():
     p = Piecewise(((x**2 + 1)/x**2, Eq(x*(1 + x) - x**2, 0)),

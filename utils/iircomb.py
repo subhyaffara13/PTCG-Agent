@@ -1,3 +1,5 @@
+import math
+
 
 def iircomb(w0, Q, ftype='notch', fs=2.0, *, pass_zero=False, xp=None, device=None):
     """

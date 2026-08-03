@@ -1,3 +1,4 @@
+import re
 
 def _parse_size(size_str):
     """Convert memory size strings ('12 GB' etc.) to float"""

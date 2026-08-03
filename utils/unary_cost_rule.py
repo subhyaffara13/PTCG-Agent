@@ -1,3 +1,5 @@
+import math
+
 
 def unary_cost_rule(transcendental: bool):
   def cost_rule(ctx: Context, **_) -> CostEstimate:

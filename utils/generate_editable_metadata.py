@@ -1,3 +1,4 @@
+import os
 
 def generate_editable_metadata(
     build_env: BuildEnvironment, backend: BuildBackendHookCaller, details: str

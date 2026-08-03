@@ -1,3 +1,4 @@
+import copy
 
 def perform_redaction(model_call_details: dict, result):
     """

@@ -1,3 +1,4 @@
+import copy
 
 def sharded_clone(args, kwargs, pg):
     self_st = args[0]

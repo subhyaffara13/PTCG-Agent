@@ -1,3 +1,4 @@
+import os
 
 def get_tpu_env_value(key) -> str | None:
   # First try to get the value from the environment.

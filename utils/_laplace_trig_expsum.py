@@ -1,3 +1,4 @@
+import re
 
 def _laplace_trig_expsum(f, t):
     """

@@ -1,3 +1,4 @@
+import random
 
 def random_bitstring(n):
     """

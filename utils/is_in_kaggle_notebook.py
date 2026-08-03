@@ -1,3 +1,4 @@
+import os
 
 def is_in_kaggle_notebook() -> bool:
     if os.getenv(KAGGLE_NOTEBOOK_ENV_VAR_NAME) is not None:

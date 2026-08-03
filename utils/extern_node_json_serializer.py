@@ -1,3 +1,4 @@
+import json
 
 def extern_node_json_serializer(
     extern_kernel_nodes: list[inductor_ExternKernelNode],

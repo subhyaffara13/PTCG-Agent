@@ -1,3 +1,4 @@
+import itertools
 
 def _get_coordinates_of_block(x, y, width, height, angle=0):
     """

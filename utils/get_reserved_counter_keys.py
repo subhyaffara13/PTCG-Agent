@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_reserved_counter_keys(budget_reservation: Optional[dict]) -> set:
     if not budget_reservation:

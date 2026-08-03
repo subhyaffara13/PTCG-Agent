@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _handle_message_start(data: Dict, response: Dict) -> None:
     msg = data.get("message", {})

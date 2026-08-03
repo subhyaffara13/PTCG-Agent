@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def create_shared_memory(
     space: Space[Any], n: int = 1, ctx=mp

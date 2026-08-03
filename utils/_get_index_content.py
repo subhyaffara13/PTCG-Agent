@@ -1,3 +1,4 @@
+import os
 
 def _get_index_content(link: Link, *, session: PipSession) -> IndexContent | None:
     url = link.url.split("#", 1)[0]

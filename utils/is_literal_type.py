@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_literal_type(typ: ProperType, fallback_fullname: str, value: LiteralValue) -> bool:
     """Check if this type is a LiteralType with the given fallback type and value."""

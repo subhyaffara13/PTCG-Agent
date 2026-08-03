@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def match_to_number(match: re.Match[str], parse_float: ParseFloat) -> Any:
     if match.group("floatpart"):

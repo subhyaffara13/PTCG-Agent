@@ -1,3 +1,4 @@
+from typing import Any
 
 def _report_kwargs_from_json(reportdict: dict[str, Any]) -> dict[str, Any]:
     """Return **kwargs that can be used to construct a TestReport or

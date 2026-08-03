@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_custom_url(request_base_url: str, route: Optional[str] = None) -> str:
     # Use environment variable value, otherwise use URL from request

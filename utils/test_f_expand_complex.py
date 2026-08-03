@@ -1,3 +1,4 @@
+import re
 
 def test_f_expand_complex():
     x = Symbol('x', real=True)

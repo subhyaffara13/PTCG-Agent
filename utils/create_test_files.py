@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def create_test_files(
     repo_path: Path, old_model_infos: ModelInfos, new_lowercase_name, filenames_to_add: list[tuple[str, bool]]

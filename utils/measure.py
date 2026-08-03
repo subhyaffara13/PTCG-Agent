@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def measure(code_str, times=1, label=None):
     """

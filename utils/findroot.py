@@ -1,3 +1,4 @@
+import copy
 
 def findroot(ctx, f, x0, solver='secant', tol=None, verbose=False, verify=True, **kwargs):
     r"""

@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoQNNPACK(fn):
     reason = "Quantized operations require QNNPACK."

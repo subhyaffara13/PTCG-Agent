@@ -1,3 +1,4 @@
+import copy
 
 def sign2map(a, var):
     """

@@ -1,3 +1,4 @@
+import functools
 
 def bypass_when(check, *, _op=identity):
     """

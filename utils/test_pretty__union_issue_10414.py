@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_pretty_Union_issue_10414():
     a, b = Interval(2, 3), Interval(4, 7)

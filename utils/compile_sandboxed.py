@@ -1,3 +1,4 @@
+from typing import Any
 
 def compile_sandboxed(source: str, filename: str = "<guardrail>") -> Any:
     """Compile guardrail source with RestrictedPython's AST transformer.

@@ -1,3 +1,4 @@
+import copy
 
 def _with_from_imports(
     parsed: parse.ParsedContent,

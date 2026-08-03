@@ -1,3 +1,4 @@
+import json
 
 def _write_digests(path: epath.PathLike, digests: dict[str, str]) -> None:
   """Writes per-host digests to a JSON file, creating parent dirs."""

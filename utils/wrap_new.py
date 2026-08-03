@@ -1,3 +1,4 @@
+import functools
 
 def wrap_new(cls: _ClsT, descriptor_infos: list[DescriptorInfo]) -> _ClsT:
   """`__new__` decorator to replace the fields by descriptors on first usage."""

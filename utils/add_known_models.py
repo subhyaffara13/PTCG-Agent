@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def add_known_models(model_cost_map: Optional[Dict] = None):
     _map = model_cost_map if model_cost_map is not None else model_cost

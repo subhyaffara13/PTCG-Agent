@@ -1,3 +1,5 @@
+import logging
+import pathlib
 
 def check_usability():
     parser = argparse.ArgumentParser(

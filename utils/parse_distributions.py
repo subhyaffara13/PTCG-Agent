@@ -1,3 +1,4 @@
+import re
 
 def parse_distributions(s):
     """

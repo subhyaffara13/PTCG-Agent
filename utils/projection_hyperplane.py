@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_hyperplane(x: Any, a: Any, b: jax.typing.ArrayLike) -> Any:
   r"""Projection onto a hyperplane.

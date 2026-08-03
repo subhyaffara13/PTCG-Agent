@@ -1,3 +1,4 @@
+import sys
 
 def _is_pygrain(array: Array) -> bool:
   if (

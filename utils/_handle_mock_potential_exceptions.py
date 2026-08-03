@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _handle_mock_potential_exceptions(
     mock_response: Union[str, Exception],

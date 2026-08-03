@@ -1,3 +1,4 @@
+import re
 
 def test_docstring_addition():
     @_preprocess_data()

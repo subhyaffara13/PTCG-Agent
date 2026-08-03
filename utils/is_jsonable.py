@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_jsonable(obj: Any, _visited: set[int] | None = None) -> bool:
     """Check if an object is JSON serializable.

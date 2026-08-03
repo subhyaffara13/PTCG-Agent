@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def parse_trusted_proxy_ranges(
     configured_ranges: Any,

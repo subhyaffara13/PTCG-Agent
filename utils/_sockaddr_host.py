@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sockaddr_host(sockaddr: Any) -> str:
     """Return the host element of a ``getaddrinfo`` sockaddr as ``str``.

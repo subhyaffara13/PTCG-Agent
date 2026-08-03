@@ -1,3 +1,4 @@
+import os
 
 def _package_dist_url(
     pylock_path_or_url: str, path: str | None, url: str | None

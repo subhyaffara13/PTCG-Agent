@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _query_cpu() -> int | None:
     """Try to determine number of CPUs allotted in a docker container.

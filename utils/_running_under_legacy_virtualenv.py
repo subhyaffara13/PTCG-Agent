@@ -1,3 +1,4 @@
+import sys
 
 def _running_under_legacy_virtualenv() -> bool:
     """Checks if sys.real_prefix is set.

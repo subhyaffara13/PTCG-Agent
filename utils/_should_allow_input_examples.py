@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _should_allow_input_examples(
     custom_llm_provider: Optional[str], model: str

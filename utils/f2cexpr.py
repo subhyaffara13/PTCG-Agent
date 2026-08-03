@@ -1,3 +1,4 @@
+import re
 
 def f2cexpr(expr):
     """Rewrite Fortran expression as f2py supported C expression.

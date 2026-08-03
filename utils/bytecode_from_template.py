@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def bytecode_from_template(
     fn: Callable[..., Any],

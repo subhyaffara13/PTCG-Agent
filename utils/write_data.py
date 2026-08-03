@@ -1,3 +1,4 @@
+import json
 
 def write_data():
     """Writes the current res_dict to the target JSON file"""

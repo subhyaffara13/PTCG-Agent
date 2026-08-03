@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _find_module_of_method(orig_method: Callable[..., Any]) -> str:
     name = orig_method.__name__

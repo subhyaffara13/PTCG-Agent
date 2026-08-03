@@ -1,3 +1,4 @@
+from typing import Dict
 
 def validate_custom_root_type(fields: Dict[str, ModelField]) -> None:
     if len(fields) > 1:

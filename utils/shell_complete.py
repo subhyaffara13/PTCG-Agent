@@ -1,3 +1,4 @@
+from typing import Any
 
 def shell_complete(
     cli: Command,

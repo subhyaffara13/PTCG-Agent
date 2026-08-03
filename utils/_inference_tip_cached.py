@@ -1,3 +1,4 @@
+from typing import Any
 
 def _inference_tip_cached(func: InferFn[_NodesT]) -> InferFn[_NodesT]:
     """Cache decorator used for inference tips."""

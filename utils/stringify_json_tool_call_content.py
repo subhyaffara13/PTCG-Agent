@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def stringify_json_tool_call_content(messages: List) -> List:
     """

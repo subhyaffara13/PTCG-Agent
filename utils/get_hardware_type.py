@@ -1,3 +1,4 @@
+import re
 
 def get_hardware_type(
     tpu_type: str | None, device_type: str | None

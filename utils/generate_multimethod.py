@@ -1,3 +1,4 @@
+import functools
 
 def generate_multimethod(
     argument_extractor: ArgumentExtractorType,

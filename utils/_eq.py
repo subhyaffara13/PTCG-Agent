@@ -1,3 +1,4 @@
+from typing import Any
 
 def _eq(lhs: Any, rhs: Any) -> bool:
     return (

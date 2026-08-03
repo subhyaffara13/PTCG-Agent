@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def dict_merge(*dicts: Mapping[str, Any]) -> Dict[str, Any]:
     """

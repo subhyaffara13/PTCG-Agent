@@ -1,3 +1,4 @@
+import functools
 
 def partialize_and_update_signature(func, **kwargs):
     """

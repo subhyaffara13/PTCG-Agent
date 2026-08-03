@@ -1,3 +1,4 @@
+import copy
 
 def jax_dtype(obj: DTypeLike | None, *, align: bool = False,
               copy: bool = False) -> DType:

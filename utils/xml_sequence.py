@@ -1,3 +1,4 @@
+from typing import Callable
 
 def xml_sequence(sequence: int) -> Callable[[_F], _F]:
     """Decorator"""

@@ -1,3 +1,4 @@
+import time
 
 def my_sleep_func(seconds=1):
     time.sleep(seconds)

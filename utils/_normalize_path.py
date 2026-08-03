@@ -1,3 +1,4 @@
+import os
 
 def _normalize_path(path: str) -> str:
     """Resolve symlinks in path and convert to absolute path.

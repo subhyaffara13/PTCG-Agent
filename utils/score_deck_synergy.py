@@ -1,3 +1,5 @@
+from factory.deck_synergy_graph import SynergyGraph
+
 
 def score_deck_synergy(deck: list, graph: SynergyGraph) -> float:
     total_pmi = 0.0

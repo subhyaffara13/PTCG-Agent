@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fn_input_mutations_to_outputs(
     fn: Callable[..., Any],

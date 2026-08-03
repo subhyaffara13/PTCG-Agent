@@ -1,3 +1,5 @@
+import math
+
 
 def test_FloatType():
     assert f16.dig == 3

@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_sharing_nesting(backend: BackendType) -> None:
     eqs = ["ab,bc,cd->a", "ab,bc,cd->b", "ab,bc,cd->c", "ab,bc,cd->c"]

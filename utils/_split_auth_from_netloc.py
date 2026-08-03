@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _split_auth_from_netloc(netloc):
     if "@" not in netloc:

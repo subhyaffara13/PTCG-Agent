@@ -1,3 +1,5 @@
+import math
+
 
 def _log_var(logx, xp, axis):
     # compute log of variance of x from log(x)

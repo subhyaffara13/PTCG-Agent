@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _create_sampling_callback(user_api_key_auth: Optional[Any] = None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def val_expressable_in_32_bits(val: Any) -> bool:
     if getattr(val, "is_Boolean", False):

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def update_responses_tools_with_model_file_ids(
     tools: Optional[List[Dict[str, Any]]],

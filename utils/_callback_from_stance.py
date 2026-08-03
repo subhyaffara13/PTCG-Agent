@@ -1,3 +1,4 @@
+from typing import Any
 
 def _callback_from_stance(callback: DynamoCallback) -> DynamoCallback:
     if _stance.stance == "default":

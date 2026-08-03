@@ -1,3 +1,4 @@
+from typing import Any
 
 def _full(fill_value, device, dtype, size):
     value = fill_value

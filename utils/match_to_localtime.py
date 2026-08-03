@@ -1,3 +1,5 @@
+import re
+import time
 
 def match_to_localtime(match: re.Match[str]) -> time:
     hour_str, minute_str, sec_str, micros_str = match.groups()

@@ -1,3 +1,4 @@
+import re
 
 def _mock_expand_patterns(patterns, *_, **__):
     """

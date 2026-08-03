@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_attrs():
     a, b = symbols('a, b', cls=Dummy)

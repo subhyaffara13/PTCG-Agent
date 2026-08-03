@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_guardrail_attrs(g: Any) -> tuple[Any, str]:
     """Get (guardrail_id, display_name) from guardrail - handles Prisma model or dict."""

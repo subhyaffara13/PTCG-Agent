@@ -1,3 +1,4 @@
+import sys
 
 def get_architecture() -> Arch:
     try:

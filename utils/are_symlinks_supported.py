@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def are_symlinks_supported(cache_dir: str | Path | None = None) -> bool:
     """Return whether the symlinks are supported on the machine.

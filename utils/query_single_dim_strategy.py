@@ -1,3 +1,4 @@
+from typing import Any
 
 def query_single_dim_strategy(
     op_overload: OpOverload,

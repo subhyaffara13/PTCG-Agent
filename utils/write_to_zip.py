@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def write_to_zip(file_path, strip_file_path, zf, prepend_str="") -> None:
     stripped_file_path = prepend_str + remove_prefix(file_path, strip_file_dir + "/")

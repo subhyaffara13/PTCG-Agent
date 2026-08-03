@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def move_function_to_module(func_name: str, src_file: Path, dest_pkg: Path, dest_module_name: str) -> bool:
     # Extract function source lines

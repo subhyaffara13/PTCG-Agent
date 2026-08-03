@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def get_typer_from_module(module: Any) -> typer.Typer | None:
     # Try to get defined app

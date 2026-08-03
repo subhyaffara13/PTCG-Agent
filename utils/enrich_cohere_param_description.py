@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def enrich_cohere_param_description(
     description: str, param_schema: Dict[str, Any]

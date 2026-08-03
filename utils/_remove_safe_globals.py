@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _remove_safe_globals(
     globals_to_remove: list[Callable | tuple[Callable, str]],

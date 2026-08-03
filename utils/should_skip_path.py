@@ -1,3 +1,4 @@
+import os
 
 def should_skip_path(path: str) -> bool:
     if stats.is_special_module(path):

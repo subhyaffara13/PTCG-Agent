@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _estimate_request_max_cost_for_model(
     request_body: dict,

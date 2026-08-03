@@ -1,3 +1,5 @@
+import sys
+from typing import Optional, Tuple
 
 def get_caller_frame_info() -> Tuple[Optional[str], bool]:
     """

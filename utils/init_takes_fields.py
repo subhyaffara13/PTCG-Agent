@@ -1,3 +1,4 @@
+from typing import Any
 
 def init_takes_fields(cls: type[Any]) -> bool:
   """Returns True if ``cls.__init__`` takes exactly one argument per field.

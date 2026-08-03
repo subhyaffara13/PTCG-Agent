@@ -1,3 +1,4 @@
+import json
 
 def get_windows_version(run_lambda):
     ret = run_and_read_all(

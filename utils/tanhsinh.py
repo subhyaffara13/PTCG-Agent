@@ -1,3 +1,5 @@
+import math
+
 
 def tanhsinh(f, a, b, *, args=(), kwargs=None, log=False, maxlevel=None, minlevel=2,
              atol=None, rtol=None, preserve_shape=False, callback=None):

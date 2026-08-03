@@ -1,3 +1,4 @@
+import os
 
 def get_ort_pipeline(model_name: str, directory: str, provider, disable_safety_checker: bool):
     from diffusers import DDIMScheduler, OnnxStableDiffusionPipeline  # noqa: PLC0415

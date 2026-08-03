@@ -1,3 +1,4 @@
+import itertools
 
 def binary_folding_init():
     _conv_args = [Arg() for _ in range(9)]

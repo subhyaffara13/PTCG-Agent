@@ -1,3 +1,4 @@
+import re
 
 def test_replace_unicode(any_string_dtype):
     ser = Series([b"abcd,\xc3\xa0".decode("utf-8")], dtype=any_string_dtype)

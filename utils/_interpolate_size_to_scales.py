@@ -1,3 +1,4 @@
+import sys
 
 def _interpolate_size_to_scales(g: jit_utils.GraphContext, input, output_size, dim):
     output_size = _maybe_get_const(output_size, "is")

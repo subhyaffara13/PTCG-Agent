@@ -1,3 +1,4 @@
+import os
 
 def explore_directories(start, exclude, ignore):
     '''Explore files and directories under `start`. `explore` and `ignore`

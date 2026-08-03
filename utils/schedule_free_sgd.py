@@ -1,3 +1,4 @@
+from typing import Optional
 
 def schedule_free_sgd(
     learning_rate: jax.typing.ArrayLike = 1.0,

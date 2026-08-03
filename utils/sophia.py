@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def sophia(
     learning_rate: base.ScalarOrSchedule,

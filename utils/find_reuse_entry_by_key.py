@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_reuse_entry_by_key(
     tx: "InstructionTranslator",

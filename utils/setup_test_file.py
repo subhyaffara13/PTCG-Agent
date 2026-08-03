@@ -1,3 +1,4 @@
+import os
 
 def setup_test_file():
     val = b'a\x00string'

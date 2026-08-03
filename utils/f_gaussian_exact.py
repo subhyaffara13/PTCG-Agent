@@ -1,3 +1,5 @@
+import math
+
 
 def f_gaussian_exact(a, b, alphas, xp):
     # Exact only when `a` and `b` are one of:

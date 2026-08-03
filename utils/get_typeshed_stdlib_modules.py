@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def get_typeshed_stdlib_modules(
     custom_typeshed_dir: str | None, version_info: tuple[int, int] | None = None

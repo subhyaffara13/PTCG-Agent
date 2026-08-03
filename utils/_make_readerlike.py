@@ -1,3 +1,4 @@
+import sys
 
 def _make_readerlike(stream, byte_order=boc.native_code):
     class R:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def flatten_one_level(tree: Any) -> tuple[Iterable[Any], Hashable]:
   """Flatten the given pytree node by one level.

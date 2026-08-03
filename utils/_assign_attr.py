@@ -1,3 +1,4 @@
+from typing import Any
 
 def _assign_attr(
     from_obj: torch.Tensor | torch.ScriptObject | torch.nn.Module,

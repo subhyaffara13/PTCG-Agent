@@ -1,3 +1,5 @@
+import sys
+import time
 
 def pause(info: str | None = None, err: bool = False) -> None:
     """This command stops execution and waits for the user to press any

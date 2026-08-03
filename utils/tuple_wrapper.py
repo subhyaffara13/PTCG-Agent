@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def tuple_wrapper(method):
     """

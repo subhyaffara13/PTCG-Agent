@@ -1,3 +1,4 @@
+from typing import Any
 
 def use_autovisualizer_if_present(
     node: Any,

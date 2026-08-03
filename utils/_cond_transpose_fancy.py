@@ -1,3 +1,4 @@
+import functools
 
 def _cond_transpose_fancy(cts_in, index, *args, branches, **params):
   assert not isinstance(index, ad.GradAccum)

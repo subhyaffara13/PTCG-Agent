@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_tool_calls(message) -> Optional[list]:
     """Return ``message.tool_calls`` only when it's a non-empty list.

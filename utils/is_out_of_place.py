@@ -1,3 +1,4 @@
+import os
 
 def is_out_of_place(rel_filepath) -> bool:
     if os.path.isabs(rel_filepath):

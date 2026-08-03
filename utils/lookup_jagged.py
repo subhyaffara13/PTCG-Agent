@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def lookup_jagged(func, *args, **kwargs) -> Callable | None:
     dispatch_func = JAGGED_OPS_TABLE.get(func, None)

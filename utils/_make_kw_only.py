@@ -1,3 +1,4 @@
+import functools
 
 def _make_kw_only(cls: _ClsT) -> _ClsT:
   """Replace the `__init__` by a keyword-only version."""

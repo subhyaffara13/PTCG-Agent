@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_provider_interactions_api_config(
     provider: str,

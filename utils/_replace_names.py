@@ -1,3 +1,4 @@
+import re
 
 def _replace_names(shape_expr: str, rename_mapping: dict[str, str]) -> str:
     """Replace all known names in a shape expression with new names."""

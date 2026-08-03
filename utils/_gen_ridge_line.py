@@ -1,3 +1,4 @@
+import copy
 
 def _gen_ridge_line(start_locs, max_locs, length, distances, gaps):
     """

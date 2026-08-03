@@ -1,3 +1,5 @@
+import os
+import re
 
 def glob_translate(pat):
     # Copied from: https://github.com/python/cpython/pull/106703.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _async_prefetch_lowering(
     ctx: lowering.LoweringRuleContext,

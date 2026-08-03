@@ -1,3 +1,4 @@
+import os
 
 def get_out_shardings_from_executable(
     xla_executable,

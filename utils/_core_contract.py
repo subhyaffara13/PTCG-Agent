@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def _core_contract(
     operands_: Sequence[ArrayType],

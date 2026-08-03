@@ -1,3 +1,4 @@
+from typing import Callable
 
 def findobj(
     o: Artist | None = None,

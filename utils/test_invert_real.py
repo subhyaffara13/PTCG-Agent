@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_invert_real():
     x = Symbol('x', real=True)

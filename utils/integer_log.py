@@ -1,3 +1,5 @@
+import math
+
 
 def integer_log(n, b):
     r"""

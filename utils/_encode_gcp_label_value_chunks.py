@@ -1,3 +1,4 @@
+from typing import List
 
 def _encode_gcp_label_value_chunks(value: str) -> List[str]:
     """Encode arbitrary text across one or more GCP-label-safe values."""

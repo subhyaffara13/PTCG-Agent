@@ -1,3 +1,4 @@
+from typing import Any
 
 def prepare_ts_data(
     series: Series, ax: Axes, kwargs: dict[str, Any]

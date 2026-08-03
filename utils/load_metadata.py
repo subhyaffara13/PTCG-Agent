@@ -1,3 +1,5 @@
+import json
+import os
 
 def load_metadata(repo_id, class_info_file):
     fname = os.path.join("" if repo_id is None else repo_id, class_info_file)

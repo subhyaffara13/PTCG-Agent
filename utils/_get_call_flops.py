@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_call_flops(
   c: module_lib._CallInfo,

@@ -1,3 +1,4 @@
+import os
 
 def make_test_distribution(metadata_path, metadata):
     """

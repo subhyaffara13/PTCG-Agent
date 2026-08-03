@@ -1,3 +1,4 @@
+import re
 
 def test_pdf_type1_font_subsetting():
     """Test that fonts in PDF output are properly subset."""

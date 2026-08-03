@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _ttfont_save_xml(
     ttf: Any,

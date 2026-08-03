@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compute_stride(
     old_shape: Sequence[IntLikeType],

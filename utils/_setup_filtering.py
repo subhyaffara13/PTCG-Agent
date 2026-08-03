@@ -1,3 +1,4 @@
+import os
 
 def _setup_filtering(argv: abc.MutableSequence[str]) -> bool:
   """Implements the bazel test filtering protocol.

@@ -1,3 +1,5 @@
+import json
+from typing import Optional, Union
 
 def encode(
     s: Union[str, bytes, bytearray],

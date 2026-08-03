@@ -1,3 +1,4 @@
+import sys
 
 def ttDump(input, output, options):
     input_name = input

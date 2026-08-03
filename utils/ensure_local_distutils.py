@@ -1,3 +1,4 @@
+import sys
 
 def ensure_local_distutils():
     import importlib

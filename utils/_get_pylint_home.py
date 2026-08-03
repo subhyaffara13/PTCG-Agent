@@ -1,3 +1,4 @@
+import os
 
 def _get_pylint_home() -> str:
     """Return the pylint home."""

@@ -1,3 +1,4 @@
+import functools
 
 def _merge_globalized_replicas(
     globalized_tree: tuple[jax.Array, ...],

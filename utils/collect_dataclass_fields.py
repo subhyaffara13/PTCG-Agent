@@ -1,3 +1,4 @@
+from typing import Any
 
 def collect_dataclass_fields(
     cls: type[StandardDataclass],

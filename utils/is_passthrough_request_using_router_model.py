@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_passthrough_request_using_router_model(
     request_body: dict, llm_router: Optional[litellm.Router]

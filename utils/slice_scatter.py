@@ -1,3 +1,4 @@
+import functools
 
 def slice_scatter(
     input: Tensor,

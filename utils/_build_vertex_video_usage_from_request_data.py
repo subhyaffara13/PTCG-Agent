@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_vertex_video_usage_from_request_data(
     request_data: Optional[Dict[str, Any]],

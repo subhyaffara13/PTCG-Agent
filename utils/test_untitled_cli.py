@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_untitled_cli(capfd, hello_world_f90, monkeypatch):
     """Check that modules are named correctly

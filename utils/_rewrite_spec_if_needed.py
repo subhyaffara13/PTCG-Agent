@@ -1,3 +1,4 @@
+import copy
 
 def _rewrite_spec_if_needed(
     spec: shard_spec.ShardingSpec, tensor: torch.Tensor, rank: int

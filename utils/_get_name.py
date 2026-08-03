@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _get_name(func: Callable):
     if hasattr(func, "__name__"):

@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_protected_indices(messages: List[dict]) -> List[int]:
     """

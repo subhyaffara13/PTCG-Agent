@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def calculate_sample_sizes(batch_size: int, expert_ratio: float, expert_len: int, self_play_len: int) -> Tuple[int, int]:
     target_expert = int(batch_size * expert_ratio)

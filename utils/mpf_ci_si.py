@@ -1,3 +1,5 @@
+import math
+
 
 def mpf_ci_si(x, prec, rnd=round_fast, which=2):
     """

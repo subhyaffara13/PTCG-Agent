@@ -1,3 +1,4 @@
+from typing import Any
 
 def hessian_diag(
     loss: LossFn,

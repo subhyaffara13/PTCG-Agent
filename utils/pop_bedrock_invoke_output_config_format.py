@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def pop_bedrock_invoke_output_config_format(request_body: Dict) -> Optional[Dict]:
     """

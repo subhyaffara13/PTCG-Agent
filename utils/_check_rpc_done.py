@@ -1,3 +1,4 @@
+import time
 
 def _check_rpc_done(rank_distance):
     while not rpc_done[rank_distance]:

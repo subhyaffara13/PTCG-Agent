@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _construct_restore_args(
     target: PyTree | None,

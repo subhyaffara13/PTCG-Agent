@@ -1,3 +1,5 @@
+import math
+
 
 def _per_token_quant_qparam_dim_check(input, scales, zero_points):
     num_tokens = math.prod(list(input.size())[:-1])

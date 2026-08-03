@@ -1,3 +1,4 @@
+import re
 
 def infer_ir_build_options_from_test_name(name: str) -> CompilerOptions | None:
     """Look for magic substrings in test case name to set compiler options.

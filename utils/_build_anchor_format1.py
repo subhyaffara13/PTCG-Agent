@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _buildAnchorFormat1(point: ElementType, validate: bool) -> Optional[dict[str, Any]]:
     if point.get("type") != "move":

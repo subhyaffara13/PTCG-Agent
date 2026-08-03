@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def _host_perfetto_trace_file(path: os.PathLike | str):
   # ui.perfetto.dev looks for files hosted on `127.0.0.1:9001`. We set up a

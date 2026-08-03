@@ -1,3 +1,4 @@
+import functools
 
 def _dot_product_attention_fp8_bwd_partition(
     scale, use_causal_mask, layout, mesh,

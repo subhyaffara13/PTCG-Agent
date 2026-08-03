@@ -1,3 +1,4 @@
+import re
 
 def nsimplify(expr, constants=(), tolerance=None, full=False, rational=None,
     rational_conversion='base10'):

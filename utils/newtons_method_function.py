@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def newtons_method_function(expr, wrt, params=None, func_name="newton", attrs=Tuple(), *, delta=None, **kwargs):
     """ Generates an AST for a function implementing the Newton-Raphson method.

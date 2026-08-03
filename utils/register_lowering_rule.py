@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_lowering_rule(params_cls, rule, platform: str):
   _backend_lowering_rules[params_cls] = (rule, platform)

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def handle_generic_stream_chunk(dict_chunk: dict) -> ModelResponseStream:
     """Parse a single GENERIC SSE chunk into a LiteLLM ModelResponseStream."""

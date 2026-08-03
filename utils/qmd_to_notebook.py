@@ -1,3 +1,6 @@
+import json
+import os
+import sys
 
 def qmd_to_notebook(text):
     """Convert a Quarto Markdown notebook to a Jupyter notebook"""

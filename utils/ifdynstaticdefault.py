@@ -1,3 +1,4 @@
+from typing import Any
 
 def ifdynstaticdefault(count1: Any, count2: Any) -> Any:
     if torch._dynamo.config.assume_static_by_default:

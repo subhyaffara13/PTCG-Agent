@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_str_size():
     # GH#21758

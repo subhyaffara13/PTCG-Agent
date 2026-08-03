@@ -1,3 +1,4 @@
+from typing import Dict, Union
 
 def _get_env(environment: Dict[str, str], name: str) -> str:
     value: Union[str, Undefined] = environment.get(name, _undefined)

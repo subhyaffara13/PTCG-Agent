@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def tensorsymmetry(*args):
     """

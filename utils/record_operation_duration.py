@@ -1,3 +1,4 @@
+from typing import Optional
 
 def record_operation_duration(
     command_name: str,

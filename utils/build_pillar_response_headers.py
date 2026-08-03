@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def build_pillar_response_headers(metadata_store: Dict[str, Any]) -> Dict[str, str]:
     """

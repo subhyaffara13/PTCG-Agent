@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_7547():
     A, B, V = symbols('A,B,V')

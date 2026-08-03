@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def update_wrapper_attributes(wrapped: ValidateCallSupportedTypes, wrapper: Callable[..., Any]):
     """Update the `wrapper` function with the attributes of the `wrapped` function. Return the updated function."""

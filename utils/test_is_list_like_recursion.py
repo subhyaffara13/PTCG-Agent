@@ -1,3 +1,4 @@
+import sys
 
 def test_is_list_like_recursion():
     # GH 33721

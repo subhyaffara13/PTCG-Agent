@@ -1,3 +1,4 @@
+import sys
 
 def run_setup(script_name, script_args: Iterable[str] | None = None, stop_after="run"):
     """Run a setup script in a somewhat controlled environment, and

@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def decode_model_from_file_id(encoded_id: str) -> Optional[str]:
     """

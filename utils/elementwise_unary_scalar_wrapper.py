@@ -1,3 +1,4 @@
+from typing import Callable
 
 def elementwise_unary_scalar_wrapper(
     fn: Callable[_P, _T],

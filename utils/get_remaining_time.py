@@ -1,3 +1,5 @@
+import time
+from typing import Optional
 
 def get_remaining_time(
     start_time: float, timeout_secs: Optional[float]

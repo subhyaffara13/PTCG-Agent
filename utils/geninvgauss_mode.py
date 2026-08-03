@@ -1,3 +1,5 @@
+import math
+
 
 def geninvgauss_mode(p, b):
     if p > 1:  # equivalent mode formulas numerical more stable versions

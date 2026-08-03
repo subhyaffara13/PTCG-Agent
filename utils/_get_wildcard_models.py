@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_wildcard_models(
     unique_models: List[str],

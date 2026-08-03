@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_view_inputs(
     aot_config: AOTConfig,

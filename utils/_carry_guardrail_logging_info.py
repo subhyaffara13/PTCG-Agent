@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _carry_guardrail_logging_info(
     request_data: dict, guardrail_data: Optional[dict]

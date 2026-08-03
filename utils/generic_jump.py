@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def generic_jump(
     truth_fn: Callable[[object], bool], push: bool

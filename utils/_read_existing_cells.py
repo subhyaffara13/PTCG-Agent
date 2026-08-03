@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _read_existing_cells(csv_path: Path) -> set[tuple]:
     """Return the set of cell keys already present in games.csv (for --resume)."""

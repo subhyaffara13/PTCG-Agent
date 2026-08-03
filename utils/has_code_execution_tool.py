@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def has_code_execution_tool(tools: Optional[List[Dict]]) -> bool:
     """Check if litellm_code_execution tool is in the tools list."""

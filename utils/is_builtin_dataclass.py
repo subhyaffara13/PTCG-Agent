@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_builtin_dataclass(_cls: Type[Any]) -> bool:
     """

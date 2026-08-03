@@ -1,3 +1,4 @@
+import functools
 
 def _function_to_method(random_f):
   @functools.wraps(random_f)

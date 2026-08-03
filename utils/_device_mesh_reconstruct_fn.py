@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _device_mesh_reconstruct_fn(
     mesh: "OpaqueBase",

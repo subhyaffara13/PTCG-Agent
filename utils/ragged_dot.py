@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def ragged_dot(result: _ods_ir.Type, lhs: _ods_ir.Value, rhs: _ods_ir.Value, group_sizes: _ods_ir.Value[_ods_ir.RankedTensorType], ragged_dot_dimension_numbers: _Union[_Any, _ods_ir.Attribute], *, precision_config: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult:
   return RaggedDotOp(result=result, lhs=lhs, rhs=rhs, group_sizes=group_sizes, ragged_dot_dimension_numbers=ragged_dot_dimension_numbers, precision_config=precision_config, loc=loc, ip=ip).result

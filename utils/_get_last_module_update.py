@@ -1,3 +1,4 @@
+import sys
 
 def _get_last_module_update(module_name: str) -> int | None:
   """Get the last update for one module."""

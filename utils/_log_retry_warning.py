@@ -1,3 +1,4 @@
+import logging
 
 def _log_retry_warning(retry_state: tenacity.RetryCallState):
     assert retry_state.outcome is not None

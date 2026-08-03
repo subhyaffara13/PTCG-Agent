@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def ensure_str(s, encoding='utf-8', errors='strict'):
     """Coerce *s* to `str`.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def replay_adhoc_ctx(**adhoc_kwargs: Any):
   """Replay the adhoc context."""

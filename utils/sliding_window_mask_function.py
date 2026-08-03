@@ -1,3 +1,4 @@
+from typing import Callable
 
 def sliding_window_mask_function(sliding_window: tuple[int, int]) -> Callable:
     """

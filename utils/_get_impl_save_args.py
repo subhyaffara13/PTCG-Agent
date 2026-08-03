@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_impl_save_args(
     item: Optional[PyTree] = None,

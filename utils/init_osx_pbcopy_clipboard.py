@@ -1,3 +1,4 @@
+import subprocess
 
 def init_osx_pbcopy_clipboard():
     def copy_osx_pbcopy(text):

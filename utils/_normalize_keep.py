@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_keep(keep_obj: Mapping[str, Any]) -> dict[str, Any]:
     """Map keep-dict keys to canonical lowercase item keys.

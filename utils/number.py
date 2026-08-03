@@ -1,3 +1,4 @@
+from typing import Any
 
 def number(s: Any) -> float:
     try:

@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def _get_elf_header() -> Optional[_ELFFileHeader]:
     try:

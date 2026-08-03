@@ -1,3 +1,5 @@
+import math
+
 
 def _generate_per_layer_crops(crop_n_layers, overlap_ratio, original_size):
     """

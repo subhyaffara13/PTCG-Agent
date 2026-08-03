@@ -1,3 +1,4 @@
+from typing import Any
 
 def _namedtuple_flatten_with_keys(
     d: NamedTuple,

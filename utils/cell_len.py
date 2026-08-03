@@ -1,3 +1,4 @@
+from typing import Callable
 
 def cell_len(text: str, unicode_version: str = "auto") -> int:
     """Get the cell length of a string (length as it appears in the terminal).

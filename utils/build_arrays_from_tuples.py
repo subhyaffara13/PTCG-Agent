@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def build_arrays_from_tuples(path: PathType) -> List[Any]:
     """Build random numpy arrays from a path.

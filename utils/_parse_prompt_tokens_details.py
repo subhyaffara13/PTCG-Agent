@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _parse_prompt_tokens_details(usage: Usage) -> PromptTokensDetailsResult:
     cache_hit_tokens = (

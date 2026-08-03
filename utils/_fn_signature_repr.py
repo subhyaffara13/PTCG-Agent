@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _fn_signature_repr(fn: Callable[..., Any]) -> str:
   """Constructs the signature representation of a function."""

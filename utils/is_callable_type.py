@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def is_callable_type(type_: type[Any]) -> bool:
     return type_ is Callable or get_origin(type_) is Callable

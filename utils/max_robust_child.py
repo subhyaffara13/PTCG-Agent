@@ -1,3 +1,4 @@
+from typing import Optional
 
 def max_robust_child(
     root: SearchNode, find_robust: bool = False

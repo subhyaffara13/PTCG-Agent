@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def generate_tuple_convertor(
     types: Sequence[Any],

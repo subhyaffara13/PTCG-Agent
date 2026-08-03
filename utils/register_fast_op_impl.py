@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_fast_op_impl(
     func: OpOverload,

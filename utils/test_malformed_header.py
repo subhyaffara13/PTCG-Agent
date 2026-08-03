@@ -1,3 +1,4 @@
+import logging
 
 def test_malformed_header(afm_data, caplog):
     fh = BytesIO(afm_data)

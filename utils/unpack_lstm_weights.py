@@ -1,3 +1,5 @@
+import math
+
 
 def unpack_lstm_weights(
     weights: Array, input_size: int, hidden_size: int, num_layers: int,

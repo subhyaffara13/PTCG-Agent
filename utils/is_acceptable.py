@@ -1,3 +1,4 @@
+import sys
 
 def is_acceptable(tensor):
     if not torch._C._get_cudnn_enabled():

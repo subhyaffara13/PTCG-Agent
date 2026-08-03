@@ -1,3 +1,4 @@
+from typing import Any
 
 def _mapping_array_conversion(
     value: Mapping[str, Any], xp: ModuleType, device: Device | None = None

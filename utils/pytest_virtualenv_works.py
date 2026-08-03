@@ -1,3 +1,4 @@
+import sys
 
 def pytest_virtualenv_works(venv):
     """

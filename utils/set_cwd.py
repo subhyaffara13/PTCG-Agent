@@ -1,3 +1,4 @@
+import os
 
 def set_cwd(path: str) -> Iterator[None]:
     old_cwd = os.getcwd()

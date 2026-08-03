@@ -1,3 +1,4 @@
+from typing import Any
 
 def triton_kernel_wrapper_functional_proxy_torch_dispatch_mode(
     mode: ProxyTorchDispatchMode,

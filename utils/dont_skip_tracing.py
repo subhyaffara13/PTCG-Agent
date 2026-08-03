@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dont_skip_tracing(fn: None = None) -> DynamoConfigPatchProxy: ...
 

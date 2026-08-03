@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _collect_response_file_search_vector_store_ids(data: Dict[str, Any]) -> set[str]:
     vector_store_ids: set[str] = set()

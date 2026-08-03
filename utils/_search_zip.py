@@ -1,3 +1,4 @@
+import os
 
 def _search_zip(
     modpath: tuple[str, ...],

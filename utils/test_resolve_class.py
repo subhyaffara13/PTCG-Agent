@@ -1,3 +1,4 @@
+import sys
 
 def test_resolve_class(monkeypatch, tmp_path, package_dir, file, module, return_value):
     monkeypatch.setattr(sys, "modules", {})  # reproducibility

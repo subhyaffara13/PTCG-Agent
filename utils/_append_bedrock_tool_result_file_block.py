@@ -1,3 +1,4 @@
+from typing import List
 
 def _append_bedrock_tool_result_file_block(
     tool_result_content_blocks: List[BedrockToolResultContentBlock],

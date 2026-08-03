@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def get_model_rate_limit_from_metadata(
     user_api_key_dict: UserAPIKeyAuth,

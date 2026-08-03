@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def check_size_alltoall(alltoall_cases: list[dict[str, Any]]) -> tuple[bool, int, int]:
     input_numel = 0

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_forward_ad_formula(op: Callable, args, kwargs, gradcheck_wrapper=None, assert_equal_fn=None):
     CCT, cct_mode = generate_cct_and_mode(autograd_view_consistency=False)

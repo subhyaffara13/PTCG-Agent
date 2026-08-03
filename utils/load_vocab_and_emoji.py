@@ -1,3 +1,4 @@
+import json
 
 def load_vocab_and_emoji(vocab_file, emoji_file):
     """Loads a vocabulary file and emoji file into a dictionary."""

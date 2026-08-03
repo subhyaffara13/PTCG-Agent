@@ -1,3 +1,4 @@
+import os
 
 def wait_pid_pidfd_open(pid, timeout=None):
     """Wait for PID to terminate using pidfd_open() + poll(). Linux >=

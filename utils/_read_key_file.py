@@ -1,3 +1,4 @@
+import re
 
 def _read_key_file(key_path):
     with open(key_path, "rb") as key_file:

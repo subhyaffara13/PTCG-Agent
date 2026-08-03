@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_all_pg_configs() -> list[dict[str, Any]]:
     """

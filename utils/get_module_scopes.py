@@ -1,3 +1,4 @@
+import functools
 
 def get_module_scopes(module, args=None, kwargs=None):
   """Get all scopes on module, including constructor Module arguments.

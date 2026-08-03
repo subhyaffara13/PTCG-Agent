@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _handle_special_commands(
     console: Console,

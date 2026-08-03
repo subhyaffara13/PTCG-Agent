@@ -1,3 +1,4 @@
+import os
 
 def test_include_path():
     incdir = np.f2py.get_include()

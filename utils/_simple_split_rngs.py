@@ -1,3 +1,4 @@
+import random
 
 def _simple_split_rngs(
     node: tp.Any,

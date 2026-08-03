@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def read_from_shared_memory(
     space: Space, shared_memory: dict | tuple | SynchronizedArray, n: int = 1

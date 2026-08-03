@@ -1,3 +1,4 @@
+from typing import Any
 
 def _replicated_abstract_state(metadata: Any) -> Any:
   """Builds an abstract state with every leaf replicated across local devices.

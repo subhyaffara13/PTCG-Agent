@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _choose_memory_arg(memory_limit: _MemoryLimit, size_list: List[int]) -> Optional[int]:
     if memory_limit == "max_input":

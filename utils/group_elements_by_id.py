@@ -1,3 +1,4 @@
+from typing import Dict
 
 def group_elements_by_id(tree: etree.Element) -> Dict[str, etree.Element]:
     # select all svg elements with 'id' attribute no matter where they are

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _is_doctest(config: Config, path: Path, parent: Collector) -> bool:
     if path.suffix in (".txt", ".rst") and parent.session.isinitpath(path):

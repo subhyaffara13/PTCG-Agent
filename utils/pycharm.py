@@ -1,3 +1,4 @@
+import os
 
 def pycharm():
     os.environ["PYCHARM_HOSTED"] = "1"

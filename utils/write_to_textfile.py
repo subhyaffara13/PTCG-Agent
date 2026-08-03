@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def write_to_textfile(path: str, registry: Collector, escaping: str = openmetrics.ALLOWUTF8, tmpdir: Optional[str] = None) -> None:
     """Write metrics to the given path.

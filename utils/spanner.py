@@ -1,3 +1,5 @@
+import math
+
 
 def spanner(G, stretch, weight=None, seed=None):
     """Returns a spanner of the given graph with the given stretch.

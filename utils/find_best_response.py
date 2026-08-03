@@ -1,3 +1,4 @@
+import itertools
 
 def find_best_response(
     game,

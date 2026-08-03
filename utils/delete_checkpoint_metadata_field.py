@@ -1,3 +1,4 @@
+import json
 
 def delete_checkpoint_metadata_field(
     path: epath.Path, field_to_remove: str

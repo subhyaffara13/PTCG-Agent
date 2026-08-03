@@ -1,3 +1,4 @@
+import sys
 
 def _ensure_pydantic_core_version() -> None:  # pragma: no cover
     if not check_pydantic_core_version():

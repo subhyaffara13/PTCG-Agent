@@ -1,3 +1,4 @@
+from typing import List
 
 def _is_orphaned_tool_result(
     current_message: AllMessageValues,

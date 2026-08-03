@@ -1,3 +1,4 @@
+import itertools
 
 def generate_subclass_choices(flat_args, CCT, cct_mode):
     # CCT: CompositeCompliantTensor class which is generated using generate_cct_and_mode

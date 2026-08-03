@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def _compile_marker(pattern: Optional[str]) -> Optional[Pattern[str]]:
     """Compile optional regex string to a pattern."""

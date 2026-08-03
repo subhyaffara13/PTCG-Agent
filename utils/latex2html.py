@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def latex2html(node, source):
     inline = isinstance(node.parent, nodes.TextElement)

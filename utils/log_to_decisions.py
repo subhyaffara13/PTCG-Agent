@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def log_to_decisions(decisions_file: Path, team_name: str, team_id: str, wins: int, losses: int):
     import datetime

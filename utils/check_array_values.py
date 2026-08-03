@@ -1,3 +1,5 @@
+import logging
+from typing import Union
 
 def check_array_values(
     values: Sequence[Union[jax.Array, np.ndarray]],

@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def register_replacement(
     search_fn: SearchFn,

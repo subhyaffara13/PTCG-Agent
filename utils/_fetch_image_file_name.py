@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _fetchImageFileName(glif: bytes) -> Optional[str]:
     """

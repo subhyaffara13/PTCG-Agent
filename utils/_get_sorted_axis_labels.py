@@ -1,3 +1,4 @@
+from typing import Dict, Union
 
 def _getSortedAxisLabels(
     axes: list[Union[AxisDescriptor, DiscreteAxisDescriptor]],

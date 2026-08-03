@@ -1,3 +1,4 @@
+import pathlib
 
 def _regexp_paths_csv_transfomer(value: str) -> Sequence[Pattern[str]]:
     """Transforms a comma separated list of regular expressions paths."""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def inspect_validator(
     validator: Callable[..., Any], *, mode: FieldValidatorModes, type: Literal['field', 'model']

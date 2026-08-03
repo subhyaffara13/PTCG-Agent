@@ -1,3 +1,4 @@
+from typing import Any
 
 def _local_scalar_dense_impl(self: ComplexTensor, *args: Any, **kwargs: Any) -> complex:
     x, y = split_complex_tensor(self)

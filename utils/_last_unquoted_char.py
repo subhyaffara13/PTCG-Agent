@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _last_unquoted_char(text: str, chs: Optional[str]) -> int:
     """Return position of last unquoted character in list, or -1 if not found."""

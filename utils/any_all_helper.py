@@ -1,3 +1,4 @@
+from typing import Callable
 
 def any_all_helper(
     builder: IRBuilder,

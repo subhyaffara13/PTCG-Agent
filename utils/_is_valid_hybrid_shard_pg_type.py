@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_valid_hybrid_shard_pg_type(process_group: Any) -> bool:
     return (

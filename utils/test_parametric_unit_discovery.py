@@ -1,3 +1,4 @@
+import os
 
 def test_parametric_unit_discovery(
     generic_data, long_datum, unitless_dtype, expected_dtype, nrows

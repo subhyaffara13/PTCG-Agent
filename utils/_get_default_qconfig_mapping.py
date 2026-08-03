@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_default_qconfig_mapping(
     is_qat: bool, backend: str, version: int

@@ -1,3 +1,4 @@
+from typing import List, Set
 
 def _is_host_allowlisted(hostname: str, effective_port: int) -> bool:
     """Check whether a host is in the admin-configured allowlist.

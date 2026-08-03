@@ -1,3 +1,4 @@
+import sys
 
 def pytest_runtest_call(item: Item) -> None:
     """Called to run the test for test item (the call phase).

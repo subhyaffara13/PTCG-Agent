@@ -1,3 +1,4 @@
+import copy
 
 def virtualize_exception_table(
     exn_tab_bytes: bytes, instructions: list[Instruction]

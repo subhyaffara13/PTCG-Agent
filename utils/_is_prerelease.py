@@ -1,3 +1,4 @@
+import os
 
 def _is_prerelease() -> bool:
   """Determine if this is a pre-release ("rc" wheels) build."""

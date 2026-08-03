@@ -1,3 +1,4 @@
+import re
 
 def _prepare_output_docstrings(output_type, config_class, min_indent=None, add_intro=True):
     """

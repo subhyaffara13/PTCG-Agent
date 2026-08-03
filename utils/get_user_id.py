@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_user_id() -> int | None:
     """Return the current process's real user id or None if it could not be

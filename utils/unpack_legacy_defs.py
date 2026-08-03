@@ -1,3 +1,4 @@
+import copy
 
 def unpack_legacy_defs(
     schema: dict,

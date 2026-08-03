@@ -1,3 +1,5 @@
+import math
+
 
 def hadamard(n, dtype=int):
     """

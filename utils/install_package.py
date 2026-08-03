@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def install_package(
     pkg: str, python_executable: str = sys.executable, editable: bool = False

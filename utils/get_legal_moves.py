@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_legal_moves(observation: Mapping[str, Any]) -> dict[int, str] | None:
     """Return legal moves for the current turn.

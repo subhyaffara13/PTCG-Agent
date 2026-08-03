@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def get_vertex_location_from_url(url: str) -> Optional[str]:
     """

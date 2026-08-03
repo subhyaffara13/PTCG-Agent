@@ -1,3 +1,5 @@
+import functools
+import os
 
 def wrap_exceptions(fun):
     """Call callable into a try/except clause and translate ENOENT,

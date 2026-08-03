@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_job_id_from_arn(arn: str) -> Optional[str]:
     """``arn:aws:bedrock:<region>:<acct>:model-invocation-job/<job-id>`` -> ``<job-id>``."""

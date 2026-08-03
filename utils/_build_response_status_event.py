@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_response_status_event(
     event_type: Literal[

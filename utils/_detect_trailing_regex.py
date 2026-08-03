@@ -1,3 +1,4 @@
+import re
 
 def _detect_trailing_regex() -> re.Pattern[str]:
   """Check if the last character is a `;` token."""

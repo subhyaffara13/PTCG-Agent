@@ -1,3 +1,4 @@
+from typing import Any
 
 def _candidate_action_strings(payload: dict[str, Any]) -> list[str]:
     """Convert a parsed JSON dict into candidate legal-action strings."""

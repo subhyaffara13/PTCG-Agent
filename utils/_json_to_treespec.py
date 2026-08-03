@@ -1,3 +1,4 @@
+import json
 
 def _json_to_treespec(json_schema: DumpableContext) -> TreeSpec:
     if (

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_qlinear_weight_prepack_pass(
     pattern,

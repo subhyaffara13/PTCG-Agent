@@ -1,3 +1,4 @@
+import functools
 
 def _masked_apply(f, *, args, kwargs=None, xp):
     # Unmask array arguments, evaluate function, and apply result mask to outputs.

@@ -1,3 +1,4 @@
+import itertools
 
 def _mosaic_gpu_abstract_eval(*_, module, out_types, inout_types):
   del module # Unused.

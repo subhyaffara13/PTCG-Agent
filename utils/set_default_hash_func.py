@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_default_hash_func(cls: type[BaseModel], bases: tuple[type[Any], ...]) -> None:
     base_hash_func = get_attribute_from_bases(bases, '__hash__')

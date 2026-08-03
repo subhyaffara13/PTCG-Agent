@@ -1,3 +1,4 @@
+from typing import List
 
 def contains_all(text: str, substrings: List[str]) -> bool:
     """

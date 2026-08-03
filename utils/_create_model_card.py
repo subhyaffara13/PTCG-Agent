@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _create_model_card(repo_dir: Path):
     """

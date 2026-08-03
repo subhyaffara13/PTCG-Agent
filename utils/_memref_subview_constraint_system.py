@@ -1,3 +1,5 @@
+import math
+
 
 def _memref_subview_constraint_system(
     ctx: DerivationContext,

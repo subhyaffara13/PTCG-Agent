@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_traced_sample_variant_pairs(device, dtype, op):
     # tuples of (variant, sample)

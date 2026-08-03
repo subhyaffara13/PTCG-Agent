@@ -1,3 +1,4 @@
+import functools
 
 def test_functools():
     fp = functools.partial(f, 1, 2)

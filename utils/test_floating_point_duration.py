@@ -1,3 +1,4 @@
+import time
 
 def test_floating_point_duration():
     # Test using a floating point number in seconds

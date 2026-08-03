@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _pipepager(
     cmd_parts: list[str], color: bool | None = None

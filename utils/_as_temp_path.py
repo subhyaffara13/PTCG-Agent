@@ -1,3 +1,4 @@
+import uuid
 
 def _as_temp_path(host, path, temppath):
     share = path.split("/")[1]

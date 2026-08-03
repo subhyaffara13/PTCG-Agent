@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_client_in_cache(client_cache_key: str, vertex_llm_model: Any):
     litellm.in_memory_llm_clients_cache.set_cache(

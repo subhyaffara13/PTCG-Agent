@@ -1,3 +1,4 @@
+import os
 
 def _untar_without_filter(
     filename: str,

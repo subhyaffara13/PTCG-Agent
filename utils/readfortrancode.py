@@ -1,3 +1,7 @@
+import os
+import re
+from pathlib import Path
+
 
 def readfortrancode(ffile, dowithline=show, istop=1):
     """

@@ -1,3 +1,4 @@
+import itertools
 
 def _replica_groups_hlo(replica_groups: Sequence[Sequence[int]]
                         ) -> ir.DenseElementsAttr:

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def temp_style(style_name, settings=None):
     """Context manager to create a style sheet in a temporary directory."""

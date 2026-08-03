@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def _run_ninja_build(build_directory: str, verbose: bool, error_prefix: str) -> None:
     command = ['ninja', '-v']

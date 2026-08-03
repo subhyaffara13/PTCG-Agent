@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _normalize_tool_choice(selected_params: Dict) -> None:
     tc = selected_params.get("toolChoice")

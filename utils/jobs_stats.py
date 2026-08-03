@@ -1,3 +1,4 @@
+import time
 
 def jobs_stats(
     job_ids: JobIdsArg = None,

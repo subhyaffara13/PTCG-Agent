@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _prepare_convolution_fusion_create(
     cls,

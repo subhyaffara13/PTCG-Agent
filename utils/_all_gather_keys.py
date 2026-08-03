@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _all_gather_keys(
     local_dict: dict[str, Any], group: dist.ProcessGroup | None = None

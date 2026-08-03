@@ -1,3 +1,4 @@
+from typing import Any
 
 def _deserialize_pytreedef_to_pytree(
     p: ser_flatbuf.PyTreeDef,

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _nova_canvas_task_body(
     *,

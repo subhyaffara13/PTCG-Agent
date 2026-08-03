@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_and_process_custom_metadata(
     custom_metadata: Any,

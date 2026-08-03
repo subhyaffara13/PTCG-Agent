@@ -1,3 +1,4 @@
+from typing import Any, Tuple, Union
 
 def get_object_types_mro(obj: Union[object, Type[Any]]) -> Tuple[type, ...]:
     """Returns the MRO of an object's class, or of the object itself if it's a class."""

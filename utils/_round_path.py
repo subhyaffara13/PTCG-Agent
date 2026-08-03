@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _round_path(
     path: pathops.Path, round: Callable[[float], float] = otRound

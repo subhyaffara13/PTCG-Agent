@@ -1,3 +1,4 @@
+import time
 
 def _chat_completion_json(model: str) -> dict:
     """Return a minimal valid ChatCompletion object."""

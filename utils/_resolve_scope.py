@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_scope(
     user_api_key_dict: UserAPIKeyAuth,

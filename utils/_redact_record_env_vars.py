@@ -1,3 +1,4 @@
+from typing import Any
 
 def _redact_record_env_vars(record: Any) -> Any:
     """Return ``record`` with its ``env_vars[].value`` blanked.

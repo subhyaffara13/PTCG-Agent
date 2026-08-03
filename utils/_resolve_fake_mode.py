@@ -1,3 +1,4 @@
+from typing import Any
 
 def _resolve_fake_mode(gm: GraphModule, dynamic_shapes: Any) -> FakeTensorMode:
     if dynamic_shapes == "from_example_inputs":

@@ -1,3 +1,4 @@
+import os
 
 def test_file_truncated(tmp_path):
     path = tmp_path / "a.npy"

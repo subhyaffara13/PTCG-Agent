@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_team_id_from_data(data: dict) -> Optional[str]:
     """

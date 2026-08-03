@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_app_dir(app_name: str, roaming: bool = True, force_posix: bool = False) -> str:
     r"""Returns the config folder for the application.  The default behavior

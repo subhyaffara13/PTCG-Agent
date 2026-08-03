@@ -1,3 +1,4 @@
+from typing import Any
 
 def claim_worker_thread(
     backend_class: type[AsyncBackend], token: object

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _scan_cached_repo(repo_path: Path) -> CachedRepoInfo:
     """Scan a single cache repo and return information about it.

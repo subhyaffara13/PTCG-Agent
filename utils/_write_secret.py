@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _write_secret(path: Path, content: str) -> None:
     """Write content to file, restricting both the file and its parent directory to owner-only on POSIX systems."""

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def validate_rate_limit_category(value: Any) -> Optional[str]:
     """Return ``value`` only if it matches a known :class:`RateLimitErrorCategory`.

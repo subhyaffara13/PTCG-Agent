@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_key_index(dct: dict[Any, Any], key: Any) -> int:
     # Ensure that we call dict.keys and not value.keys (which can call

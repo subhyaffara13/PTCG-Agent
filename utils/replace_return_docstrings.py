@@ -1,3 +1,4 @@
+import re
 
 def replace_return_docstrings(output_type=None, config_class=None):
     def docstring_decorator(fn):

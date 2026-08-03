@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _check_non_standard_fallback_format(fallbacks: Optional[List[Any]]) -> bool:
     """

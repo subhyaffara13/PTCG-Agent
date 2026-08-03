@@ -1,3 +1,5 @@
+import json
+import os
 
 def rebuild(expr):
     """ Rebuild a SymPy tree.

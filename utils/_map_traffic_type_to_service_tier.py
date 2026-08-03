@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _map_traffic_type_to_service_tier(traffic_type: Optional[str]) -> Optional[str]:
     """

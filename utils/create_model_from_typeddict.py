@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def create_model_from_typeddict(
     # Mypy bug: `Type[TypedDict]` is resolved as `Any` https://github.com/python/mypy/issues/11030

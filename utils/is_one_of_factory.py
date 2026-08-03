@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def is_one_of_factory(legal_values: Sequence) -> Callable[[Any], None]:
     callables = [c for c in legal_values if callable(c)]

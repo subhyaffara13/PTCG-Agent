@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _prepare_multipart_file_upload(
     file: Any,

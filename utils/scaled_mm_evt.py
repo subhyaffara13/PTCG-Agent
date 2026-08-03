@@ -1,3 +1,4 @@
+from typing import Any
 
 def scaled_mm_evt(
     scale_A_name: str, scale_B_name: str, bias_name: str | None, output_name: str

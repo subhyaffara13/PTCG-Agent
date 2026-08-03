@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _simple_layout(
     packages: Iterable[str], package_dir: dict[str, str], project_dir: StrPath

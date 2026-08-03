@@ -1,3 +1,5 @@
+import math
+
 
 def mqa_reference(
     q,                # [bs, num_q_heads, head_dim]

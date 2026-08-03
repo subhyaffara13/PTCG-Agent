@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_langfuse_proxy_credentials(
     *,

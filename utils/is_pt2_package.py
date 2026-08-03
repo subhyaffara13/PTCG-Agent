@@ -1,3 +1,4 @@
+import os
 
 def is_pt2_package(serialized_model: bytes | str) -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _dump_response_object(obj: Any) -> Dict[str, Any]:
     if hasattr(obj, "model_dump"):

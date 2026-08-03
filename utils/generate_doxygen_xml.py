@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def generate_doxygen_xml(app):
     build_dir = os.path.join(app.confdir, ".build")

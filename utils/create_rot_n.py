@@ -1,3 +1,4 @@
+import sys
 
 def create_rot_n(n: int) -> list[Instruction]:
     """

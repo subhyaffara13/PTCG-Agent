@@ -1,3 +1,5 @@
+import math
+
 
 def do_matmul(a_gmem,
               b_gmem,

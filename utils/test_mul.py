@@ -1,3 +1,4 @@
+import random
 
 def test_mul():
     from sympy.abc import x

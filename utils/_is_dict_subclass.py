@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_dict_subclass(obj: Any, *, force: bool = False) -> bool:
   """Returns `True` if the object is a dict subclass."""

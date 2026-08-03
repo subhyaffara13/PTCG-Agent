@@ -1,3 +1,4 @@
+import os
 
 def make_path_posix(path):
     """Make path generic and absolute for current OS"""

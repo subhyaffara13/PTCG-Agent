@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _warn_deprecation(name: str, module_globals: Dict[str, Any]) -> Any:
     if (val := module_globals.get(f"_DEPRECATED_{name}")) is None:

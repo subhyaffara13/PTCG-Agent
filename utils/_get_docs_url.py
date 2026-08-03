@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _get_docs_url() -> Optional[str]:
     """

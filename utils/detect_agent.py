@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def detect_agent() -> Optional[str]:
     """Return the id of the detected AI agent harness or `None`.

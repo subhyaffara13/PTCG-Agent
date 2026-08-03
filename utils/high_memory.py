@@ -1,3 +1,4 @@
+import os
 
 def high_memory(pytestconfig):
     from matplotlib.testing import is_ci_environment

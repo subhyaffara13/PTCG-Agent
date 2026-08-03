@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _unchunk(data: dict[str, Any]):
   """Convert canonical dictionary of chunked arrays back into array."""

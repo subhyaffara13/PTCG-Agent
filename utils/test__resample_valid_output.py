@@ -1,3 +1,4 @@
+import functools
 
 def test__resample_valid_output():
     resample = functools.partial(mpl._image.resample, transform=Affine2D())

@@ -1,3 +1,4 @@
+import os
 
 def _waitpid(pid, timeout):
     """Wrapper around os.waitpid(). PID is supposed to be gone already,

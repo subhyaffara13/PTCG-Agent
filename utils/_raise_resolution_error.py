@@ -1,3 +1,4 @@
+from typing import Any
 
 def _raise_resolution_error(code: types.CodeType, scope: Any) -> Never:
     raise PackageError(

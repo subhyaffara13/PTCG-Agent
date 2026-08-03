@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_force_test(
     op: OpType, func_impl: Callable[..., Any] | None = None

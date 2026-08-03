@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _add_send_recv(
     compute_actions: dict[int, list[_Action]],

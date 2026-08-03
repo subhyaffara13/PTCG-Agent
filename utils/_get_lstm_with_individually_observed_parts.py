@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_lstm_with_individually_observed_parts(
     float_lstm: torch.nn.LSTM,

@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, Optional
 
 def parse_sse_json_chunk(chunk: str) -> Optional[Dict[str, Any]]:
     """Parse a single raw SSE line into a JSON object dict.

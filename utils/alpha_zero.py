@@ -1,3 +1,6 @@
+import json
+import os
+import sys
 
 def alpha_zero(config: Config) -> None:
   # NOTE: a single device accelearation is currently supported

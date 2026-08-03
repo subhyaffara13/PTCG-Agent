@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def fuse(model: torch.nn.Module, inplace=False, no_trace=False) -> torch.nn.Module:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _collect_param_buffer_metadata(mod: torch.fx.GraphModule) -> dict[str, Any]:
     """

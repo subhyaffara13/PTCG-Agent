@@ -1,3 +1,5 @@
+import json
+import os
 
 def mount_swagger_ui():
     swagger_directory = os.path.join(current_dir, "swagger")

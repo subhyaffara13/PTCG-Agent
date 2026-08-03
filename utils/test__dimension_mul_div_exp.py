@@ -1,3 +1,4 @@
+import time
 
 def test_Dimension_mul_div_exp():
     assert 2*length == length*2 == length/2 == length

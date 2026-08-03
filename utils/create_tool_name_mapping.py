@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def create_tool_name_mapping(
     tools: List[Dict[str, Any]],

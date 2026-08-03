@@ -1,3 +1,4 @@
+from typing import Any, Dict, Union
 
 def _flatten_dict(space: Dict, x: dict[str, Any]) -> dict[str, Any] | NDArray[Any]:
     if space.is_np_flattenable:

@@ -1,3 +1,5 @@
+import math
+
 
 def _variance_scaling(tensor, mode="fan_in", distribution="normal"):
     fan_in, fan_out = torch.nn.init._calculate_fan_in_and_fan_out(tensor)

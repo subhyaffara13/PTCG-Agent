@@ -1,3 +1,4 @@
+from typing import List
 
 def extract_sql_commands(diff_output: str) -> List[str]:
     """

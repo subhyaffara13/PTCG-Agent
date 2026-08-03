@@ -1,3 +1,4 @@
+import re
 
 def splittype(url):
     """splittype('type:opaquestring') --> 'type', 'opaquestring'."""

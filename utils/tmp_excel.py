@@ -1,3 +1,4 @@
+import uuid
 
 def tmp_excel(ext, tmp_path):
     tmp = tmp_path / f"{uuid.uuid4()}{ext}"

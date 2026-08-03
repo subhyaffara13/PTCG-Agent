@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _ensure_mingw_cudart_import_lib(libraries_dirs: list[str]) -> list[str]:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_vertex_ai_model_route(
     model: str, litellm_params: Optional[dict] = None

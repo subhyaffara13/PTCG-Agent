@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def load_results(
     base: str | Path, pylint_home: str | Path = PYLINT_HOME

@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_hypercube(tree: Any, scale: Any = 1) -> Any:
   r"""Projection onto the (unit) hypercube.

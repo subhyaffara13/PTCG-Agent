@@ -1,3 +1,4 @@
+from typing import Any
 
 def none_validator(v: Any) -> 'Literal[None]':
     if v is None:

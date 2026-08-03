@@ -1,3 +1,4 @@
+from typing import Any
 
 def _getexif(self: JpegImageFile) -> dict[int, Any] | None:
     if "exif" not in self.info:

@@ -1,3 +1,5 @@
+import math
+
 
 def cancel_divide_tracers(num, denom):
   partition = lambda l: partition_list([isinstance(d, Tracer) for d in l], l)

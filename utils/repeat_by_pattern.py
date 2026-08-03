@@ -1,3 +1,4 @@
+import re
 
 def repeat_by_pattern(
     *,

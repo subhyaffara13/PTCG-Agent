@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_logger_for_subgraph(
     model: GraphModule,

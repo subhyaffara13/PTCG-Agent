@@ -1,3 +1,4 @@
+from typing import List, Set
 
 def _get_dropped_tool_span_indices(
     kept_indices: Set[int], tool_exchange_spans: List[Set[int]]

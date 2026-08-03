@@ -1,3 +1,4 @@
+from typing import Any
 
 def _make_index_map(
     tiled_pairs: list[tuple[int, int]],

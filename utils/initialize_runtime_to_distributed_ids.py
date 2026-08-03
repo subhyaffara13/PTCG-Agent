@@ -1,3 +1,4 @@
+import logging
 
 def initialize_runtime_to_distributed_ids():
   """Initializes the process index mapping.

@@ -1,3 +1,4 @@
+import sys
 
 def public(obj: T) -> T:
     """

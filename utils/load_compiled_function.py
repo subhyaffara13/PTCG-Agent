@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def load_compiled_function(
     file: io.IOBase,

@@ -1,3 +1,4 @@
+import itertools
 
 def prefetch_to_device(
     iterator, size, devices=None, axis_name='_device_put_sharded'):

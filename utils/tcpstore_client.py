@@ -1,3 +1,4 @@
+import os
 
 def tcpstore_client(prefix: str = "debug_server") -> dist.Store:
     MASTER_ADDR = os.environ["MASTER_ADDR"]

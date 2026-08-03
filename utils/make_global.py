@@ -1,3 +1,4 @@
+import sys
 
 def make_global(*args):
     for arg in args:

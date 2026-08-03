@@ -1,3 +1,4 @@
+import json
 
 def _bytes_to_list(content: bytes) -> list:
     """Parse bytes from a Response object into a Python list.

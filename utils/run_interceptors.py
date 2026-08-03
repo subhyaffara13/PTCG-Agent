@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def run_interceptors(
   orig_method: Callable[..., Any],

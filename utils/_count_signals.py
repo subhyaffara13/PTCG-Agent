@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def _count_signals(text: str, patterns: List[str]) -> int:
     """Count how many of the patterns appear in text."""

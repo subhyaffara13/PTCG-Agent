@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_symbol_from_tensor_shape(symbol: sympy.Symbol, shape_env: Any) -> bool:
     """Check if a symbol originates from a tensor size/stride (TensorPropertySource)."""

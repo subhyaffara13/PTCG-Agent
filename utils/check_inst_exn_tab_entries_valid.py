@@ -1,3 +1,4 @@
+import sys
 
 def check_inst_exn_tab_entries_valid(instructions: list[Instruction]) -> None:
     """

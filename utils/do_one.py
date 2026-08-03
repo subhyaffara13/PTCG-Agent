@@ -1,3 +1,4 @@
+from typing import Callable
 
 def do_one(*rules: Callable[[_T], _T]) -> Callable[[_T], _T]:
     """ Try each of the rules until one works. Then stop. """

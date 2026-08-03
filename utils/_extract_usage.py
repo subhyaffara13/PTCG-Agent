@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _extract_usage(response: Any) -> Tuple[int, int]:
     usage = getattr(response, "usage", None)

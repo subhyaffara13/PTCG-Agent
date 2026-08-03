@@ -1,3 +1,4 @@
+from typing import Any, Dict, Union
 
 def _reasoning_item_to_response_input(
     r_item: Union[ChatCompletionReasoningItem, Dict[str, Any]],

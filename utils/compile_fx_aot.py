@@ -1,3 +1,6 @@
+import copy
+import functools
+from typing import Any
 
 def compile_fx_aot(
     model_: GraphModule,

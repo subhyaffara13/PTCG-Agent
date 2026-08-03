@@ -1,3 +1,4 @@
+from typing import Optional
 
 def resolve_llm_passthrough_timeout(
     kwargs: Optional[dict] = None,

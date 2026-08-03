@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_tensor_meta(
     local_tensor, check_shape_stride=False

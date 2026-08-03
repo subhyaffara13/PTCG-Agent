@@ -1,3 +1,5 @@
+import json
+from typing import List, Optional
 
 def _get_batch_job_cost_from_file_content(
     file_content_dictionary: List[dict],

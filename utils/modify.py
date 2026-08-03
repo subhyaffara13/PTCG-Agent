@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def modify(
     texts: Optional[List[str]] = None,

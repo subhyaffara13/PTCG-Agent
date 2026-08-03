@@ -1,3 +1,4 @@
+import re
 
 def _wrap_in_tex(text):
     p = r'([a-zA-Z]+)'

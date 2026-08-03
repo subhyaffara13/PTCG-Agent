@@ -1,3 +1,4 @@
+import re
 
 def update_schema():
     import importlib.resources

@@ -1,3 +1,4 @@
+import os
 
 def write_and_fudge_mtime(content: str, target_path: str) -> None:
     # In some systems, mtime has a resolution of 1 second which can

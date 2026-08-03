@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _export_to_aten_ir_make_fx(
     mod: torch.nn.Module,

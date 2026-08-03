@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def _get_cache_dir(custom_cache_dir: Path | None, *, use_pip: bool = True) -> Path:
     """

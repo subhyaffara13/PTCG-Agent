@@ -1,3 +1,4 @@
+import logging
 
 def _logger_configured(logger: logging.Logger) -> bool:
     """Determines whether `logger` has non-default configuration

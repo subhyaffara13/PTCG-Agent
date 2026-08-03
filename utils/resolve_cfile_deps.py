@@ -1,3 +1,4 @@
+import os
 
 def resolve_cfile_deps(
     cfile_dir: str, direct_includes: list[tuple[bool, str]], target_dir: str

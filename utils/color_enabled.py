@@ -1,3 +1,5 @@
+import os
+import sys
 
 def color_enabled():
     COLOR_ENV = os.getenv('COLOR', 'auto')

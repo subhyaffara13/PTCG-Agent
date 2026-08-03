@@ -1,3 +1,4 @@
+import copy
 
 def test_inherited_copy(mi_styler, deepcopy):
     # Ensure that the inherited class is preserved when a Styler object is copied.

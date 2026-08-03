@@ -1,3 +1,4 @@
+import sys
 
 def _print_list_as_json(requested_items):
     import json

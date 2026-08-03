@@ -1,3 +1,4 @@
+import copy
 
 def _register_dequant_promotion_pass(pattern, pass_number, dtype=torch.float32):
     @register_freezing_graph_pattern(

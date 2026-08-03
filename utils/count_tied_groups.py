@@ -1,3 +1,4 @@
+import itertools
 
 def count_tied_groups(x, use_missing=False):
     """

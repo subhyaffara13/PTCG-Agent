@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _resolve_secret(value: Any) -> Optional[str]:
     """Resolve a config value, expanding ``os.environ/`` references."""

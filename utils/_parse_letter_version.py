@@ -1,3 +1,4 @@
+from typing import Optional, Tuple, Union
 
 def _parse_letter_version(
     letter: str | None, number: str | bytes | SupportsInt | None

@@ -1,3 +1,4 @@
+import re
 
 def param_parse(d, params):
     """Recursively parse array dimensions.

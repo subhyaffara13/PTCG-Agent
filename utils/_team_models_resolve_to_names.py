@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _team_models_resolve_to_names(
     team_models: List[str], access_groups: Dict[str, Any]

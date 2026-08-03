@@ -1,3 +1,4 @@
+import functools
 
 def _make_class_factory(mixin_class, fmt, attr_name=None):
     """

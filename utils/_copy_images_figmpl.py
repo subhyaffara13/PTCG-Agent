@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _copy_images_figmpl(self, node):
 

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def _get_deployment_order(deployment: Union[Dict, Any]) -> Optional[int]:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def should_extension_dispatch(left: ArrayLike, right: Any) -> bool:
     """

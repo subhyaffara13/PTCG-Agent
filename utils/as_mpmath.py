@@ -1,3 +1,4 @@
+from typing import Any
 
 def as_mpmath(x: Any, prec: int, options: OPT_DICT) -> mpc | mpf:
     from .numbers import Infinity, NegativeInfinity, Zero

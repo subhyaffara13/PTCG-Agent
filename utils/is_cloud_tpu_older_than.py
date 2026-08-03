@@ -1,3 +1,4 @@
+import re
 
 def is_cloud_tpu_older_than(year: int, month: int, day: int, backend):
   if 'TFRT TPU' not in backend.platform_version:

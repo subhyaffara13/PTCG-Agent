@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def init_prompts(
     all_prompts: List[Dict],

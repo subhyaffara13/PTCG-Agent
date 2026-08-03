@@ -1,3 +1,4 @@
+import sys
 
 def just_fix_windows_console():
     global fixed_windows_console

@@ -1,3 +1,4 @@
+from typing import List
 
 def register_pools_connection_count(
     connection_pools: List["ConnectionPoolInterface"],

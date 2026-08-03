@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convertFontInfoDataVersion2ToVersion1(data: dict[str, Any]) -> dict[str, Any]:
     converted = {}

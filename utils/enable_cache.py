@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def enable_cache(
     type: Optional[LiteLLMCacheType] = LiteLLMCacheType.LOCAL,

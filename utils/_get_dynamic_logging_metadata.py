@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_dynamic_logging_metadata(
     user_api_key_dict: UserAPIKeyAuth, proxy_config: ProxyConfig

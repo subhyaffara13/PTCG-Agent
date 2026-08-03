@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_content_from_model_response(response: Union[ModelResponse, dict]) -> str:
     """

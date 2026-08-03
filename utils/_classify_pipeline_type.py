@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _classify_pipeline_type(source_dir: Path):
     # May also check _class_name in model_index.json like `StableDiffusion3Pipeline` or `FluxPipeline` etc to classify.

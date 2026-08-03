@@ -1,3 +1,4 @@
+import re
 
 def scan_four_digit_hex(s, end, _m=re.compile(r'^[0-9a-fA-F]{4}$').match):
     """Scan a four digit hex number from s[end:end + 4]

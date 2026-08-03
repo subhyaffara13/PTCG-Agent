@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _handle_128k_pricing(
     model_info: ModelInfo,

@@ -1,3 +1,4 @@
+import re
 
 def mpc_tan(z, prec, rnd=round_fast):
     """Complex tangent. Computed as tan(a+bi) = sin(2a)/M + sinh(2b)/M*i

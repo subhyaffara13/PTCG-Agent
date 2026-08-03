@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_gemini_model(model: Optional[str], custom_llm_provider: Optional[str]) -> bool:
     """

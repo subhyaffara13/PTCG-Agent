@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def lookup_alias(
     the_object: Any,

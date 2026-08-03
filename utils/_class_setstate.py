@@ -1,3 +1,4 @@
+import sys
 
 def _class_setstate(obj, state):
     state, slotstate = state

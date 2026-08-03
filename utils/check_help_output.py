@@ -1,3 +1,4 @@
+import sys
 
 def check_help_output(pkg: str, subcommand: Sequence[str] | None = None) -> tuple[str, str]:
     """test that `python -m PKG [subcommand] -h` works"""

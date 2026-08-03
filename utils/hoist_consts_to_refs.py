@@ -1,3 +1,4 @@
+from typing import Callable
 
 def hoist_consts_to_refs(
     jaxpr: core.Jaxpr,

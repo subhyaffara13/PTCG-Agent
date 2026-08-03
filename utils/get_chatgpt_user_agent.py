@@ -1,3 +1,4 @@
+import os
 
 def get_chatgpt_user_agent(originator: str) -> str:
     override = os.getenv("CHATGPT_USER_AGENT")

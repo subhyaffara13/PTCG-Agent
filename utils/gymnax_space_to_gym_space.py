@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def gymnax_space_to_gym_space(space: Space) -> gspc.Space:
     """Convert Gymnax space to equivalent Gym space."""

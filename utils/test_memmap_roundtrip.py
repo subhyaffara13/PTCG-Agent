@@ -1,3 +1,4 @@
+import os
 
 def test_memmap_roundtrip(tmpdir):
     for i, arr in enumerate(basic_arrays + record_arrays):

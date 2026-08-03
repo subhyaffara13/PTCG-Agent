@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _disable_load_state_dict_hooks(mod: torch.nn.Module):
     state_dict_hooks: dict[int, Callable] = dict(mod._state_dict_hooks)

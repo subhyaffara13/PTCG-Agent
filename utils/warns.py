@@ -1,3 +1,7 @@
+import os
+import pathlib
+import re
+from typing import Any, Callable
 
 def warns(
     expected_warning: type[Warning] | tuple[type[Warning], ...] = ...,

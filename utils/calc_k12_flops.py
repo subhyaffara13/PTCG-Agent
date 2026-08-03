@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def calc_k12_flops(
     inputs: Tuple[FrozenSet[str]],

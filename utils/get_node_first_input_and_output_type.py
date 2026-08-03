@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_node_first_input_and_output_type(
     node: Node,

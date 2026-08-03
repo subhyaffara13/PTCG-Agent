@@ -1,3 +1,4 @@
+import sys
 
 def print_full_documentation(
     linter: PyLinter, stream: TextIO = sys.stdout, show_options: bool = True

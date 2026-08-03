@@ -1,3 +1,4 @@
+import re
 
 def compare_or_regex_search(
     a: ArrayLike, b: Scalar | Pattern, regex: bool, mask: npt.NDArray[np.bool_]

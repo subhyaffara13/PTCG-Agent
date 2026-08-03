@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_split_unbind_children(graph: torch.fx.Graph, inputs: list[torch.fx.Node]):
     nodes = OrderedSet[Any]()

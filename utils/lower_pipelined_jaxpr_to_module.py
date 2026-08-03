@@ -1,3 +1,4 @@
+import functools
 
 def lower_pipelined_jaxpr_to_module(
     grid_mapping: pallas_core.GridMapping,

@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def write_to_shared_memory(
     space: Space,

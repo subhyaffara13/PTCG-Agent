@@ -1,3 +1,4 @@
+import os
 
 def is_sub_path_normabs(path: str, dir: str) -> bool:
     """Given two paths, return if path is a sub-path of dir.

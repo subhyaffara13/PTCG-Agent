@@ -1,3 +1,4 @@
+from typing import Set
 
 def test_setexpr():
     se = SetExpr(Interval(0, 1))

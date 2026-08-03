@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_model_param(request: "Request", request_body: dict) -> Optional[str]:
     """

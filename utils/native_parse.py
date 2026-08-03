@@ -1,3 +1,4 @@
+import os
 
 def native_parse(
     filename: str,

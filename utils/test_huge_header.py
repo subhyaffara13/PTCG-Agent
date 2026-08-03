@@ -1,3 +1,4 @@
+import os
 
 def test_huge_header(tmpdir, mmap_mode):
     f = os.path.join(tmpdir, 'large_header.npy')

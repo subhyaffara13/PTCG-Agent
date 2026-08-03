@@ -1,3 +1,4 @@
+import re
 
 def _get_flags(fc_flags):
     flag_values = []

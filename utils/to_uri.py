@@ -1,3 +1,4 @@
+import pathlib
 
 def to_uri(file_path):
     pure_path = pathlib.PurePath(file_path)

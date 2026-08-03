@@ -1,3 +1,5 @@
+import math
+
 
 def newton_cotes(rn, equal=0):
     r"""

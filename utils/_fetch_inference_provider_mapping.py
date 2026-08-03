@@ -1,3 +1,4 @@
+import os
 
 def _fetch_inference_provider_mapping(model: str) -> dict:
     """

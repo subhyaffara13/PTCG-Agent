@@ -1,3 +1,4 @@
+import random
 
 def _handle_boss_switch(gs, base_name):
     if any(k in base_name for k in {"boss", "orders"}):

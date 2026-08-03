@@ -1,3 +1,4 @@
+import os
 
 def _font_finder_darwin():
     locations = [

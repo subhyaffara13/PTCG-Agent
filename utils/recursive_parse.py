@@ -1,3 +1,5 @@
+import json
+import re
 
 def recursive_parse(
     node_content: str | list | dict,

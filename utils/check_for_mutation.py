@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_for_mutation(
     func: WrappedFunction,

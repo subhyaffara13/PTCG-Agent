@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_bedrock_client_ssl_verify() -> Union[bool, str]:
     """

@@ -1,3 +1,4 @@
+import json
 
 def test_show_versions_console_json(capsys):
     # GH39701

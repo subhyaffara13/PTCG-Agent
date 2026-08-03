@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_set_operators_parenthesis():
     a, b, c, d = symbols('a:d')

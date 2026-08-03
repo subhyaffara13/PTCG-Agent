@@ -1,3 +1,4 @@
+import os
 
 def test_sub_character(all_parsers, csv_dir_path):
     # see gh-16893

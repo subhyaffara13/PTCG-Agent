@@ -1,3 +1,4 @@
+import logging
 
 def setup_test_directory(
     name: str, base_path: str | None = None, repeat_index: int | None = None

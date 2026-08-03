@@ -1,3 +1,5 @@
+import copy
+import re
 
 def analyzevars(block):
     """

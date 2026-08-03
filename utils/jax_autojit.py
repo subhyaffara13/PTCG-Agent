@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def jax_autojit(
     func: Callable[P, T],

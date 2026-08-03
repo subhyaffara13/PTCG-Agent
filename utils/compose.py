@@ -1,3 +1,4 @@
+import functools
 
 def compose(*funcs):
     """ Compose functions to operate in series.

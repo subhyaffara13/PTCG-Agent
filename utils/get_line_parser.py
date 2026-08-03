@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def get_line_parser() -> LineParser:
     def parse_line(line: str) -> Tuple[str, Values]:

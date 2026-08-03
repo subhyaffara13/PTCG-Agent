@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_read_items(fqn: str, md: STORAGE_TYPES, obj: Any) -> list[ReadItem]:
     if not isinstance(md, BytesStorageMetadata):

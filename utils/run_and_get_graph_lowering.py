@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def run_and_get_graph_lowering(
     fn: Callable[P, _T], *args: P.args, **kwargs: P.kwargs

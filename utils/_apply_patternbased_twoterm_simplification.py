@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _apply_patternbased_twoterm_simplification(Rel, patterns, func,
                                                dominatingvalue,

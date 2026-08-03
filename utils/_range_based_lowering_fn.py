@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _range_based_lowering_fn(
     processed_configs: list[CustomOpConfig],

@@ -1,3 +1,4 @@
+import re
 
 def test_fullmatch_compiled_regex(any_string_dtype):
     # GH#61952

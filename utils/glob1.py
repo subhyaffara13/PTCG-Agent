@@ -1,3 +1,4 @@
+import os
 
 def glob1(dirname: StrPath, pattern: str) -> list[str]: ...
 

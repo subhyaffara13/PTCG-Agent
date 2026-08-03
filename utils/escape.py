@@ -1,3 +1,6 @@
+import json
+import os
+import re
 
 def escape(s: t.Any, /) -> Markup:
     """Replace the characters ``&``, ``<``, ``>``, ``'``, and ``"`` in

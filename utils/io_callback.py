@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def io_callback(
     callback: Callable[..., Any],

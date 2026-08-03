@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _sanitize_prometheus_label_value(value: Optional[Any]) -> Optional[str]:
     """

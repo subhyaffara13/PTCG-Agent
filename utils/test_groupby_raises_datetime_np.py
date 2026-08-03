@@ -1,3 +1,4 @@
+import re
 
 def test_groupby_raises_datetime_np(
     how, by, groupby_series, groupby_func_np, df_with_datetime_col

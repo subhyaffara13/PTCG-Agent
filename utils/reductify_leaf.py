@@ -1,3 +1,4 @@
+from typing import Any
 
 def reductify_leaf(
     grad_input: torch.Tensor | None,

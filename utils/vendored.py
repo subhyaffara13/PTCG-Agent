@@ -1,3 +1,4 @@
+import sys
 
 def vendored(modulename):
     vendored_name = "{0}.{1}".format(__name__, modulename)

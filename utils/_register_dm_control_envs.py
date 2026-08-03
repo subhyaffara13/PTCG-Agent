@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _register_dm_control_envs():
     """Registers all dm-control environments in gymnasium."""

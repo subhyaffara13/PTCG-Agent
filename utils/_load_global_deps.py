@@ -1,3 +1,4 @@
+import os
 
 def _load_global_deps() -> None:
     if platform.system() == "Windows":

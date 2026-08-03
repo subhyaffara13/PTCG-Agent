@@ -1,3 +1,4 @@
+from typing import Any
 
 def frozenset_schema(
     items_schema: CoreSchema | None = None,

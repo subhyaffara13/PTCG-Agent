@@ -1,3 +1,4 @@
+import re
 
 def pprint_registry(
     print_registry: dict[str, EnvSpec] = registry,

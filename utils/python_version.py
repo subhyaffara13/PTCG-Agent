@@ -1,3 +1,4 @@
+import sys
 
 def python_version() -> Version:
     """

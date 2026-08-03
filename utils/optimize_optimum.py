@@ -1,3 +1,4 @@
+import os
 
 def optimize_optimum(config: AutoConfig, args: argparse.Namespace):
     tmp_file = os.path.join(args.output, args.model_name + ".tmp.onnx")

@@ -1,3 +1,4 @@
+import json
 
 def compute_registration_declarations(
     f: NativeFunction, backend_indices: dict[DispatchKey, BackendIndex]

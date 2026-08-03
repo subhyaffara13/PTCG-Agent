@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_subclass_meta(
     curr_args: list[Any] | tuple[Any, ...],

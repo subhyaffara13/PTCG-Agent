@@ -1,3 +1,4 @@
+import copy
 
 def test_non_mutable_get_values(kind):
     cmap = copy.copy(mpl.colormaps['viridis'])

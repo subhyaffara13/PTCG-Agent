@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_current_entry_match(
     all_entries: dict[int, list[dict[str, Any]]],

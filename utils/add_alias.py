@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_alias(
     the_object: Any,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def legacy_cat_wrap_dim(dim: int, tensor_sizes: list[list[int]]):
     out_dim: Optional[int] = None

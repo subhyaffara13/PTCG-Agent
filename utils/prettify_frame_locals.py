@@ -1,3 +1,4 @@
+from typing import Any
 
 def prettify_frame_locals(
     loc: str, locals: dict[str, Any], symbols: dict[str, Any]

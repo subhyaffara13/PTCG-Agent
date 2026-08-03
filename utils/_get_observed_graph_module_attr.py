@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_observed_graph_module_attr(
     model: torch.nn.Module | GraphModule, attr_name: str

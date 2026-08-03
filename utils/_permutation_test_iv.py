@@ -1,3 +1,5 @@
+import math
+
 
 def _permutation_test_iv(data, statistic, permutation_type, vectorized,
                          n_resamples, batch, alternative, axis, rng):

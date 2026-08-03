@@ -1,3 +1,4 @@
+from typing import List
 
 def update_regrets(regret):
   """Updates the regrets without CFRPlus."""

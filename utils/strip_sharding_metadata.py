@@ -1,3 +1,4 @@
+from typing import Any
 
 def strip_sharding_metadata(tree: Any) -> Any:
   """Strips concrete sharding_metadata from Metadata to decouple from topologies."""

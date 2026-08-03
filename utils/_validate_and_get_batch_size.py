@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_and_get_batch_size(
     flat_in_dims: list[int | None],

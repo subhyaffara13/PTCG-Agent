@@ -1,3 +1,4 @@
+import os
 
 def _wrap_io_open(
     file: str | os.PathLike[str] | int,

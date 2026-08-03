@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def step_transition(
     state: EnvState, action_right: bool, right_cond: jnp.ndarray, size: int

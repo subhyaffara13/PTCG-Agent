@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def lowered_as_tpu_kernel(
     lowered_module: ir.Module,

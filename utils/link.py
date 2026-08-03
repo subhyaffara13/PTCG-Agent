@@ -1,3 +1,4 @@
+import os
 
 def link(obj_files, out_file=None, shared=False, Runner=None,
          cwd=None, cplus=False, fort=False, extra_objs=None, **kwargs):

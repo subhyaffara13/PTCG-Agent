@@ -1,3 +1,4 @@
+import re
 
 def find_evaluated_property_keys_by_schema(validator, instance, schema):
     if validator.is_type(schema, "boolean"):

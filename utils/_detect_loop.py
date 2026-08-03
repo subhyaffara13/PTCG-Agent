@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _detect_loop(history: List[str], new_calls: List[Dict[str, Any]]) -> bool:
     """Fires if any new call's signature appears >= LOOP_REPEAT_THRESHOLD-1 times

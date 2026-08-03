@@ -1,3 +1,4 @@
+import sys
 
 def _is_jax_array(x):
     """Return whether *x* is a JAX Array."""

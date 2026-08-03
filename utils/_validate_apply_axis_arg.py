@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_apply_axis_arg(
     arg: NDFrame | Sequence | np.ndarray,

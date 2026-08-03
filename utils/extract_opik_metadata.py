@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict
 
 def extract_opik_metadata(
     litellm_metadata: Dict[str, Any],

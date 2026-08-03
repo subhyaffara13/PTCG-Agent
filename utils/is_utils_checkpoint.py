@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_utils_checkpoint(obj: Any) -> bool:
     # Lazy import to avoid circular dependencies

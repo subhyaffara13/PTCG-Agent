@@ -1,3 +1,4 @@
+from typing import Callable
 
 def impl(
     qualname: str,

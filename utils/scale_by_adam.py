@@ -1,3 +1,4 @@
+from typing import Optional
 
 def scale_by_adam(
     b1: jax.typing.ArrayLike = 0.9,

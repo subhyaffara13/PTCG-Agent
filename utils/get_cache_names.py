@@ -1,3 +1,4 @@
+import os
 
 def get_cache_names(id: str, path: str, options: Options) -> tuple[str, str, str | None]:
     """Return the file names for the cache files.

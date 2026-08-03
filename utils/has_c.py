@@ -1,3 +1,4 @@
+import os
 
 def has_c():
     if not hasattr(has_c, 'result'):

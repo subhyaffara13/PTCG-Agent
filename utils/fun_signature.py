@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fun_signature(fun: Callable) -> inspect.Signature | None:
   try:

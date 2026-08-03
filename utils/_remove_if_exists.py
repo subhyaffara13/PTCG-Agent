@@ -1,3 +1,4 @@
+import os
 
 def _remove_if_exists(path):
     if os.path.exists(path):

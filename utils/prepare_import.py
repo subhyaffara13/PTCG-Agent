@@ -1,3 +1,5 @@
+import os
+import sys
 
 def prepare_import(path: str) -> str:
     """Given a filename this will try to calculate the python path, add it

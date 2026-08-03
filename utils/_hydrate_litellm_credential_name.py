@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _hydrate_litellm_credential_name(
     litellm_params: Optional[LiteLLM_Params],

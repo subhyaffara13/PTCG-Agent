@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _fn_children(fn: Callable[..., Any]) -> list[Node]:
   """Build the fn children."""

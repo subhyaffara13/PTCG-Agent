@@ -1,3 +1,4 @@
+import os
 
 def backends() -> dict[str, xla_client.Client]:
   global _backends

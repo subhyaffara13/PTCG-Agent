@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def swap_collection(fn: Callable[..., Any], col_a: str, col_b: str):
   """Swap two collections."""

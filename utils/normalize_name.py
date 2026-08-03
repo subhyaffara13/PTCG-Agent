@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Union
 
 def normalize_name(
     name: AnyStr | None,

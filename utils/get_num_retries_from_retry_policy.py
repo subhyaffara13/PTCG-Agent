@@ -1,3 +1,4 @@
+from typing import Dict, Optional, Union
 
 def get_num_retries_from_retry_policy(
     exception: Exception,

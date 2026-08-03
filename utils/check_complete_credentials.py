@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_complete_credentials(request_body: dict) -> bool:
     """

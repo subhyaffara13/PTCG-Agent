@@ -1,3 +1,4 @@
+import functools
 
 def _is_module_class(target: TransformTarget) -> bool:
   return (

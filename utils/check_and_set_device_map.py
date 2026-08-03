@@ -1,3 +1,4 @@
+import os
 
 def check_and_set_device_map(device_map: "torch.device | int | str | dict | None") -> dict | str | None:
     from ..modeling_utils import get_torch_context_manager_or_global_device

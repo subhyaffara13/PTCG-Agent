@@ -1,3 +1,4 @@
+from typing import Any
 
 def getattr_and_trace(*args: Any, **kwargs: Any) -> Any:
     wrapper_obj = args[0]

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def math_inline_dollar(
     allow_space: bool = True, allow_digits: bool = True, allow_double: bool = False

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _read_xsl(xsl):
     # Previously these values were allowed:

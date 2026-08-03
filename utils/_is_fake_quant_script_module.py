@@ -1,3 +1,4 @@
+import re
 
 def _is_fake_quant_script_module(mod):
     """Return true if given mod is an instance of FakeQuantize script module."""

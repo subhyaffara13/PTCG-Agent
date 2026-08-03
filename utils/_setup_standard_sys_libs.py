@@ -1,3 +1,4 @@
+import os
 
 def _setup_standard_sys_libs(
     cpp_compiler: str,

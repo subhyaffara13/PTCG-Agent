@@ -1,3 +1,4 @@
+import functools
 
 def pointwise(
     size_hints,

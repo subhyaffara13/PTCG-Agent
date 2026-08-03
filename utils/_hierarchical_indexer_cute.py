@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _hierarchical_indexer_cute(
     size: Sequence[int],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_ignored_states(
     ignored_states: list[Any], passed_as_ignored_states: bool

@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def validate_models_exist(model_names: List[str], llm_router) -> Tuple[bool, List[str]]:
     """

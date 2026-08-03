@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_pool_name(pool: Union["ConnectionPoolInterface", "ConnectionPool"]) -> str:
     """

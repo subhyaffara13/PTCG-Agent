@@ -1,3 +1,4 @@
+import re
 
 def test_contour_shape_error(args, message):
     fig, ax = plt.subplots()

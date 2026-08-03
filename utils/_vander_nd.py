@@ -1,3 +1,4 @@
+import functools
 
 def _vander_nd(vander_fs, points, degrees):
     r"""

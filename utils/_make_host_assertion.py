@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _make_host_assertion(assert_fn: TAssertFn,
                          name: Optional[str] = None) -> TChexAssertion:

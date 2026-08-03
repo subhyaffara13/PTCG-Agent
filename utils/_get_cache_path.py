@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_cache_path():
     cache_dir = Path(mpl.get_cachedir(), 'test_cache')

@@ -1,3 +1,5 @@
+import itertools
+from typing import Dict, List, Optional, Tuple
 
 def optimal(
     inputs: List[ArrayIndexType],

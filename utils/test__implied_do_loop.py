@@ -1,3 +1,4 @@
+import os
 
 def test_ImpliedDoLoop():
     if not has_fortran():

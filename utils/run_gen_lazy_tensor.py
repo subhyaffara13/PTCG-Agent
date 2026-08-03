@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def run_gen_lazy_tensor(
     aten_path: str,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_signature_for_torch_op(
     op: Callable[..., Any], return_schemas: Literal[True]

@@ -1,3 +1,4 @@
+import re
 
 def parse_docstring(docstring, max_indent_level=0, return_intro=False):
     """

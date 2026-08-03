@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def spec_matches_module_path(module_spec: ModuleSpec | None, module_path: Path) -> bool:
     """Return true if the given ModuleSpec can be used to import the given module path."""

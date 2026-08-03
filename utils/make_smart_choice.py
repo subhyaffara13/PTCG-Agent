@@ -44,12 +44,11 @@ def make_smart_choice(select, observation, fallback_action):
                 if sel_type == 4 or str(get_val(select, "context", "")).lower() in ("discard", "energy_discard"):
                     is_discard = True
                 else:
-                    # Check if all options point to cards in our hand
                     current = get_val(observation, "current")
                     my_idx = get_val(current, "yourIndex", 0)
                     players = get_val(current, "players", [])
-                    if len(players) > my_idx:
-                        my_hand_ids = [get_val(c, "id") for c in get_val(players[my_idx], "hand", []) if c and get_val(c, "id") is not None]
+                    if players and len(players) > my_idx:
+                        my_hand_ids = [get_val(c, "id") for c in (get_val(players[my_idx], "hand") or []) if c and get_val(c, "id") is not None]
                         
                         option_card_ids = []
                         for opt in options:

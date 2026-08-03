@@ -1,3 +1,4 @@
+from typing import Callable
 
 def unused(fn: Callable[_P, _R]) -> Callable[_P, _R]:
     """

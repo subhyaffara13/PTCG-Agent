@@ -1,3 +1,7 @@
+import json
+from typing import Any
+from pathlib import Path
+
 
 def get_player(window_kaggle: dict[str, Any], renderer: tuple[str, str] | str) -> str:
     # TODO: resolve type alert here. Renderer is clearly not a string, but gets .strip() called.

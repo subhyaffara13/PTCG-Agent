@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_attribute_from_base_dicts(tp: type[Any], name: str) -> Any:
     """Get an attribute out of the `__dict__` following the MRO.

@@ -1,3 +1,6 @@
+import functools
+import re
+from typing import List, Optional, Set, Tuple, Union
 
 def decode(
     s: Union[str, bytes, bytearray],

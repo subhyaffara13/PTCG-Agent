@@ -1,3 +1,4 @@
+import sys
 
 def _padded_dense_to_jagged_forward(
     fake_mode: FakeTensorMode,

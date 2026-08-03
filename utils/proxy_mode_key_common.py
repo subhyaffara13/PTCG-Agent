@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def proxy_mode_key_common(
     call_hop: Callable[..., Any],

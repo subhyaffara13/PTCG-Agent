@@ -1,3 +1,5 @@
+import os
+from typing import List
 
 def _parse_trusted_native_redirect_uris() -> List[str]:
     """Built-in native MCP callbacks plus ``MCP_TRUSTED_NATIVE_REDIRECT_URIS``."""

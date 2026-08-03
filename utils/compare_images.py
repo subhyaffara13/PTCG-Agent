@@ -1,3 +1,4 @@
+import os
 
 def compare_images(expected, actual, tol, in_decorator=False):
     """

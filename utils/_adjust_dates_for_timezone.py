@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _adjust_dates_for_timezone(
     start_date: str,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def restore_args_from_target(target: Any, mesh: Mesh | None = None) -> Any:
   """Creates Orbax `restore_args` given a target Pytree.

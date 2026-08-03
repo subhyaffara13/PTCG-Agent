@@ -1,3 +1,4 @@
+from typing import List
 
 def _validate_node_rank_by_process_index(
     node_rank_by_process_index: List[int], *, num_nodes: int

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _check_int_or_none(x: Any, func: Callable[..., Any], out_dims: out_dims_t) -> None:
     if isinstance(x, int):

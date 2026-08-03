@@ -1,3 +1,4 @@
+from typing import List
 
 def evaluate_degradation_health(win_rate_history: List[float], diversity_history: List[float]) -> dict:
     """Helper to evaluate system health trends."""

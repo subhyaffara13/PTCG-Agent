@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_init_to_accept_kwargs(cls: dataclass):
     # Get the original dataclass-generated __init__

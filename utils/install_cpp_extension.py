@@ -1,3 +1,5 @@
+import os
+import sys
 
 def install_cpp_extension(extension_root):
     # Wipe the build / install dirs if they exist

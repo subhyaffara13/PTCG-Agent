@@ -1,3 +1,4 @@
+import time
 
 def spectrogram(
     waveform: np.ndarray,

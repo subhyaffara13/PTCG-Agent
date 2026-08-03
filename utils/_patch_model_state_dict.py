@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _patch_model_state_dict(
     model: nn.Module,

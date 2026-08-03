@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def iter_known_server_prefixes(server: Any) -> Iterator[str]:
     """Yield every prefix form that may appear in tool names for ``server``.

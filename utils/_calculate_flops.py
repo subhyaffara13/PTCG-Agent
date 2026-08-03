@@ -1,3 +1,4 @@
+from typing import Any
 
 def _calculate_flops(event: dict[str, Any]) -> int:
     """

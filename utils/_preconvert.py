@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def _preconvert(item: Any) -> str | list[Any]:
     """Preconverts objects from native types into JSONifyiable types"""

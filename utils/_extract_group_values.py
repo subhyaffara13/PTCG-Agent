@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _extract_group_values(value: Any) -> List[str]:
     """Return group ids from a SCIM patch value."""

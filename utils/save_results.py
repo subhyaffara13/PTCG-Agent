@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def save_results(
     results: LinterStats, base: str | Path, pylint_home: str | Path = PYLINT_HOME

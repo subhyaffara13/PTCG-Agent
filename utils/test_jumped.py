@@ -1,3 +1,4 @@
+import sys
 
 def test_jumped(config):
     # Each config contains the initial seed, a number of raw steps

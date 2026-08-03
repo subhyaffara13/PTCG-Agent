@@ -1,3 +1,4 @@
+import time
 
 def get_replicate_completion_pricing(completion_response: dict, total_time=0.0):
     # see https://replicate.com/pricing

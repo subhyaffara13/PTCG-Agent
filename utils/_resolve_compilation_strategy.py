@@ -1,3 +1,4 @@
+import copy
 
 def _resolve_compilation_strategy(
     computation: ir.Module,

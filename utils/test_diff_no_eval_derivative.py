@@ -1,3 +1,4 @@
+import re
 
 def test_diff_no_eval_derivative():
     class My(Expr):

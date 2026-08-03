@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_monoid_window_reducer(
     monoid_op, xs: Sequence[Array]

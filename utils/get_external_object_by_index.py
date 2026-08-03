@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_external_object_by_index(index: int) -> Any:
     assert index in index_to_external_object_weakref, (

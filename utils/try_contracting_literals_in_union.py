@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def try_contracting_literals_in_union(types: Sequence[Type]) -> list[ProperType]:
     """Contracts any literal types back into a sum type if possible.

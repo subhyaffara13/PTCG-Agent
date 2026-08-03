@@ -1,3 +1,4 @@
+import functools
 
 def _auto_norm_from_scale(scale_cls):
     """

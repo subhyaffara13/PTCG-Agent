@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_ipynb(log_mock):
     mi_cfg = cli.Config(**BASE_CONFIG_WITH_IPYNB.config_values)

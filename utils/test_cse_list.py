@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_cse_list():
     _cse = lambda x: cse(x, list=False)

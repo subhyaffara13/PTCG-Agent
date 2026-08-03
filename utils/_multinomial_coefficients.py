@@ -1,3 +1,5 @@
+import math
+
 
 def _multinomial_coefficients(distributions):
   """Returns the multinomial coefficients.

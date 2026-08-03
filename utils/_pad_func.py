@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _pad_func(array: Array, pad_width: PadValue[int], func: Callable[..., Any], **kwargs) -> Array:
   pad_width = _broadcast_to_pairs(pad_width, np.ndim(array), "pad_width")

@@ -1,3 +1,5 @@
+import math
+
 
 def rand_indices_unique_along_axis(rng):
   """Sample an array of given shape containing indices up to dim (exclusive),

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_str_format_call(
     node: nodes.Call, context: InferenceContext | None = None, **kwargs: Any

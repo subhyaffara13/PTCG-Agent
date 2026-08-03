@@ -1,3 +1,4 @@
+from typing import Any
 
 def treespec_dict(
     mapping: Mapping[Any, TreeSpec] | Iterable[tuple[Any, TreeSpec]] = (),

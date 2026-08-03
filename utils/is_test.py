@@ -1,3 +1,4 @@
+import os
 
 def is_test() -> bool:
   """Returns True if running in a test environment."""

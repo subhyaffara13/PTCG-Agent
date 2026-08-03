@@ -1,3 +1,4 @@
+from typing import Any
 
 def precompute_methods(obj: Any, methods: list[str]) -> None:
     """Replace methods with new methods that returns a precomputed constants."""

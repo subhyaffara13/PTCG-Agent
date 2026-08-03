@@ -1,3 +1,4 @@
+import os
 
 def paired_paths(main_path, fmt, formats):
     """Return the list of paired notebooks, given main path, and the list of formats"""

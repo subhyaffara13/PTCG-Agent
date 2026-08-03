@@ -1,3 +1,6 @@
+import functools
+import itertools
+from typing import Callable
 
 def associative_scan(
     combine_fn: Callable[[pytree.PyTree, pytree.PyTree], pytree.PyTree],

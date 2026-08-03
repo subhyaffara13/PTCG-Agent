@@ -1,3 +1,4 @@
+from typing import List
 
 def _make_forwards(lstm_hidden_sizes: List[int], mlp_hidden_sizes: List[int],
                    output_dim: int, batch_size: int) -> hk.Transformed:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def prepare_axis_resources(axis_resources, arg_name,
                            allow_unconstrained_dims=False):

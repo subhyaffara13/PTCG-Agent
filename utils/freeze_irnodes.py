@@ -1,3 +1,4 @@
+from typing import Any
 
 def freeze_irnodes(tree: Any) -> Any:
     """Freeze layouts for every IRNode contained in a pytree."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_devices_from_args(args: Sequence[Any]) -> xc.DeviceList | None:
   """Returns a representative device list from function call arguments."""

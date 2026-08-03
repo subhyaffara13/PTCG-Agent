@@ -1,3 +1,4 @@
+import sys
 
 def _unified_diff(a: str, b: str) -> str:
     """Return a string containing the unified diff of two strings.

@@ -1,3 +1,4 @@
+import sys
 
 def test_bode():
     if not numpy:

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def iter_process_parents(pid, max_depth=10):
     """Try to look up the process tree via the /proc interface."""

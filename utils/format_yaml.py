@@ -1,3 +1,4 @@
+from typing import Any
 
 def format_yaml(data: object) -> str:
     # Ignore alias in Dumper

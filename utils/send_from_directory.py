@@ -1,3 +1,4 @@
+import os
 
 def send_from_directory(
     directory: os.PathLike[str] | str,

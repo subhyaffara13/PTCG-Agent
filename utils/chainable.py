@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def chainable(method: Callable[[_T, ...], None]) -> Callable[[_T, ...], _T]:
     """

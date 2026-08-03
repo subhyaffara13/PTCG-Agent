@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def compute_file_hash(path: Path, algorithm: HashAlgo) -> str:
     """

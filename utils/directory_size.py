@@ -1,3 +1,4 @@
+import os
 
 def directory_size(path: str) -> int | float:
     size = 0.0

@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _version_from_git_tree(base_version: str) -> str | None:
   try:

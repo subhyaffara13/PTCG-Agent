@@ -1,3 +1,4 @@
+import itertools
 
 def _indices(func, *args, **kwargs):
     # Assumes data is sparse

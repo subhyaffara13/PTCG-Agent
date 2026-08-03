@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_functional_schema(schema: Any, *, allow_valid_view: bool = False) -> bool:
     """Check if the schema is functional.

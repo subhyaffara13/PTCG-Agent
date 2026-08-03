@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_invert_complex():
     assert invert_complex(x + 3, y, x) == (x, FiniteSet(y - 3))

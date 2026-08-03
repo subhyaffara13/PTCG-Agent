@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def get_default_mcts_params_impl() -> Dict[str, Any]:
     return {"c_puct": 1.25, "exploration_rate": {"dirichlet_alpha": 0.3, "dirichlet_epsilon": 0.25, "temperature": 1.0},

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _enforce_inbound_trace_id(agent: Any, request: Request) -> None:
     """Raise 400 if agent requires x-litellm-trace-id on inbound calls and it is missing."""

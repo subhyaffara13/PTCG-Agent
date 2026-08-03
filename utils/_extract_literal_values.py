@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _extract_literal_values(annotation: Any) -> List[str]:
     """

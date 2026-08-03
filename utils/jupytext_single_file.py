@@ -1,3 +1,8 @@
+import copy
+import json
+import os
+import re
+import sys
 
 def jupytext_single_file(nb_file, args, log, notary):
     """Apply the jupytext command, with given arguments, to a single file"""

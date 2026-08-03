@@ -1,3 +1,8 @@
+import functools
+import random
+from typing import Callable
+import math
+
 
 def dot_product_attention(
     query: Array,

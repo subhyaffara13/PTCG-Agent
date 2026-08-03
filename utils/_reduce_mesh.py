@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _reduce_mesh(
     mesh: jax.sharding.Mesh,

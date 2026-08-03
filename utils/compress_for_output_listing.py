@@ -1,3 +1,4 @@
+import os
 
 def compress_for_output_listing(paths: Iterable[str]) -> tuple[set[str], set[str]]:
     """Returns a tuple of 2 sets of which paths to display to user

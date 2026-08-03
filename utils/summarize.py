@@ -1,3 +1,8 @@
+import itertools
+import json
+from typing import List, Optional, Tuple
+from pathlib import Path
+
 
 def summarize(report_path: str):
     p = Path(report_path)

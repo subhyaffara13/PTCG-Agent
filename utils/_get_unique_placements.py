@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_unique_placements(op_schema: OpSchema) -> set[Placement]:
     unique_placements = set()

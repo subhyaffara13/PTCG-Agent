@@ -1,3 +1,5 @@
+import json
+from typing import List, Set
 
 def _load_competitors_excluding_brand(brand_self: List[str]) -> List[str]:
     """

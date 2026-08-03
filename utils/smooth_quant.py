@@ -1,3 +1,4 @@
+import os
 
 def smooth_quant(
     args: argparse.Namespace,

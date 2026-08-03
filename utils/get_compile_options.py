@@ -1,3 +1,4 @@
+import pathlib
 
 def get_compile_options(
     num_replicas: int,

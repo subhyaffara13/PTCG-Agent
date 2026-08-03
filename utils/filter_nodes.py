@@ -1,3 +1,4 @@
+from typing import Any
 
 def filter_nodes(nodes: Iterable[torch.fx.Node], fn: Any) -> list[torch.fx.Node]:
     fns = [fn]

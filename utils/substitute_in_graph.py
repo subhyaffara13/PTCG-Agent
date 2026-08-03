@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def substitute_in_graph(
     original_fn: Callable[_P, _R],

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def vmap_impl(
     func: Callable[_P, Tensor | tuple[Tensor, ...]],

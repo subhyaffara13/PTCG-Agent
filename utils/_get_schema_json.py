@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def _get_schema_json(v, version=None, version_minor=None):
     """

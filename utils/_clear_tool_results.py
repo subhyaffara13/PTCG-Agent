@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def _clear_tool_results(
     messages: List[Dict[str, Any]], ids_to_clear: set

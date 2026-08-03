@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_to_reference_decomposed_fx(
     graph_module: GraphModule,

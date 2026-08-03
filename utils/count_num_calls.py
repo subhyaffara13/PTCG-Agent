@@ -1,3 +1,4 @@
+import functools
 
 def count_num_calls(fn):
   """Counts the number of times the function was called."""

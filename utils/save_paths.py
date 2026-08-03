@@ -1,3 +1,4 @@
+import sys
 
 def save_paths():
     """Make sure ``sys.path``, ``sys.meta_path`` and ``sys.path_hooks`` are preserved"""

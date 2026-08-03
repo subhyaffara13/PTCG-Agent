@@ -1,3 +1,4 @@
+import os
 
 def get_rocm_compiler() -> str:
     """

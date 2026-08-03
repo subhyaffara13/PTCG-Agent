@@ -1,3 +1,4 @@
+from typing import List
 
 def validate_model_access(
     model_id: str,

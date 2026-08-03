@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sort_with_ref_region(
     index_to_rank: dict[int, int], regions: list[list[Any]]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def stage_backward_input(
     stage_outputs_or_loss: list[torch.Tensor],

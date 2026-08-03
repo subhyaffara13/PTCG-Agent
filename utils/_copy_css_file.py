@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _copy_css_file(app, exc):
     if exc is None and app.builder.format == 'html':

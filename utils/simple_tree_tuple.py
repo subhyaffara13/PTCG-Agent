@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Tuple
 
 def simple_tree_tuple(seq: Sequence[Tuple[int, ...]]) -> Tuple[Any, ...]:
     """Make a simple left to right binary tree out of iterable `seq`.

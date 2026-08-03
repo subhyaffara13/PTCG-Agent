@@ -1,3 +1,4 @@
+import json
 
 def _quote_promql_string_literal(value: str) -> str:
     """Render ``value`` as a PromQL double-quoted string literal.

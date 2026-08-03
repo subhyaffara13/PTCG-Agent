@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_args(arg: Any) -> Any:
     if isinstance(arg, Node):

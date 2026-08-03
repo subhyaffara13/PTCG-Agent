@@ -1,3 +1,4 @@
+from typing import Any
 
 def pallas_make_block_spec_non_tiled(shape: tuple[int, ...]) -> Any:
     import jax.numpy as jnp  # pyrefly: ignore [import-error, missing-import]

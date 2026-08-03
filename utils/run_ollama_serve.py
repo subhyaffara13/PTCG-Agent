@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def run_ollama_serve():
     try:

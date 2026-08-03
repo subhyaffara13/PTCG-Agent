@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_contains_path(other_path, inside, inverted_inside):
     path = Path([(0, 0), (0, 1), (1, 1), (1, 0), (0, 0)], closed=True)

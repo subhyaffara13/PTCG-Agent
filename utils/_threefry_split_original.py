@@ -1,3 +1,5 @@
+import math
+
 
 def _threefry_split_original(key, shape) -> typing.Array:
   num = math.prod(shape)

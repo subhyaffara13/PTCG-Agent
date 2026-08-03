@@ -1,3 +1,4 @@
+from typing import Callable
 
 def select_describe_func(
     data: Series,

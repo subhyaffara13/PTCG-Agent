@@ -1,3 +1,4 @@
+from typing import Any
 
 def patch_dynamo_config(
     arg1: str | dict[str, Any] | tuple[tuple[str, Any], ...] | None = None,

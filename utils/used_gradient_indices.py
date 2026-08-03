@@ -1,3 +1,4 @@
+import re
 
 def used_gradient_indices(formula: str) -> list[int]:
     """Determine a list of gradient indices (the i in grads[i]) that

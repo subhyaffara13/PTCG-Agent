@@ -1,3 +1,4 @@
+import sys
 
 def accept_suggestion(input_text: str, auto_accept: bool) -> bool:
     sys.stdout.write(input_text)

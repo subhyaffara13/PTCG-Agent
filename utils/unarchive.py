@@ -1,3 +1,5 @@
+import os
+import sys
 
 def unarchive(archive_filename, dest_dir, format=None, check=True):
 

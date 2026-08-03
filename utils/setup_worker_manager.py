@@ -1,3 +1,5 @@
+import os
+import sys
 
 def setup_worker_manager(sources: list[BuildSource], ctx: ServerContext) -> BuildManager | None:
     data_dir = os.path.dirname(os.path.dirname(__file__))

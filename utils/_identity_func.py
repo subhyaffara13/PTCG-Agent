@@ -1,3 +1,4 @@
+from typing import Any
 
 def _identity_func(
     obj: torch.Tensor,

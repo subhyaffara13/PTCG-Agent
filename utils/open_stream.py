@@ -1,3 +1,4 @@
+import os
 
 def open_stream(
     filename: str | os.PathLike[str],

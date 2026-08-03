@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def measure_with_ema(
     measure: Callable[[base.Updates], base.ArrayTree],

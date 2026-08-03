@@ -1,3 +1,9 @@
+from __future__ import annotations
+from typing import List, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from factory.deck_scorer_state import CardState
+
 
 def prize_efficiency(deck: List[CardState], ct: dict) -> float:
     try:

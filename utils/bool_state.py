@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bool_state(
     name: str,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def resolve_oci_schema_anyof(obj: Any) -> Any:
     """Resolve Pydantic v2 ``Optional[T]`` → ``anyOf`` patterns.

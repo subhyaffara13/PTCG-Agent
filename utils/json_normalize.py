@@ -1,3 +1,4 @@
+from typing import Any
 
 def json_normalize(
     data: dict | list[dict] | Series,

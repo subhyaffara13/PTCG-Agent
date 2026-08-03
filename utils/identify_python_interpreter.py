@@ -1,3 +1,4 @@
+import os
 
 def identify_python_interpreter(python: str) -> str | None:
     # If the named file exists, use it.

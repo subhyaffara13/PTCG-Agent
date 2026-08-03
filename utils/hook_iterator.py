@@ -1,3 +1,4 @@
+import functools
 
 def hook_iterator(namespace) -> None:
     r"""

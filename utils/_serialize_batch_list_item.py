@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _serialize_batch_list_item(row: Any) -> Dict[str, Any]:
     item: Dict[str, Any] = {}

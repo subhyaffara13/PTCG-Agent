@@ -1,3 +1,5 @@
+import re
+import subprocess
 
 def _get_icpx_version() -> str:
     icpx = 'icx' if IS_WINDOWS else 'icpx'

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _resize_nearest(x, output_shape: core.Shape):
   input_shape = x.shape

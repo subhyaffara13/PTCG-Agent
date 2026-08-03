@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _src_path(
     name: str,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def handle_generic_response(
     json_data: dict,

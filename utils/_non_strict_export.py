@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _non_strict_export(
     mod: torch.nn.Module,

@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def read_video_torchcodec(
     video_path: Union["URL", "Path"],

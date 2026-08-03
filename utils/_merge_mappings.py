@@ -1,3 +1,4 @@
+from typing import Dict, Union
 
 def _merge_mappings(
     obj1: Mapping[_T_co, Union[_T, Omit]],

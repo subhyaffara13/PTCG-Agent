@@ -1,3 +1,4 @@
+import os
 
 def _addsitedirs(new_dirs):
     """To use this function, it is necessary to insert new_dir in front of sys.path.

@@ -1,3 +1,5 @@
+import math
+
 
 def _chandrupatla(func, a, b, *, args=(), kwargs=None, xatol=None, xrtol=None,
                   fatol=None, frtol=0, maxiter=None, callback=None):

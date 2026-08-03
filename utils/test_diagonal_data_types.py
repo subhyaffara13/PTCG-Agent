@@ -1,3 +1,4 @@
+import itertools
 
 def test_diagonal_data_types(n, m):
     """Check lobpcg for diagonal matrices for all matrix types.

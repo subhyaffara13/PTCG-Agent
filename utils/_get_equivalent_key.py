@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_equivalent_key(key: str, available_keys: set) -> Optional[str]:
     """

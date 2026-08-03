@@ -1,3 +1,4 @@
+import time
 
 def istft(
     input: Tensor,

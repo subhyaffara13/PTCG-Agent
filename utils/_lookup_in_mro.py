@@ -1,3 +1,4 @@
+import itertools
 
 def _lookup_in_mro(node, name) -> list:
     attrs = node.locals.get(name, [])

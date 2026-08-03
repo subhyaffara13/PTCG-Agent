@@ -1,3 +1,4 @@
+from typing import Union
 
 def constant(image: Image.Image, value: int) -> Image.Image:
     """Fill a channel with a given gray level.

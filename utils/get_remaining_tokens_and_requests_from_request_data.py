@@ -1,3 +1,4 @@
+from typing import Dict
 
 def get_remaining_tokens_and_requests_from_request_data(data: Dict) -> Dict[str, str]:
     """

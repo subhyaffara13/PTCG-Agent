@@ -1,3 +1,4 @@
+import time
 
 def test_callback_num_times():
     # Super-simple micro-benchmarking related to PR #2919.

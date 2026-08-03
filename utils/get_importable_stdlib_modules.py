@@ -1,3 +1,4 @@
+import sys
 
 def get_importable_stdlib_modules() -> set[str]:
     """Return all importable stdlib modules at runtime."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ensure_strict_json_schema(
     json_schema: object,

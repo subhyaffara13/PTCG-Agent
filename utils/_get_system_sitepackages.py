@@ -1,3 +1,4 @@
+import os
 
 def _get_system_sitepackages() -> set[str]:
     """Get system site packages

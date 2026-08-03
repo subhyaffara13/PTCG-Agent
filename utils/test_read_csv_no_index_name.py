@@ -1,3 +1,4 @@
+import os
 
 def test_read_csv_no_index_name(all_parsers, csv_dir_path):
     parser = all_parsers

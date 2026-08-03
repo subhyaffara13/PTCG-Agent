@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _prepare_linear_fusion_create(
     cls,

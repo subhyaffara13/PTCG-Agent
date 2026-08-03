@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_model_typevars_map(cls: type[BaseModel]) -> dict[TypeVar, Any]:
     """Package a generic BaseModel's typevars and concrete parametrization (if present) into a dictionary compatible

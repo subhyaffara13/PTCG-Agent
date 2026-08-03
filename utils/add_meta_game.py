@@ -1,3 +1,4 @@
+import itertools
 
 def add_meta_game(
     meta_games,

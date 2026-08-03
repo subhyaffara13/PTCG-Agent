@@ -1,3 +1,4 @@
+import itertools
 
 def generate_indices(f, values=False):
     """

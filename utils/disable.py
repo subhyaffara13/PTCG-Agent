@@ -1,3 +1,4 @@
+from typing import Callable
 
 def disable(fn=None, recursive=True, *, reason=None):
     """

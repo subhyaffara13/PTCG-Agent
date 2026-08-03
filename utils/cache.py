@@ -1,3 +1,6 @@
+import functools
+import time
+from typing import Any, Callable
 
 def cache(  # type: ignore[overload-overlap]
     func: Callable[P, Coroutine[Any, Any, T]], /

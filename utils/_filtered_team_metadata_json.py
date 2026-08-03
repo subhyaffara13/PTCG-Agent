@@ -1,3 +1,4 @@
+import json
 
 def _filtered_team_metadata_json(
     metadata: Mapping[str, object] | None,

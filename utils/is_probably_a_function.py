@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_probably_a_function(runtime: Any) -> bool:
     return (

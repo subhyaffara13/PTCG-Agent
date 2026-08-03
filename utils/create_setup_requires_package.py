@@ -1,3 +1,4 @@
+import os
 
 def create_setup_requires_package(
     path,

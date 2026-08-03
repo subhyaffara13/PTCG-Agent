@@ -1,3 +1,4 @@
+from typing import Optional
 
 def team_call_validation_checks(
     prisma_client: Optional[PrismaClient],

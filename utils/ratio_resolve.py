@@ -1,3 +1,4 @@
+from typing import List
 
 def ratio_resolve(total: int, edges: Sequence[Edge]) -> List[int]:
     """Divide total space to satisfy size, ratio, and minimum_size, constraints.

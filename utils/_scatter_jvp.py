@@ -1,3 +1,5 @@
+import math
+
 
 def _scatter_jvp(primals, tangents, *, update_jaxpr, update_consts,
                  dimension_numbers, indices_are_sorted, unique_indices,

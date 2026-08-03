@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _inout_vma_error(f: Callable, mesh: Mesh | AbstractMesh, tree: PyTreeDef,
                      specs: Specs, fails: list[core.ManualAxisType | NoFail]

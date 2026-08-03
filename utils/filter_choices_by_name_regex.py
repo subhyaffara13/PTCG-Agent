@@ -1,3 +1,4 @@
+import re
 
 def filter_choices_by_name_regex(choices: list[ChoiceCaller]) -> list[ChoiceCaller]:
     """Filter choices based on autotune_choice_name_regex config."""

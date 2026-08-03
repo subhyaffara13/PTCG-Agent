@@ -1,3 +1,4 @@
+from typing import Callable
 
 def add_offsets_to_mask_function(mask_function: Callable, q_offset: int, kv_offset: int) -> Callable:
     """

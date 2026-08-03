@@ -1,3 +1,4 @@
+from typing import Any
 
 def mask_list(
     mask: list[bool], inp: list[Any], other: list[Any] | None = None

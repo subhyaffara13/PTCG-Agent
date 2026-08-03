@@ -1,3 +1,4 @@
+from typing import Any
 
 def fold_weight(
     quantized_model: GraphModule,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_openai_compatible_url(url_route: Optional[str]) -> bool:
     """True if the URL targets an OpenAI-compatible API surface.

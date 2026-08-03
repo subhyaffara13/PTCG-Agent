@@ -1,3 +1,4 @@
+from typing import Any
 
 def scatter_kwargs(
     inputs: tuple[Any, ...],

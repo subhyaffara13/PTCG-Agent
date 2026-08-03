@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _patch_unwrap_mock_aware() -> Generator[None]:
     """Context manager which replaces ``inspect.unwrap`` with a version

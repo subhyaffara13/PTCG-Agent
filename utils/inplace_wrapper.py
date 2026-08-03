@@ -1,3 +1,4 @@
+from typing import Callable
 
 def inplace_wrapper(fn: Callable) -> Callable:
     """

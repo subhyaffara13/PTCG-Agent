@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_default_model_and_revision(targeted_task: dict, task_options: Any | None) -> tuple[str, str]:
     """

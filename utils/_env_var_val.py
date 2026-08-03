@@ -1,3 +1,4 @@
+import os
 
 def _env_var_val(env_var: str, default: T) -> str | T:
     """Get the value of an environment variable or return the default.

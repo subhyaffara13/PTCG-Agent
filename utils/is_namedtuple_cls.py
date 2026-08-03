@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_namedtuple_cls(cls: Any) -> bool:
     """Test if an object is a namedtuple or a (torch.return_types|torch.autograd.forward_ad).* quasi-namedtuple"""

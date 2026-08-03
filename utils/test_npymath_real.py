@@ -1,3 +1,4 @@
+import itertools
 
 def test_npymath_real():
     # Smoketest npymath functions

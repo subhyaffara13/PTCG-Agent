@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def create_game_with_setting(game_name: str,
                              setting: Optional[str] = None) -> pyspiel.Game:

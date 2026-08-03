@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_attrs_to_new_gm(
     new_gm: torch.fx.GraphModule,

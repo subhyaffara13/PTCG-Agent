@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_banned_params(
     body: dict,

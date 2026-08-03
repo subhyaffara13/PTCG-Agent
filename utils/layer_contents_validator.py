@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def layerContentsValidator(
     value: Any, ufoPathOrFileSystem: Union[str, fs.base.FS]

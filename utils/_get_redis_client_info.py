@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _get_redis_client_info(cache_instance) -> Tuple[List, int]:
     """

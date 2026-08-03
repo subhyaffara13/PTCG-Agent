@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _topological_sort_passes(
     passes: list[Callable], constraints: list[Callable]

@@ -1,3 +1,4 @@
+import functools
 
 def jit_partial(
     fun: tp.Callable[..., R],

@@ -1,3 +1,5 @@
+import math
+
 
 def axis_groups(axis_ctx, name) -> tuple[tuple[int, ...]]:
   assert not isinstance(axis_ctx, sharding_impls.ShardingContext)

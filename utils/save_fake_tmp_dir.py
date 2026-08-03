@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def save_fake_tmp_dir(
     directory: epath.Path,

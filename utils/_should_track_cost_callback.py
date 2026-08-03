@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _should_track_cost_callback(
     user_api_key: Optional[str],

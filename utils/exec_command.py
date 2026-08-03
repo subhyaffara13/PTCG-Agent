@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def exec_command(command, input=None, capture=False, warn_only=False, quiet=False):
     """Execute the desired command, and pipe the given input into it"""

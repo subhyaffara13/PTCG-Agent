@@ -1,3 +1,4 @@
+import json
 
 def parse_jupytext_configuration_file(jupytext_config_file, stream=None):
     """Read a Jupytext config file, and return a dict"""

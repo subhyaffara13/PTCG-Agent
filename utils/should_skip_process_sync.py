@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def should_skip_process_sync(processes: Optional[Set[int]] = None) -> bool:
   if processes and len(processes) == 1 and process_index() in processes:

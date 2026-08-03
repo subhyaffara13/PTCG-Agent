@@ -1,3 +1,4 @@
+import os
 
 def md_to_notebook(text):
     """Convert a Markdown text to a Jupyter notebook, using Pandoc"""

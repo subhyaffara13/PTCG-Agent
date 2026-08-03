@@ -1,3 +1,4 @@
+import re
 
 def unescape(s: str) -> str:
     return re.sub(r"\\([{}()+-.*?^$\[\]\s\\|])", r"\1", s)

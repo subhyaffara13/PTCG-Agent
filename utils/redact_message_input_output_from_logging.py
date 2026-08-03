@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def redact_message_input_output_from_logging(
     model_call_details: dict, result, input: Optional[Any] = None

@@ -1,3 +1,4 @@
+from typing import Any
 
 def can_hold_element(arr: ArrayLike, element: Any) -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def return_arg_list(arg_indices: list[int]) -> Callable[[Node], list[int]]:
     """

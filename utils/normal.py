@@ -1,3 +1,4 @@
+import random
 
 def normal(
     key: torch.Tensor,

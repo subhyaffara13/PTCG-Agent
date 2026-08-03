@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _enable(
     compiler_fn: Callable[..., Any],

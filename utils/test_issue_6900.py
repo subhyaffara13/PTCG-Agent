@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_6900():
     from itertools import permutations

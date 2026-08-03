@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_allowed_to_call_vector_store_endpoint(
     provider: LlmProviders,

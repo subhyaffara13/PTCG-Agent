@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_funcitem(
     stub: nodes.FuncItem, runtime: MaybeMissing[Any], object_path: list[str]

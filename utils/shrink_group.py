@@ -1,3 +1,4 @@
+from typing import Any
 
 def shrink_group(
     ranks_to_exclude: list[int],

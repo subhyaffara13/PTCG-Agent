@@ -1,3 +1,4 @@
+import re
 
 def test_matfile_version(version, filt, regex):
     use_filt = pjoin(test_data_path, f'test*{filt}.mat')

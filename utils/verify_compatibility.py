@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def verify_compatibility(dir_path: Path):
     if dir_path.exists():

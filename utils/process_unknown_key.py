@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def process_unknown_key(key: str, metadata_dict: dict[str, Any]) -> Any:
   if 'custom_metadata' in metadata_dict and metadata_dict['custom_metadata']:

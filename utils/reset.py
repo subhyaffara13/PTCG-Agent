@@ -1,3 +1,5 @@
+import itertools
+import random
 
 def reset() -> None:
     """

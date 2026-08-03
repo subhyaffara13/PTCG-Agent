@@ -1,3 +1,4 @@
+import functools
 
 def reduced_f32_on_and_off(bf32_precision=1e-2, tf32_precision=1e-5):
     def with_reduced_f32_disabled(self, function_call):

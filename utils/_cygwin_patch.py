@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _cygwin_patch(filename: StrOrBytesPath):  # pragma: nocover
     """

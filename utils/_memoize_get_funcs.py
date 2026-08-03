@@ -1,3 +1,4 @@
+import functools
 
 def _memoize_get_funcs(func):
     """

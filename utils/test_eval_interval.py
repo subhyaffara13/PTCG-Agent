@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_eval_interval():
     assert exp(x)._eval_interval(*Tuple(x, 0, 1)) == exp(1) - exp(0)

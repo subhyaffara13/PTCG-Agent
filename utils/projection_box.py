@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_box(tree: Any, lower: Any, upper: Any) -> Any:
   r"""Projection onto box constraints.

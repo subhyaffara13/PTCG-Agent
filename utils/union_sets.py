@@ -1,3 +1,4 @@
+from typing import Union
 
 def union_sets(self, o): # noqa:F811
     """ Returns the union of self and o

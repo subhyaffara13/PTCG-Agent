@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _pager_contextmanager(
     color: bool | None = None,

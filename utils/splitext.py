@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def splitext(path: str) -> Tuple[str, str]:
     """Like os.path.splitext, but take off .tar too"""

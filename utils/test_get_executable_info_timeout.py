@@ -1,3 +1,4 @@
+import subprocess
 
 def test_get_executable_info_timeout(mock_check_output):
     """

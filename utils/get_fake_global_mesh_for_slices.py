@@ -1,3 +1,4 @@
+from typing import List, Set
 
 def get_fake_global_mesh_for_slices(
     slice_processes: List[Set[int]],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def sequence_validator(
     input_value: Sequence[Any],

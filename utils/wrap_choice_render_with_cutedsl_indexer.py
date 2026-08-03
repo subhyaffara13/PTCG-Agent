@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_choice_render_with_cutedsl_indexer(choice: Any) -> None:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def apply_client_compaction_block_history(
     *,

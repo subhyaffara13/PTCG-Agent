@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_docstring_templates(func: Callable[_P, _T]) -> Callable[_P, _T]:
     """Decorator that applies docstring templates to function docstring

@@ -1,3 +1,4 @@
+import os
 
 def parse_makefile(fn, g=None):  # noqa: C901
     """Parse a Makefile-style file.

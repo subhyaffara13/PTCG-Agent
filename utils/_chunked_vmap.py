@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _chunked_vmap(
     func: Callable[_P, Tensor | tuple[Tensor, ...]],

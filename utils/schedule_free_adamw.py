@@ -1,3 +1,4 @@
+from typing import Optional
 
 def schedule_free_adamw(
     learning_rate: jax.typing.ArrayLike = 0.0025,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_unflatten(leaves: Iterable[Any], treespec: TreeSpec) -> PyTree:
     """Reconstruct a pytree from the treespec and the leaves.

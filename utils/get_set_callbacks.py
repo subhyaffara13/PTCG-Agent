@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_set_callbacks() -> Callable:
     """Get the cached set_callbacks function, initializing if needed."""

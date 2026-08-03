@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def optimize_onnx_model_by_ort(onnx_model_path, ort_model_path, use_gpu, overwrite, model_fusion_statistics):
     if overwrite or not os.path.exists(ort_model_path):

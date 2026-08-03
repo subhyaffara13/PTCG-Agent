@@ -1,3 +1,4 @@
+import os
 
 def should_do_markup(file: TextIO) -> bool:
     if os.environ.get("PY_COLORS") == "1":

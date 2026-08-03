@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def test_stubs(args: _Arguments, use_builtins_fixtures: bool = False) -> int:
     """This is stubtest! It's time to test the stubs!"""

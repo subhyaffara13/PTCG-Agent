@@ -1,3 +1,4 @@
+from typing import Any
 
 def _run_state_discharge_rule(in_avals: Sequence[core.AbstractValue],
                               out_avals: Sequence[core.AbstractValue],

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _custom_vjp_single_scope_fn(
   fn: Callable[..., Any],

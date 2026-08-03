@@ -1,3 +1,4 @@
+import sys
 
 def igcd_lehmer(a, b):
     r"""Computes greatest common divisor of two integers.

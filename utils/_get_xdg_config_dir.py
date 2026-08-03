@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _get_xdg_config_dir():
     """

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def truetype(
     font: StrOrBytesPath | BinaryIO,

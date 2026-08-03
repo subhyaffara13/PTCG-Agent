@@ -1,3 +1,4 @@
+import re
 
 def compile_pattern(pattern: PatternType) -> re.Pattern[PatternType]:
     try:

@@ -1,3 +1,4 @@
+import logging
 
 def create_test_suite_from_config(
     config_path: str,

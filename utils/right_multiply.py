@@ -1,3 +1,4 @@
+import copy
 
 def right_multiply(J, d, copy=True):
     """Compute J diag(d).

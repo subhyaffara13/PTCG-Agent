@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_basic_str_escape(
     src: str, pos: Pos, *, multiline: bool = False

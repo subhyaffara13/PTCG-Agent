@@ -1,3 +1,4 @@
+from typing import Any
 
 def texmath_plugin(
     md: MarkdownIt, delimiters: str = "dollars", macros: Any = None

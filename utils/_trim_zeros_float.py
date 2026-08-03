@@ -1,3 +1,4 @@
+import re
 
 def _trim_zeros_float(
     str_floats: ArrayLike | list[str], decimal: str = "."

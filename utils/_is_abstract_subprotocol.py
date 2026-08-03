@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_abstract_subprotocol(
     type_a: type[Any], type_b: type[Any]

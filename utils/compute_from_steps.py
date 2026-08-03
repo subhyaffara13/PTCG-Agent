@@ -1,3 +1,6 @@
+from typing import Dict, List
+import math
+
 
 def compute_from_steps(steps: List[Dict], player_idx: int) -> BehavioralVector:
     """

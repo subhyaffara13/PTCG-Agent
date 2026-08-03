@@ -1,3 +1,4 @@
+from typing import Any
 
 def leaf_is_placeholder(leaf: Any) -> bool:
   """Determines if `leaf` represents a placeholder for a non-aggregated value."""

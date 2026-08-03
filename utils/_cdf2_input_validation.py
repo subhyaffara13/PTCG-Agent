@@ -1,3 +1,4 @@
+import functools
 
 def _cdf2_input_validation(f):
     # Wrapper that does the job of `_set_invalid_nan` when `cdf` or `logcdf`

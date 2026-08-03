@@ -1,3 +1,4 @@
+import sys
 
 def test_lazy_load():
     # gh-22045. lazyload doesn't import submodule names into the namespace

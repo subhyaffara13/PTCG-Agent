@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def should_use_cohere_v1_client(
     api_base: Optional[str], present_version_params: List[str]

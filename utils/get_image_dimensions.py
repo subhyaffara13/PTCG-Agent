@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def get_image_dimensions(
     data: str,

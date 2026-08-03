@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ndindexer_indices(
     indexer: indexing.NDIndexer, allow_arrays: bool = False

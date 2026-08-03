@@ -1,3 +1,4 @@
+import subprocess
 
 def ffmpeg_read(bpayload: bytes, sampling_rate: int) -> np.ndarray:
     """

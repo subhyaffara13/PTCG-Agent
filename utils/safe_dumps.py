@@ -1,3 +1,5 @@
+import json
+from typing import Any, Union
 
 def safe_dumps(data: Any, max_depth: int = DEFAULT_MAX_RECURSE_DEPTH) -> str:
     """

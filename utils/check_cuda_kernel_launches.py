@@ -1,3 +1,5 @@
+import os
+import sys
 
 def check_cuda_kernel_launches():
     """Checks all pytorch code for CUDA kernel launches without cuda error checks

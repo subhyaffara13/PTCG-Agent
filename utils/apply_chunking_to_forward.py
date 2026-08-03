@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_chunking_to_forward(
     forward_fn: Callable[..., torch.Tensor],

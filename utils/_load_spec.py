@@ -1,3 +1,4 @@
+import sys
 
 def _load_spec(spec: ModuleSpec, module_name: str) -> ModuleType:
     name = getattr(spec, "__name__", module_name)

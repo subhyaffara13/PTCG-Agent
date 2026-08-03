@@ -1,3 +1,4 @@
+import subprocess
 
 def run_validator():
     """Run pytest to ensure we didn't break player logic."""

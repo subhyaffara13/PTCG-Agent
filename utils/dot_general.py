@@ -1,3 +1,4 @@
+import itertools
 
 def dot_general(result: _ods_ir.Type, lhs: _ods_ir.Value[_ods_ir.RankedTensorType], rhs: _ods_ir.Value[_ods_ir.RankedTensorType], dot_dimension_numbers: _Union[_Any, _ods_ir.Attribute], *, precision_config: _Optional[_Union[_Any, _ods_ir.ArrayAttr]] = None, algorithm: _Optional[_Union[_Any, _ods_ir.Attribute]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.RankedTensorType]:
   return DotGeneralOp(result=result, lhs=lhs, rhs=rhs, dot_dimension_numbers=dot_dimension_numbers, precision_config=precision_config, algorithm=algorithm, loc=loc, ip=ip).result

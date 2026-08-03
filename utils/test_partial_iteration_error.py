@@ -1,3 +1,4 @@
+import sys
 
 def test_partial_iteration_error(in_dtype, buf_dtype):
     value = 123  # relies on python cache (leak-check will still find it)

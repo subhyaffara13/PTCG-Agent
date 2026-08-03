@@ -1,3 +1,5 @@
+import math
+
 
 def invgauss_pdf(x, mu):
     m = invgauss_mode(mu)

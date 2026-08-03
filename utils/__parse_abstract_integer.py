@@ -1,3 +1,4 @@
+import re
 
 def _ParseAbstractInteger(text):
   """Parses an integer without checking size/signedness.

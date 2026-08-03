@@ -1,3 +1,5 @@
+import os
+from typing import Dict, List
 
 def get_available_content_categories() -> List[Dict[str, str]]:
     """

@@ -1,3 +1,5 @@
+import math
+
 
 def create_fb_matrix(
     n_freqs: int,

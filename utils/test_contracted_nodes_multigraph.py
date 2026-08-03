@@ -1,3 +1,4 @@
+import copy
 
 def test_contracted_nodes_multigraph(store_contraction_as, copy, selfloops):
     """Tests that using a MultiGraph creates multiple edges. `store_contraction_as`

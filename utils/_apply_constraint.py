@@ -1,3 +1,4 @@
+from typing import Any
 
 def _apply_constraint(  # noqa: C901
     s: cs.CoreSchema | None, constraint: _ConstraintAnnotation

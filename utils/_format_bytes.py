@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _format_bytes(n: float) -> str:
     for unit in ("B", "kB", "MB", "GB", "TB"):

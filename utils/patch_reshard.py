@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_reshard(new_reshard: Callable):
     orig_reshard = FSDPParamGroup.reshard

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _add_submodule(
     mod: torch.nn.Module,

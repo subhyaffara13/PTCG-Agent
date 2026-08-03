@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_optimization_cflags(
     cpp_compiler: str, min_optimize: bool = False

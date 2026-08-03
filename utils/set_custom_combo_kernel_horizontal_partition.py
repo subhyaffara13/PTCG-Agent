@@ -1,3 +1,4 @@
+from typing import Callable
 
 def set_custom_combo_kernel_horizontal_partition(
     algorithm: Callable[

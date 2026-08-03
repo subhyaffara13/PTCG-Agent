@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def scan_with_axes(
     target: 'flax.linen.transforms.Target',

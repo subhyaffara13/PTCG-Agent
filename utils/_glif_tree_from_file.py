@@ -1,3 +1,4 @@
+from typing import Union
 
 def _glifTreeFromFile(aFile: Union[str, bytes, int]) -> ElementType:
     if etree._have_lxml:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def DEFINE_spaceseplist(  # pylint: disable=invalid-name
     name: str,

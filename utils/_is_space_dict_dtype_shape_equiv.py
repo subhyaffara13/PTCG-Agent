@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _is_space_dict_dtype_shape_equiv(space_1: Dict, space_2):
     return (

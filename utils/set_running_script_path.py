@@ -1,3 +1,5 @@
+import os
+import sys
 
 def set_running_script_path():
     global running_script_path

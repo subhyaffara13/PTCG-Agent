@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _download(url, filename, directory="/tmp/mnist"):
     """Download a url to a file in the given directory."""

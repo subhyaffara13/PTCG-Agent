@@ -1,3 +1,4 @@
+from typing import Set, Tuple
 
 def test_is_number():
     assert Interval(0, 1).is_number is False

@@ -1,3 +1,4 @@
+import re
 
 def _is_multi_naming_match(
     match: re.Match[str] | None, node_type: str, confidence: interfaces.Confidence

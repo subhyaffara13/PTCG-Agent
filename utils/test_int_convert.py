@@ -1,3 +1,4 @@
+import sys
 
 def test_int_convert():
     class Int:

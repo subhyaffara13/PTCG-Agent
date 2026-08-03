@@ -1,3 +1,4 @@
+from typing import Any
 
 def replace_grad_tensors(output: Any, tensor_iter: Iterator[torch.Tensor]) -> Any:
     """

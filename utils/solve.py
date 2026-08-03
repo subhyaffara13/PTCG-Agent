@@ -1,3 +1,4 @@
+import re
 
 def solve(input: Tensor, A: Tensor, *, out=None) -> tuple[Tensor, Tensor]:
     raise RuntimeError(

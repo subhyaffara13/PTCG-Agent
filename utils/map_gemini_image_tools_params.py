@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def map_gemini_image_tools_params(
     non_default_params: Dict[str, Any],

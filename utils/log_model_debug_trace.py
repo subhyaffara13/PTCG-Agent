@@ -1,3 +1,5 @@
+import json
+import os
 
 def log_model_debug_trace(debug_path: str | None, model):
     if debug_path:

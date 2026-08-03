@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _show_fixtures_per_test(config: Config, session: Session) -> None:
     import _pytest.config

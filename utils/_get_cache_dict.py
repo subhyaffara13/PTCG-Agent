@@ -1,3 +1,4 @@
+import logging
 
 def _get_cache_dict(cache: DynamicCache):
     """Convert cache to dictionary format for pytree operations."""

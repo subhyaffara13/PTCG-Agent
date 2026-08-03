@@ -1,3 +1,4 @@
+from typing import Any
 
 def missing_sentinel_schema(
     metadata: dict[str, Any] | None = None,

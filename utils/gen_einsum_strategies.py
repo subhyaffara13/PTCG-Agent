@@ -1,3 +1,4 @@
+import itertools
 
 def gen_einsum_strategies(
     equation: str,

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _decompose_and_get_gm_with_new_signature_constants(
     ep: "ExportedProgram",

@@ -1,3 +1,4 @@
+from typing import Any
 
 def increment_version(tensor: torch.Tensor | Iterable[torch.Tensor]) -> None:
     """Update autograd metadata tracking whether the given Tensor was modified in place.

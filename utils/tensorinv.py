@@ -1,3 +1,5 @@
+import math
+
 
 def tensorinv(a: ArrayLike, ind=2):
     a = _atleast_float_1(a)

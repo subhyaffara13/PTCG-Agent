@@ -1,3 +1,4 @@
+from typing import Any
 
 def _count_prompt_or_input_tokens(model: str, value: Any) -> int:
     """Token-count a ``prompt`` / ``input`` field that the OpenAI batch

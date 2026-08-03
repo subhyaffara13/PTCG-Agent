@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def _merge_cli_sso_attribution_metadata(
     existing_metadata: Dict[str, Any], attribution_metadata: Dict[str, Any]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_cookie(name: str, value: str, **kwargs: Any) -> Cookie:
     """Make a cookie from underspecified parameters.

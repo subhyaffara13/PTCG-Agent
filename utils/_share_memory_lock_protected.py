@@ -1,3 +1,4 @@
+import functools
 
 def _share_memory_lock_protected(fn):
     @functools.wraps(fn)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_items_from_dict(obj: dict[K, V]) -> Iterable[tuple[K, V | Any]]:
     # Get items without calling the user defined __getitem__ or keys method.

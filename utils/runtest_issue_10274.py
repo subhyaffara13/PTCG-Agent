@@ -1,3 +1,4 @@
+import os
 
 def runtest_issue_10274(language, backend):
     expr = (a - b + c)**(13)

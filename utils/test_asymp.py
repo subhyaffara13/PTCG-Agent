@@ -1,3 +1,4 @@
+import sys
 
 def test_asymp(f, maxdps=150, verbose=False, huge_range=False):
     dps = [5,15,25,50,90,150,500,1500,5000,10000]

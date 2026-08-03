@@ -1,3 +1,4 @@
+from typing import Any
 
 def _record_to_spend_metrics(record: Any) -> SpendMetrics:
     """Build a SpendMetrics directly from one already-aggregated rollup row.

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _as_version(version: Union[str, LegacyVersion, Version]
 ) -> Union[LegacyVersion, Version]:

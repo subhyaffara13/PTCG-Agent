@@ -1,3 +1,4 @@
+import time
 
 def speed_metrics(split, start_time, num_samples=None, num_steps=None, num_tokens=None):
     """

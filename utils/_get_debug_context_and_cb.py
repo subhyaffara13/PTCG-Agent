@@ -1,3 +1,4 @@
+from typing import Any, Callable, Tuple
 
 def _get_debug_context_and_cb() -> Tuple[Callable[[], Any], Callable[[CheckpointError], None]]:
     # This function returns the context_fn and error_cb to be used by the

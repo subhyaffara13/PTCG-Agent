@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def load_trace(path: Path) -> dict:
     if path.suffix == ".gz" or path.name.endswith(".json.gz"):

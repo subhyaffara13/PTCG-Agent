@@ -1,3 +1,4 @@
+import re
 
 def sanitize_test_filename(filename):
     strip_py = re.sub(r'.py$', '', filename)

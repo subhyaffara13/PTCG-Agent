@@ -1,3 +1,4 @@
+import time
 
 def do_recheck(args: argparse.Namespace) -> None:
     """Ask the daemon to recheck the previous list of files, with optional modifications.

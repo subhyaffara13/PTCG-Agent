@@ -1,3 +1,4 @@
+import json
 
 def format_json(blob: str):
     parsed = json.loads(blob)

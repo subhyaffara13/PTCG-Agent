@@ -1,3 +1,4 @@
+from typing import Optional
 
 def turn_based_aec_to_parallel(
     aec_env: AECEnv[AgentID, ObsType, Optional[ActionType]]

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _filter_iter(
     l1: Iterable[Any],

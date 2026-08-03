@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def extract_between_tags(tag: str, string: str, strip: bool = False) -> List[str]:
     ext_list = re.findall(f"<{tag}>(.+?)</{tag}>", string, re.DOTALL)

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _segment_update(name: str,
                     data: ArrayLike,

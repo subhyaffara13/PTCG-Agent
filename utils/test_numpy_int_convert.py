@@ -1,3 +1,4 @@
+import sys
 
 def test_numpy_int_convert():
     np = pytest.importorskip("numpy")

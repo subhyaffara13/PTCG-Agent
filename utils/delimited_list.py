@@ -1,3 +1,4 @@
+from typing import Union
 
 def delimited_list(
     expr: Union[str, ParserElement],

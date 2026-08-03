@@ -1,3 +1,5 @@
+import uuid
+from typing import List, Union
 
 def convert_function_to_anthropic_tool_invoke(
     function_call: Union[dict, ChatCompletionToolCallFunctionChunk],

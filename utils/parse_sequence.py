@@ -1,3 +1,4 @@
+from typing import Any
 
 def parse_sequence(source, info):
     "Parses a sequence, eg. 'abc'."

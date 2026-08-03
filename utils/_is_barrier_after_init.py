@@ -1,3 +1,4 @@
+import os
 
 def _is_barrier_after_init() -> int:
     # Environment variable to control whether process group should perform a

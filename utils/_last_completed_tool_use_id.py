@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _last_completed_tool_use_id(
     messages: List[Dict[str, Any]],

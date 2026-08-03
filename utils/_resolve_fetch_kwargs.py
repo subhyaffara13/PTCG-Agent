@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _resolve_fetch_kwargs(
     fn_name: str,

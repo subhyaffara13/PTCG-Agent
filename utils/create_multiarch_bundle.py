@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def create_multiarch_bundle(code_objects: dict, output_bundle_path: str) -> bool:
     """

@@ -1,3 +1,4 @@
+import os
 
 def _find_exe(exe, paths=None):
     """Return path to an MSVC executable program.

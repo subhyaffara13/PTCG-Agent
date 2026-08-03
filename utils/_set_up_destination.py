@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_up_destination(root: str | PathLike[str], overwrite: bool,
                         pytree_repr: dict[str, Any], distinct_locations: bool,

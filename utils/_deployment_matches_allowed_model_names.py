@@ -1,3 +1,4 @@
+from typing import Any, Dict, Set
 
 def _deployment_matches_allowed_model_names(
     model: Dict[str, Any], allowed_model_names: Set[str]

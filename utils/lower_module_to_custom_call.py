@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_module_to_custom_call(
     ctx: mlir.LoweringRuleContext,

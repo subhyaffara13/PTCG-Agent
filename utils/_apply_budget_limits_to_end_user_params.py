@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _apply_budget_limits_to_end_user_params(
     end_user_params: dict,

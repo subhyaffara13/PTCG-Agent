@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_win32_installed_fonts():
     """List the font paths known to the Windows registry."""

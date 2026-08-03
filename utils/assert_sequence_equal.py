@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_sequence_equal(
     self_: Any,

@@ -1,3 +1,4 @@
+import copy
 
 def stochastic_graph(G, copy=True, weight="weight"):
     """Returns a right-stochastic representation of directed graph `G`.

@@ -1,3 +1,4 @@
+from typing import List
 
 def _chat_body_from_inputs(
     inputs: GenericGuardrailAPIInputs, agent_id: str, request_data: dict

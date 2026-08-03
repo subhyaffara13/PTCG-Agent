@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional, Union
 
 def process_slack_alerting_variables(
     alert_to_webhook_url: Optional[Dict[AlertType, Union[List[str], str]]],

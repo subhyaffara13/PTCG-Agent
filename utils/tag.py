@@ -1,3 +1,4 @@
+from typing import Callable
 
 def tag(name: str, **attributes: str | list[str] | None) -> Callable[..., str]:
   """Create a html tag.

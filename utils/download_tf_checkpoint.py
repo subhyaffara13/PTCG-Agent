@@ -1,3 +1,4 @@
+import os
 
 def download_tf_checkpoint(model_name, tf_models_dir="tf_models"):
     import pathlib  # noqa: PLC0415

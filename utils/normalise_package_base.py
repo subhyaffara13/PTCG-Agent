@@ -1,3 +1,4 @@
+import os
 
 def normalise_package_base(root: str) -> str:
     if not root:

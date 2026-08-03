@@ -1,3 +1,4 @@
+import copy
 
 def _astype(self: Array, dtype: DTypeLike | None, copy: bool = False,
             device: xc.Device | Sharding | None = None) -> Array:

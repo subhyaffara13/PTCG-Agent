@@ -1,3 +1,4 @@
+import re
 
 def test_observation_action_spaces(env, agent_0):
     for agent in env.agents:

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_module_extender(
     manager: AstroidManager, module_name: str, get_extension_mod: Callable[[], Module]

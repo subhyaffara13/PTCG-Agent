@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_board_ascii(board: Sequence[Sequence[str]]) -> str:
     """Render the board with rank labels on the left and files on top.

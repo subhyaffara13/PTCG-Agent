@@ -1,3 +1,4 @@
+import os
 
 def additional_tests(suite=None, project_dir=None):
     import simplejson

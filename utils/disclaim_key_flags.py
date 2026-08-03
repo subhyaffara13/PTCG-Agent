@@ -1,3 +1,4 @@
+import sys
 
 def disclaim_key_flags() -> None:
   """Declares that the current module will not define any more key flags.

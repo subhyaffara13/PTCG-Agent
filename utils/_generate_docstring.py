@@ -1,3 +1,4 @@
+from typing import Any
 
 def _generate_docstring(func):
     """A utility function called from tools/update_masked_docs.py

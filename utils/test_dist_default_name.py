@@ -1,3 +1,4 @@
+import os
 
 def test_dist_default_name(tmp_path, dist_name, package_dir, package_files):
     """Make sure dist.name is discovered from packages/py_modules"""

@@ -1,3 +1,6 @@
+import itertools
+from pathlib import Path
+
 
 def cleanup_candidates(root: Path, prefix: str, keep: int) -> Iterator[Path]:
     """List candidates for numbered directories to be removed - follows py.path."""

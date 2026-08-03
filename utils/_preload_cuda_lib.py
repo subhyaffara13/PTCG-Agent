@@ -1,3 +1,4 @@
+import sys
 
 def _preload_cuda_lib(lib_folder: str, lib_name: str, required: bool = True) -> None:  # type: ignore[valid-type]
     """Preloads cuda library if it could not be found otherwise."""

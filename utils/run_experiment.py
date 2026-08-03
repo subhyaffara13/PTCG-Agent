@@ -1,3 +1,4 @@
+import copy
 
 def run_experiment(num_players, env, payoffs, centralized):
   """Run the experiments."""

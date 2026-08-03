@@ -1,3 +1,4 @@
+from typing import Callable
 
 def parallel_wrapper_fn(env_fn: Callable) -> Callable:
     def par_fn(**kwargs):

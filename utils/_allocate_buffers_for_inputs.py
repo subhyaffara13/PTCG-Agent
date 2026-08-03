@@ -1,3 +1,4 @@
+from typing import Any
 
 def _allocate_buffers_for_inputs(
     token: jax.Array,

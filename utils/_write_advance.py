@@ -1,3 +1,4 @@
+from typing import Any
 
 def _writeAdvance(glyphObject: Any, element: ElementType, validate: bool) -> None:
     width = getattr(glyphObject, "width", None)

@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def auto_cpp_level(compiler: Any) -> Union[str, int]:
     """

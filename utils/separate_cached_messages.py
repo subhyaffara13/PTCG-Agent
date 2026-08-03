@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def separate_cached_messages(
     messages: List[AllMessageValues],

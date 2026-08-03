@@ -1,3 +1,4 @@
+from typing import Optional
 
 def extract_model_from_sources(
     file_id: str,

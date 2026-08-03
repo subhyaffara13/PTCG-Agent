@@ -1,3 +1,4 @@
+from typing import Any
 
 def _expected_leaf_from_template(value: Any) -> _ExpectedLeaf | None:
   """Returns expected shape/dtype based on a restore spec template leaf."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _interpolate_scipy_wrapper(
     x: np.ndarray,

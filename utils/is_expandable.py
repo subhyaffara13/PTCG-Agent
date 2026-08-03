@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_expandable(obj: Any) -> bool:
     """Check if an object may be expanded by pretty print."""

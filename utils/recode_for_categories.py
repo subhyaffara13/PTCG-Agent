@@ -1,3 +1,4 @@
+import copy
 
 def recode_for_categories(
     codes: np.ndarray,

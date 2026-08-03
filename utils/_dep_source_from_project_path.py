@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _dep_source_from_project_path(
     project_path: Path, index_url: str, extra_index_urls: list[str], locked: bool, state: AuditState

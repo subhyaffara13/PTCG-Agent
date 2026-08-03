@@ -1,3 +1,4 @@
+import random
 
 def stateful_rng(seed: typing.ArrayLike | None = None, *,
                  impl: random.PRNGSpecDesc | None = None) -> StatefulPRNG:

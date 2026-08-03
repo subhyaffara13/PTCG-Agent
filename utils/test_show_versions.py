@@ -1,3 +1,5 @@
+import json
+import os
 
 def test_show_versions(tmpdir):
     # GH39701

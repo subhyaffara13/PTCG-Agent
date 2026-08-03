@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _decode_user_credential(stored: str) -> Optional[str]:
     """Read back a value persisted in ``LiteLLM_MCPUserCredentials.credential_b64``.

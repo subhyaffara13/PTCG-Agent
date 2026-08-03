@@ -1,3 +1,4 @@
+import os
 
 def buffered_fsspec_create_stream(
     path: str | os.PathLike[str], mode: str

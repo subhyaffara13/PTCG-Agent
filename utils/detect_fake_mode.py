@@ -1,3 +1,4 @@
+from typing import Any
 
 def detect_fake_mode(inputs: Any = None) -> FakeTensorMode | None:
     """

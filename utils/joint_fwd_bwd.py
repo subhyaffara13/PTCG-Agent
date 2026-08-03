@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def joint_fwd_bwd(
     fn: Callable[..., Any],

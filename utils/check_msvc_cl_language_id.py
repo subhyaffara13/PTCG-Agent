@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def check_msvc_cl_language_id(compiler: str) -> None:
     """

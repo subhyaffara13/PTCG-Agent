@@ -1,3 +1,4 @@
+from typing import Any
 
 def filter_out_const_values(tup: tuple[Any, ...], masks: list[bool]) -> tuple[Any, ...]:
     """

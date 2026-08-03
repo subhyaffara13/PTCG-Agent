@@ -1,3 +1,4 @@
+from typing import Optional
 
 def collect_line_profiler_stats(output_file: Optional[str] = None) -> None:
     """Collect and save line_profiler statistics.

@@ -1,3 +1,5 @@
+import os
+from typing import Union
 
 def should_update_prisma_schema(
     disable_updates: Union[bool, str] | None = None,

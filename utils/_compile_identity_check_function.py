@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compile_identity_check_function(member: LiteralString, function_name: LiteralString) -> FunctionType:
     """Create a function checking that the function argument is the (unparameterized) typing `member`.

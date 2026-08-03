@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_case_validator(df: pd.DataFrame, column: Any) -> Remediation | None:
     """

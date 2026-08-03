@@ -1,3 +1,4 @@
+import sys
 
 def getAlternatives(n):
     if isinstance(n, ast.If):

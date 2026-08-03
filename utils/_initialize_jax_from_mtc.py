@@ -1,3 +1,4 @@
+import logging
 
 def _initialize_jax_from_mtc(
     local_checkpoint_directory: epath.Path,

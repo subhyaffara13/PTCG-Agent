@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fetch_agentops_jwt(api_key: str) -> dict[str, Any]:
     # Own a short-lived client rather than ``_get_httpx_client()``: that returns

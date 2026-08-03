@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def migrate_config(name: str, env: Any) -> list[Any]:
     """Migrate a config file.

@@ -1,3 +1,4 @@
+import re
 
 def test_xp_result_type_no_force(x, y, xp):
     # When force_floating==False (default), behavior of `xp_result_type`

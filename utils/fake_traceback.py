@@ -1,3 +1,4 @@
+import sys
 
 def fake_traceback(  # type: ignore
     exc_value: BaseException, tb: t.Optional[TracebackType], filename: str, lineno: int

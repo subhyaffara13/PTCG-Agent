@@ -1,3 +1,4 @@
+import os
 
 def ensure_relative(path):
     """Take the full path 'path', and make it a relative path.

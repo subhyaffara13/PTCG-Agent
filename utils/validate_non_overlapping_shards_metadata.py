@@ -1,3 +1,5 @@
+import math
+
 
 def validate_non_overlapping_shards_metadata(shards: list[ShardMetadata]):
     """

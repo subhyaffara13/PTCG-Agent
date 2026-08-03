@@ -1,3 +1,4 @@
+from typing import Callable
 
 def estimate_collective_time(
     n: fx.Node,

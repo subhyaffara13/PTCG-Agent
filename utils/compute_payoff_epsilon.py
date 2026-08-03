@@ -1,3 +1,4 @@
+import itertools
 
 def compute_payoff_epsilon(
     game: coalitional_game.CoalitionalGame,

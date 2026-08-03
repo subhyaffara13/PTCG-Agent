@@ -1,3 +1,4 @@
+import re
 
 def set_up_treescope():
   """Sets up treescope to render JAX objects."""

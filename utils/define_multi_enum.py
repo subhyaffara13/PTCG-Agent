@@ -1,3 +1,4 @@
+from typing import Any
 
 def DEFINE_multi_enum(  # pylint: disable=invalid-name
     name: str,

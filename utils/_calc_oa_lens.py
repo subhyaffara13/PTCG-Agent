@@ -1,3 +1,5 @@
+import math
+
 
 def _calc_oa_lens(s1, s2):
     """Calculate the optimal FFT lengths for overlap-add convolution.

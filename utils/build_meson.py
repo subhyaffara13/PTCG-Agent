@@ -1,3 +1,4 @@
+import sys
 
 def build_meson(source_files, module_name=None, **kwargs):
     """

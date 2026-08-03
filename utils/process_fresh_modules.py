@@ -1,3 +1,4 @@
+import time
 
 def process_fresh_modules(graph: Graph, modules: list[str], manager: BuildManager) -> None:
     """Process the modules in one group of modules from their cached data.

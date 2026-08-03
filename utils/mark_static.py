@@ -1,3 +1,4 @@
+from typing import Any
 
 def mark_static(t: Any, index: int | list[Any] | tuple[Any] | None = None) -> None:
     """

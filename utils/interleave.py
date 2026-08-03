@@ -1,3 +1,4 @@
+import itertools
 
 def interleave(seqs):
     """ Interleave a sequence of sequences

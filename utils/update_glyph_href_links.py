@@ -1,3 +1,4 @@
+from typing import Dict
 
 def update_glyph_href_links(svg: etree.Element, id_map: Dict[str, str]) -> None:
     # update all xlink:href="#glyph..." attributes to point to the new glyph ids

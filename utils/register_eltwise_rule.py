@@ -1,3 +1,4 @@
+import functools
 
 def register_eltwise_rule(prim: core.Primitive):
   register_pull_block_spec_rule(prim)(

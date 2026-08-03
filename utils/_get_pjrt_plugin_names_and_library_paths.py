@@ -1,3 +1,4 @@
+import os
 
 def _get_pjrt_plugin_names_and_library_paths(
     plugins_from_env: str,

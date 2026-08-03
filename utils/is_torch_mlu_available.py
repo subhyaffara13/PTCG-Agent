@@ -1,3 +1,4 @@
+import os
 
 def is_torch_mlu_available() -> bool:
     """

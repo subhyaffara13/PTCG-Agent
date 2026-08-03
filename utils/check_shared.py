@@ -1,3 +1,4 @@
+import itertools
 
 def check_shared(axs, x_shared, y_shared):
     """

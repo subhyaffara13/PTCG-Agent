@@ -1,3 +1,6 @@
+from typing import Callable
+import math
+
 
 def compute_weight_mat(input_size: core.DimSize,
                        output_size: core.DimSize,

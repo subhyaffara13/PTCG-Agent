@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def remove_items_at_indices(items: Optional[List[Any]], indices: Iterable[int]) -> None:
     """Remove items from a list in-place by index"""

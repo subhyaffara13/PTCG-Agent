@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def generate_prompt(
     observation: Mapping[str, Any],

@@ -1,3 +1,4 @@
+import functools
 
 def catch_config_error(method: T) -> T:
     """Method decorator for catching invalid config (Trait/ArgumentErrors) during init.

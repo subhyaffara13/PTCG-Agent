@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def check_parameters_count(cls: Type[GenericModel], parameters: Tuple[Any, ...]) -> None:
     actual = len(parameters)

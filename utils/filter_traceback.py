@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def filter_traceback(entry: TracebackEntry) -> bool:
     """Return True if a TracebackEntry instance should be included in tracebacks.

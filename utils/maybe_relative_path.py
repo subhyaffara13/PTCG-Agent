@@ -1,3 +1,4 @@
+import os
 
 def maybe_relative_path(path):
     if not os.path.isabs(path):

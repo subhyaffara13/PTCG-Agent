@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _resolve_queries_from_args(args: Dict[str, Any], input: Any) -> List[str]:
     """Pull the queries list out of parsed tool-call arguments, with backward-compat fallbacks."""

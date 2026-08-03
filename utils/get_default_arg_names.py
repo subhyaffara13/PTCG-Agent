@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_default_arg_names(function: Callable[..., Any]) -> tuple[str, ...]:
     # Note: this code intentionally mirrors the code at the beginning of

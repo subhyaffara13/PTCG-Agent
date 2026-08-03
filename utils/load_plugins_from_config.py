@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def load_plugins_from_config(
     options: Options, errors: Errors, stdout: TextIO

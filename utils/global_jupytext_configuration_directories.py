@@ -1,3 +1,4 @@
+import os
 
 def global_jupytext_configuration_directories():
     """Return the directories in which Jupytext will search for a configuration file"""

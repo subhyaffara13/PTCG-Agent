@@ -1,3 +1,4 @@
+from typing import Callable
 
 def trace_structured_artifact(
     name: str,  # this will go in metadata

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _raise_mujoco_py_error(*args: Any, **kwargs: Any):
     raise ImportError(

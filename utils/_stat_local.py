@@ -1,3 +1,4 @@
+import os
 
 def _stat_local(path: str) -> tuple[int, float] | None:
     """Stat a local file and return (size, mtime_ms).

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def wrap_function_directly(func: Callable) -> Callable:
     """Wrap a function directly with line_profiler.

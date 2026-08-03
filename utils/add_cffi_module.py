@@ -1,3 +1,4 @@
+import os
 
 def add_cffi_module(dist, mod_spec):
     from cffi.api import FFI

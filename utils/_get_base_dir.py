@@ -1,3 +1,4 @@
+import os
 
 def _get_base_dir():
   if 'BUILD_WORKING_DIRECTORY' in os.environ:

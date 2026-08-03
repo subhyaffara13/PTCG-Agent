@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_rowwise_scaling(sz: Any, transpose: bool) -> bool:
     idx = 0 if transpose else -1

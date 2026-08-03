@@ -1,3 +1,4 @@
+import functools
 
 def broadcasting_vmap(fun, in_axes=0, out_axes=0):
   @functools.wraps(fun)

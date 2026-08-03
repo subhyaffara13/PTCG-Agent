@@ -1,3 +1,4 @@
+import random
 
 def rsa_recover_prime_factors(n: int, e: int, d: int) -> tuple[int, int]:
     """

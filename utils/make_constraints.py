@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_constraints(
     fake_mode: FakeTensorMode,

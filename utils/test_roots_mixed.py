@@ -1,3 +1,4 @@
+import re
 
 def test_roots_mixed():
     f = -1936 - 5056*x - 7592*x**2 + 2704*x**3 - 49*x**4

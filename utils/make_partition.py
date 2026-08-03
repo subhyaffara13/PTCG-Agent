@@ -1,3 +1,4 @@
+import itertools
 
 def make_partition(items, test, check=True):
     """

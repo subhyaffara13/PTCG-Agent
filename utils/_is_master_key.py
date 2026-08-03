@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_master_key(api_key: Optional[str], _master_key: Optional[str]) -> bool:
     """

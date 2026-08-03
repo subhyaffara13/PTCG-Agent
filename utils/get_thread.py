@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_thread(
     custom_llm_provider: Literal["openai", "azure"],

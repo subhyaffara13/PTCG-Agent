@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def map(
     f: Callable[[pytree.PyTree, tuple[pytree.PyTree, ...]], pytree.PyTree],

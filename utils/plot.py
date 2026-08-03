@@ -1,3 +1,4 @@
+import re
 
 def plot(
     *args: float | ArrayLike | str,

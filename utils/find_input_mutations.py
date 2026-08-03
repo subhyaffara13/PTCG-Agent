@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_input_mutations(g: torch.fx.Graph) -> set[int]:
     def meta_fk(meta: dict[str, Any]) -> Any:

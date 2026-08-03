@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def parse_deck_csv(eval_deck):
     deck_path = Path(eval_deck)

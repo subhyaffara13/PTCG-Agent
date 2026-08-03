@@ -1,3 +1,4 @@
+import sys
 
 def process_graph(graph: Graph, manager: BuildManager) -> None:
     """Process everything in dependency order."""

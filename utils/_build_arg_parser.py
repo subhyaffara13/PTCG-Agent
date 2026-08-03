@@ -1,3 +1,4 @@
+import sys
 
 def _build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(

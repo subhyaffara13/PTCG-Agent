@@ -1,3 +1,4 @@
+from typing import Any
 
 def recursive_update(target, update, overwrite=True):
     """Update recursively a (nested) dictionary with the content of another.

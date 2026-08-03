@@ -1,3 +1,4 @@
+from typing import Callable
 
 def scan3(f: Callable[[Carry, X], tuple[Carry, Y]],
          init: Carry,

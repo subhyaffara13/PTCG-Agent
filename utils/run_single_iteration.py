@@ -1,3 +1,4 @@
+import time
 
 def run_single_iteration(iteration, enable_distributed, inference_server):
     from factory.log_pruner import prune_logs

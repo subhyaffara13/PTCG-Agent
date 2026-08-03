@@ -1,3 +1,4 @@
+from typing import Any
 
 def device_get(x: Any):
   """Transfer ``x`` to host.

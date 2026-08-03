@@ -1,3 +1,4 @@
+import functools
 
 def _without_device(fn, **unused_kwargs):
   """Variant that applies `jax.device_get` to the args of fn."""

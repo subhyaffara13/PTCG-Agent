@@ -1,3 +1,4 @@
+import os
 
 def set_environ(env_name: str, value: str | None) -> Generator[None, None, None]:
     """Set the environment variable 'env_name' to 'value'

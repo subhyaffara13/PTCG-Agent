@@ -1,3 +1,4 @@
+import copy
 
 def sharded_type_as(args, kwargs, pg):
     """

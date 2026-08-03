@@ -1,3 +1,4 @@
+import os
 
 def running_on_ci() -> bool:
     """Check if we're currently running on a CI system."""

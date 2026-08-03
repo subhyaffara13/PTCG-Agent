@@ -1,3 +1,5 @@
+import os
+import sys
 
 def run_model(
     model_base, model_control, model_input, num_iterations=10, precision=1e-4

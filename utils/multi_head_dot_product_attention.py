@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def multi_head_dot_product_attention(
   scope: Scope,

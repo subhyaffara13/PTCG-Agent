@@ -1,3 +1,4 @@
+import logging
 
 def log_ir_pre_fusion(nodes: SchedulerNodeList) -> None:
     if ir_pre_fusion_log.isEnabledFor(logging.INFO):

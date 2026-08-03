@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_N10():
     x = Symbol('x')

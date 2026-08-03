@@ -1,3 +1,4 @@
+from typing import Any
 
 def _node_has_keys(node: Any, keys: tuple[Any, ...]) -> bool:
   """Filter for nodes in a tree whose field/key/name matches the given key.

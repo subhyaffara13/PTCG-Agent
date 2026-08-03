@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_var(
     stub: nodes.Var, runtime: MaybeMissing[Any], object_path: list[str]

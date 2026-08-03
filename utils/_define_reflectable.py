@@ -1,3 +1,4 @@
+from typing import Any
 
 def _define_reflectable(orig_method_name: str) -> None:
     method_name = f"__r{orig_method_name.strip('_')}__"

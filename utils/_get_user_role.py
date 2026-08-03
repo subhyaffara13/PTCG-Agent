@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_user_role(
     user_obj: Optional[LiteLLM_UserTable],

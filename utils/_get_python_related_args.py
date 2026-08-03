@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_python_related_args() -> tuple[list[str], list[str]]:
     python_include_dirs = _get_python_include_dirs()

@@ -1,3 +1,4 @@
+import os
 
 def normalise_path(path: str) -> str:
     path = os.path.splitdrive(path)[1]

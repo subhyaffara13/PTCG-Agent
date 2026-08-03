@@ -1,3 +1,4 @@
+from typing import Any
 
 def _tpu_v2_v3_create_device_mesh(
     mesh_shape: Sequence[int],

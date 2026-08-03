@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def greedy_bucket_collective_by_mb(
     gm: torch.fx.GraphModule,

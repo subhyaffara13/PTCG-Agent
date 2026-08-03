@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _get_openai_compatible_provider_info(
     model: str,

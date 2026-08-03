@@ -1,3 +1,7 @@
+import functools
+from typing import Any
+import math
+
 
 def interpret_pallas_call(
     *args,

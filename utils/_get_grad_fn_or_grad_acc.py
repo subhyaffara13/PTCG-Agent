@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_grad_fn_or_grad_acc(t: Union[torch.Tensor, "GradientEdge"]) -> Node:
     if isinstance(t, GradientEdge):

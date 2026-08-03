@@ -1,3 +1,4 @@
+import os
 
 def get_env_int(env_var: str, default: int) -> int:
     """Parse an environment variable as an integer, falling back to default on invalid values.

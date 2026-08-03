@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def var_builder(prefix: str) -> tuple[VarRanges, Callable[[sympy.Expr], sympy.Symbol]]:
     cnt = itertools.count()

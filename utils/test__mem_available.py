@@ -1,3 +1,4 @@
+import sys
 
 def test__mem_available():
     # May return None on non-Linux platforms

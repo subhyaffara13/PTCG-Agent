@@ -1,3 +1,4 @@
+from typing import Union
 
 def valid_label_length(label: Union[bytes, str]) -> bool:
     """Check that a label does not exceed the maximum permitted length.

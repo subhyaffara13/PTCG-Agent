@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _build_comprehension_fn(
     tx: InstructionTranslatorBase,

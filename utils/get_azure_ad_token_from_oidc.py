@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Optional
 
 def get_azure_ad_token_from_oidc(
     azure_ad_token: str,

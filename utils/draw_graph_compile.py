@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def draw_graph_compile(
     name: str,

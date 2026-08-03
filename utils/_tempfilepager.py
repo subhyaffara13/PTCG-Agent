@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def _tempfilepager(
     cmd_parts: list[str], color: bool | None = None

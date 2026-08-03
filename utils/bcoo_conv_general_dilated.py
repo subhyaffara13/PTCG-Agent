@@ -1,3 +1,4 @@
+import functools
 
 def bcoo_conv_general_dilated(lhs, rhs, *, window_strides, padding,
                               lhs_dilation=None, rhs_dilation=None, dimension_numbers=None,

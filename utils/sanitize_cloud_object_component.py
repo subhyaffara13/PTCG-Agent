@@ -1,3 +1,4 @@
+from typing import Optional
 
 def sanitize_cloud_object_component(
     value: Optional[str], fallback: str = "file"

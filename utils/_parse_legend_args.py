@@ -1,3 +1,4 @@
+import logging
 
 def _parse_legend_args(axs, *args, handles=None, labels=None, **kwargs):
     """

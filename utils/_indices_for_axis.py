@@ -1,3 +1,4 @@
+import itertools
 
 def _indices_for_axis():
     """Returns (src, dst) pairs of indices."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_output_handler(
     info: Any, runtime_metadata: ViewAndMutationMeta, trace_joint: bool

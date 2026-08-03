@@ -1,3 +1,4 @@
+from typing import Callable
 
 def mask_indices(n, mask_func, k=0):
     """

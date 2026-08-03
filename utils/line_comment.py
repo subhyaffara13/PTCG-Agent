@@ -1,3 +1,4 @@
+import itertools
 
 def line_comment(state: StateBlock, startLine: int, endLine: int, silent: bool) -> bool:
     if is_code_block(state, startLine):

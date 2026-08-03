@@ -1,3 +1,4 @@
+import os
 
 def _get_python_inc_nt(prefix, spec_prefix, plat_specific):
     if python_build:

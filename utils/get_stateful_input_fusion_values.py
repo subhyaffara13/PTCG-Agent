@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_stateful_input_fusion_values(
     fusion: Callable,

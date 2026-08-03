@@ -1,3 +1,4 @@
+from typing import Any
 
 def _has_non_empty_value(value: Any) -> bool:
     """Check if a value has real content (not None, not empty list, not blank string)."""

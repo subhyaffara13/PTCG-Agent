@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_specs(error_type: SpecErrorType, specs: Any, manual_axes) -> None:
   from jax._src.hijax import HiPspec

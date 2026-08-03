@@ -1,3 +1,4 @@
+import os
 
 def resolve_oci_credentials(optional_params: dict) -> dict:
     """

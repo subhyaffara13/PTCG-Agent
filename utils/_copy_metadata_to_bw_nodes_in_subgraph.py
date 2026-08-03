@@ -1,3 +1,4 @@
+import copy
 
 def _copy_metadata_to_bw_nodes_in_subgraph(
     fx_g: torch.fx.GraphModule, fwd_seq_nr_to_node: dict[str, torch.fx.Node]

@@ -1,3 +1,4 @@
+import logging
 
 def _get_logging_handler(
     destination: str = _DEFAULT_DESTINATION,

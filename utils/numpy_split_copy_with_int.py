@@ -1,3 +1,4 @@
+from typing import List
 
 def numpy_split_copy_with_int(x: Tensor, splits: Sequence[int], dim: int) -> tuple[List[Tensor], int]:
     x_np = to_numpy(x)

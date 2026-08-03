@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _extract_tool_calls(content: Any) -> List[Dict[str, Any]]:
     """Extract OpenAI-format tool_calls from MCP ToolUseContent."""

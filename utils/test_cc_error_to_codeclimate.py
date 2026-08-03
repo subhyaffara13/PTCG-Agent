@@ -1,3 +1,4 @@
+import json
 
 def test_cc_error_to_codeclimate():
     error_result = {'error': 'Error: invalid syntax (<unknown>, line 100)'}

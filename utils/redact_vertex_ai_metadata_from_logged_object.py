@@ -1,3 +1,4 @@
+from typing import Any
 
 def redact_vertex_ai_metadata_from_logged_object(obj: Any) -> None:
     if isinstance(obj, dict):

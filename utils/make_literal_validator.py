@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_literal_validator(type_: Any) -> Callable[[Any], Any]:
     permitted_choices = all_literal_values(type_)

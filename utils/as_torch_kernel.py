@@ -1,3 +1,4 @@
+import functools
 
 def as_torch_kernel(fn):
   """Makes a Mosaic GPU kernel callable with PyTorch tensors.

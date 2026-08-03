@@ -1,3 +1,4 @@
+import logging
 
 def _get_device_worker_key(device: jax.Device) -> tuple[int, ...]:
   """Returns a tuple uniquely identifying the worker/VM for `device`."""

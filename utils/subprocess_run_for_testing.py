@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def subprocess_run_for_testing(command, env=None, timeout=60, stdout=None,
                                stderr=None, check=False, text=True,

@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_gh22819_cli(capfd, gh22819_cli, monkeypatch):
     """Check that module names are handled correctly

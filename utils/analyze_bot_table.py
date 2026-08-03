@@ -1,3 +1,4 @@
+import re
 
 def analyze_bot_table(filename):
   """Do some analysis on the payoff cross-table."""

@@ -1,3 +1,4 @@
+import os
 
 def _validate_pathlike(s):
     if isinstance(s, (str, os.PathLike)):

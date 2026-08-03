@@ -1,3 +1,4 @@
+import re
 
 def optimize_scatter_mm(
     m, k, n, bm, bk, dtype=torch.float16, device="cuda", sparsity=0.5, force=False

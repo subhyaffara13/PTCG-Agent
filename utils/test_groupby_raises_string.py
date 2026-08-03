@@ -1,3 +1,4 @@
+import re
 
 def test_groupby_raises_string(
     how, by, groupby_series, groupby_func, df_with_string_col, using_infer_string

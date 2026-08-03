@@ -1,3 +1,5 @@
+import os
+import sys
 
 def print_environment_info(return_string: bool = False) -> str | None:
   """Returns a string containing local environment & JAX installation information.

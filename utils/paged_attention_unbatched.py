@@ -1,3 +1,4 @@
+import functools
 
 def paged_attention_unbatched(
     q: jax.Array,  #  [num_q_heads, head_dim]

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_custom_transform():
     plt.rcParams.update({"xtick.direction": "in", "ytick.direction": "inout"})

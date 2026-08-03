@@ -1,3 +1,4 @@
+import sys
 
 def _worker(index, env_fn, pipe, parent_pipe, shared_memory, error_queue):
     assert shared_memory is None

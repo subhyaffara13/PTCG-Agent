@@ -1,3 +1,4 @@
+import time
 
 def waitForPaste(timeout=None):
     """This function call blocks until a non-empty text string exists on the

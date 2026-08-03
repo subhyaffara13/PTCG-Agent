@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_max(tree: Any) -> jax.typing.ArrayLike:
   """Compute the max of all the elements in a pytree.

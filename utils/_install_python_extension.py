@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def _install_python_extension(
     *, owner: str, repo_name: str, short_name: str, extension_dir: Path, branch: str

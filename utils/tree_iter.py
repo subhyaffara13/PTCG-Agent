@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_iter(
     tree: PyTree,

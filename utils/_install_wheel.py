@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any, Callable
 
 def _install_wheel(  # noqa: C901, PLR0915 function is too long
     name: str,

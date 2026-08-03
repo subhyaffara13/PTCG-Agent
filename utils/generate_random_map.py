@@ -1,3 +1,4 @@
+from typing import List
 
 def generate_random_map(
     size: int = 8, p: float = 0.8, seed: int | None = None

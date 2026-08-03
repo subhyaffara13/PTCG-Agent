@@ -1,3 +1,4 @@
+import functools
 
 def register_js_fn(fn: _FnT) -> _FnT:
   r"""Decorator to make a function callable from Javascript.

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_cooldown_deployments(
     litellm_router_instance: LitellmRouter, parent_otel_span: Optional[Span]

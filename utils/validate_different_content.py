@@ -1,3 +1,4 @@
+from typing import Union
 
 def validate_different_content(v: Union[str, dict, list]) -> str:
     if v in ((), {}, []):

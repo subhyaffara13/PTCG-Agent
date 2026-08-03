@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _format_labels(
     bins: Index,

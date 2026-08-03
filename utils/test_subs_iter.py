@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_subs_iter():
     assert x.subs(reversed([[x, y]])) == y

@@ -1,3 +1,4 @@
+import os
 
 def _is_unpacked_egg(path):
     """

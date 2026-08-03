@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def skills_list(
     token: TokenOpt = None,

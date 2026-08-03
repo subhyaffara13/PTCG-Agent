@@ -1,3 +1,4 @@
+import re
 
 def check_plugin_version(
     plugin_name: str, jaxlib_version: str, plugin_version: str

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _oauth_invalid_request(
     error_description: str,

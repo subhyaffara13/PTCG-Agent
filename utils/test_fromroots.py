@@ -1,3 +1,4 @@
+import random
 
 def test_fromroots(Poly):
     # check that requested roots are zeros of a polynomial

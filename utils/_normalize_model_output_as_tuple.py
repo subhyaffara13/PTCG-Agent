@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_model_output_as_tuple(output: Any) -> tuple[Any]:
     """[Note: pipeline model output type]

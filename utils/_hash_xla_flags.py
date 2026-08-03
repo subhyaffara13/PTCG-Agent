@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _hash_xla_flags(hash_obj, extra_flag_prefixes: list[str]):
   xla_flags = []

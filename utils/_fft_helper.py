@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _fft_helper(x, win, detrend_func, nperseg, noverlap, nfft, sides):
     """

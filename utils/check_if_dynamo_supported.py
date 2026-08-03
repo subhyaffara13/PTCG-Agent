@@ -1,3 +1,4 @@
+import sys
 
 def check_if_dynamo_supported() -> None:
     if sys.version_info >= (3, 15):

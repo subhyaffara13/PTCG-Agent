@@ -1,3 +1,4 @@
+import os
 
 def prompt_initializer(
     litellm_params: "PromptLiteLLMParams", prompt_spec: "PromptSpec"

@@ -1,3 +1,4 @@
+import json
 
 def load_vocab(vocab_file):
     """Loads a vocabulary file into a dictionary."""

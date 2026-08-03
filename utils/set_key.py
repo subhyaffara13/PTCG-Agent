@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def set_key(
     dotenv_path: StrPath,

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_finite_basic():
     x = Symbol('x')

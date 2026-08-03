@@ -1,3 +1,4 @@
+import itertools
 
 def _get_subgames_states(state, all_states, depth_limit, depth,
                          include_terminals, include_chance_states,

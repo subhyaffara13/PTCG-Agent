@@ -1,3 +1,4 @@
+import os
 
 def register_pjrt_plugin_factories_from_env() -> None:
   """Registers backend factories for PJRT plugins.

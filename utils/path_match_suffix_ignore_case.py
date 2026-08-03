@@ -1,3 +1,4 @@
+import pathlib
 
 def path_match_suffix_ignore_case(path: pathlib.Path | str, suffix: str) -> bool:
     """

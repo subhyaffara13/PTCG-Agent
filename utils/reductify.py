@@ -1,3 +1,4 @@
+from typing import Any
 
 def reductify(
     grad_input: torch.Tensor | tuple[torch.Tensor, ...],

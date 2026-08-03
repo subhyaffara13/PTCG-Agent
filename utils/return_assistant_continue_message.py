@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def return_assistant_continue_message(
     assistant_continue_message: Optional[

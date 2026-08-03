@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_literal_str(src: str, pos: Pos) -> tuple[Pos, str]:
     pos += 1  # Skip starting apostrophe

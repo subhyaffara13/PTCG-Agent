@@ -1,3 +1,4 @@
+from typing import Any
 
 def eval_type_lenient(
     value: Any,

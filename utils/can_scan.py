@@ -1,3 +1,4 @@
+import sys
 
 def can_scan() -> bool:
     if not sys.platform.startswith('java') and sys.platform != 'cli':

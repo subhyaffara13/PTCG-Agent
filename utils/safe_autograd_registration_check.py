@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_autograd_registration_check(
     op: torch._ops.OpOverload,

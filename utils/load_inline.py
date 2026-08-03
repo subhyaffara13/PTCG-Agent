@@ -1,3 +1,4 @@
+import os
 
 def load_inline(name,
                 cpp_sources,

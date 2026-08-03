@@ -1,3 +1,4 @@
+import os
 
 def pytest_runtest_setup(item):
     mark = item.get_closest_marker("xslow")

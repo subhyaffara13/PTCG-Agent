@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_credential_from_entry(
     entry: dict, provider: Optional[str] = None

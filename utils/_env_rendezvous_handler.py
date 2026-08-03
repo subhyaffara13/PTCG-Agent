@@ -1,3 +1,4 @@
+import os
 
 def _env_rendezvous_handler(
     url: str, timeout: timedelta = default_pg_timeout, **kwargs

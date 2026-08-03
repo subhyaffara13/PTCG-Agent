@@ -1,3 +1,4 @@
+import re
 
 def test_split_regex_explicit(any_string_dtype):
     # explicit regex = True split with compiled regex

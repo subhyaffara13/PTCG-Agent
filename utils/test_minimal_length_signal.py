@@ -1,3 +1,5 @@
+import math
+
 
 def test_minimal_length_signal(m_num):
     """Verify that the shortest allowed signal works. """

@@ -1,3 +1,4 @@
+import itertools
 
 def test_light_source_hillshading():
     """

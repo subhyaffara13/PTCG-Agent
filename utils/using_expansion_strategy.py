@@ -1,3 +1,4 @@
+import functools
 
 def using_expansion_strategy(
     max_height: int | None = 20,

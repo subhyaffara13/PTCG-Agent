@@ -1,3 +1,4 @@
+import functools
 
 def get_invoke_subgraph_compile_options(
     inductor_config_patches=None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def option_context(*args) -> Generator[None]:
     """

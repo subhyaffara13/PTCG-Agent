@@ -1,3 +1,4 @@
+from typing import Callable
 
 def codegen_backward_subclass_fns(
     grad_input_metas: list[PlainTensorMeta | SubclassCreationMeta] | None = None,

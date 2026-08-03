@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_flattened_with_keypath(
     flat_with_keys: list[tuple[tuple[Any, ...], Any]],

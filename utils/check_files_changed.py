@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def check_files_changed(target_files):
     files_to_add = []

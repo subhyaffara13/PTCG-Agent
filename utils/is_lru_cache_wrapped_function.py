@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def is_lru_cache_wrapped_function(
     value: Callable[..., T],

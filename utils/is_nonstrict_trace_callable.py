@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_nonstrict_trace_callable(obj: Any) -> bool:
     _maybe_init_lazy_module(obj)

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def hook_with_zero_step(
     hook: Callable[[Any, dist.GradBucket], torch.futures.Future],

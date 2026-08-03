@@ -1,3 +1,4 @@
+import itertools
 
 def _is_trailing_comma(tokens: list[tokenize.TokenInfo], index: int) -> bool:
     """Check if the given token is a trailing comma.

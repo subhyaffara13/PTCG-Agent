@@ -1,3 +1,5 @@
+import math
+
 
 def print_columns(strings, max_width=MAX_WIDTH):
   """Prints a list of strings in columns."""

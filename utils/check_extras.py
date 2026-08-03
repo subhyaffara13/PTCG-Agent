@@ -1,3 +1,4 @@
+import itertools
 
 def check_extras(dist, attr, value):
     """Verify that extras_require mapping is valid"""

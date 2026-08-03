@@ -1,3 +1,4 @@
+from typing import Union
 
 def reduce_rational_inequalities_wrap(condition, var):
     if condition.is_Relational:

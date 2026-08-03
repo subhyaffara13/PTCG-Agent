@@ -1,3 +1,4 @@
+import os
 
 def group_dir(group_name: str) -> str:
     """Given a group name, return the relative directory path for it."""

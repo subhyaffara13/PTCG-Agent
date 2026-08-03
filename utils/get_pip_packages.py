@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_pip_packages(run_lambda, patterns=None):
     """Return `pip list` output. Note: will also find conda-installed pytorch and numpy packages."""

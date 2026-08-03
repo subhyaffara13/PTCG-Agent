@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_testing_overrides() -> dict[Callable, Callable]:
     """Return a dict containing dummy overrides for all overridable functions

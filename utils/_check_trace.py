@@ -1,3 +1,4 @@
+import re
 
 def _check_trace(
     check_inputs,

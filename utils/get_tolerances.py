@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_tolerances(
     *inputs: torch.Tensor | torch.dtype,

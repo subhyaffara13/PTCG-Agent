@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def collect_targets(game_state: Dict[str, Any], registry) -> dict:
     opp_active = game_state.get("opponent_active_pokemon") or {}

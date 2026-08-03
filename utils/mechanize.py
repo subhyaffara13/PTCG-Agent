@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def mechanize(
     base_optimizer: Union[base.GradientTransformation,

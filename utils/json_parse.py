@@ -1,3 +1,5 @@
+import json
+from typing import Any, Optional
 
 def json_parse(text: str) -> Optional[Any]:
     """

@@ -1,3 +1,4 @@
+import re
 
 def _parse_kernel_args_num_gb(
     kernel_fn_code: str, kernel_category: str

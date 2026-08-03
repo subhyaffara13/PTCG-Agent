@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def _get_comprehension_result_patterns() -> dict[str, dict[str, Any]]:
     """Discover bytecode patterns for comprehension result handling.

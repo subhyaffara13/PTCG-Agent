@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_invert_trig_hyp_real():
     # check some codepaths that are not as easily reached otherwise

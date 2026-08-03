@@ -1,3 +1,4 @@
+import pathlib
 
 def _is_setuptools_namespace(location: pathlib.Path) -> bool:
     try:

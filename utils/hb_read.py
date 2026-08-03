@@ -1,3 +1,4 @@
+import os
 
 def hb_read(path_or_open_file, *, spmatrix=_NoValue):
     """Read HB-format file.

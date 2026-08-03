@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _user_id_from_session_cookie(request: Request) -> Optional[str]:
     """Return user_id from the UI ``token`` cookie (HS256-signed with

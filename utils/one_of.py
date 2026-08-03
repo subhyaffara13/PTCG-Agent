@@ -1,3 +1,5 @@
+import re
+from typing import Union
 
 def oneOf(validator, oneOf, instance, schema):
     subschemas = enumerate(oneOf)

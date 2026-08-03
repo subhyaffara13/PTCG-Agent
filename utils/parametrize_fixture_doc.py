@@ -1,3 +1,4 @@
+from typing import Callable
 
 def parametrize_fixture_doc(*args) -> Callable[[F], F]:
     """

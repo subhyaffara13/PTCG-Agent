@@ -1,3 +1,4 @@
+import os
 
 def _path_is_ancestor(path: str, other: str) -> bool:
     """Take ``other`` and remove the length of ``path`` from it. Then join it

@@ -1,3 +1,5 @@
+import re
+import sys
 
 def valid_vec_isa_list() -> list[VecISA]:
     isa_list: list[VecISA] = []

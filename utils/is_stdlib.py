@@ -1,3 +1,4 @@
+import sys
 
 def is_stdlib(mod: object) -> bool:
     if not isinstance(mod, types.ModuleType):

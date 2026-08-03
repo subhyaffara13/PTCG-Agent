@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _as_jax_callable(
     config: CustomCallBackendConfig,

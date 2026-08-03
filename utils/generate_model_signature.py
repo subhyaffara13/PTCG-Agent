@@ -1,3 +1,4 @@
+from typing import Callable, Dict
 
 def generate_model_signature(
     init: Callable[..., None], fields: Dict[str, 'ModelField'], config: Type['BaseConfig']

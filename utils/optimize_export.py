@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def optimize_export(
     args: argparse.Namespace,

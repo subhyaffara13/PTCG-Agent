@@ -1,3 +1,5 @@
+import math
+
 
 def create_descriptor(
     ref: ir.Value,

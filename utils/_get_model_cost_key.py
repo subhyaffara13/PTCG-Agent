@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_model_cost_key(potential_key: str) -> Optional[str]:
     """

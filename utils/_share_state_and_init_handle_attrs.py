@@ -1,3 +1,4 @@
+from typing import Any
 
 def _share_state_and_init_handle_attrs(
     root_state: _FSDPState,

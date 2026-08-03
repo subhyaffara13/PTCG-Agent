@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def traverse_fixture_closure(
     initialnames: Iterable[str],

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def spawn_materialize(
     thread_pool: ThreadPoolExecutor | None,

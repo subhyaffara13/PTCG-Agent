@@ -1,3 +1,4 @@
+import copy
 
 def split_by_tags(
     gm: torch.fx.GraphModule,

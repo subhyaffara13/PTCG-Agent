@@ -1,3 +1,4 @@
+import os
 
 def pickler(obj):
     fn = tempfile.mktemp()

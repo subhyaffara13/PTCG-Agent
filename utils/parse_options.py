@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def parseOptions(args):
     rawOptions, files = getopt.gnu_getopt(

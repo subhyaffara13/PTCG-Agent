@@ -1,3 +1,6 @@
+import copy
+import logging
+from typing import Any
 
 def optimize_for_inference(
     mod: ScriptModule, other_methods: list[str] | None = None

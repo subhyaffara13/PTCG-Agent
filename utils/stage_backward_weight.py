@@ -1,3 +1,4 @@
+from typing import Any
 
 def stage_backward_weight(
     weights: Iterator[Parameter], param_groups: list[dict[str, Any]], retain_graph=False

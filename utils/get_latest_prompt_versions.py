@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def get_latest_prompt_versions(prompts: List[PromptSpec]) -> List[PromptSpec]:
     """

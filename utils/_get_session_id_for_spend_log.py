@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_session_id_for_spend_log(
     kwargs: dict,

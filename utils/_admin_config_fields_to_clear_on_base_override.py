@@ -1,3 +1,4 @@
+from typing import List
 
 def _admin_config_fields_to_clear_on_base_override() -> List[str]:
     """

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_submission_py_compatibility():
     # Verify that all Python files inside the submission/ directory are Python 3.11 compatible (no PEP 701 nested quotes in f-strings)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _handle_date_column(
     col, utc: bool = False, format: str | dict[str, Any] | None = None

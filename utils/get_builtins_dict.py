@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_builtins_dict(global_scope: Scope) -> dict[str, Any]:
     # f_globals["__builtins__"] can be a dict or a module. This is an

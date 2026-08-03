@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_no_transformed_refs_args(dbg_fn: Callable[[], core.DebugInfo],
                                    args_flat) -> None:

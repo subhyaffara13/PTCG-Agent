@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_custom_type(
     type_name: str,

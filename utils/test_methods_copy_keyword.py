@@ -1,3 +1,4 @@
+import copy
 
 def test_methods_copy_keyword(request, method, copy):
     index = None

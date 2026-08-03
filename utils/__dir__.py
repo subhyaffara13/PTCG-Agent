@@ -1,3 +1,4 @@
+import sys
 
 def __dir__() -> tuple[str, ...]:
     return __all__ + ("__doc__",)

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def ensure_dir_exists(path: str | Path, mode: int = 0o777) -> None:
     """Ensure that a directory exists

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _nan_reduction(a: ArrayLike, name: str, jnp_reduction: Callable[..., Array],
                    init_val: ArrayLike, nan_if_all_nan: bool,

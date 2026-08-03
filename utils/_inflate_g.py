@@ -1,3 +1,4 @@
+import itertools
 
 def _inflate_g(g, n):
     """ Return C, h such that h is a G function of argument z**n and

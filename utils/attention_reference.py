@@ -1,3 +1,5 @@
+import math
+
 
 def attention_reference(q, k, v, causal=False, save_residuals=False):
   batch_size, q_seq_len, num_q_heads, head_dim = q.shape

@@ -1,3 +1,4 @@
+from typing import Any
 
 def nested_update(this: dict[Any, Any], that: dict[Any, Any]) -> dict[Any, Any]:
     """Merge two nested dictionaries.

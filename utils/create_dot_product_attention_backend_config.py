@@ -1,3 +1,4 @@
+import json
 
 def create_dot_product_attention_backend_config(
     batch,

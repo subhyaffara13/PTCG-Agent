@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _variadic_reduction_jaxpr(computation: Callable[[Any, Any], Any],
                               debug_info: core.DebugInfo,

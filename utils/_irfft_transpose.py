@@ -1,3 +1,5 @@
+import math
+
 
 def _irfft_transpose(t, fft_lengths):
   # The transpose of IRFFT is the RFFT of the cotangent times a scaling

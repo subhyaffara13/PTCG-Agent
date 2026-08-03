@@ -1,3 +1,4 @@
+from typing import Any
 
 def _assert_and_get_unique_device(module: torch.nn.Module) -> Any:
     """

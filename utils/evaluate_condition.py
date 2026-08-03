@@ -1,3 +1,5 @@
+import os
+import sys
 
 def evaluate_condition(item: Item, mark: Mark, condition: object) -> tuple[bool, str]:
     """Evaluate a single skipif/xfail condition.

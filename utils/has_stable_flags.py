@@ -1,3 +1,5 @@
+import os
+import re
 
 def has_stable_flags(testcase: DataDrivenTestCase) -> bool:
     if any(re.match(r"# flags[2-9]:", line) for line in testcase.input):

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_gc_statistics() -> Dict[str, Any]:
     """Get garbage collector statistics."""

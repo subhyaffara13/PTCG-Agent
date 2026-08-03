@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def migrate_file(src: str | Path, dst: str | Path, substitutions: Any = None) -> bool:
     """Migrate a single file from src to dst

@@ -1,3 +1,5 @@
+import math
+
 
 def reference_gelu(X, *, approximate='none'):
     def _gelu_ref(X):

@@ -1,3 +1,4 @@
+import os
 
 def test_xxe():
     assert os.path.isfile(path)

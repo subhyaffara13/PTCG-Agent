@@ -1,3 +1,4 @@
+import subprocess
 
 def print_gtk(x, start_viewer=True):
     """Print to Gtkmathview, a gtk widget capable of rendering MathML.

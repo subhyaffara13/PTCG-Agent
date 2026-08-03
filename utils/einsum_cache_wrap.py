@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def einsum_cache_wrap(einsum: Any) -> Any:
     """Decorates an ``einsum()`` implementation to be memoized inside a

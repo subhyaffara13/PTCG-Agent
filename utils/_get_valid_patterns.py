@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _get_valid_patterns(op_pattern):
     """Return a list of valid patterns generated from the op_pattern.

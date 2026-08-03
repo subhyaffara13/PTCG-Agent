@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_healthcheck_server(
     alive_callback: Callable[[], int],

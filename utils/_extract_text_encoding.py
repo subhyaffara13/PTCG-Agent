@@ -1,3 +1,4 @@
+import sys
 
 def _extract_text_encoding(encoding=None, *args, **kwargs):
     stack_level = 3

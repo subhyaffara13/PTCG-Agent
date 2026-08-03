@@ -1,3 +1,4 @@
+import re
 
 def _maybe_adjust_name(name: str, version: Sequence[int]) -> str:
     """

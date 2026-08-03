@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _monitor_thread_target(
     status_dir: str, csv_path: Path, total: int,

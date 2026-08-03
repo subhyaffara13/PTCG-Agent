@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_sequence(
     space: Sequence, x: tuple[Any, ...] | Any

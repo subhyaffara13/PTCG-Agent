@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_bn(
     loader: Iterable[Any],

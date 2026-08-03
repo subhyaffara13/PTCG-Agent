@@ -1,3 +1,4 @@
+from typing import Dict
 
 def gather_all_validators(type_: 'ModelOrDc') -> Dict[str, 'AnyClassMethod']:
     all_attributes = ChainMap(*[cls.__dict__ for cls in type_.__mro__])  # type: ignore[arg-type,var-annotated]

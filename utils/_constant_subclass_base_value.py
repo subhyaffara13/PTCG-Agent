@@ -1,3 +1,4 @@
+from typing import Any
 
 def _constant_subclass_base_value(value: Any) -> Any:
     """Extract the base constant value from a constant subclass instance."""

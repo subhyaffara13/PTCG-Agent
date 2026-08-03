@@ -1,3 +1,5 @@
+import os
+import sys
 
 def getsyspath() -> list[str]:
     # Do not include things from the standard library

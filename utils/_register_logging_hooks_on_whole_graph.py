@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _register_logging_hooks_on_whole_graph(
     t_outputs: Sequence[torch.Tensor | GradientEdge],

@@ -1,3 +1,4 @@
+import os
 
 def rebuild_storage_fd(cls, df, size):
     fd = df.detach()

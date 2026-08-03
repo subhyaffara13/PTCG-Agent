@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_win_folder_via_ctypes(csidl_name: str) -> str:
     """Get folder via :func:`SHGetKnownFolderPath`.

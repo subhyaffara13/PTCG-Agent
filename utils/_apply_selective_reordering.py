@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_selective_reordering(
     condition_fn: Callable[[str, str], bool],

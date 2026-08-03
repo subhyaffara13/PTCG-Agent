@@ -1,3 +1,4 @@
+from typing import Any
 
 def _model_output_unflatten(
     values: Iterable[Any],

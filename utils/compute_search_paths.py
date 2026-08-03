@@ -1,3 +1,5 @@
+import os
+import sys
 
 def compute_search_paths(
     sources: list[BuildSource], options: Options, data_dir: str, alt_lib_path: str | None = None

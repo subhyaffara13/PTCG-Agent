@@ -1,3 +1,5 @@
+import os
+import sys
 
 def set_verbose() -> None:
   """Log stderr & `absl.logging` in Colab (filtered by default)."""

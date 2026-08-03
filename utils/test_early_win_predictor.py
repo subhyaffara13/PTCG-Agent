@@ -1,3 +1,4 @@
+import json
 
 def test_early_win_predictor(tmp_path):
     skills_dir = tmp_path / "skills"

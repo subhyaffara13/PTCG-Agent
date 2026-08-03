@@ -1,3 +1,4 @@
+import os
 
 def test_xerbla_override():
     # Check that our xerbla has been successfully linked in. If it is not,

@@ -1,3 +1,4 @@
+import re
 
 def test_parse_datetime_string_with_reso_check_instance_type_raise_exception():
     # issue 20684

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def conv_output_size(
     input_size: list[int],

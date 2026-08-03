@@ -1,3 +1,4 @@
+import sys
 
 def _colorama_workaround() -> None:
     """Ensure colorama is imported so that it attaches to the correct stdio

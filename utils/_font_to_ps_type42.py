@@ -1,3 +1,4 @@
+import os
 
 def _font_to_ps_type42(font_path, subset_index, glyph_indices, fh):
     """

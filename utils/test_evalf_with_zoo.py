@@ -1,3 +1,4 @@
+import re
 
 def test_evalf_with_zoo():
     assert (1/x).evalf(subs={x: 0}) == zoo  # issue 8242

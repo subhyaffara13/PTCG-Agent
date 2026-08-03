@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _handle_new_key_with_scan(
     potential_key_lower: str,

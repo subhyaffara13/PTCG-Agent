@@ -1,3 +1,4 @@
+from typing import Callable
 
 def generate_shared_aggregator(
     func: Callable[..., Scalar],

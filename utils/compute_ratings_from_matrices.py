@@ -1,3 +1,4 @@
+from typing import Optional
 
 def compute_ratings_from_matrices(
     win_matrix: np.ndarray,

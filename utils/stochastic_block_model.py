@@ -1,3 +1,6 @@
+import itertools
+import math
+
 
 def stochastic_block_model(
     sizes, p, nodelist=None, seed=None, directed=False, selfloops=False, sparse=True

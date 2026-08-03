@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def extract_file_id_or_bytes(
     source_url: str,

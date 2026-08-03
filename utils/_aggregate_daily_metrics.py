@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _aggregate_daily_metrics(metrics: Any, id_attr: str) -> Dict[str, Dict[str, Any]]:
     agg: Dict[str, Dict[str, Any]] = {}

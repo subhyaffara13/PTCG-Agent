@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_model_from_vertex_ai_setup(setup_response: dict) -> Optional[str]:
     """

@@ -1,3 +1,4 @@
+import sys
 
 def test_setting_backend_without_plot_raises(monkeypatch):
     # GH-28163

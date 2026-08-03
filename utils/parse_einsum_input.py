@@ -1,3 +1,4 @@
+from typing import Any, List, Tuple
 
 def parse_einsum_input(operands: Any, shapes: bool = False) -> Tuple[str, str, List[ArrayType]]:
     """A reproduction of einsum c side einsum parsing in python.

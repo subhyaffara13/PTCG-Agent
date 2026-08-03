@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_no_fake_params_or_buffers(gm: torch.nn.Module) -> None:
     from torch._subclasses.fake_tensor import FakeTensorConfig, is_fake

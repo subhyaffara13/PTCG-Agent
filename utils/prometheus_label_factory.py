@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def prometheus_label_factory(
     supported_enum_labels: List[str],

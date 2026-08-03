@@ -1,3 +1,4 @@
+import sys
 
 def test_backend_is_correct(monkeypatch, restore_backend, dummy_backend):
     monkeypatch.setitem(sys.modules, "pandas_dummy_backend", dummy_backend)

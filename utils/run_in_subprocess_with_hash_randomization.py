@@ -1,3 +1,7 @@
+import os
+import random
+import subprocess
+import sys
 
 def run_in_subprocess_with_hash_randomization(
         function, function_args=(),

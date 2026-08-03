@@ -1,3 +1,4 @@
+from typing import Any
 
 def _verify_abstract_status(stub: nodes.FuncDef, runtime: Any) -> Iterator[str]:
     stub_abstract = stub.abstract_status == nodes.IS_ABSTRACT

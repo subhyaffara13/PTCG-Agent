@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_all_comm_blocks(
     graph: fx.Graph,

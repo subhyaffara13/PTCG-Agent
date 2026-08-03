@@ -1,3 +1,4 @@
+import functools
 
 def _set_invalid_nan_property(f):
     # Wrapper for input / output validation and standardization of distribution

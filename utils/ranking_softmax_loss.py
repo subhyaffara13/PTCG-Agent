@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def ranking_softmax_loss(
     logits: jax.typing.ArrayLike,

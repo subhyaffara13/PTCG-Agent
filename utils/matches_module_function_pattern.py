@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def matches_module_function_pattern(
     pattern: tuple[type[torch.nn.modules.Module], Callable[..., Any]],

@@ -1,3 +1,4 @@
+import random
 
 def counter_reactionary(observation, configuration):
     global last_counter_action

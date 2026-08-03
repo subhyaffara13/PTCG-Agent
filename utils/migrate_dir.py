@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def migrate_dir(src: str, dst: str) -> bool:
     """Migrate a directory from src to dst"""

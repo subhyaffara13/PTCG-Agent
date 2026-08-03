@@ -1,3 +1,4 @@
+import os
 
 def get_tests_dir(append_path=None):
     """

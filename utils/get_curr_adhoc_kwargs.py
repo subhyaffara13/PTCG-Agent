@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_curr_adhoc_kwargs() -> dict[str, Any] | None:
   if _CURR_ADHOC_KWARGS is None:

@@ -1,3 +1,4 @@
+import random
 
 def test_lp():
     r1 = y + 2*z <= 3

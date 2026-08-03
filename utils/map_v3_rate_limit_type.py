@@ -1,3 +1,4 @@
+from typing import Optional
 
 def map_v3_rate_limit_type(
     v3_value: Optional[str],

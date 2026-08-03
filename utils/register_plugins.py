@@ -1,3 +1,5 @@
+import os
+import sys
 
 def register_plugins(linter: PyLinter, directory: str) -> None:
     """Load all module and package in the given directory, looking for a

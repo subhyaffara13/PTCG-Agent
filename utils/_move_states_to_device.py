@@ -1,3 +1,4 @@
+import itertools
 
 def _move_states_to_device(
     params: list[nn.Parameter],

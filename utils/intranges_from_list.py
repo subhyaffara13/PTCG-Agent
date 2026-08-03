@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def intranges_from_list(list_: list[int]) -> tuple[int, ...]:
     """Represent a list of integers as a sequence of ranges:

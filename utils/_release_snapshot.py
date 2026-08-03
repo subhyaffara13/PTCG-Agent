@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def _release_snapshot(
     checkpoint_dir: epath.Path,

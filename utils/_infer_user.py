@@ -1,3 +1,4 @@
+import os
 
 def _infer_user() -> str:
     """Try to find a user scheme for the current platform."""

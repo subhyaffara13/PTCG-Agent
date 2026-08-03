@@ -1,3 +1,4 @@
+from typing import Union
 
 def bytesify(s: Union[bytes, bytearray, memoryview, int, str]) -> bytes:
     # Fast-path:

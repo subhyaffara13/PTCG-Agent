@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_simple_tensorstore_read_spec(
     checkpoint_directory: epath.Path,

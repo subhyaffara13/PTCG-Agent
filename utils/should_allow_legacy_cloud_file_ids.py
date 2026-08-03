@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def should_allow_legacy_cloud_file_ids(
     litellm_params: Optional[Mapping[str, Any]] = None,

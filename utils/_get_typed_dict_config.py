@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_typed_dict_config(cls: type[Any] | None) -> ConfigDict:
     if cls is not None:

@@ -1,3 +1,4 @@
+import itertools
 
 def generate_all_int_dyn_dim_possibilities(
     my_list: list[DVar],

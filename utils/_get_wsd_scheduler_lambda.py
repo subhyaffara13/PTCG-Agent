@@ -1,3 +1,5 @@
+import math
+
 
 def _get_wsd_scheduler_lambda(
     current_step: int,

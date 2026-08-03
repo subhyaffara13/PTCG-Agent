@@ -1,3 +1,4 @@
+import time
 
 def update_model_weights(model, batch_experiences):
     """

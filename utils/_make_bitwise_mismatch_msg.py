@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_bitwise_mismatch_msg(
     *,

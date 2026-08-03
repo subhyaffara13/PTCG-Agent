@@ -1,3 +1,4 @@
+from typing import Any
 
 def _jaxpr_call(
     jaxpr: jax_core.Jaxpr,

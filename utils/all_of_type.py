@@ -1,3 +1,4 @@
+import functools
 
 def all_of_type(arg_type):
     """

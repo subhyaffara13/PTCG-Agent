@@ -1,3 +1,4 @@
+from typing import List, Union
 
 def get_response_string(response_obj: Union[ModelResponse, ModelResponseStream]) -> str:
     # Handle Responses API streaming events

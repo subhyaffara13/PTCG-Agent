@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _get_fake_value_impl(
     node: torch.fx.Node,

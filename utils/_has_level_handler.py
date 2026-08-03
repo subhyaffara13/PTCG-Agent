@@ -1,3 +1,4 @@
+import logging
 
 def _has_level_handler(logger: logging.Logger) -> bool:
     """Check if there is a handler in the logging chain that will handle

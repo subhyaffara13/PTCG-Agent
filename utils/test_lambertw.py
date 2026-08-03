@@ -1,3 +1,4 @@
+import re
 
 def test_lambertw():
     k = Symbol('k')

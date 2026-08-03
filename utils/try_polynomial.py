@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def try_polynomial(func, z):
     """ Recognise polynomial cases. Returns None if not such a case.

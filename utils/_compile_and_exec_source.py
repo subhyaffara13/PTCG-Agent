@@ -1,3 +1,6 @@
+import functools
+import logging
+from typing import Callable
 
 def _compile_and_exec_source(
     source: str,

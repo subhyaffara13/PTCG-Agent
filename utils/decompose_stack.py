@@ -1,3 +1,4 @@
+from typing import Any
 
 def decompose_stack(graph: torch.fx.GraphModule, input_tensors: list[Any]) -> Any:
     unsqueezed_inputs = []

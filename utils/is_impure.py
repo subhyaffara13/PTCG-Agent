@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def is_impure(
     op: Callable,

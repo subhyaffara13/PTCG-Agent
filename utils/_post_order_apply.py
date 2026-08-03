@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _post_order_apply(
     root_module: nn.Module,

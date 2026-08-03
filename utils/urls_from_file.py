@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def urls_from_file(list_file: Path) -> list[str]:
     """``list_file`` should be a text file where each line corresponds to a URL to

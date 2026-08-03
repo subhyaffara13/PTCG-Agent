@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_mocked_coro(
     return_value: Any = sentinel, raise_exception: Any = sentinel

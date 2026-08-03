@@ -1,3 +1,5 @@
+import math
+
 
 def _schur_subsets_number(n):
 

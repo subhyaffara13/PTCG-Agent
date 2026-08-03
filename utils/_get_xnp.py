@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_xnp(
     array_args: dict[str, Any],

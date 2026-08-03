@@ -1,3 +1,4 @@
+from typing import Any
 
 def format_tb(frames: list[Any]) -> str:
     formatted_traceback = [

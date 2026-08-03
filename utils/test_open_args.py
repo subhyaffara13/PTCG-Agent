@@ -1,3 +1,5 @@
+import os
+import uuid
 
 def test_open_args(using_infer_string):
     not_written = f"{uuid.uuid4()}.h5"

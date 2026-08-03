@@ -1,3 +1,4 @@
+from typing import Any
 
 def natural_list(items: list[Any]) -> str:
     """Natural list.

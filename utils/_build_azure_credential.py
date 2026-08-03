@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _build_azure_credential(
     azure_client_id: Optional[str] = None,

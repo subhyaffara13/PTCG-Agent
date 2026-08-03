@@ -1,3 +1,4 @@
+from typing import Callable
 
 def simple_wraps(
     f: Callable[_P, _R],

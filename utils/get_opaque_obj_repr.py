@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_opaque_obj_repr(obj: Any) -> tuple[str, dict[str, type]]:
     """

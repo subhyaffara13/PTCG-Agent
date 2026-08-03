@@ -1,3 +1,4 @@
+from typing import Any
 
 def _optim_state_dict(
     model: nn.Module,

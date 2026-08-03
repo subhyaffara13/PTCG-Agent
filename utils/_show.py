@@ -1,3 +1,4 @@
+from typing import Any
 
 def _show(image: Image, **options: Any) -> None:
     from . import ImageShow

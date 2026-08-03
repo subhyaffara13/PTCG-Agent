@@ -1,3 +1,4 @@
+from typing import Any
 
 def log_chromium_event_internal(
     event: dict[str, Any],

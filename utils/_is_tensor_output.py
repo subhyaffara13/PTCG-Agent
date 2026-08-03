@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_tensor_output(result: Any) -> bool:
     """Check if a result is a tensor or list/tuple of tensors."""

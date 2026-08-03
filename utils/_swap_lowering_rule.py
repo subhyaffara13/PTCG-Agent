@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def _swap_lowering_rule(
     ctx: LoweringRuleContext,

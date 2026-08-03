@@ -1,3 +1,4 @@
+import itertools
 
 def _unravel_index(indices: Tensor, shape: int | Sequence[int]) -> Tensor:
     torch._check_type(

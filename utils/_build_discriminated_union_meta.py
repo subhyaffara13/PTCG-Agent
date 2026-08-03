@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_discriminated_union_meta(*, union: type, meta_annotations: tuple[Any, ...]) -> DiscriminatorDetails | None:
     cached = DISCRIMINATOR_CACHE.get(union)

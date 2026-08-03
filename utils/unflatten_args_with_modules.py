@@ -1,3 +1,4 @@
+from typing import Any
 
 def unflatten_args_with_modules(
     flat_args: tuple[Any, ...], input_spec: pytree.TreeSpec

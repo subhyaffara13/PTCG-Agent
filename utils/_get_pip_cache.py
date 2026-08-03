@@ -1,3 +1,7 @@
+import subprocess
+import sys
+from pathlib import Path
+
 
 def _get_pip_cache() -> Path:
     # Unless the cache directory is specifically set by the `--cache-dir` option, we try to share

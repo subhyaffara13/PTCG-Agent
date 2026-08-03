@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def _parse_musl_version(output: str) -> _MuslVersion | None:
     lines = [n for n in (n.strip() for n in output.splitlines()) if n]

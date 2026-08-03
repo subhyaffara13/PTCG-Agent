@@ -1,3 +1,4 @@
+import sys
 
 def print_cycles(objects, outstream=sys.stdout, show_progress=False):
     """

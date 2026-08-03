@@ -1,3 +1,5 @@
+import math
+
 
 def _allocate_semaphores(
     token: Array, device_id: Array, local_core_id: Array | None, shape: Array

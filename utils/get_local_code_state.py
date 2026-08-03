@@ -1,3 +1,4 @@
+import os
 
 def get_local_code_state(cache_key: str) -> defaultdict[CodeId, CodeState] | None:
     global _CODE_STATE

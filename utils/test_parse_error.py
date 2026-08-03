@@ -1,3 +1,4 @@
+import sys
 
 def test_parse_error(testcase: DataDrivenTestCase) -> None:
     try:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def dump_environment_info() -> dict[str, Any]:
     """Dump information about the machine to help debugging issues.

@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def stringify_path(filepath: str | os.PathLike[str] | pathlib.Path) -> str:
     """Attempt to convert a path-like object to a string.

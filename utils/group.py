@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def group(name: _AnyCallable) -> Group: ...
 

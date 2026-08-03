@@ -1,3 +1,4 @@
+from typing import Any
 
 def _esc_str(s: Any, apply_repr: bool = False) -> str:
     """

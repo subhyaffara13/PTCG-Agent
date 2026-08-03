@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_defaultdict_default_default_factory(values_source_type: Any) -> Callable[[], Any]:
     FieldInfo = import_cached_field_info()

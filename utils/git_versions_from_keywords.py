@@ -1,3 +1,4 @@
+import re
 
 def git_versions_from_keywords(keywords, tag_prefix, verbose):
     """Get version information from git keywords."""

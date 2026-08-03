@@ -1,3 +1,4 @@
+from typing import Any
 
 def has_reuse_entries(
     tx: "InstructionTranslator",

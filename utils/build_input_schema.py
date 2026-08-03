@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def build_input_schema(operation: Dict[str, Any]) -> Dict[str, Any]:
     """Build MCP input schema from OpenAPI operation."""

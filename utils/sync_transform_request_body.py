@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def sync_transform_request_body(
     gemini_api_key: Optional[str],

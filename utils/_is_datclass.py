@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_datclass(obj: Any, *, force: bool = False) -> bool:
   """Returns `True` if the object is a dataclass."""

@@ -1,3 +1,4 @@
+from typing import List
 
 def last_assistant_with_tool_calls_has_no_thinking_blocks(
     messages: List[AllMessageValues],

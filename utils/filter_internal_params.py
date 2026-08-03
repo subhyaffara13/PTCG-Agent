@@ -1,3 +1,4 @@
+from typing import Optional
 
 def filter_internal_params(
     data: dict, additional_internal_params: Optional[set] = None

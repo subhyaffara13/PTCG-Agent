@@ -1,3 +1,4 @@
+from typing import Callable
 
 def copy_method_sig(
     source_method: Callable[Concatenate[_A1, _P], _R],

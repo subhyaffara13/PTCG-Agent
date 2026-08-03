@@ -1,3 +1,4 @@
+import time
 
 def run_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: list, mast_policy, time_remaining):
     max_time = 2.0

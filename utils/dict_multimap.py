@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dict_multimap(fn, dicts):
     first = dicts[0]

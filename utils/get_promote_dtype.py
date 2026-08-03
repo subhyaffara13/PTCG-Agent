@@ -1,3 +1,4 @@
+import functools
 
 def get_promote_dtype(args):
     return (

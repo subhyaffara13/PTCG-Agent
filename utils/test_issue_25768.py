@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_25768():
     assert dumeq(solveset_real(sin(x) - S.Half, x), Union(

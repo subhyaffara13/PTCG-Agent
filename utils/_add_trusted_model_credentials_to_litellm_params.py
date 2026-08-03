@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _add_trusted_model_credentials_to_litellm_params(
     litellm_params_dict: Dict[str, Any], kwargs: Dict[str, Any]

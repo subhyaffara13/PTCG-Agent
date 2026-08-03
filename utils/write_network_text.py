@@ -1,3 +1,4 @@
+import sys
 
 def write_network_text(
     graph,

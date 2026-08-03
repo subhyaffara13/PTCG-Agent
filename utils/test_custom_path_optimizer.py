@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def test_custom_path_optimizer() -> None:
     np = pytest.importorskip("numpy")

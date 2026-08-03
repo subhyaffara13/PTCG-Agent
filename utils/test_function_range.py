@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_function_range():
     assert function_range(sin(x), x, Interval(-pi/2, pi/2)

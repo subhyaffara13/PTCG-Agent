@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def loop_last(values: Iterable[T]) -> Iterable[Tuple[bool, T]]:
     """Iterate and generate a tuple with a flag for last value."""

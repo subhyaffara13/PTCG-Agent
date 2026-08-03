@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _is_pytreespec_instance(
     obj: Any,

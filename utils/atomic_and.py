@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_and(ref: _Ref, val) -> None:
   """Performs an atomic store-and of the value to the reference.

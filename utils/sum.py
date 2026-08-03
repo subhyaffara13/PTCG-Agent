@@ -1,3 +1,4 @@
+import functools
 
 def sum(
     input: Tensor | MaskedTensor,

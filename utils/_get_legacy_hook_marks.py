@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_legacy_hook_marks(
     method: Any,

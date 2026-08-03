@@ -1,3 +1,4 @@
+import os
 
 def test_clear_cache(tmp_path):
     # Note: `tmp_path` is a pytest fixture, it handles cleanup

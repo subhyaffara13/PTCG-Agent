@@ -1,3 +1,4 @@
+from typing import Callable
 
 def benchmark_node(
     n: fx.Node,

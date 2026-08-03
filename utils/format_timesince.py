@@ -1,3 +1,4 @@
+import time
 
 def format_timesince(ts: float) -> str:
     """Format timestamp in seconds into a human-readable string, relative to now.

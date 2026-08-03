@@ -1,3 +1,4 @@
+from typing import Callable
 
 def ir_node_to_tensor(x: None, replace_symbols_with_hints: bool = False) -> None: ...
 

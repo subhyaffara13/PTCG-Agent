@@ -1,3 +1,4 @@
+import itertools
 
 def _enumerate_feasible_logical_axis_assignments(
     physical_mesh_shape: Sequence[int],

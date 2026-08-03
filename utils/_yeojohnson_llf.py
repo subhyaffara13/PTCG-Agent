@@ -1,3 +1,5 @@
+import math
+
 
 def _yeojohnson_llf(data, *, lmb, axis=0):
     xp = array_namespace(data)

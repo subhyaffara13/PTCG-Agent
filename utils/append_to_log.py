@@ -1,3 +1,4 @@
+import json
 
 def append_to_log(filename, data):
     lock_file = filename.replace(".json", ".lock")

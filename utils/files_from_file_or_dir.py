@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def files_from_file_or_dir(
     file_or_dir_path: pathlib.Path | str, predicate: typing.Callable[[pathlib.Path], bool] = lambda _: True

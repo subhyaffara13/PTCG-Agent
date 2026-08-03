@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_transformers_update_command() -> list[str] | None:
     """Return the command to update transformers as an argv list, or None if the installation method is unknown."""

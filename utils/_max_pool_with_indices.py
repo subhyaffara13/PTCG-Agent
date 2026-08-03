@@ -1,3 +1,4 @@
+import functools
 
 def _max_pool_with_indices(
     x: torch.Tensor,

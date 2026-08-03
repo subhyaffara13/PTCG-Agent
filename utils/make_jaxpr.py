@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def make_jaxpr(
     fun: Callable,

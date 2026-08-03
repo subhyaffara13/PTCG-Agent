@@ -1,3 +1,4 @@
+import os
 
 def newer_group(
     sources: Iterable[str | bytes | os.PathLike[str] | os.PathLike[bytes]],

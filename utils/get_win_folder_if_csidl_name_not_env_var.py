@@ -1,3 +1,4 @@
+import os
 
 def get_win_folder_if_csidl_name_not_env_var(csidl_name: str) -> str | None:  # noqa: PLR0911
     """Get a folder for a CSIDL name that does not exist as an environment variable."""

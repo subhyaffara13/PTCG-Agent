@@ -1,3 +1,4 @@
+from typing import Any
 
 def genericDictValidator(value: Any, prototype: GenericDict) -> bool:
     """

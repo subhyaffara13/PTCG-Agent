@@ -1,3 +1,4 @@
+import copy
 
 def all_node_cuts(G, k=None, flow_func=None):
     r"""Returns all minimum k cutsets of an undirected graph G.

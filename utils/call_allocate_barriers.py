@@ -1,3 +1,4 @@
+import functools
 
 def call_allocate_barriers(
     *,

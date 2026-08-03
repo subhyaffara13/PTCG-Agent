@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_min(ref: _Ref, val) -> None:
   """Performs an atomic store-min of the value to the reference.

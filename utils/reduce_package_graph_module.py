@@ -1,3 +1,4 @@
+from typing import Any
 
 def reduce_package_graph_module(
     importer: PackageImporter, body: dict[Any, Any], generated_module_name: str

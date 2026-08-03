@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _run_python_pjit(p, args_flat, fun: Callable, args, kwargs):
   for arg in args_flat:

@@ -1,3 +1,4 @@
+from typing import List
 
 def set_last_user_message(
     messages: List[AllMessageValues], content: str

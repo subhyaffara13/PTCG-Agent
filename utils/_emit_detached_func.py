@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _emit_detached_func(
     name: str,

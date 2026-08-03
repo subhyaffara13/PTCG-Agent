@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_direct_client_ip(request: Request) -> Optional[str]:
     client = getattr(request, "client", None)

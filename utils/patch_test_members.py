@@ -1,3 +1,4 @@
+from typing import Any
 
 def patch_test_members(updates: dict[str, Any]):
     def decorator(test_func):

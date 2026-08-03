@@ -1,3 +1,5 @@
+import math
+
 
 def harmonic_diameter(G, sp=None, *, weight=None):
     """Returns the harmonic diameter of the graph G.

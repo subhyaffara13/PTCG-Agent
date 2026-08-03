@@ -1,3 +1,4 @@
+from typing import Callable
 
 def extend_logger_results_with_comparison(
     results: NSResultsType,

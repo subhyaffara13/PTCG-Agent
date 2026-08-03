@@ -1,3 +1,4 @@
+import functools
 
 def softmax(x: Tensor, dim: int, half_to_float: bool) -> Tensor:
     if half_to_float:

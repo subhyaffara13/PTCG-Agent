@@ -1,3 +1,6 @@
+from typing import Any, Callable
+import math
+
 
 def sdpa_dense_backward(
     query: torch.Tensor,

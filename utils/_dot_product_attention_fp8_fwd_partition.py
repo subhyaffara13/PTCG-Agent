@@ -1,3 +1,4 @@
+import functools
 
 def _dot_product_attention_fp8_fwd_partition(
     scale, use_causal_mask, layout, is_training,

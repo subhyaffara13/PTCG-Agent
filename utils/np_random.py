@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def np_random(seed: int | None = None) -> tuple[np.random.Generator, int]:
     """Returns a NumPy random number generator (RNG) along with seed value from the inputted seed.

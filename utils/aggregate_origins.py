@@ -1,3 +1,4 @@
+import functools
 
 def aggregate_origins(
     node_schedule: Sequence[BaseSchedulerNode] | ExternKernel,

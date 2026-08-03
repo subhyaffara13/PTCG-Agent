@@ -1,3 +1,4 @@
+from typing import Callable
 
 def inspect_array_sharding(value, *, callback: Callable[[Sharding], None]):
   """Enables inspecting array sharding inside JIT-ted functions.

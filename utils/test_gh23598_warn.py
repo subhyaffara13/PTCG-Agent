@@ -1,3 +1,4 @@
+import sys
 
 def test_gh23598_warn(capfd, gh23598_warn, monkeypatch):
     foutl = get_io_paths(gh23598_warn, mname="test")

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def with_cleanup(
     func: Callable[[_CommandT, Values, list[str]], int],

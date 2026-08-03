@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def may_distort_benchmarking_result(fn: Callable[..., Any]) -> Callable[..., Any]:
     from torch._inductor import config

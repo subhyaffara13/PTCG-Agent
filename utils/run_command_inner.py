@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def run_command_inner(*cmd, **kwargs):
     opts = {

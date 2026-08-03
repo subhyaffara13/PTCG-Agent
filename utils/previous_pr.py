@@ -1,3 +1,4 @@
+from typing import Optional
 
 def previous_pr(api: HfApi, model_id: str, pr_title: str, token: str) -> Optional["Discussion"]:
     main_commit = api.list_repo_commits(model_id, token=token)[0].commit_id

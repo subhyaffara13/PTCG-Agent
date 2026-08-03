@@ -1,3 +1,5 @@
+import os
+import random
 
 def _test(n, base, s, t):
     """Miller-Rabin strong pseudoprime test for one base.

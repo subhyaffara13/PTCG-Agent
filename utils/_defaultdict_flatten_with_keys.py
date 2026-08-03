@@ -1,3 +1,4 @@
+from typing import Any
 
 def _defaultdict_flatten_with_keys(
     d: defaultdict[Any, T],

@@ -1,3 +1,5 @@
+import math
+
 
 def collapse(iterable, base_type=None, levels=None):
     """Flatten an iterable with multiple levels of nesting (e.g., a list of

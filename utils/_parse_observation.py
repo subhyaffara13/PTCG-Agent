@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _parse_observation(observation: Mapping[str, Any]) -> dict[str, Any] | None:
     """Pull the JSON observation emitted by ``DarkHexState.observation_string``."""

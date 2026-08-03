@@ -1,3 +1,4 @@
+import logging
 
 def update_opset_version(
     model: ModelProto,

@@ -1,3 +1,5 @@
+import json
+import time
 
 def _compile_end() -> None:
     global _cumulative_compile_time, _t0, _triton_kernel_metrics

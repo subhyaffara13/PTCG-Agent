@@ -1,3 +1,4 @@
+from typing import Optional
 
 def conv_backwards(
     grad_output: list[int],

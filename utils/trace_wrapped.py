@@ -1,3 +1,4 @@
+from typing import Any
 
 def trace_wrapped(*args: Any, **kwargs: Any) -> Any:
     with torch.no_grad():

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_customcell():
     types = ('horizontal', 'vertical', 'open', 'closed', 'T', 'R', 'B', 'L')

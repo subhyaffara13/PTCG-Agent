@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _makeTags(tagStr, xml, suppress_LT=Suppress("<"), suppress_GT=Suppress(">")):
     """Internal helper to construct opening and closing tag expressions,

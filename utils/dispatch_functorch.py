@@ -1,3 +1,4 @@
+from typing import Any
 
 def dispatch_functorch(op: Any, args: tuple[Any, ...], kwargs: dict[str, Any]) -> Any:
     interpreter = retrieve_current_functorch_interpreter()

@@ -1,3 +1,4 @@
+from typing import Any
 
 def format_section(
     stream: TextIO,

@@ -1,3 +1,4 @@
+import re
 
 def mpc_sin_pi(z, prec, rnd=round_fast):
     a, b = z

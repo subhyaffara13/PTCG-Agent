@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Union
 
 def load_module_asdict(
     filename: Union[str, os.PathLike] = None,

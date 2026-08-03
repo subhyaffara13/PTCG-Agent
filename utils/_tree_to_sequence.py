@@ -1,3 +1,4 @@
+from typing import Any, List, Tuple
 
 def _tree_to_sequence(tree: Tuple[Any, ...]) -> PathType:
     """Converts a contraction tree to a contraction path as it has to be

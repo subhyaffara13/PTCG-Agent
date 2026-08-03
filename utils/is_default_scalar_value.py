@@ -1,3 +1,5 @@
+import math
+
 
 def IsDefaultScalarValue(value):
   """Returns whether or not a scalar value is the default value of its type.

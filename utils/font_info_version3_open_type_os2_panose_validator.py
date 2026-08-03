@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoVersion3OpenTypeOS2PanoseValidator(values: Any) -> bool:
     """

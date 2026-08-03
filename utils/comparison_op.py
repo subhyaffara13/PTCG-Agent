@@ -1,3 +1,4 @@
+from typing import Any
 
 def comparison_op(request):
     """

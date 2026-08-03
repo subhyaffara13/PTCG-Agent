@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _google_genai_streaming_hidden_params(
     *,

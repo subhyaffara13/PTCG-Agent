@@ -1,3 +1,4 @@
+from typing import Any
 
 def run_const_graph_functional(
     ctx: "BaseFunctionalizeAPI", graph: torch.fx.GraphModule, args: tuple[Any, ...]

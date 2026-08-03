@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def test_torch_performance(
     args: argparse.Namespace,

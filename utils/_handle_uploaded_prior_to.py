@@ -1,3 +1,4 @@
+import re
 
 def _handle_uploaded_prior_to(
     option: Option, opt: str, value: str, parser: OptionParser

@@ -1,3 +1,4 @@
+from typing import Any
 
 def array_metadata_from_tensorstore(
     t: Any,

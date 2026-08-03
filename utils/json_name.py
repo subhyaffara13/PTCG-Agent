@@ -1,3 +1,4 @@
+from typing import Callable
 
 def json_name(name: str) -> Callable[[_F], _F]:
     """Decorator"""

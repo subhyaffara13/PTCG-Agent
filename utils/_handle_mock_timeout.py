@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _handle_mock_timeout(
     mock_timeout: Optional[bool],

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_set_operations_nonsets():
     '''Tests that e.g. FiniteSet(1) * 2 raises TypeError'''

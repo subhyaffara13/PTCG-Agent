@@ -1,3 +1,4 @@
+import os
 
 def file_ns_handler(
     importer: object,

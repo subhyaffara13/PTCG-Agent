@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _common_new(cls, function, *symbols, discrete, **assumptions):
     """Return either a special return value or the tuple,

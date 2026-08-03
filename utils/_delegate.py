@@ -1,3 +1,4 @@
+from typing import Any
 
 def _delegate(op: str) -> Any:
     def delegate(

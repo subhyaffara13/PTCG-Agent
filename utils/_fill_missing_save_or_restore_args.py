@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _fill_missing_save_or_restore_args(
     item: PyTree, args: Optional[PyTree], *, mode: str

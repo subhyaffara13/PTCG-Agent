@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Optional
 
 def pushadd_to_gateway(
         gateway: str,

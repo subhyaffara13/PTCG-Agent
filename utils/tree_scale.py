@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_scale(
     scalar: jax.typing.ArrayLike,

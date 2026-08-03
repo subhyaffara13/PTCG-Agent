@@ -1,3 +1,4 @@
+import re
 
 def is_unbacked_source(source_name: str) -> bool:
     unbacked_sources = get_unbacked_sources()

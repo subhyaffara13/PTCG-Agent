@@ -1,3 +1,4 @@
+import functools
 
 def test__workers_wrapper():
     arr = np.linspace(0, np.pi)

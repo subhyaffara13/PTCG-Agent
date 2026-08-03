@@ -1,3 +1,5 @@
+import logging
+import time
 
 def get_absl_log_prefix(record):
   """Returns the absl log prefix for the log record.

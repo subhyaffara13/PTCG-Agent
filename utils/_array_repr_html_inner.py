@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _array_repr_html_inner(
     img: Array,

@@ -1,3 +1,4 @@
+import os
 
 def _set_env(key: str, value: str) -> Iterator[None]:
     """Thread-safe env var set/restore using atomic C-level lookups.

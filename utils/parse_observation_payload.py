@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def parse_observation_payload(observation: Mapping[str, Any]) -> dict[str, Any]:
     """Pull the structured bargaining state dict out of the observation.

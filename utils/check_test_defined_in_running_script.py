@@ -1,3 +1,4 @@
+import os
 
 def check_test_defined_in_running_script(test_case):
     if running_script_path is None:

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _solve_trig(f, symbol, domain):
     """Function to call other helpers to solve trigonometric equations """

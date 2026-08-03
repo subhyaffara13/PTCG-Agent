@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _unwrap_optional_type(field_annotation: Any) -> Any:
     """Unwrap Optional types to get the actual type."""

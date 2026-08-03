@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _onnx_op(
     op_type: str, opset_version: int, fake_impl: Callable[_P, _R]

@@ -1,3 +1,4 @@
+import re
 
 def hierarchical_pickle(data):
     if isinstance(data, (bool, int, float, str, type(None))):

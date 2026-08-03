@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _regret_matching(
     cumulative_regrets: Dict[int, float], legal_actions: List[int]

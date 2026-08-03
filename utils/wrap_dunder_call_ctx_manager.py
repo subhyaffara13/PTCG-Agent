@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_dunder_call_ctx_manager(self: Any, func: Callable[_P, _R]) -> Callable[_P, _R]:
     """

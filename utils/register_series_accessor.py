@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_series_accessor(name: str) -> Callable[[TypeT], TypeT]:
     """

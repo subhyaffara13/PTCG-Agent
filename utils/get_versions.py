@@ -1,3 +1,4 @@
+import os
 
 def get_versions() -> dict:
     """Get version information or return default if unable to do so."""

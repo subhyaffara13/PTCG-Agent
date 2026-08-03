@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_fans(shape: Sequence[int],
                   in_axis: int | Sequence[int] = -2,

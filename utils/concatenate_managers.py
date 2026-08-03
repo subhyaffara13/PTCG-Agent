@@ -1,3 +1,4 @@
+import copy
 
 def concatenate_managers(
     mgrs_indexers, axes: list[Index], concat_axis: AxisInt, copy: bool

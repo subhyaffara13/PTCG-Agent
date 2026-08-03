@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def lower_pointwise_subgraph(
     subgraph: ir.Subgraph, inputs: list[InputDescriptor]

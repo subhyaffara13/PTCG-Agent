@@ -1,3 +1,4 @@
+from typing import Any
 
 def _combine_rank_results(rank_results: dict[int, Any], default: Any | None) -> Any:
     rank_ids = rank_results.keys()

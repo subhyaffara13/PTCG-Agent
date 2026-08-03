@@ -1,3 +1,4 @@
+from typing import Any
 
 def read_iceberg(
     table_identifier: str,

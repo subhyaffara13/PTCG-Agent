@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def from_dlpack(
     ext_tensor: Any,

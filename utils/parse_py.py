@@ -1,3 +1,4 @@
+import re
 
 def parse_py(s, **kwargs):
     """Parse a string into a (nbformat, string) tuple."""

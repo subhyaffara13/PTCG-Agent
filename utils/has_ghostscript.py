@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def has_ghostscript() -> bool:
     global gs_binary, gs_windows_binary

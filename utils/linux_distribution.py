@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def linux_distribution(full_distribution_name: bool = True) -> Tuple[str, str, str]:
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _trace_kernel_to_jaxpr(
     fun: Callable,

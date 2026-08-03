@@ -1,3 +1,4 @@
+import time
 
 def test_transform_casting():
     # 13046

@@ -1,3 +1,4 @@
+import re
 
 def is_kernel(attn_implementation: str | None) -> bool:
     """Check whether `attn_implementation` matches a kernel pattern from the hub."""

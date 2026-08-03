@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_indexing_smoketest_or_raises(
     obj,

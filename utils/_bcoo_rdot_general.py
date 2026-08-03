@@ -1,3 +1,4 @@
+from typing import Any
 
 def _bcoo_rdot_general(lhs: Array, rhs_data: Array, rhs_indices: Array, *,
                        dimension_numbers: DotDimensionNumbers,

@@ -1,3 +1,4 @@
+import sys
 
 def ensure_echo_on() -> None:
     """Ensure that echo mode is enabled. Some tools such as PDB disable

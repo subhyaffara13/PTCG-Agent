@@ -1,3 +1,5 @@
+import math
+
 
 def _differential_entropy_is_too_small(samples, kwargs, axis=-1):
     values = samples[0]

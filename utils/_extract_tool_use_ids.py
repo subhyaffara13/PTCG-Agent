@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _extract_tool_use_ids(content: Any) -> List[str]:
     if not isinstance(content, list):

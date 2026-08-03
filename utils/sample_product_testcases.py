@@ -1,3 +1,5 @@
+import math
+
 
 def sample_product_testcases(*args, **kw):
   """Non-decorator form of sample_product."""

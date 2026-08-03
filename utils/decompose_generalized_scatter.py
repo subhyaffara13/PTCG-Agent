@@ -1,3 +1,4 @@
+import itertools
 
 def decompose_generalized_scatter(graph: torch.fx.Graph) -> None:
     """Replace _generalized_scatter with normal aten ops"""

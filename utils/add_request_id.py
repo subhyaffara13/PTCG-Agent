@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_request_id(obj: BaseModel, request_id: str | None) -> None:
     obj._request_id = request_id

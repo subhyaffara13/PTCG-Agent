@@ -1,3 +1,4 @@
+import os
 
 def prepare_environment(cache_dir, output_dir, use_gpu, provider=None):
     if cache_dir and not os.path.exists(cache_dir):

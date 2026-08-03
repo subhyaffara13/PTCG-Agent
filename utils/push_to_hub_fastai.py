@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def push_to_hub_fastai(
     learner,

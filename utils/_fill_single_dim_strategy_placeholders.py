@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _fill_single_dim_strategy_placeholders(
     unique_input_placements: set[Placement],

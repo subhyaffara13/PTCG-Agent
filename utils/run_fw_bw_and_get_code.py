@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def run_fw_bw_and_get_code(fn: Callable[..., Any]) -> tuple[Any, list[str]]:
     def run_with_backward() -> Any:

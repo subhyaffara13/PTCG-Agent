@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def test_nfloat():
     from sympy.core.basic import _aresame

@@ -1,3 +1,4 @@
+from typing import Any
 
 def model_json_schema(model: type[_ModelT]) -> dict[str, Any]:
     if PYDANTIC_V1:

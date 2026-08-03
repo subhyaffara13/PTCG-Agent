@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def get_team_from_list(
     team_list: Optional[Union[List[LiteLLM_TeamTable], List[TeamListResponseObject]]],

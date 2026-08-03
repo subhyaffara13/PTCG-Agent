@@ -1,3 +1,4 @@
+import re
 
 def _updatePSNameRecord(varfont, familyName, styleName, platform):
     # Implementation based on Adobe Technical Note #5902 :

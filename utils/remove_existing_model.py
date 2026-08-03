@@ -1,3 +1,4 @@
+import os
 
 def remove_existing_model(model_path: str):
     # Remove ONNX model and its external data

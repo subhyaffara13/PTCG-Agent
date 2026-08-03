@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def optimistic_adam_v2(
     learning_rate: base.ScalarOrSchedule,

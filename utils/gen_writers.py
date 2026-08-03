@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def gen_writers():
     for writer, output in WRITER_OUTPUT:

@@ -1,3 +1,4 @@
+import os
 
 def norm_and_check(source_tree: str, requested: str) -> str:
     """Normalise and check a backend path.

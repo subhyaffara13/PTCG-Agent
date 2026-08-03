@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _normalize_response_format(selected_params: Dict, vendor: OCIVendors) -> None:
     rf = selected_params.get("responseFormat")

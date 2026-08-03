@@ -1,3 +1,4 @@
+import sys
 
 def show_sys_implementation() -> None:
     logger.info("sys.implementation:")

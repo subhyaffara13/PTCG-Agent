@@ -1,3 +1,4 @@
+from typing import Any
 
 def figure(
     # autoincrement if None, else integer from 1-N

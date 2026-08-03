@@ -1,3 +1,4 @@
+import functools
 
 def _memoize_by_id(fn, refs):
   """Memoization by module/variable id to handle aliasing in traversal."""

@@ -1,3 +1,4 @@
+import subprocess
 
 def stop_etcd(subprocess, data_dir: str | None = None):
     if subprocess and subprocess.poll() is None:

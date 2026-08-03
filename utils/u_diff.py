@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def u_diff(
     filepath_a: Text,

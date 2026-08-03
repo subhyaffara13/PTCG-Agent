@@ -1,3 +1,4 @@
+from typing import Any
 
 def _handle_call_function_node_with_lowering(
     model: ir.Model,

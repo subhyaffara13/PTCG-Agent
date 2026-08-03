@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_multiline_str(src: str, pos: Pos, *, literal: bool) -> tuple[Pos, str]:
     pos += 3

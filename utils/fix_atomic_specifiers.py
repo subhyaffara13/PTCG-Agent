@@ -1,3 +1,4 @@
+from typing import Any
 
 def fix_atomic_specifiers(
     decl: c_ast.Decl | c_ast.Typedef,

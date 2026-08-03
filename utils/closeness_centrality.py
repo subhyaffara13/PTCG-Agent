@@ -1,3 +1,4 @@
+import functools
 
 def closeness_centrality(G, nodes, normalized=True):
     r"""Compute the closeness centrality for nodes in a bipartite network.

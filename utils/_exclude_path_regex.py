@@ -1,3 +1,4 @@
+import re
 
 def _exclude_path_regex() -> re.Pattern[str]:
   # The regex below would not handle an empty set of exclusions correctly.

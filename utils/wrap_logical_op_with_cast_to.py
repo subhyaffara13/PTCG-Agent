@@ -1,3 +1,4 @@
+import functools
 
 def wrap_logical_op_with_cast_to(to_type):
     def decorator(fn):

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def max_unpool1d(
     input: Tensor,

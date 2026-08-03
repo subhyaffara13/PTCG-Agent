@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_interval_symbolic_end_points():
     a = Symbol('a', real=True)

@@ -1,3 +1,5 @@
+import os
+from typing import Optional, Tuple
 
 def resolve_validated_local_image_path(candidate: str) -> Optional[Tuple[str, str]]:
     """Resolve ``candidate`` only when it is an existing supported image file."""

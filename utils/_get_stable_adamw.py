@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_stable_adamw(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get StableAdamW optimizer from torch-optimi."""

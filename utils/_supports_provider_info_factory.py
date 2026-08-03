@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _supports_provider_info_factory(
     model: str, custom_llm_provider: Optional[str], key: str

@@ -1,3 +1,4 @@
+import functools
 
 def set_up_omegaconf() -> None:
   """Registers handlers for OmegaConf types."""

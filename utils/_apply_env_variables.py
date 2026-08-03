@@ -1,3 +1,4 @@
+import os
 
 def _apply_env_variables(env: dict[str, str] | None = None) -> None:
     env_dict = env if env is not None else os.environ

@@ -1,3 +1,4 @@
+import time
 
 def optimize_edit_paths(
     G1,

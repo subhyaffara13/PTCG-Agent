@@ -1,3 +1,4 @@
+import itertools
 
 def check_internal_overlap(a, manual_expected=None):
     got = internal_overlap(a)

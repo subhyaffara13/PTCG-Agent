@@ -1,3 +1,4 @@
+from typing import Any
 
 def interp_upsample_1out_1in_strategy(
     op: torch._ops.OpOverload,

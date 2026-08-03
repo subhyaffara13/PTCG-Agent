@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def unflatten(
     module: ExportedProgram, flat_args_adapter: FlatArgsAdapter | None = None

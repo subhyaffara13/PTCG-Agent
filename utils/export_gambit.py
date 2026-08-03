@@ -1,3 +1,4 @@
+import functools
 
 def export_gambit(game):
   """Builds gambit representation of the game tree.

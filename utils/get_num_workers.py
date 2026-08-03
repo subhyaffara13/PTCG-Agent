@@ -1,3 +1,4 @@
+import os
 
 def get_num_workers() -> int:
     if "TORCHINDUCTOR_COMPILE_THREADS" in os.environ:

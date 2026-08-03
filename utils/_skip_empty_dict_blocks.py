@@ -1,3 +1,4 @@
+from typing import List
 
 def _skip_empty_dict_blocks(blocks: List[dict]) -> List[dict]:
     """

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def install_types(
     formatter: util.FancyFormatter,

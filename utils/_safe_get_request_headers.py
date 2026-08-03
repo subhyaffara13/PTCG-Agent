@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _safe_get_request_headers(request: Optional[Request]) -> dict:
     """

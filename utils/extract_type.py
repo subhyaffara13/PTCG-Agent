@@ -1,3 +1,4 @@
+import re
 
 def extract_type(name: str) -> str:
     """If the argument is the name of a method (of form C.m), return

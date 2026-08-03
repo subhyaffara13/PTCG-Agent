@@ -1,3 +1,4 @@
+import sys
 
 def DEFINE_flag(  # pylint: disable=invalid-name
     flag: _flag.Flag[_T],

@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def factor_system_bool(eqs: Sequence[Expr | complex], gens: Sequence[Expr] = (), **kwargs: Any) -> Boolean:
     """

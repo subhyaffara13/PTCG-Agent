@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_collective_node_from_wait(node: torch.fx.Node) -> torch.fx.Node | None:
     """Given a wait node, return the collective it waits on.

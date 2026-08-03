@@ -1,3 +1,4 @@
+import re
 
 def safer_name(value: str) -> str:
     """Like ``safe_name`` but can be used as filename component for wheel"""

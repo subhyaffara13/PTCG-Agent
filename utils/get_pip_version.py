@@ -1,3 +1,4 @@
+import os
 
 def get_pip_version() -> str:
     pip_pkg_dir = os.path.join(os.path.dirname(__file__), "..", "..")

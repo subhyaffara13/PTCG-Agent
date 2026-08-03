@@ -1,3 +1,5 @@
+import logging
+import pathlib
 
 def update_onnx_opset(
     model_path: pathlib.Path,

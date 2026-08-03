@@ -1,3 +1,4 @@
+import re
 
 def test_replace_named_groups_regex_swap(
     any_string_dtype, use_compile, repl, expected_list

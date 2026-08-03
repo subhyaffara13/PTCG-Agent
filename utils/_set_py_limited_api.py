@@ -1,3 +1,4 @@
+import sys
 
 def _set_py_limited_api(Extension, kwds):
     """

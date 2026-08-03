@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _debug_callback_eager_rule(
     mesh,

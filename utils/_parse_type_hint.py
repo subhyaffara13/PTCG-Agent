@@ -1,3 +1,4 @@
+from typing import Union
 
 def _parse_type_hint(hint: str) -> dict:
     origin = get_origin(hint)

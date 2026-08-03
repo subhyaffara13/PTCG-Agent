@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def flatten_fun_for_sparse_ad(fun, argnums: int | tuple[int, ...], args: tuple[Any, ...]):
   argnums_tup = _ensure_index_tuple(argnums)

@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_factorint():
     assert primefactors(123456) == [2, 3, 643]

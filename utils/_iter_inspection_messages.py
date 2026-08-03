@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _iter_inspection_messages(data: Dict[str, Any]) -> Iterator[Dict[str, Any]]:
     """Yield every message-like dict, walking ``messages`` AND ``input``."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_visibility_more_specific(
     candidate: FixtureDef[Any], other: FixtureDef[Any]

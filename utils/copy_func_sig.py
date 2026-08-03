@@ -1,3 +1,4 @@
+from typing import Callable
 
 def copy_func_sig(
     source_func: Callable[_P, _R],

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def quantity_simplify(expr, across_dimensions: bool=False, unit_system=None):
     """Return an equivalent expression in which prefixes are replaced

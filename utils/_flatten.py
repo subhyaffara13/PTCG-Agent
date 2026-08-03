@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _flatten(x, f):
     if isinstance(x, str):

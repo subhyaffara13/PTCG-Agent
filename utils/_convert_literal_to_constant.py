@@ -1,3 +1,4 @@
+from typing import Union
 
 def _convert_literal_to_constant(value: Union[int, ConstantOp, Value]) -> Value:
     if isinstance(value, int):

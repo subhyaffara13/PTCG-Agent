@@ -1,3 +1,4 @@
+import os
 
 def load_arrayvis_javascript() -> str:
   """Loads the contents of `arrayvis.js` from the Python package.

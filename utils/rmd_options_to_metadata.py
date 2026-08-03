@@ -1,3 +1,4 @@
+import re
 
 def rmd_options_to_metadata(options, use_runtools=False):
     """Parse rmd options and return a metadata dictionary"""

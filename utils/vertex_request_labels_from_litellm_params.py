@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def vertex_request_labels_from_litellm_params(
     litellm_params: Optional[dict],

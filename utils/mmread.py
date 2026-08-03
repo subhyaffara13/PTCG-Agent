@@ -1,3 +1,4 @@
+import os
 
 def mmread(source, *, spmatrix=_NoValue):
     """

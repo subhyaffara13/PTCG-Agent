@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _safe_db_event_metadata(kwargs: Dict) -> Optional[Dict[str, str]]:
     """Minimal, non-sensitive ``event_metadata`` for a DB service log.

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def remat_scan(
   body_fn: Callable[..., Any],

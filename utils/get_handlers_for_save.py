@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_handlers_for_save(
     handler_registry: registration.CheckpointableHandlerRegistry,

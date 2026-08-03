@@ -1,3 +1,4 @@
+import os
 
 def build_npm_download_purl(uri):
     path = unquote_plus(urlparse(uri).path)

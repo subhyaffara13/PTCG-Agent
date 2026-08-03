@@ -1,3 +1,4 @@
+import os
 
 def block_diag(*tensors):
     """Create a block diagonal matrix from provided tensors.

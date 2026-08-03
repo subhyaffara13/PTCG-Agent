@@ -1,3 +1,4 @@
+from typing import Any
 
 def ensure_arraylike_tuple(fun_name: str, tup: Sequence[Any]) -> tuple[Array, ...]:
   """Check that argument elements are arraylike and convert to a tuple of arrays.

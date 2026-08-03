@@ -1,3 +1,5 @@
+import math
+
 
 def test_parity(device, model, ort_session, batch_size, sequence_length, global_length, verbose=True):
     parameters = f"batch_size={batch_size} sequence_length={sequence_length} global_length={global_length}"

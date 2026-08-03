@@ -1,3 +1,6 @@
+import json
+import re
+from typing import Any
 
 def _format_table_value_human(value: Any) -> str:
     """Convert a value to string for terminal display."""

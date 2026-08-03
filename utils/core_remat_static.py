@@ -1,3 +1,4 @@
+import functools
 
 def core_remat_static(
     fn,

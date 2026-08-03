@@ -1,3 +1,5 @@
+import math
+
 
 def rs_series_from_list(p, c, x, prec, concur=1):
     """

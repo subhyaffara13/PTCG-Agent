@@ -1,3 +1,4 @@
+from typing import Any
 
 def pad_jaxpr_constvars(jaxpr: jax_core.Jaxpr,
                         i: int,

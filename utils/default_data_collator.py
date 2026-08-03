@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_data_collator(features: list[InputDataClass], return_tensors="pt") -> dict[str, Any]:
     """

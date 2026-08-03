@@ -1,3 +1,4 @@
+import os
 
 def get_shm_size_in_mb():
   """Get /dev/shm size in MB.

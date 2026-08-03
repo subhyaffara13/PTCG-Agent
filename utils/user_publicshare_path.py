@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_publicshare_path() -> Path:
     """:returns: public share path tied to the user"""

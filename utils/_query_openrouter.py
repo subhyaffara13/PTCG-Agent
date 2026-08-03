@@ -1,3 +1,5 @@
+import json
+import os
 
 def _query_openrouter(prompt, extractor):
     openrouter_key = os.environ.get("OPENROUTER_API_KEY")

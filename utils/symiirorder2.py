@@ -1,3 +1,5 @@
+import math
+
 
 def symiirorder2(input, r, omega, precision=-1.0):
     """

@@ -1,3 +1,4 @@
+import time
 
 def _handle_no_master(listener, last_seen_master_time, last_known_master_ip, run_master_loop, run_worker_loop, run_election):
     grace_period = 300

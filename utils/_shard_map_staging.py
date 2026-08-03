@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _shard_map_staging(
     trace: pe.DynamicJaxprTrace, prim: core.Primitive, f: Callable,

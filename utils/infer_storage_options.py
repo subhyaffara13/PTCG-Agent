@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def infer_storage_options(
     urlpath: str, inherit_storage_options: dict[str, Any] | None = None

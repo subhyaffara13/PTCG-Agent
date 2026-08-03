@@ -1,3 +1,4 @@
+from typing import Callable
 
 def test_quantifier_extensions():
     from sympy.logic.boolalg import Boolean

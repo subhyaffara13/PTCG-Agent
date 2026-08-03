@@ -1,3 +1,4 @@
+import os
 
 def pstoeps(tmpfile, bbox=None, rotated=False):
     """

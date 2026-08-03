@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def get_schema_ref(name: str, ref_prefix: Optional[str], ref_template: str, schema_overrides: bool) -> Dict[str, Any]:
     if ref_prefix:

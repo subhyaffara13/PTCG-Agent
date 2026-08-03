@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _resolve_mutated_flat_indices(
     fn: Callable,

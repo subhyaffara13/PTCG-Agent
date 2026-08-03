@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_model_id_from_unified_batch_id(file_id: str) -> Optional[str]:
     """

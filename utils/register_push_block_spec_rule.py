@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_push_block_spec_rule(
     prim: core.Primitive,

@@ -1,3 +1,4 @@
+import sys
 
 def check_interactive_exception(call: CallInfo[object], report: BaseReport) -> bool:
     """Check whether the call raised an exception that should be reported as

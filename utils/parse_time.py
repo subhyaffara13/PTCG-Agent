@@ -1,3 +1,5 @@
+import time
+from typing import Dict, Union
 
 def parse_time(raw_time: str) -> time:
     """Convert ``str`` to a ``datetime.time``.

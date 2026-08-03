@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def test_ort(args, device) -> list[dict[str, Any]]:
     model_name = args.model

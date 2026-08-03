@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def foreach_run_and_map_input_device(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

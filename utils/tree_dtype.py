@@ -1,3 +1,5 @@
+import functools
+from typing import Optional
 
 def tree_dtype(
     tree: base.ArrayTree, mixed_dtype_handler: Optional[str] = None

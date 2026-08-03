@@ -1,3 +1,4 @@
+import os
 
 def get_rank(group: ProcessGroup | None = None) -> int:
     """

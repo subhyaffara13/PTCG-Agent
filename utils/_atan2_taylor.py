@@ -1,3 +1,4 @@
+from typing import Any
 
 def _atan2_taylor(primals_in, series_in):
   x, y = primals_in

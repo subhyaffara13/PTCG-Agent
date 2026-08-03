@@ -1,3 +1,4 @@
+import itertools
 
 def _check_warns(expected: typing.Iterable[_W]):
     warns: typing.List[str] = []

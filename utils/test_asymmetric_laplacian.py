@@ -1,3 +1,4 @@
+import copy
 
 def test_asymmetric_laplacian(use_out_degree, normed,
                               copy, dtype, arr_type):

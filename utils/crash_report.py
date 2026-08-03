@@ -1,3 +1,4 @@
+import sys
 
 def crash_report(module_path: str, line: int) -> NoReturn:
     # Adapted from report_internal_error in mypy

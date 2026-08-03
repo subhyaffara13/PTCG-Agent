@@ -1,3 +1,4 @@
+import json
 
 def print_repro_on_failure(repro_parts):
     try:

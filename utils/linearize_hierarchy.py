@@ -1,3 +1,4 @@
+from typing import Callable
 
 def linearize_hierarchy(
     info: TypeInfo, obj_type: Callable[[], Instance] | None = None

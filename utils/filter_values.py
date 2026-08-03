@@ -1,3 +1,4 @@
+from typing import Any
 
 def filter_values(
     existing: 'PartsOf[T]',

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _read_allowed_features(license_data: Dict[str, Any]) -> list:
     raw_allowed_features = license_data.get("allowed_features")

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _toml_dict_factory(data: list[tuple[str, Any]]) -> dict[str, Any]:
     return {

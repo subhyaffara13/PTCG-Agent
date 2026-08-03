@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_max_height_width(
     images: list[Union["torch.Tensor", np.ndarray]], input_data_format: str | ChannelDimension = ChannelDimension.FIRST

@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def test_pretty_seq():
     expr = ()

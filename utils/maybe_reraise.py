@@ -1,3 +1,4 @@
+from typing import Optional
 
 def maybe_reraise(
     prefix: Optional[_Str] = None,

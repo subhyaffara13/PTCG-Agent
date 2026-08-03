@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_status_for_spend_log(
     metadata: dict,

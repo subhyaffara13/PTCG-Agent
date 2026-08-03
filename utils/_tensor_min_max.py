@@ -1,3 +1,4 @@
+import functools
 
 def _tensor_min_max(*args, real_callable, tensor_callable, **kwargs):
     """

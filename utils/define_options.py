@@ -1,3 +1,4 @@
+import sys
 
 def define_options(
     program: str = "mypy",

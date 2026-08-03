@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple, Union
 
 def _prepare_request_data_and_content(
     data: Optional[Union[dict, str, bytes]] = None,

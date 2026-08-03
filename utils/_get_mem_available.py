@@ -1,3 +1,4 @@
+import sys
 
 def _get_mem_available():
     """Return available memory in bytes, or None if unknown."""

@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def _prometheus_labels_from_context(
     supported_enum_labels: List[str],

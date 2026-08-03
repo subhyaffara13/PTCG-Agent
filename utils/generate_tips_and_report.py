@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def generate_tips_and_report(logs_dir: Path, skills_dir: Path, report_path: Path, trend_stats: dict, strategy_trackers: dict, deck_trackers: dict, best_plays: list, worst_plays: list):
     threshold = max(20, int(trend_stats["total_games"] * 0.02))

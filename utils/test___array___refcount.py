@@ -1,3 +1,5 @@
+import copy
+import sys
 
 def test___array___refcount():
     class MyArray:

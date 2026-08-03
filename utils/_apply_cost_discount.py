@@ -1,3 +1,5 @@
+import logging
+from typing import Optional, Tuple
 
 def _apply_cost_discount(
     base_cost: float,

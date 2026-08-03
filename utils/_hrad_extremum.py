@@ -1,3 +1,5 @@
+import math
+
 
 def _hrad_extremum(L):
     lhs = (math.pow(L, 3.0) + 48.0 * math.pow(L, 2.0) + 768.0 * L + 4096.0) / 1560896.0

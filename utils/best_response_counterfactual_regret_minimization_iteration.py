@@ -1,3 +1,4 @@
+from typing import List
 
 def best_response_counterfactual_regret_minimization_iteration(
     history_tree_node: HistoryNode,

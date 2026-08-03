@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def pattern_bytes_validator(input_value: Any, /) -> re.Pattern[bytes]:
     if isinstance(input_value, re.Pattern):

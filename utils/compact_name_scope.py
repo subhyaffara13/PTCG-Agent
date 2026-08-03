@@ -1,3 +1,4 @@
+import functools
 
 def compact_name_scope(fun: _CallableT) -> _CallableT:
   """Creates compact submodules from a method.

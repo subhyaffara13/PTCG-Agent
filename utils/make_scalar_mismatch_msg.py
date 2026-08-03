@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_scalar_mismatch_msg(
     actual: bool | int | float | complex,

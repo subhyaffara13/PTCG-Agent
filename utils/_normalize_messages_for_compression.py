@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def _normalize_messages_for_compression(
     messages: List[dict],

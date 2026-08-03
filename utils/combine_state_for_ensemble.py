@@ -1,3 +1,4 @@
+from typing import Any
 
 def combine_state_for_ensemble(models: list[nn.Module]) -> Any:
     warn_deprecated("combine_state_for_ensemble", "torch.func.stack_module_state")

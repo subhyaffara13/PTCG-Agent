@@ -1,3 +1,5 @@
+import os
+from typing import Union
 
 def load_image_as_tensor(
     image: Union[str, "PIL.Image.Image"],

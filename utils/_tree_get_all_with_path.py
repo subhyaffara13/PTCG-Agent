@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _tree_get_all_with_path(
     tree: base.PyTree, key: str

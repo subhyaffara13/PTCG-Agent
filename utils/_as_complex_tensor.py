@@ -1,3 +1,4 @@
+from typing import Any
 
 def _as_complex_tensor(arg: Tensor | Any) -> Tensor | ComplexTensor | Any:
     """Convert a Tensor with complex dtypes to a ComplexTensor. Pass along other args as-is."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_checkers_infos(linter: PyLinter) -> dict[str, dict[str, Any]]:
     """Get info from a checker and handle KeyError."""

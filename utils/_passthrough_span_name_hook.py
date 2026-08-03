@@ -1,3 +1,4 @@
+from typing import Any
 
 def _passthrough_span_name_hook(span: Any, scope: dict) -> None:
     """FastAPI ``server_request_hook``: give passthrough server spans a useful name.

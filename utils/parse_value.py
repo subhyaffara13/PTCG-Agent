@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def parse_value(reader: Reader) -> str:
     char = reader.peek(1)

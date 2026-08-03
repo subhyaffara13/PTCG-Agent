@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def load_aoti_eager_cache(
     ns: str, op_func_name_with_overload: str, device_type: str

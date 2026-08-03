@@ -1,3 +1,4 @@
+from typing import Any
 
 def _augment_trace_helper(data: dict[str, Any]) -> dict[str, Any]:
     extern_mapping = _create_extern_mapping(data)

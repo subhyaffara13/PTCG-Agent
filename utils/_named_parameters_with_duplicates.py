@@ -1,3 +1,4 @@
+from typing import Any
 
 def _named_parameters_with_duplicates(
     module: nn.Module, **kwargs: Any

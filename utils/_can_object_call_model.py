@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional, Union
 
 def _can_object_call_model(
     model: Union[str, List[str]],

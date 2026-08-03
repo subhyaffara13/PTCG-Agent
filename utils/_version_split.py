@@ -1,3 +1,4 @@
+from typing import List
 
 def _version_split(version: str) -> list[str]:
     """Split version into components.

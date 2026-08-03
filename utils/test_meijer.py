@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_meijer():
     raises(TypeError, lambda: meijerg(1, z))

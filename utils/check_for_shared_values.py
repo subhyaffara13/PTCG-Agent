@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_for_shared_values(
     node: Any,

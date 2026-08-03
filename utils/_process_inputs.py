@@ -1,3 +1,4 @@
+from typing import Any
 
 def _process_inputs(args, kwargs) -> Any:
   """A function that normalizes the representation of the ``args`` and

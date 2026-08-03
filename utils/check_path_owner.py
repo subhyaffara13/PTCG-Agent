@@ -1,3 +1,5 @@
+import os
+import sys
 
 def check_path_owner(path: str) -> bool:
     # If we don't have a way to check the effective uid of this process, then

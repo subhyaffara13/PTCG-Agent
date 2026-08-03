@@ -1,3 +1,4 @@
+import copy
 
 def propagate_inst_exn_table_entries(instructions: list[Instruction]) -> None:
     """

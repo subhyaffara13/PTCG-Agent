@@ -1,3 +1,5 @@
+import math
+
 
 def geninvgauss_pdf(x, p, b):
     m = geninvgauss_mode(p, b)

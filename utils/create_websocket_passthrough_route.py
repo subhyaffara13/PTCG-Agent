@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def create_websocket_passthrough_route(
     endpoint: str,

@@ -1,3 +1,4 @@
+import re
 
 def mpc_pow_int(z, n, prec, rnd=round_fast):
     a, b = z

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_masks_for_generate(
     config: PreTrainedConfig,

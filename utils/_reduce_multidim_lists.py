@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _reduce_multidim_lists(
     lists_to_reduce: list[Any], reduce_func: Callable[[list[Any]], Any]

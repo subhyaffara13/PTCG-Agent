@@ -1,3 +1,4 @@
+import re
 
 def repr_regex(regex):
     all_flags = ("A", "I", "DEBUG", "L", "M", "S", "X")

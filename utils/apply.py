@@ -1,3 +1,6 @@
+import functools
+import os
+from typing import Any, Callable
 
 def apply(loop=None):
     """Patch asyncio to make its event loop reentrant."""

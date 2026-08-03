@@ -1,3 +1,4 @@
+from typing import Any
 
 def _serialize_triton_kernel(kernel: Any) -> tuple[str, str]:
     """

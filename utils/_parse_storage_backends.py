@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_storage_backends(
     data: Mapping[str, Any], config: tiering_service_pb2.ServerConfig

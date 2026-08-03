@@ -1,3 +1,4 @@
+import subprocess
 
 def install_project(name, venv, tmp_path, files, *opts):
     project = tmp_path / name

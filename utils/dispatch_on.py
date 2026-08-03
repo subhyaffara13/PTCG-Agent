@@ -1,3 +1,4 @@
+import itertools
 
 def dispatch_on(*dispatch_args):
     """

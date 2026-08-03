@@ -1,3 +1,4 @@
+from typing import Set
 
 def rich_cast(renderable: object) -> "RenderableType":
     """Cast an object to a renderable by calling __rich__ if present.

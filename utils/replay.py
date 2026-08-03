@@ -1,3 +1,4 @@
+import itertools
 
 def replay(filename: str) -> None:
     from .backends.debugging import eager

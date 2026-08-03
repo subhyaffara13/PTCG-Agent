@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_telemetry_logger(module: str) -> Callable[..., None]:
     """Return a module-labelled logger that forwards to the global exporter."""

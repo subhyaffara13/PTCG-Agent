@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _build_search_optional_params(
     max_results: Optional[int] = None,

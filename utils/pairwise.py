@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def pairwise(iterable: Iterable[_T], /) -> Iterator[tuple[_T, _T]]:
     a = None

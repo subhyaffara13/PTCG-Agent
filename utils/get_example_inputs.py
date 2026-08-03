@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_example_inputs(key: str) -> list[Any]:
     global _EXAMPLE_INPUTS

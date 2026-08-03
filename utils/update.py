@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def update(op, device_name, version, key, value):
     """Update the db of op parameters."""

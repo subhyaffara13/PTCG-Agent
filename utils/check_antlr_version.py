@@ -1,3 +1,4 @@
+import subprocess
 
 def check_antlr_version():
     debug("Checking antlr4 version...")

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_excluded_subpackages(tmpdir_cwd):
     jaraco.path.build(EXAMPLE_WITH_MANIFEST)

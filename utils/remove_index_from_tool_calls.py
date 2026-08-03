@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def remove_index_from_tool_calls(
     messages: Optional[List[AllMessageValues]],

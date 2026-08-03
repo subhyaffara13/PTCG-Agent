@@ -1,3 +1,4 @@
+import re
 
 def get_model_params_and_category(model_name, call_type: CallTypes) -> str:
     """

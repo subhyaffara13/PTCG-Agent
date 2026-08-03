@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_sharding(op: OpOverload | list[OpOverload]):
     """

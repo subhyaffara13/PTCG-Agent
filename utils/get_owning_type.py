@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_owning_type(t: CType) -> tuple[CType, Callable[[str], str]]:
     if t == BaseCType(tensorListT):

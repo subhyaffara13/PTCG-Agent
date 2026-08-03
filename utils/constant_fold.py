@@ -1,3 +1,4 @@
+from typing import Callable
 
 def constant_fold(
     gm: torch.fx.GraphModule,

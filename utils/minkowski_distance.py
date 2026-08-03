@@ -1,3 +1,4 @@
+import os
 
 def minkowski_distance(x, y, p=2.0):
     """Compute the L**p distance between two arrays.

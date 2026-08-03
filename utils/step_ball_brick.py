@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def step_ball_brick(
     state: EnvState, new_x: jnp.ndarray, new_y: jnp.ndarray

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _verify_metaclass(
     stub: nodes.TypeInfo, runtime: type[Any], object_path: list[str], *, is_runtime_typeddict: bool

@@ -1,3 +1,4 @@
+import os
 
 def test_label_structuring_elements(xp):
     data = np.loadtxt(os.path.join(os.path.dirname(

@@ -1,3 +1,4 @@
+import sys
 
 def _cached_cleaned_instructions(
     code: types.CodeType, safe: bool = False

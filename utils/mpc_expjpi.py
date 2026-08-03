@@ -1,3 +1,4 @@
+import re
 
 def mpc_expjpi(z, prec, rnd='f'):
     re, im = z

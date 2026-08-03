@@ -1,3 +1,4 @@
+import re
 
 def _process_plot_format(fmt, *, ambiguous_fmt_datakey=False):
     """

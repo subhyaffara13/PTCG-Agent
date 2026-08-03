@@ -1,3 +1,4 @@
+import re
 
 def _is_threaded_cpython(abis: list[str]) -> bool:
     """

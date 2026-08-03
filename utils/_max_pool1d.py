@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _max_pool1d(
     input: Tensor,

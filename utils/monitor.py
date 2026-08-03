@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def monitor(f, input='print', output='print'):
     """

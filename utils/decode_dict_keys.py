@@ -1,3 +1,4 @@
+import copy
 
 def decode_dict_keys(obj):
     """Decode the keys of the given dictionary with utf-8."""

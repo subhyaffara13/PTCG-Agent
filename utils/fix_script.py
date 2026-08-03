@@ -1,3 +1,5 @@
+import os
+import sys
 
 def fix_script(path: str) -> bool:
     """Replace #!python with #!/path/to/python

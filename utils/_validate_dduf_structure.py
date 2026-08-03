@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_dduf_structure(index: Any, entry_names: Iterable[str]) -> None:
     """

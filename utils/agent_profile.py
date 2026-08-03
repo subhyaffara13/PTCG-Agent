@@ -1,3 +1,5 @@
+import os
+from typing import Tuple
 
 def agent_profile(command: str) -> Tuple[str, FrozenSet[str]]:
     """Return the (display name, env profiles) for a wrapped command.

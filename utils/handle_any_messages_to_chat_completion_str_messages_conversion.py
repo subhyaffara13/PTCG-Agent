@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def handle_any_messages_to_chat_completion_str_messages_conversion(
     messages: Any,

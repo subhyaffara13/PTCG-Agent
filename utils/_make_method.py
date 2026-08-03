@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _make_method(
     cls: type[object],

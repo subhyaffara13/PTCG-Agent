@@ -1,3 +1,4 @@
+import os
 
 def valid_textfile(filedir):
     # Generate and return a valid temporary file.

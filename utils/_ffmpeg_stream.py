@@ -1,3 +1,4 @@
+import subprocess
 
 def _ffmpeg_stream(ffmpeg_command, buflen: int):
     """

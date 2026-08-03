@@ -1,3 +1,6 @@
+import time
+from pathlib import Path
+
 
 def WeakFileLock(lock_file: str | Path, *, timeout: float | None = None) -> Generator[BaseFileLock, None, None]:
     """A filelock with some custom logic.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def opcheck(
     op: torch._ops.OpOverload | torch._ops.OpOverloadPacket | CustomOpDef,

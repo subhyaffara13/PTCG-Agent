@@ -1,3 +1,4 @@
+import json
 
 def replace_model_in_jsonl(file_content: FileTypes, new_model_name: str) -> FileTypes:
     try:

@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def _compile_and_write_cache(
     backend: xc.Client,

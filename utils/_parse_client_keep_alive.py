@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_client_keep_alive(
     data: Mapping[str, Any], config: tiering_service_pb2.ServerConfig

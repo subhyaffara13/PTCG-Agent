@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def is_anthropic_native_web_search_tool(tool: Dict[str, Any]) -> bool:
     """

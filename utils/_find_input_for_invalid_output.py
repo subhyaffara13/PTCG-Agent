@@ -1,3 +1,4 @@
+from typing import Any
 
 def _find_input_for_invalid_output(
     node: fx.Node,

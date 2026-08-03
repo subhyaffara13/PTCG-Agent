@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _parse_mcp_server_names_from_path(
     path: str, mcp_servers_header: Optional[List[str]] = None

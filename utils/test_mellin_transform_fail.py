@@ -1,3 +1,4 @@
+import re
 
 def test_mellin_transform_fail():
     skip("Risch takes forever.")

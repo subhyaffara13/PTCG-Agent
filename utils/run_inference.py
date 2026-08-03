@@ -1,3 +1,4 @@
+import time
 
 def run_inference(args, init_inputs, iter_inputs, model):
     if args.benchmark_type in {"hf-pt-eager", "hf-pt-compile", "hf-ort"}:

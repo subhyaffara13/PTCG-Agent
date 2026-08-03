@@ -1,3 +1,5 @@
+import math
+
 
 def _van_es_entropy(X, m, *, xp):
     """Compute the van Es estimator as described in [6]."""

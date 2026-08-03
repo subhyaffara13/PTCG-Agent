@@ -1,3 +1,4 @@
+from typing import Any
 
 def tokenize(*args: Any, **kwargs: Any) -> str:
     """Deterministic token

@@ -1,3 +1,5 @@
+import math
+
 
 def _nonneg_int_or_fail(n, var_name, strict=True):
     try:

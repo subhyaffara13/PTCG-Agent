@@ -1,3 +1,4 @@
+from typing import Callable
 
 def admon_plugin(md: MarkdownIt, render: None | Callable[..., str] = None) -> None:
     """Plugin to use

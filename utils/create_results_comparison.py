@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_results_comparison(
     results_grouped,

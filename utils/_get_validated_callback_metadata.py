@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_validated_callback_metadata(
     item: dict, *, source: str

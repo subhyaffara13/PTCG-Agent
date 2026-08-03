@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional
 
 def deprecated_args(
     args_to_warn: Optional[List[str]] = None,

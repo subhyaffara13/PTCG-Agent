@@ -1,3 +1,4 @@
+import re
 
 def split_name_params(schema: str) -> tuple[str, list[str]]:
     m = re.match(r"(\w+)(\.\w+)?\((.*)\)", schema)

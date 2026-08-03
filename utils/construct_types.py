@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_types(types_tr_list_from_yaml: list[Any]) -> str:
     types_tr_list_part = [

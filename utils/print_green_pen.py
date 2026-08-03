@@ -1,3 +1,4 @@
+import sys
 
 def printGreenPen(penName, funcs, file=sys.stdout, docstring=None):
     if docstring is not None:

@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def create_fx_graph_from_captured_output(
     out: CaptureOutput, mod: Any, args: tuple[Any, ...], kwargs: dict[str, Any]

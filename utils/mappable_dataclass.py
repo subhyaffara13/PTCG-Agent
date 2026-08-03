@@ -1,3 +1,4 @@
+import functools
 
 def mappable_dataclass(cls):
   """Exposes dataclass as ``collections.abc.Mapping`` descendent.

@@ -1,3 +1,5 @@
+import itertools
+import re
 
 def _check_antecedents_inversion(g, x):
     """ Check antecedents for the laplace inversion integral. """

@@ -1,3 +1,4 @@
+import sys
 
 def find_induced_nodes(G, s, t, treewidth_bound=sys.maxsize):
     """Returns the set of induced nodes in the path from s to t.

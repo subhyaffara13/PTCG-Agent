@@ -1,3 +1,4 @@
+from typing import Any
 
 def current_xla_metadata() -> dict[str, Any] | None:
   metadata = config.xla_metadata_context_manager.value

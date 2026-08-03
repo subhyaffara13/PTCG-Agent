@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any, List
 
 def replace_types(type_: Any, type_map: Mapping[Any, Any]) -> Any:
     """Return type with all occurrences of `type_map` keys recursively replaced with their values.

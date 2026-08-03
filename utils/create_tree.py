@@ -1,3 +1,4 @@
+import os
 
 def create_tree(base_dir, files, mode=0o777, verbose=True):
     """Create all the empty directories under 'base_dir' needed to put 'files'

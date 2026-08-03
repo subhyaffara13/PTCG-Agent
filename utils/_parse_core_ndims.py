@@ -1,3 +1,4 @@
+import re
 
 def _parse_core_ndims(signature):
     """Return tuple of num core dims per input from gufunc signature."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _on_batch_callback(
     infos: Sequence[types.ParamInfo],

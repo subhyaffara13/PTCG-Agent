@@ -1,3 +1,4 @@
+import functools
 
 def in_string_annotation(func):
     @functools.wraps(func)

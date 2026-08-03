@@ -1,3 +1,4 @@
+from typing import Any
 
 def score_hand_helper(hand: list[str], scoring_db: dict[str, dict[str, Any]]) -> list[tuple[str, float]]:
     try:

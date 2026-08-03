@@ -1,3 +1,4 @@
+import copy
 
 def pickles(obj,exact=False,safe=False,**kwds):
     """

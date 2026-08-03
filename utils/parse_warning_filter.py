@@ -1,3 +1,4 @@
+import re
 
 def parse_warning_filter(
     arg: str, *, escape: bool

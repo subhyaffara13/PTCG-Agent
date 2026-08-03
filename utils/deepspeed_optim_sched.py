@@ -1,3 +1,4 @@
+import copy
 
 def deepspeed_optim_sched(trainer, hf_deepspeed_config, args, num_training_steps, model_parameters):
     """

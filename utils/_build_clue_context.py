@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_clue_context(observation: Mapping[str, Any]) -> str:
     """Build the clue / guess-progress context string for Guesser turns."""

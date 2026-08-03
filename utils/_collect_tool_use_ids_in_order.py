@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _collect_tool_use_ids_in_order(messages: List[Dict[str, Any]]) -> List[str]:
     """Return tool_use ids in the chronological order they appear in messages."""

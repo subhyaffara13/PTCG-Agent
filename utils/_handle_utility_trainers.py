@@ -1,3 +1,4 @@
+import random
 
 def _handle_utility_trainers(gs, hand, base_name, CardRegistry, int_or_str):
     if any(k in base_name for k in {"night stretcher", "night-stretcher"}):

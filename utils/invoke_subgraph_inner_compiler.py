@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def invoke_subgraph_inner_compiler(
     subgraph: torch.fx.GraphModule, example_inputs: list[torch.Tensor]

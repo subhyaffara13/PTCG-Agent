@@ -1,3 +1,4 @@
+import itertools
 
 def _mma_single_tile(
     acc: fa.FragmentedArray, a: fa.FragmentedArray, b: fa.FragmentedArray

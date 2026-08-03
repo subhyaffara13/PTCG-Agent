@@ -1,3 +1,4 @@
+from typing import Any
 
 def list_mode_options(
     mode: str | None = None, dynamic: bool | None = None

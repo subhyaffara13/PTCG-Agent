@@ -1,3 +1,4 @@
+import re
 
 def bin_xml_escape(arg: object) -> str:
     r"""Visually escape invalid XML characters.

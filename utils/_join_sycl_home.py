@@ -1,3 +1,4 @@
+import os
 
 def _join_sycl_home(*paths) -> str:
     """

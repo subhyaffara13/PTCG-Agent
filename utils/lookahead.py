@@ -1,3 +1,4 @@
+import logging
 
 def lookahead(
     fast_optimizer: base.GradientTransformation,

@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def get_default_static_quant_reference_module_mappings() -> dict[Callable, Any]:
     """Get reference module mapping for post training static quantization"""

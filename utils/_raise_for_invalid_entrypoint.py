@@ -1,3 +1,4 @@
+import os
 
 def _raise_for_invalid_entrypoint(specification: str, scripts_dir: str) -> None:
     entry = get_export_entry(specification)

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _none_checkpointable_name_not_supported_error(
     path: Path,

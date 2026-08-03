@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_addfont_as_path(monkeypatch):
     """Smoke test that addfont() accepts pathlib.Path."""

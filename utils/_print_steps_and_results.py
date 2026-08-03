@@ -1,3 +1,4 @@
+from typing import Any
 
 def _print_steps_and_results(env: Any) -> None:
     print("\n=== GAME STEPS ===")

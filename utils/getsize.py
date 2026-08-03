@@ -1,3 +1,4 @@
+import os
 
 def getsize(path):
   """Return the size, in bytes, of path."""

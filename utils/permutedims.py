@@ -1,3 +1,4 @@
+import itertools
 
 def permutedims(expr, perm=None, index_order_old=None, index_order_new=None):
     """

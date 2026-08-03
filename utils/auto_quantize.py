@@ -1,3 +1,4 @@
+import functools
 
 def auto_quantize(func, qtype, quant_loss=None):
     """

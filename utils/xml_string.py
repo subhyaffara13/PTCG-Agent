@@ -1,3 +1,4 @@
+from typing import Callable
 
 def xml_string(string_type: XmlStringSerializationType) -> Callable[[_F], _F]:
     """Decorator"""

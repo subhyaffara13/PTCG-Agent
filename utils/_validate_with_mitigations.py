@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _validate_with_mitigations(
     op: Callable[..., Any],

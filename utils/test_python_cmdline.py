@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def test_python_cmdline(testcase: DataDrivenTestCase, step: int) -> None:
     assert testcase.old_cwd is not None, "test was not properly set up"

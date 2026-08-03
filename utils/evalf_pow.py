@@ -1,3 +1,6 @@
+import re
+import math
+
 
 def evalf_pow(v: 'Pow', prec: int, options) -> TMP_RES:
 

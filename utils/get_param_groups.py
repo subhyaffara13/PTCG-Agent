@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_param_groups(
     inputs: list[Node], params: list[Node], reverse_edges_dict

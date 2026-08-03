@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional, Union
 
 def _convert_teams_to_response_models(
     teams: list,

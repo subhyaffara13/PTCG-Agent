@@ -1,3 +1,4 @@
+from typing import Any
 
 def read_sql_query(  # pyright: ignore[reportOverlappingOverload]
     sql,

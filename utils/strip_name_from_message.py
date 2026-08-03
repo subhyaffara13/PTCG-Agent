@@ -1,3 +1,4 @@
+from typing import List
 
 def strip_name_from_message(
     message: AllMessageValues, allowed_name_roles: List[str] = ["user"]

@@ -1,3 +1,4 @@
+import subprocess
 
 def launch(url: str, wait: bool = False, locate: bool = False) -> int:
     """This function launches the given URL (or filename) in the default

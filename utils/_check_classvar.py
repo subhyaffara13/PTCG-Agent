@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _check_classvar(v: Optional[Type[Any]]) -> bool:
     if v is None:

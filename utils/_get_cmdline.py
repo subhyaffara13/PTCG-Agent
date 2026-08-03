@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_cmdline(pid):
     path = os.path.join("/proc", str(pid), "cmdline")

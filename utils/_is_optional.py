@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _is_optional(type_: type) -> bool:
     """Returns whether a type_ is an Optional."""

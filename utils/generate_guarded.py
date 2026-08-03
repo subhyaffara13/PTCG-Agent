@@ -1,3 +1,4 @@
+import sys
 
 def generate_guarded(
     mod: str, target: str, ignore_errors: bool = True, verbose: bool = False

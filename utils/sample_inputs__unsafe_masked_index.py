@@ -1,3 +1,4 @@
+import functools
 
 def sample_inputs__unsafe_masked_index(op_info, device, dtype, requires_grad, **kwargs):
     make_arg = partial(make_tensor, device=device, dtype=dtype, requires_grad=requires_grad)

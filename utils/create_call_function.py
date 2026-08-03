@@ -1,3 +1,4 @@
+import sys
 
 def create_call_function(nargs: int, push_null: bool) -> list[Instruction]:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_qconv_weight_prepack_pass(
     pattern, pass_number, dtype=torch.float32, with_dtype_convert=False

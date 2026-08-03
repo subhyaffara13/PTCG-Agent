@@ -1,3 +1,4 @@
+from typing import List
 
 def reorderGlyphs(font: ttLib.TTFont, new_glyph_order: List[str]):
     old_glyph_order = font.getGlyphOrder()

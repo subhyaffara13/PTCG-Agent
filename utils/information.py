@@ -1,3 +1,4 @@
+from typing import Any
 
 def information(version: str, plugins: Plugins) -> dict[str, Any]:
     """Generate the information to be printed for the bug report."""

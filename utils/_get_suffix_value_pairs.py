@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_suffix_value_pairs(
   tree_or_leaf: Any,

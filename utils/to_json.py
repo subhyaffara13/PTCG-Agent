@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def to_json(
     path_or_buf: FilePath | WriteBuffer[str] | WriteBuffer[bytes],

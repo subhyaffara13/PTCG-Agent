@@ -1,3 +1,4 @@
+import re
 
 def _mask_hidden_input(message: str, value: str) -> str:
     """Replace occurrences of ``value`` in ``message`` with a fixed mask.

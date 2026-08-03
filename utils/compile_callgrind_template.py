@@ -1,3 +1,4 @@
+import os
 
 def compile_callgrind_template(*, stmt: str, setup: str, global_setup: str) -> str:
     template_path: str = os.path.join(SOURCE_ROOT, "valgrind_wrapper", "timer_callgrind_template.cpp")

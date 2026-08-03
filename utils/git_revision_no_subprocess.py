@@ -1,3 +1,4 @@
+import os
 
 def git_revision_no_subprocess(dir: str) -> bytes | None:
     """Get the SHA-1 of HEAD by reading git files directly, without a subprocess.

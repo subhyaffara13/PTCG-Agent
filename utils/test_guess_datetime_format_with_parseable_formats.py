@@ -1,3 +1,4 @@
+import re
 
 def test_guess_datetime_format_with_parseable_formats(string, fmt):
     with tm.maybe_produces_warning(

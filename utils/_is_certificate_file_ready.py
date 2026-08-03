@@ -1,3 +1,4 @@
+import os
 
 def _is_certificate_file_ready(path):
     """Checks if a file exists and is not empty."""

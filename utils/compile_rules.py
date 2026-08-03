@@ -1,3 +1,4 @@
+import re
 
 def compile_rules(environment: "Environment") -> t.List[t.Tuple[str, str]]:
     """Compiles all the rules from the environment into a list of rules."""

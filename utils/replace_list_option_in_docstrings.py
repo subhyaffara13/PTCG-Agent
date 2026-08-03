@@ -1,3 +1,5 @@
+import re
+from typing import Callable
 
 def replace_list_option_in_docstrings(
     config_to_class=None, use_model_types: bool = True

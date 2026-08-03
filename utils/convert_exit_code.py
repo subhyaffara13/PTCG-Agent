@@ -1,3 +1,4 @@
+import os
 
 def convert_exit_code(status):
     """Convert a os.waitpid() status to an exit code."""

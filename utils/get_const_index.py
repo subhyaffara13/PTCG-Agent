@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_const_index(code_options: dict[str, Any], val: Any) -> int:
     for i, v in enumerate(code_options["co_consts"]):

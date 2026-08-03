@@ -1,3 +1,4 @@
+import functools
 
 def _topmost_artist(
         artists,

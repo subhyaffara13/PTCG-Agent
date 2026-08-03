@@ -1,3 +1,4 @@
+from typing import Optional
 
 def normalize_str_to_list(x: Optional[StrOrStrList]) -> list[str]:
   if x is None:

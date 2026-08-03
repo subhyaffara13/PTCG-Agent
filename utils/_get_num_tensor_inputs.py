@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_num_tensor_inputs(op_schema: OpSchema) -> int:
     num_inputs = 0

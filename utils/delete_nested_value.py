@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def delete_nested_value(
     data: Dict[str, Any],

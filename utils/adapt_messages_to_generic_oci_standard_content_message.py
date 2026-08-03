@@ -1,3 +1,4 @@
+from typing import List, Union
 
 def adapt_messages_to_generic_oci_standard_content_message(
     role: str, content: Union[str, list]

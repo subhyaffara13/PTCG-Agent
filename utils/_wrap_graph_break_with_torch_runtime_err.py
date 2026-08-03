@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _wrap_graph_break_with_torch_runtime_err(gb_fn: Callable[[], NoReturn]) -> NoReturn:
     from .exc import TorchRuntimeError, Unsupported

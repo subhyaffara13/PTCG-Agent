@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_hop_fw_bw(
     fw_gm: GraphModule,

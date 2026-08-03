@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _build_file_search_call_output(
     call_id: str,

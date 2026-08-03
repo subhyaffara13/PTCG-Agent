@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_source_from_frame(cls: type[Any]) -> list[str] | None:
     frame = inspect.currentframe()

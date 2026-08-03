@@ -1,3 +1,4 @@
+import os
 
 def test_compressed_roundtrip(tmpdir):
     arr = np.random.rand(200, 200)

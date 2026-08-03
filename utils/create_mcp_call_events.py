@@ -1,3 +1,5 @@
+import uuid
+from typing import List, Optional
 
 def create_mcp_call_events(
     tool_name: str,

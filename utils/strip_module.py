@@ -1,3 +1,4 @@
+import os
 
 def strip_module(filename):
     if '.' in filename:

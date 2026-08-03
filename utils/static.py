@@ -1,3 +1,4 @@
+from typing import Any
 
 def static(prefix: str, path: PathLike, **kwargs: Any) -> StaticDef:
     return StaticDef(prefix, path, kwargs)

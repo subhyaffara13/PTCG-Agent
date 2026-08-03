@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _encode_tool_call_id_with_signature(
     tool_call_id: str, thought_signature: Optional[str]

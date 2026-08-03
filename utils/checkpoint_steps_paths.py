@@ -1,3 +1,4 @@
+from typing import List
 
 def checkpoint_steps_paths(
     checkpoint_dir: epath.PathLike,

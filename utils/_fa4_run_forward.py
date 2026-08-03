@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fa4_run_forward(
     query: torch.Tensor,

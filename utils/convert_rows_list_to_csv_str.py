@@ -1,3 +1,4 @@
+import os
 
 def convert_rows_list_to_csv_str(rows_list: list[str]) -> str:
     """

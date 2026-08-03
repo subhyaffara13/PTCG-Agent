@@ -1,3 +1,4 @@
+from typing import List
 
 def HTMLBody(children: List[str], css_styles=css) -> str:
     """

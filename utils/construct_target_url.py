@@ -1,3 +1,4 @@
+from typing import Optional
 
 def construct_target_url(
     base_url: str,

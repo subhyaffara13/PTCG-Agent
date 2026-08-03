@@ -1,3 +1,4 @@
+from typing import Any
 
 def fuse_fx(gm: torch.fx.GraphModule, example_inputs) -> torch.fx.GraphModule:
     is_cpu = is_cpu_device(example_inputs)

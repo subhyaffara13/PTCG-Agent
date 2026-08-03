@@ -1,3 +1,4 @@
+from typing import Any
 
 def batch_space(space: Space[Any], n: int = 1) -> Space[Any]:
     """Batch spaces of size `n` optimized for neural networks.

@@ -1,3 +1,4 @@
+import re
 
 def test_metadata_immutable(idx):
     levels, codes = idx.levels, idx.codes

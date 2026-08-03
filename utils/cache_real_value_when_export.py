@@ -1,3 +1,4 @@
+from typing import Any
 
 def cache_real_value_when_export(
     tx: "InstructionTranslatorBase", proxy: Any, example_value: Any

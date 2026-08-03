@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def naturally(
     to_sort: Iterable[str], key: Callable[[str], Any] | None = None, reverse: bool = False

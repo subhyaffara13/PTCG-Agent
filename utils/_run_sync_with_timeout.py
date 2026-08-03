@@ -1,3 +1,4 @@
+from typing import Any
 
 def _run_sync_with_timeout(
     promise: Any,

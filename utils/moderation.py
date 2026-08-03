@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def moderation(
     input: str, model: Optional[str] = None, api_key: Optional[str] = None, **kwargs

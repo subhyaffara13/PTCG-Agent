@@ -1,3 +1,4 @@
+import json
 
 def _sign_jwt_request(request, principal, headers, payload, delegates=[]):
     """Makes a request to the Google Cloud IAM service to sign a JWT using a

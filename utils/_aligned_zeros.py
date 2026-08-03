@@ -1,3 +1,4 @@
+import functools
 
 def _aligned_zeros(shape, dtype=float, order="C", align=None):
     """

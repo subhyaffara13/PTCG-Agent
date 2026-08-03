@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_graph_created_object(
     example_value: Any, construct_fn: Callable[[int, PyCodegen], None]

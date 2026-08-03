@@ -1,3 +1,4 @@
+import functools
 
 def triton_config_reduction(
     size_hints,

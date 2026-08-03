@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_msg_dict(func_name, *args, **kwargs) -> dict[str, Any]:
     if dist.is_initialized():

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _gcd_terms(terms, isprimitive=False, fraction=True):
     """Helper function for :func:`gcd_terms`.

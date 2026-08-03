@@ -1,3 +1,4 @@
+import random
 
 def GeneralConv(dimension_numbers, out_chan, filter_shape,
                 strides=None, padding='VALID', W_init=None,

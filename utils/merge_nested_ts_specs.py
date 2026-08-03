@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_nested_ts_specs(dict1: dict[Any, Any], dict2: dict[Any, Any] | None):
   """Merge two ts specs, dict2 takes precedence."""

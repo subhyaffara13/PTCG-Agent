@@ -1,3 +1,4 @@
+import logging
 
 def process_index() -> int:
   """Customized logic for obtaining JAX process index."""

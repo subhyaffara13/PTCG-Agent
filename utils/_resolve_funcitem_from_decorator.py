@@ -1,3 +1,4 @@
+import copy
 
 def _resolve_funcitem_from_decorator(dec: nodes.OverloadPart) -> nodes.FuncItem | None:
     """Returns a FuncItem that corresponds to the output of the decorator.

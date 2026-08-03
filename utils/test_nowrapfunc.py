@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_nowrapfunc(capfd, hello_world_f90, monkeypatch):
     """Ensures that fortran subroutine wrappers for F77 can be disabled

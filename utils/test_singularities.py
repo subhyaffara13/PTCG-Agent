@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_singularities():
     assert integrate(1/x**2, (x, -oo, oo)) is oo

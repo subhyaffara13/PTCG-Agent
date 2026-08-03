@@ -1,3 +1,4 @@
+import sys
 
 def _lazy_import(fullname):
     """Return a lazily imported proxy for a module or library.

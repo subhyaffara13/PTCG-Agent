@@ -1,3 +1,4 @@
+from typing import Any
 
 def replace_with_canonical_aliases(
     node: Any,

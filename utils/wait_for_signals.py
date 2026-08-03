@@ -1,3 +1,4 @@
+import logging
 
 def wait_for_signals(
     receive_signals: Sequence[synchronization.HandlerAwaitableSignal],

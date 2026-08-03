@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_team_ids_with_key_list_permission_from_objects(
     user_api_key_dict: UserAPIKeyAuth,

@@ -1,3 +1,4 @@
+from typing import Set
 
 def test_ordered_partition_9608():
     a = Partition([1, 2, 3], [4])

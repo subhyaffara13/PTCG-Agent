@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _create_graph_and_save_traced_inputs(
     fn_to_trace: Callable[..., Any],

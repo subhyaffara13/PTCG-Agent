@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _read_global_instruction(readline: Callable) -> tuple[str, str]:
     module = readline()[:-1].decode("utf-8")

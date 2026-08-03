@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Optional
 
 def load_cli_token() -> Optional[dict]:
     """Load CLI token data from file"""

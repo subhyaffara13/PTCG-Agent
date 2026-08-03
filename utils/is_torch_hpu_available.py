@@ -1,3 +1,4 @@
+import os
 
 def is_torch_hpu_available() -> bool:
     "Checks if `torch.hpu` is available and potentially if a HPU is in the environment"

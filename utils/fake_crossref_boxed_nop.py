@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fake_crossref_boxed_nop(
     fx_g: torch.fx.GraphModule,

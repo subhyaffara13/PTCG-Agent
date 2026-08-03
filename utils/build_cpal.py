@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def buildCPAL(
     palettes: Sequence[Sequence[Tuple[float, float, float, float]]],

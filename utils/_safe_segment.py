@@ -1,3 +1,4 @@
+import re
 
 def _safe_segment(segment):
     """Convert an arbitrary string into a safe segment"""

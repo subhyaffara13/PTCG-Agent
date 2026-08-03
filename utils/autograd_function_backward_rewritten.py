@@ -1,3 +1,4 @@
+from typing import Any
 
 def autograd_function_backward_rewritten(original_backward: Any) -> Any:
     def new_backward(ctx: Any, *grads: Any) -> Any:

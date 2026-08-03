@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _read_dict_from_shared_memory(space: Dict, shared_memory, n: int = 1):
     return {

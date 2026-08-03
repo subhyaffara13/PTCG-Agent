@@ -1,3 +1,5 @@
+import os
+import uuid
 
 def download_url_to_file(
     url: str,

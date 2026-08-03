@@ -1,3 +1,4 @@
+import sys
 
 def create_terminal_printer(
     color: bool, output: TextIO | None = None, error: str = "", success: str = ""

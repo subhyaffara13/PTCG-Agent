@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_fail_callback(callback: ConvertFrameProtocol) -> ConvertFrameProtocol:
     fail_callback = getattr(callback, "_dynamo_fail_callback", None)

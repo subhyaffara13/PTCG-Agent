@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _classify_csv(csv_path: Path) -> tuple[int, int, int]:
     """Return (done, timed_out, crashed_other) from games.csv."""

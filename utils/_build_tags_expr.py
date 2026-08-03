@@ -1,3 +1,4 @@
+import json
 
 def _build_tags_expr(available_keys: list[str]) -> pl.Expr:
     """Build a Polars expression that produces a JSON Tags string per row.

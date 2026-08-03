@@ -1,3 +1,4 @@
+import os
 
 def update_testcase_output(testcase: DataDrivenTestCase, output: list[str]) -> None:
     # TODO: backport this to mypy

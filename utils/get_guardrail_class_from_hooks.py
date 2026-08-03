@@ -1,3 +1,4 @@
+import os
 
 def get_guardrail_class_from_hooks():
     """

@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def extract_docstrings_from_cls(cls: type[Any], use_inspect: bool = False) -> dict[str, str]:
     """Map model attributes and their corresponding docstring.

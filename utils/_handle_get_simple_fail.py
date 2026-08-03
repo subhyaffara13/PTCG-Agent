@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _handle_get_simple_fail(
     link: Link,

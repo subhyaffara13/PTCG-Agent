@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def ipython_inline_display(figure):
     import tornado.template

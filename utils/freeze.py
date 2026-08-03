@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def freeze(
     mod, preserved_attrs: list[str] | None = None, optimize_numerics: bool = True

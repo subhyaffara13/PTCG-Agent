@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def aot_eager_decomp_partition_with_mode(
     gm: torch.fx.GraphModule,

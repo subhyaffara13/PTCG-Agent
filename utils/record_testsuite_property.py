@@ -1,3 +1,4 @@
+from typing import Callable
 
 def record_testsuite_property(request: FixtureRequest) -> Callable[[str, object], None]:
     """Record a new ``<property>`` tag as child of the root ``<testsuite>``.

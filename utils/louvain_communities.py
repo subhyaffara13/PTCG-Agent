@@ -1,3 +1,4 @@
+import itertools
 
 def louvain_communities(
     G, weight="weight", resolution=1, threshold=0.0000001, max_level=None, seed=None

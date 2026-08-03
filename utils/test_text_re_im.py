@@ -1,3 +1,4 @@
+import re
 
 def test_text_re_im():
     assert latex(im(x), gothic_re_im=True) == r'\Im{\left(x\right)}'

@@ -1,3 +1,4 @@
+import subprocess
 
 def init_xsel_clipboard():
     DEFAULT_SELECTION = "-b"

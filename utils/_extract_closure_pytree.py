@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _extract_closure_pytree(
     fn, _seen: set[int] | None = None

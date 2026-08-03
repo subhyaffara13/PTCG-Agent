@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def relative_alias_names(
     relative_scope: Mapping[str, Any] | Literal["magic"],

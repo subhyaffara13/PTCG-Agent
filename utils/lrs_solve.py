@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def lrs_solve(row_payoffs, col_payoffs, lrsnash_max_denom, lrsnash_path):
   """Find all Nash equilibria using the lrsnash solver.

@@ -1,3 +1,4 @@
+import sys
 
 def urlencode(query, doseq=False, safe='', encoding=None, errors=None,
               quote_via=quote_plus):

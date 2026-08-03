@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def tokenizer_class_from_name(class_name: str) -> type[Any] | None:
     # Bloom tokenizer classes were removed but should map to the fast backend for BC

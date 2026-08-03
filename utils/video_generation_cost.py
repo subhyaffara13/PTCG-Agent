@@ -1,3 +1,4 @@
+from typing import Optional
 
 def video_generation_cost(
     model: str,

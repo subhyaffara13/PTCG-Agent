@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def dfs_base_table(
     root: BaseTable,

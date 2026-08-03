@@ -1,3 +1,4 @@
+import json
 
 def print_file_listing(
     items: Sequence[BucketItem] | Sequence[RepoItem],

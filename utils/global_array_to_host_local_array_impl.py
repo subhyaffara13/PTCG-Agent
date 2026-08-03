@@ -1,3 +1,4 @@
+from typing import Any
 
 def global_array_to_host_local_array_impl(
     arr: Any, *, global_mesh: jax.sharding.Mesh, pspec: Any):

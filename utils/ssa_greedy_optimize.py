@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Dict, List
 
 def ssa_greedy_optimize(
     inputs: List[ArrayIndexType],

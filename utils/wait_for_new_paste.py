@@ -1,3 +1,4 @@
+import time
 
 def waitForNewPaste(timeout=None):
     """This function call blocks until a new text string exists on the

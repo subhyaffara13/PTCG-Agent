@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_timestamp(path: str) -> Optional[float]:
     if not os.path.isfile(path):

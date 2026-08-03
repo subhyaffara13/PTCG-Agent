@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_node_count(graph: Any) -> int:
     """Return the number of nodes currently in the graph."""

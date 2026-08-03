@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def jagged_from_list(
     tensors: List[torch.Tensor],

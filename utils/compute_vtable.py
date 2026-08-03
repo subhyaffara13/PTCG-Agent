@@ -1,3 +1,4 @@
+import itertools
 
 def compute_vtable(cls: ClassIR) -> None:
     """Compute the vtable structure for a class."""

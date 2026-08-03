@@ -1,3 +1,5 @@
+import math
+
 
 def _iota_2x32_shape_lowering(ctx: LoweringRuleContext, *, shape):
   total_elements = math.prod(shape)

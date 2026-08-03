@@ -1,3 +1,4 @@
+from typing import Callable
 
 def gen_generator_func(
     builder: IRBuilder,

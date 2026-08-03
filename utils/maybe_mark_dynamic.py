@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_mark_dynamic(t: Any, index: int | list[Any] | tuple[Any]) -> None:
     """

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _clean_conversion_cache():
     # This will actually ignore mpl_toolkits baseline images, but they're

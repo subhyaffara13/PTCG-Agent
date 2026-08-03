@@ -1,3 +1,4 @@
+from typing import Any
 
 def autograd_key(
     fw_gm: GraphModule,

@@ -1,3 +1,5 @@
+import json
+import re
 
 def _gemma4_json_to_json(text: str) -> str:
     """Convert Gemma4 tool call format (unquoted keys, ``<|"|>`` string delimiters) to valid JSON."""

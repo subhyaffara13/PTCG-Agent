@@ -1,3 +1,4 @@
+import re
 
 def test_table_index_incompatible_dtypes(temp_hdfstore):
     df1 = DataFrame({"a": [1, 2, 3]})

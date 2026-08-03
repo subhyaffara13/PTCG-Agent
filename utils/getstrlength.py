@@ -1,3 +1,4 @@
+import re
 
 def getstrlength(var):
     if isstringfunction(var):

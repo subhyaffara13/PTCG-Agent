@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tagged_union_schema(
     choices: dict[Any, CoreSchema],

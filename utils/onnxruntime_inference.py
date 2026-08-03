@@ -1,3 +1,4 @@
+import random
 
 def onnxruntime_inference(session, all_inputs, output_names):
     if len(all_inputs) > 0:

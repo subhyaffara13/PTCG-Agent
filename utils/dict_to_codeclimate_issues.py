@@ -1,3 +1,4 @@
+import re
 
 def dict_to_codeclimate_issues(results, threshold='B'):
     '''Convert a dictionary holding CC analysis results into Code Climate

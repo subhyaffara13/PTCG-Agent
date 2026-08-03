@@ -1,3 +1,4 @@
+import os
 
 def test_fortranfile_write_mixed_record(tmpdir):
     tf = path.join(str(tmpdir), str(threading.get_native_id()), 'test.dat')

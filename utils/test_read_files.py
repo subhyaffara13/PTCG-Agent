@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_read_files(tmp_path, monkeypatch):
     dir_ = tmp_path / "dir_"

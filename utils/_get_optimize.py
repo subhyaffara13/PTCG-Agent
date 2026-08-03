@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_optimize(im: Image.Image, info: dict[str, Any]) -> list[int] | None:
     """

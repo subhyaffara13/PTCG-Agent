@@ -1,3 +1,4 @@
+import os
 
 def atomic_write_binary(file_path: str, data: bytes):
     dir_name = os.path.dirname(file_path) or "."

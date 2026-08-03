@@ -1,3 +1,4 @@
+import os
 
 def _get_rocm_arch_flags(cflags: list[str] | None = None) -> list[str]:
     # If cflags is given, there may already be user-provided arch flags in it

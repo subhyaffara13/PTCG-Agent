@@ -1,3 +1,4 @@
+from typing import Any
 
 def _torch_to_device(
     x: torch.Tensor,

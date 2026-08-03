@@ -1,3 +1,6 @@
+import copy
+import functools
+from typing import Any
 
 def equalize(image: Image.Image, mask: Image.Image | None = None) -> Image.Image:
     """

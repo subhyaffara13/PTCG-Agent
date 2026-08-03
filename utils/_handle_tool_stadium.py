@@ -1,3 +1,4 @@
+import random
 
 def _handle_tool_stadium(gs, base_name, CardRegistry, target):
     if any(k in base_name for k in {"choice belt", "bravery charm", "forest seal", "canceling cologne", "tool"}):

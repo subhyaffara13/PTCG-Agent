@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_state_dict_similarity(
     state_dict: dict[str, Any],

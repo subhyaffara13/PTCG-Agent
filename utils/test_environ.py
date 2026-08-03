@@ -1,3 +1,4 @@
+import os
 
 def test_environ():
     # See: https://github.com/pytoolz/cytoolz/issues/127

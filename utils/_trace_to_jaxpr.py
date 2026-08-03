@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _trace_to_jaxpr(fun, in_tree, in_avals, dbg):
   f = lu.wrap_init(fun, debug_info=dbg)

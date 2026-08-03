@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def proxy_mode_key(
     proxy_mode: ProxyTorchDispatchMode,

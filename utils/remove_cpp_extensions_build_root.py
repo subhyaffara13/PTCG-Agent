@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def remove_cpp_extensions_build_root():
     """

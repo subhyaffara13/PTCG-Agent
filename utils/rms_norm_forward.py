@@ -1,3 +1,4 @@
+import functools
 
 def rms_norm_forward(
     x, weight, bias,

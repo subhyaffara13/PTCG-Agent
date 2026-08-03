@@ -1,3 +1,5 @@
+import math
+
 
 def mi_compute(halstead_volume, complexity, sloc, comments):
     '''Compute the Maintainability Index (MI) given the Halstead Volume, the

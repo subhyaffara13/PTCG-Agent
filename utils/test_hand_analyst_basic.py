@@ -1,3 +1,4 @@
+import json
 
 def test_hand_analyst_basic(tmp_path):
     skills_dir = tmp_path / "skills"

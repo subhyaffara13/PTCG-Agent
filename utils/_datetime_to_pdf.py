@@ -1,3 +1,4 @@
+import time
 
 def _datetime_to_pdf(d):
     """

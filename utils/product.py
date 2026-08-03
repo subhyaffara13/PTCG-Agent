@@ -1,3 +1,7 @@
+import functools
+import itertools
+import math
+
 
 def product(*iterables, repeat=1, total=None, tqdm_class=tqdm_auto, **kwargs):
     """Equivalent of `itertools.product`."""

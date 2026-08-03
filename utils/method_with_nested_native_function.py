@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def method_with_nested_native_function(
     func: Callable[[S, F3], T],

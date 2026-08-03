@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_flag_parser(*, parser: flags.ArgumentParser) -> Callable[[_T], _T]:
   """Creates a decorator to register parser on types.

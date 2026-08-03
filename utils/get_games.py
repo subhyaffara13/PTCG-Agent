@@ -1,3 +1,5 @@
+import os
+from typing import List
 
 def get_games(input_dir: str) -> List[dict]:
     """Loads all game replay JSONs from a directory, walking subdirectories.

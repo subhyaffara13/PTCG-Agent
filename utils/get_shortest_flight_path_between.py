@@ -1,3 +1,4 @@
+import random
 
 def get_shortest_flight_path_between(position_a, position_b, size, trailing_digits=False):
     mag_x = 1 if position_b.x > position_a.x else -1

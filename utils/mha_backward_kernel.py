@@ -1,3 +1,5 @@
+import math
+
 
 def mha_backward_kernel(
     # Inputs

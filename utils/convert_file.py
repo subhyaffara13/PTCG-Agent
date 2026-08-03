@@ -1,3 +1,4 @@
+import sys
 
 def convert_file(filename: str) -> None:
     """

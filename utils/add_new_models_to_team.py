@@ -1,3 +1,4 @@
+from typing import List
 
 def add_new_models_to_team(
     team_obj: LiteLLM_TeamTable, new_models: List[str]

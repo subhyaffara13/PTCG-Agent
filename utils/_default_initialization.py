@@ -1,3 +1,5 @@
+import math
+
 
 def _default_initialization(x):
   assert hasattr(x, 'shape')

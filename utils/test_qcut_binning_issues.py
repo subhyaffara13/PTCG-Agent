@@ -1,3 +1,4 @@
+import os
 
 def test_qcut_binning_issues(datapath):
     # see gh-1978, gh-1979

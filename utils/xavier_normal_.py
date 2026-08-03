@@ -1,3 +1,5 @@
+import math
+
 
 def xavier_normal_(tensor: torch.Tensor, gain: float = 1.0, generator: torch.Generator | None = None) -> torch.Tensor:
     if not getattr(tensor, "_is_hf_initialized", False):

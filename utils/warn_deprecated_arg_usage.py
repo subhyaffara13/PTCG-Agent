@@ -1,3 +1,4 @@
+from typing import Union
 
 def warn_deprecated_arg_usage(
     arg_name: Union[list, str],

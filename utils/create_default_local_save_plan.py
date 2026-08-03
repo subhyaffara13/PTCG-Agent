@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_default_local_save_plan(
     state_dict: dict[str, Any], is_coordinator: bool

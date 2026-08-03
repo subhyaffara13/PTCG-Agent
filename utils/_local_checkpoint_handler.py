@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _local_checkpoint_handler(
     multiprocessing_options: checkpoint_manager.MultiprocessingOptions,

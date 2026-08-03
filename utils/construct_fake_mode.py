@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_fake_mode(
     flat_args: list[Any], aot_config: AOTConfig

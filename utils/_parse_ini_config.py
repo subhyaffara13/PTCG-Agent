@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _parse_ini_config(path: Path) -> iniconfig.IniConfig:
     """Parse the given generic '.ini' file using legacy IniConfig parser, returning

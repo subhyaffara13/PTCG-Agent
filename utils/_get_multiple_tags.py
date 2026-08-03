@@ -1,3 +1,4 @@
+import re
 
 def _get_multiple_tags(params: str) -> tuple[list[str], str]:
     """Check for multiple tags when the title is double quoted."""

@@ -1,3 +1,4 @@
+import sys
 
 def py_scanstring(s, end, encoding=None, strict=True,
         _b=BACKSLASH, _m=STRINGCHUNK.match, _join=u''.join,

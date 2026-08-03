@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_mocked_request(
     method: str,

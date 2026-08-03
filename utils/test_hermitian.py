@@ -1,3 +1,4 @@
+import itertools
 
 def test_hermitian():
     H = HermitianOperator('H')

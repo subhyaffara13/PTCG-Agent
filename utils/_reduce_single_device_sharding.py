@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _reduce_single_device_sharding(
     sharding: jax.sharding.SingleDeviceSharding,

@@ -1,3 +1,4 @@
+import re
 
 def _clean_stack_name(stack_name: str) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import List
 
 def is_valid_deployment_tag(
     deployment_tags: List[str], request_tags: List[str], match_any: bool = True

@@ -1,3 +1,5 @@
+import math
+
 
 def _quantile(
     arr: "np.typing.ArrayLike",

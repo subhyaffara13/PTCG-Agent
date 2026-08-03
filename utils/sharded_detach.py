@@ -1,3 +1,4 @@
+import copy
 
 def sharded_detach(args, kwargs, pg):
     self_st = args[0]

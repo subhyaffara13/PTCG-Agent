@@ -1,3 +1,5 @@
+import os
+import sys
 
 def kernelspec_from_language(language):
     """Return the python kernel that matches the current env, or the first kernel that matches the given language"""

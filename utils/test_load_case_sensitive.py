@@ -1,3 +1,4 @@
+import sys
 
 def test_load_case_sensitive(monkeypatch):
     mpl_test_backend = SimpleNamespace(**vars(backend_template))

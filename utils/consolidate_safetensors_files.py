@@ -1,3 +1,4 @@
+import time
 
 def consolidate_safetensors_files(
     input_dir: str,

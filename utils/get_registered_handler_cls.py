@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_registered_handler_cls(
     arg: Union[Type[CheckpointArgs], CheckpointArgs]

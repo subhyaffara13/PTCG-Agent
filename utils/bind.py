@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bind(optional: _T | None, fn: Callable[[_T], _R]) -> _R | None:
     if optional is None:

@@ -1,3 +1,4 @@
+import os
 
 def get_conda_packages(run_lambda, patterns=None):
     if patterns is None:

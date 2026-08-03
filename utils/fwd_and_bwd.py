@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fwd_and_bwd(
     fun: Callable, argnums: int | Sequence[int], has_aux: bool = False,

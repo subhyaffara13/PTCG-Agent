@@ -1,3 +1,4 @@
+import sys
 
 def get_procfs_path():
     """Return updated psutil.PROCFS_PATH constant."""

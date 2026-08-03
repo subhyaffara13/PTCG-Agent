@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def load_config(config_path: str) -> dict[str, Any]:
   """Loads and validates a benchmark YAML config into a raw dict.

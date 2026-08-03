@@ -1,3 +1,4 @@
+import re
 
 def rename_source_key(
     source_key: str,

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _prev_fail_rates(metrics_prev: Any, id_attr: str) -> Dict[str, float]:
     prev_agg_raw: Dict[str, Dict[str, int]] = {}

@@ -1,3 +1,4 @@
+from typing import Dict, List, Set
 
 def _rename_duplicate_bedrock_document_names(
     contents: List[BedrockMessageBlock],

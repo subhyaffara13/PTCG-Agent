@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def itemgetter(item: _T, /) -> Callable[[Any], _U]: ...
 

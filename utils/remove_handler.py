@@ -1,3 +1,4 @@
+import logging
 
 def remove_handler(handler: logging.Handler) -> None:
     """removes given handler from the HuggingFace Transformers's root logger."""

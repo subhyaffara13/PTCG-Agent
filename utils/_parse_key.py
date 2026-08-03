@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Tuple
 
 def _parse_key(key: str) -> Tuple[str, Optional[int]]:
   """Parse a ConfigDict key into to it's initial part and index (if any)."""

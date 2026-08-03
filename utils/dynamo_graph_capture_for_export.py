@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dynamo_graph_capture_for_export(
     fn: Callable[..., Any],

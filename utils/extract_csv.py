@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def extract_csv(input_dir: str, output_path: str, log_file_path: Optional[str] = None,
                 max_workers: Optional[int] = None) -> pd.DataFrame:

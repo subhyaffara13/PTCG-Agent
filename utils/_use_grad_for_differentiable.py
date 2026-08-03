@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _use_grad_for_differentiable(func: Callable[_P, _T]) -> Callable[_P, _T]:
     def _use_grad(*args: _P.args, **kwargs: _P.kwargs) -> _T:

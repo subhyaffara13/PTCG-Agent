@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_registry_mpl_resets():
     # Check that Matplotlib converters are properly reset (see issue #27481)

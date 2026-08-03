@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_cli_sso_start_rate_limit_cache_key(
     request: Request, use_x_forwarded_for: Optional[bool] = False

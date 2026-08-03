@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_dict(
     node: dict[Any, Any],

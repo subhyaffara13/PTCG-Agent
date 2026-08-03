@@ -1,3 +1,4 @@
+import re
 
 def extract_entities_with_patch_indices(text):
     """Extract entities contained in `text`. The bounding bboxes is given in the form of patch indices.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def pydantic_general_metadata(**metadata: Any) -> BaseMetadata:
     """Create a new `_PydanticGeneralMetadata` class with the given metadata.

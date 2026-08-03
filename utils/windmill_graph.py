@@ -1,3 +1,4 @@
+import itertools
 
 def windmill_graph(n, k):
     """Generate a windmill graph.

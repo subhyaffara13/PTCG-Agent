@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _transcription_usage_has_token_details(
     usage_block: Optional[Usage],

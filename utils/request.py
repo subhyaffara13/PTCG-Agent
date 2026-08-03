@@ -1,3 +1,6 @@
+import json
+import sys
+from typing import Any, Optional
 
 def request(
     method: bytes | str,

@@ -1,3 +1,4 @@
+import sys
 
 def test_sigint(env, target, kwargs):
     backend = env.get("MPLBACKEND")

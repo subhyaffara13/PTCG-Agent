@@ -1,3 +1,4 @@
+from typing import Any
 
 def read_fwf(
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],

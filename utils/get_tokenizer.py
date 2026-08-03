@@ -1,3 +1,4 @@
+import os
 
 def get_tokenizer(pipeline_info: PipelineInfo, framework_model_dir, subfolder="tokenizer"):
     tokenizer_dir = os.path.join(framework_model_dir, pipeline_info.name(), subfolder)

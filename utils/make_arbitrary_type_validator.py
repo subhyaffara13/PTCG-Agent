@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_arbitrary_type_validator(type_: Type[T]) -> Callable[[T], T]:
     def arbitrary_type_validator(v: Any) -> T:

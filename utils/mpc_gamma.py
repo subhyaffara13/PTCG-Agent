@@ -1,3 +1,6 @@
+import re
+import math
+
 
 def mpc_gamma(z, prec, rnd='d', type=0):
     a, b = z

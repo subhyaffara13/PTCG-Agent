@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_eval_rule(
     prim: core.Primitive,

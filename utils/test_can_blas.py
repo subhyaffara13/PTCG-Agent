@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_can_blas(inp: Any, benchmark: bool) -> None:
     result = blas.can_blas(*inp)

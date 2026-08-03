@@ -1,3 +1,4 @@
+import sys
 
 def test_f2py_only(capfd, retreal_f77, monkeypatch):
     """Test that functions can be kept by only:

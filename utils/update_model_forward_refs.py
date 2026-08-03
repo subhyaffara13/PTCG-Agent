@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict, Tuple, Union
 
 def update_model_forward_refs(
     model: Type[Any],

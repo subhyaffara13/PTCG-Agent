@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_bool_as_set():
     assert ITE(y <= 0, False, y >= 1).as_set() == Interval(1, oo)

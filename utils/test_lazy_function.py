@@ -1,3 +1,4 @@
+import sys
 
 def test_lazy_function():
     module_name='xmlrpc.client'

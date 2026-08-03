@@ -1,3 +1,4 @@
+import sys
 
 def cli_detect(argv: list[str] | None = None) -> int:
     """

@@ -1,3 +1,4 @@
+import re
 
 def test_interactive_data():
     # verify that InteractiveSeries produces the same numerical data as their

@@ -1,3 +1,4 @@
+import re
 
 def expand_device_map(device_map: dict | None, param_names: list[str]):
     """

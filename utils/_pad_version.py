@@ -1,3 +1,5 @@
+import itertools
+from typing import List, Tuple
 
 def _pad_version(left: list[str], right: list[str]) -> tuple[list[str], list[str]]:
     left_split, right_split = [], []

@@ -1,3 +1,4 @@
+import os
 
 def auto_complete_paths(current: str, completion_type: str) -> Iterable[str]:
     """If ``completion_type`` is ``file`` or ``path``, list all regular files

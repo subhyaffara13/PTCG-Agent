@@ -1,3 +1,5 @@
+import math
+
 
 def make_sprite(label_img, save_path) -> None:
     from PIL import Image

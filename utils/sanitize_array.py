@@ -1,3 +1,4 @@
+import copy
 
 def sanitize_array(
     data,

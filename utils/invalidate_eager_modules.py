@@ -1,3 +1,4 @@
+import itertools
 
 def invalidate_eager_modules():
     with torch.utils._python_dispatch._disable_current_modes():

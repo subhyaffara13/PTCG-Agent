@@ -1,3 +1,4 @@
+import json
 
 def create_dot_product_attention_fp8_backend_config(
     batch, num_heads, seq_q, seq_kv, dtype, fmha_scale, mask_type, layout, is_bwd):

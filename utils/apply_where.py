@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_where(  # numpydoc ignore=GL08
     cond: Array,

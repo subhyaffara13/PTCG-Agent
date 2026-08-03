@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_monoid_reducer(monoid_op: Callable,
                         xs: Sequence[Array]) -> Callable | None:

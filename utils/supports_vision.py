@@ -1,3 +1,4 @@
+from typing import Optional
 
 def supports_vision(model: str, custom_llm_provider: Optional[str] = None) -> bool:
     """

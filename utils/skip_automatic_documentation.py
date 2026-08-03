@@ -1,3 +1,4 @@
+from typing import Any
 
 def skip_automatic_documentation(obj: Any):
   """Marks an object as skipped for automatic documentation generation."""

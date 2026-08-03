@@ -1,3 +1,4 @@
+from typing import Optional
 
 def mock_completion_streaming_obj(
     model_response, mock_response, model, n: Optional[int] = None

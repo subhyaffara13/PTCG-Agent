@@ -1,3 +1,4 @@
+import os
 
 def get_netrc_auth(
     url: _t.UriType, raise_errors: bool = False

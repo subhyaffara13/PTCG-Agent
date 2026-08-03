@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_along_axis(func1d, axis, arr, *args, **kwargs):
     """

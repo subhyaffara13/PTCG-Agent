@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def generate_list_convertor(
     convertor: Callable[[Any], Any] | None, default_value: Any | None

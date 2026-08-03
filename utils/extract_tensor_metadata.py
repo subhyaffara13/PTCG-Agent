@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_tensor_metadata(t: torch.Tensor) -> tuple[Any, ...]:
     return (t.shape, t.stride(), t.dtype, t.device, t.requires_grad)

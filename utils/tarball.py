@@ -1,3 +1,4 @@
+import os
 
 def tarball(
     url, target_dir: str | os.PathLike | None = None

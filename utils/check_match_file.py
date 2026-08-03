@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_match_file(
 	patterns: Iterable[tuple[int, Pattern]],

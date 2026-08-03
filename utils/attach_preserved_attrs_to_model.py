@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def attach_preserved_attrs_to_model(
     model: GraphModule | torch.nn.Module,

@@ -1,3 +1,4 @@
+import functools
 
 def assign_params(func, namespace):
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_barrier_from_config(
     barrier_config: BarrierConfig,

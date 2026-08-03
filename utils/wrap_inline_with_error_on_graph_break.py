@@ -1,3 +1,4 @@
+from typing import Callable
 
 def wrap_inline_with_error_on_graph_break(
     fn: Callable[_P, _R], error_on_graph_break: bool

@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def linetable_writer(
     first_lineno: int,

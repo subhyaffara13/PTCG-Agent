@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def ensure_patched(cls: Any) -> None:
     if getattr(cls, "___needs_mutation_patch", True):

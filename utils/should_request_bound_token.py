@@ -1,3 +1,4 @@
+import os
 
 def should_request_bound_token(cert):
     """Determines if a bound token should be requested.

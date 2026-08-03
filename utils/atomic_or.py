@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_or(ref: _Ref, val) -> None:
   """Performs an atomic store-or of the value to the reference.

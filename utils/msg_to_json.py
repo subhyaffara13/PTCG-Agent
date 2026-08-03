@@ -1,3 +1,4 @@
+from typing import Any
 
 def msg_to_json(msg: Message) -> dict[str, Any]:
     """Convert a Message object into a JSON-compatible dictionary."""

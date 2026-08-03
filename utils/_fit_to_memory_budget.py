@@ -1,3 +1,4 @@
+import logging
 
 def _fit_to_memory_budget(
     output_size: int, num_partitions: int, dtype: torch.dtype

@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Tuple
 
 def convert_interleaved_input(operands: Sequence[Any]) -> Tuple[str, Tuple[Any, ...]]:
     """Convert 'interleaved' input to standard einsum input."""

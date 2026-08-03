@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _find_sycl_home() -> str | None:
     sycl_home = None

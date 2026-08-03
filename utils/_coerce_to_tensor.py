@@ -1,3 +1,4 @@
+import copy
 
 def _coerce_to_tensor(obj, dtype=None, copy=False, ndmin=0):
     """The core logic of the array(...) function.

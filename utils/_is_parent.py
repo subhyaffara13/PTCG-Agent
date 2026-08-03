@@ -1,3 +1,4 @@
+import os
 
 def _is_parent(dir_a, dir_b):
     """

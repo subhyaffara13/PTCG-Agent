@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_as_Basic():
     assert as_Basic(1) is S.One

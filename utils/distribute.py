@@ -1,3 +1,4 @@
+import itertools
 
 def distribute(x):
     """ Control automatic distribution of Number over Add

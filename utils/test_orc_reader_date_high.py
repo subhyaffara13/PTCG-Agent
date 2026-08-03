@@ -1,3 +1,4 @@
+import os
 
 def test_orc_reader_date_high(dirpath):
     data = {

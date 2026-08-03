@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def shape_env_check_state_equal(
     env1: ShapeEnv,

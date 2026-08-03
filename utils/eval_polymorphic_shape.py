@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def eval_polymorphic_shape(fun_jax: Callable,
                *,

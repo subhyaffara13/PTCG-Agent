@@ -1,3 +1,5 @@
+import logging
+import re
 
 def _extract_int_from_repr(
     device: jax.Device,

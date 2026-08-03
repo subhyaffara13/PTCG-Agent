@@ -1,3 +1,4 @@
+from typing import Any
 
 def _multiply_at(a: Array, indices: Any, b: ArrayLike) -> Array:
   """Implementation of jnp.multiply.at."""

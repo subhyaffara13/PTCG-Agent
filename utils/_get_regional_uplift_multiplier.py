@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_regional_uplift_multiplier(
     model_info: ModelInfo, data_residency: Optional[str]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _load_extra_files(
     archive_reader: PT2ArchiveReader, file_names: list[str]

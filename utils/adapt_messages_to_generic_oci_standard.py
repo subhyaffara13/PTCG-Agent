@@ -1,3 +1,4 @@
+from typing import List
 
 def adapt_messages_to_generic_oci_standard(
     messages: List[AllMessageValues],

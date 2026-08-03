@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def add_policy_to_applied_policies_header(
     request_data: Dict, policy_name: Optional[str]

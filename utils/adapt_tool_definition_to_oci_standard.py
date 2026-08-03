@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def adapt_tool_definition_to_oci_standard(
     tools: List[Dict], vendor: OCIVendors

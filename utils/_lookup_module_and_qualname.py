@@ -1,3 +1,4 @@
+import sys
 
 def _lookup_module_and_qualname(obj, name=None):
     if name is None:

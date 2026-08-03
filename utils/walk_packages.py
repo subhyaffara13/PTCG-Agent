@@ -1,3 +1,4 @@
+import sys
 
 def walk_packages(
     inspect: ModuleInspect, packages: list[str], verbose: bool = False

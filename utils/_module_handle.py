@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _module_handle(state: _FSDPState, module: nn.Module) -> Optional["FlatParamHandle"]:
     """

@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_shared_realtime_ssl_context() -> Union[bool, str, ssl.SSLContext]:
     """

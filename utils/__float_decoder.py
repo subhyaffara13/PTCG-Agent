@@ -1,3 +1,5 @@
+import math
+
 
 def _FloatDecoder():
   """Returns a decoder for a float field.

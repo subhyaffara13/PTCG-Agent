@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def json_schema_valid(obj: Any, schema: Dict[str, Any]) -> bool:
     """

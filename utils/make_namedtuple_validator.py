@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Tuple
 
 def make_namedtuple_validator(
     namedtuple_cls: Type[NamedTupleT], config: Type['BaseConfig']

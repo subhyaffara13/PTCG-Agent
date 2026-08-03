@@ -1,3 +1,4 @@
+import re
 
 def _fn_matches(fn, glob):
     """Return whether the supplied file name fn matches pattern filename."""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def generate_numba_apply_func(
     func: Callable[..., Scalar],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ref_abstract_eval(init_aval, *, memory_space: Any, kind: Any):
   from jax._src.state.types import AbstractRef  # pyrefly: ignore[missing-import]

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def site_bin_path() -> Path:
     """:returns: bin path shared by users"""

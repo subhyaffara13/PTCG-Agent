@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_summary_text(raw: Optional[str]) -> Optional[str]:
     if not raw:

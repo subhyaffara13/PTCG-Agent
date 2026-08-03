@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_private_key_from_file(file_path: str) -> Any:
     """Loads a private key from a file path."""

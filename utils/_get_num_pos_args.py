@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_num_pos_args(f: Callable) -> int:
     """Get number of positional args for a function

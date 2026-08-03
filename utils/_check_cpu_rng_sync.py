@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_cpu_rng_sync(
     generator: torch.Generator, group: dist.ProcessGroup

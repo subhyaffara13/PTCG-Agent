@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_freeze(xs: Any) -> Any:
   """Deep copy unfrozen dicts to make the dictionary FrozenDict safe."""

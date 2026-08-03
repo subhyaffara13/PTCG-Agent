@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_quoter(encode: bool = True) -> Callable[[AnyStr], str]: ...
 

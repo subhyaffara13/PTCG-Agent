@@ -1,3 +1,4 @@
+from typing import Any
 
 def _split_events_by_invocation(
     events: list[dict[str, Any]],

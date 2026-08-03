@@ -1,3 +1,5 @@
+import math
+
 
 def _no_grad_trunc_normal_(
     tensor: Tensor,

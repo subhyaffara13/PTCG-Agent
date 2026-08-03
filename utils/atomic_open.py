@@ -1,3 +1,4 @@
+import os
 
 def atomic_open(filename: str) -> Generator[BufferedWriter, None, None]:
     """Write a file to the disk in an atomic fashion"""

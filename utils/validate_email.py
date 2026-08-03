@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def validate_email(value: str) -> tuple[str, str]:
     """Email address validation using [email-validator](https://pypi.org/project/email-validator/).

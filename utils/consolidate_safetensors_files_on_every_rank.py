@@ -1,3 +1,4 @@
+import time
 
 def consolidate_safetensors_files_on_every_rank(
     input_dir: str,

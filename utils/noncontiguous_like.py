@@ -1,3 +1,5 @@
+import math
+
 
 def noncontiguous_like(t):
     # Short-circuits if t is already noncontiguous

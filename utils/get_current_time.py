@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def get_current_time(params: Optional[Dict[str, Any]] = None) -> str:
     """

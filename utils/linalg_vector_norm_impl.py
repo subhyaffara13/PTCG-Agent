@@ -1,3 +1,4 @@
+from typing import Any
 
 def linalg_vector_norm_impl(
     self: ComplexTensor, *args: Any, **kwargs: Any

@@ -1,3 +1,4 @@
+import functools
 
 def define_aliases(alias_d, cls=None):
     """

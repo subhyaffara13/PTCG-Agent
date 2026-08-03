@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_int_to_concrete_values(dim: Any) -> int | None:
     if dim is None:

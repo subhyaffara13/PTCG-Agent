@@ -1,3 +1,4 @@
+from typing import Any
 
 def ensure_arraylike(fun_name: str, /) -> tuple[()]:
   ...

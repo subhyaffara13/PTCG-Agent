@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def get_end_user_id_for_cost_tracking(
     litellm_params: dict,

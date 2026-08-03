@@ -1,3 +1,4 @@
+from typing import Any
 
 def getargspec(f):
     """A replacement for inspect.getargspec"""

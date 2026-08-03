@@ -1,3 +1,5 @@
+import copy
+import sys
 
 def _format_print_callback(
     fmt: str, np_printoptions, has_placeholders, logging_record, *args, **kwargs

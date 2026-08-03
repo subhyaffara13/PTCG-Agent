@@ -1,3 +1,4 @@
+import functools
 
 def treemap_copy_args(f):
   @functools.wraps(f)

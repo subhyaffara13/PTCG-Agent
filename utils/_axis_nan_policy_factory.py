@@ -1,3 +1,5 @@
+import math
+
 
 def _axis_nan_policy_factory(tuple_to_result, default_axis=0,
                              n_samples=1, paired=False,

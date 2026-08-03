@@ -1,3 +1,4 @@
+import sys
 
 def _running_under_venv() -> bool:
     """Checks if sys.base_prefix and sys.prefix match.

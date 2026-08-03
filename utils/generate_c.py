@@ -1,3 +1,5 @@
+import sys
+import time
 
 def generate_c(
     sources: list[BuildSource],

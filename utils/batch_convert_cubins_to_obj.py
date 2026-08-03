@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def batch_convert_cubins_to_obj(
     cubins: list[tuple[str, str]],

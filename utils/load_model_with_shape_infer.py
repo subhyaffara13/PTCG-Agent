@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def load_model_with_shape_infer(model_path: Path) -> ModelProto:
     inferred_model_path = generate_identified_filename(model_path, "-inferred")

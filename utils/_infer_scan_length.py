@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_scan_length(
     xs_flat: list[Any], xs_avals: list[AbstractValue],

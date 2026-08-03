@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_sum(
     val: Any, nobs: int, sum_x: Any, compensation: Any

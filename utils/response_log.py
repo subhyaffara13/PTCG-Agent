@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def response_log(logger: logging.Logger, response: Any) -> None:
     """

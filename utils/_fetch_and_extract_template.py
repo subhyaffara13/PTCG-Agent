@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def _fetch_and_extract_template(
     model: str, chat_template: Optional[Any], get_config_fn, get_template_fn

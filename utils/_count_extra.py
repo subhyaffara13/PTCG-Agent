@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _count_extra(
     count_function: TokenCounterFunction,

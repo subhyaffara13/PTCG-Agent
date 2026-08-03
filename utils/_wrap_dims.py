@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_dims(dim: Any, ndim: int, keepdim: bool = False) -> list[DimEntry]:
     """Convert dimension specification to list of DimEntry objects."""

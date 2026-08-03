@@ -1,3 +1,5 @@
+import functools
+from typing import Callable, Optional, Union
 
 def inject_hyperparams(
     inner_factory: Callable[..., base.GradientTransformation],

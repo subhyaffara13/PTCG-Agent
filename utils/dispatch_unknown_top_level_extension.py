@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def dispatch_unknown_top_level_extension(args: list[str], known_commands: set[str]) -> int | None:
     if not args:

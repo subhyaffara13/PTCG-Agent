@@ -1,3 +1,4 @@
+import random
 
 def set_rng_seed(seed=None):
     if seed is None:

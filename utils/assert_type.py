@@ -1,3 +1,4 @@
+from typing import Union
 
 def assert_type(typ: type, value: object) -> None:
     __tracebackhide__ = True

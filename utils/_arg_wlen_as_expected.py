@@ -1,3 +1,5 @@
+import math
+
 
 def _arg_wlen_as_expected(value):
     """Ensure argument `wlen` is of type `np.intp` and larger than 1.

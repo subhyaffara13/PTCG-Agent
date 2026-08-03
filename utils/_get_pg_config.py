@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_pg_config(group: ProcessGroup | None = None) -> dict[str, Any]:
     """

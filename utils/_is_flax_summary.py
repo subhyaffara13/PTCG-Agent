@@ -1,3 +1,4 @@
+import sys
 
 def _is_flax_summary(value: Array) -> bool:
   if 'flax.linen' not in sys.modules:

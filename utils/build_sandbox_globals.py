@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def build_sandbox_globals() -> Dict[str, Any]:
     """Assemble the globals dict for executing guardrail code.

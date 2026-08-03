@@ -1,3 +1,4 @@
+import os
 
 def test_read_tarfile(c_parser_only, csv_dir_path, tar_suffix):
     # see gh-16530

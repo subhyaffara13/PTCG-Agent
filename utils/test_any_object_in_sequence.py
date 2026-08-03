@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_any_object_in_sequence():
     # Cf. issue 5306

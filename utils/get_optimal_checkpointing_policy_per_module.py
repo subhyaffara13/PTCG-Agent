@@ -1,3 +1,5 @@
+import math
+
 
 def get_optimal_checkpointing_policy_per_module(
     sac_stats: SACStats, memory_budget: float

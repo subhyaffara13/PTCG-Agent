@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def to_backend_cache_wrap(to_backend: Any = None, constants: Any = False) -> Any:
     """Decorates an ``to_backend()`` implementation to be memoized inside a

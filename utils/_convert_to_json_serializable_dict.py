@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _convert_to_json_serializable_dict(
     obj: Any, visited: Optional[set] = None, max_depth: int = 20

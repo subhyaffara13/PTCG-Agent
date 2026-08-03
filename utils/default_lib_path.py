@@ -1,3 +1,5 @@
+import os
+import sys
 
 def default_lib_path(
     data_dir: str, pyversion: tuple[int, int], custom_typeshed_dir: str | None

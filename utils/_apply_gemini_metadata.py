@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _apply_gemini_metadata(
     part: PartType,

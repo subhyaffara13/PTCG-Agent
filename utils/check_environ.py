@@ -1,3 +1,4 @@
+import os
 
 def check_environ() -> None:
     """Ensure that 'os.environ' has all the environment variables we

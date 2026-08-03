@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_normal_gumbel(p, q):
     mean_scale_ratio = p.loc / q.scale

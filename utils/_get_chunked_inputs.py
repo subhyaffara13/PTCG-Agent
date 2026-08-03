@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _get_chunked_inputs(
     flat_args: list[Any],

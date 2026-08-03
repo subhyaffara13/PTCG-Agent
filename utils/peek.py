@@ -1,3 +1,4 @@
+import itertools
 
 def peek(seq):
     """ Retrieve the next element of a sequence

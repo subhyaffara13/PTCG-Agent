@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def optimize_remat_of_custom_vjp_fwd(
     fun: Callable[..., ReturnValue],

@@ -1,3 +1,4 @@
+import os
 
 def verify_module(fscache: FileSystemCache, id: str, path: str, prefix: str) -> bool:
     """Check that all packages containing id have a __init__ file."""

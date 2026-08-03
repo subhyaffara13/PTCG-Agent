@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def create_modular_file(
     repo_path: Path,

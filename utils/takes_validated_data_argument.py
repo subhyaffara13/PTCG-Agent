@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def takes_validated_data_argument(
     default_factory: Callable[[], Any] | Callable[[dict[str, Any]], Any],

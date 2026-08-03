@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _check_arguments(args, nexpr, npar, **kwargs):
     """Checks the arguments and converts into tuples of the

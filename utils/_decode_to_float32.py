@@ -1,3 +1,5 @@
+import os
+from typing import Tuple
 
 def _decode_to_float32(file_bytes: bytes) -> Tuple["FloatArray", int]:
     """

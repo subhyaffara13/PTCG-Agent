@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def load_custom_secret_manager(config_file_path: Optional[str] = None) -> None:
     """

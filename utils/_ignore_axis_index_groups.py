@@ -1,3 +1,4 @@
+import functools
 
 def _ignore_axis_index_groups(fn):
   """Wrapper that forces axis_index_groups to be None.

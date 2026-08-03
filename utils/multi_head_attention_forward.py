@@ -1,3 +1,5 @@
+import math
+
 
 def multi_head_attention_forward(
     query: Tensor,

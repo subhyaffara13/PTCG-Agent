@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Union
 
 def _convert_mcp_content_to_openai(
     content: Any,

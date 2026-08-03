@@ -1,3 +1,5 @@
+import math
+
 
 def test_value_expression(
     arg_type: BaseType | OptionalType | Type, index: int, op_name: str

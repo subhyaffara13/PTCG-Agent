@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Tuple, Union
 
 def contract_path(
     subscripts: str,

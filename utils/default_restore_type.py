@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_restore_type(args: RestoreArgs) -> Any:
   if isinstance(args, ArrayRestoreArgs):

@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def _import_module_using_spec(
     module_name: str, module_path: Path, *, insert_modules: bool

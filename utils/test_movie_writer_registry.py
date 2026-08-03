@@ -1,3 +1,4 @@
+import sys
 
 def test_movie_writer_registry():
     assert len(animation.writers._registered) > 0

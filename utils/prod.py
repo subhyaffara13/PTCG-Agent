@@ -1,3 +1,4 @@
+import functools
 
 def prod(
     input: Tensor | MaskedTensor,

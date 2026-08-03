@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_call_function(
     tx: "InstructionTranslator",

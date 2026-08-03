@@ -1,3 +1,4 @@
+from typing import Any
 
 def _should_skip_optional_params(field_name: str, field_annotation: Any) -> bool:
     """Check if optional_params field should be skipped (not meaningfully overridden)."""

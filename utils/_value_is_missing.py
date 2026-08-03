@@ -1,3 +1,4 @@
+from typing import Any
 
 def _value_is_missing(param: click.Parameter, value: Any) -> bool:
     if value is None:

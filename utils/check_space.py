@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_space(
     space: Space, space_type: str, check_box_space_fn: Callable[[spaces.Box], None]

@@ -19,10 +19,9 @@ class DummyStream(io.StringIO):
     def flush(self):
         pass
 
-@contextlib.contextmanager
 from utils.silence_kaggle_warnings import silence_kaggle_warnings
-
 from utils.ensure_dependencies import ensure_dependencies
+from utils._backoff_sleep import _backoff_sleep
 
 import socket
 import logging
@@ -37,8 +36,6 @@ _MAX_RETRIES = 15
 _CONNECT_TIMEOUT = 5.0  # Short timeout for initial TCP connect
 _READ_TIMEOUT = 120.0    # Longer timeout for MCTS runs (per-read)
 _STARTUP_WATCHDOG = 300  # 5 minutes: if we can't get a complete cycle, bail
-
-from utils._backoff_sleep import _backoff_sleep
 
 class WorkerClient:
     def __init__(self, host='127.0.0.1', port=9871):

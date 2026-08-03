@@ -1,3 +1,4 @@
+import re
 
 def test_tanh():
     R, x, y = ring('x, y', QQ)

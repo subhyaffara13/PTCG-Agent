@@ -1,3 +1,4 @@
+import os
 
 def _resolve_upload_paths(
     *, repo_id: str, local_path: str | None, path_in_repo: str | None, include: list[str] | None

@@ -1,3 +1,4 @@
+from typing import Any
 
 def gen_pattern(
     search_fn: SearchFn,

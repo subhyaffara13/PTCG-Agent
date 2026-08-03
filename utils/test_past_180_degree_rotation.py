@@ -1,3 +1,5 @@
+import math
+
 
 def test_past_180_degree_rotation(xp):
     # ensure that a > 180 degree rotation is returned as a <180 rotation in MRPs

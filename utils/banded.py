@@ -1,3 +1,4 @@
+from typing import Dict
 
 def banded(*args, **kwargs):
     """Returns a SparseMatrix from the given dictionary describing

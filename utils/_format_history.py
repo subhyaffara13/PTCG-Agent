@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_history(move_history: list[str]) -> str:
     """Group the flat action list into 3-action turns labelled by player.

@@ -1,3 +1,4 @@
+import itertools
 
 def draw_networkx_edge_labels(
     G,

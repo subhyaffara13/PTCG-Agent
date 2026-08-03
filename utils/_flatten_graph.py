@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_graph(space: Graph, x: GraphInstance) -> GraphInstance:
     """We're not using ``.unflatten()`` for :class:`Box` and :class:`Discrete` because a graph is not a homogeneous space, see `.flatten` docstring."""

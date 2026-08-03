@@ -1,3 +1,4 @@
+import functools
 
 def test_polygon_selector_remove(ax, idx, draw_bounding_box):
     verts = [(50, 50), (150, 50), (50, 150)]

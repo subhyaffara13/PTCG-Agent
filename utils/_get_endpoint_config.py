@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _get_endpoint_config(endpoint_name: str) -> Optional[Dict]:
     """Get config for a specific endpoint by name."""

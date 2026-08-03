@@ -1,3 +1,4 @@
+from typing import Any
 
 def issubclass_of_namedtuple(t: Any) -> bool:
   """Determines if the `type` is a subclass of NamedTuple."""

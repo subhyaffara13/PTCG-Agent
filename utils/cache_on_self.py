@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def cache_on_self(fn: Callable[Concatenate[Any, P], RV]) -> CachedMethod[P, RV]:
     name = fn.__name__

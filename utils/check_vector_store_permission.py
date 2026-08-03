@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def check_vector_store_permission(
     index_name: str,

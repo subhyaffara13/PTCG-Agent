@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_dataframe_accessor(name: str) -> Callable[[TypeT], TypeT]:
     """

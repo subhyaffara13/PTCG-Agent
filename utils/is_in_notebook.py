@@ -1,3 +1,5 @@
+import os
+import sys
 
 def is_in_notebook() -> bool:
     try:

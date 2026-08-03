@@ -1,3 +1,4 @@
+import copy
 
 def gen_single_dim_einsum_strategies(
     equation: str,

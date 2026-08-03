@@ -1,3 +1,4 @@
+import os
 
 def _load_private_key_from_env(env_var: str) -> RSAPrivateKey:
     """Load an RSA private key from an env var (PEM string or file:// path)."""

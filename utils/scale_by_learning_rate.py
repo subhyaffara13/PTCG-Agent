@@ -1,3 +1,4 @@
+from typing import Optional
 
 def scale_by_learning_rate(
     learning_rate: Optional[base.ScalarOrSchedule] = None,

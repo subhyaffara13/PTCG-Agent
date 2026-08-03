@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _view2np(safeview) -> Dict[str, np.ndarray]:
     result = {}

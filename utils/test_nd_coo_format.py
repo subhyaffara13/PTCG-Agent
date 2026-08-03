@@ -1,3 +1,4 @@
+import os
 
 def test_nd_coo_format(ndim, value):
     A = coo_array([value]).reshape((1,) * ndim)

@@ -1,3 +1,4 @@
+import functools
 
 def _sticky_export(
     forward_func: typing.Callable[_InputT, _RetT],

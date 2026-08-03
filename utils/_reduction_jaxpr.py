@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _reduction_jaxpr(computation: Callable,
                      aval: core.AbstractValue):

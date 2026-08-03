@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_namedtuple(name, fieldnames, modulename, defaults=None):
     class_ = _import_module(modulename + '.' + name, safe=True)

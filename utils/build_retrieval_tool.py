@@ -1,3 +1,4 @@
+from typing import List
 
 def build_retrieval_tool(available_keys: List[str]) -> dict:
     """

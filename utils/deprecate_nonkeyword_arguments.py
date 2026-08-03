@@ -1,3 +1,4 @@
+from typing import Callable
 
 def deprecate_nonkeyword_arguments(
     klass: type[PandasChangeWarning],

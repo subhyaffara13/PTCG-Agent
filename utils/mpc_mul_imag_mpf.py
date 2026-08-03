@@ -1,3 +1,4 @@
+import re
 
 def mpc_mul_imag_mpf(z, x, prec, rnd=round_fast):
     """

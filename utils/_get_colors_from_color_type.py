@@ -1,3 +1,4 @@
+import itertools
 
 def _get_colors_from_color_type(color_type: str, num_colors: int) -> list[Color]:
     """Get colors from user input color type."""

@@ -1,3 +1,5 @@
+import json
+from typing import Optional
 
 def parse_xml_params(xml_content, json_schema: Optional[dict] = None):
     """

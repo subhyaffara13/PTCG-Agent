@@ -1,3 +1,4 @@
+import sys
 
 def run_and_exit(*args, **kwargs):
     """Run the tests, and if there are failures, exit with a return code of 1.

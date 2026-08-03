@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _spec_divisibility_error(
     f: Callable, mesh: Mesh | AbstractMesh, tree: PyTreeDef, specs: Specs,

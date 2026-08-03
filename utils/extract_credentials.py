@@ -1,3 +1,4 @@
+from typing import Dict
 
 def extract_credentials(source: Source) -> Dict[str, str]:
     """Extract all credentials from a source."""

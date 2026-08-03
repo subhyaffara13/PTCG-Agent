@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_cell(val: Any = None) -> types.CellType:
     """Some black magic to create a cell object that usually only exists in a closure"""

@@ -1,3 +1,4 @@
+from typing import Set
 
 def solveset(f, symbol=None, domain=S.Complexes):
     r"""Solves a given inequality or equation with set as output

@@ -1,3 +1,4 @@
+from typing import Any
 
 def assend_assigned_stmts(
     self: nodes.AssignName | nodes.AssignAttr,

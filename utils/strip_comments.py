@@ -1,3 +1,4 @@
+import re
 
 def strip_comments(s):
     return re.sub(r"\s+#.*", "", s)

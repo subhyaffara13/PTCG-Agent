@@ -1,3 +1,4 @@
+from typing import Any
 
 def _scalar(x: torch.Tensor):
     """Convert a scalar tensor into a Python value."""

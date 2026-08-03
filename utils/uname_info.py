@@ -1,3 +1,4 @@
+from typing import Dict
 
 def uname_info() -> Dict[str, str]:
     """

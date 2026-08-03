@@ -1,3 +1,4 @@
+import os
 
 def _get_explicit_environ_credentials(quota_project_id=None):
     """Gets credentials from the GOOGLE_APPLICATION_CREDENTIALS environment

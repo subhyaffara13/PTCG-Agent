@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def test_build_sdist(monkeypatch, tmpdir):
     monkeypatch.chdir(MAIN_DIR)

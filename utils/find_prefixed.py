@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def find_prefixed(root: Path, prefix: str) -> Iterator[os.DirEntry[str]]:
     """Find all elements in root that begin with the prefix, case-insensitive."""

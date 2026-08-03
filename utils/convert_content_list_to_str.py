@@ -1,3 +1,4 @@
+from typing import Union
 
 def convert_content_list_to_str(
     message: Union[AllMessageValues, ChatCompletionResponseMessage],

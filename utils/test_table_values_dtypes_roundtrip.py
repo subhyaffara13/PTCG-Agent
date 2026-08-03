@@ -1,3 +1,4 @@
+import re
 
 def test_table_values_dtypes_roundtrip(temp_hdfstore, using_infer_string):
     df1 = DataFrame({"a": [1, 2, 3]}, dtype="f8")

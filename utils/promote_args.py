@@ -1,3 +1,4 @@
+import functools
 
 def promote_args(new_args):
     def promote_arg(arg, promote_type):

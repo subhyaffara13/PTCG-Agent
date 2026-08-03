@@ -1,3 +1,4 @@
+import os
 
 def test_iter_files(mocker, iter_files):
     os_mod = mocker.patch('radon.cli.tools.os')

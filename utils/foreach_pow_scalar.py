@@ -1,3 +1,4 @@
+from typing import Any
 
 def foreach_pow_scalar(
     scalar: Any, exps: Sequence[bool | complex | float | int]

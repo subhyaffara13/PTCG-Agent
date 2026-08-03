@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_module_method(module, method: tp.Callable[..., Any] | str | None):
   """Get a callable method from the module, or raise TypeError."""

@@ -1,3 +1,5 @@
+import re
+from typing import Tuple
 
 def rename_by_regex(
     rules: Sequence[Tuple[str, str]],

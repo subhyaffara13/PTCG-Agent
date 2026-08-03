@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_elementwise_unary_reference(
     type_promotion_kind,

@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def with_scoped(
     *types: Any,

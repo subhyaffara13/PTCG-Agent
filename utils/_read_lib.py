@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _readLib(glyphObject: Optional[Any], lib: ElementType, validate: bool) -> None:
     assert len(lib) == 1

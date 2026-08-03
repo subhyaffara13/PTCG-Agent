@@ -1,3 +1,4 @@
+import functools
 
 def microbatch(
     fun: Function,

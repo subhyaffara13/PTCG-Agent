@@ -1,3 +1,4 @@
+import os
 
 def test_read_csv_local(all_parsers, csv1):
     prefix = "file:///" if compat.is_platform_windows() else "file://"

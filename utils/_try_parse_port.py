@@ -1,3 +1,4 @@
+import re
 
 def _try_parse_port(port_str: str) -> int | None:
     """Try to extract the port number from ``port_str``."""

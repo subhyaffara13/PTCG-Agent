@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_spend_logs_metadata(
     metadata: Optional[dict],

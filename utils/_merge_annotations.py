@@ -1,3 +1,4 @@
+import itertools
 
 def _merge_annotations(
     annotations: Iterable[nodes.NodeNG], comment_annotations: Iterable[nodes.NodeNG]

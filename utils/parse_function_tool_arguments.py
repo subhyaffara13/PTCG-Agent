@@ -1,3 +1,4 @@
+import json
 
 def parse_function_tool_arguments(
     *, input_tools: list[ChatCompletionToolUnionParam], function: Function | ParsedFunction

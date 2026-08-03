@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _allgather_orig_param_states(
     fsdp_param_info: FSDPParamInfo,

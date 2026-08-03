@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_truetype_conversion(recwarn):
     mpl.rcParams['pdf.fonttype'] = 3

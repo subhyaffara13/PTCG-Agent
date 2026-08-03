@@ -1,3 +1,4 @@
+import os
 
 def MultiProcessValue(process_identifier=os.getpid):
     """Returns a MmapedValue class based on a process_identifier function.

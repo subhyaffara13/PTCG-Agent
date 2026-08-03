@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _infer_params(
     fun: Callable, ji: PjitInfo, args: tuple[Any, ...], kwargs: dict[str, Any]

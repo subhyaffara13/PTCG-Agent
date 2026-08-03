@@ -1,3 +1,4 @@
+from typing import Any
 
 def _optimizer_post_hook(
     optimizer: Optimizer, args: tuple[Unpack[_Ts]], kwargs: dict[str, Any]

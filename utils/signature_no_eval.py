@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def signature_no_eval(f: Callable[..., Any]) -> Signature:
     """Get the signature of a callable without evaluating any annotations."""

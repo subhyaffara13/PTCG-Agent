@@ -1,3 +1,4 @@
+from typing import Union
 
 def valid_string_length(domain: Union[bytes, str], trailing_dot: bool) -> bool:
     """Check that a full domain name does not exceed the maximum length.

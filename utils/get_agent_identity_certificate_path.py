@@ -1,3 +1,5 @@
+import os
+import time
 
 def get_agent_identity_certificate_path():
     """Gets the certificate path from the certificate config file.

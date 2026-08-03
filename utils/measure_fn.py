@@ -1,3 +1,5 @@
+import os
+import sys
 
 def measure_fn(args, fn, inputs):
     # Measure CPU usage

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def build_wrapper(func: Callable[P, R], event_handlers: list[BaseValidateHandlerProtocol]) -> Callable[P, R]:
     if not event_handlers:

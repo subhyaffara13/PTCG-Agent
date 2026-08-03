@@ -1,3 +1,4 @@
+from typing import Any
 
 def _writeGuidelines(
     glyphObject: Any, element: ElementType, identifiers: set[str], validate: bool

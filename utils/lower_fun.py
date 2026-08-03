@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def lower_fun(fun: Callable, multiple_results: bool = True) -> Callable:
   """Converts a traceable JAX function `fun` into a lowering rule.

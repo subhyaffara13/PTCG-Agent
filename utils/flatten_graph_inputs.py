@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def flatten_graph_inputs(
     gm: torch.fx.GraphModule, inputs: Any, compile_gm: Callable[[Any, Any], Any]

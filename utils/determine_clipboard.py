@@ -1,3 +1,4 @@
+import os
 
 def determine_clipboard():
     """

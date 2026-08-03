@@ -1,3 +1,4 @@
+import sys
 
 def check_graphviz_availability() -> None:
     """Check if the ``dot`` command is available on the machine.

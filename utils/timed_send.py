@@ -1,3 +1,4 @@
+import time
 
 def timed_send(manager: BuildManager, server: IPCServer, message: SccResponseMessage) -> None:
     t0 = time.time()

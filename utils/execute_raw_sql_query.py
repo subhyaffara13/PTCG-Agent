@@ -1,3 +1,4 @@
+from typing import Any
 
 def execute_raw_sql_query(sql_query: str, *, token: str | bool | None = None) -> list[dict[str, Any]]:
     normalized_query = sql_query.strip().rstrip(";").strip()

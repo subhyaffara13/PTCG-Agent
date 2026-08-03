@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _estimate_image_generation_cost(
     request_body: dict,

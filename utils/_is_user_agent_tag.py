@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_user_agent_tag(tag: Optional[str]) -> bool:
     """Determine whether a tag should be treated as a User-Agent tag."""

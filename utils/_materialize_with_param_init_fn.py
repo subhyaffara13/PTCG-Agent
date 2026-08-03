@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _materialize_with_param_init_fn(
     root_module: nn.Module,

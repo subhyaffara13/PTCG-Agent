@@ -1,3 +1,4 @@
+from typing import Any
 
 def _writeAnchorsFormat1(pen: Any, anchors: Any, validate: bool) -> None:
     if validate and not anchorsValidator(anchors):

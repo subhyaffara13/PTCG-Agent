@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _parts_rule(integrand, symbol) -> tuple[Expr, Expr, Expr, Expr, Rule] | None:
     # LIATE rule:

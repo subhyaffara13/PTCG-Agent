@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def dump_to_minify(
     gm: torch.fx.GraphModule, args: Sequence[Any], compiler_name: str

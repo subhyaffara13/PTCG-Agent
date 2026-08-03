@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_latex_dict():
     d = {Rational(1): 1, x**2: 2, x: 3, x**3: 4}

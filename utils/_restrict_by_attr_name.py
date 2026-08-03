@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _restrict_by_attr_name(name: str, is_allowed: Callable[[str], bool]):
   """Patch the given backend restriction onto getattr(compiler, name)."""

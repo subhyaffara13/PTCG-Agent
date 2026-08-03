@@ -1,3 +1,4 @@
+import sys
 
 def test_nditer_multi_index_set_refcount():
     # Test if the reference count on index variable is decreased

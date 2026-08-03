@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_temp_remove_mode_context_manager(
     mode_ty: type[TorchFunctionMode],

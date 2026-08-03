@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _personal_key_membership_check(
     user_api_key_dict: UserAPIKeyAuth,

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Set
 
 def mask_sensitive_keys(
     data: Dict[str, Any], sensitive_fields: Set[str]

@@ -1,3 +1,4 @@
+import sys
 
 def interpreter_name() -> str:
     """

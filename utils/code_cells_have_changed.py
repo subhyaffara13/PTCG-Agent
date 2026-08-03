@@ -1,3 +1,4 @@
+import os
 
 def code_cells_have_changed(notebook, nb_files):
     """The source for the code cells has not changed"""

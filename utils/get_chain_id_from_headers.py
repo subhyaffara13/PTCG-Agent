@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def get_chain_id_from_headers(headers: Optional[Dict[str, str]]) -> Optional[str]:
     """

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_chunksize_fails(high_memory):
     # NOTE: This test covers multiple independent test scenarios in a single

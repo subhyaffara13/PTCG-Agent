@@ -1,3 +1,4 @@
+import os
 
 def iter_filenames(paths, exclude=None, ignore=None):
     '''A generator that yields all sub-paths of the ones specified in

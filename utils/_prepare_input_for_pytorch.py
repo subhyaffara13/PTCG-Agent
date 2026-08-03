@@ -1,3 +1,4 @@
+import copy
 
 def _prepare_input_for_pytorch(args, kwargs):
     """Prepare input for PyTorch model execution.

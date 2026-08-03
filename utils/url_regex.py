@@ -1,3 +1,4 @@
+import re
 
 def url_regex() -> Pattern[str]:
     global _url_regex_cache

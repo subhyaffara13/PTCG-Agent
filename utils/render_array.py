@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def render_array(
     array: ArrayInRegistry,

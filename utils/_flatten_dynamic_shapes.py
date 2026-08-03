@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_dynamic_shapes(
     combined_args: dict[str, Any],

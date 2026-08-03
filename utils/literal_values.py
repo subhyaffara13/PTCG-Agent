@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def literal_values(type_: type[Any]) -> tuple[Any, ...]:
     return get_args(type_)

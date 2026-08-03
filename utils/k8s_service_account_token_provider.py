@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def k8s_service_account_token_provider(
     token_file_path: str | Path = "/var/run/secrets/kubernetes.io/serviceaccount/token",

@@ -1,3 +1,4 @@
+import copy
 
 def tensor_parallel_transformation(
     exported_program: ExportedProgram,

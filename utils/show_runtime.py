@@ -1,3 +1,4 @@
+import sys
 
 def show_runtime():
     """

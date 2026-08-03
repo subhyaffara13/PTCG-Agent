@@ -1,3 +1,5 @@
+import itertools
+import logging
 
 def _reset_logs() -> None:
     # reset all registered logs

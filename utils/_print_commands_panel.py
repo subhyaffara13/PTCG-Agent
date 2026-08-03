@@ -1,3 +1,4 @@
+from typing import Any
 
 def _print_commands_panel(
     *,

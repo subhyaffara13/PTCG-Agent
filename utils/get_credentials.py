@@ -1,3 +1,4 @@
+import subprocess
 
 def get_credentials() -> None:
   """Gets credentials for the project."""

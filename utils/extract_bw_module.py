@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def extract_bw_module(CompiledFunction: Any) -> Callable[..., Any]:
     if isinstance(

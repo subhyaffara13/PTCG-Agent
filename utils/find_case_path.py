@@ -1,3 +1,6 @@
+from typing import Optional
+from pathlib import Path
+
 
 def find_case_path(dir_path: Path, file_name: str, case_sensitive: bool) -> Optional[Path]:
     """

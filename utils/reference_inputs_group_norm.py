@@ -1,3 +1,4 @@
+import itertools
 
 def reference_inputs_group_norm(op_info, device, dtype, requires_grad, **kwargs):
     yield from sample_inputs_group_norm(

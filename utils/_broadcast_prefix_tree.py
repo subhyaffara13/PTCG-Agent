@@ -1,3 +1,4 @@
+from typing import Any
 
 def _broadcast_prefix_tree(prefix_tree: Any, full_tree: Any) -> list[Any]:
   bcast_flat = []

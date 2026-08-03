@@ -1,3 +1,6 @@
+import itertools
+import math
+
 
 def _axis_index_rule(ctx: LoweringRuleContext, *, axis_name: Hashable):
   grid_names = ctx.lowering_context.grid_names

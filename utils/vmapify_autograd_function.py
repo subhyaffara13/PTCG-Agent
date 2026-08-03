@@ -1,3 +1,4 @@
+from typing import Any
 
 def vmapify_autograd_function(
     autograd_function: type[torch.autograd.Function],

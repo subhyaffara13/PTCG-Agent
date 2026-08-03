@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoWOFFMetadataVendorValidator(value: Any) -> bool:
     """

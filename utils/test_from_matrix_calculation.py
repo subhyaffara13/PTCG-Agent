@@ -1,3 +1,5 @@
+import math
+
 
 def test_from_matrix_calculation(xp):
     atol = 1e-8

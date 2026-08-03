@@ -1,3 +1,5 @@
+import copy
+import os
 
 def export_onnx_models(
     model_name_or_path: str,

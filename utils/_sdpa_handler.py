@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _sdpa_handler(
     op_call: torch._ops.OpOverload,

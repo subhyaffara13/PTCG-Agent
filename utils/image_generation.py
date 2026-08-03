@@ -1,3 +1,5 @@
+import logging
+from typing import Any, Optional, Union
 
 def image_generation(
     prompt: str,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _iter_text_parts_in_content(content: Any) -> Iterator[str]:
     """Yield text fragments from a ``message.content`` value (string or

@@ -1,3 +1,4 @@
+import sys
 
 def _embedding_bag_helper(
     g: jit_utils.GraphContext,

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def matches_gitignore(subpath: str, fscache: FileSystemCache, verbose: bool) -> bool:
     dir, _ = os.path.split(subpath)

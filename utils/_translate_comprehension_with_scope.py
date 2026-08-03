@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _translate_comprehension_with_scope(
     builder: IRBuilder,

@@ -1,3 +1,4 @@
+import random
 
 def sample_some_states(
     game,

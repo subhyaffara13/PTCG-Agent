@@ -1,3 +1,4 @@
+import functools
 
 def extract_function_qualname(func: ValidateCallSupportedTypes) -> str:
     """Extract the qualname of a `ValidateCallSupportedTypes` object."""

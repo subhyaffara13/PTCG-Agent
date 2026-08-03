@@ -1,3 +1,4 @@
+import os
 
 def get_env():
     env = os.getenv("KAGGLE_API_ENVIRONMENT")

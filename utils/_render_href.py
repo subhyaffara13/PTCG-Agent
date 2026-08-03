@@ -1,3 +1,4 @@
+import re
 
 def _render_href(x, format):
     """uses regex to detect a common URL pattern and converts to href tag in format."""

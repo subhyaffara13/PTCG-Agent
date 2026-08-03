@@ -1,3 +1,4 @@
+from typing import Callable
 
 def extract_test_fn() -> Callable | None:
     try:

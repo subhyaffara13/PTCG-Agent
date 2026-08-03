@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _collect_strings(node: Any, holders: List[_StringHolder]) -> None:
     """

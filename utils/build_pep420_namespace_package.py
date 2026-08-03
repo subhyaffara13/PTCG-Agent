@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def build_pep420_namespace_package(tmpdir, name):
     src_dir = tmpdir / name

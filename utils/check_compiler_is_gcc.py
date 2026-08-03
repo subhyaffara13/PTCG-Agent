@@ -1,3 +1,6 @@
+import os
+import re
+import subprocess
 
 def check_compiler_is_gcc(compiler) -> bool:
     if not IS_LINUX:

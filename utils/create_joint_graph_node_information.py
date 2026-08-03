@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_joint_graph_node_information(
     joint_graph: Graph,

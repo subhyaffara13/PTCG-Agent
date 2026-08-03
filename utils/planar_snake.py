@@ -1,3 +1,4 @@
+import functools
 
 def planar_snake(
     lin_idx: jax.Array,

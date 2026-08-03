@@ -1,3 +1,4 @@
+import itertools
 
 def test_striped_lines(fig_test, fig_ref, gapcolor):
     ax_test = fig_test.add_subplot(111)

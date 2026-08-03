@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_metadata_matches(n: object, r: object, desc: Callable[[], str]) -> None:
     if not callable(desc):

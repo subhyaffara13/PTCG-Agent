@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def expand_grouped_metadata(annotations: Iterable[Any]) -> Iterable[Any]:
     """Expand the annotations.

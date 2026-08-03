@@ -1,3 +1,4 @@
+import re
 
 def test_replace_literal_compiled_raises(any_string_dtype):
     ser = Series([], dtype=any_string_dtype)

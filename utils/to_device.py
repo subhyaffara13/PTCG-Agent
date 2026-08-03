@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def to_device(x: TensorBox, device: torch.device, *, copy=False, non_blocking=False):
     device = decode_device(device)

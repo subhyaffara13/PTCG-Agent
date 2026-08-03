@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_required_as(
     d: Mapping[str, Any],

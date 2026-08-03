@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fp16_compress_wrapper(
     hook: Callable[[Any, dist.GradBucket], torch.futures.Future[torch.Tensor]],

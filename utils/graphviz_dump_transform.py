@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def graphviz_dump_transform(transform, dest, *, highlight=None):
     """

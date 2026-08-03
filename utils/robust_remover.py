@@ -1,3 +1,4 @@
+import functools
 
 def robust_remover():
     return (

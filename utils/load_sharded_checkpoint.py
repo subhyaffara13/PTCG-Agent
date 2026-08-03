@@ -1,3 +1,5 @@
+import json
+import os
 
 def load_sharded_checkpoint(model, folder, strict=True, prefer_safe=True):
     """

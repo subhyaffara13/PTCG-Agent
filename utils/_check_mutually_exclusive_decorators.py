@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _check_mutually_exclusive_decorators(fn: Callable, decorator_name: str) -> None:
     mutually_exclusive = {

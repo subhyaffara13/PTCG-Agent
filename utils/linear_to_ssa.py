@@ -1,3 +1,4 @@
+import itertools
 
 def linear_to_ssa(path: PathType) -> PathType:
     """Convert a path with recycled linear ids to a path with static single

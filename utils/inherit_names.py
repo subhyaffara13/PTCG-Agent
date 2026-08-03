@@ -1,3 +1,4 @@
+from typing import Callable
 
 def inherit_names(
     names: list[str], delegate: type, cache: bool = False, wrap: bool = False

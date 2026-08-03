@@ -1,3 +1,4 @@
+from typing import List
 
 def get_permutation(items: List, seed: int) -> List:
     """

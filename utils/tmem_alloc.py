@@ -1,3 +1,5 @@
+import math
+
 
 def tmem_alloc(result: _ods_ir.Type, smem_ptr: _ods_ir.Value[_ods_ir.MemRefType], *, collective: _Optional[_Union[bool, _ods_ir.BoolAttr]] = None, packing: _Optional[_Union[int, _ods_ir.IntegerAttr]] = None, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> _ods_ir.OpResult[_ods_ir.MemRefType]:
   return TmemAllocOp(result=result, smem_ptr=smem_ptr, collective=collective, packing=packing, loc=loc, ip=ip).result

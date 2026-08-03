@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def _tokens(text: Optional[str]) -> Set[str]:
     if not text:

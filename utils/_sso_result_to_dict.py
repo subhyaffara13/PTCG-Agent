@@ -1,3 +1,4 @@
+from typing import Any, Dict, Union
 
 def _sso_result_to_dict(result: Union[CustomOpenID, OpenID, dict]) -> Dict[str, Any]:
     if isinstance(result, dict):

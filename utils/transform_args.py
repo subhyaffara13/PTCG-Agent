@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def transform_args(
     args: list[Any],

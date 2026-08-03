@@ -1,3 +1,4 @@
+from typing import Optional
 
 def infer_openai_data_residency(
     custom_llm_provider: Optional[str], api_base: Optional[str]

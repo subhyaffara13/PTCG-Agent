@@ -1,3 +1,4 @@
+import os
 
 def _update_current_test_var(
     item: Item, when: Literal["setup", "call", "teardown"] | None

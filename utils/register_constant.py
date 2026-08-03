@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_constant(cls: type[Any]) -> None:
     """Registers a type as a pytree node with no leaves.

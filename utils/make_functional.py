@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_functional(model: nn.Module, disable_autograd_tracking: bool = False) -> Any:
     warn_deprecated("make_functional", "torch.func.functional_call")

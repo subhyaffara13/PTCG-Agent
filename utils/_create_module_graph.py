@@ -1,3 +1,4 @@
+import sys
 
 def _create_module_graph(nodes: set[str]) -> dict[str, set[str]]:
   graph = {}

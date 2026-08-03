@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def batch_cost_calculator(
     usage: Usage,

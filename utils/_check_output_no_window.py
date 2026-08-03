@@ -1,3 +1,4 @@
+import os
 
 def _check_output_no_window(*args, **kwargs):
     # Avoid showing a cmd.exe window when running this

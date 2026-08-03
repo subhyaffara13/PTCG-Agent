@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def eager_noexcept(
     gm: torch.fx.GraphModule, fake_tensor_inputs: list[torch.Tensor], **kwargs: Any

@@ -1,3 +1,4 @@
+import re
 
 def test_check_shape(target: tuple[int | None, ...],
                      shape_repr: str,

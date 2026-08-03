@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _fix_atomic_specifiers_once(
     decl: c_ast.Decl | c_ast.Typedef,

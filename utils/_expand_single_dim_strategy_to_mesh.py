@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _expand_single_dim_strategy_to_mesh(
     mesh: DeviceMesh,

@@ -1,3 +1,4 @@
+import copy
 
 def ndarray_to_mgr(
     values, index, columns, dtype: DtypeObj | None, copy: bool

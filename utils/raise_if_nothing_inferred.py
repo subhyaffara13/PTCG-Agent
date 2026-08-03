@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def raise_if_nothing_inferred(
     func: Callable[_P, Generator[InferenceResult]],

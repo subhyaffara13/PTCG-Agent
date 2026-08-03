@@ -1,3 +1,4 @@
+import re
 
 def _strip_code_flanked_in_backticks(line: str) -> str:
     """Alter line so code flanked in back-ticks is ignored.

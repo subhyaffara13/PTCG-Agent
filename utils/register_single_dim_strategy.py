@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_single_dim_strategy(
     op: torch._ops.OpOverload | list[torch._ops.OpOverload],

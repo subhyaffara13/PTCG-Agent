@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def run_using_a_configuration_file(
     configuration_path: Path | str, file_to_lint: str = __file__

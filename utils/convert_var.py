@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_var(self: Var) -> Json:
     data: dict[str, Any] = {

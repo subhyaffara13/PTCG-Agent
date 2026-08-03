@@ -1,3 +1,4 @@
+from typing import Dict
 
 def parse_player_actions(state, moderator, game_state):
     parsed_player_actions: Dict[str, Action] = {}

@@ -1,3 +1,4 @@
+import re
 
 def test_detect_poles():
     if not np:

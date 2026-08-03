@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_customer_user_header_from_mapping(user_id_mapping) -> Optional[list]:
     """Return the header_name mapped to CUSTOMER role, if any (dict-based)."""

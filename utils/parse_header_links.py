@@ -1,3 +1,4 @@
+import re
 
 def parse_header_links(value: str) -> list[dict[str, str]]:
     """Return a list of parsed link headers proxies.

@@ -1,3 +1,4 @@
+import itertools
 
 def group_functions_by_op_name(
     grouped_native_functions: Sequence[NativeGroupT],

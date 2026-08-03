@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pretty(thing: Any, prefix: str):
     """

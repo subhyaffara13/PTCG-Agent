@@ -1,3 +1,4 @@
+import sys
 
 def reload_workspace(
     source: g3_utils.Source | None = None,

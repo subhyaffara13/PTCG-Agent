@@ -1,3 +1,4 @@
+from typing import Union
 
 def toUnicode(glyph, isZapfDingbats=False):
     """Convert glyph names to Unicode, such as ``'longs_t.oldstyle'`` --> ``u'ſt'``

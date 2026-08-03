@@ -1,3 +1,4 @@
+import os
 
 def test_malicious_load():
     class Executor:

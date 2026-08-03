@@ -1,3 +1,4 @@
+from typing import Any
 
 def _size_and_bytes(pytree: Any) -> tuple[int, int]:
   leaves = jax.tree_util.tree_leaves(pytree)

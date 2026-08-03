@@ -1,3 +1,4 @@
+import os
 
 def disk_usage(path):
     """Return disk usage associated with path.

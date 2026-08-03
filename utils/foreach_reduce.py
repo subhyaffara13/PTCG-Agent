@@ -1,3 +1,4 @@
+from typing import Callable
 
 def foreach_reduce(
     fsdp_params: list[FSDPParam],

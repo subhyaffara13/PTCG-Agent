@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def validate_model_max_budget(model_max_budget: Optional[Dict]) -> None:
     """

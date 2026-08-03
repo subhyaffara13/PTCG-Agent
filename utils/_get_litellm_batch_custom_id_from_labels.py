@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_litellm_batch_custom_id_from_labels(labels: Dict[str, Any]) -> str:
     """Prefer encoded custom_id when present (see _set_litellm_batch_custom_id_labels)."""

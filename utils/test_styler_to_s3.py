@@ -1,3 +1,4 @@
+import uuid
 
 def test_styler_to_s3(s3_bucket_public, s3so):
     # GH#46381

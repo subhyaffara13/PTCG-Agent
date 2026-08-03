@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_set_attribute(span: "Span", key: str, value: Any):
     """

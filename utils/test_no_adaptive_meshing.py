@@ -1,3 +1,4 @@
+import re
 
 def test_no_adaptive_meshing():
     matplotlib = import_module('matplotlib', min_module_version='1.1.0', catch=(RuntimeError,))

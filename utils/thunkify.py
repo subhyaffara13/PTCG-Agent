@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def thunkify(
     tracer: _ProxyTracer, f: Callable[_P, R], *args: _P.args, **kwargs: _P.kwargs

@@ -1,3 +1,5 @@
+import math
+
 
 def soft_random_geometric_graph(
     n, radius, dim=2, pos=None, p=2, p_dist=None, seed=None, *, pos_name="pos"

@@ -1,3 +1,4 @@
+from typing import Any
 
 def assign_annassigned_stmts(
     self: nodes.AnnAssign,

@@ -1,3 +1,4 @@
+import copy
 
 def reference_bmm(op, sample):
     # unbind reduces a dim and bmm requires 3D, so use matmul as the reference

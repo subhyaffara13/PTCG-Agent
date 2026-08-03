@@ -1,3 +1,5 @@
+import math
+
 
 def calc_chunk_sizes(
     chunk_size: int | tuple[int, int] | None,

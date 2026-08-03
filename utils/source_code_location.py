@@ -1,3 +1,5 @@
+import os
+import re
 
 def source_code_location(event: _ProfilerEvent | None) -> str:
     while event:

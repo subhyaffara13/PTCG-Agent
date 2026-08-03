@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional
 
 def track(
     sequence: Iterable[ProgressType],

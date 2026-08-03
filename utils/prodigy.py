@@ -1,3 +1,4 @@
+from typing import Optional
 
 def prodigy(
     learning_rate: base.ScalarOrSchedule = 1.0,

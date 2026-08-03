@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_scalar_on_like(
     value: Any, like: jax.Array, *, dtype: Any

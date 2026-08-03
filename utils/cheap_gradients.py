@@ -1,3 +1,4 @@
+import random
 
 def cheap_gradients(random, dist, y, payoff_matrices, num_players, p=1,
                     proj_grad=True):

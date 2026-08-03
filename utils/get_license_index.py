@@ -1,3 +1,4 @@
+import json
 
 def get_license_index(license_index_location=vendored_scancode_licensedb_index_location):
     """

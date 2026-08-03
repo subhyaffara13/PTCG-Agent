@@ -1,3 +1,4 @@
+from typing import Any
 
 def _iter_openai_jsonl_lines(openai_file_content: FileTypes) -> Iterator[str]:
     """

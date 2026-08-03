@@ -1,3 +1,4 @@
+import random
 
 def _graph_updates_split_rngs(
     node: tp.Any,

@@ -1,3 +1,4 @@
+import re
 
 def _discover_fusable_modules(
     cls: "type[PreTrainedModel]",

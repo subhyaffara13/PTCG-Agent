@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_element(root_dict: STATE_DICT_TYPE, path: OBJ_PATH, value: Any) -> None:
     """Set ``value`` in ``root_dict`` along the ``path`` object path."""

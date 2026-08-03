@@ -1,3 +1,5 @@
+import math
+
 
 def transform_math_literal(builder: IRBuilder, fullname: str, line: int) -> Value | None:
     if fullname == "math.e":

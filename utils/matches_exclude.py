@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def matches_exclude(
     subpath: str, excludes: list[str], fscache: FileSystemCache, verbose: bool

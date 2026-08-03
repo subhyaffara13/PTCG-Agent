@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_build_dir(capfd, hello_world_f90, monkeypatch):
     """Ensures that the build directory can be specified

@@ -1,3 +1,4 @@
+import sys
 
 def install_importhook(config: Config) -> rewrite.AssertionRewritingHook:
     """Try to install the rewrite hook, raise SystemError if it fails."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_sequence_or_set(
     sequence: dict[Any, Any],

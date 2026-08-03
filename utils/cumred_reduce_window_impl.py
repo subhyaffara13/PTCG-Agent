@@ -1,3 +1,4 @@
+from typing import Callable
 
 def cumred_reduce_window_impl(window_reduce: Callable, x, *, axis: int,
                               reverse: bool):

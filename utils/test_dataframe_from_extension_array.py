@@ -1,3 +1,4 @@
+import copy
 
 def test_dataframe_from_extension_array(copy, data, dtype):
     arr = pd.array(data, dtype=dtype)

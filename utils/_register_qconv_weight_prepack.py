@@ -1,3 +1,4 @@
+import itertools
 
 def _register_qconv_weight_prepack():
     for dtype, with_dtype_convert in itertools.product(

@@ -1,3 +1,4 @@
+import os
 
 def _worker_compile_cpp(
     lock_path: str,

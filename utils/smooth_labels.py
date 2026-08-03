@@ -1,3 +1,4 @@
+from typing import Union
 
 def smooth_labels(
     labels: jax.typing.ArrayLike,

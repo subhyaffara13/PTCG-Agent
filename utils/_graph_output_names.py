@@ -1,3 +1,4 @@
+from typing import Any
 
 def _graph_output_names(gm: torch.fx.GraphModule) -> list[Any]:
     output_node = next(iter(reversed(gm.graph.nodes)))

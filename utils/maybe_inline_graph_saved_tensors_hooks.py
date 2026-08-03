@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def maybe_inline_graph_saved_tensors_hooks(
     fw_module: torch.fx.GraphModule,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _coerce_timeout(value: Any, fallback: float) -> float:
     """Return `value` if it is a real int/float, else `fallback`. Guards

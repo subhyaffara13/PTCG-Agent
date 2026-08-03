@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_opaque_obj_info(cls: Any) -> _OpaqueTypeInfo | None:
     if not is_opaque_type(cls):

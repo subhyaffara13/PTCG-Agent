@@ -1,3 +1,4 @@
+import os
 
 def resolve_includes(source):
     d = os.path.dirname(source)

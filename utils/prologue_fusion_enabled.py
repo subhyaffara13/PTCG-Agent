@@ -1,3 +1,4 @@
+import os
 
 def prologue_fusion_enabled() -> bool:
     ENABLE_PROLOGUE_FUSION_VERSION = 0

@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def lfs_enable_largefiles(
     path: Annotated[

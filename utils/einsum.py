@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def einsum(*args: Any) -> Tensor:
     r"""einsum(equation, *operands) -> Tensor

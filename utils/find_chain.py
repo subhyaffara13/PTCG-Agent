@@ -1,3 +1,4 @@
+import sys
 
 def find_chain(obj, predicate, edge_func, max_depth=20, extra_ignore=()):
     queue = [obj]

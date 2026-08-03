@@ -1,3 +1,6 @@
+import copy
+from pathlib import Path
+
 
 def save_and_reload_model_with_shape_infer(model: ModelProto) -> ModelProto:
     with tempfile.TemporaryDirectory(prefix="ort.quant.") as quant_tmp_dir:

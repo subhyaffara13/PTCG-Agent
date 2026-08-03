@@ -1,3 +1,4 @@
+from typing import Any
 
 def literal_schema(
     expected: list[Any],

@@ -1,3 +1,4 @@
+import logging
 
 def _manage_snapshot_file_not_found(
     ignore_errors: bool, formatted_message: str

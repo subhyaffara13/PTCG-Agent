@@ -1,3 +1,5 @@
+import os
+import re
 
 def parse_req_from_line(name: str, line_source: str | None) -> RequirementParts:
     if is_url(name):

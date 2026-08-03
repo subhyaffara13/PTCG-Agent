@@ -1,3 +1,4 @@
+from typing import Any
 
 def _raise_shimmy_error(*args: Any, **kwargs: Any):
     raise ImportError(

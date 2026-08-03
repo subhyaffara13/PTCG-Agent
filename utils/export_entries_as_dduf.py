@@ -1,3 +1,7 @@
+import json
+import os
+from pathlib import Path
+
 
 def export_entries_as_dduf(dduf_path: str | os.PathLike, entries: Iterable[tuple[str, str | Path | bytes]]) -> None:
     """Write a DDUF file from an iterable of entries.

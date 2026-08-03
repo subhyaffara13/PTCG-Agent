@@ -1,3 +1,4 @@
+import functools
 
 def _graph_updates_scan(
   f, f_unbound, *,

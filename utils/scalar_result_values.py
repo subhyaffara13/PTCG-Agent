@@ -1,3 +1,4 @@
+from typing import Any
 
 def scalar_result_values(result: jax.Array, *, op_name: str) -> list[Any]:
   """Returns scalar values from workers."""

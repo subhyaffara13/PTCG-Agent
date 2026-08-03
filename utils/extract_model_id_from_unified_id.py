@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def extract_model_id_from_unified_id(
     unified_id: str,

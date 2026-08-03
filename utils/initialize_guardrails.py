@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def initialize_guardrails(
     guardrails_config: List[Dict[str, GuardrailItemSpec]],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_escaped_gradients(
     outputs: Any,

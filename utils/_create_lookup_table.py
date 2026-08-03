@@ -1,3 +1,4 @@
+import re
 
 def _create_lookup_table(N, data, gamma=1.0):
     r"""

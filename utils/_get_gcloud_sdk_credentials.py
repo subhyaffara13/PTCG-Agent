@@ -1,3 +1,4 @@
+import os
 
 def _get_gcloud_sdk_credentials(quota_project_id=None):
     """Gets the credentials and project ID from the Cloud SDK."""

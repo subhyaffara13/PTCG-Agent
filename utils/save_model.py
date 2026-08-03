@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def save_model(
     model: torch.nn.Module,

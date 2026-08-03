@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_fusion_pattern_to_extra_inputs_getter(
     backend_config: BackendConfig,

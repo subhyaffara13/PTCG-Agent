@@ -1,3 +1,4 @@
+from typing import Any
 
 def _index_to_gather(indexer: NDIndexer, *, x_sharding: NamedSharding | Any,
                      normalize_indices: bool = True) -> _GatherIndexer:

@@ -1,3 +1,4 @@
+import functools
 
 def upcast(func):
     """NumPy fft casts inputs to 64 bit and *returns 64-bit results*."""

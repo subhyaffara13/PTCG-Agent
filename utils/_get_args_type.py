@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_args_type(
     args: Union[Type[CheckpointArgs], CheckpointArgs],

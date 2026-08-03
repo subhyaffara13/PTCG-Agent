@@ -1,3 +1,4 @@
+import sys
 
 def _find_chordality_breaker(G, s=None, treewidth_bound=sys.maxsize):
     """Given a graph G, starts a max cardinality search

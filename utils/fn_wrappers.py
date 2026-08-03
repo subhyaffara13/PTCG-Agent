@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fn_wrappers(fn: Callable[..., Any]) -> list[Callable[..., Any]]:
     fns = [fn]

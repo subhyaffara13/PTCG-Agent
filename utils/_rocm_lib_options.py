@@ -1,3 +1,4 @@
+import os
 
 def _rocm_lib_options(dst_file_ext: str) -> list[str]:
     from torch.utils import cpp_extension

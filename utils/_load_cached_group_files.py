@@ -1,3 +1,4 @@
+import json
 
 def _load_cached_group_files(
     group_sources: list[BuildSource], result: BuildResult

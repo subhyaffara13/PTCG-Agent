@@ -1,3 +1,5 @@
+import math
+
 
 def cauchy(self, median=0, sigma=1, generator=None):
     if generator is not None:

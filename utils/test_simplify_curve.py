@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_simplify_curve():
     pp1 = patches.PathPatch(

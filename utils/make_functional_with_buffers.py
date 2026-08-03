@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_functional_with_buffers(
     model: nn.Module, disable_autograd_tracking: bool = False

@@ -1,3 +1,5 @@
+import json
+from typing import List, Optional
 
 def _convert_tool_response_to_message(
     tool_calls: List[ChatCompletionToolCallChunk],

@@ -1,3 +1,4 @@
+import re
 
 def _compile_pattern(pattern: str) -> re.Pattern | None:
     """

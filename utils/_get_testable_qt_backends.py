@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_testable_qt_backends():
     envs = []

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _step_arr_on_state_devices(step: int, state: PyTree) -> jax.Array:
   """Creates a scalar step array on the same device list as `state`."""

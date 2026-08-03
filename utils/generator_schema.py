@@ -1,3 +1,4 @@
+from typing import Any
 
 def generator_schema(
     items_schema: CoreSchema | None = None,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def all_gather_object_enforce_type(
     pg: dist.ProcessGroup,

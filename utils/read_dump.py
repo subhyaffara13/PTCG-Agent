@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def read_dump(prefix: str, filename: str) -> dict[str, str | int | list[Any]]:
     basename = os.path.basename(filename)

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def find_executable_batch_size(
     function: Callable | None = None, starting_batch_size: int = 128, auto_find_batch_size: bool = False

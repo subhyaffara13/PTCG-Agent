@@ -1,3 +1,4 @@
+import os
 
 def _capath_contains_certs(capath: str) -> bool:
     """Check whether capath exists and contains certs in the expected format."""

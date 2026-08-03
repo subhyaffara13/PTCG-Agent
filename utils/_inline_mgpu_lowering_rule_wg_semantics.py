@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _inline_mgpu_lowering_rule_wg_semantics(
     ctx: lowering.LoweringRuleContext,

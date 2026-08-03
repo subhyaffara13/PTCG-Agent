@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def set_global_gitlab_config(config: Dict[str, Any]) -> None:
     """Set global BitBucket configuration for prompt management."""

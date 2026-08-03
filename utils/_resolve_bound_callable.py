@@ -1,3 +1,4 @@
+import functools
 
 def _resolve_bound_callable(
   f: tp.Callable[..., tp.Any],

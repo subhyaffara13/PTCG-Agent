@@ -1,3 +1,4 @@
+from typing import Any
 
 def _bilinear_taylor_rule(prim, primals_in, series_in, **params):
   x, y = primals_in

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def populateCOLRv0(
     table: ot.COLR,

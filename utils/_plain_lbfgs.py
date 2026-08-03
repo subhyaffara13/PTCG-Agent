@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _plain_lbfgs(
     fun: Callable[[jnp.ndarray], jnp.ndarray],

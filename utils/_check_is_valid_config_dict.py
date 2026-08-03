@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_is_valid_config_dict(
     config_dict: Any, allowed_keys: set[str], dict_name: str

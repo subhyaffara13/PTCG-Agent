@@ -1,3 +1,4 @@
+import itertools
 
 def test_all_node_cuts_sap():
     """Non-slow test for `all_node_cuts` using the shortest augmenting path flow."""

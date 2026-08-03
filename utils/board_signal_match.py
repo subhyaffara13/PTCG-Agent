@@ -1,3 +1,4 @@
+from typing import Any
 
 def board_signal_match(board_summary: dict[str, Any]) -> str | None:
     prizes     = board_summary.get("prizes")

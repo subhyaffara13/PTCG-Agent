@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def print(*args: Any, **kwargs: Any) -> None:
     """Proxy for Console print."""

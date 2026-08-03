@@ -1,3 +1,4 @@
+import copy
 
 def reads(text, fmt=None, as_version=nbformat.NO_CONVERT, config=None, **kwargs):
     """

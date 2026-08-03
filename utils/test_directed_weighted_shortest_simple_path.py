@@ -1,3 +1,4 @@
+import random
 
 def test_directed_weighted_shortest_simple_path():
     def cost_func(path):

@@ -1,3 +1,4 @@
+import sys
 
 def withStderrTo(stderr, f, *args, **kwargs):
     """

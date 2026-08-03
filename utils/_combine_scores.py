@@ -1,3 +1,4 @@
+from typing import List
 
 def _combine_scores(
     bm25_scores: List[float],

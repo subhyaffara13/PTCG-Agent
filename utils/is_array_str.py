@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_array_str(x: Any) -> bool:
   """Returns True if the given array is a `str` array.

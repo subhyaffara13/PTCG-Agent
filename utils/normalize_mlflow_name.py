@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def normalize_mlflow_name(
     name_str: str,

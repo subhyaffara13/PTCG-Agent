@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def is_free_format(fname):
     """Check if file is in free format Fortran."""

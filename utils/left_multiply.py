@@ -1,3 +1,4 @@
+import copy
 
 def left_multiply(J, d, copy=True):
     """Compute diag(d) J.

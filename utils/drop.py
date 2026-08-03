@@ -1,3 +1,4 @@
+import itertools
 
 def drop(n, seq):
     """ The sequence following the first n elements

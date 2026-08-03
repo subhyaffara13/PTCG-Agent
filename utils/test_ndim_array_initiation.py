@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_ndim_array_initiation():
     arr_with_no_elements = ImmutableDenseNDimArray([], shape=(0,))

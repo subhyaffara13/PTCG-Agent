@@ -1,3 +1,5 @@
+import math
+
 
 def get_pool_ceil_padding(input, kernel_size, stride, padding):
     # TODO(justinchuby): Looks like this op is deprecated in torch

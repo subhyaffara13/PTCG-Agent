@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _decompose_exported_program(
     ep,

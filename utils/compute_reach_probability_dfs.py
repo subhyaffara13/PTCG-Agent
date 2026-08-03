@@ -1,3 +1,4 @@
+from typing import List
 
 def compute_reach_probability_dfs(
     history_tree_node: HistoryNode,

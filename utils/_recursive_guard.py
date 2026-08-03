@@ -1,3 +1,4 @@
+import functools
 
 def _recursive_guard(fillvalue='...'):
     """

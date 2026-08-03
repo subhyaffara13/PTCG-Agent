@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_intersection(
     set1: set[T],

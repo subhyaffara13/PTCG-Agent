@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def parse_section(
     prefix: str,

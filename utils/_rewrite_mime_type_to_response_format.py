@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _rewrite_mime_type_to_response_format(generation_config: GenerationConfig) -> None:
     """

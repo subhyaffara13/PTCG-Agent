@@ -1,3 +1,4 @@
+from typing import Any
 
 def pretty_repr_top_level(obj: Any, *, force: bool = True) -> str:
   """Pretty `repr(obj)` for nested list, dict, dataclasses,...

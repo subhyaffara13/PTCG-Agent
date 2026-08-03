@@ -1,3 +1,4 @@
+import os
 
 def profile_fn(args, fn, inputs, inputs_type):
     # Filename prefix format:

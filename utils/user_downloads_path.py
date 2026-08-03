@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_downloads_path() -> Path:
     """:returns: downloads path tied to the user"""

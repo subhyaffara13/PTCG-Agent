@@ -1,3 +1,4 @@
+from typing import List
 
 def extract_deck_anti_patterns(deck: List[int], learned_donts: dict, save_donts_fn) -> bool:
     """Identifies specific toxic combinations in a bad deck using LLM semantic analysis."""

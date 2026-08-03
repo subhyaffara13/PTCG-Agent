@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Tuple
 
 def apply_clear_tool_uses_20250919(
     *,

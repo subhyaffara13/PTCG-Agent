@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_torch_storage_id(tensor: "torch.Tensor") -> tuple["torch.device", int | tuple[Any, ...], int] | None:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def infer_size_impl(shape: list[int], numel: int) -> list[int]:
     newsize = 1

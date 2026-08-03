@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compare_outputs(
     local_output: Any,

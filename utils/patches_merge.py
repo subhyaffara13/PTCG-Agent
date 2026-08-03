@@ -1,3 +1,5 @@
+import math
+
 
 def patches_merge(
     patches: "torch.Tensor",

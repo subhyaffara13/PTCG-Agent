@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_object_type_qconfig(
     qconfig_mapping: QConfigMapping,

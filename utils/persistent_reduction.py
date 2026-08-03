@@ -1,3 +1,4 @@
+import copy
 
 def persistent_reduction(
     size_hints,

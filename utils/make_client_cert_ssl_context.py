@@ -1,3 +1,4 @@
+from typing import Optional
 
 def make_client_cert_ssl_context(
     cert_bytes: bytes, key_bytes: bytes, passphrase: Optional[bytes] = None

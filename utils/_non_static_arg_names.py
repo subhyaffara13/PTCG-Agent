@@ -1,3 +1,4 @@
+from typing import Any
 
 def _non_static_arg_names(fn_signature: inspect.Signature | None,
                           args: Sequence[Any], kwargs: dict[str, Any],

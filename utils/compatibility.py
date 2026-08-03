@@ -1,3 +1,4 @@
+from typing import Callable
 
 def compatibility(is_backward_compatible: bool) -> Callable[[_T], _T]:
     if is_backward_compatible:

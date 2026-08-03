@@ -1,3 +1,4 @@
+from typing import List
 
 def _remove_thought_signatures_from_messages(
     messages: List, thought_signature_separator: str

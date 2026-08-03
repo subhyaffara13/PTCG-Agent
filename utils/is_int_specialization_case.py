@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_int_specialization_case(value: Any, source: Any) -> bool:
     from .source import is_from_defaults

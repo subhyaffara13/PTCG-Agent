@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_domains():
     X, Y = Die('x', 6), Die('y', 6)

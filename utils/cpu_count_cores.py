@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def cpu_count_cores():
     cmd = ["lsdev", "-Cc", "processor"]

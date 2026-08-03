@@ -1,3 +1,4 @@
+import os
 
 def is_stdlib_file(typeshed_dir: str | None, file: str) -> bool:
     if "stdlib" not in file:

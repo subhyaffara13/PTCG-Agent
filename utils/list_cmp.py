@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def list_cmp(
     op: Callable[[Any, Any], bool], left: Sequence[T], right: Sequence[T]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def parse_native_functions_keys(
     backend_yaml_path: str,

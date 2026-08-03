@@ -1,3 +1,5 @@
+import math
+
 
 def _get_grid_and_cluster_dims_and_num_threads(
     grid_mapping: pallas_core.GridMapping, mesh: plgpu.Mesh | None

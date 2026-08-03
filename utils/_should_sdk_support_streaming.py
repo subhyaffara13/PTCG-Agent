@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _should_sdk_support_streaming(
     custom_llm_provider: Optional[Union[FileContentProvider, str]],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_future(original_result: Any) -> Future[None]:
     """

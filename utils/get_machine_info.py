@@ -1,3 +1,4 @@
+import json
 
 def get_machine_info(silent=True) -> str:
     machine = MachineInfo(silent)

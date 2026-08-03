@@ -1,3 +1,4 @@
+from typing import Callable
 
 def when(
     condition: bool | jax_typing.ArrayLike, /

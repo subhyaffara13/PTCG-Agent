@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_basic_str(src: str, pos: Pos, *, multiline: bool) -> tuple[Pos, str]:
     if multiline:

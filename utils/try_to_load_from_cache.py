@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def try_to_load_from_cache(
     repo_id: str,

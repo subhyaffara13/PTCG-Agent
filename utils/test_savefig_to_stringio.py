@@ -1,3 +1,4 @@
+import re
 
 def test_savefig_to_stringio(format, use_log, rcParams, orientation, papersize):
     mpl.rcParams.update(rcParams)

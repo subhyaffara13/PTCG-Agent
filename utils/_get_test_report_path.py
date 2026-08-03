@@ -1,3 +1,4 @@
+import os
 
 def _get_test_report_path():
     # allow users to override the test file location. We need this

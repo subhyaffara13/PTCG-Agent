@@ -1,3 +1,4 @@
+from typing import List
 
 def resolve_action_type_mapping(action_label: str, options: list) -> List[int]:
     if action_label.startswith("attack:"):

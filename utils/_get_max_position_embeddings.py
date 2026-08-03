@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_max_position_embeddings(model_name: str) -> Optional[int]:
     # Construct the URL for the config.json file

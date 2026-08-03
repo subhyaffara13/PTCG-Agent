@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def egyptian_fraction(r, algorithm="Greedy"):
     """

@@ -1,3 +1,5 @@
+import copy
+import re
 
 def getarrdims(a, var, verbose=0):
     ret = {}

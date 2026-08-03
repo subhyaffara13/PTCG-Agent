@@ -1,3 +1,5 @@
+import math
+
 
 def text_on_color(
     text: str,

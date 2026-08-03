@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def test_issue_5788():
     args = [(1, 2), (2, 1)]

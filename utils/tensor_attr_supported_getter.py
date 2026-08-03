@@ -1,3 +1,5 @@
+import math
+
 
 def tensor_attr_supported_getter(func, *args, **kwargs):
     if func is torch.ops.aten.is_non_overlapping_and_dense.default:

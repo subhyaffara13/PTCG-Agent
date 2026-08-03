@@ -1,3 +1,4 @@
+import copy
 
 def test_input_data_is_not_modified_when_building_graph():
     G = nx.path_graph(4)

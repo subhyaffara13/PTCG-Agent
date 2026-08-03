@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def skills_update(
     name: Annotated[

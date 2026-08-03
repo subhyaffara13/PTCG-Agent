@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_flatten_with_path_one_level(
     x: Any,

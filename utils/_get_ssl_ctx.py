@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_ssl_ctx(
         certfile: str,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_model_region(
     custom_llm_provider: str, litellm_params: LiteLLM_Params

@@ -1,3 +1,4 @@
+from typing import Any
 
 def reshape_batch_axis(tree: Any, microbatch_size: int, axis: int = 0) -> Any:
   """Reshape batch axis of pytree leaves for use with microbatching.

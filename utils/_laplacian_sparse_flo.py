@@ -1,3 +1,4 @@
+import copy
 
 def _laplacian_sparse_flo(graph, normed, axis, copy, form, dtype, symmetrized):
     # The keyword argument `copy` is unused and has no effect here.

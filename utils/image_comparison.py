@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def image_comparison(baseline_images, extensions=None, tol=0,
                      freetype_version=None, remove_text=False,

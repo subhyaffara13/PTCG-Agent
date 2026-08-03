@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def setup_stacktrace_preservation_hooks(roots: list[torch.autograd.graph.Node]) -> None:
     def iter_graph(

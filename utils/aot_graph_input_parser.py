@@ -1,3 +1,5 @@
+import re
+from typing import Any, Callable
 
 def aot_graph_input_parser(
     func: Callable[[list[Tensor]], list[Tensor]],

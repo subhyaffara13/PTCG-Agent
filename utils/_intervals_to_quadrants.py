@@ -1,3 +1,4 @@
+import re
 
 def _intervals_to_quadrants(intervals, f1, f2, s, t, F):
     """Generate a sequence of extended quadrants from a list of critical points. """

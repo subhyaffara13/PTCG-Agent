@@ -1,3 +1,4 @@
+import os
 
 def _maybe_write(filename, new_content) -> None:
     r'''

@@ -1,3 +1,5 @@
+import functools
+import itertools
 
 def _reflection_pad_backward(grad_output, x, padding):
     dim = len(padding) // 2

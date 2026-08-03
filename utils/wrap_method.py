@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_method(
     original_method: Callable[Concatenate[WT, P], Any],

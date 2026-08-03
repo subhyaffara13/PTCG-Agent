@@ -1,3 +1,4 @@
+from typing import Optional
 
 def record_pubsub_message(
     direction: PubSubDirection,

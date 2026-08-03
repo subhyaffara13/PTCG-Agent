@@ -1,3 +1,4 @@
+import re
 
 def periodicity(f, symbol, check=False):
     """

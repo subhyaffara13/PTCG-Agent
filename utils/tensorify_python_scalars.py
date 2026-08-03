@@ -1,3 +1,4 @@
+import os
 
 def tensorify_python_scalars(
     gm: GraphModule, shape_env: ShapeEnv, fake_mode: fake_tensor.FakeTensorMode

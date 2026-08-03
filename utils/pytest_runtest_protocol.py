@@ -1,3 +1,4 @@
+import sys
 
 def pytest_runtest_protocol(item: Item) -> Generator[None, object, object]:
     timeout = get_timeout_config_value(item.config)

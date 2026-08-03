@@ -1,3 +1,4 @@
+import logging
 
 def is_logging_enabled(logger: logging.Logger) -> bool:
     """

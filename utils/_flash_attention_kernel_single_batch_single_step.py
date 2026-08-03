@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flash_attention_kernel_single_batch_single_step(
     batch_idx: tuple[int, ...],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def process_inlines(tokens: list[Token], state: StateCore) -> None:
     stack: list[dict[str, Any]] = []

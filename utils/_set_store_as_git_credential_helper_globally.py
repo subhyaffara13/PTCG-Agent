@@ -1,3 +1,4 @@
+import subprocess
 
 def _set_store_as_git_credential_helper_globally() -> None:
     """Set globally the credential.helper to `store`.

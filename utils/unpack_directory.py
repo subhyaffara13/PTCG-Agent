@@ -1,3 +1,4 @@
+import os
 
 def unpack_directory(filename, extract_dir, progress_filter=default_filter) -> None:
     """ "Unpack" a directory, using the same interface as for archives

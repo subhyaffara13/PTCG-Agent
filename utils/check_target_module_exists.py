@@ -1,3 +1,4 @@
+import re
 
 def check_target_module_exists(optim_target_modules, key: str, return_is_regex: bool = False):
     """A helper method to check if the passed module's key name matches any of the target modules in the optim_target_modules.

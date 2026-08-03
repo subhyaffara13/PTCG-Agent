@@ -1,3 +1,4 @@
+import time
 
 def ficticious_play(seq_game, number_of_iterations, compute_metrics=False):
   xfp_solver = fictitious_play.XFPSolver(seq_game)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _graph_device_type(graph: Graph | None) -> str:
     if graph is None:

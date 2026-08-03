@@ -1,3 +1,4 @@
+import time
 
 def _shutdown_proc(p, timeout):
   """Waits for a proc to shut down; terminates or kills it after `timeout`."""

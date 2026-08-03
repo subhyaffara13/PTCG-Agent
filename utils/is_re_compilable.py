@@ -1,3 +1,4 @@
+import re
 
 def is_re_compilable(obj: object) -> bool:
     """

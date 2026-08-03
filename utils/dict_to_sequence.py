@@ -1,3 +1,4 @@
+from typing import Any
 
 def dict_to_sequence(
     d: _t.SupportsItems[Any, Any] | Iterable[tuple[Any, Any]],

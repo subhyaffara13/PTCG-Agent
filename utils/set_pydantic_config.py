@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_pydantic_config(typ: Any, config: pydantic.ConfigDict) -> None:
     """Add a pydantic config for the given type.

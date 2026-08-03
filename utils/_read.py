@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _read(filename):
     if (2, 5) < sys.version_info < (3, 0):

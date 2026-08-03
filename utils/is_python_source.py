@@ -1,3 +1,4 @@
+import os
 
 def is_python_source(filename: str | None) -> bool:
     """Return: True if the filename is a python source file."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_move_history(history: list[dict[str, Any]] | None) -> str:
     if not history:

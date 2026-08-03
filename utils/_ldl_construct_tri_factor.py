@@ -1,3 +1,4 @@
+import re
 
 def _ldl_construct_tri_factor(lu, swap_vec, pivs, lower=True):
     """

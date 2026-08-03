@@ -1,3 +1,6 @@
+import json
+import math
+
 
 def _write_metadata(
     output_files_data: dict[str, _OutputFileData],

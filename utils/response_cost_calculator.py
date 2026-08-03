@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def response_cost_calculator(
     response_object: Union[

@@ -1,3 +1,4 @@
+import os
 
 def extension_extract_fn(pathname):
     ext = os.path.splitext(pathname)[1]

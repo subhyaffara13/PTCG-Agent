@@ -1,3 +1,4 @@
+import re
 
 def evalf_sum(expr: 'Sum', prec: int, options: OPT_DICT) -> TMP_RES:
     from .numbers import Float

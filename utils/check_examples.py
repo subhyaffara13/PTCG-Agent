@@ -1,3 +1,4 @@
+import os
 
 def check_examples():
     example_files = sorted(glob.glob('../../examples/*.cpp'))

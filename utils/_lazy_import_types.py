@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lazy_import_types(name: str) -> Any:
     """Handler for type classes (GuardrailItem, etc.)"""

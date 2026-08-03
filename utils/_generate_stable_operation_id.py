@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _generate_stable_operation_id(route: Any) -> str:
     operation_id = re.sub(r"\W", "_", f"{route.name}{route.path_format}")

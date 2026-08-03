@@ -1,3 +1,4 @@
+from typing import Callable
 
 def action(subparser: argparse.ArgumentParser) -> Callable[[ActionFunction], ActionFunction]:
     """Decorator to tie an action function to a subparser."""

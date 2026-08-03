@@ -1,3 +1,4 @@
+import sys
 
 def is_platform_little_endian() -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def calculate_cost_component(
     model_info: ModelInfo, cost_key: str, usage_value: Optional[float]

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_solve_trig():
     assert dumeq(solveset_real(sin(x), x),

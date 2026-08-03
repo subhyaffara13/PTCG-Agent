@@ -1,3 +1,6 @@
+import os
+import time
+import uuid
 
 def _make_temp_dir(prefix: str | None = None, gc_dev_shm: bool = False) -> str:
     """Create a temporary directory. The caller is responsible for cleanup.

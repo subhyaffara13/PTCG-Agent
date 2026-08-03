@@ -1,3 +1,4 @@
+import functools
 
 def wrap_model_xla_fsdp(model, args, is_fsdp_xla_v2_enabled):
     """

@@ -1,3 +1,4 @@
+import os
 
 def test_backward_compat_nodateconversion(version, datapath):
     # The Stata data format prior to 105 did not support a date format

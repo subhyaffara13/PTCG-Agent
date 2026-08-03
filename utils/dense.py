@@ -1,3 +1,4 @@
+import random
 
 def Dense(out_dim, W_init=glorot_normal(), b_init=normal()):
   """Layer constructor function for a dense (fully-connected) layer."""

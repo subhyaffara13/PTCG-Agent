@@ -1,3 +1,4 @@
+import re
 
 def getformat(fmt, keep_pad_byte=False):
     fmt = tostr(fmt, encoding="ascii")

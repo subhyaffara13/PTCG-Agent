@@ -1,3 +1,4 @@
+import random
 
 def test_measure_all_oneshot():
     random.seed(42)

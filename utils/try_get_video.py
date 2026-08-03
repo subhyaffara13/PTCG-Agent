@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def try_get_video(env, keep_running=False):
     if not env.football_video_path:

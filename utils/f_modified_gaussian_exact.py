@@ -1,3 +1,5 @@
+import math
+
 
 def f_modified_gaussian_exact(a, b, n, xp):
     # Exact only for the limits

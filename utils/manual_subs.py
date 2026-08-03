@@ -1,3 +1,4 @@
+from typing import Dict
 
 def manual_subs(expr, *args):
     """

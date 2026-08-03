@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _drain_endpoint_token() -> Optional[str]:
     """

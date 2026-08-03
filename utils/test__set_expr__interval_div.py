@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_SetExpr_Interval_div():
     # TODO: some expressions cannot be calculated due to bugs (currently

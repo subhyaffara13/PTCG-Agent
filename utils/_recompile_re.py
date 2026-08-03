@@ -1,3 +1,4 @@
+import re
 
 def _recompile_re() -> None:
     global SKIP_DIRS_RE

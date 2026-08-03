@@ -1,3 +1,4 @@
+import copy
 
 def _try_clone_model(model):
     """Used for preserving original model in case forward mutates model states."""

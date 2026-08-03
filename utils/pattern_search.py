@@ -1,3 +1,4 @@
+import re
 
 def pattern_search(patterns: str | Sequence[str], string: str) -> str | None:
   if isinstance(patterns, str):

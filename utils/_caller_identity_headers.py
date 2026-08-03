@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _caller_identity_headers(user_api_key_dict: UserAPIKeyAuth) -> Dict[str, str]:
     headers: Dict[str, str] = {}

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_desired_device_type_test_bases(
     except_for=None, only_for=None, include_lazy=False, allow_mps=False, allow_xpu=False

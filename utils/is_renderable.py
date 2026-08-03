@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_renderable(check_object: Any) -> bool:
     """Check if an object may be rendered by Rich."""

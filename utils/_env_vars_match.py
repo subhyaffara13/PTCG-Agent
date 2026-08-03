@@ -1,3 +1,4 @@
+import os
 
 def _env_vars_match(env_vars: dict[str, str]) -> bool:
     """Return `True` if any `(var, pattern)` from the harness matches the environment.

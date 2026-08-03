@@ -1,3 +1,5 @@
+import math
+
 
 def test_trig_hyperb_basic():
     for x in (list(range(100)) + list(range(-100,0))):

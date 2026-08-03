@@ -1,3 +1,5 @@
+import itertools
+import sys
 
 def _process_traceback(
     exc: BaseException,

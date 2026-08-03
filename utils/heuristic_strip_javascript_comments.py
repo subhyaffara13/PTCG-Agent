@@ -1,3 +1,4 @@
+import re
 
 def heuristic_strip_javascript_comments(js_source: str) -> str:
   """Heuristically removes javascript comments.

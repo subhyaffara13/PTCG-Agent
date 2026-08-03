@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bucket_reduce_scatter_by_mb(
     gm: torch.fx.GraphModule,

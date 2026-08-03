@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _split_decomp_table_to_cia_and_python_decomp(
     decomp_table: dict[torch._ops.OperatorBase, Callable],

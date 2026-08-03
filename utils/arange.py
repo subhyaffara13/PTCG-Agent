@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def arange(
     start: ArrayLikeOrScalar | None = None,

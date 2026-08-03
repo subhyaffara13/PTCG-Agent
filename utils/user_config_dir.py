@@ -1,3 +1,5 @@
+import os
+import sys
 
 def user_config_dir(  # noqa: PLR0913, PLR0917
     appname: str | None = None,

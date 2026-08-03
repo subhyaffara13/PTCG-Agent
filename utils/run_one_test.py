@@ -1,3 +1,5 @@
+import json
+import os
 
 def run_one_test(model_setting, test_setting, perf_results, all_inputs, intra_op_num_threads):
     session = create_session(

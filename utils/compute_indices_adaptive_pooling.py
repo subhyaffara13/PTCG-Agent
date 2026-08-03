@@ -1,3 +1,4 @@
+import functools
 
 def compute_indices_adaptive_pooling(start_index, end_index, h_in, w_in, h_out, w_out):
     h_start_index = functools.partial(start_index, out_dim=h_out, inp_dim=h_in)

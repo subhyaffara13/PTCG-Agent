@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fun_qual_name(fun: Callable) -> str:
   qual_name = getattr(fun, "__qualname__", None)

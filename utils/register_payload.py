@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_payload(
     factory: type["Payload"], type: Any, *, order: Order = Order.normal

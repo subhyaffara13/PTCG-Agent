@@ -1,3 +1,4 @@
+import os
 
 def read_setup_file(filename):  # noqa: C901
     """Reads a Setup file and returns Extension instances."""

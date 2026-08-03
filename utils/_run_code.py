@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _run_code(code, code_path, ns=None, function_name=None):
     """

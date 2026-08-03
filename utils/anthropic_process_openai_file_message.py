@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def anthropic_process_openai_file_message(
     message: ChatCompletionFileObject,

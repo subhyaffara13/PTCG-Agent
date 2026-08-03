@@ -1,3 +1,4 @@
+import sys
 
 def show_version_verbose(config: Config) -> None:
     """Show verbose pytest version installation, including plugins."""

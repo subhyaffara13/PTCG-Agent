@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def use_absl_handler():
   """Uses the ABSL logging handler for logging.

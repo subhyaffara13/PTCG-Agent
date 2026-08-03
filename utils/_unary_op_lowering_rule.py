@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _unary_op_lowering_rule(
     _: LoweringContext,

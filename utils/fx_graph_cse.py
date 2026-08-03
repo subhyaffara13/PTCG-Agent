@@ -1,3 +1,4 @@
+from typing import Any
 
 def fx_graph_cse(fx_g: torch.fx.graph.Graph) -> fx.Graph:
     new_graph = fx.Graph()

@@ -1,3 +1,5 @@
+import re
+import time
 
 def wait_until_node_failure(rank: int, expected_error_regex: str = ".*") -> str:
     """

@@ -1,3 +1,4 @@
+import os
 
 def compile_multiarch_bundle_from_llvm_ir(
     llvm_ir_path: str, output_bundle_path: str, target_archs: list[str] | None = None

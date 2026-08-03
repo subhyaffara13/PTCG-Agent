@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def update_bucket_csi_driver(mount_csi_driver: bool):
   """Mounts or unmounts the Bucket CSI driver.

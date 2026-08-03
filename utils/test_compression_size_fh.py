@@ -1,3 +1,4 @@
+import os
 
 def test_compression_size_fh(obj, method, compression_only, temp_file):
     path = temp_file

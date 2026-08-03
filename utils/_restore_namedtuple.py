@@ -1,3 +1,4 @@
+from typing import Any
 
 def _restore_namedtuple(xs, state_dict: dict[str, Any]):
   """Rebuild namedtuple from serialized dict."""

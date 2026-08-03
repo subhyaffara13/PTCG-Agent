@@ -1,3 +1,5 @@
+import math
+
 
 def _lu_solve_core(lu: Array, permutation: Array, b: Array, trans: int) -> Array:
   m = lu.shape[0]

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def disallow_in_graph(fn: Callable[..., Any]) -> Any:
     """

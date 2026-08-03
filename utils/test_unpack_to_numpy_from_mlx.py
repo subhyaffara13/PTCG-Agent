@@ -1,3 +1,4 @@
+import sys
 
 def test_unpack_to_numpy_from_mlx():
     """

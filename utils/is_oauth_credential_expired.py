@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def is_oauth_credential_expired(cred: Dict[str, Any], buffer_seconds: int = 0) -> bool:
     """Return True if the OAuth2 credential's access_token has expired.

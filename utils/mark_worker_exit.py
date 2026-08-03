@@ -1,3 +1,4 @@
+import os
 
 def mark_worker_exit(worker_pid: int) -> None:
     """Remove prometheus .db files for a dead worker. Called by gunicorn child_exit hook."""

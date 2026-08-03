@@ -1,3 +1,4 @@
+import sys
 
 def get_calling_module_object_and_name() -> _ModuleObjectAndName:
   """Returns the module that's calling into this module.

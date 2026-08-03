@@ -1,3 +1,4 @@
+import os
 
 def test_examples(dtype, irl):
     # Note: atol for complex64 bumped from 1e-4 to 1e-3 due to test failures

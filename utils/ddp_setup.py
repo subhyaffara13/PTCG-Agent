@@ -1,3 +1,4 @@
+import os
 
 def ddp_setup(rank, world_size):
     os.environ["MASTER_ADDR"] = "localhost"

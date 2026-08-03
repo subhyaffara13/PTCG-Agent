@@ -1,3 +1,4 @@
+from typing import Callable
 
 def cohere(x, y, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
            noverlap=0, pad_to=None, sides='default', scale_by_freq=None):

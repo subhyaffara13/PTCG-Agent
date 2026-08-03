@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _bytes_to_dataclass(cls: Any, artifact_bytes: bytes) -> Any:
     artifact_str = artifact_bytes.decode("utf-8")

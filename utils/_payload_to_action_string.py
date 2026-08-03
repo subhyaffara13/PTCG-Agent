@@ -1,3 +1,4 @@
+from typing import Any
 
 def _payload_to_action_string(payload: Mapping[str, Any]) -> str | None:
     """Convert a parsed JSON dict into a canonical legal-action string.

@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def getStatNames(
     doc: DesignSpaceDocument, userLocation: SimpleLocationDict

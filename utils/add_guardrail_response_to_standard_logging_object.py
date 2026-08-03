@@ -1,3 +1,4 @@
+from typing import Optional
 
 def add_guardrail_response_to_standard_logging_object(
     litellm_logging_obj: Optional["LiteLLMLogging"],

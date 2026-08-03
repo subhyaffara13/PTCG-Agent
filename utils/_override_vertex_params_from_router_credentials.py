@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def _override_vertex_params_from_router_credentials(
     router_credentials: Optional[Any],

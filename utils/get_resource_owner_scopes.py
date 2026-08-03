@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_resource_owner_scopes(
     user_api_key_dict: Optional[UserAPIKeyAuth],

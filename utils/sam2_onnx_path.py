@@ -1,3 +1,4 @@
+import os
 
 def sam2_onnx_path(output_dir, model_type, component, multimask_output=False, suffix=""):
     if component == "image_encoder":

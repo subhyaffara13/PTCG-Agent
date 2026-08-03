@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_namedtuple(
     cls: type[Any],

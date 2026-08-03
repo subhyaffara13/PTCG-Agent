@@ -1,3 +1,4 @@
+from typing import Any
 
 def _add_custom_serialization_from_json_encoders(
     json_encoders: JsonEncoders | None, tp: Any, schema: CoreSchema

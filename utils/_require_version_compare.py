@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _require_version_compare(
     fn: Callable[["Specifier", ParsedVersion, str], bool]

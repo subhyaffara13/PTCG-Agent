@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_convert_to_tuples_of_quantities():
     from sympy.core.symbol import symbols

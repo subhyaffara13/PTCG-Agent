@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def optimize_by_onnxruntime(
     onnx_model: str | ModelProto | None = None,

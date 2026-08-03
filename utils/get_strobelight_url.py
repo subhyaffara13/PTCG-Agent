@@ -1,3 +1,4 @@
+import json
 
 def get_strobelight_url(identifier: str) -> str:
     scuba_json = {

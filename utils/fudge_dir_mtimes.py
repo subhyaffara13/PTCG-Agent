@@ -1,3 +1,4 @@
+import os
 
 def fudge_dir_mtimes(dir: str, delta: int) -> None:
     # Skip linker outputs. Pushing them back combines with write_file's

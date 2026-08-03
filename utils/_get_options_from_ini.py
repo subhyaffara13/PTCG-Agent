@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_options_from_ini(ini_path, target):
     """Return a dictionary of config options or None if we can't load any."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _reshape_all_args(
     microbatch_size: int,

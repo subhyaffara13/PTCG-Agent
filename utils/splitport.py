@@ -1,3 +1,4 @@
+import re
 
 def splitport(host):
     """splitport('host:port') --> 'host', 'port'."""

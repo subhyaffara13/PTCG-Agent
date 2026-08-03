@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _lower_quantized_binary_op(model: GraphModule, qconfig_map: dict[str, QConfigAny]):
     binary_ops_to_lower: list[Callable] = [

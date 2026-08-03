@@ -1,3 +1,4 @@
+import logging
 
 def convert_and_export_with_cache(
     model: PreTrainedModel,

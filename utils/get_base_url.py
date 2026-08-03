@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def get_base_url(spec: Dict[str, Any], spec_path: Optional[str] = None) -> str:
     """Extract base URL from OpenAPI spec."""

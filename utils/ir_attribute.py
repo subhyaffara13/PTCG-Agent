@@ -1,3 +1,4 @@
+from typing import Any
 
 def ir_attribute(val: Any) -> ir.Attribute:
   """Convert a Python value to an MLIR attribute."""

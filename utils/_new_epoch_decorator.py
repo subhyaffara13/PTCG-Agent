@@ -1,3 +1,4 @@
+import functools
 
 def _new_epoch_decorator(thefunc):
     @functools.wraps(thefunc)

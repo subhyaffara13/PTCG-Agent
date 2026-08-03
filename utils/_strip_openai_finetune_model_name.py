@@ -1,3 +1,4 @@
+import re
 
 def _strip_openai_finetune_model_name(model_name: str) -> str:
     """

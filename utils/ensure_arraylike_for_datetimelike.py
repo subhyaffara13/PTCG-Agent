@@ -1,3 +1,4 @@
+import copy
 
 def ensure_arraylike_for_datetimelike(
     data, copy: bool, cls_name: str

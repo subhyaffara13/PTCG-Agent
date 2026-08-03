@@ -1,3 +1,4 @@
+import functools
 
 def decode_attn_unbatched(
     q,           # [num_heads, head_dim]

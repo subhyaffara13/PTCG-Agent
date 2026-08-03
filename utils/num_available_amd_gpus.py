@@ -1,3 +1,5 @@
+import os
+import re
 
 def num_available_amd_gpus(stop_at: int | None = None) -> int:
   """Count AMD GPUs available via KFD kernel driver.

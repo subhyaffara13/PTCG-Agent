@@ -1,3 +1,11 @@
+from __future__ import annotations
+
+import math
+from typing import List, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from factory.deck_scorer_state import CardState
+
 
 def consistency_score(deck: List[CardState], ct: dict) -> float:
     try:

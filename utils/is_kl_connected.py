@@ -1,3 +1,4 @@
+import copy
 
 def is_kl_connected(G, k, l, low_memory=False):
     """Returns True if and only if `G` is locally `(k, l)`-connected.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def group_foreach_args(
     arg_pairs: Iterable[Any],

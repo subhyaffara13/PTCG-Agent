@@ -1,3 +1,4 @@
+import os
 
 def maybe_warm_pool() -> None:
     if (

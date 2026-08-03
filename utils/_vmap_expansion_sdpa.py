@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _vmap_expansion_sdpa(mask_function: Callable) -> Callable:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _extract_fields_recursive(
     model: Type[BaseModel],

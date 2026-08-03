@@ -1,3 +1,4 @@
+import os
 
 def get_world_size(group: ProcessGroup | None = None) -> int:
     """

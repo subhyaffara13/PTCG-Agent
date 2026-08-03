@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _jvp(primals, tangents):
   (x, _), (_, t) = primals, tangents

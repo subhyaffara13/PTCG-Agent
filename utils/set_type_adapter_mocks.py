@@ -1,3 +1,4 @@
+from typing import Callable
 
 def set_type_adapter_mocks(adapter: TypeAdapter) -> None:
     """Set `core_schema`, `validator` and `serializer` to mock core types on a type adapter instance.

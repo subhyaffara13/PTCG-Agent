@@ -1,3 +1,4 @@
+from typing import Any
 
 def mark_dynamic(
     t: Any,

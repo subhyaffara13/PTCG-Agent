@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def save_processed_players(processed_file: Path, processed_players: dict):
     try:

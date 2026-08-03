@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_module_module_registration_hook(
     hook: Callable[..., None],

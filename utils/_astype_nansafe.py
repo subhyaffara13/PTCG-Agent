@@ -1,3 +1,4 @@
+import copy
 
 def _astype_nansafe(
     arr: np.ndarray, dtype: np.dtype, copy: bool = ..., skipna: bool = ...

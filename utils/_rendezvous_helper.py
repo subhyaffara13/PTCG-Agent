@@ -1,3 +1,4 @@
+import os
 
 def _rendezvous_helper(url: str, rank: int, world_size_opt: int | None, **kwargs):
     result = urlparse(url)

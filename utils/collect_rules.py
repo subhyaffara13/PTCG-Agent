@@ -1,3 +1,4 @@
+import os
 
 def collect_rules(root_path):
   """Collects and returns all rules from root path recursively."""

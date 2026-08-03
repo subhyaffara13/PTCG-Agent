@@ -1,3 +1,5 @@
+import os
+import re
 
 def fix_native_line_number(message: str, fnam: str, delta: int) -> str:
     """Update code locations in test case output to point to the .test file.

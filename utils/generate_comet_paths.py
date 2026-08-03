@@ -1,3 +1,6 @@
+import random
+import math
+
 
 def generate_comet_paths(
     initial_planets,

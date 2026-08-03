@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_array_write_spec(
     info: types.ParamInfo,

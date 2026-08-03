@@ -1,3 +1,5 @@
+import re
+from typing import Dict
 
 def _has_use_fallback_transform(
     input_key: TupleKey, flat_transforms: Dict[TupleKey, Transform]

@@ -1,3 +1,4 @@
+import copy
 
 def masked_invalid(a, copy=True):
     """

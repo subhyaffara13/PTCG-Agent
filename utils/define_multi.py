@@ -1,3 +1,4 @@
+from typing import Any
 
 def DEFINE_multi(  # pylint: disable=invalid-name
     parser: _argument_parser.ArgumentParser[_T],

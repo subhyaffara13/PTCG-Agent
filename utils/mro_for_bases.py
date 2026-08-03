@@ -1,3 +1,4 @@
+from typing import Any
 
 def mro_for_bases(bases: tuple[type[Any], ...]) -> tuple[type[Any], ...]:
     def merge_seqs(seqs: list[deque[type[Any]]]) -> Iterable[type[Any]]:

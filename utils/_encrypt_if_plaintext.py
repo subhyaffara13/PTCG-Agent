@@ -1,3 +1,4 @@
+from typing import Any
 
 def _encrypt_if_plaintext(key: str, value: Any) -> Any:
     if not isinstance(value, str) or not value:

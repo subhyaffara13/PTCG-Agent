@@ -1,3 +1,4 @@
+from typing import Any
 
 def start_blocking_portal(
     backend: str = "asyncio",

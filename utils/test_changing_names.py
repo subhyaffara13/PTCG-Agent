@@ -1,3 +1,4 @@
+import copy
 
 def test_changing_names(idx):
     assert [level.name for level in idx.levels] == ["first", "second"]

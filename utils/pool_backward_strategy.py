@@ -1,3 +1,4 @@
+from typing import Any
 
 def pool_backward_strategy(
     op: torch._ops.OpOverload,

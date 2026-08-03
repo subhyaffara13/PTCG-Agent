@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unflatten_optim_state_dict(
     optim: torch.optim.Optimizer,

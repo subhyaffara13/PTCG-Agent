@@ -1,3 +1,4 @@
+import os
 
 def _get_default_use_replica_parallel():
   platform = os.environ.get('JAX_PLATFORMS', '').lower()

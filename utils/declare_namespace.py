@@ -1,3 +1,4 @@
+import sys
 
 def declare_namespace(packageName: str) -> None:
     """Declare that package 'packageName' is a namespace package"""

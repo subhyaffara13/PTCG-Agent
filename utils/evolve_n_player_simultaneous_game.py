@@ -1,3 +1,4 @@
+import random
 
 def evolve_n_player_simultaneous_game(game, policy, graph):
   state = game.new_initial_state()

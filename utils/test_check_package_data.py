@@ -1,3 +1,4 @@
+import re
 
 def test_check_package_data(package_data, expected_message):
     if expected_message is None:

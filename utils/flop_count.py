@@ -1,3 +1,4 @@
+from typing import Dict
 
 def flop_count(
     idx_contraction: Collection[str],

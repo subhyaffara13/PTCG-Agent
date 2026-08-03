@@ -1,3 +1,5 @@
+import functools
+from typing import Callable, Set
 
 def shard_map(f, mesh, in_specs, out_specs, check_rep=True):
   """Please use `jax.shard_map`. `jax.experimental.shard_map.shard_map`

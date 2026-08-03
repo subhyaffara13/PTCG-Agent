@@ -1,3 +1,7 @@
+import time
+from typing import Any, Callable
+import math
+
 
 def timed(
     model: Any, example_inputs: Iterable[Any], times: int = 1

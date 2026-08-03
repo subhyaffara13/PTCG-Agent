@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _unflatten_box_multibinary(
     space: Box | MultiBinary, x: NDArray[Any]

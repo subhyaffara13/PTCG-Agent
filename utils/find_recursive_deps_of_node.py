@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def find_recursive_deps_of_node(
     snode: BaseSchedulerNode,

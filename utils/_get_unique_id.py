@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_unique_id(tensor: "torch.Tensor") -> int | tuple[Any, ...]:
     """Returns a unique id for plain tensor

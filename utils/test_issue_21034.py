@@ -1,3 +1,4 @@
+import re
 
 def test_issue_21034():
     a = symbols('a', real=True)

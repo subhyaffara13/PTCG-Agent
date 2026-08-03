@@ -1,3 +1,6 @@
+import itertools
+import math
+
 
 def plan_tiled_transfer(
     nested_ref_shape: Sequence[Sequence[int]],

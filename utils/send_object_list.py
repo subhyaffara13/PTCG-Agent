@@ -1,3 +1,4 @@
+from typing import Any
 
 def send_object_list(
     object_list: list[Any],

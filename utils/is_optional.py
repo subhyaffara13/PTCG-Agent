@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def is_optional(ann):
     if ann is Optional:

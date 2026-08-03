@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_custom_op_autotuning(
     custom_op: torch._library.custom_ops.CustomOpDef | torch._ops.OpOverload,

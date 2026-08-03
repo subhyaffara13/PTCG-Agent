@@ -1,3 +1,4 @@
+import sys
 
 def _assert_caught_no_extra_warnings(
     *,

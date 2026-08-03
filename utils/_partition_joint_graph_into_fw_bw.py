@@ -1,3 +1,4 @@
+from typing import Any
 
 def _partition_joint_graph_into_fw_bw(
     fx_g: torch.fx.GraphModule,

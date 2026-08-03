@@ -1,3 +1,4 @@
+import time
 
 def test_extend():
     ms = DimensionSystem((length, time), (velocity,))

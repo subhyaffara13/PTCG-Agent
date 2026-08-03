@@ -1,3 +1,4 @@
+import os
 
 def test_tempdir():
     with tempdir() as tdir:

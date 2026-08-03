@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def get_key_name(key: Any) -> Union[int, str]:
   """Returns the name of a JAX Key."""

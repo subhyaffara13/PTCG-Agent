@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def validate_json(
     ctx: click.Context,

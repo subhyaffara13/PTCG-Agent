@@ -1,3 +1,4 @@
+import functools
 
 def context_decorator(ctx, func):
     """

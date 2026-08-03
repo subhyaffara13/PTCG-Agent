@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_version_exists(ns: str | None, name: str, version: int | None):
     """Check if an env version exists in a namespace. If it doesn't, print a helpful error message.

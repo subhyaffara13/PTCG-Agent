@@ -1,3 +1,4 @@
+import functools
 
 def withQNNPACKBackend(fn):
     # TODO(future PR): consider combining with skipIfNoQNNPACK,

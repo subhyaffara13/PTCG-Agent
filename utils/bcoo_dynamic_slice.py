@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def bcoo_dynamic_slice(mat: BCOO, start_indices: Sequence[Any], slice_sizes: Sequence[int]) -> BCOO:
   """Sparse implementation of :func:`jax.lax.dynamic_slice`.

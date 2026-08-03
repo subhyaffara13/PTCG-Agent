@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def get_module_object_and_name(
     globals_dict: dict[str, Any],

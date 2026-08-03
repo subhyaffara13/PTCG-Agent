@@ -1,3 +1,4 @@
+from typing import Any
 
 def multi_host_url_schema(
     *,

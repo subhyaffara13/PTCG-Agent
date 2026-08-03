@@ -1,3 +1,4 @@
+import json
 
 def burn_in_info(skeleton, info):
     """Burn model info into the HTML skeleton.

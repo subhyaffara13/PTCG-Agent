@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, Optional
 
 def _resolve_session_key(kwargs: Dict[str, Any]) -> Optional[str]:
     """Pick a stable per-conversation key for owner-cache attribution.

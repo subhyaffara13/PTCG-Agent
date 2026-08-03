@@ -1,3 +1,4 @@
+import re
 
 def tasklists_plugin(
     md: MarkdownIt,

@@ -1,3 +1,4 @@
+import random
 
 def eigh_tridiagonal(d, e, eigvals_only=False, select='a', select_range=None,
                      check_finite=True, tol=0., lapack_driver='auto'):

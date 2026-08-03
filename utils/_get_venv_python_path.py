@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _get_venv_python_path(venv_dir: Path) -> Path:
     if os.name == "nt":

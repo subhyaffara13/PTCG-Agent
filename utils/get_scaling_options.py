@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_scaling_options(
     mat_a: Any,

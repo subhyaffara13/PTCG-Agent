@@ -1,3 +1,4 @@
+from typing import Any
 
 def clear_lru_caches() -> None:
     """Clear caches holding references to AST nodes."""

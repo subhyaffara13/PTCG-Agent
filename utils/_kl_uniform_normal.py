@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_uniform_normal(p, q):
     common_term = p.high - p.low

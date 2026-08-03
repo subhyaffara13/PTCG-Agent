@@ -1,3 +1,4 @@
+from typing import Any
 
 def jaxpr_subcomp(
     ctx: ModuleContext,

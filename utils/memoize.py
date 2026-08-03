@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def memoize(fun):
     """A simple memoize decorator for functions supporting (hashable)

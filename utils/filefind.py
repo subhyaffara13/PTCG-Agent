@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def filefind(filename: str, path_dirs: Sequence[str] | None = None) -> str:
     """Find a file by looking through a sequence of paths.

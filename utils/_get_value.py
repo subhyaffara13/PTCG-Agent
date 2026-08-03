@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_value(x):
     # item is significantly faster than a cpu tensor in eager mode

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def register_multi_grad_hook(
     tensors: Sequence[torch.Tensor],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def getitem(x):
     return x

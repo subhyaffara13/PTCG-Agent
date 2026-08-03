@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def has_non_string_content(data: Dict[str, Any]) -> bool:
     """Return True if any inspected content is not a plain string.

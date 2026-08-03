@@ -1,3 +1,4 @@
+import os
 
 def get_video_processor_config(
     pretrained_model_name_or_path: str | os.PathLike,

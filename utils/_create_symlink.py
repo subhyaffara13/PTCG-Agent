@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _create_symlink(src: str, dst: str, new_blob: bool = False) -> None:
     """Create a symbolic link named dst pointing to src.

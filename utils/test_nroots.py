@@ -1,3 +1,4 @@
+import re
 
 def test_nroots():
     assert Poly(0, x).nroots() == []

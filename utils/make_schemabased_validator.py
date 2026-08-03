@@ -1,3 +1,4 @@
+from typing import Union
 
 def make_schemabased_validator(output_format: Literal[OutputFormat.JSON], schema_version: 'SchemaVersion'
                                ) -> 'JsonValidator':

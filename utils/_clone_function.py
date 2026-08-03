@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _clone_function(f: Callable[..., Any]) -> Callable[..., Any]:
     """Returns a clone of an existing function."""

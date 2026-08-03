@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _math_attention_inner(
     query: torch.Tensor,

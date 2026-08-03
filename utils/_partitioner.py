@@ -1,3 +1,4 @@
+import copy
 
 def _partitioner(gm: torch.fx.GraphModule) -> torch.fx.GraphModule:
     """

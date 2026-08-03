@@ -1,3 +1,4 @@
+import re
 
 def test_functions():
     one_var = (acosh, ln, Heaviside, factorial, bernoulli, coth, tanh,

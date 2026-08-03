@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_write_items(fqn: str, object: Any) -> list[WriteItem]:
     if hasattr(object, "__create_write_items__"):

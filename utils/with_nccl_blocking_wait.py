@@ -1,3 +1,4 @@
+import os
 
 def with_nccl_blocking_wait(func):
     """

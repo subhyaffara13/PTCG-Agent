@@ -1,3 +1,4 @@
+from typing import Any
 
 def _needs_obs_or_fq(
     prev_output_dtype: Any,

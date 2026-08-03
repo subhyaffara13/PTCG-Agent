@@ -1,3 +1,6 @@
+from typing import List
+import math
+
 
 def _cosine_similarity(a: List[float], b: List[float]) -> float:
     """Compute cosine similarity between two vectors."""

@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def get_default_compiler(osname: str | None = None, platform: str | None = None) -> str:
     """Determine the default compiler to use for the given platform.

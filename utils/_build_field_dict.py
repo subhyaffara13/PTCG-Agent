@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _build_field_dict(
     field: Any,

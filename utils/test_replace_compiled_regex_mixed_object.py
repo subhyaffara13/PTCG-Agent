@@ -1,3 +1,4 @@
+import re
 
 def test_replace_compiled_regex_mixed_object():
     pat = re.compile(r"BAD_*")

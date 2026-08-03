@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_string_metadata(input: str) -> dict[str, Any]:
     assert isinstance(input, str)

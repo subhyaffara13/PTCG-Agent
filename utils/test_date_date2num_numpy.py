@@ -1,3 +1,4 @@
+import time
 
 def test_date_date2num_numpy(t0, dtype):
     time = mdates.date2num(t0)

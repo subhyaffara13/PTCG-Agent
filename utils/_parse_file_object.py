@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _parse_file_object(file_object: Any) -> Any:
     """Prisma may return ``Json`` columns as either a parsed dict or the raw

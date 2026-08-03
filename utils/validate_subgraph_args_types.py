@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_subgraph_args_types(lifted_args: tuple[Any, ...] | list[Any]):
     allowed_types = (torch.Tensor, int, torch.SymInt)

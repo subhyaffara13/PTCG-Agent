@@ -1,3 +1,4 @@
+from typing import Any, Dict, Tuple
 
 def _iterate_tuple(space: Tuple, items: tuple[Any, ...]):
     # If this is a tuple of custom subspaces only, then simply iterate over items

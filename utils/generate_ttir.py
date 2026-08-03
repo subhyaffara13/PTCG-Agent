@@ -1,3 +1,6 @@
+import functools
+import itertools
+from typing import Any, Callable
 
 def generate_ttir(
     kernel: "TritonKernelType",

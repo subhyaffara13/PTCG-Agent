@@ -1,3 +1,4 @@
+import os
 
 def check_externally_managed() -> None:
     """Check whether the current environment is externally managed.

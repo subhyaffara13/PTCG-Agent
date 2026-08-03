@@ -1,3 +1,5 @@
+import math
+
 
 def _gcd(a, b):
     """Calculate the greatest common divisor of a and b"""

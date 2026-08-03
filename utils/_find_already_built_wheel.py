@@ -1,3 +1,4 @@
+import os
 
 def _find_already_built_wheel(metadata_directory):
     """Check for a wheel already built during the get_wheel_metadata hook."""

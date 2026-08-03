@@ -1,3 +1,5 @@
+import math
+
 
 def _async_store_smem_op_lowering_rule(
     ctx: LoweringContext, op: mgpu.AsyncStoreSmemOp

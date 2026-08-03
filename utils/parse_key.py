@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def parse_key(reader: Reader) -> Optional[str]:
     char = reader.peek(1)

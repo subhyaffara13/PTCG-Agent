@@ -1,3 +1,4 @@
+from typing import Any
 
 def assign_dictionary_input_to_object(dict_object: dict[str, Any],
                                       road_sections: Collection[str],

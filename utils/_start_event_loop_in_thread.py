@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _start_event_loop_in_thread(
     event_loop: asyncio.AbstractEventLoop, call_soon_cb: Callable, *args

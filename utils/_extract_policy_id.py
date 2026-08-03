@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_policy_id(s: str) -> Optional[str]:
     """Extract raw UUID from policy_<uuid> string, or None if not a valid version ID."""

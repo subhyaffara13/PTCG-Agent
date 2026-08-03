@@ -1,3 +1,4 @@
+import logging
 
 def _globalize_single_replica_arrays(
     inp: jax.Array,

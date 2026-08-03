@@ -1,3 +1,4 @@
+import os
 
 def has_local_docs():
     pkg_dir = os.path.dirname(os.path.abspath(__file__))

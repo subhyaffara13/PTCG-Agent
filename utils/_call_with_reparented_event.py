@@ -1,3 +1,5 @@
+import copy
+import functools
 
 def _call_with_reparented_event(func):
     """

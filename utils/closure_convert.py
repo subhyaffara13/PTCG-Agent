@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def closure_convert(fun: Callable, *example_args) -> tuple[Callable, list[Any]]:
   """Closure conversion utility, for use with higher-order custom derivatives.

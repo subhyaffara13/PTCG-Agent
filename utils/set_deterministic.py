@@ -1,3 +1,4 @@
+import random
 
 def set_deterministic() -> None:
     """Make torch manual seed deterministic."""

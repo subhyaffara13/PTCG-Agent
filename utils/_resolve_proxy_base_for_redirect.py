@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_proxy_base_for_redirect(request: Request) -> Optional[str]:
     try:

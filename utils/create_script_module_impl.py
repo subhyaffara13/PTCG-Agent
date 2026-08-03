@@ -1,3 +1,4 @@
+import functools
 
 def create_script_module_impl(nn_module, concrete_type, stubs_fn):
     """

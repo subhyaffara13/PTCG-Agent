@@ -1,3 +1,4 @@
+from typing import Any
 
 def multi_device_op_default(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

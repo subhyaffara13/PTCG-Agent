@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def reduce_order(func):
     """

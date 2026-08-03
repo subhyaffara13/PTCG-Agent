@@ -1,3 +1,4 @@
+import os
 
 def _clear_cache(datasets, cache_dir=None, method_map=None):
     if method_map is None:

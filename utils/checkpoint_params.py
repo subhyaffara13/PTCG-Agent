@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def checkpoint_params(gm: torch.fx.GraphModule) -> Callable[[], None]:
     with torch.no_grad():

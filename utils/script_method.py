@@ -1,3 +1,4 @@
+import sys
 
 def script_method(fn):
     if sys.version_info >= (3, 14):

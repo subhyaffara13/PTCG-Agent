@@ -1,3 +1,4 @@
+from typing import Optional
 
 def detailed_match_files(
 	patterns: Iterable[Pattern],

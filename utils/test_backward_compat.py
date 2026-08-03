@@ -1,3 +1,4 @@
+import os
 
 def test_backward_compat(version, datapath):
     data_base = datapath("io", "data", "stata")

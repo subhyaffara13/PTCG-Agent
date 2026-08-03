@@ -1,3 +1,4 @@
+from typing import Any
 
 def normalize_range_iter(range_iter: Any) -> tuple[int, int, int]:
     _, (range_obj,), maybe_idx = range_iter.__reduce__()

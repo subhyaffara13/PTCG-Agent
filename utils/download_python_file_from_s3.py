@@ -1,3 +1,4 @@
+import os
 
 def download_python_file_from_s3(
     bucket_name: str,

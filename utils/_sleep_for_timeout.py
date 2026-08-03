@@ -1,3 +1,5 @@
+import time
+from typing import Union
 
 def _sleep_for_timeout(timeout: Union[float, str, httpx.Timeout]):
     if isinstance(timeout, float):

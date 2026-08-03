@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def test_gcd_terms():
     f = 2*(x + 1)*(x + 4)/(5*x**2 + 5) + (2*x + 2)*(x + 5)/(x**2 + 1)/5 + \

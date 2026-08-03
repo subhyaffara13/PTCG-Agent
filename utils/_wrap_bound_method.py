@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_bound_method(fn: Any, argnames: list[str]) -> Any:
     """

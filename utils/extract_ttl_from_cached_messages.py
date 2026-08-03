@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def extract_ttl_from_cached_messages(messages: List[AllMessageValues]) -> Optional[str]:
     """

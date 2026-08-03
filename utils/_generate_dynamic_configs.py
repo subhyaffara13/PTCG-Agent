@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _generate_dynamic_configs(
     tensor_inputs: list[Buffer],

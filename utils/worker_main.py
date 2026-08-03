@@ -1,3 +1,4 @@
+import os
 
 def worker_main() -> Generator[None, None, None]:
     """

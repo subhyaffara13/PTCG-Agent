@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _conv_forwards(
     input: list[int],

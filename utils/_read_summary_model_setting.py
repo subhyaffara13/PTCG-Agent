@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _read_summary_model_setting() -> Optional[str]:
     """Look up the configured summarization model from proxy general_settings."""

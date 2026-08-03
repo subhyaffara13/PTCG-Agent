@@ -1,3 +1,4 @@
+import re
 
 def _classify_point(re, im):
     """Return the half-axis (or origin) on which (re, im) point is located. """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _merge_with_dialect_properties(
     dialect: csv.Dialect,

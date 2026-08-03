@@ -1,3 +1,4 @@
+from typing import Any
 
 def fastlog(x: MPF_TUP | None) -> int | Any:
     """Fast approximation of log2(x) for an mpf value tuple x.

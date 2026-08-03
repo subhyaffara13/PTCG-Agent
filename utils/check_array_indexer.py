@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_array_indexer(array: AnyArrayLike, indexer: Any) -> Any:
     """

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _is_builtin_module(module):
     if not hasattr(module, "__file__"): return True

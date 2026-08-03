@@ -1,3 +1,4 @@
+import logging
 
 def _showwarning(
     message: Warning | str,

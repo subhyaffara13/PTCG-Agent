@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def is_type_factory(_type: type[Any]) -> Callable[[Any], None]:
     """

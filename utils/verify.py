@@ -1,3 +1,8 @@
+import copy
+import json
+import os
+import sys
+from typing import Any
 
 def verify(
     stub: MaybeMissing[nodes.Node], runtime: MaybeMissing[Any], object_path: list[str]

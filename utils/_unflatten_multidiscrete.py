@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unflatten_multidiscrete(
     space: MultiDiscrete, x: NDArray[np.integer[Any]]

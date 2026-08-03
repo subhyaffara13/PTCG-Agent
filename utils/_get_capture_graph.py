@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_capture_graph(stream: Any) -> Any:
     """Return the graph handle for the active capture, or None."""

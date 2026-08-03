@@ -1,3 +1,4 @@
+from typing import Any
 
 def requires_bwd_pass(out: Any) -> bool:
     if isinstance(out, torch.Tensor):

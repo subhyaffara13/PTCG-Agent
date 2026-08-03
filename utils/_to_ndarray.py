@@ -1,3 +1,4 @@
+import sys
 
 def _to_ndarray(tensor: paddle.Tensor, name: str):
     if not tensor.is_contiguous():

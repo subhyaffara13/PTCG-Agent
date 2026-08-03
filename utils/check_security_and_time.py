@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def check_security_and_time(staged_path: Path, content: str) -> tuple[int, str]:
     lines = content.splitlines()

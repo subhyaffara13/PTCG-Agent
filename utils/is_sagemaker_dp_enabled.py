@@ -1,3 +1,5 @@
+import json
+import os
 
 def is_sagemaker_dp_enabled() -> bool:
     # Get the sagemaker specific env variable.

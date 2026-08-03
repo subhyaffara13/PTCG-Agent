@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _prepare_false_positive_mitigations(
     op: Callable[..., Any],

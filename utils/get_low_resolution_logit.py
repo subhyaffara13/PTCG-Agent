@@ -1,3 +1,5 @@
+import math
+
 
 def get_low_resolution_logit(query, key, block_size, mask=None, value=None):
     """

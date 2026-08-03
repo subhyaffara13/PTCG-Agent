@@ -1,3 +1,4 @@
+import functools
 
 def _possibly_unimplemented(cls, require=True):
     """

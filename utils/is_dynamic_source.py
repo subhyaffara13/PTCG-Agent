@@ -1,3 +1,4 @@
+import re
 
 def is_dynamic_source(source_name: str) -> bool:
     dynamic_sources = get_dynamic_sources()

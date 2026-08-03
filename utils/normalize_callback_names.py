@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def normalize_callback_names(callbacks: Iterable[Any]) -> List[Any]:
     if callbacks is None:

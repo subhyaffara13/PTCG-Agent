@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_graph_provenance_json(graph: Graph) -> dict[str, Any]:
     """

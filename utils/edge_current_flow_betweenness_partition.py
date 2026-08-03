@@ -1,3 +1,4 @@
+import functools
 
 def edge_current_flow_betweenness_partition(G, number_of_sets, *, weight=None):
     """Partition created by removing the highest edge current flow betweenness edge.

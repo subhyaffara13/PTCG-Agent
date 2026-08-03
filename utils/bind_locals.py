@@ -1,3 +1,4 @@
+from typing import Any
 
 def bind_locals(
     signature: inspect.Signature, *args: Any, **kwargs: Any

@@ -1,3 +1,5 @@
+import math
+
 
 def _compare_tensors(
     expected: torch.Tensor,

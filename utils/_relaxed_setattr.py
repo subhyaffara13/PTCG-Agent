@@ -1,3 +1,4 @@
+from typing import Any
 
 def _relaxedSetattr(object: Any, attr: str, value: Any) -> None:
     try:

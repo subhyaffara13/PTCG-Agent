@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def cache_method(
     f: Callable[Concatenate[_C, _P], _T],

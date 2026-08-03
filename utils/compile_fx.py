@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def compile_fx(
     model_: GraphModule,

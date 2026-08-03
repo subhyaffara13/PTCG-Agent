@@ -1,3 +1,4 @@
+from typing import Any
 
 def _tree_trim(
     path: tuple[str | int, ...],

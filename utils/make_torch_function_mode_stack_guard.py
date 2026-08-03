@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_torch_function_mode_stack_guard(
     initial_stack: list[torch.overrides.TorchFunctionMode],

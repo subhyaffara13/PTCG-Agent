@@ -1,3 +1,5 @@
+import random
+from typing import List
 
 def apply_symmetry_augmentation(state_tensor: List[float], stack_size: int, single_state_dim: int, max_hand: int, max_board: int) -> List[float]:
     """

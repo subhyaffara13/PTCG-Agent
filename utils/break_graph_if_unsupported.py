@@ -1,3 +1,7 @@
+import copy
+import functools
+import sys
+from typing import Callable
 
 def break_graph_if_unsupported(
     *, push: bool, msg_prefix: str

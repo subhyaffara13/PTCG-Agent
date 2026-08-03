@@ -1,3 +1,4 @@
+from typing import Any, Tuple, Union
 
 def batched_serialization_requests(
     tree: PyTree,

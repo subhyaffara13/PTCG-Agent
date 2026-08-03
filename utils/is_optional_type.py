@@ -1,3 +1,4 @@
+from typing import Union
 
 def is_optional_type(type_hint) -> bool:  # type: ignore[no-untyped-def]
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_non_negative(tree: Any) -> Any:
   r"""Projection onto the non-negative orthant.

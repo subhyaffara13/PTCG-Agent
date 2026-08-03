@@ -1,3 +1,4 @@
+import os
 
 def envset(name: str, default: bool = False) -> bool: ...
 

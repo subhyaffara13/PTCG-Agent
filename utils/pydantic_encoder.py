@@ -1,3 +1,4 @@
+from typing import Any
 
 def pydantic_encoder(obj: Any) -> Any:
     warnings.warn(

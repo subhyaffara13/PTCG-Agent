@@ -1,3 +1,4 @@
+from typing import List
 
 def _create_handler_for_path_params(
     path_params: List[str],

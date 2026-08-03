@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_float_integer(var: Any) -> bool:
     """Checks if a scalar variable is an integer or float (does not include bool)."""

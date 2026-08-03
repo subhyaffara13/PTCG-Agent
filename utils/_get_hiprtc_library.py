@@ -1,3 +1,4 @@
+import sys
 
 def _get_hiprtc_library() -> ctypes.CDLL:
     try:

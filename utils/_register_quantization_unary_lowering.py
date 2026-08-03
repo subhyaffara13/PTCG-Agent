@@ -1,3 +1,4 @@
+import itertools
 
 def _register_quantization_unary_lowering():
     # QConv2d

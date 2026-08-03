@@ -1,3 +1,4 @@
+from typing import Any
 
 def _make_user_magic(method: str, user_type: type) -> None:
     # User magic takes care of wrapping the other operand into a node,

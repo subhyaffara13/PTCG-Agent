@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _normalize_user_info_user_id(
     request: Request, user_id: Optional[str]

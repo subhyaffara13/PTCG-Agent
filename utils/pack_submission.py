@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pack_submission(source_tar: str = "submission_iter28_v0248.tar.gz"):
     skills_dir = Path("skills")

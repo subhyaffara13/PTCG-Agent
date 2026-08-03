@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def parse_obj_as(type_: type[T], obj: Any, type_name: NameFactory | None = None) -> T:
     warnings.warn(

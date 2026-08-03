@@ -1,3 +1,4 @@
+import json
 
 def _make_iam_token_request(
     request,

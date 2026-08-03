@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_result(
     objs: list[Series | DataFrame],

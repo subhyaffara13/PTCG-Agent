@@ -1,3 +1,5 @@
+import math
+
 
 def _pair_uniform_to_normal(u1, u2):
     """Box-Muller transform"""

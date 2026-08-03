@@ -1,3 +1,4 @@
+import os
 
 def gen_lib_options(
     compiler: Compiler,

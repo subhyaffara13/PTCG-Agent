@@ -1,3 +1,4 @@
+import os
 
 def can_symlink(tmpdir):
     """

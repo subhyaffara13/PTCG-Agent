@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ir_constant(val: Any, *,
   const_lowering: dict[tuple[int, core.AbstractValue], IrValues] | None = None,

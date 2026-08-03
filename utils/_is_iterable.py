@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_iterable(value: Any) -> bool:
 	"""

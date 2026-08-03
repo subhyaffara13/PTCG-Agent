@@ -1,3 +1,5 @@
+import random
+from typing import Any
 
 def load_graph_and_inputs(ir: str) -> tuple[Any, list[Any]]:
     graph = torch._C.parse_ir(ir, parse_tensor_constants=True)

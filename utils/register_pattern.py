@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Union
 
 def register_pattern(
 	name: str,

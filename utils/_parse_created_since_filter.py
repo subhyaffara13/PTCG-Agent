@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _parse_created_since_filter(created_since: Optional[str]) -> Optional[datetime]:
     """Parse and validate the created_since date filter."""

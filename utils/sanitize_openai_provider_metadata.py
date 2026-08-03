@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def sanitize_openai_provider_metadata(
     metadata: Optional[Dict[str, Any]],

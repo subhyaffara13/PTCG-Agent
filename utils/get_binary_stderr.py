@@ -1,3 +1,4 @@
+import sys
 
 def get_binary_stderr() -> t.BinaryIO:
     writer = _find_binary_writer(sys.stderr)

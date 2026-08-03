@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def muon(
     params: list[Tensor],

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_batch_models_from_file_content(
     file_content_dictionary: List[dict],

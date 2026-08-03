@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def scandir(
     path: str | os.PathLike[str],

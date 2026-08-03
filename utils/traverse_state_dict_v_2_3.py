@@ -1,3 +1,4 @@
+from typing import Callable
 
 def traverse_state_dict_v_2_3(
     state_dict: STATE_DICT_TYPE,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def are_same_graph_modules(
     fn_name: str, a_mod: GraphModule, b_mod: GraphModule, fake_mode: "FakeTensorMode"

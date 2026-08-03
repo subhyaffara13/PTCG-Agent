@@ -1,3 +1,4 @@
+import os
 
 def test_size_assumed_shape():
     if not has_fortran():

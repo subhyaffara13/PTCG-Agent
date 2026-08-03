@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_gcloud_project() -> Optional[str]:
     """Attempts to get the Google Cloud project ID from environment or gcloud config."""

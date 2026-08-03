@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _shape_matches(actual_shape: Sequence[int],
                    expected_shape: _ai.TShapeMatcher) -> bool:

@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _flatdim_dict(space: Dict) -> int:
     if space.is_np_flattenable:

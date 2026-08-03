@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any, Callable
 
 def init(autoreset=False, convert=None, strip=None, wrap=True):
 

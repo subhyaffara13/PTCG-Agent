@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_utf16m_sfnt():
     try:

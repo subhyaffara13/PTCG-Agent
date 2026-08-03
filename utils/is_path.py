@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def is_path(f: Any) -> TypeGuard[StrOrBytesPath]:
     return isinstance(f, (bytes, str, os.PathLike))

@@ -1,3 +1,4 @@
+import random
 
 def test_integer_dtype(int_func):
     random.seed(123456789)

@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def receive(connection: IPCBase) -> Any:
     """Receive single JSON data frame from a connection.

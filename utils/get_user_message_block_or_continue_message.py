@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_user_message_block_or_continue_message(
     message: ChatCompletionUserMessage,

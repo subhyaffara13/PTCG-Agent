@@ -1,3 +1,4 @@
+import logging
 
 def warn_once(logger_instance: logging.Logger, msg: str) -> None:
     """Log a warning message only once per unique message.

@@ -1,3 +1,4 @@
+import os
 
 def _setup_test_runner_fail_fast(argv: abc.MutableSequence[str]) -> None:
   """Implements the bazel test fail fast protocol.

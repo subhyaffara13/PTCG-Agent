@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def auto_commit_and_push_if_changed():
     """Checks for changes to key factory/logic files, commits, and pushes them to Git."""

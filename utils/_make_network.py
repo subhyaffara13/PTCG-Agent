@@ -1,3 +1,4 @@
+from typing import List
 
 def _make_network(lstm_hidden_sizes: List[int],
                   mlp_hidden_sizes: List[int],

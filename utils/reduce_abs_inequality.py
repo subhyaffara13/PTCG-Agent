@@ -1,3 +1,4 @@
+import itertools
 
 def reduce_abs_inequality(expr, rel, gen):
     """Reduce an inequality with nested absolute values.

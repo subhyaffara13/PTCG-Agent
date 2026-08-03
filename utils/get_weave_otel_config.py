@@ -1,3 +1,4 @@
+import os
 
 def get_weave_otel_config() -> WeaveOtelConfig:
     """

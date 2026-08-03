@@ -1,3 +1,4 @@
+import re
 
 def find_functions(text):
     lines = text.split('\n')

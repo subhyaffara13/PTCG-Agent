@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_hex_char(src: str, pos: Pos, hex_len: int) -> tuple[Pos, str]:
     hex_str = src[pos : pos + hex_len]

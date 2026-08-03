@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _node_not_implemented(node_name: str) -> Callable[..., None]:
     """

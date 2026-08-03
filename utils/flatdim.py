@@ -1,3 +1,4 @@
+from typing import Any
 
 def flatdim(space: Space[Any]) -> int:
     """Return the number of dimensions a flattened equivalent of this space would have.

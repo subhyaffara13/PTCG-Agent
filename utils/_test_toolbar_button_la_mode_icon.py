@@ -1,3 +1,4 @@
+import os
 
 def _test_toolbar_button_la_mode_icon(fig):
     # test a toolbar button icon using an image in LA mode (GH issue 25174)

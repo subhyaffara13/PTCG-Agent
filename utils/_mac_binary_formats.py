@@ -1,3 +1,4 @@
+from typing import List
 
 def _mac_binary_formats(version: AppleVersion, cpu_arch: str) -> list[str]:
     formats = [cpu_arch]

@@ -1,3 +1,4 @@
+import re
 
 def is_regex(instance: object) -> bool:
     if not isinstance(instance, str):

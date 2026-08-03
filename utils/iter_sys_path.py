@@ -1,3 +1,5 @@
+import os
+import sys
 
 def iter_sys_path() -> t.Iterator[tuple[str, bool, bool]]:
     if os.name == "posix":

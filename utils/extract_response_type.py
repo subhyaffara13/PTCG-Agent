@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_response_type(typ: type[BaseAPIResponse[Any]]) -> type:
     """Given a type like `APIResponse[T]`, returns the generic type variable `T`.

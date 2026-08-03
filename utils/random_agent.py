@@ -1,3 +1,7 @@
+import random
+from typing import Any
+import math
+
 
 def random_agent(obs: dict) -> list[int]:
     if obs["select"] == None:

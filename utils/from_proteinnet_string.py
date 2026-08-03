@@ -1,3 +1,4 @@
+import re
 
 def from_proteinnet_string(proteinnet_str: str) -> Protein:
     tag_re = r"(\[[A-Z]+\]\n)"

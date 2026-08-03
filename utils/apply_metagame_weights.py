@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def apply_metagame_weights(current_weights):
     from factory.configs import DEFAULT_ARCHETYPE_WEIGHTS

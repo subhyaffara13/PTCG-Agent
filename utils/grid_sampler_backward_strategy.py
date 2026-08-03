@@ -1,3 +1,4 @@
+from typing import Any
 
 def grid_sampler_backward_strategy(
     op: torch._ops.OpOverload,

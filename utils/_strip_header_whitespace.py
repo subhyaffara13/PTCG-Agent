@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _strip_header_whitespace(headers: Dict[str, str]) -> Dict[str, str]:
     return {

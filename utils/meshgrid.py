@@ -1,3 +1,4 @@
+import copy
 
 def meshgrid(*tensors: torch.Tensor | list[torch.Tensor], indexing: str | None = None) -> tuple[torch.Tensor, ...]:
     """

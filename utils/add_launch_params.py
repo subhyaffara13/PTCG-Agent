@@ -1,3 +1,4 @@
+import re
 
 def add_launch_params(
     original: str, kernel_to_params: dict[str, tuple[str, str]]

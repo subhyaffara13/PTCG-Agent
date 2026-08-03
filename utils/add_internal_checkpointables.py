@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_internal_checkpointables(
     checkpointables: dict[str, Any],

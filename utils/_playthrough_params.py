@@ -1,3 +1,4 @@
+import re
 
 def _playthrough_params(lines):
   """Returns the playthrough parameters from a playthrough record.

@@ -1,3 +1,5 @@
+import copy
+from typing import Tuple
 
 def cse(exprs, symbols=None, optimizations=None, postprocess=None,
         order='canonical', ignore=(), list=True):

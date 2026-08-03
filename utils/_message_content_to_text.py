@@ -1,3 +1,4 @@
+from typing import Any
 
 def _message_content_to_text(content: Any) -> str:
     if isinstance(content, str):

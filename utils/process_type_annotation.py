@@ -1,3 +1,4 @@
+from typing import Union
 
 def process_type_annotation(type_input, param_name: str | None = None) -> tuple[str, bool]:
     """

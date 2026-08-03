@@ -1,3 +1,4 @@
+import sys
 
 def remove_dead_code(instructions: list["Instruction"]) -> list["Instruction"]:
     """Dead code elimination"""

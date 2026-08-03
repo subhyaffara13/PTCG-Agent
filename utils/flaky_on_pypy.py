@@ -1,3 +1,4 @@
+import functools
 
 def flaky_on_pypy(func):
     @functools.wraps(func)

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def inspect_field_serializer(serializer: Callable[..., Any], mode: Literal['plain', 'wrap']) -> tuple[bool, bool]:
     """Look at a field serializer function and determine if it is a field serializer,

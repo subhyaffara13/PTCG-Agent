@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _as_numpy_array(obj: object) -> ndarray | None:
     """

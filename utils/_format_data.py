@@ -1,3 +1,4 @@
+import pathlib
 
 def _format_data(data: object, format_: PropertyFormat, format_template: str | None) -> object:
     if isinstance(data, (date, datetime)):

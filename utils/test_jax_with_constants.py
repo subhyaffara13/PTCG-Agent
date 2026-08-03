@@ -1,3 +1,4 @@
+from typing import Set
 
 def test_jax_with_constants(constants: Set[int]) -> None:
     jax = pytest.importorskip("jax")

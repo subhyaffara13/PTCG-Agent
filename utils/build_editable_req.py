@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def build_editable_req(
     editable_req: str,

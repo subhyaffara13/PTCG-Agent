@@ -1,3 +1,4 @@
+from typing import Any
 
 def call_backward(
     backward_c_function: torch.autograd.function.BackwardCFunction,

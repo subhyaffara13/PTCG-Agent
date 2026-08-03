@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _try_delete_path(path: Path, path_type: str) -> None:
     """Try to delete a local file or folder.

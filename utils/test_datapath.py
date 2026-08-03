@@ -1,3 +1,4 @@
+import os
 
 def test_datapath(datapath):
     args = ("io", "data", "csv", "iris.csv")

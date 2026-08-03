@@ -1,3 +1,4 @@
+from typing import Any
 
 def _board_size_from_state(state: Mapping[str, Any]) -> int | None:
     board_size = state.get("board_size")

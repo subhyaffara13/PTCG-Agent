@@ -1,3 +1,4 @@
+from typing import Union
 
 def write_any_response(
     response: Union[InformationalResponse, Response], write: Writer

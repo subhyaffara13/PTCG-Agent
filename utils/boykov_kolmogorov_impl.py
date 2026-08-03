@@ -1,3 +1,4 @@
+import time
 
 def boykov_kolmogorov_impl(G, s, t, capacity, residual, cutoff):
     if s not in G:

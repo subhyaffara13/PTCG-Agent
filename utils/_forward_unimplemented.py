@@ -1,3 +1,4 @@
+from typing import Any
 
 def _forward_unimplemented(self, *input: Any) -> None:
     r"""Define the computation performed at every call.

@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _build_url(
     api_base: str,

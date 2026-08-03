@@ -1,3 +1,4 @@
+import re
 
 def _normalize_base_url(base_url: str | httpx.URL) -> httpx.URL:
     url = httpx.URL(base_url)

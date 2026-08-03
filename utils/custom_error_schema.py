@@ -1,3 +1,4 @@
+from typing import Any
 
 def custom_error_schema(
     schema: CoreSchema,

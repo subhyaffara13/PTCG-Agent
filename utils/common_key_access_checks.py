@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def common_key_access_checks(
     user_api_key_dict: UserAPIKeyAuth,

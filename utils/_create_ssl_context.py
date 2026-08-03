@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def _create_ssl_context(
     cafile: Optional[str],

@@ -1,3 +1,4 @@
+import time
 
 def test_inv_can_transf_matrix():
     dimsys = DimensionSystem((length, mass, time))

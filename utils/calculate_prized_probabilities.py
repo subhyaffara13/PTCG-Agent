@@ -1,3 +1,6 @@
+from typing import Dict, List
+import math
+
 
 def calculate_prized_probabilities(initial_decklist: Dict[int, int], visible: List[int], prizes_remaining: int) -> Dict[int, float]:
     try:

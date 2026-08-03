@@ -1,3 +1,5 @@
+import math
+
 
 def test_Piecewise():
 

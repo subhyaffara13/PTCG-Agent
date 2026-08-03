@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_union(name: str, value: Any, args: tuple[Any, ...]) -> None:
     """Validate that value matches one of the types in a Union."""

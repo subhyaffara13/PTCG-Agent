@@ -1,3 +1,4 @@
+from typing import Any
 
 def dot(self: list[int], tensor: list[int]):
     if not (len(self) == 1 and len(tensor) == 1):

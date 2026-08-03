@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def create_pydantic_model_from_dataclass(
     dc_cls: Type['Dataclass'],

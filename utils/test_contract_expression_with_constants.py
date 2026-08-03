@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def test_contract_expression_with_constants(string: str, constants: List[int]) -> None:
     views = build_views(string)

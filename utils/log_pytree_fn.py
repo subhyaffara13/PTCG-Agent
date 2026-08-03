@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def log_pytree_fn(inp: Any, metadata: dict[str, Any]):
   """Logs information about the input pytree and metadata.

@@ -1,3 +1,4 @@
+import sys
 
 def create_load_method(name: str) -> Instruction:
     if sys.version_info >= (3, 12):

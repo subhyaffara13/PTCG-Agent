@@ -1,3 +1,4 @@
+import itertools
 
 def test_permutedims_with_indices():
     A = Array(range(32)).reshape(2, 2, 2, 2, 2)

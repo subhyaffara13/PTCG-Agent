@@ -1,3 +1,4 @@
+import itertools
 
 def all_pairs_node_connectivity(G, nbunch=None, cutoff=None):
     """Compute node connectivity between all pairs of nodes.

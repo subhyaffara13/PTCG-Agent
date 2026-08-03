@@ -1,3 +1,4 @@
+import logging
 
 def _get_pathways_persistence_array_handler(
     **kwargs,

@@ -1,3 +1,4 @@
+import copy
 
 def _fuse_modules(
     model,

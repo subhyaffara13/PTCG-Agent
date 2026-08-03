@@ -1,3 +1,4 @@
+import re
 
 def test_replace_compiled_regex_callable(any_string_dtype):
     # test with callable

@@ -1,3 +1,5 @@
+import math
+
 
 def _vector_str(self, indent, summarize, formatter1, formatter2=None):
     # length includes spaces and comma between elements

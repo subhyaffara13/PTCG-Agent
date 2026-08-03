@@ -1,3 +1,4 @@
+from typing import Any
 
 def inductor_fails(
     fx_g: torch.fx.GraphModule, args: Sequence[Any], check_str: str | None = None

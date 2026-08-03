@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_bases(tp: type[Any]) -> tuple[type[Any], ...]:
     """Get the base classes of a class or typeddict.

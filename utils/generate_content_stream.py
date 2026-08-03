@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def generate_content_stream(
     model: str,

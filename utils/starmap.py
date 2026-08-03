@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def starmap(
     function: Callable[[], _U],

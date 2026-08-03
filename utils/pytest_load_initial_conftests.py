@@ -1,3 +1,4 @@
+import sys
 
 def pytest_load_initial_conftests(early_config: Config) -> Generator[None]:
     ns = early_config.known_args_namespace

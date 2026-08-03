@@ -1,3 +1,4 @@
+from typing import Callable
 
 def resolve_argnums(
     fun: Callable,

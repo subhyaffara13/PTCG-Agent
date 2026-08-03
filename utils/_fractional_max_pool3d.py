@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _fractional_max_pool3d(
     input: Tensor,

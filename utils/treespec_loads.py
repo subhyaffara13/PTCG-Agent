@@ -1,3 +1,4 @@
+import json
 
 def treespec_loads(serialized: str) -> TreeSpec:
     """Deserialize a treespec from a JSON string."""

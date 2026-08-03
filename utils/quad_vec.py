@@ -1,3 +1,5 @@
+import copy
+import sys
 
 def quad_vec(f, a, b, epsabs=1e-200, epsrel=1e-8, norm='2', cache_size=100e6,
              limit=10000, workers=1, points=None, quadrature=None, full_output=False,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_play_trainer_helper(gs: dict, hand: list, target: str, CardRegistry: Any, int_or_str: Any, remove_from_hand: Any, draw_cards: Any) -> None:
     name = target.lower() if target else ""

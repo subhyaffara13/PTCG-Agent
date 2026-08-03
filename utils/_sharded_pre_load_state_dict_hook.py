@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _sharded_pre_load_state_dict_hook(
     module: nn.Module,

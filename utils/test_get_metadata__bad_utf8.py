@@ -1,3 +1,4 @@
+import os
 
 def test_get_metadata__bad_utf8(tmpdir):
     """

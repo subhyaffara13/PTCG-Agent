@@ -1,3 +1,4 @@
+import json
 
 def _coerce_response_obj_for_attrs(response_obj):
     """Return a `.get`-compatible view of `response_obj` when possible.

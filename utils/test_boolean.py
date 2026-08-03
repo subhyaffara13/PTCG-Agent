@@ -1,3 +1,4 @@
+from typing import Callable
 
 def test_boolean(value: t.Any) -> bool:
     """Return true if the object is a boolean value.

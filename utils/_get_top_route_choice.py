@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_top_route_choice(result: Any) -> Any:
     """Extract the top RouteChoice from SemanticRouter result.

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def verify_proxy_key(
     base_url: str,

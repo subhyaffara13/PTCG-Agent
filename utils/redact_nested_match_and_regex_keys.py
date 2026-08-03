@@ -1,3 +1,5 @@
+import copy
+from typing import Any, List, Union
 
 def redact_nested_match_and_regex_keys(
     payload: Union[dict, List[Any], str, None],

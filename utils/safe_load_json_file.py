@@ -1,3 +1,4 @@
+import json
 
 def safe_load_json_file(json_file: str):
     "A helper to load safe config files and raise a proper error message if it wasn't serialized correctly"

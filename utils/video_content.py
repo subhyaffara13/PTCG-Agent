@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def video_content(
     video_id: str,

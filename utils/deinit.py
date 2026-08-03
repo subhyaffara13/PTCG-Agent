@@ -1,3 +1,4 @@
+import sys
 
 def deinit():
     if orig_stdout is not None:

@@ -1,3 +1,4 @@
+import sys
 
 def _find_comprehension_end_for_ip(tx: InstructionTranslatorBase) -> int:
     """Find the instruction pointer of the outermost END_FOR for current comprehension."""

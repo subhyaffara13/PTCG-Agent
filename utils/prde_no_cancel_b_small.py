@@ -1,3 +1,4 @@
+import itertools
 
 def prde_no_cancel_b_small(b, Q, n, DE):
     """

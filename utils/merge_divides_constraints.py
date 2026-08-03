@@ -1,3 +1,5 @@
+import math
+
 
 def merge_divides_constraints(d0: Divides, d1: Divides) -> Divides:
   if d0.expr != d1.expr:

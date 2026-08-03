@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_pydata_sparse_to_scipy(
     arg: Any,

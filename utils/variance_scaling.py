@@ -1,3 +1,4 @@
+import random
 
 def variance_scaling(
   scale: RealNumeric,

@@ -1,3 +1,4 @@
+import random
 
 def random_circuit(ngates, nqubits, gate_space=(X, Y, Z, S, T, H, CNOT, SWAP)):
     """Return a random circuit of ngates and nqubits.

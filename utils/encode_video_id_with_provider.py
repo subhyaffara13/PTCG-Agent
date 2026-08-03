@@ -1,3 +1,4 @@
+from typing import Optional
 
 def encode_video_id_with_provider(
     video_id: str, provider: str, model_id: Optional[str] = None

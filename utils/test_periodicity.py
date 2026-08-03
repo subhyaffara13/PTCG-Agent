@@ -1,3 +1,4 @@
+import re
 
 def test_periodicity():
     assert periodicity(sin(2*x), x) == pi

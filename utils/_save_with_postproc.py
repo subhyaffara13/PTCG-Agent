@@ -1,3 +1,4 @@
+import sys
 
 def _save_with_postproc(pickler, reduction, is_pickler_dill=None, obj=Getattr.NO_DEFAULT, postproc_list=None):
     if obj is Getattr.NO_DEFAULT:

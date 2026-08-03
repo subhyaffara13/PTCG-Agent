@@ -1,3 +1,4 @@
+from typing import Any
 
 def indented(subfigure: Any) -> figures_impl.TreescopeFigure:
   """Returns a figure object that displays a value with an indent.

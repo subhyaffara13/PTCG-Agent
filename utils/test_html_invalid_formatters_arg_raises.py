@@ -1,3 +1,4 @@
+import re
 
 def test_html_invalid_formatters_arg_raises(size):
     # issue-28469

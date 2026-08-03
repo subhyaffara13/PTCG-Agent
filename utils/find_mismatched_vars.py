@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_mismatched_vars(
     var: Any, types: type | tuple[type, ...], allow_none: bool = False

@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def _write_version(fname: str) -> None:
   """Used by setup.py to write the specified version info into the source tree."""

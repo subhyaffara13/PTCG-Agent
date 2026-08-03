@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _write_tuple_to_shared_memory(
     space: Tuple, index: int, values: tuple[Any, ...], shared_memory

@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_fake_tensor(
     t: torch.Tensor, fake_mode: torch._subclasses.fake_tensor.FakeTensorMode

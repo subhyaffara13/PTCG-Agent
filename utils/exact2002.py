@@ -1,3 +1,5 @@
+import math
+
 
 def exact2002(exact):
     replace = {

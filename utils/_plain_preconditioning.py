@@ -1,3 +1,4 @@
+from typing import Union
 
 def _plain_preconditioning(
     diff_params_memory: Union[list[jnp.ndarray], jnp.ndarray],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_set(name: str, value: Any, args: tuple[Any, ...]) -> None:
     """Validate set[T] type."""

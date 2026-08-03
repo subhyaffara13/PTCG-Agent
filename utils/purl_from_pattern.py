@@ -1,3 +1,4 @@
+import re
 
 def purl_from_pattern(type_, pattern, url, qualifiers=None):
     url = unquote_plus(url)

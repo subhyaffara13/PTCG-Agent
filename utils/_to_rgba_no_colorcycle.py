@@ -1,3 +1,4 @@
+import re
 
 def _to_rgba_no_colorcycle(c, alpha=None):
     """

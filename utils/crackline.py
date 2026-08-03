@@ -1,3 +1,4 @@
+import re
 
 def crackline(line, reset=0):
     """

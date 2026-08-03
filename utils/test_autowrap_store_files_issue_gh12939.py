@@ -1,3 +1,4 @@
+import os
 
 def test_autowrap_store_files_issue_gh12939():
     x, y = symbols('x y')

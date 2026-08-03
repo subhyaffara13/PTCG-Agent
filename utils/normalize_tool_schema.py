@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def normalize_tool_schema(tool: Dict[str, Any]) -> Dict[str, Any]:
     """

@@ -1,3 +1,4 @@
+import os
 
 def _load_constants(
     archive_reader: PT2ArchiveReader,

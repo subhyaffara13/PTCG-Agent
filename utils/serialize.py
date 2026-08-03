@@ -1,3 +1,4 @@
+from typing import Optional
 
 def serialize(node, stream=None, Dumper=Dumper, **kwds):
     """

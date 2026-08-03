@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_to_fake_tensor_and_record_impl(
     e: Any,

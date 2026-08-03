@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _shard_map_partial_eval(trace: pe.JaxprTrace, shard_map_p,
                             f: Callable, tracers, mesh, in_specs,

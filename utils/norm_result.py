@@ -1,3 +1,4 @@
+import re
 
 def norm_result(result):
     "normalize differences, such as timing between output"

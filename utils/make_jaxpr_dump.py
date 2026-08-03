@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_jaxpr_dump(jaxpr: core.Jaxpr, **_) -> common.SourceMapDump:
   pprint_mappings: list[list[tuple[int, int, Any]]] = []

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def record_error_count(
     server_address: Optional[str] = None,

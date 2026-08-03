@@ -1,3 +1,4 @@
+import logging
 
 def get_sharding_or_none(serialized_string):
   try:

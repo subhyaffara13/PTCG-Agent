@@ -1,3 +1,4 @@
+from typing import Union
 
 def _solve_radical(f, unradf, symbol, solveset_solver):
     """ Helper function to solve equations with radicals """

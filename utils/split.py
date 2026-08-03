@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def split(path, sep):
     if sep not in path:

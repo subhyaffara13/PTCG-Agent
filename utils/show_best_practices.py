@@ -1,3 +1,5 @@
+import sys
+from typing import Union
 
 def show_best_practices(file=sys.stdout) -> Union[str, None]:
     """

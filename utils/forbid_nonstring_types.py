@@ -1,3 +1,4 @@
+from typing import Callable
 
 def forbid_nonstring_types(
     forbidden: list[str] | None, name: str | None = None

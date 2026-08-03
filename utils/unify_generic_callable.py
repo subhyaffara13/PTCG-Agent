@@ -1,3 +1,4 @@
+from typing import Any
 
 def unify_generic_callable(
     type: NormalizedCallableType,

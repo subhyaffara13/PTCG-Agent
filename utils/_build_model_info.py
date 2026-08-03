@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _build_model_info(
     model: str,

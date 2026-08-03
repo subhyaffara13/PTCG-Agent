@@ -1,3 +1,4 @@
+import functools
 
 def test_working_set_resolve(
     installed_dists,

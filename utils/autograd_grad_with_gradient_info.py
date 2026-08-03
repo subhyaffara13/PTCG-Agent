@@ -1,3 +1,4 @@
+from typing import Any
 
 def autograd_grad_with_gradient_info(
     output_infos: Sequence[GradientInfo | None],

@@ -1,3 +1,4 @@
+import re
 
 def rename_kernels(source_code: str) -> str:
     pattern = r"(\w+)\s*=\s*async_compile\.triton\('triton_',\s"

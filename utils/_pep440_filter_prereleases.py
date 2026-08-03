@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _pep440_filter_prereleases(
     iterable: Iterable[Any], key: Callable[[Any], UnparsedVersion] | None

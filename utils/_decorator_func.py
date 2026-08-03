@@ -1,3 +1,4 @@
+import functools
 
 def _decorator_func(wrapped_func, op, op_table):
     """

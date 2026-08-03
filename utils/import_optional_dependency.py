@@ -1,3 +1,4 @@
+import sys
 
 def import_optional_dependency(
     name: str,

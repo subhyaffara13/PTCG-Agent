@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_tensorstore_metadata(arr, is_remote: bool = False,
                               file_size_target: int = _FILE_SIZE_TARGET,

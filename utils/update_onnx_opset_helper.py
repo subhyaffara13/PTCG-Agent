@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def update_onnx_opset_helper():
     parser = argparse.ArgumentParser(

@@ -1,3 +1,4 @@
+import os
 
 def create_source_list(
     paths: Sequence[str],

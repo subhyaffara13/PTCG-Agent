@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def normalize_file(
 	file: StrPath,

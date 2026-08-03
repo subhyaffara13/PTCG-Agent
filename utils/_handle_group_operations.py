@@ -1,3 +1,4 @@
+from typing import Any, Optional, Set
 
 def _handle_group_operations(
     op_type: str, value: Any, teams_set: Set[str]

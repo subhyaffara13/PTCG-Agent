@@ -1,3 +1,4 @@
+import os
 
 def make_local_path(s):
     """Converts '/' in a string to os.sep"""

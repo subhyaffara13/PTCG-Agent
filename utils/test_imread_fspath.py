@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_imread_fspath():
     img = plt.imread(

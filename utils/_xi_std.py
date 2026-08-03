@@ -1,3 +1,5 @@
+import math
+
 
 def _xi_std(r, l, y_continuous, xp):
     # Compute asymptotic standard deviation of xi under null hypothesis of independence

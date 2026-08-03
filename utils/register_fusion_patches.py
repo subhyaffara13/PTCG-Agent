@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_fusion_patches(
     cls: "type[PreTrainedModel]", config, fusion_config: Mapping[str, bool | Mapping[str, Any]] | None = None

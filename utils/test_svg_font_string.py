@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_svg_font_string(font_str, include_generic):
     fp = fm.FontProperties(family=["WenQuanYi Zen Hei"])

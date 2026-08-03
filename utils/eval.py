@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def eval(image: Image, *args: Callable[[int], float]) -> Image:
     """

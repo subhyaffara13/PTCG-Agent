@@ -1,3 +1,4 @@
+from typing import Union
 
 def extract_normalized_read_writes(
     node: Union["FusedSchedulerNode", "SchedulerNode"],

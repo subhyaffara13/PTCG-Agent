@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _is_cooldown_required(
     litellm_router_instance: LitellmRouter,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def patch_lazy_xp_functions(
     request: pytest.FixtureRequest,

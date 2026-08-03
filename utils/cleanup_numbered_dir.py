@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def cleanup_numbered_dir(
     root: Path, prefix: str, keep: int, consider_lock_dead_if_created_before: float

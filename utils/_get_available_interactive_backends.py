@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_available_interactive_backends():
     _is_linux_and_display_invalid = (sys.platform == "linux" and

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def load_offload_lib(offload_lib_path):
     _LOGGER.debug("loading offload library from %s", offload_lib_path)

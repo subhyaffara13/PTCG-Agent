@@ -1,3 +1,6 @@
+import functools
+import logging
+from typing import Any, Callable
 
 def lru_cache(
     *,

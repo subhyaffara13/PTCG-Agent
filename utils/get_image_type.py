@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_image_type(image):
     if is_pil_image(image):

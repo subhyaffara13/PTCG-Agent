@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _last_user_content(messages: Optional[List[Dict[str, Any]]]) -> Optional[str]:
     if not messages:

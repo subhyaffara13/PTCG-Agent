@@ -1,3 +1,4 @@
+import re
 
 def verify_tp_plan(expected_keys: list[str], tp_plan: dict[str, str] | None):
     """

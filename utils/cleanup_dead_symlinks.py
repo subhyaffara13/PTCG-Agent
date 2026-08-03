@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def cleanup_dead_symlinks(root: Path) -> None:
     for left_dir in root.iterdir():

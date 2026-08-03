@@ -1,3 +1,4 @@
+import re
 
 def get_abs(expr: Expr, prec: int, options: OPT_DICT) -> TMP_RES:
     result = evalf(expr, prec + 2, options)

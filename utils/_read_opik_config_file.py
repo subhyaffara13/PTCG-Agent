@@ -1,3 +1,5 @@
+import os
+from typing import Dict
 
 def _read_opik_config_file() -> Dict[str, str]:
     config_path = os.path.expanduser(CONFIG_FILE_PATH_DEFAULT)

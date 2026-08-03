@@ -1,3 +1,5 @@
+import math
+
 
 def chi2_pdf(x, df):
     if x > 0:

@@ -1,3 +1,4 @@
+import sys
 
 def get_base_class_and_magic_number(
     lib_file: BufferedIOBase,

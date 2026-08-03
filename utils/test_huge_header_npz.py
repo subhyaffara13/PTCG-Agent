@@ -1,3 +1,4 @@
+import os
 
 def test_huge_header_npz(tmpdir):
     f = os.path.join(tmpdir, 'large_header.npz')

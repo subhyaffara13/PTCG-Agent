@@ -1,3 +1,4 @@
+import re
 
 def get_parameter_names(model, forbidden_layer_types, forbidden_layer_names=None):
     """

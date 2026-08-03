@@ -1,3 +1,4 @@
+import re
 
 def parse_type_ignore_tag(tag: str | None) -> list[str] | None:
     """Parse optional "[code, ...]" tag after "# type: ignore".

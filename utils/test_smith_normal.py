@@ -1,3 +1,4 @@
+import random
 
 def test_smith_normal():
 

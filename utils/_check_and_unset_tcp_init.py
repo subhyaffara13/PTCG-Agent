@@ -1,3 +1,4 @@
+import os
 
 def _check_and_unset_tcp_init():
     use_tcp_init = os.environ.get("RPC_INIT_WITH_TCP", None)

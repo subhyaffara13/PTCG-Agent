@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_linalg_multi_dot(op_info, device, dtype, requires_grad, **kwargs):
     # Each test case consists of the sizes in the chain of multiplications

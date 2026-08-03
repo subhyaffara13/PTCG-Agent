@@ -1,3 +1,4 @@
+from typing import Any
 
 def finalize_overlap_scheduling(
     gm: fx.GraphModule,

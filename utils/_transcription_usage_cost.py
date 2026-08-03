@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _transcription_usage_cost(usage: dict, model_info: Optional[ModelInfo]) -> float:
     if model_info is None:

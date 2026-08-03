@@ -1,3 +1,4 @@
+from typing import Union
 
 def maybe_read_from_SEND_RESPONSE_server(
     buf: ReceiveBuffer,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_alignments(headers: list[str], rows: list[list[Any]]) -> dict[str, str]:
     """Return ``{"col": "right"}`` for columns where every non-None value is numeric."""

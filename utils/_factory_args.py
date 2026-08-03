@@ -1,3 +1,4 @@
+from typing import Any
 
 def _factory_args(fake_tensor: Tensor) -> dict[str, Any]:
     return {

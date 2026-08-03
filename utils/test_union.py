@@ -1,3 +1,4 @@
+from typing import Set, Union
 
 def test_union():
     instance = m.TestUnion()

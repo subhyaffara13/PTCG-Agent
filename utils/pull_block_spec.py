@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def pull_block_spec(
     f: Callable,

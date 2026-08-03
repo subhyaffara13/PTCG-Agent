@@ -1,3 +1,4 @@
+import sys
 
 def get_mypy_config(
     mypy_options: list[str],

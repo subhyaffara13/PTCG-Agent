@@ -1,3 +1,4 @@
+from typing import Any
 
 def qr(a: ArrayLike, mode="reduced"):
     a = _atleast_float_1(a)

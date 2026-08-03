@@ -1,3 +1,4 @@
+import re
 
 def safe_extra(extra: str) -> NormalizedExtra:
     """Convert an arbitrary string to a standard 'extra' name

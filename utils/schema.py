@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def schema(
     models: Sequence[Union[Type['BaseModel'], Type['Dataclass']]],

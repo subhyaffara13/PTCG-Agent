@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def resolve_default_value(
     default: Any,

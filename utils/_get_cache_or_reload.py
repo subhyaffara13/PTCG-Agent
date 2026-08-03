@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_cache_or_reload(
     github,

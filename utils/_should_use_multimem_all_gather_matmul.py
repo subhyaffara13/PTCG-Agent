@@ -1,3 +1,5 @@
+import math
+
 
 def _should_use_multimem_all_gather_matmul(
     A_shard: torch.Tensor,

@@ -1,3 +1,4 @@
+import re
 
 def mpci_sin(x, prec):
     a, b = x

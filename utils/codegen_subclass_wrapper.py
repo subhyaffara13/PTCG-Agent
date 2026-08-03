@@ -1,3 +1,4 @@
+from typing import Callable
 
 def codegen_subclass_wrapper(
     compiled_fn: Callable[..., object],

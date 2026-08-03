@@ -1,3 +1,4 @@
+import os
 
 def safe_join(t: Type, s: Type) -> Type:
     # This is a temporary solution to prevent crashes in combine_similar_callables() etc.,

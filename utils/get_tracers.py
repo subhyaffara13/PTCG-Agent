@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def get_tracers(tree: pytypes.ArrayTree) -> Tuple[jax.core.Tracer]:
   """Returns a tuple with tracers from a tree."""

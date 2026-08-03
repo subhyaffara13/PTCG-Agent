@@ -1,3 +1,4 @@
+import os
 
 def test_gh21999_file_not_exist():
     tmpdir = mkdtemp(suffix=str(threading.get_native_id()))

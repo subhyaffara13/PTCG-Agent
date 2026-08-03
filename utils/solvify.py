@@ -1,3 +1,4 @@
+from typing import Union
 
 def solvify(f, symbol, domain):
     """Solves an equation using solveset and returns the solution in accordance

@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_fx_proxy_cls(
     target_cls: type[VTTypeAlias],

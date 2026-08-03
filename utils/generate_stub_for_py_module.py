@@ -1,3 +1,4 @@
+import os
 
 def generate_stub_for_py_module(
     mod: StubSource,

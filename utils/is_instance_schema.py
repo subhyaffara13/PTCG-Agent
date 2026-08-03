@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_instance_schema(
     cls: Any,

@@ -1,3 +1,4 @@
+import sys
 
 def _forcibly_shutdown_process_pool_on_exit(
     workers: set[Process], _task: object

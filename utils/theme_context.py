@@ -1,3 +1,4 @@
+from typing import Any
 
 def theme_context(params: dict[str, Any]) -> Generator:
     """Temporarily modify specifc matplotlib rcParams."""

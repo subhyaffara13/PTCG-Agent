@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def workaround_stride_incorrect_op(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

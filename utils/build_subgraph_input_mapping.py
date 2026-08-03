@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_subgraph_input_mapping(
     tx: "InstructionTranslator",

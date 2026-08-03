@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def save_observation(
     env: AECEnv[AgentID, Any, Any],

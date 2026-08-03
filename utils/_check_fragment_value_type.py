@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_fragment_value_type(
     value: Any,

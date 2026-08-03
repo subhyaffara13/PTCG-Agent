@@ -1,3 +1,4 @@
+from typing import Union
 
 def safe_divide(
     numerator: Union[int, float],

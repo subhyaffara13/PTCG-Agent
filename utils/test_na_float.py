@@ -1,3 +1,5 @@
+import math
+
 
 def test_na_float(df_from_dict):
     df = df_from_dict({"a": [1.0, math.nan, 2.0]})

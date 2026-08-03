@@ -1,3 +1,4 @@
+from typing import Any
 
 def process_inputs(
     flat_args: list[Any],

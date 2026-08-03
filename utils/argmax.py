@@ -1,3 +1,5 @@
+import random
+from typing import Optional
 
 def argmax(
     self: list[int], dim: Optional[int] = None, keepdim: bool = False

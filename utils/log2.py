@@ -1,3 +1,4 @@
+import re
 
 def log2(a):
     return prims.log2(a)

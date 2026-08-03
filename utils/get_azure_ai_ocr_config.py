@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_azure_ai_ocr_config(model: str) -> Optional["BaseOCRConfig"]:
     """

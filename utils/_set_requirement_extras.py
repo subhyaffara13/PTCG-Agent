@@ -1,3 +1,4 @@
+import re
 
 def _set_requirement_extras(req: Requirement, new_extras: set[str]) -> Requirement:
     """

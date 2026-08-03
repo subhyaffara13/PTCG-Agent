@@ -1,3 +1,4 @@
+import os
 
 def is_reasoning_auto_summary_enabled() -> bool:
     """Check whether the default 'summary: detailed' injection is enabled (opt-in)."""

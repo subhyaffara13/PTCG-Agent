@@ -1,3 +1,6 @@
+from typing import Any, Callable
+import math
+
 
 def same(
     ref: Any,

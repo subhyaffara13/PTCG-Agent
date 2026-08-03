@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _group_by(values: Iterable[V], get_key: Callable[[V], K]) -> dict[K, set[V]]:
     """

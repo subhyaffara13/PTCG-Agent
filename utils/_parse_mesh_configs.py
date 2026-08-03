@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_mesh_configs(
     config: dict[str, Any],

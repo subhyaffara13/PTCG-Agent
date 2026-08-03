@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_dependence():
     X, Y = Die('X'), Die('Y')

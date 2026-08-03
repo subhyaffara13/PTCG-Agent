@@ -1,3 +1,4 @@
+import itertools
 
 def can_pad(
     mat1: Tensor,

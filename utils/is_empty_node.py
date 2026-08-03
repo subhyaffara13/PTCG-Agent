@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_empty_node(x: Any) -> bool:
   try:

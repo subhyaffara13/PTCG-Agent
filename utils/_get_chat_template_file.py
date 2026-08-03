@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_chat_template_file(hf_model_name: str) -> Dict[str, Any]:
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _cumulatively_sum_simpson_integrals(
     y: np.ndarray,

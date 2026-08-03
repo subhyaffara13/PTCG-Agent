@@ -1,3 +1,4 @@
+import sys
 
 def _issubclass_fast(cls: type, modname: str, clsname: str) -> bool:
     try:

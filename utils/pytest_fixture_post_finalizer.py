@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_fixture_post_finalizer(
     fixturedef: FixtureDef[Any], request: SubRequest

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def validate_credentials(
     auth_url: Optional[str] = None,

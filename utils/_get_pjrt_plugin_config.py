@@ -1,3 +1,4 @@
+import json
 
 def _get_pjrt_plugin_config(
     json_path: str,

@@ -1,3 +1,4 @@
+import time
 
 def online_mirror_descent(mfg_game,
                           number_of_iterations,

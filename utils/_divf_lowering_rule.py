@@ -1,3 +1,4 @@
+from typing import Any
 
 def _divf_lowering_rule(
     ctx: LoweringContext, op: Any

@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def get_fake_value(
     node: torch.fx.Node,

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _get_dist(dist_path, attrs):
     root = "/".join(os.path.split(dist_path))  # POSIX-style

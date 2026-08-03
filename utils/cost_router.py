@@ -1,3 +1,4 @@
+from typing import Union
 
 def cost_router(call_type: CallTypes) -> Literal["cost_per_token", "cost_per_second"]:
     if call_type == CallTypes.atranscription or call_type == CallTypes.transcription:

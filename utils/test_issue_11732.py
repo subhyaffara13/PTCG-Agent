@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_11732():
     interval12 = Interval(1, 2)

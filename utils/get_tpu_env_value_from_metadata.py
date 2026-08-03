@@ -1,3 +1,4 @@
+import re
 
 def get_tpu_env_value_from_metadata(key) -> str | None:
   metadata_value = None

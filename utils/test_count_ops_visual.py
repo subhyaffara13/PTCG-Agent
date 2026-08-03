@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_count_ops_visual():
     ADD, MUL, POW, SIN, COS, EXP, AND, D, G, M = symbols(

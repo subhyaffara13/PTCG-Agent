@@ -1,3 +1,4 @@
+import time
 
 def _run_once(state, bots):
   """Plays bots with each other, returns terminal utility for each player."""

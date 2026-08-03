@@ -1,3 +1,4 @@
+from typing import Optional
 
 def playthrough_lines(game_string, alsologtostdout=False, action_sequence=None,
                       observation_params_string=None,

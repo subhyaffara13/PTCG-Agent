@@ -1,3 +1,5 @@
+import math
+
 
 def get_num_params_in_lstm(input_size: int, hidden_size: int, num_layers: int,
                            bidirectional: bool) -> int:

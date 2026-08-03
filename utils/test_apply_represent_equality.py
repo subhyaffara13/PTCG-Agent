@@ -1,3 +1,4 @@
+import random
 
 def test_apply_represent_equality():
     gates = [HadamardGate(int(3*random.random())),

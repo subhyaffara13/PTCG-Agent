@@ -1,3 +1,4 @@
+import copy
 
 def laplacian(expr):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prefix(value: Any) -> str:
     if isinstance(value, types.MethodType):

@@ -1,3 +1,4 @@
+import functools
 
 def _make_norm_from_scale(
     scale_cls, scale_args, scale_kwargs_items,

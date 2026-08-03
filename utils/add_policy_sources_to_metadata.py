@@ -1,3 +1,4 @@
+from typing import Dict
 
 def add_policy_sources_to_metadata(request_data: Dict, policy_sources: Dict[str, str]):
     """

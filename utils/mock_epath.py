@@ -1,3 +1,5 @@
+import copy
+from typing import Optional
 
 def mock_epath(
     *,

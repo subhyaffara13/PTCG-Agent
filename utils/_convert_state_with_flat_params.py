@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _convert_state_with_flat_params(
     all_optim_state_keys: list[_OptimStateKey],

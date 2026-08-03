@@ -1,3 +1,4 @@
+import re
 
 def test_append_frame_column_oriented(temp_hdfstore, request):
     # column oriented

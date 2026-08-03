@@ -1,3 +1,4 @@
+import os
 
 def styled_prompt():
     """Create a styled blue box prompt for user input."""

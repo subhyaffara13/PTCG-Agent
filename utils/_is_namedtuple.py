@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_namedtuple(x):
   """Duck typing test for namedtuple factory-generated objects."""

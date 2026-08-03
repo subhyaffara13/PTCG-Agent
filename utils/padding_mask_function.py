@@ -1,3 +1,4 @@
+from typing import Callable
 
 def padding_mask_function(padding_mask: torch.Tensor) -> Callable:
     """

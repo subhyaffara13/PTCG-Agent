@@ -1,3 +1,4 @@
+import os
 
 def get_abspath(path, cwd='.'):
     """ Returns the absolute path.

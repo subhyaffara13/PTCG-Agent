@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_device_metadata(input: torch.device) -> dict[str, Any]:
     assert isinstance(input, torch.device)

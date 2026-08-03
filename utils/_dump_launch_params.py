@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _dump_launch_params(args, kwargs, launcher, kernel_name, grid):
     call_args = []

@@ -1,3 +1,5 @@
+from router.packets import OpponentModelPacket
+
 
 def make_packet(**overrides) -> OpponentModelPacket:
     defaults = dict(

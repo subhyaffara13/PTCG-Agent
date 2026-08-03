@@ -1,3 +1,4 @@
+import sys
 
 def _find_modules_imported_in_different_source(
     source: g3_utils.Source,

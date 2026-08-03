@@ -1,3 +1,5 @@
+import json
+from typing import Any, Optional
 
 def _usage_log_entry_from_row(
     r: Any, sl: Any, action_filter: Optional[str]

@@ -1,3 +1,4 @@
+import time
 
 def SpeedTest(image):
     print(f"\nImage Scaling Speed Test - Image Size {str(image.get_size())}\n")

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def eager_mask(
     batch_size: int,

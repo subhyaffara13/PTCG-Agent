@@ -1,3 +1,4 @@
+import re
 
 def check_structure():
     expected_sections = [

@@ -1,3 +1,4 @@
+import re
 
 def test_meijerint():
     from sympy.core.function import expand

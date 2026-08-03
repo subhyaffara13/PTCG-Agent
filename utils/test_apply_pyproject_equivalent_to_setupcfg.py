@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_apply_pyproject_equivalent_to_setupcfg(url, monkeypatch, tmp_path):
     monkeypatch.setattr(expand, "read_attr", Mock(return_value="0.0.1"))

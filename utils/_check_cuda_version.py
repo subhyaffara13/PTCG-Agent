@@ -1,3 +1,7 @@
+import os
+import re
+import subprocess
+import sys
 
 def _check_cuda_version(compiler_name: str, compiler_version: TorchVersion) -> None:
     if not CUDA_HOME:

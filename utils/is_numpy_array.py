@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_numpy_array(x) -> bool:
     """

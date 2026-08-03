@@ -1,3 +1,4 @@
+import re
 
 def test_noncircularized_real_imaginary_parts():
     # If this passes, lines numbered 3878-3882 (at the time of this commit)

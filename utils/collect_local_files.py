@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def collect_local_files(root: Path) -> dict[str, Path]:
     """

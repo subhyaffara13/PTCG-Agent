@@ -1,3 +1,4 @@
+from typing import Any
 
 def compile_mps_shaders(
     kernels: list[tuple[str, str, list[str]]],

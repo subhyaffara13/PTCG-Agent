@@ -1,3 +1,4 @@
+import os
 
 def open_memmap(filename, mode='r+', dtype=None, shape=None,
                 fortran_order=False, version=None, *,

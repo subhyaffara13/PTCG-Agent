@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_default_team_param(field: str) -> Any:
     """

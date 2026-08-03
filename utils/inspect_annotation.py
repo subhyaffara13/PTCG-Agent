@@ -1,3 +1,4 @@
+from typing import Any
 
 def inspect_annotation(  # noqa: PLR0915
     annotation: Any,

@@ -1,3 +1,4 @@
+import re
 
 def matrix_exp_jordan_form(A, t):
     r"""

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_and_merge_model_level_guardrails(
     data: dict, llm_router: Optional[Router]

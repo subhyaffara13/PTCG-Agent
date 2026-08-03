@@ -1,3 +1,4 @@
+from typing import Callable
 
 def chunked_causal_mask_function(chunk_size: int, left_padding: torch.Tensor) -> Callable:
     """

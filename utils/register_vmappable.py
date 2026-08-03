@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_vmappable(data_type: type, spec_type: type, axis_size_type: type,
                        to_elt: Callable, from_elt: Callable,

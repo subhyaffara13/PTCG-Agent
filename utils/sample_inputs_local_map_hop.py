@@ -1,3 +1,4 @@
+import functools
 
 def sample_inputs_local_map_hop(opinfo, device, dtype, requires_grad, **kwargs):
     # TODO: once HOPs support DTensor inputs, we should also test DTensors

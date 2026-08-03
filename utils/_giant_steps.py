@@ -1,3 +1,5 @@
+import math
+
 
 def _giant_steps(target):
     """Return a list of precision steps for the Newton's method"""

@@ -1,3 +1,5 @@
+import copy
+import os
 
 def draw_graph(
     traced: torch.fx.GraphModule,

@@ -1,3 +1,4 @@
+import os
 
 def set_dir(d: str | os.PathLike) -> None:
     r"""

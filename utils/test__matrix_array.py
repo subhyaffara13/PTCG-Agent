@@ -1,3 +1,4 @@
+import copy
 
 def test_Matrix_array():
     class matarray:

@@ -1,3 +1,4 @@
+import json
 
 def _get_body_error_code(error_str: str) -> int | None:
     """Return error.code from a JSON error body, or None if not parseable."""

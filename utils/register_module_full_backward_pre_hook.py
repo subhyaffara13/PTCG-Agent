@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_module_full_backward_pre_hook(
     hook: Callable[["Module", _grad_t], _grad_t | None],

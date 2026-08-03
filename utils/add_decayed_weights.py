@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def add_decayed_weights(
     weight_decay: base.ScalarOrSchedule = 0.0,

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_platform() -> Platform:
     try:

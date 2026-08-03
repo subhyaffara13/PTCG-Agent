@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_field_name(bases: Iterable[Type[Any]], field_name: str) -> None:
     """

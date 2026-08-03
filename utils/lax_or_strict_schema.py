@@ -1,3 +1,4 @@
+from typing import Any
 
 def lax_or_strict_schema(
     lax_schema: CoreSchema,

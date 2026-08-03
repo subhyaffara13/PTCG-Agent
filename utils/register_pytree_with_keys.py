@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_pytree_with_keys(
     nodetype: type[T],

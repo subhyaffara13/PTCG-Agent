@@ -1,3 +1,4 @@
+import functools
 
 def addmm_patterns_init():
     """

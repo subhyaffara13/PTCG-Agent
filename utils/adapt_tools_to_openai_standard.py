@@ -1,3 +1,4 @@
+from typing import List
 
 def adapt_tools_to_openai_standard(
     tools: List[OCIToolCall],

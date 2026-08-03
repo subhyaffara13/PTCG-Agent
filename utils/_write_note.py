@@ -1,3 +1,4 @@
+from typing import Any
 
 def _writeNote(glyphObject: Any, element: ElementType, validate: bool) -> None:
     note = getattr(glyphObject, "note", None)

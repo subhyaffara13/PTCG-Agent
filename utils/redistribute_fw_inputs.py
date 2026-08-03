@@ -1,3 +1,4 @@
+from typing import Any
 
 def redistribute_fw_inputs(
     global_args: Any, all_placements: Any, mesh: Any, _: int | None = None

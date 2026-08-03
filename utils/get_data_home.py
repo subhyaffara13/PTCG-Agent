@@ -1,3 +1,4 @@
+import os
 
 def get_data_home(data_home=None):
     """Return a path to the cache directory for example datasets.

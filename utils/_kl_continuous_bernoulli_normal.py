@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_continuous_bernoulli_normal(p, q):
     t1 = -p.entropy()

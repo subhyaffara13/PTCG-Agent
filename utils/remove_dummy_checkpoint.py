@@ -1,3 +1,4 @@
+import os
 
 def remove_dummy_checkpoint(is_main_process, output_dir, filenames):
     if is_main_process:

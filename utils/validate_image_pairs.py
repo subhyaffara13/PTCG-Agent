@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_image_pairs(images: Any) -> Sequence[Sequence[ImagePair]]:
     error_message = (

@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def try_ann_to_type(ann, loc, rcb=None):
     ann_args = typing.get_args(ann)  # always returns a tuple!

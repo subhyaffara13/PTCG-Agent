@@ -1,3 +1,4 @@
+from typing import Any
 
 def adopt_module_key_flags(
     module: Any, flag_values: _flagvalues.FlagValues = _flagvalues.FLAGS

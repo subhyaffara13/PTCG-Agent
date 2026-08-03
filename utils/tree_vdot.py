@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_vdot(tree_x: Any, tree_y: Any) -> jax.typing.ArrayLike:
   r"""Compute the inner product between two pytrees.

@@ -1,3 +1,4 @@
+import sys
 
 def in_venv():
     if hasattr(sys, 'real_prefix'):

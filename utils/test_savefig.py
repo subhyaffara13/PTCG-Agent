@@ -1,3 +1,4 @@
+import os
 
 def test_savefig(kind, data, index):
     fig, ax = plt.subplots()

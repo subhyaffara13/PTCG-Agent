@@ -1,3 +1,4 @@
+import sys
 
 def test_refimported_imported_as():
     import collections

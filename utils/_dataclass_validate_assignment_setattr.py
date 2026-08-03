@@ -1,3 +1,4 @@
+from typing import Any
 
 def _dataclass_validate_assignment_setattr(self: 'Dataclass', name: str, value: Any) -> None:
     if self.__pydantic_initialised__:

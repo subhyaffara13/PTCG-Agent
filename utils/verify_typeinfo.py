@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_typeinfo(
     stub: nodes.TypeInfo,

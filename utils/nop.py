@@ -1,3 +1,4 @@
+from typing import Any
 
 def nop(fx_g: fx.GraphModule, _: Any) -> fx.GraphModule:
     """

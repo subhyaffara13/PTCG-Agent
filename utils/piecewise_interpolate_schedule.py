@@ -1,3 +1,4 @@
+from typing import Optional
 
 def piecewise_interpolate_schedule(
     interpolate_type: str,

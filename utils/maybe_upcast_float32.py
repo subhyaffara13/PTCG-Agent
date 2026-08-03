@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def maybe_upcast_float32(convert_output: bool = True) -> Callable[[_T], _T]:
     """

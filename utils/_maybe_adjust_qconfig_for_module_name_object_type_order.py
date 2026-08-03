@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _maybe_adjust_qconfig_for_module_name_object_type_order(
     qconfig_mapping: QConfigMapping,

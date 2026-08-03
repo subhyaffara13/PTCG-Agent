@@ -1,3 +1,4 @@
+import re
 
 def test_CRootOf_evalf():
     real = rootof(x**3 + x + 3, 0).evalf(n=20)

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_fuser_method_new(
     op_pattern: Pattern,

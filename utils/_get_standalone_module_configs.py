@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_standalone_module_configs(
     node: Node,

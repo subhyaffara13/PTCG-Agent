@@ -1,3 +1,4 @@
+import re
 
 def split_by_unquoted(line, characters):
     """

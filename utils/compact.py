@@ -1,3 +1,5 @@
+import functools
+import os
 
 def compact(paths: Iterable[str]) -> set[str]:
     """Compact a path set to contain the minimal number of paths

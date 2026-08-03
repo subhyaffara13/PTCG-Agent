@@ -1,3 +1,4 @@
+import json
 
 def _get_json_config(config_dict):
     """Parse and returns JSON string from python dictionary."""

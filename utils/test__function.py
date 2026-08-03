@@ -1,3 +1,4 @@
+from typing import Callable
 
 def test_Function():
     assert julia_code(sin(x) ** cos(x)) == "sin(x) .^ cos(x)"

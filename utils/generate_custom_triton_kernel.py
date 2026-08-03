@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_custom_triton_kernel(kernel: Any) -> str:
     res = ""

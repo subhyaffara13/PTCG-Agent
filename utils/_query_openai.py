@@ -1,3 +1,5 @@
+import json
+import os
 
 def _query_openai(prompt, extractor):
     openai_key = os.environ.get("OPENAI_API_KEY")

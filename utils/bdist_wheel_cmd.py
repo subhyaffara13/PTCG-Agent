@@ -1,3 +1,4 @@
+import os
 
 def bdist_wheel_cmd(**kwargs):
     """Run command in the same process so that it is easier to collect coverage"""

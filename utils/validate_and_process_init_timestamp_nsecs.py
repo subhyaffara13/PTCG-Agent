@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_and_process_init_timestamp_nsecs(
     init_timestamp_nsecs: Any,

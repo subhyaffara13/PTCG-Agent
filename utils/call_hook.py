@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_hook(
     hook: Callable[..., torch.Tensor | None], *args: Any, **kwargs: Any

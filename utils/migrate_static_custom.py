@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def migrate_static_custom(src: str, dst: str) -> bool:
     """Migrate non-empty custom.js,css from src to dst

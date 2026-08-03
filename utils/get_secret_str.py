@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def get_secret_str(
     secret_name: str,

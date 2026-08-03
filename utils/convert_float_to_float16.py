@@ -1,3 +1,5 @@
+import itertools
+import os
 
 def convert_float_to_float16(
     model,

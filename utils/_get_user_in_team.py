@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_user_in_team(
     team_table: LiteLLM_TeamTableCachedObj, user_id: Optional[str]

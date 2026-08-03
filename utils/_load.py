@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def _load(csv_path: Path) -> list[dict]:
     """Load games.csv, dropping rows with errors (timeout/crash/etc).

@@ -1,3 +1,4 @@
+import sys
 
 def create_binary_subscr() -> Instruction:
     if sys.version_info < (3, 14):

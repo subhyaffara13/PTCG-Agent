@@ -1,3 +1,4 @@
+import functools
 
 def transposed_ragged_dot(
     lhs,  # (K, M)

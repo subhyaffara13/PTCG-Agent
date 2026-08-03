@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_openin_any_paranoid():
     completed = subprocess_run_for_testing(

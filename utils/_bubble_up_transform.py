@@ -1,3 +1,4 @@
+import functools
 
 def _bubble_up_transform(
     ctx: LoweringRuleContext,

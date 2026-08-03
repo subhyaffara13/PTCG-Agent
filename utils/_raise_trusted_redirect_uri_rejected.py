@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _raise_trusted_redirect_uri_rejected(
     request: Request,

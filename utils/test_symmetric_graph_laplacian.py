@@ -1,3 +1,4 @@
+import copy
 
 def test_symmetric_graph_laplacian():
     symmetric_mats = (

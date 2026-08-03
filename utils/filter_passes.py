@@ -1,3 +1,4 @@
+import re
 
 def filter_passes(regex: str) -> Sequence[Pass]:
   """Gets all registered passes whose display name matches the given regex."""

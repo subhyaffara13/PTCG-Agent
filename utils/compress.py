@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Set, Union
 
 def compress(data: Iterable[_T], selectors: Iterable[_U], /) -> Iterator[_T]:
     return (datum for datum, selector in zip(data, selectors) if selector)

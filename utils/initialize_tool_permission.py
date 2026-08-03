@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def initialize_tool_permission(litellm_params: LitellmParams, guardrail: Guardrail):
     from litellm.proxy.guardrails.guardrail_hooks.tool_permission import (

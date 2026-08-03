@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def test_failing_ffmpeg(tmp_path, monkeypatch, anim):
     """

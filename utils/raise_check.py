@@ -1,3 +1,4 @@
+import sys
 
 def raise_check(func, **kwds):
     try:

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def validate_and_fix_openai_tools(tools: Optional[List]) -> Optional[List[dict]]:
     """

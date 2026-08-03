@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_click_param(
     param: ParamMeta,

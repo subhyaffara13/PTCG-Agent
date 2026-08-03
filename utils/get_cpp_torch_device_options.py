@@ -1,3 +1,4 @@
+import os
 
 def get_cpp_torch_device_options(
     device_type: str,

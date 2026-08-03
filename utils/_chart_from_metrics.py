@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _chart_from_metrics(metrics: Any) -> List[Dict[str, Any]]:
     chart_by_date: Dict[str, Dict[str, int]] = {}

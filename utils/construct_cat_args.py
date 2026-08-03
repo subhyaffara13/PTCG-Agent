@@ -1,3 +1,4 @@
+from typing import Callable
 
 def construct_cat_args(
     graph: torch.fx.Graph,

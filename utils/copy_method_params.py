@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def copy_method_params(
     source_method: Callable[Concatenate[Any, _P], Any],

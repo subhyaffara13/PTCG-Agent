@@ -1,3 +1,4 @@
+import os
 
 def _pjit_partial_eval(trace: pe.JaxprTrace,
                        *in_tracers,

@@ -1,3 +1,4 @@
+import re
 
 def quote_docstring(docstr: str) -> str:
     """Returns docstring correctly encapsulated in a single or double quoted form."""

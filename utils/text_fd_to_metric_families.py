@@ -1,3 +1,6 @@
+from typing import List
+import math
+
 
 def text_fd_to_metric_families(fd: TextIO) -> Iterable[Metric]:
     """Parse Prometheus text format from a file descriptor.

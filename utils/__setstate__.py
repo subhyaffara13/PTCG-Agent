@@ -1,3 +1,4 @@
+from typing import Any
 
 def __setstate__(state: dict[str, Any]) -> dict[str, Any]:
     g = globals()

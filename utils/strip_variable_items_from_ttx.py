@@ -1,3 +1,4 @@
+import re
 
 def stripVariableItemsFromTTX(
     string: str,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_format_timedelta64(
     values: TimedeltaArray,

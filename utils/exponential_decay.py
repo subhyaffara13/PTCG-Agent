@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def exponential_decay(
     init_value: jax.typing.ArrayLike,

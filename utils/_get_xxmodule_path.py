@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_xxmodule_path():
     source_name = 'xxmodule.c' if sys.version_info > (3, 9) else 'xxmodule-3.8.c'

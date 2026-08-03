@@ -1,3 +1,4 @@
+import os
 
 def static_cuda_launcher_default() -> bool:
     STATIC_CUDA_LAUNCHER_VERSION = 2

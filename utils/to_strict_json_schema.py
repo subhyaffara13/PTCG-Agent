@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_strict_json_schema(model: type[pydantic.BaseModel] | pydantic.TypeAdapter[Any]) -> dict[str, Any]:
     if inspect.isclass(model) and is_basemodel_type(model):

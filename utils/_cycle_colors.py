@@ -1,3 +1,4 @@
+import itertools
 
 def _cycle_colors(colors: list[Color], num_colors: int) -> Iterator[Color]:
     """Cycle colors until achieving max of `num_colors` or length of `colors`.

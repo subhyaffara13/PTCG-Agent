@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def check_numpy_ndarray_args(args: Iterable[Any], kwargs: Mapping[Any, Any]) -> bool:
     from .variables.tensor import NumpyNdarrayVariable

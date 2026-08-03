@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _build_reasoning_item(
     item_id: str,

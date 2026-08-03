@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _flatten_unflatten_for_dynamic_shapes(
     obj: Any,

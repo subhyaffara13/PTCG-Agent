@@ -1,3 +1,5 @@
+import math
+
 
 def _minimize_newtoncg(fun, x0, args=(), jac=None, hess=None, hessp=None,
                        callback=None, xtol=1e-5, eps=_epsilon, maxiter=None,

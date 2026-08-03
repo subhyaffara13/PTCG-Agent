@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def generate_unified_id_string(
     resource_type: str,

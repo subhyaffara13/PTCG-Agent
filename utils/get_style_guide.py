@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_style_guide(**kwargs: Any) -> StyleGuide:
     r"""Provision a StyleGuide for use.

@@ -1,3 +1,5 @@
+import copy
+import os
 
 def gptq_quantize(
     model,

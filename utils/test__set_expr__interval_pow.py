@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_SetExpr_Interval_pow():
     assert SetExpr(Interval(0, 2))**2 == SetExpr(Interval(0, 4))

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def _apply_prompt_management_to_responses_call(
     input: Union[str, ResponseInputParam],

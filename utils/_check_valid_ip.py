@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def _check_valid_ip(
     allowed_ips: Optional[List[str]],

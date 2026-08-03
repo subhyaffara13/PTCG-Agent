@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def runner_with_spinner_message(message: str) -> Callable[..., None]:
     """Provide a subprocess_runner that shows a spinner message.

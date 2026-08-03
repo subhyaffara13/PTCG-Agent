@@ -1,3 +1,5 @@
+import os
+import sys
 
 def glibc_version_string_confstr() -> str | None:
     "Primary implementation of glibc_version_string using os.confstr."

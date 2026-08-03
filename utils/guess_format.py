@@ -1,3 +1,4 @@
+import re
 
 def guess_format(text, ext):
     """Guess the format and format options of the file, given its extension and content"""

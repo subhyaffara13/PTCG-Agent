@@ -1,3 +1,4 @@
+import re
 
 def multi_host_url_regex() -> Pattern[str]:
     """

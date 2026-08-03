@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _lru_cache(fn: Callable[P, R]) -> Callable[P, R]:
     """LRU cache decorator with TypeError fallback.

@@ -1,3 +1,4 @@
+import sys
 
 def parse_flags_with_usage(args):
   """Tries to parse the flags, print usage, and exit if unparsable.

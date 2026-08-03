@@ -1,3 +1,5 @@
+import uuid
+from typing import Tuple
 
 def _request_token_sync(
     credentials: str,

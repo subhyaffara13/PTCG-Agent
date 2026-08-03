@@ -1,3 +1,4 @@
+import os
 
 def _handle_src(option: Option, opt_str: str, value: str, parser: OptionParser) -> None:
     value = os.path.abspath(value)

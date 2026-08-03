@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_compiler_repro_string(
     gm: torch.fx.GraphModule,

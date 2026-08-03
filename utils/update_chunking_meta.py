@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_chunking_meta(node: Node, **kwargs: Any) -> bool:
     """

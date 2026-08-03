@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_method_definitions(
     file_path: str | list[str],

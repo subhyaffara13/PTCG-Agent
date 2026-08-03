@@ -1,3 +1,4 @@
+import re
 
 def filter_files(prefix, suffix, files, remove_prefix=None):
     """

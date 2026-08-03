@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _export_internal(
     fun_jit: stages.Wrapped,

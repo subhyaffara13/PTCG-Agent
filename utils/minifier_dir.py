@@ -1,3 +1,4 @@
+import os
 
 def minifier_dir() -> str:
     path = os.path.join(get_debug_dir(), "minifier")

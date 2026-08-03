@@ -1,3 +1,4 @@
+import os
 
 def file_info_from_modpath(
     modpath: list[str],

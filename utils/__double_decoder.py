@@ -1,3 +1,5 @@
+import math
+
 
 def _DoubleDecoder():
   """Returns a decoder for a double field.

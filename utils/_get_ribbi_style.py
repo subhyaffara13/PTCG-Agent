@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _getRibbiStyle(
     self: DesignSpaceDocument, userLocation: SimpleLocationDict

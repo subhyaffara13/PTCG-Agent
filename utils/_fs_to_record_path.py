@@ -1,3 +1,4 @@
+import os
 
 def _fs_to_record_path(path: str, lib_dir: str) -> RecordPath:
     # On Windows, do not handle relative paths if they belong to different

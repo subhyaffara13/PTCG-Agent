@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_full(fragments: _GenericFragments[Any]) -> bool:
   """True iff every array element is covered by some fragment."""

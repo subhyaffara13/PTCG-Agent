@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def create_onnx_friendly_decomposition_table(
     onnx_registered_ops: set[_registration.TorchOp],

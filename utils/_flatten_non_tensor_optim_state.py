@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_non_tensor_optim_state(
     state_name: str,

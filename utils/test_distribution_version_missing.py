@@ -1,3 +1,4 @@
+import os
 
 def test_distribution_version_missing(
     tmpdir, suffix, expected_filename, expected_dist_type

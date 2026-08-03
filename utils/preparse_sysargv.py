@@ -1,3 +1,4 @@
+import sys
 
 def preparse_sysargv():
     # To keep backwards bug compatibility, newer flags are handled by argparse,

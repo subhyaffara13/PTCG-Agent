@@ -1,3 +1,5 @@
+import math
+
 
 def _sinpi_real(x):
     if x < 0:

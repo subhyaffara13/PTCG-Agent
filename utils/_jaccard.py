@@ -1,3 +1,4 @@
+from typing import Set
 
 def _jaccard(a: Set[str], b: Set[str]) -> float:
     union = a | b

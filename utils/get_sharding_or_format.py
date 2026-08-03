@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_sharding_or_format(
     value: Any, *, support_format: bool = False

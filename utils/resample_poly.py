@@ -1,3 +1,5 @@
+import math
+
 
 def resample_poly(x, up, down, axis=0, window=('kaiser', 5.0),
                   padtype='constant', cval=None):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_well_known_filter(
     the_object: Any, path: ModuleAttributePath | LocalNamePath

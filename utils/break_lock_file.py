@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def break_lock_file(lock_file: str, mtime_before: float, ino_before: int) -> None:
     """

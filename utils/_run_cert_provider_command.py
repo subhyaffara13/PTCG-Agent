@@ -1,3 +1,5 @@
+import re
+import subprocess
 
 def _run_cert_provider_command(command, expect_encrypted_key=False):
     """Run the provided command, and return client side mTLS cert, key and

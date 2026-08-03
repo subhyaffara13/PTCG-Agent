@@ -1,3 +1,4 @@
+from typing import Union
 
 def _invert_trig_hyp_real(f, g_ys, symbol):
     """Helper function for inverting trigonometric and hyperbolic functions.

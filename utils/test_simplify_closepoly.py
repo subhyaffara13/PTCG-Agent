@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_simplify_closepoly():
     # The values of the vertices in a CLOSEPOLY should always be ignored,

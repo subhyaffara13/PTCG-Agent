@@ -1,3 +1,4 @@
+import subprocess
 
 def run_update() -> int:
     """Run the install-method-appropriate update command for the `hf` CLI.

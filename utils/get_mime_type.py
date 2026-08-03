@@ -1,3 +1,4 @@
+import os
 
 def get_mime_type(file_path: str) -> str:
     """

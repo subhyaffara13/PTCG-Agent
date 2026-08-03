@@ -1,3 +1,4 @@
+import os
 
 def assert_relative(path):
     if not os.path.isabs(path):

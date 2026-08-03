@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_safe_constant(v: Any) -> bool:
     if istype(v, (tuple, frozenset)):

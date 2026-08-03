@@ -1,3 +1,4 @@
+from typing import Any
 
 def triton_kernel_wrapper_functional_functionalize(
     ctx: "BaseFunctionalizeAPI",

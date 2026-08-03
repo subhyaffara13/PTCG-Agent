@@ -1,3 +1,4 @@
+import itertools
 
 def check_shape(
     buffer: IndentedBuffer, var: CSEVariableType, shape: BlockShapeType

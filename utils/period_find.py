@@ -1,3 +1,5 @@
+import math
+
 
 def period_find(a, N):
     """Finds the period of a in modulo N arithmetic

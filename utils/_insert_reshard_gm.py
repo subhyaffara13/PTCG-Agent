@@ -1,3 +1,4 @@
+import copy
 
 def _insert_reshard_gm(
     gm: torch.fx.GraphModule,

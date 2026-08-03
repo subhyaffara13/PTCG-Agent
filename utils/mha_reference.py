@@ -1,3 +1,5 @@
+import math
+
 
 def mha_reference(
     q,

@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def find_tex_file(filename):
     """

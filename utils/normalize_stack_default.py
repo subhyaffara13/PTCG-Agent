@@ -1,3 +1,4 @@
+import itertools
 
 def normalize_stack_default(match: Match, *args, **kwargs):
     node = match.nodes[0]

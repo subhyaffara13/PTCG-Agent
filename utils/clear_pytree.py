@@ -1,3 +1,4 @@
+from typing import Any
 
 def clear_pytree(pytree: Any) -> Any:
   """Clears the pytree to free up memory."""

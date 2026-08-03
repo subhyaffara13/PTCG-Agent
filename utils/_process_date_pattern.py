@@ -1,3 +1,4 @@
+import re
 
 def _process_date_pattern(dp):
     """Compute a regex for each date pattern to use as a prefilter."""

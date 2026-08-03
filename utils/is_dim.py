@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_dim(d: object) -> bool:
     return isinstance(d, (DVar, int)) or d == Dyn

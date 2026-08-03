@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def get_anthropic_beta_from_headers(headers: dict) -> List[str]:
     """

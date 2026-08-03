@@ -1,3 +1,4 @@
+from typing import Callable
 
 def jit_user_function(func: Callable) -> Callable:
     """

@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _create_msvc_gs_stubs_lib(output_dir: str) -> str | None:
     """

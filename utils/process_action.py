@@ -1,3 +1,4 @@
+import random
 
 def process_action(state, config):
     current_turn = state[0].observation.current_turn

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _set_triton_ptxas_path() -> None:
     if os.environ.get("TRITON_PTXAS_PATH") is not None:

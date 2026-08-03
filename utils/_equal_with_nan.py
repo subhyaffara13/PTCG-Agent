@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _equal_with_nan(left: Any, right: Any) -> bool:
     if isinstance(left, dict) and isinstance(right, dict):

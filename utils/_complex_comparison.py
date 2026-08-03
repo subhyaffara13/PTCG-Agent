@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _complex_comparison(lax_op: Callable[[ArrayLike, ArrayLike], Array],
                         x: Array, y: Array):

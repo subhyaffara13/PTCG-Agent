@@ -1,3 +1,4 @@
+from typing import Any
 
 def with_assigned_stmts(
     self: nodes.With,

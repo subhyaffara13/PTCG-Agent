@@ -1,3 +1,4 @@
+import os
 
 def merge_transformers_sharded_states(path, num_checkpoints):
     """

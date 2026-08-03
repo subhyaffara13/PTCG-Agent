@@ -1,3 +1,4 @@
+import copy
 
 def make_valid_bedrock_tool_name(input_tool_name: str) -> str:
     """Normalize tool names to Bedrock pattern [a-zA-Z][a-zA-Z0-9_-]*."""

@@ -1,3 +1,4 @@
+import uuid
 
 def encapsulate_streaming_html(
     inner_iterator: Iterable[str],

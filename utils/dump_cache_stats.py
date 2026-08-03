@@ -1,3 +1,4 @@
+import logging
 
 def dump_cache_stats() -> None:
     if not log.isEnabledFor(logging.INFO):

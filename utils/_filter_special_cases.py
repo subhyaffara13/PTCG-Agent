@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _filter_special_cases(f) -> Callable[[F], F]:
     @wraps(f)

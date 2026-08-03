@@ -1,3 +1,4 @@
+import os
 
 def offload_weight(weight: torch.Tensor, weight_name: str, offload_folder: str | None, offload_index: dict) -> dict:
     """Write `weight` to disk inside `offload_folder`, and update `offload_index` accordingly. Everything is

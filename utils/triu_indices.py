@@ -1,3 +1,4 @@
+import os
 
 def triu_indices(n, k=0, m=None):
     if m is None:

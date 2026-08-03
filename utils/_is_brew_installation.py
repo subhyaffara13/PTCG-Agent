@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def _is_brew_installation() -> bool:
     """Check if running from a Homebrew installation.

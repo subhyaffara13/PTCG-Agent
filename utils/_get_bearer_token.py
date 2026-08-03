@@ -1,3 +1,4 @@
+import re
 
 def _get_bearer_token(
     api_key: str,

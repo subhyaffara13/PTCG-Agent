@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_logging_payload(kwargs, response_obj, start_time, end_time) -> SpendLogsPayload:
     if kwargs is None:

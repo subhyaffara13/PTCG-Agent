@@ -1,3 +1,5 @@
+import os
+from typing import Callable, Optional
 
 def save_video(
     frames: list,

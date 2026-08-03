@@ -1,3 +1,5 @@
+import math
+
 
 def _scatter_fused_allreduce_waits(
     graph: fx.Graph,

@@ -1,3 +1,5 @@
+import math
+
 
 def cheb1ord(wp, ws, gpass, gstop, analog=False, fs=None):
     """Chebyshev type I filter order selection.

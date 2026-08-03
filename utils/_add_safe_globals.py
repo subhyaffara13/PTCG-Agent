@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _add_safe_globals(safe_globals: list[Callable | tuple[Callable, str]]):
     global _marked_safe_globals_set

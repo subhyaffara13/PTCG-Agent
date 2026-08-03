@@ -1,3 +1,4 @@
+import logging
 
 def get_loggers() -> list[logging.Logger]:
     return [

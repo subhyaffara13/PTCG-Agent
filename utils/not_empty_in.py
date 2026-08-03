@@ -1,3 +1,4 @@
+from typing import Union
 
 def not_empty_in(finset_intersection, *syms):
     """

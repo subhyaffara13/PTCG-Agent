@@ -1,3 +1,7 @@
+import os
+import re
+import subprocess
+import sys
 
 def get_compiler_abi_compatibility_and_version(compiler) -> tuple[bool, TorchVersion]:
     """

@@ -1,3 +1,7 @@
+import os
+from typing import Any
+from pathlib import Path
+
 
 def _execute_plan(plan: SyncPlan, api: "HfApi", verbose: bool = False, status: Any | None = None) -> None:
     """Execute a sync plan."""

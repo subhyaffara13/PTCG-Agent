@@ -1,3 +1,4 @@
+from typing import Any
 
 def lazy_format_graph_tabular(fn_name: str, gm: torch.fx.GraphModule) -> Any:
     def inner() -> str:

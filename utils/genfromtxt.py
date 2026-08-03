@@ -1,3 +1,6 @@
+import functools
+import itertools
+import os
 
 def genfromtxt(fname, dtype=float, comments='#', delimiter=None,
                skip_header=0, skip_footer=0, converters=None,

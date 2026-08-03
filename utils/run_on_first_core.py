@@ -1,3 +1,4 @@
+import functools
 
 def run_on_first_core(core_axis_name: str):
   """Runs a function on the first core in a given axis."""

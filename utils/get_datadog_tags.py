@@ -1,3 +1,5 @@
+import os
+from typing import List, Optional
 
 def get_datadog_tags(
     standard_logging_object: Optional[StandardLoggingPayload] = None,

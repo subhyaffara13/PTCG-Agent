@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def generate_hash_function(frozen: bool) -> Optional[Callable[[Any], int]]:
     def hash_function(self_: Any) -> int:

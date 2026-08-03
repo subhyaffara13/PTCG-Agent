@@ -1,3 +1,4 @@
+import functools
 
 def mark_as(dispatch_type):
     """

@@ -1,3 +1,4 @@
+import pathlib
 
 def _get_directory(path: pathlib.Path) -> pathlib.Path:
     """Get the directory of a path - itself if already a directory."""

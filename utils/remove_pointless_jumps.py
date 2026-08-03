@@ -1,3 +1,4 @@
+import itertools
 
 def remove_pointless_jumps(instructions: list["Instruction"]) -> list["Instruction"]:
     """Eliminate jumps to the next instruction"""

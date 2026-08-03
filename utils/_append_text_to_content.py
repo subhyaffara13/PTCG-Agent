@@ -1,3 +1,4 @@
+from typing import Any
 
 def _append_text_to_content(content: Any, extra_text: str) -> Any:
     """Append ``extra_text`` to an OpenAI-shape message ``content`` field.

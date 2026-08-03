@@ -1,3 +1,4 @@
+import os
 
 def remove_extension_h_precompiler_headers() -> None:
     def _remove_if_file_exists(path_file) -> None:

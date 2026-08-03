@@ -1,3 +1,4 @@
+from typing import Optional
 
 def add_cache_point_tool_block(
     tool: dict, model: Optional[str] = None

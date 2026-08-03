@@ -1,3 +1,4 @@
+import time
 
 def test_dimensional_expr_of_derivative():
     l = Quantity('l')

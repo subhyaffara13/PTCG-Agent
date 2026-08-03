@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _bytecode_from_template_with_split(
     template: Callable[..., Any],

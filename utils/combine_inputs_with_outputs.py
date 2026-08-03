@@ -1,3 +1,4 @@
+import copy
 
 def combine_inputs_with_outputs(nb_source, nb_outputs, fmt=None):
     """Return a notebook that combines the text and metadata from the first notebook,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _display_stats_tabular(headers: list[str], table_data: list[list[Any]]) -> None:
     try:

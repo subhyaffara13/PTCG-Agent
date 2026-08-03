@@ -1,3 +1,4 @@
+import os
 
 def _manager_path():
     if platform.system() == "Windows":

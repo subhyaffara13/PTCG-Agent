@@ -1,3 +1,4 @@
+from typing import Any
 
 def piecewise_constant(boundaries: Any, values: Any):
   boundaries = jnp.array(boundaries)

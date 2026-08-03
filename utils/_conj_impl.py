@@ -1,3 +1,4 @@
+import re
 
 def _conj_impl(self: ComplexTensor) -> ComplexTensor:
     re, im = split_complex_tensor(self)

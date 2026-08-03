@@ -1,3 +1,4 @@
+import copy
 
 def writes(notebook, fmt, version=nbformat.NO_CONVERT, config=None, **kwargs):
     """Return the text representation of the notebook

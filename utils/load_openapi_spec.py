@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def load_openapi_spec(filepath: str) -> Dict[str, Any]:
     """

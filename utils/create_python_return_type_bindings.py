@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_python_return_type_bindings(
     fm: FileManager,

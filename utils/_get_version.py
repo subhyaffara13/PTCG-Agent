@@ -1,3 +1,6 @@
+from typing import List
+from pathlib import Path
+
 
 def _get_version():
     """Return the version string used for __version__."""

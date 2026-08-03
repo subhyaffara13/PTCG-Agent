@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_hash_func(cls: type[BaseModel]) -> Any:
     getter = operator.itemgetter(*cls.__pydantic_fields__.keys()) if cls.__pydantic_fields__ else lambda _: 0

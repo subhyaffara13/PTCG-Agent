@@ -1,3 +1,4 @@
+import os
 
 def run_test_in_subprocess(test_case, target_func, inputs=None, timeout=None):
     """

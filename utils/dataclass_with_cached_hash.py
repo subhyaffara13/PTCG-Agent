@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dataclass_with_cached_hash(cls: type[T], **kwargs: Any) -> type[T]: ...
 

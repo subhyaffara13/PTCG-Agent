@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_pretrained_tokenizer(
     identifier: str, revision="main", auth_token: Optional[str] = None

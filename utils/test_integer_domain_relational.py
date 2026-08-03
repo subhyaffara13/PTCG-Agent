@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_integer_domain_relational():
     eq1 = 2*x + 3 > 0

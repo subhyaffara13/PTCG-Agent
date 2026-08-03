@@ -1,3 +1,4 @@
+import copy
 
 def test_Singletons():
     protocols = [0, 1, 2, 3, 4]

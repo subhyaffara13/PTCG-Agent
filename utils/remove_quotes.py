@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_quotes(s: str, l: int, t: ParseResults) -> Any:
     r"""

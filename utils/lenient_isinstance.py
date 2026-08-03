@@ -1,3 +1,4 @@
+from typing import Any, Tuple, Union
 
 def lenient_isinstance(o: Any, class_or_tuple: Union[Type[Any], Tuple[Type[Any], ...], None]) -> bool:
     try:

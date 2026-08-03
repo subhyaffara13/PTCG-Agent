@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def _editor_open(local_path: str) -> int | Literal["no-tty", "no-editor"]:
     if not (sys.stdin.isatty() and sys.stdout.isatty()):

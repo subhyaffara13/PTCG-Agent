@@ -1,3 +1,4 @@
+import sys
 
 def test_movie_writer_invalid_path(anim):
     if sys.platform == "win32":

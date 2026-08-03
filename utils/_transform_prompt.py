@@ -1,3 +1,4 @@
+from typing import List, Union
 
 def _transform_prompt(
     messages: Union[List[AllMessageValues], List[OpenAITextCompletionUserMessage]],

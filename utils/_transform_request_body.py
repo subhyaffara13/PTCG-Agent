@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _transform_request_body(
     messages: List[AllMessageValues],

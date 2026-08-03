@@ -1,3 +1,4 @@
+import functools
 
 def watcher(fn):
   """A decorator to fn/processes that gives a logger and logs exceptions."""

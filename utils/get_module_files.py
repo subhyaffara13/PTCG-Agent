@@ -1,3 +1,4 @@
+import os
 
 def get_module_files(
     src_directory: str, blacklist: Sequence[str], list_all: bool = False

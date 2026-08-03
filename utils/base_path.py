@@ -1,3 +1,4 @@
+import os
 
 def base_path(main_path, fmt, formats=None):
     """Given a path and options for a format (ext, suffix, prefix), return the corresponding base path"""

@@ -1,3 +1,4 @@
+import re
 
 def _parse_docstrings() -> str:
     """Convert all docstrings in ``_docstrings_list`` into a single

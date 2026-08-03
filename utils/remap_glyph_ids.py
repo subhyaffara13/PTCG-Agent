@@ -1,3 +1,4 @@
+from typing import Dict
 
 def remap_glyph_ids(
     svg: etree.Element, glyph_index_map: Dict[int, int]

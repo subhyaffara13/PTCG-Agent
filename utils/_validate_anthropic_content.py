@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_anthropic_content(content: Mapping[str, Any]) -> type:
     """

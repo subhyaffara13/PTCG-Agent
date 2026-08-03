@@ -1,3 +1,4 @@
+import re
 
 def test_list_accessor_non_list_dtype():
     ser = Series(

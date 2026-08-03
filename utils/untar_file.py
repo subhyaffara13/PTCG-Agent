@@ -1,3 +1,4 @@
+import sys
 
 def untar_file(filename: str, location: str) -> None:
     """

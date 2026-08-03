@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Tuple
 
 def _parse_data_url(data_url: str) -> Optional[Tuple[bytes, str, str]]:
     """

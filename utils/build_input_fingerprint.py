@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_input_fingerprint(
     tx: "InstructionTranslator",

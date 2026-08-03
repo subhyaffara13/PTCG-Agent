@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _handle_combo_kernel_per_subkernel_blocks(
     size_hints: dict[str, int],

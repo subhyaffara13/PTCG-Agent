@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def aoti_eager_op_conf_lock(op_func_name_with_overload: str) -> Any:
     # Avoid circular import

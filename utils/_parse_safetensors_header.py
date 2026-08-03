@@ -1,3 +1,4 @@
+import json
 
 def _parse_safetensors_header(metadata_as_bytes: bytes, filename: str, context_msg: str) -> SafetensorsFileMetadata:
     """

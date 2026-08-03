@@ -1,3 +1,4 @@
+from typing import Any
 
 def only_consist_of(
     var: Any, types: tuple[type, ...], allow_none: bool = False

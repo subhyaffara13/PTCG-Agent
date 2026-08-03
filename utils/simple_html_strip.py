@@ -1,3 +1,4 @@
+import re
 
 def simple_html_strip(s):
     r"""

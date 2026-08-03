@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _get_response_id(response: Any) -> Optional[str]:
     if response is None:

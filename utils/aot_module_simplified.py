@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def aot_module_simplified(
     mod: torch.fx.GraphModule | torch._dynamo.utils.GmWrapper,

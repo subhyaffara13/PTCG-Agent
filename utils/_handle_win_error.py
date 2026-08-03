@@ -1,3 +1,4 @@
+from typing import Any
 
 def _handle_win_error(result: bool, _: Any, args: Any) -> Any:
     if not result:

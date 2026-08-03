@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def extract_and_build_metadata(
     opik_metadata: Dict[str, Any],

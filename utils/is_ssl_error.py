@@ -1,3 +1,4 @@
+import sys
 
 def is_ssl_error(error: Exception | None = None) -> bool:
     """Checks if the given error (or the current one) is an SSL error."""

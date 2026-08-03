@@ -1,3 +1,5 @@
+import json
+import sys
 
 def lfs_multipart_upload() -> None:
     """Internal git-lfs custom transfer agent for multipart uploads.

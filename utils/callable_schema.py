@@ -1,3 +1,4 @@
+from typing import Any
 
 def callable_schema(
     *, ref: str | None = None, metadata: dict[str, Any] | None = None, serialization: SerSchema | None = None

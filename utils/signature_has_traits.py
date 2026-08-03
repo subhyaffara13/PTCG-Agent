@@ -1,3 +1,4 @@
+import copy
 
 def signature_has_traits(cls: type[T]) -> type[T]:
     """Return a decorated class with a constructor signature that contain Trait names as kwargs."""

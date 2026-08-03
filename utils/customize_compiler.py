@@ -1,3 +1,4 @@
+import os
 
 def customize_compiler(compiler: CCompiler) -> None:
     """Do any platform-specific customization of a CCompiler instance.

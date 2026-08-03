@@ -1,3 +1,4 @@
+from typing import Any
 
 def bmm_adapter(
     shapes: tuple[Any], concrete: tuple[Any]

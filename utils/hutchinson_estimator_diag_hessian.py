@@ -1,3 +1,4 @@
+from typing import Optional
 
 def hutchinson_estimator_diag_hessian(random_seed: Optional[jax.Array] = None):
   """Returns a GradientTransformationExtraArgs computing the Hessian diagonal.

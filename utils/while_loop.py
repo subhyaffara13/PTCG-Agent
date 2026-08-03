@@ -1,3 +1,5 @@
+import random
+from typing import Any, Callable
 
 def while_loop(cond_fn, body_fn, carried_inputs):
     r"""

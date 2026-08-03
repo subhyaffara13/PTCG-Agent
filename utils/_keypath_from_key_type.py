@@ -1,3 +1,4 @@
+from typing import Any
 
 def _keypath_from_key_type(key_name: str, key_type: KeyType) -> Any:
   """Converts from Key in InternalTreeMetadata to JAX keypath class."""

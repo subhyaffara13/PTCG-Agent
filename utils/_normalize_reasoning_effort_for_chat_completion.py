@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _normalize_reasoning_effort_for_chat_completion(
     value: Union[str, dict, None],

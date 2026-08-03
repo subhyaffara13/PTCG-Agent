@@ -1,3 +1,4 @@
+import os
 
 def disk_io_counters(perdisk=False):
     """Return disk I/O statistics for every disk installed on the

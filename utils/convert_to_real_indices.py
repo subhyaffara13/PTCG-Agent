@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def convert_to_real_indices(seq, qubit_map):
     """Returns the circuit with real indices.

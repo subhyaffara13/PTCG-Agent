@@ -1,3 +1,4 @@
+from typing import Optional
 
 def validate_oci_environment(
     headers: dict,

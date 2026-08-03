@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def map_with_path(
     f: Callable[..., Any],

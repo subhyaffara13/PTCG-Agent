@@ -1,3 +1,4 @@
+import sys
 
 def test_impulse_response():
     if not numpy:

@@ -1,3 +1,4 @@
+import itertools
 
 def _compile_fn(fn, in_structs):
   try:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _value_metadata_tree_for_json_dumps(obj: Any) -> Any:
   """Callback for `simplejson.dumps` to convert a PyTree to JSON object."""

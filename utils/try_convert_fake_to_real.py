@@ -1,3 +1,4 @@
+from typing import Any
 
 def try_convert_fake_to_real(
     ten_list: list[FakeTensor | Any],

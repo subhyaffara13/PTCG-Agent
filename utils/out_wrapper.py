@@ -1,3 +1,4 @@
+from typing import Callable
 
 def out_wrapper(
     *out_names: str,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _validate_tag_list_date_range(
     start_date: Optional[str], end_date: Optional[str]

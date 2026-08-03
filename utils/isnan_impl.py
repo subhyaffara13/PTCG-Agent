@@ -1,3 +1,4 @@
+import re
 
 def isnan_impl(self: ComplexTensor) -> torch.Tensor:
     re, im = split_complex_tensor(self)

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _cumulative_jet_rule(primals_in, series_in, *, axis: int, reverse: bool,
                          combine_fn: Callable):

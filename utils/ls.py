@@ -1,3 +1,4 @@
+import time
 
 def ls(
     cache_dir: Annotated[

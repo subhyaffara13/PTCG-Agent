@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_nnx_var(col: str, x: meta.AxisMetadata | Any) -> variablelib.Variable:
   """Convert a Linen variable to an NNX variable."""

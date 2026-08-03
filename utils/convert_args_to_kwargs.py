@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Optional, Tuple
 
 def convert_args_to_kwargs(
     original_function: Callable,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def custom_function_call_vmap_generate_rule(
     interpreter: VmapInterpreter,

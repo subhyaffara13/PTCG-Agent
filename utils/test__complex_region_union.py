@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_ComplexRegion_union():
     # Polar form

@@ -1,3 +1,4 @@
+import sys
 
 def test_read_csv_and_table_sys_setprofile(all_parsers, read_func):
     # GH#41069

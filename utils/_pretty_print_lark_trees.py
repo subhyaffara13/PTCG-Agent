@@ -1,3 +1,4 @@
+import re
 
 def _pretty_print_lark_trees(tree, indent=0, show_expr=True):
     if isinstance(tree, _lark.Token):

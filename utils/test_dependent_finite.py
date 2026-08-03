@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_dependent_finite():
     X, Y = Die('X'), Die('Y')

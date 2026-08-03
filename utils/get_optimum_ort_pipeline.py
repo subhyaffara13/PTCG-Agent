@@ -1,3 +1,4 @@
+import os
 
 def get_optimum_ort_pipeline(
     model_name: str,

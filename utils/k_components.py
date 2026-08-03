@@ -1,3 +1,4 @@
+import itertools
 
 def k_components(G, min_density=0.95):
     r"""Returns the approximate k-component structure of a graph G.

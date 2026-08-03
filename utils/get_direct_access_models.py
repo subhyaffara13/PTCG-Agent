@@ -1,3 +1,4 @@
+from typing import List
 
 def get_direct_access_models(
     user_db_object: LiteLLM_UserTable,

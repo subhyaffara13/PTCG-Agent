@@ -1,3 +1,5 @@
+import subprocess
+from typing import List, Tuple
 
 def check_prisma_schema_diff_helper(db_url: str) -> Tuple[bool, List[str]]:
     """Checks for differences between current database and Prisma schema.

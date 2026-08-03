@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_metrics(existing_metrics: SpendMetrics, record: Any) -> SpendMetrics:
     """Update metrics with new record data.

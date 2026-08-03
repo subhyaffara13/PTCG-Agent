@@ -1,3 +1,4 @@
+import sys
 
 def test_use_url(tmp_path):
     path = tmp_path / 'file'

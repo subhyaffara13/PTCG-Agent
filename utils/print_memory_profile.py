@@ -1,3 +1,4 @@
+import sys
 
 def print_memory_profile(run_gc: bool = True) -> None:
     if not sys.platform.startswith("win"):

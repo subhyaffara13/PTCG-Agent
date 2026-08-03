@@ -1,3 +1,4 @@
+import sys
 
 def _present(req):
     return any(_dist_matches_req(dist, req) for dist in metadata.distributions())

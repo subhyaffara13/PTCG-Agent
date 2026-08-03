@@ -1,3 +1,4 @@
+import os
 
 def load_deck_on_kaggle(configuration=None):
     import csv

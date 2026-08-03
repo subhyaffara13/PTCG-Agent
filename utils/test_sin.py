@@ -1,3 +1,4 @@
+import re
 
 def test_sin():
     f = lambdify(x, sin(x)**2)

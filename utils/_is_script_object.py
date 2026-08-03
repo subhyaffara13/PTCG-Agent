@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_script_object(obj: Any) -> bool:
     return isinstance(

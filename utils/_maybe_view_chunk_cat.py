@@ -1,3 +1,5 @@
+import math
+
 
 def _maybe_view_chunk_cat(
     res: "torch.Tensor", group_size: int, gather_dim: int

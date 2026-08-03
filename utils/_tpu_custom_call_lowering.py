@@ -1,3 +1,4 @@
+from typing import Any
 
 def _tpu_custom_call_lowering(
     ctx: mlir.LoweringRuleContext,

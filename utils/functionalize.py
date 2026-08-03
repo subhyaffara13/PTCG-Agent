@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def functionalize(
     func: Callable[..., Any], *, remove: str = "mutations"

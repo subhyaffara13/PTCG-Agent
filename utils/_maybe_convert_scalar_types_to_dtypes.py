@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_convert_scalar_types_to_dtypes(
     scalar_types: list[Any],

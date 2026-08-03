@@ -1,3 +1,4 @@
+from typing import Any
 
 def _has_same_id_matched_objs(frame: DynamoFrameType, cache_entry: Any) -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def inductor_accuracy_fails(
     fx_g: torch.fx.GraphModule,

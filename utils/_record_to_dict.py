@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _record_to_dict(record: Any) -> Dict[str, Any]:
     if isinstance(record, dict):

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def optionally_handle_anthropic_oauth(
     headers: dict, api_key: Optional[str]

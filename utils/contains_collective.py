@@ -1,3 +1,4 @@
+from typing import Callable
 
 def contains_collective(
     snode: BaseSchedulerNode,

@@ -1,3 +1,4 @@
+import copy
 
 def _get_updated_module_call_graph(
     old_gm: torch.fx.GraphModule,

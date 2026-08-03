@@ -1,3 +1,4 @@
+import re
 
 def match_ultimate_tic_tac_toe(raw: str, legal_action_strings: Sequence[str]) -> str | None:
     """Game-specific matcher for Ultimate Tic-Tac-Toe actions."""

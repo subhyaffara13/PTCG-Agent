@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_weakly_typed_scalar(x: Any) -> bool:
   try:

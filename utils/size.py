@@ -1,3 +1,5 @@
+import math
+
 
 def size(a: ArrayLike, axis=None):
     if axis is None:

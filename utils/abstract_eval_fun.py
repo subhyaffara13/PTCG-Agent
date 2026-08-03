@@ -1,3 +1,4 @@
+from typing import Callable
 
 def abstract_eval_fun(fun: Callable, *avals,
                       debug_info: core.DebugInfo, **params):

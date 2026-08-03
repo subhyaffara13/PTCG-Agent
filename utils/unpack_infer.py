@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def unpack_infer(stmt, context: InferenceContext | None = None):
     """recursively generate nodes inferred by the given statement.

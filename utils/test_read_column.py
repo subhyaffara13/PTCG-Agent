@@ -1,3 +1,4 @@
+import re
 
 def test_read_column(temp_hdfstore):
     df = DataFrame(

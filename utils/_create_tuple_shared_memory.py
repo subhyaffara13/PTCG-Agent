@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _create_tuple_shared_memory(space: Tuple, n: int = 1, ctx=mp):
     return tuple(

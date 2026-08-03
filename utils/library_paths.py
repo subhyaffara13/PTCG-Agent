@@ -1,3 +1,4 @@
+import os
 
 def library_paths(device_type: str = "cpu", torch_include_dirs: bool = True, cross_target_platform: str | None = None) -> list[str]:
     """

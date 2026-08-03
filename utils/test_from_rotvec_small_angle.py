@@ -1,3 +1,5 @@
+import math
+
 
 def test_from_rotvec_small_angle(xp):
     rotvec = xp.asarray([

@@ -1,3 +1,4 @@
+import os
 
 def ensure_directory(path: StrOrBytesPath) -> None:
     """Ensure that the parent directory of `path` exists"""

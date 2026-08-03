@@ -1,3 +1,4 @@
+import json
 
 def setup_skills_dir(tmp_path, filename, content):
     skills_dir = tmp_path / "skills"

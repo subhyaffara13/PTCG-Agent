@@ -1,3 +1,4 @@
+import os
 
 def write_legacy_hdf(output_dir, format):
     import tables

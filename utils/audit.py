@@ -1,3 +1,4 @@
+import sys
 
 def audit() -> None:  # pragma: no cover
     """

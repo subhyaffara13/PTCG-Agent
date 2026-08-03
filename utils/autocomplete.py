@@ -1,3 +1,5 @@
+import os
+import sys
 
 def autocomplete() -> None:
     """Entry Point for completion of main and subcommand options."""

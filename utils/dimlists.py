@@ -1,3 +1,4 @@
+import sys
 
 def dimlists(
     n: int | None = None, sizes: list[int | None] | None = None

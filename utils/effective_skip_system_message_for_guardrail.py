@@ -1,3 +1,4 @@
+from typing import Any
 
 def effective_skip_system_message_for_guardrail(guardrail_to_apply: Any) -> bool:
     per = getattr(guardrail_to_apply, "skip_system_message_in_guardrail", None)

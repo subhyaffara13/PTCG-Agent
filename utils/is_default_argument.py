@@ -1,3 +1,4 @@
+import itertools
 
 def is_default_argument(node: nodes.NodeNG, scope: nodes.NodeNG | None = None) -> bool:
     """Return true if the given Name node is used in function or lambda

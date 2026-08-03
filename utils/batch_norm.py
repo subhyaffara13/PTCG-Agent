@@ -1,3 +1,5 @@
+import random
+from typing import Optional
 
 def batch_norm(
     input: list[int],

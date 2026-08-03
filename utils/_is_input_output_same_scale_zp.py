@@ -1,3 +1,5 @@
+import math
+
 
 def _is_input_output_same_scale_zp(check_node):
     def fn(match):

@@ -1,3 +1,4 @@
+import re
 
 def check_files(files, file_check, exclusions=set(), pattern=None):
     """

@@ -1,3 +1,4 @@
+import os
 
 def _file_arg_to_module(filename: str) -> str:
     filename, _ = os.path.splitext(filename)

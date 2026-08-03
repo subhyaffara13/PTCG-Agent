@@ -1,3 +1,5 @@
+import math
+
 
 def _convert_to_2d(coo, axis):
     axis_coords = tuple(coo.coords[i] for i in axis)

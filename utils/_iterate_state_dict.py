@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def _iterate_state_dict(
     iter_object: Any,

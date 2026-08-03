@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _sanitize_error_information_for_spend_logs(
     error_information: Optional[StandardLoggingPayloadErrorInformation],

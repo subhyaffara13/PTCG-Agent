@@ -1,3 +1,4 @@
+from typing import Any
 
 def __getstate__() -> dict[str, Any]:
     state = {}

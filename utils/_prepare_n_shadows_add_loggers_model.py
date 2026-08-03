@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_n_shadows_add_loggers_model(
     model: torch.nn.Module,

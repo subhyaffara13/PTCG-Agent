@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _legacy_zip_load(
     filename: str,

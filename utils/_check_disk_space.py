@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _check_disk_space(expected_size: int, target_dir: str | Path) -> None:
     """Check disk usage and log a warning if there is not enough disk space to download the file.

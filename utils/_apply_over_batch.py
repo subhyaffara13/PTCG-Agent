@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def _apply_over_batch(*argdefs):
     """

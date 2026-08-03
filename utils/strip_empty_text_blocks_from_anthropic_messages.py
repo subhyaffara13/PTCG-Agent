@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def strip_empty_text_blocks_from_anthropic_messages(
     messages: List[Any],

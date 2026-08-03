@@ -1,3 +1,4 @@
+import logging
 
 def data_type_logger(msg: str) -> None:
     if schedule_log.isEnabledFor(logging.DEBUG):

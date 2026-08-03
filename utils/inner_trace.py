@@ -1,3 +1,4 @@
+from typing import Any
 
 def inner_trace(
     mode: ProxyTorchDispatchMode,

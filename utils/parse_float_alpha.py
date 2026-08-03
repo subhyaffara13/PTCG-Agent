@@ -1,3 +1,6 @@
+from typing import Optional, Union
+import math
+
 
 def parse_float_alpha(value: Union[None, str, float, int]) -> Optional[float]:
     """Parse an alpha value checking it's a valid float in the range 0 to 1.

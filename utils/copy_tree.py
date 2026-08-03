@@ -1,3 +1,6 @@
+import functools
+import itertools
+import os
 
 def copy_tree(
     src,

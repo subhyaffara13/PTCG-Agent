@@ -1,3 +1,4 @@
+import time
 
 def _determine_next_job(status: LargeUploadStatus) -> tuple[WorkerJob, list[JOB_ITEM_T]] | None:
     with status.lock:

@@ -1,3 +1,4 @@
+import functools
 
 def warn_only_n_pos_args_in_future(fun, n):
   """Warns if more than ``n`` positional arguments are passed to ``fun``.

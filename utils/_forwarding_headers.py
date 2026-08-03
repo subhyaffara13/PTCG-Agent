@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _forwarding_headers(
     user_api_key_dict: UserAPIKeyAuth,

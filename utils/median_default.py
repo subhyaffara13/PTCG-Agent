@@ -1,3 +1,4 @@
+import functools
 
 def median_default(self):
     if not config.triton.decompose_sort_ops:

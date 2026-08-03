@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_qualified_type_name(ty: type[Any]) -> RenderableTreePart:
   """Formats the name of a type so that it is qualified in roundtrip mode.

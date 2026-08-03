@@ -1,3 +1,5 @@
+import math
+
 
 def exp(a):
     return prims.exp(a)

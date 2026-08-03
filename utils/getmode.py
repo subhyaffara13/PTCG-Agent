@@ -1,3 +1,4 @@
+import sys
 
 def getmode(mode: str) -> ModeDescriptor:
     """Gets a mode descriptor for the given mode."""

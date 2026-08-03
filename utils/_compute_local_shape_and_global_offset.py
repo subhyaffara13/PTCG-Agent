@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _compute_local_shape_and_global_offset(
     global_shape: ShapeType,

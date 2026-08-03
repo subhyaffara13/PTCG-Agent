@@ -1,3 +1,4 @@
+from typing import Any
 
 def compute_overlapping_inputs(
     aot_config: AOTConfig, fwd_inputs: list[Any], aliased_input_indices: list[int]

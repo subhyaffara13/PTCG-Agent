@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def invoke_subgraph_inductor_compile(
     gm, example_inputs, inductor_config_patches=None, **kwargs

@@ -1,3 +1,5 @@
+import pathlib
+import sys
 
 def check_config_h():
     """Check if the current Python installation appears amenable to building

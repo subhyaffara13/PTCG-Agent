@@ -1,3 +1,4 @@
+import sys
 
 def register_pickle_by_value(module):
     """Register a module to make its functions and classes picklable by value.

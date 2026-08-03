@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def _get_models_from_access_groups(
     model_access_groups: Dict[str, List[str]],

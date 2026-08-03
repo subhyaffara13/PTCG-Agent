@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _encrypt_global_env_var_values(env_vars: Iterable[Dict[str, Any]]) -> None:
     """Encrypt ``scope="global"`` env var values in place before persisting.

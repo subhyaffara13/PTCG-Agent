@@ -1,3 +1,4 @@
+import logging
 
 def maybe_dump_jaxpr_to_file(
     fun_name: str, jaxpr: core.Jaxpr

@@ -1,3 +1,4 @@
+import re
 
 def get_loop():
     """Create or return the default fsspec IO loop

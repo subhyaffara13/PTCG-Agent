@@ -1,3 +1,4 @@
+import os
 
 def _iglob(pathname: AnyStr, recursive: bool) -> Iterator[AnyStr]:
     dirname, basename = os.path.split(pathname)

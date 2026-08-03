@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_unwrap_functional_tensor(maybe_tensor: Any, *, reapply_views: bool) -> Any:
     if not isinstance(maybe_tensor, torch.Tensor):

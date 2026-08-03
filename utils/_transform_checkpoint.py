@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _transform_checkpoint(
     item: PyTree,

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fixture(
     fixture_function: Callable[..., object],

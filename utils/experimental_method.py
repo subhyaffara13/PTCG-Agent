@@ -1,3 +1,4 @@
+from typing import Callable
 
 def experimental_method() -> Callable[[C], C]:
     """

@@ -1,3 +1,4 @@
+import re
 
 def _sanitize_llvm_ir_for_rocm(llvm_ir_path: str) -> str:
     """

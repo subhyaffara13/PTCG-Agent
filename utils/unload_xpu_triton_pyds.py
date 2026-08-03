@@ -1,3 +1,4 @@
+import sys
 
 def unload_xpu_triton_pyds() -> None:
     # unload __triton_launcher.pyd

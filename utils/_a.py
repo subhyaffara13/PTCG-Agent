@@ -1,3 +1,5 @@
+import math
+
 
 def _a(n, k, prec):
     """ Compute the inner sum in HRR formula [1]_

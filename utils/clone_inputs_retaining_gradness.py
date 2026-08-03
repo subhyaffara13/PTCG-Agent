@@ -1,3 +1,4 @@
+from typing import Any
 
 def clone_inputs_retaining_gradness(example_inputs: Sequence[Any]) -> list[Any]:
     """

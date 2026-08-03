@@ -1,3 +1,5 @@
+import math
+
 
 def _get_builtin_table():
     global _builtin_table

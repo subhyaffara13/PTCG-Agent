@@ -1,3 +1,4 @@
+from typing import Optional
 
 def parse_hsl(h: str, h_units: str, sat: str, light: str, alpha: Optional[float] = None) -> RGBA:
     """Parse raw hue, saturation, lightness, and alpha values and convert to RGBA.

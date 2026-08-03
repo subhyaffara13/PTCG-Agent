@@ -1,3 +1,5 @@
+import os
+import sys
 
 def open_url(url: str, wait: bool = False, locate: bool = False) -> int:
     import subprocess

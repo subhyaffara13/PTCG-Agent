@@ -1,3 +1,4 @@
+from typing import Callable
 
 def split_const_subgraphs(
     module: torch.nn.Module | torch.fx.GraphModule,

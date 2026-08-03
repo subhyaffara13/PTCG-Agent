@@ -1,3 +1,4 @@
+from typing import Any
 
 def reduce_graph_module(body: dict[Any, Any], import_block: str) -> torch.nn.Module:
     # BC: attribute name was changed from `code` to `_code` to facilitate

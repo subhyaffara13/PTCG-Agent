@@ -1,3 +1,4 @@
+import copy
 
 def reverse(G, copy=True):
     """Returns the reverse directed graph of G.

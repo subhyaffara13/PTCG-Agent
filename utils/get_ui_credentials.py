@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_ui_credentials(master_key: Optional[str]) -> tuple[str, str]:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_request_route_from_data(request_data: dict) -> Optional[str]:
     """Get request route from request_data (metadata or top-level)."""

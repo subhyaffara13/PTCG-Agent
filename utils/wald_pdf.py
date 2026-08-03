@@ -1,3 +1,5 @@
+import math
+
 
 def wald_pdf(x):
     if x > 0:

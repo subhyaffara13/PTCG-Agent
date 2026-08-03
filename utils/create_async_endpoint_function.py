@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Optional
 
 def create_async_endpoint_function(
     sync_func: Callable,

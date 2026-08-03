@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _safe_get_request_query_params(request: Optional[Request]) -> Dict:
     if request is None:

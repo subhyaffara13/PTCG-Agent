@@ -1,3 +1,4 @@
+import sys
 
 def is_local_in_caller_frame(obj):
     """

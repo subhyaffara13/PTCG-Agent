@@ -1,3 +1,5 @@
+import subprocess
+from typing import List, Optional
 
 def run_external_diff(
     diff_tool: Text,

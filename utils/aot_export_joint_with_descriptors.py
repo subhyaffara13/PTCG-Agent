@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def aot_export_joint_with_descriptors(
     stack: contextlib.ExitStack,

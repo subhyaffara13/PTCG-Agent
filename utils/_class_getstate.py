@@ -1,3 +1,4 @@
+import sys
 
 def _class_getstate(obj):
     clsdict = _extract_class_dict(obj)

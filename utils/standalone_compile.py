@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def standalone_compile(
     gm: GraphModule,

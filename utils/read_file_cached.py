@@ -1,3 +1,4 @@
+import os
 
 def read_file_cached(blobpath: str, expected_hash: str | None = None) -> bytes:
     user_specified_cache = True

@@ -1,3 +1,5 @@
+import math
+
 
 def _fragmented_array_from_ir(
     fragmented_array_as_ir: ir.Value,

@@ -1,3 +1,6 @@
+import itertools
+import re
+from typing import Any
 
 def fx_to_pattern(
     gm: torch.fx.GraphModule | torch.fx.Graph,

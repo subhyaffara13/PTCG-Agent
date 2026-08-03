@@ -1,3 +1,4 @@
+import sys
 
 def _is_pandas_dataframe(x):
     """Check if *x* is a Pandas DataFrame."""

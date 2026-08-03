@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_targeted_model_ids(
     model_list: list, model: Optional[str], model_id: Optional[str]

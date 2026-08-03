@@ -1,3 +1,4 @@
+import os
 
 def get_default_headers() -> dict:
     """

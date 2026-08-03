@@ -1,3 +1,4 @@
+import os
 
 def analyze_egg(egg_dir, stubs):
     # check for existing flag in EGG-INFO

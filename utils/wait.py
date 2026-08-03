@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def wait():
     """wait() -> Event

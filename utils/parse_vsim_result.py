@@ -1,3 +1,4 @@
+import json
 
 def parse_vsim_result(response, **options):
     """

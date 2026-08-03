@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _convert_schema_types(schema, depth=0):
     """

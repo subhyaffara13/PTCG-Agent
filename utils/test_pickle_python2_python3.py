@@ -1,3 +1,4 @@
+import os
 
 def test_pickle_python2_python3():
     # Test that loading object arrays saved on Python 2 works both on

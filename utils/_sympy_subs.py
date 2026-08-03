@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sympy_subs(expr: sympy.Basic, replacements: dict[sympy.Expr, Any]) -> sympy.Basic:
     """

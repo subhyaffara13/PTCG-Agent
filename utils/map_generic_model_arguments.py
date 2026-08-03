@@ -1,3 +1,4 @@
+from typing import Any
 
 def map_generic_model_arguments(cls: type[BaseModel], args: tuple[Any, ...]) -> dict[TypeVar, Any]:
     """Return a mapping between the parameters of a generic model and the provided arguments during parameterization.

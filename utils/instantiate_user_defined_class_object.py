@@ -1,3 +1,4 @@
+from typing import Any
 
 def instantiate_user_defined_class_object(
     cls: type[T], /, *args: Any, **kwargs: Any

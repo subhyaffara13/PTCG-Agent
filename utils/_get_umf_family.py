@@ -1,3 +1,4 @@
+import copy
 
 def _get_umf_family(A):
     """Get umfpack family string given the sparse matrix dtype."""

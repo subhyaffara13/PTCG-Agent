@@ -1,3 +1,4 @@
+import itertools
 
 def chunk_fragment(fragment: F, target_shape: Shape) -> list[F]:
   """Chunks the given fragment into the given target shape.

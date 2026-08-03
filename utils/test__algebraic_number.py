@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_AlgebraicNumber():
     a = AlgebraicNumber(sqrt(2))

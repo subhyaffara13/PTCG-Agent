@@ -1,3 +1,4 @@
+import itertools
 
 def _classify_plugins(
     plugins: list[LoadedPlugin],

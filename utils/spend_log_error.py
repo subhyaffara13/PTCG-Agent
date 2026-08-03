@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def spend_log_error(
     message: str,

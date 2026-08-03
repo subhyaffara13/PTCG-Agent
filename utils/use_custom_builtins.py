@@ -1,3 +1,4 @@
+import os
 
 def use_custom_builtins(builtins_path: str, testcase: DataDrivenTestCase) -> Iterator[None]:
     for path, _ in testcase.files:

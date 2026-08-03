@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _extract_weights_impl(
     model_name_a: str,

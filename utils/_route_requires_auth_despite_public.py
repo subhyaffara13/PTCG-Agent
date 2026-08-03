@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _route_requires_auth_despite_public(
     route: str, general_settings: Optional[dict]

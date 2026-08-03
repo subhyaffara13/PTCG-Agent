@@ -1,3 +1,4 @@
+import sys
 
 def _load_backend_lib(backend, name, flags):
     import os

@@ -1,3 +1,4 @@
+from typing import Any
 
 def optimized_generate_dump(args: tuple[Any, str],
                             xla_compiler_flags: dict[str, Any] | None = None,

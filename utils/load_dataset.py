@@ -1,3 +1,4 @@
+import os
 
 def load_dataset(name, cache=True, data_home=None, **kws):
     """Load an example dataset from the online repository (requires internet).

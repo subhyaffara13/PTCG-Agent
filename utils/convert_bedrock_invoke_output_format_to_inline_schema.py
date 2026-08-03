@@ -1,3 +1,5 @@
+import json
+from typing import Dict
 
 def convert_bedrock_invoke_output_format_to_inline_schema(
     output_format: Dict,

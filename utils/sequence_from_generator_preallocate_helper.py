@@ -1,3 +1,4 @@
+from typing import Callable
 
 def sequence_from_generator_preallocate_helper(
     builder: IRBuilder,

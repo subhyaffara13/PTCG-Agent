@@ -1,3 +1,4 @@
+from typing import Any
 
 def _install_completion_placeholder_function(
     install_completion: bool = Option(

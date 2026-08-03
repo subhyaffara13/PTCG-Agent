@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_ComplexRegion_measure():
     a, b = Interval(2, 5), Interval(4, 8)

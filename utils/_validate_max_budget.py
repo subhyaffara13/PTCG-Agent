@@ -1,3 +1,6 @@
+from typing import Optional
+import math
+
 
 def _validate_max_budget(max_budget: Optional[float]) -> None:
     """

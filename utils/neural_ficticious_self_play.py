@@ -1,3 +1,4 @@
+import time
 
 def neural_ficticious_self_play(seq_game,
                                 num_epoch,

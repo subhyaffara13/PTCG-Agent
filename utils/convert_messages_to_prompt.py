@@ -1,3 +1,4 @@
+from typing import List
 
 def convert_messages_to_prompt(messages: List[AllMessageValues]) -> str:
     """

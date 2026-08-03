@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_grid_sampler_3d(op_info, device, dtype, requires_grad, **kwargs):
     _make_input = partial(make_tensor, device=device, dtype=dtype, requires_grad=requires_grad,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def dpsgd(
     learning_rate: base.ScalarOrSchedule,

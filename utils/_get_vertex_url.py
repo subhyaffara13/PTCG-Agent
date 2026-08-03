@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _get_vertex_url(
     mode: all_gemini_url_modes,

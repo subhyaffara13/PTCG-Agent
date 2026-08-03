@@ -1,3 +1,4 @@
+import logging
 
 def _setup_handlers(create_handler_fn, log) -> None:
     debug_handler = _track_handler(create_handler_fn())

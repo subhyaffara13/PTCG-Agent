@@ -1,3 +1,4 @@
+import re
 
 def module_imports_on_top_of_file(
         logical_line, indent_level, checker_state, noqa):

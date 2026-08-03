@@ -1,3 +1,5 @@
+import math
+
 
 def build_mpt_alibi_tensor(num_heads, sequence_length, alibi_bias_max=8, device=None):
     r"""

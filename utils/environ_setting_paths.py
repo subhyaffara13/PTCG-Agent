@@ -1,3 +1,4 @@
+import os
 
 def environ_setting_paths(output_path):
     # Set dumping values to files as default

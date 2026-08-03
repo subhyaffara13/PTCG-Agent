@@ -1,3 +1,4 @@
+import itertools
 
 def set_any_tvars(
     node: TypeAlias,

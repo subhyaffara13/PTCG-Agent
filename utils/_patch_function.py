@@ -1,3 +1,4 @@
+from typing import Any
 
 def _patch_function(fn: FunctionType, nargs: int) -> FunctionType:
     co = fn.__code__

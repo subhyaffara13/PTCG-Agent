@@ -1,3 +1,4 @@
+from typing import Any
 
 def _translate_fx_graph(
     fx_graph: torch.fx.Graph,

@@ -1,3 +1,4 @@
+import sys
 
 def _find_spec(module_name: str, module_path: StrPath | None) -> ModuleSpec:
     spec = importlib.util.spec_from_file_location(module_name, module_path)

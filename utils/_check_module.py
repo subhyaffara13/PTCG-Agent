@@ -1,3 +1,4 @@
+import copy
 
 def _check_module(mod: ir.Module, *,
                   disabled_checks: Sequence[DisabledSafetyCheck],

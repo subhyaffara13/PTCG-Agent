@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def _output_io(name: Path) -> Iterator[IO[str]]:  # pragma: no cover
     """

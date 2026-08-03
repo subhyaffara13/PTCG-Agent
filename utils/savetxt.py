@@ -1,3 +1,4 @@
+import os
 
 def savetxt(fname, X, fmt='%.18e', delimiter=' ', newline='\n', header='',
             footer='', comments='# ', encoding=None):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def nn_module_new(cls: Any) -> Any:
     obj = object_new(cls)

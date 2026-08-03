@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_mangle_lambdas(agg_spec: Any) -> Any:
     """

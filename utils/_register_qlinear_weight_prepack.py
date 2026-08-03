@@ -1,3 +1,4 @@
+import itertools
 
 def _register_qlinear_weight_prepack():
     # 6 Linear related patterns will be matched based on the dtype, input dimension size and input contiguous.

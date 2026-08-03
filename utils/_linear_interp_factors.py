@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def _linear_interp_factors(
     old_min: _MinMaxValue,

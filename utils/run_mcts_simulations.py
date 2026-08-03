@@ -1,3 +1,5 @@
+import time
+from typing import List
 
 def run_mcts_simulations(engine, root: MCTSNode, game_state: dict, canonical_actions: List[str], mast_policy, time_remaining: float | None):
     # Cap max time for Python MCTS fallback to prevent stalls on worker nodes

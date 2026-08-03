@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_deprecate(meth: Callable[_P, _R]) -> Callable[_P, _R]:
     new_name = meth.__name__

@@ -1,3 +1,5 @@
+import logging
+import re
 
 def fuse_by_pattern(
     *,

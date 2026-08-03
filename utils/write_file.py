@@ -1,3 +1,4 @@
+import os
 
 def write_file(path: str, contents: str) -> None:
     """Write data into a file.

@@ -1,3 +1,5 @@
+import math
+
 
 def argus_pdf(x, chi):
     # approach follows Baumgarten/Hoermann: Generating ARGUS random variates

@@ -1,3 +1,4 @@
+import sys
 
 def ready_to_read(conns: Sequence[IPCBase], timeout: float | None = None) -> list[int]:
     """Wait until some connections are readable.

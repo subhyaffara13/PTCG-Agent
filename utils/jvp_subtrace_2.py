@@ -1,3 +1,4 @@
+from typing import Callable
 
 def jvp_subtrace_2(f: Callable, tag: core.TraceTag, primals, tangents):
   with core.take_current_trace() as parent_trace:

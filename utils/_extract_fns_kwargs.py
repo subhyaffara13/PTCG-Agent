@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _extract_fns_kwargs(
     fns: tuple[Callable[..., Any], ...],

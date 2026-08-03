@@ -1,3 +1,4 @@
+import re
 
 def _translate(pat, STAR, QUESTION_MARK):
     # Copied from: https://github.com/python/cpython/pull/106703.

@@ -1,3 +1,4 @@
+import os
 
 def simple_cythonize(src, destdir=None, cwd=None, **cy_kwargs):
     """ Generates a C file from a Cython source file.

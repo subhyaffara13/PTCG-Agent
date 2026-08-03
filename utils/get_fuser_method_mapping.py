@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_fuser_method_mapping(
     backend_config: BackendConfig,

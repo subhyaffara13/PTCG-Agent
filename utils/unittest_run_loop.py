@@ -1,3 +1,4 @@
+from typing import Any
 
 def unittest_run_loop(func: Any, *args: Any, **kwargs: Any) -> Any:
     """

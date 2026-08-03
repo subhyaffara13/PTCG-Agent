@@ -1,3 +1,4 @@
+from typing import Any
 
 def _strip_invalida_metadata(
     nbdict: Any, version: int, version_minor: int, relax_add_props: bool

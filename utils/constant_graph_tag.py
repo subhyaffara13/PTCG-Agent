@@ -1,3 +1,4 @@
+from typing import Callable
 
 def constant_graph_tag(
     gm: torch.fx.GraphModule,

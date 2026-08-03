@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _batch_differing_spaces_dict(spaces: list[Dict]):
     assert all(spaces[0].keys() == space.keys() for space in spaces)

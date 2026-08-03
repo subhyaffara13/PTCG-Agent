@@ -1,3 +1,4 @@
+from typing import Any
 
 def _apply_encoderinfo(im: Image.Image, encoderinfo: dict[str, Any]) -> None:
     im.encoderconfig = (

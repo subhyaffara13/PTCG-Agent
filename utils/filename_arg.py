@@ -1,3 +1,4 @@
+import os
 
 def filename_arg(path: str, optname: str) -> str:
     """Argparse type validator for filename arguments.

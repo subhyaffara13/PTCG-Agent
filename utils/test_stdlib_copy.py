@@ -1,3 +1,4 @@
+import copy
 
 def test_stdlib_copy(dtype, string_list):
     arr = np.array(string_list, dtype=dtype)

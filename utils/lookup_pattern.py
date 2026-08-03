@@ -1,3 +1,4 @@
+from typing import Callable
 
 def lookup_pattern(name: str) -> Callable[[AnyStr], Pattern]:
 	"""

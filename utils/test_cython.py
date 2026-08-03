@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_cython(tmp_path):
     srcdir = os.path.dirname(os.path.dirname(__file__))

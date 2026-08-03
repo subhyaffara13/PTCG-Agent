@@ -1,3 +1,4 @@
+import re
 
 def _resolve_deletion_targets(hf_cache_info: HFCacheInfo, targets: list[str]) -> _DeletionResolution:
     """Resolve the deletion targets into a deletion resolution."""

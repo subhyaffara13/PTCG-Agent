@@ -1,3 +1,4 @@
+import re
 
 def should_convert_module(full_name, patterns: list[str] | None = None):
     if patterns is None:

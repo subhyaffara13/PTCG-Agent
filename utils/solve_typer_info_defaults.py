@@ -1,3 +1,4 @@
+from typing import Any
 
 def solve_typer_info_defaults(typer_info: TyperInfo) -> TyperInfo:
     values: dict[str, Any] = {}

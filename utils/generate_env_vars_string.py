@@ -1,3 +1,4 @@
+import os
 
 def generate_env_vars_string(*, stable_output: bool = False) -> str:
     """

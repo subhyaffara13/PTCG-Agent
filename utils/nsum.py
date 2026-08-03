@@ -1,3 +1,5 @@
+import math
+
 
 def nsum(f, a, b, *, step=1, args=(), kwargs=None,
          log=False, maxterms=int(2**20), tolerances=None):

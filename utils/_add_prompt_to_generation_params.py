@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _add_prompt_to_generation_params(
     generation_params: dict,

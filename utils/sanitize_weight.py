@@ -1,3 +1,5 @@
+import math
+
 
 def sanitizeWeight(userTriple, designTriple, pins, measurements):
     """Sanitize the weight axis limits."""

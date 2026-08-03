@@ -1,3 +1,4 @@
+import itertools
 
 def _cond_to_lojax(pred, *hi_args, branches, **kwds):
   jaxpr = branches[0]

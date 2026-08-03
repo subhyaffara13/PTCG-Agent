@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _caller_dir_pycache():
     if _TMPDIR:

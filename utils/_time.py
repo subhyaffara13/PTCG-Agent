@@ -1,3 +1,4 @@
+import time
 
 def _time(trace_name, name, time=True):
     if (not _JIT_TIME and not time) or not torch.cuda.is_available():

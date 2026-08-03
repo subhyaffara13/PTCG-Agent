@@ -1,3 +1,4 @@
+from typing import Any
 
 def produce_guards_and_solve_constraints(
     fake_mode: FakeTensorMode,

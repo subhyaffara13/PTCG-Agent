@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_arg(arg: Any):
   if not core.valid_jaxtype(arg):

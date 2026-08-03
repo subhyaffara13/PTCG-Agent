@@ -1,3 +1,4 @@
+from typing import Any
 
 def should_cooldown_based_on_allowed_fails_policy(
     litellm_router_instance: LitellmRouter,

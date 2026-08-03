@@ -1,3 +1,4 @@
+import time
 
 def test_dt_properties(prop, expected):
     ser = pd.Series(

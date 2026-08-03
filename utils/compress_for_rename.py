@@ -1,3 +1,4 @@
+import os
 
 def compress_for_rename(paths: Iterable[str]) -> set[str]:
     """Returns a set containing the paths that need to be renamed.

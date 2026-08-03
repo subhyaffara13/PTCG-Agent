@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def check_and_normalize_arrays(
     fn: None = ...,

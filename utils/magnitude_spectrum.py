@@ -1,3 +1,4 @@
+from typing import Callable
 
 def magnitude_spectrum(
     x: ArrayLike,

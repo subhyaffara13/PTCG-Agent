@@ -1,3 +1,4 @@
+from typing import Any
 
 def source_map(doc: Doc, source: Any) -> Doc:
   """Source mapping.

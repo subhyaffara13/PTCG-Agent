@@ -1,3 +1,5 @@
+import math
+
 
 def _write_sub_tensor_to_file_optimized(
     full_tensor_mv: memoryview,

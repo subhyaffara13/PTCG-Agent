@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_namespace_exists(ns: str | None):
     """Check if a namespace exists. If it doesn't, print a helpful error message."""

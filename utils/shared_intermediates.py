@@ -1,3 +1,4 @@
+from typing import Optional
 
 def shared_intermediates(
     cache: Optional[CacheType] = None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def generic_recursion_self_type(
     origin: type[BaseModel], args: tuple[Any, ...]

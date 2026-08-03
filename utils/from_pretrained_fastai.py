@@ -1,3 +1,4 @@
+import os
 
 def from_pretrained_fastai(
     repo_id: str,

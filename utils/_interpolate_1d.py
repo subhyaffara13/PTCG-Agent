@@ -1,3 +1,4 @@
+from typing import Any
 
 def _interpolate_1d(
     indices: np.ndarray,

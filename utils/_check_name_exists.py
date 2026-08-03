@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_name_exists(ns: str | None, name: str):
     """Check if an env exists in a namespace. If it doesn't, print a helpful error message."""

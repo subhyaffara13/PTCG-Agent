@@ -1,3 +1,5 @@
+import math
+
 
 def constant_repr(value: int | float) -> str:
     if value == float("inf"):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_assert_bytecode_sequence(with_msg: bool) -> list[str]:
     if with_msg:

@@ -1,3 +1,5 @@
+import re
+from typing import Dict, Optional
 
 def parseLimits(limits: Iterable[str]) -> Dict[str, Optional[AxisTriple]]:
     result = {}

@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_partial_sharing(backend: BackendType) -> None:
     eq = "ab,bc,de->"

@@ -1,3 +1,4 @@
+import time
 
 def load_test_model(
     model: str,

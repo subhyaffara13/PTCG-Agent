@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_op_to_type_to_weight_extraction_fn() -> dict[str, dict[Callable, Callable]]:
     op_to_type_to_weight_extraction_fn: dict[str, dict[Callable, Callable]] = {

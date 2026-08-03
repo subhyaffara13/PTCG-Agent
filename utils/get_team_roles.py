@@ -1,3 +1,4 @@
+from typing import List
 
 def get_team_roles(base_roles: List[str]) -> (List[str], List[str]):
     """Partitions roles into villager and werewolf teams."""

@@ -1,3 +1,4 @@
+from typing import Union
 
 def resampling_validator(value: Union[int, "PILImageResampling"] | None = None):
     if value is None:

@@ -1,3 +1,4 @@
+import os
 
 def save_op_profiles(op_profiles: dict[str, set[OpProfile]], f: FileLike) -> None:
     """

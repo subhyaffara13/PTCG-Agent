@@ -1,3 +1,4 @@
+import re
 
 def parse_directive_options(content, error_msg):
     """Parse (and validate) the directive option section."""

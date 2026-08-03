@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def compute_summary(results: List[GameResult]) -> Dict[str, Any]:
     total = len(results)

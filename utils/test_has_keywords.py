@@ -1,3 +1,4 @@
+import sys
 
 def test_has_keywords():
     assert has_keywords(lambda: None) is False

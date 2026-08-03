@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_insert_input_observer_for_arg_or_kwarg(
     node: Node | Any,

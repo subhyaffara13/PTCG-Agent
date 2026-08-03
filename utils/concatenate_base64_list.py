@@ -1,3 +1,4 @@
+from typing import List
 
 def concatenate_base64_list(base64_strings: List[str]) -> str:
     """

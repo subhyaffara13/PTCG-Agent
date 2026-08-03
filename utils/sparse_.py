@@ -1,3 +1,5 @@
+import math
+
 
 def sparse_(
     tensor: torch.Tensor, sparsity: float, std: float = 0.01, generator: torch.Generator | None = None

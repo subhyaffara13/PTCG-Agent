@@ -1,3 +1,4 @@
+from typing import Any
 
 def _atomic_rmw(
     op: tt_dialect.RMWOp,

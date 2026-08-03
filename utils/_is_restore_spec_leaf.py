@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_restore_spec_leaf(value: Any) -> bool:
   """Returns whether the value is a valid restore spec leaf."""

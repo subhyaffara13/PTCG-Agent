@@ -1,3 +1,5 @@
+import math
+
 
 def qspline2d(signal, lamb=0.0, precision=-1.0):
     """

@@ -1,3 +1,4 @@
+import re
 
 def _math_mode_with_dollar(s: str) -> str:
     r"""

@@ -1,3 +1,6 @@
+import itertools
+import sys
+from typing import Any, Callable
 
 def fix_vars(
     instructions: list[Instruction],

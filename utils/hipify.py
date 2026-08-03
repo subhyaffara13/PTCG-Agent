@@ -1,3 +1,5 @@
+import os
+import sys
 
 def hipify(
     project_directory: str,

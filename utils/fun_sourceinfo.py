@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fun_sourceinfo(fun: Callable) -> str:
   # See DebugInfo.fun_src_info

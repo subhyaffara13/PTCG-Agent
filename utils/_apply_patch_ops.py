@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Set, Tuple
 
 def _apply_patch_ops(
     existing_user: LiteLLM_UserTable,

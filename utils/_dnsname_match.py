@@ -1,3 +1,4 @@
+import re
 
 def _dnsname_match(
     dn: typing.Any, hostname: str, max_wildcards: int = 1

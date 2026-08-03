@@ -1,3 +1,4 @@
+import json
 
 def validate_schema(schema: FunctionSchema) -> None:
     if not torch._library.utils.is_functional_schema(schema):

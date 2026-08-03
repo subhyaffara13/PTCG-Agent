@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def subprocess_run_helper(func, *args, timeout, extra_env=None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unravel_ma_timestep(timestep: dm_env.TimeStep, agents: list[AgentID]) -> tuple[
     dict[AgentID, Any],

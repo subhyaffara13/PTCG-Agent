@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Tuple
 
 def _parse_scim_eq_filter(scim_filter: str) -> Optional[Tuple[str, str]]:
     """Parse the SCIM equality filters Okta uses before user lifecycle changes."""

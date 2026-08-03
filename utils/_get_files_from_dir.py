@@ -1,3 +1,4 @@
+import os
 
 def _get_files_from_dir(
     files_dir, included_globs=None, excluded_path_strings=None

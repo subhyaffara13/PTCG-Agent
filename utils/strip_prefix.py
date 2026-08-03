@@ -1,3 +1,4 @@
+import sys
 
 def strip_prefix():
     r"""

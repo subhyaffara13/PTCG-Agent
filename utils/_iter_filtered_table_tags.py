@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _iter_filtered_table_tags(
     tags: Iterable[str],

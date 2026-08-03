@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Dict, Optional
 
 def analyze_single_game(json_file: str, cache: Dict, model_id: str, output_dir: Optional[str], max_retries: int = 10) -> Optional[Dict]:
     """

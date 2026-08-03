@@ -1,3 +1,4 @@
+from typing import Any
 
 def compare_weights(
     float_dict: dict[str, Any], quantized_dict: dict[str, Any]

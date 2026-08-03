@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_leaf_node(t: Any) -> bool:
   """The default value of the `is_leaf` predicate."""

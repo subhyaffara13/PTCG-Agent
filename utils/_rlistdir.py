@@ -1,3 +1,4 @@
+import os
 
 def _rlistdir(dirname: StrPath) -> Iterator[str]: ...
 

@@ -1,3 +1,4 @@
+import re
 
 def _assert_caught_expected_warnings(
     *,

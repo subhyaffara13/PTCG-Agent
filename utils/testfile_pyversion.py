@@ -1,3 +1,4 @@
+import re
 
 def testfile_pyversion(path: str) -> tuple[int, int]:
     if m := re.search(r"python3([0-9]+)\.test$", path):

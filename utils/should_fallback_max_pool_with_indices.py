@@ -1,3 +1,4 @@
+import functools
 
 def should_fallback_max_pool_with_indices(kernel_size, *, n_dim):
     kernel_size = pad_listlike(kernel_size, n_dim)

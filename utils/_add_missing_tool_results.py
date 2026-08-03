@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _add_missing_tool_results(
     current_message: AllMessageValues,

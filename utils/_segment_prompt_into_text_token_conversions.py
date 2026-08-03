@@ -1,3 +1,4 @@
+import re
 
 def _segment_prompt_into_text_token_conversions(prompt: str) -> list:
     """

@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _inject_memory_context(observation: Mapping[str, Any]) -> str:
     """Build memory-context string from observation history fields.

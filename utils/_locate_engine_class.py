@@ -1,3 +1,4 @@
+import sys
 
 def _locate_engine_class(ffi, force_generic_engine):
     if _FORCE_GENERIC_ENGINE:

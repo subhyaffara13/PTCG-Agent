@@ -1,3 +1,4 @@
+import functools
 
 def call_for_per_sample_grads(
     module,

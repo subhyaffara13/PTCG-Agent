@@ -1,3 +1,4 @@
+import functools
 
 def argsort_sym(
     shape_env: ShapeEnv,

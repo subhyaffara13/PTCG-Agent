@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _input_snippet_for_tool_log(sl: Any, max_len: int = 200) -> Optional[str]:
     """Short snippet from messages or proxy_server_request for tool usage log row."""

@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def extract_target_model_names_from_unified_id(
     unified_id: str,

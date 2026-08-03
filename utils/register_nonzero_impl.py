@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_nonzero_impl(op: OpType) -> Callable[..., Any]:
     def nonzero_impl(

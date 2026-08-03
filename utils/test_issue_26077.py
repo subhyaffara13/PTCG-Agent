@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_26077():
     _n = Symbol('_n')

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_jit_model(
     model0: Any,

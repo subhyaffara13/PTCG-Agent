@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def register_namedtuple_serialization(
     nodetype: type[T],

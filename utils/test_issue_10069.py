@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_10069():
     eq = abs(1/(x - 1)) - 1 > 0

@@ -1,3 +1,4 @@
+from typing import List, Tuple, Union
 
 def can_blas(
     inputs: List[str],

@@ -1,3 +1,5 @@
+import json
+from typing import List, Optional
 
 def _parse_sse_events(raw: bytes) -> List[tuple]:
     """Return a list of (event_type, parsed_data_dict) from raw SSE bytes."""

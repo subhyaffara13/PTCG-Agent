@@ -1,3 +1,5 @@
+import json
+from typing import List, Optional
 
 def init_redis_cluster(redis_kwargs) -> redis.RedisCluster:
     _redis_cluster_nodes_in_env: Optional[str] = get_secret("REDIS_CLUSTER_NODES")  # type: ignore

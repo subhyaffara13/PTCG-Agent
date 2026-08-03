@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _count_content_list(
     count_function: TokenCounterFunction,

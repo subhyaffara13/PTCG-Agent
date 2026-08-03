@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_flat_models_from_model(model: Type['BaseModel'], known_models: Optional[TypeModelSet] = None) -> TypeModelSet:
     """

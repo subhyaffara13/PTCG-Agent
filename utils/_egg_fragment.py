@@ -1,3 +1,4 @@
+import re
 
 def _egg_fragment(url):
     _egg_fragment_re = re.compile(r"[#&]egg=([^&]*)")

@@ -1,3 +1,4 @@
+import copy
 
 def _register_concat_linear_int8_woq_lowering(
     pattern, computation_woq, computation_reshape

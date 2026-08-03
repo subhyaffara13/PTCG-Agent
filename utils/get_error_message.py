@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_error_message(error_obj) -> Optional[str]:
     """

@@ -1,3 +1,5 @@
+import functools
+import itertools
 
 def test_introspect_builtin_modules():
     mods = [builtins, functools, itertools, operator, toolz,

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def lazy_init(input_device: torch.device | None = None):
     if torch._C._has_mkldnn and config.cpp.weight_prepack:

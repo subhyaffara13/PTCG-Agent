@@ -1,3 +1,5 @@
+import math
+
 
 def _unsafe_rbg_split(key: typing.Array, shape: prng.Shape) -> typing.Array:
   # treat 10 iterations of random bits as a 'hash function'

@@ -1,3 +1,4 @@
+import re
 
 def _is_call_name(call_name: str, base: str) -> bool:
     # Recognize when call_name = _call_name(base, n) for some n >= 0.

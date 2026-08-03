@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_11730():
     unit = Interval(0, 1)

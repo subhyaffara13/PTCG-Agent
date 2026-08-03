@@ -1,3 +1,4 @@
+from typing import Any
 
 def logical_op(left: ArrayLike, right: Any, op) -> ArrayLike:
     """

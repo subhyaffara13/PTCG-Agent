@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _wrap_webhook_to_check_secret(func: Callable, webhook_secret: str) -> Callable:
     """Wraps a webhook function to check the webhook secret before calling the function.

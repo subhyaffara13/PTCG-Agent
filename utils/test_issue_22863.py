@@ -1,3 +1,5 @@
+import math
+
 
 def test_issue_22863():
     i = integrate((3*x**3-x**2+2*x-4)/sqrt(x**2-3*x+2), (x, 0, 1))

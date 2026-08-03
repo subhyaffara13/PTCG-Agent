@@ -1,3 +1,5 @@
+import math
+
 
 def pixel_shuffle(input_tensor, shuffle_ratio):
     # input_tensor: [batch_size, num_patches, channels]

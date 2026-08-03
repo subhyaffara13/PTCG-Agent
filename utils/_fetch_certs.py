@@ -1,3 +1,4 @@
+import json
 
 def _fetch_certs(request, certs_url):
     """Fetches certificates.

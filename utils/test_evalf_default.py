@@ -1,3 +1,4 @@
+import re
 
 def test_evalf_default():
     from sympy.functions.special.gamma_functions import polygamma

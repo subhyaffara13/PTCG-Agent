@@ -1,3 +1,4 @@
+from typing import Optional
 
 def tree_cast(
     tree: base.ArrayTree, dtype: Optional[jax.typing.DTypeLike]

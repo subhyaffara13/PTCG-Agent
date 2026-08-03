@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _legacy_save(obj, f, pickle_module, pickle_protocol) -> None:
     import torch.nn as nn

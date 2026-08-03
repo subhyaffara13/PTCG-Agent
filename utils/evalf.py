@@ -1,3 +1,6 @@
+import re
+import math
+
 
 def evalf(x: Expr, prec: int, options: OPT_DICT) -> TMP_RES:
     """

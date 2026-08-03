@@ -1,3 +1,4 @@
+from typing import Any
 
 def _device_put_transpose(cts, *args, devices, srcs, copy_semantics):
   results: list[Any | None] = [None] * len(cts)

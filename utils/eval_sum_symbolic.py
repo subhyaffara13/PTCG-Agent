@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def eval_sum_symbolic(f, limits):
     f_orig = f

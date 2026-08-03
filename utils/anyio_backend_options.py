@@ -1,3 +1,4 @@
+from typing import Any
 
 def anyio_backend_options(anyio_backend: Any) -> dict[str, Any]:
     if isinstance(anyio_backend, str):

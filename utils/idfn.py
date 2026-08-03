@@ -1,3 +1,4 @@
+import re
 
 def idfn(x):
     xpr = re.compile(r"'(.*)?'")

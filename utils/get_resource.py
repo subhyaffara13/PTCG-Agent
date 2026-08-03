@@ -1,3 +1,5 @@
+import os
+import sys
 
 def getResource(identifier, pkgname=__name__):
     """

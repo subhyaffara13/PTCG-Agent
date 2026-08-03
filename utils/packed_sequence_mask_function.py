@@ -1,3 +1,4 @@
+from typing import Callable
 
 def packed_sequence_mask_function(packed_sequence_mask: torch.Tensor) -> Callable:
     """

@@ -1,3 +1,5 @@
+import time
+from typing import Optional
 
 def _prune_oauth_metadata_cache(now: Optional[float] = None) -> None:
     now = now if now is not None else time.time()

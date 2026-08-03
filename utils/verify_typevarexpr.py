@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_typevarexpr(
     stub: nodes.TypeVarExpr, runtime: MaybeMissing[Any], object_path: list[str]

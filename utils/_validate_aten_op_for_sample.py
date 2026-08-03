@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _validate_aten_op_for_sample(
     aten_op: OpOverload,

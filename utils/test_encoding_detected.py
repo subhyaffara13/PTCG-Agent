@@ -1,3 +1,4 @@
+import os
 
 def test_encoding_detected():
     system_locale = os.environ.get("LC_ALL")

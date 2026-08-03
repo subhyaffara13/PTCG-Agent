@@ -1,3 +1,4 @@
+import itertools
 
 def normalize_cat_default_aten(match: Match, *args, **kwargs):
     cat_node = match.nodes[0]

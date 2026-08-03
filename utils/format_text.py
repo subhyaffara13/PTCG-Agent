@@ -1,3 +1,4 @@
+import re
 
 def format_text(text):
     """Lowercases and strips punctuation."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def validateLayerInfoVersion3ValueForAttribute(attr: str, value: Any) -> bool:
     """

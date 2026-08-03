@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoFBGEMM(fn):
     reason = "Quantized operations require FBGEMM. FBGEMM is only optimized for CPUs with instruction set support AVX2 or newer."

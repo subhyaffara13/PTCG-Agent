@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_full_move_history(state: Mapping[str, Any]) -> str:
     history = state.get("move_history")

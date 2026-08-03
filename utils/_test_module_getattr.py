@@ -1,3 +1,4 @@
+import sys
 
 def _test_module_getattr():
     warnings.filterwarnings('ignore', category=DeprecationWarning)

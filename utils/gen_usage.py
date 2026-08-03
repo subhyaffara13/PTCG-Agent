@@ -1,3 +1,4 @@
+import os
 
 def gen_usage(script_name):
     script = os.path.basename(script_name)

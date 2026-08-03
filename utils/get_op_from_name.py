@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_op_from_name(op_name: str) -> Callable:
     """

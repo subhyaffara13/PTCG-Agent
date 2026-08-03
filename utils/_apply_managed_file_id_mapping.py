@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def _apply_managed_file_id_mapping(
     input: Union[str, ResponseInputParam],

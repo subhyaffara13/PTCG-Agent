@@ -1,3 +1,4 @@
+import random
 
 def test_tensorflow_math():
     if not tf:

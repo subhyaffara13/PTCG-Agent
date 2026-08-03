@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _update_average_policy(
     average_policy: policy.TabularPolicy,

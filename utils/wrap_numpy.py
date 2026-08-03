@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def wrap_numpy(fn):
     r"""Decorator that turns a function from ``np.ndarray``s to ``np.ndarray``s into a function

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def display_arr(
     screen: Surface, arr: np.ndarray, video_size: tuple[int, int], transpose: bool

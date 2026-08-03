@@ -1,3 +1,4 @@
+from typing import Dict, Optional, Set
 
 def _extract_inbound_headers(
     request_data: dict,

@@ -1,3 +1,4 @@
+import os
 
 def get_include_dirs() -> Sequence[str]:
     """Gets the include directory for compiling against exported C libraries.

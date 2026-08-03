@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def _transform_callback_vars(
     metadata: Any, transform: Callable[[str, Any], Any]

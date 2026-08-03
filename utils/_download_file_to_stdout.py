@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _download_file_to_stdout(api: HfApi, src: str) -> None:
     uri = parse_hf_uri(src)

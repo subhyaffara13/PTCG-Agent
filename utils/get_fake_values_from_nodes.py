@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_fake_values_from_nodes(
     tx: InstructionTranslatorBase, nodes: Any, allow_non_graph_fake: bool

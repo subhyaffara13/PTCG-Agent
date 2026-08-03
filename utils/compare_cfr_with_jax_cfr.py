@@ -1,3 +1,4 @@
+import time
 
 def compare_cfr_with_jax_cfr(game):
   """Do the comparison."""

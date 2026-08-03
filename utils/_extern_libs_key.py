@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _extern_libs_key(backend: Any) -> str:
     """Return a cache key fragment for extern libs (e.g. libdevice.10.bc).

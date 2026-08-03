@@ -1,3 +1,4 @@
+from typing import Any
 
 def action_http(args: Any) -> None:
     from flask import Flask, request

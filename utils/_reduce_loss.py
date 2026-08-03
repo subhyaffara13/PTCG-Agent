@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _reduce_loss(
     loss: jax.Array, reduction: str, axis: Optional[int] = None

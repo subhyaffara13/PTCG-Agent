@@ -1,3 +1,4 @@
+import os
 
 def _parse_local_package_name(path):
     # Determine the package name from a local directory

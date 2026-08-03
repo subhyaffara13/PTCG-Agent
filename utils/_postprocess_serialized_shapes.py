@@ -1,3 +1,4 @@
+from typing import Any
 
 def _postprocess_serialized_shapes(
     dynamic_shapes: dict[str, Any] | tuple[Any] | list[Any] | None,

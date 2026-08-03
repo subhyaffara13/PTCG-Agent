@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _is_immutabledict(obj: Any, *, force: bool = False) -> bool:
   """Returns `True` if the object is an `immutabledict`."""

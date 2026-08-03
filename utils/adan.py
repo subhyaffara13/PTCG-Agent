@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def adan(
     learning_rate: base.ScalarOrSchedule,

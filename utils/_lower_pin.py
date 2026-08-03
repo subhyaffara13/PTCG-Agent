@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _lower_pin(ctx, x_op, *, to):
   color = {'vmem': 1, 'hbm': 0, None: None}[to]

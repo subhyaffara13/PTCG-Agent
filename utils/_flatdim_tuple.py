@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _flatdim_tuple(space: Tuple) -> int:
     if space.is_np_flattenable:

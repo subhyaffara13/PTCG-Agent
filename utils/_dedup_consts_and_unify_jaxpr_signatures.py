@@ -1,3 +1,4 @@
+from typing import Any
 
 def _dedup_consts_and_unify_jaxpr_signatures(
     jaxprs: Sequence[jax_core.Jaxpr],

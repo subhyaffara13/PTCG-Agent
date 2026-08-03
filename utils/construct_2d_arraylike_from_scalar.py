@@ -1,3 +1,4 @@
+import copy
 
 def construct_2d_arraylike_from_scalar(
     value: Scalar, length: int, width: int, dtype: np.dtype, copy: bool

@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _routing_selector_matches_claim(
     selector_value: Optional[Any],

@@ -1,3 +1,4 @@
+import copy
 
 def test_colormap_copy():
     cmap = plt.colormaps["Reds"]

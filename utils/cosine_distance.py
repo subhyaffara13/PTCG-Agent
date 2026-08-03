@@ -1,3 +1,4 @@
+from typing import Union
 
 def cosine_distance(
     predictions: jax.typing.ArrayLike,

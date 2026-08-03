@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_tensor_metadata(
     result: torch.Tensor, include_contiguity=True

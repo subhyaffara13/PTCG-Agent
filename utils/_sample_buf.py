@@ -1,3 +1,4 @@
+import random
 
 def _sample_buf(self, buffer, k, name):
     if not buffer or k == 0: return [], [], []

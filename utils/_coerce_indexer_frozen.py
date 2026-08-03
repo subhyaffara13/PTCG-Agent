@@ -1,3 +1,4 @@
+import copy
 
 def _coerce_indexer_frozen(array_like, categories, copy: bool = False) -> np.ndarray:
     """

@@ -1,3 +1,4 @@
+import os
 
 def _remove_dir(path_dir: str) -> None:
     if os.path.exists(path_dir):

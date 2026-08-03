@@ -1,3 +1,4 @@
+import copy
 
 def hit(key: str, ty: str) -> defaultdict[CodeId, CodeState]:
     global _INIT_CODE_STATE

@@ -1,3 +1,4 @@
+from typing import Any
 
 def precompute_method(obj: Any, method: str) -> None:
     """Replace obj.method() with a new method that returns a precomputed constant."""

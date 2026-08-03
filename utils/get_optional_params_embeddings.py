@@ -1,3 +1,5 @@
+import sys
+from typing import Any, List, Optional
 
 def get_optional_params_embeddings(
     # 2 optional params

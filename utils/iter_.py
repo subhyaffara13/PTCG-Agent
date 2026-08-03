@@ -1,3 +1,4 @@
+from typing import Callable
 
 def iter_(fn_or_iterable, sentinel=_sentinel_missing, /):  # type: ignore[no-untyped-def]
     # Without a second argument, object must be a collection object which supports

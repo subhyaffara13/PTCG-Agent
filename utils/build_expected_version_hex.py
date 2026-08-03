@@ -1,3 +1,4 @@
+from typing import Dict
 
 def build_expected_version_hex(matches: Dict[str, str]) -> str:
     patch_level_serial = matches["PATCH"]

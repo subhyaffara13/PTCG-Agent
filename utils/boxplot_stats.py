@@ -1,3 +1,4 @@
+import itertools
 
 def boxplot_stats(X, whis=1.5, bootstrap=None, labels=None, autorange=False):
     r"""

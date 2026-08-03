@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_pathlib_path_division(any_string_dtype, request):
     # GH#61940

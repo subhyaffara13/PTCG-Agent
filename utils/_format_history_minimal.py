@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_history_minimal(state: Mapping[str, Any], labels: Mapping[str, str]) -> str:
     """Terser history: just ``Px keep: L1=A L2=B L3=C`` per row, no complement."""

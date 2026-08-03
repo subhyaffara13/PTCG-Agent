@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_fileno(file_like: IO[str]) -> int | None:
     """Get fileno() from a file, accounting for poorly implemented file-like objects.

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_extensions_root() -> Path:
     root_dir = EXTENSIONS_ROOT.expanduser()

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def invoke_subgraph(subgraph_fn: ir.Subgraph, identifier: str, *operands):
     result = ir.InvokeSubgraph.create(subgraph_fn, *operands)

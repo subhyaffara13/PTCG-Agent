@@ -1,3 +1,4 @@
+import sys
 
 def get_path_for_function(f):
     """Get the path of the file where the function is defined.

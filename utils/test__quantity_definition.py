@@ -1,3 +1,4 @@
+import time
 
 def test_Quantity_definition():
     q = Quantity("s10", abbrev="sabbr")

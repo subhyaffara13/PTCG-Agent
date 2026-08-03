@@ -1,3 +1,4 @@
+import sys
 
 def autoparse(
         func=None, *,

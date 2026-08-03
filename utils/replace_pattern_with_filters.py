@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def replace_pattern_with_filters(
     gm: GraphModule,

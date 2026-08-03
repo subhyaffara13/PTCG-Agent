@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _create_jit_fn(code_string: str, **kwargs) -> Callable:
     """

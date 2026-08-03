@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def _body_framing(
     request_method: bytes, event: Union[Request, Response]

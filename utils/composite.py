@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def composite(image1: Image, image2: Image, mask: Image) -> Image:
     """

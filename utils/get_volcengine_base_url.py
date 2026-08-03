@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_volcengine_base_url(api_base: Optional[str] = None) -> str:
     """

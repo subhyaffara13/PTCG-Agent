@@ -1,3 +1,4 @@
+import os
 
 def highest_init_level(fscache: FileSystemCache, id: str, path: str, prefix: str) -> int:
     """Compute the highest level where an __init__ file is found."""

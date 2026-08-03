@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_url(url: str, **kwargs: Any) -> "Redis":
     """

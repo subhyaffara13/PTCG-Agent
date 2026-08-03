@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_build_platform():
     """Return this platform's string for platform-specific distributions"""

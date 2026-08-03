@@ -1,3 +1,4 @@
+import os
 
 def current_umask():
     tmp = os.umask(0o022)

@@ -1,3 +1,4 @@
+from typing import Dict, Set, Tuple
 
 def _encodeWithBf(valueSet: Set[int], branchFactor: int, height: int) -> bytes:
     if height == 0:

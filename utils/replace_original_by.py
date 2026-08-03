@@ -1,3 +1,4 @@
+import sys
 
 def replace_original_by(stream):
     orig_stdout = sys.__stdout__

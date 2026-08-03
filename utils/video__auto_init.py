@@ -1,3 +1,5 @@
+import os
+import sys
 
 def Video_AutoInit():
     """Called from the base.c just before display module is initialized."""

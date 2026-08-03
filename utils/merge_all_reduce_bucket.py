@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_all_reduce_bucket(
     g: torch.fx.Graph,

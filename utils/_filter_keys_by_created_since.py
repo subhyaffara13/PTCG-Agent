@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _filter_keys_by_created_since(
     source_keys: List[Dict[str, Any]],

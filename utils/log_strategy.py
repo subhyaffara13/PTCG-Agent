@@ -1,3 +1,4 @@
+from typing import Any
 
 def log_strategy(
     packet: dict[str, Any],

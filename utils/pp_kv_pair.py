@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def pp_kv_pair(k:str, v: Any, context: JaxprPpContext, settings: JaxprPpSettings) -> pp.Doc:
   if type(v) is tuple and all(isinstance(j, (Jaxpr, ClosedJaxpr)) for j in v):

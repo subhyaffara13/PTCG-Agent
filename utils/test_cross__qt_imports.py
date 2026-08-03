@@ -1,3 +1,4 @@
+import subprocess
 
 def test_cross_Qt_imports(host, mpl):
     try:

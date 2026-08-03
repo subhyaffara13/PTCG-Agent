@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def wrap_torch_function(
     dispatcher: Callable[_P, Iterable[Any]],

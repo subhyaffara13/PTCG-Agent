@@ -1,3 +1,4 @@
+from typing import Any
 
 def ir_dataclass(cls: type[Any] | None = None, /, *, frozen: bool = True) -> Any:
     def wrap(cls: _T) -> _T:

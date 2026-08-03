@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_n_transformed_and_logged_copies_of_subgraph(
     mt: GraphModule,

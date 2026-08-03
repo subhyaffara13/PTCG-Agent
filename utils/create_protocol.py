@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def create_protocol(config: Dict, default_name: str = None) -> Any:
     """

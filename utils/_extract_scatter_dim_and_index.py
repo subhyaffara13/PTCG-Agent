@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_scatter_dim_and_index(
     indices_arg: Any,

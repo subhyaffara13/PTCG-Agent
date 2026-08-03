@@ -1,3 +1,4 @@
+import random
 
 def _compare_tensorflow_relational(
     variables, expr, rng=lambda: random.randint(0, 10)):

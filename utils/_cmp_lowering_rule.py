@@ -1,3 +1,4 @@
+import functools
 
 def _cmp_lowering_rule(primitive, ctx: LoweringRuleContext, x, y):
   x, y = _bcast(

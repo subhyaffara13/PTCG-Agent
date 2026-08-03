@@ -1,3 +1,4 @@
+import sys
 
 def detect_console_encoding() -> str:
     """

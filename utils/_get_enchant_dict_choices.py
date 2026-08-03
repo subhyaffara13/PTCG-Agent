@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_enchant_dict_choices(
     inner_enchant_dicts: list[tuple[Any, enchant.ProviderDesc]],

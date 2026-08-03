@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_cached_generic_type_early(parent: type[BaseModel], typevar_values: Any) -> type[BaseModel] | None:
     """The use of a two-stage cache lookup approach was necessary to have the highest performance possible for

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def model_in_access_group(
     model: str, team_models: Optional[List[str]], llm_router: Optional[Router]

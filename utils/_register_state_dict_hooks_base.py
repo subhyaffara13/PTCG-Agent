@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _register_state_dict_hooks_base(
     state: _FSDPState,

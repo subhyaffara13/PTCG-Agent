@@ -1,3 +1,7 @@
+import subprocess
+import sys
+from pathlib import Path
+
 
 def test_npdistop(hello_world_f90, monkeypatch):
     """

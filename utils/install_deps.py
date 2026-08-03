@@ -1,3 +1,6 @@
+import logging
+import subprocess
+import sys
 
 def install_deps():
   """Installs required dependencies if not present."""

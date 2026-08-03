@@ -1,3 +1,4 @@
+import os
 
 def user_cache_dir(  # noqa: PLR0913, PLR0917
     appname: str | None = None,

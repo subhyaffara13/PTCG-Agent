@@ -1,3 +1,4 @@
+import functools
 
 def _workers_wrapper(func):
     """

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Set
 
 def ensure_unique_openapi_operation_ids(
     openapi_schema: Dict[str, Any],

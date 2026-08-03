@@ -1,3 +1,4 @@
+import functools
 
 def _compute_summary(
     x: jax.Array, is_floating: bool, is_integer: bool, is_bool: bool, xnp=None

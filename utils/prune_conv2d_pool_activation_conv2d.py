@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prune_conv2d_pool_activation_conv2d(
     c1: nn.Conv2d,

@@ -1,3 +1,4 @@
+import os
 
 def _get_editable_info(dist: BaseDistribution) -> _EditableInfo:
     """

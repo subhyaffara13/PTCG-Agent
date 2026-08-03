@@ -1,3 +1,4 @@
+from typing import Any
 
 def _deserialize_state(observation: Mapping[str, Any]) -> pyspiel.State | None:
     serialized = observation.get("serializedGameAndState", "")

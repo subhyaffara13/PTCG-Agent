@@ -1,3 +1,4 @@
+from typing import Callable
 
 def parse_action(
         state: State,

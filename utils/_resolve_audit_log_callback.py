@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_audit_log_callback(name: str) -> Optional[CustomLogger]:
     """Resolve a string callback name to a CustomLogger instance, with caching.

@@ -1,3 +1,5 @@
+import math
+
 
 def _infer_flat_result_types(
     op: ir.OpView, out_layouts: Sequence[ir.Attribute]

@@ -1,3 +1,4 @@
+from typing import Any, Optional, Set
 
 def _readGlyphFromTree(
     tree: ElementType,

@@ -1,3 +1,4 @@
+import random
 
 def _with_space(c):
     # return c with a random amount of leading space

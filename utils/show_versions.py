@@ -1,3 +1,5 @@
+import json
+import sys
 
 def show_versions():
     """

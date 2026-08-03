@@ -1,3 +1,4 @@
+import uuid
 
 def test_with_s3_url(compression, s3_bucket_public, s3so, temp_file):
     # Bucket created in tests/io/conftest.py

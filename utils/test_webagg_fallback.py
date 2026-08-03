@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_webagg_fallback(backend):
     pytest.importorskip("tornado")

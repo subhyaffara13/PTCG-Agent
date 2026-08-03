@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_ffi_target(
     name: str,

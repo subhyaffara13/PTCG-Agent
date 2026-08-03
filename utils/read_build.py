@@ -1,3 +1,4 @@
+import subprocess
 
 def read_build(package):
   """Runs bazel query on given package file and returns all cc rules."""

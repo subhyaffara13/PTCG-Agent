@@ -1,3 +1,4 @@
+from typing import Any
 
 def addupdate_jvp_rule(primals: list[Any], tangents: list[Any], **params: Any):
   ref_primal, x_primal, *idx = primals

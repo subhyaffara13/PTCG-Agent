@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_bound_arg(
     tx: "InstructionTranslator", val: Any, source: Source | None = None

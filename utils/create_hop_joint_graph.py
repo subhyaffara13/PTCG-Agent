@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_hop_joint_graph(
     fw_fn: Callable,

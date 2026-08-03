@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_graph_filter(
     filter_fn: Callable[[str, str, _OverrideNode], bool],

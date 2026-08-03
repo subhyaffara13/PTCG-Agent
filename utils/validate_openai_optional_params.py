@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def validate_openai_optional_params(
     stop: Optional[Union[str, List[str]]] = None, **kwargs

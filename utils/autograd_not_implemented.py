@@ -1,3 +1,4 @@
+from typing import Callable
 
 def autograd_not_implemented(custom_op):
     def kernel(*args, **kwargs):

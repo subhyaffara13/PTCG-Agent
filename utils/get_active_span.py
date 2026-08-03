@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def get_active_span() -> Optional[Any]:
     """

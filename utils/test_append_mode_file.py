@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_append_mode_file(tmp_excel):
     # GH 39576

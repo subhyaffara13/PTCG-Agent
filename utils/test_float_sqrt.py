@@ -1,3 +1,5 @@
+import math
+
 
 def test_float_sqrt():
     mp.dps = 15

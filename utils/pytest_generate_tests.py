@@ -1,3 +1,4 @@
+from typing import Callable
 
 def pytest_generate_tests(metafunc):  # type: ignore[no-untyped-def]
     if "loop_factory" not in metafunc.fixturenames:

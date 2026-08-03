@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_base_name_to_sets_of_related_ops() -> dict[str, set[NSNodeTargetType]]:
     # note: this set is modified below by items from backend_config

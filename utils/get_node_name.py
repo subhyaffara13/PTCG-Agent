@@ -1,3 +1,4 @@
+from typing import Union
 
 def getNodeName(node):
     # Returns node.id, or node.name, or None

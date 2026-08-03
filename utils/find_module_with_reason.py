@@ -1,3 +1,4 @@
+import time
 
 def find_module_with_reason(id: str, manager: BuildManager) -> ModuleSearchResult:
     """Find a filesystem path for module `id` or the reason it can't be found."""

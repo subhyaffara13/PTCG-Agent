@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_pytest_test_cases(argv: list[str]) -> list[str]:
     class TestCollectorPlugin:

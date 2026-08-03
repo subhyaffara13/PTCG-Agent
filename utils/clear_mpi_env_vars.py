@@ -1,3 +1,4 @@
+import os
 
 def clear_mpi_env_vars():
     """Clears the MPI of environment variables.

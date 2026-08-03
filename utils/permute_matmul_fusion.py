@@ -1,3 +1,4 @@
+import itertools
 
 def permute_matmul_fusion(module: torch.fx.GraphModule) -> torch.fx.GraphModule:
     for node in itertools.chain(

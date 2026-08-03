@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def convert_jax_path_to_dm_path(
     jax_tree_path: Sequence[JaxKeyType],

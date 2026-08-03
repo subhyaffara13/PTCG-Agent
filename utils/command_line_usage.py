@@ -1,3 +1,5 @@
+import os
+import sys
 
 def command_line_usage() -> None:
     """Entry point for the compiler bisector command-line interface."""

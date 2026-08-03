@@ -1,3 +1,4 @@
+import os
 
 def _add_c_module(dist, ffi, module_name, source, source_extension, kwds):
     # We are a setuptools extension. Need this build_ext for py_limited_api.

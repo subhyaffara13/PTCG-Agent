@@ -1,3 +1,6 @@
+from typing import List
+import math
+
 
 def is_valid(errs_it):
     """Whether there are no errors in the given iterator."""

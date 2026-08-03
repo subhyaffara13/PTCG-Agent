@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def sam(
     optimizer: base.GradientTransformation,

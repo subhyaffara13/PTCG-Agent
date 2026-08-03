@@ -1,3 +1,4 @@
+import json
 
 def _reconstruct_fake_tensor(
     serialized_tensor_meta: bytes, is_parameter: bool

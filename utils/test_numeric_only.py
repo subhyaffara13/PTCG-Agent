@@ -1,3 +1,4 @@
+import re
 
 def test_numeric_only(kernel, has_arg, numeric_only, keys):
     # GH#46072

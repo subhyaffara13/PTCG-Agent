@@ -1,3 +1,4 @@
+import sys
 
 def get_stderr_fileno() -> int:
     try:

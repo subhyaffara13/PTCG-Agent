@@ -1,3 +1,5 @@
+import os
+import re
 
 def translate_pattern(glob):  # noqa: C901  # is too complex (14)  # FIXME
     """

@@ -1,3 +1,4 @@
+import random
 
 def test_deriv(Poly):
     # Check that the derivative is the inverse of integration. It is

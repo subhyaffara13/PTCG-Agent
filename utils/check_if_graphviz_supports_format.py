@@ -1,3 +1,6 @@
+import re
+import subprocess
+import sys
 
 def check_if_graphviz_supports_format(output_format: str) -> None:
     """Check if the ``dot`` command supports the requested output format.

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def fixup_id(value: str) -> Optional[str]:
     """Fixup SPDX-ID.

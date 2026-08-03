@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def _extract_player_ids_from_string(text: str, all_player_ids: List[PlayerID]) -> List[PlayerID]:
     """Extracts player IDs mentioned in a string."""

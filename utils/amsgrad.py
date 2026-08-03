@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def amsgrad(
     learning_rate: base.ScalarOrSchedule,

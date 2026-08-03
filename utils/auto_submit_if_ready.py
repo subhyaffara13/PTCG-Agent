@@ -1,3 +1,8 @@
+import json
+import subprocess
+import sys
+from pathlib import Path
+
 
 def auto_submit_if_ready():
     """Checks fitness, submission budget, and uploads to Kaggle if warranted."""

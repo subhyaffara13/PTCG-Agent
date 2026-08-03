@@ -1,3 +1,4 @@
+import random
 
 def test_tree_isomorphic_all_non_isomorphic_trees_relabeled(n):
     """Tests every non-isomorphic tree with `n` nodes is isomorphic with a

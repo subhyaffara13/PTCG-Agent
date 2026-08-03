@@ -1,3 +1,4 @@
+from typing import Optional
 
 def post_call_processing(
     original_response,

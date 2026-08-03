@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import List, Optional
 
 def validate_environment(
     model: Optional[str] = None,

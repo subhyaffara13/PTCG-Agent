@@ -1,3 +1,4 @@
+import json
 
 def _set_budget_reset_at(data: UpdateTeamRequest, updated_kv: dict) -> None:
     """Set budget_reset_at in updated_kv if budget_duration is provided."""

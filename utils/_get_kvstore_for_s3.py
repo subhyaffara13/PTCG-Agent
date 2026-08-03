@@ -1,3 +1,4 @@
+import re
 
 def _get_kvstore_for_s3(ckpt_path: str):
   m = re.fullmatch('^s3://([^/]*)/(.*)$', ckpt_path, re.DOTALL)

@@ -1,3 +1,4 @@
+import functools
 
 def custom_vjp_call_rule(in_err, enabled_errors, *in_vals,
                          call_jaxpr: core.ClosedJaxpr,

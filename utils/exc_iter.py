@@ -1,3 +1,4 @@
+import itertools
 
 def exc_iter(*args):
     """

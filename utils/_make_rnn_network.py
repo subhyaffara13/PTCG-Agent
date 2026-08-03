@@ -1,3 +1,4 @@
+from typing import List
 
 def _make_rnn_network(lstm_hidden_sizes: List[int],
                       mlp_hidden_sizes: List[int]) -> hk.RNNCore:

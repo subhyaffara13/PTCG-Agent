@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _dispatch_custom_op(
     sharding_spec, op: Callable, types, args, kwargs, process_group

@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _resolve_vertex_model_from_router(
     model_id: str,

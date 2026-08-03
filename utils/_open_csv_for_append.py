@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def _open_csv_for_append(csv_path: Path) -> tuple[Any, csv.DictWriter]:
     """Open ``games.csv`` for appending; write header if new."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _negate_tensors_in_tree(tree: Any) -> Any:
     """Negate all tensors in a pytree structure."""

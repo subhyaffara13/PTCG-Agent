@@ -1,3 +1,4 @@
+from typing import Any
 
 def approx(
     expected: Any,

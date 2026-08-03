@@ -1,3 +1,5 @@
+import math
+
 
 def _tile_preserving_einshape_kernel(
     equation: str, x: jax_typing.Array, **size_vars: int

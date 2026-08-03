@@ -1,3 +1,4 @@
+from typing import Optional
 
 def reconstruct_model_name(
     model_name: str,

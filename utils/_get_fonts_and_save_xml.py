@@ -1,3 +1,5 @@
+import os
+from typing import List, Optional, Tuple
 
 def _get_fonts_and_save_xml(
     filepath_a: Text,

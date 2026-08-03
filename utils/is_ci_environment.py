@@ -1,3 +1,4 @@
+import os
 
 def is_ci_environment() -> bool:
     """

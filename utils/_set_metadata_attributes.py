@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _set_metadata_attributes(span: "Span", metadata: Optional[Any], span_attrs) -> None:
     if metadata is not None:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def replace_boxed(tree: Any, updates: Any) -> Any:
   """Updates all AxisMetadata boxes with the values in updates."""

@@ -1,3 +1,5 @@
+import math
+
 
 def _bvn(a, b, A):
     # covariance matrix is written [[s1**2, rho*s1*s2], [rho*s1*s2, s2**2]]

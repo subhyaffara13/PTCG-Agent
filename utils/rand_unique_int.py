@@ -1,3 +1,5 @@
+import math
+
 
 def rand_unique_int(rng, high=None):
   def fn(shape, dtype):

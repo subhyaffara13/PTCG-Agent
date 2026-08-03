@@ -1,3 +1,4 @@
+from typing import Any
 
 def zip_schema(
     schema: _C.FunctionSchema, args: tuple[Any, ...], kwargs: dict[str, Any]

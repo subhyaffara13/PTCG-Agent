@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict, Optional
 
 def resolve_annotations(raw_annotations: Dict[str, Type[Any]], module_name: Optional[str]) -> Dict[str, Type[Any]]:
     """

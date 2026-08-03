@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_metric_attribute_filter(value: Any) -> OTELMetricAttributeFilter:
     if isinstance(value, OTELMetricAttributeFilter):

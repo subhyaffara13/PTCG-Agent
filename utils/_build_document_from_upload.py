@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _build_document_from_upload(
     file_content: bytes,

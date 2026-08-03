@@ -1,3 +1,4 @@
+import itertools
 
 def solve_biquadratic(f, g, opt):
     """Solve a system of two bivariate quadratic polynomial equations.

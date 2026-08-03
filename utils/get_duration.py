@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_duration(sorted_gpu_events: list[dict[str, Any]]) -> int:
     if len(sorted_gpu_events) == 0:

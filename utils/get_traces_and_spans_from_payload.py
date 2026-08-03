@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def get_traces_and_spans_from_payload(
     payload: List[Dict[str, Any]],

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _solve_trig1(f, symbol, domain):
     """Primary solver for trigonometric and hyperbolic equations

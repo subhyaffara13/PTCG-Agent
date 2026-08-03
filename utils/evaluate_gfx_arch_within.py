@@ -1,3 +1,4 @@
+import os
 
 def evaluate_gfx_arch_within(arch_list):
     if not torch.cuda.is_available():

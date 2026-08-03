@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def disable_nested_graph_breaks(fn: None = None) -> DynamoConfigPatchProxy: ...
 

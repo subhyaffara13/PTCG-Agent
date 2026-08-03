@@ -1,3 +1,4 @@
+from typing import Callable
 
 def blockwise_bidirectional_mask(block_boundaries: torch.Tensor) -> Callable:
     def inner_mask(batch_idx: int, head_idx: int, q_idx: int, kv_idx: int) -> bool:

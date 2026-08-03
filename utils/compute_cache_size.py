@@ -1,3 +1,4 @@
+from typing import Any
 
 def compute_cache_size(
     frame: DynamoFrameType, cache_entry: Any

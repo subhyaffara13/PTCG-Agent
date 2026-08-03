@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def imports(
     input_stream: TextIO,

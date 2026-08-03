@@ -1,3 +1,4 @@
+from typing import Any
 
 def deprecate_argument(
     kwargs: dict[str, Any], arg_name: str, default_value=None, *, new_name: str = ""

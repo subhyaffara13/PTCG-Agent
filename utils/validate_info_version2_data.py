@@ -1,3 +1,4 @@
+from typing import Any
 
 def validateInfoVersion2Data(infoData: dict[str, Any]) -> dict[str, Any]:
     """

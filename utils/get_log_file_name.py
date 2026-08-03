@@ -1,3 +1,4 @@
+import sys
 
 def get_log_file_name(level=INFO):
   """Returns the name of the log file.

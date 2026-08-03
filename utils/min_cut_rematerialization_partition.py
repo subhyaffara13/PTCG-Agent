@@ -1,3 +1,4 @@
+from typing import Any
 
 def min_cut_rematerialization_partition(
     joint_module: fx.GraphModule,

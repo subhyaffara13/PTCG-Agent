@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Any
 
 def _model_proxy_send(module: str, **kwargs: Any) -> None:
     """Default exporter that POSTs to the Kaggle Model Proxy /telemetry/logs."""

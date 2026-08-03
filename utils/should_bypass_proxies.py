@@ -1,3 +1,4 @@
+import os
 
 def should_bypass_proxies(url: str, no_proxy: str | None) -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sharded_post_state_dict_hook(
     module: nn.Module,

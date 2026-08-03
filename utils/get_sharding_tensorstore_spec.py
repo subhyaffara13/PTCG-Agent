@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_sharding_tensorstore_spec(
     directory: str, param_name: str

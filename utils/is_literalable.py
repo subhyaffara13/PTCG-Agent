@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_literalable(x: Any, for_ad: bool = False) -> bool:
   x_type = type(x)

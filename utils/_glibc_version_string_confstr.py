@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _glibc_version_string_confstr() -> str | None:
     """

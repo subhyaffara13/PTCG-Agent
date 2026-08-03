@@ -1,3 +1,4 @@
+import re
 
 def _check_antecedents_1(g, x, helper=False):
     r"""

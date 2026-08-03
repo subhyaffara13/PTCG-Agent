@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_arch() -> tuple[int, int]:
   device: Any = jax.sharding.get_abstract_mesh().abstract_device

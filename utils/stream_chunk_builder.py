@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def stream_chunk_builder(
     chunks: list,

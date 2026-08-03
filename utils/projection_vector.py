@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_vector(x: Any, a: Any) -> Any:
   r"""Projection onto a vector.

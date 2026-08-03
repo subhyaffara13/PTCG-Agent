@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def decompress_telemetry(telemetry_data: dict, log_dir: str = "logs"):
     """Decompresses telemetry data and writes steps_*.json files to the specified log directory."""

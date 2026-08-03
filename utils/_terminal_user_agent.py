@@ -1,3 +1,4 @@
+import os
 
 def _terminal_user_agent() -> str:
     term_program = os.getenv("TERM_PROGRAM")

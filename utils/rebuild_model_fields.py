@@ -1,3 +1,4 @@
+from typing import Any
 
 def rebuild_model_fields(
     cls: type[BaseModel],

@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _run_subprocess_ignore_stderr(command):
     """Return subprocess.check_output with the given command and ignores stderr."""

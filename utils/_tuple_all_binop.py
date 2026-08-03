@@ -1,3 +1,4 @@
+import functools
 
 def _tuple_all_binop(binop, xs, ys):
   """Dynamic reduce_all calculation with a user-provided comparison op."""

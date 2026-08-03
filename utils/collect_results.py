@@ -1,3 +1,4 @@
+from typing import Any
 
 def collect_results(
     model: torch.nn.Module, prediction: Any, loss: Any, example_inputs: Any

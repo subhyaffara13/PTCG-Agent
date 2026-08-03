@@ -1,3 +1,4 @@
+from typing import List
 
 def validate_chat_completion_user_messages(messages: List[AllMessageValues]):
     """

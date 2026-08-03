@@ -1,3 +1,6 @@
+import copy
+import functools
+from typing import Any, Callable
 
 def _get_option(target_obj: Distribution | DistributionMetadata, key: str):
     """

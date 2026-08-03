@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_xor(ref: _Ref, val) -> None:
   """Performs an atomic store-xor of the value to the reference.

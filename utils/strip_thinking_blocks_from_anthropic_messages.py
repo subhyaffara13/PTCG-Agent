@@ -1,3 +1,5 @@
+import copy
+from typing import Any, List
 
 def strip_thinking_blocks_from_anthropic_messages(messages: List[Any]) -> List[Any]:
     """

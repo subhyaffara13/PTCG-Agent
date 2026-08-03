@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _readNote(glyphObject: Optional[Any], note: ElementType) -> None:
     if note.text is None:

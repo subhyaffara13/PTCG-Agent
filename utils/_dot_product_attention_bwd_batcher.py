@@ -1,3 +1,5 @@
+import math
+
 
 def _dot_product_attention_bwd_batcher(
      batched_args, batch_dims, *, scale, seed, dropout_rate, variadic_args,

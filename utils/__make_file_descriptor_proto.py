@@ -1,3 +1,4 @@
+import os
 
 def _MakeFileDescriptorProto(proto_file_name, full_name, field_items):
   """Populate FileDescriptorProto for MessageFactory's DescriptorPool."""

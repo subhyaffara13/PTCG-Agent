@@ -1,3 +1,4 @@
+from typing import Union
 
 def is_matmul_valid(*args: Union[MatrixExpr, Expr]) -> Boolean:
     """Return the symbolic condition how ``MatMul`` makes sense

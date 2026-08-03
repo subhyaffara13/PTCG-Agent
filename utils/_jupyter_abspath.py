@@ -1,3 +1,4 @@
+import os
 
 def _jupyter_abspath(subcommand: str) -> str:
     """This method get the abspath of a specified jupyter-subcommand with no

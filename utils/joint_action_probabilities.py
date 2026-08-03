@@ -1,3 +1,4 @@
+import itertools
 
 def joint_action_probabilities(state, policy):
   """Yields action, probability pairs for a joint policy in simultaneous state.

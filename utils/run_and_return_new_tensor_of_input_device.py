@@ -1,3 +1,4 @@
+from typing import Any
 
 def run_and_return_new_tensor_of_input_device(
     fake_mode: FakeTensorMode,

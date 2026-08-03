@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _setup_timezone(
     current_time: datetime, timezone_str: str = "UTC"

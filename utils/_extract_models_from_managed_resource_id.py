@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _extract_models_from_managed_resource_id(
     resource_id: Any,

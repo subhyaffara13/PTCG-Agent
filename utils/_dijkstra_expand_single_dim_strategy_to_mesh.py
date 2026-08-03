@@ -1,3 +1,6 @@
+from typing import Callable
+import math
+
 
 def _dijkstra_expand_single_dim_strategy_to_mesh(
     mesh: DeviceMesh,

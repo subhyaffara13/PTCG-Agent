@@ -1,3 +1,4 @@
+import re
 
 def _parse_hlo_new_format(lines: list[str]) -> sourcemap.SourceMap:
   file_names = {}

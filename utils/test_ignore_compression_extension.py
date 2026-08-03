@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_ignore_compression_extension(tmp_path, all_parsers):
     parser = all_parsers

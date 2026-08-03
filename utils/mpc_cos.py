@@ -1,3 +1,4 @@
+import re
 
 def mpc_cos(z, prec, rnd=round_fast):
     """Complex cosine. The formula used is cos(a+bi) = cos(a)*cosh(b) -

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _serialize_array(
     builder: flatbuffers.Builder,

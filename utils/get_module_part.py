@@ -1,3 +1,4 @@
+import os
 
 def get_module_part(dotted_name: str, context_file: str | None = None) -> str:
     """Given a dotted name return the module part of the name :

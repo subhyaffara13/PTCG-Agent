@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict
 
 def _openai_batch_jsonl_entry_to_vertex_wrapped_request(
     openai_entry: Dict[str, Any],

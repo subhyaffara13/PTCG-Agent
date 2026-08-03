@@ -1,3 +1,4 @@
+import re
 
 def _modeling_key(file_path: str) -> str | None:
     # Extract "xxx" from test_modeling_xxx.py

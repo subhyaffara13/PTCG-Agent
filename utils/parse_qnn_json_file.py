@@ -1,3 +1,4 @@
+import json
 
 def parse_qnn_json_file(qnn_json_file_path, qnn_input_output_tensor_dic):
     with open(qnn_json_file_path) as qnn_json_file:

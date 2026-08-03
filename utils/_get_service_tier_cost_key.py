@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_service_tier_cost_key(base_key: str, service_tier: Optional[str]) -> str:
     """

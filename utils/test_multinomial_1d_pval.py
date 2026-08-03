@@ -1,3 +1,4 @@
+import random
 
 def test_multinomial_1d_pval():
     # gh-20483

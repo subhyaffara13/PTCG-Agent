@@ -1,3 +1,4 @@
+import copy
 
 def test_round_trip(m):
     assert_equal_tensor_ref(m.round_trip_tensor(tensor_ref))

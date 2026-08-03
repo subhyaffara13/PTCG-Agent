@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _read_config(config_file: Path) -> TestFileOptions:
     config = configparser.ConfigParser()

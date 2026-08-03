@@ -1,3 +1,4 @@
+import os
 
 def test_move_raises_error_with_tmpdir_permission(recursive, tmpdir):
     # Create a file in the temporary directory

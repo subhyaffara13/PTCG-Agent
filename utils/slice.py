@@ -1,3 +1,4 @@
+from typing import Optional
 
 def slice(
     self: list[int], dim: int, start: Optional[int], end: Optional[int], step: int

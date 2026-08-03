@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def extract_healthy_behavior_patterns(iteration_result: Dict[str, Any], behavioral_vectors: Dict[str, Any], learned_dos: dict, save_dos_fn):
     """Extract behavior dos from successful iterations."""

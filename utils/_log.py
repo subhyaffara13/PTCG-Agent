@@ -1,3 +1,4 @@
+import logging
 
 def _log(type: str, message: str, *args: t.Any, **kwargs: t.Any) -> None:
     """Log a message to the 'werkzeug' logger.

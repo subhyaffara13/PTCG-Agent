@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_turn_off_message_logging_from_dynamic_params(
     model_call_details: dict,

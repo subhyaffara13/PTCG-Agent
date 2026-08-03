@@ -1,3 +1,4 @@
+import functools
 
 def deprecated_method(replacement):
     """A decorator which can be used to mark a method as deprecated

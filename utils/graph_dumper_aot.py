@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def graph_dumper_aot(
     current_name: str, folder_name: str, dump_example_input: bool = False

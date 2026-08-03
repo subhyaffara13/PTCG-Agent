@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_arc_full_circle_snap(theta2):
     # A span within floating-point tolerance of a whole number of turns must

@@ -1,3 +1,4 @@
+from typing import Optional, Set, Union
 
 def _unelided_shape_matches(
     actual_shape: Sequence[int],

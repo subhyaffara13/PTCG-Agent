@@ -1,3 +1,4 @@
+import re
 
 def test_sinh():
     R, x, y = ring('x, y', QQ)

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def type_casts(
     f: Callable,

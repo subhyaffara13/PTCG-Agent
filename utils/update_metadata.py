@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_metadata(a, b: dict[str, Any]):
   if not b:

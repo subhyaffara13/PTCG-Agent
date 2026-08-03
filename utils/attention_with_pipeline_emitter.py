@@ -1,3 +1,5 @@
+import math
+
 
 def attention_with_pipeline_emitter(q, k, v, config: TuningConfig, save_residuals=False):
   if config.causal:

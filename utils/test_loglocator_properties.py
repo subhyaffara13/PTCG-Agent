@@ -1,3 +1,4 @@
+import itertools
 
 def test_loglocator_properties():
     # Test that LogLocator returns ticks satisfying basic desirable properties

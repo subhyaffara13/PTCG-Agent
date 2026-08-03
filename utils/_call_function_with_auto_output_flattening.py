@@ -1,3 +1,4 @@
+from typing import Any
 
 def _call_function_with_auto_output_flattening(
     tx: "InstructionTranslator",

@@ -1,3 +1,6 @@
+import logging
+import os
+import time
 
 def _initialize_mtc_colocated(
     local_checkpoint_directory: epath.Path,

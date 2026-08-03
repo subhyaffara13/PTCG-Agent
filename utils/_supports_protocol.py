@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _supports_protocol(
     value: nodes.NodeNG, protocol_callback: Callable[[nodes.NodeNG], bool]

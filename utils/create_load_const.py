@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_load_const(val: Any, checked: bool = True) -> Instruction:
     """

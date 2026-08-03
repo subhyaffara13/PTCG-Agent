@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _estimate_gb(event: dict[str, Any]) -> float:
     """

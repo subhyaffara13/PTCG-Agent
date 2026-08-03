@@ -1,3 +1,4 @@
+import sys
 
 def _get_caller_frame_info(depth: int = 2) -> tuple[str | None, bool]:
     """Used inside a function to check whether it was called globally.

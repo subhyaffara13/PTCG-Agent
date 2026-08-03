@@ -1,3 +1,4 @@
+import time
 
 def batch_completions(
     model: str, messages: list, optional_params=None, custom_prompt_dict={}

@@ -1,3 +1,4 @@
+import re
 
 def is_attr_private(attrname: str) -> Match[str] | None:
     """Check that attribute name is private (at least two leading underscores,

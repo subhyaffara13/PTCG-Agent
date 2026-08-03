@@ -1,3 +1,5 @@
+import copy
+from typing import Callable
 
 def extract_compiled_graph(model: fx.GraphModule, example_inputs) -> Callable:
     """

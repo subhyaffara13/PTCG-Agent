@@ -1,3 +1,4 @@
+import copy
 
 def test_property_return_value_policies(access):
     obj = m.TestPropRVP() if not access.startswith("static") else m.TestPropRVP

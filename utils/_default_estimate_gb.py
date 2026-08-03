@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _default_estimate_gb(event: dict[str, Any]) -> float:
     sizes_and_types = zip(event["args"]["Input Dims"], event["args"]["Input type"])

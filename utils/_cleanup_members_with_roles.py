@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _cleanup_members_with_roles(
     existing_team_row: LiteLLM_TeamTable,

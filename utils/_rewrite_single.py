@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _rewrite_single(f, x, recursive=True):
     """

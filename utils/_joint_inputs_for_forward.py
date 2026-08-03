@@ -1,3 +1,4 @@
+from typing import Any
 
 def _joint_inputs_for_forward(
     joint_inputs: list[Any] | tuple[list[Any], list[Any]],

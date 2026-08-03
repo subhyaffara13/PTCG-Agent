@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def call_fixture_func(
     fixturefunc: _FixtureFunc[FixtureValue], request: FixtureRequest, kwargs

@@ -1,3 +1,4 @@
+import re
 
 def expand_errors(input: list[str], output: list[str], fnam: str) -> None:
     """Transform comments such as '# E: message' or

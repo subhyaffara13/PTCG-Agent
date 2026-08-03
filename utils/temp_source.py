@@ -1,3 +1,4 @@
+import os
 
 def temp_source(text: str) -> Iterator[str]:
     with tempfile.TemporaryDirectory() as temp_dir:

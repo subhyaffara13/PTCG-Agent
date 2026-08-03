@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def get_gpu_info(run_lambda):
     if get_platform() == "darwin" or (

@@ -1,3 +1,4 @@
+import copy
 
 def _unlift_exported_program_lifted_states(
     ep: ExportedProgram, check_guards=True

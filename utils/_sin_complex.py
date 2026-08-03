@@ -1,3 +1,4 @@
+import re
 
 def _sin_complex(x):
   # use expm1 instead of exp to avoid cancellation when abs(x) is small

@@ -1,3 +1,4 @@
+import os
 
 def run_ort_inference(args, init_inputs, iter_inputs, model):
     def prepare_ort_inputs(inputs, kv_cache_ortvalues):

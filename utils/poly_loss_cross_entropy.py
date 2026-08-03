@@ -1,3 +1,4 @@
+from typing import Union
 
 def poly_loss_cross_entropy(
     logits: jax.typing.ArrayLike,

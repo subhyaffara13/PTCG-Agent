@@ -1,3 +1,6 @@
+import os
+import re
+from typing import Optional
 
 def load_dotenv(
     dotenv_path: Optional[StrPath] = None,

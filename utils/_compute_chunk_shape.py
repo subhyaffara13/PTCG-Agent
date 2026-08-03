@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_chunk_shape(
     local_shape: Sequence[int], dtype: str | jnp.dtype,

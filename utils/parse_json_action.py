@@ -1,3 +1,4 @@
+from typing import Callable
 
 def parse_json_action(
     response: str,

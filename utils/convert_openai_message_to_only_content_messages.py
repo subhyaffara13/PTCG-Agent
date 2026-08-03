@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def convert_openai_message_to_only_content_messages(
     messages: List[AllMessageValues],

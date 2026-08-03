@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _redact_settings(settings: Optional[Mapping[str, Any]]) -> Dict[str, Any]:
     """Replace every value in a settings map with a fixed marker.

@@ -1,3 +1,4 @@
+import os
 
 def sensors_fans():
     """Return hardware fans info (for CPU and other peripherals) as a

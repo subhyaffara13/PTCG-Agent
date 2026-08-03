@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_axis(tree: Any, index: int, params: dict[Any, Any]) -> Any:
   """Add an axis to each AxisMetadata node in a PyTree."""

@@ -1,3 +1,4 @@
+import itertools
 
 def _quadratic_assignment_2opt(A, B, maximize=False, rng=None,
                                partial_match=None,

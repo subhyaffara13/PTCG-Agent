@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def print_performance(
     model: Callable[..., Any],

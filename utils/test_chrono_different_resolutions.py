@@ -1,3 +1,4 @@
+import time
 
 def test_chrono_different_resolutions():
     resolutions = m.different_resolutions()

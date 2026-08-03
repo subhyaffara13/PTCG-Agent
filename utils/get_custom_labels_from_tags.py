@@ -1,3 +1,4 @@
+from typing import Dict
 
 def get_custom_labels_from_tags(tags: Sequence[str]) -> Dict[str, str]:
     """

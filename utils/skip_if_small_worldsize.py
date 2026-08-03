@@ -1,3 +1,5 @@
+import os
+import sys
 
 def skip_if_small_worldsize(func):
     @wraps(func)

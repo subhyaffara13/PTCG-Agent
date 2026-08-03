@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _break_stale_marker(  # noqa: PLR0911
     name: str,

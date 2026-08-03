@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_cost_for_anthropic_web_search(
     model_info: Optional["ModelInfo"] = None,

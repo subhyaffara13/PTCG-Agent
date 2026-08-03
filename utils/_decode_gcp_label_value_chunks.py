@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _decode_gcp_label_value_chunks(values: List[str]) -> Optional[str]:
     """Decode values produced by _encode_gcp_label_value_chunks."""

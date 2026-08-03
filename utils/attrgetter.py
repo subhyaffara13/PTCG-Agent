@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def attrgetter(attr: str, /) -> Callable[[Any], _U]: ...
 

@@ -1,3 +1,4 @@
+from typing import Dict, Set
 
 def closure_element_ids(
     elements: Dict[str, etree.Element], element_ids: Set[str]

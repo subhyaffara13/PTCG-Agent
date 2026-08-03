@@ -1,3 +1,4 @@
+import os
 
 def atomic_write(path: str, mode: str = "wb"):
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _request_token(
     client_id: str, auth_url: str, timeout: float, cert_pair=None, client_secret=None

@@ -1,3 +1,4 @@
+from typing import Any
 
 def unpack_outputs(outputs: tuple[Any, ...]) -> tuple[Any, Any]:
     out_dims = outputs[-1]

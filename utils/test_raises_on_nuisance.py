@@ -1,3 +1,4 @@
+import re
 
 def test_raises_on_nuisance(df, using_infer_string):
     grouped = df.groupby("A")

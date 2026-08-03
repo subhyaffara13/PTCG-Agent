@@ -1,3 +1,4 @@
+from typing import Any
 
 def uuid_validator(v: Any, field: 'ModelField') -> UUID:
     try:

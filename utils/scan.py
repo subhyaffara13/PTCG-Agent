@@ -1,3 +1,6 @@
+import functools
+import random
+from typing import Any, Callable
 
 def scan(stream, Loader=Loader):
     """

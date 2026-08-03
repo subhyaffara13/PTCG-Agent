@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_aware_datetime(
     value: dt.datetime | dt.timedelta | float | None,

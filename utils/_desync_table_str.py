@@ -1,3 +1,4 @@
+from typing import Any
 
 def _desync_table_str(tag: str, value_ranks: dict[Any, set[int]]) -> str:
     headers = ["Ranks", f"{tag} values"]

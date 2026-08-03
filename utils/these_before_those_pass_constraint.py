@@ -1,3 +1,4 @@
+from typing import Callable
 
 def these_before_those_pass_constraint(these: Callable, those: Callable):
     """

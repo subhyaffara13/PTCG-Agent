@@ -1,3 +1,4 @@
+from typing import Dict
 
 def interpolate_headers(
     headers: Mapping[str, str], variables: Mapping[str, str]

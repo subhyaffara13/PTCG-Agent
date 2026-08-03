@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_cost_for_web_search_request(
     custom_llm_provider: str, usage: "Usage", model_info: "ModelInfo"

@@ -1,3 +1,4 @@
+import subprocess
 
 def _check_and_log_subprocess(command, logger, **kwargs):
     """

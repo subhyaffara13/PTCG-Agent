@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_tensor_subclasses(
     unwrapped_args: Sequence[Any],

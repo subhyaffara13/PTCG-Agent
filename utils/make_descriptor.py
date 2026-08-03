@@ -1,3 +1,4 @@
+import os
 
 def MakeDescriptor(
     desc_proto,

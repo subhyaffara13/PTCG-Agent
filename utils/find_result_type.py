@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_result_type(left_dtype: DtypeObj, right: Any) -> DtypeObj:
     """

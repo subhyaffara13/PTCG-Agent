@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _decode_header_lines(
     lines: Iterable[bytes],

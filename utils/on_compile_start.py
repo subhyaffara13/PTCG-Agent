@@ -1,3 +1,4 @@
+from typing import Callable
 
 def on_compile_start(
     callback: Callable[[CallbackArgs], None],

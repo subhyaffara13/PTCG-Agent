@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _glibc_version_string() -> str | None:
     """Returns glibc version string, or None if not using glibc."""

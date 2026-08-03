@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def generate_description(skills_dir: Path) -> str:
     desc = ["Antigravity Apex Kaggle Submission."]

@@ -1,3 +1,4 @@
+import sys
 
 def test_native():
     native_is_le = sys.byteorder == 'little'

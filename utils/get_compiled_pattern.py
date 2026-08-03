@@ -1,3 +1,4 @@
+import re
 
 def get_compiled_pattern(pattern_name: str) -> Pattern:
     """

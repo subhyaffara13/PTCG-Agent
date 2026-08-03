@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_a_var(
     obj: torch.Tensor | list[Any] | tuple[Any, ...] | dict[Any, Any],

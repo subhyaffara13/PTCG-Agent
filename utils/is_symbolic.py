@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_symbolic(a: Any) -> TypeGuard[torch.SymInt | torch.Tensor]:
     return isinstance(a, torch.SymInt) or (

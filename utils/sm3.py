@@ -1,3 +1,4 @@
+import functools
 
 def sm3(
     learning_rate: jax.typing.ArrayLike, momentum: jax.typing.ArrayLike = 0.9

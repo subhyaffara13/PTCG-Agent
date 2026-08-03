@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_shape(x: Any) -> TensorShapeType:
     """Get the shape of the array-like object `x`. If `x` is not array-like, raise an error.

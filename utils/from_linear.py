@@ -1,3 +1,5 @@
+import math
+
 
 def from_linear(c):
     if c <= 0.0031308:

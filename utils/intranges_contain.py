@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def intranges_contain(int_: int, ranges: tuple[int, ...]) -> bool:
     """Determine if `int_` falls into one of the ranges in `ranges`."""

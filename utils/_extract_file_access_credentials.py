@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_file_access_credentials(litellm_params: Optional[dict]) -> dict:
     """

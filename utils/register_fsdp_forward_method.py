@@ -1,3 +1,4 @@
+import functools
 
 def register_fsdp_forward_method(module: nn.Module, method_name: str) -> None:
     """

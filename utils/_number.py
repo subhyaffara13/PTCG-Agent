@@ -1,3 +1,4 @@
+from typing import Union
 
 def _number(s: Union[str, int, float]) -> IntFloat:
     """

@@ -1,3 +1,4 @@
+import sys
 
 def _format_full_version(info: sys._version_info) -> str:
     version = f"{info.major}.{info.minor}.{info.micro}"

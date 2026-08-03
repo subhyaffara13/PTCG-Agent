@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple_tuple_count():
     assert Tuple(0, 1, 2, 3).tuple_count(4) == 0

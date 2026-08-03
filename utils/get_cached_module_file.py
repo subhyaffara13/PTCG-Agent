@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_cached_module_file(
     pretrained_model_name_or_path: str | os.PathLike,

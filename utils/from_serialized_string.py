@@ -1,3 +1,4 @@
+import json
 
 def from_serialized_string(serialized_str) -> ShardingMetadata:
   """Converts `serialized_string` to `ShardingMetadata`."""

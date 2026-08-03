@@ -1,3 +1,5 @@
+import functools
+import sys
 
 def _process_class(cls: type[M], extra_fields=None, **kwargs):
   """Transforms `cls` into a dataclass that supports kw_only fields."""

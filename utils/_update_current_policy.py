@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _update_current_policy(
     current_policy: policy.TabularPolicy,

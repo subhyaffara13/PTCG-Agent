@@ -1,3 +1,4 @@
+import random
 
 def create_py_random_state(random_state=None):
     """Returns a random.Random instance depending on input.

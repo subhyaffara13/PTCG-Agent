@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _handle_team_selection_during_polling(
     base_url: str, key_id: str, poll_secret: str, teams: List[Dict[str, Any]]

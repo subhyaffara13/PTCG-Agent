@@ -1,3 +1,4 @@
+import re
 
 def _is_anthropic_document_data_uri(url: str) -> bool:
     # Anthropic's base64 document source accepts only application/pdf and

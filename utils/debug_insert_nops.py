@@ -1,3 +1,4 @@
+from typing import Any
 
 def debug_insert_nops(
     frame: DynamoFrameType, cache_size: int, hooks: Any, _: Any, *, skip: int = 0

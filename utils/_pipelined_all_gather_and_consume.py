@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _pipelined_all_gather_and_consume(
     shard: torch.Tensor,

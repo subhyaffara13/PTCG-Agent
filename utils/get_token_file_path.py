@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_token_file_path() -> str:
     """Get the path to store the authentication token"""

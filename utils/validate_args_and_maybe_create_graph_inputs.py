@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_args_and_maybe_create_graph_inputs(
     sub_args: list[VariableTracker],

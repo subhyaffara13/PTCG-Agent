@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _safe_read_response(
     response: httpx.Response, timeout: Optional[float] = None

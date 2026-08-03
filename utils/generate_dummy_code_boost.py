@@ -1,3 +1,4 @@
+import random
 
 def generate_dummy_code_boost(nclasses=10):
     decl = ""

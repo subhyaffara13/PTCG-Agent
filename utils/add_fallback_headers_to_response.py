@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_fallback_headers_to_response(
     response: Any,

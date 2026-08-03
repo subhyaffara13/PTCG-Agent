@@ -1,3 +1,5 @@
+import math
+
 
 def perfect_power(n, candidates=None, big=True, factor=True):
     """

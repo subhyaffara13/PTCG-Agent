@@ -1,3 +1,4 @@
+import itertools
 
 def is_from_fallback_block(node: nodes.NodeNG) -> bool:
     """Check if the given node is from a fallback import block."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_opaque_node(node: Any) -> bool:
     """Check if a node contains an opaque or non-tensor value (e.g., ProcessGroup)."""

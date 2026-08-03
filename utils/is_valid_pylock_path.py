@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def is_valid_pylock_path(path: Path) -> bool:
     """Check if the given path is a valid pylock file path."""

@@ -1,3 +1,5 @@
+import copy
+from typing import List
 
 def _redact_sensitive_agent_fields(
     agents: List[AgentResponse],

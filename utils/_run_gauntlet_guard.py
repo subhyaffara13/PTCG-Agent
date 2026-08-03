@@ -1,3 +1,4 @@
+import pathlib
 
 def _run_gauntlet_guard():
     from factory.gauntlet_runner import GauntletRunner

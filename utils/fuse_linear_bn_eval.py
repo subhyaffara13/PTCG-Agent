@@ -1,3 +1,4 @@
+import copy
 
 def fuse_linear_bn_eval(
     linear: LinearT,

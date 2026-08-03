@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def tabulate(
     rows: list[tuple[str, Any]] | list[list[Any]],

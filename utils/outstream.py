@@ -1,3 +1,4 @@
+import sys
 
 def outstream(outfile=None):
     '''Encapsulate output stream creation as a context manager'''

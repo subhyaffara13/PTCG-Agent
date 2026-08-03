@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _replace_with_hop_pass_helper(
     gm: torch.fx.GraphModule,

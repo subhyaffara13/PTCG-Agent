@@ -1,3 +1,4 @@
+import sys
 
 def requires_gpu_with_enough_memory(min_mem_required):
     def inner(fn):

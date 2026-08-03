@@ -1,3 +1,4 @@
+import os
 
 def increment_argcomplete_index() -> None:
     """Assumes ``$_ARGCOMPLETE`` is set and `argcomplete` is importable

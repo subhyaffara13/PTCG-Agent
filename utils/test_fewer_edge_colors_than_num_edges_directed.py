@@ -1,3 +1,4 @@
+import itertools
 
 def test_fewer_edge_colors_than_num_edges_directed():
     """Test that the edge colors are cycled when there are fewer specified

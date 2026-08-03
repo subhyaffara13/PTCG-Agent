@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _has_different_parameters_default_value(
     original: nodes.Arguments, overridden: nodes.Arguments

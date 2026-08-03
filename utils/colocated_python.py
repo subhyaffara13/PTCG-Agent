@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def colocated_python(fun: Callable[..., Any]):
   """Executes the given Python function on the same devices as the arguments.

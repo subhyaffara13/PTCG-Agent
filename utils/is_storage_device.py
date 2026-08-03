@@ -1,3 +1,4 @@
+import os
 
 def is_storage_device(name):
     """Return True if the given name refers to a root device (e.g.

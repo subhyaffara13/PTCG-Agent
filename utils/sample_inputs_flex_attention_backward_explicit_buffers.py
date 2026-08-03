@@ -1,3 +1,4 @@
+import functools
 
 def sample_inputs_flex_attention_backward_explicit_buffers(
     opinfo, device, dtype, requires_grad, **kwargs

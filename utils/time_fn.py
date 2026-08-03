@@ -1,3 +1,5 @@
+import sys
+import time
 
 def time_fn(args, fn, inputs):
     # Warm up

@@ -1,3 +1,4 @@
+import re
 
 def test_to_html_with_column_specific_col_space():
     df = DataFrame(

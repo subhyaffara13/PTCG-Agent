@@ -1,3 +1,4 @@
+from typing import Any
 
 def broadcast_all(*values: Tensor | Number) -> tuple[Tensor, ...]:
     r"""

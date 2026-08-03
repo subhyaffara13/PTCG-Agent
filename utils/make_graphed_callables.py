@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_graphed_callables(
     callables: _ModuleOrCallable,

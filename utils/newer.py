@@ -1,3 +1,4 @@
+import os
 
 def newer(
     source: str | bytes | os.PathLike[str] | os.PathLike[bytes],

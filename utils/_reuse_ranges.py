@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _reuse_ranges(num_layers: int) -> Generator[Tuple[int, int], None, None]:
     # TODO feels like something itertools might have already

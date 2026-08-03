@@ -1,3 +1,4 @@
+from typing import Any
 
 def result_type(*arrays_and_dtypes):
     tensors = []

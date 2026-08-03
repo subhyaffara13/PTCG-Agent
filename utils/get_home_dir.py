@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_home_dir() -> str:
     """Get the real path of the home directory"""

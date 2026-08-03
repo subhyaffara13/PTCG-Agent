@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def extract_commit_hash(resolved_file: str | None, commit_hash: str | None) -> str | None:
     """

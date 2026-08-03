@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _wrap_hash(hash_fn: Callable[..., Any]) -> Callable[..., Any]:
   """Wraps a hash function with some check for Flax Modules."""

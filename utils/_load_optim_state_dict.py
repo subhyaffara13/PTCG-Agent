@@ -1,3 +1,4 @@
+from typing import Any
 
 def _load_optim_state_dict(
     model: nn.Module,

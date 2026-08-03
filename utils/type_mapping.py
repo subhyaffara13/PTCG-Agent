@@ -1,3 +1,4 @@
+from typing import Callable
 
 def type_mapping(type_: type) -> Callable[[_F], _F]:
     """Decorator"""

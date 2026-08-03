@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def _find_annotations_pkl(trace_file: Path) -> Path | None:
     """Auto-discover the annotations pickle from the trace file location.

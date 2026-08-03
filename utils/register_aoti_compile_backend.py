@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_aoti_compile_backend(
     device_type: str,

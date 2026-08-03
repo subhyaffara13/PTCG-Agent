@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def perload_icx_libomp_win(cpp_compiler: str) -> None:
     def _load_icx_built_in_lib_by_name(cpp_compiler: str, lib_name: str) -> bool:

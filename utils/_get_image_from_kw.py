@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_image_from_kw(kw: dict[str, Any]) -> ImageFile.ImageFile | None:
     source = None

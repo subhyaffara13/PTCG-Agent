@@ -1,3 +1,4 @@
+import pathlib
 
 def sympy_dir() -> pathlib.Path:
     """Returns the root SymPy directory."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _validate_pass_schedule_constraint(
     constraint: Callable[[Callable, Callable], bool], passes: list[Callable]

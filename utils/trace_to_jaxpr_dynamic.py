@@ -1,3 +1,4 @@
+from typing import Any
 
 def trace_to_jaxpr_dynamic(
     fun: lu.WrappedFun, in_avals: Sequence[AbstractValue | core.AvalQDD],

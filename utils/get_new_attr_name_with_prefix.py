@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_new_attr_name_with_prefix(prefix: str) -> Callable:
     prefix = prefix.replace(".", "_")

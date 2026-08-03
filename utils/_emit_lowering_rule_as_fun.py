@@ -1,3 +1,4 @@
+import itertools
 
 def _emit_lowering_rule_as_fun(
     lowering_rule: CachedLoweringRule,

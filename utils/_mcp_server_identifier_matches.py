@@ -1,3 +1,4 @@
+from typing import Any
 
 def _mcp_server_identifier_matches(server: Any, identifier: str) -> bool:
     return identifier in {

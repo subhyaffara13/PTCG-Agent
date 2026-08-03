@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def test_dviread(tmp_path, engine, monkeypatch):
     dirpath = Path(__file__).parent / "baseline_images/dviread"

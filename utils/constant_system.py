@@ -1,3 +1,4 @@
+import itertools
 
 def constant_system(A, u, DE):
     """

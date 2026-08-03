@@ -1,3 +1,4 @@
+import os
 
 def set_extracted_file_to_default_mode_plus_executable(path: str) -> None:
     """

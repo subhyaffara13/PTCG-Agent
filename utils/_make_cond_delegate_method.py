@@ -1,3 +1,4 @@
+import functools
 
 def _make_cond_delegate_method(attr_name):
     """For spooled temp files, delegate only if rolled to file object"""

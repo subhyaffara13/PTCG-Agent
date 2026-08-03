@@ -1,3 +1,4 @@
+from typing import Any
 
 def _swap_abstract_eval(*avals_flat, args_tree, **_):
   ref, transforms, val, mask = args_tree.unflatten(avals_flat)

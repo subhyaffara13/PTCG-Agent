@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_dtypes() -> dict[str, Any]:
   """Returns the mapping from safetensor `dtype` strings to NumPy `dtypes`."""

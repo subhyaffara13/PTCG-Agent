@@ -1,3 +1,4 @@
+import os
 
 def looks_like_ci() -> bool:
     """

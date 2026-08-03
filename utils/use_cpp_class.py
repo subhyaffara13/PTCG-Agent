@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def use_cpp_class(cpp_cls: type[Any]) -> Callable[[type[T]], type[T]]:
   """A decorator replacing a Python class with its C++ version at runtime."""

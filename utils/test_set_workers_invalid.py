@@ -1,3 +1,4 @@
+import os
 
 def test_set_workers_invalid():
 

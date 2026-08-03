@@ -1,3 +1,4 @@
+import random
 
 def test_identity():
     with warns_deprecated_sympy():

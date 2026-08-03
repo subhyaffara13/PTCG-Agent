@@ -1,3 +1,4 @@
+import functools
 
 def all_equal(iterable, key=None):
     """

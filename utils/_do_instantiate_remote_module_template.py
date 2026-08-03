@@ -1,3 +1,4 @@
+import sys
 
 def _do_instantiate_remote_module_template(
     generated_module_name, str_dict, enable_moving_cpu_tensors_to_cuda

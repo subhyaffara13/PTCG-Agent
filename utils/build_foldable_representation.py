@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_foldable_representation(
     value: Any,

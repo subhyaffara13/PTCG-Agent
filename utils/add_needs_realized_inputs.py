@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_needs_realized_inputs(
     fn: Collection[torch._ops.OpOverload | torch._ops.OpOverloadPacket]

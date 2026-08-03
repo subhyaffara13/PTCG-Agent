@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _check_model_access_group(
     models: Optional[List[str]], llm_router: Optional[Router], premium_user: bool

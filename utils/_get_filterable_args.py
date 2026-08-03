@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional
 
 def _get_filterable_args(
     func: Callable, args: tuple, kwargs: dict, allowed_args: Optional[List[str]] = None

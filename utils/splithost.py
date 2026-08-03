@@ -1,3 +1,4 @@
+import re
 
 def splithost(url):
     """splithost('//host[:port]/path') --> 'host[:port]', '/path'."""

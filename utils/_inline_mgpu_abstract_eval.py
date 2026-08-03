@@ -1,3 +1,4 @@
+import itertools
 
 def _inline_mgpu_abstract_eval(
     *flat_args_and_transforms,

@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def byte_compile(  # noqa: C901
     py_files: Iterable[str],

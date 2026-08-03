@@ -1,3 +1,4 @@
+import itertools
 
 def test_replace_promoter():
     arg = ["Hello, planet!", "planet, Hello!"]

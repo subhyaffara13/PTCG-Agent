@@ -1,3 +1,4 @@
+import re
 
 def test_csc():
     x = symbols('x', real=True)

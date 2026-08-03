@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_native_function_declarations(
     *,

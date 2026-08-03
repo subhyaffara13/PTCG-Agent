@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def gen_register_replacement(
     unique_name: str,

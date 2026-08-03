@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_custom_getattr(
     value: Any, ignore_nn_module_getattr: bool = False

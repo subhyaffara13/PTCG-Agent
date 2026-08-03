@@ -1,3 +1,4 @@
+import json
 
 def _render_readable_state(pyspiel_state: pyspiel.State) -> str:
     """Build the multi-hand session view that goes into ``{readable_state_str}``.

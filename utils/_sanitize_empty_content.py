@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sanitize_empty_content(message_dict: dict[str, Any]) -> None:
     """

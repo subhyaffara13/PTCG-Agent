@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def update_responses_input_with_model_file_ids(
     input: Any,

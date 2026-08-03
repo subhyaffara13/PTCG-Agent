@@ -1,3 +1,5 @@
+import functools
+import logging
 
 def register_dataclass_type_with_jax_tree_util(data_class):
   """Register an existing dataclass so JAX knows how to handle it.

@@ -1,3 +1,5 @@
+import math
+
 
 def test_fht_agrees_with_fftlog(xp):
     # check that fht numerically agrees with the output from Fortran FFTLog,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_and_load_state_dict_in_model(
     model: PreTrainedModel,

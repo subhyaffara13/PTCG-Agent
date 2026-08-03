@@ -1,3 +1,4 @@
+import time
 
 def benchmark_render(env: gymnasium.Env, target_duration: int = 5) -> float:
     """A benchmark to measure the time of render().

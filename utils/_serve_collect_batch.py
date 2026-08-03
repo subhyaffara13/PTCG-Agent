@@ -1,3 +1,4 @@
+import time
 
 def _serve_collect_batch(self):
     batch = []

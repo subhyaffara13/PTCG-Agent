@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_meta_consistency_vt(
     vars1: list[VariableTracker],

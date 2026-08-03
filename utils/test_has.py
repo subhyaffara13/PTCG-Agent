@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_has():
     a, b, c = symbols('a, b, c', cls=Dummy)

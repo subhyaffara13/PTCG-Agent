@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def adaptive_grad_clip(
     clipping: jax.typing.ArrayLike,  # float

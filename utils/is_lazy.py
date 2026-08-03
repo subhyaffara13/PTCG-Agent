@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_lazy(param: Any) -> bool:
     """

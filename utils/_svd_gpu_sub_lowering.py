@@ -1,3 +1,4 @@
+from typing import Any
 
 def _svd_gpu_sub_lowering(ctx, operand, *, full_matrices, compute_uv,
                           target_name_prefix, algorithm):

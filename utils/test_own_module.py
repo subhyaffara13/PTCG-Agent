@@ -1,3 +1,5 @@
+import math
+
 
 def test_own_module():
     f = lambdify(x, sin(x), math)

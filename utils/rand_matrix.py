@@ -1,3 +1,4 @@
+import random
 
 def randMatrix(r, c=None, min=0, max=99, seed=None, symmetric=False,
                percent=100, prng=None):

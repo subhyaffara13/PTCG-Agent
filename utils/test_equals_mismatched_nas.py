@@ -1,3 +1,4 @@
+import copy
 
 def test_equals_mismatched_nas(nulls_fixture, nulls_fixture2):
     # GH#39650

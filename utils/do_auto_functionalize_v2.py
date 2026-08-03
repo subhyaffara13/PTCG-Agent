@@ -1,3 +1,4 @@
+from typing import Any
 
 def do_auto_functionalize_v2(
     mode: "torch._subclasses.functional_tensor.FunctionalTensorMode",

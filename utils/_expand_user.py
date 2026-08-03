@@ -1,3 +1,4 @@
+import os
 
 def _expand_user(filepath_or_buffer: str) -> str: ...
 

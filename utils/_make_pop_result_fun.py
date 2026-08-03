@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _make_pop_result_fun(
     info: FunctionInfo,

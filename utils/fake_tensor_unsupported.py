@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def fake_tensor_unsupported(fn: Callable[[Any, list[Any], Any], R]) -> Any:
     """

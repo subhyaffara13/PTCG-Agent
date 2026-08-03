@@ -1,3 +1,4 @@
+from typing import Any, Callable, List, Optional
 
 def _sort_by_gid(
     get_glyph_id: Callable[[str], int],

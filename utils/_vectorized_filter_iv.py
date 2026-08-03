@@ -1,3 +1,5 @@
+import math
+
 
 def _vectorized_filter_iv(input, function, size, footprint, output, mode, cval, origin,
                           axes, batch_memory):

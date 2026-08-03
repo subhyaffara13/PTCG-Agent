@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _cumulative_jvp_rule(primals, tangents, *, axis: int, reverse: bool,
                          combine_fn: Callable):

@@ -1,3 +1,4 @@
+import itertools
 
 def test_continued_fraction():
     assert cf_p(1, 1, 10, 0) == cf_p(1, 1, 0, 1)

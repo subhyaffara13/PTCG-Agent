@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def interpolating_poly(n, x, X='x', Y='y'):
     """Construct Lagrange interpolating polynomial for ``n``

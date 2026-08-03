@@ -1,3 +1,4 @@
+from typing import Any
 
 def append_repr_html_when_present(
     node: Any,

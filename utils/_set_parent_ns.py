@@ -1,3 +1,4 @@
+import sys
 
 def _set_parent_ns(packageName) -> None:
     parts = packageName.split('.')

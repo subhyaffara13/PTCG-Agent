@@ -1,3 +1,4 @@
+import re
 
 def _parse_marker_bytes(data: bytes) -> _MarkerInfo | None:
     # Trust nothing about attacker-controlled markers; any deviation returns None so callers fall through

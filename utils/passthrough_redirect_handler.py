@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional, Tuple
 
 def passthrough_redirect_handler(
         url: str,

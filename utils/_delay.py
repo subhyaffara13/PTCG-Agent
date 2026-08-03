@@ -1,3 +1,5 @@
+import random
+import time
 
 def _delay(seconds: float | tuple[float, float]) -> None:
     """Suspend the current thread for ``seconds``.

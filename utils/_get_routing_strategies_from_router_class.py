@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_routing_strategies_from_router_class() -> List[str]:
     """

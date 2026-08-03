@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_operators(operator_list_from_yaml: list[Any]) -> str:
     operator_list_part = [

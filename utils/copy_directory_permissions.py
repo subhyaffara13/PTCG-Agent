@@ -1,3 +1,4 @@
+import os
 
 def copy_directory_permissions(directory: str, target_file: BinaryIO) -> None:
     mode = (

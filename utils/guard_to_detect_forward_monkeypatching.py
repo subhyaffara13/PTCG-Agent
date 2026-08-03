@@ -1,3 +1,4 @@
+import functools
 
 def guard_to_detect_forward_monkeypatching(
     source: Source | None, mod: torch.nn.Module

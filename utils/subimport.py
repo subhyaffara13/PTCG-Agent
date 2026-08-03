@@ -1,3 +1,4 @@
+import sys
 
 def subimport(name):
     # We cannot do simply: `return __import__(name)`: Indeed, if ``name`` is

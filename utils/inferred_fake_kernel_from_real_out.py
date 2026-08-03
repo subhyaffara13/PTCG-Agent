@@ -1,3 +1,4 @@
+from typing import Any
 
 def inferred_fake_kernel_from_real_out(
     mode: FakeTensorMode, op: torch._ops.OpOverload, real_out: Any

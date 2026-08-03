@@ -1,3 +1,4 @@
+import copy
 
 def _laplacian_dense(graph, normed, axis, copy, form, dtype, symmetrized):
 

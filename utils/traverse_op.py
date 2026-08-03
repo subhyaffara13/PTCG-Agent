@@ -1,3 +1,4 @@
+from typing import Callable
 
 def traverse_op(
     op: ir.OpView,

@@ -1,3 +1,4 @@
+import re
 
 def _stabilize_multi_method_route_ids(routes) -> None:
     """FastAPI derives route IDs from a set of methods; make snapshots stable."""

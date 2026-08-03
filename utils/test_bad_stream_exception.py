@@ -1,3 +1,4 @@
+import os
 
 def test_bad_stream_exception(all_parsers, csv_dir_path):
     # see gh-13652

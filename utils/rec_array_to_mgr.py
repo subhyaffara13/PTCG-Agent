@@ -1,3 +1,4 @@
+import copy
 
 def rec_array_to_mgr(
     data: np.rec.recarray | np.ndarray,

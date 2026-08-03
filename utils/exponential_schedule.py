@@ -1,3 +1,4 @@
+from typing import Callable
 
 def exponential_schedule(
     start_e: float, end_e: float, duration: float

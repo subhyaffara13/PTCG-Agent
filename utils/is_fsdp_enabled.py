@@ -1,3 +1,4 @@
+import os
 
 def is_fsdp_enabled():
     if is_torch_available():

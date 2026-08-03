@@ -1,3 +1,4 @@
+import re
 
 def try_split(v: str | Sequence[str] | object, split_regex: str = ",") -> list[str]:
     """Split and trim a str or sequence (eg: list) of str into a list of str.

@@ -1,3 +1,4 @@
+import sys
 
 def ipython_in_subprocess(requested_backend_or_gui_framework, all_expected_backends):
     import pytest

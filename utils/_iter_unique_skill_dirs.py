@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _iter_unique_skill_dirs(roots: list[Path]) -> list[Path]:
     seen: set[Path] = set()

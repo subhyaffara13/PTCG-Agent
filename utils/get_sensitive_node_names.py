@@ -1,3 +1,4 @@
+import re
 
 def get_sensitive_node_names(matmul_nodes: list[str], encoder_layers: int, decoder_layers: int):
     """Identify sensitive MatMul nodes that should use INT8 in k_quant_mixed.

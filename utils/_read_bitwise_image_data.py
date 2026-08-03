@@ -1,3 +1,4 @@
+import itertools
 
 def _readBitwiseImageData(bitmapObject, name, attrs, content, ttFont):
     bitDepth = safeEval(attrs["bitDepth"])

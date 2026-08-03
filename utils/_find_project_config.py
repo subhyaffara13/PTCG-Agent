@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _find_project_config() -> Iterator[Path]:
     """Traverse up the directory tree to find a config file.

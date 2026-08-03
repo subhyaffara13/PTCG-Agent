@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def step_reward(
     state: EnvState,

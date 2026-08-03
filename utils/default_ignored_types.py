@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def default_ignored_types() -> tuple[type[Any], ...]:
     from ..fields import ComputedFieldInfo

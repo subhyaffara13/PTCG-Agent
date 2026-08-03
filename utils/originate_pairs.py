@@ -1,3 +1,4 @@
+from typing import Any
 
 def originate_pairs(
     actual: Any,

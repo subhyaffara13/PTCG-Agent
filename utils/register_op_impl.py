@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_op_impl(
     run_impl_check: Callable[[OpOverload], bool]

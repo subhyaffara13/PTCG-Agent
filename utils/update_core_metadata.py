@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_core_metadata(
     core_metadata: Any,

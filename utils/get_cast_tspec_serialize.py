@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_cast_tspec_serialize(
     tspec: dict[str, Any], value: Any, args: types.SaveArgs

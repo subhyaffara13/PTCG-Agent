@@ -1,3 +1,5 @@
+import sys
+import time
 
 def estimate_fine_tuning_time(df: pd.DataFrame) -> None:
     """

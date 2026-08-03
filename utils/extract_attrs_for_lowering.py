@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_attrs_for_lowering(mod: nn.Module) -> dict[str, Any]:
     """If `mod` is in `module_fetch_book`, fetch the mod's attributes that in the `module_fetch_book`

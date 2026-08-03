@@ -1,3 +1,4 @@
+import sys
 
 def _remote_module_reducer(remote_module):
     """Serialize a RemoteModule."""

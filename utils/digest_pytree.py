@@ -1,3 +1,4 @@
+from typing import Any
 
 def digest_pytree(pytree: Any) -> dict[str, str]:
   """Computes a per-leaf SHA-256 digest keyed by leaf path.

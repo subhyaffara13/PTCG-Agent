@@ -1,3 +1,4 @@
+import os
 
 def test_compression_utf_encoding(all_parsers, csv_dir_path, utf_value, encoding_fmt):
     # see gh-18071, gh-24130

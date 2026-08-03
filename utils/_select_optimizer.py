@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _select_optimizer(
     optimization: Literal["random-cd", "lloyd"] | None, config: dict

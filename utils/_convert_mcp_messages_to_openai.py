@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _convert_mcp_messages_to_openai(
     messages: List["SamplingMessage"],

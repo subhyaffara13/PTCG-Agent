@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _execvp(cmd: str, argv: list[str]) -> None:
     """execvp, except on Windows where it uses Popen

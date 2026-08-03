@@ -1,3 +1,4 @@
+from typing import Optional
 
 def latest_step_metadata(
     root_path: epath.PathLike, name_format: NameFormat[MetadataT]

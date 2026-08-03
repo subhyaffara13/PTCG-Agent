@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_torch_obj_rule_map() -> dict[Any, type["VariableTracker"]]:
     d: dict[Any, type[VariableTracker]] = {}

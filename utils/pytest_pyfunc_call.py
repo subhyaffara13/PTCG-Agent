@@ -1,3 +1,4 @@
+from typing import Any
 
 def pytest_pyfunc_call(pyfuncitem):  # type: ignore[no-untyped-def]
     """Run coroutines in an event loop instead of a normal function call."""

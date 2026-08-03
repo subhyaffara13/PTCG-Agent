@@ -1,3 +1,5 @@
+import os
+from typing import Optional, Union
 
 def get_ssl_verify(
     ssl_verify: Optional[Union[bool, str]] = None,

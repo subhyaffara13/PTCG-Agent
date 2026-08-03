@@ -1,3 +1,4 @@
+from typing import Callable
 
 def is_tensor_method_or_property(func: Callable) -> bool:
     """

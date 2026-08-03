@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_generic_websocket_passthrough_endpoint(
     provider: str,

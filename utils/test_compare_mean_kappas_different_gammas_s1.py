@@ -1,3 +1,5 @@
+import math
+
 
 def test_compare_mean_kappas_different_gammas_S1():
     G1 = nx.geometric_soft_configuration_graph(

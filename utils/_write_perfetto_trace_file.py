@@ -1,3 +1,6 @@
+import json
+import os
+import pathlib
 
 def _write_perfetto_trace_file(log_dir: os.PathLike | str):
   # Navigate to folder with the latest trace dump to find `trace.json.jz`

@@ -1,3 +1,4 @@
+import re
 
 def _build_cache(name, find_available, used_names):
     used_names.add(name)

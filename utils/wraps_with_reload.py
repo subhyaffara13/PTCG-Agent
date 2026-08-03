@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def wraps_with_reload(fn: Callable[..., Any]) -> Callable[[_FnT], _FnT]:
   """Wrap the function to support colab module reload."""

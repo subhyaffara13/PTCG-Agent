@@ -1,3 +1,4 @@
+import json
 
 def load_json(path: str) -> dict | list:
     with open(path, "r") as f:

@@ -1,3 +1,4 @@
+import os
 
 def extract_zipped_paths(path: str) -> str:
     """Replace nonexistent paths that look like they refer to a member of a zip

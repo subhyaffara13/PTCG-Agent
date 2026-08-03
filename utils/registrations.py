@@ -1,3 +1,4 @@
+from typing import Any
 
 def registrations() -> dict[str, list[tuple[str, Any, int]]]:
   api_version = 1

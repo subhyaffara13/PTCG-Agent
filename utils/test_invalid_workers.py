@@ -1,3 +1,4 @@
+import os
 
 def test_invalid_workers(x):
     cpus = os.cpu_count()

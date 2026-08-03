@@ -1,3 +1,4 @@
+import json
 
 def make_card_scoring(skills_dir):
     cards_file = skills_dir / "card_scoring.json"

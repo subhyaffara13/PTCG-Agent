@@ -1,3 +1,4 @@
+import functools
 
 def __read_test_cases():
     base = EXAMPLE_BASE_INFO

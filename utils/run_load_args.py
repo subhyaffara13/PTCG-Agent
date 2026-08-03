@@ -1,3 +1,4 @@
+from typing import Any
 
 def run_load_args(options: Any, mod: torch.nn.Module, load_args: Any) -> list[Any]:
     if not hasattr(load_args, "_version"):

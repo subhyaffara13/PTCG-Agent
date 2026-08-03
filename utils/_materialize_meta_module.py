@@ -1,3 +1,4 @@
+import itertools
 
 def _materialize_meta_module(
     root_module: nn.Module,

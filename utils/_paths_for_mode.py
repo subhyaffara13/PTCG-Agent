@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Tuple
 
 def _paths_for_mode(
     mode: DiscoveryMode, params: Optional[Dict[str, Any]]

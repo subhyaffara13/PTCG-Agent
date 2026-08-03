@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_abstract_state(
     config: configs.CheckpointConfig,

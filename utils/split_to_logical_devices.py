@@ -1,3 +1,5 @@
+import math
+
 
 def split_to_logical_devices(tensor: TfVal,
                              partition_dimensions: PartitionsOrReplicated):

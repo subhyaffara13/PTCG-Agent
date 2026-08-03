@@ -1,3 +1,4 @@
+import functools
 
 def _gradcheck_helper(
     func,

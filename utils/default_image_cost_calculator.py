@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def default_image_cost_calculator(
     model: str,

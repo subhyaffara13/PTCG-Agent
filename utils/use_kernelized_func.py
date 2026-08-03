@@ -1,3 +1,4 @@
+from typing import Callable
 
 def use_kernelized_func(module_names: list[Callable] | Callable):
     """

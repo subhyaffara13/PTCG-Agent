@@ -1,3 +1,4 @@
+from typing import Any
 
 def arg_tree_leaves(*args: PyTree, **kwargs: PyTree) -> list[Any]:
     """Get a flat list of arguments to this function

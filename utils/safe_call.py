@@ -1,3 +1,4 @@
+from typing import Callable
 
 def safe_call(func: Callable[_P, _R], *args: _P.args, **kwargs: _P.kwargs) -> _R:
     """Call a function in a separate process.

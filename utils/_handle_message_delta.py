@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _handle_message_delta(data: Dict, response: Dict) -> None:
     delta = data.get("delta", {})

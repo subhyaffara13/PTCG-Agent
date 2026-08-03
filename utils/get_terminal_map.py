@@ -1,3 +1,4 @@
+import os
 
 def get_terminal_map():
     """Get a map of device-id -> path as a dict.

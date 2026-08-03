@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def inherit_config(self_config: 'ConfigType', parent_config: 'ConfigType', **namespace: Any) -> 'ConfigType':
     if not self_config:

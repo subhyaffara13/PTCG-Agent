@@ -1,3 +1,4 @@
+from typing import Any, Callable, Union
 
 def _extract_default_help_str(
     obj: Union["TyperArgument", "TyperOption"], *, ctx: click.Context

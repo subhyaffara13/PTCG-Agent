@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _poll_for_authentication(
     base_url: str, key_id: str, poll_secret: str

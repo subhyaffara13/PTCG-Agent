@@ -1,3 +1,4 @@
+import sys
 
 def mock_colabtools():
   """colabtools only works in Colab, so mock it.."""

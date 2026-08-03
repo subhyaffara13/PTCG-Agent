@@ -1,3 +1,4 @@
+import os
 
 def _sycl_compiler() -> str:
     # Search order:

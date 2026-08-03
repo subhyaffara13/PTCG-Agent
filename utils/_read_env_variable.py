@@ -1,3 +1,4 @@
+import os
 
 def _read_env_variable(name: str) -> bool | str | None:
     value = os.environ.get(name)

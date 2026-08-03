@@ -1,3 +1,4 @@
+from typing import Callable
 
 def triton_builtin(f: Callable[..., _T]) -> Callable[..., _T]:
     """

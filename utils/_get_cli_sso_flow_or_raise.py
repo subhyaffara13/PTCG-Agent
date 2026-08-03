@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_cli_sso_flow_or_raise(login_id: Optional[str], cache: DualCache) -> dict:
     if not _is_valid_cli_sso_login_id(login_id):

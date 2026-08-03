@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def load_aws_kms(use_aws_kms: Optional[bool]):
     if use_aws_kms is None or use_aws_kms is False:

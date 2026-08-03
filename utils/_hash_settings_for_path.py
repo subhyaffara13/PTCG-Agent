@@ -1,3 +1,6 @@
+import itertools
+import os
+import sys
 
 def _hash_settings_for_path(path: tuple[str, ...]) -> _PathHashSettingsT:
     """Return a hash and the path settings that created it."""

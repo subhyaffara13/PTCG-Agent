@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _normalize_a2a_jsonrpc_response(
     response_dict: Dict[str, Any],

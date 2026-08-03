@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _tensordot(x: ArrayType, y: ArrayType, axes: Tuple[int, ...], backend: str = "numpy") -> ArrayType:
     """Base tensordot."""

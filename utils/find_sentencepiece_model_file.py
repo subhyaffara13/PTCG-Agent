@@ -1,3 +1,4 @@
+import os
 
 def find_sentencepiece_model_file(pretrained_model_name_or_path, **kwargs):
     """

@@ -1,3 +1,5 @@
+import math
+
 
 def _inv_totient_estimate(m):
     """

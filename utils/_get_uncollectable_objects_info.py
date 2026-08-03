@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_uncollectable_objects_info() -> Dict[str, Any]:
     """Get information about uncollectable objects (potential memory leaks)."""

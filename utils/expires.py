@@ -1,3 +1,4 @@
+import time
 
 def expires(after: float, scope: str | None = None, client: TimerClient | None = None):
     """

@@ -1,3 +1,4 @@
+import re
 
 def has_non_roman_characters(input_string):
     # Find any character outside the ASCII range

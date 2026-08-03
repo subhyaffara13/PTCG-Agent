@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _get_router_zero_cost_cache(llm_router: Router) -> Optional[Dict[str, bool]]:
     """

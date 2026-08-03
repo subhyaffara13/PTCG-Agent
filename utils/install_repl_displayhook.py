@@ -1,3 +1,4 @@
+import sys
 
 def install_repl_displayhook() -> None:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def multiple_of_validator(x: Any, multiple_of: Any) -> Any:
     try:

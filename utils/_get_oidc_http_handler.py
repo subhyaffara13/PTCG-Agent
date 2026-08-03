@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_oidc_http_handler(timeout: Optional[httpx.Timeout] = None) -> HTTPHandler:
     """

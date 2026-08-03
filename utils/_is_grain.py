@@ -1,3 +1,4 @@
+import sys
 
 def _is_grain(array: Array) -> bool:
   if 'grain.tensorflow' not in sys.modules:

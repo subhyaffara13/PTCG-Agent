@@ -1,3 +1,4 @@
+import logging
 
 def _get_cache(backend) -> CacheInterface | None:
   # TODO(b/289098047): consider making this an API and changing the callers of

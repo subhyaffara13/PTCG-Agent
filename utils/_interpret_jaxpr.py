@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def _interpret_jaxpr(
     jaxpr,

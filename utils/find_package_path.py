@@ -1,3 +1,4 @@
+import os
 
 def find_package_path(
     name: str, package_dir: Mapping[str, str], root_dir: StrPath

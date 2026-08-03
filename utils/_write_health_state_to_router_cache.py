@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _write_health_state_to_router_cache(
     healthy_endpoints: list,

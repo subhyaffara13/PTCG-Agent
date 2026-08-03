@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_supported_openai_params(
     model: str,

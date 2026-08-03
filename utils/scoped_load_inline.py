@@ -1,3 +1,4 @@
+import sys
 
 def scoped_load_inline(func):
 

@@ -1,3 +1,4 @@
+import re
 
 def find_config_file_line_number(path: str, section: str, setting_name: str) -> int:
     """Return the approximate location of setting_name within mypy config file.

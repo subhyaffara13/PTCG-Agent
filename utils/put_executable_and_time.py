@@ -1,3 +1,4 @@
+import logging
 
 def put_executable_and_time(
     cache_key: str,

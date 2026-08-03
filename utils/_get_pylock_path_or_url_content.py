@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_pylock_path_or_url_content(path_or_url: str, session: PipSession) -> str:
     # TODO: refactor - this is similar to req_file.get_file_content

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_torch_symbolic_type(
     value: Any,

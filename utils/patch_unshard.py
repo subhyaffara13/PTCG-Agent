@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_unshard(new_unshard: Callable):
     orig_unshard = FSDPParamGroup.unshard

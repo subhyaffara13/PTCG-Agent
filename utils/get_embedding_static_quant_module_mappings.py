@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def get_embedding_static_quant_module_mappings() -> dict[Callable, Any]:
     """Get module mapping, including mapping for embedding QAT"""

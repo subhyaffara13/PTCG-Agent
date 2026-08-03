@@ -1,3 +1,4 @@
+import logging
 
 def setup_log_file() -> contextlib.ExitStack:
     exitstack = contextlib.ExitStack()

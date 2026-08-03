@@ -1,3 +1,4 @@
+from typing import Any
 
 def _clone_aliasing_output(inputs: Sequence[Any], outputs: Sequence[Any]):
     # For tensors whose grad is None, create zero tensors as gradients

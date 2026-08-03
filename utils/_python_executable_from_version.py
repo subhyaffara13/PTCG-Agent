@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def _python_executable_from_version(python_version: tuple[int, int]) -> str:
     if sys.version_info[:2] == python_version:

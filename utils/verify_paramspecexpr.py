@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_paramspecexpr(
     stub: nodes.ParamSpecExpr, runtime: MaybeMissing[Any], object_path: list[str]

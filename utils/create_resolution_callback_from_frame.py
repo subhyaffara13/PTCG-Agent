@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def createResolutionCallbackFromFrame(frames_up: int = 0) -> Callable[[str], Any]:
     """

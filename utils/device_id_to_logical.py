@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def device_id_to_logical(
     mesh_context: pallas_utils.MeshInfo | None,

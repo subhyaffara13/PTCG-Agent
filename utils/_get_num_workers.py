@@ -1,3 +1,4 @@
+import os
 
 def _get_num_workers(verbose: bool) -> int | None:
     max_jobs = os.environ.get('MAX_JOBS')

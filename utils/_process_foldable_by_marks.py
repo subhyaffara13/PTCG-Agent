@@ -1,3 +1,4 @@
+from typing import Any
 
 def _process_foldable_by_marks(
     foldable: part_interface.FoldableTreeNode,

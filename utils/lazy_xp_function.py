@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def lazy_xp_function(
     func: Callable[..., Any] | tuple[type, str],

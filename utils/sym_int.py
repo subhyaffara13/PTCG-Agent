@@ -1,3 +1,5 @@
+import math
+
 
 def sym_int(a):
     r"""SymInt-aware utility for int casting.

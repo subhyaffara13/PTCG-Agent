@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def sort_imports(
     file_name: str,

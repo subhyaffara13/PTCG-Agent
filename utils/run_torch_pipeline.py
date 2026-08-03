@@ -1,3 +1,4 @@
+import time
 
 def run_torch_pipeline(
     pipe,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def estimate_nccl_collective_runtime_from_fx_node(
     fx_node: torch.fx.Node,

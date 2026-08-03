@@ -1,3 +1,4 @@
+from typing import Callable, Dict, List, Optional, Tuple, Union
 
 def play(board, column, mark, config):
     columns = config.columns

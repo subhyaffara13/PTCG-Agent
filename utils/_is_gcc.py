@@ -1,3 +1,4 @@
+import re
 
 def _is_gcc(cpp_compiler: str) -> bool:
     # Since "clang++" ends with "g++", the regex match below would validate on it.

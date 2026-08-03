@@ -1,3 +1,4 @@
+from typing import Any
 
 def pallas_make_block_spec(
     buf_shape: tuple[int, ...],

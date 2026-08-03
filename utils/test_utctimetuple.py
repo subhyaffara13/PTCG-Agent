@@ -1,3 +1,4 @@
+import time
 
 def test_utctimetuple():
     # GH 32174

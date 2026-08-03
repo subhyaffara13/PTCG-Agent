@@ -1,3 +1,4 @@
+from typing import Any
 
 def arithmetic_op(left: ArrayLike, right: Any, op):
     """

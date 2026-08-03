@@ -1,3 +1,5 @@
+import math
+
 
 def _map_dimensions_to_gemini_image_size(width: int, height: int) -> str:
     effective_square_side = math.sqrt(width * height)

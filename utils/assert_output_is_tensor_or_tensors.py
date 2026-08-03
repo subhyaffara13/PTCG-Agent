@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_output_is_tensor_or_tensors(output: Any, api: str) -> None:
     if isinstance(output, torch.Tensor):

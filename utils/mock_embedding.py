@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def mock_embedding(model: str, mock_response: Optional[List[float]]):
     if mock_response is None:

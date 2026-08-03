@@ -1,3 +1,4 @@
+from typing import Any
 
 def _belong_to_module(obj: Any, module: types.ModuleType) -> bool:
   """Returns `True` if the instance, class, function belong to module."""

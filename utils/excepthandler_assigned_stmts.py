@@ -1,3 +1,4 @@
+from typing import Any
 
 def excepthandler_assigned_stmts(
     self: nodes.ExceptHandler,

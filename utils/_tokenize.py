@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def _tokenize(data: bytes, skip_ws: bool) -> T.Generator[_Token, int, None]:
     """

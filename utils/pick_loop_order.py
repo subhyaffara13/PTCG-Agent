@@ -1,3 +1,4 @@
+import functools
 
 def pick_loop_order(
     stride_lengths: list[list[int]],

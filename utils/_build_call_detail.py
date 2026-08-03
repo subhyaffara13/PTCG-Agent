@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_call_detail(
     record: dict[str, Any],

@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def call_highest_priority(method_name: str
     ) -> Callable[[Callable[[T1, T2], T3]], Callable[[T1, T2], T3]]:

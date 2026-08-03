@@ -1,3 +1,4 @@
+import re
 
 def getlincoef(e, xset):  # e = a*x+b ; x in xset
     """

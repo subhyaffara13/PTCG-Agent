@@ -1,3 +1,4 @@
+import os
 
 def _test_environ_pythonpath(
     new_pythonpath: str | None = None,

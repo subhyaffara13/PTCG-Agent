@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_config(config: dict[str, Any]) -> None:
   """Performs basic validation on the loaded YAML config."""

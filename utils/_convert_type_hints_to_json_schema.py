@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _convert_type_hints_to_json_schema(func: Callable) -> dict:
     type_hints = get_type_hints(func)

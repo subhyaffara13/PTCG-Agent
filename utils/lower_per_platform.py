@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_per_platform(ctx: LoweringRuleContext,
                        description: str,

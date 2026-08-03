@@ -1,3 +1,4 @@
+import functools
 
 def _array_from_process_local_data(
     local_data: np.ndarray, sharding: Sharding,

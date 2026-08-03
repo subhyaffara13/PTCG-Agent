@@ -1,3 +1,4 @@
+from typing import Set
 
 def test_torch_with_constants(constants: Set[int]) -> None:
     torch = pytest.importorskip("torch")

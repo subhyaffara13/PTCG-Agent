@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_SetKind_Unions():
     assert Union(FiniteSet(Matrix([1, 2])), Interval(1, 2)).kind is SetKind(UndefinedKind)

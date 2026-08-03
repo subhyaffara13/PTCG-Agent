@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _generate_azure_ad_redis_token(
     azure_client_id: Optional[str] = None,

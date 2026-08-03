@@ -1,3 +1,4 @@
+from typing import Callable
 
 def saved_residuals(f: Callable,
                     *args, **kwargs) -> list[tuple[core.AbstractValue, str]]:

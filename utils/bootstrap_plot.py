@@ -1,3 +1,4 @@
+import random
 
 def bootstrap_plot(
     series: Series,

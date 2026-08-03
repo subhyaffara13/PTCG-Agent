@@ -1,3 +1,4 @@
+from typing import Any
 
 def gen_ops(device_type: str) -> dict[Any, Any]:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _normalize_oci_finish_reason(raw: Optional[str]) -> Optional[str]:
     """Map an OCI-specific finish reason to its OpenAI-standard equivalent.

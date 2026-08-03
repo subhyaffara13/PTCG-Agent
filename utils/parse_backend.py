@@ -1,3 +1,4 @@
+from typing import Optional
 
 def parse_backend(arrays: Sequence[ArrayType], backend: Optional[str]) -> str:
     """Find out what backend we should use, dipatching based on the first

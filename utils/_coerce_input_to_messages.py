@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _coerce_input_to_messages(input_value: Any) -> List[Dict[str, Any]]:
     """Coerce a Responses-API ``data["input"]`` value into chat-style messages."""

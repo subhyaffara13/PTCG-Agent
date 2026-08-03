@@ -1,3 +1,5 @@
+import json
+import os
 
 def compile_so(aoti_dir: str, aoti_files: list[str], so_path: str) -> str:
     def get_aoti_file_with_suffix(suffix: str) -> str:

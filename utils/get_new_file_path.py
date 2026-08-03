@@ -1,3 +1,6 @@
+import time
+from pathlib import Path
+
 
 def get_new_file_path(log_dir: Path) -> Path:
     timestamp = int(time.time())

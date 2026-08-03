@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_ktc_generator(
     template: KernelTemplate | ExternKernelChoice,

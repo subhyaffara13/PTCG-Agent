@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _extract_response_text(response: Any) -> str:
     """Extract text from every LLM response choice."""

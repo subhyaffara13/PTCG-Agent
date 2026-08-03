@@ -1,3 +1,4 @@
+import sys
 
 def b(x): # deal with b'foo' versus 'foo'
     import codecs

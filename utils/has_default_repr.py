@@ -1,3 +1,4 @@
+from typing import Any
 
 def has_default_repr(cls: Any) -> bool:
   """Returns `True` if the dataclass do not overwrite `__repr__`."""

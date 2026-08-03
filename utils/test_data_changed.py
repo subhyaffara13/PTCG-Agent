@@ -1,3 +1,4 @@
+import sys
 
 def test_data_changed():
     FooS = dill.copy(Foo)

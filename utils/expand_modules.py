@@ -1,3 +1,5 @@
+import os
+import sys
 
 def expand_modules(
     files_or_modules: Sequence[str],

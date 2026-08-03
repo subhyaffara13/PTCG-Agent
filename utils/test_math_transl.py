@@ -1,3 +1,5 @@
+import math
+
 
 def test_math_transl():
     from sympy.utilities.lambdify import MATH_TRANSLATIONS

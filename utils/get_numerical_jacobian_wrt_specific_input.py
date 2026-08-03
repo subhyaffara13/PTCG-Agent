@@ -1,3 +1,4 @@
+import functools
 
 def get_numerical_jacobian_wrt_specific_input(
     fn, input_idx, inputs, outputs, eps, input=None, is_forward_ad=False

@@ -1,3 +1,4 @@
+from typing import Any
 
 def non_kwarg_to(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

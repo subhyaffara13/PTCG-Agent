@@ -1,3 +1,4 @@
+from typing import Any
 
 def _import_class(fqp: str):
     """Take a fully-qualified path and return the imported class or identifier.

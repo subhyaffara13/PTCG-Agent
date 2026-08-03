@@ -1,3 +1,4 @@
+import sys
 
 def test_python_alreadyset_in_destructor(monkeypatch, capsys):
     hooked = False

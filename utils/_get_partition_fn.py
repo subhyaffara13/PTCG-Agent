@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_partition_fn(
     fw_hop_node: torch.fx.Node, aot_config: AOTConfig

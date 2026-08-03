@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _filter_conflicting_keys(d: dict[str, Any]) -> dict[str, Any]:
   """Filters metadata keys that conflict due to parent-child relationships.

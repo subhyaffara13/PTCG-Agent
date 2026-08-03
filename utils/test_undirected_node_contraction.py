@@ -1,3 +1,4 @@
+import copy
 
 def test_undirected_node_contraction(store_contraction_as, copy, selfloops):
     """Tests for node contraction in an undirected graph."""

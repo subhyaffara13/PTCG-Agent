@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def same_two_models(
     gm: torch.fx.GraphModule,

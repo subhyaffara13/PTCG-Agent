@@ -1,3 +1,4 @@
+import sys
 
 def decoding_stream(
     stream: BufferedReader | BytesIO,

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def get_gemini_image_generation_config(
     model: str,

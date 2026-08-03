@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def subset_glyphs(self, s):
     cff = self.cff

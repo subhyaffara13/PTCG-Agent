@@ -1,3 +1,4 @@
+import re
 
 def redact_locations(err_msg: str) -> str:
   """Removes location strings from an error message."""

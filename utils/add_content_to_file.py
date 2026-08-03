@@ -1,3 +1,4 @@
+import os
 
 def add_content_to_file(file_name: str | os.PathLike, new_content: str, add_after: str):
     """

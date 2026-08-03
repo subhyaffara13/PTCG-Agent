@@ -1,3 +1,4 @@
+import os
 
 def _mcts_search_internal(self, game_state, legal_actions, time_remaining):
     if not legal_actions: return "pass"

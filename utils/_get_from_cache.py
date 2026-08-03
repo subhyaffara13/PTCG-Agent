@@ -1,3 +1,4 @@
+import itertools
 
 def _get_from_cache(cache, key, *, backend_name=None, mutations=None):
     """Search the networkx cache for a graph that is compatible with ``key``.

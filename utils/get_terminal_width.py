@@ -1,3 +1,4 @@
+import os
 
 def get_terminal_width() -> int:
     """Get current terminal width if possible, otherwise return the default one."""

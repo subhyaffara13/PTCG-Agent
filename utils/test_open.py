@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_open(mocker):
     with tools._open('-') as fobj:

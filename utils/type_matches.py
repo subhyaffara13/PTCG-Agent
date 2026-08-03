@@ -1,3 +1,4 @@
+from typing import Any
 
 def type_matches(signature_type: Any, argument_type: Any) -> bool:
     sig_origin_type = getattr(signature_type, "__origin__", signature_type)

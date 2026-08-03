@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_memory_space_aval(aval: jax_core.AbstractValue) -> Any:
   """Queries the memory space of an array."""

@@ -1,3 +1,5 @@
+import random
+from typing import Any, Dict, List, Union
 
 def simple_shuffle(
     llm_router_instance: LitellmRouter,

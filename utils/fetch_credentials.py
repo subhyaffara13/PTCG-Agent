@@ -1,3 +1,5 @@
+import os
+from typing import Dict, Optional, Union
 
 def fetch_credentials(
     service_key: Optional[Union[str, dict]] = None,

@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def load_processed_players(processed_file: Path) -> dict:
     if processed_file.exists():

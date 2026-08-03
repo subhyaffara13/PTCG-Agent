@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _resolve_update_roots(
     *,

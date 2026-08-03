@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def _async_worker(
     index: int,

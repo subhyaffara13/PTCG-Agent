@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _check_repo_is_trusted(
     repo_owner,

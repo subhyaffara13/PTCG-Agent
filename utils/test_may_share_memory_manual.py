@@ -1,3 +1,4 @@
+import itertools
 
 def test_may_share_memory_manual():
     # Manual test cases for may_share_memory

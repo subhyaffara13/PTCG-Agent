@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_fake_exception(fn: Callable[[], Any]) -> Any:
     try:

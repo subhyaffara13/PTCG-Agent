@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _summarise_entity_data(data: Dict[str, Any], entity_label: str) -> str:
     """Summarise team/tag entity usage data."""

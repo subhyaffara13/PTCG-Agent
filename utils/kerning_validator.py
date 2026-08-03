@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def kerningValidator(data: Any) -> tuple[bool, Optional[str]]:
     """

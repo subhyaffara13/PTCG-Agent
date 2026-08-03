@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def generate_pjrt_gpu_plugin_options() -> _NameValueMapping:
   """Generates the PjRt GPU plugin options.

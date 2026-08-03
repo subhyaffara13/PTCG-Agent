@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _register_post_backward_reshard_only_hook(
     state: _FSDPState,

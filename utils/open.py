@@ -1,3 +1,5 @@
+import os
+from typing import Callable, List, Optional, Union
 
 def open(
     urlpath,

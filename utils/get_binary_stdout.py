@@ -1,3 +1,4 @@
+import sys
 
 def get_binary_stdout() -> t.BinaryIO:
     writer = _find_binary_writer(sys.stdout)

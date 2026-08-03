@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_module_variables(
   path: tuple[str, ...],

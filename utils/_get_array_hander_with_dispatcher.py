@@ -1,3 +1,4 @@
+import logging
 
 def _get_array_hander_with_dispatcher(
     dispatcher: dispatchers.Dispatcher | None,

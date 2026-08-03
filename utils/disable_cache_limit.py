@@ -1,3 +1,4 @@
+import sys
 
 def disable_cache_limit() -> Generator[None, None, None]:
     prior = config.recompile_limit

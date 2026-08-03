@@ -1,3 +1,4 @@
+from typing import List, Tuple, Union
 
 def _dispatch_index_op_fold_results(
     ofrs: Sequence[Union[Operation, OpView, Value, int]],

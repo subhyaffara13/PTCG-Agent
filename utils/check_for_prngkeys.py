@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_for_prngkeys(fun_name: str, *args: Any):
   """Check if args don't match and none of the args have typed prng dtype"""

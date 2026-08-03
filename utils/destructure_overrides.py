@@ -1,3 +1,4 @@
+from typing import Any
 
 def destructure_overrides(toml_data: dict[str, Any]) -> dict[str, Any]:
     """Take the new [[tool.mypy.overrides]] section array in the pyproject.toml file,

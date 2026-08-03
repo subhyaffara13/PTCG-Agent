@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _is_prefix(candidate, target):
     """Check whether `candidate` is a prefix of `target`."""

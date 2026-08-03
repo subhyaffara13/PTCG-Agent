@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_dim(arg: Any, orig_ndim: int, allow_none: bool = True) -> DimEntry:
     """

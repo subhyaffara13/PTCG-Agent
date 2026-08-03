@@ -1,3 +1,4 @@
+import sys
 
 def show_options(solver=None, method=None, disp=True):
     """

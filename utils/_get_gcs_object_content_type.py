@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _get_gcs_object_content_type(
     image_url: str,

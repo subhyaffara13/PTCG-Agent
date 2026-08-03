@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _side_expander(prop_fmt: str) -> Callable:
     """

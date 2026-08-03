@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _coerce_text(value) -> Optional[str]:
     """Best-effort text extraction from a message-content value.

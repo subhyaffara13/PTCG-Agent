@@ -1,3 +1,4 @@
+from typing import Callable
 
 def angle_spectrum(
     x: ArrayLike,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_flex_attention_lse_kwargs(return_lse: bool) -> dict[str, bool | Optional["AuxRequest"]]:
     """

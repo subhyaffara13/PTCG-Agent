@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _maybe_wrap_formatter(
     formatter: BaseFormatter | None = None,

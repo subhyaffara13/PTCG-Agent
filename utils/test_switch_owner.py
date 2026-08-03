@@ -1,3 +1,4 @@
+import os
 
 def test_switch_owner(get_module, policy):
     a = get_module.get_array()

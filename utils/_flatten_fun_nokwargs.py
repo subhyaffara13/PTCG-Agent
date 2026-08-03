@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _flatten_fun_nokwargs(f: Callable,
                           store: lu.Store, in_tree: PyTreeDef,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_httpx_client(params: Optional[dict] = None) -> HTTPHandler:
     """

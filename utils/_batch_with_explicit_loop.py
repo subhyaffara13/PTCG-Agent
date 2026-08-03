@@ -1,3 +1,4 @@
+from typing import Any
 
 def _batch_with_explicit_loop(
     args: Sequence[jax_typing.Array],

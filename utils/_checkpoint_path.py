@@ -1,3 +1,4 @@
+import os
 
 def _checkpoint_path(
   ckpt_dir: str, step: int | float | str, prefix: str = 'checkpoint_'

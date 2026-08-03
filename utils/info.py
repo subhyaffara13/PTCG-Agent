@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def info(pretty: bool = False, best: bool = False) -> InfoDict:
     """

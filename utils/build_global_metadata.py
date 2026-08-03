@@ -1,3 +1,4 @@
+import copy
 
 def build_global_metadata(
     gathered_metadatas: Sequence[ShardedTensorMetadata | None],

@@ -1,3 +1,4 @@
+import time
 
 def cd_index(G, node, time_delta, *, time="time", weight=None):
     r"""Compute the CD index for `node` within the graph `G`.

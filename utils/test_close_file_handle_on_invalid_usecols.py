@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_close_file_handle_on_invalid_usecols(all_parsers, temp_file):
     # GH 45384

@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_custom_logger_compatible_class(
     logging_integration: _custom_logger_compatible_callbacks_literal,

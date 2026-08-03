@@ -1,3 +1,4 @@
+import time
 
 def init_windows_clipboard():
     global HGLOBAL, LPVOID, DWORD, LPCSTR, INT

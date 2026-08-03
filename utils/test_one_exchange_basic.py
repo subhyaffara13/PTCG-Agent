@@ -1,3 +1,4 @@
+import random
 
 def test_one_exchange_basic():
     G = nx.complete_graph(5)

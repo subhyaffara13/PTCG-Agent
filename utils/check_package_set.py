@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_package_set(
     package_set: PackageSet, should_ignore: Callable[[str], bool] | None = None

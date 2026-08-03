@@ -1,3 +1,4 @@
+from typing import Optional
 
 def encrypt_value_helper(value: str, new_encryption_key: Optional[str] = None):
     signing_key = new_encryption_key or _get_salt_key()

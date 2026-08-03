@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_request_tags_for_cost_tracking(
     sl_object: Optional[StandardLoggingPayload],

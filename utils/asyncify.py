@@ -1,3 +1,5 @@
+import functools
+from typing import Callable, Optional
 
 def asyncify(function: Callable[T_ParamSpec, T_Retval]) -> Callable[T_ParamSpec, Awaitable[T_Retval]]:
     """

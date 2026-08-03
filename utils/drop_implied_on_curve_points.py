@@ -1,3 +1,4 @@
+from typing import Set
 
 def dropImpliedOnCurvePoints(*interpolatable_glyphs: Glyph) -> Set[int]:
     """Drop impliable on-curve points from the (simple) glyph or glyphs.

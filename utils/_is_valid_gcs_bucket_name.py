@@ -1,3 +1,4 @@
+import re
 
 def _is_valid_gcs_bucket_name(bucket: str) -> bool:
     """

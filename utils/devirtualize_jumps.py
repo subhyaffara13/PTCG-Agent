@@ -1,3 +1,4 @@
+import sys
 
 def devirtualize_jumps(instructions: list[Instruction]) -> None:
     """Fill in args for virtualized jump target after instructions may have moved"""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def aot_compile_fullgraph(
     model: Any,

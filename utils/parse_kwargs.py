@@ -1,3 +1,4 @@
+import re
 
 def parse_kwargs(desc):
     r"""Map a description of args to a dictionary of {argname: description}.

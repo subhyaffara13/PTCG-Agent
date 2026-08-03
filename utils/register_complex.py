@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_complex(
     op: OpType,

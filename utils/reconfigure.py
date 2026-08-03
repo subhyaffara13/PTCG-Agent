@@ -1,3 +1,4 @@
+from typing import Any
 
 def reconfigure(*args: Any, **kwargs: Any) -> None:
     """Reconfigures the global console by replacing it with another.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def serialize_torch_artifact(
     artifact: Any | None, pickle_protocol: int = DEFAULT_PICKLE_PROTOCOL

@@ -1,3 +1,4 @@
+import re
 
 def get_original_file_id(encoded_id: str) -> str:
     """

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_determinism_check(objects, fmt, usetex):
     """

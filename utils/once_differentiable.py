@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def once_differentiable(
     fn: Callable[Concatenate[_T, _P], _R],

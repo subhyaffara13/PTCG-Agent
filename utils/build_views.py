@@ -1,3 +1,5 @@
+import random
+from typing import Any, Dict, List, Optional, Tuple
 
 def build_views(
     string: str, dimension_dict: Optional[Dict[str, int]] = None, array_function: Optional[Any] = None

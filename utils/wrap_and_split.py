@@ -1,3 +1,4 @@
+import random
 
 def wrap_and_split():
   key = random.key(42)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_chunks_output(
     chunks_output_: list[Any],

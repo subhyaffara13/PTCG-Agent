@@ -1,3 +1,5 @@
+import os
+import re
 
 def _parse_requirement_url(req_str):
     original_req_str = req_str

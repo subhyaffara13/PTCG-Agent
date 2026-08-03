@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_module_forward_pre_hook(hook: Callable[..., None]) -> RemovableHandle:
     r"""Register a forward pre-hook common to all modules.

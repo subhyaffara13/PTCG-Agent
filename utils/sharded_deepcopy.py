@@ -1,3 +1,4 @@
+import copy
 
 def sharded_deepcopy(args, kwargs, pg):
     # NOTE: we directly implement deepcopy magic method

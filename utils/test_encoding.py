@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_encoding(mocker, log_mock):
     mi_cfg = cli.Config(**BASE_CONFIG.config_values)

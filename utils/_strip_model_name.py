@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _strip_model_name(model: str, custom_llm_provider: Optional[str]) -> str:
     if custom_llm_provider and custom_llm_provider in ["bedrock", "bedrock_converse"]:

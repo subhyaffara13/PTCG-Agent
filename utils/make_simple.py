@@ -1,3 +1,4 @@
+import time
 
 def make_simple(*args, **kwargs):
     f = netcdf_file(*args, **kwargs)

@@ -1,3 +1,4 @@
+import os
 
 def egg_link_path_from_location(raw_name: str) -> str | None:
     """

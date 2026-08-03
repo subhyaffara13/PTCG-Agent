@@ -1,3 +1,4 @@
+import random
 
 def test_eval_repr_invariant():
     """Test that eval(repr(x)) == x"""

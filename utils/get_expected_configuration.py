@@ -1,3 +1,5 @@
+import copy
+import json
 
 def get_expected_configuration(
     configuration_path: str, default_configuration: PylintConfiguration

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _validate_token_response(
     token_response: Dict[str, Any],

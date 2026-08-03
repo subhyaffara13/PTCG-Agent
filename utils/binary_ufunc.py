@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def binary_ufunc(identity: Any, reduce: Callable[..., Any] | None = None,
                  accumulate: Callable[..., Any] | None = None,

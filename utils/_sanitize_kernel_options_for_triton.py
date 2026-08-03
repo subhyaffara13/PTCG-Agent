@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sanitize_kernel_options_for_triton(
     kernel_options: dict[str, Any],

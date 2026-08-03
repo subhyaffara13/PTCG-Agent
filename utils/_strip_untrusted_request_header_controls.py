@@ -1,3 +1,4 @@
+from typing import Any
 
 def _strip_untrusted_request_header_controls(
     headers: Any,

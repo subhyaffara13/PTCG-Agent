@@ -1,3 +1,5 @@
+import math
+
 
 def resolve_conint(cls):  # type: ignore[no-untyped-def]
     min_value = cls.ge

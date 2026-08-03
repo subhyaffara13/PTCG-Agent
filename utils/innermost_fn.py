@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def innermost_fn(fn: Callable[..., Any]) -> Callable[..., Any]:
     """

@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def generic_cost_per_token(
     model: str,

@@ -1,3 +1,5 @@
+import time
+from typing import Callable
 
 def profile_inline_call(
     output: OutputGraph,

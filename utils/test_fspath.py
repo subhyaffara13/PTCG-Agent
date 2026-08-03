@@ -1,3 +1,4 @@
+import os
 
 def test_fspath(temp_h5_path):
     with HDFStore(temp_h5_path) as store:

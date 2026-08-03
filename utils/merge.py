@@ -1,3 +1,4 @@
+import copy
 
 def merge(arg, default, override, args, kwargs):
     '''Merge all the possible arguments into a tuple and a dictionary.

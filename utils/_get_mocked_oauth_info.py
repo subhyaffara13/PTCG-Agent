@@ -1,3 +1,4 @@
+import time
 
 def _get_mocked_oauth_info() -> dict:
     token = get_token()

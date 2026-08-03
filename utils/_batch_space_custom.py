@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _batch_space_custom(space: Graph | Text | Sequence | OneOf, n: int = 1):
     # Without deepcopy, then the space.np_random is batched_space.spaces[0].np_random

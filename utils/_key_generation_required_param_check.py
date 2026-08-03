@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _key_generation_required_param_check(
     data: GenerateKeyRequest, required_params: Optional[List[str]]

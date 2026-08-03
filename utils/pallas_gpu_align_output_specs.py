@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def pallas_gpu_align_output_specs(
     out_shapes: tuple[Any, ...],

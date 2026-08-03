@@ -1,3 +1,4 @@
+from typing import Any
 
 def all_identical(left: Iterable[Any], right: Iterable[Any]) -> bool:
     """

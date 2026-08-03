@@ -1,3 +1,4 @@
+from typing import Optional
 
 def record_streaming_lag_from_response(
     response,

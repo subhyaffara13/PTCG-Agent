@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def optimize_stable_diffusion_pipeline(
     input_dir: str,

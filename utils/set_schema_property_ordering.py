@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def set_schema_property_ordering(
     schema: Dict[str, Any], depth: int = 0

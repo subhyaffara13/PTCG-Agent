@@ -1,3 +1,4 @@
+from typing import Union
 
 def cosine_similarity(g: jit_utils.GraphContext, x1, x2, dim, eps):
     cross = symbolic_helper._reducesum_helper(

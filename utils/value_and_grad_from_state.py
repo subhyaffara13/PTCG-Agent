@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def value_and_grad_from_state(
     value_fn: Callable[..., jax.typing.ArrayLike],

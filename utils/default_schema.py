@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_schema(schema: Any, data: Any) -> Any:
     default = get(schema, path=["default"])

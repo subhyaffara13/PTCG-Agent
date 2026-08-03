@@ -1,3 +1,4 @@
+from typing import Any
 
 def optimize(node: nodes.Node, environment: "Environment") -> nodes.Node:
     """The context hint can be used to perform an static optimization

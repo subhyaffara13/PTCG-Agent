@@ -1,3 +1,5 @@
+import math
+
 
 def burr12_pdf(x, cc, dd):
     if x > 0:

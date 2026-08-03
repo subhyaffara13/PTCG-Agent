@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def make_graph_return_tuple(
     gm: GraphModule,

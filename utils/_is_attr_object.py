@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_attr_object(obj: Any) -> bool:
     """Check if an object was created with attrs module."""

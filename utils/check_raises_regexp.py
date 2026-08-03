@@ -1,3 +1,4 @@
+import re
 
 def check_raises_regexp(thunk, err_type, pattern):
   try:

@@ -1,3 +1,4 @@
+from typing import List, Optional, Set, Tuple
 
 def _extract_upstream_auth_failure(
     exc: BaseException,

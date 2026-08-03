@@ -1,3 +1,4 @@
+import os
 
 def directory_arg(path: str, optname: str) -> str:
     """Argparse type validator for directory arguments.

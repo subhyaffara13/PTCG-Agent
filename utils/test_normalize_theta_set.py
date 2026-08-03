@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_normalize_theta_set():
     # Interval

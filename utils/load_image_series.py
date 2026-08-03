@@ -1,3 +1,4 @@
+import os
 
 def loadImageSeries(filelist: list[str] | None = None) -> list[Image.Image] | None:
     """create a list of :py:class:`~PIL.Image.Image` objects for use in a montage"""

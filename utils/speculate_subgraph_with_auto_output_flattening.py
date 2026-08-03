@@ -1,3 +1,4 @@
+from typing import Optional
 
 def speculate_subgraph_with_auto_output_flattening(
     tx: "InstructionTranslator",

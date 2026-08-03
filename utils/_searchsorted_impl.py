@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _searchsorted_impl(sorted_arr: ArrayLike, query: ArrayLike, *, dimension: int,
                        batch_dims: int, side: str, dtype: np.dtype, method: str):

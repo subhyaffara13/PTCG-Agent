@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _parse_value_and_timestamp(s: str) -> Tuple[float, Optional[float]]:
     s = s.lstrip()

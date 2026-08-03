@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_model_config(model: type[pydantic.BaseModel]) -> Any:
     if PYDANTIC_V1:

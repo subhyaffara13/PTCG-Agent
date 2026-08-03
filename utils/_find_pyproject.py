@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _find_pyproject() -> Path:
     """Search for file pyproject.toml in the parent directories recursively.

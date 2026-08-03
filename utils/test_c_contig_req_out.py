@@ -1,3 +1,4 @@
+import random
 
 def test_c_contig_req_out(dtype):
     # GH 18704

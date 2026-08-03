@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_state_dict(target) -> dict[str, Any]:
   """Returns a dictionary with the state of the given target."""

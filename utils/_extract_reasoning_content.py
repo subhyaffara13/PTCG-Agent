@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _extract_reasoning_content(message: dict) -> Tuple[Optional[str], Optional[str]]:
     """

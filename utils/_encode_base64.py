@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _encode_base64(
     data: bytes, maxlinelength: Optional[int] = 76, indent_level: int = 1

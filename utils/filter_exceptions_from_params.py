@@ -1,3 +1,4 @@
+from typing import Any
 
 def filter_exceptions_from_params(data: Any, max_depth: int = 20) -> Any:
     """

@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def extract_unified_uuid_from_unified_id(
     unified_id: str,

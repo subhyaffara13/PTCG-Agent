@@ -1,3 +1,5 @@
+import os
+import sys
 
 def read_types_packages_to_install(cache_dir: str, after_run: bool) -> list[str]:
     if not os.path.isdir(cache_dir):

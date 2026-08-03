@@ -1,3 +1,6 @@
+import functools
+import logging
+from typing import Optional, Union
 
 def broadcast_one_replica_to_all(
     in_tree: tuple[jax.Array, ...],

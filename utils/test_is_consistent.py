@@ -1,3 +1,4 @@
+import time
 
 def test_is_consistent():
     assert DimensionSystem((length, time)).is_consistent is True

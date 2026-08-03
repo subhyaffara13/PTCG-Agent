@@ -1,3 +1,4 @@
+from typing import Callable
 
 def cached_property(func: Callable) -> property:
     cached_name = f"_cached_{func}"

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _simulate_comms_compute(
     pipeline_order, stage_to_rank: Callable[[int], int], num_stages: int

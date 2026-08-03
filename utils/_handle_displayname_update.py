@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _handle_displayname_update(
     op_type: str, value: Any, update_data: Dict[str, Any]

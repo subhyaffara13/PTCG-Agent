@@ -1,3 +1,4 @@
+import os
 
 def write_safety_flag(egg_dir, safe) -> None:
     # Write or remove zip safety flag file(s)

@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable, Optional, Union
 
 def get_azure_ad_token_provider(
     azure_scope: Optional[str] = None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _copy_and_set_values(
     self: Model,

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_piecewise_solveset():
     eq = Piecewise((x - 2, Gt(x, 2)), (2 - x, True)) - 3

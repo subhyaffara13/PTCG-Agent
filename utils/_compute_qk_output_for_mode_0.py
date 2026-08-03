@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_qk_output_for_mode_0(
     Q: torch.Tensor,

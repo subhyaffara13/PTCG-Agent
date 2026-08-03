@@ -1,3 +1,4 @@
+import logging
 
 def filter_invalid_unicode_from_table(table):
     """

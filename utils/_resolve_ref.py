@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _resolve_ref(
     param: Dict[str, Any], component_params: Dict[str, Any]

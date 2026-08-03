@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_duration_in_model_call_details(
     logging_obj: Any,  # we're not guaranteed this will be `LiteLLMLoggingObject`

@@ -1,3 +1,4 @@
+import re
 
 def get_model_params_and_category_embeddings(model_name) -> str:
     """

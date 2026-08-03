@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def _gen_ops_cached(arch: str, version: str, device_type: str) -> dict[Any, Any]:
     # Note: Cache needs to be specific for cuda architecture and version

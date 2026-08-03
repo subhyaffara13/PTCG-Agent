@@ -1,3 +1,4 @@
+import json
 
 def basichandlers(extension: str, data):
     """Transforms raw data (byte stream) into python objects.

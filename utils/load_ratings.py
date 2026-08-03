@@ -1,3 +1,4 @@
+import json
 
 def load_ratings(elo_file):
     import logging

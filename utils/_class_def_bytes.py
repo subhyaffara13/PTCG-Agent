@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _classDef_bytes(
     class_data: List[Tuple[List[Tuple[int, int]], int, int]],

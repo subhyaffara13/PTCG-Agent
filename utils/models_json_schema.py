@@ -1,3 +1,4 @@
+from typing import Any
 
 def models_json_schema(
     models: Sequence[tuple[type[BaseModel] | type[PydanticDataclass], JsonSchemaMode]],

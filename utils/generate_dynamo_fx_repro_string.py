@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_dynamo_fx_repro_string(
     gm: torch.fx.GraphModule,

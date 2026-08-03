@@ -1,3 +1,4 @@
+import sys
 
 def test_iter_object_arrays_conversions():
     # Conversions to/from objects

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _make_cachedir(target: Path) -> None:
     """Create the pytest cache directory atomically with supporting files.

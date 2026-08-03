@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_or_create_collector() -> Optional[RedisMetricsCollector]:
     """

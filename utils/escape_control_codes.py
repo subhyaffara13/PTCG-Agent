@@ -1,3 +1,4 @@
+from typing import Dict
 
 def escape_control_codes(
     text: str,

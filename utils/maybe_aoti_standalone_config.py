@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_aoti_standalone_config(config_patches: dict[str, Any]) -> dict[str, Any]:
     """

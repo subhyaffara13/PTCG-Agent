@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _external_stacklevel(internal: list[str]) -> int:
     """Find the stacklevel of the first frame that doesn't contain any of the given internal strings

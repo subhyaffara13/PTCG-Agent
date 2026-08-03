@@ -1,3 +1,7 @@
+import csv
+from pathlib import Path
+from typing import List
+
 
 def write_deck_csv(deck: List[dict], dest: Path):
     counts = {}

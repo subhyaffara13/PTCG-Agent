@@ -1,3 +1,4 @@
+from typing import Optional
 
 def native_batch_norm(
     input: list[int],

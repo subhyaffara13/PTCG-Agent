@@ -1,3 +1,4 @@
+import os
 
 def _is_sycl_file(path: str) -> bool:
     valid_ext = ['.sycl']

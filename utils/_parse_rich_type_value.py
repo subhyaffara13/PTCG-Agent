@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _parse_rich_type_value(value: Any) -> str:
     """Parse rich (toml) types into strings."""

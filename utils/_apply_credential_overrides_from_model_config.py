@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _apply_credential_overrides_from_model_config(
     data: dict,

@@ -1,3 +1,5 @@
+import itertools
+from typing import List
 
 def get_action_probs(
     agent: OpponentShapingAgent, game: str

@@ -1,3 +1,4 @@
+from typing import Any
 
 def union_schema(
     choices: list[CoreSchema | tuple[CoreSchema, str]],

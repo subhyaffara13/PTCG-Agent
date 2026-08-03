@@ -1,3 +1,6 @@
+import copy
+import math
+
 
 def test_deepcopy(xp):
     r = Rotation.from_quat(xp.asarray([0, 0, math.sin(np.pi/4), math.cos(np.pi/4)]))

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parameters_for(func: Any) -> dict[str, bool]:
     """Return the parameters for the plugin.

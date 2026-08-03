@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_transform():
     # Also test that 3-way unification is done correctly

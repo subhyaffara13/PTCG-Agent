@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _estimate_output_tokens(
     request_body: dict,

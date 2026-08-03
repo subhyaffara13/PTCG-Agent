@@ -1,3 +1,4 @@
+import random
 
 def test_unstable():
     # this is a "Gaussian Toeplitz matrix", as mentioned in Example 2 of

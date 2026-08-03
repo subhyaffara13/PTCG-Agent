@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def pipe_output(output: str) -> None:
     """Pipes output to a pager if stdout is a TTY and a pager is available."""

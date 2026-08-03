@@ -1,3 +1,5 @@
+import math
+
 
 def hypergeometric_prob(N: int, K: int, n: int) -> float:
     """

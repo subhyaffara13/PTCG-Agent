@@ -1,3 +1,4 @@
+import os
 
 def latest_checkpoint(
   ckpt_dir: str | os.PathLike, prefix: str = 'checkpoint_'

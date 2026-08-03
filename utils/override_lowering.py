@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def override_lowering(
     aten_op: Callable[..., Any], override_fn: Callable[..., Any]

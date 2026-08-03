@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_single_level_function(
     interpreter: FuncTorchInterpreter,

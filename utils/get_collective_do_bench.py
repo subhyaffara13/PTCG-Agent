@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def get_collective_do_bench() -> Callable[[Callable[[], Any]], float]:
     with dynamo_timed("collective_compute_do_bench"):

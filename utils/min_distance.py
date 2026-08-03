@@ -1,3 +1,4 @@
+from typing import List
 
 def min_distance(position: int, food: List[int], columns: int):
     row, column = row_col(position, columns)

@@ -1,3 +1,4 @@
+import sys
 
 def test_reduction_no_reference_leak():
     # Test that the generic reduction does not leak references.

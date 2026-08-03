@@ -1,3 +1,4 @@
+import os
 
 def deduce_helpful_msg(req: str) -> str:
     """Returns helpful msg in case requirements file does not exist,

@@ -1,3 +1,4 @@
+import sys
 
 def get_code_keys() -> list[str]:
     # Python 3.11 changes to code keys are not fully documented.

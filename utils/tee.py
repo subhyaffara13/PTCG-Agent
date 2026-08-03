@@ -1,3 +1,4 @@
+from typing import Any
 
 def tee(
     iterable: Iterable[T] | AsyncIterable[T], n: int = 2

@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_node_from_old_node_preserve_meta(
     quantized_graph: Graph,

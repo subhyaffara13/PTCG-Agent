@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def list_subcommands() -> list[str]:
     """List all jupyter subcommands

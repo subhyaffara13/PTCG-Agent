@@ -1,3 +1,4 @@
+from typing import Any
 
 def autograd_not_implemented_inner(
     operator: OperatorBase, delayed_error: bool, *args: Any, **kwargs: Any

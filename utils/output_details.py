@@ -1,3 +1,4 @@
+from typing import Any
 
 def output_details(results, csv_filename):
     with open(csv_filename, mode="a", newline="", encoding="ascii") as csv_file:

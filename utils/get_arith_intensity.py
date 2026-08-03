@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_arith_intensity(data: Any) -> float:
     m = data["m"]

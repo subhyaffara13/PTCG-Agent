@@ -1,3 +1,4 @@
+from typing import Union
 
 def _labelToFlags(label: Union[AxisLabelDescriptor, LocationLabelDescriptor]) -> int:
     flags = 0

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def onnx_impl(
     target: _registration.TorchOp | tuple[_registration.TorchOp, ...],

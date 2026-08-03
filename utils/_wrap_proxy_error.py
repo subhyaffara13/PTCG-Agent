@@ -1,3 +1,4 @@
+import re
 
 def _wrap_proxy_error(err: Exception, proxy_scheme: str | None) -> ProxyError:
     # Look for the phrase 'wrong version number', if found

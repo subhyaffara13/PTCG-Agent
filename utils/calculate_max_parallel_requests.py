@@ -1,3 +1,4 @@
+from typing import Optional
 
 def calculate_max_parallel_requests(
     max_parallel_requests: Optional[int],

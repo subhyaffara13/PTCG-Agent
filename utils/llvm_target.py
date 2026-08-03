@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def llvm_target() -> str:
     if sys.platform == "linux":

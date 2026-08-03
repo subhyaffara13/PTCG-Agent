@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def lift_direct_transform(
   transform: Callable[..., Any],

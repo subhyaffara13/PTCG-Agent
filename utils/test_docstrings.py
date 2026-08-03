@@ -1,3 +1,4 @@
+import re
 
 def test_docstrings(doc):
     assert doc(UserType) == "A `py::class_` type for testing"

@@ -1,3 +1,4 @@
+import functools
 
 def _add_keepdims(func):
     """ hack in keepdims behavior into a function taking an axis """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def redistribute_bw_inputs(
     global_args: Any, all_placements: Any, mesh: Any, num_activations: int

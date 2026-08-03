@@ -1,3 +1,4 @@
+from typing import Optional
 
 def any_checkpoint_step(checkpoint_dir: epath.PathLike) -> Optional[int]:
   """Returns any finalized checkpoint step in the directory or None.

@@ -1,3 +1,4 @@
+import os
 
 def get_outfnames(fname: str, split: bool) -> list[str]:
     suffixes = ["_train", "_valid"] if split else [""]

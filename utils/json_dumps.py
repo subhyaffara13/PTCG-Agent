@@ -1,3 +1,4 @@
+import json
 
 def json_dumps(obj: object, debug: bool = False) -> bytes:
     if orjson is not None:

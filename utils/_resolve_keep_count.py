@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _resolve_keep_count(keep: Dict[str, Any]) -> int:
     keep_type = keep.get("type", "tool_uses")

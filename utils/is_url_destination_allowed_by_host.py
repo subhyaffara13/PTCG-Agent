@@ -1,3 +1,4 @@
+from typing import List
 
 def is_url_destination_allowed_by_host(url: str, allowed_hosts: List[str]) -> bool:
     """Return True when a credential-bearing provider URL is admin-allowlisted.

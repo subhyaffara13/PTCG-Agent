@@ -1,3 +1,4 @@
+import itertools
 
 def reinplace(gm, *sample_args):
     r"""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_layout_metadata(input: torch.layout) -> dict[str, Any]:
     assert isinstance(input, torch.layout)

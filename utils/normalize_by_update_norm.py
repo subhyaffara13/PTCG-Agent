@@ -1,3 +1,4 @@
+from typing import Optional
 
 def normalize_by_update_norm(
     scale_factor: jax.typing.ArrayLike = 1.0, eps: jax.typing.ArrayLike = 1e-6

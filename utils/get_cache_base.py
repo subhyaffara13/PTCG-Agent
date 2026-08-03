@@ -1,3 +1,4 @@
+import os
 
 def get_cache_base(suffix=None):
     """

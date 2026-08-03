@@ -1,3 +1,4 @@
+import re
 
 def mpc_mul_int(z, n, prec, rnd=round_fast):
     a, b = z

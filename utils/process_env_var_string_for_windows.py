@@ -1,3 +1,4 @@
+import sys
 
 def process_env_var_string_for_windows(env_var_str: str) -> str:
     """

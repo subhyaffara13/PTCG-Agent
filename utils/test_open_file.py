@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_open_file(all_parsers, temp_file):
     # GH 39024

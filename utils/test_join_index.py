@@ -1,3 +1,4 @@
+import re
 
 def test_join_index(float_frame):
     # left / right

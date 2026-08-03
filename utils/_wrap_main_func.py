@@ -1,3 +1,5 @@
+import functools
+import itertools
 
 def _wrap_main_func(
     module: ir.Module,

@@ -1,3 +1,4 @@
+import logging
 
 def _log_cache_key_hash(hash_obj, last_serialized: str, hashfn):
   if logger.isEnabledFor(logging.DEBUG):

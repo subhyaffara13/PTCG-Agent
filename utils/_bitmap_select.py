@@ -1,3 +1,4 @@
+from typing import List
 
 def _bitmap_select(s: int, seq: List[FrozenSet[int]]) -> Generator[FrozenSet[int], None, None]:
     """Select elements of ``seq`` which are marked by the bitmap set ``s``.

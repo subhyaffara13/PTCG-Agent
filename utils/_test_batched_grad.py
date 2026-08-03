@@ -1,3 +1,4 @@
+import functools
 
 def _test_batched_grad(input, output, output_idx) -> bool:
     # NB: _test_batched_grad compares two autograd.grad invocations with a single

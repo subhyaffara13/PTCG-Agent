@@ -1,3 +1,4 @@
+import re
 
 def get_triton_kernel_and_cache_entry(node: torch.fx.Node):
     if (

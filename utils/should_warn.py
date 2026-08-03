@@ -1,3 +1,4 @@
+import os
 
 def should_warn(key: t.Any) -> bool:
     """Add our own checks for too many deprecation warnings.

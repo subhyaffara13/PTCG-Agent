@@ -1,3 +1,6 @@
+import logging
+from pathlib import Path
+
 
 def qnn_preprocess_model(
     model_input: str | pathlib.Path | onnx.ModelProto,

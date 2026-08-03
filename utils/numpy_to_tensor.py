@@ -1,3 +1,4 @@
+from typing import Any
 
 def numpy_to_tensor(value: Any) -> Any:
     """Convert tnp.ndarray to tensor, leave other types intact. If a list/tuple, loop through it to convert."""

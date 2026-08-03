@@ -1,3 +1,4 @@
+import copy
 
 def _Lookup_SinglePos_subtables_flatten(lst, font, min_inclusive_rec_format):
     glyphs, _ = _merge_GlyphOrders(font, [v.Coverage.glyphs for v in lst], None)

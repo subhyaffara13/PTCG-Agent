@@ -1,3 +1,4 @@
+from typing import Set, Union
 
 def simplify_union(args):
     """

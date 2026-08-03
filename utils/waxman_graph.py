@@ -1,3 +1,5 @@
+import math
+
 
 def waxman_graph(
     n,

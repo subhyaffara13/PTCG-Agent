@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _extract_nested_case(
     case_node: c_ast.Case | c_ast.Default, stmts_list: List[c_ast.Node]

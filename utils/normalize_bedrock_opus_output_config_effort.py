@@ -1,3 +1,4 @@
+from typing import Any
 
 def normalize_bedrock_opus_output_config_effort(model: str, output_config: Any) -> None:
     """

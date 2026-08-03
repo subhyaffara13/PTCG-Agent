@@ -1,3 +1,4 @@
+from typing import Union
 
 def construct_full_unpacked_stream(
     num_real_text_tokens: Union[list[list[int]], "torch.Tensor"],

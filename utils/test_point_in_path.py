@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_point_in_path():
     # Test #1787

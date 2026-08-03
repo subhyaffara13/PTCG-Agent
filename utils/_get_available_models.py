@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _get_available_models(ctx: click.Context) -> List[Dict[str, Any]]:
     """Get list of available models from the proxy server"""

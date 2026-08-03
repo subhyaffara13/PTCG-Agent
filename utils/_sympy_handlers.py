@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _sympy_handlers() -> dict[type[sympy.Expr], Callable[..., Any]]:
     """

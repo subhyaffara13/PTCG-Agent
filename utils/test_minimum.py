@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_minimum():
     assert minimum(sin(x), x) is S.NegativeOne

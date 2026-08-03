@@ -1,3 +1,4 @@
+from typing import Any
 
 def custom_function_call_functionalize(
     interpreter: FuncTorchInterpreter,

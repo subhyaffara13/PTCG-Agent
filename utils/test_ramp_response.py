@@ -1,3 +1,4 @@
+import sys
 
 def test_ramp_response():
     if not numpy:

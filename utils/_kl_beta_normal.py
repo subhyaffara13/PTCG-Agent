@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_beta_normal(p, q):
     E_beta = p.concentration1 / (p.concentration1 + p.concentration0)

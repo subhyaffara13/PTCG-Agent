@@ -1,3 +1,4 @@
+from typing import Any
 
 def _call_id(
     payload: "StandardLoggingPayload | None", kwargs: Mapping[str, Any]

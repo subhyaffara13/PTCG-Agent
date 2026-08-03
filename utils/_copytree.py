@@ -1,3 +1,4 @@
+import os
 
 def _copytree(input_path, output_path):
     if _samepath(input_path, output_path):

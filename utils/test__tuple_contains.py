@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple_contains():
     t1, t2 = Tuple(1), Tuple(2)

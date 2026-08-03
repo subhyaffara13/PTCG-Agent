@@ -1,3 +1,4 @@
+from typing import Any
 
 def issubtype(left, right, recursive=True):
     r"""

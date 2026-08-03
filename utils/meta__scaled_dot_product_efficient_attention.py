@@ -1,3 +1,5 @@
+import math
+
 
 def meta__scaled_dot_product_efficient_attention(
     query: Tensor,

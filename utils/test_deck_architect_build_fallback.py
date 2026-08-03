@@ -1,3 +1,4 @@
+import json
 
 def test_deck_architect_build_fallback(tmp_path):
     skills_dir = make_skills_dir(tmp_path)

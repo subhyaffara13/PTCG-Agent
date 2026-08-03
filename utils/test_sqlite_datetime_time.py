@@ -1,3 +1,4 @@
+import time
 
 def test_sqlite_datetime_time(tz_aware, sqlite_buildin):
     conn = sqlite_buildin

@@ -1,3 +1,4 @@
+import sys
 
 def show_align_message(s1: str, s2: str) -> None:
     """Align s1 and s2 so that the their first difference is highlighted.

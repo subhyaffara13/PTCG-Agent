@@ -1,3 +1,4 @@
+from typing import Optional
 
 def resolve_driver_info(
     driver_info: Optional[DriverInfo] | object = SENTINEL,

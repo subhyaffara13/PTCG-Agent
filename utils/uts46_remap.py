@@ -1,3 +1,4 @@
+from typing import Optional
 
 def uts46_remap(domain: str, std3_rules: bool = True, transitional: bool = False) -> str:
     """Apply the UTS #46 character mapping to a domain string.

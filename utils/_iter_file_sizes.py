@@ -1,3 +1,4 @@
+import logging
 
 def _iter_file_sizes(path: epath.Path) -> Iterator[tuple[str, int]]:
   """Yields (leaf_name, size_bytes) for every file under path; logs IO errors."""

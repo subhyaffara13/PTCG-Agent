@@ -1,3 +1,4 @@
+from typing import Optional
 
 def convert_key_logging_metadata_to_callback(
     data: AddTeamCallback, team_callback_settings_obj: Optional[TeamCallbackMetadata]

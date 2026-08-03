@@ -1,3 +1,4 @@
+import functools
 
 def _sum() -> Accumulator:
   """An Accumulator that computes the sum of microbatched outputs."""

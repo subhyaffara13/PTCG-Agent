@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_boxed_func(f: Callable[..., Any]) -> Callable[[list[Any]], Any]:
     @simple_wraps(f)

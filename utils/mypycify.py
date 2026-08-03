@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def mypycify(
     paths: list[str],

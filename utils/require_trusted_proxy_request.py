@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def require_trusted_proxy_request(
     *,

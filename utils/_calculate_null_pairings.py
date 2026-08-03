@@ -1,3 +1,5 @@
+import math
+
 
 def _calculate_null_pairings(data, statistic, n_permutations, batch,
                              rng=None, *, xp):

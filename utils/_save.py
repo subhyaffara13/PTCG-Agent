@@ -1,3 +1,9 @@
+import itertools
+import os
+import pathlib
+import sys
+import time
+from typing import Any, Callable
 
 def _save(
     im: Image.Image, fp: IO[bytes], filename: str | bytes, save_all: bool = False

@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def _expand_model_aliases(model_cost: dict) -> dict:
     """

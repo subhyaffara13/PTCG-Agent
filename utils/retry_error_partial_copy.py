@@ -1,3 +1,5 @@
+import functools
+import time
 
 def retry_error_partial_copy(fun):
     """Workaround for https://github.com/giampaolo/psutil/issues/875.

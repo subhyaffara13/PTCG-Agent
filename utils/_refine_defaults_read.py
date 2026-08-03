@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _refine_defaults_read(
     dialect: str | csv.Dialect | None,

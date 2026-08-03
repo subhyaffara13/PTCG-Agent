@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _get_user_dirs_folder(key: str) -> str | None:
     """Return directory from user-dirs.dirs config file.

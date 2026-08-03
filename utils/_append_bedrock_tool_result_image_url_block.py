@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _append_bedrock_tool_result_image_url_block(
     tool_result_content_blocks: List[BedrockToolResultContentBlock],

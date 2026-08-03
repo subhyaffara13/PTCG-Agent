@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_user_fonts_linux(tmpdir, monkeypatch):
     font_test_file = 'mpltest.ttf'

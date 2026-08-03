@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_common_xfix(series: Any, xfix: str = "suffix") -> str:
     """

@@ -1,3 +1,4 @@
+import re
 
 def log_compilations():
   """A utility for programmatically capturing JAX compilation logs."""

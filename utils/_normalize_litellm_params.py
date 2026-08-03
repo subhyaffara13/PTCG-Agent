@@ -1,3 +1,5 @@
+import json
+from typing import Any, Optional
 
 def _normalize_litellm_params(
     vector_store: LiteLLM_ManagedVectorStore,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def validate_call(
     *, config: ConfigDict | None = None, validate_return: bool = False

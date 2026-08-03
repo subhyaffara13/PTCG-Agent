@@ -1,3 +1,5 @@
+import math
+
 
 def _loop(work, callback, shape, maxiter, func, args, dtype, pre_func_eval,
           post_func_eval, check_termination, post_termination_check,

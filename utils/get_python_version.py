@@ -1,3 +1,4 @@
+import sys
 
 def get_python_version() -> str:
     """Find and format the python implementation and version.

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Tuple
 
 def _get_holder_field(config_path: str, config: Any) -> Tuple[Any, str]:
   """Returns the last part config_path and config to allow assignment.

@@ -1,3 +1,4 @@
+import re
 
 def get_meta(op, key, device_name=None, version=(0, torch.float16, 0.5), exact=False):
     """Return triton kernel meta parameters of the specified op and its inputs key.

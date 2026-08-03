@@ -1,3 +1,4 @@
+import os
 
 def jit_module_from_flatbuffer(f):
     if isinstance(f, (str, os.PathLike)):

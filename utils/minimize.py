@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def minimize(
     target_func,

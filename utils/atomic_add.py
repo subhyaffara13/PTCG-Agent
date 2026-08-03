@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_add(ref: _Ref, val) -> None:
   """Performs an atomic store-add of the value to the reference.

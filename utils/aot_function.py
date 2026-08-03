@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def aot_function(
     fn: Callable[_P, _R],

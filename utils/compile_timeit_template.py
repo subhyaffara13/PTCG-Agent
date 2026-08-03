@@ -1,3 +1,4 @@
+import os
 
 def compile_timeit_template(*, stmt: str, setup: str, global_setup: str) -> TimeitModuleType:
     template_path: str = os.path.join(SOURCE_ROOT, "timeit_template.cpp")

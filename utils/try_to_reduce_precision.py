@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def try_to_reduce_precision(
     node: Any,

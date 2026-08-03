@@ -1,3 +1,4 @@
+import itertools
 
 def test_kdtree_duplicated_inputs(kdtree_type):
     # check kdtree with duplicated inputs

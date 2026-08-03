@@ -1,3 +1,4 @@
+import sys
 
 def _is_orbax(array: Array) -> bool:
   if 'orbax.checkpoint' not in sys.modules:

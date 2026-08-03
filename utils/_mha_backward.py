@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _mha_backward(sm_scale: float, causal: bool, block_sizes: BlockSizes,
                   backward_pass_impl: str, num_warps: int | None,

@@ -1,3 +1,4 @@
+import itertools
 
 def sorted_imports(
     parsed: parse.ParsedContent,

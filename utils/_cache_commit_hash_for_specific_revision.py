@@ -1,3 +1,7 @@
+import os
+import uuid
+from pathlib import Path
+
 
 def _cache_commit_hash_for_specific_revision(storage_folder: str, revision: str, commit_hash: str) -> None:
     """Cache reference between a revision (tag, branch or truncated commit hash) and the corresponding commit hash.

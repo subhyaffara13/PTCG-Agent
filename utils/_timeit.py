@@ -1,3 +1,4 @@
+import time
 
 def _timeit(name: str) -> Generator[None, None, None]:
     start = time.perf_counter()

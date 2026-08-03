@@ -1,3 +1,4 @@
+import re
 
 def test_real_imag():
     a, b = symbols('a b', real=True)

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _smem_tree_size(smem_buffers: ShapeTree) -> int:
   leaves = jax.tree.leaves(

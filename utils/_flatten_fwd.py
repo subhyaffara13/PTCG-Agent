@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _flatten_fwd(f: Callable, store: lu.EqualStore,
                  nondiff_argnums: Sequence[int],

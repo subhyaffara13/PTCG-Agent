@@ -1,3 +1,4 @@
+import os
 
 def get_tpu_library_path() -> str | None:
   path_from_env = os.getenv('TPU_LIBRARY_PATH')

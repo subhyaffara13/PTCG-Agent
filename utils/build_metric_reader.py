@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_metric_reader(config: OpenTelemetryV2Config) -> "MetricReader":
     """Build a metric reader mirroring v1's exporter selection.

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def stack_op(fn: Callable[..., object]) -> Callable[..., Any]:
     nargs = len(inspect.signature(fn).parameters)

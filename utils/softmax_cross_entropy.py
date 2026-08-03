@@ -1,3 +1,4 @@
+from typing import Union
 
 def softmax_cross_entropy(
     logits: jax.typing.ArrayLike,

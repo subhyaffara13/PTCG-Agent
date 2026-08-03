@@ -1,3 +1,4 @@
+import sys
 
 def flip_jump_direction(instruction: Instruction) -> None:
     if sys.version_info < (3, 11):

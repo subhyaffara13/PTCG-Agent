@@ -1,3 +1,4 @@
+from typing import Any
 
 def _any_str_or_dim_in_dynamic_shapes(
     dynamic_shapes: dict[str, Any] | tuple[Any, ...] | list[Any],

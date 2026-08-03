@@ -1,3 +1,4 @@
+import os
 
 def generate_c_extension_shim(
     full_module_name: str, module_name: str, dir_name: str, group_name: str

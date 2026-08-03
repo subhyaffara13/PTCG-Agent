@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _query_cpu_cgroupsv1() -> int | None:
     cpu_quota, avail_cpu = None, None

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def ops_wrapper(name: str) -> Callable[..., OpsValue]:
     assert isinstance(name, str), type(name)

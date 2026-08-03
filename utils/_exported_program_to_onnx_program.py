@@ -1,3 +1,4 @@
+import itertools
 
 def _exported_program_to_onnx_program(
     exported_program: torch.export.ExportedProgram,

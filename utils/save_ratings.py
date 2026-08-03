@@ -1,3 +1,4 @@
+import json
 
 def save_ratings(elo_file, ratings):
     import logging

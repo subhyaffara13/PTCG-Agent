@@ -1,3 +1,4 @@
+from typing import Callable
 
 def generate_print_python(
     node: ir.FallbackKernel,

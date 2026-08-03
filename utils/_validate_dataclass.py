@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_dataclass(cls: Type['DataclassT'], v: Any) -> 'DataclassT':
     with set_validation(cls, True):

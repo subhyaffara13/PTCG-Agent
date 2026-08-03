@@ -1,3 +1,4 @@
+import re
 
 def parse_rendezvous_endpoint(
     endpoint: str | None, default_port: int

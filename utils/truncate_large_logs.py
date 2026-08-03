@@ -1,3 +1,4 @@
+import os
 
 def truncate_large_logs(log_dir):
     for log_name in ["master_server.log", "run_ppo_trainer_loop.log", "run_deck_optimizer_loop.log"]:

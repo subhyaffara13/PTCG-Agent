@@ -1,3 +1,4 @@
+import logging
 
 def configLogger(**kwargs):
     """A more sophisticated logging system configuation manager.

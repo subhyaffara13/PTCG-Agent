@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_piecewise_integrate4_symbolic_conditions():
     a = Symbol('a', real=True)

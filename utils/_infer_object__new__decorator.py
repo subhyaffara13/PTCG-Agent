@@ -1,3 +1,4 @@
+from typing import Any
 
 def _infer_object__new__decorator(
     node: nodes.ClassDef, context: InferenceContext | None = None, **kwargs: Any

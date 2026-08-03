@@ -1,3 +1,4 @@
+import os
 
 def _serialize_ssh_private_key(
     private_key: SSHPrivateKeyTypes,

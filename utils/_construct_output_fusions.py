@@ -1,3 +1,4 @@
+import functools
 
 def _construct_output_fusions(
     candidate_values,

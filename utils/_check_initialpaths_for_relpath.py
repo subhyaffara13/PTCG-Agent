@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _check_initialpaths_for_relpath(
     initial_paths: frozenset[Path], path: Path

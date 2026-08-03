@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_numpy_dtype_inference(
     arr: ExtensionArray,

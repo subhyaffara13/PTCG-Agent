@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_trace_new():
     a, b, c, d, Y = symbols('a b c d Y')

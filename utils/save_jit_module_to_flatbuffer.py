@@ -1,3 +1,4 @@
+import os
 
 def save_jit_module_to_flatbuffer(m, f, _extra_files=None) -> None:
     r"""

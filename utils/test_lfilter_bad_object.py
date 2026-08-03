@@ -1,3 +1,4 @@
+import sys
 
 def test_lfilter_bad_object(xp):
     # lfilter: object arrays with non-numeric objects raise TypeError.

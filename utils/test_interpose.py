@@ -1,3 +1,4 @@
+import itertools
 
 def test_interpose():
     assert "a" == first(rest(interpose("a", range(1000000000))))

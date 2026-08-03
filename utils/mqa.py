@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def mqa(
     q,                # [batch_size, num_heads, head_dim]

@@ -1,3 +1,5 @@
+import os
+from typing import Callable, Optional
 
 def _iter_tree_entries_next(
 	root_full: str,

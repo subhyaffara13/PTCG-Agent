@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_error(
     op: OpType, exc_type: type[Exception] = NotImplementedError

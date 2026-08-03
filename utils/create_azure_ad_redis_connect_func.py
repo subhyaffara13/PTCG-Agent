@@ -1,3 +1,5 @@
+import os
+from typing import Callable, Optional
 
 def create_azure_ad_redis_connect_func(
     azure_client_id: Optional[str] = None,

@@ -1,3 +1,5 @@
+import math
+
 
 def test_pickling(xp):
     # Note: Array API makes no provision for arrays to be pickleable, so

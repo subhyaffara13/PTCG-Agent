@@ -1,3 +1,4 @@
+from typing import List
 
 def _sort_bedrock_assistant_content_blocks(
     blocks: List[BedrockContentBlock],

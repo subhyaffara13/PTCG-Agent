@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _bar(current: float, total: float, width: int = _BAR_WIDTH) -> str:
     if total <= 0:

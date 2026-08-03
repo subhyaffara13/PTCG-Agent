@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_insert_input_equalization_observers_for_node(
     node: Node,

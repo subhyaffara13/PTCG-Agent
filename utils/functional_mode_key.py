@@ -1,3 +1,4 @@
+from typing import Any
 
 def functional_mode_key(
     ctx: Any, gm: GraphModule, *args: Any, **kwargs: Any

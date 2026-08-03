@@ -1,3 +1,4 @@
+from typing import List
 
 def get_stacktrace_without_chex_internals() -> List[traceback.FrameSummary]:
   """Returns the latest non-chex frame from the call stack."""

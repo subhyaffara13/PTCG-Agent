@@ -1,3 +1,4 @@
+from typing import Callable
 
 def exposed_in(module: str) -> Callable[[F], F]:
     def wrapper(fn: F) -> F:

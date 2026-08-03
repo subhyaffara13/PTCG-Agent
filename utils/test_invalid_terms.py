@@ -1,3 +1,4 @@
+import re
 
 def test_invalid_terms(temp_hdfstore):
     df = DataFrame(

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fromfunction(function, shape, *, dtype=float, like=None, **kwargs):
     """

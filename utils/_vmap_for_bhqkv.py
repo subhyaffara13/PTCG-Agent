@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _vmap_for_bhqkv(
     fn: Callable[..., _R],

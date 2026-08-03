@@ -1,3 +1,4 @@
+import os
 
 def test_wheel_includes_cli_scripts(setuptools_wheel):
     with ZipFile(setuptools_wheel) as zipfile:

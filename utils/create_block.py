@@ -1,3 +1,4 @@
+import re
 
 def create_block(typestr, placement, item_shape=None, num_offset=0, maker=new_block):
     """

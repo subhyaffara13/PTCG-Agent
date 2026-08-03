@@ -1,3 +1,4 @@
+from typing import Any
 
 def video_metadata_validator(value: VideoMetadataType | None = None):
     if value is None:

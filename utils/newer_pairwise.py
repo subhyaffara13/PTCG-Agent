@@ -1,3 +1,4 @@
+from typing import Callable
 
 def newer_pairwise(
     sources: Iterable[_SourcesT],

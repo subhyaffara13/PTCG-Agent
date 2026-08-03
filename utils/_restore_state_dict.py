@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _restore_state_dict(
     original_module: torch.nn.Module | Callable[..., Any],

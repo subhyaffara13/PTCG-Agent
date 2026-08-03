@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def _transform_file(file: FileTypes) -> HttpxFileTypes:
     if is_file_content(file):

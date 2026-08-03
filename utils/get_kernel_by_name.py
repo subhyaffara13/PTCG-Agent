@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_kernel_by_name(kernel_name: str) -> Any:
     """Get a cutlass_api kernel by name using the global cache."""

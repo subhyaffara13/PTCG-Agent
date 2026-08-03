@@ -1,3 +1,4 @@
+from typing import Any
 
 def enumerate_items_with_dict_position(
     obj: dict[K, V],

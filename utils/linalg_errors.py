@@ -1,3 +1,4 @@
+import functools
 
 def linalg_errors(func):
     @functools.wraps(func)

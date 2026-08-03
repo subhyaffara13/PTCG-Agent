@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _build_db_connection_url_params(
     connection_limit: int,

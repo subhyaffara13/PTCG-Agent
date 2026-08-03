@@ -1,3 +1,7 @@
+import csv
+from pathlib import Path
+from typing import List
+
 
 def read_deck_csv(src: Path) -> List[dict]:
     deck = []

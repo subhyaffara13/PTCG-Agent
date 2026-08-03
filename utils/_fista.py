@@ -1,3 +1,5 @@
+import math
+
 
 def _fista(G, iterations):
     if G.number_of_edges() == 0:

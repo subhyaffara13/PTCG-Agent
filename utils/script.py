@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def script(
     obj: Any,

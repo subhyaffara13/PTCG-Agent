@@ -1,3 +1,4 @@
+import itertools
 
 def zip_longest(
     iter1: Iterable[_T1],

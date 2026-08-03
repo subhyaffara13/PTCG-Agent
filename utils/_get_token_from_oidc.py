@@ -1,3 +1,5 @@
+import os
+import time
 
 def _get_token_from_oidc() -> str | None:
     """Get a short-lived OIDC token in CI (Trusted Publishers).

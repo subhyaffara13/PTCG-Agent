@@ -1,3 +1,5 @@
+import re
+from typing import Callable
 
 def render_jinja_template(
     conversations: list[ChatType],

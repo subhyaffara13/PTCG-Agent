@@ -1,3 +1,4 @@
+from typing import Any
 
 def just_print_entries(
     all_entries: dict[int, list[dict[str, Any]]],

@@ -1,3 +1,4 @@
+import os
 
 def _open_file_or_url(fname):
     if (isinstance(fname, str)

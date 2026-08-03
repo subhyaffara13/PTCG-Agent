@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _original_func(f: Callable) -> Callable:
   if isinstance(f, property):

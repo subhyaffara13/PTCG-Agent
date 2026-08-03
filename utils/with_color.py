@@ -1,3 +1,4 @@
+from typing import Any
 
 def with_color(subfigure: Any, color: str) -> figures_impl.TreescopeFigure:
   """Returns a colored version of the first figure.

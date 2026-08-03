@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_signal_windows_opinfo(
     name: str,

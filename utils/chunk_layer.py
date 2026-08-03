@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def chunk_layer(
     layer: Callable,

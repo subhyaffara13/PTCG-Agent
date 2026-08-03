@@ -1,3 +1,4 @@
+from typing import Any
 
 def _torchscript_type_to_python_type(ts_type: "torch._C.JitType") -> Any:
     """

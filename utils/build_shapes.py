@@ -1,3 +1,4 @@
+from typing import Dict, Optional, Tuple
 
 def build_shapes(string: str, dimension_dict: Optional[Dict[str, int]] = None) -> Tuple[TensorShapeType, ...]:
     """Builds random tensor shapes for testing.

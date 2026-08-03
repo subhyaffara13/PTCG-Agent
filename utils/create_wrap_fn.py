@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_wrap_fn(
     fn: Callable[..., Any], args: tuple[Any, ...]

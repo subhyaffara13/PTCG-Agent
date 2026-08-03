@@ -1,3 +1,4 @@
+import os
 
 def _get_size_of_pytorch_model(model):
     torch.save(model.state_dict(), "temp.p")

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_state_dict(
     state_dict: STATE_DICT_TYPE,

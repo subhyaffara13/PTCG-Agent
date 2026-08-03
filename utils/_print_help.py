@@ -1,3 +1,4 @@
+import sys
 
 def _print_help(what, name):
     try:

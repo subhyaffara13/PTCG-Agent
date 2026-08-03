@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compare_rules(
     ground_truth_valid: set[ComboKey],

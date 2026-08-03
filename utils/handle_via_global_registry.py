@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_via_global_registry(
     node: Any,

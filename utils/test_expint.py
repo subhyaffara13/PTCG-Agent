@@ -1,3 +1,4 @@
+import re
 
 def test_expint():
     expr = Ei(x)

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def install_zsh(*, prog_name: str, complete_var: str, shell: str) -> Path:
     # Setup Zsh and load ~/.zfunc

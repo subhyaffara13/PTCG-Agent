@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def transcription_cost(
     model: str, custom_llm_provider: Optional[str], duration: float

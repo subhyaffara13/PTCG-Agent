@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_local_download_paths(local_dir: Path, filename: str) -> LocalDownloadFilePaths:
     """Compute paths to the files related to a download process.

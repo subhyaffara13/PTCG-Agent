@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def ocr_cost(
     model: str,

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_IndexedBase_shape():
     i, j, m, n = symbols('i j m n', integer=True)

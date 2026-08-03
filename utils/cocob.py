@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def cocob(
     learning_rate: base.ScalarOrSchedule = 1.0,

@@ -1,3 +1,4 @@
+import os
 
 def read_any_format(
     fname: str, fields: list[str] = ["prompt", "completion"]

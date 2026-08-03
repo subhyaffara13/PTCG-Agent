@@ -1,3 +1,4 @@
+import os
 
 def iterate_python_lines(path: str) -> Iterator[tuple[int, str]]:
     """Return an iterator over (line number, line text) from a Python file."""

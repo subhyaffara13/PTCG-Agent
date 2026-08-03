@@ -1,3 +1,4 @@
+from typing import List
 
 def _compute_overall_action(results: List[GuardrailTestResultEntry]) -> str:
     """Return the worst-case action: blocked > masked > error > unsupported > passed."""

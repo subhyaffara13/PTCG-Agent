@@ -1,3 +1,5 @@
+import re
+from typing import Union
 
 def _solveset(f, symbol, domain, _check=False):
     """Helper for solveset to return a result from an expression

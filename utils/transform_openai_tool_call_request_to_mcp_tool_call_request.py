@@ -1,3 +1,4 @@
+from typing import Dict, Union
 
 def transform_openai_tool_call_request_to_mcp_tool_call_request(
     openai_tool: Union[ChatCompletionMessageToolCall, Dict],

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_params_convertors_ctx_param_name_from_function(
     callback: Callable[..., Any] | None,

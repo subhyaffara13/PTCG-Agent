@@ -1,3 +1,4 @@
+from typing import Any
 
 def _read_one_of_from_shared_memory(
     space: OneOf, shared_memory, n: int = 1

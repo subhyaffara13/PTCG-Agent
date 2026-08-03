@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _sparse_array_op(
     left: SparseArray, right: SparseArray, op: Callable, name: str

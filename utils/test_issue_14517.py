@@ -1,3 +1,4 @@
+import random
 
 def test_issue_14517():
     M = Matrix([

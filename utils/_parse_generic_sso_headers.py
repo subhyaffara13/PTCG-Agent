@@ -1,3 +1,5 @@
+import os
+from typing import Dict
 
 def _parse_generic_sso_headers() -> dict:
     """Parse comma-separated GENERIC_SSO_HEADERS env var into a dict."""

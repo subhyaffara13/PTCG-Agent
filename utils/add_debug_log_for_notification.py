@@ -1,3 +1,5 @@
+import logging
+from typing import Union
 
 def add_debug_log_for_notification(
     connection: "MaintNotificationsAbstractConnection",

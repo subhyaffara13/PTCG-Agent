@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _count_anthropic_content(
     content: Mapping[str, Any],

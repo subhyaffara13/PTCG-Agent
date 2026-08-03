@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def format_log_entries(component: str, path: Path) -> str:
     data = json.loads(path.read_text(encoding="utf-8"))

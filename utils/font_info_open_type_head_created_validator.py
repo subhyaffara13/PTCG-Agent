@@ -1,3 +1,4 @@
+from typing import Any
 
 def fontInfoOpenTypeHeadCreatedValidator(value: Any) -> bool:
     """

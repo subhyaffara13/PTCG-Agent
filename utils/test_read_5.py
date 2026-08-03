@@ -1,3 +1,4 @@
+import sys
 
 def test_read_5():
     # Big-endian float

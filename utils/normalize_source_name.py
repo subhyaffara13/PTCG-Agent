@@ -1,3 +1,4 @@
+import re
 
 def normalize_source_name(name: str) -> str:
     # Match attribute access like .x and replace with ['x']

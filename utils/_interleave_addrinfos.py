@@ -1,3 +1,4 @@
+import itertools
 
 def _interleave_addrinfos(
     addrinfos: Sequence[AddrInfoType], first_address_family_count: int = 1

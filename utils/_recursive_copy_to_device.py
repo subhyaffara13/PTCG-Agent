@@ -1,3 +1,4 @@
+from typing import Any
 
 def _recursive_copy_to_device(
     value: Any,

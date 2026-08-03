@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _patch_optimizer_state_dict(
     model: nn.Module,

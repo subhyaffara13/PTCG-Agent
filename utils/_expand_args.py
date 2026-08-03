@@ -1,3 +1,5 @@
+import os
+import re
 
 def _expand_args(
     args: cabc.Iterable[str],

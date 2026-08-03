@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def get_openapi_schema_with_compat(
     get_openapi_func,

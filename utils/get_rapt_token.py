@@ -1,3 +1,4 @@
+import sys
 
 def get_rapt_token(
     request, client_id, client_secret, refresh_token, token_uri, scopes=None

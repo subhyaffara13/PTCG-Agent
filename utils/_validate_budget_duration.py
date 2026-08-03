@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _validate_budget_duration(budget_duration: Optional[str]) -> None:
     """Reject budget durations that can't be parsed, are non-positive, or

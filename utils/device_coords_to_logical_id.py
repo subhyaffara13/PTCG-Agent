@@ -1,3 +1,5 @@
+import math
+
 
 def device_coords_to_logical_id(device_coords, axis_sizes, axis_indices):
   if isinstance(device_coords, dict):

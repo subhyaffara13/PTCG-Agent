@@ -1,3 +1,4 @@
+import re
 
 def split_url(url: str) -> SplitURLType:
     """Split URL into parts."""

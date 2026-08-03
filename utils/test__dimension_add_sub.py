@@ -1,3 +1,4 @@
+import time
 
 def test_Dimension_add_sub():
     assert length + length == length

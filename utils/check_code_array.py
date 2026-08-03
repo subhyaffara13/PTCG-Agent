@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_code_array(codes: Any) -> None:
     if not isinstance(codes, np.ndarray):

@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def clean_and_assemble_instructions(
     instructions: list[Instruction], keys: list[str], code_options: dict[str, Any]

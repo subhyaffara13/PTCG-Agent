@@ -1,3 +1,4 @@
+from typing import Any, Dict, Tuple
 
 def parse_cluster_slots(
     resp: Any, **options: Any

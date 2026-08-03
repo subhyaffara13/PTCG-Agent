@@ -1,3 +1,4 @@
+import time
 
 def duration_in_seconds(duration: str) -> int:
     """

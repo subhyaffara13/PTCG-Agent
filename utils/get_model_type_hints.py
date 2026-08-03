@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_model_type_hints(
     model_class: type[BaseModel],

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_user_id_from_request(request: Request) -> Optional[str]:
     """

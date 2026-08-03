@@ -1,3 +1,4 @@
+import json
 
 def load_vocab_and_merges(pretrained_model_name_or_path, **kwargs):
     """

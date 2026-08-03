@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def handle_anthropic_text_model_custom_llm_provider(
     model: str, custom_llm_provider: Optional[str] = None

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_thread_local_state_call_tf_concrete_function_list() -> (
     list[Any] | None

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def cuda_standalone_runner_compile_command(srcpath: Path, exepath: Path):
     # returns command string to compile a (captured) CUDA GEMM Kernel source to a standalone executable that's ready to run

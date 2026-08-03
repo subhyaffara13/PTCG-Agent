@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def apply_redacted_messages_back(
     data: Dict[str, Any], redacted_messages: List[Dict[str, Any]]

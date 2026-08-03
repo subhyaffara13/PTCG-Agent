@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _check_team_budget_update_authority(
     data: UpdateTeamRequest,

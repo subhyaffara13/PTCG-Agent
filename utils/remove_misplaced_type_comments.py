@@ -1,3 +1,4 @@
+import re
 
 def remove_misplaced_type_comments(source: bytes) -> bytes: ...
 

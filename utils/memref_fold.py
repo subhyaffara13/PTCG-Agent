@@ -1,3 +1,5 @@
+import math
+
 
 def memref_fold(ref: ir.Value, dim, fold_rank) -> ir.Value:
   ...

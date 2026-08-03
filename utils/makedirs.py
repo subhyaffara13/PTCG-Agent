@@ -1,3 +1,4 @@
+import os
 
 def makedirs(path):
   if io_mode == BackendMode.DEFAULT:

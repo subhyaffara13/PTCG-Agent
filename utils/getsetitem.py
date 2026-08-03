@@ -1,3 +1,4 @@
+from typing import Any
 
 def getsetitem(self: Any, index: Any, tensors_have_dims: bool) -> IndexingInfo:
     from . import DimList  # Import DimList for type checking

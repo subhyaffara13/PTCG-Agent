@@ -1,3 +1,4 @@
+from typing import Any
 
 def _strip_total_tokens_from_anthropic_response(response: Any) -> None:
     """Remove the OpenAI-flavored `usage.total_tokens` field that LiteLLM

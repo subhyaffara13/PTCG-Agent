@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_importable_with__OO():
     """

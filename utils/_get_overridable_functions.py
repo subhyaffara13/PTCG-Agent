@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_overridable_functions() -> tuple[
     dict[Any, list[Callable]], dict[Callable, str]

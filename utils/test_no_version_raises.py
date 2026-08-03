@@ -1,3 +1,4 @@
+import sys
 
 def test_no_version_raises(monkeypatch):
     name = "fakemodule"

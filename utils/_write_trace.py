@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _write_trace(path: str, data: dict[str, Any]) -> None:
     """Write trace data to a gzipped JSON file."""

@@ -1,3 +1,5 @@
+import math
+
 
 def _extract_aliased_ref(
     ref: RefOrTmemType,

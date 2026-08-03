@@ -1,3 +1,4 @@
+import re
 
 def format_source_location(
     filepath: str, lineno: int

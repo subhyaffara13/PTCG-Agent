@@ -1,3 +1,5 @@
+import math
+
 
 def _get_existing_inline_assertions(
     graph_module: torch.fx.GraphModule,

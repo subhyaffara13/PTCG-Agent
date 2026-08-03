@@ -1,3 +1,6 @@
+import os
+import sys
+import uuid
 
 def get_pin_and_cookie_name(
     app: WSGIApplication,

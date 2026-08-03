@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def kernel(
     body: Callable | Sequence[Callable] | api.NotSpecified = api.NotSpecified(),

@@ -1,3 +1,4 @@
+import random
 
 def test_gnp_augmentation():
     rng = random.Random(0)

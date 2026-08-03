@@ -1,3 +1,4 @@
+from typing import Any
 
 def named_expr_assigned_stmts(
     self: nodes.NamedExpr,

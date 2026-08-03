@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any, Callable, Optional, Union
 
 def register(t):
     """decorator to register types to Pickler's :attr:`~Pickler.dispatch` table"""

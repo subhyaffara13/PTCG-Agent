@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_get(client: Any, url: str, **kwargs: Any) -> Any:
     """

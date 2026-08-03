@@ -1,3 +1,5 @@
+import math
+
 
 def value_to_cpp(value, cpp_type):
     if value == float("-inf"):

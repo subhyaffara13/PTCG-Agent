@@ -1,3 +1,4 @@
+import json
 
 def parse_json(s, **kwargs):
     """Parse a JSON string into a dict."""

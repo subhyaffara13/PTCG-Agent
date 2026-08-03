@@ -1,3 +1,4 @@
+import re
 
 def wide_to_long(
     df: DataFrame, stubnames, i, j, sep: str = "", suffix: str = r"\d+"

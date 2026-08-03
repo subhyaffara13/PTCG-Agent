@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def _system_to_openai_message(
     system: Optional[Union[str, List[Dict[str, Any]]]],

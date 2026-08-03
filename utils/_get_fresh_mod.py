@@ -1,3 +1,4 @@
+import sys
 
 def _get_fresh_mod():
     # Get this module, with warning registry empty

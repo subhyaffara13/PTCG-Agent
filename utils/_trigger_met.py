@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Tuple
 
 def _trigger_met(
     trigger: Dict[str, Any],

@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Callable
 
 def wrap_session(
     config: Config, doit: Callable[[Config, Session], int | ExitCode | None]

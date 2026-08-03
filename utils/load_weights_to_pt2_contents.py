@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_weights_to_pt2_contents(
     pt2_contents: PT2ArchiveContents, weights_map: dict[str, Any]

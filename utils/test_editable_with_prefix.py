@@ -1,3 +1,8 @@
+import os
+import subprocess
+import sys
+from pathlib import Path
+
 
 def test_editable_with_prefix(tmp_path, sample_project, editable_opts):
     """

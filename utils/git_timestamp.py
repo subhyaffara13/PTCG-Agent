@@ -1,3 +1,4 @@
+import os
 
 def git_timestamp(path):
     if not os.path.isfile(path):

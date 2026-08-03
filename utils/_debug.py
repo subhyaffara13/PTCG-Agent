@@ -1,3 +1,4 @@
+import sys
 
 def _debug(text):
     from sympy import SYMPY_DEBUG

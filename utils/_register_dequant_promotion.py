@@ -1,3 +1,4 @@
+import itertools
 
 def _register_dequant_promotion():
     dequant_pattern_cases = itertools.product(

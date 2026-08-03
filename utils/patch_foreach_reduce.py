@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_foreach_reduce(new_foreach_reduce: Callable):
     orig_foreach_foreach_reduce = (

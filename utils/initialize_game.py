@@ -1,3 +1,5 @@
+import random
+import time
 
 def initialize_game(state, env):
     """Set up the initial game state."""

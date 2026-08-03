@@ -1,3 +1,4 @@
+import os
 
 def _find_user_code_frame() -> types.FrameType | None:
     frame = inspect.currentframe()

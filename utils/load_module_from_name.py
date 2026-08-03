@@ -1,3 +1,4 @@
+import sys
 
 def load_module_from_name(dotted_name: str) -> types.ModuleType:
     """Load a Python module from its name.

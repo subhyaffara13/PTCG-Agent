@@ -1,3 +1,4 @@
+from typing import Dict
 
 def convert5to4(
     doc: DesignSpaceDocument,

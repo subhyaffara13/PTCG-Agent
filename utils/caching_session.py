@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def caching_session(cache_dir: Path | None, *, use_pip: bool = False) -> requests.Session:
     """

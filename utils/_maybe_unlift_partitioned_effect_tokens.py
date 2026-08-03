@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_unlift_partitioned_effect_tokens(
     fw_module: torch.fx.GraphModule,

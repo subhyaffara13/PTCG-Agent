@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _replace_pattern(
     gm: GraphModule,

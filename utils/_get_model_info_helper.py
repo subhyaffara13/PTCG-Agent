@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _get_model_info_helper(
     model: str,

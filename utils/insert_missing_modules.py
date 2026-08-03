@@ -1,3 +1,4 @@
+import sys
 
 def insert_missing_modules(modules: dict[str, ModuleType], module_name: str) -> None:
     """

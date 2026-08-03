@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def write_to_compressed(compression, path: str, data, dest: str = "test") -> None:
     """

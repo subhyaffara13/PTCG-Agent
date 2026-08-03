@@ -1,3 +1,4 @@
+import os
 
 def paths_on_pythonpath(paths):
     """

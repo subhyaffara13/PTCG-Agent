@@ -1,3 +1,5 @@
+import math
+
 
 def logaddexp2(a: TensorLikeType, b: TensorLikeType) -> TensorLikeType:
     torch._check(

@@ -1,3 +1,4 @@
+import time
 
 def test_factor_and_dimension():
     assert (3000, Dimension(1)) == SI._collect_factor_and_dimension(3000)

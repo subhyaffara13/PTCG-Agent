@@ -1,3 +1,4 @@
+import os
 
 def _maybe_load_decompositions():
     if os.environ.get("PYTORCH_JIT", "1") == "1" and __debug__:

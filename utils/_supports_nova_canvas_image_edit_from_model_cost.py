@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _supports_nova_canvas_image_edit_from_model_cost(model: str) -> bool:
     """

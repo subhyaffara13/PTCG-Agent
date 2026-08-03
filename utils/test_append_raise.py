@@ -1,3 +1,4 @@
+import re
 
 def test_append_raise(temp_hdfstore, using_infer_string):
     # test append with invalid input to get good error messages

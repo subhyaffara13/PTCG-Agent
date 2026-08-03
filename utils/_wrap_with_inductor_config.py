@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _wrap_with_inductor_config(
     compiler_fn: Any, config_patches: dict[str, Any]

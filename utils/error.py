@@ -1,3 +1,4 @@
+import sys
 
 def error(msg):
     from cffi._shimmed_dist_utils import DistutilsSetupError

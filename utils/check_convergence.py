@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_convergence(numer: Expr, denom: Expr, n: Symbol) -> tuple[int, Any, Any]:
     """

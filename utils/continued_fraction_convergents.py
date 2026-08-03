@@ -1,3 +1,4 @@
+import itertools
 
 def continued_fraction_convergents(cf):
     """

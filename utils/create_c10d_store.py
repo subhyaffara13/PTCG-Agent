@@ -1,3 +1,4 @@
+import os
 
 def create_c10d_store(
     is_server: bool,

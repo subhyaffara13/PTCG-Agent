@@ -1,3 +1,4 @@
+import sys
 
 def check_help_all_output(pkg: str, subcommand: Sequence[str] | None = None) -> tuple[str, str]:
     """test that `python -m PKG --help-all` works"""

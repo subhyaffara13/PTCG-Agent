@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_coins():
     C, D = Coin('C'), Coin('D')

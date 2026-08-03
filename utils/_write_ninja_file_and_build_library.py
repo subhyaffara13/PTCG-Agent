@@ -1,3 +1,4 @@
+import os
 
 def _write_ninja_file_and_build_library(
         name,

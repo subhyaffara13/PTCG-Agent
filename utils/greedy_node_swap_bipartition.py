@@ -1,3 +1,4 @@
+import random
 
 def greedy_node_swap_bipartition(G, *, init_split=None, max_iter=10):
     """Split the nodes into two communities based on greedy

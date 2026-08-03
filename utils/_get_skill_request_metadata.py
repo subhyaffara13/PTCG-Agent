@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _get_skill_request_metadata(
     kwargs: Dict[str, Any],

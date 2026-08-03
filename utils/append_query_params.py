@@ -1,3 +1,4 @@
+from typing import Optional
 
 def append_query_params(url: Optional[str], params: dict) -> str:
     from litellm._logging import verbose_proxy_logger

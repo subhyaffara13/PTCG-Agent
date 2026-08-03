@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prepare_function_arguments(
     func: Callable, args: tuple, kwargs: dict, *, num_required_args: int

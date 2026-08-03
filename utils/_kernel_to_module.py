@@ -1,3 +1,4 @@
+from typing import Union
 
 def _kernel_to_module(
     body,

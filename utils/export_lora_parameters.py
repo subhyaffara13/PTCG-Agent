@@ -1,3 +1,4 @@
+import os
 
 def export_lora_parameters(
     npz_file_path: os.PathLike, adapter_version: int, model_version: int, output_file_path: os.PathLike

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def wrap_error(
     e: Exception,

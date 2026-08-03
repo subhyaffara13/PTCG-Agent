@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _resolve_embedding_config_from_router(
     embedding_model: str, llm_router

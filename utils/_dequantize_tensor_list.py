@@ -1,3 +1,4 @@
+from typing import Any
 
 def _dequantize_tensor_list(tensor_list, qtype, quant_loss=None):
     if not isinstance(tensor_list, list) or not all(

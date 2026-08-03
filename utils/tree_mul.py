@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_mul(tree_x: Any, tree_y: Any) -> Any:
   r"""Multiply two pytrees.

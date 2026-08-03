@@ -1,3 +1,5 @@
+import math
+
 
 def test_torch_derivative_lambdify():
     if not torch:

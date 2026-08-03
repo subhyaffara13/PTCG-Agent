@@ -1,3 +1,5 @@
+import math
+
 
 def fast_gnp_random_graph(n, p, seed=None, directed=False, *, create_using=None):
     """Returns a $G_{n,p}$ random graph, also known as an Erdős-Rényi graph or

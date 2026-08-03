@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def is_web_search_tool_chat_completion(tool: Dict[str, Any]) -> bool:
     """

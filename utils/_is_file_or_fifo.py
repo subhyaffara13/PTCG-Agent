@@ -1,3 +1,4 @@
+import os
 
 def _is_file_or_fifo(path: StrPath) -> bool:
     """

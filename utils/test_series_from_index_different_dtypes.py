@@ -1,3 +1,4 @@
+import copy
 
 def test_series_from_index_different_dtypes(copy):
     idx = Index([1, 2, 3], dtype="int64", copy=copy)

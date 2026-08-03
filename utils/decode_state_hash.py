@@ -1,3 +1,4 @@
+import json
 
 def decode_state_hash(encrypted_state: str) -> dict:
     """

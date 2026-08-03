@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _aot_stage2c_make_inference_function(
     aot_config: AOTConfig,

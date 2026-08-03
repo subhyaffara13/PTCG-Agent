@@ -1,3 +1,4 @@
+from typing import Any
 
 def lookup_immutability_for_type(candidate_type: type[Any]) -> bool:
   """Checks if an object is marked as immutable in the global registry.

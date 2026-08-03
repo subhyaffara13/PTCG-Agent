@@ -1,3 +1,4 @@
+import json
 
 def test_turn_planner_sorting(tmp_path):
     skills_dir = tmp_path / "skills"

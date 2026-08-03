@@ -1,3 +1,4 @@
+from typing import Any
 
 def _date_and_delta(
     value: Any, *, now: dt.datetime | None = None, precise: bool = False

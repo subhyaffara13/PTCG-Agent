@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _make_reduce_func_with_common_obj(
     reduce_func: Callable[[Any], tuple[Any, Any]],

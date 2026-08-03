@@ -1,3 +1,5 @@
+import math
+
 
 def association(observed, method="cramer", correction=False, lambda_=None):
     """Calculates degree of association between two nominal variables.

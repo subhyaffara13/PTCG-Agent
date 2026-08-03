@@ -1,3 +1,4 @@
+import sys
 
 def test_show(case, capsys, xp, batch_A, batch_b):
     if case.solver != tfqmr:

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _apply_transform(
     s: cs.CoreSchema | None, func: Callable[[Any], Any], handler: GetCoreSchemaHandler

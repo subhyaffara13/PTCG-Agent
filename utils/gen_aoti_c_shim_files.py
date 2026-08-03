@@ -1,3 +1,4 @@
+import os
 
 def gen_aoti_c_shim_files(
     aoti_fm: FileManager,

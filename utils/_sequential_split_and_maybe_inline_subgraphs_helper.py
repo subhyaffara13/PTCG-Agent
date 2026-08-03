@@ -1,3 +1,5 @@
+import copy
+from typing import Callable
 
 def _sequential_split_and_maybe_inline_subgraphs_helper(
     new_gm: torch.fx.GraphModule,

@@ -1,3 +1,4 @@
+import os
 
 def test_save_unicode_field(tmpdir):
     filename = os.path.join(str(tmpdir), 'test.mat')

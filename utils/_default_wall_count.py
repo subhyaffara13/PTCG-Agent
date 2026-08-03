@@ -1,3 +1,4 @@
+from typing import Any
 
 def _default_wall_count(params: Mapping[str, Any]) -> int:
     """Quoridor's per-player wall budget.

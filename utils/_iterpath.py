@@ -1,3 +1,4 @@
+import os
 
 def _iterpath(path):
     path, last = os.path.split(path)

@@ -1,3 +1,5 @@
+import json
+import os
 
 def _get_apikey_creds():
     apikey_filename = os.path.expanduser("~/.kaggle/kaggle.json")

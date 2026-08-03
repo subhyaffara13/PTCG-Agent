@@ -1,3 +1,4 @@
+from typing import Any
 
 def _retry_on_failure(transfer: _Transfer, optimized: bool | None) -> Any:
   """If `optimized` is `None`, retry `transfer` with `optimized=False` on failure."""

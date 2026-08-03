@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Set
 
 def _sanitize_inbound_headers(
     headers: Any,

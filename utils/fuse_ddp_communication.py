@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fuse_ddp_communication(
     graph: fx.Graph, passes: list[Callable[..., None] | str], bucket_size_mb: int

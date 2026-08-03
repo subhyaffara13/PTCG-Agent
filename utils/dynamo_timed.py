@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def dynamo_timed(
     key: str,

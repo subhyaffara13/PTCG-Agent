@@ -1,3 +1,4 @@
+from typing import Optional
 
 def max_robust_secure_child(
     root: SearchNode, secure_c: float = 1.0, find_secure: bool = False

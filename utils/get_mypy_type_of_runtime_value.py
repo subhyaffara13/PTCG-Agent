@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_mypy_type_of_runtime_value(
     runtime: Any, type_context: mypy.types.Type | None = None

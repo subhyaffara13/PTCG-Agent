@@ -1,3 +1,4 @@
+from typing import Any
 
 def issue_insecure_write_warning() -> None:
     """Issue an insecure write warning."""

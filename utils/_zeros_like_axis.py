@@ -1,3 +1,4 @@
+import functools
 
 def _zeros_like_axis(x, axis: int) -> jax.Array:
   """Returns an array of zeros like the given axis of `x`."""

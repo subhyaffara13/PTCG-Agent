@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _auto_wrap(
     root_module: nn.Module,

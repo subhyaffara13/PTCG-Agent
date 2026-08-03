@@ -1,3 +1,4 @@
+from typing import Callable
 
 def dynamic_scheduling_loop(
     grid_names: Sequence[Hashable],

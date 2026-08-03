@@ -1,3 +1,4 @@
+from typing import Any
 
 def argument_names(
     f_sig: inspect.Signature,

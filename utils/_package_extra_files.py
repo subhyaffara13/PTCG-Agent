@@ -1,3 +1,4 @@
+from typing import Any
 
 def _package_extra_files(
     archive_writer: PT2ArchiveWriter, extra_files: dict[str, Any] | None

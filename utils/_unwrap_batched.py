@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _unwrap_batched(
     batched_outputs: Tensor | tuple[Tensor, ...],

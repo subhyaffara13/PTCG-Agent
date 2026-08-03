@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Tuple
 
 def _strip_extras(path: str) -> Tuple[str, Optional[str]]:
     m = re.match(r"^(.+)(\[[^\]]+\])$", path)

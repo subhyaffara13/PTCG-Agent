@@ -1,3 +1,4 @@
+import sys
 
 def _is_torch_array(x):
     """Return whether *x* is a PyTorch Tensor."""

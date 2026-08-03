@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _extract_grpc_status_name(error: Any) -> Optional[str]:
     """

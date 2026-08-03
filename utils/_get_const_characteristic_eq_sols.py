@@ -1,3 +1,4 @@
+import re
 
 def _get_const_characteristic_eq_sols(r, func, order):
     r"""

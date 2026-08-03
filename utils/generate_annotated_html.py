@@ -1,3 +1,5 @@
+import os
+import sys
 
 def generate_annotated_html(
     html_fnam: str, result: BuildResult, modules: dict[str, ModuleIR], mapper: Mapper

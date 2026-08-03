@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def get_end_user_id_from_request_body(
     request_body: dict, request_headers: Optional[dict] = None

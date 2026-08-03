@@ -1,3 +1,5 @@
+import math
+
 
 def _find_divisors(size: int):
   """Fast-ish method for finding divisors of a number."""

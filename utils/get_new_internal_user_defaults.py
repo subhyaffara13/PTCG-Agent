@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_new_internal_user_defaults(
     user_id: str, user_email: Optional[str] = None

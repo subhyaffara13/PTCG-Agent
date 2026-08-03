@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def split_server_prefix_from_name(prefixed_name: str) -> Tuple[str, str]:
     """Return the unprefixed name plus the server name used as prefix."""

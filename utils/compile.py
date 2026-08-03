@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any
 
 def compile(tmpdir, ext, compiler_verbose=0, debug=None):
     """Compile a C extension module using distutils."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _replace_by_prefix(
     state_dict: dict[str, Any],

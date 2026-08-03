@@ -1,3 +1,4 @@
+import itertools
 
 def _get_tensorboard_scalars(path):
   """Read and parse scalar TensorBoard summaries.

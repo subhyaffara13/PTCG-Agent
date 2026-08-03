@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def add_provider_specific_fields(
     object: BaseModel, provider_specific_fields: Optional[Dict[str, Any]]

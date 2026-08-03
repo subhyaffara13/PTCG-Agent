@@ -1,3 +1,4 @@
+import re
 
 def is_inplace(func):
     name = func.overloadpacket.__name__

@@ -1,3 +1,5 @@
+import math
+
 
 def asadpour_atsp(G, weight="weight", seed=None, source=None):
     """

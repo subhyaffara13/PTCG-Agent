@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def get_api_base(
     model: str, optional_params: Union[dict, LiteLLM_Params]

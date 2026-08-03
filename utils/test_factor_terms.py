@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_factor_terms():
     # issue 7067

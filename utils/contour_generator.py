@@ -1,3 +1,4 @@
+from typing import Any
 
 def contour_generator(
     x: ArrayLike | None = None,

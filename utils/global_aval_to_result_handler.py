@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def global_aval_to_result_handler(
     aval: core.AbstractValue, out_sharding, committed: bool

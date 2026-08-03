@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _add_text_like_part_events(
     *,

@@ -1,3 +1,5 @@
+import math
+
 
 def _ConvertFloat(value, field):
   """Convert an floating point number."""

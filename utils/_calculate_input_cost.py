@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _calculate_input_cost(
     prompt_tokens_details: PromptTokensDetailsResult,

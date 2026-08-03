@@ -1,3 +1,4 @@
+from typing import Any
 
 def estimate_runtime(node: fx.Node) -> float:
     RUNTIME_MODE = config.activation_memory_budget_runtime_estimator

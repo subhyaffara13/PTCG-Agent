@@ -1,3 +1,4 @@
+import os
 
 def read_config(options, args, arglist, parser):
     """Read and parse configurations.

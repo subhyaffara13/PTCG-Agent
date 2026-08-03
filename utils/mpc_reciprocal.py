@@ -1,3 +1,4 @@
+import re
 
 def mpc_reciprocal(z, prec, rnd=round_fast):
     """Calculate 1/z efficiently"""

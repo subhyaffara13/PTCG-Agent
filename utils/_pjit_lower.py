@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pjit_lower(
     jaxpr: core.ClosedJaxpr,

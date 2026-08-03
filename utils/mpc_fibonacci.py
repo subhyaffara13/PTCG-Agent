@@ -1,3 +1,4 @@
+import re
 
 def mpc_fibonacci(z, prec, rnd=round_fast):
     re, im = z

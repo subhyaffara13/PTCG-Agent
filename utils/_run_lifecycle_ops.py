@@ -1,3 +1,5 @@
+import logging
+from typing import Callable
 
 def _run_lifecycle_ops(*ops: Callable[[], None]) -> None:
   """Runs all lifecycle operations and re-raises the first failure."""

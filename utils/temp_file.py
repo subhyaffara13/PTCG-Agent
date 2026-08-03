@@ -1,3 +1,4 @@
+import uuid
 
 def temp_file(tmp_path):
     """

@@ -1,3 +1,4 @@
+import copy
 
 def _compile_submod(gm, prefix):
     from torch._inductor.standalone_compile import AOTCompiledArtifact

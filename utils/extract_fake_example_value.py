@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_fake_example_value(node: torch.fx.Node, required: bool = True) -> Any:
     if "example_value" in node.meta and is_fake(node.meta["example_value"]):

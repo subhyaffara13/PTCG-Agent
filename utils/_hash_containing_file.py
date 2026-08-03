@@ -1,3 +1,4 @@
+import os
 
 def _hash_containing_file(filepath: str) -> str:
     # if the file does not exists we consider filepath to be the hash.

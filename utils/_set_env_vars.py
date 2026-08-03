@@ -1,3 +1,5 @@
+import os
+from typing import Any, Dict
 
 def _set_env_vars(config_data: Dict[str, Any]) -> None:
     """Set HCP_VAULT_* env vars from config data. Unsets vars for missing/None/empty fields."""

@@ -1,3 +1,4 @@
+import time
 
 def _should_check_db(
     key: str, last_db_access_time: LimitedSizeOrderedDict, db_cache_expiry: int

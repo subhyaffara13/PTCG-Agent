@@ -1,3 +1,4 @@
+from typing import List
 
 def pairs_string_to_list(positions: str) -> List[np.ndarray]:
   """Converts a string representing positions into a list of positions."""

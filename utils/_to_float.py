@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _to_float(x: bytes | str) -> float:
     # Some AFM files use "," instead of "." as decimal separator -- this

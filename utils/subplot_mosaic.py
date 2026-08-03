@@ -1,3 +1,4 @@
+from typing import Any
 
 def subplot_mosaic(
     mosaic: str,

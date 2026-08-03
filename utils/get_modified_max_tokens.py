@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_modified_max_tokens(
     model: str,

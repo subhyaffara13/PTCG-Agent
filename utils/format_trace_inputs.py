@@ -1,3 +1,4 @@
+import itertools
 
 def format_trace_inputs(f: NativeFunction) -> str:
     def dispatch_trace_input(arg: Argument | TensorOptionsArguments) -> Sequence[str]:

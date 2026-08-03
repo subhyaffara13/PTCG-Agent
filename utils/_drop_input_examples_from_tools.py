@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _drop_input_examples_from_tools(
     tools: Optional[List[dict]],

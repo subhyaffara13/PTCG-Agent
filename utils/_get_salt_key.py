@@ -1,3 +1,4 @@
+import os
 
 def _get_salt_key():
     from litellm.proxy.proxy_server import master_key

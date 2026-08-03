@@ -1,3 +1,4 @@
+from typing import Any
 
 def first_call_function_nn_module_stack(graph: torch.fx.Graph) -> dict[str, Any] | None:
     """

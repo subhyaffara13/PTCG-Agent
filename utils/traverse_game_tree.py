@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def traverse_game_tree(
     game: pyspiel.Game,

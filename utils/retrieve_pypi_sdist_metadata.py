@@ -1,3 +1,4 @@
+import json
 
 def retrieve_pypi_sdist_metadata(package, version):
     # https://warehouse.pypa.io/api-reference/json.html

@@ -1,3 +1,4 @@
+import functools
 
 def extras_from_deps(deps):
     """

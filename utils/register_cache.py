@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_cache(cls: type[BaseCache], clobber: bool = False) -> None:
     """'Register' cache implementation.

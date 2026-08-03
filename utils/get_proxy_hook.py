@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_proxy_hook(
     hook_name: Union[

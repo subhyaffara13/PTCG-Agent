@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_to_key(
     path: _KeyPath, node: Any, key: Any

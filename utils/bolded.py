@@ -1,3 +1,4 @@
+from typing import Any
 
 def bolded(subfigure: Any) -> figures_impl.TreescopeFigure:
   """Returns a bolded version of the first figure.

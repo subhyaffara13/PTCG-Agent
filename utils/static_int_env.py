@@ -1,3 +1,4 @@
+import os
 
 def static_int_env(varname: str, default: int | None) -> int | None:
   """Read an environment variable and interpret it as an integer.

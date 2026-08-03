@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 
 def jupyter_data_dir() -> str:
     """Get the config directory for Jupyter data files for this platform and user.

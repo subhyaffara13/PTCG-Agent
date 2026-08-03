@@ -1,3 +1,4 @@
+import os
 
 def access_pypi():
     # Detect if tests are being run without connectivity

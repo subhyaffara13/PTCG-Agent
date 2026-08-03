@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_datadog_base_url_from_env() -> Optional[str]:
     """

@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Callable
 
 def make_fake_inputs(
     nn_module,

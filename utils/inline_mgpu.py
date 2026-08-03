@@ -1,3 +1,4 @@
+from typing import Any
 
 def inline_mgpu(*, arg_types=(), return_type=None):
   r"""Returns a decorator that inlines Mosaic GPU code.

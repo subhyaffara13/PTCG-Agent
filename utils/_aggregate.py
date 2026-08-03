@@ -1,3 +1,4 @@
+from typing import Any
 
 def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Build the per-variant / per-model statistics shown in summary.md."""

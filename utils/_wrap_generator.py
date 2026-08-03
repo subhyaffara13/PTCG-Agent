@@ -1,3 +1,5 @@
+import functools
+import sys
 
 def _wrap_generator(ctx_factory, func):
     """

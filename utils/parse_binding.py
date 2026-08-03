@@ -1,3 +1,4 @@
+from typing import Optional
 
 def parse_binding(reader: Reader) -> Binding:
     reader.set_mark()

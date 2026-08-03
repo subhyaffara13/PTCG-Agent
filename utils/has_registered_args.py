@@ -1,3 +1,4 @@
+from typing import Union
 
 def has_registered_args(
     handler: Union[Type[CheckpointHandler], CheckpointHandler]

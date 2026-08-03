@@ -1,3 +1,4 @@
+from typing import Callable
 
 def test_deprecate_privatize_attribute() -> None:
     class C:

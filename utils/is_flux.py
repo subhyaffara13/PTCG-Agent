@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def is_flux(source_dir: Path):
     return (

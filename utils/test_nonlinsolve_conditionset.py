@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_nonlinsolve_conditionset():
     # when solveset failed to solve all the eq

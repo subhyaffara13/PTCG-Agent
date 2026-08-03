@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_shard_size_and_offsets(
     curr_local_size: int,

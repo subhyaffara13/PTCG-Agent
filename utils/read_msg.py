@@ -1,3 +1,5 @@
+import json
+import sys
 
 def read_msg() -> dict | None:
     """Read Line delimited JSON from stdin."""

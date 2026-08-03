@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_nested_fn(
     code: types.CodeType,

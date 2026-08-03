@@ -1,3 +1,4 @@
+import os
 
 def test_maxrows_exceeding_chunksize(nmax):
     # tries to read all of the file,

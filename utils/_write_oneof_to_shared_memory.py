@@ -1,3 +1,4 @@
+from typing import Any
 
 def _write_oneof_to_shared_memory(
     space: OneOf, index: int, values: tuple[int, Any], shared_memory

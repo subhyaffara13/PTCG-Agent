@@ -1,3 +1,4 @@
+import functools
 
 def make_opaque_bitwise_fn(name, real_op_name):
     if name == "bitwise_and":

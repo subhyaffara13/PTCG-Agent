@@ -1,3 +1,4 @@
+from typing import Any
 
 def _defaultdict_unflatten(
     values: Iterable[T],

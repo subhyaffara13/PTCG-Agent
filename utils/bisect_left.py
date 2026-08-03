@@ -1,3 +1,4 @@
+from typing import Any
 
 def bisect_left(a: list[Any], x: Any, lo: int = 0, hi: int = -1) -> int:
     """Same as https://docs.python.org/3/library/bisect.html; not in numba yet!"""

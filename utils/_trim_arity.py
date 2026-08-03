@@ -1,3 +1,4 @@
+import sys
 
 def _trim_arity(func, max_limit=3):
     """decorator to trim function calls to match the arity of the target"""

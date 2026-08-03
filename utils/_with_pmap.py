@@ -1,3 +1,4 @@
+import functools
 
 def _with_pmap(fn,
                broadcast_args_to_devices=True,

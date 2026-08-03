@@ -1,3 +1,4 @@
+import os
 
 def _get_model_ops_and_info(f_input):
     r"""Retrieve the root (top level) operators of a model and their corresponding compatibility info.

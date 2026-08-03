@@ -1,3 +1,4 @@
+import functools
 
 def all_gather_lhs_matmul(
     lhs: jax.Array,

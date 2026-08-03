@@ -1,3 +1,4 @@
+import subprocess
 
 def get_gcc_major_version():
     """

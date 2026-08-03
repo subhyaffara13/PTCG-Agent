@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def aiohttp_client(loop: asyncio.AbstractEventLoop) -> Iterator[AiohttpClient]:
     """Factory to create a TestClient instance.

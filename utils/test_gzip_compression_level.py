@@ -1,3 +1,4 @@
+import os
 
 def test_gzip_compression_level(obj, method, temp_file):
     # GH33196

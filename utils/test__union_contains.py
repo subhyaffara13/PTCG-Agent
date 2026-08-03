@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_Union_contains():
     assert zoo not in Union(

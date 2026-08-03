@@ -1,3 +1,4 @@
+import functools
 
 def array_function_dispatch(dispatcher=None, module=None, verify=True,
                             docs_from_dispatcher=False):

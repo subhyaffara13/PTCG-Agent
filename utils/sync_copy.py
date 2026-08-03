@@ -1,3 +1,4 @@
+import functools
 
 def sync_copy(src_ref, dst_ref, *, add: bool = False) -> None:
   """Synchronously copies a PyTree of refs to another PyTree of refs."""

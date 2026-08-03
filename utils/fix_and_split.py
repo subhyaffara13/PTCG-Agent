@@ -1,3 +1,4 @@
+import re
 
 def fix_and_split(filepath):
     """Fix syntax errors in a generated file, then split if >50 lines."""

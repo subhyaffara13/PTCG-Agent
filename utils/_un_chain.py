@@ -1,3 +1,4 @@
+import re
 
 def _un_chain(path, kwargs):
     # Avoid a circular import

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_find_noto():
     fp = FontProperties(family=["Noto Sans CJK SC", "Noto Sans CJK JP"])

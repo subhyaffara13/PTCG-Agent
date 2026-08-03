@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_measure():
     a = Symbol('a', real=True)

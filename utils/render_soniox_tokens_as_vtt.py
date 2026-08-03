@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def render_soniox_tokens_as_vtt(tokens: List[Dict[str, Any]]) -> str:
     """

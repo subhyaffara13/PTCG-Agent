@@ -1,3 +1,4 @@
+import copy
 
 def contracted_edge(
     G, edge, self_loops=True, copy=True, *, store_contraction_as="contraction"

@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_admin_team_ids_from_objects(
     user_api_key_dict: UserAPIKeyAuth,

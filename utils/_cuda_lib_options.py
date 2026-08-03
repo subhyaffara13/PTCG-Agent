@@ -1,3 +1,4 @@
+import os
 
 def _cuda_lib_options() -> list[str]:
     """

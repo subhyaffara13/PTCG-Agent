@@ -1,3 +1,4 @@
+import functools
 
 def _check_grads_arg_passed(f: F) -> F:
   @functools.wraps(f)

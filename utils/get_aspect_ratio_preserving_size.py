@@ -1,3 +1,5 @@
+import math
+
 
 def get_aspect_ratio_preserving_size(
     height: int,

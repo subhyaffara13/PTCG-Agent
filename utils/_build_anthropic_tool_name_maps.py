@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple
 
 def _build_anthropic_tool_name_maps(
     original_names: List[str],

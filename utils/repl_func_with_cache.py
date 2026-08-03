@@ -1,3 +1,4 @@
+import re
 
 def repl_func_with_cache(match: re.Match, cache: Sequence[str]) -> str:
     seq = match.group()

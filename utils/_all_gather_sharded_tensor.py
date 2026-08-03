@@ -1,3 +1,5 @@
+import math
+
 
 def _all_gather_sharded_tensor(
     sharded_tensor: "ShardedTensor",

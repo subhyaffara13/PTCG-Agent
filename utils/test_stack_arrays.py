@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_stack_arrays() -> None:
     x = np.zeros((2,), np.int32)

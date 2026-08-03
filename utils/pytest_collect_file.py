@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pytest_collect_file(
     file_path: Path,

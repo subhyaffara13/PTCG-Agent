@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def _extract_requested_mcp_access_groups(
     object_permission: Optional[dict],

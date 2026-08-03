@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _transform_url(
     url: str, transform_netloc: Callable[[str], tuple[Any, ...]]

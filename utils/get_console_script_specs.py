@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def get_console_script_specs(console: dict[str, str]) -> list[str]:
     """

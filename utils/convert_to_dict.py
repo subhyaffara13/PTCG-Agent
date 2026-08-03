@@ -1,3 +1,4 @@
+from typing import Union
 
 def convert_to_dict(message: Union[BaseModel, dict]) -> dict:
     """

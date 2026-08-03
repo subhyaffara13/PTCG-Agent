@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def get_device_states(*args) -> Tuple[List[int], List[torch.Tensor]]:
     # This will not error out if "arg" is a CPU tensor or a non-tensor type because

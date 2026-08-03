@@ -1,3 +1,4 @@
+import os
 
 def find_parent_package(
     packages: list[str], package_dir: Mapping[str, str], root_dir: StrPath

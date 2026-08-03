@@ -1,3 +1,4 @@
+from typing import Any
 
 def benchmark_all_kernels(
     benchmark_name: str, benchmark_all_configs: dict[Any, Any] | None

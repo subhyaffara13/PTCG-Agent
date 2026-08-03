@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_attack_helper(gs: dict, hand: list, CardRegistry: Any) -> None:
     try:

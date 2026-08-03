@@ -1,3 +1,4 @@
+import re
 
 def safe_version(version: str) -> str:
     """

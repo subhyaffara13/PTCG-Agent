@@ -1,3 +1,4 @@
+import sys
 
 def _unikey_or_keysym_to_mplkey(unikey, keysym):
     """

@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def shutil_rmtree(
     path: StrOrBytesPath,

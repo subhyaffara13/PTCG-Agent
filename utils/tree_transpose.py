@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_transpose(outer_treedef: PyTreeDef, inner_treedef: PyTreeDef | None,
                    pytree_to_transpose: Any) -> Any:

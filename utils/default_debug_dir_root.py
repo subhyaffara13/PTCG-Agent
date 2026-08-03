@@ -1,3 +1,4 @@
+import os
 
 def default_debug_dir_root() -> str:
     # [@compile_ignored: debug]

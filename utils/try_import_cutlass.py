@@ -1,3 +1,5 @@
+import os
+import sys
 
 def try_import_cutlass() -> bool:
     """

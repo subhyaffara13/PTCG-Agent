@@ -1,3 +1,4 @@
+from typing import Any
 
 def _toml_value(key: str, value: Any) -> Any:  # noqa: ANN401
     if isinstance(value, (Version, Marker, SpecifierSet)):

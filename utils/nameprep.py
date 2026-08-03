@@ -1,3 +1,4 @@
+from typing import Any
 
 def nameprep(s: Any) -> None:
     """Stub for :rfc:`3491` Nameprep, which is not used by IDNA 2008.

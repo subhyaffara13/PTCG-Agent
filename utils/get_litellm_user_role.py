@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_litellm_user_role(role_str) -> Optional[LitellmUserRoles]:
     """

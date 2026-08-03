@@ -1,3 +1,4 @@
+import functools
 
 def _get_collective_key(coll_node: fx.Node) -> str:
     """Extract a unique key for a collective node including group info and tensor size."""

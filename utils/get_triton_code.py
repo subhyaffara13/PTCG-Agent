@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_triton_code(fn: Callable[P, _T], *args: P.args, **kwargs: P.kwargs) -> str:
     # pyrefly: ignore [bad-argument-type]

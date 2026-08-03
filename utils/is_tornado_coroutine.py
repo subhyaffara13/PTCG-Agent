@@ -1,3 +1,4 @@
+import sys
 
 def is_tornado_coroutine(func):
     """Return whether `func` is a Tornado coroutine function.

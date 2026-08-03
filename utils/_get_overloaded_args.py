@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_overloaded_args(
     relevant_args: Iterable[Any],

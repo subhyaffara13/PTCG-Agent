@@ -1,3 +1,5 @@
+import logging
+import os
 
 def construct_and_record_rdzv_event(
     run_id: str,

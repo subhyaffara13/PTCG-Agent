@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _time_logger(func: Callable[_P, _T]) -> Callable[_P, _T]:
     @functools.wraps(func)

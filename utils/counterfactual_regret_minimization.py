@@ -1,3 +1,4 @@
+import time
 
 def counterfactual_regret_minimization(seq_game,
                                        number_of_iterations,

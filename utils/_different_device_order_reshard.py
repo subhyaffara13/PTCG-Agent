@@ -1,3 +1,4 @@
+import copy
 
 def _different_device_order_reshard(
     x: array.ArrayImpl, target_sharding: NamedSharding, copy: ArrayCopySemantics

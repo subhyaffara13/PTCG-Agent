@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_placeholder(value: Any) -> bool:
   return value is PLACEHOLDER

@@ -1,3 +1,4 @@
+import re
 
 def mpc_psi(m, z, prec, rnd=round_fast):
     """

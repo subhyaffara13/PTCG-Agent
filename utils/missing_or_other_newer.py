@@ -1,3 +1,4 @@
+import os
 
 def missing_or_other_newer(path, other_path, cwd=None):
     """

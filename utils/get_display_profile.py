@@ -1,3 +1,4 @@
+import sys
 
 def get_display_profile(handle: SupportsInt | None = None) -> ImageCmsProfile | None:
     """

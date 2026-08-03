@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_meshgrid(op_info: OpInfo, device: torch.device, dtype: torch.dtype,
                            requires_grad: bool,

@@ -1,3 +1,4 @@
+import copy
 
 def test_multigraph_edge_contraction(edge, store_contraction_as, copy, selfloops):
     """Tests for edge contraction in a multigraph"""

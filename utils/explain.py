@@ -1,3 +1,5 @@
+import logging
+from typing import Any, Callable
 
 def explain(f: Callable[..., Any], *extra_args: Any, **extra_kwargs: Any) -> Any:
     from .backends.debugging import ExplainOutput

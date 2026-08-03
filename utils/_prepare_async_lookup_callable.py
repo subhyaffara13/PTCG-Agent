@@ -1,3 +1,4 @@
+import functools
 
 def _prepare_async_lookup_callable(request):
     """Unwraps a request callable, clones the transport, and returns the new callable.

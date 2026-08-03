@@ -1,3 +1,4 @@
+from typing import Callable
 
 def wrap_init(f: Callable, params=None, *, debug_info=None) -> WrappedFun:
   debug_info = debug_info or _missing_debug_info("linear_util.wrap_init")

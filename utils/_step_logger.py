@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _step_logger() -> Any:
     return torchdynamo_logging.get_step_logger(log)

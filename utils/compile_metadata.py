@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def compile_metadata(skills_dir: str = "skills"):
     s_dir = Path(skills_dir)

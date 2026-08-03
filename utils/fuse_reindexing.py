@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fuse_reindexing(
     reindex1: Callable[[Sequence[_U]], Sequence[_V]],

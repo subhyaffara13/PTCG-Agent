@@ -1,3 +1,4 @@
+import os
 
 def attach_huggingface_oauth(app: "fastapi.FastAPI", route_prefix: str = "/"):
     """

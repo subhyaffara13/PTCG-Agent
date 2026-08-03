@@ -1,3 +1,4 @@
+from typing import Any
 
 def parse_eval_result_entries(data: list[dict[str, Any]]) -> list[EvalResultEntry]:
     """Parse a list of dicts into [`EvalResultEntry`] objects.

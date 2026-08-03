@@ -1,3 +1,5 @@
+import math
+
 
 def _optimize_transform_infos(
     transform_infos: list[_TransformInfo],

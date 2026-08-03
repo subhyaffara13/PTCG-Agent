@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_type_ref(type_: Any, args_override: tuple[type[Any], ...] | None = None) -> str:
     """Produces the ref to be used for this type by pydantic_core's core schemas.

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def aot_load(so_path: str, device: str) -> Callable:
     """

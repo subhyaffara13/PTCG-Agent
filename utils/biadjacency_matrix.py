@@ -1,3 +1,4 @@
+import itertools
 
 def biadjacency_matrix(
     G, row_order, column_order=None, dtype=None, weight="weight", format="csr"

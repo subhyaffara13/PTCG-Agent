@@ -1,3 +1,4 @@
+import itertools
 
 def collect_fw_donated_buffer_idxs(
     fw_ins: list[FakeTensor | None],

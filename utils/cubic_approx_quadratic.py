@@ -1,3 +1,5 @@
+import math
+
 
 def cubic_approx_quadratic(cubic, tolerance):
     """Approximate a cubic Bezier with a single quadratic within a given tolerance.

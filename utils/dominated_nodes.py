@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dominated_nodes(
     initial_queue: Iterable[torch.fx.Node],

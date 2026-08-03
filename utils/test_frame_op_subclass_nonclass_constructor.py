@@ -1,3 +1,4 @@
+import functools
 
 def test_frame_op_subclass_nonclass_constructor():
     # GH#43201 subclass._constructor is a function, not the subclass itself

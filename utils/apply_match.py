@@ -1,3 +1,4 @@
+from typing import Any
 
 def apply_match(
     modules: dict[str, nn.ModuleDict],

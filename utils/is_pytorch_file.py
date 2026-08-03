@@ -1,3 +1,4 @@
+import os
 
 def is_pytorch_file(rel_filepath) -> bool:
     _deprecated("is_pytorch_file")

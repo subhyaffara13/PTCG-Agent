@@ -1,3 +1,4 @@
+from typing import Any
 
 def transpose(array, axes=None):
     """

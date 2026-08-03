@@ -1,3 +1,4 @@
+import json
 
 def _bytes_to_dict(content: bytes) -> dict:
     """Parse bytes from a Response object into a Python dictionary.

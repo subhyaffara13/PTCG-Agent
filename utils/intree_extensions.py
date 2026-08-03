@@ -1,3 +1,5 @@
+import os
+from typing import Dict, List, Optional
 
 def intree_extensions(
     paths: Iterable[str], package_dir: Optional[Dict[str, str]] = None

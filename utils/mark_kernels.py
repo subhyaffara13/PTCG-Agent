@@ -1,3 +1,4 @@
+from typing import Any
 
 def mark_kernels(annotation: str | dict[str, Any]):
     """Context manager that records node index ranges for later annotation.

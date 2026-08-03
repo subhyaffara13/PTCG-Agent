@@ -1,3 +1,5 @@
+import copy
+from typing import Optional
 
 def _build_competitor_guardrail_definitions(
     definitions: list,

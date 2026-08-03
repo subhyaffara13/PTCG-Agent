@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dataclass_field(
     name: str,

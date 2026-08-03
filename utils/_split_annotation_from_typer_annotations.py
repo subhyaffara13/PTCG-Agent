@@ -1,3 +1,4 @@
+from typing import Any
 
 def _split_annotation_from_typer_annotations(
     base_annotation: type[Any],

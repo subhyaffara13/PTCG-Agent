@@ -1,3 +1,4 @@
+from typing import Callable
 
 def sympify_return(*args):
     '''Function/method decorator to sympify arguments automatically

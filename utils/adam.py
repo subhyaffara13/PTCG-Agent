@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def adam(
     params: list[Tensor],

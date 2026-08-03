@@ -1,3 +1,4 @@
+import re
 
 def check_packages(dist, attr, value):
     for pkgname in value:

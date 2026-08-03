@@ -1,3 +1,4 @@
+from typing import Dict
 
 def parse_labels(labels_string: str, openmetrics: bool = False) -> Dict[str, str]:
     labels: Dict[str, str] = {}

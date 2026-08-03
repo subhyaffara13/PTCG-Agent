@@ -1,3 +1,4 @@
+import itertools
 
 def combinations_with_replacement(iterable, r, total=None, tqdm_class=tqdm_auto, **kwargs):
     """Equivalent of `itertools.combinations_with_replacement`."""

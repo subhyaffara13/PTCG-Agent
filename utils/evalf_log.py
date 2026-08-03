@@ -1,3 +1,4 @@
+import re
 
 def evalf_log(expr: 'log', prec: int, options: OPT_DICT) -> TMP_RES:
     if len(expr.args)>1:

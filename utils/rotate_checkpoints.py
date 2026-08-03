@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def rotate_checkpoints(
     output_dir: str,

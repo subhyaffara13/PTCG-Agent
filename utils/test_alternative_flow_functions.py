@@ -1,3 +1,4 @@
+import itertools
 
 def test_alternative_flow_functions(G, flow_func):
     node_conn = nx.node_connectivity(G)

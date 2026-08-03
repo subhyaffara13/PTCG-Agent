@@ -1,3 +1,4 @@
+from typing import Any
 
 def has_dims(obj: Any) -> bool:
     """

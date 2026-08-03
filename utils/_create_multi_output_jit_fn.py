@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _create_multi_output_jit_fn(
     code_string: str, num_outputs: int, **kwargs

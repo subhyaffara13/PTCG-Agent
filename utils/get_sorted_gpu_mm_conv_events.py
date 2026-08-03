@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_sorted_gpu_mm_conv_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
     def is_mm_conv_event(event: dict[str, Any]) -> bool:

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _replace_observer_with_quantize_dequantize_node_decomposed(
     model: torch.fx.GraphModule,

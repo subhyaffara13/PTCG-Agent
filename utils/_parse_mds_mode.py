@@ -1,3 +1,4 @@
+import os
 
 def _parse_mds_mode():
     """Parses the GCE_METADATA_MTLS_MODE environment variable."""

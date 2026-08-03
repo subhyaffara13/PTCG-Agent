@@ -1,3 +1,5 @@
+import re
+import sys
 
 def _android_folder() -> str | None:  # noqa: C901
     """:returns: base folder for the Android OS or None if it cannot be found"""

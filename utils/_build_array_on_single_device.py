@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_array_on_single_device(
     info: dict[str, Any], owner: int, ctx: _LoadContext

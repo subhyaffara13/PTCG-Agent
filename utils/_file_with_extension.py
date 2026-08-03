@@ -1,3 +1,4 @@
+import os
 
 def _file_with_extension(directory: StrPath, extension: str | tuple[str, ...]):
     matching = (f for f in os.listdir(directory) if f.endswith(extension))

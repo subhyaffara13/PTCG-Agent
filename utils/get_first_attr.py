@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_first_attr(obj: Any, *attrs: str) -> Any:
     """

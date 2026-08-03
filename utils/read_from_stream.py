@@ -1,3 +1,4 @@
+import os
 
 def readFromStream(substrate, size=-1, context=None):
     """Read from the stream.

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def format_iso_datetime_str(iso_datetime_str: Optional[str]) -> str:
     """Format an ISO format datetime string to human-readable date with minute resolution."""

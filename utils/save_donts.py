@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def save_donts(donts_file: Path, learned_donts: dict):
     try:

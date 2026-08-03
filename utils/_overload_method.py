@@ -1,3 +1,4 @@
+import sys
 
 def _overload_method(func):
     try:

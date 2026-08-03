@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Any, Dict, List
 
 def analyze_log_file(filepath: str, 
                      trend_stats: Dict[str, Any], 

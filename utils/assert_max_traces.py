@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable, Optional, Union
 
 def assert_max_traces(fn: Optional[Union[Callable[..., Any], int]] = None,
                       n: Optional[Union[Callable[..., Any], int]] = None):

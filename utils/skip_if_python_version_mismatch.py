@@ -1,3 +1,4 @@
+import sys
 
 def skipIfPythonVersionMismatch(predicate):
     vi = sys.version_info

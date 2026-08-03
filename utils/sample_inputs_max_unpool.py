@@ -1,3 +1,4 @@
+import copy
 
 def sample_inputs_max_unpool(op_info, device, dtype, requires_grad, **kwargs):
     unpool_name_to_pool_method_dict = {

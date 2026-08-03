@@ -1,3 +1,4 @@
+import re
 
 def fix_win_path(line: str) -> str:
     r"""Changes Windows paths to Linux paths in error messages.

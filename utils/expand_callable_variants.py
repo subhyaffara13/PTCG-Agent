@@ -1,3 +1,4 @@
+import itertools
 
 def expand_callable_variants(c: CallableType) -> list[CallableType]:
     """Expand a generic callable using all combinations of type variables' values/bounds."""

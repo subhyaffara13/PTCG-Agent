@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _tools_response_format_and_stream(
     optional_params: dict, model_params: dict

@@ -1,3 +1,5 @@
+import math
+
 
 def _get_barrier(
     aval: ShapedAbstractValue, arrival_multiplier: int

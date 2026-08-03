@@ -1,3 +1,4 @@
+from typing import Any
 
 def _model_to_graph(
     model,

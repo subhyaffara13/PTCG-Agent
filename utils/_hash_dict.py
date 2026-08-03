@@ -1,3 +1,4 @@
+import json
 
 def _hash_dict(d: dict[str, str]) -> str:
     """Return a stable sha224 of a dictionary."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_sequence_of_objects(
     d: Mapping[str, Any], target_item_type: type[_FromMappingProtocolT], key: str

@@ -1,3 +1,4 @@
+import sys
 
 def parse_source_file(mod: StubSource, mypy_options: MypyOptions) -> None:
     """Parse a source file.

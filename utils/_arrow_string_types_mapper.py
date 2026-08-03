@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _arrow_string_types_mapper() -> Callable:
     pa = import_optional_dependency("pyarrow")

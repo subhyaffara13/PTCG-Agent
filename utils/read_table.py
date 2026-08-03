@@ -1,3 +1,4 @@
+from typing import Callable
 
 def read_table(
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],

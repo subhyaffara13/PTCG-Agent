@@ -1,3 +1,5 @@
+import itertools
+import sys
 
 def _import_gi_module(modname):
     # we only consider gi.repository submodules

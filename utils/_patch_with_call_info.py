@@ -1,3 +1,4 @@
+import os
 
 def _patch_with_call_info(module_or_class, attr_name, _parse_call_info_func, target_args):
     """

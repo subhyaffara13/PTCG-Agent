@@ -1,3 +1,5 @@
+import os
+import sys
 
 def message_about_scripts_not_on_PATH(scripts: Sequence[str]) -> str | None:
     """Determine if any scripts are not on PATH and format a warning.

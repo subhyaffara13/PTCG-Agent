@@ -1,3 +1,5 @@
+import math
+
 
 def e_fixed(prec):
     """

@@ -1,3 +1,4 @@
+import os
 
 def _find_common_roots(paths: t.Iterable[str]) -> t.Iterable[str]:
     root: dict[str, dict[str, t.Any]] = {}

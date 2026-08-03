@@ -1,3 +1,8 @@
+import copy
+import json
+import logging
+from pathlib import Path
+
 
 def quantize_static(
     model_input: str | Path | onnx.ModelProto,

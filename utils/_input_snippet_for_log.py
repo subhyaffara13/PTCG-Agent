@@ -1,3 +1,5 @@
+import json
+from typing import Any, Optional
 
 def _input_snippet_for_log(sl: Any) -> Optional[str]:
     """Snippet for request input: prefer messages, fall back to proxy_server_request (same as drawer)."""

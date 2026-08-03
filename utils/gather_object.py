@@ -1,3 +1,4 @@
+from typing import Any
 
 def gather_object(
     obj: Any,

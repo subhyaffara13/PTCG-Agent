@@ -1,3 +1,5 @@
+import os
+from typing import Union
 
 def load_image(
     image: Union[str, "PIL.Image.Image"],

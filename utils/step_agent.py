@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def step_agent(state: EnvState, action: jnp.ndarray) -> EnvState:
     """Update the position of the agent."""

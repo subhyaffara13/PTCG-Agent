@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_impl_with_key_reuse_checks(prim: core.Primitive, raw_impl: Callable[..., Any], *args, **kwargs) -> Any:
   if prim not in key_reuse_signatures:

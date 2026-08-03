@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _build_middlewares(
     handler: Handler, apps: tuple["Application", ...]

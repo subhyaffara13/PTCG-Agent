@@ -1,3 +1,4 @@
+from typing import Union
 
 def _format_type_annotation_recursive(type_hint):
     """

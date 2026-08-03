@@ -1,3 +1,4 @@
+import random
 
 def infer_random_sample(node, context: InferenceContext | None = None):
     if len(node.args) != 2:

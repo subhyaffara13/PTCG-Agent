@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def convert_n_shadows_model(
     model: GraphModule,

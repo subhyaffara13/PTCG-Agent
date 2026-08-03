@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_dice(observation: str) -> list[dict[str, Any]]:
     for line in observation.splitlines():

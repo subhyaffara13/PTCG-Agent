@@ -1,3 +1,4 @@
+import copy
 
 def kl_connected_subgraph(G, k, l, low_memory=False, same_as_graph=False):
     """Returns the maximum locally `(k, l)`-connected subgraph of `G`.

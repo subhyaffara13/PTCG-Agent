@@ -1,3 +1,4 @@
+from typing import Any
 
 def max_across_indices(values: Iterable[Any]) -> list[Any]:
     """

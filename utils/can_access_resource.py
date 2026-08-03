@@ -1,3 +1,4 @@
+from typing import Optional
 
 def can_access_resource(
     user_api_key_dict: UserAPIKeyAuth,

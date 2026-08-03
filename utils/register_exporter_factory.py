@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_exporter_factory(
     kind: str, factory: Callable[[ExporterSpec], SpanExporter]

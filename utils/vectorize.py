@@ -1,3 +1,4 @@
+import functools
 
 def vectorize(pyfunc, *, excluded=frozenset(), signature=None):
   """Define a vectorized function with broadcasting.

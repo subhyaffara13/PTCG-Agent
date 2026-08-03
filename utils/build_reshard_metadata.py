@@ -1,3 +1,4 @@
+import copy
 
 def build_reshard_metadata(
     st_size: torch.Size,

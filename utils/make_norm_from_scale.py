@@ -1,3 +1,4 @@
+import functools
 
 def make_norm_from_scale(scale_cls, base_norm_cls=None, *, init=None):
     """

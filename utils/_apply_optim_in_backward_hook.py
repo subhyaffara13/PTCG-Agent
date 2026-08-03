@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _apply_optim_in_backward_hook(
     gradient_is_bucket_view: bool,

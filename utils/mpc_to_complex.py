@@ -1,3 +1,4 @@
+import re
 
 def mpc_to_complex(z, strict=False, rnd=round_fast):
     re, im = z

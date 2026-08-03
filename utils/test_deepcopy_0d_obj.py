@@ -1,3 +1,4 @@
+import copy
 
 def test_deepcopy_0d_obj():
     source = np.ma.array(0, mask=[0], dtype=object)

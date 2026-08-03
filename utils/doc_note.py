@@ -1,3 +1,4 @@
+import re
 
 def doc_note(initialdoc, note):
     """

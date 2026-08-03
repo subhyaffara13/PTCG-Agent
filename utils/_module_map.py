@@ -1,3 +1,4 @@
+import sys
 
 def _module_map():
     """get map of imported modules"""

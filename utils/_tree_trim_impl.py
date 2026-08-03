@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _tree_trim_impl(
     template: PyTreeOf[Any],

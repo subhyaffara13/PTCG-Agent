@@ -1,3 +1,4 @@
+import random
 
 def test_pow_integer_direction():
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _safe_index(lst: list, item: Any) -> int | None:
     """

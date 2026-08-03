@@ -1,3 +1,4 @@
+import sys
 
 def test_usage_via_getsizeof():
     df = DataFrame(

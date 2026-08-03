@@ -1,3 +1,4 @@
+import sys
 
 def _implementation():
     """Return a dict with the Python implementation and version.

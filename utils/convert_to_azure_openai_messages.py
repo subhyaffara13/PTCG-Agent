@@ -1,3 +1,4 @@
+from typing import List
 
 def convert_to_azure_openai_messages(
     messages: List[AllMessageValues],

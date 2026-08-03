@@ -1,3 +1,4 @@
+from typing import Optional
 
 def skip_not_finite(
     updates: base.Updates,

@@ -1,3 +1,4 @@
+import os
 
 def _get_version_for_build() -> str:
   """Determine the version at build time.

@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _merge_ssl_params(
     ssl: Union["SSLContext", bool, Fingerprint],

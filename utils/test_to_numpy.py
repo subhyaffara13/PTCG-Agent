@@ -1,3 +1,4 @@
+import sys
 
 def test_to_numpy():
     if not np:

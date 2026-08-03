@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def prompt_team_selection_fallback(
     teams: List[Dict[str, Any]],

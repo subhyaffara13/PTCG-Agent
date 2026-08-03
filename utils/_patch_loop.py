@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _patch_loop(loop):
     """Patch loop to make it reentrant."""

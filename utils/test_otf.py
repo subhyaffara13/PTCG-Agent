@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_otf():
     fname = '/usr/share/fonts/opentype/freefont/FreeMono.otf'

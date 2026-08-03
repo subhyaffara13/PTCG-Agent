@@ -1,3 +1,4 @@
+import time
 
 def _state_to_str(x, y, t, population, player_id):
   """A string that uniquely identify (pos, t, population, player_id)."""

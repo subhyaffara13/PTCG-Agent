@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_4499():
     # previously, this gave 16 constants

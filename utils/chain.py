@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def chain(*iterables, total=None, tqdm_class=tqdm_auto, **kwargs):
     """Equivalent of `itertools.chain`."""

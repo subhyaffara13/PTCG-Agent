@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def schur(a, output='real', lwork=None, overwrite_a=False, sort=None,
           check_finite=True):

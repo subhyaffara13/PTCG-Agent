@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_continuous_domain():
     assert continuous_domain(sin(x), x, Interval(0, 2*pi)) == Interval(0, 2*pi)

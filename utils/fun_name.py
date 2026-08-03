@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fun_name(fun: Callable, default_name: str = "<unnamed function>") -> str:
   name = getattr(fun, "__name__", None)

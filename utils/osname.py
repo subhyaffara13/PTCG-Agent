@@ -1,3 +1,4 @@
+import os
 
 def osname(name):
     orig = os.name

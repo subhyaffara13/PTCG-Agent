@@ -1,3 +1,4 @@
+import re
 
 def _desc_to_leaf(leaf_desc: str | None) -> str | None | jax.ShapeDtypeStruct:
   if leaf_desc is None:

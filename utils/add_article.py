@@ -1,3 +1,4 @@
+import re
 
 def add_article(name: str, definite: bool = False, capital: bool = False) -> str:
     """Returns the string with a prepended article.

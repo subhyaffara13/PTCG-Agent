@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_marker_as_markerstyle():
     fix, ax = plt.subplots()

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_function_type_hints(
     function: Callable[..., Any],

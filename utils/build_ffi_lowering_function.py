@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def build_ffi_lowering_function(
     call_target_name: str,

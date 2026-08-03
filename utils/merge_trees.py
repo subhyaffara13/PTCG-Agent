@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable, Optional
 
 def merge_trees(*trees: PyTree, target: Optional[PyTree] = None) -> PyTree:
   """Merges the provided PyTrees into a single result.

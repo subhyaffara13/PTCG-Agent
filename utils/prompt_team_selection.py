@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict, List, Optional
 
 def prompt_team_selection(teams: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     """Interactive team selection with arrow keys"""

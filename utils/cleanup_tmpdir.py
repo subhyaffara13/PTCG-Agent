@@ -1,3 +1,4 @@
+import os
 
 def cleanup_tmpdir(tmpdir=None, keep_so=False):
     """Clean up the temporary directory by removing all files in it

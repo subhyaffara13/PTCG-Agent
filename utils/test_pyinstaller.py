@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def test_pyinstaller(mode, tmp_path):
     """Compile and run pyinstaller-smoke.py using PyInstaller."""

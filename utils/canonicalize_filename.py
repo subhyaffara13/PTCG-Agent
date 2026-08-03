@@ -1,3 +1,4 @@
+import re
 
 def canonicalize_filename(file_name: str):
   pattern = config.hlo_source_file_canonicalization_regex.value

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_path_intersect_path(phi):
     # test for the range of intersection angles

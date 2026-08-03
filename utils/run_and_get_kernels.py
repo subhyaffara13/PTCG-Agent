@@ -1,3 +1,5 @@
+import re
+from typing import Callable
 
 def run_and_get_kernels(
     fn: Callable[P, _T], *args: P.args, **kwargs: P.kwargs

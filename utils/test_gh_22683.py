@@ -1,3 +1,4 @@
+import sys
 
 def test_gh_22683():
     b = 777.68760986

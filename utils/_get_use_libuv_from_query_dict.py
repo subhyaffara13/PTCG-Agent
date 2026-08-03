@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_use_libuv_from_query_dict(query_dict: dict[str, str]) -> bool:
     # libuv is the default backend for TCPStore. To enable the non-libuv backend,

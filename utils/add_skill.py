@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def add_skill(skill_name: str, destination_root: Path, force: bool = False) -> Path:
     """Resolve a marketplace skill by name and install it."""

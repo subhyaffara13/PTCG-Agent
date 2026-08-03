@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_cost_per_unit(
     model_info: ModelInfo, cost_key: str, default_value: Optional[float] = 0.0

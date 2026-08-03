@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def dsolve_system(eqs, funcs=None, t=None, ics=None, doit=False, simplify=True):
     r"""

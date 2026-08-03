@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def resolve_class(
     qualified_class_name: str,

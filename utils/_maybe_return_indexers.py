@@ -1,3 +1,4 @@
+import functools
 
 def _maybe_return_indexers(meth: F) -> F:
     """

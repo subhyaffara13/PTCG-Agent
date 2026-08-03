@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def find_suffixes(root: Path, prefix: str) -> Iterator[str]:
     """Combine find_prefixes and extract_suffixes."""

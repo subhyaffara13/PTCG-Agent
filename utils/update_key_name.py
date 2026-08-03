@@ -1,3 +1,4 @@
+from typing import Any
 
 def update_key_name(mapping: dict[str, Any]) -> dict[str, Any]:
     """

@@ -1,3 +1,5 @@
+import math
+
 
 def _build_table(
     events,

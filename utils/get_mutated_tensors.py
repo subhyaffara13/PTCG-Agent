@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_mutated_tensors(
     kernel_idx: int,

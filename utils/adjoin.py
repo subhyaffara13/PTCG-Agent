@@ -1,3 +1,4 @@
+from typing import Any
 
 def adjoin(space: int, *lists: list[str], **kwargs: Any) -> str:
     """

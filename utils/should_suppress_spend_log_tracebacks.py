@@ -1,3 +1,4 @@
+import logging
 
 def should_suppress_spend_log_tracebacks() -> bool:
     """Return ``True`` when spend-log traceback suppression should apply.

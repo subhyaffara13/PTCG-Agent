@@ -1,3 +1,4 @@
+import re
 
 def _base64_data_uri_replacer(match: re.Match) -> str:
     """Replace a single base64 data-URI match with a size placeholder if too long."""

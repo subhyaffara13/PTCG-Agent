@@ -1,3 +1,4 @@
+from typing import Any
 
 def _identity(o: T) -> T:
     return o

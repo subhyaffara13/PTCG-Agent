@@ -1,3 +1,4 @@
+import re
 
 def test_getitem_setitem_datetimeindex():
     N = 50

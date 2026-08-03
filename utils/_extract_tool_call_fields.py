@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _extract_tool_call_fields(tool_call: Any, fallback_call_id: str) -> Tuple[str, str]:
     """Extract (call_id, raw_arguments_string) from a dict or Pydantic tool_call item."""

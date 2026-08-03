@@ -1,3 +1,4 @@
+import time
 
 def rfc822_formatted_time() -> str:
     global _cached_current_datetime

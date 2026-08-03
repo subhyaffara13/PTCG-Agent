@@ -1,3 +1,5 @@
+import math
+
 
 def div_prim(a, b):
     is_integral = all(is_boolean_type(x) or is_integer_type(x) for x in [a, b])

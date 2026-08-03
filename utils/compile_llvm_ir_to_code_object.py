@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def compile_llvm_ir_to_code_object(
     llvm_ir_path: str, output_path: str, target_arch: str

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _should_use_importlib_metadata() -> bool:
     """Whether to use the ``importlib.metadata`` or ``pkg_resources`` backend.

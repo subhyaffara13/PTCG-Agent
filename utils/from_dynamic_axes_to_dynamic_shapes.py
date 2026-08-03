@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_dynamic_axes_to_dynamic_shapes(
     model,

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_functional_test_files_from_directory(
     input_dir: Path | str,

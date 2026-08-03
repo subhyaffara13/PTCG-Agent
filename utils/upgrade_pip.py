@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def upgrade_pip(python_executable: str) -> None:
     """Install pip>=21.3.1. Required for editable installs with PEP 660."""

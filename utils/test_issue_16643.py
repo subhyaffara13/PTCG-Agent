@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_16643():
     n = Dummy('n')

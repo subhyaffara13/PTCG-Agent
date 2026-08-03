@@ -1,3 +1,4 @@
+from typing import Optional
 
 def calculate_cache_writing_cost(
     cache_creation_tokens: int,

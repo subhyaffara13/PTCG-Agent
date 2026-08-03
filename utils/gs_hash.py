@@ -1,3 +1,4 @@
+import json
 
 def gs_hash(game_state: dict) -> int:
     """Compute a deterministic hash for a game state dict for transposition detection."""

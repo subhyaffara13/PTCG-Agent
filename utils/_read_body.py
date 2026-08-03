@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def _read_body(body: str | None, body_file: Path | None) -> str | None:
     """Resolve body text from --body or --body-file (supports '-' for stdin)."""

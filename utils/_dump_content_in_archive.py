@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _dump_content_in_archive(archive: zipfile.ZipFile, filename: str, content: str | os.PathLike | bytes) -> None:
     with archive.open(filename, "w", force_zip64=True) as archive_fh:

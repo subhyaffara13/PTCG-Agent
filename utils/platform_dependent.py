@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def platform_dependent(*args: Any,
                        default: Callable[..., _T] | None = None,

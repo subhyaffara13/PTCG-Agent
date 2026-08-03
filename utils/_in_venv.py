@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _in_venv(path: Path) -> bool:
     """Attempt to detect if ``path`` is the root of a Virtual Environment by

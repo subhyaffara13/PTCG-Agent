@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def evaluator(
     *, game: pyspiel.Game, config: Config, logger: Any, queue

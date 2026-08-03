@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prune_conv2d_pool_flatten_linear(
     conv2d: nn.Conv2d,

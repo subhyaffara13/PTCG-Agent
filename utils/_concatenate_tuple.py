@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _concatenate_tuple(
     space: Tuple, items: Iterable, out: tuple[Any, ...]

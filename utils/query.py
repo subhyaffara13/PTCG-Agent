@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def query(key):
     """Ask for a value of the given configuration item. """

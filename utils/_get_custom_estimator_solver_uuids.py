@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_custom_estimator_solver_uuids(
     autograd_config: Any,

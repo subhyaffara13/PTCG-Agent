@@ -1,3 +1,4 @@
+import sys
 
 def min_fill_in_heuristic(graph_dict):
     """Implements the Minimum Degree heuristic.

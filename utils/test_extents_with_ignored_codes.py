@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_extents_with_ignored_codes(ignored_code):
     # Check that STOP and CLOSEPOLY points are ignored when calculating extents

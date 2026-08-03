@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _get_count_function(
     model: Optional[str],

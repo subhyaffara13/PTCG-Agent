@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def defaultdict_validator(
     input_value: Any, handler: core_schema.ValidatorFunctionWrapHandler, default_default_factory: Callable[[], Any]

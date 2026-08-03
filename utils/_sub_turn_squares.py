@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sub_turn_squares(
     state: Mapping[str, Any],

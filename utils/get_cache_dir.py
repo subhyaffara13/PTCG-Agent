@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def get_cache_dir(file_path: Path) -> Path:
     """Return the cache directory to write .pyc files for the given .py file path."""

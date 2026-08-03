@@ -1,3 +1,4 @@
+from typing import Any
 
 def detect_shape_env(inputs: Any = None):
     shape_envs = []

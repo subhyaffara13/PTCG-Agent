@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prune_lstm_output_layernorm_linear(
     lstm: nn.LSTM,

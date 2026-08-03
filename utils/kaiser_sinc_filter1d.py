@@ -1,3 +1,5 @@
+import math
+
 
 def kaiser_sinc_filter1d(cutoff, half_width, kernel_size):
     """Generates a 1D Kaiser-windowed sinc filter.

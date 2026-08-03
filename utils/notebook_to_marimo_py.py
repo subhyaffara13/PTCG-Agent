@@ -1,3 +1,4 @@
+import os
 
 def notebook_to_marimo_py(notebook):
     """Convert a notebook to its Marimo script"""

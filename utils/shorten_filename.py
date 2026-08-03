@@ -1,3 +1,4 @@
+import os
 
 def shorten_filename(fn, *, base=None):
     """Shorten a source filepath, with the assumption that torch/ subdirectories don't need to be shown to user."""

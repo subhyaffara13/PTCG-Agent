@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_checkpoint_deleter(
     directory: epath.Path,

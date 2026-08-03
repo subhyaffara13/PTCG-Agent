@@ -1,3 +1,4 @@
+import os
 
 def _newer(source, target):
     return not os.path.exists(target) or (

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def optimistic_adam(
     learning_rate: jax.typing.ArrayLike,

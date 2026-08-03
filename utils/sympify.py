@@ -1,3 +1,4 @@
+from typing import Any
 
 def sympify(a: int, *, strict: bool = False) -> Integer: ... # type: ignore
 

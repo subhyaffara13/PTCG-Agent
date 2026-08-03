@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Union
 
 def rich_repr(cls: Optional[Type[T]]) -> Type[T]:
     ...

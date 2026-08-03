@@ -1,3 +1,4 @@
+import os
 
 def _save_and_load(matrix):
     fd, tmpfile = tempfile.mkstemp(suffix='.npz')

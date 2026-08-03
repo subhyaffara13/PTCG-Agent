@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_opaque_obj(value: Any, metadata: Any) -> bool:
     if metadata is None:

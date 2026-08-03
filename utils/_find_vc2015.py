@@ -1,3 +1,4 @@
+import os
 
 def _find_vc2015():
     try:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_models_info(
     ctx: click.Context, output_format: Literal["table", "json"], columns: str

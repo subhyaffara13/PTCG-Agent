@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_proxy_admin(user_api_key_dict: Optional[UserAPIKeyAuth]) -> bool:
     if user_api_key_dict is None:

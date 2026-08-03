@@ -1,3 +1,4 @@
+from typing import Any
 
 def _worker_check_single_file(
     file_item: FileItem,

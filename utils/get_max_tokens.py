@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def get_max_tokens(model: str) -> Optional[int]:
     """

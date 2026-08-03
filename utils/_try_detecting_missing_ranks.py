@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _try_detecting_missing_ranks(
     store,

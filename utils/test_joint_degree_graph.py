@@ -1,3 +1,4 @@
+import time
 
 def test_joint_degree_graph(ntimes=10):
     for _ in range(ntimes):

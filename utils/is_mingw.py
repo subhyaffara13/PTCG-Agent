@@ -1,3 +1,4 @@
+import sys
 
 def is_mingw() -> bool:
     """Returns True if the current platform is mingw.

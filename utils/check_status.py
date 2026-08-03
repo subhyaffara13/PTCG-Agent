@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_status(data: dict[str, Any]) -> tuple[int, str]:
     """Check if the process is alive.

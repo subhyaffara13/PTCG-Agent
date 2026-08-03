@@ -1,3 +1,4 @@
+import os
 
 def read_hdf(
     path_or_buf: FilePath | HDFStore,

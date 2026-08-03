@@ -1,3 +1,4 @@
+import functools
 
 def _dict_method_all(dict_method: F) -> F:
     @functools.wraps(dict_method)

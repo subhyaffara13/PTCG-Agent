@@ -1,3 +1,4 @@
+import copy
 
 def _laplacian_sparse(graph, normed, axis, copy, form, dtype, symmetrized):
     # The keyword argument `form` is unused and has no effect here.

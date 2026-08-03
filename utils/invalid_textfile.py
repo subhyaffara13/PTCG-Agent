@@ -1,3 +1,4 @@
+import os
 
 def invalid_textfile(filedir):
     # Generate and return an invalid filename.

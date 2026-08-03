@@ -1,3 +1,5 @@
+import math
+
 
 def _perfect_power(n, next_p=2):
     """ Return integers ``(b, e)`` such that ``n == b**e`` if ``n`` is a unique

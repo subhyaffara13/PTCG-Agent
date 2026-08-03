@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _for_each_rank_run_func(
     func: OpOverload | Callable[..., Any],

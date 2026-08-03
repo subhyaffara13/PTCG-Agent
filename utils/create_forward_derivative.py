@@ -1,3 +1,4 @@
+import re
 
 def create_forward_derivative(
     f: NativeFunction, formula: str, names: tuple[str, ...]

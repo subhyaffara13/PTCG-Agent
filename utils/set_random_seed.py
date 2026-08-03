@@ -1,3 +1,4 @@
+import random
 
 def set_random_seed(seed=123):
     """Set random seed manually to get deterministic results"""

@@ -1,3 +1,4 @@
+import os
 
 def can_use_kqueue():
     # Availability: macOS, BSD

@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def fresh_cache(
     cache_entries: dict[str, Any] | None = None,

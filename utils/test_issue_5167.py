@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_5167():
     from sympy.abc import w, x, y, z

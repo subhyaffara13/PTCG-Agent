@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_delete_parameter() -> None:
     @_api.delete_parameter("3.0", "foo")

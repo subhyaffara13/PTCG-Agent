@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _disallow_in_graph_helper(throw_if_not_allowed: bool) -> Callable[..., Any]:
     def inner(fn: Any) -> Any:

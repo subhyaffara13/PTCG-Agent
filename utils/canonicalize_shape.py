@@ -1,3 +1,4 @@
+from typing import Any
 
 def canonicalize_shape(shape: Shape, context: str="") -> tuple[Any, ...]:
   """Canonicalizes and checks for errors in a user-provided shape value.

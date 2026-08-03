@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_path_completion_type(
     cwords: list[str], cword: int, opts: Iterable[Any]

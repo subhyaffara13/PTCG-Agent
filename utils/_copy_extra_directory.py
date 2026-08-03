@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _copy_extra_directory(source_dir: Path, target_dir: Path, model_list: list[str]):
     """Copy extra directory that does not have onnx model

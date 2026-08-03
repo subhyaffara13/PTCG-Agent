@@ -1,3 +1,4 @@
+from typing import Any
 
 def _clear_hashicorp_vault_state(proxy_config: Any) -> None:
     """Clear all Hashicorp Vault state: env vars, secret manager, and change-detection cache."""

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def safe_exists(p: Path) -> bool:
     """Like Path.exists(), but account for input arguments that might be too long (#11394)."""

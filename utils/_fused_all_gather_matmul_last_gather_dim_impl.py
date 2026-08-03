@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fused_all_gather_matmul_last_gather_dim_impl(
     mm_out_op: torch._ops.OpOverload,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def gradcheck(
     func: Callable[..., _TensorOrTensors],  # See Note [VarArg of Tensors]

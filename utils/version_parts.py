@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def version_parts(best: bool = False) -> Tuple[str, str, str]:
     """

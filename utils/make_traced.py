@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_traced(fn: Callable[P, T]) -> Callable[P, T]:
     """

@@ -1,3 +1,4 @@
+import sys
 
 def stdin_get_value():
     """Read the value from stdin."""

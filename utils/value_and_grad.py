@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def value_and_grad(fun: Callable, argnums: int | Sequence[int] = 0,
                    has_aux: bool = False, holomorphic: bool = False,

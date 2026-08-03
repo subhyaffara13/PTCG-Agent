@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_no_float0s(fun_name: str, *args: Any):
   """Check if none of the args have dtype float0."""

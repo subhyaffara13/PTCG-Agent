@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_empty_permuted(op, device, dtype, requires_grad, **kwargs):
     # shape

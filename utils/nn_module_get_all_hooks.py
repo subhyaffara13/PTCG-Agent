@@ -1,3 +1,4 @@
+from typing import Any
 
 def nn_module_get_all_hooks(
     mod: torch.nn.Module,

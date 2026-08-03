@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_full_or_cpu_state_dict(
     state_dict: dict[str, Any], info: _StateDictInfo

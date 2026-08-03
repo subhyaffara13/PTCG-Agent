@@ -1,3 +1,4 @@
+from typing import Any
 
 def isscalar(a):
     # We need to use normalize_array_like, but we don't want to export it in funcs.py

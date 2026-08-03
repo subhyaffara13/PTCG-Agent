@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_proxy_server_request_for_spend_logs_payload(
     metadata: dict,

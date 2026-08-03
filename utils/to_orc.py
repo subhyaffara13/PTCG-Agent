@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_orc(
     df: DataFrame,

@@ -1,3 +1,5 @@
+import random
+import sys
 
 def test_integer_repeat(int_func):
     rng = random.RandomState(123456789)

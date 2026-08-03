@@ -1,3 +1,4 @@
+import os
 
 def test_code_runs(path: str) -> None:
     """Validate that the code in `path` properly during runtime."""

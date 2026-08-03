@@ -1,3 +1,4 @@
+import os
 
 def _is_suppression_env_enabled() -> bool:
     """Read the opt-in env var fresh each call so dynamic flips are honored.

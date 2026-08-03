@@ -1,3 +1,5 @@
+import itertools
+import sys
 
 def _fetch_build_eggs(dist, requires: _reqs._StrOrIter) -> list[metadata.Distribution]:
     _DeprecatedInstaller.emit(stacklevel=3)

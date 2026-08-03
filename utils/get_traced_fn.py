@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_traced_fn(mod: Any) -> tuple[FunctionType, object | None]:
     """

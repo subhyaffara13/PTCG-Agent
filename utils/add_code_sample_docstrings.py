@@ -1,3 +1,4 @@
+import re
 
 def add_code_sample_docstrings(
     *docstr,

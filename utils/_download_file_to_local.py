@@ -1,3 +1,4 @@
+import os
 
 def _download_file_to_local(api: HfApi, src: str, dst: str | None) -> None:
     uri = parse_hf_uri(src)

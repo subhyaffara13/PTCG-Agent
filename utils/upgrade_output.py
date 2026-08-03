@@ -1,3 +1,4 @@
+import json
 
 def upgrade_output(output):
     """upgrade a single code cell output from v3 to v4

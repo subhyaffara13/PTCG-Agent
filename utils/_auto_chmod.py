@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def _auto_chmod(
     func: Callable[..., _T], arg: str, exc: BaseException

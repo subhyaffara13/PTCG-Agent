@@ -1,3 +1,4 @@
+import json
 
 def _format_text_generation_stream_output(line: str, details: bool) -> str | TextGenerationStreamOutput | None:
     if not line.startswith("data:"):

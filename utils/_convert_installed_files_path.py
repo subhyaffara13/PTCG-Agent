@@ -1,3 +1,4 @@
+import pathlib
 
 def _convert_installed_files_path(
     entry: tuple[str, ...],

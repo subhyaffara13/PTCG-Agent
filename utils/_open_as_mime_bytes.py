@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _open_as_mime_bytes(content: ContentT) -> MimeBytes: ...  # means "if input is not None, output is not None"
 

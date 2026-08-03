@@ -1,3 +1,4 @@
+import os
 
 def test_sparray_vs_spmatrix():
     #save/load matrix

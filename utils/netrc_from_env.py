@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def netrc_from_env() -> netrc.netrc | None:
     """Load netrc from file.

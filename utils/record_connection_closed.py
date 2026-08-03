@@ -1,3 +1,4 @@
+from typing import Optional
 
 def record_connection_closed(
     close_reason: Optional[CloseReason] = None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def mark_static_address(t: Any, guard: bool = False) -> None:
     """

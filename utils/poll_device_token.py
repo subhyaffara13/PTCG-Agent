@@ -1,3 +1,5 @@
+import time
+from typing import Callable
 
 def poll_device_token(
     device_info: DeviceCodeInfo, *, on_pending: Callable[[], None] | None = None

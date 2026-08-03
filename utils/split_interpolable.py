@@ -1,3 +1,5 @@
+import itertools
+from typing import Tuple
 
 def splitInterpolable(
     doc: DesignSpaceDocument,

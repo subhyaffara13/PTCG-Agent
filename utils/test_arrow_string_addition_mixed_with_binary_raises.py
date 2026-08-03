@@ -1,3 +1,4 @@
+import re
 
 def test_arrow_string_addition_mixed_with_binary_raises(string_type):
     left = pd.Series(["a", None], dtype=ArrowDtype(string_type))

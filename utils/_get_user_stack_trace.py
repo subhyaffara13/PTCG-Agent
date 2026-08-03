@@ -1,3 +1,4 @@
+import os
 
 def _get_user_stack_trace(stack_trace_str: str) -> str | None:
     # Extract user code stack trace, filtering out torch internals.

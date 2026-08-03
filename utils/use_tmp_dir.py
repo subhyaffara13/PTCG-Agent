@@ -1,3 +1,5 @@
+import os
+import sys
 
 def use_tmp_dir(mod_name: str) -> Iterator[str]:
     current = os.getcwd()

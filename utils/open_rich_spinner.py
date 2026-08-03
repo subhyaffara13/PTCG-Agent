@@ -1,3 +1,4 @@
+import logging
 
 def open_rich_spinner(label: str, console: Console | None = None) -> Generator[None]:
     if not logger.isEnabledFor(logging.INFO):

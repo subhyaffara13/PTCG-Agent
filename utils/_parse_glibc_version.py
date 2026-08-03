@@ -1,3 +1,5 @@
+import re
+from typing import Tuple
 
 def _parse_glibc_version(version_str: str) -> _GLibCVersion:
     """Parse glibc version.

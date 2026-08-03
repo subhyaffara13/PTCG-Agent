@@ -1,3 +1,5 @@
+import re
+from typing import Any, Callable
 
 def fp8_bench(fn: Callable[[], Any], warmup: int = 25, rep: int = 100) -> float:
     """

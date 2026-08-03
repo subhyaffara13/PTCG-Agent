@@ -1,3 +1,4 @@
+import os
 
 def _load_dotenv_disabled() -> bool:
     """

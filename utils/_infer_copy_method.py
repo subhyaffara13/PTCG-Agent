@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _infer_copy_method(
     node: nodes.Call, context: InferenceContext | None = None, **kwargs: Any

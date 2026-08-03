@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_a2a_agent_model(model_name: Any) -> bool:
     """Check if the model name is for an A2A agent (a2a/ prefix)."""

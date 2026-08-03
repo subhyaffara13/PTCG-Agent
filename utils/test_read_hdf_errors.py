@@ -1,3 +1,4 @@
+import uuid
 
 def test_read_hdf_errors(temp_h5_path):
     df = DataFrame(

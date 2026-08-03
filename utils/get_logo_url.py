@@ -1,3 +1,4 @@
+import os
 
 def get_logo_url():
     """Get the current logo URL from environment.

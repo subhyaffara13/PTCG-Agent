@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def _find_mentioned_players(text: str, all_player_ids: List[PlayerID]) -> List[PlayerID]:
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_fusion_values(
     fusion: Callable,

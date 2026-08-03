@@ -1,3 +1,4 @@
+import os
 
 def test_imread_pil_uint16():
     img = plt.imread(os.path.join(os.path.dirname(__file__),

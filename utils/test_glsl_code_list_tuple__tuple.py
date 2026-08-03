@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_glsl_code_list_tuple_Tuple():
     assert glsl_code([1,2,3,4]) == 'vec4(1, 2, 3, 4)'

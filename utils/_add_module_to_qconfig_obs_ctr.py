@@ -1,3 +1,4 @@
+from typing import Any
 
 def _add_module_to_qconfig_obs_ctr(
     qconfig: QConfigAny, module: nn.Module | None

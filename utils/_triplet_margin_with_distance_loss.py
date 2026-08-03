@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _triplet_margin_with_distance_loss(
     anchor: TensorLikeType,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def graph_module_from_producer_nodes(
     root: GraphModule, producer_nodes: list[Node]

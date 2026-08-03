@@ -1,3 +1,4 @@
+import sys
 
 def guard_torch_init_functions():
     """

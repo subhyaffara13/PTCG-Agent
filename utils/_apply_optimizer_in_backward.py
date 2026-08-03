@@ -1,3 +1,4 @@
+from typing import Any
 
 def _apply_optimizer_in_backward(
     optimizer_class: type[torch.optim.Optimizer],

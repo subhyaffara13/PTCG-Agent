@@ -1,3 +1,4 @@
+from typing import Optional
 
 def set_attributes(
     span: "Span", kwargs, response_obj, attributes: Type[BaseLLMObsOTELAttributes]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _iterate_nodes(val: Any) -> Iterator[SymNode]:
     """

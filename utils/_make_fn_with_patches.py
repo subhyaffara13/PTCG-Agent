@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _make_fn_with_patches(fn: Callable[_P, _T], *patches: Any) -> Callable[_P, _T]:
     @functools.wraps(fn)

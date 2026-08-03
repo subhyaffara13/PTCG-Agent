@@ -1,3 +1,4 @@
+import os
 
 def _update_user_library(library):
     """Update style library with user-defined rc files."""

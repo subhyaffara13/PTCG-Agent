@@ -1,3 +1,4 @@
+from typing import Any
 
 def ensure_property(f: Any) -> Any:
     """Ensure that a function is a `property` or `cached_property`, or is a valid descriptor.

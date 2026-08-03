@@ -1,3 +1,4 @@
+from typing import List
 
 def runtime_to_distributed_ids() -> List[int]:
   if not is_runtime_to_distributed_ids_initialized():

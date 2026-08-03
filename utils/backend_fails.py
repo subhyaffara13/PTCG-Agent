@@ -1,3 +1,4 @@
+from typing import Any
 
 def backend_fails(
     gm: fx.GraphModule,

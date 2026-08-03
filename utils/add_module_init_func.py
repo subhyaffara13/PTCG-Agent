@@ -1,3 +1,4 @@
+from typing import Callable
 
 def add_module_init_func(name: str, init_func: Callable[[], None]) -> None:
     """Register a module without eagerly importing it"""

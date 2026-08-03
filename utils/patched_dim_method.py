@@ -1,3 +1,4 @@
+from typing import Any
 
 def patched_dim_method(wrapper: WrappedOperator, *args: Any, **kwargs: Any) -> Any:
     """

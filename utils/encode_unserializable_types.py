@@ -1,3 +1,4 @@
+from typing import Dict
 
 def encode_unserializable_types(
     data: Dict[str, object], depth: int = 0

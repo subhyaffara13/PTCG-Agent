@@ -1,3 +1,4 @@
+import re
 
 def parametrize_test_working_set_resolve(*test_list):
     idlist = []

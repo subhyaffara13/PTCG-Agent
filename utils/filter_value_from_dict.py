@@ -1,3 +1,4 @@
+from typing import Any
 
 def filter_value_from_dict(dictionary: dict, key: str, depth: int = 0) -> Any:
     """

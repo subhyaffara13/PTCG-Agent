@@ -1,3 +1,5 @@
+import math
+
 
 def linalg_matrix_norm(
     g: jit_utils.GraphContext,

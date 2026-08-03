@@ -1,3 +1,4 @@
+import os
 
 def pick_vec_isa() -> VecISA:
     if config.is_fbcode() and (platform.machine() in ["x86_64", "AMD64"]):

@@ -1,3 +1,5 @@
+import math
+
 
 def manual_proto(
     aval: core.ShapedArray,

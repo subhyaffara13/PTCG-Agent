@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def samefile_nofollow(p1: Path, p2: Path) -> bool:
     """Test whether two paths reference the same actual file or directory.

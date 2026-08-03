@@ -1,3 +1,4 @@
+from typing import Callable
 
 def linear_schedule(
     init_value: jax.typing.ArrayLike,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def raise_on_overridden_hash(obj: Any, vt: VariableTracker) -> None:
     from . import graph_break_hints

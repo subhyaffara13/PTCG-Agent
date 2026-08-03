@@ -1,3 +1,4 @@
+import sys
 
 def get_module(module, paths, info):
     spec = find_spec(module, paths)

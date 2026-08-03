@@ -1,3 +1,4 @@
+from typing import Any, List, Tuple
 
 def _extract_converse_output_texts(
     content_blocks: List[Any],

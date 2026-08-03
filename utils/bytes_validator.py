@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def bytes_validator(v: Any) -> Union[bytes]:
     if isinstance(v, bytes):

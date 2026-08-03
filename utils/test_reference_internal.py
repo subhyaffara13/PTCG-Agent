@@ -1,3 +1,4 @@
+import sys
 
 def test_reference_internal(m, member_name):
     if not hasattr(sys, "getrefcount"):

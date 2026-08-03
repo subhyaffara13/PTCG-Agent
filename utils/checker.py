@@ -1,3 +1,5 @@
+import logging
+import pathlib
 
 def checker(model_path: pathlib.Path, logger: logging.Logger):
     model_with_shape_info_wrapper = ModelProtoWithShapeInfo(model_path)

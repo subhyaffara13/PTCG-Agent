@@ -1,3 +1,4 @@
+import time
 
 def do_run(args: argparse.Namespace) -> None:
     """Do a check, starting (or restarting) the daemon as necessary

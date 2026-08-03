@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_solve_modular():
     n = Dummy('n', integer=True)

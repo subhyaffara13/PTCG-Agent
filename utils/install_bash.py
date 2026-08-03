@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def install_bash(*, prog_name: str, complete_var: str, shell: str) -> Path:
     # Ref: https://github.com/scop/bash-completion#faq

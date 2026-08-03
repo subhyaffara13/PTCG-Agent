@@ -1,3 +1,5 @@
+import uuid
+from typing import Union
 
 def _convert_to_bedrock_tool_call_result(
     message: Union[ChatCompletionToolMessage, ChatCompletionFunctionMessage],

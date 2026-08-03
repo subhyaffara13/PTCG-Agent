@@ -1,3 +1,5 @@
+import os
+import sys
 
 def optimize_sam2_model(onnx_model_path, optimized_model_path, float16: bool, use_gpu: bool):
     print(f"Optimizing {onnx_model_path} to {optimized_model_path} with float16={float16} and use_gpu={use_gpu}...")

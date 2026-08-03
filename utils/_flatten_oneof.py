@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_oneof(space: OneOf, x: tuple[int, Any]) -> NDArray[Any]:
     idx, sample = x

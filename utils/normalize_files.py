@@ -1,3 +1,4 @@
+from typing import Optional
 
 def normalize_files(
 	files: Iterable[StrPath],

@@ -1,3 +1,4 @@
+from typing import List
 
 def _strip_huggingface_special_token_ids(
     tokenizer: Tokenizer, tokens: List[int]

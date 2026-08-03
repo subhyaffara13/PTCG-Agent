@@ -1,3 +1,4 @@
+import functools
 
 def _cond_resource_estimator(
     ctx: ResourceEstimatorContext, *args, branches

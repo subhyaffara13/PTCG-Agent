@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _wrap_mode(function: Callable[..., str]) -> Callable[..., str]:
     """Registers an individual wrap mode. Function name and order are significant and used for

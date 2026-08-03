@@ -1,3 +1,4 @@
+from typing import Union
 
 def solve_poly_inequalities(polys):
     """Solve polynomial inequalities with rational coefficients.

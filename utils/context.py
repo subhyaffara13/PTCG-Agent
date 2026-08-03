@@ -1,3 +1,4 @@
+from typing import Callable
 
 def context(msg_fn: Callable[[], str]) -> Iterator[None]:
     try:

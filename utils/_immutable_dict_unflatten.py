@@ -1,3 +1,4 @@
+from typing import Any
 
 def _immutable_dict_unflatten(
     values: Iterable[_VT],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _rle_to_mask(rle: dict[str, Any]) -> np.ndarray:
     """Compute a binary mask from an uncompressed RLE."""

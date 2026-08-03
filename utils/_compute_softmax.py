@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_softmax(scores):
     """Compute softmax probability over raw logits."""

@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def unitwise_norm(
     x: jax.typing.ArrayLike, axis: Optional[Union[int, tuple[int, ...]]] = None

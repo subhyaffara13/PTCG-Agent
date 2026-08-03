@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _build_summary_prompt(
     edit_spec: Dict[str, Any], tools: Optional[List[Dict[str, Any]]]

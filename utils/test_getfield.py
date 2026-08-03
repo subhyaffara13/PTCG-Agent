@@ -1,3 +1,4 @@
+import sys
 
 def test_getfield():
     a = np.arange(32, dtype='uint16')

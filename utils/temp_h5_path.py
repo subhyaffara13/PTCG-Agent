@@ -1,3 +1,4 @@
+import uuid
 
 def temp_h5_path(tmp_path):
     """Fixture for HDF5 path"""

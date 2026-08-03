@@ -1,3 +1,4 @@
+from typing import Any
 
 def classify_vt(vt: Any) -> InputTag | None:
     """Return the tag for a leaf VT, or None if unsupported."""

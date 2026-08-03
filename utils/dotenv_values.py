@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def dotenv_values(
     dotenv_path: Optional[StrPath] = None,

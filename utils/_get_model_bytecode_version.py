@@ -1,3 +1,4 @@
+import os
 
 def _get_model_bytecode_version(f_input) -> int:
     r"""Take a file-like object to return an integer.

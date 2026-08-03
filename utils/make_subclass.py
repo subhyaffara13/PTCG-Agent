@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_subclass(
     cls: type[Any], data: torch.Tensor, requires_grad: bool = False, **kwargs: Any

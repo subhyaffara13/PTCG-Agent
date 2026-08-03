@@ -1,3 +1,4 @@
+import functools
 
 def jax_to_ir(fn, input_shapes, *, constants=None, format):
   """Converts a JAX function to a serialized ir and a debug txt dump.

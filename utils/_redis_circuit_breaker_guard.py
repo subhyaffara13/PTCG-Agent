@@ -1,3 +1,4 @@
+import functools
 
 def _redis_circuit_breaker_guard(method):  # type: ignore
     """

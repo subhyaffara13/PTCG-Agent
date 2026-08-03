@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_value_metadata(value: Any) -> Any:
   """Creates Metadata for the given value matching Orbax's return type."""

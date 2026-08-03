@@ -1,3 +1,5 @@
+import math
+
 
 def _chandrupatla_minimize(func, x1, x2, x3, *, args=(), kwargs=None, xatol=None,
                            xrtol=None, fatol=None, frtol=None, maxiter=100,

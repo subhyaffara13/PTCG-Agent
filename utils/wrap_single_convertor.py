@@ -1,3 +1,4 @@
+import functools
 
 def wrap_single_convertor(convert_single):
     """

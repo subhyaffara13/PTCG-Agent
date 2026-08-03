@@ -1,3 +1,4 @@
+from typing import Optional
 
 def mock_vector_store_create_response(
     mock_response: Optional[VectorStoreCreateResponse] = None,

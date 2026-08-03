@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _generic_cost_per_character(
     model: str,

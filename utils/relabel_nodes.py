@@ -1,3 +1,4 @@
+import copy
 
 def relabel_nodes(G, mapping, copy=True):
     """Relabel the nodes of the graph G according to a given mapping.

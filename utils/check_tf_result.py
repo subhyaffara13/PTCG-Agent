@@ -1,3 +1,4 @@
+import logging
 
 def check_tf_result(idx: int, r_tf: TfVal, r_aval: core.ShapedArray | None) -> TfVal:
   # Check that the TF function returns values of expected types. This

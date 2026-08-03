@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_model_id_with_router(
     model_id: Optional[str], llm_router: Optional[Router]

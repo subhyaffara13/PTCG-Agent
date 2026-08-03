@@ -1,3 +1,5 @@
+import functools
+import itertools
 
 def _map_coordinates(input: ArrayLike, coordinates: Sequence[ArrayLike],
                      order: int, mode: str, cval: ArrayLike) -> Array:

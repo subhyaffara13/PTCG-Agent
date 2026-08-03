@@ -1,3 +1,4 @@
+import os
 
 def init_dist():
     if "LOCAL_RANK" in os.environ:

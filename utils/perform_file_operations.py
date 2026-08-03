@@ -1,3 +1,4 @@
+import os
 
 def perform_file_operations(operations: list[UpdateFile | DeleteFile]) -> None:
     for op in operations:

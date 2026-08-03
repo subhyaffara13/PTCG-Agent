@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _get_vc_env(vc_arch: str) -> dict[str, str]:
     try:

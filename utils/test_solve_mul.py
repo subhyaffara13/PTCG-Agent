@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_solve_mul():
     assert solveset_real((a*x + b)*(exp(x) - 3), x) == \

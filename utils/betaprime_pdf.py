@@ -1,3 +1,5 @@
+import math
+
 
 def betaprime_pdf(x, a, b):
     if x > 0:

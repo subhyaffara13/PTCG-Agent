@@ -1,3 +1,4 @@
+from typing import Any
 
 def _clone_input(value: Any, fake_mode: FakeTensorMode | None) -> Any:
     if isinstance(value, torch.Tensor):

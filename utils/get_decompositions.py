@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_decompositions(
     aten_ops: Sequence[torch._ops.OperatorBase | OpOverloadPacket],

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def format_callable_args(
     arg_types: list[Type],

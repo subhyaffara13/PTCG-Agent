@@ -1,3 +1,5 @@
+import json
+import subprocess
 
 def is_conda_llvm_openmp_installed() -> bool:
     try:

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Tuple
 
 def _find_latest_compaction_index(
     messages: List[Dict[str, Any]],

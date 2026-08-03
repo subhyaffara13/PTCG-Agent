@@ -1,3 +1,4 @@
+import re
 
 def mpc_exp(z, prec, rnd=round_fast):
     """

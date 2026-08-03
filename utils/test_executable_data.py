@@ -1,3 +1,4 @@
+import os
 
 def test_executable_data(tmpdir_cwd):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_user_object(value: Any, source: Source) -> int:
     global index_to_bytecode_constructor

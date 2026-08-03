@@ -1,3 +1,4 @@
+import functools
 
 def filter_output_hidden_states(forward_function):
     """

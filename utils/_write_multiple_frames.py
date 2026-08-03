@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def _write_multiple_frames(
     im: Image.Image, fp: IO[bytes], palette: _Palette | None

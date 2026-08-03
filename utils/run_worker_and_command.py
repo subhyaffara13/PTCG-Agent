@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def run_worker_and_command(command):
   """Worker Mode: Initializes JAX explicitly, then executes the target command."""

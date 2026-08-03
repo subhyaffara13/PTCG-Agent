@@ -1,3 +1,4 @@
+import os
 
 def _get_unique_path(base_name: str, extension: str) -> str:
     """Get a unique file path, appending a counter if the file already exists.

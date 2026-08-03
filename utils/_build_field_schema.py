@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _build_field_schema(model_class: type) -> Dict[str, Any]:
     """Build field_schema dict from a Pydantic model for UI rendering."""

@@ -1,3 +1,4 @@
+import os
 
 def _add_py_module(dist, ffi, module_name):
     from setuptools.command.build_py import build_py

@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def add_hop_context(cls: type[HOP_VT_Alias]) -> type[HOP_VT_Alias]:
     """

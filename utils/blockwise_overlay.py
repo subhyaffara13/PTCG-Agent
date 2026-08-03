@@ -1,3 +1,4 @@
+from typing import Callable
 
 def blockwise_overlay(block_sequence_ids: torch.Tensor) -> Callable:
     """

@@ -1,3 +1,4 @@
+import re
 
 def _get_group_names(regex: re.Pattern) -> list[Hashable] | range:
     """

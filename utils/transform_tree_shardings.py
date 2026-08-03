@@ -1,3 +1,4 @@
+from typing import Any
 
 def transform_tree_shardings(input_tree: PyTree) -> Any:
   """Converts shardings/specs/restore-args/arrays to colocated CPU devices."""

@@ -1,3 +1,4 @@
+import functools
 
 def _get_sfdp_patterns(input_device: torch.device | None = None):
     from .joint_graph import patterns

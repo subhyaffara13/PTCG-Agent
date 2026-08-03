@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def add_scheduler_init_hook(
     pre_fn: Callable[..., Any], post_fn: Callable[..., Any] | None = None

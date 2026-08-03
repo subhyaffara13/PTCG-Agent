@@ -1,3 +1,4 @@
+import sys
 
 def skip_if_lt_x_gpu(x, *, allow_cpu=False):
     """Skip if fewer than x accelerators available.

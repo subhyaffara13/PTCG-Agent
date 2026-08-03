@@ -1,3 +1,4 @@
+import sys
 
 def _running_under_virtualenv():
     if hasattr(sys, "real_prefix"):

@@ -1,3 +1,5 @@
+import math
+
 
 def _estimate_optimal_partitions(output_size: int, index_size: int) -> int:
     """Estimate optimal number of partitions based on contention ratio."""

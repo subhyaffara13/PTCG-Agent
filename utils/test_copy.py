@@ -1,3 +1,4 @@
+import copy
 
 def test_copy(d, Asp):
     assert d.items() == Asp.items()

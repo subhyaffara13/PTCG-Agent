@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lower_multiref_transformed_ref(f, ref, ref_ty, ref_block_shape, args,
                                    rest_refs):

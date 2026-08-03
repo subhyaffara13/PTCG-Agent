@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_oci_base_url(optional_params: dict, api_base: Optional[str] = None) -> str:
     """Return the OCI inference base URL, respecting any explicit api_base override.

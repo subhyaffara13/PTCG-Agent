@@ -1,3 +1,4 @@
+from typing import Union
 
 def _keep_alive(event: Union[Request, Response]) -> bool:
     connection = get_comma_header(event.headers, b"connection")

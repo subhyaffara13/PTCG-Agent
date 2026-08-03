@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def to_flat_dict(
     tree: PyTree,

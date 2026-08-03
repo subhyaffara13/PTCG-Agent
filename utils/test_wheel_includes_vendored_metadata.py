@@ -1,3 +1,5 @@
+import os
+import re
 
 def test_wheel_includes_vendored_metadata(setuptools_wheel):
     with ZipFile(setuptools_wheel) as zipfile:

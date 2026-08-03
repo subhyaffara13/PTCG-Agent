@@ -1,3 +1,4 @@
+import itertools
 
 def greedy_color(G, strategy="largest_first", interchange=False):
     """Color a graph using various strategies of greedy graph coloring.

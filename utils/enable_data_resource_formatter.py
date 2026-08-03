@@ -1,3 +1,4 @@
+import sys
 
 def enable_data_resource_formatter(enable: bool) -> None:
     if "IPython" not in sys.modules:

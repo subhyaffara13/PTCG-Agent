@@ -1,3 +1,5 @@
+import math
+
 
 def _glance_host(
     host_values: dict[str, float], keys: list[str] | None

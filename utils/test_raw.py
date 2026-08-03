@@ -1,3 +1,4 @@
+import sys
 
 def test_raw(mocker, log_mock):
     harv_mock = mocker.patch('radon.cli.RawHarvester')

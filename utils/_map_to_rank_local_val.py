@@ -1,3 +1,4 @@
+from typing import Any
 
 def _map_to_rank_local_val(val: Any, rank: int) -> Any:
     if isinstance(val, LocalTensor):

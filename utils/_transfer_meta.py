@@ -1,3 +1,4 @@
+from typing import Any
 
 def _transfer_meta(
     new_meta: dict[str, Any], old_node: torch.fx.Node, pass_name: str = ""

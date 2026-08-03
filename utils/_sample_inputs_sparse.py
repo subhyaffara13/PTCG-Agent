@@ -1,3 +1,4 @@
+import os
 
 def _sample_inputs_sparse(
     sample_inputs,

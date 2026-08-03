@@ -1,3 +1,4 @@
+import time
 
 def _save_oauth_token(response: OAuthTokenResponse) -> tuple[str, str]:
     """Validate and persist a token response from the device code flow, including refresh metadata."""

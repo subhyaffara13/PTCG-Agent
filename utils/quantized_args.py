@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def quantized_args(
     *arg_q_descriptors: bool,

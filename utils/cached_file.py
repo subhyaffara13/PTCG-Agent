@@ -1,3 +1,4 @@
+import os
 
 def cached_file(
     path_or_repo_id: str | os.PathLike,

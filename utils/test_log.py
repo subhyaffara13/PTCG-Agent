@@ -1,3 +1,5 @@
+import math
+
 
 def test_log():
     # https://github.com/sympy/sympy/issues/21598

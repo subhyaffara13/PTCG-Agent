@@ -1,3 +1,4 @@
+import functools
 
 def ragged_dot_kernel(a, b, group_sizes, config: TuningConfig):
   dtype = a.dtype

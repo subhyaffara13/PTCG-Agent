@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_sharding(sharding, shape):
   """Modifies and checks the sharding.

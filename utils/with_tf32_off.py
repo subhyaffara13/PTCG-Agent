@@ -1,3 +1,4 @@
+import functools
 
 def with_tf32_off(f):
     @functools.wraps(f)

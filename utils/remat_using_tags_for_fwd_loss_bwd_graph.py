@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def remat_using_tags_for_fwd_loss_bwd_graph(gm: fx.GraphModule) -> fx.GraphModule:
     """

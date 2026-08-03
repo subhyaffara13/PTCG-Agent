@@ -1,3 +1,4 @@
+import sys
 
 def get_typer_from_state() -> typer.Typer | None:
     spec = None

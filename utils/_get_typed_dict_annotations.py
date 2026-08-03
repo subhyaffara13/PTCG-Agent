@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_typed_dict_annotations(schema: type[TypedDictType]) -> dict[str, Any]:
     """Extract type annotations from a TypedDict class."""

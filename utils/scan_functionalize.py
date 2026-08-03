@@ -1,3 +1,4 @@
+import itertools
 
 def scan_functionalize(ctx, combine_fn, init, xs, additional_inputs):
     from torch._higher_order_ops.utils import (

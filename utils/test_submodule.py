@@ -1,3 +1,4 @@
+import sys
 
 def test_submodule(monkeypatch):
     # Create a fake module with a submodule

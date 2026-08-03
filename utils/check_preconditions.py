@@ -1,3 +1,4 @@
+import subprocess
 
 def check_preconditions() -> bool:
   """Runs pre-flight checks. Returns True if cluster exists, False otherwise.

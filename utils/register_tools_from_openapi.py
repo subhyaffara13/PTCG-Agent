@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def register_tools_from_openapi(spec: Dict[str, Any], base_url: str):
     """Register MCP tools from OpenAPI specification."""

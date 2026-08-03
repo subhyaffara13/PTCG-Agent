@@ -1,3 +1,4 @@
+import itertools
 
 def echo_via_pager(
     text_or_generator: cabc.Iterable[str] | t.Callable[[], cabc.Iterable[str]] | str,

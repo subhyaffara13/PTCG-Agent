@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _render_and_prompt_for_team_selection(teams: List[Dict[str, Any]]) -> Optional[str]:
     """Render teams table and prompt user for a team selection.

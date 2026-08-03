@@ -1,3 +1,4 @@
+import itertools
 
 def cons(el, seq):
     """ Add el to beginning of (possibly infinite) sequence seq.

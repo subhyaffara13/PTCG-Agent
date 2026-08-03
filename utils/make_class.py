@@ -1,3 +1,4 @@
+import sys
 
 def make_class(
     name, attrs, bases=(object,), class_body=None, **attributes_arguments

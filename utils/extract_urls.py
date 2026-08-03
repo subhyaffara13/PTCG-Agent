@@ -1,3 +1,4 @@
+from typing import List
 
 def extract_urls(text: str) -> List[str]:
     """

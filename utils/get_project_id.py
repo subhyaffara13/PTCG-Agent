@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def get_project_id():
     """Gets the project ID for the current App Engine application.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_numpy_type_info(obj: Any) -> bool:
     if np is None:

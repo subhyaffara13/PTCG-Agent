@@ -1,3 +1,4 @@
+import re
 
 def _first_line_re():
     """

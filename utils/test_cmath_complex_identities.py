@@ -1,3 +1,6 @@
+import re
+import math
+
 
 def test_cmath_complex_identities():
     # Define symbol

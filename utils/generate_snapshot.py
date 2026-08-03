@@ -1,3 +1,5 @@
+import sys
+from typing import Dict, Set
 
 def generate_snapshot() -> Dict[str, Dict]:
     import importlib

@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def virtualenv(python_executable: str = sys.executable) -> Iterator[tuple[str, str]]:
     """Context manager that creates a virtualenv in a temporary directory

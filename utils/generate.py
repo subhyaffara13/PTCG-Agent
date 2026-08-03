@@ -1,3 +1,5 @@
+import json
+from typing import Optional
 
 def generate(
     node: nodes.Template,

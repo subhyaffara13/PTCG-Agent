@@ -1,3 +1,4 @@
+import re
 
 def _parse_revision_from_pr_url(pr_url: str) -> str:
     """Safely parse revision number from a PR url.

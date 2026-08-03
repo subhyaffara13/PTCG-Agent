@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _resolve_fine_tuning_timeout(
     timeout: Any,

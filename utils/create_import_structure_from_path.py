@@ -1,3 +1,4 @@
+import os
 
 def create_import_structure_from_path(module_path):
     """

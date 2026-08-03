@@ -1,3 +1,4 @@
+from typing import Any
 
 def aiohttp_server(loop: asyncio.AbstractEventLoop) -> Iterator[AiohttpServer]:
     """Factory to create a TestServer instance, given an app.

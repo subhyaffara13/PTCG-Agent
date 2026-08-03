@@ -1,3 +1,4 @@
+import functools
 
 def _sparsify_with_interpreter(f):
   """Implementation of sparsify() using jaxpr interpreter."""

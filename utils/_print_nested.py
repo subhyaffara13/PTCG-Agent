@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _print_nested(
     value: STATE_DICT_ITEM,

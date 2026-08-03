@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def _get_vjp_fun(
     primal_fun: Callable,

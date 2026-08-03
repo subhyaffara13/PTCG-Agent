@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def _writeGlyphToBytes(
     glyphName: str,

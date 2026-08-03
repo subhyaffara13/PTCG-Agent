@@ -1,3 +1,4 @@
+import re
 
 def replace_cascade_sum_with_add(buffer: IndentedBuffer):
     """

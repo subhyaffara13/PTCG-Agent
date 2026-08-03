@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _atomic_replace_directory(existing_dir: Path, staged_dir: Path) -> None:
     backup_dir = staged_dir.parent / f"{existing_dir.name}.backup"

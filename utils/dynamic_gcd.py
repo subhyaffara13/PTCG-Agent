@@ -1,3 +1,5 @@
+import math
+
 
 def dynamic_gcd(a: int, b: ir.Value) -> int:
   if a <= 0:

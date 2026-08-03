@@ -1,3 +1,6 @@
+import sys
+import math
+
 
 def _validate_global_plan(global_plan: list[SavePlan], metadata: Metadata) -> list[str]:
     """Validate the global plan and return a list of error messages (empty if valid)."""

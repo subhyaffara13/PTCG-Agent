@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def get_gemini_image_web_search_requests(
     response_data: Dict[str, Any],

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_streaming_logging_obj(
     request: "SendStreamingMessageRequest",

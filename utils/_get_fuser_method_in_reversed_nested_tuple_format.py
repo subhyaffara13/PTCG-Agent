@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_fuser_method_in_reversed_nested_tuple_format(
     config: BackendPatternConfig,

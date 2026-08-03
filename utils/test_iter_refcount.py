@@ -1,3 +1,4 @@
+import sys
 
 def test_iter_refcount():
     # Make sure the iterator doesn't leak

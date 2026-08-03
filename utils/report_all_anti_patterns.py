@@ -1,3 +1,5 @@
+import json
+import os
 
 def report_all_anti_patterns(
     prof,

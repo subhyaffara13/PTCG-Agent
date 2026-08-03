@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _hash_value(value, field_name: str) -> Optional[str]:
     """Hashes a value and returns a formatted hash string."""

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_bypass(pipeline, candidates: list, gs: dict, rules: dict) -> Optional[str]:
     try:

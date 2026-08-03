@@ -1,3 +1,4 @@
+from typing import Callable
 
 def roofline_and_grad(
   f: Callable,

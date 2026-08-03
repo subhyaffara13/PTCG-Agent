@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_getattr(object: Any, name: str, default: Any) -> Any:
     """Like getattr but return default upon any Exception or any OutcomeException.

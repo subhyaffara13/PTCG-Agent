@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ge(lhs: Any, rhs: Any) -> bool:
     if isinstance(rhs, NestedIntNode) and isinstance(lhs, NestedIntNode):

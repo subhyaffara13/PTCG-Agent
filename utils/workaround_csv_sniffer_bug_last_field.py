@@ -1,3 +1,4 @@
+import re
 
 def workaround_csv_sniffer_bug_last_field(sniff_line, dialect, delimiters):
     """

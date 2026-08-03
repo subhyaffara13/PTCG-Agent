@@ -1,3 +1,4 @@
+import sys
 
 def get_code_complexity(code, threshold=7, filename='stdin'):
     try:

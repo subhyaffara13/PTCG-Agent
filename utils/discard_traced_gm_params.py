@@ -1,3 +1,4 @@
+import itertools
 
 def discard_traced_gm_params(mod: torch.fx.GraphModule):
     with torch.utils._python_dispatch._disable_current_modes():

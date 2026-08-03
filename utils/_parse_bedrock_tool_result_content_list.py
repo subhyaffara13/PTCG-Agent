@@ -1,3 +1,4 @@
+from typing import List
 
 def _parse_bedrock_tool_result_content_list(
     content_list: List,

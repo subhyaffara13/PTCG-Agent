@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def param_path_convertor(value: str | None = None) -> Path | None:
     if value is not None:

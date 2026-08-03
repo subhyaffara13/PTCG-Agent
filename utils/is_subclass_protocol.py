@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def is_subclass_protocol(cls: Type[Any], protocol: Type[Any]) -> bool:
   """Performs a best-effort check if `cls` is a subclass of a protocol.

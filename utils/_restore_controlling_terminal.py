@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _restore_controlling_terminal() -> None:
     """Reattach the controlling terminal to stdin before handing off to the agent.

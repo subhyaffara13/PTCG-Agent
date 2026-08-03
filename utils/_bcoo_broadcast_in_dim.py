@@ -1,3 +1,5 @@
+import math
+
 
 def _bcoo_broadcast_in_dim(data: Array, indices: Array, *, spinfo: SparseInfo, shape: Shape,
                            broadcast_dimensions: Sequence[int]) -> tuple[Array, Array]:

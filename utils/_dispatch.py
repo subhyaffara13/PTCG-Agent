@@ -1,3 +1,4 @@
+import functools
 
 def _dispatch(table, min, max=None, state=None, args=('raw',)):
     """

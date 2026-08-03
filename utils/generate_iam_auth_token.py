@@ -1,3 +1,5 @@
+import os
+from typing import Any, Optional
 
 def generate_iam_auth_token(
     db_host, db_port, db_user, client: Optional[Any] = None

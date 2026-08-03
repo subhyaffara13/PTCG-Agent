@@ -1,3 +1,4 @@
+import functools
 
 def create_deprecated_function_alias(fun, new_name, deprecated_alias):
   """Create a deprecated alias for a function.

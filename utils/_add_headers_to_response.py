@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def _add_headers_to_response(response: Any, headers: dict) -> Any:
     """

@@ -1,3 +1,4 @@
+import random
 
 def random_demo(env: AECEnv, render: bool = True, episodes: int = 1) -> float:
     """Runs an env object with random actions."""

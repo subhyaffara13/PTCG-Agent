@@ -1,3 +1,4 @@
+import sys
 
 def throw_abstract_impl_not_imported_error(opname, module, context):
     if module in sys.modules:

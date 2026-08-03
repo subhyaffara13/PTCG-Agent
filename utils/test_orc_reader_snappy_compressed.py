@@ -1,3 +1,4 @@
+import os
 
 def test_orc_reader_snappy_compressed(dirpath):
     data = {

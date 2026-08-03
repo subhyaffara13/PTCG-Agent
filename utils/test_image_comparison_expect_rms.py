@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_image_comparison_expect_rms(im1, im2, tol, expect_rms, tmp_path,
                                      monkeypatch):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def prepare_config(config: Type[BaseConfig], cls_name: str) -> None:
     if not isinstance(config.extra, Extra):

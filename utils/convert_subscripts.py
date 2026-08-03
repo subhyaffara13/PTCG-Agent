@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def convert_subscripts(old_sub: List[Any], symbol_map: Dict[Any, Any]) -> str:
     """Convert user custom subscripts list to subscript string according to `symbol_map`.

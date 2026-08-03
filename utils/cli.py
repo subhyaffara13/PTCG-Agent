@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def cli(ctx: click.Context, file: Any, quote: Any, export: Any) -> None:
     """This script is used to set, get or unset values from a .env file."""

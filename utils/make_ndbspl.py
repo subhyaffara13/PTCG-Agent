@@ -1,3 +1,5 @@
+import functools
+import itertools
 
 def make_ndbspl(points, values, k=3, *, solver=ssl.gcrotmk, **solver_args):
     """Construct an interpolating NdBspline.

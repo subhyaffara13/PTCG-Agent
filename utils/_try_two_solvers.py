@@ -1,3 +1,4 @@
+import logging
 
 def _try_two_solvers(func, *args, **kwargs):
   try:

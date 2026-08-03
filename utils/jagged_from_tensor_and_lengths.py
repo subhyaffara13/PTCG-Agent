@@ -1,3 +1,4 @@
+from typing import Optional
 
 def jagged_from_tensor_and_lengths(
     tensor: torch.Tensor, starts: torch.Tensor, lengths: torch.Tensor

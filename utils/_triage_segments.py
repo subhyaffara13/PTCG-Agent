@@ -1,3 +1,4 @@
+from typing import Any
 
 def _triage_segments(window, nperseg, input_length):
     """

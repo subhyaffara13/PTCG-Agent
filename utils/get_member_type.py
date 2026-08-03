@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_member_type(cls: Any, member_name: str) -> MemberType | None:
     """

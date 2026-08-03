@@ -1,3 +1,4 @@
+import itertools
 
 def unwrap_tensor_subclass_parameters(module: torch.nn.Module) -> torch.nn.Module:
     """

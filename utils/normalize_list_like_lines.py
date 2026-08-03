@@ -1,3 +1,4 @@
+import re
 
 def normalize_list_like_lines(generation):
     """

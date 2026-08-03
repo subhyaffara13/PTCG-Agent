@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _deserialize_pytreedef(
     p: ser_flatbuf.PyTreeDef,

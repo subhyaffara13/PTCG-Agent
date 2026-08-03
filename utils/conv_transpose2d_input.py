@@ -1,3 +1,4 @@
+from typing import Optional
 
 def conv_transpose2d_input(
     input: list[int],

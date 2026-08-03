@@ -1,3 +1,4 @@
+import logging
 
 def _initialize(g=globals()):
     "Set up global resource manager (deliberately not state-saved)"

@@ -1,3 +1,4 @@
+import os
 
 def get_ld_library_path() -> str:
     path = os.environ.get("LD_LIBRARY_PATH", "")

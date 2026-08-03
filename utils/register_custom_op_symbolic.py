@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_custom_op_symbolic(
     symbolic_name: str,

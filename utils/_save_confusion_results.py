@@ -1,3 +1,6 @@
+import json
+import os
+import re
 
 def _save_confusion_results(label: str, metrics: dict, wrong: list, rows: list) -> dict:
     """Save confusion matrix results to a JSON file and return the result dict."""

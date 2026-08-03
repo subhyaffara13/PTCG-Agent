@@ -1,3 +1,4 @@
+from typing import Any
 
 def stack_module_state(
     models: Sequence[nn.Module] | nn.ModuleList,

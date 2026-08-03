@@ -1,3 +1,4 @@
+import itertools
 
 def flatnotmasked_contiguous(a):
     """

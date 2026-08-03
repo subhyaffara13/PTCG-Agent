@@ -1,3 +1,4 @@
+from typing import Callable
 
 def collate_float_fn(
     batch,

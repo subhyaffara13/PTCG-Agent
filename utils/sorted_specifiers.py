@@ -1,3 +1,4 @@
+from typing import List
 
 def sorted_specifiers(specifier: SpecifierSet) -> List[str]:
     """

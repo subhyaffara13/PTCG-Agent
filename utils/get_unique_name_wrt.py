@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def get_unique_name_wrt(
     prefix: str, *containers: Any, requires_suffix: bool = False

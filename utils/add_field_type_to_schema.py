@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def add_field_type_to_schema(field_type: Any, schema_: Dict[str, Any]) -> None:
     """

@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def insert_observers_for_model(
     model: GraphModule,

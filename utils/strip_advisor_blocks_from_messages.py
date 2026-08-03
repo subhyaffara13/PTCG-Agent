@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def strip_advisor_blocks_from_messages(
     messages: List[Any], replace_with_text: bool = False

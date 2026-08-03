@@ -1,3 +1,5 @@
+import os
+import sys
 
 def ttCompile(input, output, options):
     input_name = input

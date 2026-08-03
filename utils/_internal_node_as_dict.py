@@ -1,3 +1,4 @@
+from typing import Any
 
 def _internal_node_as_dict(x: Any) -> Mapping[str, Any]:
   keys_and_children, _ = tree_flatten_with_path_one_level(x)

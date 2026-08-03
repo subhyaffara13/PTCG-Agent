@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _add_docstr(*args: str) -> Callable[[_T], _T]:
     r"""Adds docstrings to a given decorated function.

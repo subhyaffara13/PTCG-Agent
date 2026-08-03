@@ -1,3 +1,4 @@
+from typing import Optional
 
 def prepare_data_with_credentials(
     data: dict,

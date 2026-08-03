@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def find_modular_structure(
     module_name: Path, old_model_infos: ModelInfos, new_cased_name: str

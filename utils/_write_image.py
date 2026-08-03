@@ -1,3 +1,6 @@
+from typing import Any
+import math
+
 
 def _write_image(
     im: Image.Image,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def collect_eqns(jaxpr: core.Jaxpr, key: Callable):
   d = defaultdict(list)

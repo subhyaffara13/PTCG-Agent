@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def extract_expire_flags(
     ex: Optional[ExpiryT] = None,

@@ -1,3 +1,4 @@
+import json
 
 def preprocess(content: str) -> ReqFileLines:
     """Split, filter, and join lines, and return a line iterator.

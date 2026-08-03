@@ -1,3 +1,4 @@
+from typing import Optional
 
 def custom_chat_llm_router(
     async_fn: bool, stream: Optional[bool], custom_llm: CustomLLM

@@ -1,3 +1,4 @@
+import time
 
 def boot_time():
     """The system boot time expressed in seconds since the epoch."""

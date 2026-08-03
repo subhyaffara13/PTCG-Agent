@@ -1,3 +1,4 @@
+import sys
 
 def create_dup_top() -> Instruction:
     if sys.version_info >= (3, 11):

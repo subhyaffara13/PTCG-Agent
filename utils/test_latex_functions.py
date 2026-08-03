@@ -1,3 +1,4 @@
+import re
 
 def test_latex_functions():
     assert latex(exp(x)) == r"e^{x}"

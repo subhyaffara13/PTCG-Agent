@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def fold_rngs(
     fn: Callable[..., Any],

@@ -1,7 +1,17 @@
 
+import os
+import time
+import logging
+from pathlib import Path
+from factory.game_logger import GameLogger
+from factory.game_agent_wrapper import CABTAgentWrapper
+from factory.game_runner_worker_helpers import setup_game_env, extract_prizes, dump_steps, run_early_prediction, write_steps_file
+
+logger = logging.getLogger(__name__)
+
 def _parallel_game_worker(log_dir: str, label: str, v_a: str, v_b: str, 
                           deck_a: list[int], deck_b: list[int], use_staging_a: bool, use_staging_b: bool, seed: int | None = None,
-                          model_path_a: str = None, model_path_b: str = None) -> dict:
+                          model_path_a: str | None = None, model_path_b: str | None = None) -> dict:
     env = setup_game_env(seed)
 
     start_time = time.time()

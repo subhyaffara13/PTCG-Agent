@@ -1,3 +1,4 @@
+import os
 
 def parseGSUBGPOS(lines, font, tableTag):
     container = ttLib.getTableClass(tableTag)()

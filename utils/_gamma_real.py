@@ -1,3 +1,5 @@
+import math
+
 
 def _gamma_real(x):
     _intx = int(x)

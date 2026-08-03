@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_obj(local: Any, attr_name: str) -> Any:
     if hasattr(local, attr_name):

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_piecewise_integrate2():
     from itertools import permutations

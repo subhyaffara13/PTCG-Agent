@@ -1,3 +1,4 @@
+import sys
 
 def _patch_asyncio():
     """Patch asyncio module to use pure Python tasks and futures."""

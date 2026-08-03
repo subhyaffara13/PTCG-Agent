@@ -1,3 +1,4 @@
+from typing import Any
 
 def op_signature_from_function(
     func,

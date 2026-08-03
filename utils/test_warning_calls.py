@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_warning_calls():
     # combined "ignore" and stacklevel error

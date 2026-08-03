@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def dowg(
     learning_rate: base.ScalarOrSchedule = 1.0,

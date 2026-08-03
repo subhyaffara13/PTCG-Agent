@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def lru_cache_wrapper(
     maxsize: Optional[int] = None,

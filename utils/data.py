@@ -1,3 +1,4 @@
+import time
 
 def data(func, dataname, *a, **kw):
     kw.setdefault('dataname', dataname)

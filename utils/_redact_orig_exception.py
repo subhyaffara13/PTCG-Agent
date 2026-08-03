@@ -1,3 +1,4 @@
+from typing import Union
 
 def _redact_orig_exception(
     orig_exception: Union[requests.exceptions.HTTPError, str],

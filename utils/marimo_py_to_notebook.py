@@ -1,3 +1,4 @@
+import os
 
 def marimo_py_to_notebook(text):
     """Convert a Marimo script to a Jupyter notebook, using Marimo"""

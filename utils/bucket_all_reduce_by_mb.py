@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bucket_all_reduce_by_mb(
     gm: torch.fx.GraphModule,

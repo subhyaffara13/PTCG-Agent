@@ -1,3 +1,4 @@
+from typing import Optional
 
 def supports_pdf_input(model: str, custom_llm_provider: Optional[str] = None) -> bool:
     """Check if a given model supports pdf input in a chat completion call"""

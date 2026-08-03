@@ -1,3 +1,4 @@
+from typing import Dict
 
 def build_agent_env(
     base_env: Mapping[str, str],

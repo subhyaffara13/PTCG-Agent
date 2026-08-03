@@ -1,3 +1,4 @@
+from typing import Any
 
 def debug_print_impl(
     *args: Any,

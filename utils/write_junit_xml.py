@@ -1,3 +1,4 @@
+import os
 
 def write_junit_xml(
     dt: float,

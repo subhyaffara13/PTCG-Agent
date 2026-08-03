@@ -1,3 +1,4 @@
+import uuid
 
 def test_mode():
     expr = x + y

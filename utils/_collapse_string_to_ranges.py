@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable, Union
 
 def _collapse_string_to_ranges(
     s: Union[str, Iterable[str]], re_escape: bool = True

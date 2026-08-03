@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unpack_hook_tp(mesh: DeviceMesh, input_reshard_dim: int, x: Any) -> torch.Tensor:  # noqa: D401
     """Hook function called before activation recomputing in BWD to restore input."""

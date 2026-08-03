@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lookup_inner(
     obj: Any,

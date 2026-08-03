@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def stateless(
     f: Callable[[Updates, Optional[Params]], Updates],

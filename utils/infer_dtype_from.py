@@ -1,3 +1,4 @@
+from typing import Any
 
 def infer_dtype_from(val) -> tuple[DtypeObj, Any]:
     """

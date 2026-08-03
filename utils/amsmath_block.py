@@ -1,3 +1,4 @@
+import re
 
 def amsmath_block(
     state: StateBlock, startLine: int, endLine: int, silent: bool

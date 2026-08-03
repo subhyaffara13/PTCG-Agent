@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def remove_readonly(
     func: Callable[..., object],

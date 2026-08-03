@@ -1,3 +1,4 @@
+import functools
 
 def skipDeviceIf(cond, msg, *, device):
     if cond:

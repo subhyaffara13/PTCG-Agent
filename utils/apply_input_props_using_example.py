@@ -1,3 +1,4 @@
+from typing import Any
 
 def apply_input_props_using_example(graph: Graph, example_input: list[Any]) -> None:
     """

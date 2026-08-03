@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def transform_openai_input_gemini_content(
     input: GeminiEmbeddingInput,

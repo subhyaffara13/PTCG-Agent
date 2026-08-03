@@ -1,3 +1,4 @@
+from typing import Callable
 
 def extract_weights(
     mod: nn.Module,

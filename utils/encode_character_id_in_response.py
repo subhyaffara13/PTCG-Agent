@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def encode_character_id_in_response(
     response: Any, custom_llm_provider: str, model_id: Optional[str]

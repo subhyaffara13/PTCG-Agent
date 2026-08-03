@@ -1,3 +1,4 @@
+from typing import Any
 
 def save_flag_values(
     flag_values: flags.FlagValues = FLAGS,

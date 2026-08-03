@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def should_use_emulated_file_search(
     tools: Optional[Iterable[ToolParam]],

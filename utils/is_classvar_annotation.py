@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_classvar_annotation(tp: Any, /) -> bool:
     """Return whether the provided argument represents a class variable annotation.

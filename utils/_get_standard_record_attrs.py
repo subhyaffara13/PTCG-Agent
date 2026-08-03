@@ -1,3 +1,4 @@
+import logging
 
 def _get_standard_record_attrs() -> frozenset:
     """Standard LogRecord attribute names - excludes extra keys from logger.debug(..., extra={...})."""

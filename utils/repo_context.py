@@ -1,3 +1,4 @@
+import subprocess
 
 def repo_context(
     url, branch: str | None = None, quiet: bool = True, dest_ctx=robust_temp_dir

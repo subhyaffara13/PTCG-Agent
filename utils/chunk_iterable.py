@@ -1,3 +1,4 @@
+import itertools
 
 def chunk_iterable(iterable: Iterable[T], chunk_size: int) -> Iterable[Iterable[T]]:
     """Iterates over an iterator chunk by chunk.

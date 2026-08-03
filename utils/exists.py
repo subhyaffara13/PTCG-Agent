@@ -1,3 +1,4 @@
+import os
 
 def exists(path):
   if io_mode == BackendMode.DEFAULT:

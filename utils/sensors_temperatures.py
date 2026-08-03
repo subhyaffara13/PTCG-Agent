@@ -1,3 +1,5 @@
+import os
+import re
 
 def sensors_temperatures():
     """Return hardware (CPU and others) temperatures as a dict

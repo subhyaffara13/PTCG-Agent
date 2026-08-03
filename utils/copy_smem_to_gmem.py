@@ -1,3 +1,4 @@
+from typing import Any
 
 def copy_smem_to_gmem(
     src: _Ref,

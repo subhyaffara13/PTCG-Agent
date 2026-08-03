@@ -1,3 +1,4 @@
+import re
 
 def as_euler(
     quat: Array, seq: str, degrees: bool = False, *, suppress_warnings: bool = False

@@ -1,3 +1,4 @@
+import sys
 
 def bmat(blocks, format=None, dtype=None):
     """

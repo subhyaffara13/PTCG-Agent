@@ -1,3 +1,4 @@
+import re
 
 def do_integral(expr: 'Integral', prec: int, options: OPT_DICT) -> TMP_RES:
     func = expr.args[0]

@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_newshape(arr: Array, newshape: DimSize | Shape) -> Shape:
   """Fixes a -1 value in newshape, if present."""

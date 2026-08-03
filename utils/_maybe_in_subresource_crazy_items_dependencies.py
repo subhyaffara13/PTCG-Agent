@@ -1,3 +1,4 @@
+from typing import Any, Set
 
 def _maybe_in_subresource_crazy_items_dependencies(
     in_value: Set[str] = frozenset(),

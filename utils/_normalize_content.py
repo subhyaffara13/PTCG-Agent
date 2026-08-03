@@ -1,3 +1,4 @@
+import json
 
 def _normalize_content(raw: object) -> str | list[_ContentPart] | None:
     if raw is None:

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def passthrough(func: Callable[..., object]) -> Callable[[_T], _T]:
     """

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def find_default_config_files() -> Iterator[Path]:
     """Find all possible config files."""

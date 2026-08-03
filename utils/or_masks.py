@@ -1,3 +1,4 @@
+from typing import Callable
 
 def or_masks(*mask_functions: Callable) -> Callable:
     """Returns a mask function that is the union of provided mask functions"""

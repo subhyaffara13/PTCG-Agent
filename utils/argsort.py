@@ -1,3 +1,4 @@
+from typing import Any
 
 def argsort(seq: Sequence[Any], *, reverse: bool = False) -> list[int]:
     getter = seq.__getitem__

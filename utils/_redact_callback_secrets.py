@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _redact_callback_secrets(metadata: Any) -> Any:
     """Strip secret values out of a team-metadata snapshot before audit logging.

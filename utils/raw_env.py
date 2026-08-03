@@ -1,3 +1,4 @@
+import os
 
 def raw_env(**kwargs):
     return conversions.parallel_to_aec(parallel_env(**kwargs))

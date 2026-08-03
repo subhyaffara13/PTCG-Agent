@@ -1,3 +1,4 @@
+from typing import Any
 
 def run_debugger(frames: list[DebuggerFrame], thread_id: int | None,
                  **kwargs: Any):

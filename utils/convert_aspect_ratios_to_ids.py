@@ -1,3 +1,4 @@
+from typing import Optional
 
 def convert_aspect_ratios_to_ids(
     aspect_ratios: list[list[tuple[int, int]]],

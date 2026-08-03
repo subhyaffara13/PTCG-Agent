@@ -1,3 +1,4 @@
+import functools
 
 def tf32_on_and_off(tf32_precision=1e-5, *, only_if=True):
     def with_tf32_disabled(self, function_call):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_named_optimizer(optim_state_dict: dict[str, Any]) -> bool:
     """

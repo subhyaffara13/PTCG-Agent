@@ -1,3 +1,4 @@
+from typing import Callable
 
 def group_by(items: Iterable[TItem], selector: Callable[[TItem], THash]) -> dict[THash, list[TItem]]:
     results = {}

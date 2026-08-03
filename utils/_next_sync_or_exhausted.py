@@ -1,3 +1,4 @@
+from typing import Any
 
 def _next_sync_or_exhausted(it: Any) -> Any:
     """

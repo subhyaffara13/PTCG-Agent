@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def openxla_eval_boxed(
     model: fx.GraphModule, fake_tensor_inputs: list[torch.Tensor]

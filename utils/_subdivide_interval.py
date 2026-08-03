@@ -1,3 +1,4 @@
+import functools
 
 def _subdivide_interval(args):
     interval, f, norm_func, _quadrature = args

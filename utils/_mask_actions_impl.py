@@ -1,3 +1,4 @@
+from typing import Dict, Tuple
 
 def _mask_actions_impl(pipeline, actions: list, game_state: dict) -> Tuple[list, Dict[str, list]]:
     filtered = pipeline.mask_illegal(actions, game_state)

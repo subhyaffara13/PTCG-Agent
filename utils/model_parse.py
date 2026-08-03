@@ -1,3 +1,4 @@
+from typing import Any
 
 def model_parse(model: type[_ModelT], data: Any) -> _ModelT:
     if PYDANTIC_V1:

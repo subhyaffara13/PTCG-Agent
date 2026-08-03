@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _write_pytreedef(directory: Any, pytree_repr: dict[str, Any],
                      distinct_locations: bool):

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _jsonrpc_error(
     request_id: Optional[Any],

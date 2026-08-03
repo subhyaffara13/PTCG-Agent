@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def spawn_entity(key: chex.PRNGKey, state: EnvState) -> Tuple[chex.Array, jnp.ndarray]:
     """Spawn new enemy or treasure at random location with random direction."""

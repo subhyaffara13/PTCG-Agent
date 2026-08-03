@@ -1,3 +1,4 @@
+from typing import Callable
 
 def collect(expr, syms, func=None, evaluate=None, exact=False, distribute_order_term=True):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_app_mock() -> mock.MagicMock:
     def get_dict(app: Any, key: str) -> Any:

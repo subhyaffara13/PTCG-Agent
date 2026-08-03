@@ -1,3 +1,5 @@
+import math
+
 
 def float_finite_validator(v: 'Number', field: 'ModelField', config: 'BaseConfig') -> 'Number':
     allow_inf_nan = getattr(field.type_, 'allow_inf_nan', None)

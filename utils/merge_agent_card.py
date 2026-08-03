@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def merge_agent_card(
     upstream_card: Optional[Mapping[str, Any]],

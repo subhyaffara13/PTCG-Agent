@@ -1,3 +1,4 @@
+import itertools
 
 def jit_arguments(func: FunctionSchema) -> list[Argument]:
     def to_argument(

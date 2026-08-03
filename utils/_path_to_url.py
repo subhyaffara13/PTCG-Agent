@@ -1,3 +1,4 @@
+import os
 
 def _path_to_url(path):
     path = os.path.normpath(os.path.abspath(path))

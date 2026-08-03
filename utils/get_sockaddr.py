@@ -1,3 +1,4 @@
+import os
 
 def get_sockaddr(
     host: str, port: int, family: socket.AddressFamily

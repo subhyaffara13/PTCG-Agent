@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_object(name: str) -> Any:
     try:

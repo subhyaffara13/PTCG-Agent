@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_quantized_operator(float_op: Callable | str) -> Callable:
     """Get the quantized operator corresponding to the float operator"""

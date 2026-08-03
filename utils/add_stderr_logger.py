@@ -1,3 +1,4 @@
+import logging
 
 def add_stderr_logger(
     level: int = logging.DEBUG,

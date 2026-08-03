@@ -1,3 +1,4 @@
+import sys
 
 def _get_torch_related_args(
     include_pytorch: bool, aot_mode: bool

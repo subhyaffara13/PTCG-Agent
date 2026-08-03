@@ -1,3 +1,4 @@
+import os
 
 def activate(
     locale: str | None, path: str | os.PathLike[str] | None = None

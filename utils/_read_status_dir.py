@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Any
 
 def _read_status_dir(status_dir: str) -> list[dict[str, Any]]:
     """Snapshot of all in-flight cells. Tolerates partial writes / races."""

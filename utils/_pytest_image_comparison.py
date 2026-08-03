@@ -1,3 +1,4 @@
+import functools
 
 def _pytest_image_comparison(baseline_images, extensions, tol,
                              freetype_version, remove_text, savefig_kwargs,

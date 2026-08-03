@@ -1,3 +1,4 @@
+from typing import List
 
 def is_tokens_or_list_of_tokens(value: List):
     # Check if it's a list of integers (tokens)

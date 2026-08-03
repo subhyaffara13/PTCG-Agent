@@ -1,3 +1,4 @@
+from typing import Any
 
 def iter_contains(
     items: Iterable[Any],

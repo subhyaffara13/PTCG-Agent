@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def test_tmpconfigdir_warning(tmp_path):
     """Test that a warning is emitted if a temporary configdir must be used."""

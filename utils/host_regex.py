@@ -1,3 +1,4 @@
+import re
 
 def host_regex() -> Pattern[str]:
     global _host_regex_cache

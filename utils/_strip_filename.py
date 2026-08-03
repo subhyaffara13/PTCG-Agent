@@ -1,3 +1,4 @@
+import os
 
 def _strip_filename(msg: str) -> tuple[int, str]:
     """Strip the filename and line number from a mypy message."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_var_mapping(
     iter_vars: list[sympy.Symbol],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def match_coalesced_groups(
     all_rank_events: dict[Any, Any],

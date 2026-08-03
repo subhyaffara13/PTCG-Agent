@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_bidirectional_sliding_window_mask(
     config: PreTrainedConfig,

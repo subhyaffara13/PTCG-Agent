@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _vmap(
     func: Callable,

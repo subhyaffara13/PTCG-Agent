@@ -1,3 +1,4 @@
+import re
 
 def wrap_paragraphs(text: str, ncols: int = 80) -> list[str]:
     """Wrap multiple paragraphs to fit a specified width.

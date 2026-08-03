@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def verify_token(
     id_token: Union[str, bytes],

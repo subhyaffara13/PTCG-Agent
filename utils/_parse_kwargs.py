@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_kwargs(df: DataFrame, **kwargs: Any) -> dict[str, Any]:
     # Parse `kwargs`, evaluating any expressions we encounter.

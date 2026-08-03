@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _getattr(objclass, name, repr_str):
     # hack to grab the reference directly

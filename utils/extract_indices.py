@@ -1,3 +1,4 @@
+from typing import Any
 
 def extractIndices(index: Any, indices: list) -> bool:
     if isinstance(index, tuple):  # mpy::tuple_view::check

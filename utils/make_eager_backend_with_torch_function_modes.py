@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_eager_backend_with_torch_function_modes(
     modes: Iterable[torch.overrides.TorchFunctionMode],

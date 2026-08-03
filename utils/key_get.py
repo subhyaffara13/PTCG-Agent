@@ -1,3 +1,4 @@
+from typing import Any
 
 def key_get(obj: Any, kp: KeyPath) -> Any:
     """Given an object and a key path, return the value at the key path."""

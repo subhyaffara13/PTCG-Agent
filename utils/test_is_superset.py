@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_is_superset():
     assert Interval(0, 1).is_superset(Interval(0, 2)) == False

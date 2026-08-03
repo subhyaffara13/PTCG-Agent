@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_importable_with_no_home(tmp_path):
     subprocess_run_for_testing(

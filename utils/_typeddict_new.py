@@ -1,3 +1,4 @@
+import sys
 
 def _typeddict_new(cls, _typename, _fields=None, **kwargs):
     total = kwargs.pop('total', True)

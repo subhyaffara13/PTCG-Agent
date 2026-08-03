@@ -1,3 +1,4 @@
+import copy
 
 def test_deepcopy_2d_obj():
     source = np.ma.array([[0, "dog"],

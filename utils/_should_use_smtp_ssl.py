@@ -1,3 +1,4 @@
+import os
 
 def _should_use_smtp_ssl(smtp_port: int) -> bool:
     """

@@ -1,3 +1,4 @@
+import re
 
 def test_exp_assumptions():
     r = Symbol('r', real=True)

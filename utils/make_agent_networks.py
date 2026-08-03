@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def make_agent_networks(
     num_actions: int,

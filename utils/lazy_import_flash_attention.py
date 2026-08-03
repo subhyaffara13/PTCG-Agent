@@ -1,3 +1,4 @@
+from typing import Callable
 
 def lazy_import_flash_attention(
     implementation: str | None, attention_wrapper: Callable | None = None, allow_all_kernels: bool = False

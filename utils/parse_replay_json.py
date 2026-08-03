@@ -1,3 +1,5 @@
+import json
+from typing import Dict, List
 
 def parse_replay_json(path: str) -> List[Dict]:
     """Parse game replay JSON."""

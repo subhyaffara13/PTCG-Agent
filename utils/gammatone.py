@@ -1,3 +1,5 @@
+import math
+
 
 def gammatone(freq, ftype, order=None, numtaps=None, fs=None, *, xp=None, device=None):
     """

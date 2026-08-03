@@ -1,3 +1,4 @@
+from typing import Any
 
 def _process_param_defaults(param: Parameter) -> Parameter:
     """Modify the signature for a parameter in a dataclass where the default value is a FieldInfo instance.

@@ -1,3 +1,4 @@
+import re
 
 def rs_z(ctx, w, derivative=0):
     w = ctx.convert(w)

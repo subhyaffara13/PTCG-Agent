@@ -1,3 +1,4 @@
+from typing import Any
 
 def _streaming_load(
     f: BufferedIOBase,

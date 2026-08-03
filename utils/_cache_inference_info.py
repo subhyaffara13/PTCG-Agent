@@ -1,3 +1,5 @@
+import time
+from typing import Any, Callable
 
 def _cache_inference_info(
     aot_config: AOTConfig,

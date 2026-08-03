@@ -1,3 +1,5 @@
+import math
+
 
 def secure_child(
     root: SearchNode, secure_c: float = 1.0

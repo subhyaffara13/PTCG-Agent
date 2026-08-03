@@ -1,3 +1,5 @@
+import json
+from typing import List, Union
 
 def convert_openai_message_to_cohere_tool_result(
     message: Union[ChatCompletionToolMessage, ChatCompletionFunctionMessage],

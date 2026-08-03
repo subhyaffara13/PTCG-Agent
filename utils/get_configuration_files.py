@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_configuration_files() -> dict[Kind, list[str]]:
     global_config_files = [

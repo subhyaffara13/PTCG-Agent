@@ -1,3 +1,5 @@
+import math
+
 
 def test_qs_factor():
     assert qs_factor(1009 * 100003, 2000, 10000) == {1009: 1, 100003: 1}

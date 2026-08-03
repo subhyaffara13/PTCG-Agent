@@ -1,3 +1,4 @@
+import re
 
 def test_unimplemented_dtypes_table_columns2(temp_hdfstore):
     # frame

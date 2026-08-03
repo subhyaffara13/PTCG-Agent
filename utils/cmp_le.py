@@ -1,3 +1,4 @@
+from typing import Any
 
 def cmp_le(a: Any, b: Any) -> bool:
     # Check if __le__ is overridden

@@ -1,3 +1,4 @@
+import sys
 
 def _get_base_model_from_metadata(model_call_details=None):
     if model_call_details is None:

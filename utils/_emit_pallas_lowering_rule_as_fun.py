@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _emit_pallas_lowering_rule_as_fun(
     ctx: LoweringContext,

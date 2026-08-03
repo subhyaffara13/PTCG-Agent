@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_verbose():
     # Smoke test that checks the printing does something and does not crash

@@ -1,3 +1,4 @@
+import os
 
 def _get_py3_code(code, fn_name):
     with tempfile.TemporaryDirectory() as tmp_dir:

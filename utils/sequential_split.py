@@ -1,3 +1,4 @@
+from typing import Callable
 
 def sequential_split(
     gm: torch.fx.GraphModule,

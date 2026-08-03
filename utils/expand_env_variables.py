@@ -1,3 +1,4 @@
+import os
 
 def expand_env_variables(lines_enum: ReqFileLines) -> ReqFileLines:
     """Replace all environment variables that can be retrieved via `os.getenv`.

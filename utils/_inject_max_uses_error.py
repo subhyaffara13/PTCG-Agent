@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _inject_max_uses_error(
     messages: List[Dict],

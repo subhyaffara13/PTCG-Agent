@@ -1,3 +1,4 @@
+from typing import Any
 
 def compile_time_record_function(name: str) -> Generator[Any, None, None]:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_pre_linen(params: PyTree) -> PyTree:
   """Converts a pre-Linen parameter pytree.

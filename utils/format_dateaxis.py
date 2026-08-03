@@ -1,3 +1,4 @@
+import functools
 
 def format_dateaxis(
     subplot, freq: BaseOffset, index: DatetimeIndex | PeriodIndex

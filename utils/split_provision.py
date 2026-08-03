@@ -1,3 +1,4 @@
+import re
 
 def split_provision(value):
     """Return the name and optional version number of a provision.

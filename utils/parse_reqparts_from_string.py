@@ -1,3 +1,6 @@
+import os
+import re
+from typing import Optional
 
 def parse_reqparts_from_string(requirement_string: str) -> RequirementParts:
     """

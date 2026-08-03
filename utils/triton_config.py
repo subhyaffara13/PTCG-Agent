@@ -1,3 +1,5 @@
+import math
+
 
 def triton_config(
     size_hints,

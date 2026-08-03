@@ -1,3 +1,4 @@
+import os
 
 def _key_func(key: str) -> str:
     """Split at the first occurrence of the ``:`` character.

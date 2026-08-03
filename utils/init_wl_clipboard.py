@@ -1,3 +1,4 @@
+import subprocess
 
 def init_wl_clipboard():
     PRIMARY_SELECTION = "-p"

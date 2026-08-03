@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_local_method_names(
   cls: Any, exclude: Iterable[str] = ()

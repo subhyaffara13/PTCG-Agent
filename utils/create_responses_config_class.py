@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def create_responses_config_class(provider: SimpleProviderConfig):
     """Generate a Responses API config class dynamically from JSON configuration.

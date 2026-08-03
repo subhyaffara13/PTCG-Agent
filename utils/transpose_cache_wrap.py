@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def transpose_cache_wrap(transpose: Any) -> Any:
     """Decorates a ``transpose()`` implementation to be memoized inside a

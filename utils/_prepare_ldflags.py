@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _prepare_ldflags(extra_ldflags, with_cuda, with_sycl, verbose, is_standalone):
     if IS_WINDOWS:

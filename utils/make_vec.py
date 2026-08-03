@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def make_vec(
     id: str | EnvSpec,

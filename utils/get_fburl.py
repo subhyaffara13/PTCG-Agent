@@ -1,3 +1,4 @@
+import subprocess
 
 def get_fburl(url: str) -> str:
     short_url = url

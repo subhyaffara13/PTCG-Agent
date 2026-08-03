@@ -1,3 +1,4 @@
+import itertools
 
 def margulis_gabber_galil_graph(n, create_using=None):
     r"""Returns the Margulis-Gabber-Galil undirected MultiGraph on `n^2` nodes.

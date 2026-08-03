@@ -1,3 +1,4 @@
+import functools
 
 def sample_inputs_inline_asm(opinfo, device, dtype, requires_grad, **kwargs):
     make_arg = functools.partial(

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _restore_list(xs, state_dict: dict[str, Any]) -> list[Any]:
   if len(state_dict) != len(xs):

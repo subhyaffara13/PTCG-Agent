@@ -1,3 +1,4 @@
+import functools
 
 def _tmp_donotuse_dont_inline_everything(fn):
     @functools.wraps(fn)

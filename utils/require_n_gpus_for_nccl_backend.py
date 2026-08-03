@@ -1,3 +1,4 @@
+import sys
 
 def require_n_gpus_for_nccl_backend(n, backend):
     def decorator(func):

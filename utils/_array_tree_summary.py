@@ -1,3 +1,5 @@
+import math
+
 
 def _array_tree_summary(tree: PyTree) -> str:
   """Returns a compact shape/dtype-only summary without materializing arrays.

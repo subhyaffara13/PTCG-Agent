@@ -1,3 +1,4 @@
+import functools
 
 def get_download_progress_renderer(
     *, bar_type: BarType, size: int | None = None, initial_progress: int | None = None

@@ -1,3 +1,4 @@
+import copy
 
 def _PairPosFormat2_align_matrices(self, lst, font, transparent=False):
     matrices = [l.Class1Record for l in lst]

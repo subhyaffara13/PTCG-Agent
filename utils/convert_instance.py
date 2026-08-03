@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_instance(self: Instance) -> Json:
     ready = self.type is not NOT_READY

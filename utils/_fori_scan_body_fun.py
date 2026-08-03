@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _fori_scan_body_fun(body_fun: Callable, body_fun_dbg: core.DebugInfo) -> Callable:
   body_fun_ref = weakref.ref(body_fun)

@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def infer_scale_swizzle_ir(
     mat: Buffer,

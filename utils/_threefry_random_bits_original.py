@@ -1,3 +1,5 @@
+import math
+
 
 def _threefry_random_bits_original(key: typing.Array, bit_width, shape):
   size = math.prod(shape)

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_non_default_params(
     passed_params: dict, default_params: dict, additional_drop_params: Optional[list]

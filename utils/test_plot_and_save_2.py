@@ -1,3 +1,4 @@
+import os
 
 def test_plot_and_save_2(adaptive):
     if not matplotlib:

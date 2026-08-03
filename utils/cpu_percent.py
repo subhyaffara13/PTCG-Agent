@@ -1,3 +1,4 @@
+import time
 
 def cpu_percent(interval=None, percpu=False):
     """Return a float representing the current system-wide CPU

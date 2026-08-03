@@ -1,3 +1,4 @@
+import os
 
 def get_and_parse_agent_identity_certificate():
     """Gets and parses the agent identity certificate if not opted out.

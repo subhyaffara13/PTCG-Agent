@@ -1,3 +1,4 @@
+from typing import Any
 
 def _clean_schema_for_pretty_print(obj: Any, strip_metadata: bool = True) -> Any:  # pragma: no cover
     """A utility function to remove irrelevant information from a core schema."""

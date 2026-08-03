@@ -1,3 +1,4 @@
+import sys
 
 def _styled_input(prompt: str) -> str:
     """

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable, Optional, Union
 
 def power_iteration(
     matrix: Union[

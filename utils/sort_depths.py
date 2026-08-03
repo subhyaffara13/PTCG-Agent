@@ -1,3 +1,4 @@
+from typing import Any
 
 def sort_depths(
     args: tuple[Any, ...], depth_map: dict[fx.Node, int]

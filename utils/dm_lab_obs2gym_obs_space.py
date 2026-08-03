@@ -1,3 +1,4 @@
+from typing import Any
 
 def dm_lab_obs2gym_obs_space(observation: dict) -> spaces.Space[Any]:
     """Gets the observation spec from a single observation."""

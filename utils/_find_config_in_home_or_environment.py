@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _find_config_in_home_or_environment() -> Iterator[Path]:
     """Find a config file in the specified environment var or the home directory."""

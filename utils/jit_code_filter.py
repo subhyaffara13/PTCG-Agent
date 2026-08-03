@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def jit_code_filter(code: CodeType) -> bool:
     """Codefilter for Torchscript to trace forward calls.

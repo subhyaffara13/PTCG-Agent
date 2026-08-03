@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def is_hidden(abs_path: str | Path, abs_root: str | Path = "") -> bool:
     """Is a file hidden or contained in a hidden directory?

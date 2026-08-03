@@ -1,3 +1,4 @@
+from typing import Any
 
 def _single_mapping_child(tree: PyTree) -> Any | None:
   if isinstance(tree, Mapping) and len(tree) == 1:

@@ -1,3 +1,4 @@
+import functools
 
 def _qdwh(x, m, n, max_iterations, eps):
   """QR-based dynamically weighted Halley iteration for polar decomposition."""

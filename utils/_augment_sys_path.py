@@ -1,3 +1,4 @@
+import sys
 
 def _augment_sys_path(additional_paths: Sequence[str]) -> list[str]:
     original = list(sys.path)

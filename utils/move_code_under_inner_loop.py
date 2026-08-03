@@ -1,3 +1,4 @@
+import re
 
 def move_code_under_inner_loop(
     code: IndentedBuffer,

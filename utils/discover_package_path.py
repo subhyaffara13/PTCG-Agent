@@ -1,3 +1,4 @@
+import os
 
 def discover_package_path(modulepath: str, source_roots: Sequence[str]) -> str:
     """Discover package path from one its modules and source roots."""

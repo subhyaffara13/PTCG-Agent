@@ -1,3 +1,4 @@
+import functools
 
 def make_xp_test_case(*funcs, capabilities_table=None):
     capabilities_table = (xp_capabilities_table if capabilities_table is None

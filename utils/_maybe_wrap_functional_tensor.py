@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_wrap_functional_tensor(
     maybe_tensor: Any, level: int, *, _python_functionalize: bool = False

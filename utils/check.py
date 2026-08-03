@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def check(obj, *args, **kwds):
     """

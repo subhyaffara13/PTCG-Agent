@@ -1,3 +1,4 @@
+import os
 
 def get_resources_dests(resources_root, rules):
     """Find destinations for resources files"""

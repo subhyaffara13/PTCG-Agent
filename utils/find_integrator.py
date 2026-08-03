@@ -1,3 +1,4 @@
+import re
 
 def find_integrator(name):
     for cl in IntegratorBase.integrator_classes:

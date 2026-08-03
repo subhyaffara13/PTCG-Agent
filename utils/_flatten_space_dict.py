@@ -1,3 +1,4 @@
+from typing import Dict, Union
 
 def _flatten_space_dict(space: Dict) -> Box | Dict:
     if space.is_np_flattenable:

@@ -1,3 +1,4 @@
+import sys
 
 def rewrite_traceback_stack(source: t.Optional[str] = None) -> BaseException:
     """Rewrite the current exception to replace any tracebacks from

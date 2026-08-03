@@ -1,3 +1,4 @@
+from typing import Any
 
 def temporarily_clear_interpreter_stack() -> Generator[list[Any], None, None]:
     stack: list[Any] = []

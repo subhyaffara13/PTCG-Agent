@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _get_or_create_proxy_metadata_bucket(
     request_data: Dict,

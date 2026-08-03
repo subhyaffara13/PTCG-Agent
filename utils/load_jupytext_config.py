@@ -1,3 +1,4 @@
+import os
 
 def load_jupytext_config(nb_file):
     """Return the jupytext configuration file in the same folder, or in a parent folder, of the current file, if any"""

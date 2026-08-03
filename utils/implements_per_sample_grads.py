@@ -1,3 +1,4 @@
+import functools
 
 def implements_per_sample_grads(torch_function):
     @functools.wraps(torch_function)

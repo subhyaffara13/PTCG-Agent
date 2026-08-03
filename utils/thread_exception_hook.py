@@ -1,3 +1,4 @@
+from typing import Callable
 
 def thread_exception_hook(
     args: threading.ExceptHookArgs,

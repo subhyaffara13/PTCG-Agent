@@ -1,3 +1,4 @@
+import logging
 
 def run_loop(game,
              game_name,

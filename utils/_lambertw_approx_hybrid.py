@@ -1,3 +1,5 @@
+import math
+
 
 def _lambertw_approx_hybrid(z, k):
     imag_sign = 0

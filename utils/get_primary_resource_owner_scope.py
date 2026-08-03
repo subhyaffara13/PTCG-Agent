@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_primary_resource_owner_scope(
     user_api_key_dict: Optional[UserAPIKeyAuth],

@@ -1,3 +1,4 @@
+import os
 
 def _get_read_cursor(source, parallelism=None):
     """

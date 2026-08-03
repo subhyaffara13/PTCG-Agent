@@ -1,3 +1,4 @@
+import re
 
 def test_valid_scipy_version():
     # Verify that the SciPy version is a valid one (no .post suffix or other

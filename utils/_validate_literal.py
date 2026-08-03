@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_literal(name: str, value: Any, args: tuple[Any, ...]) -> None:
     """Validate Literal type."""

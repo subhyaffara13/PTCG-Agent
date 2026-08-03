@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_guard_fn_signature(value: Any) -> None:
     fn = value.__metadata_guard__

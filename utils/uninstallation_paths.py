@@ -1,3 +1,4 @@
+import os
 
 def uninstallation_paths(dist: BaseDistribution) -> Generator[str, None, None]:
     """

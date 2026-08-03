@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def run_single_game_cli(game_dir, game_config, use_random_agents, debug):
     """

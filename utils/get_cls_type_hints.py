@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_cls_type_hints(
     obj: type[Any],

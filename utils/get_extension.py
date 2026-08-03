@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_extension(srcfilename, modname, sources=(), **kwds):
     from cffi._shimmed_dist_utils import Extension

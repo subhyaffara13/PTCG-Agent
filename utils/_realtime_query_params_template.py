@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def _realtime_query_params_template(
     model: Optional[str], intent: Optional[str]

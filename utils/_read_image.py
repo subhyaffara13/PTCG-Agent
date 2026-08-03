@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _readImage(glyphObject: Optional[Any], image: ElementType, validate: bool) -> None:
     imageData = dict(image.attrib)

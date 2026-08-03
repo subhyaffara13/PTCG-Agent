@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_subclass_metadata(guard: Any, value: Any) -> tuple[Any, ...]:
     metadata = deepcopy(value.__tensor_flatten__()[1])

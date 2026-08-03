@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_NZQRC_unions():
     # check that all trivial number set unions are simplified:

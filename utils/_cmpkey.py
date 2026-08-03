@@ -1,3 +1,5 @@
+import itertools
+from typing import Optional, Tuple
 
 def _cmpkey(
     epoch: int,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_loop_body_with_args(
     fn: Any,

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def write_legacy_file():
     # force our cwd to be the first searched

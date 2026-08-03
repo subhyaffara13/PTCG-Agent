@@ -1,3 +1,5 @@
+import logging
+import os
 
 def enable_aot_logging() -> Iterator[None]:
     compile_debug = os.environ.get("TORCH_COMPILE_DEBUG", "0") == "1"

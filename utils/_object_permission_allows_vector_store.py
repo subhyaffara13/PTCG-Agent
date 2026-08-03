@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _object_permission_allows_vector_store(
     object_permission: Optional[LiteLLM_ObjectPermissionTable],

@@ -1,3 +1,5 @@
+import math
+
 
 def _get_base_step(dtype, xp):
     # Compute the base step length for the provided dtype. Theoretically, the

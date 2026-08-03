@@ -1,3 +1,4 @@
+import os
 
 def _rmtree_ignore_errors(path: str) -> None:
   if os.path.isfile(path):

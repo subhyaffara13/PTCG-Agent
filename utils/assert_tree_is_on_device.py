@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def assert_tree_is_on_device(tree: ArrayTree,
                              *,

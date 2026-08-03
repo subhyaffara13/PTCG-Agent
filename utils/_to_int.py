@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def _to_int(s: str) -> Union[int, str]:
     try:

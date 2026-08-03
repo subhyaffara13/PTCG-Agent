@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_reduction_combine_fn(
     reduction_type: str, dtype: torch.dtype, arg_break_ties_left: bool = True

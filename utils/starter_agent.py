@@ -1,3 +1,5 @@
+import math
+
 
 def starter_agent(obs):
     """Carrot loop: buy seed, plant on the current tile, water, harvest at max_yield_day."""

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _joining_type(cp: int) -> Optional[str]:
     for jt, ranges in idnadata.joining_types.items():

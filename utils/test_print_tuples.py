@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_print_tuples():
     assert mpp.doprint(Tuple(0,)) == \

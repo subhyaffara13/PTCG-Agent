@@ -1,3 +1,5 @@
+import os
+from typing import Callable, Optional
 
 def run_agent(agent, n_steps):
     while True:

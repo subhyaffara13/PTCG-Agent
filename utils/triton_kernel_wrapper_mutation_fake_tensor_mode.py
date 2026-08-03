@@ -1,3 +1,4 @@
+from typing import Any
 
 def triton_kernel_wrapper_mutation_fake_tensor_mode(
     mode: FakeTensorMode,

@@ -1,3 +1,5 @@
+import math
+
 
 def _get_input_guards_for_graph(
     placeholders: list[torch.fx.Node],

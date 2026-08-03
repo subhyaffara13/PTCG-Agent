@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_file_hash(path, block_size=2 ** 20):
     sha256 = hashlib.sha256(usedforsecurity=False)

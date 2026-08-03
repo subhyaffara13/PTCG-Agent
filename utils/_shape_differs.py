@@ -1,3 +1,4 @@
+import sys
 
 def _shape_differs(t1: type[object], t2: type[object]) -> bool:
     """Check whether two types differ in shape.

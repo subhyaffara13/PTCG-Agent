@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def benchmark(args, benchmark_cmd, engine):
     log_filename = f"{engine}_{datetime.datetime.now():%Y-%m-%d_%H:%M:%S}.log"

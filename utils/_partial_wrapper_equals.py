@@ -1,3 +1,4 @@
+import copy
 
 def _partial_wrapper_equals(obs_or_fq1: _PartialWrapper, obs_or_fq2: _PartialWrapper):
     """

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def _run_compile_cmd(cmd_line: str, cwd: str) -> None:
     cmd = shlex.split(cmd_line)

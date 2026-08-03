@@ -1,3 +1,4 @@
+from typing import Callable
 
 def this_before_that_pass_constraint(this: Callable, that: Callable):
     """

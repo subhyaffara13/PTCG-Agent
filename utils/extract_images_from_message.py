@@ -1,3 +1,4 @@
+from typing import List
 
 def extract_images_from_message(message: AllMessageValues) -> List[str]:
     """

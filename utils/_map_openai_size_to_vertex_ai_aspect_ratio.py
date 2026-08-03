@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _map_openai_size_to_vertex_ai_aspect_ratio(size: Optional[str]) -> str:
     """Map OpenAI size parameter to Vertex AI aspectRatio."""

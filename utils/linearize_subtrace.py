@@ -1,3 +1,4 @@
+from typing import Callable
 
 def linearize_subtrace(_f: Callable, _store: lu.Store, _is_vjp: bool,
                        _tag: core.TraceTag, nzs_in: Sequence[bool],

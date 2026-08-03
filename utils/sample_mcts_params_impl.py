@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def sample_mcts_params_impl(trial: Any) -> Dict[str, Any]:
     if not OPTUNA_AVAILABLE or trial is None:

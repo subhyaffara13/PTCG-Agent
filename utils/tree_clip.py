@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def tree_clip(
     tree: Any,

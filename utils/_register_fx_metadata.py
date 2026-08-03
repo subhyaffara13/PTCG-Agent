@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_fx_metadata(module_name: str, metadata: dict[str, Any]) -> None:
     """

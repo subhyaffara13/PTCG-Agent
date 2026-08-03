@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Dict
 
 def default_environment() -> Environment:
     """Return the default marker environment for the current Python process.

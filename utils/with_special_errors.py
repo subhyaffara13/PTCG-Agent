@@ -1,3 +1,4 @@
+import functools
 
 def with_special_errors(func):
     """

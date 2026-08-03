@@ -1,3 +1,4 @@
+import itertools
 
 def _stack_multi_column_index(columns: MultiIndex) -> MultiIndex | Index:
     """Creates a MultiIndex from the first N-1 levels of this MultiIndex."""

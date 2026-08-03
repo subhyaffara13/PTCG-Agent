@@ -1,3 +1,4 @@
+import itertools
 
 def test_ft2image_draw_rect_filled():
     width = 23

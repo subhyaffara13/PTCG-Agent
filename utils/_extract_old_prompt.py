@@ -1,3 +1,4 @@
+import json
 
 def _extract_old_prompt(generate_return_json: str) -> str:
     """Pull the user prompt text out of an old-format generate_returns entry."""

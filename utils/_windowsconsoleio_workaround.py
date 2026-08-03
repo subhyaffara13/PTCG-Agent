@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _windowsconsoleio_workaround(stream: TextIO) -> None:
     """Workaround for Windows Unicode console handling.

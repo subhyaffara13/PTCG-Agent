@@ -1,3 +1,4 @@
+import sys
 
 def usage(shorthelp=False, writeto_stdout=False, detailed_error=None,
           exitcode=None):

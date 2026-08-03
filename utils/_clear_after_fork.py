@@ -1,3 +1,4 @@
+import os
 
 def _clear_after_fork(cached):
     """Ensure ``func`` clears cached state after ``fork`` when supported.

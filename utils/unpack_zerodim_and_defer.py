@@ -1,3 +1,4 @@
+from typing import Callable
 
 def unpack_zerodim_and_defer(name: str) -> Callable[[F], F]:
     """

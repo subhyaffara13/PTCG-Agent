@@ -1,3 +1,4 @@
+import sys
 
 def _whichmodule(obj, name):
     """Find the module an object belongs to.

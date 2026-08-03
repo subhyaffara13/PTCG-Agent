@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_interpolated_moveto_closepoly():
     # Initial path has two closed subpaths

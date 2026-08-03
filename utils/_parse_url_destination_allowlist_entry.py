@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _parse_url_destination_allowlist_entry(
     entry: str,

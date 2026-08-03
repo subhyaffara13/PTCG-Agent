@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _compile_to_executable(
     name: str,

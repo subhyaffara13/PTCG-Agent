@@ -1,3 +1,4 @@
+from typing import Union
 
 def step_api_compatibility(
     step_returns: TerminatedTruncatedStepType | DoneStepType,

@@ -1,3 +1,4 @@
+import functools
 
 def test_is_valid(check_valid=is_valid_args, incomplete=False):
     orig_check_valid = check_valid

@@ -1,3 +1,4 @@
+import functools
 
 def scale_by_shape(
     weight_dimension_numbers: WeightDimNumOrFn | None = None,

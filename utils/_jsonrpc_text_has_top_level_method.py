@@ -1,3 +1,4 @@
+from typing import List
 
 def _jsonrpc_text_has_top_level_method(text: str) -> bool:
     """Whether a (possibly truncated) JSON-RPC envelope has a ``method`` key at

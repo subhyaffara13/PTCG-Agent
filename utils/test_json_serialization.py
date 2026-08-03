@@ -1,3 +1,4 @@
+import copy
 
 def test_json_serialization(tmp_path):
     # Can't open a NamedTemporaryFile twice on Windows, so use a temporary

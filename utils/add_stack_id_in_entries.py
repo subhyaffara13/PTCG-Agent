@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_stack_id_in_entries(
     entries: dict[int, list[dict[str, Any]]],

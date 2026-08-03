@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def custom_function_call_vmap_helper(
     interpreter: VmapInterpreter,

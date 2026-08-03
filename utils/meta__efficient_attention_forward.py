@@ -1,3 +1,5 @@
+import math
+
 
 def meta__efficient_attention_forward(
     query: Tensor,

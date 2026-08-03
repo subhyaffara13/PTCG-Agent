@@ -1,3 +1,4 @@
+import itertools
 
 def recalc_global_sharded_tensor_metadata(
     global_sharded_tensor_metadata: ShardedTensorMetadata, sharded_dim: int

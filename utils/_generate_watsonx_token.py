@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _generate_watsonx_token(api_key: Optional[str], token: Optional[str]) -> str:
     if token is not None:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _new_namedtuple_type(
     module_name: str,

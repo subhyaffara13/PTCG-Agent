@@ -1,3 +1,5 @@
+import os
+from typing import Optional, Union
 
 def get_secret(
     secret_name: str,

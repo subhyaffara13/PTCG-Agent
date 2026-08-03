@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fallback_typer_group_factory(
     fallback_handler: FallbackHandlerT,

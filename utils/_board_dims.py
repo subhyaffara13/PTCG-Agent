@@ -1,3 +1,4 @@
+from typing import Any
 
 def _board_dims(state: Mapping[str, Any]) -> tuple[int, int]:
     """Return ``(num_rows, num_cols)`` from a parsed state dict.

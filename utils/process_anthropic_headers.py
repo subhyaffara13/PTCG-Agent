@@ -1,3 +1,4 @@
+from typing import Union
 
 def process_anthropic_headers(headers: Union[httpx.Headers, dict]) -> dict:
     openai_headers = {}

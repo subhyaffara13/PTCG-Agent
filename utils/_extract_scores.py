@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_scores(env: Any) -> tuple[float, float, int]:
     """Return (score_p0, score_p1, winner) from a terminated env."""

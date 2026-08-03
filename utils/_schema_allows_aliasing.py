@@ -1,3 +1,4 @@
+from typing import Any
 
 def _schema_allows_aliasing(func: Any) -> bool:
     schema = func._schema

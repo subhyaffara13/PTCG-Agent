@@ -1,3 +1,5 @@
+import random
+from typing import List
 
 def eval_against_random_bots(env, trained_agents, random_agents, num_episodes):
   """Evaluates `trained_agents` against `random_agents` for `num_episodes`."""

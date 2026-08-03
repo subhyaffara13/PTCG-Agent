@@ -1,3 +1,4 @@
+from typing import List
 
 def score(row):
     """Scoring function based on 3 metrics. The larger score is better."""

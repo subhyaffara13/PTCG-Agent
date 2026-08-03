@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _generate_node_name_to_qconfig(
     root: torch.nn.Module,

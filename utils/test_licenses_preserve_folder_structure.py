@@ -1,3 +1,4 @@
+import os
 
 def test_licenses_preserve_folder_structure(licenses_dist, monkeypatch, tmp_path):
     monkeypatch.chdir(licenses_dist)

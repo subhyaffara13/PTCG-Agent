@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_huggingface_hub_update_command() -> list[str] | None:
     """Return the command to update huggingface_hub as an argv list, or None if the installation method is unknown."""

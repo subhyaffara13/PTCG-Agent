@@ -1,3 +1,4 @@
+import os
 
 def decide_worker_start_method() -> str:
     if "TORCHINDUCTOR_WORKER_START" in os.environ:

@@ -1,3 +1,4 @@
+import os
 
 def test_property_rvalue_policy():
     """When returning an rvalue, the return value policy is automatically changed from

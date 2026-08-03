@@ -1,3 +1,4 @@
+import sys
 
 def get_device_information(device_type: str) -> dict[str, str]:
     """

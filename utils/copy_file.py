@@ -1,3 +1,4 @@
+import os
 
 def copy_file(  # noqa: C901
     src,

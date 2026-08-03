@@ -1,3 +1,4 @@
+from typing import Union
 
 def group_images_by_shape(
     images: Union[list["torch.Tensor"], "torch.Tensor"],

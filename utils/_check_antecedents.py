@@ -1,3 +1,5 @@
+import itertools
+import re
 
 def _check_antecedents(g1, g2, x):
     """ Return a condition under which the integral theorem applies. """

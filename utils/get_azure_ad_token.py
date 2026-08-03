@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_azure_ad_token(
     litellm_params: GenericLiteLLMParams,

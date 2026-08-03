@@ -1,3 +1,4 @@
+import json
 
 def read_cell_metadata(token, cell_index):
     """Return cell metadata"""

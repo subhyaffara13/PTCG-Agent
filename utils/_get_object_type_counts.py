@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def _get_object_type_counts(top_n: int) -> Tuple[int, List[Dict[str, Any]]]:
     """Count objects by type and return total count and top N types."""

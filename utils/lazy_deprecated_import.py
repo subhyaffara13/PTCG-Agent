@@ -1,3 +1,4 @@
+from typing import Callable
 
 def lazy_deprecated_import(
     all: list[str],

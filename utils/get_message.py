@@ -1,3 +1,5 @@
+import json
+import sys
 
 def get_message(dimension_process):
     raw = dimension_process.stderr.readline()

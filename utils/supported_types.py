@@ -1,3 +1,4 @@
+from typing import Any
 
 def supported_types() -> list[Any]:
   """Returns the default list of supported types."""

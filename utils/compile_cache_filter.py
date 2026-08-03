@@ -1,3 +1,4 @@
+from typing import Callable
 
 def compile_cache_filter(
     expr: str, repo_refs_map: RepoRefsMap

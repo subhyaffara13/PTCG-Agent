@@ -1,3 +1,4 @@
+import copy
 
 def global_type_handler_registry_context():
   """Context manager for changing the GLOBAL_TYPE_HANDLER_REGISTRY."""

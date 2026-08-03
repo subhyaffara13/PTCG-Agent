@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_region_from_bedrock_arn(arn: str) -> Optional[str]:
     """ARN shape: ``arn:aws:bedrock:<region>:<account>:<type>/<id>``"""

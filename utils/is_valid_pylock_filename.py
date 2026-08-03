@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def is_valid_pylock_filename(filename: str) -> bool:
     if _is_url(filename):

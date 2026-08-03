@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_provider_for_cost_calc(
     model: Optional[str],

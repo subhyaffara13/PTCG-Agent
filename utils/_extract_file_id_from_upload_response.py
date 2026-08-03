@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_file_id_from_upload_response(response: Any) -> str:
     try:

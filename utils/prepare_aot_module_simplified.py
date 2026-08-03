@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def prepare_aot_module_simplified(
     mod: nn.Module,

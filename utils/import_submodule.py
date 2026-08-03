@@ -1,3 +1,4 @@
+import os
 
 def import_submodule(mod: types.ModuleType) -> None:
     """

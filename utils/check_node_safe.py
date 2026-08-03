@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def check_node_safe(node: Node) -> None:
     """

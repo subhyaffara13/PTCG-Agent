@@ -1,3 +1,4 @@
+from typing import Union
 
 def _fetch_files_to_copy(
     copies: Iterable[CommitOperationCopy],

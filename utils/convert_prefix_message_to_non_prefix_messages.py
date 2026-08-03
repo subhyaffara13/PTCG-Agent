@@ -1,3 +1,4 @@
+from typing import List
 
 def convert_prefix_message_to_non_prefix_messages(
     messages: List[AllMessageValues],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _add_triton_kernel_info(kernel_name: str, info: dict[str, Any]):
     global _triton_kernel_metrics

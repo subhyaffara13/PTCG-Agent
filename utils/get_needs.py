@@ -1,3 +1,4 @@
+import copy
 
 def get_needs():
     # This function modifies the contents of the global `outneeds` dict.

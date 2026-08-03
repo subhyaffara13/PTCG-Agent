@@ -1,3 +1,4 @@
+import re
 
 def header_to_metadata_and_cell(lines, header_prefix, header_suffix, ext=None, root_level_metadata_as_raw_cell=True):
     """

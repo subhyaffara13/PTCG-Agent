@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, List
 
 def walk_user_text(data: Dict[str, Any], visit: Callable[[str], str]) -> int:
     """Rewrite every text fragment in place via ``visit``.

@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _get_guardrails_list_response(
     guardrails_config: List[Dict],

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_arg_kinds(
     arg_kinds: list[ArgKind], nodes: list[T], fail: Callable[[str, T], None]

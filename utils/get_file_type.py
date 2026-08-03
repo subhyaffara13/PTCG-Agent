@@ -1,3 +1,4 @@
+import os
 
 def get_file_type(*args, **kwargs):
     open = kwargs.pop("open", __builtin__.open)

@@ -1,3 +1,4 @@
+from typing import Union
 
 def from_unix_seconds(seconds: Union[int, float]) -> datetime:
     if seconds > MAX_NUMBER:

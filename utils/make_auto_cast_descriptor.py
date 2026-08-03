@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_auto_cast_descriptor(
     field: dataclasses.Field[Any], hint: helpers.Hint

@@ -1,3 +1,4 @@
+import os
 
 def _abspaths(cwd: str, values: Iterable[str]) -> set[str]:
     paths = {

@@ -1,3 +1,4 @@
+import os
 
 def distutils_scheme(
     dist_name: str,

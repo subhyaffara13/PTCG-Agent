@@ -1,3 +1,6 @@
+import time
+import uuid
+from typing import Any, Dict, List, Optional, Union
 
 def _synthesize_responses_api_response(
     original_response: ResponsesAPIResponse,

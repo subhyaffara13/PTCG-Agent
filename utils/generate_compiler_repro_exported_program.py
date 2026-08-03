@@ -1,3 +1,4 @@
+import os
 
 def generate_compiler_repro_exported_program(
     exported_program: ExportedProgram,

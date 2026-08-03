@@ -1,3 +1,4 @@
+import os
 
 def _check_and_set_tcp_init():
     # if we are running with TCP init, set main address and port

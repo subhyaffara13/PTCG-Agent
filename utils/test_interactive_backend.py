@@ -1,3 +1,5 @@
+import json
+import subprocess
 
 def test_interactive_backend(env, toolbar):
     if env["MPLBACKEND"] == "macosx":

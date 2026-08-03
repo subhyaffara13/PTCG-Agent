@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def check_parent_directory(path: Path | str) -> None:
     """

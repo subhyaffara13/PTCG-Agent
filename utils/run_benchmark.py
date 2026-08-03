@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def run_benchmark(name: str, function: object, dtype: torch.dtype, seed: int, device: str, samples: int,
                   probability_regular: float):

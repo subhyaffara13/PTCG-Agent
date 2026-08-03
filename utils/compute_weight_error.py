@@ -1,3 +1,4 @@
+from typing import Callable
 
 def compute_weight_error(
     weights_match: dict[str, dict[str, numpy.ndarray]],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _writeUnicodes(glyphObject: Any, element: ElementType, validate: bool) -> None:
     unicodes = getattr(glyphObject, "unicodes", [])

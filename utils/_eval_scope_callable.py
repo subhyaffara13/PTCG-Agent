@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _eval_scope_callable(
     scope_callable: Callable[[str, Config], ScopeName],

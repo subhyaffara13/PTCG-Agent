@@ -1,3 +1,4 @@
+from typing import Callable
 
 def set_chunking_meta_if_none(
     nodes: Sequence[Node],

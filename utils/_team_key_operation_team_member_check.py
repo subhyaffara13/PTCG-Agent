@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _team_key_operation_team_member_check(
     assigned_user_id: Optional[str],

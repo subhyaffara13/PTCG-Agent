@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_profile(should_profile: bool, *args: Any, **kwargs: Any) -> Iterator[Any]:
     if should_profile:

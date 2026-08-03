@@ -1,3 +1,4 @@
+import re
 
 def markdown_to_doxygen(string):
     """Markdown to Doxygen equations"""

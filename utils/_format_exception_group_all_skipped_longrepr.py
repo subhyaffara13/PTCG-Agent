@@ -1,3 +1,4 @@
+import os
 
 def _format_exception_group_all_skipped_longrepr(
     item: Item,

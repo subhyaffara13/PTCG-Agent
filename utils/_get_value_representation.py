@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_value_representation(x: Any) -> _ValueRepresentation:
   if isinstance(x, (int, float, bool, type(None))) or (

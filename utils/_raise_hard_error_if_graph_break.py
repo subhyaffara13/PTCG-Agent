@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _raise_hard_error_if_graph_break(
     reason: str,

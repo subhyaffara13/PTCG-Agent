@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _apply_excluded(func: Callable[..., Any],
                     excluded: Collection[int | str],

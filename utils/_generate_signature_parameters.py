@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _generate_signature_parameters(  # noqa: C901 (ignore complexity, could use a refactor)
     init: Callable[..., None],

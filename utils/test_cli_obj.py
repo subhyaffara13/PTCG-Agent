@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_cli_obj(capfd, hello_world_f90, monkeypatch):
     """Ensures that the extra object can be specified when using meson backend

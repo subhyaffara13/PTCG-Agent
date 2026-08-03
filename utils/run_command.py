@@ -1,3 +1,8 @@
+import logging
+import os
+import subprocess
+import sys
+from typing import Dict, List
 
 def run_command(command: List[str], env: Dict[str, str]) -> None:
     """Replace the current process with the specified command.

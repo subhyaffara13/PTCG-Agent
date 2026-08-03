@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _trusted_redirect_uri_is_allowed(
     parsed: ParseResult,

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_ipython_dir() -> str:
     """Return the IPython directory location.

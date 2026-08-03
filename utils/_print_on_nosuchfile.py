@@ -1,3 +1,4 @@
+import logging
 
 def _print_on_nosuchfile(e):
     """Print helpful troubleshooting message

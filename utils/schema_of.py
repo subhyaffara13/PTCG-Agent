@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def schema_of(
     type_: Any,

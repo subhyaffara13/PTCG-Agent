@@ -1,3 +1,4 @@
+import os
 
 def update_path(path, shard_index=0, num_shards=1):
   """Regenerates all playthroughs in the path."""

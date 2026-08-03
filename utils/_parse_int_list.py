@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_int_list(value: Any) -> list[int] | None:
     if isinstance(value, list):

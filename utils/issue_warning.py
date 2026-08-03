@@ -1,3 +1,4 @@
+import sys
 
 def issue_warning(*args, **kw):
     level = 1

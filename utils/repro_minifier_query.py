@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any
 
 def repro_minifier_query(options: Any, mod: nn.Module, load_args: Any) -> None:
     mod, args = repro_common(options, mod, load_args)

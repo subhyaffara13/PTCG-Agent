@@ -1,3 +1,4 @@
+import time
 
 def test_quantity_abs():
     v_w1 = Quantity('v_w1')

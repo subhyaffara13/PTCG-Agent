@@ -1,3 +1,4 @@
+import re
 
 def test_issues_6819_6820_6821_6248_8692_25777_25779():
     # issue 6821

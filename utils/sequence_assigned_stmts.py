@@ -1,3 +1,4 @@
+from typing import Any
 
 def sequence_assigned_stmts(
     self: nodes.Tuple | nodes.List,

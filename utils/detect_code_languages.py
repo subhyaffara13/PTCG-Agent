@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def detect_code_languages(text: str) -> List[str]:
     """

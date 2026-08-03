@@ -1,3 +1,4 @@
+import subprocess
 
 def try_nvidia_smi() -> str | None:
   try:

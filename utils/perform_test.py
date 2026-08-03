@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def perform_test(
     func: Callable[[DataDrivenTestCase], None], builtins_path: str, testcase: DataDrivenTestCase

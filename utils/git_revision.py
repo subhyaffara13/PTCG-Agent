@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def git_revision(dir: str) -> bytes:
     """Get the SHA-1 of the HEAD of a git repository."""

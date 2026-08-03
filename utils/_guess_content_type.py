@@ -1,3 +1,4 @@
+import os
 
 def _guess_content_type(filename: str | None) -> str | None:
     """

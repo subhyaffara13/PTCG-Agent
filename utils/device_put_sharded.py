@@ -1,3 +1,4 @@
+from typing import Any
 
 def device_put_sharded(shards: Sequence[Any], devices: Sequence[xc.Device]):  # noqa: F811
   """Transfer array shards to specified devices and form Array(s).

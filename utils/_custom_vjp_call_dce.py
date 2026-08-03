@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _custom_vjp_call_dce(
     used_outs: Sequence[bool], eqn: core.JaxprEqn

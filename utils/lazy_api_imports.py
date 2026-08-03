@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def lazy_api_imports(
     globals_: dict[str, Any],

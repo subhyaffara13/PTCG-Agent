@@ -1,3 +1,4 @@
+from typing import Callable
 
 def flex_attention_mask(
     batch_size: int,

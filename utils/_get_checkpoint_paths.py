@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _get_checkpoint_paths(
   ckpt_dir: str | os.PathLike,

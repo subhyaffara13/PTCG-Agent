@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def append_to_history(history_file: Path, record: dict):
     history = []

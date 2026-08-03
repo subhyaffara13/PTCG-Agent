@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def randint_like_low(
     self: torch.Tensor, low: int, high: int, **kwargs: Any

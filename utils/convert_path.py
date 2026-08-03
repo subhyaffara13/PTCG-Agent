@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def convert_path(pathname: str | os.PathLike[str]) -> str:
     r"""

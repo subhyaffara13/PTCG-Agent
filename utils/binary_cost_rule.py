@@ -1,3 +1,5 @@
+import math
+
 
 def binary_cost_rule(ctx: Context, **_) -> CostEstimate:
   aval_out, = ctx.avals_out

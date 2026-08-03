@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_module_table(
   module: module_lib.Module,

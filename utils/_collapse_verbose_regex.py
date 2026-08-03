@@ -1,3 +1,4 @@
+import re
 
 def _collapse_verbose_regex(regex_str: str) -> str:
     if "\n" not in regex_str:

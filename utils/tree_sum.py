@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_sum(
     tree: Any, associative_reduction: bool = False

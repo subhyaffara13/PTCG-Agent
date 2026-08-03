@@ -1,3 +1,4 @@
+import re
 
 def safe_name(name: str) -> str:
     """Convert an arbitrary string to a standard distribution name

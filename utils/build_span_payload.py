@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def build_span_payload(
     project_name: str,

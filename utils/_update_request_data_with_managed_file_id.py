@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _update_request_data_with_managed_file_id(
     data: Dict,

@@ -1,3 +1,4 @@
+import functools
 
 def transform_metadata(
     *,

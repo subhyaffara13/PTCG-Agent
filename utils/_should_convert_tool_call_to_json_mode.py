@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def _should_convert_tool_call_to_json_mode(
     tool_calls: Optional[

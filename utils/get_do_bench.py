@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def get_do_bench() -> Callable[[Callable[[], Any]], float]:
     return functools.partial(

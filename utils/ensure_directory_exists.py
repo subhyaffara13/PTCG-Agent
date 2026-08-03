@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def ensure_directory_exists(filename: Path | str) -> None:
     """

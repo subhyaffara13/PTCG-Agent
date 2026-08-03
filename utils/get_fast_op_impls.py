@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_fast_op_impls() -> dict[OpOverload, Callable[..., Any]]:
     import torch._refs

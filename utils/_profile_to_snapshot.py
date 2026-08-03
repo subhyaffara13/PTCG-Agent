@@ -1,3 +1,4 @@
+from typing import Any
 
 def _profile_to_snapshot(profile):
     import torch

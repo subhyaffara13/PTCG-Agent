@@ -1,3 +1,4 @@
+import re
 
 def line(content: str, line_separator: str, config: Config = DEFAULT_CONFIG) -> str:
     """Returns a line wrapped to the specified line-length, if possible."""

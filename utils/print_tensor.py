@@ -1,3 +1,4 @@
+from typing import Callable
 
 def print_tensor(
     path: OBJ_PATH,

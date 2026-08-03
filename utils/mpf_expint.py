@@ -1,3 +1,4 @@
+import re
 
 def mpf_expint(n, x, prec, rnd=round_fast, gamma=False):
     """

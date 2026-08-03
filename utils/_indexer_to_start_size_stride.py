@@ -1,3 +1,4 @@
+from typing import Any
 
 def _indexer_to_start_size_stride(
     indexer: NDIndexer,

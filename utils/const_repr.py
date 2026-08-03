@@ -1,3 +1,4 @@
+from typing import Any
 
 def const_repr(x: Any, *, local: Any) -> str:
     from .trace_rules import is_builtin_callable

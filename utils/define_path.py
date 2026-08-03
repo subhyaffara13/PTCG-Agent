@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def DEFINE_path(  # pylint: disable=invalid-name
     name: str,

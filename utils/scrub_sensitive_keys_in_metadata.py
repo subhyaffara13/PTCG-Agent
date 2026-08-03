@@ -1,3 +1,4 @@
+from typing import Optional
 
 def scrub_sensitive_keys_in_metadata(litellm_params: Optional[dict]):
     if litellm_params is None:

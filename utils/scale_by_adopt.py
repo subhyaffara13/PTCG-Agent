@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def scale_by_adopt(
     b1: jax.typing.ArrayLike = 0.9,

@@ -1,3 +1,4 @@
+import os
 
 def tempdir(*args, **kwargs):
     """Context manager to provide a temporary test folder.

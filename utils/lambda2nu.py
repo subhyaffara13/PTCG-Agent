@@ -1,3 +1,4 @@
+from typing import Any
 
 def lambda2nu(lambda_: "npt.ArrayLike") -> Any:
     """

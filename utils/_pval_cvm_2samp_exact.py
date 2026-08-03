@@ -1,3 +1,5 @@
+import math
+
 
 def _pval_cvm_2samp_exact(s, m, n):
     """

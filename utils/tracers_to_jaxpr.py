@@ -1,3 +1,4 @@
+from typing import Any
 
 def tracers_to_jaxpr(
   in_tracers: Sequence[JaxprTracer],

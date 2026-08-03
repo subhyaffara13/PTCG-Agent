@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_colrv0_layer(layer: Any) -> bool:
     # Consider as COLRv0 layer any sequence of length 2 (be it tuple or list) in which

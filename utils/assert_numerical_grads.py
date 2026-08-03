@@ -1,3 +1,4 @@
+from typing import Callable
 
 def assert_numerical_grads(f: Callable[..., Array],
                            f_args: Sequence[Array],

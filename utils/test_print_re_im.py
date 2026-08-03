@@ -1,3 +1,4 @@
+import re
 
 def test_print_re_im():
     assert mpp.doprint(re(x)) == \

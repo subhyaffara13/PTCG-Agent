@@ -1,3 +1,4 @@
+import os
 
 def get_beta_headers_config(url: str) -> dict:
     """

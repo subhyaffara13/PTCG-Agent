@@ -1,3 +1,4 @@
+import copy
 
 def test_circular_reference():
     assert copy(obj4())

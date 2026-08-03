@@ -1,3 +1,4 @@
+import os
 
 def get_worker_log_path() -> str | None:
     log_loc = None

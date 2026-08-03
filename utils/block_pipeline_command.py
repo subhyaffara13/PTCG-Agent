@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def block_pipeline_command(name: str) -> Callable[..., Any]:
     """

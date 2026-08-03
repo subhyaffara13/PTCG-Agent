@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pprint_dict(
     seq: Mapping, _nest_lvl: int = 0, max_seq_items: int | None = None, **kwds: Any

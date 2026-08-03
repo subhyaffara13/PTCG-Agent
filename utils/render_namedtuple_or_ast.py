@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_namedtuple_or_ast(
     node: tuple[Any, ...] | ast.AST,

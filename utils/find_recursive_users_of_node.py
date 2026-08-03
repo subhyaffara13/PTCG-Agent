@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def find_recursive_users_of_node(
     snode: BaseSchedulerNode,

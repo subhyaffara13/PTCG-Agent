@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_request_body_safe(
     request_body: dict, general_settings: dict, llm_router: Optional[Router], model: str

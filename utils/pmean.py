@@ -1,3 +1,5 @@
+import math
+
 
 def pmean(xs, axis_name):
   warnings.warn('use jax.lax.pmean instead', DeprecationWarning)

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def string_state(
     name: str,

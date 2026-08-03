@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _merge_budget_alert_email_configs(
     global_cfg: Optional[Dict[str, Any]],

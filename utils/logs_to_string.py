@@ -1,3 +1,4 @@
+import logging
 
 def logs_to_string(module, log_option):
     """Example:

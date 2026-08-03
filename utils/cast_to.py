@@ -1,3 +1,4 @@
+from typing import Any
 
 def cast_to(
     dtype: torch.dtype, model: torch.fx.GraphModule, inputs: list[Any]

@@ -1,3 +1,5 @@
+import math
+
 
 def random_kernel_graph(
     n, kernel_integral, kernel_root=None, seed=None, *, create_using=None

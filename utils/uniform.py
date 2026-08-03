@@ -1,3 +1,4 @@
+import random
 
 def uniform(
     key: torch.Tensor,

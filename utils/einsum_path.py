@@ -1,3 +1,4 @@
+from typing import Any
 
 def einsum_path(*operands, optimize='greedy', einsum_call=False):
     """

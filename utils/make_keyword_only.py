@@ -1,3 +1,4 @@
+import functools
 
 def make_keyword_only(since, name, func=None):
     """

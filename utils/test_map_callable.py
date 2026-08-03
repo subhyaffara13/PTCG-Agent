@@ -1,3 +1,5 @@
+import math
+
 
 def test_map_callable(datetime_series, engine):  # noqa: F811
     with np.errstate(all="ignore"):

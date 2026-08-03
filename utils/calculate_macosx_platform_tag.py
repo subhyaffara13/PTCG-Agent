@@ -1,3 +1,5 @@
+import os
+import sys
 
 def calculate_macosx_platform_tag(archive_root: StrPath, platform_tag: str) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_pytree_flatten_spec(
     cls: type[Any],

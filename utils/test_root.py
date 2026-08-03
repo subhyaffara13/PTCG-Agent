@@ -1,3 +1,4 @@
+import random
 
 def test_root():
     from sympy.abc import x

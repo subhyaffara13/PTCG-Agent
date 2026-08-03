@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_tensorstore_metadata_cached(
   global_shape: Sequence[int], dtype: jnp.dtype, local_shape: Sequence[int],

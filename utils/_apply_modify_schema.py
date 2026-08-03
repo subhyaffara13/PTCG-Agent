@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Optional
 
 def _apply_modify_schema(
     modify_schema: Callable[..., None], field: Optional[ModelField], field_schema: Dict[str, Any]

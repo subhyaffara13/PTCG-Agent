@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def has_flag(compiler: Any, flag: str) -> bool:
     """

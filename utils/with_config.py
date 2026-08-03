@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def with_config(*, config: ConfigDict) -> Callable[[_TypeT], _TypeT]: ...
 

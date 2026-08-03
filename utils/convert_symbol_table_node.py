@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_symbol_table_node(self: SymbolTableNode, cfg: Config) -> Json:
     data: dict[str, Any] = {".class": "SymbolTableNode", "kind": node_kinds[self.kind]}

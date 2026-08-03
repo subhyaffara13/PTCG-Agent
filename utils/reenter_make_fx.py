@@ -1,3 +1,4 @@
+import functools
 
 def reenter_make_fx(fn, subgraph_decomp_table=None):
     from torch.fx.experimental.proxy_tensor import _CURRENT_MAKE_FX_TRACER

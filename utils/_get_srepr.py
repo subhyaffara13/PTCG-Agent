@@ -1,3 +1,4 @@
+import re
 
 def _get_srepr(expr):
     s = srepr(expr)

@@ -1,3 +1,4 @@
+import os
 
 def audiohandler(extension, data):
     if extension not in ["flac", "mp3", "sox", "wav", "m4a", "ogg", "wma"]:

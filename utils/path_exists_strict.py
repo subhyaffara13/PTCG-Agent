@@ -1,3 +1,4 @@
+import os
 
 def path_exists_strict(path):
     """Same as os.path.exists() but does not swallow EACCES / EPERM

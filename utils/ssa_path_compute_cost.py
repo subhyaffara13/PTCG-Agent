@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple
 
 def ssa_path_compute_cost(
     ssa_path: PathType,

@@ -1,3 +1,4 @@
+import os
 
 def _dump_DDP_relevant_env_vars():
     relevant_env_vars = [

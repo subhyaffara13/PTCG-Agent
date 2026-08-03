@@ -1,3 +1,5 @@
+import math
+
 
 def _get_closure_vars() -> dict[str, object]:
     global _CLOSURE_VARS

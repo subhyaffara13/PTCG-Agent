@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def _normalize_spec(
     spec: Union[Dict[str, Any], List[Dict[str, Any]], None],

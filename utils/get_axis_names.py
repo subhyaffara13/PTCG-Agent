@@ -1,3 +1,4 @@
+import re
 
 def get_axis_names(axes_metadata):
   """Gets axis names for variables as logical PartitionSpecs.

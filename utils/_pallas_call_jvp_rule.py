@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pallas_call_jvp_rule(
     primals,

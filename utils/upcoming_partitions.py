@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def upcoming_partitions(
     today: date, interval: PartitionInterval, ahead: int

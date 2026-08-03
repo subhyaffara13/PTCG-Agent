@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_correct_state(env_gym, env_name: str, state_jax: Any, atol: float = 1e-4):
     """Check that numpy-based env state is same as JAX dict."""

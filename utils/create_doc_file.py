@@ -1,3 +1,4 @@
+import re
 
 def create_doc_file(new_paper_name: str, public_classes: list[str]):
     """

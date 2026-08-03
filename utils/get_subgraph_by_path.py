@@ -1,3 +1,4 @@
+import itertools
 
 def get_subgraph_by_path(
     graph_view: GraphView, paths: str | list[str]

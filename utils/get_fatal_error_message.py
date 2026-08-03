@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_fatal_error_message(filepath: str, issue_template_path: Path) -> str:
     return (

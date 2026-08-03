@@ -1,3 +1,5 @@
+import math
+
 
 def _random(shape, density=0.01, format=None, dtype=None,
             rng=None, data_sampler=None):

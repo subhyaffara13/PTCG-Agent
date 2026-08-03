@@ -1,3 +1,4 @@
+from typing import Any
 
 def field_get_default(field: FieldInfo) -> Any:
     value = field.get_default()

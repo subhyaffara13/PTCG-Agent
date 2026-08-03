@@ -1,3 +1,4 @@
+import os
 
 def system_default_viewer(fname, fmt):
     """ Open fname with the default system viewer.

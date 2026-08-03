@@ -1,3 +1,5 @@
+import os
+import sys
 
 def uninteresting_files() -> set[str]:
     import torch._dynamo.external_utils

@@ -1,3 +1,4 @@
+import os
 
 def get_configured_s3_bucket_name(litellm_params: Mapping[str, object]) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def findKnownKerningGroups(groups: Mapping[str, Any]) -> tuple[set[str], set[str]]:
     """Find all kerning groups in a UFO1 or UFO2 font that use known prefixes.

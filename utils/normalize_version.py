@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def normalize_version(
     version: AnyStr | None, ptype: Optional[Union[str, bytes]], encode: bool | None = True

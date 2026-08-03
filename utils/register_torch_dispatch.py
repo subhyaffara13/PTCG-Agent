@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_torch_dispatch(
     op: _op_identifier,

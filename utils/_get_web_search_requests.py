@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _get_web_search_requests(server_tool_use: Any) -> Optional[int]:
     """

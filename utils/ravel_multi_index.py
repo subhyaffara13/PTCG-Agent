@@ -1,3 +1,5 @@
+import math
+
 
 def ravel_multi_index(multi_index, dims, mode="raise", order="C"):
     """

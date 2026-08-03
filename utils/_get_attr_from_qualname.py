@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_attr_from_qualname(mod: torch.nn.Module, qualname: str) -> Any:
     attr_val = mod

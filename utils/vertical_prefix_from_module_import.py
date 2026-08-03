@@ -1,3 +1,4 @@
+from typing import Any
 
 def vertical_prefix_from_module_import(**interface: Any) -> str:
     if not interface["imports"]:

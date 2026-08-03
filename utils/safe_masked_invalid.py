@@ -1,3 +1,4 @@
+import copy
 
 def safe_masked_invalid(x, copy=False):
     x = np.array(x, subok=True, copy=copy)

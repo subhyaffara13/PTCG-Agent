@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def annotate_fn(
     annotation_dict: dict[str, Any],

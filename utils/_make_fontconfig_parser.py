@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _make_fontconfig_parser():
     def comma_separated(elem):

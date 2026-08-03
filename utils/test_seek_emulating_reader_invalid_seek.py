@@ -1,3 +1,4 @@
+import os
 
 def test_seek_emulating_reader_invalid_seek():
     # Dummy data for the reader

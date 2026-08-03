@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _is_ip_in_networks(
     client_ip: Optional[str], networks: List[TrustedProxyNetwork]

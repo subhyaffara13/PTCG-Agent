@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _first_non_cancelled_cause(exc: BaseException) -> Optional[BaseException]:
     queue: List[BaseException] = [exc]

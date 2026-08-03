@@ -1,3 +1,4 @@
+import re
 
 def _skip_regex(lines_enum, options):
     skip_regex = options.skip_requirements_regex if options else None

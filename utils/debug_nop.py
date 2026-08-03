@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def debug_nop(
     fx_g: fx.GraphModule, _: Any

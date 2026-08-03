@@ -1,3 +1,4 @@
+import os
 
 def _should_enforce():
     enforce = os.getenv("SETUPTOOLS_ENFORCE_DEPRECATION", "false").lower()

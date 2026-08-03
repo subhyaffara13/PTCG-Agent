@@ -1,3 +1,4 @@
+from typing import Any
 
 def new_ref(init_val: Any, *, memory_space: Any = None, kind: Any = None):
   """Create a mutable array reference with initial value ``init_val``.

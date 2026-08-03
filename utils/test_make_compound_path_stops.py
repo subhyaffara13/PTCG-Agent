@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_make_compound_path_stops():
     zero = [0, 0]

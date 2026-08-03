@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def boxed_nop_with_mode(
     fx_g: torch.fx.GraphModule,

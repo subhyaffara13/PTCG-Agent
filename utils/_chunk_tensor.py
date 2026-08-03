@@ -1,3 +1,4 @@
+import copy
 
 def _chunk_tensor(
     tensor: torch.Tensor,

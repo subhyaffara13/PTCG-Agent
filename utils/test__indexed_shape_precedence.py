@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Indexed_shape_precedence():
     i, j = symbols('i j', integer=True)

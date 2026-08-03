@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _ravel_list(lst: list[Any], /) -> tuple[Array, Callable[[Array], list[Any]]]:
   if not lst:

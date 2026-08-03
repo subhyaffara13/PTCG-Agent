@@ -1,3 +1,4 @@
+import functools
 
 def _cached_partial(
     f: tp.Callable[..., tp.Any],

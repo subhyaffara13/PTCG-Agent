@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def is_remote_storage(tspec: dict[str, Any] | str) -> bool:
   """Detect if user is using remote storages.

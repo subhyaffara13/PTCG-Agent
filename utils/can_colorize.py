@@ -1,3 +1,5 @@
+import os
+import sys
 
 def can_colorize(
     *, no_color: bool | None = None, force_color: bool | None = None

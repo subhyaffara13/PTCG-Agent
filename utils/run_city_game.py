@@ -1,3 +1,5 @@
+import random
+import sys
 
 def run_city_game(repos: list[RepoStorageInfo]) -> None:
     """Launch the interactive city explorer."""

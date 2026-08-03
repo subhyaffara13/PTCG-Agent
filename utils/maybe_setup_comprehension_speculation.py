@@ -1,3 +1,4 @@
+import sys
 
 def maybe_setup_comprehension_speculation(
     tx: InstructionTranslatorBase, inst: Instruction

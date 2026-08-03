@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_simplified_FiniteSet_in_CondSet():
     assert ConditionSet(x, And(x < 1, x > -3), FiniteSet(0, 1, 2)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_underlying_shape(
     shape: tuple[int, ...] | None, dtype: Any

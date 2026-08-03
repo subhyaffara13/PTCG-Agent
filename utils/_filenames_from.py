@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def _filenames_from(
     arg: str,

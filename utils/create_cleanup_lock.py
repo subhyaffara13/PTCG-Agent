@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def create_cleanup_lock(p: Path) -> Path:
     """Create a lock to prevent premature directory cleanup."""

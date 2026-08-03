@@ -1,3 +1,4 @@
+import os
 
 def _compression_level_from_env() -> int:
     env_level = GPOS_COMPACT_MODE_DEFAULT

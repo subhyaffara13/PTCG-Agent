@@ -1,3 +1,4 @@
+import itertools
 
 def _flattened_scope_names(
     iterator: Iterator[nodes.Global | nodes.Nonlocal],

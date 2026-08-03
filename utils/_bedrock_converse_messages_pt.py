@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def _bedrock_converse_messages_pt(
     messages: List,

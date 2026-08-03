@@ -1,3 +1,5 @@
+import logging
+from typing import Callable
 
 def train(cfg, agent):
   """Trains an Escher agent.

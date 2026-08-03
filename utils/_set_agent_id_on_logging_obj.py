@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _set_agent_id_on_logging_obj(
     kwargs: Dict[str, Any],

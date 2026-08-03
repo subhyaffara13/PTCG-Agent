@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_related_files(
     tested_configuration_file: str | Path, suffix_filter: str

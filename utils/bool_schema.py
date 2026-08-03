@@ -1,3 +1,4 @@
+from typing import Any
 
 def bool_schema(
     strict: bool | None = None,

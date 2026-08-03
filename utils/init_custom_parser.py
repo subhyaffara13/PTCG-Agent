@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def init_custom_parser(modification, transformer=None):
     latex_grammar = Path(grammar_file).read_text(encoding="utf-8")

@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_weave_otel_attributes(span: Span, kwargs: dict[str, Any], response_obj: Any):
     """

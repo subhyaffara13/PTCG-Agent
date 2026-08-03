@@ -1,3 +1,4 @@
+import copy
 
 def _check_laplacian_dtype_none(
     A, desired_L, desired_d, normed, use_out_degree, copy, dtype, arr_type

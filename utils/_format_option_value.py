@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_option_value(optdict: OptionDict, value: Any) -> str:
     """Return the user input's value from a 'compiled' value.

@@ -1,3 +1,4 @@
+import os
 
 def _get_exec_path(module_name, path):
     if IS_WINDOWS and TORCH_LIB_PATH not in os.getenv('PATH', '').split(';'):

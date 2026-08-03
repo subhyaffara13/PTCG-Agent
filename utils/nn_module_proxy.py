@@ -1,3 +1,4 @@
+from typing import Any
 
 def nn_module_proxy(mod: Any) -> Any:
     if not isinstance(mod, torch.nn.Module):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_list(
     attr: list[Any] | set[Any] | tuple[Any, ...],

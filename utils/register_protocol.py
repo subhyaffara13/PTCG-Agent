@@ -1,3 +1,4 @@
+from typing import Callable, Dict
 
 def register_protocol(default_params: Dict = None) -> Callable:
     """

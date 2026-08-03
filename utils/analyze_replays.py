@@ -1,3 +1,7 @@
+import json
+import os
+import sys
+from typing import Dict, List, Optional
 
 def analyze_replays(replay_dir: str, cache_file: str, model_id: str, output_dir: Optional[str] = None) -> List[Dict]:
     if output_dir and not os.path.exists(output_dir):

@@ -1,3 +1,4 @@
+import sys
 
 def _sigmasks_enum() -> str:
     """Generates the source code for the Sigmasks int enum."""

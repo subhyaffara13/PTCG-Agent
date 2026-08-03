@@ -1,3 +1,4 @@
+import os
 
 def test_warning_calls_filters(warning_calls):
     bad_filters, bad_stacklevels = warning_calls

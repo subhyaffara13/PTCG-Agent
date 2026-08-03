@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def debug_callback_impl(*args, callback: Callable[..., Any],
                         effect: DebugEffect, partitioned: bool):

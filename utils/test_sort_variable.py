@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_sort_variable():
     vsort = Derivative._sort_variable_count

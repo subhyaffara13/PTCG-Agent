@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def branch(
     inputs: List[ArrayIndexType],

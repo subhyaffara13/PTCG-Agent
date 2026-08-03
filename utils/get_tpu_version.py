@@ -1,3 +1,4 @@
+import re
 
 def get_tpu_version() -> int:
   if device_under_test() != "tpu":

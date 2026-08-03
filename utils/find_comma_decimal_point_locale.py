@@ -1,3 +1,4 @@
+import sys
 
 def find_comma_decimal_point_locale():
     """See if platform has a decimal point as comma locale.

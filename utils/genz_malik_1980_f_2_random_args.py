@@ -1,3 +1,5 @@
+import math
+
 
 def genz_malik_1980_f_2_random_args(rng, shape, xp):
     ndim = shape[-1]

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def jvp(func, inputs, v=None, create_graph=False, strict=False):
     r"""Compute the dot product between the Jacobian of the given function at the point given by the inputs and a vector ``v``.

@@ -1,3 +1,4 @@
+import re
 
 def get_func_names(expected: list[str]) -> list[str]:
     res = []

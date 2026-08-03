@@ -1,3 +1,4 @@
+from typing import List
 
 def _get_pass_through_endpoints_from_config() -> List[PassThroughGenericEndpoint]:
     """

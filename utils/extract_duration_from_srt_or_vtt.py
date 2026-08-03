@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def extract_duration_from_srt_or_vtt(srt_or_vtt_content: str) -> Optional[float]:
     """

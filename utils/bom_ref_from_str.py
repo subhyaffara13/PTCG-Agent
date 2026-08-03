@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def bom_ref_from_str(bom_ref: BomRef, optional: bool = ...) -> BomRef:
     ...  # pragma: no cover

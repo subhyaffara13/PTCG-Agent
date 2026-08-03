@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _register_loader(idx: int, size: int) -> Callable[[_LoaderFunc], _LoaderFunc]:
     def decorator(func: _LoaderFunc) -> _LoaderFunc:

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _extract_target_storage_simple(target_storage_form: Optional[str] = None) -> str:
     """

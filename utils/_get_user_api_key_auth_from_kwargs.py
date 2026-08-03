@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _get_user_api_key_auth_from_kwargs(kwargs: Dict[str, Any]) -> Optional[Any]:
     for metadata_key in ("metadata", "litellm_metadata"):

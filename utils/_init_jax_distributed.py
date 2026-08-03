@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _init_jax_distributed():
   """Initializes JAX distributed system if not managed by XManager."""

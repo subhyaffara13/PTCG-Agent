@@ -1,3 +1,5 @@
+import math
+
 
 def eigenvector_centrality(G, max_iter=100, tol=1.0e-6, nstart=None, weight=None):
     r"""Compute the eigenvector centrality for the graph G.

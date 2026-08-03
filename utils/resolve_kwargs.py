@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def resolve_kwargs(fun: Callable, args, kwargs) -> tuple[Any, ...]:
   """Resolve input arguments to positional following a function's signature.

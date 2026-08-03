@@ -1,3 +1,4 @@
+from typing import List
 
 def update_weights(agents: List[OpponentShapingAgent]):
   """Updates the weights of the opponent models.

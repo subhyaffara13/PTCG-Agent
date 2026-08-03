@@ -1,3 +1,4 @@
+import subprocess
 
 def system(*args, **kwargs):
     """Execute the given bash command"""

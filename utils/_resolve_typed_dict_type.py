@@ -1,3 +1,4 @@
+from typing import Union
 
 def _resolve_typed_dict_type(typ):
     """Resolve the actual TypedDict class from a potentially wrapped type."""

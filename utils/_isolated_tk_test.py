@@ -1,3 +1,7 @@
+import functools
+import os
+import subprocess
+import sys
 
 def _isolated_tk_test(success_count, func=None):
     """

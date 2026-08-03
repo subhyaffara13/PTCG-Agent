@@ -1,3 +1,4 @@
+from typing import Any
 
 def align_trace_from_beginning(
     entries: dict[int, list[dict[str, Any]]],

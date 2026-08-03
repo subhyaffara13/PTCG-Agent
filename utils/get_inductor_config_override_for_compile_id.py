@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_inductor_config_override_for_compile_id(
     compile_id: CompileId | None,

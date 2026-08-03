@@ -1,3 +1,4 @@
+from typing import Any
 
 def _update_array_restore_args(
     v: Any, leaf_args: ArrayRestoreArgs

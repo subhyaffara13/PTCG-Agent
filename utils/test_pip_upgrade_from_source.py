@@ -1,3 +1,4 @@
+import subprocess
 
 def test_pip_upgrade_from_source(
     pip_version, venv_without_setuptools, setuptools_wheel, setuptools_sdist

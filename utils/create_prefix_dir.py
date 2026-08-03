@@ -1,3 +1,5 @@
+import logging
+import os
 
 def create_prefix_dir(nb_file, fmt, log):
     """Create directory if fmt has a prefix"""

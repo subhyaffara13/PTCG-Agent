@@ -1,3 +1,4 @@
+import functools
 
 def _dot_product_attention_fwd_partition(
     scale, seed, dropout_rate, variadic_args, mask_type, layout, sliding_window_length,

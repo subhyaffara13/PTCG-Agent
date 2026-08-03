@@ -1,3 +1,4 @@
+from typing import Optional
 
 def assign_key(ctx: click.Context, team_id: Optional[str]):
     """Assign your current CLI key to a team"""

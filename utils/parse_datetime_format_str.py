@@ -1,3 +1,4 @@
+import re
 
 def parse_datetime_format_str(format_str, data) -> pd.Series | np.ndarray:
     """Parse datetime `format_str` to interpret the `data`."""

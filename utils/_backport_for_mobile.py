@@ -1,3 +1,4 @@
+import os
 
 def _backport_for_mobile(f_input, f_output, to_version):
     r"""Take a input string containing a file name (file-like object) and a new destination to return a boolean.

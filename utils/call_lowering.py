@@ -1,3 +1,4 @@
+from typing import Any
 
 def call_lowering(fn_name, call_jaxpr: core.ClosedJaxpr, backend,
                   ctx: ModuleContext, in_avals,

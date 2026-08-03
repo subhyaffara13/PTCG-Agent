@@ -1,3 +1,4 @@
+import os
 
 def _unpack_zipfile_obj(zipfile_obj, extract_dir, progress_filter=default_filter):
     """Internal/private API used by other parts of setuptools.

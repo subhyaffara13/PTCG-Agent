@@ -1,3 +1,4 @@
+import sys
 
 def test_daemon(testcase: DataDrivenTestCase) -> None:
     assert testcase.old_cwd is not None, "test was not properly set up"

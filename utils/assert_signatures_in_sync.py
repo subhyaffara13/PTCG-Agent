@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def assert_signatures_in_sync(
     source_func: Callable[..., Any],

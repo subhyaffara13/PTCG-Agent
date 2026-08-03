@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_validator(validator: Any) -> bool:
     """Check if a function is a validator.

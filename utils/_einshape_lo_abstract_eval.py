@@ -1,3 +1,4 @@
+import functools
 
 def _einshape_lo_abstract_eval(
     x_aval: jax_core.ShapedArray,

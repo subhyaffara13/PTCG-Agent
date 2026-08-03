@@ -1,3 +1,4 @@
+import functools
 
 def _share_masks(*args, xp):
     if is_marray(xp):

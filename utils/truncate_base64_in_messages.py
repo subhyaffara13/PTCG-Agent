@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def truncate_base64_in_messages(
     messages: Optional[Union[str, list, dict]],

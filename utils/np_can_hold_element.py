@@ -1,3 +1,4 @@
+from typing import Any
 
 def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
     """

@@ -1,3 +1,4 @@
+import re
 
 def test_catalan():
     n = Symbol('n', integer=True)

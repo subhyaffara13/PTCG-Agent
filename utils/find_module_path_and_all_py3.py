@@ -1,3 +1,4 @@
+import sys
 
 def find_module_path_and_all_py3(
     inspect: ModuleInspect, module: str, verbose: bool

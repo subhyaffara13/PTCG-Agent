@@ -1,3 +1,4 @@
+from typing import Any
 
 def _inject_multi_game_context(observation: Mapping[str, Any]) -> str:
     """Status block shown only on the second and later games.

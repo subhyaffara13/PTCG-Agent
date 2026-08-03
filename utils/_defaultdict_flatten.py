@@ -1,3 +1,4 @@
+from typing import Any
 
 def _defaultdict_flatten(d: defaultdict[Any, T]) -> tuple[list[T], Context]:
     values, dict_context = _dict_flatten(d)

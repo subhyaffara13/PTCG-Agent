@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_model_list_from_yaml_file(yaml_file: str) -> list[dict[str, Any]]:
     """Load and validate the model list from a YAML file."""

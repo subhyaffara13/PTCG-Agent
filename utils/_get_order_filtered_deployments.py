@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def _get_order_filtered_deployments(
     healthy_deployments: List[Dict], target_order: Optional[int] = None

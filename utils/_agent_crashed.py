@@ -1,3 +1,4 @@
+from typing import Any
 
 def _agent_crashed(env: Any, idx: int) -> bool:
     """True if agent ``idx`` ended in a non-DONE/INACTIVE status."""

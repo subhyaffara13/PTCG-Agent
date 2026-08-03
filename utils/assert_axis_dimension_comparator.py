@@ -1,3 +1,4 @@
+from typing import Callable
 
 def assert_axis_dimension_comparator(tensor: Array, axis: int,
                                      pass_fn: Callable[[int], bool],

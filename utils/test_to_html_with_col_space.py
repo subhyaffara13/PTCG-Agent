@@ -1,3 +1,4 @@
+import re
 
 def test_to_html_with_col_space(col_space):
     df = DataFrame(np.random.default_rng(2).random(size=(1, 3)))

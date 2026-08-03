@@ -1,3 +1,4 @@
+import os
 
 def _get_ppid(pid, name):
     path = os.path.join("/proc", str(pid), name)

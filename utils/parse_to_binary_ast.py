@@ -1,3 +1,4 @@
+import time
 
 def parse_to_binary_ast(
     filename: str,

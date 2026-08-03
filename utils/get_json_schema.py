@@ -1,3 +1,6 @@
+import json
+import re
+from typing import Callable
 
 def get_json_schema(func: Callable) -> dict:
     """

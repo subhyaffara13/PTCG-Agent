@@ -1,3 +1,5 @@
+import math
+
 
 def test_mean_kappas_mean_degree_S1():
     G = nx.geometric_soft_configuration_graph(

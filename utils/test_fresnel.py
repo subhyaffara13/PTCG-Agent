@@ -1,3 +1,4 @@
+import re
 
 def test_fresnel():
     from sympy.functions.special.error_functions import (fresnelc, fresnels)

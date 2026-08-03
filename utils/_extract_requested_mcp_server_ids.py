@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def _extract_requested_mcp_server_ids(
     object_permission: Optional[dict],

@@ -1,3 +1,7 @@
+import json
+from datetime import datetime
+from pathlib import Path
+
 
 def write_deck_report(archetype: str, scores: dict, weak_metric: str, dest: Path):
     report = {

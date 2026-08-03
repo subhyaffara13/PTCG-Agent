@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def _extract_tensor_dict(t: torch.Tensor) -> dict[str, Any]:
     KEYS_TO_COPY = [

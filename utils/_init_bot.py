@@ -1,3 +1,4 @@
+from typing import Any
 
 def _init_bot(bot_type, game, player_id):
   """Initializes a bot by type.

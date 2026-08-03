@@ -1,3 +1,4 @@
+import functools
 
 def skip_under_pyodide(message):
     """Decorator to skip a test if running under Pyodide/WASM."""

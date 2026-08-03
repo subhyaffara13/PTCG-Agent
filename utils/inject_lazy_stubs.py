@@ -1,3 +1,5 @@
+import sys
+from typing import Dict
 
 def inject_lazy_stubs(schema: Dict) -> Dict:
     """Inject openapi entries for unloaded features. Uses the snapshot file

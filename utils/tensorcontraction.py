@@ -1,3 +1,4 @@
+import itertools
 
 def tensorcontraction(array, *contraction_axes):
     """

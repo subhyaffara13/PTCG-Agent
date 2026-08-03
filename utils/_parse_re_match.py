@@ -1,3 +1,4 @@
+import re
 
 def _parse_re_match(node_match: re.Match) -> dict | str:
     # If the regex has named groups, return a dict of those groups

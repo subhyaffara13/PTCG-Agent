@@ -1,3 +1,5 @@
+import random
+from typing import Callable
 
 def define_prng_impl(*,
                      key_shape: Shape,

@@ -1,3 +1,4 @@
+import re
 
 def test_tensorflow_complexes():
     if not tensorflow:

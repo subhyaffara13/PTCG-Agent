@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def to_custom_raw_response_wrapper(
     func: Callable[P, object],

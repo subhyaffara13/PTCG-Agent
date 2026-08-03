@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_constructor():
     # this is shared by Sum, so testing Integral's constructor

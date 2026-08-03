@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def compile_cache_sort(sort_expr: str) -> tuple[Callable[[CacheEntry], tuple[Any, ...]], bool]:
     """Convert a `hf cache ls` sort expression into a key function for sorting entries.

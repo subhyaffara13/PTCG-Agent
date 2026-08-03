@@ -1,3 +1,4 @@
+import sys
 
 def identify_imports_main(
     argv: Sequence[str] | None = None, stdin: TextIOWrapper | None = None

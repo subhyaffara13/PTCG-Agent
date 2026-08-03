@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def add_filename_suffix(file_path: str, suffix: str) -> str:
     """

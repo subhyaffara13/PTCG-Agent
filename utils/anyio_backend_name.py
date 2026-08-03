@@ -1,3 +1,4 @@
+from typing import Any
 
 def anyio_backend_name(anyio_backend: Any) -> str:
     if isinstance(anyio_backend, str):

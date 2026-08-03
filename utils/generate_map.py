@@ -1,3 +1,6 @@
+import random
+import math
+
 
 def generate_map(seed):
     """Procedurally generate a symmetric Planet Wars map.

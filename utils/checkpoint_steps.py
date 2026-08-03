@@ -1,3 +1,4 @@
+from typing import List
 
 def checkpoint_steps(checkpoint_dir: epath.PathLike) -> List[int]:
   """Returns a list of finalized checkpoint steps in the directory."""

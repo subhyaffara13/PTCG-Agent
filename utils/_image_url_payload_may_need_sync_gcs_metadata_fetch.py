@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _image_url_payload_may_need_sync_gcs_metadata_fetch(
     raw_image_url: Any,

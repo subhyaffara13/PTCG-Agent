@@ -1,3 +1,4 @@
+from typing import Any, Dict, Set
 
 def _mask_sensitive_fields(
     data: Dict[str, Any], sensitive_fields: Set[str]

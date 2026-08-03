@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_binary_linear(op: OpType) -> Callable[..., Any]:
     def impl_with_alpha(

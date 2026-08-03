@@ -1,3 +1,5 @@
+import re
+from typing import Callable
 
 def _parse_latex_css_conversion(styles: CSSList) -> CSSList:
     """

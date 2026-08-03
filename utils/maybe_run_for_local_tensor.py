@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def maybe_run_for_local_tensor(func: Callable[_P, _R]) -> Callable[_P, _R]:
     """

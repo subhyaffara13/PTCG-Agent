@@ -1,3 +1,4 @@
+import os
 
 def zip_dir(directory):
     """zip a directory tree into a BytesIO object"""

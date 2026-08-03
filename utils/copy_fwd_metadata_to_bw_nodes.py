@@ -1,3 +1,4 @@
+import logging
 
 def copy_fwd_metadata_to_bw_nodes(fx_g: torch.fx.GraphModule) -> None:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _run_symbolic_function(
     graph: _C.Graph,

@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def num_available_tpu_chips_and_device_id():
   """Returns the device id and number of TPU chips attached through PCI."""

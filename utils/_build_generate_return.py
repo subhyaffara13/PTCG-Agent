@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_generate_return(record: dict[str, Any]) -> dict[str, Any]:
     """Build a legacy ``GenerateReturn``-shaped dict from a call record.

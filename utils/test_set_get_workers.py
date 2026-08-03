@@ -1,3 +1,4 @@
+import os
 
 def test_set_get_workers():
     cpus = os.cpu_count()

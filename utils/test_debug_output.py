@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_debug_output():
     env = os.environ.copy()

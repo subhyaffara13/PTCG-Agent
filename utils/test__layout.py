@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test__layout():
     fonts, test_str = _gen_multi_font_text()

@@ -1,3 +1,4 @@
+from typing import List
 
 def ratio_reduce(
     total: int, ratios: List[int], maximums: List[int], values: List[int]

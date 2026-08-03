@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_json(response: str) -> dict[str, Any] | None:
     """Pull the LAST action object from the LLM response.

@@ -1,3 +1,5 @@
+import math
+
 
 def disc_naive(t, k):
     """Straitforward way to compute the discontinuity matrix. For testing ONLY.

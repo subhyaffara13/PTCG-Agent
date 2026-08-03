@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def sanitize_oci_schema(schema: Any) -> Any:
     """Recursively remove OCI-incompatible fields from a JSON schema.

@@ -1,3 +1,4 @@
+import copy
 
 def test_norm_deepcopy():
     norm = mcolors.LogNorm()

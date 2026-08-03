@@ -1,3 +1,4 @@
+import json
 
 def _message_for(non_json):
     try:

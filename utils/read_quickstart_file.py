@@ -1,3 +1,4 @@
+from typing import Any
 
 def read_quickstart_file(
     options: Options, stdout: TextIO

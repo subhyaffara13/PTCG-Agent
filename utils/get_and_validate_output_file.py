@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_and_validate_output_file() -> tuple[bool, Path]:
     """Make sure that the output file is correct."""

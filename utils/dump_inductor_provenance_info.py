@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def dump_inductor_provenance_info() -> dict[str, Any]:
     try:

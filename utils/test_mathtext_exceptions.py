@@ -1,3 +1,6 @@
+import re
+import math
+
 
 def test_mathtext_exceptions(math, msg):
     parser = mathtext.MathTextParser('agg')

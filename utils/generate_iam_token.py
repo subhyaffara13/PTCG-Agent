@@ -1,3 +1,4 @@
+from typing import Optional
 
 def generate_iam_token(api_key=None, **params) -> str:
     result: Optional[str] = iam_token_cache.get_cache(api_key)  # type: ignore

@@ -1,3 +1,4 @@
+from typing import Any
 
 def treescope_part_from_display_object(
     value: Any,

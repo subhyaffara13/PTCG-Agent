@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_outputs_maintaining_identity(
     outputs: Any,

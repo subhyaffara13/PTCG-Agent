@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _upload_file_to_remote(api: HfApi, src: str, dst: str, *, src_is_stdin: bool) -> None:
     uri = parse_hf_uri(dst)

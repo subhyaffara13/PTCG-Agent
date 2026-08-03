@@ -1,3 +1,4 @@
+import os
 
 def test_version_2_0_memmap(tmpdir):
     # requires more than 2 byte for header

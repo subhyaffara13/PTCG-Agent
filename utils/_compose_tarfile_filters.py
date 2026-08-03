@@ -1,3 +1,4 @@
+import functools
 
 def _compose_tarfile_filters(*filters):
     def compose_two(f1, f2):

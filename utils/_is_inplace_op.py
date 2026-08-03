@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _is_inplace_op(op: OpOverload | Callable[..., Any]) -> bool:
     return (

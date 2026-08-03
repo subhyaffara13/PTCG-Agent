@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _get_parent_otel_span_from_kwargs(
     kwargs: Optional[dict] = None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def concrete_or_error(force: Any, val: Any, context=""):
   """Like force(val), but gives the context in the error message."""

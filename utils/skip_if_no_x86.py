@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoX86(fn):
     reason = "Quantized operations require X86."

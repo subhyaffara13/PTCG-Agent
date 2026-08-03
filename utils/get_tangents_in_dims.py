@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_tangents_in_dims(input_dims: Any, tangents: tuple[Any, ...]) -> Any:
     flat_in_dims, spec = pytree.tree_flatten(input_dims)

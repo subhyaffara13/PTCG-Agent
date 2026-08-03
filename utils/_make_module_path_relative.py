@@ -1,3 +1,4 @@
+import pathlib
 
 def _make_module_path_relative(abs_path: str, sys_path: tuple[str, ...]) -> str:
     """

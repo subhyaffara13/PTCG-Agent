@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def time_and_count(
     fn: Callable[Concatenate[Any, P], T],

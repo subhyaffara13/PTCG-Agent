@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_children_with_path(
     path: _KeyPath, node: Any

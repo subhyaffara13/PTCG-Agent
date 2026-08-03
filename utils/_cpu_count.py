@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _cpu_count() -> int:
     """Use sched_affinity if available for virtualized or containerized

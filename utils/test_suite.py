@@ -1,3 +1,7 @@
+import itertools
+import sys
+import math
+
 
 def test_suite(options, args):
     """

@@ -1,3 +1,4 @@
+import functools
 
 def lazy_compile(**compile_kwargs):
     """Lazily wrap a function with torch.compile on the first call

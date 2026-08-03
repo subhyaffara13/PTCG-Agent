@@ -1,3 +1,4 @@
+from typing import Any
 
 def resolve_pending_annotations() -> None:
     """Resolve pending scope index ranges into kernel annotations.

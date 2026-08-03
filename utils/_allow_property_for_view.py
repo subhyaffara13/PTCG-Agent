@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _allow_property_for_view(prop_info: 'ObjectMetadataLibrary.SerializableProperty', value_: Any,
                              view_: Optional[Type[ViewType]]) -> bool:

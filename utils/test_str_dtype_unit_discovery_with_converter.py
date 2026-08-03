@@ -1,3 +1,4 @@
+import os
 
 def test_str_dtype_unit_discovery_with_converter():
     data = ["spam-a-lot"] * 60000 + ["XXXtis_but_a_scratch"]

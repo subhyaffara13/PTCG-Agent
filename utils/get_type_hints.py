@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_type_hints(
     obj: Any,

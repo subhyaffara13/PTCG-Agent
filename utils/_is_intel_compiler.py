@@ -1,3 +1,5 @@
+import re
+import subprocess
 
 def _is_intel_compiler(cpp_compiler: str) -> bool:
     def _check_minimal_version(compiler_version: TorchVersion) -> None:

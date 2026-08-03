@@ -1,3 +1,4 @@
+import itertools
 
 def module_inputs_torch_nn_Transformer(module_info, device, dtype, requires_grad, training, **kwargs):
     make_input = partial(make_tensor, device=device, dtype=dtype, requires_grad=requires_grad)

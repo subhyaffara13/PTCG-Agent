@@ -1,3 +1,4 @@
+import os
 
 def get_executable_path(py_binary_name):
   """Returns the executable path of a py_binary.

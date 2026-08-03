@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def get_printoptions() -> dict[str, Any]:
     r"""Gets the current options for printing, as a dictionary that

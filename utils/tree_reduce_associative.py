@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_reduce_associative(
     operation: Callable[[T, T], T],

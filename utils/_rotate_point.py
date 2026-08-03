@@ -1,3 +1,5 @@
+import math
+
 
 def _rotate_point(angle, x, y):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_node_target(
     submodules: Mapping[str, torch.nn.Module], node: torch.fx.Node

@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_scalar_in(x: Any,
                      min_: Scalar,

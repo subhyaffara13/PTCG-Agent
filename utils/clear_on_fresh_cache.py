@@ -1,3 +1,4 @@
+from typing import Any
 
 def clear_on_fresh_cache(obj: Any) -> Any:
     """

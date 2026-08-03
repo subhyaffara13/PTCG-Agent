@@ -1,3 +1,5 @@
+import math
+
 
 def _rfft_transpose(t, fft_lengths):
   # The transpose can be computed directly using irfft with a mask to account

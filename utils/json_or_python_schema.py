@@ -1,3 +1,4 @@
+from typing import Any
 
 def json_or_python_schema(
     json_schema: CoreSchema,

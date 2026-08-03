@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_pass_to_subgraphs(pass_fn: Callable[[fx.Graph], None], graph: fx.Graph):
     """Recursively apply a pass function to all subgraphs referenced by get_attr nodes."""

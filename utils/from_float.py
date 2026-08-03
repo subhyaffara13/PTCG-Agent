@@ -1,3 +1,5 @@
+import math
+
 
 def from_float(x, prec=53, rnd=round_fast):
     """Create a raw mpf from a Python float, rounding if necessary.

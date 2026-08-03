@@ -1,3 +1,4 @@
+import copy
 
 def canonicalize(
     ep: ExportedProgram, constants: set[str] | None = None

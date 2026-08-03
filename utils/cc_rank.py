@@ -1,3 +1,5 @@
+import math
+
 
 def cc_rank(cc):
     r'''Rank the complexity score from A to F, where A stands for the simplest

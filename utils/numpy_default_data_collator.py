@@ -1,3 +1,4 @@
+from typing import Any
 
 def numpy_default_data_collator(features: list[InputDataClass]) -> dict[str, Any]:
     if not isinstance(features[0], Mapping):

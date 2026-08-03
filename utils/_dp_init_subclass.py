@@ -1,3 +1,4 @@
+import sys
 
 def _dp_init_subclass(sub_cls, *args, **kwargs) -> None:
     # Add function for datapipe instance to reinforce the type

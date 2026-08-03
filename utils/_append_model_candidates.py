@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _append_model_candidates(candidates: List[str], value: Any) -> None:
     if value is None:

@@ -1,3 +1,4 @@
+import time
 
 def _spaces_hot_reload_summary(
     api: HfApi,

@@ -1,3 +1,4 @@
+from typing import List
 
 def validate_and_fix_openai_messages(messages: List):
     """

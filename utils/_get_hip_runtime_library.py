@@ -1,3 +1,4 @@
+import sys
 
 def _get_hip_runtime_library() -> ctypes.CDLL:
     # If ROCm python packages are available, query the OS-independent absolute

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def warn_unused_configs(
     options: Options, flush_errors: Callable[[str | None, list[str], bool], None]

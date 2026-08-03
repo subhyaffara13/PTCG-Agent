@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def validate_managed_files_requirement(
     target_model_names: List[str],

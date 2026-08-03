@@ -1,3 +1,4 @@
+import re
 
 def test_polygamma():
     assert polygamma(n, nan) is nan

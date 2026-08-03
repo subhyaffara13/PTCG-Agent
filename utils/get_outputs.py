@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_outputs(graph: fx.Graph) -> list[fx.Node]:
     for node in graph.find_nodes(op="output"):

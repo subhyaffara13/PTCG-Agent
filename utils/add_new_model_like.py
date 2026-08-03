@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def add_new_model_like(
     repo_path: Annotated[

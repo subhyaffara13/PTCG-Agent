@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _staged_schema():
     yaml_ret: dict[str, Any] = {}

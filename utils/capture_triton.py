@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def capture_triton(triton_kernel: Callable, /) -> Any:
     """This API has been renamed to wrap_triton"""

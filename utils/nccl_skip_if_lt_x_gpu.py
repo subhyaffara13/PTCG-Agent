@@ -1,3 +1,4 @@
+import sys
 
 def nccl_skip_if_lt_x_gpu(backend, x):
     def decorator(func):

@@ -1,3 +1,6 @@
+import json
+import re
+from typing import Any
 
 def jaxpr_to_html(jaxpr: core.Jaxpr) -> str:
   """Renders a Jaxpr as HTML with interactive tracebacks and search."""

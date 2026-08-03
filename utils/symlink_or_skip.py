@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def symlink_or_skip(
     src: os.PathLike[str] | str,

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _detect_failure(tool_results: List[Dict[str, Any]]) -> bool:
     """Any tool result explicitly flagged as an error.

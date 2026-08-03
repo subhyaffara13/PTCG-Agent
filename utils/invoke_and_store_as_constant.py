@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def invoke_and_store_as_constant(
     tx: "InstructionTranslator",

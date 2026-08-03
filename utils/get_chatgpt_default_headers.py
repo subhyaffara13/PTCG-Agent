@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_chatgpt_default_headers(
     access_token: str,

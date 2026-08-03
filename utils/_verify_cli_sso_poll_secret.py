@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _verify_cli_sso_poll_secret(flow: dict, poll_secret: Optional[str]) -> bool:
     expected_poll_secret_hash = flow.get("poll_secret_hash")

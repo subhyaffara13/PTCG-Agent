@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_and_instantiate_subclasses(
     package_name: str, base_class: Any

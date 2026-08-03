@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _core_aten_decompositions_post_autograd() -> dict[
     torch._ops.OperatorBase, Callable

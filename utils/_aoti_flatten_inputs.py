@@ -1,3 +1,4 @@
+from typing import Any
 
 def _aoti_flatten_inputs(
     gm: torch.fx.GraphModule,

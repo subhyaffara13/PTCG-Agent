@@ -1,3 +1,4 @@
+from typing import Any
 
 def annotated_type(tp: Any, /) -> Any | None:
     """Return the type of the `Annotated` special form, or `None`."""

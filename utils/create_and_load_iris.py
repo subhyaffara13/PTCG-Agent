@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def create_and_load_iris(conn, iris_file: Path):
     from sqlalchemy import insert

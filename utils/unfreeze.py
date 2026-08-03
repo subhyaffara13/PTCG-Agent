@@ -1,3 +1,4 @@
+from typing import Any
 
 def unfreeze(x: FrozenDict | dict[str, Any]) -> dict[Any, Any]:
   """Unfreeze a FrozenDict.

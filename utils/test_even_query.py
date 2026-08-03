@@ -1,3 +1,4 @@
+import re
 
 def test_even_query():
     assert ask(Q.even(x)) is None

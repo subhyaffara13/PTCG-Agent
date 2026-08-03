@@ -1,3 +1,5 @@
+import copy
+import os
 
 def load_f2cmap_file(f2cmap_file):
     global f2cmap_all, f2cmap_mapped

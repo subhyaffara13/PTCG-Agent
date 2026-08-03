@@ -1,3 +1,4 @@
+import functools
 
 def truncate_array_and_mask(
     array: jax.Array,

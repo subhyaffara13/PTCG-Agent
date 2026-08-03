@@ -1,3 +1,4 @@
+import sys
 
 def create_binary_slice(
     start: int | None, end: int | None, store: bool = False

@@ -1,3 +1,4 @@
+import os
 
 def test_cont_fit(distname, arg, method):
     run_xfail = int(os.getenv('SCIPY_XFAIL', default=False))

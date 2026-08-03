@@ -1,4 +1,5 @@
-from . import Any, BaseAgent, Counter, Path, ProcessPoolExecutor, _parallel_game_worker, datetime, json, logger, os
+import re
+from . import Any, BaseAgent, Counter, Path, ProcessPoolExecutor, _parallel_game_worker, datetime, json, logger, os, random
 from ._setup import DEFAULT_DECK
 from ._mutate_deck__load_optimized_deck import _mutate_deck
 

@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Union
 
 def serializable_class(
     cls: Literal[None] = None, *,

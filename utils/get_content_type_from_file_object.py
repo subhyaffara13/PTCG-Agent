@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_content_type_from_file_object(file_object: Optional[dict]) -> str:
     """

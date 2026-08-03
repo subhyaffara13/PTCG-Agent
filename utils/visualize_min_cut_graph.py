@@ -1,3 +1,4 @@
+from typing import Any
 
 def visualize_min_cut_graph(
     nx_graph: nx.DiGraph[str, dict[str, Any]],

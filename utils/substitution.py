@@ -1,3 +1,4 @@
+from typing import Union
 
 def substitution(system, symbols, result=[{}], known_symbols=[],
                  exclude=[], all_symbols=None):

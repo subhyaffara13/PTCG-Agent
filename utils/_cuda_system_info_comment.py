@@ -1,3 +1,4 @@
+import subprocess
 
 def _cuda_system_info_comment() -> str:
     if not torch.cuda.is_available():

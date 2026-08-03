@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_ImageSet():
     raises(ValueError, lambda: ImageSet(x, S.Integers))

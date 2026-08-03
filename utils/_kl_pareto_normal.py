@@ -1,3 +1,5 @@
+import math
+
 
 def _kl_pareto_normal(p, q):
     var_normal = 2 * q.scale.pow(2)

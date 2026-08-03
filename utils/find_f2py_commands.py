@@ -1,3 +1,5 @@
+import os
+import sys
 
 def find_f2py_commands():
     if sys.platform == 'win32':

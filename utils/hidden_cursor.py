@@ -1,3 +1,4 @@
+import logging
 
 def hidden_cursor(file: IO[str]) -> Generator[None, None, None]:
     # The Windows terminal does not support the hide/show cursor ANSI codes,

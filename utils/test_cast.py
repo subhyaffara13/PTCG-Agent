@@ -1,3 +1,4 @@
+import random
 
 def test_cast():
     vo = m.VectorOwner.Create(0)

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _format_streaming_sse_chunk(chunk: Union[str, bytes]) -> Union[str, bytes]:
     if isinstance(chunk, bytes):

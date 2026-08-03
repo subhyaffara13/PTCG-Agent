@@ -1,3 +1,4 @@
+import functools
 
 def with_cached_index_content(fn: ParseLinks) -> ParseLinks:
     """

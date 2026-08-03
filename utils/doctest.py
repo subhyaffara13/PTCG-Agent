@@ -1,3 +1,4 @@
+import subprocess
 
 def doctest(*paths, subprocess=True, rerun=0, **kwargs):
     r"""

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _compute_local_source_files_hash(
     pretrained_model_name_or_path: str | os.PathLike,

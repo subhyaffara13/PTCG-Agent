@@ -1,3 +1,5 @@
+import math
+
 
 def get_max_res_without_distortion(
     image_size: tuple[int, int],

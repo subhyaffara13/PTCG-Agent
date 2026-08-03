@@ -1,3 +1,4 @@
+import os
 
 def keyfunc(name: str) -> tuple[bool, int, str]:
     """Determines sort order for directory listing.

@@ -1,3 +1,4 @@
+import copy
 
 def _setCoordinates(glyph, coord, glyfTable, *, recalcBounds=True):
     # Handle phantom points for (left, right, top, bottom) positions.

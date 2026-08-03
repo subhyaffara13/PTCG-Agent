@@ -1,3 +1,4 @@
+import random
 
 def generate_feedback_box():
     box_width = 60

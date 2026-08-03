@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_jobs_stats_rows(
     job_id: str, metrics_stream: Iterable[dict[str, Any]], table_headers: list[str]

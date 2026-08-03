@@ -1,3 +1,4 @@
+from typing import Callable
 
 def set_dataclass_mocks(cls: type[PydanticDataclass], undefined_name: str = 'all referenced types') -> None:
     """Set `__pydantic_validator__` and `__pydantic_serializer__` to `MockValSer`s on a dataclass.

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def log_crash(exctype, value, tb):
     sys.__excepthook__(exctype, value, tb)

@@ -1,3 +1,4 @@
+import sys
 
 def _patch_for_target(patchlist, target):
     from cffi._shimmed_dist_utils import build_ext

@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def read_json(data: ReadBuffer) -> dict[str, Any]:
     assert read_tag(data) == DICT_STR_GEN

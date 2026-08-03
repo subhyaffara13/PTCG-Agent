@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def get_optional_params_image_gen(
     model: Optional[str] = None,

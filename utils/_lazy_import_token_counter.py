@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lazy_import_token_counter(name: str) -> Any:
     """Handler for token counter utilities"""

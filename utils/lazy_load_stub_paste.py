@@ -1,3 +1,4 @@
+import copy
 
 def lazy_load_stub_paste():
     """

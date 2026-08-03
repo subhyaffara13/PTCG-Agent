@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _build_oauth_authorization_server_response(
     request: Request,

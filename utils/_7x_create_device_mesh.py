@@ -1,3 +1,4 @@
+from typing import Any
 
 def _7x_create_device_mesh(
     mesh_shape: Sequence[int], devices: Sequence[Any], **unused_kwargs

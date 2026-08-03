@@ -1,3 +1,4 @@
+import json
 
 def test_game_runner_three_games(tmp_path):
     runner = GameRunner(log_dir=str(tmp_path))

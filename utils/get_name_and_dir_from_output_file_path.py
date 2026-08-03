@@ -1,3 +1,4 @@
+import os
 
 def get_name_and_dir_from_output_file_path(
     file_path: str,

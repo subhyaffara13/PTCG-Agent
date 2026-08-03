@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_object_constructor(
     object_type: type[Any],

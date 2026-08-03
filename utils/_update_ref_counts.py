@@ -1,3 +1,4 @@
+from typing import Dict, Set
 
 def _update_ref_counts(
     dim_to_keys: Dict[str, Set[ArrayIndexType]],

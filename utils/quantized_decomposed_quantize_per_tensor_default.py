@@ -1,3 +1,4 @@
+import functools
 
 def quantized_decomposed_quantize_per_tensor_default(
     input: TensorBox,

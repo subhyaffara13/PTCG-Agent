@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def detect_first_expected_role(
     messages: List[AllMessageValues],

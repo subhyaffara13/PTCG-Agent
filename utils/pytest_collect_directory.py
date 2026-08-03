@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pytest_collect_directory(path: Path, parent: Collector) -> Collector | None:
     """Create a :class:`~pytest.Collector` for the given directory, or None if

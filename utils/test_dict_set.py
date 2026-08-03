@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_dict_set():
     a, b, c = map(Wild, 'abc')

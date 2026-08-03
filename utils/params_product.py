@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def params_product(*params_lists: Sequence[Sequence[Any]],
                    named: bool = False) -> Sequence[Sequence[Any]]:

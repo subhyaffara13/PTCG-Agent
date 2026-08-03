@@ -1,3 +1,4 @@
+from typing import Optional
 
 def num_devices_available(devtype: str, backend: Optional[str] = None) -> int:
   """Returns the number of available device of the given type."""

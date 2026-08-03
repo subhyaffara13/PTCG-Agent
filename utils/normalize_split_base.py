@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def normalize_split_base(
     match: Match,

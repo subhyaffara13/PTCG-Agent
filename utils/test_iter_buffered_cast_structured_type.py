@@ -1,3 +1,4 @@
+import sys
 
 def test_iter_buffered_cast_structured_type():
     # Tests buffering of structured types

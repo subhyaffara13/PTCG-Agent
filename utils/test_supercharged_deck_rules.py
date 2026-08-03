@@ -1,3 +1,4 @@
+import json
 
 def test_supercharged_deck_rules(tmp_path):
     skills_dir = make_skills_dir(tmp_path)

@@ -1,3 +1,4 @@
+import os
 
 def _get_base_name(trace_path: str) -> str:
     """Get the base name of a trace file, stripping known extensions."""

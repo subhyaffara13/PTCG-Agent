@@ -1,3 +1,4 @@
+from typing import List
 
 def _next_google_genai_sse_chunk(line_iter) -> bytes:
     event_lines: List[str] = []

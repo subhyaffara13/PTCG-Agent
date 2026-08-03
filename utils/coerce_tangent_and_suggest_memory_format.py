@@ -1,3 +1,4 @@
+from typing import Any
 
 def coerce_tangent_and_suggest_memory_format(
     x: Tensor,

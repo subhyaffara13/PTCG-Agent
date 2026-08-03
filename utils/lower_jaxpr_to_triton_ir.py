@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_jaxpr_to_triton_ir(
     ctx: ModuleContext,

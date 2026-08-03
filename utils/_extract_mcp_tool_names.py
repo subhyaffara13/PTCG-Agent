@@ -1,3 +1,4 @@
+from typing import List
 
 def _extract_mcp_tool_names(data: dict) -> List[str]:
     """MCP call_tool: name or mcp_tool_name in body"""

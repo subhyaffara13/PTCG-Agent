@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def site_cache_path(
     appname: str | None = None,

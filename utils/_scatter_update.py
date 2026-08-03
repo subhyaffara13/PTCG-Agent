@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _scatter_update(x: ArrayLike, idx: Index | tuple[Index, ...],
                     y: ArrayLike, scatter_op: Callable[..., Array],

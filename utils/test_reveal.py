@@ -1,3 +1,4 @@
+import os
 
 def test_reveal(path: str) -> None:
     """Validate that mypy correctly infers the return-types of

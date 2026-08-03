@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ensure_mlir_value(val: object, aval: ShapedAbstractValue) -> Any:
   if isinstance(val, ir.Value):

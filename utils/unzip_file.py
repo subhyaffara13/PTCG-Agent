@@ -1,3 +1,4 @@
+import os
 
 def unzip_file(filename: str, location: str, flatten: bool = True) -> None:
     """

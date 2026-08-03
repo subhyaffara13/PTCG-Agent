@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_gen_pyf(capfd, hello_world_f90, monkeypatch):
     """Ensures that a signature file is generated via the CLI

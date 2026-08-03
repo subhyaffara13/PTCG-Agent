@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_mypyc_attr_literal(e: Expression) -> Any:
     """Convert an expression from a mypyc_attr decorator to a value.

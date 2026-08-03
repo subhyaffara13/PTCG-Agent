@@ -1,3 +1,4 @@
+from typing import Any
 
 def add_op_with_blocks(
     graph_context: GraphContext,

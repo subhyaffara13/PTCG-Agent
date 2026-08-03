@@ -1,3 +1,4 @@
+from typing import Callable
 
 def loop_pass(
     base_pass: Callable,

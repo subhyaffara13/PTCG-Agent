@@ -1,3 +1,4 @@
+from typing import Any
 
 def figtext(
     x: float, y: float, s: str, fontdict: dict[str, Any] | None = None, **kwargs

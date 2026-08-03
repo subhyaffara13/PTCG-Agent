@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_option_group(group: dict[str, Any], parser: ConfigOptionParser) -> OptionGroup:
     """

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_contains():
     assert 6 in ConditionSet(x, x > 5, Interval(1, 7))

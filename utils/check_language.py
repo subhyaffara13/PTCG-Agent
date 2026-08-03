@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def check_language(lang, code_snippet=None):
     if sys.platform == "win32":

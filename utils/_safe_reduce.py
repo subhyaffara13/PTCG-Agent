@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def _safe_reduce(
     a: jax.typing.ArrayLike,

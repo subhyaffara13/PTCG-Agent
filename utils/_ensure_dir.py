@@ -1,3 +1,4 @@
+import os
 
 def _ensure_dir(filename):
     dirname = os.path.dirname(filename)

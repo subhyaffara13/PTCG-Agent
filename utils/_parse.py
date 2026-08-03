@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Tuple
 
 def _parse(markup: str) -> Iterable[Tuple[int, Optional[str], Optional[Tag]]]:
     """Parse markup in to an iterable of tuples of (position, text, tag).

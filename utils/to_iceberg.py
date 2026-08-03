@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_iceberg(
     df: DataFrame,

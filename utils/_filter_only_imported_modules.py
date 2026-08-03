@@ -1,3 +1,4 @@
+import sys
 
 def _filter_only_imported_modules(opened_files: Iterable[str]) -> list[str]:
   """Restrict the list of files to Python modules already in sys.modules."""

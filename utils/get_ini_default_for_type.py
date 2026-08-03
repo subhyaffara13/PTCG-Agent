@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_ini_default_for_type(
     type: Literal[

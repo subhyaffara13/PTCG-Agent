@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_muon_reshape(x: jax.Array, dim_nums: MuonDimensionNumbers
                           ) -> tuple[ReshapeFn, ReshapeFn]:

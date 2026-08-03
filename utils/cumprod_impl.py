@@ -1,3 +1,4 @@
+from typing import Any
 
 def cumprod_impl(self: ComplexTensor, *args: Any, **kwargs: Any) -> ComplexTensor:
     dtype = kwargs.pop("dtype", self.dtype)

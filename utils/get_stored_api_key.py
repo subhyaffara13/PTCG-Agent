@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_stored_api_key(expected_base_url: Optional[str] = None) -> Optional[str]:
     """Get the stored API key from token file.

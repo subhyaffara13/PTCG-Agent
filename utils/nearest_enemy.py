@@ -1,3 +1,5 @@
+import math
+
 
 def nearest_enemy(obs, config=None):
     """Each owned planet sends half its ships to its nearest non-self

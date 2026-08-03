@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def add_layout_constraint(
     fn: torch._ops.OpOverloadPacket | torch._ops.OpOverload,

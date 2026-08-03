@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _np2paddle(
     numpy_dict: Dict[str, np.ndarray], device: str = "cpu"

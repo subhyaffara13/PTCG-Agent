@@ -1,3 +1,4 @@
+import logging
 
 def _load_log_content(path):
     if not path.exists(): return []

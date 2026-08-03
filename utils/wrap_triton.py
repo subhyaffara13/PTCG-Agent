@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def wrap_triton(triton_kernel: Callable, /) -> Any:
     """Allows capture of a triton kernel into a graph via make_fx or

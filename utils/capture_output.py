@@ -1,3 +1,4 @@
+import sys
 
 def capture_output() -> Generator[StringIO, None, None]:
     """Capture output that is printed to terminal.

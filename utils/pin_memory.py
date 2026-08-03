@@ -1,3 +1,4 @@
+import copy
 
 def pin_memory(data_ptr: int, size: int) -> None:
     cudart = torch.cuda.cudart()

@@ -1,3 +1,5 @@
+import math
+
 
 def expectile(a, alpha=0.5, *, weights=None, axis=None):
     r"""Compute the expectile at the specified level.

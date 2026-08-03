@@ -1,3 +1,4 @@
+from typing import List
 
 def _collect_block_text(block: dict, holders: List[_StringHolder]) -> None:
     text = block.get("text")

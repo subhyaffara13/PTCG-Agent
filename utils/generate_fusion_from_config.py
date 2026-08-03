@@ -1,3 +1,4 @@
+from typing import Any
 
 def generate_fusion_from_config(config_options: dict[str, Any], pre_grad=True):
     fusions: list[GroupBatchFusionBase] = []

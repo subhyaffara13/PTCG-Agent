@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def game_state_from_dict(d: Dict[str, Any]) -> "GameState":
     return GameState(

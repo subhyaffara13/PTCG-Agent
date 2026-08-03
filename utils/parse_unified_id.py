@@ -1,3 +1,4 @@
+from typing import Optional
 
 def parse_unified_id(
     unified_id: str,

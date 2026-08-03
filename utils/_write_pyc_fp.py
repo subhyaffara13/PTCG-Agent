@@ -1,3 +1,4 @@
+import os
 
 def _write_pyc_fp(
     fp: IO[bytes], source_stat: os.stat_result, co: types.CodeType

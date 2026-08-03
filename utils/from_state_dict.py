@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_state_dict(target, state: dict[str, Any], name: str = '.'):
   """Restores the state of the given target using a state dict.

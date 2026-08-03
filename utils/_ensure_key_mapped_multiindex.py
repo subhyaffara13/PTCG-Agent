@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _ensure_key_mapped_multiindex(
     index: MultiIndex, key: Callable, level=None

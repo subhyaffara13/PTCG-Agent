@@ -1,3 +1,4 @@
+import os
 
 def _safe_path_join(base: epath.Path, rel_path: str) -> epath.Path | None:
   """Joins ``rel_path`` onto ``base`` iff the result stays within ``base``.

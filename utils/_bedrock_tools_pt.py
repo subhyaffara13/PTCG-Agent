@@ -1,3 +1,5 @@
+import copy
+from typing import List, Optional
 
 def _bedrock_tools_pt(
     tools: List, model: Optional[str] = None

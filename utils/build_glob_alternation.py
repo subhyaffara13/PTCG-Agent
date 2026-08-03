@@ -1,3 +1,4 @@
+import re
 
 def build_glob_alternation(
     globs: list[WeightRenaming | WeightConverter | str],

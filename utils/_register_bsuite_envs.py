@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_bsuite_envs():
     """Registers all bsuite environments in gymnasium."""

@@ -1,3 +1,5 @@
+import os
+from typing import List
 
 def agent_launch_args(command: str, base_url: str) -> List[str]:
     """Extra CLI args an agent needs to actually honor the proxy.

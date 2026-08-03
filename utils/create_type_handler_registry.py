@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def create_type_handler_registry(
     *handlers: Tuple[Any, types.TypeHandler]

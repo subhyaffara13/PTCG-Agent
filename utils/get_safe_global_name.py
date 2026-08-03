@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_safe_global_name(tx: InstructionTranslatorBase, root: str, obj: Any) -> str:
     # The global_mangled_class_name should be different for different

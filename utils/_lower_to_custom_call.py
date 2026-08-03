@@ -1,3 +1,4 @@
+import json
 
 def _lower_to_custom_call(
     ctx: mlir.LoweringRuleContext,

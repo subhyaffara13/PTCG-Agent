@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_otf_font_smoke(family_name, file_name):
     # checks that there's no segfault

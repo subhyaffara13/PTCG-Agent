@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_user_allowed_globals():
     rc: dict[str, Any] = {}

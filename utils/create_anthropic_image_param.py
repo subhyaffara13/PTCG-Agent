@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def create_anthropic_image_param(
     image_url_input: Union[str, dict],

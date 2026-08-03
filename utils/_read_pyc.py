@@ -1,3 +1,7 @@
+import os
+from typing import Callable
+from pathlib import Path
+
 
 def _read_pyc(
     source: Path, pyc: Path, trace: Callable[[str], None] = lambda x: None

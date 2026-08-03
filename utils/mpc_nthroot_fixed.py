@@ -1,3 +1,4 @@
+import re
 
 def mpc_nthroot_fixed(a, b, n, prec):
     # a, b signed integers at fixed precision prec

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def tensor_map(tensor: Tensor, cb: Callable[[int, Tensor], Tensor | None]) -> Tensor:
     """

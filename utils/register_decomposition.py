@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_decomposition(
     aten_op: torch._ops.OpOverload,

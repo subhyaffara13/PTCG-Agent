@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def refresh_suppressed_submodules(
     module: str,

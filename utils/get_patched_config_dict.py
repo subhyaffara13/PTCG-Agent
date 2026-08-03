@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_patched_config_dict(
     config_patches: str | dict[str, Any] | None = None,

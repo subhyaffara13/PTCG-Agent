@@ -1,3 +1,4 @@
+import re
 
 def generate_lookup_hash_from_source_code(size_hints_str: str, source_code: str) -> str:
     # Name agnostic + strip white space

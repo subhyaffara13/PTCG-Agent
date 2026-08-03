@@ -1,3 +1,4 @@
+import sys
 
 def print_function(print_cls):
     """ A decorator to replace kwargs with the printer settings in __signature__ """

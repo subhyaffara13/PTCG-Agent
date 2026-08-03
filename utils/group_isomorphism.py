@@ -1,3 +1,4 @@
+import itertools
 
 def group_isomorphism(G, H, isomorphism=True):
     '''

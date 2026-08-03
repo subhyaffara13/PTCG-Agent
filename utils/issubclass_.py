@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def issubclass_(arg, klass):
     try:

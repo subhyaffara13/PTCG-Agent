@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def with_native_function_with_differentiability_info_and_key(
     func: Callable[[NFWDI, str], T],

@@ -1,3 +1,4 @@
+import itertools
 
 def _find_tensors(obj):
     r"""Recursively find all tensors contained in the specified object."""

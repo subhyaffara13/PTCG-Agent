@@ -1,3 +1,4 @@
+import itertools
 
 def yield_lines(iterable: Iterable[str]) -> Iterator[str]:
     r"""

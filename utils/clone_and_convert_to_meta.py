@@ -1,3 +1,4 @@
+from typing import Any
 
 def clone_and_convert_to_meta(example_input: Any) -> Any:
     """

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _simplify_patterns_xor():
     """ Two-term patterns for Xor."""

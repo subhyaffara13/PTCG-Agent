@@ -1,3 +1,4 @@
+from typing import Any
 
 def iinfo(dtyp):
     torch_dtype = _dtypes.dtype(dtyp).torch_dtype

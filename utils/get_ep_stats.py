@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_ep_stats(ep: ExportedProgram) -> dict[str, Any]:
     op_count = 0

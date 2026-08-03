@@ -1,3 +1,5 @@
+import math
+
 
 def test_imps():
     # Here we check if the default returned functions are anonymous - in

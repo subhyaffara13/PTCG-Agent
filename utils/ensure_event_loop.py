@@ -1,3 +1,4 @@
+import sys
 
 def ensure_event_loop(prefer_selector_loop: bool = False) -> asyncio.AbstractEventLoop:
     # Get the loop for this thread, or create a new one.

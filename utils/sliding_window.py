@@ -1,3 +1,4 @@
+import itertools
 
 def sliding_window(n, seq):
     """ A sequence of overlapping subsequences

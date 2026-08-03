@@ -1,3 +1,4 @@
+from typing import Dict, Optional, Tuple, Union
 
 def rand_equation(
     n: int,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def flatten_to_sequence(
   xs: Mapping[Any, Any],

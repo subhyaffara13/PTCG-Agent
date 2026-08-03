@@ -1,3 +1,4 @@
+import os
 
 def approximate_taylor_polynomial(f,x,degree,scale,order=None):
     """

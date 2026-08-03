@@ -1,3 +1,4 @@
+import copy
 
 def test_length_zero_copy(dtype, copy):
     arr = np.array([], dtype=dtype)

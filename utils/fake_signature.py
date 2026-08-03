@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fake_signature(fn: Callable[_P, R], nargs: int) -> Callable[_P, R]:
     """FX gets confused by varargs, de-confuse it"""

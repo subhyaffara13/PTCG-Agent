@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_desired_scaling(
     t: Any,

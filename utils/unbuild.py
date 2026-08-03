@@ -1,3 +1,4 @@
+import sys
 
 def unbuild(font, f=sys.stdout):
     fvar = font["fvar"]

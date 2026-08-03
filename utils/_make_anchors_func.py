@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_anchors_func(
     selected_levels: list[int],

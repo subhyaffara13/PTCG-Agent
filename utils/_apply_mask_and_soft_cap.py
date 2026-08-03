@@ -1,3 +1,4 @@
+import functools
 
 def _apply_mask_and_soft_cap(
     qk: jax.Array,

@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def send(connection: IPCBase, data: Any) -> None:
     """Send data to a connection encoded and framed.

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def aot_dispatch_subclass(
     flat_fn_maybe_joint: JointTraceFn | TraceFn,

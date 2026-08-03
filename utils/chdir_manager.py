@@ -1,3 +1,4 @@
+import os
 
 def chdir_manager(target: str) -> Iterator[None]:
     dir = os.getcwd()

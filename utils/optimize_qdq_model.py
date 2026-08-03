@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def optimize_qdq_model():
     parser = argparse.ArgumentParser(

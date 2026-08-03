@@ -1,3 +1,6 @@
+from typing import Any, Callable
+import math
+
 
 def _populate_custom_primitive_op_block(
     ctx: lowering.LoweringRuleContext,

@@ -1,3 +1,4 @@
+import os
 
 def _create_tcp_store(params: RendezvousParameters) -> TCPStore:
     host, port = parse_rendezvous_endpoint(params.endpoint, default_port=DEFAULT_PORT)

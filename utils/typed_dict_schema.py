@@ -1,3 +1,4 @@
+from typing import Any
 
 def typed_dict_schema(
     fields: dict[str, TypedDictField],

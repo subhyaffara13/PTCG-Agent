@@ -1,3 +1,5 @@
+import logging
+from typing import Callable
 
 def split_module(
     m: GraphModule,

@@ -1,3 +1,6 @@
+import copy
+import os
+import sys
 
 def environment(**replacements):
     """

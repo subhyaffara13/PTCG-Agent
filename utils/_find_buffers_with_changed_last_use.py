@@ -1,3 +1,4 @@
+from typing import Any
 
 def _find_buffers_with_changed_last_use(
     candidate: BaseSchedulerNode,

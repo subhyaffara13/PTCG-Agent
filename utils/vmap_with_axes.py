@@ -1,3 +1,4 @@
+from typing import Any
 
 def vmap_with_axes(
     target: 'flax.linen.transforms.Target',

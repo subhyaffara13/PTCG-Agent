@@ -1,3 +1,4 @@
+import functools
 
 def log_lru_cache_stats(wrapped_f: functools._lru_cache_wrapper[object]) -> None:
     log.debug(

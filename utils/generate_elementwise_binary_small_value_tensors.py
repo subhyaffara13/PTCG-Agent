@@ -1,3 +1,5 @@
+import math
+
 
 def generate_elementwise_binary_small_value_tensors(
     op, *, device, dtype, requires_grad=False, exclude_zero=None

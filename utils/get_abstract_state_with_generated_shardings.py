@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_abstract_state_with_generated_shardings(pytree_metadata: Any) -> Any:
   abstract_state = jax.tree.map(

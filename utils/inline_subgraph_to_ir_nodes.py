@@ -1,3 +1,4 @@
+from typing import Any
 
 def inline_subgraph_to_ir_nodes(
     gm: torch.fx.GraphModule, inputs: list[Any], name: str

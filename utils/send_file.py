@@ -1,3 +1,5 @@
+import os
+import time
 
 def send_file(
     path_or_file: os.PathLike[t.AnyStr] | str | t.IO[bytes],

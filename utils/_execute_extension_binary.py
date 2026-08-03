@@ -1,3 +1,7 @@
+import os
+import subprocess
+from pathlib import Path
+
 
 def _execute_extension_binary(executable_path: Path, args: list[str]) -> int:
     try:

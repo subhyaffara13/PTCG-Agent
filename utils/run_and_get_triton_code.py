@@ -1,3 +1,4 @@
+from typing import Callable
 
 def run_and_get_triton_code(
     fn: Callable[P, _T], *args: P.args, **kwargs: P.kwargs

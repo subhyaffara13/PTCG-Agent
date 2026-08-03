@@ -1,3 +1,5 @@
+import logging
+import re
 
 def test_logging(should_trace):
     buffer = StringIO()

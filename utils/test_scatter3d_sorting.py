@@ -1,3 +1,4 @@
+import itertools
 
 def test_scatter3d_sorting(fig_ref, fig_test):
     """Test that marker properties are correctly sorted."""

@@ -1,3 +1,5 @@
+import re
+import sys
 
 def run_compile():
     """

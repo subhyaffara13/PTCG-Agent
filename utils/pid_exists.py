@@ -1,3 +1,4 @@
+import os
 
 def pid_exists(pid):
     """Check for the existence of a unix pid."""

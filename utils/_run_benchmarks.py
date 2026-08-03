@@ -1,3 +1,4 @@
+import logging
 
 def _run_benchmarks(
     config_file: str,

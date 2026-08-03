@@ -1,3 +1,5 @@
+import math
+
 
 def _get_possible_outcomes(m, bits):
     """Get the possible states that can be produced in a measurement.

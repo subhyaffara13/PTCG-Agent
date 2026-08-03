@@ -1,3 +1,4 @@
+import time
 
 def _compile_start() -> None:
     global _t0, _triton_kernel_metrics

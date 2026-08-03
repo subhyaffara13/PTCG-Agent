@@ -1,3 +1,4 @@
+import os
 
 def test_pass(path) -> None:
     # Alias `OUTPUT_MYPY` so that it appears in the local namespace

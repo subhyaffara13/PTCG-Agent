@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_attribute_from_bases(tp: type[Any] | tuple[type[Any], ...], name: str) -> Any:
     """Get the attribute from the next class in the MRO that has it,

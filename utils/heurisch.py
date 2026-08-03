@@ -1,3 +1,4 @@
+import re
 
 def heurisch(f, x, rewrite=False, hints=None, mappings=None, retries=3,
              degree_offset=0, unnecessary_permutations=None,

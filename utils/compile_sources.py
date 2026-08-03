@@ -1,3 +1,5 @@
+import copy
+import os
 
 def compile_sources(files, Runner=None, destdir=None, cwd=None, keep_dir_struct=False,
                     per_file_kwargs=None, **kwargs):

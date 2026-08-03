@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_type(type_hint, comp_type) -> bool:  # type: ignore[no-untyped-def]
     """

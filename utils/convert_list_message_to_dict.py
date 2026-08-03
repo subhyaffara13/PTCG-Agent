@@ -1,3 +1,4 @@
+from typing import List
 
 def convert_list_message_to_dict(messages: List):
     new_messages = []

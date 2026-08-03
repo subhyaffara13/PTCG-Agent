@@ -1,3 +1,4 @@
+from typing import Callable
 
 def add_shadow_loggers(
     name_a: str,

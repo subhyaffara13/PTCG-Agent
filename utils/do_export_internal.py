@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def do_export_internal(model: nn.Module, onnx_io_tuple: tuple, onnx_inputs: tuple, onnx_path: Path, opset: int):
     """do export with torch.onnx.export"""

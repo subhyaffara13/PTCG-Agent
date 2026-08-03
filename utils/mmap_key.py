@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def mmap_key(metric_name: str, name: str, labelnames: List[str], labelvalues: List[str], help_text: str) -> str:
     """Format a key for use in the mmap file."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _create_range_input_gen_fn(
     base_gen_fn: Callable[[torch.Tensor], torch.Tensor],

@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def lazy_format_graph_code(
     name: str, gm: torch.fx.GraphModule, maybe_id: int | None = None, **kwargs: Any

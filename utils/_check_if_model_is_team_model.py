@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _check_if_model_is_team_model(
     models: List[DeploymentTypedDict], user_row: LiteLLM_UserTable

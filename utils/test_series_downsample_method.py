@@ -1,3 +1,4 @@
+import re
 
 def test_series_downsample_method(
     method, numeric_only, expected_data, using_infer_string

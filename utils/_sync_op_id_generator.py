@@ -1,3 +1,4 @@
+import logging
 
 def _sync_op_id_generator(test_file_yaml: str) -> None:
   """Synchronizes the OperationIdGenerator across processes."""

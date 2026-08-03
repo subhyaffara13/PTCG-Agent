@@ -1,3 +1,4 @@
+from typing import Any
 
 def normalize_as_list(x: Any) -> list[Any]:
     if isinstance(x, tuple):

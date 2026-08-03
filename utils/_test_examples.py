@@ -1,3 +1,4 @@
+import os
 
 def _test_examples(in_filename, out_filename, test_name=""):
 

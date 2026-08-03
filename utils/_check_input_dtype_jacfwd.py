@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_input_dtype_jacfwd(holomorphic: bool, x: Any) -> None:
   dispatch.check_arg(x)

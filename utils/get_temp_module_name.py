@@ -1,3 +1,4 @@
+import sys
 
 def get_temp_module_name():
     # Assume single-threaded, and the module dir usable only by this thread

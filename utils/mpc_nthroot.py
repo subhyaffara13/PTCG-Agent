@@ -1,3 +1,4 @@
+import re
 
 def mpc_nthroot(z, n, prec, rnd=round_fast):
     """

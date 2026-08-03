@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _convert_detail_to_media_resolution_enum(
     detail: Optional[str],

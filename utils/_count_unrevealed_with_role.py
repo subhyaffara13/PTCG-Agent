@@ -1,3 +1,4 @@
+from typing import Any
 
 def _count_unrevealed_with_role(observation: Mapping[str, Any], role: str) -> int:
     """Count cells whose role equals ``role`` and that are still hidden.

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def chunked_overlay(chunk_size: int, left_padding: torch.Tensor) -> Callable:
     """

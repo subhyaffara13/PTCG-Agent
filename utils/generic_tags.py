@@ -1,3 +1,4 @@
+from typing import Optional
 
 def generic_tags(
     interpreter: str | None = None,

@@ -1,3 +1,4 @@
+import re
 
 def test_inverse_mellin_transform():
     from sympy.core.function import expand

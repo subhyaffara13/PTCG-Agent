@@ -1,3 +1,4 @@
+import re
 
 def test_if_sheet_exists_raises(tmp_excel, if_sheet_exists, msg):
     # GH 40230

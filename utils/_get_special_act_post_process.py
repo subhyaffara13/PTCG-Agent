@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_special_act_post_process(module: torch.nn.Module) -> Callable | None:
     r"""Get the special activation post process for `module`, this has

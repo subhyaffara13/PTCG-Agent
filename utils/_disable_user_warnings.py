@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _disable_user_warnings(
     func: Callable[_P, _R],

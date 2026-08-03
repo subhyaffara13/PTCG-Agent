@@ -1,3 +1,4 @@
+import re
 
 def normalize_newlines(text):
     r"""

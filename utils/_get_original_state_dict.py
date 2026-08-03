@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_original_state_dict(mod: torch.nn.Module) -> dict[str, Any]:
     # Explicitly not calling mode.state_dict() as we do not want the module state for serialization

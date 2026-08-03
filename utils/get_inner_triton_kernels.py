@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_inner_triton_kernels(fn: Callable[..., Any]) -> list[object]:
     """

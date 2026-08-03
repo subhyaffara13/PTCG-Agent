@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_value_errors(contract_fn: Any) -> None:
     with pytest.raises(ValueError):

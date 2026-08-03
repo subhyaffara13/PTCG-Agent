@@ -1,3 +1,4 @@
+import json
 
 def parse_jupytext_args(args=None):
     """Command line parser for jupytext"""

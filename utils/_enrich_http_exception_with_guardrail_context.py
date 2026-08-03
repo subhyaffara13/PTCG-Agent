@@ -1,3 +1,4 @@
+from typing import Any
 
 def _enrich_http_exception_with_guardrail_context(
     exc: BaseException, callback: Any

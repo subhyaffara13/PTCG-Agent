@@ -1,3 +1,4 @@
+from typing import List
 
 def _validate_replicator_ranks(
     *, num_nodes: int, node_rank: int, peer_ranks: List[int]

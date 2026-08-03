@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _handle_torch_function_and_wrap_type_error_to_not_implemented(
     f: Callable[Concatenate[_TensorLike, _P], "Tensor"],

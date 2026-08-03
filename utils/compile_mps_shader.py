@@ -1,3 +1,4 @@
+from typing import Any
 
 def compile_mps_shader(source: str) -> Any:
     """

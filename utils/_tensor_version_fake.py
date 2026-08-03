@@ -1,3 +1,4 @@
+from typing import Any
 
 def _tensor_version_fake(fake_mode: FakeTensorMode, self_tensor: Any) -> SymInt:
     """

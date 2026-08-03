@@ -1,3 +1,4 @@
+import re
 
 def get_linux_pkg_version(run_lambda, pkg_name):
     pkg_mgr = _detect_linux_pkg_manager()

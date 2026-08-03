@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_guard_fail_reason(
     guard_manager: GuardManagerWrapper,

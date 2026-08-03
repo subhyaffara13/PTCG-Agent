@@ -1,3 +1,4 @@
+import time
 
 def get_elapsed_time_ms(start_time_in_seconds: float):
     """Return the elapsed time in millis from the given start time."""

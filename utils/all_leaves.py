@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def all_leaves(iterable: Iterable[Any],
                is_leaf: Callable[[Any], bool] | None = None) -> bool:

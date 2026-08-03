@@ -1,3 +1,4 @@
+import re
 
 def test_evalc():
     x = Symbol("x", real=True)

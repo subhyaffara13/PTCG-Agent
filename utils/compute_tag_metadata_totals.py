@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def compute_tag_metadata_totals(records: List[Any]) -> SpendMetrics:
     """

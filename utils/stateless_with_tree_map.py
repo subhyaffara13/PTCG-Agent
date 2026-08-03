@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def stateless_with_tree_map(
     f: Callable[[jax.typing.ArrayLike, Optional[jax.typing.ArrayLike]],

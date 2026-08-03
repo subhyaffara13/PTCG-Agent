@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def _create_root_directory(
     directory: epath.PathLike,

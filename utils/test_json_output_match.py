@@ -1,3 +1,4 @@
+import os
 
 def test_json_output_match(capsys, tmpdir):
     # GH39701

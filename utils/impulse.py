@@ -1,3 +1,4 @@
+import sys
 
 def impulse(system, X0=None, T=None, N=None):
     """Impulse response of continuous-time system.

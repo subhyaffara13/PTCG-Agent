@@ -1,3 +1,4 @@
+import sys
 
 def _portable_async_sleep(seconds: float) -> t.Awaitable[None]:
     # If trio is already imported, then importing it is cheap.

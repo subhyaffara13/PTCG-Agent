@@ -1,3 +1,4 @@
+import sys
 
 def capture_sys_output():
     capture_out, capture_err = StringIO(), StringIO()

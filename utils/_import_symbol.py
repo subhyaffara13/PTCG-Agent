@@ -1,3 +1,4 @@
+from typing import Any
 
 def _import_symbol(import_qualname: str, parent_module_name: str) -> Any:
   """Import the lazy-symbol."""

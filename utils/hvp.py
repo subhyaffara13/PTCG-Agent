@@ -1,3 +1,4 @@
+from typing import Any
 
 def hvp(func, inputs, v=None, create_graph=False, strict=False):
     r"""Compute the dot product between the scalar function's Hessian and a vector ``v`` at a specified point.

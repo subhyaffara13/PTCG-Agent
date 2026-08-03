@@ -1,3 +1,4 @@
+import itertools
 
 def componentsOverlap(glyph: _g_l_y_f.Glyph, glyphSet: _TTGlyphMapping) -> bool:
     if not glyph.isComposite():

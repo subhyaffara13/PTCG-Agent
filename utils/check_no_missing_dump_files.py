@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_no_missing_dump_files(
     entries: dict[int, Any], memberships: list[Membership]

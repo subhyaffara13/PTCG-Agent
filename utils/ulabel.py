@@ -1,3 +1,4 @@
+from typing import Union
 
 def ulabel(label: Union[str, bytes, bytearray]) -> str:
     """Convert a single A-label into its U-label form.

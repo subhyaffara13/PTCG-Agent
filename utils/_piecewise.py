@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _piecewise(x: Array, condlist: Array, consts: dict[int, ArrayLike],
                funcs: frozenset[tuple[int, Callable[..., Array]]],

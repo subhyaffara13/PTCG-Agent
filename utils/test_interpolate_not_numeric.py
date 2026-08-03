@@ -1,3 +1,4 @@
+import re
 
 def test_interpolate_not_numeric(data):
     if not data.dtype._is_numeric:

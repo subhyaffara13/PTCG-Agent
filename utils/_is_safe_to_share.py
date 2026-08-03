@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_safe_to_share(node: Any) -> bool:
   """Returns whether the given node is immutable."""

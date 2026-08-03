@@ -1,3 +1,5 @@
+import math
+
 
 def textplot_str(expr, a, b, W=55, H=21):
     """Generator for the lines of the plot"""

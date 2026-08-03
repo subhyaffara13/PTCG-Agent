@@ -1,3 +1,4 @@
+import os
 
 def _validate_workers(workers: IntNumber = 1) -> IntNumber:
     """Validate `workers` based on platform and value.

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _http_error_response(error: str) -> Dict[str, Any]:
     """Create a standardized error response for HTTP requests."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _generate_inputs_for_submodules(
     model: torch.nn.Module,

@@ -1,3 +1,4 @@
+import itertools
 
 def kneser_graph(n, k):
     """Returns the Kneser Graph with parameters `n` and `k`.

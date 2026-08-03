@@ -1,3 +1,4 @@
+from typing import Any
 
 def cast_to_fp64(
     model: torch.fx.GraphModule, inputs: list[Any]

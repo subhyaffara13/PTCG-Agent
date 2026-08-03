@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _get_safetensors_file_metadata(file_bytes: io.IOBase) -> tuple[Any, int]:
     # this uses the same logic that's done in HF code base

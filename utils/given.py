@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def given(expr, condition=None, **kwargs):
     r""" Conditional Random Expression.

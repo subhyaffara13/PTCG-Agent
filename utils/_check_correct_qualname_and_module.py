@@ -1,3 +1,5 @@
+import functools
+import sys
 
 def _check_correct_qualname_and_module(obj) -> bool:
     qualname = obj.__qualname__

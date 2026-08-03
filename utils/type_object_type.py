@@ -1,3 +1,4 @@
+from typing import Callable
 
 def type_object_type(
     info: TypeInfo, named_type: Callable[[str], Instance] | None = None

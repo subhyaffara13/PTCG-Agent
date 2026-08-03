@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_standard_typevars_map(cls: Any) -> dict[TypeVar, Any] | None:
     """Package a generic type's typevars and parametrization (if present) into a dictionary compatible with the

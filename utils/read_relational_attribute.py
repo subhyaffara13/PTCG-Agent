@@ -1,3 +1,4 @@
+import re
 
 def read_relational_attribute(ofile, relational_attribute, i):
     """Read the nested attributes of a relational attribute"""

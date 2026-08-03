@@ -1,3 +1,4 @@
+import copy
 
 def _replace_with_hop_helper(
     node: torch.fx.Node,

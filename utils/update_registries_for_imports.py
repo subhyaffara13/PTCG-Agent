@@ -1,3 +1,4 @@
+import sys
 
 def update_registries_for_imports():
   """Updates registries by running setup logic for newly-imported modules."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _load_botocore() -> tuple[Any, Any, Any, Any]:
     try:

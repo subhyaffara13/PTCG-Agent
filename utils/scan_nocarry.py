@@ -1,3 +1,4 @@
+from typing import Callable
 
 def scan_nocarry(f: Callable[[Carry, X], tuple[Carry, Y]],
          xs: X | None = None,

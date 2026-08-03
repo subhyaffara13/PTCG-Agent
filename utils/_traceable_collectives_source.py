@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _traceable_collectives_source(
     tx: "InstructionTranslator", fn: Callable[..., Any]

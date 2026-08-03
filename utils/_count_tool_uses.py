@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _count_tool_uses(messages: List[Dict[str, Any]]) -> int:
     """Return the number of tool_use content blocks across all messages.

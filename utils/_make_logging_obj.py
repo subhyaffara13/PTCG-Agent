@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _make_logging_obj(
     kwargs: Dict[str, Any],

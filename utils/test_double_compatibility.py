@@ -1,3 +1,5 @@
+import math
+
 
 def test_double_compatibility():
     mp.prec = 53

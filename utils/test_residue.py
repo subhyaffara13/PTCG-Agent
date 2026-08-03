@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_residue():
     assert n_order(2, 13) == 12

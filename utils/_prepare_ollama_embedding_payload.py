@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _prepare_ollama_embedding_payload(
     model: str, prompts: List[str], optional_params: Dict[str, Any]

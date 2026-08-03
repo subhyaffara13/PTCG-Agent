@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def make_dupe_guard(
     obj_source: Source, dupe_source: Source | None

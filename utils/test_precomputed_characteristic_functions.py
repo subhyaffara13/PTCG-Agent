@@ -1,3 +1,4 @@
+import re
 
 def test_precomputed_characteristic_functions():
     import mpmath

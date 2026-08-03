@@ -1,3 +1,4 @@
+import os
 
 def common_dir_prefix(paths: list[str]) -> str:
     if not paths:

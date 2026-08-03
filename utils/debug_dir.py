@@ -1,3 +1,4 @@
+import os
 
 def debug_dir() -> str:
     path = os.path.join(os.path.dirname(__file__), "../debug")

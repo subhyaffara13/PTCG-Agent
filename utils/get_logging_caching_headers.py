@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def get_logging_caching_headers(request_data: Dict) -> Optional[Dict]:
     _metadata: Dict = {}

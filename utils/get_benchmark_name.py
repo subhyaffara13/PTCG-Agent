@@ -1,3 +1,4 @@
+import sys
 
 def get_benchmark_name() -> str | None:
     """

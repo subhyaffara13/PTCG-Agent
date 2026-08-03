@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _build_part_for_input(
     element: str,

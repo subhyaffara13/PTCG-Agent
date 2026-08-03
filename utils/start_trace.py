@@ -1,3 +1,4 @@
+import os
 
 def start_trace(
     log_dir: os.PathLike | str,

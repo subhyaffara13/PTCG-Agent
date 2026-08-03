@@ -1,3 +1,5 @@
+import math
+
 
 def _check_ns_shape_dtype(
     actual: Array,

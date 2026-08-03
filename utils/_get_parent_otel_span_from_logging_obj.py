@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_parent_otel_span_from_logging_obj(
     logging_obj: Optional[LiteLLMLoggingObject] = None,

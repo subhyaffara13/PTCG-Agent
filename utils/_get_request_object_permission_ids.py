@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _get_request_object_permission_ids(
     request_data: dict,

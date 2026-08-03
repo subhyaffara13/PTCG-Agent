@@ -1,3 +1,4 @@
+import itertools
 
 def associative_scan_functionalize(ctx, combine_fn, xs, additional_inputs):
     from torch._higher_order_ops.utils import _check_alias_and_mutation

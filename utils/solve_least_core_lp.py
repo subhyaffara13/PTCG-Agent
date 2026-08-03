@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def solve_least_core_lp(
     game: coalitional_game.CoalitionalGame,

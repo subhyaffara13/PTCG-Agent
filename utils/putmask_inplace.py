@@ -1,3 +1,4 @@
+from typing import Any
 
 def putmask_inplace(values: ArrayLike, mask: npt.NDArray[np.bool_], value: Any) -> None:
     """

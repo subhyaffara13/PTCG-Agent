@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_hp_space_ray(trial) -> dict[str, Any]:
     from .integrations import is_ray_tune_available

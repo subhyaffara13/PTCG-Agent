@@ -1,3 +1,4 @@
+import sys
 
 def is_torch_native_class(cls):
     if not hasattr(cls, "__module__"):

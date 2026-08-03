@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def export_onnx(hf_model: str, cache_dir: str | None, onnx_path_str: str, with_past: bool, opset: int):
     """

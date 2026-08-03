@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_xla_runtime_error_handler(
     handler_fn: Callable[[_jax.JaxRuntimeError], Exception | None],

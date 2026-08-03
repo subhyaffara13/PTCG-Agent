@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def write_json(data: WriteBuffer, value: dict[str, Any]) -> None:
     write_tag(data, DICT_STR_GEN)

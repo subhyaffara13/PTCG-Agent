@@ -1,3 +1,4 @@
+from typing import Any
 
 def bool_validator(v: Any) -> bool:
     if v is True or v is False:

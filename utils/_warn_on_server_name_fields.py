@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _warn_on_server_name_fields(
     *,

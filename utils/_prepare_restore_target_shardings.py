@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_restore_target_shardings(
     state_restore_args: args_lib.PyTreeRestore,

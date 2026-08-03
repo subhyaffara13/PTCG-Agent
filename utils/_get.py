@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def _get(d: Mapping[str, Any], expected_type: type[_T], key: str) -> _T | None:
     """Get a value from the dictionary and verify it's the expected type."""

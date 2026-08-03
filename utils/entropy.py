@@ -1,3 +1,5 @@
+import math
+
 
 def entropy(expr, condition=None, **kwargs):
     """

@@ -1,3 +1,4 @@
+import functools
 
 def _register_style(style_list, cls=None, *, name=None):
     """Class decorator that stashes a class in a (style) dictionary."""

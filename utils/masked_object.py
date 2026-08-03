@@ -1,3 +1,4 @@
+import copy
 
 def masked_object(x, value, copy=True, shrink=True):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def pycodestyle_physical(
     indent_char: Any,

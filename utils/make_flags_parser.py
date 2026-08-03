@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def make_flags_parser(
     cls: _DataclassT,

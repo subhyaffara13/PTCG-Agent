@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _parse_obs(observation: Mapping[str, Any]) -> dict[str, Any]:
     obs_str = observation.get("observationString", "")

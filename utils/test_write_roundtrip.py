@@ -1,3 +1,4 @@
+import os
 
 def test_write_roundtrip(realfile, mmap, rate, channels, dt_str, tmpdir):
     dtype = np.dtype(dt_str)

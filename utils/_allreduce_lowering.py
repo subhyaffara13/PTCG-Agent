@@ -1,3 +1,4 @@
+from typing import Any
 
 def _allreduce_lowering(prim, pos_fn, ctx, arg, *, axes, axis_index_groups):
   aval_in, = ctx.avals_in

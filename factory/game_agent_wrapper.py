@@ -7,7 +7,7 @@ from factory.game_adapter import run_agent_turn
 logger = logging.getLogger(__name__)
 
 class CABTAgentWrapper:
-    def __init__(self, agent_id: str, skills_dir: str, deck: list[int], g_logger, staging_dir: str = "staging", use_staging: bool = False, model_path: str = None):
+    def __init__(self, agent_id: str, skills_dir: str, deck: list[int], g_logger, staging_dir: str = "staging", use_staging: bool = False, model_path: str | None = None):
         self.agent_id = agent_id
         self.skills_dir = Path(skills_dir)
         self.staging_dir = Path(staging_dir)
@@ -30,10 +30,11 @@ class CABTAgentWrapper:
             if staging_file.exists():
                 try:
                     spec = importlib.util.spec_from_file_location(f"staging_{name}", str(staging_file))
-                    module = importlib.util.module_from_spec(spec)
-                    spec.loader.exec_module(module)
-                    class_name = "".join([part.capitalize() for part in name.split("_")])
-                    cls = getattr(module, class_name)
+                    if spec is not None and spec.loader is not None:
+                        module = importlib.util.module_from_spec(spec)
+                        spec.loader.exec_module(module)
+                        class_name = "".join([part.capitalize() for part in name.split("_")])
+                        cls = getattr(module, class_name)
                     
                     obj = cls(log_dir=str(self.orchestrator.log_dir), skills_dir=str(self.orchestrator.skills_dir))
                     if name == "hand_analyst":
@@ -52,7 +53,7 @@ class CABTAgentWrapper:
                 except Exception as e:
                     logger.error(f"Failed to inject staging class for {name}: {e}")
 
-    def __call__(self, obs: dict, conf: dict = None) -> list[int]:
+    def __call__(self, obs: dict, conf: dict | None = None) -> list[int]:
         selected = run_agent_turn(self.orchestrator, obs, self.deck)
         current_turn = obs.get("turn_number", 1)
         try:
@@ -87,7 +88,7 @@ class CABTAgentWrapper:
             logger.error(f"Failed to log variance: {e}")
 
         if isinstance(selected, list):
-            return [int(x) for x in selected if x is not None]
+            return [x for x in selected if x is not None]
         elif selected is not None:
-            return [int(selected)]
+            return [selected]
         return []

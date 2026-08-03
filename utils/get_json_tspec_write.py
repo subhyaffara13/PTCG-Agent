@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_json_tspec_write(
     info: types.ParamInfo,

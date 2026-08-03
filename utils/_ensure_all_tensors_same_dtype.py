@@ -1,3 +1,4 @@
+import itertools
 
 def _ensure_all_tensors_same_dtype(*tensors) -> None:
     last_dtype = None

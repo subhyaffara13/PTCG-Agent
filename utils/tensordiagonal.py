@@ -1,3 +1,4 @@
+import itertools
 
 def tensordiagonal(array, *diagonal_axes):
     """

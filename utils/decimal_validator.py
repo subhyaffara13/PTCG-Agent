@@ -1,3 +1,4 @@
+from typing import Any
 
 def decimal_validator(v: Any) -> Decimal:
     if isinstance(v, Decimal):

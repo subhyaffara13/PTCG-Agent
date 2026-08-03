@@ -1,3 +1,4 @@
+import copy
 
 def is_available() -> bool:
     r"""Check if the current accelerator is available at runtime: it was build, all the

@@ -1,3 +1,4 @@
+import os
 
 def savefig(fname: str | os.PathLike | IO, **kwargs) -> None:
     fig = gcf()

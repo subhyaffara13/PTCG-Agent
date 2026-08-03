@@ -1,3 +1,4 @@
+import copy
 
 def sequence_to_td64ns(
     data,

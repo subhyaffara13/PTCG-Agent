@@ -1,3 +1,4 @@
+from typing import Any
 
 def DEFINE_list(  # pylint: disable=invalid-name
     name: str,

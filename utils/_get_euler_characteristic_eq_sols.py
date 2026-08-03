@@ -1,3 +1,4 @@
+import re
 
 def _get_euler_characteristic_eq_sols(eq, func, match_obj):
     r"""

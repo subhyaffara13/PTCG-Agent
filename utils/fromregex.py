@@ -1,3 +1,5 @@
+import os
+import re
 
 def fromregex(file, regexp, dtype, encoding=None):
     r"""

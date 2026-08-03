@@ -1,3 +1,4 @@
+import itertools
 
 def test_large_path(num_symbols: int) -> None:
     symbols = "".join(oe.get_symbol(i) for i in range(num_symbols))

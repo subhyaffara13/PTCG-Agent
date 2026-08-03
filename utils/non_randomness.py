@@ -1,3 +1,5 @@
+import math
+
 
 def non_randomness(G, k=None, weight="weight"):
     """Compute the non-randomness of a graph.

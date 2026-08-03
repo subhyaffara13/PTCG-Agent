@@ -1,3 +1,5 @@
+import os
+import sys
 
 def load_provider_lib(provider_lib_path):
     _LOGGER.debug("loading provider library from %s", provider_lib_path)

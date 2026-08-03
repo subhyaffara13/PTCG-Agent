@@ -1,3 +1,4 @@
+import os
 
 def mypy_path() -> list[str]:
     path_env = os.getenv("MYPYPATH")

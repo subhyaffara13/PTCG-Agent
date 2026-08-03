@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _signature(model) -> inspect.Signature:
     should_be_callable = getattr(model, "forward", model)

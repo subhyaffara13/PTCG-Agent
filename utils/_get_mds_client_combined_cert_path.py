@@ -1,3 +1,4 @@
+import os
 
 def _get_mds_client_combined_cert_path():
     if os.name == _WINDOWS_OS_NAME:

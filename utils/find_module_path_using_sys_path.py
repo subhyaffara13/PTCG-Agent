@@ -1,3 +1,4 @@
+import os
 
 def find_module_path_using_sys_path(module: str, sys_path: list[str]) -> str | None:
     relative_candidates = (

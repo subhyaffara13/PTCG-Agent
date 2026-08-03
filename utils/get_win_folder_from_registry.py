@@ -1,3 +1,4 @@
+import sys
 
 def get_win_folder_from_registry(csidl_name: str) -> str:
     """Get folder from the registry.

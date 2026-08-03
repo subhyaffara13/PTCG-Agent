@@ -1,3 +1,4 @@
+import re
 
 def contains_doctest(text):
     try:

@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _apply_regret_matching_plus_reset(
     info_state_nodes: Dict[str, _InfoStateNode],

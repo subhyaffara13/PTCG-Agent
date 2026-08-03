@@ -1,3 +1,4 @@
+import functools
 
 def profile_endpoint(sampling_rate: float = 1.0):
     """Decorator to sample endpoint hits and save to a profile file.

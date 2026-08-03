@@ -1,3 +1,4 @@
+import functools
 
 def standard_jvp2(jvprules, primitive, primals, tangents, **params):
   val_out = primitive.bind(*primals, **params)

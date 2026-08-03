@@ -1,3 +1,5 @@
+import math
+
 
 def point_in_between(a, b, p):
     # checks if p is on the line between a and b

@@ -1,3 +1,4 @@
+import itertools
 
 def _ace_constraints(payoff, epsilons, remove_null=True, zero_tolerance=0.0):
   """Returns sparse alternate ce constraints Ax - epsilon <= 0.

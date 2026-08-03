@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_fake_inputs(gm, args, kwargs):
     """

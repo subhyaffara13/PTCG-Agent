@@ -1,3 +1,4 @@
+import re
 
 def match_differentiability_info(
     native_functions: list[NativeFunction],

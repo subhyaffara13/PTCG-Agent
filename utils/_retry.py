@@ -1,3 +1,5 @@
+import time
+from typing import Callable
 
 def _retry(max_retries: int, sleep_time: float) -> Callable:
     """

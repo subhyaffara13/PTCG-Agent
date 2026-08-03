@@ -1,3 +1,4 @@
+from typing import Any
 
 def pattern_to_human_readable(p) -> Any:
     if isinstance(p, tuple):

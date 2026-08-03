@@ -1,3 +1,4 @@
+from typing import Any
 
 def resolve_shape_to_proxy(
     shape: list[int | torch.SymInt], bound_symbols: dict[Any, Any]

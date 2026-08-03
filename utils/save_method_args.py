@@ -1,3 +1,4 @@
+import functools
 
 def save_method_args(method):
     """

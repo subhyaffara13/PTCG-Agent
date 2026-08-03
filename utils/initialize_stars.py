@@ -1,3 +1,4 @@
+import random
 
 def initialize_stars():
     "creates a new starfield"

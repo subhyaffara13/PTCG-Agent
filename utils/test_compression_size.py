@@ -1,3 +1,4 @@
+import os
 
 def test_compression_size(obj, method, compression_only, temp_file):
     if compression_only == "tar":

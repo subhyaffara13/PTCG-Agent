@@ -1,3 +1,4 @@
+import itertools
 
 def plot_cuboid(ax, scale):
     # plot a rectangular cuboid with side lengths given by scale (x, y, z)

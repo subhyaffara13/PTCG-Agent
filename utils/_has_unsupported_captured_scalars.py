@@ -1,3 +1,4 @@
+from typing import Any
 
 def _has_unsupported_captured_scalars(
     score_mod_other_buffers: Sequence[Any],

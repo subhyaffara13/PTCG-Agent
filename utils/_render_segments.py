@@ -1,3 +1,4 @@
+from typing import List
 
 def _render_segments(segments: Iterable[Segment]) -> str:
     def escape(text: str) -> str:

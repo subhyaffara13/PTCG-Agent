@@ -1,3 +1,4 @@
+import os
 
 def _cache_dir_prefix(options: Options) -> str:
     """Get current cache directory (or file if id is given)."""

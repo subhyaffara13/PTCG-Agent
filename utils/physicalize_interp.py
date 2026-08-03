@@ -1,3 +1,4 @@
+from typing import Any
 
 def physicalize_interp(
     jaxpr: core.Jaxpr, consts: Sequence[core.Value], *args: core.Value

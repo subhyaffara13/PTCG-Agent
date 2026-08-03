@@ -1,3 +1,5 @@
+import math
+
 
 def _calculate_quad_point_coordinates(x, y, width, height, angle=0):
     """

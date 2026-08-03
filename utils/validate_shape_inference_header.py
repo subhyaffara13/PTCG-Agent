@@ -1,3 +1,4 @@
+import os
 
 def validate_shape_inference_header(
     shape_inference_hdr: str, expected_shape_infr_decls: list[str]

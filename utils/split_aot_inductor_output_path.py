@@ -1,3 +1,4 @@
+import os
 
 def split_aot_inductor_output_path(path: str) -> tuple[str, str]:
     def get_module_ext_type() -> str:

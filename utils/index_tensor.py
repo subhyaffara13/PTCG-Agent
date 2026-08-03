@@ -1,3 +1,4 @@
+from typing import Any
 
 def index_tensor(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

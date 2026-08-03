@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_finalvar(ann_type: Type[Any]) -> bool:
     return _check_finalvar(ann_type) or _check_finalvar(get_origin(ann_type))

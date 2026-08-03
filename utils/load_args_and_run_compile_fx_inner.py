@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_args_and_run_compile_fx_inner(path: str) -> Any:
     from torch._inductor.compile_fx import compile_fx_inner

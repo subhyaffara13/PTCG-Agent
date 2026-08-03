@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def flatten_errors(
     errors: Sequence[Any], config: Type['BaseConfig'], loc: Optional['Loc'] = None

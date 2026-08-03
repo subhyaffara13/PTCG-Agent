@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def maybe_layout_constraints(fn: Callable[..., Any]) -> Callable[..., Any] | None:
     """Get layout constraints. Returns None if there are no layout constraints."""

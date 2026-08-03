@@ -1,3 +1,4 @@
+import re
 
 def _parse_nh_struct(text):
     pattern = r'(\w+):\s*([^,}]+)'

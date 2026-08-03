@@ -1,3 +1,4 @@
+import sys
 
 def get_key_input():
     """Get a single key input from the user (cross-platform)"""

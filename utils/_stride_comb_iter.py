@@ -1,3 +1,4 @@
+import itertools
 
 def _stride_comb_iter(x):
     """

@@ -1,3 +1,5 @@
+import math
+
 
 def test_align_vectors_scaled_weights(xp):
     n = 10

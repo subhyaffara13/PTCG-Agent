@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_sdist_members(sdist_path):
     with tarfile.open(sdist_path, "r:gz") as tar:

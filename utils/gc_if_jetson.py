@@ -1,3 +1,4 @@
+import functools
 
 def gcIfJetson(fn):
     # Irregular Jetson host/device memory setup requires cleanup to avoid tests being killed

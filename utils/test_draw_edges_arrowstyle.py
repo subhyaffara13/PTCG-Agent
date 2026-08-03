@@ -1,3 +1,4 @@
+import itertools
 
 def test_draw_edges_arrowstyle(arrowstyle):
     G = nx.DiGraph([(0, 1), (0, 2), (1, 2)])

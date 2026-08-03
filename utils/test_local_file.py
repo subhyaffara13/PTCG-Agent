@@ -1,3 +1,4 @@
+import os
 
 def test_local_file(all_parsers, csv_dir_path):
     parser = all_parsers

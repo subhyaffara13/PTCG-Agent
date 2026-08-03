@@ -1,3 +1,4 @@
+from typing import Any
 
 def error_analysis(
     all_entries: dict[int, list[dict[str, Any]]],

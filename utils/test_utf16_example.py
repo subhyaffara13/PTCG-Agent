@@ -1,3 +1,4 @@
+import os
 
 def test_utf16_example(all_parsers, csv_dir_path):
     path = os.path.join(csv_dir_path, "utf16_ex.txt")

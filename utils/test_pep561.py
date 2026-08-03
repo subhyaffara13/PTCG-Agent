@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_pep561(testcase: DataDrivenTestCase) -> None:
     """Test running mypy on files that depend on PEP 561 packages."""

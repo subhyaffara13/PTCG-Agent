@@ -1,3 +1,4 @@
+from typing import Any
 
 def _safe_builtins_dict(builtins_dict: dict[str, Any]) -> dict[str, Any]:
     """Filter a builtins dict to only picklable entries for serialization."""

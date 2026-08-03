@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_jaxpr_to_transform_func(
     jaxpr: jax_core.Jaxpr,

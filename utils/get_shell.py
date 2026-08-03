@@ -1,3 +1,4 @@
+import os
 
 def get_shell(pid=None, max_depth=10):
     proc_map = {

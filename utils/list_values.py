@@ -1,3 +1,4 @@
+import json
 
 def list_values(ctx: click.Context, output_format: str) -> None:
     """Display all the stored key/value."""

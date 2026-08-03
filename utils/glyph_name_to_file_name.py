@@ -1,3 +1,4 @@
+from typing import Optional
 
 def glyphNameToFileName(glyphName: str, existingFileNames: Optional[set[str]]) -> str:
     """

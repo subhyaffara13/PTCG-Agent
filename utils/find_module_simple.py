@@ -1,3 +1,4 @@
+import time
 
 def find_module_simple(id: str, manager: BuildManager) -> str | None:
     """Find a filesystem path for module `id` or `None` if not found."""

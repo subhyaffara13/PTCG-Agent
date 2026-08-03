@@ -1,3 +1,4 @@
+import itertools
 
 def inherit_from_std_ex(node: nodes.NodeNG | astroid.Instance) -> bool:
     """Return whether the given class node is subclass of

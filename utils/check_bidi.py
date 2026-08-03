@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_bidi(label: str, check_ltr: bool = False) -> bool:
     """Validate the Bidi Rule from :rfc:`5893` for a single label.

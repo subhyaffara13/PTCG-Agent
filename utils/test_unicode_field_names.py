@@ -1,3 +1,4 @@
+import os
 
 def test_unicode_field_names(tmpdir):
     # gh-7391

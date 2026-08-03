@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Print():
     fmt = "%d %.3f"

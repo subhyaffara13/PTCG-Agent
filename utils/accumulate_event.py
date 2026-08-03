@@ -1,3 +1,4 @@
+from typing import Any
 
 def accumulate_event(
     *,

@@ -1,3 +1,4 @@
+import functools
 
 def call_deallocate_barrier(
     token: jax.Array,

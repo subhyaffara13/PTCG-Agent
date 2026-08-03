@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_bivar_cmap_from_image():
     """

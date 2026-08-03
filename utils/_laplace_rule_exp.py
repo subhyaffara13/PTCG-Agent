@@ -1,3 +1,4 @@
+import re
 
 def _laplace_rule_exp(f, t, s):
     """

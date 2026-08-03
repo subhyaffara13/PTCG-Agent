@@ -1,3 +1,4 @@
+from typing import Any
 
 def estimate_roofline_runtime_ms(node: fx.Node) -> float:
     """Estimate runtime using roofline model (max of compute and memory bound).

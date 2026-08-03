@@ -1,3 +1,6 @@
+import functools
+import random
+from typing import Any, Callable
 
 def vmap(func: Callable, in_dims: in_dims_t = 0, out_dims: out_dims_t = 0) -> Callable:
     """

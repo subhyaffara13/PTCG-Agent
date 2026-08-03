@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _uses_arguments(
     index_map: Callable[..., Any], num_args: int

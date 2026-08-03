@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_target_dtype_info_for_matched_node_pattern(
     matched_node_pattern: NodePattern,

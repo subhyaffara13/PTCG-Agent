@@ -1,3 +1,4 @@
+import sys
 
 def _attach(package_name, submodules=None, submod_attrs=None):
     """Attach lazily loaded submodules, functions, or other attributes.

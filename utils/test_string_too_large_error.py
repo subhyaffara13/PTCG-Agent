@@ -1,3 +1,4 @@
+import sys
 
 def test_string_too_large_error():
     arr = np.array(["a", "b", "c"], dtype=StringDType())

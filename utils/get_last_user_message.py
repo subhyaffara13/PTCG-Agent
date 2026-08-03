@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_last_user_message(messages: List[AllMessageValues]) -> Optional[str]:
     """

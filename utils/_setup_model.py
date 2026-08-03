@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _setup_model() -> tuple[str, dict[str, Any]]:
     """Read env vars and return ``(model_name, litellm_kwargs)``."""

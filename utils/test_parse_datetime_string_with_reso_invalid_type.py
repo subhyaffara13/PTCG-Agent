@@ -1,3 +1,4 @@
+import re
 
 def test_parse_datetime_string_with_reso_invalid_type():
     # Raise on invalid input, don't just return it

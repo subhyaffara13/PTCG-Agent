@@ -1,3 +1,5 @@
+import subprocess
+from typing import Optional
 
 def _get_musl_version(executable: str) -> _MuslVersion | None:
     """Detect currently-running musl runtime version.

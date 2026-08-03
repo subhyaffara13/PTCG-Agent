@@ -1,3 +1,5 @@
+import json
+import os
 
 def convert_all_safetensors_to_bins(folder: str):
     """Convert all safetensors files into torch bin files, to mimic saving with torch (since we still support loading

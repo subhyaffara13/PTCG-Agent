@@ -1,3 +1,4 @@
+from typing import Any
 
 def logical_to_mesh_sharding(
   tree: Any,

@@ -1,3 +1,4 @@
+import json
 
 def _load_plan(plan_file: str) -> SyncPlan:
     """Load a sync plan from a JSONL file."""

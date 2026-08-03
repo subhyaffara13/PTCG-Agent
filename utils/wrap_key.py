@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def wrap_key(
     f: Callable[[Unpack[_Ts]], R],

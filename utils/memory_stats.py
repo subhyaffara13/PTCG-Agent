@@ -1,3 +1,4 @@
+from typing import Any
 
 def memory_stats(device_index: _device_t = None, /) -> OrderedDict[str, Any]:
     r"""Return a dictionary of accelerator device memory allocator statistics for a given device index.

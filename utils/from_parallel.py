@@ -1,3 +1,4 @@
+from typing import Optional
 
 def from_parallel(
     par_env: ParallelEnv[AgentID, ObsType, Optional[ActionType]]

@@ -1,3 +1,4 @@
+import itertools
 
 def _greedy_coloring_with_interchange(G, nodes):
     """Return a coloring for `original_graph` using interchange approach

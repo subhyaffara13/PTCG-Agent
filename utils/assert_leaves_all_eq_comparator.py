@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def assert_leaves_all_eq_comparator(
     equality_comparator: TLeavesEqCmpFn,

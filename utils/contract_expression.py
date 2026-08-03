@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def contract_expression(
     subscripts: str,

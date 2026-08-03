@@ -1,3 +1,4 @@
+from typing import List
 
 def compact_class_pairs(
     font: TTFont, level: int, subtable: otTables.PairPos

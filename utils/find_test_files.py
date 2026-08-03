@@ -1,3 +1,4 @@
+import pathlib
 
 def find_test_files(pattern: str, exclude: list[str] | None = None) -> list[str]:
     return [

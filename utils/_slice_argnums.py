@@ -1,3 +1,4 @@
+from typing import Any
 
 def _slice_argnums(
     args: tuple[Any, ...], argnums: argnums_t, as_tuple: bool = True

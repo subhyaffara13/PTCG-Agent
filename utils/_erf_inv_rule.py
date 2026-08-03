@@ -1,3 +1,4 @@
+from typing import Any
 
 def _erf_inv_rule(primals_in, series_in):
   x, = primals_in

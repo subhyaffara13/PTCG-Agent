@@ -1,3 +1,4 @@
+from typing import Callable, Optional, Union
 
 def serializable_enum(cls: Literal[None] = None) -> Callable[[Type[_E]], Type[_E]]:
     ...

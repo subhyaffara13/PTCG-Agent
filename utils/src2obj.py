@@ -1,3 +1,4 @@
+import os
 
 def src2obj(srcpath, Runner=None, objpath=None, cwd=None, inc_py=False, **kwargs):
     """ Compiles a source code file to an object file.

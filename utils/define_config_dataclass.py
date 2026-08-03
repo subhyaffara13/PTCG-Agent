@@ -1,3 +1,4 @@
+from typing import Any, Callable, List, Optional
 
 def DEFINE_config_dataclass(  # pylint: disable=invalid-name
     name: str,

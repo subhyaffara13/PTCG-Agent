@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_bedrock_event_stream_decoder(
     invoke_provider: Optional[str], model: str, sync_stream: bool, json_mode: bool

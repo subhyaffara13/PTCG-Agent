@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _handle_content_block_delta(data: Dict, content_blocks: Dict[int, Dict]) -> None:
     idx = data.get("index", 0)

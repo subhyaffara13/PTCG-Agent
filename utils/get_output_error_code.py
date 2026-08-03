@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_output_error_code(cmd: str | Sequence[str]) -> tuple[str, str, Any]:
     """Get stdout, stderr, and exit code from running a command"""

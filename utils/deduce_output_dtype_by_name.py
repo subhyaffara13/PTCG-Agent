@@ -1,3 +1,4 @@
+from typing import Any
 
 def deduce_output_dtype_by_name(
     op_name: str,

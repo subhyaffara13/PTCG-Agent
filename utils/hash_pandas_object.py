@@ -1,3 +1,4 @@
+import itertools
 
 def hash_pandas_object(
     obj: Index | DataFrame | Series,

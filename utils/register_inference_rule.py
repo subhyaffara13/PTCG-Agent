@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_inference_rule(
     call_target: Target,

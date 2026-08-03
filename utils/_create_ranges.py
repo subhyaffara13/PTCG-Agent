@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _create_ranges(exprs, ranges, npar, label="", params=None):
     """This function does two things:

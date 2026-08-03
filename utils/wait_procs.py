@@ -1,3 +1,4 @@
+import subprocess
 
 def wait_procs(procs, timeout=None, callback=None):
     """Convenience function which waits for a list of processes to

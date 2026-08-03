@@ -1,3 +1,5 @@
+import math
+
 
 def encode_sinusoidal_position_embedding(
     pos_tensor: torch.Tensor,

@@ -1,3 +1,4 @@
+import re
 
 def _indent(s, indent=4):
     """

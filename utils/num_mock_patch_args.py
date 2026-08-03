@@ -1,3 +1,4 @@
+import sys
 
 def num_mock_patch_args(function) -> int:
     """Return number of arguments used up by mock arguments (if any)."""

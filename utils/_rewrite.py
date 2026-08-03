@@ -1,3 +1,5 @@
+import copy
+from typing import Callable
 
 def _rewrite(fn: torch.nn.Module | Callable) -> torch.nn.Module | Callable:
     if isinstance(fn, torch.nn.Module):

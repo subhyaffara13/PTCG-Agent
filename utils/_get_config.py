@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_config(numels: dict[str, int]) -> dict[str, int]:
     """

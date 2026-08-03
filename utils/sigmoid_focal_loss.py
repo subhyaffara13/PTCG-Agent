@@ -1,3 +1,4 @@
+from typing import Optional
 
 def sigmoid_focal_loss(inputs, targets, num_boxes, alpha: float = 0.25, gamma: float = 2):
     """

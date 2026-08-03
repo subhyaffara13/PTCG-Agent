@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_meta(op) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]:
     def wrapper(fn):

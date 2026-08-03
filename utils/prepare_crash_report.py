@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def prepare_crash_report(ex: Exception, filepath: str, crash_file_path: str) -> Path:
     issue_template_path = (

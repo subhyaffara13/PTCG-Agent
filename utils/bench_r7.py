@@ -1,3 +1,4 @@
+import random
 
 def bench_R7():
     "[f.subs(x, random()) for _ in range(10**4)]"

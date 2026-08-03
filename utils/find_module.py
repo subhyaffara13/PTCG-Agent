@@ -1,3 +1,4 @@
+import os
 
 def find_module(module, paths=None):
     """Just like 'imp.find_module()', but with package support"""

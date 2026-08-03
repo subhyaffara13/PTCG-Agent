@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _validate_plugin_source(source: Dict[str, Any]) -> None:
     """Validate plugin source format, raising HTTPException on invalid input."""

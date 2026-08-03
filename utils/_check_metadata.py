@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_metadata(testing_metadata: dict[str, Any]):
     """Check the metadata of an environment."""

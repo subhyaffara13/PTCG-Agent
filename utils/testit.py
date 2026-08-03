@@ -1,3 +1,5 @@
+import os
+import sys
 
 def testit(importdir='', testdir='', exit_on_fail=False):
     """Run all tests in testdir while importing from importdir."""

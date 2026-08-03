@@ -1,3 +1,4 @@
+import os
 
 def _resolve(env: None) -> os._Environ[str]: ...
 

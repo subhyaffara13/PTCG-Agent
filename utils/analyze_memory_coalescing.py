@@ -1,3 +1,5 @@
+import itertools
+from typing import Union
 
 def analyze_memory_coalescing(
     fused_node: Union["FusedSchedulerNode", "SchedulerNode"],

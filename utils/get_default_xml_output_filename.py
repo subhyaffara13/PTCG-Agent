@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_default_xml_output_filename() -> str | None:
   if os.environ.get('XML_OUTPUT_FILE'):

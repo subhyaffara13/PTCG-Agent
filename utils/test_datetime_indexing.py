@@ -1,3 +1,4 @@
+import re
 
 def test_datetime_indexing():
     index = date_range("1/1/2000", "1/7/2000")

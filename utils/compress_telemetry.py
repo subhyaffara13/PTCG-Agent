@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def compress_telemetry(res_dict: dict, log_dir: str = "logs") -> dict:
     """Finds steps_*.json files in res_dict, compresses them to base64 gzipped strings, and deletes local copies."""

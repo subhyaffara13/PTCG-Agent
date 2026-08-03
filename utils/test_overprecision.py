@@ -1,3 +1,4 @@
+import os
 
 def test_overprecision():
     # We used to output too many digits in FontMatrix entries and

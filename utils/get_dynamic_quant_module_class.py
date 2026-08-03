@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def get_dynamic_quant_module_class(
     float_module_class: Callable,

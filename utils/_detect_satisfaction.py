@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _detect_satisfaction(curr_user: Optional[str]) -> bool:
     if not curr_user:

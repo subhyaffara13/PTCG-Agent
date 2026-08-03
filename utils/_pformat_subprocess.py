@@ -1,3 +1,4 @@
+import os
 
 def _pformat_subprocess(command):
     """Pretty-format a subprocess command for printing/logging purposes."""

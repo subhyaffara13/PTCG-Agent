@@ -1,3 +1,4 @@
+from typing import Any
 
 def categorical_column_to_series(col: Column) -> tuple[pd.Series, Any]:
     """

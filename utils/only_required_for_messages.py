@@ -1,3 +1,4 @@
+from typing import Callable
 
 def only_required_for_messages(
     *messages: str,

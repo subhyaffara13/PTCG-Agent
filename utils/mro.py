@@ -1,3 +1,4 @@
+from typing import Any
 
 def mro(tp: type[Any]) -> tuple[type[Any], ...]:
     """Calculate the Method Resolution Order of bases using the C3 algorithm.

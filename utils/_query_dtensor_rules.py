@@ -1,3 +1,4 @@
+from typing import Any
 
 def _query_dtensor_rules(
     aten_op: OpOverload | None,

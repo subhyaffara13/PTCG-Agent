@@ -1,3 +1,4 @@
+import sys
 
 def test_sf_error_special_refcount():
     # Regression test for gh-16233.

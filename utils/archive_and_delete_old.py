@@ -1,3 +1,4 @@
+import os
 
 def archive_and_delete_old(log_dir, files_to_delete, archive_dir):
     import zipfile, time

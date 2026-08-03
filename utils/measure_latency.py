@@ -1,3 +1,4 @@
+import time
 
 def measure_latency(cuda_session: CudaSession, input_dict):
     start = time.time()

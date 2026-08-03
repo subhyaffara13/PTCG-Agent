@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_arraylike_or_none(fun_name: str, *args: Any):
   assert isinstance(fun_name, str), f"fun_name must be a string. Got {fun_name}"

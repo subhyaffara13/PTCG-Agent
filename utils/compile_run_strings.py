@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def compile_run_strings(sources, build_dir=None, clean=False, compile_kwargs=None, link_kwargs=None):
     """ Compiles, links and runs a program built from sources.

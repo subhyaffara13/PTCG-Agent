@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_choice_non_empty(choice: Any) -> bool:
     """

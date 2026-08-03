@@ -1,3 +1,4 @@
+import copy
 
 def get_balanced_memory(
     model: "PreTrainedModel",

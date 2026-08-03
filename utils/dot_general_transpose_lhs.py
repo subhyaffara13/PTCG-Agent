@@ -1,3 +1,4 @@
+import itertools
 
 def dot_general_transpose_lhs(g, x, y, *, dimension_numbers, precision,
                               preferred_element_type: DTypeLike | None,

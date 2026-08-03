@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _clean_endpoint_data(endpoint_data: dict, details: Optional[bool] = True):
     """

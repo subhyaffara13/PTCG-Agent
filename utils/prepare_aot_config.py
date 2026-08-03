@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def prepare_aot_config(
     mod: nn.Module,

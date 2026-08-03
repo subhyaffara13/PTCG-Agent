@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def validate_func_kwargs(
     kwargs: dict,

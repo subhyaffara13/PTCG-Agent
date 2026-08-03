@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def view(path: str, handler: type[AbstractView], **kwargs: Any) -> RouteDef:
     return route(hdrs.METH_ANY, path, handler, **kwargs)

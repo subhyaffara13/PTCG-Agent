@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _apply_to_tensors(
     fn: Callable[[torch.Tensor], Q], container: torch.Tensor

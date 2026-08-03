@@ -1,3 +1,4 @@
+from typing import Any
 
 def _find_fake_class_for_script_object(x: torch.ScriptObject) -> Any:
     full_qualname = x._type().qualified_name()  # type: ignore[attr-defined]

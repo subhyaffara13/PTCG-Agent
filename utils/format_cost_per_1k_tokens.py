@@ -1,3 +1,4 @@
+from typing import Optional
 
 def format_cost_per_1k_tokens(cost: Optional[float]) -> str:
     """Format a per-token cost to cost per 1000 tokens."""

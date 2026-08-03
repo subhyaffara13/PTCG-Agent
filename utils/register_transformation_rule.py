@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_transformation_rule(
     call_target: type[Constraint],

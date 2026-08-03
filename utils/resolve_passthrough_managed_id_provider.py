@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def resolve_passthrough_managed_id_provider(
     custom_llm_provider: Any,

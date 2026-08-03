@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_figlabels() -> list[Any]:
     """Return a list of existing figure labels."""

@@ -1,3 +1,4 @@
+import os
 
 def _get_editor_command() -> str | None:
     for env in ("HF_EDITOR", "VISUAL", "EDITOR"):

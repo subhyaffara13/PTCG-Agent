@@ -1,3 +1,5 @@
+import random
+from typing import Any, Callable
 
 def resolve_episode_seed(
     env: Any,

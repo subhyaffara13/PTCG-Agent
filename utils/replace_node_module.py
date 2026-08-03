@@ -1,3 +1,4 @@
+from typing import Any
 
 def replace_node_module(
     node: fx.Node, modules: dict[str, Any], new_module: torch.nn.Module

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_server_prefix(server: Any) -> str:
     """Return the prefix for a server.

@@ -1,3 +1,4 @@
+import os
 
 def test_pickle(method, kwargs):
     Method = getattr(stats.sampling, method)

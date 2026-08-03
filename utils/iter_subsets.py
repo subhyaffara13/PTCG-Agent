@@ -1,3 +1,4 @@
+import itertools
 
 def iter_subsets(s: Sequence) -> Iterable[tuple]:
   """Return an iterator over all subsets of a sequence s"""

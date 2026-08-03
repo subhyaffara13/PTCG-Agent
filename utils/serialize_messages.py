@@ -1,3 +1,4 @@
+import json
 
 def serialize_messages(messages: Sequence[object]) -> str | None:
     """Round-trip a sequence of message dicts through ``stringify_message``."""

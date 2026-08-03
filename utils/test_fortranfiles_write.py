@@ -1,3 +1,4 @@
+import re
 
 def test_fortranfiles_write():
     for filename in iglob(path.join(DATA_PATH, "fortran-*-*x*x*.dat")):

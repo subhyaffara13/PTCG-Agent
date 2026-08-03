@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def transfer_arrays_to_host(
     arrays: Sequence[jax.Array],

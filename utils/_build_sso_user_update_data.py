@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _build_sso_user_update_data(
     result: Optional[Union["CustomOpenID", OpenID, dict]],

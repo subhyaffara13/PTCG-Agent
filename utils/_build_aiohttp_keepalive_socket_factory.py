@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Tuple
 
 def _build_aiohttp_keepalive_socket_factory() -> (
     Optional[Callable[[Tuple[Any, ...]], socket.socket]]

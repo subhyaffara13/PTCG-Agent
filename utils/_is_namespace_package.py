@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _is_namespace_package(path: Path, src_extensions: frozenset[str]) -> bool:
     if not _is_package(path):

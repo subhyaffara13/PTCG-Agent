@@ -1,3 +1,4 @@
+import logging
 
 def _delete_checkpoints(
     manager: p2p_checkpoint_manager.CheckpointManager,

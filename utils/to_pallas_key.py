@@ -1,3 +1,4 @@
+import functools
 
 def to_pallas_key(key: jax.Array) -> jax.Array:
   """Helper function for converting non-Pallas PRNG keys into Pallas keys."""

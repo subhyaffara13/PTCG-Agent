@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _filter_reserved_headers(
     agent_extra_headers: Optional[Mapping[str, str]],

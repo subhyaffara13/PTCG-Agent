@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _batch_cost_calculator(
     file_content_dictionary: List[dict],

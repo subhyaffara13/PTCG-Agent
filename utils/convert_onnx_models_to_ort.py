@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def convert_onnx_models_to_ort(
     model_path_or_dir: pathlib.Path,

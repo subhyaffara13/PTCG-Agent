@@ -1,3 +1,5 @@
+import math
+
 
 def calculate_gain(
     nonlinearity: _NonlinearityType, param: int | float | None = None

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_best_invocation_for_this_pip() -> str:
     """Try to figure out the best way to invoke pip in the current environment."""

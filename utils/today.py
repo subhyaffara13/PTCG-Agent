@@ -1,3 +1,4 @@
+import time
 
 def today(tzinfo=None):
     """

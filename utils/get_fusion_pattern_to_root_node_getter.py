@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_fusion_pattern_to_root_node_getter(
     backend_config: BackendConfig,

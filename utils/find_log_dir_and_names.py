@@ -1,3 +1,5 @@
+import os
+import sys
 
 def find_log_dir_and_names(program_name=None, log_dir=None):
   """Computes the directory and filename prefix for log file.

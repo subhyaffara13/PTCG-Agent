@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def get_budget_window_start(window: Any) -> Optional[datetime]:
     window_dict = _coerce_window(window)

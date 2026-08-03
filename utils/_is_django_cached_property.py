@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_django_cached_property(runtime: Any) -> bool:  # pragma: no cover
     # This is a special case for

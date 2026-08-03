@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _cached_get_model_info_helper(
     model: str,

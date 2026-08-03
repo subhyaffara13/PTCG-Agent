@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def _get_status_fields(
     status: StandardLoggingPayloadStatus,

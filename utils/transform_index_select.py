@@ -1,3 +1,4 @@
+import copy
 
 def transform_index_select(
     constraint: Constraint, counter: int

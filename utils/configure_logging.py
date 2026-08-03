@@ -1,3 +1,10 @@
+import sys
+import logging
+
+LOG = logging.getLogger("flake8")
+LOG_FORMAT = "%(name)s: %(message)s"
+_VERBOSITY_TO_LOG_LEVEL = {1: logging.WARNING, 2: logging.INFO, 3: logging.DEBUG}
+
 
 def configure_logging(
     verbosity: int,
@@ -34,4 +41,3 @@ def configure_logging(
     LOG.debug(
         "Added a %s logging handler to logger root at %s", filename, __name__
     )
-

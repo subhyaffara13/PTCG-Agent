@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def compute_next_policy(infostates: List[InfostateNode],
                         cfr_plus: bool = False) -> None:

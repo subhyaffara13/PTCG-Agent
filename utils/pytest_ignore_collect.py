@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pytest_ignore_collect(collection_path: Path, config: Config) -> bool | None:
     """Return ``True`` to ignore this path for collection.

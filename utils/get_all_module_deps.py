@@ -1,3 +1,4 @@
+import sys
 
 def get_all_module_deps() -> dict[str, _ModuleDeps]:
   """Construct the graph of the imported nodes."""

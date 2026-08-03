@@ -1,3 +1,4 @@
+import re
 
 def test_append_with_strings2(temp_hdfstore):
     def check_col(key, name, size):

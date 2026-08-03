@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _is_range(r):
     """A range is defined as (symbol, start, end). start and end should

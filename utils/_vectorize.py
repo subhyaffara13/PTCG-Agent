@@ -1,3 +1,5 @@
+import math
+
 
 def _vectorize(xp):
     # xp-compatible version of np.vectorize

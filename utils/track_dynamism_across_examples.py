@@ -1,3 +1,4 @@
+from typing import Any
 
 def track_dynamism_across_examples(
     example_inputs: list[Any],

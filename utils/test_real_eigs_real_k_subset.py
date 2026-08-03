@@ -1,3 +1,4 @@
+import itertools
 
 def test_real_eigs_real_k_subset():
     rng = np.random.default_rng(2)

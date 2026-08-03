@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_gcp_project(
     data: Mapping[str, Any], config: tiering_service_pb2.ServerConfig

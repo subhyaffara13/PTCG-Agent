@@ -1,3 +1,4 @@
+import os
 
 def subst_vars(s, local_vars: Mapping[str, object]) -> str:
     """

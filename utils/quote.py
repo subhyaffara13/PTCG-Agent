@@ -1,3 +1,4 @@
+import re
 
 def quote(string: str, safe: str) -> str:
     """

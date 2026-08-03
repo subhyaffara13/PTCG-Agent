@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def _get_entrypoint_name(entrypoint: Callable | str | None, args: list[Any]) -> str:
     """Retrieve entrypoint name with the rule:

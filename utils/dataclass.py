@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any, Callable, Optional, Union
 
 def dataclass(clz: _T, **kwargs) -> _T:
   ...

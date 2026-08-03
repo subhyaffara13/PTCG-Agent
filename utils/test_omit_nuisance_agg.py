@@ -1,3 +1,4 @@
+import re
 
 def test_omit_nuisance_agg(df, agg_function, numeric_only, using_infer_string):
     # GH 38774, GH 38815

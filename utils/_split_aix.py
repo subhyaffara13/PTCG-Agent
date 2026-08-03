@@ -1,3 +1,4 @@
+import os
 
 def _split_aix(cmd):
     """

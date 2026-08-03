@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_not_both_none(first: Any, second: Any) -> None:
   """Checks that at least one of the arguments is not `None`.

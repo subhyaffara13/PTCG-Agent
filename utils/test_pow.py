@@ -1,3 +1,4 @@
+import random
 
 def test_pow():
     if not np:

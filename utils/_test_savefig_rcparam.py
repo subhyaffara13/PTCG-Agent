@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _test_savefig_rcparam():
     tmp_path = Path(os.environ["TEST_SAVEFIG_PATH"])

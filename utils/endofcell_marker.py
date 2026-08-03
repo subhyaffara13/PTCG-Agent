@@ -1,3 +1,4 @@
+import re
 
 def endofcell_marker(source, comment):
     """Issues #31 #38:  does the cell contain a blank line? In that case

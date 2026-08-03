@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_rng_sync_internal(
     generator: torch.Generator, group: dist.ProcessGroup

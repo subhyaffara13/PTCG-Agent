@@ -1,3 +1,4 @@
+import os
 
 def get_cuda_module_loading_config():
     if TORCH_AVAILABLE and torch.cuda.is_available():

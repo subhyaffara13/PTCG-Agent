@@ -1,3 +1,4 @@
+import time
 
 def benchmark_step(env: gymnasium.Env, target_duration: int = 5, seed=None) -> float:
     """A benchmark to measure the runtime performance of step for an environment.

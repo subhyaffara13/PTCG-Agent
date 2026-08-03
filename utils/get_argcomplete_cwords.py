@@ -1,3 +1,4 @@
+import os
 
 def get_argcomplete_cwords() -> t.Optional[t.List[str]]:
     """Get current words prior to completion point

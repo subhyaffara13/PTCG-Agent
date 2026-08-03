@@ -1,3 +1,4 @@
+import copy
 
 def test_shared_ptr_from_this_and_references():
     s = m.SharedFromThisRef()

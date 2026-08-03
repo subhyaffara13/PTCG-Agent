@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def instrument_fastapi_app(app: Any) -> None:
     """Attach OTel server-span instrumentation to the proxy FastAPI app.

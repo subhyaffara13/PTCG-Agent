@@ -1,3 +1,5 @@
+import math
+
 
 def test_SeriesApprox_trivial():
     x, z = symbols('x z')

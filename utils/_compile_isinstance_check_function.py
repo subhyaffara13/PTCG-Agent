@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compile_isinstance_check_function(member: LiteralString, function_name: LiteralString) -> FunctionType:
     """Create a function checking that the function is an instance of the typing `member`.

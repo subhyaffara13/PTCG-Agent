@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def format_decisions(dec_file: Path) -> str:
     content = dec_file.read_text(encoding="utf-8")

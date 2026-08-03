@@ -1,3 +1,4 @@
+from typing import Callable
 
 def accumulate(binop, seq, initial=no_default):
     """ Repeatedly apply binary function to a sequence, accumulating results

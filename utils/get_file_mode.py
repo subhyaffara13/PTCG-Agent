@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_file_mode(fname: str) -> int:
     """Retrieves the file mode corresponding to fname in a filesystem-tolerant manner.

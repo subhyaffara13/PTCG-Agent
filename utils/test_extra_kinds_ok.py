@@ -1,3 +1,4 @@
+import sys
 
 def test_extra_kinds_ok(monkeypatch, restore_backend, dummy_backend):
     # https://github.com/pandas-dev/pandas/pull/28647

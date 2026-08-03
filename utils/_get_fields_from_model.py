@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_fields_from_model(model_class: Type[BaseModel]) -> Dict[str, Any]:
     """

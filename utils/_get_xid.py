@@ -1,3 +1,5 @@
+import logging
+import time
 
 def _get_xid() -> int:
   """Returns the XID for this run."""

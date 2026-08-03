@@ -1,3 +1,5 @@
+import json
+from typing import Dict, List
 
 def _handle_invalid_parallel_tool_calls(
     tool_calls: List[ChatCompletionMessageToolCall],

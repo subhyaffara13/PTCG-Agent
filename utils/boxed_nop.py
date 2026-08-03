@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def boxed_nop(
     fx_g: torch.fx.GraphModule, example_inputs: list[torch.Tensor]

@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def find_contraction(
     positions: Collection[int],

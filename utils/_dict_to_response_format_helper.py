@@ -1,3 +1,5 @@
+import copy
+from typing import Optional
 
 def _dict_to_response_format_helper(
     response_format: dict, ref_template: Optional[str] = None

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_SeqPer():
     s = SeqPer((1, n, 3), (x, 0, 5))

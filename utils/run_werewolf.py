@@ -1,3 +1,5 @@
+import os
+import time
 
 def run_werewolf(output_dir, base_name, config, agents, debug):
     """

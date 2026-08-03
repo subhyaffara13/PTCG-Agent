@@ -1,3 +1,4 @@
+from typing import Any
 
 def _find_match(
     str_list: dict[str, Any] | list[str],

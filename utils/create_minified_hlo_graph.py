@@ -1,3 +1,4 @@
+import os
 
 def create_minified_hlo_graph(
     minified_fx_graph: fx.GraphModule, inputs: Sequence[torch.Tensor]

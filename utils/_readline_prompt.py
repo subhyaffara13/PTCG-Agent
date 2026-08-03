@@ -1,3 +1,4 @@
+import sys
 
 def _readline_prompt(func: t.Callable[[str], str], text: str, err: bool) -> str:
     """Call a prompt function, passing the full prompt on non-Windows so

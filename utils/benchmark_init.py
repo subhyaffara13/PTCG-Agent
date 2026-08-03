@@ -1,3 +1,5 @@
+import time
+from typing import Callable
 
 def benchmark_init(
     env_lambda: Callable[[], gymnasium.Env], target_duration: int = 5, seed=None

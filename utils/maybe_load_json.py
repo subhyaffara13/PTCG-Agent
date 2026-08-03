@@ -1,3 +1,5 @@
+import json
+import os
 
 def maybe_load_json(filename):
     if os.path.isfile(filename):

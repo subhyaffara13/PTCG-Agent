@@ -1,3 +1,4 @@
+import subprocess
 
 def check_mingw_win32_flavor(compiler: str) -> str:
     """

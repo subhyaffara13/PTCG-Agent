@@ -1,3 +1,4 @@
+from typing import Optional
 
 def schedule_free(
     base_optimizer: base.GradientTransformation,

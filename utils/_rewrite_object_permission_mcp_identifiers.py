@@ -1,3 +1,4 @@
+from typing import Dict, Optional, Set
 
 def _rewrite_object_permission_mcp_identifiers(
     object_permission: Optional[dict],

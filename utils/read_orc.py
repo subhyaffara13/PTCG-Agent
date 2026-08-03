@@ -1,3 +1,4 @@
+from typing import Any
 
 def read_orc(
     path: FilePath | ReadBuffer[bytes],

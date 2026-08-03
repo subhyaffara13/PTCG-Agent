@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_field_title_generator_to_field_info(
     title_generator: Callable[[str, FieldInfo], str],

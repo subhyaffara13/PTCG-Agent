@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple
 
 def cluster_pairs_by_class2_coverage_custom_cost(
     font: TTFont,

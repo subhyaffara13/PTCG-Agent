@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def init_once_fakemode(fn: Callable[..., Any]) -> Callable[..., Any]:
     """Wrapper around lazy init functions in fx_passes/"""

@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def validate_anthropic_api_metadata(metadata: Optional[Dict] = None) -> Optional[Dict]:
     """

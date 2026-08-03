@@ -1,3 +1,4 @@
+import functools
 
 def ragged_paged_attention(
     q: jax.Array,  # [max_num_batched_tokens, num_q_heads, head_dim]

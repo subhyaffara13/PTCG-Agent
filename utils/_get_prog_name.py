@@ -1,3 +1,4 @@
+import os
 
 def _get_prog_name(argv: Sequence[str]) -> str:
     """Determine the CLI program name from the argument vector.

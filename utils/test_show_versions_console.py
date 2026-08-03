@@ -1,3 +1,4 @@
+import re
 
 def test_show_versions_console(capsys):
     # gh-32041

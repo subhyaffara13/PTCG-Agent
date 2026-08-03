@@ -1,3 +1,4 @@
+import random
 
 def _modgcd_multivariate_p(f, g, p, degbound, contbound):
     r"""

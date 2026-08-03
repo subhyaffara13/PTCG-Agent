@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_tickedstroke(text_placeholders):
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4))

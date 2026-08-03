@@ -1,3 +1,4 @@
+import time
 
 def compute_regret_policy(game,
                           policy,

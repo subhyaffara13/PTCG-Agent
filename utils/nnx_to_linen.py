@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def nnx_to_linen(
     model_class: nnx.Module,

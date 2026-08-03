@@ -1,3 +1,4 @@
+import pathlib
 
 def get_pandas_objects(
     module_name: str, recurse: bool

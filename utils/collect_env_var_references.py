@@ -1,3 +1,4 @@
+from typing import Set
 
 def collect_env_var_references(*, strings: Iterable[str]) -> Set[str]:
     """Union of every ``${NAME}`` reference across a collection of strings."""

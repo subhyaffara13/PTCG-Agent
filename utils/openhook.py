@@ -1,3 +1,4 @@
+import os
 
 def openhook(filename, mode):
     """Ensures that filename is opened with correct encoding parameter.

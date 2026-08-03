@@ -1,3 +1,4 @@
+import random
 
 def test_reflection_coeffs():
     # check that the partial solutions are given by the reflection

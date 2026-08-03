@@ -1,3 +1,4 @@
+import random
 
 def test_array_permutedims():
     sa = symbols('a0:144')

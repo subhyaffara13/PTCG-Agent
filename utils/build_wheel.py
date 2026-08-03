@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def build_wheel(extra_file_defs=None, **kwargs):
     file_defs = {

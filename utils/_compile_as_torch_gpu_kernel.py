@@ -1,3 +1,4 @@
+import functools
 
 def _compile_as_torch_gpu_kernel(module_asm: bytes):
   try:

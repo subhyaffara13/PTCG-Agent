@@ -1,3 +1,4 @@
+import sys
 
 def _is_match(modules, node, pattern, max_uses=sys.maxsize):
     """Matches a node in fx against a pattern"""

@@ -1,3 +1,4 @@
+import itertools
 
 def _register_qlinear_binary_fusion():
     r"""

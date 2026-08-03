@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def _mk_tmp(request: FixtureRequest, factory: TempPathFactory) -> Path:
     name = request.node.name

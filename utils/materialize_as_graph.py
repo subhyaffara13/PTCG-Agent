@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def materialize_as_graph(
     fn: Callable,

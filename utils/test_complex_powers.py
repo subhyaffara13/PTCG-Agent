@@ -1,3 +1,4 @@
+import random
 
 def test_complex_powers():
     for dps in [15, 30, 100]:

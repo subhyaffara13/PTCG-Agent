@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _build_backend():
     """Find and load the build backend"""

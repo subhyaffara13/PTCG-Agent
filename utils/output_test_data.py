@@ -1,3 +1,4 @@
+import os
 
 def output_test_data(directory: str, inputs: dict[str, np.ndarray]):
     """Output input tensors of test data to a directory

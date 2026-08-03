@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_save(
     id: str, driver: Callable[[Image, IO[bytes], str | bytes], None]

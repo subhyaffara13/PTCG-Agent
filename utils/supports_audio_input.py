@@ -1,3 +1,4 @@
+from typing import Optional
 
 def supports_audio_input(model: str, custom_llm_provider: Optional[str] = None) -> bool:
     """Check if a given model supports audio input in a chat completion call"""

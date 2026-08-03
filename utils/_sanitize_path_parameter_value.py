@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sanitize_path_parameter_value(param_value: Any, param_name: str) -> str:
     """Ensure path params cannot introduce directory traversal."""

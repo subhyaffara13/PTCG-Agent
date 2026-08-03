@@ -1,3 +1,4 @@
+import sys
 
 def _analyze_comprehension(tx: InstructionTranslatorBase) -> ComprehensionAnalysis:
     """Analyze comprehension bytecode to determine result handling pattern."""

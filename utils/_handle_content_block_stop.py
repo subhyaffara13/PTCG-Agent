@@ -1,3 +1,5 @@
+import json
+from typing import Dict
 
 def _handle_content_block_stop(data: Dict, content_blocks: Dict[int, Dict]) -> None:
     idx = data.get("index", 0)

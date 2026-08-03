@@ -1,3 +1,4 @@
+import os
 
 def fd_id(fd):
     # Returns a tuple which uniquely identifies a file descriptor. In Mac OS,

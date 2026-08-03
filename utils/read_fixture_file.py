@@ -1,3 +1,6 @@
+from typing import Any
+from pathlib import Path
+
 
 def read_fixture_file(path: str | Path) -> list[list[Any]]:
     text = Path(path).read_text(encoding="utf-8")

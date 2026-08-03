@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _append_query_params(url: str, params: Dict[str, str]) -> str:
     parsed = urlparse(url)

@@ -1,3 +1,5 @@
+import itertools
+import os
 
 def build_sync_jupytext_contents_manager_class(base_contents_manager_class):
     """

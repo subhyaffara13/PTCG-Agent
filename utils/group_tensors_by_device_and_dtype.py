@@ -1,3 +1,4 @@
+from typing import Any
 
 def group_tensors_by_device_and_dtype(
     tensorlistlist: list[list[torch.Tensor | None]], with_indices: bool = False

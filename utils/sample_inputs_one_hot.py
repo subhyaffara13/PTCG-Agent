@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_one_hot(op_info, device, dtype, requires_grad, **kwargs):
     def make_input(shape, *, low, high):

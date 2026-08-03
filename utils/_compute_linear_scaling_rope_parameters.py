@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _compute_linear_scaling_rope_parameters(
     config: Optional["PreTrainedConfig"] = None,

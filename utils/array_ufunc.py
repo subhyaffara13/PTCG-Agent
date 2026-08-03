@@ -1,3 +1,4 @@
+from typing import Any
 
 def array_ufunc(self, ufunc: np.ufunc, method: str, *inputs: Any, **kwargs: Any):
     """

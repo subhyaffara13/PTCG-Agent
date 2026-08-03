@@ -1,3 +1,4 @@
+from typing import Any
 
 def _make_graph_module(
     *args: Any, graph_module_cls: type[GraphModule] | None = None, **kwargs: Any

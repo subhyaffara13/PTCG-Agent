@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_is_contig_ops() -> list[AHOperation]:
     def mat1_is_contig_fn(data: Any) -> bool:

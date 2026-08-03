@@ -1,3 +1,5 @@
+import math
+
 
 def divide_shape_sizes(s1: Shape, s2: Shape) -> DimSize:
   """Returns an integer "i" s.t., i * size(s2) == size(s1).

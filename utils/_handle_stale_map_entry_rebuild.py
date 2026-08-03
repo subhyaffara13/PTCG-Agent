@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _handle_stale_map_entry_rebuild(
     potential_key_lower: str,

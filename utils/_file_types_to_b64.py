@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _file_types_to_b64(image: Optional[FileTypes]) -> str:
     """Encode OpenAI image input to base64 string for Nova Canvas."""

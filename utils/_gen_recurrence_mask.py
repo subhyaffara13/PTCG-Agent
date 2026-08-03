@@ -1,3 +1,4 @@
+from typing import Any
 
 def _gen_recurrence_mask(
     l_max: int, is_normalized: bool, dtype: Any

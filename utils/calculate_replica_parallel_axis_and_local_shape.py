@@ -1,3 +1,4 @@
+from typing import Optional
 
 def calculate_replica_parallel_axis_and_local_shape(
     arr: jax.Array, max_replicas_for_replica_parallel: Optional[int]

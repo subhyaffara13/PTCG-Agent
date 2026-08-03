@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_lazy_module(mod: Any) -> bool:
     return isinstance(mod, LazyModuleMixin)

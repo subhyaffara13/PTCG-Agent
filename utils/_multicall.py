@@ -1,3 +1,4 @@
+import re
 
 def _multicall(
     hook_name: str,

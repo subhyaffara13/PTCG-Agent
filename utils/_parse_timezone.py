@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _parse_timezone(value: Optional[str], error: Type[Exception]) -> Union[None, int, timezone]:
     if value == 'Z':

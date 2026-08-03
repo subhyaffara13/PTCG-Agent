@@ -1,3 +1,4 @@
+from typing import Any
 
 def lattice_result_type(*args: Any) -> tuple[DType, bool]:
   dtypes, weak_types = zip(*(_dtype_and_weaktype(arg) for arg in args))

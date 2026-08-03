@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_allowed_to_make_key_request(
     user_api_key_dict: UserAPIKeyAuth,

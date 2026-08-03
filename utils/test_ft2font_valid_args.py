@@ -1,3 +1,4 @@
+import os
 
 def test_ft2font_valid_args():
     class PathLikeClass:

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def apply_class_attr_hook(
     mx: MemberContext, hook: Callable[[AttributeContext], Type] | None, result: Type

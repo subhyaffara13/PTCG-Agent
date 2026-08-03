@@ -1,3 +1,4 @@
+import os
 
 def get_win_folder(csidl_name: str) -> str:
     """Get a Windows folder path, checking for ``WIN_PD_OVERRIDE_*`` environment variable overrides first.

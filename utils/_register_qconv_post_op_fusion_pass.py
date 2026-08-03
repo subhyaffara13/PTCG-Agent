@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_qconv_post_op_fusion_pass(
     pattern,

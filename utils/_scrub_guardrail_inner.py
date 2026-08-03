@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _scrub_guardrail_inner(inner: Dict[str, Any]) -> None:
     """Strip remote-URL entries from a guardrail's ``callbacks`` list

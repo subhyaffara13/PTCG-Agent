@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _parse_completion_tokens_details(usage: Usage) -> CompletionTokensDetailsResult:
     audio_tokens = (

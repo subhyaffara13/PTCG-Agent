@@ -1,3 +1,4 @@
+import os
 
 def _get_user_media_dir(env_var: str, fallback_tilde_path: str) -> str:
     if media_dir := _get_user_dirs_folder(env_var):

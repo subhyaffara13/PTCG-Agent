@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _find_virtual_namespaces(pkg_roots: dict[str, str]) -> Iterator[str]:
     """By carefully designing ``package_dir``, it is possible to implement the logical

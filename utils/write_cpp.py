@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def write_cpp(cpp_path: str, upgrader_dict: list[dict[str, Any]]) -> None:
     upgrader_bytecode_function_to_index_map = (

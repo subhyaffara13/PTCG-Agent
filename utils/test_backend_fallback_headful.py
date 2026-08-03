@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_backend_fallback_headful(tmp_path):
     if parse_version(pytest.__version__) >= parse_version('8.2.0'):

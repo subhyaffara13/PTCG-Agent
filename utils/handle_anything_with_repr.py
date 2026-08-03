@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_anything_with_repr(
     node: Any,

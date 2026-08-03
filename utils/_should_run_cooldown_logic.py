@@ -1,3 +1,6 @@
+from typing import Any, Optional, Union
+import math
+
 
 def _should_run_cooldown_logic(
     litellm_router_instance: LitellmRouter,

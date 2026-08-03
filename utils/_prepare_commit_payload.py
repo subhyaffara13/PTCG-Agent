@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _prepare_commit_payload(
     operations: Iterable[CommitOperation],

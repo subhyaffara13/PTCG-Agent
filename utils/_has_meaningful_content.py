@@ -1,3 +1,4 @@
+from typing import Any
 
 def _has_meaningful_content(value: Any) -> bool:
     """

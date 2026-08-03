@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _enable_all_extensions(run: Run, value: str | None) -> None:
     """Enable all extensions."""

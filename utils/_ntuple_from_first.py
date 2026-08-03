@@ -1,3 +1,4 @@
+import itertools
 
 def _ntuple_from_first(n):
     """Converts the argument to a tuple of size n

@@ -1,3 +1,4 @@
+import sys
 
 def _signals_enum() -> str:
     """Generates the source code for the Signals int enum."""

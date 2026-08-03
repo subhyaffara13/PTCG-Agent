@@ -1,3 +1,4 @@
+import sys
 
 def test_object_cleanup_on_read_error():
     sentinel = object()

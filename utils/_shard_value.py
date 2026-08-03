@@ -1,3 +1,5 @@
+import math
+
 
 def _shard_value(val: TfVal,
                  sd: xla_client.HloSharding | None, *,

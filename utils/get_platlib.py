@@ -1,3 +1,4 @@
+import pathlib
 
 def get_platlib() -> str:
     return get_python_lib(plat_specific=True)

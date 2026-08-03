@@ -1,3 +1,4 @@
+from typing import Callable
 
 def resolve_internal_import(module: ModuleType | None, chained_path: str) -> Callable | ModuleType | None:
     """

@@ -1,3 +1,5 @@
+import re
+import sys
 
 def test_lower_sig(capfd, hello_world_f77, monkeypatch):
     """Lowers cases in signature files by flag or when -h is present

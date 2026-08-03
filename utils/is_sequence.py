@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_sequence(seq):
     if isinstance(seq, str):

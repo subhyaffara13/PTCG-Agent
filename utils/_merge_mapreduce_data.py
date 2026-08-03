@@ -1,3 +1,4 @@
+from typing import Any
 
 def _merge_mapreduce_data(
     linter: PyLinter,

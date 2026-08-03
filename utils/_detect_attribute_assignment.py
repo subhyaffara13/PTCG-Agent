@@ -1,3 +1,4 @@
+from typing import Any
 
 def _detect_attribute_assignment(mod: torch.nn.Module) -> Generator[None, None, None]:
     # Do not allow assignment of tensor attributes during export unless

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_physical_tpu_mesh(jax_devices: Sequence[Any]) -> np.ndarray:
   r"""Rearrange TPU devices in a slice into a physical mesh.

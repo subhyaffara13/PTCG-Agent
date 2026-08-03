@@ -1,3 +1,5 @@
+import math
+
 
 def tukey(M, alpha=0.5, sym=True, *, xp=None, device=None):
     r"""Return a Tukey window, also known as a tapered cosine window.

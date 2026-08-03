@@ -1,3 +1,4 @@
+import sys
 
 def mark_adhoc_imported_modules(
     source: None | g3_utils.Source,

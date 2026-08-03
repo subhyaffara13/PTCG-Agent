@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def optimize_model_helper():
     parser = argparse.ArgumentParser(

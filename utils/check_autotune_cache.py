@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def check_autotune_cache(
     configs: list[Config], filename: str | None, inductor_meta: dict[str, Any]

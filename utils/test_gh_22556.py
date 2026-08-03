@@ -1,3 +1,4 @@
+import copy
 
 def test_gh_22556():
     source = np.ma.array([0, [0, 1, 2]], dtype=object)

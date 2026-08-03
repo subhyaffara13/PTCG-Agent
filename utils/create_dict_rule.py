@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def create_dict_rule(src: str, pos: Pos, out: Output) -> tuple[Pos, Key]:
     pos += 1  # Skip "["

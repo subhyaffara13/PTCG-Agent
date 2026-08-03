@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_8257():
     reals_plus_infinity = Union(Interval(-oo, oo), FiniteSet(oo))

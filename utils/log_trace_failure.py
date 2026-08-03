@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def log_trace_failure(search_fn: Callable[..., Any], e: RuntimeError) -> None:
     log.info(

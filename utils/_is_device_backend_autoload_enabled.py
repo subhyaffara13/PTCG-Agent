@@ -1,3 +1,4 @@
+import os
 
 def _is_device_backend_autoload_enabled() -> builtins.bool:
     """

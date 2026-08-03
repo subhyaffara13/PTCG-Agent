@@ -1,3 +1,4 @@
+import os
 
 def _import_module_from_library(module_name, path, is_python_module):
     filepath = os.path.join(path, f"{module_name}{LIB_EXT}")

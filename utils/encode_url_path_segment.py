@@ -1,3 +1,4 @@
+from typing import Any
 
 def encode_url_path_segment(value: Any, *, field_name: str = "path parameter") -> str:
     """Percent-encode one user-controlled URL path segment.

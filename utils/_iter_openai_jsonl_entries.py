@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict
 
 def _iter_openai_jsonl_entries(
     openai_file_content: FileTypes,

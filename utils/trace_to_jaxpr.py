@@ -1,3 +1,4 @@
+from typing import Callable
 
 def trace_to_jaxpr(
     fun: Callable,

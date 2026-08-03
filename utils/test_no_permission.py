@@ -1,3 +1,4 @@
+import os
 
 def test_no_permission(all_parsers, temp_file):
     # GH 23784

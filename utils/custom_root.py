@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def custom_root(f: Callable,
                 initial_guess: Any,

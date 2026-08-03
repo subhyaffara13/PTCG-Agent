@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def assert_metadata_eq(
     assert_eq: Callable[[object, object], None],

@@ -1,3 +1,4 @@
+import copy
 
 def aggregate_stats(
     model: torch.nn.Module,

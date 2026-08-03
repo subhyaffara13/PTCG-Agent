@@ -1,3 +1,4 @@
+from typing import Union
 
 def divide_to_patches(
     image: Union[np.ndarray, "torch.Tensor"], patch_size: int | tuple[int, int]

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _get_args_for_key(
     handler: CheckpointHandler, item_name: str

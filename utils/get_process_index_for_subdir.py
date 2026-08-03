@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def get_process_index_for_subdir(
     use_ocdbt: bool,

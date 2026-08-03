@@ -1,3 +1,5 @@
+import sys
+from typing import Callable
 
 def should_retry_after_invalid_input(
     func: Callable[_P, _ReturnValueT],

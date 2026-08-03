@@ -1,3 +1,4 @@
+from typing import Any
 
 def _all_elements_same(values: list[Any]) -> bool:
     if not values:

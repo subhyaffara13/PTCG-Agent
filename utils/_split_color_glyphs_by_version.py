@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _split_color_glyphs_by_version(
     colorGlyphs: _ColorGlyphsDict,

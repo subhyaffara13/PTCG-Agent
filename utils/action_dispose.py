@@ -1,3 +1,4 @@
+from typing import Any
 
 def action_dispose(args: Any) -> str:
     global cached_agent, disposed

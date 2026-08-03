@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict
 
 def make_typeddict_validator(
     typeddict_cls: Type['TypedDict'], config: Type['BaseConfig']  # type: ignore[valid-type]

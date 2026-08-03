@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def adjacent_tmp_file(path: str, **kwargs: Any) -> Generator[BinaryIO, None, None]:
     """Return a file-like object pointing to a tmp file next to path.

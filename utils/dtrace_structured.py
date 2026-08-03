@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dtrace_structured(
     name: str,

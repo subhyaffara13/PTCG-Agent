@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_indirect_offsets_from_indices(
     indices: Sequence[Any],

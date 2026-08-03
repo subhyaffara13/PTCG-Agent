@@ -1,3 +1,4 @@
+import itertools
 
 def _get_next_log_count_per_token(token):
   """Wrapper for _log_counter_per_token. Thread-safe.

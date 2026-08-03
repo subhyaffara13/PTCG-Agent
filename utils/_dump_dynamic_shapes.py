@@ -1,3 +1,4 @@
+from typing import Any
 
 def _dump_dynamic_shapes(
     dynamic_shapes: dict[str, Any] | tuple[Any] | list[Any] | None,

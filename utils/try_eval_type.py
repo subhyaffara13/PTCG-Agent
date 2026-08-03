@@ -1,3 +1,4 @@
+from typing import Any
 
 def try_eval_type(
     value: Any,

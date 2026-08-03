@@ -1,3 +1,4 @@
+import json
 
 def _treespec_to_json(treespec: TreeSpec) -> _TreeSpecSchema:
     if treespec.is_leaf():

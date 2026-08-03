@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional, Tuple
 
 def basic_auth_handler(
         url: str,

@@ -1,3 +1,4 @@
+import sys
 
 def spawn_threads_and_init_comms(
     func=None, timeout=TIMEOUT_DEFAULT, world_size=DEFAULT_WORLD_SIZE

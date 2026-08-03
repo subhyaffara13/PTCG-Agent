@@ -1,3 +1,4 @@
+from typing import Callable
 
 def violinplot(
     dataset: ArrayLike | Sequence[ArrayLike],

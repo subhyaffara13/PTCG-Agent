@@ -1,3 +1,6 @@
+import itertools
+import time
+from typing import Any
 
 def compile_frame(  # type: ignore[return]
     code: types.CodeType,

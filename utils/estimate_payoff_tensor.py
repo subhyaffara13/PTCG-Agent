@@ -1,3 +1,4 @@
+import itertools
 
 def estimate_payoff_tensor(game, rnd, num_trials=5):
   """Simulate a batch of dialogues and returns payoffs for each player."""

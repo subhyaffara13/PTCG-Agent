@@ -1,3 +1,4 @@
+import sys
 
 def test_memory_usage(index_or_series_memory_obj):
     obj = index_or_series_memory_obj

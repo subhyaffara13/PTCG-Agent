@@ -1,3 +1,4 @@
+import re
 
 def mpc_to_str(z, dps, **kwargs):
     re, im = z

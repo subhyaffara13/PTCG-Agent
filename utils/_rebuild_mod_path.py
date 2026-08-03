@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _rebuild_mod_path(orig_path, package_name, module: types.ModuleType) -> None:
     """

@@ -1,3 +1,4 @@
+import os
 
 def test_distutils_local_with_setuptools(venv):
     """

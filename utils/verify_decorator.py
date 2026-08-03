@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_decorator(
     stub: nodes.Decorator, runtime: MaybeMissing[Any], object_path: list[str]

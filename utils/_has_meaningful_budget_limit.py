@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _has_meaningful_budget_limit(budget_values: Dict[str, Any]) -> bool:
     """A budget is meaningful if at least one limit is actually set; an empty

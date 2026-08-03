@@ -1,3 +1,4 @@
+import sys
 
 def import_fresh_module(name: str, blocked: list[str]) -> ModuleType:
     # Keep track of modules saved for later restoration as well

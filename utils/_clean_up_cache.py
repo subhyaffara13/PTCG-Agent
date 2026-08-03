@@ -1,3 +1,4 @@
+import os
 
 def _clean_up_cache(module):
     cached = module.__file__.split('.', 1)[0] + '.pyc'

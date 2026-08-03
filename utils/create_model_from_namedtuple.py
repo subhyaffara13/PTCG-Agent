@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def create_model_from_namedtuple(namedtuple_cls: Type['NamedTuple'], **kwargs: Any) -> Type['BaseModel']:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _handle_match(
     guardrail: SemanticGuardrail,

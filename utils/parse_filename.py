@@ -1,3 +1,4 @@
+import os
 
 def parse_filename(fname):
     """Parse a notebook filename.

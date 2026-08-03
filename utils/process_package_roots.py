@@ -1,3 +1,4 @@
+import os
 
 def process_package_roots(
     fscache: FileSystemCache | None, parser: argparse.ArgumentParser, options: Options

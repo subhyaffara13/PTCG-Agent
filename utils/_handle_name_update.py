@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _handle_name_update(
     path: str, op_type: str, value: Any, scim_metadata: Dict[str, Any]

@@ -1,3 +1,6 @@
+import time
+from pathlib import Path
+
 
 def write_download_metadata(local_dir: Path, filename: str, commit_hash: str, etag: str) -> None:
     """Write metadata about a file in the local directory related to a download process.

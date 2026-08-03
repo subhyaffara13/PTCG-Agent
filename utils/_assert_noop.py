@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _assert_noop(*args,
                  custom_message: Optional[str] = None,

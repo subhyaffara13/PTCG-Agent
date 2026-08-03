@@ -1,3 +1,4 @@
+import os
 
 def test_read_write_files():
     # test round trip for example file

@@ -1,3 +1,4 @@
+import functools
 
 def method_cache(method, cache_wrapper=None):
     """

@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_duckdb_connection(
     token: str | bool | None,

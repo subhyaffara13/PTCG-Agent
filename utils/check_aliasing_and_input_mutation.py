@@ -1,3 +1,4 @@
+from typing import Optional
 
 def check_aliasing_and_input_mutation(
     subtracer: "SubgraphTracer",

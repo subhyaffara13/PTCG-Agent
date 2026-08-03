@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def legacy_windows_render(buffer: Iterable[Segment], term: LegacyWindowsTerm) -> None:
     """Makes appropriate Windows Console API calls based on the segments in the buffer.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_opaque_obj(guard: Any, value: Any) -> Any:
     opaque_info = get_opaque_obj_info(type(value))

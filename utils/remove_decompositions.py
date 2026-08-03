@@ -1,3 +1,4 @@
+from typing import Callable
 
 def remove_decompositions(
     decompositions: dict[torch._ops.OperatorBase, Callable],

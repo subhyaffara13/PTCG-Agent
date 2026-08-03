@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _configure_hlo_dump(output_directory: str):
   """Sets the XLA_FLAGS environment variable to enable HLO dumping."""

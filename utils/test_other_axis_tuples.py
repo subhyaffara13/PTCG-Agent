@@ -1,3 +1,4 @@
+import re
 
 def test_other_axis_tuples(axis):
     # Check that _axis_nan_policy_factory treats all `axis` tuples as expected

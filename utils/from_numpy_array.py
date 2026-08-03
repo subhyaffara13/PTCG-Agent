@@ -1,3 +1,4 @@
+import itertools
 
 def from_numpy_array(
     A, parallel_edges=False, create_using=None, edge_attr="weight", *, nodelist=None

@@ -1,3 +1,6 @@
+import itertools
+import json
+import re
 
 def _pprof_profile(
     profile: dict[tuple[xla_client.Traceback | None, core.Primitive], int],

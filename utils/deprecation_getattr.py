@@ -1,3 +1,4 @@
+import functools
 
 def deprecation_getattr(module, deprecations):
   def _getattr(name):

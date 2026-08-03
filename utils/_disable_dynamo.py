@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _disable_dynamo(
     fn: Callable[_P, _T], recursive: bool = True

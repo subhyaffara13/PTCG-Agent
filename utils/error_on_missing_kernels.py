@@ -1,3 +1,4 @@
+import re
 
 def error_on_missing_kernels(
     native_functions: Sequence[NativeFunction],

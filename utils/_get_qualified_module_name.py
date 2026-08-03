@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_qualified_module_name(cls: Any) -> str:
     if isinstance(cls, str):

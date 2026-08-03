@@ -1,3 +1,4 @@
+from typing import List
 
 def distributed_to_device_ids() -> List[List[int]]:
   if not is_distributed_to_device_ids_initialized():

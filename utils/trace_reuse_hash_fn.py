@@ -1,3 +1,4 @@
+from typing import Any
 
 def trace_reuse_hash_fn(
     tx: "InstructionTranslator",

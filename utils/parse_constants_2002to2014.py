@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def parse_constants_2002to2014(
     d: str, exact_func: Callable[[Any], Any]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_dim_name_mapping(
     dynamic_shapes: dict[str, Any] | tuple[Any] | list[Any] | None,

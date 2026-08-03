@@ -1,3 +1,4 @@
+import os
 
 def _parse_pip_syntax_editable(editable_req: str) -> tuple[str | None, str, set[str]]:
     url = editable_req

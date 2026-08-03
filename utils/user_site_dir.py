@@ -1,3 +1,5 @@
+import sys
+import time
 
 def user_site_dir(request):
     self = request.instance

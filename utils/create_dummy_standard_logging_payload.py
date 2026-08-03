@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def create_dummy_standard_logging_payload() -> StandardLoggingPayload:
     # First create the nested objects with proper typing

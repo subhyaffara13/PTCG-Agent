@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def vector_store_search_cost(
     model: Optional[str],

@@ -1,3 +1,4 @@
+import os
 
 def test_orc_reader_decimal(dirpath):
     # Only testing the first 10 rows of data

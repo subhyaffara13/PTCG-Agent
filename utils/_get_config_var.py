@@ -1,3 +1,4 @@
+from typing import Union
 
 def _get_config_var(name: str, warn: bool = False) -> int | str | None:
     value: int | str | None = sysconfig.get_config_var(name)

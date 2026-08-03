@@ -1,3 +1,4 @@
+import logging
 
 def set_signals(
     send_signals: Sequence[synchronization.HandlerAwaitableSignal],

@@ -1,3 +1,4 @@
+import itertools
 
 def _parse_legacy_records(thread_records):
     def _get_record_key(record):

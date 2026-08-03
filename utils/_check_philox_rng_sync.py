@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_philox_rng_sync(
     generator: torch.Generator, group: dist.ProcessGroup

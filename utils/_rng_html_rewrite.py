@@ -1,3 +1,4 @@
+import re
 
 def _rng_html_rewrite(func):
     """Rewrite the HTML rendering of ``np.random.default_rng``.

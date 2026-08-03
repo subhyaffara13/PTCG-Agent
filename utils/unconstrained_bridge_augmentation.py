@@ -1,3 +1,5 @@
+import math
+
 
 def unconstrained_bridge_augmentation(G):
     """Finds an optimal 2-edge-augmentation of G using the fewest edges.

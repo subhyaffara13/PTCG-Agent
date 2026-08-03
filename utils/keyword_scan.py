@@ -1,3 +1,4 @@
+from typing import Any
 
 def keyword_scan(trigger_lower: str, profiles: dict[str, Any]) -> tuple[str | None, float]:
     best_key, best_score = None, 0.0

@@ -1,3 +1,4 @@
+import functools
 
 def except_(*exceptions, replace=None, use=None):
     """

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _broadcast_to_and_flatten(
     tree: PyTree,

@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def _cost_per_token_custom_pricing_helper(
     prompt_tokens: float = 0,

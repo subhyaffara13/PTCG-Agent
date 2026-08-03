@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def build_collectives(
     all_entries: dict[int, list[dict[str, Any]]],

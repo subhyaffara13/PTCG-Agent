@@ -1,3 +1,5 @@
+import os
+from typing import List
 
 def prune_logs(log_dir: str = "logs", max_files: int = 1000) -> None:
     """

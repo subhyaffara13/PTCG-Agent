@@ -1,3 +1,4 @@
+from typing import Callable
 
 def fetch_sym_proxy(
     tracer: _ProxyTracer,

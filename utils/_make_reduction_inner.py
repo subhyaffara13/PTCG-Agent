@@ -1,3 +1,4 @@
+import itertools
 
 def _make_reduction_inner(
     x, *, axis, keepdims, dtype, override_return_dtype, reduction_type=None

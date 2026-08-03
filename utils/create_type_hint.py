@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_type_hint(x: object) -> object:
     """

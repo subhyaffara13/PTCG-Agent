@@ -1,3 +1,4 @@
+from typing import Callable
 
 def compile_times(repr: Literal["str"], aggregate: bool = False) -> str: ...
 

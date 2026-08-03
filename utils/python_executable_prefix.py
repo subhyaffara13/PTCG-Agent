@@ -1,3 +1,4 @@
+import sys
 
 def python_executable_prefix(v: str) -> list[str]:
     if sys.platform == "win32":

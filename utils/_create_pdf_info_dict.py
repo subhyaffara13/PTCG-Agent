@@ -1,3 +1,4 @@
+import os
 
 def _create_pdf_info_dict(backend, metadata):
     """

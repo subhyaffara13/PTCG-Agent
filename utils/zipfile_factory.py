@@ -1,3 +1,4 @@
+import os
 
 def zipfile_factory(file, *args, **kwargs):
     """

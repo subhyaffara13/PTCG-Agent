@@ -1,3 +1,4 @@
+import subprocess
 
 def marimo(*args: str):
     cmd = ["marimo"] + list(args)

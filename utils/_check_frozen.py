@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_frozen(model_cls: type[BaseModel], name: str, value: Any) -> None:
     if model_cls.model_config.get('frozen'):

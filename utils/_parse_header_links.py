@@ -1,3 +1,4 @@
+import re
 
 def _parse_header_links(value: str) -> list[dict[str, str]]:
     """

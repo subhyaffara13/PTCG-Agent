@@ -1,3 +1,4 @@
+import copy
 
 def _all_gather_dtensor(
     tensor: DTensor,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_json_schema_type(param_type: type) -> dict[str, str]:
     type_mapping = {

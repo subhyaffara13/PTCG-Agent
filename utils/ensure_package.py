@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def ensure_package(dir_path: Path):
     dir_path.mkdir(parents=True, exist_ok=True)

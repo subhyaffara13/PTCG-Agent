@@ -1,3 +1,4 @@
+import os
 
 def _prepare_debugging_info(test_info, info):
     """Combine the information about the test and the call information to a patched function/method within it."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def enter_freezing() -> Generator[Any, None, None]:
     """

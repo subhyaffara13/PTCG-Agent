@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_retreat_helper(gs: dict, target: str, CardRegistry: Any) -> None:
     # Check if status blocks retreat

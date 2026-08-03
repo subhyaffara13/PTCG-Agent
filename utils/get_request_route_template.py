@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_request_route_template(request: Request) -> Optional[str]:
     """

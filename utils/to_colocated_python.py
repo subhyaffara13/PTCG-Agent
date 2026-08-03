@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def to_colocated_python(input_tree: PyTree) -> PyTree:
   """Copies a pytree of arrays to colocated CPU devices."""

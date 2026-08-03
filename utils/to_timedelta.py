@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_timedelta(
     arg: str | float | timedelta,

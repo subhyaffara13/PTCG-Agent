@@ -1,3 +1,4 @@
+from typing import List, Union
 
 def _check_team_member_admin_add(
     member: Union[Member, List[Member]],

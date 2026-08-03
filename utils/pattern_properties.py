@@ -1,3 +1,4 @@
+import re
 
 def patternProperties(validator, patternProperties, instance, schema):
     if not validator.is_type(instance, "object"):

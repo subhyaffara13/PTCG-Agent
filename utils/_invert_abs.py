@@ -1,3 +1,4 @@
+from typing import Union
 
 def _invert_abs(f, g_ys, symbol):
     """Helper function for inverting absolute value functions.

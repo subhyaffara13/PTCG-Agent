@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_blockwise1xTILESIZE_scaling(
     sz: Any, tensor_sz: Any, tile_size: int, transpose: bool

@@ -1,3 +1,4 @@
+import sys
 
 def is_console_interactive() -> bool:
     """Is this console interactive?"""

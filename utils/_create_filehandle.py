@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _create_filehandle(name, mode, position, closed, open, strictio, fmode, fdata): # buffering=0
     # only pickles the handle, not the file contents... good? or StringIO(data)?

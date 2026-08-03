@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any
 
 def _librt_build_hash(experimental: bool, opt_level: str) -> str:
     """Compute hash for librt build, including sources and build environment."""

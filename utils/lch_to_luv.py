@@ -1,3 +1,5 @@
+import math
+
 
 def lch_to_luv(triple):
     L, C, H = triple

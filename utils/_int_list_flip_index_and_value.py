@@ -1,3 +1,4 @@
+from typing import List
 
 def _int_list_flip_index_and_value(int_list: List[int]):
   """Reverses indices and values of a list of integers.

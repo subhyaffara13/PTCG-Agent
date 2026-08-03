@@ -1,3 +1,4 @@
+from typing import Callable
 
 def null_safe(rule: Callable[[_T], _T | None]) -> Callable[[_T], _T]:
     """ Return original expr if rule returns None """

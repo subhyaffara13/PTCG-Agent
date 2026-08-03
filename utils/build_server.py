@@ -1,3 +1,4 @@
+import uuid
 
 def build_server(
     model_manager: ModelManager,

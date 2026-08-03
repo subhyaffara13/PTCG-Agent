@@ -1,3 +1,4 @@
+import os
 
 def _prepare(
     install_requires: _StrOrIter, extras_require: Mapping[str, _StrOrIter]

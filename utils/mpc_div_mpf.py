@@ -1,3 +1,4 @@
+import re
 
 def mpc_div_mpf(z, p, prec, rnd=round_fast):
     """Calculate z/p where p is real"""

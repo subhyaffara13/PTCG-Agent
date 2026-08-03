@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def read_fitness(path: str, key: str) -> float:
     try:

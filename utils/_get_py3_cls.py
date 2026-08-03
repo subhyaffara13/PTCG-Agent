@@ -1,3 +1,4 @@
+import sys
 
 def _get_py3_cls():
     """Python 3.3 hides the pure Python code but defusedxml requires it.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _deserialize_graph_module(
     forward, body: dict[Any, Any], graph_module_cls=None

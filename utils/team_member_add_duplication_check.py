@@ -1,3 +1,4 @@
+from typing import List
 
 def team_member_add_duplication_check(
     data: TeamMemberAddRequest,

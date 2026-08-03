@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_thought_signature_from_tool(
     tool: dict, model: Optional[str] = None

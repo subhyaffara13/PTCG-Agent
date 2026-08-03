@@ -1,3 +1,5 @@
+import itertools
+import re
 
 def make_compressed_re(
     word_list: Iterable[str],

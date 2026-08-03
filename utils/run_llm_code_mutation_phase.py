@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def run_llm_code_mutation_phase(meta_analyst, code_architect):
     logger.info("--- [LLM Meta-Learning Phase] ---")

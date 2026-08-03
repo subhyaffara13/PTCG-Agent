@@ -1,3 +1,4 @@
+import itertools
 
 def find_transitive_subgroups_of_S6(*targets, print_report=False):
     r"""

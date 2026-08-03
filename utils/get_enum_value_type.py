@@ -1,3 +1,4 @@
+from typing import List
 
 def get_enum_value_type(e: type[enum.Enum], loc):
     enum_values: List[enum.Enum] = list(e)

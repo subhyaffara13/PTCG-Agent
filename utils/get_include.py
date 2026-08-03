@@ -1,3 +1,4 @@
+import os
 
 def get_include(user: bool = False) -> str:  # noqa: ARG001
     """

@@ -1,3 +1,5 @@
+import logging
+import os
 
 def write_calibration_table(calibration_cache, dir="."):
     """

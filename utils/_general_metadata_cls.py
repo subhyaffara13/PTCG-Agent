@@ -1,3 +1,4 @@
+from typing import Any
 
 def _general_metadata_cls() -> type[BaseMetadata]:
     """Do it this way to avoid importing `annotated_types` at import time."""

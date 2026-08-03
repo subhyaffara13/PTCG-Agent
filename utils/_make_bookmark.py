@@ -1,3 +1,4 @@
+import re
 
 def _make_bookmark(s: str) -> str:
     """

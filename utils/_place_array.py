@@ -1,3 +1,4 @@
+import copy
 
 def _place_array(_arr, device, dlpack_device, copy):
   if device and dlpack_device != device:

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_solve_args():
     # equation container, issue 5113

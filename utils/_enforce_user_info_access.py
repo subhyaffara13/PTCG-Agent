@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _enforce_user_info_access(
     user_id: Optional[str], user_api_key_dict: UserAPIKeyAuth

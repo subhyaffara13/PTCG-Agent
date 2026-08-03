@@ -1,3 +1,4 @@
+import os
 
 def ValidateProtobufRuntimeVersion(
     gen_domain, gen_major, gen_minor, gen_patch, gen_suffix, location

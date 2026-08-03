@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_unbound_fn(method_or_fn: Callable[..., Any]) -> Callable[..., Any]:
   """Returns an unbound function from a method that is possibly bound.

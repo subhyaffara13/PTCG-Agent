@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def from_jax_sharding(jax_sharding) -> Optional[ShardingMetadata]:
   """Converts `jax.sharding.Sharding` to `ShardingMetadata`."""

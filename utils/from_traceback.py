@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_traceback(tb: Sequence[traceback.FrameSummary]) -> list[dict[str, Any]]:
     # dict naming convention here coincides with

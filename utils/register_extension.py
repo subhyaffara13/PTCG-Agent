@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_extension(id: str, extension: str) -> None:
     """

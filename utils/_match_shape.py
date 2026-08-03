@@ -1,3 +1,4 @@
+import random
 
 def _match_shape(
   path: tuple[Key, ...], scalar_key: jax.Array, target_shape: tuple[int, ...]

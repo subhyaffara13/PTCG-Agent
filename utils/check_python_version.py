@@ -1,3 +1,4 @@
+import sys
 
 def check_python_version(program: str) -> None:
     """Report issues with the Python used to run mypy, dmypy, or stubgen"""

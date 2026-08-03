@@ -1,3 +1,4 @@
+from typing import Any
 
 def aot_module(mod: nn.Module, *args: Any, **kwargs: Any) -> nn.Module:
     """

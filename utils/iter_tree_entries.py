@@ -1,3 +1,5 @@
+import os
+from typing import Callable, Optional
 
 def iter_tree_entries(
 	root: StrPath,

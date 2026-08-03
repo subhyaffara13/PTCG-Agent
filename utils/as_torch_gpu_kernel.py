@@ -1,3 +1,4 @@
+from typing import Union
 
 def as_torch_gpu_kernel(
     body,

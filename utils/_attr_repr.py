@@ -1,3 +1,4 @@
+from typing import Any
 
 def _attr_repr(value: Any):
   if callable(value) and (

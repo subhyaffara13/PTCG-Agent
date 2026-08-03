@@ -1,3 +1,4 @@
+import os
 
 def set_env(**kwargs):
   """Context manager to temporarily set/unset one or more environment variables.

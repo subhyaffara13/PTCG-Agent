@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_fake_args_kwargs(x: torch.fx.Node) -> tuple[bool, tuple[Any], dict[str, Any]]:
     """

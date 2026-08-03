@@ -1,3 +1,4 @@
+from typing import Callable
 
 def func_to_graphable(
     func: Callable[..., object],

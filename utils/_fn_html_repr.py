@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _fn_html_repr(fn: Callable[..., Any]) -> str:
   """Constructs the signature representation of a function."""

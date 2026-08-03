@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_tensor_base_attr_getter(value: Any) -> bool:
     return (

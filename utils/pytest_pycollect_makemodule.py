@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pytest_pycollect_makemodule(module_path: Path, parent) -> Module | None:
     """Return a :class:`pytest.Module` collector or None for the given path.

@@ -1,3 +1,4 @@
+import itertools
 
 def min_cost_perfect_bipartite_matching_bruteforce(G):
     n = len(G)

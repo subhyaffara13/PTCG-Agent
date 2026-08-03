@@ -1,3 +1,4 @@
+import functools
 
 def _both_exp_pow(func):
     """

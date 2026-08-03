@@ -1,3 +1,4 @@
+import re
 
 def character_backward_compatibility_hook(item, parents, result,
                                           *args, **kwargs):

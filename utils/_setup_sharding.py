@@ -1,3 +1,6 @@
+import itertools
+import os
+import sys
 
 def _setup_sharding(
     custom_loader: unittest.TestLoader | None = None,

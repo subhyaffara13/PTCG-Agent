@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_adagrad(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get Adagrad optimizer."""

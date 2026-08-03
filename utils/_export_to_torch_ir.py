@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _export_to_torch_ir(
     f: Callable,

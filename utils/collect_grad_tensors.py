@@ -1,3 +1,4 @@
+from typing import Any
 
 def collect_grad_tensors(output: Any) -> tuple[torch.Tensor, ...]:
     """

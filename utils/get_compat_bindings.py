@@ -1,3 +1,4 @@
+import os
 
 def get_compat_bindings() -> CallgrindModuleType:
     with LOCK:

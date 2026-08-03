@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _install_extension_from_github(
     *,

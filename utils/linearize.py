@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def linearize(
     func: Callable[..., Any], *primals: Any

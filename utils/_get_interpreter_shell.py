@@ -1,3 +1,4 @@
+import os
 
 def _get_interpreter_shell(proc_name, proc_args):
     """Get shell invoked via an interpreter.

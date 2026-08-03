@@ -1,3 +1,4 @@
+from typing import Optional
 
 def log_guardrail_information(func):
     """

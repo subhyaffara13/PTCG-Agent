@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_arg_info_from_tensor_fqn(model: nn.Module, tensor_fqn: str) -> dict[str, Any]:
     """

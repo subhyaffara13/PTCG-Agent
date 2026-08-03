@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_palette(
     im: Image.Image, palette: _Palette | None, info: dict[str, Any]

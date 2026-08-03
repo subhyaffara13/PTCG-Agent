@@ -1,3 +1,4 @@
+from typing import Any
 
 def unbox(tree: Any) -> Any:
   """Strips all AxisMetadata boxes from a PyTree."""

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_start_with_moveto():
     # Should be entirely clipped away to a single MOVETO

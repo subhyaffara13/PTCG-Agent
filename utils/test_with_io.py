@@ -1,3 +1,4 @@
+import sys
 
 def testWithIO(inp, out, f):
     """Calls the function `f` with ``sys.stdin`` changed to `inp`

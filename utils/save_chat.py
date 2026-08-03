@@ -1,3 +1,5 @@
+import json
+import os
 
 def save_chat(filename: str, chat: list[dict], settings: dict) -> str:
     """Saves the chat history to a file."""

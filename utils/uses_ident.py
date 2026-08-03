@@ -1,3 +1,4 @@
+import re
 
 def uses_ident(info: DifferentiabilityInfo | None, ident: str) -> bool:
     if info is None:

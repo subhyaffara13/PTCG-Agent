@@ -1,3 +1,4 @@
+import functools
 
 def _pad_mm_init(input_device: torch.device | None = None) -> None:
     from .joint_graph import patterns

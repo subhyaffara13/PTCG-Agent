@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_constant(node):
     return isinstance(node, ast.Constant) or _is_tuple_constant(node)

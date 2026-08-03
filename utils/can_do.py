@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def can_do(ap, bq, numerical=True, div=1, lowerplane=False):
     r = hyperexpand(hyper(ap, bq, z))

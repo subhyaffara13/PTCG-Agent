@@ -1,3 +1,5 @@
+import math
+
 
 def genz_malik_1980_f_5_random_args(rng, shape, xp):
     alphas = xp.asarray(rng.random(shape))

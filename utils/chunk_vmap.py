@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def chunk_vmap(
     func: Callable[_P, _R],

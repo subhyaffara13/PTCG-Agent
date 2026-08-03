@@ -1,3 +1,6 @@
+import logging
+import time
+from typing import Any
 
 def _compile(pattern, flags, ignore_unused, kwargs, cache_it):
     "Compiles a regular expression to a PatternObject."

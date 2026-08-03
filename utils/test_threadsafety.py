@@ -1,3 +1,4 @@
+import time
 
 def test_threadsafety():
     def callback(a, caller):

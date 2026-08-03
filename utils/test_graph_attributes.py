@@ -1,3 +1,4 @@
+import json
 
 def test_graph_attributes():
     G = nx.path_graph(4)

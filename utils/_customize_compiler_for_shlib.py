@@ -1,3 +1,4 @@
+import sys
 
 def _customize_compiler_for_shlib(compiler):
     if sys.platform == "darwin":

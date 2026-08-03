@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_xml_dom_element(
     doc: minidom.Document, name: str, value: Any

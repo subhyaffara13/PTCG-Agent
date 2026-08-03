@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_ndim(tensor_meta: Any) -> int:
     if not isinstance(tensor_meta, TensorMeta):

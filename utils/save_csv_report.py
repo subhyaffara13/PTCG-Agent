@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def save_csv_report(results: List[Dict], csv_file: str):
     """Saves a CSV report with rubric scores, MVP, and key metrics."""

@@ -1,3 +1,4 @@
+import logging
 
 def _add_data_doc(docstring, replace_names):
     """

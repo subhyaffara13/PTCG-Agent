@@ -1,3 +1,4 @@
+import re
 
 def _read_cert_file(cert_path):
     with open(cert_path, "rb") as cert_file:

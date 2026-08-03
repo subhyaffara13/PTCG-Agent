@@ -1,3 +1,4 @@
+from typing import Any
 
 def format_inputs_log(inputs: list[Any]) -> str:
     def format_item(i: int, inp: Any) -> str:

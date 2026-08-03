@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def Skip(self: JpegImageFile, marker: int) -> None:
     assert self.fp is not None

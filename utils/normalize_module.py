@@ -1,3 +1,4 @@
+from typing import Any
 
 def normalize_module(
     root: torch.nn.Module,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _check_jaxpr(
     ctx_factory: Callable[[], tuple[JaxprPpContext, JaxprPpSettings]],

@@ -1,3 +1,4 @@
+from typing import Dict
 
 def distro_release_info() -> Dict[str, str]:
     """

@@ -1,3 +1,4 @@
+import random
 
 def _compare_torch_relational(variables, expr, rng=lambda: random.randint(0, 10)):
     f = lambdify(variables, expr, 'torch')

@@ -1,3 +1,4 @@
+import logging
 
 def build_cpu_memory_monitor(logger_instance: logging.Logger | None = None) -> CPUMemoryMonitor:
     """Build and initialize a CPU memory monitor.

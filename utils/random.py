@@ -1,3 +1,4 @@
+from typing import Any
 
 def random(mode: str = "RGB") -> ImagePalette:
     from random import randint

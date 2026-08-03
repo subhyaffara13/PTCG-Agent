@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any, Dict, Optional
 
 def save(tensors: Dict[str, Array], metadata: Optional[Dict[str, str]] = None) -> bytes:
     """

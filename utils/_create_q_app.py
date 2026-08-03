@@ -1,3 +1,4 @@
+import sys
 
 def _create_qApp():
     app = QtWidgets.QApplication.instance()

@@ -1,3 +1,4 @@
+from typing import List
 
 def openai_messages_without_system(
     messages: List[AllMessageValues],

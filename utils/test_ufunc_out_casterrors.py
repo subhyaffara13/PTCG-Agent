@@ -1,3 +1,4 @@
+import sys
 
 def test_ufunc_out_casterrors():
     # Tests that casting errors are correctly reported and buffers are

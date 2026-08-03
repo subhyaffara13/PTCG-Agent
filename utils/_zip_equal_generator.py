@@ -1,3 +1,4 @@
+import itertools
 
 def _zip_equal_generator(iterables):
     for combo in zip_longest(*iterables, fillvalue=_marker):

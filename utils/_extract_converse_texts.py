@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _extract_converse_texts(
     body: dict,

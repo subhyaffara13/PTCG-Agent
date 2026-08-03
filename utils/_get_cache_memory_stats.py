@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict
 
 def _get_cache_memory_stats(
     user_api_key_cache, llm_router, proxy_logging_obj, redis_usage_cache

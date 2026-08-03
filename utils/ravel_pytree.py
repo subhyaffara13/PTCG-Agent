@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def ravel_pytree(pytree: Any) -> tuple[Array, Callable[[Array], Any]]:
   """Ravel (flatten) a pytree of arrays down to a 1D array.

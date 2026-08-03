@@ -1,3 +1,4 @@
+from typing import List, Tuple, Union
 
 def _dp_parse_out_single_term_ops(
     inputs: List[FrozenSet[int]], all_inds: Tuple[str, ...], ind_counts: CounterType[str]

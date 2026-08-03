@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_api_params(params: dict, model: Optional[str] = None) -> WatsonXAPIParams:
     """

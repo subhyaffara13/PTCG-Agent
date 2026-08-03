@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def handle_effect_tokens_fn(
     fn: Callable[..., Any],

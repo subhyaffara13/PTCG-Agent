@@ -1,3 +1,4 @@
+import re
 
 def test_expand_function():
     assert expand(x + y) == x + y

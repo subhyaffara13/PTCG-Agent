@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _str_or_none(value) -> Optional[str]:
     try:

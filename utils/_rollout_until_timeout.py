@@ -1,3 +1,5 @@
+import random
+import time
 
 def _rollout_until_timeout(game_name,
                            time_limit,

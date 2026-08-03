@@ -1,3 +1,4 @@
+import time
 
 def http_date(
     timestamp: datetime | date | int | float | struct_time | None = None,

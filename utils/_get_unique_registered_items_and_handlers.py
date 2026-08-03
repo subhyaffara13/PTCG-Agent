@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _get_unique_registered_items_and_handlers(
     registry: handler_registration.CheckpointHandlerRegistry,

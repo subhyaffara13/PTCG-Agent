@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_blockwise128x128_scaling(sz: Any, tensor_sz: Any) -> bool:
     return V.graph.sizevars.statically_known_equals(

@@ -1,3 +1,4 @@
+from typing import Any
 
 def enum(validator, enums, instance, schema):
     if all(not equal(each, instance) for each in enums):

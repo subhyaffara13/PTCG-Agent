@@ -1,3 +1,4 @@
+from typing import Any
 
 def node_arg_is_bias(node: Node, arg: Any) -> bool:
     """Returns if node arg is bias"""

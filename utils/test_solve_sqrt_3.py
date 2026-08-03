@@ -1,3 +1,4 @@
+import re
 
 def test_solve_sqrt_3():
     R = Symbol('R')

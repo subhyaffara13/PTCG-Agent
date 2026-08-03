@@ -1,3 +1,4 @@
+from typing import Any
 
 def DEFINE_alias(  # pylint: disable=invalid-name
     name: str,

@@ -1,3 +1,4 @@
+import functools
 
 def _avg_poolnd(
     x,

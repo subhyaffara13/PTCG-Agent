@@ -1,3 +1,4 @@
+import functools
 
 def make_wrapped(fn, ctxs):
     @functools.wraps(fn)

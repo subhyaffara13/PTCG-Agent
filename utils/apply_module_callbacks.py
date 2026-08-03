@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Optional
 
 def apply_module_callbacks(
     user_protocol: Optional[int],

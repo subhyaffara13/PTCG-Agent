@@ -1,3 +1,4 @@
+from typing import Callable
 
 def relabel_result(
     result: DataFrame | Series,

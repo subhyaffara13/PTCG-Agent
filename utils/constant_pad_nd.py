@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def constant_pad_nd(x, padding, fill_value=0):
     assert (len(padding) % 2) == 0

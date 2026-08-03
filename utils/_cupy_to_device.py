@@ -1,3 +1,4 @@
+from typing import Any
 
 def _cupy_to_device(
     x: cp.ndarray,

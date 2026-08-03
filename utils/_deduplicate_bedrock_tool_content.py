@@ -1,3 +1,4 @@
+from typing import List
 
 def _deduplicate_bedrock_tool_content(
     tool_content: List[BedrockContentBlock],

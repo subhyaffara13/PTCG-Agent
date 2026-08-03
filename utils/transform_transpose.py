@@ -1,3 +1,4 @@
+import copy
 
 def transform_transpose(constraint: Constraint, counter: int) -> tuple[Constraint, int]:
     """

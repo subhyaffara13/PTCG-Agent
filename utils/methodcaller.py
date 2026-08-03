@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def methodcaller(name: str, /, *args: Any, **kwargs: Any) -> Callable[[Any], Any]:
     if not isinstance(name, str):

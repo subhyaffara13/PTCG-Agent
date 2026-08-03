@@ -1,3 +1,4 @@
+import re
 
 def test_replace_compiled_regex_raises(any_string_dtype):
     # case and flags provided to str.replace will have no effect

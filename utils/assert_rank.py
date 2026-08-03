@@ -1,3 +1,4 @@
+from typing import Set, Union
 
 def assert_rank(
     inputs: Union[Scalar, Union[Array, Sequence[Array]]],

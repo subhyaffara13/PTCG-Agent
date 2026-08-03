@@ -1,3 +1,4 @@
+import re
 
 def _convert_output_args_doc(output_args_doc):
     """Convert output_args_doc to display properly."""

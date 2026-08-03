@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_reduce_poly_inequalities_real_interval():
     assert reduce_rational_inequalities(

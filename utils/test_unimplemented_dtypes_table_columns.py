@@ -1,3 +1,4 @@
+import re
 
 def test_unimplemented_dtypes_table_columns(temp_hdfstore):
     dtypes = [("date", datetime.date(2001, 1, 2))]

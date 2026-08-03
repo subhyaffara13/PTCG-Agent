@@ -1,3 +1,4 @@
+import re
 
 def has_test_name_tag(name: str, tag: str) -> bool:
     """Check if a test case name contains a tag token like ``_experimental``.

@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple, Union
 
 def _format_marker(
     marker: list[str] | MarkerAtom | str, first: bool | None = True

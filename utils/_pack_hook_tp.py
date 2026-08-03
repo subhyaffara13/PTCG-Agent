@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pack_hook_tp(mesh: DeviceMesh, input_reshard_dim: int, x: torch.Tensor) -> Any:  # noqa: D401
     """Hook function called after FWD to shard input."""

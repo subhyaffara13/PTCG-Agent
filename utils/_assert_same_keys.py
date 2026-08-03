@@ -1,3 +1,4 @@
+from typing import Any
 
 def _assert_same_keys(
     state_dict: dict[str, Any], process_group: dist.ProcessGroup | None = None

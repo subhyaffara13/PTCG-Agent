@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _usage_video_resolution_from_parameters(
     parameters: Dict[str, Any],

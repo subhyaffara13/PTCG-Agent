@@ -1,3 +1,4 @@
+from typing import Any, List, Optional, Tuple, Union
 
 def create_config_class(provider: SimpleProviderConfig):
     """Generate config class dynamically from JSON configuration"""

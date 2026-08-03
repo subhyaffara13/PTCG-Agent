@@ -1,3 +1,4 @@
+import sys
 
 def sys_executable_encodable():
     try:

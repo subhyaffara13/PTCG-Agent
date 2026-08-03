@@ -1,3 +1,4 @@
+import logging
 
 def set_logging_handler(
     name: str = "charset_normalizer",

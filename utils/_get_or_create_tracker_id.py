@@ -1,3 +1,4 @@
+import uuid
 
 def _get_or_create_tracker_id(class_def):
     with _DYNAMIC_CLASS_TRACKER_LOCK:

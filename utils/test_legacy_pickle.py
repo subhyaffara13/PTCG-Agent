@@ -1,3 +1,4 @@
+import os
 
 def test_legacy_pickle(version):
     # Pickling format was changes in 1.22.x and in 2.0.x

@@ -1,3 +1,5 @@
+import math
+
 
 def _check_divisibility(sharding, shape):
   mesh = sharding.mesh

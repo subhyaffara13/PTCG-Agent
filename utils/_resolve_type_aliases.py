@@ -1,3 +1,4 @@
+import sys
 
 def _resolve_type_aliases(field_type: typing.Any) -> typing.Any:
     # Recursively resolve PEP 695 (`type X = ...`) type aliases (Python

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_stdlib_dataclass(cls: type[Any], /) -> TypeIs[type[StandardDataclass]]:
     """Returns `True` if the class is a stdlib dataclass and *not* a Pydantic dataclass.

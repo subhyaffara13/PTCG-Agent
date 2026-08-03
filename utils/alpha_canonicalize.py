@@ -1,3 +1,4 @@
+from typing import Dict
 
 def alpha_canonicalize(equation: str) -> str:
     """Alpha convert an equation in an order-independent canonical way.

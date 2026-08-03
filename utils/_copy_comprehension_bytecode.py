@@ -1,3 +1,4 @@
+import copy
 
 def _copy_comprehension_bytecode(
     tx: InstructionTranslatorBase, start_ip: int, end_ip: int

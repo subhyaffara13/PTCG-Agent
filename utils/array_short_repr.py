@@ -1,3 +1,4 @@
+from typing import Any
 
 def array_short_repr(arr: NDArray[Any]) -> str:
     """Create a shortened string representation of a numpy array.

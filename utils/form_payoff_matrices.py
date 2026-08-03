@@ -1,3 +1,4 @@
+import itertools
 
 def form_payoff_matrices(game_results, num_checkpts):
   """Packages dictionary of game results into a payoff tensor.

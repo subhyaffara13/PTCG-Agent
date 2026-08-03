@@ -1,3 +1,4 @@
+from typing import Any
 
 def bytes_to_scalar(byte_list: list[int], dtype: torch.dtype, device: torch.device):
     dtype_to_ctype: dict[torch.dtype, Any] = {

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _get_pyvenv_cfg_lines() -> list[str] | None:
     """Reads {sys.prefix}/pyvenv.cfg and returns its contents as list of lines

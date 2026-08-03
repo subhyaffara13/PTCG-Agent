@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _process_batched_inputs(
     in_dims: in_dims_t, args: tuple[Any, ...], func: Callable[..., Any]

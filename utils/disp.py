@@ -1,3 +1,4 @@
+from typing import Any
 
 def disp(obj: Any, mode: str = '') -> None:
   """Display the object.

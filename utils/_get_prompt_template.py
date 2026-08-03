@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_prompt_template(
     prompt_spec: PromptSpec, base_prompt_id: str

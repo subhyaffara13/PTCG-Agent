@@ -1,3 +1,4 @@
+import os
 
 def all_tests_suite(project_dir=None):
     def get_suite():

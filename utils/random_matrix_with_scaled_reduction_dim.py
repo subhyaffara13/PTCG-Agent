@@ -1,3 +1,5 @@
+import math
+
 
 def random_matrix_with_scaled_reduction_dim(rows, columns, *batch_dims, **kwargs):
     """Return rectangular matrix or batches of rectangular matrices

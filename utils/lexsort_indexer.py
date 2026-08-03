@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def lexsort_indexer(
     keys: Sequence[ArrayLike | Index | Series],

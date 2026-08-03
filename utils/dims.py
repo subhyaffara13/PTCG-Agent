@@ -1,3 +1,4 @@
+import sys
 
 def dims(
     *names: str, min: int | None = None, max: int | None = None

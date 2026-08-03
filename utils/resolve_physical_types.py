@@ -1,3 +1,4 @@
+from typing import Any
 
 def resolve_physical_types(jaxpr: jax_core.Jaxpr, consts: Sequence[Any]):
   kernel_avals = jax_core.ClosedJaxpr(jaxpr, consts).in_avals

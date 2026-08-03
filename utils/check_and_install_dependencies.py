@@ -1,3 +1,8 @@
+import re
+import subprocess
+import sys
+from pathlib import Path
+
 
 def check_and_install_dependencies():
     print("[INFO] Checking dependencies...")

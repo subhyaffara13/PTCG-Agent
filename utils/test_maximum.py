@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_maximum():
     assert maximum(sin(x), x) is S.One

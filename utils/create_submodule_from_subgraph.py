@@ -1,3 +1,4 @@
+import copy
 
 def create_submodule_from_subgraph(
     model: torch.nn.Module,

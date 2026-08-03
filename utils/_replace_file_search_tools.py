@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Tuple
 
 def _replace_file_search_tools(
     tools: Optional[Iterable[ToolParam]],

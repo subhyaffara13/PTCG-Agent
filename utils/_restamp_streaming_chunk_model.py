@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _restamp_streaming_chunk_model(
     *,

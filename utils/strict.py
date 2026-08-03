@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def strict(cls: Type[T]) -> Type[T]: ...
 

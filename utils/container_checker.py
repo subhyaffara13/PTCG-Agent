@@ -1,3 +1,4 @@
+from typing import Union
 
 def container_checker(obj, target_type) -> bool:
     origin_type = get_origin(target_type)

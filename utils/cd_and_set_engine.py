@@ -1,3 +1,4 @@
+import functools
 
 def cd_and_set_engine(monkeypatch, datapath):
     func = functools.partial(pd.read_excel, engine="odf")

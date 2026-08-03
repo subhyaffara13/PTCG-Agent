@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def try_run(commands):
     """Run a series of commands and only return True if all ran fine."""

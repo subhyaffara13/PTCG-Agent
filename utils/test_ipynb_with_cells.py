@@ -1,3 +1,4 @@
+import os
 
 def test_ipynb_with_cells(mocker, log_mock):
     mi_cfg = cli.Config(**BASE_CONFIG_WITH_IPYNB_AND_CELLS.config_values)

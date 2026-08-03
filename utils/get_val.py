@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_val(capture):
     if isinstance(capture, Capture):

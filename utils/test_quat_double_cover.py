@@ -1,3 +1,5 @@
+import math
+
 
 def test_quat_double_cover(xp):
     # See the Rotation.from_quat() docstring for scope of the quaternion

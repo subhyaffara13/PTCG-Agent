@@ -1,3 +1,4 @@
+import os
 
 def _fx_compile_mode_default() -> FxCompileConfig:
     name = "TORCHINDUCTOR_FX_COMPILE_MODE"

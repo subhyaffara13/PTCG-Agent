@@ -1,3 +1,4 @@
+import itertools
 
 def moral_graph(G):
     r"""Return the Moral Graph

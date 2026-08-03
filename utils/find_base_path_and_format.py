@@ -1,3 +1,4 @@
+import os
 
 def find_base_path_and_format(main_path, formats: list[dict[str, str]]) -> tuple[str, dict[str, str]]:
     """Return the base path and the format corresponding to the given path"""

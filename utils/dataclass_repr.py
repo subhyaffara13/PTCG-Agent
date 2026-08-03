@@ -1,3 +1,4 @@
+from typing import Any
 
 def dataclass_repr(
     obj: Any,

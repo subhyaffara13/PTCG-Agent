@@ -1,3 +1,4 @@
+from typing import Any
 
 def json_bytes_response(
     data: Any = sentinel,

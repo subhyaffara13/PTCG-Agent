@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple
 
 def _compute_oversize_flops(
     inputs: Tuple[FrozenSet[str]],

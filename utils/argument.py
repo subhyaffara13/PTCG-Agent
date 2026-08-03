@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def argument(
     *param_decls: str, cls: type[Argument] | None = None, **attrs: t.Any

@@ -1,3 +1,4 @@
+import itertools
 
 def test_atol(solver, xp, batch_A, batch_b):
     # TODO: minres / tfqmr. It didn't historically use absolute tolerances, so

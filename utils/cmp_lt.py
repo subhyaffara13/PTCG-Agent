@@ -1,3 +1,4 @@
+from typing import Any
 
 def cmp_lt(a: Any, b: Any) -> bool:
     result = a.__lt__(b)

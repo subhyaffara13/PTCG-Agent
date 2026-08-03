@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _lock():
     TEMP_DIR = os.environ["TEMP_DIR"]

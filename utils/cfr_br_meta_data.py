@@ -1,3 +1,5 @@
+import logging
+from typing import Dict, List
 
 def cfr_br_meta_data(
     history_tree_node: typing.HistoryNode,

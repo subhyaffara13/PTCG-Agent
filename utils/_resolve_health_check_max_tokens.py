@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_health_check_max_tokens(
     model_info: dict, litellm_params: dict

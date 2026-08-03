@@ -1,3 +1,4 @@
+import sys
 
 def get_supported_platform():
     """Return this platform's maximum compatible version.

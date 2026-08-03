@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def extract_span_identifiers(
     current_span_data: Any,

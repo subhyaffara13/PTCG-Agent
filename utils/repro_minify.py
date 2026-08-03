@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def repro_minify(options: Any, mod: nn.Module, load_args: Any) -> None:
     from functorch.compile import minifier

@@ -1,3 +1,4 @@
+import re
 
 def test_fullmatch_case_kwarg(any_string_dtype):
     ser = Series(["ab", "AB", "abc", "ABC"], dtype=any_string_dtype)

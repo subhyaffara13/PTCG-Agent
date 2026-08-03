@@ -1,3 +1,4 @@
+from typing import Set, Tuple
 
 def _process_limits(*symbols, discrete=None):
     """Process the list of symbols and convert them to canonical limits,

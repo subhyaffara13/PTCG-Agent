@@ -1,3 +1,4 @@
+import re
 
 def analyzecommon(block):
     if not hascommon(block):

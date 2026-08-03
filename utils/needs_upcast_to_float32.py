@@ -1,3 +1,4 @@
+from typing import Any
 
 def needs_upcast_to_float32(arg: Any) -> bool:
     return (

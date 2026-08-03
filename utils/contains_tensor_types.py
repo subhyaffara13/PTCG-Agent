@@ -1,3 +1,4 @@
+from typing import Any
 
 def contains_tensor_types(type_: Any) -> bool:
     tensor_type = torch._C.TensorType.get()

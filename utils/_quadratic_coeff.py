@@ -1,3 +1,5 @@
+import math
+
 
 def _quadratic_coeff(signal):
     signal = np.asarray(signal)

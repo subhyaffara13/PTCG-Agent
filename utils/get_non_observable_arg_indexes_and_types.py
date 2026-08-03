@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_non_observable_arg_indexes_and_types(
     node: Node,

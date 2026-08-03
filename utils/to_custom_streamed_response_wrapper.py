@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def to_custom_streamed_response_wrapper(
     func: Callable[P, object],

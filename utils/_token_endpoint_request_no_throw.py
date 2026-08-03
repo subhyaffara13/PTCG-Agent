@@ -1,3 +1,4 @@
+import json
 
 def _token_endpoint_request_no_throw(
     request,

@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def backend_accuracy_fails(
     gm: torch.fx.GraphModule,

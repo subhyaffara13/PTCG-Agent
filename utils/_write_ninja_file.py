@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _write_ninja_file(path,
                       cflags,

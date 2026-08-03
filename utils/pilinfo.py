@@ -1,3 +1,5 @@
+import os
+import sys
 
 def pilinfo(out: IO[str] | None = None, supported_formats: bool = True) -> None:
     """

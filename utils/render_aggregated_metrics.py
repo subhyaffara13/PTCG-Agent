@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_aggregated_metrics(
     benchmark_name: str,

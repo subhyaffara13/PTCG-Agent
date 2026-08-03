@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def setuptools_sdist(tmp_path_factory, request):
     prebuilt = os.getenv("PRE_BUILT_SETUPTOOLS_SDIST")

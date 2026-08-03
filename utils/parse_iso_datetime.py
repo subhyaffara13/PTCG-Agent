@@ -1,3 +1,4 @@
+import sys
 
 def parse_iso_datetime(isodate: str) -> datetime.datetime:
     """Convert an ISO format string to a datetime.

@@ -1,3 +1,4 @@
+import random
 
 def get_results_n_player_simultaneous_game(game, policy):
   state = game.new_initial_state()

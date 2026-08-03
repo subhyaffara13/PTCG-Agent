@@ -1,3 +1,4 @@
+import re
 
 def get_unique_attr_name_in_module(mod_traced: torch.fx.GraphModule, name: str) -> str:
     """

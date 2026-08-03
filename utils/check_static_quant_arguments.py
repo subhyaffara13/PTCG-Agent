@@ -1,3 +1,4 @@
+import logging
 
 def check_static_quant_arguments(quant_format: QuantFormat, activation_type: QuantType, weight_type: QuantType):
     if activation_type == QuantType.QInt8 and weight_type == QuantType.QUInt8:

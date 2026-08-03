@@ -1,3 +1,4 @@
+from typing import Any
 
 def fx_insert_profiling(gm: torch.fx.GraphModule, example_inputs: list[Any]) -> Any:
     def _wrapped(*args: Any) -> Any:

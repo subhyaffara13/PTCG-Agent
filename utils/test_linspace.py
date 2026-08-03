@@ -1,3 +1,4 @@
+import random
 
 def test_linspace(Poly):
     d = Poly.domain + random((2,)) * .25

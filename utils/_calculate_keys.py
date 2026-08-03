@@ -1,3 +1,4 @@
+from typing import Any
 
 def _calculate_keys(
     self: BaseModel,

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _huggingface_dir(local_dir: Path) -> Path:
     """Return the path to the `.cache/huggingface` directory in a local directory."""

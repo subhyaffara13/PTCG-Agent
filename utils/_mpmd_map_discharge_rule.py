@@ -1,3 +1,4 @@
+from typing import Any
 
 def _mpmd_map_discharge_rule(
     avals_in: Sequence[jax_core.AbstractValue],

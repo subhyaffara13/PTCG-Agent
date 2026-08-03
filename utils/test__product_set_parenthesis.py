@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_ProductSet_parenthesis():
     ucode_str = '([4, 7] × {1, 2}) ∪ ([2, 3] × [4, 7])'

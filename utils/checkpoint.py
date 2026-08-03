@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable, Tuple
 
 def checkpoint(
     function,

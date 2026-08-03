@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_common_ancestor(
     invocation_dir: Path,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _ensure_right_number_of_layouts(
     filter_fn: Callable[[ir.Value], bool],

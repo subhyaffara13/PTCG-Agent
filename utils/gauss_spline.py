@@ -1,3 +1,5 @@
+import math
+
 
 def gauss_spline(x, n):
     r"""Gaussian approximation to B-spline basis function of order n.

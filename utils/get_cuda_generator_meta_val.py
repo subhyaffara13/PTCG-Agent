@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_cuda_generator_meta_val(device_idx: int) -> Any:
     """

@@ -1,3 +1,4 @@
+import os
 
 def _gs_uri_requires_content_type_metadata(url: str) -> bool:
     """

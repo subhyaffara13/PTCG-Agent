@@ -1,3 +1,4 @@
+import re
 
 def parse_gml_lines(lines, label, destringizer):
     """Parse GML `lines` into a graph."""

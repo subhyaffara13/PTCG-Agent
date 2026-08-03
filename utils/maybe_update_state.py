@@ -1,3 +1,7 @@
+import re
+import sys
+from pathlib import Path
+
 
 def maybe_update_state(ctx: click.Context) -> None:
     path_or_module = ctx.params.get("path_or_module")

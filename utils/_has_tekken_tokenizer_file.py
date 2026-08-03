@@ -1,3 +1,4 @@
+import os
 
 def _has_tekken_tokenizer_file(
     pretrained_model_name_or_path: str | os.PathLike[str],

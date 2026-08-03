@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _lower_single_impl(
     impl: Callable[..., Any],

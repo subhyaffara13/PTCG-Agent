@@ -1,3 +1,4 @@
+import os
 
 def naive_recompile(obj: str, src: str) -> bool:
     """

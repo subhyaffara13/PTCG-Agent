@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def createResolutionCallbackFromClosure(fn) -> Callable[[str], Any]:
     """

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def stream_chunk_builder_text_completion(
     chunks: list, messages: Optional[List] = None

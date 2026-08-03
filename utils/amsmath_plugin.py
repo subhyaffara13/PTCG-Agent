@@ -1,3 +1,4 @@
+from typing import Callable
 
 def amsmath_plugin(
     md: MarkdownIt, *, renderer: Callable[[str], str] | None = None

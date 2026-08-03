@@ -1,3 +1,4 @@
+import os
 
 def _check_wheel_install(
     filename, install_dir, install_tree_includes, project_name, version, requires_txt

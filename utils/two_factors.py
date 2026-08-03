@@ -1,3 +1,5 @@
+import math
+
 
 def two_factors(n: int) -> tuple[int, int]:
     """Split an integer into two integer factors.

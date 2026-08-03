@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def compute_size_by_dict(indices: Iterable[int], idx_dict: List[int]) -> int: ...
 

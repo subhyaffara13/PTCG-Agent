@@ -1,3 +1,4 @@
+import itertools
 
 def node_connectivity(G, s=None, t=None):
     r"""Returns an approximation for node connectivity for a graph or digraph G.

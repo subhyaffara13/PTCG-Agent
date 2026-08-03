@@ -1,3 +1,4 @@
+import sys
 
 def _get_local_callable(
     node: nodes.NodeNG, attr: str

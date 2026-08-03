@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def compact_responses(
     input: Union[str, ResponseInputParam],

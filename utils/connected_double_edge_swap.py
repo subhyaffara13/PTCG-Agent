@@ -1,3 +1,5 @@
+import math
+
 
 def connected_double_edge_swap(G, nswap=1, _window_threshold=3, seed=None):
     """Attempts the specified number of double-edge swaps in the graph `G`.

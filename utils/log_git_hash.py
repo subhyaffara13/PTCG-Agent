@@ -1,3 +1,4 @@
+import subprocess
 
 def log_git_hash():
     try:

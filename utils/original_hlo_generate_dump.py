@@ -1,3 +1,4 @@
+from typing import Any
 
 def original_hlo_generate_dump(args: tuple[Any, str],
                                **_) -> common.SourceMapDump:

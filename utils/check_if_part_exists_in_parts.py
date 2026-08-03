@@ -1,3 +1,4 @@
+from typing import List
 
 def check_if_part_exists_in_parts(
     parts: List[PartType], part: PartType, excluded_keys: List[str] = []

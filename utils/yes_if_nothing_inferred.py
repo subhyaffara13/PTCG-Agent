@@ -1,3 +1,4 @@
+from typing import Callable
 
 def yes_if_nothing_inferred(
     func: Callable[_P, Generator[InferenceResult]],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def livevars_analysis(
     instructions: list["Instruction"], instruction: "Instruction"

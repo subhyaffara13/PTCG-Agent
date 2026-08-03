@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_path(hatchpattern, density=6):
     """

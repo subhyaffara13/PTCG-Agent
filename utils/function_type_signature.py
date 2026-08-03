@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def function_type_signature(fun: Callable[..., Any], *args: Any) -> KeyReuseSignature:
   args_flat, in_tree = tree_util.tree_flatten(args)

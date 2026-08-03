@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def torch_compilable_check(cond: Any, msg: str | Callable[[], str], error_type: type[Exception] = ValueError) -> None:
     """

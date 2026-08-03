@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_torch_function_mode_stack(stack: list[Any]) -> None:
     for _ in range(_len_torch_function_stack()):

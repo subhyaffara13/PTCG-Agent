@@ -1,3 +1,4 @@
+from typing import Callable
 
 def bucket_fsdp_reduce_scatter(
     gm: torch.fx.GraphModule,

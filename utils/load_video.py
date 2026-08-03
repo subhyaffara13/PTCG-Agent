@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def load_video(
     video: VideoInput,

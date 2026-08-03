@@ -1,3 +1,5 @@
+import math
+
 
 def flatten_ref_union(ref_union: AbstractRefUnion) -> tuple[_Ref, ...]:
   """Flattens a union of trees of references into a tuple of references.

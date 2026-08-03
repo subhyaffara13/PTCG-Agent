@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def _build_synthetic_response_events(
     *,

@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def to_yyyy_mm_dd(
     s: Union[str, int, float, None],

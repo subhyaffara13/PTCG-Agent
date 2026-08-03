@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def append_dir_sep(path: pathlib.Path) -> str:
 	"""

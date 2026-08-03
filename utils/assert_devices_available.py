@@ -1,3 +1,4 @@
+from typing import Optional
 
 def assert_devices_available(n: int,
                              devtype: str,

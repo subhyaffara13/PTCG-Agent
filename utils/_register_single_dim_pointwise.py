@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _register_single_dim_pointwise(
     op: OpOverload,

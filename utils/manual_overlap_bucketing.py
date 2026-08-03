@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def manual_overlap_bucketing(
     gm: torch.fx.GraphModule,

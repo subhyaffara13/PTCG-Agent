@@ -1,3 +1,4 @@
+from typing import Any
 
 def flatten_args_with_modules(
     args_kwargs: tuple[Any, ...],

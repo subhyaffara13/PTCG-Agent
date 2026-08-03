@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_oo_optimizable():
     # GH 21071

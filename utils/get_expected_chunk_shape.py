@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_expected_chunk_shape(
     arr: jax.Array,

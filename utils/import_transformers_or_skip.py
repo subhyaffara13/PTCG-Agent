@@ -1,3 +1,4 @@
+import sys
 
 def import_transformers_or_skip():
     def decorator(func):

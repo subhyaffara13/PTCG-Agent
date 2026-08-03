@@ -1,3 +1,5 @@
+import math
+
 
 def mode(a, axis=0):
     """

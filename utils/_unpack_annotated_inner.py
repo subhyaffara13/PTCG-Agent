@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unpack_annotated_inner(
     annotation: Any, unpack_type_aliases: Literal['lenient', 'eager'], check_annotated: bool

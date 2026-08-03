@@ -1,3 +1,4 @@
+import json
 
 def htmlsafe_json_dumps(
     obj: t.Any, dumps: t.Optional[t.Callable[..., str]] = None, **kwargs: t.Any

@@ -1,3 +1,4 @@
+from typing import Union
 
 def make_batched_videos(videos) -> list[Union[np.ndarray, "torch.Tensor", "URL", "Path"]]:
     """

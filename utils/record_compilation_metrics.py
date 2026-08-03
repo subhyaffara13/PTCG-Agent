@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def record_compilation_metrics(
     start_time_ns: int,

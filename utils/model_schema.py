@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def model_schema(
     cls: type[Any],

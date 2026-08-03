@@ -1,3 +1,4 @@
+import os
 
 def diags_array(diagonals, /, *, offsets=0, shape=None, format=None, dtype=_NoValue):
     """

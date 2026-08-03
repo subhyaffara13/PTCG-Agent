@@ -1,3 +1,4 @@
+import os
 
 def notebook_formats(nbk, config, path, fallback_on_current_fmt=True):
     """Return the list of formats for the current notebook"""

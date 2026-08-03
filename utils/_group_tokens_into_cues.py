@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _group_tokens_into_cues(
     tokens: List[Dict[str, Any]],

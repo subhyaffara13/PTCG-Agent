@@ -1,3 +1,4 @@
+import re
 
 def ignore_warning(*, message: str | None = None, category: type = Warning):
   "Context manager that ignores any matching warnings."

@@ -1,3 +1,4 @@
+import copy
 
 def _try_cast(
     arr: list | np.ndarray,

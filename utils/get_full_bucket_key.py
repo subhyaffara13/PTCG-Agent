@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_full_bucket_key(
     node: torch.fx.Node, bucket_mode: BucketMode | None

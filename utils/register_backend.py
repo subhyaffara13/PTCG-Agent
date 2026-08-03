@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def register_backend(format, backend, description=None):
     """

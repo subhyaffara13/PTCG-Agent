@@ -1,3 +1,4 @@
+import sys
 
 def assert_array_strict_equal(x, y):
     assert_array_equal(x, y)

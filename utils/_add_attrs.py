@@ -1,3 +1,4 @@
+from typing import Any
 
 def _add_attrs(
     token: Token,

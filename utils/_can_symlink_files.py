@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _can_symlink_files(base_dir: Path) -> bool:
     with TemporaryDirectory(dir=str(base_dir.resolve())) as tmp:

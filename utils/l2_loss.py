@@ -1,3 +1,4 @@
+from typing import Optional
 
 def l2_loss(
     predictions: jax.typing.ArrayLike,

@@ -1,3 +1,4 @@
+import os
 
 def _copy_file_contents(src, dst, buffer_size=16 * 1024):  # noqa: C901
     """Copy the file 'src' to 'dst'; both must be filenames.  Any error

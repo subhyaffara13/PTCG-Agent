@@ -1,3 +1,4 @@
+import os
 
 def makeOutputFileName(
     input, outputDir=None, extension=None, overWrite=False, suffix=""

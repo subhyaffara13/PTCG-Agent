@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def process_single_episode_direct(replay_file, bucket_base, config_path, tts_provider, prompt_path, cache_path, enable_llm, keep_temp=False, position=0):
     episode_id = os.path.splitext(os.path.basename(replay_file))[0]

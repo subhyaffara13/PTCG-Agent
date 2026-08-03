@@ -1,3 +1,4 @@
+import copy
 
 def update_automatic_dynamic(
     tx: InstructionTranslator,

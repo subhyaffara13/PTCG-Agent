@@ -1,3 +1,4 @@
+import os
 
 def symlink_or_skip_test(src, dst):
     try:

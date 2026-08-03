@@ -1,3 +1,4 @@
+import time
 
 def test_Dimension_functions():
     raises(TypeError, lambda: dimsys_SI.get_dimensional_dependencies(cos(length)))

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_managed_file_object(
     snapshot: Optional[Dict[str, Any]], managed_id: str

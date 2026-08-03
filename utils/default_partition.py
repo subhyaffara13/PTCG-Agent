@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_partition(
     joint_module: fx.GraphModule,

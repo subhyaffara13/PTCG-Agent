@@ -1,3 +1,4 @@
+import functools
 
 def object_einsum(eq: str, *arrays: ArrayType) -> ArrayType:
     """A ``einsum`` implementation for ``numpy`` arrays with object dtype.

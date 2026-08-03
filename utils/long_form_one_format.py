@@ -1,3 +1,4 @@
+import os
 
 def long_form_one_format(jupytext_format, metadata=None, update=None, auto_ext_requires_language_info=True):
     """Parse 'sfx.py:percent' into {'suffix':'sfx', 'extension':'py', 'format_name':'percent'}"""

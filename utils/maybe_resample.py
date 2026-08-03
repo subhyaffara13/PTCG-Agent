@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_resample(series: Series, ax: Axes, kwargs: dict[str, Any]):
     # resample against axes freq if necessary

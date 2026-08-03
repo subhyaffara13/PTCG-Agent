@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def selective_decompose(
     joint_gm: fx.GraphModule,

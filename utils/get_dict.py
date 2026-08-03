@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_dict(x: Any) -> dict[str, Any]:
     if hasattr(x, "__mypyc_attrs__"):

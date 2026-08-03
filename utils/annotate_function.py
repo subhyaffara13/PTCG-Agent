@@ -1,3 +1,4 @@
+from typing import Callable
 
 def annotate_function(func: Callable, name: str | None = None,
                       **decorator_kwargs):

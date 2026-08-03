@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def install_temp(tmpdir_factory):
     # Based in part on test_cython from random.tests.test_extending

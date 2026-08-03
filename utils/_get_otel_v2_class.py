@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_otel_v2_class() -> Optional[type]:
     """Return the ``OpenTelemetryV2`` class, or ``None`` if the OTel SDK is absent.

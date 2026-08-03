@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _cumulative_reduction(
     name: str, reduction: Callable[..., Array],

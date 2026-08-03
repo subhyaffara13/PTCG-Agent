@@ -1,3 +1,5 @@
+import math
+
 
 def _mood_statistic_no_ties(r, m, n, N, xp):
     rx = r[..., :m]

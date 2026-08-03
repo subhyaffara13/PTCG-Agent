@@ -1,3 +1,5 @@
+import os
+import re
 
 def get_relative_imports(module_file: str | os.PathLike) -> list[str]:
     """

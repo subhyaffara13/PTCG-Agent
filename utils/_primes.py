@@ -1,3 +1,5 @@
+import math
+
 
 def _primes(n):
     # Defined to facilitate comparison between translation and source

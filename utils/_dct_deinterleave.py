@@ -1,3 +1,5 @@
+import math
+
 
 def _dct_deinterleave(x: Array, axis: int) -> Array:
   empty_slice = slice(None, None, None)

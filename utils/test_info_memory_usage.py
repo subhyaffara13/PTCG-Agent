@@ -1,3 +1,4 @@
+import re
 
 def test_info_memory_usage():
     # Ensure memory usage is displayed, when asserted, on the last line

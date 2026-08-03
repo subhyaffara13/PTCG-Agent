@@ -1,3 +1,4 @@
+import re
 
 def build_email_re(tlds=TLDS):
     """Builds the email regex used by linkifier

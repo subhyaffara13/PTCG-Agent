@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_to_impl(op: OpType) -> Callable[..., Any]:
     """Register an op similar to `aten.to`, but may have different signatures."""

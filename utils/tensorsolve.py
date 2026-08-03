@@ -1,3 +1,5 @@
+import math
+
 
 def tensorsolve(a: ArrayLike, b: ArrayLike, axes=None):
     a, b = _atleast_float_2(a, b)

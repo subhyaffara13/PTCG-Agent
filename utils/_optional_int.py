@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _optional_int(x: Any) -> Optional[int]:
   if x is None:

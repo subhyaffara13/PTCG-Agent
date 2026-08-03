@@ -1,3 +1,4 @@
+import functools
 
 def requires(distribution_name: str) -> list[str] | None:
     """

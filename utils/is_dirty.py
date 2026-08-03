@@ -1,3 +1,4 @@
+import subprocess
 
 def is_dirty(dir: str) -> bool:
     """Check whether a git repository has uncommitted changes."""

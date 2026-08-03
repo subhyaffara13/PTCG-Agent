@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def should_run_mock_completion(
     mock_response: Optional[Any],

@@ -1,3 +1,4 @@
+import itertools
 
 def take(n, seq):
     """ The first n elements of a sequence

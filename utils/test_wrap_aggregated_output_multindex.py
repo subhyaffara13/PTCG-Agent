@@ -1,3 +1,4 @@
+import re
 
 def test_wrap_aggregated_output_multindex(
     multiindex_dataframe_random_data, using_infer_string

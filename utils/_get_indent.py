@@ -1,3 +1,5 @@
+import re
+import sys
 
 def _get_indent(t):
     """Returns the indentation in the first line of t"""

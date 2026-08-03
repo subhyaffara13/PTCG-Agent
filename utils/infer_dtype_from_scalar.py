@@ -1,3 +1,4 @@
+from typing import Any
 
 def infer_dtype_from_scalar(val) -> tuple[DtypeObj, Any]:
     """

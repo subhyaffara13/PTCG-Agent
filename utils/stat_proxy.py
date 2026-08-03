@@ -1,3 +1,4 @@
+import os
 
 def stat_proxy(path: str) -> os.stat_result:
     try:

@@ -1,3 +1,4 @@
+import sys
 
 def get_module_dir():
     global _module_dir

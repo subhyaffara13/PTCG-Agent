@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_anomalies(rows: list[dict[str, Any]]) -> str:
     """Flag variants with high crash or error rates."""

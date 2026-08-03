@@ -1,3 +1,4 @@
+import os
 
 def _resolve_oidc_file_path(requested_path: str) -> str:
     """

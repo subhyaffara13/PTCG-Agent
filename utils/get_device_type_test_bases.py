@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_device_type_test_bases():
     # set type to List[Any] due to mypy list-of-union issue:

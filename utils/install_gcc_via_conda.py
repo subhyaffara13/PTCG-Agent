@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def install_gcc_via_conda() -> str:
     """On older systems, this is a quick way to get a modern compiler"""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def ts_compile(fx_g: fx.GraphModule, inps: Sequence[Any]) -> torch.jit.ScriptModule:
     """

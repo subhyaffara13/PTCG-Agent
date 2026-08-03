@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def convert_priority_to_percent(
     value: Union[float, PriorityReservationDict], model_info: Optional[ModelGroupInfo]

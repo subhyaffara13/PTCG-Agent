@@ -1,3 +1,4 @@
+import time
 
 def cpu_times_percent(interval=None, percpu=False):
     """Same as cpu_percent() but provides utilization percentages

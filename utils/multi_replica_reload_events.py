@@ -1,3 +1,4 @@
+import time
 
 def multi_replica_reload_events(
     commit_sha: str,

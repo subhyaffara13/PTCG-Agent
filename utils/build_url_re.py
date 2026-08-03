@@ -1,3 +1,4 @@
+import re
 
 def build_url_re(tlds=TLDS, protocols=html5lib_shim.allowed_protocols):
     """Builds the url regex used by linkifier

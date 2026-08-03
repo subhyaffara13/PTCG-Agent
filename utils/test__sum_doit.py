@@ -1,3 +1,4 @@
+import re
 
 def test_Sum_doit():
     assert Sum(n*Integral(a**2), (n, 0, 2)).doit() == a**3

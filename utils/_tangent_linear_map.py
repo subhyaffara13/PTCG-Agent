@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _tangent_linear_map(func: Callable, params, params_dot,
                         debug_info: core.DebugInfo,

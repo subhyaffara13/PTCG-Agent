@@ -1,3 +1,4 @@
+from typing import Any
 
 def typeof(x: Any) -> Any:
   """Return the JAX type (i.e. :class:`AbstractValue`) of the input.

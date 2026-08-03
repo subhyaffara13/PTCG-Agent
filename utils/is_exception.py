@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_exception(obj: Any) -> bool:
     return isinstance(obj, BaseException)

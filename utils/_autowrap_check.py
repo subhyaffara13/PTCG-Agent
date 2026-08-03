@@ -1,3 +1,4 @@
+from typing import Any
 
 def _autowrap_check(
     patcher: _Patcher, frame_dict: dict[str, Any], function_ids: set[int]

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_cli_string(
     path: Optional[str] = None,

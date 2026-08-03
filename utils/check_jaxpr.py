@@ -1,3 +1,4 @@
+import functools
 
 def check_jaxpr(jaxpr: Jaxpr):
   """Checks well-formedness of a jaxpr.

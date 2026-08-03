@@ -1,3 +1,4 @@
+import sys
 
 def _ReraiseTypeErrorWithFieldName(message_name, field_name):
   """Re-raise the currently-handled TypeError with the field name added."""

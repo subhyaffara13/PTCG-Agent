@@ -1,3 +1,4 @@
+import re
 
 def rs_zeta(ctx, s, derivative=0, **kwargs):
     if derivative > 4:

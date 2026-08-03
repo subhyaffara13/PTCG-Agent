@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _next_term(text: str, openmetrics: bool) -> Tuple[str, str, str]:
     """Extract the next comma-separated label term from the text. The results

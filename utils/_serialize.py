@@ -1,3 +1,4 @@
+from typing import Any
 
 def _serialize(obj: Any) -> bytes:
   """Serializes callables and input/output spec objects.

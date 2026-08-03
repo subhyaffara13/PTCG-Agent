@@ -1,3 +1,4 @@
+from typing import Any
 
 def _opponent_archetype_signal(board_summary: dict[str, Any]) -> str | None:
     """Adjust strategy based on opponent's identified archetype."""

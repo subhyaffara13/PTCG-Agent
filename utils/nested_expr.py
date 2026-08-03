@@ -1,3 +1,4 @@
+from typing import Union
 
 def nested_expr(
     opener: Union[str, ParserElement] = "(",

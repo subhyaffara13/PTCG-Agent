@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Union
 
 def _convert_mcp_tool_choice_to_openai(
     tool_choice: Optional["ToolChoice"],

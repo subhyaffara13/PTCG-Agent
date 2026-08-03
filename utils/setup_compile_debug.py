@@ -1,3 +1,4 @@
+import os
 
 def setup_compile_debug() -> contextlib.ExitStack:
     compile_debug = os.environ.get("TORCH_COMPILE_DEBUG", "0") == "1"

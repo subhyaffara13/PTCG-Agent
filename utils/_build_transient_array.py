@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def _build_transient_array(
     name: str, info: dict[str, Any], owner: int, ctx: _LoadContext

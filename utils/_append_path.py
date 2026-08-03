@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _append_path(ctx, path, transform, clip=None):
     for points, code in path.iter_segments(

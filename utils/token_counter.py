@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def token_counter(
     model="",

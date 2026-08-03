@@ -1,3 +1,4 @@
+from typing import Callable
 
 def tree_all_only(
     type_or_types: type[T],

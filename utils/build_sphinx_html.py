@@ -1,3 +1,5 @@
+import os
+import sys
 
 def build_sphinx_html(source_dir, doctree_dir, html_dir, extra_args=None):
     # Build the pages with warnings turned into errors

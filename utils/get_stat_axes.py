@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def getStatAxes(doc: DesignSpaceDocument, userRegion: Region) -> List[Dict]:
     """Return a list of axis dicts suitable for use as the ``axes``

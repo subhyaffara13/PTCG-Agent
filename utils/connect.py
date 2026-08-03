@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def connect(s: MouseEventType, func: Callable[[MouseEvent], Any]) -> int: ...
 

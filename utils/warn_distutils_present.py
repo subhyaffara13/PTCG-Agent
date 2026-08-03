@@ -1,3 +1,4 @@
+import sys
 
 def warn_distutils_present():
     if 'distutils' not in sys.modules:

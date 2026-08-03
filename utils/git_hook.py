@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def git_hook(
     strict: bool = False,

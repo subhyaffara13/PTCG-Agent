@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _find_vc2017():
     """Returns "15, path" based on the result of invoking vswhere.exe

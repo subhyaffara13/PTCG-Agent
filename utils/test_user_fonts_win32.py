@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def test_user_fonts_win32():
     if not (os.environ.get('APPVEYOR') or os.environ.get('TF_BUILD')):

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def make_agent(
     key: jax.random.PRNGKey,

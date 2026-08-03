@@ -1,3 +1,4 @@
+import re
 
 def downgrade_cell(cell):
     """downgrade a cell from v4 to v3

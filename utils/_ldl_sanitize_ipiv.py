@@ -1,3 +1,4 @@
+import re
 
 def _ldl_sanitize_ipiv(a, lower=True):
     """

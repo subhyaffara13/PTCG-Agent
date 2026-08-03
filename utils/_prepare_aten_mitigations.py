@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_aten_mitigations(
     aten_op: OpOverload,

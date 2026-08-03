@@ -1,3 +1,5 @@
+import math
+
 
 def _check_tensor_size(shape: tuple[int | pallas_core.Squeezed, ...]):
   size = math.prod(1 if isinstance(d, pallas_core.Squeezed) else d

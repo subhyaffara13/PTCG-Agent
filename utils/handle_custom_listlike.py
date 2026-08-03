@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_custom_listlike(
     node: Sequence[Any],

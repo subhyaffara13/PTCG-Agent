@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_type_alias_type(tp: Any, /) -> TypeIs[typing_extensions.TypeAliasType]:
     """Return whether the provided argument is an instance of `TypeAliasType`.

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_soniox_api_base(api_base: Optional[str] = None) -> str:
     """Resolve the Soniox API base URL from arg or env var (defaults to public API)."""

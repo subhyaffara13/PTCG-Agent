@@ -1,3 +1,4 @@
+import re
 
 def test_indexing_with_duplicate_datetimeindex(
     rand_series_with_duplicate_datetimeindex,

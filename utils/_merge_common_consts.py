@@ -1,3 +1,4 @@
+from typing import Any
 
 def _merge_common_consts(
     jaxprs: Sequence[core.ClosedJaxpr],

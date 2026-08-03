@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _maybe_get_custom_module_lstm_from_node_arg(
     arg: Node,

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def skip_windows_ci(name: str, file: str) -> None:
     if IS_WINDOWS and IS_CI:

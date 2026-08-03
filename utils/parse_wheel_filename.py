@@ -1,3 +1,5 @@
+import re
+from typing import Tuple
 
 def parse_wheel_filename(
     filename: str,

@@ -1,3 +1,4 @@
+import os
 
 def retrieve_sdist(package, version, tmp_path):
     """Either use cached sdist file or download it from PyPI"""

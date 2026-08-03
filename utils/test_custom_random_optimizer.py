@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def test_custom_random_optimizer() -> None:
     np = pytest.importorskip("numpy")

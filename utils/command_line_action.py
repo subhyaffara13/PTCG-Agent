@@ -1,3 +1,4 @@
+import sys
 
 def command_line_action(time_step):
   """Gets a valid action from the user on the command line."""

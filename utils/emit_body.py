@@ -1,3 +1,5 @@
+import re
+from typing import Callable
 
 def emit_body(
     fn: NativeFunctionWithDifferentiabilityInfo, key: str = "Default"

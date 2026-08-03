@@ -1,3 +1,4 @@
+import os
 
 def is_file_content(obj: object) -> TypeGuard[FileContent]:
     return (

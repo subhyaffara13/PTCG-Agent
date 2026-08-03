@@ -1,3 +1,5 @@
+import math
+
 
 def get_batch_size_from_per_elt_updates(
     per_elt_updates: base.Updates, per_elt_axis: int | list[int]

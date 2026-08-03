@@ -1,3 +1,4 @@
+from typing import Any
 
 def inductor(*args: Any, **kwargs: Any) -> Any:
     with dynamo_timed("inductor_import", log_pt2_compile_event=True):

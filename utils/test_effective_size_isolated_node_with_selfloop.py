@@ -1,3 +1,5 @@
+import math
+
 
 def test_effective_size_isolated_node_with_selfloop(graph, nodes):
     """Behavior consistent with isolated node without self-loop. See gh-6916"""

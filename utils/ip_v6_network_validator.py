@@ -1,3 +1,4 @@
+from typing import Any
 
 def ip_v6_network_validator(v: Any) -> IPv6Network:
     """

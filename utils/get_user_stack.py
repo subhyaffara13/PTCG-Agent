@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def get_user_stack(num_frames: int) -> list[dict[str, Any]]:
     from torch._guards import TracingContext

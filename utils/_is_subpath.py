@@ -1,3 +1,4 @@
+import os
 
 def _is_subpath(path: str, base: str) -> bool:
     path = os.path.normcase(os.path.normpath(path))

@@ -1,3 +1,5 @@
+import os
+from typing import Any, Dict, Optional
 
 def convert_file_document_to_url_document(document: Dict[str, Any]) -> Dict[str, str]:
     """

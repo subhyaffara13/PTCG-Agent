@@ -1,3 +1,4 @@
+from typing import Any
 
 def unpack_as(any_msg: Any, message_type: type[_MessageT]) -> _MessageT:
   unpacked = message_type()

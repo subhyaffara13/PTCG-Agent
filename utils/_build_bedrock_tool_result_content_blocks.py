@@ -1,3 +1,4 @@
+from typing import List, Union
 
 def _build_bedrock_tool_result_content_blocks(
     message: Union[ChatCompletionToolMessage, ChatCompletionFunctionMessage],

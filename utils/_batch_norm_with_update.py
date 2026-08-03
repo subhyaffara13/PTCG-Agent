@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _batch_norm_with_update(
     input: list[int],

@@ -1,3 +1,4 @@
+import itertools
 
 def test_from_numpy_array_nodelist_multigraph(nodes):
     A = np.array(

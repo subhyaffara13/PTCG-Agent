@@ -1,3 +1,4 @@
+import sys
 
 def lsim(system, U, T, X0=None, interp=True):
     """

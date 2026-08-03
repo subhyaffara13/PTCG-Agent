@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def is_forbidden_context_manager(ctx: object) -> bool:
     f_ctxs: list[Any] = []

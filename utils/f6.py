@@ -1,3 +1,4 @@
+import random
 
 def f6(x: torch.Tensor) -> torch.Tensor:
     x = f5(x, 2)

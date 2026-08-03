@@ -1,3 +1,4 @@
+from typing import Callable
 
 def mapMaybe(func: Callable[[T], S | None], xs: Iterable[T]) -> Iterator[S]:
     for x in xs:

@@ -1,3 +1,4 @@
+import json
 
 def update_db_model(
     db_model: Deployment, updated_patch: updateDeployment

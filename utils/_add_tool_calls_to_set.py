@@ -1,3 +1,4 @@
+from typing import Any, Set
 
 def _add_tool_calls_to_set(tool_calls: Any, out: Set[str]) -> None:
     """Extract tool names from OpenAI-style tool_calls list into out."""

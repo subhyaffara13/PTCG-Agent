@@ -1,3 +1,4 @@
+import re
 
 def test_raise_on_nuisance_python_multiple(three_group, using_infer_string):
     grouped = three_group.groupby(["A", "B"])

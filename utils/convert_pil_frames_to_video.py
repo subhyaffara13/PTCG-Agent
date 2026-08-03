@@ -1,3 +1,4 @@
+from typing import Union
 
 def convert_pil_frames_to_video(videos: list[VideoInput]) -> list[Union[np.ndarray, "torch.Tensor"]]:
     """

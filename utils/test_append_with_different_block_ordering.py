@@ -1,3 +1,4 @@
+import re
 
 def test_append_with_different_block_ordering(temp_hdfstore):
     # GH 4096; using same frames, but different block orderings

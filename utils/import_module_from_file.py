@@ -1,3 +1,5 @@
+import os
+import sys
 
 def import_module_from_file(filename, only_if_newer_than=None):
     """ Imports Python extension (from shared object file)

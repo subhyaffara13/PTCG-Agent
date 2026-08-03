@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_tensorsolve(op_info, device, dtype, requires_grad, **kwargs):
     a_shapes = [(2, 3, 6), (3, 4, 4, 3)]

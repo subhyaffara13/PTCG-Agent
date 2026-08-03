@@ -1,3 +1,5 @@
+import math
+
 
 def alpha_pdf(x, a):
     if x > 0:

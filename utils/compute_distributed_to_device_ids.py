@@ -1,3 +1,4 @@
+import logging
 
 def compute_distributed_to_device_ids(
     devices: Sequence[jax.Device],

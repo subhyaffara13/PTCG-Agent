@@ -1,3 +1,4 @@
+import itertools
 
 def test_hyp2f1_strange_points():
     pts = [

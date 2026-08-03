@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def calculate_vertex_ai_batch_cost_and_usage(
     vertex_ai_batch_responses: List[dict],

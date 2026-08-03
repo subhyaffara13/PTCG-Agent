@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _create_delayed_compile_callback(
     callback: DynamoCallback, stance: str

@@ -1,3 +1,4 @@
+import os
 
 def _get_oidc_allowed_credential_dirs() -> list[str]:
     """

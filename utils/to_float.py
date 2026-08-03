@@ -1,3 +1,5 @@
+import math
+
 
 def to_float(s, strict=False, rnd=round_fast):
     """

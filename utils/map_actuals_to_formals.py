@@ -1,3 +1,4 @@
+from typing import Callable
 
 def map_actuals_to_formals(
     actual_kinds: list[nodes.ArgKind],

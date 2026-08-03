@@ -1,3 +1,5 @@
+import sys
+from typing import List
 
 def _cpython_abis(py_version: PythonVersion, warn: bool = False) -> list[str]:
     py_version = tuple(py_version)  # To allow for version comparison.

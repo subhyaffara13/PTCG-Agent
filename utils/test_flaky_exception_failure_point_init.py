@@ -1,3 +1,4 @@
+import sys
 
 def test_flaky_exception_failure_point_init():
     if sys.version_info[:2] < (3, 12):

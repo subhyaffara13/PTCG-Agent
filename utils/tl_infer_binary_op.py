@@ -1,3 +1,4 @@
+import itertools
 
 def tl_infer_binary_op(
     self: _TupleListNodeT,

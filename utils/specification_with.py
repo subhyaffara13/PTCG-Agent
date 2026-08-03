@@ -1,3 +1,4 @@
+from typing import Any
 
 def specification_with(
     dialect_id: URI,

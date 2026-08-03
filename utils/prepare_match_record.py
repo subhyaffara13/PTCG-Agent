@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def prepare_match_record(record: Dict[str, Any]) -> Dict[str, Any]:
     if "elite_metrics" not in record:

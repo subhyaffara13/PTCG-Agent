@@ -1,3 +1,5 @@
+import math
+
 
 def test_basic():
     assert list(unify(a, x, {})) == [{x: a}]

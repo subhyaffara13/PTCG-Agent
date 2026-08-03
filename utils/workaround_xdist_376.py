@@ -1,3 +1,4 @@
+import sys
 
 def workaround_xdist_376(request):
     """

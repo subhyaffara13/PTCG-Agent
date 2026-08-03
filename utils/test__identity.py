@@ -1,3 +1,4 @@
+import re
 
 def test_Identity():
     from sympy.matrices.expressions.special import Identity

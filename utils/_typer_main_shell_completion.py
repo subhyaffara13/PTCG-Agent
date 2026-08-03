@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any
 
 def _typer_main_shell_completion(
     self: click.core.Command,

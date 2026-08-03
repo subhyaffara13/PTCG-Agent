@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _coerce_message(detail: Any) -> str:
     """Best-effort, JSON-friendly stringification of an HTTPException-style detail."""

@@ -1,3 +1,4 @@
+import os
 
 def get_nvidia_smi():
     # Note: nvidia-smi is currently available only on Windows and Linux

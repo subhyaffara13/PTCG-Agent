@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _image_directories(func):
     """

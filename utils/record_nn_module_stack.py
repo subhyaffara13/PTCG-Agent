@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def record_nn_module_stack(
     module_key: str, source: Source, tx: "InstructionTranslator", mod: torch.nn.Module

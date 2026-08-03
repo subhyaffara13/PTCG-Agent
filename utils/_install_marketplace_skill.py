@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _install_marketplace_skill(api, skill: MarketplaceSkill, destination_root: Path, force: bool = False) -> Path:
     """Install a marketplace skill into a local skills directory."""

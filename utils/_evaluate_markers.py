@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _evaluate_markers(
     markers: MarkerList, environment: dict[str, str | AbstractSet[str]]

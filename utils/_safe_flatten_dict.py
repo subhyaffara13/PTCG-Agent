@@ -1,3 +1,4 @@
+from typing import Any
 
 def _safe_flatten_dict(dct: dict[Any, Any]
                        ) -> tuple[list[Any], tree_util.PyTreeDef]:

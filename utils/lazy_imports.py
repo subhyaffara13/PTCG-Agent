@@ -1,3 +1,4 @@
+import functools
 
 def lazy_imports(
     *,

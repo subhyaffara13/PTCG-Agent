@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def mock_vector_store_search_response(
     mock_results: Optional[List[VectorStoreSearchResult]] = None,

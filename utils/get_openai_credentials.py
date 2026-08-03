@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_openai_credentials(
     api_base: Optional[str] = None,

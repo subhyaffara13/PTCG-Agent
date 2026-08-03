@@ -1,3 +1,5 @@
+import math
+
 
 def intRect(rect):
     """Round a rectangle to integer values.

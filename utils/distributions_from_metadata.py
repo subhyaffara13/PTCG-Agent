@@ -1,3 +1,4 @@
+import os
 
 def distributions_from_metadata(path: str):
     root = os.path.dirname(path)

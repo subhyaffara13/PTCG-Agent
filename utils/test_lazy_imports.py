@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_lazy_imports():
     source = textwrap.dedent("""

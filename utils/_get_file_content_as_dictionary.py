@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def _get_file_content_as_dictionary(file_content: bytes) -> List[dict]:
     """

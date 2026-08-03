@@ -1,3 +1,5 @@
+import os
+import sys
 
 def load_sam2_model(sam2_dir, model_type, device: str | torch.device = "cpu") -> SAM2Base:
     checkpoints_dir = os.path.join(sam2_dir, "checkpoints")

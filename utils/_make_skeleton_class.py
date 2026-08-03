@@ -1,3 +1,4 @@
+import sys
 
 def _make_skeleton_class(
     type_constructor, name, bases, type_kwargs, class_tracker_id, extra

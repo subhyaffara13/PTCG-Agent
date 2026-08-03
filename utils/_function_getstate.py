@@ -1,3 +1,4 @@
+import itertools
 
 def _function_getstate(func):
     # - Put func's dynamic attributes (stored in func.__dict__) in state. These

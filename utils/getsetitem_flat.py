@@ -1,3 +1,4 @@
+from typing import Any
 
 def getsetitem_flat(
     self_info: TensorInfo,

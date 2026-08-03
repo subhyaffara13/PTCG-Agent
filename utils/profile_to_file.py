@@ -1,3 +1,7 @@
+import functools
+import os
+import sys
+from typing import Any, Callable
 
 def profile_to_file(filename: str) -> Callable[[T], T]:
     """

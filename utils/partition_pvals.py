@@ -1,3 +1,4 @@
+from typing import Any
 
 def partition_pvals(
     pvals: list[PartialVal]

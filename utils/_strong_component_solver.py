@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _strong_component_solver(eqs, funcs, t):
     from sympy.solvers.ode.ode import dsolve, constant_renumber

@@ -1,3 +1,4 @@
+import re
 
 def parse_conversion_specifiers(format_str: str) -> list[ConversionSpecifier]:
     """Parse c-printf-style format string into list of conversion specifiers."""

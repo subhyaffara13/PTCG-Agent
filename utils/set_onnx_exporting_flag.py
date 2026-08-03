@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def set_onnx_exporting_flag(func: Callable[_P, _R]) -> Callable[_P, _R]:
     @functools.wraps(func)

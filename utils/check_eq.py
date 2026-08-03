@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_eq(xs: Any, ys: Any, err_msg: str = '') -> None:
   assert_close = partial(_assert_numpy_allclose, err_msg=err_msg)

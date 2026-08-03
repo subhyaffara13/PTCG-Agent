@@ -1,3 +1,4 @@
+from typing import Any
 
 def linen_vars_to_nnx_attrs(variables: tp.Mapping[str, Any]) -> dict[str, Any]:
   """Convert a dict of Linen-style variables to NNX variables."""

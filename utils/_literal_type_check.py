@@ -1,3 +1,4 @@
+from typing import Any
 
 def _literal_type_check(value: Any, /) -> None:
     """Type check the provided literal value against the legal parameters."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_history_rich(state: Mapping[str, Any], labels: Mapping[str, str]) -> str:
     """Numbered timeline showing both ``keep`` and the complement per offer."""

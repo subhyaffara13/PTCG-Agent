@@ -1,3 +1,4 @@
+import os
 
 def infer_credential_type_from_environment() -> AzureCredentialType:
     if (

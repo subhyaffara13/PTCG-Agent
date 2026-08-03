@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tag_to_layout_constraint(
     tag: torch._C.Tag,

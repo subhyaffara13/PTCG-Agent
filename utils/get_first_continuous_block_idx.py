@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def get_first_continuous_block_idx(
     filtered_messages: List[Tuple[int, AllMessageValues]],  # (idx, message)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def validateLayerInfoVersion3Data(infoData: dict[str, Any]) -> dict[str, Any]:
     """

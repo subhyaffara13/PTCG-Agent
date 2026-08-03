@@ -1,3 +1,4 @@
+import os
 
 def _save_pickled_tensors(
     pickled_items: list[tuple[str, torch.Tensor]],

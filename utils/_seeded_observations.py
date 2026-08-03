@@ -1,3 +1,4 @@
+from typing import Any
 
 def _seeded_observations(env_name: str, n: int = 5) -> list[dict[str, Any]]:
     """Build N observations from a few seeded steps of the env for parity checks."""

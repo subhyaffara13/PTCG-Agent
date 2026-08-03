@@ -1,3 +1,5 @@
+import logging
+import os
 
 def initialize_from_env() -> None:
   """Initializes monitoring based on environment and build type."""

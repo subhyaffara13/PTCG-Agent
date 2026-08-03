@@ -1,3 +1,4 @@
+from typing import Any, Tuple, Union
 
 def _unflatten_tuple(
     space: Tuple, x: NDArray[Any] | tuple[Any, ...]

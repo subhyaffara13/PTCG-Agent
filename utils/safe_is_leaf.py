@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_is_leaf(t: MetaTensorDesc[Any] | torch.Tensor) -> bool:
     try:

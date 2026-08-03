@@ -1,3 +1,4 @@
+from typing import Callable
 
 def splitby(
     iterable: Iterable[_T], predicate: Callable[[_T], bool]

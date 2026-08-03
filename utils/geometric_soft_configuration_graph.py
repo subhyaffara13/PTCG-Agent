@@ -1,3 +1,5 @@
+import math
+
 
 def geometric_soft_configuration_graph(
     *, beta, n=None, gamma=None, mean_degree=None, kappas=None, seed=None

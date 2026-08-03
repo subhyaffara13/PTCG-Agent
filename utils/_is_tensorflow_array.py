@@ -1,3 +1,4 @@
+import sys
 
 def _is_tensorflow_array(x):
     """Return whether *x* is a TensorFlow Tensor or Variable."""

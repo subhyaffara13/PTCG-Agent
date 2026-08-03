@@ -1,3 +1,4 @@
+import os
 
 def cloud_tpu_init() -> None:
   """Automatically sets Cloud TPU topology and other env vars.

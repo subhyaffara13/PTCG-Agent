@@ -1,3 +1,4 @@
+from typing import Any
 
 def _win32_restrict_file_to_user_ctypes(fname: str) -> None:
     """Secure a windows file to read-only access for the user.

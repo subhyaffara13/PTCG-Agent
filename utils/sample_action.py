@@ -1,3 +1,4 @@
+import random
 
 def sample_action(
     env: ParallelEnv[AgentID, ObsType, ActionType],

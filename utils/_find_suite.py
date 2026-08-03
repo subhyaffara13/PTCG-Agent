@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _find_suite():
     root = os.environ.get("JSON_SCHEMA_TEST_SUITE")

@@ -1,3 +1,4 @@
+import re
 
 def _parse_date(text):
     """Attempts to format a text as a standard date string (yyyy-mm-dd)."""

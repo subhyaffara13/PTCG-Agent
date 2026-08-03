@@ -1,3 +1,7 @@
+import os
+from typing import Any
+from pathlib import Path
+
 
 def secure_write(fname: str, binary: bool = False) -> Iterator[Any]:
     """Opens a file in the most restricted pattern available for

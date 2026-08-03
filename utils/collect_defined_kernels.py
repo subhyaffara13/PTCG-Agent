@@ -1,3 +1,4 @@
+from typing import Any
 
 def collect_defined_kernels(kernel_list: list[str]) -> Iterator[None]:
     from .codegen.wrapper import PythonWrapperCodegen

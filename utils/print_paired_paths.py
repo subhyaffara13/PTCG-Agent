@@ -1,3 +1,4 @@
+import sys
 
 def print_paired_paths(nb_file, fmt):
     """Display the paired paths for this notebook"""

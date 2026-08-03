@@ -1,3 +1,4 @@
+import functools
 
 def skip_if_not_implemented(test_func):
     @functools.wraps(test_func)

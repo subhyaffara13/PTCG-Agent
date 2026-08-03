@@ -1,3 +1,8 @@
+import os
+import sys
+from typing import List, Union
+from pathlib import Path
+
 
 def _save_figure(objects='mhip', fmt="pdf", usetex=False):
     mpl.use(fmt)

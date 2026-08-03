@@ -1,3 +1,4 @@
+import sys
 
 def test_runtime_module():
     from types import ModuleType

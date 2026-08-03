@@ -1,3 +1,4 @@
+import re
 
 def test_bug1():
     assert re(x) != x

@@ -1,3 +1,4 @@
+import copy
 
 def fix_invalid(a, mask=nomask, copy=True, fill_value=None):
     """

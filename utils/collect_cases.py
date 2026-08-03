@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def collect_cases(fn: Callable[..., Iterator[Case]]) -> Callable[..., None]:
     """run_stubtest used to be slow, so we used this decorator to combine cases.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def unwrap_dead_wrappers(args: tuple[Any, ...]) -> tuple[Any, ...]:
     # NB: doesn't use tree_map_only for performance reasons

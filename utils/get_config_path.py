@@ -1,3 +1,4 @@
+import os
 
 def get_config_path():
     """Returns the absolute path the the Cloud SDK's configuration directory.

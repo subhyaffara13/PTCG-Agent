@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_dist_canonical_name(dist: importlib.metadata.Distribution) -> NormalizedName:
     """Get the distribution's normalized name.

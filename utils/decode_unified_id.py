@@ -1,3 +1,4 @@
+from typing import Optional
 
 def decode_unified_id(encoded_unified_id: str) -> Optional[str]:
     """

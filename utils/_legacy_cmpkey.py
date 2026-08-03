@@ -1,3 +1,4 @@
+from typing import List
 
 def _legacy_cmpkey(version: str) -> LegacyCmpKey:
 

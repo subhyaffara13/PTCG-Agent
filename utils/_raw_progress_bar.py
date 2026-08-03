@@ -1,3 +1,4 @@
+import sys
 
 def _raw_progress_bar(
     iterable: Iterable[bytes],

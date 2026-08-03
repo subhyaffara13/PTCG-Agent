@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _flex_attention_autocast_impl(
     query: torch.Tensor,

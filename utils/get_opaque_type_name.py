@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_opaque_type_name(cls: Any) -> str:
     """

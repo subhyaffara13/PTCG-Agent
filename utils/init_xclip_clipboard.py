@@ -1,3 +1,4 @@
+import subprocess
 
 def init_xclip_clipboard():
     DEFAULT_SELECTION = "c"

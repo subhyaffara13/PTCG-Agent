@@ -1,3 +1,4 @@
+from typing import Any
 
 def in_namespace(
     op: Any | torch._ops.OpOverloadPacket | torch._ops.OpOverload, namespace: str

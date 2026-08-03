@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_get_pydantic_json_schema(tp: Any) -> GetJsonSchemaFunction | None:
     """Extract `__get_pydantic_json_schema__` from a type, handling the deprecated `__modify_schema__`."""

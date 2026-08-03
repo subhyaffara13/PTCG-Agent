@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def construct_restore_args(
     target: PyTree,

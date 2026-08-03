@@ -1,3 +1,4 @@
+from typing import Callable
 
 def torch_only_method(fn: Callable) -> Callable:
     def wrapper(*args, **kwargs):

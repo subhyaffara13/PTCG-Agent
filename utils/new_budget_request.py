@@ -1,3 +1,4 @@
+from typing import Optional
 
 def new_budget_request(data: NewCustomerRequest) -> Optional[BudgetNewRequest]:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def register_type_handler(ty, handler, func):
   """Registers new func for type, and restores original handler when done."""

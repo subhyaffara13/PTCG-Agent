@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def is_fs_root(p: Path) -> bool:
     r"""

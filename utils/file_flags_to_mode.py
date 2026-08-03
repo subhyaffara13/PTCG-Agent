@@ -1,3 +1,4 @@
+import os
 
 def file_flags_to_mode(flags):
     """Convert file's open() flags into a readable string.

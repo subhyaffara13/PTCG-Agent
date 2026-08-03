@@ -1,3 +1,4 @@
+import os
 
 def get_device_memory() -> int:
   """Returns HBM capacity of the device on which the code is running(in bytes)."""

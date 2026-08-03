@@ -1,3 +1,4 @@
+import itertools
 
 def create_read_items_for_chunk_list(
     fqn: str,

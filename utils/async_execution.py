@@ -1,3 +1,4 @@
+import functools
 
 def async_execution(fn):
     r"""

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def modify_sys_path() -> None:
     """Modify sys path for execution as Python module.

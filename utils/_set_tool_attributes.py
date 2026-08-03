@@ -1,3 +1,5 @@
+import json
+from typing import Optional
 
 def _set_tool_attributes(
     span: "Span", optional_tools: Optional[list], metadata_tools: Optional[list]

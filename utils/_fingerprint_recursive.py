@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fingerprint_recursive(
   obj: Any, path: tuple[str, ...], seen_modules: dict[FlaxId, int]

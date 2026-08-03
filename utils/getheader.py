@@ -1,3 +1,4 @@
+from typing import Any
 
 def getheader(
     im: Image.Image, palette: _Palette | None = None, info: dict[str, Any] | None = None

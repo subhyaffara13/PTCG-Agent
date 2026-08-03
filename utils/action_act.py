@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def action_act(args: Any) -> dict[str, Any]:
     global cached_agent

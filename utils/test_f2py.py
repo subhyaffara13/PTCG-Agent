@@ -1,3 +1,4 @@
+import subprocess
 
 def test_f2py(f2py_cmd):
     # test that we can run f2py script

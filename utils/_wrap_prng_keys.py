@@ -1,3 +1,4 @@
+from typing import Any
 
 def _wrap_prng_keys(
     results: Sequence[Any],

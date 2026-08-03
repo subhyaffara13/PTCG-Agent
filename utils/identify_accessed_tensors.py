@@ -1,3 +1,4 @@
+from typing import Any
 
 def identify_accessed_tensors(
     kernel: "TritonKernelType",

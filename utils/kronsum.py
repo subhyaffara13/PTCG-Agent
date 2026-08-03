@@ -1,3 +1,4 @@
+import os
 
 def kronsum(A, B, format=None):
     """Kronecker sum of square sparse matrices `A` and `B`.

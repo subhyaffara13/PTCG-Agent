@@ -1,3 +1,5 @@
+import math
+
 
 def _design_notch_peak_filter(w0, Q, ftype, fs=2.0, *, xp=None, device=None):
     """

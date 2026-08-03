@@ -1,3 +1,5 @@
+import math
+
 
 def _unravel_program_id(
     block_id: ir.Value,

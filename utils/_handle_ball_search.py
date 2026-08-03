@@ -1,3 +1,4 @@
+import random
 
 def _handle_ball_search(gs, hand, base_name):
     if "dusk" in base_name and any(k in base_name for k in {"ball"}):

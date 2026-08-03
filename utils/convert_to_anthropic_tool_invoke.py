@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def convert_to_anthropic_tool_invoke(
     tool_calls: List[ChatCompletionAssistantToolCall],

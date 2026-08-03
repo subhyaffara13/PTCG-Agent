@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_cookies_to_jar(
     jar: CookieJar, request: PreparedRequest, response: Any

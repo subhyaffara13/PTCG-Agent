@@ -1,3 +1,4 @@
+import json
 
 def compute_predictions_log_probs(
     all_examples,

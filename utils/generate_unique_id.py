@@ -1,3 +1,4 @@
+import random
 
 def generate_unique_id() -> int:
     while True:

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def run_evaluation_loader(model, loader, device, criterion) -> Tuple[float, float]:
     try:

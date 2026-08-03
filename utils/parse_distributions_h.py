@@ -1,3 +1,4 @@
+import os
 
 def parse_distributions_h(ffi, inc_dir):
     """

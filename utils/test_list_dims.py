@@ -1,3 +1,4 @@
+import time
 
 def test_list_dims():
     dimsys = DimensionSystem((length, time, mass))

@@ -1,3 +1,4 @@
+import random
 
 def test_write_network_text_iterative_add_random_directed_edges():
     """

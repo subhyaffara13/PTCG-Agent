@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def compile_or_get_cached(
     backend: xc.Client,

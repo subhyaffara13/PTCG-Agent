@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _format_state(observation: Mapping[str, Any]) -> tuple[str, int]:
     """Format the observation as an ASCII board plus return the board size."""

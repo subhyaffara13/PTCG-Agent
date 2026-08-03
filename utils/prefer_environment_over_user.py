@@ -1,3 +1,5 @@
+import os
+import sys
 
 def prefer_environment_over_user() -> bool:
     """Determine if environment-level paths should take precedence over user-level paths."""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _mount_app(
     prefix: str, attr_name: str = "app"

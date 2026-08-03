@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _override_sym_repr(
     override: Callable[["torch.types.PySymType"], str],

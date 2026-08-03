@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_scalar_metadata(device_type: str, input: Any) -> dict[str, Any]:
     assert isinstance(input, supported_scalar_types())

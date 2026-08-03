@@ -1,3 +1,4 @@
+import functools
 
 def cvt_e8m0_rceil_lowering(inp):
     """

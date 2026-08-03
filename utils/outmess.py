@@ -1,3 +1,4 @@
+import sys
 
 def outmess(t):
     if options.get('verbose', 1):

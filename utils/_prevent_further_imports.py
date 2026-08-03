@@ -1,3 +1,4 @@
+import sys
 
 def _prevent_further_imports() -> None:
     """Install an audit hook that warns on unexpected imports after pip install starts.

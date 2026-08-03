@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _shard_map_linearize(trace, shard_map_p, f: Callable,
                          tracers, mesh, in_specs, check_vma,

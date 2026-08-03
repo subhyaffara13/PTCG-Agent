@@ -1,3 +1,4 @@
+import os
 
 def get_username() -> str:
     """Returns the username of the current user."""

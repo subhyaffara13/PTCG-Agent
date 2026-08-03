@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def preprocessor(
         output_directory: str,

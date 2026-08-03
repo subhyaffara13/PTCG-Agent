@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def parse_env_id(env_id: str) -> tuple[str | None, str, int | None]:
     """Parse environment ID string format - ``[namespace/](env-name)[-v(version)]`` where the namespace and version are optional.

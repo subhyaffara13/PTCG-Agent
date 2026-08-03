@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _return_huggingface_tokenizer(model: str) -> Optional[SelectTokenizerResponse]:
     if model in litellm.cohere_models and "command-r" in model:

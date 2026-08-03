@@ -1,3 +1,4 @@
+from typing import Any
 
 def _calculate_max_shard_shapes(
     abstract_pytree: dict[str, Any], header: dict[str, Any]

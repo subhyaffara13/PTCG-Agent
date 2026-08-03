@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _fast_serialize_simple_model_response_stream(
     chunk: ModelResponseStream,

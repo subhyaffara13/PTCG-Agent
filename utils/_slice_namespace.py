@@ -1,3 +1,4 @@
+from typing import Any
 
 def _slice_namespace(d: dict[str, Any], name: str) -> dict[str, Any]:
   """Returns entries of `d` keyed `{name}::{key}`, stripped to `{key}`."""

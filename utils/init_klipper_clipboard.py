@@ -1,3 +1,4 @@
+import subprocess
 
 def init_klipper_clipboard():
     def copy_klipper(text):

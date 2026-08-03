@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _ensure_single_chunk(x: Array, axis: int) -> tuple[Array, Callable[[Array], Array]]:
     """

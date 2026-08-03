@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_none_type(type_: Any) -> bool:
     for none_type in NONE_TYPES:

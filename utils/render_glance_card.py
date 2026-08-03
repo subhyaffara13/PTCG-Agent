@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_glance_card(
     benchmark_name: str,

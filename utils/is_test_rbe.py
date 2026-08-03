@@ -1,3 +1,4 @@
+import os
 
 def is_test_rbe() -> bool:
   """Check for a variable set by the RBE toolchain under testing."""

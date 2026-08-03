@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_tensor_meta_match(
     t1: torch.Tensor, t2: torch.Tensor, attr_names: tuple[str, ...], msg_prefix: str

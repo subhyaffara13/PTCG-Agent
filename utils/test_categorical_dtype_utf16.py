@@ -1,3 +1,4 @@
+import os
 
 def test_categorical_dtype_utf16(all_parsers, csv_dir_path):
     # see gh-10153

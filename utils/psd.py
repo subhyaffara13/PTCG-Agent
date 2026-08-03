@@ -1,3 +1,4 @@
+from typing import Callable
 
 def psd(x, NFFT=None, Fs=None, detrend=None, window=None,
         noverlap=None, pad_to=None, sides=None, scale_by_freq=None):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def triton_arg_dtype(arg: Any) -> torch.dtype | None:
     if isinstance(arg, CSEVariable):

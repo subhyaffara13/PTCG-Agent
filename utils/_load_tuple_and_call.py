@@ -1,3 +1,4 @@
+from typing import Any
 
 def _load_tuple_and_call(tup: tuple[Any, ...]) -> list[Instruction]:
     insts: list[Instruction] = []

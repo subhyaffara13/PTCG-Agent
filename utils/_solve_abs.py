@@ -1,3 +1,4 @@
+from typing import Union
 
 def _solve_abs(f, symbol, domain):
     """ Helper function to solve equation involving absolute value function """

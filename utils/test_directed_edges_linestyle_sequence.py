@@ -1,3 +1,4 @@
+import itertools
 
 def test_directed_edges_linestyle_sequence(style_seq):
     """Tests support for specifying linestyles with sequences in

@@ -1,3 +1,4 @@
+import sys
 
 def try_import(module_name: str) -> ModuleType | None:
     # Implementation based on

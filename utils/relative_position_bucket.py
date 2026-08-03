@@ -1,3 +1,5 @@
+import math
+
 
 def relative_position_bucket(relative_position, bidirectional=True, num_buckets=32, max_distance=128):
     """

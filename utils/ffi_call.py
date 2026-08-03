@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def ffi_call(
     target_name: str,

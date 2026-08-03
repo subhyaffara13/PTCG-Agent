@@ -1,3 +1,4 @@
+import os
 
 def resolve_langfuse_credentials(
     langfuse_public_key=None,

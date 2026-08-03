@@ -1,3 +1,4 @@
+import itertools
 
 def _clean_url_path(path: str, is_local_path: bool) -> str:
     """

@@ -1,3 +1,4 @@
+import random
 
 def test_multinomial_empty():
     # gh-20483

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_compile_supported(device_type: DeviceLikeType) -> Any:
     from .eval_frame import is_dynamo_supported

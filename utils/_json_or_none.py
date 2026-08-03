@@ -1,3 +1,4 @@
+import json
 
 def _json_or_none(value: object) -> str | None:
     """JSON-serialize ``value`` (already-string values pass through). ``None`` on failure."""

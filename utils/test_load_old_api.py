@@ -1,3 +1,4 @@
+import sys
 
 def test_load_old_api(monkeypatch):
     mpl_test_backend = SimpleNamespace(**vars(backend_template))

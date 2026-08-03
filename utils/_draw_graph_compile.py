@@ -1,3 +1,4 @@
+from typing import Any
 
 def _draw_graph_compile(
     fx_g: fx.GraphModule, _: Any, name: str, clear_meta: bool = True

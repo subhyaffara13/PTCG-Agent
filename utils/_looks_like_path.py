@@ -1,3 +1,4 @@
+import os
 
 def _looks_like_path(name: str) -> bool:
     """Checks whether the string ``name``  "looks like" a path on the filesystem.

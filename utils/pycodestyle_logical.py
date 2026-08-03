@@ -1,3 +1,4 @@
+from typing import Any
 
 def pycodestyle_logical(
     blank_before: Any,

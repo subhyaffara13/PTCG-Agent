@@ -1,3 +1,4 @@
+import json
 
 def print_response(response: Response) -> None:
     console = rich.console.Console()

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _coerce_user_id_to_str(value: Any) -> Optional[str]:
     """Return a usable end-user identifier string, or None if the value isn't one.

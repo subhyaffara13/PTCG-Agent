@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _initial_style_jaxpr(fun: lu.WrappedFun,
                          in_avals: Sequence[core.AbstractValue]

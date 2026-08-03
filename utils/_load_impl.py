@@ -1,3 +1,4 @@
+import time
 
 def _load_impl(
     path: path_types.Path,

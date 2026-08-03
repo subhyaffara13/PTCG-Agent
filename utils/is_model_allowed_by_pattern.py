@@ -1,3 +1,4 @@
+import re
 
 def is_model_allowed_by_pattern(model: str, allowed_model_pattern: str) -> bool:
     """

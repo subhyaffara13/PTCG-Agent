@@ -1,3 +1,4 @@
+from typing import Any
 
 def _cubicspline_interpolate(
     xi: np.ndarray,

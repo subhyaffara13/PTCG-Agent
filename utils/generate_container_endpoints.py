@@ -1,3 +1,4 @@
+from typing import Callable, Dict
 
 def generate_container_endpoints() -> Dict[str, Callable]:
     """

@@ -1,3 +1,4 @@
+import os
 
 def mark_process_dead(pid, path=None):
     """Do bookkeeping for when one process dies in a multi-process setup."""

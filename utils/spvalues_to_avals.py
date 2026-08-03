@@ -1,3 +1,4 @@
+from typing import Any
 
 def spvalues_to_avals(
     spenv: SparsifyEnv,

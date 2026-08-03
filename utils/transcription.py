@@ -1,3 +1,4 @@
+from typing import Any, List, Optional, Union
 
 def transcription(
     model: str,

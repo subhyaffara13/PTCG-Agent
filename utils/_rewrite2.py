@@ -1,3 +1,4 @@
+import itertools
 
 def _rewrite2(f, x):
     """

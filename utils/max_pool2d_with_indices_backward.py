@@ -1,3 +1,4 @@
+from typing import Any
 
 def max_pool2d_with_indices_backward(
     grad_output: Tensor,

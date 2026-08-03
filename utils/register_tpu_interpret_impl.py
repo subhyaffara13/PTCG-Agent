@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_tpu_interpret_impl(prim: jax_core.Primitive) -> Callable[[T], T]:
   """Registers an alternate primitive implementation for TPU Interpret Mode.

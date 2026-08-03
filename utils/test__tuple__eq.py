@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple_Eq():
     assert Eq(Tuple(), Tuple()) is S.true

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_weight_info_from_shadow_wrapper(shadow_wrapper: torch.nn.Module):
     # input: shadow wrapper module

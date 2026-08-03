@@ -1,3 +1,4 @@
+import os
 
 def get_source_file(
     filename: str, include_no_ext: bool = False, prefer_stubs: bool = False

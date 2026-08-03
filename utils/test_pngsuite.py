@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_pngsuite():
     files = sorted(

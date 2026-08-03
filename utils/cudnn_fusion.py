@@ -1,3 +1,4 @@
+import functools
 
 def cudnn_fusion(f):
   """Makes a function become a cuDNN kernel. Relies on XLA's handling of

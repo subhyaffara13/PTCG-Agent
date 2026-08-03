@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_field_is_hashable(path: tuple[str, ...], x: Any):
   """Checks if a field is hashable."""

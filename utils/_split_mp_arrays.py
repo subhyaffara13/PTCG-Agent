@@ -1,3 +1,4 @@
+from typing import Any
 
 def _split_mp_arrays(
   target: dict[str, Any]

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def initsysfonts_unix(path="fc-list"):
     """use the fc-list from fontconfig to get a list of fonts"""

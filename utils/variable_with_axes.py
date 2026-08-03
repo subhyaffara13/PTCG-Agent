@@ -1,3 +1,4 @@
+from typing import Optional
 
 def variable_with_axes(
     collection: str,

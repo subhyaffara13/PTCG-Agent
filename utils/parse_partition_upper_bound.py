@@ -1,3 +1,4 @@
+from typing import Optional
 
 def parse_partition_upper_bound(bound_expr: str) -> Optional[datetime]:
     """

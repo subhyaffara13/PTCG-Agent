@@ -1,3 +1,4 @@
+from typing import Any, Optional, Tuple
 
 def render_scope(
     scope: "Mapping[str, Any]",

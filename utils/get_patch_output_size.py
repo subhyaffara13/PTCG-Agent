@@ -1,3 +1,5 @@
+import math
+
 
 def get_patch_output_size(image, target_resolution, input_data_format):
     """

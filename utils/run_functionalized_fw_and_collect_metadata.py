@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def run_functionalized_fw_and_collect_metadata(
     f: Callable[..., Any],

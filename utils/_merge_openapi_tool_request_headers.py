@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _merge_openapi_tool_request_headers(
     static_headers: Dict[str, str],

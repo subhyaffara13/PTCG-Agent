@@ -1,3 +1,4 @@
+from typing import Optional
 
 def use_custom_pricing_for_model(litellm_params: Optional[dict]) -> bool:
     """

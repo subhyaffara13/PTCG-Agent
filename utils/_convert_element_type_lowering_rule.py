@@ -1,3 +1,4 @@
+import functools
 
 def _convert_element_type_lowering_rule(
     ctx: LoweringRuleContext, x, *, new_dtype, weak_type, sharding

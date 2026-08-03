@@ -1,3 +1,4 @@
+from typing import Union
 
 def _registered(typ: Type[T]) -> Type[T]:
     pass

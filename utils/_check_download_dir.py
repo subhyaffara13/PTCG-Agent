@@ -1,3 +1,4 @@
+import os
 
 def _check_download_dir(
     link: Link,

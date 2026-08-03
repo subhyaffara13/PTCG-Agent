@@ -1,3 +1,4 @@
+from typing import Dict
 
 def gcd_terms(terms, isprimitive=False, clear=True, fraction=True):
     """Compute the GCD of ``terms`` and put them together.

@@ -1,3 +1,4 @@
+import os
 
 def is_torchelastic_launched() -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _apply_to_modules(
     root_module: torch.nn.Module,

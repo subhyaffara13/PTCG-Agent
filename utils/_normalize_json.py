@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_json(
     data: Any,

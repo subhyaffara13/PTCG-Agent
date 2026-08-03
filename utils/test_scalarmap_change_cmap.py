@@ -1,3 +1,4 @@
+import itertools
 
 def test_scalarmap_change_cmap(fig_test, fig_ref):
     # Ensure that changing the colormap of a 3D scatter after draw updates the colors.

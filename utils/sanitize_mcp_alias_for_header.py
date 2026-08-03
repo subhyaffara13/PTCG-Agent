@@ -1,3 +1,4 @@
+import re
 
 def sanitize_mcp_alias_for_header(alias: str) -> str:
     """

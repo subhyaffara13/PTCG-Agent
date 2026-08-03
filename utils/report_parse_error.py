@@ -1,3 +1,4 @@
+import re
 
 def report_parse_error(error: ParseError, errors: Errors) -> None:
     message = error["message"]

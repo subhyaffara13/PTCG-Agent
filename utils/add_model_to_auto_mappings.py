@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def add_model_to_auto_mappings(
     repo_path: Path,

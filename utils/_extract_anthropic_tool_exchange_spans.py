@@ -1,3 +1,4 @@
+from typing import List, Optional, Set, Tuple
 
 def _extract_anthropic_tool_exchange_spans(
     messages: List[dict],

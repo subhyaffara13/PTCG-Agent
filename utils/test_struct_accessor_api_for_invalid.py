@@ -1,3 +1,4 @@
+import re
 
 def test_struct_accessor_api_for_invalid(invalid):
     with pytest.raises(

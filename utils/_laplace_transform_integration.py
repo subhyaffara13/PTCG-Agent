@@ -1,3 +1,4 @@
+import re
 
 def _laplace_transform_integration(f, t, s_, *, simplify):
     """ The backend function for doing Laplace transforms by integration.

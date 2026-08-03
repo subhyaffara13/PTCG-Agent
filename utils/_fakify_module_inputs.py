@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fakify_module_inputs(
     args: tuple[Any],

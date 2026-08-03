@@ -1,3 +1,4 @@
+import os
 
 def module_to_path(out_dir: str, module: str) -> str:
     fnam = os.path.join(out_dir, f"{module.replace('.', '/')}.pyi")

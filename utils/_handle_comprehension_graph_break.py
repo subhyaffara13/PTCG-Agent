@@ -1,3 +1,4 @@
+import sys
 
 def _handle_comprehension_graph_break(
     tx: InstructionTranslatorBase, inst: Instruction

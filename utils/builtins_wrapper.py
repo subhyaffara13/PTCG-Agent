@@ -1,3 +1,4 @@
+from typing import Callable
 
 def builtins_wrapper(
     func: Callable[[DataDrivenTestCase], None], path: str

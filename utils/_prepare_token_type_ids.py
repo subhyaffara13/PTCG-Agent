@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_token_type_ids(model_kwargs: dict[str, Any], new_length: int) -> dict[str, Any]:
     """Expands or crops the model's token_type_ids for decoding purposes, to the defined length"""

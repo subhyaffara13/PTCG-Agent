@@ -1,3 +1,5 @@
+import math
+
 
 def auto_pipeline_parallel(model: nn.Module, gpulist: list, sample_inputs: tuple):
     """Make the model executable across multiple GPUs."""

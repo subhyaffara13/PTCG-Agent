@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_qsympify():
     assert _qsympify_sequence([[1, 2], [1, 3]]) == (Tuple(1, 2), Tuple(1, 3))

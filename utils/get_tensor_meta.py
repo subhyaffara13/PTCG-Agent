@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_tensor_meta(node: Node) -> Any:
     tensor_meta = node.meta.get("tensor_meta")

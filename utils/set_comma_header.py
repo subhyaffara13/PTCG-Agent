@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def set_comma_header(headers: Headers, name: bytes, new_values: List[bytes]) -> Headers:
     # The header name `name` is expected to be lower-case bytes.

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def add_loggers_to_model(
     gm: GraphModule,

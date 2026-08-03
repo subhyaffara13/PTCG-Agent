@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_override_for_compile_id(
     compile_id: CompileId | None,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_aot(obj: Any) -> bool:
     """Decides if an object behaves as an array of tables (i.e. a nonempty list

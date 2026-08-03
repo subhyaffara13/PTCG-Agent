@@ -1,3 +1,4 @@
+from typing import Any
 
 def resolve_handler_for_save(
     registry: CheckpointableHandlerRegistry,

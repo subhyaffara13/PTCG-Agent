@@ -1,3 +1,5 @@
+import math
+
 
 def _compute_holds_probability(target_ids: list, assumed_deck: dict, deck_size: int,
                                hand_size: int, known_in_play: dict, known_in_discard: dict,

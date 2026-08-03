@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def scale_by_backtracking_linesearch(
     max_backtracking_steps: jax.typing.ArrayLike,  # int

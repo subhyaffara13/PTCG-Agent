@@ -1,3 +1,4 @@
+from typing import List
 
 def get_file_ids_from_messages(messages: List[AllMessageValues]) -> List[str]:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def fisher_diag(
     negative_log_likelihood: LossFn,

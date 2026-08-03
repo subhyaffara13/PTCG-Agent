@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _detect_program_name(
     path: str | None = None, _main: ModuleType | None = None

@@ -1,3 +1,4 @@
+import functools
 
 def _tuples_differ(xs, ys):
   """Dynamic index-tuple comparison calculation."""

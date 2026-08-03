@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _azure_tool_call_invoke_helper(
     function_call_params: ChatCompletionToolCallFunctionChunk,

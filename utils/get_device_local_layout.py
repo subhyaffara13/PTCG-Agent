@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_device_local_layout(arr: jax.Array) -> Any:
   """Returns device_local_layout of a jax.Array."""

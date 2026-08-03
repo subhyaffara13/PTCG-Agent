@@ -1,3 +1,4 @@
+from typing import Union
 
 def flex_attention_forward(
     module: torch.nn.Module,

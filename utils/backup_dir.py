@@ -1,3 +1,4 @@
+import os
 
 def backup_dir(dir: str, ext: str = ".bak") -> str:
     """Figure out the name of a directory to back up the given dir to

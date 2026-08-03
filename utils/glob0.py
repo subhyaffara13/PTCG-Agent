@@ -1,3 +1,4 @@
+import os
 
 def glob0(dirname, basename):
     if not basename:

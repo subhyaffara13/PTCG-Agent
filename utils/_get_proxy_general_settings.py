@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _get_proxy_general_settings() -> Dict[str, Any]:
     try:

@@ -1,3 +1,4 @@
+import copy
 
 def test_dataframe_from_numpy_array(copy):
     arr = np.array([[1, 2], [3, 4]])

@@ -1,3 +1,4 @@
+import sys
 
 def flags_from_pkgconfig(libs):
     r"""Return compiler line flags for FFI.set_source based on pkg-config output

@@ -1,3 +1,4 @@
+import sys
 
 def _get_comprehension_bytecode_prefix() -> list[str]:
     """Get the bytecode instructions that precede BUILD_LIST in a list comprehension."""

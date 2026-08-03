@@ -1,3 +1,4 @@
+import itertools
 
 def zip_dict(  # pytype: disable=invalid-annotation
     *dicts: Unpack[dict[_KeyT, _ValuesT]],

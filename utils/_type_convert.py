@@ -1,3 +1,4 @@
+from typing import Any
 
 def _type_convert(arg: Any) -> Any:
     """Convert `None` to `NoneType` and strings to `ForwardRef` instances.

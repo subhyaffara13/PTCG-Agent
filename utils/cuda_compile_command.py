@@ -1,3 +1,5 @@
+import logging
+import os
 
 def cuda_compile_command(
     src_files: list[str],

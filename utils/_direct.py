@@ -1,3 +1,5 @@
+import math
+
 
 def _direct(f, a, b, step, args, constants, xp, inclusive=True):
     # Directly evaluate the sum.

@@ -1,3 +1,4 @@
+import os
 
 def _uses_region_derived_base_url(base_url: str | httpx.URL | None) -> bool:
     if isinstance(base_url, str) and not base_url.strip():

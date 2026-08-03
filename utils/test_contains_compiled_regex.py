@@ -1,3 +1,4 @@
+import re
 
 def test_contains_compiled_regex(any_string_dtype):
     # GH#61942

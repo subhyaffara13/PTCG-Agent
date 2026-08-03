@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_list_wrapper(
     object_type: type[Any],

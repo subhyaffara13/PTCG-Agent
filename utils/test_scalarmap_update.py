@@ -1,3 +1,4 @@
+import itertools
 
 def test_scalarmap_update(fig_test, fig_ref):
 

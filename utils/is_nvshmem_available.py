@@ -1,3 +1,4 @@
+import os
 
 def is_nvshmem_available() -> bool:
     r"""

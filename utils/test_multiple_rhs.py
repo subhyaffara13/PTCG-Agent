@@ -1,3 +1,4 @@
+import random
 
 def test_multiple_rhs():
     random = np.random.RandomState(1234)

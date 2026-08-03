@@ -1,3 +1,4 @@
+from typing import Union
 
 def generalized_kl_divergence(
     log_predictions: jax.typing.ArrayLike,

@@ -1,3 +1,4 @@
+import random
 
 def test_random_unlabeled_rooted_tree():
     for i in range(1, 10):

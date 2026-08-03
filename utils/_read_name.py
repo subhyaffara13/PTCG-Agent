@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _readName(glyphObject: Optional[Any], root: ElementType, validate: bool) -> None:
     glyphName = root.get("name")

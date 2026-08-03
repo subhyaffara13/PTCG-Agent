@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_invalid_op(name: str) -> Callable[..., NoReturn]:
     """

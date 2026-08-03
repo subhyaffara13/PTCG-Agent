@@ -1,3 +1,4 @@
+import uuid
 
 def s3_bucket_private(moto_s3_resource):
     """

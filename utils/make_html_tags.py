@@ -1,3 +1,4 @@
+from typing import Union
 
 def make_html_tags(
     tag_str: Union[str, ParserElement],

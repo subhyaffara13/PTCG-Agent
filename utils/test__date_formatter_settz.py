@@ -1,3 +1,4 @@
+import time
 
 def test_DateFormatter_settz():
     time = mdates.date2num(datetime.datetime(2011, 1, 1, 0, 0,

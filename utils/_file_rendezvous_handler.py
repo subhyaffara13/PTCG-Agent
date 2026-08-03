@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _file_rendezvous_handler(url: str, **kwargs):
     def _error(msg):

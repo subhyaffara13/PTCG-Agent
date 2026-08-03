@@ -1,3 +1,4 @@
+import os
 
 def run_ppo_update(model, optimizer, states, actions, old_log_probs, rewards, clip_ratio, gamma, lam, value_coef, entropy_coef, device, epochs=4, batch_size=1024, model_path='models/ppo_actor_critic.pt', iteration_id=None):
     if not TORCH_AVAILABLE or not states:

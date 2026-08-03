@@ -1,3 +1,4 @@
+import os
 
 def CUDAExtension(name, sources, *args, **kwargs):
     """

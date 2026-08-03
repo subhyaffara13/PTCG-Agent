@@ -1,3 +1,4 @@
+import time
 
 def slow_add(x, y, device="cpu"):
     time.sleep(1)

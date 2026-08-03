@@ -1,3 +1,4 @@
+from typing import Any
 
 def debug_print_abstract_eval(*avals: Any, fmt: str, ordered, **kwargs):
   del avals, fmt, kwargs  # Unused.

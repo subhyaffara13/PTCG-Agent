@@ -1,3 +1,4 @@
+import sys
 
 def _postmortem_exc_or_tb(
     excinfo: ExceptionInfo[BaseException],

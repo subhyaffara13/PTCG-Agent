@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _prepare_key_import_data(key: Dict[str, Any]) -> Dict[str, Any]:
     """Prepare key data for import by extracting relevant fields."""

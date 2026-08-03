@@ -1,3 +1,4 @@
+from typing import Any
 
 def _write_arrays(array_store_path: Any, arrs: list[Any],
                   arr_leaf_ids: list[int], ts_specs: list[Any | None],

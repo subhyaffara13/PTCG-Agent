@@ -1,3 +1,4 @@
+import os
 
 def write_record_to_file(filename: str, exec_record: ExecutionRecord) -> None:
     try:

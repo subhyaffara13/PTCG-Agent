@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _get_provider_handlers() -> Dict[str, Type[BaseTranslation]]:
     global _PROVIDER_HANDLERS

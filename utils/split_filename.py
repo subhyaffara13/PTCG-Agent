@@ -1,3 +1,4 @@
+import re
 
 def split_filename(filename, project_name=None):
     """

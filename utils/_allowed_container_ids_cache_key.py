@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def _allowed_container_ids_cache_key(owner_scopes: List[str]) -> str:
     """JSON-encode the sorted scope list — using a separator like ``|``

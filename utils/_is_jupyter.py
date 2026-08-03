@@ -1,3 +1,4 @@
+import os
 
 def _is_jupyter() -> bool:  # pragma: no cover
     """Check if we're running in a Jupyter notebook."""

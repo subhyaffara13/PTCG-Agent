@@ -1,3 +1,4 @@
+import itertools
 
 def _variant_default_tests_generator(fn, is_jit_context, which_variants,
                                      **var_kwargs):

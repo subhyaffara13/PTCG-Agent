@@ -1,3 +1,4 @@
+from typing import List
 
 def _create_results_from_response(
     members: List[Member],

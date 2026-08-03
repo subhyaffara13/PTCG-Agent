@@ -1,3 +1,6 @@
+import os
+import re
+import subprocess
 
 def check_compiler_ok_for_platform(compiler: str) -> bool:
     """

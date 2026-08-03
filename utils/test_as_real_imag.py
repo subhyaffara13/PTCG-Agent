@@ -1,3 +1,4 @@
+import re
 
 def test_as_real_imag():
     m1 = OperationsOnlyMatrix(2, 2, [1, 2, 3, 4])

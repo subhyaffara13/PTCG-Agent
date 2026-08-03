@@ -1,3 +1,4 @@
+import functools
 
 def rename_parameter(since, old, new, func=None):
     """

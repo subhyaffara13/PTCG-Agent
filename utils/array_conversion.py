@@ -1,3 +1,4 @@
+from typing import Any
 
 def array_conversion(value: Any, xp: ModuleType, device: Device | None = None) -> Any:
     """Convert a value into the specified xp module array type."""

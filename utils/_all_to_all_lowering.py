@@ -1,3 +1,4 @@
+from typing import Any
 
 def _all_to_all_lowering(
     ctx, x, *, split_axis, concat_axis, axis_name, axis_index_groups, tiled,

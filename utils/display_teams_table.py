@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def display_teams_table(teams: List[Dict[str, Any]]) -> None:
     """Display teams in a formatted table"""

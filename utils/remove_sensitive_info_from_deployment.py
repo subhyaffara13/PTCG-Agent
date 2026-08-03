@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def remove_sensitive_info_from_deployment(
     deployment_dict: dict,

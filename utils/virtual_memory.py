@@ -1,3 +1,4 @@
+import os
 
 def virtual_memory():
     total, avail, free, _pinned, inuse = cext.virtual_mem()

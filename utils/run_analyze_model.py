@@ -1,3 +1,4 @@
+import logging
 
 def run_analyze_model():
     args = parse_args()

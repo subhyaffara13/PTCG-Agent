@@ -1,3 +1,4 @@
+import os
 
 def _get_sycl_arch_list():
     if 'TORCH_XPU_ARCH_LIST' in os.environ:

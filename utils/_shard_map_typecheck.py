@@ -1,3 +1,4 @@
+import os
 
 def _shard_map_typecheck(_, *in_atoms, jaxpr, mesh, in_specs, out_specs,
                          check_vma, newly_manual_axes):

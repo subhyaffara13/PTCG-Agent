@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def sample_init_state(
     key: chex.PRNGKey, rows: int, columns: int

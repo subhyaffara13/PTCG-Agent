@@ -1,3 +1,4 @@
+import functools
 
 def mixed_matmul_kernel(
     a: jax.Array, b: jax.Array, *, out_dtype: jnp.dtype, config: TuningConfig

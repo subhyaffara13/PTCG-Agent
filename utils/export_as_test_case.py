@@ -1,3 +1,4 @@
+import os
 
 def export_as_test_case(
     model_bytes: bytes, inputs_data, outputs_data, name: str, dir: str

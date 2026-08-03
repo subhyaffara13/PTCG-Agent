@@ -1,3 +1,4 @@
+import random
 
 def write_randomness(number=200):
     f = open(fname, "w")

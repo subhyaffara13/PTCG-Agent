@@ -1,3 +1,6 @@
+import pathlib
+import sys
+from typing import Union
 
 def resource_path(package: Union[str, types.ModuleType]) -> abstract_path.Path:
   """Returns read-only root directory path of the module.

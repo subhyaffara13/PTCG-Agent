@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _populate_install_dir(api, skill: MarketplaceSkill, install_dir: Path) -> None:
     install_dir.mkdir(parents=True, exist_ok=True)

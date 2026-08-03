@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_literal_values(
     annotation: Any,

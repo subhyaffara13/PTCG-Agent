@@ -1,3 +1,4 @@
+import re
 
 def test_erfc():
     assert erfc(nan) is nan

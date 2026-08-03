@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_from_cache(f: Any) -> None:
     """

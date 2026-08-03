@@ -1,3 +1,4 @@
+from typing import Any
 
 def _clear_pytree(pytree: Any) -> None:
   """Frees the device arrays held by a pytree."""

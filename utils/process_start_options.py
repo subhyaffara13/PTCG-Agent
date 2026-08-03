@@ -1,3 +1,4 @@
+import sys
 
 def process_start_options(flags: list[str], allow_sources: bool) -> Options:
     _, options = mypy.main.process_options(

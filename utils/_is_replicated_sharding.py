@@ -1,3 +1,4 @@
+import logging
 
 def _is_replicated_sharding(sharding: jax.sharding.Sharding) -> bool:
   """Returns True if the sharding is replicated.

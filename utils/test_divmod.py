@@ -1,3 +1,6 @@
+import random
+import re
+from typing import Tuple
 
 def test_divmod():
     assert divmod(x, y) == (x//y, x % y)

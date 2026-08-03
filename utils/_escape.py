@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _escape(s: str, escaping: str, valid_rune_fn: Callable[[str, int], bool]) -> str:
     """Performs backslash escaping on backslash, newline, and double-quote characters.

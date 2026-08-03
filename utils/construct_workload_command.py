@@ -1,3 +1,4 @@
+import os
 
 def construct_workload_command(
     *,

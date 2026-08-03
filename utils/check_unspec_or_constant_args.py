@@ -1,3 +1,5 @@
+import itertools
+from typing import Any
 
 def check_unspec_or_constant_args(
     args: Iterable[Any], kwargs: Mapping[Any, Any]

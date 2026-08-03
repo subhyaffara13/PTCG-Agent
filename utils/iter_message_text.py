@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def iter_message_text(data: Dict[str, Any]) -> Iterator[str]:
     """Yield every text fragment from ``messages`` AND ``input``.

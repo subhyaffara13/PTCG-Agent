@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_callable_name(obj):
     # typical case has name

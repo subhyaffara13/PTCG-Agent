@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _normalize_kwargs(func: Callable, loc: dict[str, Any]) -> "OrderedDict[str, Any]":
     """Given a function and local function arguments, normalize the keyword

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def lambda_auto_wrap_policy(
     module: nn.Module, recurse: bool, nonwrapped_numel: int, lambda_fn: Callable

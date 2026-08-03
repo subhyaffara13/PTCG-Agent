@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def ensure_deletable(path: Path, consider_lock_dead_if_created_before: float) -> bool:
     """Check if `path` is deletable based on whether the lock file is expired."""

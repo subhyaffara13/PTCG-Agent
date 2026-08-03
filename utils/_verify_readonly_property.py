@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _verify_readonly_property(stub: nodes.Decorator, runtime: Any) -> Iterator[str]:
     assert stub.func.is_property

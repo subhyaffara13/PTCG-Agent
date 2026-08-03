@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _is_special_case_of(soln1, soln2, eq, order, var):
     r"""

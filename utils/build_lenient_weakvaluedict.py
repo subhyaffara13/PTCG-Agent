@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_lenient_weakvaluedict(d: dict[str, Any] | None) -> dict[str, Any] | None:
     """Takes an input dictionary, and produces a new value that (invertibly) replaces the values with weakrefs.

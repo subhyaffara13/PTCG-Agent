@@ -1,3 +1,4 @@
+from typing import Callable
 
 def anchors_plugin(
     md: MarkdownIt,

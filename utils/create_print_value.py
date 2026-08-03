@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_print_value(value: Any) -> list[Instruction]:
     return [

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_large_single_path_collection():
     buff = io.BytesIO()

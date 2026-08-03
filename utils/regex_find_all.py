@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def regex_find_all(text: str, pattern: str, flags: int = 0) -> List[str]:
     """

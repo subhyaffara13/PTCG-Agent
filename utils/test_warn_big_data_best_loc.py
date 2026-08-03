@@ -1,3 +1,5 @@
+import itertools
+import time
 
 def test_warn_big_data_best_loc(monkeypatch):
     # Force _find_best_position to think it took a long time.

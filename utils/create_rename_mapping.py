@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_rename_mapping(
     inputs, dynamic_shapes: dict[str, Any] | tuple[Any, ...] | list[Any]

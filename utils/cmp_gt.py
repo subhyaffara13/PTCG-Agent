@@ -1,3 +1,4 @@
+from typing import Any
 
 def cmp_gt(a: Any, b: Any) -> bool:
     # Check if __gt__ is overridden

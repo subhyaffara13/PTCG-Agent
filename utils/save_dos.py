@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def save_dos(dos_file: Path, learned_dos: dict):
     try:

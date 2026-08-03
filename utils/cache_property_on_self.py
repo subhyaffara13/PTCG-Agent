@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def cache_property_on_self(
     fn: Callable[Concatenate[Any, P], RV],

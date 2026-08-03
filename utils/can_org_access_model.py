@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def can_org_access_model(
     model: str,

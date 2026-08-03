@@ -1,3 +1,4 @@
+import re
 
 def _matchlambda(func, line):
     """check if lambda object 'func' matches raw line of code 'line'"""

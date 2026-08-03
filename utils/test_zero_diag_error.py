@@ -1,3 +1,4 @@
+import random
 
 def test_zero_diag_error():
     # The Levinson-Durbin implementation fails when the diagonal is zero.

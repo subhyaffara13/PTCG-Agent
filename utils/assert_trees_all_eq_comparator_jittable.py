@@ -1,3 +1,4 @@
+from typing import Tuple, Union
 
 def assert_trees_all_eq_comparator_jittable(
     equality_comparator: TLeavesEqCmpFn,

@@ -1,3 +1,4 @@
+import os
 
 def _build_cmdtuple(path, cmdtuples):
     """Helper for remove_tree()."""

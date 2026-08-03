@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional, Union
 
 def simplified_ademamix(
     learning_rate: base.ScalarOrSchedule,

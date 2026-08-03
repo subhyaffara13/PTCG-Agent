@@ -1,3 +1,4 @@
+from typing import Any
 
 def require_unanimous_scalar_result(
     result: jax.Array, *, op_name: str

@@ -1,3 +1,4 @@
+import copy
 
 def restore_filtered_metadata(filtered_metadata, unfiltered_metadata, user_filter, default_filter):
     """Update the filtered metadata with the part of the unfiltered one that matches the filter"""

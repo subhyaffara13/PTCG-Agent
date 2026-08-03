@@ -1,3 +1,4 @@
+import random
 
 def _compare_torch_scalar(variables, expr, rng=lambda: random.uniform(-5, 5)):
     f = lambdify(variables, expr, 'torch')

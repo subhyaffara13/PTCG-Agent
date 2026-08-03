@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_credential_from_model_config(
     model_name: str,

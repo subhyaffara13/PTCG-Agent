@@ -1,3 +1,4 @@
+import logging
 
 def capture_logs(is_mode=False, python_tb=False, script_tb=False, cpp_tb=False) -> Iterator[list[str]]:
     collect_traceback = python_tb or script_tb or cpp_tb

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _optimize_catch_errors(
     compile_fn: convert_frame.ConvertFrameProtocol,

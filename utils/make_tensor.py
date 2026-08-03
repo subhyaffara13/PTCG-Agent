@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def make_tensor(
     *shape: int | torch.Size | list[int] | tuple[int, ...],

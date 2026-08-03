@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_args():
     for n, cls in enumerate(classes):

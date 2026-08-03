@@ -1,3 +1,4 @@
+from typing import Union
 
 def kl_divergence(p: Distribution, q: Distribution) -> Tensor:
     r"""

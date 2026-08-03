@@ -1,3 +1,4 @@
+import itertools
 
 def test_edge_width_sequence(edgelist):
     G = barbell.to_directed()

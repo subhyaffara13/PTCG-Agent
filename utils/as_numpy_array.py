@@ -1,3 +1,4 @@
+from typing import Any
 
 def as_numpy_array(array: Array, *, xp: ModuleType) -> np.typing.NDArray[Any]:
     """

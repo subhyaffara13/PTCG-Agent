@@ -1,3 +1,4 @@
+import time
 
 def validate_meta(
     meta: CacheMeta | None, id: str, path: str | None, ignore_all: bool, manager: BuildManager

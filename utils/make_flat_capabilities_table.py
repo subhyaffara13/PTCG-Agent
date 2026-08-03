@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_flat_capabilities_table(
         modules: str | list[str],

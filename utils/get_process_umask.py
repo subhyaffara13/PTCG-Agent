@@ -1,3 +1,4 @@
+import os
 
 def get_process_umask():
     result = os.umask(0o22)

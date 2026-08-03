@@ -1,3 +1,4 @@
+from typing import Any
 
 def process_allgather(in_tree, tiled: bool | None = None):
   """All-gather data from all hosts."""

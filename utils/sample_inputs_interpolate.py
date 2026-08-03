@@ -1,3 +1,4 @@
+from typing import Any
 
 def sample_inputs_interpolate(mode, self, device, dtype, requires_grad, **kwargs):
     N, C = 2, 3

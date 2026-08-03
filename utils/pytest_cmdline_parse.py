@@ -1,3 +1,5 @@
+import os
+import sys
 
 def pytest_cmdline_parse() -> Generator[None, Config, Config]:
     config = yield

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _check_out_dims_is_int_or_int_tuple(out_dims: out_dims_t, func: Callable) -> None:
     if isinstance(out_dims, int):

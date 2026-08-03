@@ -1,3 +1,4 @@
+import functools
 
 def _deprecated(name):
     warnings.warn(f"hipify version 2.0.0 no longer uses function {name}", FutureWarning, stacklevel=2)

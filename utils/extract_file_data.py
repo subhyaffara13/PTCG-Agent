@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def extract_file_data(file_data: FileTypes) -> ExtractedFileData:
     """

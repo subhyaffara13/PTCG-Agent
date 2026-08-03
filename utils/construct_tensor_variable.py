@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_tensor_variable(
     target_cls: type[VTTypeAlias],

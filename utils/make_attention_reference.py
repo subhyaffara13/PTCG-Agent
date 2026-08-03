@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def make_attention_reference(
     mask: mask_lib.Mask | np.ndarray,

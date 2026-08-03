@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _find_endpoint_by_id(
     endpoints_data: List,

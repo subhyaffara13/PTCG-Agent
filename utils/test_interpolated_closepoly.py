@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_interpolated_closepoly():
     codes = [Path.MOVETO] + [Path.LINETO]*2 + [Path.CLOSEPOLY]

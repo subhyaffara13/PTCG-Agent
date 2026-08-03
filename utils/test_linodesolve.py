@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_linodesolve():
     t, x, a = symbols("t x a")

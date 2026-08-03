@@ -1,3 +1,5 @@
+import logging
+from typing import Callable
 
 def log_hook(fn: Callable, level=logging.INFO) -> Callable:
     """

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_model_info_response(
     model_id: str,

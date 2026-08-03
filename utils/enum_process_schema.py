@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def enum_process_schema(enum: Type[Enum], *, field: Optional[ModelField] = None) -> Dict[str, Any]:
     """

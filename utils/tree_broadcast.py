@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_broadcast(prefix_tree: Any, full_tree: Any,
                    is_leaf: Callable[[Any], bool] | None = None

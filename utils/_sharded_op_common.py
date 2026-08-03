@@ -1,3 +1,4 @@
+import functools
 
 def _sharded_op_common(op, early_stop_func, extra_check):
     """

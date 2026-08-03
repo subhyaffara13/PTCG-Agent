@@ -1,3 +1,4 @@
+import re
 
 def parse_placement(s: str) -> Placement | None:
     """

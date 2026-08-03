@@ -1,3 +1,4 @@
+import os
 
 def isfile_strict(path):
     """Same as os.path.isfile() but does not swallow EACCES / EPERM

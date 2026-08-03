@@ -1,3 +1,4 @@
+from typing import Any, List, Optional
 
 def construct_type(*, value: object, type_: object, metadata: Optional[List[Any]] = None) -> object:
     """Loose coercion to the expected type with construction of nested values.

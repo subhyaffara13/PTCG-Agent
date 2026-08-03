@@ -1,3 +1,5 @@
+import math
+
 
 def _block_diag(self):
     """

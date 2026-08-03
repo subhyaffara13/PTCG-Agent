@@ -1,3 +1,4 @@
+from typing import Any
 
 def bitwise_same(ref: Any, res: Any, equal_nan: bool = False) -> bool:
     return same(

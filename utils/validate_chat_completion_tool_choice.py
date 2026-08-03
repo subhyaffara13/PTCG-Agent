@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def validate_chat_completion_tool_choice(
     tool_choice: Optional[Union[dict, str]],

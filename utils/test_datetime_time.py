@@ -1,3 +1,4 @@
+import time
 
 def test_datetime_time(conn, request, sqlite_buildin):
     # test support for datetime.time

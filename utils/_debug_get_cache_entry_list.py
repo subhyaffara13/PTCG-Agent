@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _debug_get_cache_entry_list(
     code: types.CodeType | Callable[..., Any],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_rank_shifts(
     variants: list[str],

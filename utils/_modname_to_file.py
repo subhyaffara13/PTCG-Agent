@@ -1,3 +1,4 @@
+import os
 
 def _modname_to_file(outputdir, modname, extension):
     parts = modname.split('.')

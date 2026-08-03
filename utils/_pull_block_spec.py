@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _pull_block_spec(
     jaxpr: core.Jaxpr,

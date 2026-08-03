@@ -1,3 +1,4 @@
+import os
 
 def check_native_jit_disabled() -> bool:
     """

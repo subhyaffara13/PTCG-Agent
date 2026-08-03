@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def gen_2d_view_of_epilogue_buf(
     Y: ir.Buffer,

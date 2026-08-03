@@ -1,3 +1,4 @@
+import os
 
 def help(github, model, force_reload=False, skip_validation=False, trust_repo="check"):
     r"""

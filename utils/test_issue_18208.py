@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_18208():
     variables = symbols('x0:16') + symbols('y0:12')

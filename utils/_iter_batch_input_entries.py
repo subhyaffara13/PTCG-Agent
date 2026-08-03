@@ -1,3 +1,4 @@
+import json
 
 def _iter_batch_input_entries(file_content: bytes) -> Iterator[dict]:
     """

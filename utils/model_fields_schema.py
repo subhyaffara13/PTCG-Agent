@@ -1,3 +1,4 @@
+from typing import Any
 
 def model_fields_schema(
     fields: dict[str, ModelField],

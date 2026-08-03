@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple_index():
     assert Tuple(4, 0, 1, 2, 3).index(4) == 0

@@ -1,3 +1,4 @@
+import functools
 
 def test_polygon_selector(ax, draw_bounding_box):
     check_selector = functools.partial(

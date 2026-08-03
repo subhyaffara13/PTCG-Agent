@@ -1,3 +1,4 @@
+from typing import Any
 
 def common_completion_suffix_validator(df: pd.DataFrame) -> Remediation:
     """

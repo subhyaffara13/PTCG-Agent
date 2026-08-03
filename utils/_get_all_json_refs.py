@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_all_json_refs(item: Any) -> set[JsonRef]:
     """Get all the definitions references from a JSON schema."""

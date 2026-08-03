@@ -1,3 +1,4 @@
+import itertools
 
 def _resize_sequence(seq, N):
     """

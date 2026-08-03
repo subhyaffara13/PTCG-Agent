@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def validate_custom_validate_return_type(
     fn: Optional[Callable[..., Any]],

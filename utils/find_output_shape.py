@@ -1,3 +1,4 @@
+from typing import List
 
 def find_output_shape(inputs: List[str], shapes: List[TensorShapeType], output: str) -> TensorShapeType:
     """Find the output shape for given inputs, shapes and output string, taking

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def pass_result_wrapper(fn: Callable) -> Callable:
     """

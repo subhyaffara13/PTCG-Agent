@@ -1,3 +1,4 @@
+from typing import Callable
 
 def xml_array(array_type: XmlArraySerializationType, child_name: str) -> Callable[[_F], _F]:
     """Decorator"""

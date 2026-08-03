@@ -1,3 +1,4 @@
+import re
 
 def replace_acc_name(buffer: IndentedBuffer, name: str, new_name: str):
     for i, line in enumerate(buffer._lines):

@@ -1,3 +1,4 @@
+import sys
 
 def execute_command(user_input: str, ctx: click.Context):
     """Parse and execute a command."""

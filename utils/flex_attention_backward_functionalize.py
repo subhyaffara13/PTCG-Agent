@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def flex_attention_backward_functionalize(
     ctx: torch._subclasses.functional_tensor.BaseFunctionalizeAPI,

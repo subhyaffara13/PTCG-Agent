@@ -1,3 +1,4 @@
+from typing import Any
 
 def _bcsr_dot_general(lhs_data: jax.Array, lhs_indices: jax.Array,
                       lhs_indptr: jax.Array, rhs: Array, *,

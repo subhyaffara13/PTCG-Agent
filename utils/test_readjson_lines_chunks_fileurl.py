@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_readjson_lines_chunks_fileurl(request, datapath, engine):
     # GH 27135

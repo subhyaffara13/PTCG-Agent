@@ -1,3 +1,4 @@
+from typing import Callable
 
 def onlyNativeDeviceTypes(fn: Callable[_P, _T]) -> Callable[_P, _T]:
     @wraps(fn)

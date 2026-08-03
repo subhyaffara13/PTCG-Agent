@@ -1,3 +1,4 @@
+import itertools
 
 def retry_call(func, cleanup=lambda: None, retries=0, trap=()):
     """

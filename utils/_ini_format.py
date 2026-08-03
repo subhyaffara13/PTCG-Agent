@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _ini_format(stream: TextIO, options: list[tuple[str, OptionDict, Any]]) -> None:
     """Format options using the INI format."""

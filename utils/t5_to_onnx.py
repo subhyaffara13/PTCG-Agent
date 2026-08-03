@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def t5_to_onnx(args: argparse.Namespace):
     """Convert T5 model to onnx

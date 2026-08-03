@@ -1,3 +1,4 @@
+import logging
 
 def set_threshold(level: int) -> int:
     logging.root.setLevel(level * 10)

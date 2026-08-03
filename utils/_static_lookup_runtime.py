@@ -1,3 +1,4 @@
+from typing import Any
 
 def _static_lookup_runtime(object_path: list[str]) -> MaybeMissing[Any]:
     static_runtime = importlib.import_module(object_path[0])

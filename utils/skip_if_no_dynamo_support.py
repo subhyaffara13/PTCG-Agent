@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoDynamoSupport(fn):
     reason = "dynamo doesn't support."

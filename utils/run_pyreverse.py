@@ -1,3 +1,4 @@
+import sys
 
 def run_pyreverse(argv: Sequence[str] | None = None) -> NoReturn:
     """Run pyreverse.

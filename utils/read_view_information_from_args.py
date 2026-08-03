@@ -1,3 +1,4 @@
+from typing import Any
 
 def read_view_information_from_args(
     mutable_arg_names: list[str],

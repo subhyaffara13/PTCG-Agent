@@ -1,3 +1,6 @@
+import logging
+from pathlib import Path
+
 
 def get_expected_output(
     configuration_path: str | Path, user_specific_path: Path

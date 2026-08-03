@@ -1,3 +1,4 @@
+import sys
 
 def get_abi_tag() -> str | None:
     """Return the ABI tag based on SOABI (if available) or emulate SOABI (PyPy2)."""

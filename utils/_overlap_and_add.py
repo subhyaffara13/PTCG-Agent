@@ -1,3 +1,5 @@
+import math
+
 
 def _overlap_and_add(x: Array, step_size: int) -> Array:
   """Utility function compatible with tf.signal.overlap_and_add.

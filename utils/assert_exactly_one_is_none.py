@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_exactly_one_is_none(first: Any, second: Any) -> None:
   """Checks that one and only one of the arguments is `None`.

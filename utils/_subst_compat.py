@@ -1,3 +1,4 @@
+import re
 
 def _subst_compat(s):
     """

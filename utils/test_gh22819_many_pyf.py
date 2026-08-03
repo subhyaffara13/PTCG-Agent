@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_gh22819_many_pyf(capfd, gh22819_cli, monkeypatch):
     """Only one .pyf file allowed

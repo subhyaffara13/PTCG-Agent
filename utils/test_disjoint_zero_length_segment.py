@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_disjoint_zero_length_segment():
     this_path = Path(

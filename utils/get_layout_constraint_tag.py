@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_layout_constraint_tag(
     fn: Any, *, with_default: Literal[True] = True

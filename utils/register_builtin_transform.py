@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_builtin_transform(
     manager: AstroidManager, transform, builtin_name

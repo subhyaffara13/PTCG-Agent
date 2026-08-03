@@ -1,3 +1,4 @@
+from typing import Any
 
 def one_hot(x: torch.Tensor, v_bins: torch.Tensor) -> torch.Tensor:
     reshaped_bins = v_bins.view(((1,) * len(x.shape)) + (len(v_bins),))

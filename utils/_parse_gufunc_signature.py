@@ -1,3 +1,4 @@
+import re
 
 def _parse_gufunc_signature(signature):
     """

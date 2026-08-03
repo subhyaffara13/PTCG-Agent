@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _as_posix_path(path: str) -> str:
     posix_path = Path(os.path.normpath(path)).as_posix()

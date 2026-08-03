@@ -1,3 +1,4 @@
+import sys
 
 def wsgi_errors_stream() -> t.TextIO:
     """Find the most appropriate error stream for the application. If a request

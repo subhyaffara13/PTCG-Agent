@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_indexers(
     indexers: Sequence[indexing.NDIndexer]) -> indexing.NDIndexer:

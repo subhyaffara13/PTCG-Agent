@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_tensorstore_spec_leaf(leaf: Any):
   # TODO(rdyro): think of a better way to detect which leaf is a ts config

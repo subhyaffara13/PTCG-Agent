@@ -1,3 +1,5 @@
+import itertools
+from typing import Union
 
 def all_bdims(*shapes):
   bdims = (itertools.chain([cast(Union[int, None], None)],

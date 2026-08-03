@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_function(
     graph: fx.Graph,

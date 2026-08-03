@@ -1,3 +1,4 @@
+import re
 
 def test_diff_wrt_not_allowed():
     # issue 7027 included

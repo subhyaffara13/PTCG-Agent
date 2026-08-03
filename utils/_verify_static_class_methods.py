@@ -1,3 +1,4 @@
+from typing import Any
 
 def _verify_static_class_methods(
     stub: nodes.FuncBase, runtime: Any, static_runtime: MaybeMissing[Any], object_path: list[str]

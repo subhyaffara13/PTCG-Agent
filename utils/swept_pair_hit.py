@@ -1,3 +1,5 @@
+import math
+
 
 def swept_pair_hit(A, B, P0, P1, r):
     """True iff a fleet moving A->B and a planet moving P0->P1 come within r

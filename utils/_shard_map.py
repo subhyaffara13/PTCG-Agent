@@ -1,3 +1,4 @@
+from typing import Set
 
 def _shard_map(f: F, *, mesh: Mesh | AbstractMesh | None,
                in_specs: Specs, out_specs: Specs, axis_names: Set[AxisName],

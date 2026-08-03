@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _warn_for_function(warning: Warning, function: Callable[..., object]) -> None:
     func = cast(types.FunctionType, function)

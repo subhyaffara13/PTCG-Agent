@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def _parse_enc(path):
     r"""

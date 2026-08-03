@@ -1,3 +1,4 @@
+import re
 
 def mpc_expj(z, prec, rnd='f'):
     re, im = z

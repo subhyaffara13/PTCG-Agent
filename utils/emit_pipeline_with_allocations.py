@@ -1,3 +1,4 @@
+import functools
 
 def emit_pipeline_with_allocations(
     body,

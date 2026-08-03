@@ -1,3 +1,6 @@
+import itertools
+import math
+
 
 def rotate(th):
     """Return the matrix to rotate a 2-D point about the origin by ``angle``.

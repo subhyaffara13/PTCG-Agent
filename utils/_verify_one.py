@@ -1,3 +1,4 @@
+import os
 
 def _verify_one(req: InstallRequirement, wheel_path: str) -> None:
     canonical_name = canonicalize_name(req.name or "")

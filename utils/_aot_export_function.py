@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _aot_export_function(
     func: Callable[..., Any],

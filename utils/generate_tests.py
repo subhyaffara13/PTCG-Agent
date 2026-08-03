@@ -1,3 +1,4 @@
+import sys
 
 def generate_tests(
     prefix: str,

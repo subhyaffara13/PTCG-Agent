@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _scatter_impl(x: ArrayLike, y: ArrayLike, dynamic_idx: tuple[Any, ...], *,
                   scatter_op: Callable[..., Array],

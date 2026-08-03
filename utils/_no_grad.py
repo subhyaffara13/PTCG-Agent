@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _no_grad(func: Callable[_P, _R]) -> Callable[_P, _R]:
     """

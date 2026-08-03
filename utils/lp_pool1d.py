@@ -1,3 +1,4 @@
+from typing import Optional
 
 def lp_pool1d(
     input: Tensor,

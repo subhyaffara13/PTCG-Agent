@@ -1,3 +1,4 @@
+import functools
 
 def rms_norm_backward(
     num_warps: int | None,

@@ -1,3 +1,4 @@
+import functools
 
 def joint_graph_passes(
     graph: torch.fx.GraphModule,

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def do_daemon(args: argparse.Namespace) -> None:
     """Serve requests in the foreground."""

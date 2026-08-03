@@ -1,3 +1,4 @@
+import functools
 
 def _get_fn_name(fn):
   if isinstance(fn, functools.partial):

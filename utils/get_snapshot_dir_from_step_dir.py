@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_snapshot_dir_from_step_dir(
     step_dir: epath.Path, snapshot_dir: Optional[epath.Path] = None

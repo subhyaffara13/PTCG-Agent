@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _run_sdist_programatically(dist_path, attrs):
     dist = _get_dist(dist_path, attrs)

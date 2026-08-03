@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def create_os_error_message(
     error: OSError, show_traceback: bool, using_user_site: bool

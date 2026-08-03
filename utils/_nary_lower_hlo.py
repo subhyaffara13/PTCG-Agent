@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _nary_lower_hlo(
     op: Callable, ctx, *args: ir.Value, accuracy=None, **params

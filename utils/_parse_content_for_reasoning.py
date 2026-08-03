@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Tuple
 
 def _parse_content_for_reasoning(
     message_text: Optional[str],

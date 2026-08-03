@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def imsave(fname, arr, vmin=None, vmax=None, cmap=None, format=None,
            origin=None, dpi=100, *, metadata=None, pil_kwargs=None):

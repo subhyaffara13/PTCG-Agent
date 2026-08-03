@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_import_block(globals: dict[str, Any], importer: Importer):
     import_strs: set[str] = {

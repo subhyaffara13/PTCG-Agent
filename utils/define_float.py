@@ -1,3 +1,4 @@
+from typing import Any
 
 def DEFINE_float(  # pylint: disable=invalid-name
     name: str,

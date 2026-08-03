@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_private_key_from_str(key_str: str) -> Any:
     _require_cryptography()

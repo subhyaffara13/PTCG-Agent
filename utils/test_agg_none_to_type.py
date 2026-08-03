@@ -1,3 +1,4 @@
+import re
 
 def test_agg_none_to_type():
     # GH 40543

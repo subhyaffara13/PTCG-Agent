@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_latency(args, device) -> list[dict[str, Any]]:
     if args.engine == "onnxruntime":

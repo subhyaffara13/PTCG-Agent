@@ -1,3 +1,5 @@
+import re
+from typing import Optional, Union
 
 def match_to_datetime(match: re.Match[str]) -> datetime | date:
     """Convert a `RE_DATETIME` match to `datetime.datetime` or `datetime.date`.

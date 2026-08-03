@@ -1,3 +1,4 @@
+import sys
 
 def freqresp(system, w=None, n=10000):
     r"""Calculate the frequency response of a continuous-time system.

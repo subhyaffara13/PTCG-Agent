@@ -1,3 +1,5 @@
+import logging
+from typing import List, Optional, Union
 
 def completion_cost(
     completion_response=None,

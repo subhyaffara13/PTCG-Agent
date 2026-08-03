@@ -1,3 +1,4 @@
+from typing import Any
 
 def _apply_config_patches_recursive(
     operations: list,

@@ -1,3 +1,8 @@
+import os
+import re
+import subprocess
+from pathlib import Path
+
 
 def _check_and_build_extension_h_precompiler_headers(
         extra_cflags,

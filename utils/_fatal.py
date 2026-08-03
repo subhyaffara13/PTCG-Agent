@@ -1,3 +1,4 @@
+import sys
 
 def _fatal(msg: str) -> NoReturn:  # pragma: no cover
     """

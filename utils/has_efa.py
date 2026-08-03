@@ -1,3 +1,4 @@
+import subprocess
 
 def has_efa() -> bool:
     """

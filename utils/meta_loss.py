@@ -1,3 +1,4 @@
+from typing import List
 
 def meta_loss(opt_params, net_apply, payoff, steps, rng):
   """Meta loss function."""

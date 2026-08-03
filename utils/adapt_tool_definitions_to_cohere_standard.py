@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def adapt_tool_definitions_to_cohere_standard(
     tools: List[Dict[str, Any]],

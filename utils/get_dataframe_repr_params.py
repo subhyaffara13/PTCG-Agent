@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_dataframe_repr_params() -> dict[str, Any]:
     """Get the parameters used to repr(dataFrame) calls using DataFrame.to_string.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_size_one_mesh_axis(spec, mesh) -> PartitionSpec:
   new_spec: list[Any] = []

@@ -1,3 +1,4 @@
+import re
 
 def _split_class(fp, source, lines, cls_node, shared_nodes):
     """Split a large class by extracting methods into a _helpers file."""

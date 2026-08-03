@@ -1,3 +1,4 @@
+import functools
 
 def b2b_gemm_handler(match: Match, mat1: torch.fx.Node, mat2: torch.fx.Node) -> None:
     # match.args: list[torch.fx.Node]

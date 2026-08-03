@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_series_repr_params() -> dict[str, Any]:
     """Get the parameters used to repr(Series) calls using Series.to_string.

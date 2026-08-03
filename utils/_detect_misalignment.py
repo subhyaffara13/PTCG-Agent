@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _detect_misalignment(prev_user: Optional[str], curr_user: Optional[str]) -> bool:
     """Fires when consecutive user messages share *some* topic (jaccard > 0)

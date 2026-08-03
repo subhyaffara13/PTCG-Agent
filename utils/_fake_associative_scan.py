@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fake_associative_scan(combine_fn, xs, dim, reverse=False):
     inp_leaves, spec = pytree.tree_flatten(xs)

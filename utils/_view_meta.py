@@ -1,3 +1,4 @@
+from typing import Any
 
 def _view_meta(
     fake_mode: FakeTensorMode,

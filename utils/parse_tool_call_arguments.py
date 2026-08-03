@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def parse_tool_call_arguments(
     arguments: Optional[str],

@@ -1,3 +1,4 @@
+import os
 
 def _register_hooks() -> None:
     global _atexit_registered, _fork_registered  # noqa: PLW0603

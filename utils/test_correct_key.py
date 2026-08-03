@@ -1,3 +1,4 @@
+import sys
 
 def test_correct_key(backend, qt_key, qt_mods, answer, monkeypatch):
     """

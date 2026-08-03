@@ -1,3 +1,4 @@
+from typing import Dict, List, Union
 
 def _get_combined_pass_through_endpoints(
     pass_through_endpoints: Union[List[Dict], List[PassThroughGenericEndpoint]],

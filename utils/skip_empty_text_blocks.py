@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def skip_empty_text_blocks(
     message: ChatCompletionAssistantMessage,

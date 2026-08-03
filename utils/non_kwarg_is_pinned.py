@@ -1,3 +1,4 @@
+from typing import Any
 
 def non_kwarg_is_pinned(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

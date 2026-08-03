@@ -1,3 +1,5 @@
+import json
+from typing import List
 
 def _convert_to_bedrock_tool_call_invoke(
     tool_calls: list,

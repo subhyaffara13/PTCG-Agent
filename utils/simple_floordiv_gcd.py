@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def simple_floordiv_gcd(p: sympy.Basic, q: sympy.Basic) -> sympy.Basic:
     """

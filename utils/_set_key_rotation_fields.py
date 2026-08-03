@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _set_key_rotation_fields(
     data: dict,

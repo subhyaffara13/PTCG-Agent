@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_state_path(  # noqa: PLR0913, PLR0917
     appname: str | None = None,

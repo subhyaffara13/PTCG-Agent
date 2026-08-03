@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def update_skills(roots: list[Path], selector: str | None = None) -> list[SkillUpdateInfo]:
     """Re-sync managed marketplace skill installs from the bucket."""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def deque_validator(v: Any) -> Deque[Any]:
     if isinstance(v, deque):

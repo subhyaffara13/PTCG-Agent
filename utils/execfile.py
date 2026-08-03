@@ -1,3 +1,4 @@
+from typing import Any
 
 def execfile(filename, glob):
     # We use execfile() (here rewritten for Python 3) instead of

@@ -1,3 +1,4 @@
+from typing import Any
 
 def float_schema(
     *,

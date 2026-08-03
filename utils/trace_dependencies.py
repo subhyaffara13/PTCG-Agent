@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def trace_dependencies(
     callable: Callable[[Any], Any], inputs: Iterable[tuple[Any, ...]]

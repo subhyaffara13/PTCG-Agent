@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_supported_regions(
     model: str, custom_llm_provider: Optional[str] = None

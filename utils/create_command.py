@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_command(name: str, **kwargs: Any) -> Command:
     """

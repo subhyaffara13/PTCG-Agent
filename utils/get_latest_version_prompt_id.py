@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def get_latest_version_prompt_id(prompt_id: str, all_prompt_ids: Dict[str, Any]) -> str:
     """

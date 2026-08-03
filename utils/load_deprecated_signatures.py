@@ -1,3 +1,4 @@
+import itertools
 
 def load_deprecated_signatures(
     pairs: Sequence[PythonSignatureNativeFunctionPair],

@@ -1,3 +1,4 @@
+import itertools
 
 def test_nat_casts():
     s = 'nat'

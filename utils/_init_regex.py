@@ -1,3 +1,4 @@
+import re
 
 def _init_regex():
     global _wordchars_re, _squote_re, _dquote_re

@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def parent_frame_namespace(*, parent_depth: int = 2, force: bool = False) -> dict[str, Any] | None:
     """Fetch the local namespace of the parent frame where this function is called.

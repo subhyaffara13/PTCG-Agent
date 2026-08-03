@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _extract_field_type(field_info: Dict[str, Any]) -> str:
     """Extract the non-null type from a Pydantic v2 JSON schema field."""

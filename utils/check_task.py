@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_task(task: str) -> tuple[str, dict, Any]:
     """

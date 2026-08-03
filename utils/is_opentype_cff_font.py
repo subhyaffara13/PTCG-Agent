@@ -1,3 +1,4 @@
+import os
 
 def is_opentype_cff_font(filename):
     """

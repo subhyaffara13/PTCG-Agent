@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_bw_fn(
     fn: Callable, args: tuple[Any, ...], return_fw_outputs: bool = False

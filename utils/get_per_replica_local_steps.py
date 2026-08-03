@@ -1,3 +1,4 @@
+import logging
 
 def get_per_replica_local_steps(
     local_directory: epath.Path,

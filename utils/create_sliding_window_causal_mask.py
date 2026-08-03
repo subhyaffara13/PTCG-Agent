@@ -1,3 +1,4 @@
+from typing import Callable
 
 def create_sliding_window_causal_mask(
     config: PreTrainedConfig,

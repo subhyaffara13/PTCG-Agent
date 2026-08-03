@@ -1,3 +1,4 @@
+import json
 
 def get_intel_gpu_driver_version(run_lambda):
     lst = []

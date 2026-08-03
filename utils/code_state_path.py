@@ -1,3 +1,5 @@
+import os
+import re
 
 def code_state_path(cache_key: str) -> str | None:
     if not torch._dynamo.config.automatic_dynamic_local_pgo:

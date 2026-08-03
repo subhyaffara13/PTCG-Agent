@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def parse_sdist_filename(filename: str) -> tuple[NormalizedName, Version]:
     """

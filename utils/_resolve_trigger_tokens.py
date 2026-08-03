@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Tuple
 
 def _resolve_trigger_tokens(edit_spec: Dict[str, Any]) -> Tuple[int, List[str]]:
     """Validate and resolve ``trigger.value``.

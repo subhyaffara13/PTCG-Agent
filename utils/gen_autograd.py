@@ -1,3 +1,4 @@
+import os
 
 def gen_autograd(
     native_functions_path: str,

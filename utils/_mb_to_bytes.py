@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _mb_to_bytes(max_request_size_mb: Optional[Union[int, float]]) -> Optional[int]:
     if max_request_size_mb is None:

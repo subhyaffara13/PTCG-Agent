@@ -1,3 +1,4 @@
+import itertools
 
 def _expand_text_props(props):
     props = cbook.normalize_kwargs(props, mtext.Text)

@@ -1,3 +1,7 @@
+import json
+from typing import Any, Dict
+from pathlib import Path
+
 
 def load_fallback_scoring(skills_dir: Path, cards: Dict[Any, Any]):
     scoring_path = skills_dir / "card_scoring.json"

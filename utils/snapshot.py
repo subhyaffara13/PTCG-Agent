@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def snapshot() -> dict[str, Any]:
     r"""Return a dictionary of MTIA memory allocator history"""

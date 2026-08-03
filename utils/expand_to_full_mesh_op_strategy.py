@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def expand_to_full_mesh_op_strategy(
     mesh: DeviceMesh,

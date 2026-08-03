@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_response_headers(original_exception: Exception) -> Optional[httpx.Headers]:
     """

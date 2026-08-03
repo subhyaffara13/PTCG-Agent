@@ -1,3 +1,4 @@
+import sys
 
 def explicit_super(code: types.CodeType, instructions: list[Instruction]) -> None:
     """convert super() with no args into explicit arg form"""

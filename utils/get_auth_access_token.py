@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def get_auth_access_token(account=None):
     """Load user access token with the ``gcloud auth print-access-token`` command.

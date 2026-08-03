@@ -1,3 +1,5 @@
+import json
+from typing import Callable
 
 def to_cached_resource(
     cache: Callable[[Retrieve[D]], Retrieve[D]] | None = None,

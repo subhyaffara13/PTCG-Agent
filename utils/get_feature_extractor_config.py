@@ -1,3 +1,4 @@
+import os
 
 def get_feature_extractor_config(
     pretrained_model_name_or_path: str | os.PathLike,

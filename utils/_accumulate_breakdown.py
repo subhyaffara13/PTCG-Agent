@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _accumulate_breakdown(
     results: List[Dict[str, Any]], dimension: str, fields: List[str]

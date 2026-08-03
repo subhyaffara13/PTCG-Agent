@@ -1,3 +1,4 @@
+from typing import Any
 
 def ends_with_whitespace(it: Any) -> bool:
     """Returns ``True`` if the given item ``it`` is a ``Table`` or ``AoT`` object

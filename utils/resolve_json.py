@@ -1,3 +1,4 @@
+import json
 
 def resolve_json(cls):  # type: ignore[no-untyped-def]
     try:

@@ -1,3 +1,5 @@
+import json
+import time
 
 def worker_loop(log_dir, max_records, q, running_flag, current_file_ref, records_written_ref, stats_ref):
     import logging

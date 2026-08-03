@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _astroid_wrapper(
     func: Callable[[str], nodes.Module],

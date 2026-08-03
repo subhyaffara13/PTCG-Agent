@@ -1,3 +1,4 @@
+from typing import Any
 
 def collect_known_metadata(annotations: Iterable[Any]) -> tuple[dict[str, Any], list[Any]]:
     """Split `annotations` into known metadata and unknown annotations.

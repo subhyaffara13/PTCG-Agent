@@ -1,3 +1,6 @@
+from typing import Tuple
+import math
+
 
 def check_z_score_stop(branch_results: list, baseline_history: list, min_games: int, z_threshold: float) -> Tuple[bool, float, float, float]:
     if len(branch_results) < min_games:

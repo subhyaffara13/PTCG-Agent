@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_modules_to_states(values: Any, module_to_index: dict[int, int]) -> Any:
     """Replace nn.Module instances in a pytree with LeafModuleState objects.

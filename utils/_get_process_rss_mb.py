@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def _get_process_rss_mb() -> Optional[float]:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def validate_and_process_metrics(
     metrics: Any, additional_metrics: Optional[Any] = None

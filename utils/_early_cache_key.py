@@ -1,3 +1,4 @@
+from typing import Any
 
 def _early_cache_key(cls: type[BaseModel], typevar_values: Any) -> GenericTypesCacheKey:
     """This is intended for minimal computational overhead during lookups of cached types.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def fake_mode_key(
     mode: FakeTensorMode,

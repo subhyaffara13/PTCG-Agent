@@ -1,3 +1,4 @@
+import json
 
 def process_log_file(device_id, log_file, base_results):
     entries = []

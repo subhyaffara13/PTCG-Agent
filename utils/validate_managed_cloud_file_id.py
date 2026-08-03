@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def validate_managed_cloud_file_id(
     file_id: str,

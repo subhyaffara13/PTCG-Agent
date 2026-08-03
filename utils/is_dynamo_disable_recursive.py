@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def is_dynamo_disable_recursive(method: Callable[[Any], Any]) -> bool | None:
     """

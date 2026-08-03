@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _get_masked_values(
     sensitive_object: dict,

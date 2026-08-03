@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_apollo_optimizer(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get Apollo optimizer."""

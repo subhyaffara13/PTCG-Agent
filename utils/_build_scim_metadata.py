@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_scim_metadata(
     given_name: Optional[str], family_name: Optional[str], active: Optional[bool] = None

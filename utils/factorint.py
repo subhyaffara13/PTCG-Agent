@@ -1,3 +1,4 @@
+from typing import Dict
 
 def factorint(n, limit=None, use_trial=True, use_rho=True, use_pm1=True,
               use_ecm=True, verbose=False, visual=None, multiple=False):

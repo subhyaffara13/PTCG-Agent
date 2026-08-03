@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_checkpoint_variable(**options: Any) -> Any:
     import torch._higher_order_ops.wrap as higher_order_ops

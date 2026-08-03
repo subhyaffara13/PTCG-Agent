@@ -1,3 +1,5 @@
+import os
+import sys
 
 def check_cpu_supported():
     requires_avx2_on_cpu = (

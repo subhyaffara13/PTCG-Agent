@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_RandomDomain():
     from sympy.stats import Normal, Die, Exponential, pspace, where

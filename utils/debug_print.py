@@ -1,3 +1,6 @@
+import functools
+import logging
+from typing import Any, Callable
 
 def debug_print(format: _Union[str, _ods_ir.StringAttr], value: _ods_ir.Value[_ods_ir.VectorType], *, loc: _Optional[_ods_ir.Location] = None, ip: _Optional[_ods_ir.InsertionPoint] = None) -> DebugPrintOp:
   return DebugPrintOp(format=format, value=value, loc=loc, ip=ip)

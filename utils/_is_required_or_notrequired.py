@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_required_or_notrequired(type_hint: Any) -> bool:
     """Helper to check if a type is Required/NotRequired."""

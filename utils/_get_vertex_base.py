@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_vertex_base() -> Any:
     """Lazily return the shared VertexBase instance to avoid a module-load-time cyclic import."""

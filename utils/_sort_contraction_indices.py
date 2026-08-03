@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _sort_contraction_indices(pairing_indices):
     pairing_indices = [Tuple(*sorted(i)) for i in pairing_indices]

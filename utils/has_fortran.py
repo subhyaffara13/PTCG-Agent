@@ -1,3 +1,4 @@
+import os
 
 def has_fortran():
     if not hasattr(has_fortran, 'result'):

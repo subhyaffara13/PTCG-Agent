@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_halfspace(x: Any, a: Any, b: jax.typing.ArrayLike) -> Any:
   r"""Projection onto a halfspace.

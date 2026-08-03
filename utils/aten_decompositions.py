@@ -1,3 +1,4 @@
+from typing import Callable
 
 def aten_decompositions() -> dict[torch._ops.OpOverload, Callable]:
     """Return the ONNX to ATen decomp table."""

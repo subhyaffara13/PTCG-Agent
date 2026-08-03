@@ -1,3 +1,4 @@
+import json
 
 def get_bulk_read_request(
     location_path: str,

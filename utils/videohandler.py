@@ -1,3 +1,4 @@
+import os
 
 def videohandler(extension, data):
     if extension not in [

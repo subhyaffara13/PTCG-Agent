@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def gather_node_runtime_estimations(
     gm: torch.fx.GraphModule,

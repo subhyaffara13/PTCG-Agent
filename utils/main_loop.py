@@ -1,3 +1,4 @@
+import logging
 
 def main_loop(unused_arg):
   """Trains a Policy Gradient agent in the catch environment."""

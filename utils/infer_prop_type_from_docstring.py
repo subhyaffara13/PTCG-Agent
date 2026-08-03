@@ -1,3 +1,4 @@
+import re
 
 def infer_prop_type_from_docstring(docstr: str | None) -> str | None:
     """Check for Google/Numpy style docstring type annotation for a property.

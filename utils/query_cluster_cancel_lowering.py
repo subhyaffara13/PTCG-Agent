@@ -1,3 +1,5 @@
+import math
+
 
 def query_cluster_cancel_lowering(ctx: lowering.LoweringRuleContext,
                                   result_ref,

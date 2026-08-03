@@ -1,3 +1,4 @@
+import itertools
 
 def _consolidate(blocks: tuple[Block, ...]) -> tuple[Block, ...]:
     """

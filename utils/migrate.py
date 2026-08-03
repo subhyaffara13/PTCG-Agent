@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def migrate() -> bool:
     """Migrate IPython configuration to Jupyter"""

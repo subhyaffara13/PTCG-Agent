@@ -1,3 +1,4 @@
+import functools
 
 def _with_device(fn, ignore_argnums=(), static_argnums=(), **unused_kwargs):
   """Variant that applies `jax.device_put` to the args of fn."""

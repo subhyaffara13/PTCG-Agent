@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _factored_dims(
     shape: base.Shape, factored: bool, min_dim_size_to_factor: int

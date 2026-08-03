@@ -1,3 +1,4 @@
+import functools
 
 def scale_by_sm3(
     b1: jax.typing.ArrayLike = 0.9,

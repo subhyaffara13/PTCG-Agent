@@ -1,3 +1,4 @@
+from typing import Optional
 
 def ensure_atomic_save(
     temp_ckpt_dir: epath.Path,

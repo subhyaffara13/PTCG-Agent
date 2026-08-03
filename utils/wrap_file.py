@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional
 
 def wrap_file(
     file: BinaryIO,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def norm(  # noqa: F811
     input,

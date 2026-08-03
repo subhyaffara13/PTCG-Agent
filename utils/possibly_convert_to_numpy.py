@@ -1,3 +1,4 @@
+from typing import Any
 
 def possibly_convert_to_numpy(x: Any) -> Any:
     """Convert things without a 'shape' to ndarrays, but leave everything else.

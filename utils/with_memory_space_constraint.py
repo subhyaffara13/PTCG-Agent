@@ -1,3 +1,4 @@
+from typing import Any
 
 def with_memory_space_constraint(
     x: jax.Array, memory_space: Any

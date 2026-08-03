@@ -1,3 +1,4 @@
+import os
 
 def get_env_variable_or_raise(env_name: str) -> str:
     r"""

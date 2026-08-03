@@ -1,3 +1,4 @@
+import re
 
 def supports_response_json_schema(model: str) -> bool:
     """

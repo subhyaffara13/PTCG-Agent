@@ -1,3 +1,4 @@
+import sys
 
 def pytest_runtest_makereport(item: Item, call: CallInfo[None]) -> TestReport | None:
     """Called to create a :class:`~pytest.TestReport` for each of

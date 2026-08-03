@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_torchao_optimizer(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get TorchAO 4-bit or 8-bit optimizer."""

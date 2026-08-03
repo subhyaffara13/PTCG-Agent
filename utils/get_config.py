@@ -1,3 +1,6 @@
+import copy
+import pathlib
+from typing import Union
 
 def get_config():
     """Create, populate and return the VersioneerConfig() object."""

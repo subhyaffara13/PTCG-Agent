@@ -1,3 +1,4 @@
+import functools
 
 def print_yielded(func):
     """

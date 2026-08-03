@@ -1,3 +1,4 @@
+import sys
 
 def remove_load_call_method(instructions: list[Instruction]) -> list[Instruction]:
     """LOAD_METHOD puts a NULL on the stack which causes issues, so remove it"""

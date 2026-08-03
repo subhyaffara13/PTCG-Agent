@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_json_ordered(data: dict[str, Any], separator: str) -> dict[str, Any]:
     """

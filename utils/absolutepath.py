@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def absolutepath(path: str | os.PathLike[str]) -> Path:
     """Convert a path to an absolute path using os.path.abspath.

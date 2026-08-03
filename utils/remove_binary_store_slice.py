@@ -1,3 +1,5 @@
+import copy
+import sys
 
 def remove_binary_store_slice(instructions: list[Instruction]) -> None:
     new_insts = []

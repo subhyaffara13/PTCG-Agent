@@ -1,3 +1,4 @@
+import time
 
 def check_simple(ncfileobj):
     '''Example fileobj tests '''

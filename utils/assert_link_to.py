@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def assert_link_to(file: Path, other: Path) -> None:
     if file.is_symlink():

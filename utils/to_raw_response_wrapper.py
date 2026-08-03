@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def to_raw_response_wrapper(func: Callable[P, R]) -> Callable[P, LegacyAPIResponse[R]]:
     """Higher order function that takes one of our bound API methods and wraps it

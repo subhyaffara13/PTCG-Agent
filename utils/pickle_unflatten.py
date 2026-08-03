@@ -1,3 +1,4 @@
+from typing import Any
 
 def pickle_unflatten(instances: Iterable[object], rest: FlattenRest) -> Any:
     """

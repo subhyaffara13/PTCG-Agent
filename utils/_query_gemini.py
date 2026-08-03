@@ -1,3 +1,5 @@
+import json
+import os
 
 def _query_gemini(prompt, extractor):
     gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")

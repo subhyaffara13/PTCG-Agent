@@ -1,3 +1,6 @@
+import sys
+import math
+
 
 def test_lazy_import_impact_on_sys_modules():
     math = lazy._lazy_import("math")

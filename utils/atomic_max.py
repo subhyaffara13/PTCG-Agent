@@ -1,3 +1,4 @@
+from typing import Any
 
 def atomic_max(ref: _Ref, val) -> None:
   """Performs an atomic store-max of the value to the reference.

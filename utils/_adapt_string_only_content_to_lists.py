@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def _adapt_string_only_content_to_lists(messages: List[Dict]):
     new_messages = []

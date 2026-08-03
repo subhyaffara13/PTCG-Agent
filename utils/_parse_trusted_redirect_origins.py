@@ -1,3 +1,5 @@
+import os
+from typing import List
 
 def _parse_trusted_redirect_origins() -> List[str]:
     """Parse ``MCP_TRUSTED_REDIRECT_ORIGINS`` into normalized entries.

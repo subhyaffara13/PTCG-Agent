@@ -1,3 +1,5 @@
+import math
+
 
 def _rescale(
     betweenness, n, *, normalized, directed, endpoints=True, sampled_nodes=None

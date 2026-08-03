@@ -1,3 +1,4 @@
+import sys
 
 def _wrapper(args: list[str] | None = None) -> int:
     """Central wrapper for all old entrypoints.

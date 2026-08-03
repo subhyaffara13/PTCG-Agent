@@ -1,3 +1,5 @@
+import os
+import re
 
 def decorate_methods(cls, decorator, testmatch=None):
     """

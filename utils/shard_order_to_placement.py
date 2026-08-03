@@ -1,3 +1,4 @@
+from typing import Any
 
 def shard_order_to_placement(shard_order, mesh):
     """convert shard_order to placement with only Replicate() and Shard()"""

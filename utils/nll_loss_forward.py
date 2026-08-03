@@ -1,3 +1,4 @@
+from typing import Optional
 
 def nll_loss_forward(
     self: list[int], target: list[int], weight: Optional[list[int]], reduction: int

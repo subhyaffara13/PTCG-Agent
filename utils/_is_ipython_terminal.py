@@ -1,3 +1,4 @@
+import sys
 
 def _is_ipython_terminal() -> bool:
   """Returns True if running in a IPython terminal/XManager CLI environment."""

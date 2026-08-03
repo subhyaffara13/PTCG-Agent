@@ -1,3 +1,4 @@
+import time
 
 def run_ort_trt_static(
     work_dir: str,

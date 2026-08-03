@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_fake_tensor(vt: VariableTracker) -> Any:
     fake_tensor = vt.as_proxy().node.meta.get("example_value")

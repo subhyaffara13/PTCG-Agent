@@ -1,3 +1,4 @@
+import re
 
 def _make_unquote_part(name: str, chars: str) -> t.Callable[[str], str]:
     """Create a function that unquotes all percent encoded characters except those

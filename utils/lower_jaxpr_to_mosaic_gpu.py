@@ -1,3 +1,4 @@
+import functools
 
 def lower_jaxpr_to_mosaic_gpu(
     module_ctx: ModuleContext,

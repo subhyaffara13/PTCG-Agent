@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _absolute_root(path: StrPath) -> str:
     """Works for packages and top-level modules"""

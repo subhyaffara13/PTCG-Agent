@@ -1,3 +1,4 @@
+import os
 
 def _backport_for_mobile_to_buffer(f_input, to_version):
     r"""Take a string containing a file name (file-like object).

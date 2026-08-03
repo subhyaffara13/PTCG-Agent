@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_flat_args(
     node: Node, node_to_additional_deps: dict[Node, OrderedSet[Node]]

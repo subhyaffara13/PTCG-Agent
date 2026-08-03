@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_dynamic(*args: Any) -> bool:
     from . import ir

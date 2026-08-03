@@ -1,3 +1,4 @@
+import time
 
 def _format_expiration(expires_at: str | None) -> str:
     """Format an `expires_at` unix timestamp for display in `auth list`."""

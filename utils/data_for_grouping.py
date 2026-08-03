@@ -1,3 +1,4 @@
+import time
 
 def data_for_grouping():
     """

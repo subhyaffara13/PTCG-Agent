@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_cache_file_to_return(
     path_or_repo_id: str,

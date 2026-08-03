@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def call_and_expect_output_descs(
     fn: Callable[[*_Ts], tuple[Any, Any]], args: tuple[Unpack[_Ts]]

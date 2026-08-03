@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def searchsorted(
     sorted_sequence: TensorBox,

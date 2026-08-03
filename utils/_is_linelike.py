@@ -1,3 +1,5 @@
+import math
+
 
 def _is_linelike(segment):
     maybeline = _alignment_transformation(segment).transformPoints(segment)

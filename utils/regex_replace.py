@@ -1,3 +1,4 @@
+import re
 
 def regex_replace(text: str, pattern: str, replacement: str, flags: int = 0) -> str:
     """

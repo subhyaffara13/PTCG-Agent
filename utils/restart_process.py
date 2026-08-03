@@ -1,7 +1,9 @@
 
+import sys
+import os
+import logging
+
 def restart_process():
-    import sys
-    import os
     logging.info("Restarting process to reload updated code and weights...")
     try:
         os.execv(sys.executable, [sys.executable] + sys.argv)

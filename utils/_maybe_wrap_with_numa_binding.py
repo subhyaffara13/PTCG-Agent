@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _maybe_wrap_with_numa_binding(
     func: Callable[_TParams, _TReturn],

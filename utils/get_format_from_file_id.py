@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def get_format_from_file_id(file_id: Optional[str]) -> Optional[str]:
     """

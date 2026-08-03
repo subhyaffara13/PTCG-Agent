@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def create_dynamic_module(name: str | os.PathLike) -> None:
     """

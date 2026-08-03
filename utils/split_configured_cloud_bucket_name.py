@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def split_configured_cloud_bucket_name(bucket_name: str) -> Tuple[str, str]:
     if not isinstance(bucket_name, str) or not bucket_name.strip():

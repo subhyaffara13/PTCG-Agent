@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _extract_anchors_from_expr(segment: str) -> _Anchors | None:
     """

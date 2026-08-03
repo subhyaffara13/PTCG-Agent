@@ -1,3 +1,4 @@
+from typing import Any
 
 def order(
     tensor_or_dim: torch.Tensor | Any, *dims: Any | Sequence[Any]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def remove_dropout(model: nn.Module) -> nn.Module:
     """

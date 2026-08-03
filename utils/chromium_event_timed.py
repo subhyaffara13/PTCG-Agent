@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def chromium_event_timed(
     event_name: str,

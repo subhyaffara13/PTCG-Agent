@@ -1,3 +1,5 @@
+import os
+import re
 
 def glob_to_re(pattern):
     """Translate a shell-like glob pattern to a regular expression; return

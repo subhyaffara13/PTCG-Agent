@@ -1,3 +1,4 @@
+import time
 
 def _is_expired(connection_info: XetConnectionInfo) -> bool:
     """Check if the given XET connection info is expired."""

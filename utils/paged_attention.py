@@ -1,3 +1,4 @@
+import functools
 
 def paged_attention(
     query: Array,

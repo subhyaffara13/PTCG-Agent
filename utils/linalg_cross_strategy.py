@@ -1,3 +1,4 @@
+from typing import Any
 
 def linalg_cross_strategy(
     op: torch._ops.OpOverload,

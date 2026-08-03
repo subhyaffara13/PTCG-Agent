@@ -1,3 +1,4 @@
+from typing import Union
 
 def intersection_sets(self, o): # noqa:F811
     """ Returns a sympy.sets.Set of intersection objects,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _run_prepare_fx_on_standalone_modules(
     model: torch.nn.Module,

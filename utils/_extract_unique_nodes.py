@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_unique_nodes(
     args: tuple[Any, ...], kwargs: dict[str, Any]

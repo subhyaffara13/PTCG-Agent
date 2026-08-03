@@ -1,3 +1,4 @@
+from typing import Any
 
 def load_guard_manager(
     guards_state: "GuardsState",

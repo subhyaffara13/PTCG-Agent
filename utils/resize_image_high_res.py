@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def resize_image_high_res(
     width: int,

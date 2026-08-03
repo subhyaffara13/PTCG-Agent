@@ -1,3 +1,4 @@
+from typing import Any
 
 def memory_snapshot(mempool_id=None, include_traces=True):
     r"""Return a snapshot of the CUDA memory allocator state across all devices.

@@ -1,3 +1,4 @@
+import re
 
 def doctype_matches(text, regex):
     """Check if the doctype matches a regular expression (if present).

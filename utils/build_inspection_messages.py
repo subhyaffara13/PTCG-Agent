@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def build_inspection_messages(data: Dict[str, Any]) -> List[Dict[str, str]]:
     """Synthesize a chat-style messages list for posting to a guardrail API.

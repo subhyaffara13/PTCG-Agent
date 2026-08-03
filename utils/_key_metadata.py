@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _key_metadata(
     api_key_metadata: Dict[str, Dict[str, Any]], api_key: str

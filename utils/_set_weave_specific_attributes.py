@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_weave_specific_attributes(
     span: Span, kwargs: dict[str, Any], response_obj: Any

@@ -1,3 +1,4 @@
+from typing import Any
 
 def options_to_hparams(options: Any) -> dict[str, bool | int | float | str]:
   """Flattens an options dataclass/dict into a TB HParams-acceptable form.

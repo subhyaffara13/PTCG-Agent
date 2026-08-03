@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def get_optional_params_add_message(
     role: Optional[str],

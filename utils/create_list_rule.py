@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def create_list_rule(src: str, pos: Pos, out: Output) -> tuple[Pos, Key]:
     pos += 2  # Skip "[["

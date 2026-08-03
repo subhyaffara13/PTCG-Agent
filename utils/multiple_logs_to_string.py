@@ -1,3 +1,5 @@
+import logging
+from typing import Callable
 
 def multiple_logs_to_string(module: str, *log_options: str) -> tuple[list[io.StringIO], Callable[[], AbstractContextManager[None]]]:
     """Example:

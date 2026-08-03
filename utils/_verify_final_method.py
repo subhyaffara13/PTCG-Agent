@@ -1,3 +1,4 @@
+from typing import Any
 
 def _verify_final_method(
     stub: nodes.FuncDef, runtime: Any, static_runtime: MaybeMissing[Any]

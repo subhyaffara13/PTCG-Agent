@@ -1,3 +1,5 @@
+import json
+from typing import Optional
 
 def import_keys(
     ctx: click.Context,

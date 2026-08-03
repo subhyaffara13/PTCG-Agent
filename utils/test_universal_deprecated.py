@@ -1,3 +1,4 @@
+import os
 
 def test_universal_deprecated(dummy_dist, monkeypatch, tmp_path):
     monkeypatch.chdir(dummy_dist)

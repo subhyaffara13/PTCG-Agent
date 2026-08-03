@@ -1,3 +1,4 @@
+from typing import Any
 
 def _assign_new_node_names(
     gm: torch.fx.GraphModule,

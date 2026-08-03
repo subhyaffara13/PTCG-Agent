@@ -1,3 +1,4 @@
+import os
 
 def _sniffFileStructure(ufo_path: PathStr) -> UFOFileStructure:
     """Return UFOFileStructure.ZIP if the UFO at path 'ufo_path' (str)

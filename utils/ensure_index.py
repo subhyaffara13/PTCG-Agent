@@ -1,3 +1,4 @@
+import copy
 
 def ensure_index(index_like: Axes, copy: bool = False) -> Index:
     """

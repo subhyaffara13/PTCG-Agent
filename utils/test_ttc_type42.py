@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_ttc_type42():
     fp = fm.FontProperties(family=['WenQuanYi Zen Hei'])

@@ -1,3 +1,5 @@
+import math
+
 
 def clip(value: float, min_val: float = float("-inf"), max_val: float = float("inf")) -> float:
     return max(min_val, min(max_val, value))

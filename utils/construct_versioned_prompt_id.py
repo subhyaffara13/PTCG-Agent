@@ -1,3 +1,4 @@
+from typing import Optional
 
 def construct_versioned_prompt_id(prompt_id: str, version: Optional[int] = None) -> str:
     """

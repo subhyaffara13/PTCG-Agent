@@ -1,3 +1,4 @@
+from typing import Optional
 
 def random_playout(state: pyspiel.State, seed: Optional[int] = None):
   """Plays random actions until the state is terminal."""

@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def _setup_json_exception_handlers(formatter):
     # Create a handler with JSON formatting for exceptions

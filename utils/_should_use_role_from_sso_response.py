@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _should_use_role_from_sso_response(sso_role: Optional[str]) -> bool:
     """returns true if SSO upsert should use the 'role' defined on the SSO response"""

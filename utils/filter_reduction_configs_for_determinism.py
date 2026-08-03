@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def filter_reduction_configs_for_determinism(
     inductor_meta: dict[str, Any], configs: list[Config]

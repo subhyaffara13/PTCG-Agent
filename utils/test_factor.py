@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_factor():
     f = x**5 - x**3 - x**2 + 1

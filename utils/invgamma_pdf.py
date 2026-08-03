@@ -1,3 +1,5 @@
+import math
+
 
 def invgamma_pdf(x, a):
     if x > 0:

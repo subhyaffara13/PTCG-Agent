@@ -1,3 +1,4 @@
+import re
 
 def get_type_line(source):
     """Try to find the line containing a comment with the type annotation."""

@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def build_memory_profile(
     graph: fx.Graph,

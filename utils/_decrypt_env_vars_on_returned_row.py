@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _decrypt_env_vars_on_returned_row(row: Any) -> None:
     """Decrypt ``scope="global"`` env var values on a row returned by Prisma create/update.

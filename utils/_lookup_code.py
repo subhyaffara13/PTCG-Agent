@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _lookup_code(entry: _DynamoCodeCacheEntry) -> types.CodeType:
     assert len(entry.function_names) == 1

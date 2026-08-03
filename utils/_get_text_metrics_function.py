@@ -1,3 +1,4 @@
+import functools
 
 def _get_text_metrics_function(input_renderer, _cache=weakref.WeakKeyDictionary()):
     """

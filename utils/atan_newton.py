@@ -1,3 +1,5 @@
+import math
+
 
 def atan_newton(x, prec):
     if prec >= 100:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def store_user_object_weakrefs(*args: Any) -> None:
     global index_to_external_object_weakref

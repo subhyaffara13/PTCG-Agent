@@ -1,3 +1,4 @@
+from typing import Any
 
 def ip_v6_interface_validator(v: Any) -> IPv6Interface:
     if isinstance(v, IPv6Interface):

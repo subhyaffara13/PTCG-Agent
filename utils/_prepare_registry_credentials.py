@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _prepare_registry_credentials(
     *,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_backward_formula(op: Callable, args, kwargs,
                            output_process_fn_grad=None,

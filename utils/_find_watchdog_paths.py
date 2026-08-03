@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _find_watchdog_paths(
     extra_files: set[str], exclude_patterns: set[str]

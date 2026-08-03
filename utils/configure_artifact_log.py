@@ -1,3 +1,4 @@
+import logging
 
 def configure_artifact_log(log) -> None:
     # If the artifact is off by default, then it should only be logged when explicitly

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _composite_lowering(
     ctx: mlir.LoweringRuleContext,

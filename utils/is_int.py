@@ -1,3 +1,4 @@
+from typing import Any
 
 def isInt(f: Any) -> int:
     try:

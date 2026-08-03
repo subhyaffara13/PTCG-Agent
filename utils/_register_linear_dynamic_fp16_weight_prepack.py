@@ -1,3 +1,4 @@
+import itertools
 
 def _register_linear_dynamic_fp16_weight_prepack():
     to_dtype_op = torch.ops.quantized_decomposed.convert_element_type.no_fuse

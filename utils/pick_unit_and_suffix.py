@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def pick_unit_and_suffix(size: int, suffixes: List[str], base: int) -> Tuple[int, str]:
     """Pick a suffix and base for the given size."""

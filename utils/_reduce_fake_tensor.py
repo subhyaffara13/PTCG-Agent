@@ -1,3 +1,4 @@
+import json
 
 def _reduce_fake_tensor(fake_tensor: FakeTensor):
     is_parameter = isinstance(fake_tensor, torch.nn.Parameter)

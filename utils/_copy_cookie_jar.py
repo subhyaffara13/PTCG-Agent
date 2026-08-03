@@ -1,3 +1,4 @@
+import copy
 
 def _copy_cookie_jar(jar: CookieJar | None) -> CookieJar | None:  # type: ignore[reportUnusedFunction]  # cross-module usage in models.py
     if jar is None:

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_reduce_rational_inequalities_real_relational():
     assert reduce_rational_inequalities([], x) == False

@@ -1,3 +1,4 @@
+import os
 
 def _set_configs_from_environment():
     """Initialize ``config.backend_priority``, load backend_info and config.

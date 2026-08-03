@@ -1,3 +1,4 @@
+import os
 
 def normalize_paths(value, parent=os.curdir):
     """Parse a comma-separated list of paths.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _load_pyproject(path: str) -> dict[str, Any]:
     """

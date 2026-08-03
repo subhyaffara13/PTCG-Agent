@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def canonicalize_dtype(
     dtype: Optional[jax.typing.DTypeLike],

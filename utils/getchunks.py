@@ -1,3 +1,4 @@
+from typing import Any
 
 def getchunks(im: Image.Image, **params: Any) -> list[tuple[bytes, bytes, bytes]]:
     """Return a list of PNG chunks representing this image."""

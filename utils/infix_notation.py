@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def infix_notation(
     base_expr: ParserElement,

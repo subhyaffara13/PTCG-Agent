@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _build_content_part_done_event(
     *,

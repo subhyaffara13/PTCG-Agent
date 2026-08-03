@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, List, Optional, Union
 
 def _gemini_convert_messages_with_history(
     messages: List[AllMessageValues],

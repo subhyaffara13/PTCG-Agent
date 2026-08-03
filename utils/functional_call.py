@@ -1,3 +1,4 @@
+from typing import Any
 
 def functional_call(
     module: torch.nn.Module,

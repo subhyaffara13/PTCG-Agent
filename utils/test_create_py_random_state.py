@@ -1,3 +1,4 @@
+import random
 
 def test_create_py_random_state():
     pyrs = random.Random

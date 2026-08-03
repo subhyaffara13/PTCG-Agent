@@ -1,3 +1,4 @@
+import functools
 
 def _datetimelike_compat(func: F) -> F:
     """

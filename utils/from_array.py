@@ -1,3 +1,4 @@
+import itertools
 
 def from_array(a, mode=None, info={}):
     """Create a PNG :class:`Image` object from a 2- or 3-dimensional array.

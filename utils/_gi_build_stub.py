@@ -1,3 +1,4 @@
+import re
 
 def _gi_build_stub(parent):  # noqa: C901
     """

@@ -1,3 +1,5 @@
+import os
+from typing import Optional, Union
 
 def get_ssl_configuration(
     ssl_verify: Optional[VerifyTypes] = None,

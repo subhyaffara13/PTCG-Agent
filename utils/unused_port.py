@@ -1,3 +1,4 @@
+from typing import Callable
 
 def unused_port(aiohttp_unused_port: Callable[[], int]) -> Callable[[], int]:
     warnings.warn(

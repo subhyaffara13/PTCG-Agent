@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _normalize_team_metadata_keys(value: Any) -> List[str]:
     """Coerce a team-metadata allowlist from a list or comma-separated string.

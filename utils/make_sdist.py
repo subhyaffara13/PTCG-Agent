@@ -1,3 +1,4 @@
+import time
 
 def make_sdist(dist_path, files):
     """

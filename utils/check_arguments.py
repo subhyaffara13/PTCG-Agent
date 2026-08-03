@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def check_arguments(args, expr_len, nb_of_free_symbols):
     """

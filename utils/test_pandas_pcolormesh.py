@@ -1,3 +1,4 @@
+import time
 
 def test_pandas_pcolormesh(pd):
     time = pd.date_range('2000-01-01', periods=10)

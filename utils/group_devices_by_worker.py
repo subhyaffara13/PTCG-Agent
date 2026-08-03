@@ -1,3 +1,4 @@
+import logging
 
 def group_devices_by_worker(
     devices: Sequence[jax.Device],

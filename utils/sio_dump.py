@@ -1,3 +1,4 @@
+import json
 
 def sio_dump(obj, **kw):
     sio = StringIO()

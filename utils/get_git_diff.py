@@ -1,3 +1,4 @@
+import subprocess
 
 def get_git_diff(logic_candidate):
     diff_text = ""

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def python_subprocess_env() -> dict[str, str]:
     """

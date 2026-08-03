@@ -1,3 +1,4 @@
+from typing import Any
 
 def match_one_event(
     event_a: dict[Any, Any],

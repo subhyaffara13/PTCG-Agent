@@ -1,3 +1,4 @@
+from typing import Any
 
 def fusible(f=None, *, output_fusion_prefix: Any = True):
   def decorator(f):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def deriv_prop(prim, deriv, primals_in, series_in):
   x, = primals_in

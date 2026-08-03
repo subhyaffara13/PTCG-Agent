@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_imshow_pil(fig_test, fig_ref):
     style.use("default")

@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_fake_class(full_qualname) -> Any | None:
     if not has_fake_class(full_qualname):

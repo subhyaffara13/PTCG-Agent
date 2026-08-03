@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def flex_attention_autograd(
     query: torch.Tensor,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _import_func(func: str, backend: str, default: Any = None) -> Any:
     """Try and import ``{backend}.{func}``.

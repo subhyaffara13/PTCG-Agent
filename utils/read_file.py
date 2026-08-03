@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def read_file(path: str | Path, fallback: str | None = None) -> str:
     try:

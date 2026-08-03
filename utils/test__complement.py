@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_Complement():
     A = FiniteSet(1, 3, 4)

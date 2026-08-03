@@ -1,3 +1,4 @@
+import os
 
 def _convert_node_to_placeholder(
     graph: fx.Graph, node: fx.Node, inps: list[torch.Tensor]

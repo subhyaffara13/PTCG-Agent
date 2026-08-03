@@ -1,3 +1,5 @@
+import math
+
 
 def get_score(
     addr: sympy.Expr, var_ranges: dict[sympy.Symbol, int], buf_names: OrderedSet[str]

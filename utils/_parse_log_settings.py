@@ -1,3 +1,5 @@
+import logging
+import re
 
 def _parse_log_settings(settings):
     settings = process_env_var_string_for_windows(settings)

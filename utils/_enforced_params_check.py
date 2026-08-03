@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _enforced_params_check(
     request_body: dict,

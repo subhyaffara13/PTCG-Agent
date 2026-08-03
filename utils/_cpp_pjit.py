@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _cpp_pjit(fun: Callable, jit_info: PjitInfo):
 

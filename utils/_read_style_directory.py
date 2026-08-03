@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _read_style_directory(style_dir):
     """Return dictionary of styles defined in *style_dir*."""

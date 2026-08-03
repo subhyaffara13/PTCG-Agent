@@ -1,3 +1,4 @@
+import pathlib
 
 def test_to_read_gcs(gcs_buffer, format, monkeypatch, capsys, request):
     """

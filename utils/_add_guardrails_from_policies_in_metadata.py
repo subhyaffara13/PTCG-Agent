@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _add_guardrails_from_policies_in_metadata(
     key_metadata: Optional[dict],

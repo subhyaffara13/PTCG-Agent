@@ -1,3 +1,4 @@
+import re
 
 def to_pascal(snake: str) -> str:
     """Convert a snake_case string to PascalCase.

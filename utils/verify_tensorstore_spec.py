@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def verify_tensorstore_spec(spec: dict[str, Any], arr: jax.Array | None,
                             path: str | os.PathLike[str], ocdbt: bool,

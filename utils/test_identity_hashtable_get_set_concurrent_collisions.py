@@ -1,3 +1,4 @@
+import random
 
 def test_identity_hashtable_get_set_concurrent_collisions(key_length, length):
     ht = create_identity_hash(key_length)

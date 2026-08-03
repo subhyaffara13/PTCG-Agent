@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_transform(
     data: object,

@@ -1,3 +1,5 @@
+import math
+
 
 def otRound(value):
     """Round float value to nearest integer towards ``+Infinity``.

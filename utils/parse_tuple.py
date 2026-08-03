@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def parse_tuple(value: tuple[Any, ...]) -> RGBA:
     """Parse a tuple or list to get RGBA values.

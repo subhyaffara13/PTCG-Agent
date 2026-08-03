@@ -1,3 +1,4 @@
+from typing import Any
 
 def factor_system_cond(eqs: Sequence[Expr | complex], gens: Sequence[Expr] = (), **kwargs: Any) -> list[list[Expr]]:
     """

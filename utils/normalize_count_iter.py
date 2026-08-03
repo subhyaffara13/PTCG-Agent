@@ -1,3 +1,4 @@
+from typing import Any
 
 def normalize_count_iter(count_iter: Iterator[Any]) -> tuple[Any, Any]:
     try:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def doctest_namespace() -> dict[str, Any]:
     """Fixture that returns a :py:class:`dict` that will be injected into the

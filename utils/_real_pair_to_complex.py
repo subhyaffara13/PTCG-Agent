@@ -1,3 +1,4 @@
+from typing import Union
 
 def _real_pair_to_complex(
     x: Union[jax.typing.ArrayLike, SplitRealAndImaginaryArrays],

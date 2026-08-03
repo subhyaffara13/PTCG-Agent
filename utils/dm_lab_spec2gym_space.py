@@ -1,3 +1,4 @@
+from typing import Any
 
 def dm_lab_spec2gym_space(spec) -> spaces.Space[Any]:
     """Converts a dm_lab spec to a gymnasium space."""

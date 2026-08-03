@@ -1,3 +1,4 @@
+from typing import Any
 
 def _preserve_requires_grad_pass(
     gm: torch.fx.GraphModule,

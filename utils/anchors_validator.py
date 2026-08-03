@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def anchorsValidator(value: Any, identifiers: Optional[set[str]] = None) -> bool:
     """

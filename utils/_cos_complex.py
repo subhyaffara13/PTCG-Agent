@@ -1,3 +1,4 @@
+import re
 
 def _cos_complex(x):
   # cos(x) = complex(cos(real(x)) * cosh(imag(x)), -sin(real(x)) * sinh(imag(x)))

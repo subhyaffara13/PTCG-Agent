@@ -1,3 +1,4 @@
+from typing import Any
 
 def apply_evolve_helper(gs: dict, card_id: Any, CardRegistry: Any, remove_from_hand: Any) -> None:
     hand = list(gs.get("my_hand", []))

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _httpx_follow_relative_redirects_with_backoff(
     method: HTTP_METHOD_T, url: str, *, retry_on_errors: bool = False, **httpx_kwargs

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_tensor_meta(node: fx.Node) -> dict[str, Any] | None:
     """Extract tensor metadata from FX node."""

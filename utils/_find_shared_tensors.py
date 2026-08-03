@@ -1,3 +1,4 @@
+from typing import Dict, List, Set
 
 def _find_shared_tensors(state_dict: Dict[str, torch.Tensor]) -> List[Set[str]]:
     tensors = defaultdict(set)

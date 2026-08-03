@@ -1,3 +1,4 @@
+import sys
 
 def _record_memory_history(
     enabled: Literal["state", "all"] | None = "all", *args, **kwargs

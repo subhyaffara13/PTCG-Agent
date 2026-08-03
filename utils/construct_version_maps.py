@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_version_maps(
     upgrader_bytecode_function_to_index_map: dict[str, Any],

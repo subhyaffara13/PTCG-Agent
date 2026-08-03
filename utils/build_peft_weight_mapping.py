@@ -1,3 +1,4 @@
+import re
 
 def build_peft_weight_mapping(
     weight_conversions: list[WeightConverter | WeightRenaming] | None, adapter_name: str, peft_config=None

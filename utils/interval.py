@@ -1,3 +1,4 @@
+from typing import Callable
 
 def interval(
     min: int | float | None = None,

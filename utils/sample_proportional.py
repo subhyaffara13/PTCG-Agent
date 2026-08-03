@@ -1,3 +1,5 @@
+import random
+from typing import Any, List
 
 def sample_proportional(buffer: deque, k: int) -> List[Any]:
     if not buffer:

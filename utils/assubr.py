@@ -1,3 +1,4 @@
+import copy
 
 def assubr(rout):
     if isfunction_wrap(rout):

@@ -1,3 +1,5 @@
+import logging
+import pathlib
 
 def analyze_model(model_path: pathlib.Path, skip_optimize: bool = False, logger: logging.Logger | None = None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _api_bc_check(func):
     @wraps(func)

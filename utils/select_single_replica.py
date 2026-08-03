@@ -1,3 +1,4 @@
+from typing import List
 
 def select_single_replica(
     arrays: List[jax.Array], global_mesh: jax.sharding.Mesh

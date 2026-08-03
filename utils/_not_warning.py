@@ -1,3 +1,4 @@
+import logging
 
 def _not_warning(record):
     return record.levelno < logging.WARNING

@@ -1,3 +1,4 @@
+from typing import Any
 
 def input_reshard(
     module: torch.nn.Module,

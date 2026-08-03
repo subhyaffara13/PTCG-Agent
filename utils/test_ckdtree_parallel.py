@@ -1,3 +1,4 @@
+import os
 
 def test_ckdtree_parallel(kdtree_type, monkeypatch):
     # check if parallel=True also generates correct query results

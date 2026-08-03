@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_metadata(metadata: dict[str, Any], allowed: Iterable[str], source_type: Any) -> None:
     """A small utility function to validate that the given metadata can be applied to the target.

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Union
 
 def normalize_json_schema_types(
     schema: Union[Dict[str, Any], List[Any], Any],

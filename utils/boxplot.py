@@ -1,3 +1,4 @@
+from typing import Any
 
 def boxplot(
     x: ArrayLike | Sequence[ArrayLike],

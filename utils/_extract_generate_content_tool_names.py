@@ -1,3 +1,4 @@
+from typing import List
 
 def _extract_generate_content_tool_names(data: dict) -> List[str]:
     """Google generateContent: tools[].functionDeclarations[].name"""

@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_conj(tree: Any) -> Any:
   """Compute the conjugate of a pytree.

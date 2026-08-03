@@ -1,3 +1,4 @@
+from typing import Set
 
 def _subresources_of(
     in_value: Set[str] = frozenset(),

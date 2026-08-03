@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_array(checker, instance):
     return isinstance(instance, list)

@@ -1,3 +1,4 @@
+import sys
 
 def test_iter_writemasked_decref():
     # force casting (to make it interesting) by using a structured dtype.

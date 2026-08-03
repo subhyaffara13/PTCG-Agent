@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def aot_inductor_minifier_wrapper(
     func: Callable[..., str],

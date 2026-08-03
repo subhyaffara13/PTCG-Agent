@@ -1,3 +1,4 @@
+import os
 
 def is_on_gce(request):
     """Checks to see if the code runs on Google Compute Engine

@@ -1,3 +1,4 @@
+from typing import Any
 
 def dict_schema(
     keys_schema: CoreSchema | None = None,

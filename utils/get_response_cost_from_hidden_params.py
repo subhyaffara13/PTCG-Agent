@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def get_response_cost_from_hidden_params(
     hidden_params: Union[dict, BaseModel],

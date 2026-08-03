@@ -1,3 +1,4 @@
+from typing import Union
 
 def to_pil_image(
     image: Union[np.ndarray, "PIL.Image.Image", "torch.Tensor"],

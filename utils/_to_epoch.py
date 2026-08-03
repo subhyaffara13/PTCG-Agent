@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _to_epoch(value: Any) -> Optional[int]:
     if value is None:

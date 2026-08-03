@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def conlist(
     item_type: type[AnyItemType],

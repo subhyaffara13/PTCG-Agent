@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _next_unquoted_char(text: str, chs: Optional[str], startidx: int = 0) -> int:
     """Return position of next unquoted character in tuple, or -1 if not found.

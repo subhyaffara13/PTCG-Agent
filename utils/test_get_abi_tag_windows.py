@@ -1,3 +1,4 @@
+import sys
 
 def test_get_abi_tag_windows(monkeypatch):
     monkeypatch.setattr(tags, "interpreter_name", lambda: "cp")

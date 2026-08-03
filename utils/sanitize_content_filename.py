@@ -1,3 +1,4 @@
+import os
 
 def sanitize_content_filename(filename: str) -> str:
     """

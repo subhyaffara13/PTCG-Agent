@@ -1,3 +1,5 @@
+import re
+from typing import Optional
 
 def _emoji_replace(
     text: str,

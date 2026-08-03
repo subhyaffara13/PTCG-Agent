@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _method_from_src(
     method_name: str, src: str, globals: dict[str, Any], co_fields=None

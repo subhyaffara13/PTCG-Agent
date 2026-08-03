@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def make_uniform_sampling_constraints_function(
     num: int,

@@ -1,3 +1,4 @@
+import re
 
 def mpc_conjugate(z, prec, rnd=round_fast):
     re, im = z

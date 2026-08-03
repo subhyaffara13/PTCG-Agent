@@ -1,3 +1,4 @@
+import re
 
 def _wofz_upper(z: Array) -> Array:
   re = lax.real(z)

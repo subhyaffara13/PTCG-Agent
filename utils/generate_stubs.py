@@ -1,3 +1,4 @@
+import os
 
 def generate_stubs(options: Options) -> None:
     """Main entry point for the program."""

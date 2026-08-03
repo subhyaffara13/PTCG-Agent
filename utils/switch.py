@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def switch(
     key: Callable[[_S], _T],

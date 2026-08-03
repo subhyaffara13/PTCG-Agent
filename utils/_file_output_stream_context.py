@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _file_output_stream_context(filename: str | Path, source_file: File) -> Iterator[TextIO]:
     tmp_file = _tmp_file(source_file)

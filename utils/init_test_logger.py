@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def init_test_logger() -> logging.Logger:
     """Initialize a test-specific logger with colored stderr handler and INFO level for tests.

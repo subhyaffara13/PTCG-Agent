@@ -1,3 +1,7 @@
+import logging
+import os
+import sys
+from typing import Any, Optional, Union
 
 def trace(arg: Union[bool, TextIO, str, os.PathLike] = None, *, mode: str = 'a') -> None:
     """print a trace through the stack when pickling; useful for debugging

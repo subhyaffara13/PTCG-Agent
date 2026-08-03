@@ -1,3 +1,5 @@
+import math
+
 
 def unroll(
     hidden_states: torch.Tensor, image_shape: tuple[int, int], patch_stride: tuple[int, int], schedule: list[list[int]]

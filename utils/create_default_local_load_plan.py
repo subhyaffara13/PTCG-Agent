@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_default_local_load_plan(
     state_dict: dict[str, Any], metadata: Metadata, strict: bool = True

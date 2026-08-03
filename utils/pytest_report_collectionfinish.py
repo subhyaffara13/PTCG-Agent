@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def pytest_report_collectionfinish(  # type: ignore[empty-body]
     config: Config,

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def while_sample_slots(
     key: chex.PRNGKey, state_entities: chex.Array

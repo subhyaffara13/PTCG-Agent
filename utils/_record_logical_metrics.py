@@ -1,3 +1,4 @@
+import logging
 
 def _record_logical_metrics(
     direction: types.IoDirection,

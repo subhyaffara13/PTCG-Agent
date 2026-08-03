@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _embed_headers(
     content: list[str], include_dirs: list[Path], processed_files: set[str]

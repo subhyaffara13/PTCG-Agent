@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_input_alias_and_mutation_return_outputs(
     gm: torch.fx.GraphModule,

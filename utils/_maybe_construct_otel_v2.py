@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _maybe_construct_otel_v2(
     callback_name: str, _in_memory_loggers: list

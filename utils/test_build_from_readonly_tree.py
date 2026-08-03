@@ -1,3 +1,4 @@
+import os
 
 def test_build_from_readonly_tree(dummy_dist, monkeypatch, tmp_path):
     basedir = str(tmp_path.joinpath("dummy"))

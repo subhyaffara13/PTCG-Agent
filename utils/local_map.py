@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def local_map(
     func: Callable | None = None,

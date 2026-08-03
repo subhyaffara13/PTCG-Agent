@@ -1,3 +1,4 @@
+from typing import Any
 
 def _multi_value_fns_with_args(
     transforms: PyTree, restore_args: PyTree

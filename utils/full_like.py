@@ -1,3 +1,4 @@
+from typing import Any
 
 def full_like(
     self: torch.Tensor,

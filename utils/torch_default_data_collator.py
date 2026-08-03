@@ -1,3 +1,4 @@
+from typing import Any
 
 def torch_default_data_collator(features: list[InputDataClass]) -> dict[str, Any]:
     import torch

@@ -1,3 +1,4 @@
+import copy
 
 def _check_symmetric_graph_laplacian(mat, normed, copy=True):
     if not hasattr(mat, 'shape'):

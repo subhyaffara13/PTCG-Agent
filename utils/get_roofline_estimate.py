@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_roofline_estimate(node: Node) -> float:
     if node.op != "call_function":

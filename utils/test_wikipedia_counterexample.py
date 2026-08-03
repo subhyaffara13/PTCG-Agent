@@ -1,3 +1,4 @@
+import random
 
 def test_wikipedia_counterexample():
     # The Levinson-Durbin implementation also fails in other cases.

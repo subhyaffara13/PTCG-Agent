@@ -1,3 +1,5 @@
+import logging
+from typing import Callable
 
 def _simplify(expr, doit):
     if doit:

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def count(seq):
     """ Count the number of items in seq

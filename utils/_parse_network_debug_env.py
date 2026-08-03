@@ -1,3 +1,4 @@
+import os
 
 def _parse_network_debug_env() -> tuple[bool, str]:
     enabled_raw = os.environ.get("NETWORK_DEBUG_REPORT", "").strip()

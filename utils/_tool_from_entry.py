@@ -1,3 +1,4 @@
+import json
 
 def _tool_from_entry(entry: object) -> ToolDefinition | None:
     """One ``tools``/``functions`` entry → ``ToolDefinition``, or ``None`` if unusable."""

@@ -1,3 +1,4 @@
+import itertools
 
 def construct_game_queries(base_profile, num_checkpts):
   """Constructs a list of checkpoint selection tuples to query value function.

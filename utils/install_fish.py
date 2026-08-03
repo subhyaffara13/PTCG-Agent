@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def install_fish(*, prog_name: str, complete_var: str, shell: str) -> Path:
     path_obj = Path.home() / f".config/fish/completions/{prog_name}.fish"

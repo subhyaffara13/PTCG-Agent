@@ -1,3 +1,4 @@
+from typing import Callable
 
 def handle_sym_dispatch(
     func: Callable[_P, R],

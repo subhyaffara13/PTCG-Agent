@@ -1,3 +1,5 @@
+import math
+
 
 def geometric(self, p, generator=None):
     if generator is not None:

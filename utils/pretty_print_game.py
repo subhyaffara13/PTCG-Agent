@@ -1,3 +1,7 @@
+import json
+import os
+import re
+import sys
 
 def pretty_print_game(json_path: str):
     if not os.path.exists(json_path):

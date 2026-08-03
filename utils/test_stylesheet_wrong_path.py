@@ -1,3 +1,4 @@
+import os
 
 def test_stylesheet_wrong_path(geom_df):
     pytest.importorskip("lxml.etree")

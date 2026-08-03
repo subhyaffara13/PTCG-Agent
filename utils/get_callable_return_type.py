@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_callable_return_type(
     callable_obj: Any,

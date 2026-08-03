@@ -1,3 +1,4 @@
+import os
 
 def default_async(scopes=None, request=None, quota_project_id=None):
     """Gets the default credentials for the current environment.

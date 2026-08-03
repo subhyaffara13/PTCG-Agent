@@ -1,3 +1,4 @@
+import json
 
 def parse_table_schema(json, precise_float: bool) -> DataFrame:
     """

@@ -1,3 +1,4 @@
+import sys
 
 def skip_if_win32():
     return skip_but_pass_in_sandcastle_if(

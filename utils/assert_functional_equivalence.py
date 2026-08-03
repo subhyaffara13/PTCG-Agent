@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def assert_functional_equivalence(
     model_apply_fn: Callable[[Any, Any], Any],

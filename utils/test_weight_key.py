@@ -1,3 +1,4 @@
+import random
 
 def test_weight_key():
     G = nx.Graph()

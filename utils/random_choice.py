@@ -1,3 +1,4 @@
+import random
 
 def random_choice(outcomes, probabilities):
   """Samples from discrete probability distribution.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def complete_dataclass(
     cls: type[Any],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def dtype(arg):
     if arg is None:

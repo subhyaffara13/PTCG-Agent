@@ -1,3 +1,5 @@
+import json
+from typing import Dict
 
 def _decode_user_env_vars(stored: str) -> Dict[str, str]:
     """Decrypt a ``values_b64`` blob and parse it as a flat ``{name: value}`` dict."""

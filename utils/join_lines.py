@@ -1,3 +1,4 @@
+from typing import List
 
 def join_lines(lines_enum: ReqFileLines) -> ReqFileLines:
     """Joins a line ending in '\' with the previous line (except when following

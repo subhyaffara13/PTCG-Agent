@@ -1,3 +1,4 @@
+from typing import Any
 
 def max_min_dim_single_dim_strategy(
     op: torch._ops.OpOverload,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_concrete_sizes_from_symints(msg: str, fake_mode: FakeTensorMode | None) -> str:
     """

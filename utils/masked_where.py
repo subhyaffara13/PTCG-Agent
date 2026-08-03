@@ -1,3 +1,4 @@
+import copy
 
 def masked_where(condition, a, copy=True):
     """

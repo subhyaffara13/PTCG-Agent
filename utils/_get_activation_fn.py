@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_activation_fn(activation: str) -> Callable[[Tensor], Tensor]:
     if activation == "relu":

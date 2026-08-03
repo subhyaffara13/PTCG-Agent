@@ -1,3 +1,4 @@
+from typing import Any
 
 def _flatten_dynamic_shapes_to_axes(
     dynamic_shapes: dict[str, Any | None] | tuple[Any, ...] | list[Any],

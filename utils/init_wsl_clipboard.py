@@ -1,3 +1,4 @@
+import subprocess
 
 def init_wsl_clipboard():
     def copy_wsl(text):

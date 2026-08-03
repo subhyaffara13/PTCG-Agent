@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_verbose(
     obj: Any, is_inlined_call: bool = False, frame: Any | None = None

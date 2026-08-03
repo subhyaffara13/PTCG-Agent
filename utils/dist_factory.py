@@ -1,3 +1,4 @@
+import os
 
 def dist_factory(path_item, entry, only):
     """Return a dist_factory for the given entry."""

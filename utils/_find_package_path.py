@@ -1,3 +1,5 @@
+import os
+import pathlib
 
 def _find_package_path(import_name: str) -> str:
     """Find the path that contains the package or module."""

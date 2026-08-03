@@ -1,3 +1,4 @@
+from typing import Callable
 
 def arrow_table_to_pandas(
     table: pyarrow.Table,

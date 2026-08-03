@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def setup_docs(
     functorch_api: Callable[..., Any],

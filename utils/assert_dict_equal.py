@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_dict_equal(
     self_: Any, d1: dict[T, U], d2: dict[T, U], msg: str | None = None

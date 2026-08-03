@@ -1,3 +1,4 @@
+from typing import Dict, List, Set
 
 def _rewrite_object_permission_mcp_servers(
     object_permission: dict,

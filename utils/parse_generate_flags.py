@@ -1,3 +1,4 @@
+import json
 
 def parse_generate_flags(generate_flags: list[str] | None) -> dict:
     """Parses the generate flags from the user input into a dictionary of `generate` kwargs."""

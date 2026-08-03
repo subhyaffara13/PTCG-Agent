@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _extract_proxy_litellm_metadata(kwargs: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     """Return ``kwargs["litellm_metadata"]`` when it's a dict; ``None`` otherwise.

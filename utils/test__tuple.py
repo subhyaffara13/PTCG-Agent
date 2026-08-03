@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple():
     t = (1, 2, 3, 4)

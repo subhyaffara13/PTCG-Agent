@@ -1,3 +1,4 @@
+from typing import Any
 
 def render_to_text(
     value: Any,

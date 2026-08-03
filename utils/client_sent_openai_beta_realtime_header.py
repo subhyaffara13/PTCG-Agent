@@ -1,3 +1,4 @@
+from typing import Any
 
 def client_sent_openai_beta_realtime_header(websocket: Any) -> bool:
     """True when the client WebSocket includes ``OpenAI-Beta: realtime=v1``."""

@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def _ipy_display_hook(
     value: Any,

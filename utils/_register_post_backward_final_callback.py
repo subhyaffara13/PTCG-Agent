@@ -1,3 +1,4 @@
+import functools
 
 def _register_post_backward_final_callback(
     state: _FSDPState, module: nn.Module

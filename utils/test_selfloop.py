@@ -1,3 +1,4 @@
+import random
 
 def test_selfloop(graph_constructor):
     # Simple test for graphs with selfloops

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def http_user_agent(user_agent: dict | str | None = None) -> str:
     """

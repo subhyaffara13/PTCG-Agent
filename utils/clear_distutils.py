@@ -1,3 +1,4 @@
+import sys
 
 def clear_distutils():
     if 'distutils' not in sys.modules:

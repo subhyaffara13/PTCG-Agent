@@ -1,3 +1,4 @@
+from typing import Any
 
 def _record_function_enter_new(
     fake_mode: FakeTensorMode, func: OpOverload, name: str, args: object | None = None

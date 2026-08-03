@@ -1,3 +1,4 @@
+from typing import Callable
 
 def torch_key_cache(func: Callable[[], bytes]) -> Callable[[], bytes]:
     """

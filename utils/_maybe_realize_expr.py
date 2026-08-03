@@ -1,3 +1,4 @@
+import sys
 
 def _maybe_realize_expr(
     expr: sympy.Basic, nan_fallback: int | None

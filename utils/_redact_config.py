@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _redact_config(config: Optional[Mapping[str, Any]]) -> Dict[str, Any]:
     """Strip values from a config snapshot before audit-log emission.

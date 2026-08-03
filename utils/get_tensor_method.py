@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_tensor_method() -> frozenset[Any]:
     disallowed_tensor_methods = {"__new__", "_make_wrapper_subclass", "_make_subclass"}

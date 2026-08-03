@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _looks_like_red_hat_scheme() -> bool:
     """Red Hat patches ``sys.prefix`` and ``sys.exec_prefix``.

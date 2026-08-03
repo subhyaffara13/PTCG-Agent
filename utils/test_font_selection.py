@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def test_font_selection(rc, preamble, family):
     plt.rcParams.update(rc)

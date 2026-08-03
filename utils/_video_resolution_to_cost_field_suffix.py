@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _video_resolution_to_cost_field_suffix(resolution: str) -> Optional[str]:
     """

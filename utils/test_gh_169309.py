@@ -1,3 +1,5 @@
+import math
+
 
 def test_gh_169309():
     x = np.repeat(10, 9)

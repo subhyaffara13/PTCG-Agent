@@ -1,3 +1,4 @@
+from typing import Callable
 
 def add_shape_compute_mapping(operator_schema: str, func: Callable):
     global shape_compute_graph_mapping

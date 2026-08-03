@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def compute_module_name(root: Path, module_path: Path) -> str | None:
     """Compute a module name based on a path and a root anchor."""

@@ -1,3 +1,4 @@
+import re
 
 def _is_valid_ttl_format(ttl: str) -> bool:
     """

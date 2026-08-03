@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_tick_result(packet: dict, time_limit: float) -> dict:
     time_elapsed: float = float(packet.get("time_elapsed", 0.0))

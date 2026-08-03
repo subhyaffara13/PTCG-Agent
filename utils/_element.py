@@ -1,3 +1,4 @@
+from typing import Any
 
 def _element(
     html_element: str,

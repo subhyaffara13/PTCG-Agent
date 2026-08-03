@@ -1,3 +1,4 @@
+from typing import Any
 
 def format_bytecode(table):
     # given a nested tuple, convert it to nested list

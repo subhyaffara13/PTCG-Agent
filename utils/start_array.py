@@ -1,3 +1,4 @@
+from typing import List
 
 def start_array(self: PlistTarget) -> None:
     a: List[PlistEncodable] = []

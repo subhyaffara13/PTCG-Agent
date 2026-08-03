@@ -1,3 +1,4 @@
+from typing import Union
 
 def tensor_shape(shape: tuple[int | str], length: int | None = None):
     @as_validated_field

@@ -1,3 +1,4 @@
+import re
 
 def parse_name_for_bind(line):
     pattern = re.compile(r'bind\(\s*(?P<lang>[^,]+)(?:\s*,\s*name\s*=\s*["\'](?P<name>[^"\']+)["\']\s*)?\)', re.I)

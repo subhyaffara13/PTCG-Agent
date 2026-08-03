@@ -1,3 +1,5 @@
+import math
+
 
 def _async_store_smem_lowering(
     ctx: lowering.LoweringRuleContext,

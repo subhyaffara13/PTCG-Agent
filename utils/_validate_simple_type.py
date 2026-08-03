@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_simple_type(name: str, value: Any, expected_type: type) -> None:
     """Validate simple type (int, str, etc.)."""

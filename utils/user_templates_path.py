@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_templates_path() -> Path:
     """:returns: templates path tied to the user"""

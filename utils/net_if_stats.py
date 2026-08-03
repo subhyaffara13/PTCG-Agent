@@ -1,3 +1,6 @@
+import re
+import subprocess
+import sys
 
 def net_if_stats():
     """Get NIC stats (isup, duplex, speed, mtu)."""

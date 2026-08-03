@@ -1,3 +1,4 @@
+import os
 
 def initialize_pipeline(
     version="xl-turbo",

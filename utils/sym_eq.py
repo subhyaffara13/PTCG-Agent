@@ -1,3 +1,4 @@
+import functools
 
 def sym_eq(x: _T, y: _T) -> BoolLikeType:
     """

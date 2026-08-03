@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _dask_wrap(
     func: Callable[P, T], n: int

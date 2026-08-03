@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def _build_summary_messages(
     effective_messages: List[Dict[str, Any]],

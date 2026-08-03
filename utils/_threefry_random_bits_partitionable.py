@@ -1,3 +1,5 @@
+import math
+
 
 def _threefry_random_bits_partitionable(key: typing.Array, bit_width, shape):
   if all(core.is_constant_dim(d) for d in shape) and math.prod(shape) > 2 ** 64:

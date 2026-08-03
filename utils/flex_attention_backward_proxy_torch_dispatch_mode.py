@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def flex_attention_backward_proxy_torch_dispatch_mode(
     mode: ProxyTorchDispatchMode,

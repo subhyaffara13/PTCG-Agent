@@ -1,3 +1,4 @@
+import os
 
 def is_c_module(module: ModuleType) -> bool:
     if module.__dict__.get("__file__") is None:

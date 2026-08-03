@@ -1,3 +1,4 @@
+from typing import Optional
 
 def update_db_credential(
     db_credential: CredentialItem,

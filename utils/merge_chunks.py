@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_chunks(
     chunks: list[Any],

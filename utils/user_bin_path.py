@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_bin_path() -> Path:
     """:returns: bin path tied to the user"""

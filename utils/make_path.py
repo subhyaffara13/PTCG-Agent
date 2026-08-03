@@ -1,3 +1,4 @@
+import os
 
 def make_path(path: PathLike) -> abstract_path.Path:
   """Create a generic `pathlib.Path`-like abstraction.

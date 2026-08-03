@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_messages_for_spend_logs_payload(
     standard_logging_payload: Optional[StandardLoggingPayload],

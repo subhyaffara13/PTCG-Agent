@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_leaf_function_wrappers(
     real_fn: Callable[..., Any],

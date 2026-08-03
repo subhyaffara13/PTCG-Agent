@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _chunk(arr) -> dict[str, Any]:
   """Convert array to a canonical dictionary of chunked arrays."""

@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def to_streamed_response_wrapper(func: Callable[P, R]) -> Callable[P, ResponseContextManager[APIResponse[R]]]:
     """Higher order function that takes one of our bound API methods and wraps it

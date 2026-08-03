@@ -1,3 +1,4 @@
+import time
 
 def test_check_dimensions():
     x = symbols('x')

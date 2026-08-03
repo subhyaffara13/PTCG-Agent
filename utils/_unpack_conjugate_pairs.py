@@ -1,3 +1,4 @@
+import re
 
 def _unpack_conjugate_pairs(w: Array, vr: Array) -> Array:
   # cusolver, like LAPACK, uses a packed representation of the complex

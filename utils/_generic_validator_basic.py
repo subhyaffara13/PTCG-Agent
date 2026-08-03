@@ -1,3 +1,4 @@
+from typing import Set
 
 def _generic_validator_basic(validator: AnyCallable, sig: 'Signature', args: Set[str]) -> 'ValidatorCallable':
     has_kwargs = False

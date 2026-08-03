@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _return_conditionset(eqs, symbols):
     # return conditionset

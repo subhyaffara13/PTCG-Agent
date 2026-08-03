@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _glibc_version_string_ctypes() -> str | None:
     """

@@ -1,3 +1,6 @@
+import time
+from pathlib import Path
+
 
 def modify_model_output_intermediate_tensors(
     input_model_path: str | Path,

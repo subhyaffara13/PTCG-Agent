@@ -1,3 +1,4 @@
+import os
 
 def _write_ninja_file_and_compile_objects(
         sources: list[str],

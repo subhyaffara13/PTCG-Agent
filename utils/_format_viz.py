@@ -1,3 +1,4 @@
+import json
 
 def _format_viz(data, viz_kind, device):
     if device is not None:

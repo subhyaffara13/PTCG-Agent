@@ -1,3 +1,4 @@
+from typing import Union
 
 def parse_date(value: str | None) -> datetime | None:
     """Parse an :rfc:`2822` date into a timezone-aware

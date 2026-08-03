@@ -1,3 +1,4 @@
+import re
 
 def test_issue_15432():
     assert integrate(x**n * exp(-x) * log(x), (x, 0, oo)).gammasimp() == Piecewise(

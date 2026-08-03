@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def add_method(
     api: SemanticAnalyzerPluginInterface | CheckerPluginInterface,

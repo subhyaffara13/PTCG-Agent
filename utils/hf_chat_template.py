@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def hf_chat_template(model: str, messages: list, chat_template: Optional[Any] = None):
     """HuggingFace chat template (sync version)"""

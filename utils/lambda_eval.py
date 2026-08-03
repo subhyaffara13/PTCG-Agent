@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def lambda_eval(expression: Callable[[dict[str, Any]], Any], **kw: Any) -> Any:
     """

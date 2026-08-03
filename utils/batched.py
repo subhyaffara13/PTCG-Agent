@@ -1,3 +1,4 @@
+import itertools
 
 def batched(iterable, n, total=None, tqdm_class=tqdm_auto, **kwargs):
     """Equivalent of `itertools.batched`."""

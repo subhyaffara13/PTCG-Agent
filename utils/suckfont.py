@@ -1,3 +1,4 @@
+import re
 
 def suckfont(data, encoding="ascii"):
     m = re.search(rb"/FontName\s+/([^ \t\n\r]+)\s+def", data)

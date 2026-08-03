@@ -1,3 +1,4 @@
+from typing import Any
 
 def _swap_jvp(primals, tangents, *, args_tree, **params):
   ref_primal, transforms, val_primal, mask = args_tree.unflatten(primals)

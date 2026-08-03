@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, List, Optional
 
 def _reencrypt_global_env_var_values(
     env_vars: Optional[Iterable[Any]], new_encryption_key: str

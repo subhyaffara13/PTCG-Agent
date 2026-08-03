@@ -1,3 +1,4 @@
+import re
 
 def is_flash_attention_requested(
     config=None, requested_attention_implementation: str | None = None, version: int | None = None

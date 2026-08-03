@@ -1,3 +1,4 @@
+from typing import Any
 
 def foreach_map_fn(*args: Any) -> Any:
     op = args[0]

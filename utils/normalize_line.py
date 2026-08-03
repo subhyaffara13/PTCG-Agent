@@ -1,3 +1,4 @@
+import re
 
 def normalize_line(raw_line: str) -> tuple[str, str]:
     """Normalizes import related statements in the provided line.

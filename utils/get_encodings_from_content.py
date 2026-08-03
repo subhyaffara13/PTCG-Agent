@@ -1,3 +1,4 @@
+import re
 
 def get_encodings_from_content(content: str) -> list[str]:
     """Returns encodings from given content string.

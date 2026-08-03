@@ -1,3 +1,4 @@
+import logging
 
 def log_persistent_cache_hit(module_name: str, cache_key: str) -> None:
   hit_log_priority = (logging.WARNING if config.log_compiles.value

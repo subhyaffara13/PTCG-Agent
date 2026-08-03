@@ -1,3 +1,5 @@
+import math
+
 
 def _safe_first_finite(obj):
     """

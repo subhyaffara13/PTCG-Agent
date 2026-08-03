@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def display_interactive_team_selection(
     teams: List[Dict[str, Any]], selected_index: int = 0

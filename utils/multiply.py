@@ -1,3 +1,4 @@
+import sys
 
 def multiply(image1: Image.Image, image2: Image.Image) -> Image.Image:
     """

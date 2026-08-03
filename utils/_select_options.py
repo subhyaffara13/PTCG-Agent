@@ -1,3 +1,4 @@
+import re
 
 def _select_options(pat: str) -> list[str]:
     """

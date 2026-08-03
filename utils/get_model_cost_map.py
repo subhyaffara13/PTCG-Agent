@@ -1,3 +1,4 @@
+import os
 
 def get_model_cost_map(url: str) -> dict:
     """

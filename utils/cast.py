@@ -1,3 +1,4 @@
+import re
 
 def cast(val, typ):
     log.debug((val, typ))

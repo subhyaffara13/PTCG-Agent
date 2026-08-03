@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _merge_metadata_bags(request_data: Mapping[str, Any]) -> Optional[dict[str, Any]]:
     merged: dict[str, Any] = {}

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def trace_to_subjaxpr_nounits_fwd2(
     f: Callable,

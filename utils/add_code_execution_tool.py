@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def add_code_execution_tool(tools: Optional[List[Dict]]) -> List[Dict]:
     """Add litellm_code_execution tool if not already present."""

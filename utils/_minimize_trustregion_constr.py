@@ -1,3 +1,4 @@
+import time
 
 def _minimize_trustregion_constr(fun, x0, args, grad,
                                  hess, hessp, bounds, constraints,

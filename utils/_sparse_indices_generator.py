@@ -1,3 +1,4 @@
+import itertools
 
 def _sparse_indices_generator(player, action, num_actions):
   indices = [(action,) if p == player else range(na)

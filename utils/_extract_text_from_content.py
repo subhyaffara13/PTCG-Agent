@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_text_from_content(content: object) -> str:
     if isinstance(content, str):

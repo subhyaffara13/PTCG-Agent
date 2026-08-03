@@ -1,3 +1,4 @@
+from typing import Any
 
 def numpy_attr_wrapper(obj: Any, name: str) -> Any:
     if isinstance(obj, tnp.ndarray):

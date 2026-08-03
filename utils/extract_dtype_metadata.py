@@ -1,3 +1,4 @@
+from typing import Any
 
 def extract_dtype_metadata(input: torch.dtype) -> dict[str, Any]:
     assert isinstance(input, torch.dtype)

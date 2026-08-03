@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def grad_and_value_impl(
     func: Callable[..., Any],

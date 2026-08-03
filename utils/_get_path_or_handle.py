@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _get_path_or_handle(
     path: FilePath | ReadBuffer[bytes] | WriteBuffer[bytes],

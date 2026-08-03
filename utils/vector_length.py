@@ -1,3 +1,5 @@
+import math
+
 
 def vectorLength(vector):
     """Calculate the length of the given vector.

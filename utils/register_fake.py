@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_fake(
     op: _op_identifier,

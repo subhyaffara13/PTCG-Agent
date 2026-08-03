@@ -1,3 +1,6 @@
+import functools
+import logging
+from typing import Callable
 
 def record_shapeenv_event(
     *, save_tracked_fakes: bool = False, name: str | None = None

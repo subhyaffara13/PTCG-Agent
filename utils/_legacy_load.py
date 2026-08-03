@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _legacy_load(f, map_location, pickle_module, **pickle_load_args):
     deserialized_objects: dict[int, Any] = {}

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def generate_pydantic_signature(
     init: Callable[..., None],

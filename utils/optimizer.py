@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def optimizer(func, x0, args=(), disp=0):
     return fmin(func, x0, args=args, disp=disp, xtol=1e-12, ftol=1e-12)

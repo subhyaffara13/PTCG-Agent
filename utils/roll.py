@@ -1,3 +1,5 @@
+import itertools
+import sys
 
 def roll(a: ArrayLike, shift, axis=None):
     if axis is not None:

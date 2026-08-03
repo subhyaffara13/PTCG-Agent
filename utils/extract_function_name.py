@@ -1,3 +1,4 @@
+import functools
 
 def extract_function_name(func: ValidateCallSupportedTypes) -> str:
     """Extract the name of a `ValidateCallSupportedTypes` object."""

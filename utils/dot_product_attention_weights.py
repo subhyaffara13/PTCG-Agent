@@ -1,3 +1,6 @@
+import functools
+import random
+from typing import Callable
 
 def dot_product_attention_weights(
     query: Array,

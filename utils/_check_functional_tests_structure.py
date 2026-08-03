@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _check_functional_tests_structure(
     directory: Path, max_file_per_directory: int

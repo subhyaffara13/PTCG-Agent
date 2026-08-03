@@ -1,3 +1,5 @@
+import math
+
 
 def _convert_to_int(val):
     # Convert simple sympy Integers into concrete int

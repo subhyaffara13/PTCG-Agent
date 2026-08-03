@@ -1,3 +1,4 @@
+import copy
 
 def contracted_nodes(
     G, u, v, self_loops=True, copy=True, *, store_contraction_as="contraction"

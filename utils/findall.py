@@ -1,3 +1,5 @@
+import functools
+import os
 
 def findall(pattern, string, flags=0, pos=None, endpos=None, overlapped=False,
   concurrent=None, timeout=None, ignore_unused=False, **kwargs):

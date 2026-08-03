@@ -1,3 +1,4 @@
+from typing import Any
 
 def distributed_concat(tensor: Any, num_total_examples: int | None = None) -> Any:
     try:

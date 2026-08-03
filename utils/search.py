@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional, Union
 
 def search(pattern, string, flags=0, pos=None, endpos=None, partial=False,
   concurrent=None, timeout=None, ignore_unused=False, **kwargs):

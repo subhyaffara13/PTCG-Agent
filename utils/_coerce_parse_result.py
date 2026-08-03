@@ -1,3 +1,4 @@
+from typing import Any, List, Union
 
 def _coerce_parse_result(results: Union[ParseResults, List[Any]]) -> List[Any]:
     if isinstance(results, ParseResults):

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _find_advisor_tool_use(response: Any) -> Optional[Dict]:
     """Return the first tool_use block with name='advisor', or None."""

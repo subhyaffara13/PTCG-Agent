@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_default_structured_pruning_patterns() -> dict[
     tuple[type[nn.Module] | Callable | MatchAllNode | str, ...],

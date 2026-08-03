@@ -1,3 +1,4 @@
+import sys
 
 def test_register_entrypoint(restore_backend, tmp_path, monkeypatch, dummy_backend):
     monkeypatch.syspath_prepend(tmp_path)

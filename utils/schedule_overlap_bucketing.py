@@ -1,3 +1,4 @@
+from typing import Callable
 
 def schedule_overlap_bucketing(
     gm: torch.fx.GraphModule,

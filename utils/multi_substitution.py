@@ -1,3 +1,4 @@
+import itertools
 
 def multi_substitution(*substitutions):
     """

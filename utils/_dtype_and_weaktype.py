@@ -1,3 +1,4 @@
+from typing import Any
 
 def _dtype_and_weaktype(value: Any) -> tuple[DType, bool]:
   """Return a (dtype, weak_type) tuple for the given input."""

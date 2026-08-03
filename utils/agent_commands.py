@@ -1,3 +1,4 @@
+from typing import List
 
 def agent_commands() -> List[click.Command]:
     """Build one top-level command per known agent, e.g. `lite claude`."""

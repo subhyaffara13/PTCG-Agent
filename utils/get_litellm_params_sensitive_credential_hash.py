@@ -1,3 +1,4 @@
+import json
 
 def get_litellm_params_sensitive_credential_hash(litellm_params: dict) -> str:
     """

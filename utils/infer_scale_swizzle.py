@@ -1,3 +1,4 @@
+from typing import Any
 
 def infer_scale_swizzle(
     mat: torch.Tensor, scale: torch.Tensor

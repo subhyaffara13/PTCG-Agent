@@ -1,3 +1,5 @@
+import math
+
 
 def _range_prod(lo, hi, k=1):
     """

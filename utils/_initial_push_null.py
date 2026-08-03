@@ -1,3 +1,4 @@
+import sys
 
 def _initial_push_null(insts: list[Instruction]) -> None:
     if sys.version_info >= (3, 11):

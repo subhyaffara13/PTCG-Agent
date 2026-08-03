@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def run_one_game(
     env_name: str,

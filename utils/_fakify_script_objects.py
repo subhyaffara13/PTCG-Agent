@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fakify_script_objects(
     mod: torch.nn.Module,

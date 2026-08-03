@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _trace_to_subjaxpr_nounits(f: Callable, trace: JaxprTrace,
                                instantiate: Sequence[bool] | bool,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_game_envs(games_list: list[str]) -> dict[str, Any]:
     skipped_games = []

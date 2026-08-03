@@ -1,3 +1,5 @@
+import os
+from typing import Union
 
 def file_exists(filepath_or_buffer: FilePath | BaseBuffer) -> bool:
     """Test whether file exists."""

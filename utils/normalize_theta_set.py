@@ -1,3 +1,4 @@
+from typing import Union
 
 def normalize_theta_set(theta):
     r"""

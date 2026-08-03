@@ -1,3 +1,4 @@
+import itertools
 
 def complete_graph(n, create_using=None):
     """Return the complete graph `K_n` with n nodes.

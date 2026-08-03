@@ -1,3 +1,4 @@
+from typing import Optional
 
 def reraise(error):
     """Return a function that raises the given error when evaluated"""

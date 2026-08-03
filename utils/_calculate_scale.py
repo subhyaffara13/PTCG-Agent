@@ -1,3 +1,5 @@
+import math
+
 
 def _calculate_scale(head_dim_size: int, scale: float | None) -> float:
     """

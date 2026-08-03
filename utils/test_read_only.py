@@ -1,3 +1,4 @@
+import os
 
 def test_read_only(tmpdir_cwd):
     """

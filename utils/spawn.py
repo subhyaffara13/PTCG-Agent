@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def spawn(self, cmd, **kwargs) -> None:  # type: ignore[no-untyped-def]
     new_cmd = list(cmd)

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Union
 
 def build_cli_sso_attribution_metadata(
     result: Union[CustomOpenID, OpenID, dict],

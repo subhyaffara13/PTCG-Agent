@@ -1,3 +1,4 @@
+import re
 
 def compile_new_format_re(custom_spec: bool) -> Pattern[str]:
     """Construct regexps to match format conversion specifiers in str.format() calls.

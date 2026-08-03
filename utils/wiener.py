@@ -1,3 +1,5 @@
+import math
+
 
 def wiener(im, mysize=None, noise=None):
     """

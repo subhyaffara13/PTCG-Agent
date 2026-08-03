@@ -1,3 +1,5 @@
+import json
+import os
 
 def fetch_id_token_credentials(audience, request=None):
     """Create the ID Token credentials from the current environment.

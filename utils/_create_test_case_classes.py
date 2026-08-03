@@ -1,3 +1,4 @@
+import re
 
 def _create_test_case_classes():
   """Yields one Testing class per game to test."""

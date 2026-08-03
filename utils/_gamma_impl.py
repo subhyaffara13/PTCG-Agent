@@ -1,3 +1,5 @@
+import math
+
 
 def _gamma_impl(key, a, *, log_space, use_vmap=False):
   # split key to match the shape of a

@@ -1,3 +1,4 @@
+import os
 
 def _build_file_map(
     archive_reader: PT2ArchiveReader,

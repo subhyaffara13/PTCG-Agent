@@ -1,3 +1,4 @@
+import re
 
 def matches_re(regex, flags=0, func=None):
     r"""

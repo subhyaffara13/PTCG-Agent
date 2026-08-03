@@ -1,3 +1,5 @@
+import math
+
 
 def _philox2x32_random_bits(
     key: typing.Array, bit_width: int, shape: tuple[int, ...]

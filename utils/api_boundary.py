@@ -1,3 +1,4 @@
+import functools
 
 def api_boundary(
     fun: C, *,

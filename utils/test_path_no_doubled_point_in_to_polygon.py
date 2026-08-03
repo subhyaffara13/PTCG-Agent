@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_path_no_doubled_point_in_to_polygon():
     hand = np.array(

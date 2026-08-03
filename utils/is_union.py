@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Optional, Union
 
 def is_union(ann):
     if ann is Union:

@@ -1,3 +1,4 @@
+import os
 
 def is_project_root(test_dir='.'):
     makefile = os.path.join(test_dir, MAKEFILE)

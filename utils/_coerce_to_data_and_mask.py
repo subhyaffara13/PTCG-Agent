@@ -1,3 +1,4 @@
+import copy
 
 def _coerce_to_data_and_mask(values, dtype, copy: bool, dtype_cls: type[NumericDtype]):
     checker = dtype_cls._checker

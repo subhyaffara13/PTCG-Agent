@@ -1,3 +1,4 @@
+from typing import Any
 
 def pformat(obj: t.Any) -> str:
     """Format an object using :func:`pprint.pformat`."""

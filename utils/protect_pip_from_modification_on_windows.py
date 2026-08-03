@@ -1,3 +1,5 @@
+import os
+import sys
 
 def protect_pip_from_modification_on_windows(modifying_pip: bool) -> None:
     """Protection of pip.exe from modification on Windows

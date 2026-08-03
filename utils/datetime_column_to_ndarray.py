@@ -1,3 +1,4 @@
+from typing import Any
 
 def datetime_column_to_ndarray(col: Column) -> tuple[np.ndarray | pd.Series, Any]:
     """

@@ -1,3 +1,4 @@
+import json
 
 def _extract_csv_row(file_path):
     """Helper to extract a single row for the CSV from a game file.

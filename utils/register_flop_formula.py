@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_flop_formula(targets, get_raw=False) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]:
 

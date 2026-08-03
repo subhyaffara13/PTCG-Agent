@@ -1,3 +1,4 @@
+from typing import Any
 
 def save_reuse_entry(
     tx: "InstructionTranslator",

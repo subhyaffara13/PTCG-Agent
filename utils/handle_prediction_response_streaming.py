@@ -1,3 +1,4 @@
+import time
 
 def handle_prediction_response_streaming(
     prediction_url, api_token, print_verbose, headers: dict, http_client: HTTPHandler

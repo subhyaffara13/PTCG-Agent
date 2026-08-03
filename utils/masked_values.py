@@ -1,3 +1,4 @@
+import copy
 
 def masked_values(x, value, rtol=1e-5, atol=1e-8, copy=True, shrink=True):
     """

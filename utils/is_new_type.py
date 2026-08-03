@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_new_type(type_: Type[Any]) -> bool:
     """

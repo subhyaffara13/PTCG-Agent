@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_multi_line_equal(
     self_: Any, first: T, second: T, msg: str | None = None

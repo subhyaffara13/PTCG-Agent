@@ -1,3 +1,4 @@
+import os
 
 def _is_zip_egg(path):
     return (

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _remove_unsupported_params(
     non_default_params: dict, supported_openai_params: Optional[List[str]]

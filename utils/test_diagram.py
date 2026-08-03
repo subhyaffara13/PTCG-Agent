@@ -1,3 +1,4 @@
+from typing import Dict
 
 def test_diagram():
     A = Object("A")

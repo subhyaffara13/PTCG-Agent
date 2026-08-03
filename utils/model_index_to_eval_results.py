@@ -1,3 +1,4 @@
+from typing import Any
 
 def model_index_to_eval_results(model_index: list[dict[str, Any]]) -> tuple[str, list[EvalResult]]:
     """Takes in a model index and returns the model name and a list of `huggingface_hub.EvalResult` objects.

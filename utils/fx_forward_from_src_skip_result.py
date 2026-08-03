@@ -1,3 +1,4 @@
+from typing import Any
 
 def fx_forward_from_src_skip_result(
     src: str, globals: dict[str, Any], co_fields: dict[str, str] | None = None

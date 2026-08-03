@@ -1,3 +1,4 @@
+import itertools
 
 def _generate_marginal_results(
     table,

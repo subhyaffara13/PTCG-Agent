@@ -1,3 +1,4 @@
+import os
 
 def require_exact_world_size(world_size):
     if int(os.environ["WORLD_SIZE"]) != world_size:

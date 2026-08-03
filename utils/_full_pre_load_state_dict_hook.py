@@ -1,3 +1,4 @@
+from typing import Any
 
 def _full_pre_load_state_dict_hook(
     module: nn.Module,

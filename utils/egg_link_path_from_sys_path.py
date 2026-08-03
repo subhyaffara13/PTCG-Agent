@@ -1,3 +1,5 @@
+import os
+import sys
 
 def egg_link_path_from_sys_path(raw_name: str) -> str | None:
     """

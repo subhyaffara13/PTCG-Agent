@@ -1,3 +1,4 @@
+import copy
 
 def test_gh_21022():
     # testing for absence of reported error

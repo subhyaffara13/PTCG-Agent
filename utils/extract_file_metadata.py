@@ -1,3 +1,6 @@
+from typing import Any, Optional, Tuple
+from pathlib import Path
+
 
 def extract_file_metadata(file_data: FileTypes) -> Tuple[Optional[str], Optional[str]]:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _localize_dtensor(
     module: nn.Module, *_: Any, ignored_params: set[nn.Parameter] | None = None

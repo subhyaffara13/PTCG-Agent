@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def calculate_request_duration(file: FileTypes) -> Optional[float]:
     """

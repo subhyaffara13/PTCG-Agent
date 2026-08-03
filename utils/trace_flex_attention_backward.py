@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def trace_flex_attention_backward(
     proxy_mode: ProxyTorchDispatchMode,

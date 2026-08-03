@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_token_from_file() -> str | None:
     try:

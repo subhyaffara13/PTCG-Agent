@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _pretty_fixture_path(invocation_dir: Path, func) -> str:
     loc = Path(getlocation(func, invocation_dir))

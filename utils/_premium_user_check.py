@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _premium_user_check(feature: Optional[str] = None):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_chunking_meta(
     node: Node, meta: ChunkingMeta | None = None, **kwargs: Any

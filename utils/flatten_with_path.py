@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def flatten_with_path(
     tree: Any, is_leaf: Callable[..., bool] | None = None,

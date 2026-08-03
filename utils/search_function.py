@@ -1,3 +1,4 @@
+from typing import Optional
 
 def search_function(name: str) -> Optional[codecs.CodecInfo]:
     """Codec search function registered with :mod:`codecs`.

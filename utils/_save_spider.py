@@ -1,3 +1,4 @@
+import os
 
 def _save_spider(im: Image.Image, fp: IO[bytes], filename: str | bytes) -> None:
     # get the filename extension and register it with Image

@@ -1,3 +1,4 @@
+import functools
 
 def flash_attention_kernel(
     # Prefetched inputs

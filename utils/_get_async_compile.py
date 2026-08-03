@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_async_compile() -> Any:
     """Get or create the shared AsyncCompile instance."""

@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _extract_text_parts(content: Any) -> Optional[str]:
     """Extract text parts from mixed content."""

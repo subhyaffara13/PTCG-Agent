@@ -1,3 +1,5 @@
+import sys
+import time
 
 def _update_old_modules(
     *,

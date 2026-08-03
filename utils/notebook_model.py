@@ -1,3 +1,4 @@
+import json
 
 def notebook_model(nb):
     """Return a notebook model, with content a

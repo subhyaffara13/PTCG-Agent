@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def set_tqdm_hook(hook: Callable[[Callable[..., Any], tuple[Any, ...], dict[str, Any]], Any] | None):
     """

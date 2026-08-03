@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_quiet(capfd, hello_world_f90, monkeypatch):
     """Reduce verbosity

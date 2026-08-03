@@ -1,3 +1,4 @@
+import os
 
 def write_legacy_pickles(output_dir):
     pth = f"{platform_name()}.pickle"

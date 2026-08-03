@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_symmetric_difference(
     set1: Iterable[T],

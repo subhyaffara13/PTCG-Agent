@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _f_with_vjp(f: Callable):
   @util.wraps(f)

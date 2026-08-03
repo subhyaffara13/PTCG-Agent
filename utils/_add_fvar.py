@@ -1,3 +1,4 @@
+from typing import List
 
 def _add_fvar(font, axes, instances: List[InstanceDescriptor]):
     """

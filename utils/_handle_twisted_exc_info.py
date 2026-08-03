@@ -1,3 +1,4 @@
+import sys
 
 def _handle_twisted_exc_info(
     rawexcinfo: _SysExcInfoType | BaseException,

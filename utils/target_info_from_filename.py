@@ -1,3 +1,4 @@
+import os
 
 def target_info_from_filename(filename: str) -> tuple[str, str, str]:
     """Transforms /some/path/foo.png into ('/some/path', 'foo.png', 'png')."""

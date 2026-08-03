@@ -1,3 +1,5 @@
+import math
+
 
 def normalizeDegrees(value, rangeMin, rangeMax):
     """Angularly normalize value in [rangeMin, rangeMax] to [0, 1], with extrapolation."""

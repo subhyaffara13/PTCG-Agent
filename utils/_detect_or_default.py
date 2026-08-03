@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _detect_or_default(
     default: Specification[D],

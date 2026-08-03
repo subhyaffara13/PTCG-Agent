@@ -1,3 +1,4 @@
+import functools
 
 def check_lowering_rule(ctx, *args, err_tree, debug):
   if debug:

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def dice_loss(inputs, targets, num_boxes):
     """

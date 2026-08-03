@@ -1,3 +1,4 @@
+from typing import Callable
 
 def aot_stage2_compile(
     aot_state: AOTState,

@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def run_with_librt(
     file_path: str, experimental: bool = True, check: bool = True, opt_level: str = "0"

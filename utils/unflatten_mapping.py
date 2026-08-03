@@ -1,3 +1,4 @@
+from typing import Any
 
 def unflatten_mapping(
     xs: Sequence[tuple[tuple[Any, ...], Any]], /, *, sep: None = None

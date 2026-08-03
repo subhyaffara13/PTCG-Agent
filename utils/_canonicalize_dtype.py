@@ -1,3 +1,4 @@
+from typing import Any
 
 def _canonicalize_dtype(x64_enabled: bool, allow_extended_dtype: bool, dtype: Any) -> DType | ExtendedDType:
   if issubdtype(dtype, extended):

@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_is_subset():
     # covers line 101-102

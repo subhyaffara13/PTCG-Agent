@@ -1,3 +1,4 @@
+import re
 
 def git_get_keywords(versionfile_abs):
     """Extract version information from the given file."""

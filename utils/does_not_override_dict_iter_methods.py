@@ -1,3 +1,4 @@
+from typing import Any
 
 def does_not_override_dict_iter_methods(user_cls: Any) -> bool:
     return (

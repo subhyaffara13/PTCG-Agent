@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _make_dispatch_table(
     name: str, **tables: Sequence[_Extern | _Fallback]

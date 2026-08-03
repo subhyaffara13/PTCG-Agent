@@ -1,3 +1,4 @@
+import random
 
 def test_exact_cbrt():
     for i in range(0, 20000, 200):

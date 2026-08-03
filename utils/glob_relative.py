@@ -1,3 +1,4 @@
+import os
 
 def glob_relative(
     patterns: Iterable[str], root_dir: StrPath | None = None

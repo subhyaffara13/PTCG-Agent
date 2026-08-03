@@ -1,3 +1,4 @@
+import os
 
 def enable_full_determinism(seed: int, warn_only: bool = False):
     """

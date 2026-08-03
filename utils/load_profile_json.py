@@ -1,3 +1,4 @@
+import json
 
 def load_profile_json(profile_file):
     print(f"loading profile output {profile_file} ...")

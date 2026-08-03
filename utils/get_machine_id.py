@@ -1,3 +1,5 @@
+import re
+import sys
 
 def get_machine_id() -> str | bytes | None:
     global _machine_id

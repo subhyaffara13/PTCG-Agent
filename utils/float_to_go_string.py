@@ -1,3 +1,5 @@
+import math
+
 
 def floatToGoString(d):
     d = float(d)

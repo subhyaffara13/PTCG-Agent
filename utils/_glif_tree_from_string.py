@@ -1,3 +1,4 @@
+from typing import Union
 
 def _glifTreeFromString(aString: Union[str, bytes]) -> ElementType:
     data = tobytes(aString, encoding="utf-8")

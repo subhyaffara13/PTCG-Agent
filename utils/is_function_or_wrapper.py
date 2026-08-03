@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_function_or_wrapper(
     value: Any,

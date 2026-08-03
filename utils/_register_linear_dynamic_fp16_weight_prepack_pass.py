@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_linear_dynamic_fp16_weight_prepack_pass(
     pattern,

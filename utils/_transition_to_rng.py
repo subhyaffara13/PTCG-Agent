@@ -1,3 +1,4 @@
+import functools
 
 def _transition_to_rng(old_name, *, position_num=None, end_version=None,
                        replace_doc=True):

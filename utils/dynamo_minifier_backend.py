@@ -1,3 +1,6 @@
+import copy
+import functools
+from typing import Any
 
 def dynamo_minifier_backend(
     gm: fx.GraphModule, example_inputs: Sequence[Any], compiler_name: str | None

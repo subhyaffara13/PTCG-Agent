@@ -1,3 +1,5 @@
+import math
+
 
 def broadcast_shapes(*shapes):
     r"""broadcast_shapes(*shapes) -> Size

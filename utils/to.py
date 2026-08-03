@@ -1,3 +1,4 @@
+import copy
 
 def to(a: TensorLikeType, *args, **kwargs) -> TensorLikeType:
     # handled dispatch via positional arguments

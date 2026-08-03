@@ -1,3 +1,4 @@
+from typing import Any
 
 def gen_gm_and_inputs(
     target: Any, args: list[Any], kwargs: dict[str, Any]

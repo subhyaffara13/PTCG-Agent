@@ -1,3 +1,5 @@
+import itertools
+import logging
 
 def _export_lowered(
     lowered: stages.Lowered,

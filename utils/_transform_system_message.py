@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def _transform_system_message(
     supports_system_message: bool, messages: List[AllMessageValues]

@@ -1,3 +1,4 @@
+import os
 
 def _set_env_defaults(model_override: str | None) -> None:
     if model_override is not None:

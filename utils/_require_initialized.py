@@ -1,3 +1,4 @@
+import functools
 
 def _require_initialized(func):
     @functools.wraps(func)

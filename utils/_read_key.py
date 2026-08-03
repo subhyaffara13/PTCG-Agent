@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _read_key() -> str:
     fd = sys.stdin.fileno()

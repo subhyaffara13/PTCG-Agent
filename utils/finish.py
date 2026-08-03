@@ -1,3 +1,5 @@
+import copy
+import json
 
 def finish(state, env):
     if len(env.steps) > 0:

@@ -1,3 +1,4 @@
+import re
 
 def step_from_checkpoint_name(name: str) -> int:
   """Returns the step from a checkpoint name. Also works for tmp checkpoints."""

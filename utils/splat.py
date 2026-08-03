@@ -1,3 +1,4 @@
+import functools
 
 def splat(func):
     """

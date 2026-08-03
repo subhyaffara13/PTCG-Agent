@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def _group_events_per_cta_occupancy(
     events: list[dict[str, Any]],

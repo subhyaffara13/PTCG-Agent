@@ -1,3 +1,5 @@
+import logging
+from typing import Callable, Optional
 
 def wait_for_new_checkpoint(
     checkpoint_dir: epath.Path,

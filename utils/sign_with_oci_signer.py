@@ -1,3 +1,5 @@
+import json
+from typing import Tuple
 
 def sign_with_oci_signer(
     headers: dict,

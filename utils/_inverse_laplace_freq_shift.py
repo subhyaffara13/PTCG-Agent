@@ -1,3 +1,4 @@
+import re
 
 def _inverse_laplace_freq_shift(F, s, t, plane):
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _scan_dce_rule(used_outputs: list[bool], eqn: core.JaxprEqn
                    ) -> tuple[list[bool], core.JaxprEqn | None]:

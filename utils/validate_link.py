@@ -1,3 +1,4 @@
+from typing import Callable
 
 def validateLink(url: str, validator: Callable[[str], bool] | None = None) -> bool:
     """Validate URL link is allowed in output.

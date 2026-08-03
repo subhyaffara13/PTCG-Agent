@@ -1,3 +1,4 @@
+import sys
 
 def get_major_minor_version() -> str:
     """

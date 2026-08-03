@@ -1,3 +1,4 @@
+from typing import Dict
 
 def count_ops(expr, visual=False):
     """

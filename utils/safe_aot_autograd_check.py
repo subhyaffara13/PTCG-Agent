@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def safe_aot_autograd_check(
     op: torch._ops.OpOverload,

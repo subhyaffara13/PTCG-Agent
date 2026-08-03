@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_pprint(thing: Any, max_seq_items: int | None = None) -> str:
     return pprint_thing(

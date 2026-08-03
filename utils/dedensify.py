@@ -1,3 +1,4 @@
+import copy
 
 def dedensify(G, threshold, prefix=None, copy=True):
     """Compresses neighborhoods around high-degree nodes

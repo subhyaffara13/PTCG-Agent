@@ -1,3 +1,4 @@
+import functools
 
 def is_coroutine_callable(call: typing.Callable[..., typing.Any]) -> bool:
     if inspect.isclass(call):

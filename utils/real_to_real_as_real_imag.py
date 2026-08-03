@@ -1,3 +1,4 @@
+import re
 
 def real_to_real_as_real_imag(self, deep=True, **hints):
     if self.args[0].is_extended_real:

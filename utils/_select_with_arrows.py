@@ -1,3 +1,4 @@
+import sys
 
 def _select_with_arrows(prompt: str, choices: list[str]) -> int:
     selected = 0

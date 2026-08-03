@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_skipfooter(kwds: dict[str, Any]) -> None:
     """

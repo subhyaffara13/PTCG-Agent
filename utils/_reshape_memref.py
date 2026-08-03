@@ -1,3 +1,5 @@
+import math
+
 
 def _reshape_memref(
     ref: ir.Value,

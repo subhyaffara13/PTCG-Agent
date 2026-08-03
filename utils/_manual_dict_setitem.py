@@ -1,3 +1,4 @@
+from typing import Any
 
 def _manual_dict_setitem(
     dict_from: dict[Any, Any], dict_to: dict[Any, Any], mro_index: int

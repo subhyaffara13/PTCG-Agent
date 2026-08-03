@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _download_image_sync(url: str) -> Tuple[bytes, str, str]:
     """Download image from URL synchronously."""

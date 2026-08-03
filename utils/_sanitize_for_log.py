@@ -1,3 +1,4 @@
+from typing import Any
 
 def _sanitize_for_log(value: Any) -> str:
     """

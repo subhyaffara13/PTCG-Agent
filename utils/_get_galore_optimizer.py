@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_galore_optimizer(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get GaLore optimizer."""

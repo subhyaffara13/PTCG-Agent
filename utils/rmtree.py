@@ -1,3 +1,4 @@
+import sys
 
 def rmtree(path):
   """Remove a directory and recursively all contents inside. Might fail if used on a file path."""
