@@ -37,7 +37,7 @@ class GauntletRunner:
                     for row in csv.DictReader(f):
                         deck.extend([int(row["card_id"])] * int(row["count"]))
                 if len(deck) == 60:
-                    logger.info(f"Loaded real competitor deck from {league_file.name} for Gauntlet.")
+                    logger.debug(f"Loaded real competitor deck from {league_file.name} for Gauntlet.")
                     return deck
             except Exception as e:
                 logger.warning(f"Failed to load {league_file.name}: {e}")
