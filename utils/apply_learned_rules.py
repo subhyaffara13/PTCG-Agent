@@ -1,4 +1,15 @@
 
+def _matches_condition(cond: str, e_c: int, t_c: int, p_c: int) -> bool:
+    try:
+        return eval(cond, {}, {"e_c": e_c, "t_c": t_c, "p_c": p_c})
+    except Exception:
+        return False
+
+def _deck_out_risk(deck: list, counts: dict) -> float:
+    if counts.get("sup", 0) > 10:
+        return 0.5
+    return 0.0
+
 def apply_learned_rules(score: float, deck: list, counts: dict,
                         learned_dos: dict, learned_donts: dict) -> float:
     """Adjust *score* based on learned pattern rules."""

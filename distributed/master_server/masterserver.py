@@ -149,8 +149,15 @@ class MasterServer:
             else:
                 time.sleep(1)
 
-from utils.main import main
+def main():
+    server = MasterServer()
+    server.start()
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        logger.info("Shutting down master server...")
+        server.stop()
 
 if __name__ == "__main__":
     main()
-

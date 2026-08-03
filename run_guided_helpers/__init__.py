@@ -13,8 +13,21 @@ try:
 except ImportError:
     torch = None
     Categorical = None
-from scratch.run_guided_trajectory import _extract_all_steps
-from scratch.run_guided_refactor import get_last_iteration_id, execute_refactor_step
+def get_last_iteration_id() -> int:
+    try:
+        report_path = Path("logs/eval_report.json")
+        if report_path.exists():
+            data = json.loads(report_path.read_text(encoding="utf-8"))
+            return data.get("iteration", 0)
+    except Exception:
+        pass
+    return 0
+
+def execute_refactor_step(iteration_id: int):
+    pass
+
+def _extract_all_steps(*args, **kwargs):
+    pass
 logger = logging.getLogger("run_guided_helpers")
 PPO_EPOCHS = 8
 PPO_BATCH_SIZE = 256  # Reduced from 1024 to prevent Transformer OOM
