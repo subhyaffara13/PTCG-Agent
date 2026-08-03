@@ -36,19 +36,19 @@ class CABTAgentWrapper:
                         class_name = "".join([part.capitalize() for part in name.split("_")])
                         cls = getattr(module, class_name)
                     
-                    obj = cls(log_dir=str(self.orchestrator.log_dir), skills_dir=str(self.orchestrator.skills_dir))
-                    if name == "hand_analyst":
-                        self.orchestrator.hand_analyst = obj
-                        self.orchestrator.bus.register_agent("hand_analyst", obj.receive)
-                    elif name == "turn_planner":
-                        self.orchestrator.turn_planner = obj
-                        self.orchestrator.bus.register_agent("turn_planner", obj.receive)
-                    elif name == "strategy_agent":
-                        self.orchestrator.strategy_agent = obj
-                        self.orchestrator.bus.register_agent("strategy_agent", obj.receive)
-                    elif name == "opponent_model":
-                        self.orchestrator.opponent_model = obj
-                        self.orchestrator.bus.register_agent("opponent_model", obj.receive, perspective_flag="opponent")
+                        obj = cls(log_dir=str(self.orchestrator.log_dir), skills_dir=str(self.orchestrator.skills_dir))
+                        if name == "hand_analyst":
+                            self.orchestrator.hand_analyst = obj
+                            self.orchestrator.bus.register_agent("hand_analyst", obj.receive)
+                        elif name == "turn_planner":
+                            self.orchestrator.turn_planner = obj
+                            self.orchestrator.bus.register_agent("turn_planner", obj.receive)
+                        elif name == "strategy_agent":
+                            self.orchestrator.strategy_agent = obj
+                            self.orchestrator.bus.register_agent("strategy_agent", obj.receive)
+                        elif name == "opponent_model":
+                            self.orchestrator.opponent_model = obj
+                            self.orchestrator.bus.register_agent("opponent_model", obj.receive, perspective_flag="opponent")
                     logger.info(f"Successfully injected staging class for {name}")
                 except Exception as e:
                     logger.error(f"Failed to inject staging class for {name}: {e}")

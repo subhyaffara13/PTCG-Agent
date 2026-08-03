@@ -3,7 +3,7 @@ import sys
 import contextlib
 
 class DummyStream:
-    def write(self, text): pass
+    def write(self, text): return len(text) if text else 0
     def flush(self): pass
 
 @contextlib.contextmanager

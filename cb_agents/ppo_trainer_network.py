@@ -46,7 +46,7 @@ if TORCH_AVAILABLE:
             self.card_embed = nn.Embedding(CARD_VOCAB_SIZE, CARD_EMBED_DIM, padding_idx=PAD_TOKEN)
             self.zone_embed = nn.Embedding(self.ZONE_COUNT, CARD_EMBED_DIM)
             self.cls_embed = nn.Parameter(torch.zeros(1, 1, CARD_EMBED_DIM))
-            nn.init.normal_(self.cls_embed, std=0.02)
+            nn.init.normal_(self.cls_embed, 0.0, 0.02)
 
             encoder_layer = nn.TransformerEncoderLayer(
                 d_model=CARD_EMBED_DIM,
@@ -58,7 +58,7 @@ if TORCH_AVAILABLE:
             self.project = nn.Linear(CARD_EMBED_DIM + SCALAR_FEATURES, hidden_dim)
             self.norm = nn.LayerNorm(hidden_dim)
 
-        def forward(self, token_ids: torch.Tensor, zone_ids: torch.Tensor, scalars: torch.Tensor, padding_mask: torch.Tensor = None) -> torch.Tensor:
+        def forward(self, token_ids: torch.Tensor, zone_ids: torch.Tensor, scalars: torch.Tensor, padding_mask: torch.Tensor | None = None) -> torch.Tensor:
             """
             token_ids: (B, T) card token IDs
             zone_ids:  (B, T) zone IDs

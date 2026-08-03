@@ -1,10 +1,11 @@
 
 import random
 import logging
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
-def get_val(obj, key, default=None):
+def get_val(obj: Any, key: str, default: Any = None) -> Any:
     if isinstance(obj, dict):
         return obj.get(key, default)
     return getattr(obj, key, default)

@@ -1,7 +1,7 @@
 from typing import Any, Dict, List
 import random
 
-def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] = None) -> Dict[str, List[int]]:
+def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guaranteed_counts: Dict[int, int] | None = None) -> Dict[str, List[int]]:
     """
     Samples a concrete 'imagined' state of the opponent's hidden zones 
     based on the current belief state.
@@ -33,14 +33,14 @@ def sample_determinization(state: Any, assumed_deck: Dict[int, int], prize_guara
                  known_in_discard.get(card_id, 0))
         remaining = max(0, total_count - known)
         
-        if prize_guaranteed_counts and int(card_id) in prize_guaranteed_counts:
-            g_count = prize_guaranteed_counts[int(card_id)]
+        if prize_guaranteed_counts and card_id in prize_guaranteed_counts:
+            g_count = prize_guaranteed_counts[card_id]
             for _ in range(g_count):
                 if remaining > 0:
                     remaining -= 1
                     sampled_prizes.append(card_id)
         elif prize_probabilities:
-            prob = prize_probabilities.get(int(card_id), 0.0)
+            prob = prize_probabilities.get(card_id, 0.0)
             if prob >= 1.0:
                 if remaining > 0:
                     remaining -= 1

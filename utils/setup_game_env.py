@@ -23,7 +23,7 @@ def setup_game_env(seed=None):
             }
             if seed is not None:
                 config["seed"] = seed
-            env = kaggle_environments.make("cabt", configuration=config)
+            env = kaggle_environments.make("cabt", configuration=config)  # type: ignore
     finally:
         sys.path = saved_path
     return env
