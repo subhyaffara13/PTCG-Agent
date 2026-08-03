@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-PORT = 9872
+PORT = 9873
 logger = logging.getLogger("status_server")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - Status - %(message)s')
 
