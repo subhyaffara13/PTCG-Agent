@@ -1,3 +1,4 @@
+from typing import Callable
 
 def maybe_log_graph(
     gm: torch.fx.GraphModule,

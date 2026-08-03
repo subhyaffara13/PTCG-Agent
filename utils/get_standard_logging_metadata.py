@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def get_standard_logging_metadata(
     metadata: Optional[Dict[str, Any]],

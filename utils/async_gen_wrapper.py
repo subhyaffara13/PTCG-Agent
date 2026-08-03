@@ -1,3 +1,4 @@
+import functools
 
 def async_gen_wrapper(func, obj=None):
     """Given a async generator, make so can be called in blocking contexts"""

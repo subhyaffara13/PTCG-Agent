@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def validate_model(  # noqa: C901 (ignore complexity)
     model: Type[BaseModel], input_data: 'DictStrAny', cls: 'ModelOrDc' = None

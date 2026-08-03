@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_python_scalar(x: object) -> TypeIs[complex]:  # numpydoc ignore=PR01,RT01
     """Return True if `x` is a Python scalar, False otherwise."""

@@ -1,3 +1,4 @@
+from typing import Any, Callable, Union
 
 def create_empty_array(
     space: Space, n: int = 1, fn: Callable = np.zeros

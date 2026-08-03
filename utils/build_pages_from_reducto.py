@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def build_pages_from_reducto(result: Dict[str, Any]) -> List["OCRPage"]:
     from litellm.llms.base_llm.ocr.transformation import OCRPage

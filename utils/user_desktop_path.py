@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_desktop_path() -> Path:
     """:returns: desktop path tied to the user"""

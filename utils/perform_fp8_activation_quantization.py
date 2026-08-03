@@ -1,3 +1,4 @@
+import re
 
 def perform_fp8_activation_quantization(
     fwd_module: fx.GraphModule,

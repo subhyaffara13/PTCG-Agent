@@ -1,3 +1,4 @@
+from typing import Any
 
 def transform_gemini_image_usage(usage_metadata: dict) -> ImageUsage:
     """

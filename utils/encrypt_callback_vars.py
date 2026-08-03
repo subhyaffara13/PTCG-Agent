@@ -1,3 +1,4 @@
+from typing import Any
 
 def encrypt_callback_vars(metadata: Any) -> Any:
     """Return a deep copy of metadata with callback_vars values encrypted at rest.

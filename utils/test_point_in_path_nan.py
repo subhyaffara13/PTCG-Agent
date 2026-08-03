@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_point_in_path_nan():
     box = np.array([[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]])

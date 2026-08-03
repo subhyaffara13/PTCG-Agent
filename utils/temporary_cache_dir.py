@@ -1,3 +1,4 @@
+import os
 
 def temporary_cache_dir(directory: str) -> Generator[None, None, None]:
     from torch._inductor.utils import clear_caches

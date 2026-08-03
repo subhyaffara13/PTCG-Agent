@@ -1,3 +1,4 @@
+from typing import Set
 
 def _apply_operation(op, x, y, commutative):
     from .fancysets import ImageSet

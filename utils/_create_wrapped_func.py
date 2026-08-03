@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _create_wrapped_func(orig_fn: Callable[_P, _T]) -> Callable[_P, _T]:
     @functools.wraps(orig_fn)

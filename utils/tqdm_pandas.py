@@ -1,3 +1,4 @@
+import sys
 
 def tqdm_pandas(tclass, **tqdm_kwargs):
     """

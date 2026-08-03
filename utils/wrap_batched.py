@@ -1,3 +1,4 @@
+from typing import Any
 
 def wrap_batched(
     args: tuple[Any, ...], bdims: in_dims_t, level: int

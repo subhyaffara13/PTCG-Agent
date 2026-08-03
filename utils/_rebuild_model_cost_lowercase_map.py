@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _rebuild_model_cost_lowercase_map() -> Dict[str, str]:
     """Rebuild the case-insensitive lookup map from the current model_cost.

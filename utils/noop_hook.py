@@ -1,3 +1,4 @@
+from typing import Any
 
 def noop_hook(_: Any, bucket: GradBucket) -> torch.futures.Future[torch.Tensor]:
     """

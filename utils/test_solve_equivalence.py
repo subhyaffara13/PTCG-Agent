@@ -1,3 +1,4 @@
+import random
 
 def test_solve_equivalence():
     # For toeplitz matrices, solve_toeplitz() should be equivalent to solve().

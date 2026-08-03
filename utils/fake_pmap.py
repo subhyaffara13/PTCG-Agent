@@ -1,3 +1,4 @@
+import functools
 
 def fake_pmap(
     enable_patching: bool = True,

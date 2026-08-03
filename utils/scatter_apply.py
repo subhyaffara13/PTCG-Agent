@@ -1,3 +1,4 @@
+from typing import Callable
 
 def scatter_apply(
   operand: Array, scatter_indices: Array,

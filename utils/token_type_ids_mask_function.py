@@ -1,3 +1,4 @@
+from typing import Callable
 
 def token_type_ids_mask_function(
     token_type_ids: torch.Tensor | None,

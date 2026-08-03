@@ -1,3 +1,4 @@
+import re
 
 def safe_identifier(name: str) -> str:
     """Make a string safe to be used as Python identifier.

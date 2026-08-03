@@ -1,3 +1,4 @@
+from typing import Any
 
 def replicate_on_mesh(tree: Any) -> Any:
   """Replicates a PyTree of arrays across all devices in the current mesh."""

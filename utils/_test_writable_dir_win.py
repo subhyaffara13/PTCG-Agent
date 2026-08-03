@@ -1,3 +1,5 @@
+import os
+import random
 
 def _test_writable_dir_win(path: str) -> bool:
     # os.access doesn't work on Windows: http://bugs.python.org/issue2528

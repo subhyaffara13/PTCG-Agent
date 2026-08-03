@@ -1,3 +1,4 @@
+import sys
 
 def test_reduce_casterrors(offset):
     # Test reporting of casting errors in reductions, we test various

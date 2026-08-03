@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def deepcopy_to_fake_tensor(
     obj: Any, fake_mode: torch._subclasses.fake_tensor.FakeTensorMode

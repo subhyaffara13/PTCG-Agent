@@ -1,3 +1,4 @@
+from typing import Callable
 
 def multi_weakref_lru_cache(
     call: Callable,

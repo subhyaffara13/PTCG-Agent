@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def check_if_default_team_set() -> Optional[Union[List[str], List[NewUserRequestTeam]]]:
     if litellm.default_internal_user_params is None:

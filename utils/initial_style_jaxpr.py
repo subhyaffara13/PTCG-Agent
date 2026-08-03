@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def initial_style_jaxpr(
     fun: Callable, in_tree: PyTreeDef, in_avals: Sequence[core.AbstractValue],

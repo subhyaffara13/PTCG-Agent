@@ -1,3 +1,5 @@
+import random
+from typing import Any, Callable
 
 def _uncached_get_specialized_func(
     info: FunctionInfo,

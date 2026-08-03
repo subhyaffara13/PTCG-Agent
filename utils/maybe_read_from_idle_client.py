@@ -1,3 +1,4 @@
+from typing import Optional
 
 def maybe_read_from_IDLE_client(buf: ReceiveBuffer) -> Optional[Request]:
     lines = buf.maybe_extract_lines()

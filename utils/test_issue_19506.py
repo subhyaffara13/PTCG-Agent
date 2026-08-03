@@ -1,3 +1,4 @@
+import re
 
 def test_issue_19506():
     eq = arg(x + I)

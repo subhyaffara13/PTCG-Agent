@@ -1,3 +1,6 @@
+from typing import Union
+import math
+
 
 def _enforce_upperbound_key_params(
     data: Union[GenerateKeyRequest, UpdateKeyRequest],

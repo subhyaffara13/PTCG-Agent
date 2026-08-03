@@ -1,3 +1,4 @@
+import time
 
 def _pprint_secs(secs):
     """Format seconds in a human readable form."""

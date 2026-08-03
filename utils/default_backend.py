@@ -1,3 +1,4 @@
+from typing import Any
 
 def default_backend() -> str:
   """Returns the platform name of the default XLA backend."""

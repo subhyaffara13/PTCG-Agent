@@ -1,3 +1,4 @@
+import itertools
 
 def broadcast_symbolic_shapes(a, b):
     """

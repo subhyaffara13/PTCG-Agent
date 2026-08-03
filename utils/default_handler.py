@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional, Tuple
 
 def default_handler(
         url: str,

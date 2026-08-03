@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _apply_func_to_inner_tensors_of_same_dim(
     func: Callable[..., Any], t: object, *args: Any, **kwargs: Any

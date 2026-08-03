@@ -1,3 +1,4 @@
+import os
 
 def get_rocm_target_archs() -> list[str]:
     env_archs = os.environ.get("PYTORCH_ROCM_ARCH", "").strip()

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_default_nowrap_functions() -> set[Callable]:
     """

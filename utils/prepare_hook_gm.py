@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def prepare_hook_gm(
     aot_config: AOTConfig, fn: Callable[..., Any], args: tuple[Any, ...]

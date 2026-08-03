@@ -1,3 +1,4 @@
+import sys
 
 def _get_cuda_library() -> ctypes.CDLL:
     if sys.platform == "win32":

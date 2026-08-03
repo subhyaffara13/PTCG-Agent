@@ -1,3 +1,4 @@
+import sys
 
 def create_call_function_ex(
     has_kwargs: bool, push_null: bool, ignore_314_kwargs_push: bool = False

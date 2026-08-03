@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_rng_state_getter_or_setter(value: Any) -> bool:
     getters = (

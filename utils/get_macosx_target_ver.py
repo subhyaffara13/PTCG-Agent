@@ -1,3 +1,4 @@
+import os
 
 def get_macosx_target_ver():
     """Return the version of macOS for which we are building.

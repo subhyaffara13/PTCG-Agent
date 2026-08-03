@@ -1,3 +1,5 @@
+import re
+import subprocess
 
 def get_locales(
     prefix: str | None = None,

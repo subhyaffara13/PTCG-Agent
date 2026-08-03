@@ -1,3 +1,4 @@
+import os
 
 def parse_c(source):
     """Function for converting a C source code

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def rot_n_helper(n: int) -> Callable[..., Any]:
     assert n > 1

@@ -1,3 +1,4 @@
+import os
 
 def upload_large_folder(
     repo_id: RepoIdArg,

@@ -1,3 +1,4 @@
+from typing import Dict, Optional, Union
 
 def lookup_mcp_server_auth_in_headers(
     mcp_server_auth_headers: Mapping[str, Union[str, Dict[str, str]]],

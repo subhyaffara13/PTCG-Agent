@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_compiler_fn(
     compiler_fn: str | Callable[..., Any] | None,

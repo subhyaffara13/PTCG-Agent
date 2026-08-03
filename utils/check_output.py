@@ -1,3 +1,7 @@
+import json
+import os
+import sys
+from typing import Any
 
 def check_output(
     response: dict[str, Any], verbose: bool, junit_xml: str | None, perf_stats_file: str | None

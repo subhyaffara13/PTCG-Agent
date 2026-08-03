@@ -1,3 +1,4 @@
+from typing import Dict, List, Union
 
 def adapt_messages_to_bytez_standard(messages: List[Dict]):
     messages = _adapt_string_only_content_to_lists(messages)

@@ -1,3 +1,4 @@
+import re
 
 def test_frame_multi_key_function_list_partial_failure(using_infer_string):
     data = DataFrame(

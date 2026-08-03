@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _mark_every_path(markevery, tpath, affine, ax):
     """

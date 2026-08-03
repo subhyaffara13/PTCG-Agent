@@ -1,3 +1,5 @@
+import math
+
 
 def measureSlant(glyphset, glyphs=None):
     """Measure the perceptual average slant angle of the given glyphs."""

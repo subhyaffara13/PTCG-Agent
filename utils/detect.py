@@ -1,3 +1,4 @@
+from typing import Any
 
 def detect(
     byte_str: bytes, should_rename_legacy: bool = False, **kwargs: Any

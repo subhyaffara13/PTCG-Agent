@@ -1,3 +1,4 @@
+import functools
 
 def _insert_aten_to_metadata_assert_pass(gm: torch.fx.GraphModule) -> None:
     from torch._export.passes._node_metadata_hook import (

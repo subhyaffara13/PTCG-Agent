@@ -1,3 +1,4 @@
+from typing import Any, Dict, Tuple
 
 def add_access_group_to_deployment(
     model_info: Dict[str, Any], access_group: str

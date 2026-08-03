@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_to_cast(input_dtype_or_value: Any,
                  output_dtype_or_value: Any) -> bool:

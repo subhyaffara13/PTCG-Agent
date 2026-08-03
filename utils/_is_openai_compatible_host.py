@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_openai_compatible_host(hostname: Optional[str]) -> bool:
     """True if the hostname is OpenAI proper or one of the Azure OpenAI domains.

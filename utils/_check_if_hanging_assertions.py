@@ -1,3 +1,4 @@
+import logging
 
 def _check_if_hanging_assertions():
   if _ai.CHEXIFY_STORAGE.wait_fns:

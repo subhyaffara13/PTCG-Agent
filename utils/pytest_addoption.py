@@ -1,3 +1,6 @@
+import functools
+import os
+from typing import Any
 
 def pytest_addoption(parser):  # type: ignore[no-untyped-def]
     parser.addoption(

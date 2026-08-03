@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def load_onnx_model(
     model_id: str, onnx_path: str | None = None, provider="CUDAExecutionProvider", use_io_binding: bool = False

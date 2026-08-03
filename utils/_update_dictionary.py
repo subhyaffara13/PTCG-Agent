@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _update_dictionary(existing_dict: Dict, new_dict: dict) -> dict:
     for k, v in new_dict.items():

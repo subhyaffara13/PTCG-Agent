@@ -1,3 +1,4 @@
+import json
 
 def _warn_for_remote_retrieve(uri: str):
     from urllib.request import Request, urlopen

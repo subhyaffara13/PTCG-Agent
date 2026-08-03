@@ -1,3 +1,5 @@
+import math
+
 
 def perspective(fovy, aspect, znear, zfar):
     """

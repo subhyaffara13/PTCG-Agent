@@ -1,3 +1,4 @@
+from typing import Any
 
 def snode_args_kwargs(snode: BaseSchedulerNode) -> tuple[list[Any], dict[str, Any]]:
     args = snode.node.inputs  # type: ignore[union-attr]

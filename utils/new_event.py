@@ -1,3 +1,4 @@
+from typing import Any
 
 def new_event(*args: Any, **kwargs: Any) -> int:
     event = torch.Event(*args, **kwargs)

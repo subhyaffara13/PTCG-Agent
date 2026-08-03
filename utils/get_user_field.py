@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_user_field(
     question: str,

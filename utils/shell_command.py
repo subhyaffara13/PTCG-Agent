@@ -1,3 +1,5 @@
+import os
+import sys
 
 def shell_command() -> None:
     """Run an interactive Python shell in the context of a given

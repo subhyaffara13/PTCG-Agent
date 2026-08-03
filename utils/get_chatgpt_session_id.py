@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def get_chatgpt_session_id(litellm_params: Optional[Any]) -> Optional[str]:
     params = _normalize_litellm_params(litellm_params)

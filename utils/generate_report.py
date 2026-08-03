@@ -1,3 +1,4 @@
+import json
 
 def generate_report():
     report_lines = ["# Security & Static Logic Audit (CodeQL & Dependabot Alternatives)"]

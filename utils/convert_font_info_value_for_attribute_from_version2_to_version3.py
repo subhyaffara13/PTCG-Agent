@@ -1,3 +1,4 @@
+from typing import Any
 
 def convertFontInfoValueForAttributeFromVersion2ToVersion3(
     attr: str, value: Any

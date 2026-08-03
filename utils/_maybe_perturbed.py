@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_perturbed(x: Any) -> bool:
   # False if x can't represent an AD-perturbed value (i.e. a value

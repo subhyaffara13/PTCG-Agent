@@ -1,3 +1,4 @@
+import os
 
 def test_find_valid():
     class PathLikeClass:

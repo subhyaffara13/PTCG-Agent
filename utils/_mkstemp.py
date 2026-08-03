@@ -1,3 +1,4 @@
+import os
 
 def _mkstemp(*args, **kw):
     old_open = os.open

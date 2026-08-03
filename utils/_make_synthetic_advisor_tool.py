@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _make_synthetic_advisor_tool() -> Dict:
     """Build a regular tool definition the executor provider can understand."""

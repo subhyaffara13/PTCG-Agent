@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def repeat(x, repeats):
     old_size = list(x.get_size())

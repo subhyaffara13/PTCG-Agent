@@ -1,3 +1,4 @@
+from typing import Any
 
 def iter_tensors(
     args: tuple[Any], kwargs: dict[str, Any], allowed_nesting: int = 1

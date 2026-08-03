@@ -1,3 +1,4 @@
+from typing import Any
 
 def _einsum(*operands: Any, **kwargs: Any) -> ArrayType:
     """Base einsum, but with pre-parse for valid characters if a string is given."""

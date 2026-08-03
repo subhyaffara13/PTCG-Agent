@@ -1,3 +1,5 @@
+import sys
+import time
 
 def time_limited(timeout=0.5, return_val=np.nan, use_sigalrm=True):
     """

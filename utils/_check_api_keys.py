@@ -1,3 +1,4 @@
+import os
 
 def _check_api_keys() -> bool:
     if os.environ.get("GEMINI_API_KEY") or os.environ.get("OPENAI_API_KEY"):

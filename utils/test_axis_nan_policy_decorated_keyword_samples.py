@@ -1,3 +1,4 @@
+import re
 
 def test_axis_nan_policy_decorated_keyword_samples():
     # Test for correct behavior of function decorated with

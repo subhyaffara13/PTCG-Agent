@@ -1,3 +1,4 @@
+from typing import Union
 
 def process_response_headers(
     response_headers: Union[httpx.Headers, dict],

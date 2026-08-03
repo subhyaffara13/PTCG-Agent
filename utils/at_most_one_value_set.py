@@ -1,3 +1,4 @@
+from typing import Any
 
 def at_most_one_value_set(iterable: Iterable[Any]):
     """

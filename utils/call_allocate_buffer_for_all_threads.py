@@ -1,3 +1,4 @@
+import functools
 
 def call_allocate_buffer_for_all_threads(
     token: jax.Array,

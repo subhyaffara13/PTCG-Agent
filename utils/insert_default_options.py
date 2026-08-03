@@ -1,3 +1,4 @@
+import sys
 
 def insert_default_options() -> None:
     """Insert default options to sys.argv."""

@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def create_players_from_agents_config(
     agents_config: List[Dict], randomize_roles: bool = False, randomize_ids: bool = False, seed: Optional[int] = None

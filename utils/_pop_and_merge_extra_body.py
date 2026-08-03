@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _pop_and_merge_extra_body(data: RequestBody, optional_params: dict) -> None:
     """Pop extra_body from optional_params and shallow-merge into data, deep-merging dict values."""

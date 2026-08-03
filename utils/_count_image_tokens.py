@@ -1,3 +1,4 @@
+from typing import Any
 
 def _count_image_tokens(
     image_url: Any,

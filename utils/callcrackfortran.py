@@ -1,3 +1,4 @@
+import sys
 
 def callcrackfortran(files, options):
     rules.options = options

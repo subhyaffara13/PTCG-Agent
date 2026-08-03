@@ -1,3 +1,5 @@
+import logging
+from typing import Optional
 
 def request_log(
     logger: logging.Logger,

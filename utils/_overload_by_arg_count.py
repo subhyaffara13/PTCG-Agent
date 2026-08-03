@@ -1,3 +1,4 @@
+import functools
 
 def _overload_by_arg_count(fn):
     @functools.wraps(fn)

@@ -1,3 +1,4 @@
+import os
 
 def _convert_psfrags(tmppath, psfrags, paper_width, paper_height, orientation):
     """

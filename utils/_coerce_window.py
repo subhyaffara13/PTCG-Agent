@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _coerce_window(window: Any) -> dict:
     if isinstance(window, dict):

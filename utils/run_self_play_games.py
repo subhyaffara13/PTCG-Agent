@@ -1,3 +1,6 @@
+import copy
+import os
+import random
 
 def run_self_play_games(
     model_name,

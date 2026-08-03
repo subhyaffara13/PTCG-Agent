@@ -1,3 +1,4 @@
+import sys
 
 def should_strip_ansi(
     stream: t.IO[t.Any] | None = None, color: bool | None = None

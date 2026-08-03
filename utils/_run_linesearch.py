@@ -1,3 +1,4 @@
+from typing import Callable, Optional
 
 def _run_linesearch(
     opt: base.GradientTransformationExtraArgs,

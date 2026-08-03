@@ -1,3 +1,4 @@
+import re
 
 def _normalize_nn_module_stack(gm_torch_level, root_cls):
     # Append a root module to every nn_module_stack.

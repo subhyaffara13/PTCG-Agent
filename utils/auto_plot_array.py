@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Optional
 
 def auto_plot_array(
     *,

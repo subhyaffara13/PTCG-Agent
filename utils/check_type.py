@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_type(context: str, obj: object, need: type = str) -> None:
     if type(obj) is not need:

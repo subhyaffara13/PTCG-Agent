@@ -1,3 +1,4 @@
+import functools
 
 def _mean(num_microbatches: int) -> Accumulator:
   """An Accumulator that computes the mean of microbatched outputs."""

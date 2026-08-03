@@ -1,3 +1,4 @@
+import itertools
 
 def check_jaxpr_constants(closed_jaxpr: core.ClosedJaxpr):
   """Check if a JAXPR contains an excessive amount of constants, if so, report where they were captured"""

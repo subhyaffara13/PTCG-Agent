@@ -1,3 +1,4 @@
+from typing import Any
 
 def conv(
     fake_mode: FakeTensorMode, func: OpOverload, *args: Any, **kwargs: Any

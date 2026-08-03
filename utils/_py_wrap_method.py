@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _py_wrap_method(orig: Callable, __torch_function__: Callable) -> Callable:
     def impl(*args: Any, **kwargs: Any) -> Any:

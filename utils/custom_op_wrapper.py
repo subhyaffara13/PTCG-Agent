@@ -1,3 +1,4 @@
+from typing import Any
 
 def custom_op_wrapper(op: str, *args: Any) -> list[c_void_p] | c_void_p | None:
     # This function will be called from generated cpp wrapper code in the JIT mode.

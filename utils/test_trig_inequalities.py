@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_trig_inequalities():
     # all the inequalities are solved in a periodic interval.

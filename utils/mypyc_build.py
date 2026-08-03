@@ -1,3 +1,4 @@
+import os
 
 def mypyc_build(
     paths: list[str],

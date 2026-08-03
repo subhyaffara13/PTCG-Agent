@@ -1,3 +1,4 @@
+import sys
 
 def test_byteorder_check():
     # Byte order check should pass for native order

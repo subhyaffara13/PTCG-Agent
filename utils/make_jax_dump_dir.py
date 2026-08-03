@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def make_jax_dump_dir(out_dir_path: str) -> pathlib.Path | None:
   """Make a directory or return the undeclared outputs directory if `sponge`."""

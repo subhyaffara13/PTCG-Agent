@@ -1,3 +1,4 @@
+import copy
 
 def fuse_conv_bn_eval(
     conv: ConvT,

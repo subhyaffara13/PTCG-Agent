@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def can_modify_guardrails(team_obj: Optional[LiteLLM_TeamTable]) -> bool:
     if team_obj is None:

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def set_model_mocks(cls: type[BaseModel], undefined_name: str = 'all referenced types') -> None:
     """Set `__pydantic_core_schema__`, `__pydantic_validator__` and `__pydantic_serializer__` to mock core types on a model.

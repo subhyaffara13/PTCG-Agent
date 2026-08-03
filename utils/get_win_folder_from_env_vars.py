@@ -1,3 +1,4 @@
+import os
 
 def get_win_folder_from_env_vars(csidl_name: str) -> str:
     """Get folder from environment variables."""

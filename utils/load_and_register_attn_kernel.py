@@ -1,3 +1,4 @@
+from typing import Callable
 
 def load_and_register_attn_kernel(
     attn_implementation: str, attention_wrapper: Callable | None = None, allow_all_kernels: bool = False

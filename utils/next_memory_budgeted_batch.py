@@ -1,3 +1,4 @@
+import logging
 
 def next_memory_budgeted_batch(
     params: Sequence[tuple[jax.Array, types.ParamInfo, types.SaveArgs]],

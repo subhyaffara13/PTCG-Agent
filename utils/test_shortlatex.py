@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_shortlatex(capfd, hello_world_f90, monkeypatch):
     """Ensures that truncated documentation is written out

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _device_agnostic_dispatch(device: str, dispatch_table: dict[str, Callable], *args, **kwargs):
     if device not in dispatch_table:

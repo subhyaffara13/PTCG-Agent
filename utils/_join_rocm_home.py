@@ -1,3 +1,4 @@
+import os
 
 def _join_rocm_home(*paths) -> str:
     """

@@ -1,3 +1,4 @@
+import functools
 
 def _flattened_index_to_nd(indices, width):
     import sympy

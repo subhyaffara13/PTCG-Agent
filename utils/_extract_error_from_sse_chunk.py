@@ -1,3 +1,5 @@
+import json
+from typing import Union
 
 def _extract_error_from_sse_chunk(event_line: Union[str, bytes]) -> dict:
     """

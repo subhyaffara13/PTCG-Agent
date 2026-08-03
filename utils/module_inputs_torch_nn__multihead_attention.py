@@ -1,3 +1,4 @@
+import itertools
 
 def module_inputs_torch_nn_MultiheadAttention(module_info, device, dtype, requires_grad, training, **kwargs):
     # Currently all samples below are for validating the no-batch-dim support.

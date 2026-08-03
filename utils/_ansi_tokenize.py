@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _ansi_tokenize(ansi_text: str) -> Iterable[_AnsiToken]:
     """Tokenize a string in to plain text and ANSI codes.

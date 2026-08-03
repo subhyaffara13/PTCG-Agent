@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def grab(
     bbox: tuple[int, int, int, int] | None = None,

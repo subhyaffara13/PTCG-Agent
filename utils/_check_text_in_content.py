@@ -1,3 +1,4 @@
+from typing import List
 
 def _check_text_in_content(parts: List[PartType]) -> bool:
     """

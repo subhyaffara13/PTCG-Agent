@@ -1,3 +1,4 @@
+from typing import Any
 
 def maybe_sequence_to_range(sequence) -> Any | range:
     """

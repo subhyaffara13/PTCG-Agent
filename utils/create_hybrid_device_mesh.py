@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_hybrid_device_mesh(
     mesh_shape: Sequence[int],

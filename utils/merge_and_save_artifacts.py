@@ -1,3 +1,4 @@
+import json
 
 def merge_and_save_artifacts(skills_dir, logs_dir, report_path, report_lines, deck_tips, strategy_tips, best_plays, worst_plays):
     donts_file = skills_dir / "learned_donts.json"

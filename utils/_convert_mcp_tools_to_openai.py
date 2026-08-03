@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _convert_mcp_tools_to_openai(
     tools: Optional[List["Tool"]],

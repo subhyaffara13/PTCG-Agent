@@ -1,3 +1,4 @@
+import copy
 
 def test_Bug_2543():
     # Test that it possible to add all values to itself / deepcopy

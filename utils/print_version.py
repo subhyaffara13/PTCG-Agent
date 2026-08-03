@@ -1,3 +1,4 @@
+from typing import Optional
 
 def print_version(ctx: click.Context, param: Option, value: bool) -> None:
     if not value or ctx.resilient_parsing:

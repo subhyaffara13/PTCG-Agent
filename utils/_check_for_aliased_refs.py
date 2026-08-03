@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _check_for_aliased_refs(
     f: Callable, nondiff_argnums: Sequence[int], debug: core.DebugInfo, args):

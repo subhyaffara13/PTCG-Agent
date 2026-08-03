@@ -1,3 +1,4 @@
+import re
 
 def test_mellin_transform_bessel():
     from sympy.functions.elementary.miscellaneous import Max

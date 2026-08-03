@@ -1,3 +1,4 @@
+from typing import Any
 
 def serialize_sequence_via_list(
     v: Any, handler: core_schema.SerializerFunctionWrapHandler, info: core_schema.SerializationInfo

@@ -1,3 +1,4 @@
+import os
 
 def load_op_profiles(f: FileLike) -> dict[str, set[OpProfile]]:
     """

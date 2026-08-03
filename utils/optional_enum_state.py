@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def optional_enum_state(
     name: str,

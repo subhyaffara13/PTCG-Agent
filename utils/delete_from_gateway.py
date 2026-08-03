@@ -1,3 +1,4 @@
+from typing import Any, Callable, Dict, Optional
 
 def delete_from_gateway(
         gateway: str,

@@ -1,3 +1,4 @@
+import random
 
 def test_conversion():
     f = [x**2 + y**2, 2*z]

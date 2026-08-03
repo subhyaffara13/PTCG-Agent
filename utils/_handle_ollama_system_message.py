@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _handle_ollama_system_message(
     messages: list, prompt: str, msg_i: int

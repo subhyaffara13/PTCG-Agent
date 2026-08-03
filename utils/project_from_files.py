@@ -1,3 +1,4 @@
+import os
 
 def project_from_files(
     files: Sequence[str],

@@ -1,3 +1,4 @@
+import sys
 
 def _caller(depth=1, default='__main__'):
     try:

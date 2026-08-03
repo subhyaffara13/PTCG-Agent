@@ -1,3 +1,4 @@
+from typing import Optional
 
 def confrozenset(
     item_type: type[HashableItemType], *, min_length: int | None = None, max_length: int | None = None

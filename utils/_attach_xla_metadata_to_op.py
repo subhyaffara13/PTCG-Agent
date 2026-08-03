@@ -1,3 +1,4 @@
+from typing import Any
 
 def _attach_xla_metadata_to_op(
     xla_metadata: dict[str, Any], op: ir.Operation

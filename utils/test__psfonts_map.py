@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_PsfontsMap(monkeypatch):
     monkeypatch.setattr(dr, 'find_tex_file', lambda x: x.decode())

@@ -1,3 +1,4 @@
+import re
 
 def evalf_add(v: 'Add', prec: int, options: OPT_DICT) -> TMP_RES:
     res = pure_complex(v)

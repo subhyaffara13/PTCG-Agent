@@ -1,3 +1,5 @@
+import math
+
 
 def _too_close_or_ambiguous(x, y, planets):
     """True if (x, y) is too close to any existing planet or sits at a

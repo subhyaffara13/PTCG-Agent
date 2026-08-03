@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def ranges(ints: Iterable[int]) -> Iterator[Tuple[int, int]]:
     # Yield sorted, non-overlapping (min, max) ranges of consecutive integers

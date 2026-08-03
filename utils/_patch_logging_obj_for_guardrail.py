@@ -1,3 +1,4 @@
+from typing import Any
 
 def _patch_logging_obj_for_guardrail(
     litellm_logging_obj: Any, request: ApplyGuardrailRequest

@@ -1,3 +1,5 @@
+import os
+from typing import Any
 
 def _patch_setuptools_copy_extensions_to_source() -> None:
     """Skip redundant `.so` copies for extensions we generated.

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def split_auth_from_netloc(netloc: str) -> NetlocTuple:
     """

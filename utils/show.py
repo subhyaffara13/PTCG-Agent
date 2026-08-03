@@ -1,3 +1,4 @@
+from typing import Any
 
 def show(*, block: bool, **kwargs) -> None: ...
 

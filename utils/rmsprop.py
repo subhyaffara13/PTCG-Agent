@@ -1,3 +1,4 @@
+from typing import Optional
 
 def rmsprop(
     params: list[Tensor],

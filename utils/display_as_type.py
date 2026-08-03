@@ -1,3 +1,4 @@
+from typing import Any
 
 def display_as_type(v: Type[Any]) -> str:
     if not isinstance(v, typing_base) and not isinstance(v, WithArgsTypes) and not isinstance(v, type):

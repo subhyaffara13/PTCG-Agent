@@ -1,3 +1,4 @@
+import sys
 
 def _build_cacheable_data() -> _CacheEntry:
     entry_points = importlib.metadata.entry_points()

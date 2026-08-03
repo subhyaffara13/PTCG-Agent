@@ -1,3 +1,4 @@
+import os
 
 def norm_sep(path: str | os.PathLike[str]) -> str:
     """Normalize path separators to forward slashes for nodeid compatibility.

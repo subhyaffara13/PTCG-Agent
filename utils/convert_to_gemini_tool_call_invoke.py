@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def convert_to_gemini_tool_call_invoke(
     message: ChatCompletionAssistantMessage,

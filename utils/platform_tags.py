@@ -1,3 +1,4 @@
+import sys
 
 def platform_tags() -> Iterator[str]:
     """

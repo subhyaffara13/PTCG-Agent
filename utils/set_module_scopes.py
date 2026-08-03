@@ -1,3 +1,4 @@
+import functools
 
 def set_module_scopes(module, args, kwargs, scopes):
   """Set all scopes on module, including those on Modules in dataclass fields.

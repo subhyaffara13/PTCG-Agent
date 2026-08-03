@@ -1,3 +1,5 @@
+import math
+
 
 def genz_malik_1980_f_1_exact(a, b, r, alphas, xp):
     ndim = xp_size(a)

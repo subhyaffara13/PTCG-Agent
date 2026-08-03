@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_content_type_header(header: str) -> tuple[str, dict[str, Any]]:
     """Returns content type and parameters from given header.

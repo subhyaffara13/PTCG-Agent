@@ -1,3 +1,4 @@
+import json
 
 def data_generator(response):
     verbose_proxy_logger.debug("inside generator")

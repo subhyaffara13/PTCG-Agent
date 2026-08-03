@@ -1,3 +1,4 @@
+from typing import Dict
 
 def strip_control_codes(
     text: str, _translate_table: Dict[int, None] = _CONTROL_STRIP_TRANSLATE

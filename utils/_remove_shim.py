@@ -1,3 +1,4 @@
+import sys
 
 def _remove_shim():
     try:

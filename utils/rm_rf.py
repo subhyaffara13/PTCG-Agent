@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def rm_rf(path: Path) -> None:
     """Remove the path contents recursively, even if some elements

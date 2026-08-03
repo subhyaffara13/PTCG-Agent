@@ -1,3 +1,4 @@
+import os
 
 def get_umask(mask: int = 0o666) -> int:
     """Get the current umask.

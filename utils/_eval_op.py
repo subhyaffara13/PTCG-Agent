@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _eval_op(lhs: str, op: Op, rhs: str | AbstractSet[str], *, key: str) -> bool:
     op_str = op.serialize()

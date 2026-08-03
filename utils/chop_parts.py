@@ -1,3 +1,4 @@
+import re
 
 def chop_parts(value: TMP_RES, prec: int) -> TMP_RES:
     """

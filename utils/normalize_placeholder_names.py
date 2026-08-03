@@ -1,3 +1,4 @@
+import copy
 
 def normalize_placeholder_names(
     gm: torch.fx.GraphModule,

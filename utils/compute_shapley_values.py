@@ -1,3 +1,4 @@
+import itertools
 
 def compute_shapley_values(
     game: coalitional_game.CoalitionalGame,

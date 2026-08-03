@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def computed_field(func: PropertyT, /) -> PropertyT: ...
 

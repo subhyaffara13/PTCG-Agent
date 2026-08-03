@@ -1,3 +1,4 @@
+from typing import Any
 
 def construct_constants(constants_list_from_yaml: list[Any]) -> str:
     constants_list_part = []

@@ -1,3 +1,4 @@
+import os
 
 def _finalize_array_store(kvstore_path, distinct_locations: bool):
   """When multiple processes are writing, they must write to a per-process

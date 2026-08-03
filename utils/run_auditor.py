@@ -1,3 +1,6 @@
+import json
+import os
+import subprocess
 
 def run_auditor():
     """Run bandit and flake8 to find issues."""

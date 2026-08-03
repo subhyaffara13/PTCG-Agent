@@ -1,3 +1,4 @@
+import os
 
 def compare_figure(fname, savefig_kwargs={}, tol=0):
     actual = os.path.join(result_dir, fname)

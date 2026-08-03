@@ -1,3 +1,4 @@
+from typing import Optional
 
 def scope_session_to_principal(session_id: str, principal: Optional[str]) -> str:
     """

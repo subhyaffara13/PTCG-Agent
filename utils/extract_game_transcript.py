@@ -1,3 +1,6 @@
+import json
+import os
+from typing import Tuple
 
 def extract_game_transcript(json_path: str) -> Tuple[str, int]:
     if not os.path.exists(json_path):

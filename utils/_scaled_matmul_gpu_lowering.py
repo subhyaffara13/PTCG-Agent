@@ -1,3 +1,4 @@
+import json
 
 def _scaled_matmul_gpu_lowering(
     ctx, a, b, a_scales, b_scales, preferred_element_type

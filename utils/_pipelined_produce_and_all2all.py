@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _pipelined_produce_and_all2all(
     chunk_producer: Callable[[int, torch.Tensor], None],

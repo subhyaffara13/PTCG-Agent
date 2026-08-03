@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def parse_key_part(src: str, pos: Pos) -> tuple[Pos, str]:
     try:

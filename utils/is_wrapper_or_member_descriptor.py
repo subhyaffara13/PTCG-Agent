@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_wrapper_or_member_descriptor(
     value: Any,

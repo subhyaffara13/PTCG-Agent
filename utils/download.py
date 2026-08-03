@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def download(
     model_id: Annotated[str, typer.Argument(help="The model ID to download")],

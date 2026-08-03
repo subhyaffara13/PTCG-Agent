@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def type_to_response_format_param(
     response_format: type | completion_create_params.ResponseFormat | Omit,

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_localhost_or_internal_url(url: Optional[str]) -> bool:
     """

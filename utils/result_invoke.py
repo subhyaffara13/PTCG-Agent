@@ -1,3 +1,4 @@
+import functools
 
 def result_invoke(action):
     r"""

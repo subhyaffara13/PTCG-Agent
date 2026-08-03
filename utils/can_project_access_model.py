@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def can_project_access_model(
     model: Union[str, List[str]],

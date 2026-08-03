@@ -1,3 +1,4 @@
+from typing import Any
 
 def _verify_params_are_hashable(
     primitive: core.Primitive, params: dict[str, Any]) -> None:

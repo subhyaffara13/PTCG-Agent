@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def ints_to_rgba(r: Union[int, str], g: Union[int, str], b: Union[int, str], alpha: Optional[float] = None) -> RGBA:
     """Converts integer or string values for RGB color and an optional alpha value to an `RGBA` object.

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def flatten_fun_for_vmap(f: Callable,
                          store: lu.Store, in_tree: PyTreeDef, *args_flat):

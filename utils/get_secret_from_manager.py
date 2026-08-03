@@ -1,3 +1,5 @@
+import os
+from typing import Any, Optional
 
 def get_secret_from_manager(
     client: Any,

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable, Tuple, Union
 
 def _parse_minimize(minimize: Union[str, Callable]) -> Tuple[Callable, Union[int, float]]:
     """This works out what local scoring function to use for the dp algorithm

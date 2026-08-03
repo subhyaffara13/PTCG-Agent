@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def _override_builtin_ops():
     original_max = builtins.max

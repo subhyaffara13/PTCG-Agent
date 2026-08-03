@@ -1,3 +1,4 @@
+import os
 
 def _get_cuda_dep_paths(path: str, lib_folder: str, lib_name: str) -> list[str]:
     # Libraries can either be in

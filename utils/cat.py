@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def cat(fname, fallback=_DEFAULT, _open=open_text):
     """Read entire file content and return it as a string. File is

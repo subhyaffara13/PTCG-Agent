@@ -1,3 +1,4 @@
+import logging
 
 def remat_partial_eval(trace: pe.JaxprTrace, *tracers: core.Tracer,
                        jaxpr: core.Jaxpr, prevent_cse, **params):

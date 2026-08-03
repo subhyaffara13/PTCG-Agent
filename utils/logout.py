@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def logout(token_name: str | None = None) -> None:
     """Logout the machine from the Hub.

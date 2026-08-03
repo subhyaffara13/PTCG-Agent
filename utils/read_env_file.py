@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def read_env_file(
     file_path: StrPath, *, encoding: str = None, case_sensitive: bool = False

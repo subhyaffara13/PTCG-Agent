@@ -1,3 +1,4 @@
+import itertools
 
 def index_output_size_and_inner_fn(
     x_size,

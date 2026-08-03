@@ -1,3 +1,4 @@
+import pathlib
 
 def make_absolute_path(partial_path: str) -> str:
     """Convert a partial path to an absolute path.

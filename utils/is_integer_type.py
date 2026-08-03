@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_integer_type(x: Any) -> TypeGuard[TensorBox | sympy.Expr | int]:
     if isinstance(x, TensorBox):

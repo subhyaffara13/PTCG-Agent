@@ -1,3 +1,4 @@
+from typing import Callable
 
 def specialize_function(
     name: str, typ: RType | None = None

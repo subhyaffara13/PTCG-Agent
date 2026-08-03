@@ -1,3 +1,4 @@
+from typing import Optional
 
 def clean_headers(
     headers: Headers,

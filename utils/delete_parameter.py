@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def delete_parameter(since, name, func=None, **kwargs):
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_default_kwargs(f: Callable) -> "OrderedDict[str, Any]":
     """Get all default keyword arguments from function signature

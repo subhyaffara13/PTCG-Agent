@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _mean_sem(values: List[float]) -> Tuple[float, float]:
     """Helper to calculate mean and standard error of the mean.

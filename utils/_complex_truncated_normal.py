@@ -1,3 +1,4 @@
+import random
 
 def _complex_truncated_normal(key: Array, upper: ArrayLike,
                               shape: Sequence[int],

@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _batch_differing_spaces_tuple(spaces: list[Tuple]):
     return Tuple(

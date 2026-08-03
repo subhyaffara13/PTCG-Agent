@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_dict(name: str, value: Any, args: tuple[Any, ...]) -> None:
     """Validate dict[K, V] type."""

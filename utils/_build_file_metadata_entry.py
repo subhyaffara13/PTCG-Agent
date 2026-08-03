@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional, Tuple
 
 def _build_file_metadata_entry(
     response: Any,

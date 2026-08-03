@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _sanitize_empty_text_content(
     message: AllMessageValues,

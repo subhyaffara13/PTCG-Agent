@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def metadata_load(local_path: str | Path) -> dict | None:
     content = Path(local_path).read_text()

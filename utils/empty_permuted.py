@@ -1,3 +1,4 @@
+from typing import Any
 
 def empty_permuted(
     size: list[int | torch.SymInt],

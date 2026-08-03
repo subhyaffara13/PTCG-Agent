@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def _check_for_pgf(texsystem):
     """

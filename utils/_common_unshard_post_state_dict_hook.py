@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _common_unshard_post_state_dict_hook(
     module: nn.Module,

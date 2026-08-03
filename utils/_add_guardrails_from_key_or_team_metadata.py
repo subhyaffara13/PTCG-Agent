@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _add_guardrails_from_key_or_team_metadata(
     key_metadata: Optional[dict],

@@ -1,3 +1,4 @@
+import re
 
 def test_sec():
     x = symbols('x', real=True)

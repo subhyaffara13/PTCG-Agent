@@ -1,3 +1,4 @@
+from typing import Callable
 
 def lazy_function(module : str, name : str) -> Callable:
     """Create a lazy proxy for a function in a module.

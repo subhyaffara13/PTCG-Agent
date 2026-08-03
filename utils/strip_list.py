@@ -1,3 +1,4 @@
+import re
 
 def strip_list(l: list[str]) -> list[str]:
     """Return a stripped copy of l.

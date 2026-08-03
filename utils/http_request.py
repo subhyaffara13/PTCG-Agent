@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def http_request(request: Any) -> tuple[str | dict[str, Any], int, dict[str, str]]:
     # Set CORS headers for the preflight request

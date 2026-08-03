@@ -1,3 +1,4 @@
+from typing import Any
 
 def remap_to_exec_graph(torch_cuda_graph: torch.cuda.CUDAGraph) -> None:
     """Remap annotation keys from capture graph ID to exec graph ID.

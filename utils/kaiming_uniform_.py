@@ -1,3 +1,5 @@
+import math
+
 
 def kaiming_uniform_(
     tensor: torch.Tensor,

@@ -1,3 +1,4 @@
+from typing import Set
 
 def _generic_validator_cls(validator: AnyCallable, sig: 'Signature', args: Set[str]) -> 'ValidatorCallable':
     # assume the first argument is value

@@ -1,3 +1,4 @@
+from typing import Set, Tuple
 
 def _decodeImpl(
     data: bytes, branchFactor: int, height: int, bias: int, maxValue: int

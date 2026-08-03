@@ -1,3 +1,4 @@
+import time
 
 def test_autofmt_xdate(which):
     date = ['3 Jan 2013', '4 Jan 2013', '5 Jan 2013', '6 Jan 2013',

@@ -1,3 +1,4 @@
+from typing import Any
 
 def new_stream(*args: tuple[Any], **kwargs: Any) -> int:
     stream = torch.Stream(*args, **kwargs)  # type: ignore[no-matching-overload,call-overload]

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_list(name: str, value: Any, args: tuple[Any, ...]) -> None:
     """Validate list[T] type."""

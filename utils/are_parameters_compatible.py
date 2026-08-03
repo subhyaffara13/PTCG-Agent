@@ -1,3 +1,4 @@
+from typing import Callable
 
 def are_parameters_compatible(
     left: Parameters | NormalizedCallableType,

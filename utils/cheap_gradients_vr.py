@@ -1,3 +1,4 @@
+import random
 
 def cheap_gradients_vr(random, dist, y, payoff_matrices, num_players, pm_vr,
                        p=1, proj_grad=True, version=0):

@@ -1,3 +1,4 @@
+import functools
 
 def layer_norm_forward(
     x, weight, bias,

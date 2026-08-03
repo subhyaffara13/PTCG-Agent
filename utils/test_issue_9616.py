@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_9616():
     assert dumeq(solveset(sinh(x) + tanh(x) - 1, x), Union(

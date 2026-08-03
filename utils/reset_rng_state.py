@@ -1,3 +1,4 @@
+import random
 
 def reset_rng_state(use_xla: bool = False) -> None:
     torch.manual_seed(1337)

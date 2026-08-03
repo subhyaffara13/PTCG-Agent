@@ -1,3 +1,4 @@
+import itertools
 
 def test_banded_ode_solvers():
     # Test the "lsoda", "vode" and "zvode" solvers of the `ode` class

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_all_fallbacks(
     model: str,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _collect_vector_store_ids_from_payload(payload: Any) -> set[str]:
     vector_store_ids: set[str] = set()

@@ -1,3 +1,4 @@
+import re
 
 def process_target_pattern(pattern: str) -> tuple[str, str | None]:
     """

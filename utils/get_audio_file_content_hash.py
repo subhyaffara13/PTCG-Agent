@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_audio_file_content_hash(file_obj: FileTypes) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def assert_digests_match(expected_digests: dict[str, str], pytree: Any):
   """Asserts a pytree's per-leaf digests match a previously captured set.

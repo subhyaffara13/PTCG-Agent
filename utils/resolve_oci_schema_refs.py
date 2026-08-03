@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def resolve_oci_schema_refs(schema: Dict[str, Any]) -> Dict[str, Any]:
     """Inline all ``$ref``/``$defs`` references — OCI does not support JSON Schema ``$ref``."""

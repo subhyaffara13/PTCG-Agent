@@ -1,3 +1,4 @@
+import re
 
 def test_bbox():
     fig, ax = plt.subplots()

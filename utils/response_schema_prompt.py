@@ -1,3 +1,4 @@
+from typing import Optional
 
 def response_schema_prompt(model: str, response_schema: dict) -> str:
     """

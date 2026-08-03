@@ -1,3 +1,4 @@
+import re
 
 def test_invalid_example(tmp_path, example, error_msg):
     pyproject = tmp_path / "pyproject.toml"

@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def lbfgs(
     learning_rate: Optional[base.ScalarOrSchedule] = None,

@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _handle_generic_sso_error(
     e: Exception,

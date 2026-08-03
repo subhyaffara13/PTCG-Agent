@@ -1,3 +1,4 @@
+import os
 
 def rocm_compiler() -> str | None:
     if is_linux():

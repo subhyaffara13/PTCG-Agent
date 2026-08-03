@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def run_sync(
     func: Callable[[Unpack[PosArgsT]], T_Retval],

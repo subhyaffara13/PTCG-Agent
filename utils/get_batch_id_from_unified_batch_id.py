@@ -1,3 +1,4 @@
+import re
 
 def get_batch_id_from_unified_batch_id(file_id: str) -> str:
     ## use regex to get the batch_id from the file_id

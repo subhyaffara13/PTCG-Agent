@@ -1,3 +1,4 @@
+import copy
 
 def test_scale_deepcopy():
     sc = mscale.LogScale(axis='x', base=10)

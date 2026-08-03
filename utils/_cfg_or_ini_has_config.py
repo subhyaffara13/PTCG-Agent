@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _cfg_or_ini_has_config(path: Path | str) -> bool:
     parser = configparser.ConfigParser()

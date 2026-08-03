@@ -1,3 +1,4 @@
+import sys
 
 def is_notebook() -> bool:
     """Return `True` if code is executed in a notebook (Jupyter, Colab, QTconsole).

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _validate_key_alias_format(key_alias: Optional[str]) -> None:
     """

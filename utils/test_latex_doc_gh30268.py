@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_latex_doc_gh30268(tmp_path):
 

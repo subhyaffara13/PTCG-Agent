@@ -1,3 +1,4 @@
+import sys
 
 def find_cudart_versions(build_env=False, build_cuda_version=None):
     # ctypes.CDLL and ctypes.util.find_library load the latest installed library.

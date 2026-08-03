@@ -1,3 +1,5 @@
+import sys
+from typing import Optional
 
 def supports_response_schema(
     model: str, custom_llm_provider: Optional[str] = None

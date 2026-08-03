@@ -1,3 +1,4 @@
+import os
 
 def is_installable_dir(path: str) -> bool:
     """Is path is a directory containing pyproject.toml or setup.py?

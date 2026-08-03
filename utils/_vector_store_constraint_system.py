@@ -1,3 +1,4 @@
+from typing import Any
 
 def _vector_store_constraint_system(
     ctx: DerivationContext,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def projection_l2_ball(tree: Any, scale: jax.typing.ArrayLike = 1) -> Any:
   r"""Projection onto the l2 ball.

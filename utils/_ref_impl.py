@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ref_impl(init_val, *, memory_space: Any, kind: Any):
   if memory_space is not None:

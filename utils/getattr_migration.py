@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Callable
 
 def getattr_migration(module: str) -> Callable[[str], Any]:
     """Implement PEP 562 for objects that were either moved or removed on the migration

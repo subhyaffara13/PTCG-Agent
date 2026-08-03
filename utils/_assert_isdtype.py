@@ -1,3 +1,4 @@
+from typing import Any
 
 def _assert_isdtype(dtype: Any) -> None:
   if not isinstance(dtype, DType):

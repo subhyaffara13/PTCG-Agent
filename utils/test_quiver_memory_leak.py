@@ -1,3 +1,4 @@
+import sys
 
 def test_quiver_memory_leak():
     fig, ax = plt.subplots()

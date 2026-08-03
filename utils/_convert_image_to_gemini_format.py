@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _convert_image_to_gemini_format(image_file) -> Dict[str, str]:
     """

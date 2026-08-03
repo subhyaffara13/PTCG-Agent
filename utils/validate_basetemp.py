@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def validate_basetemp(path: str) -> str:
     # GH 7119

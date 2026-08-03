@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_latex_header_span(
     cell: dict[str, Any],

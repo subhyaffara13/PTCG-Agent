@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def test_compile_sources():
     tmpdir = tempfile.mkdtemp()

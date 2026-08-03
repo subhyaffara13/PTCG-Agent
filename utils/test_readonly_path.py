@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_readonly_path():
     path = Path.unit_circle()

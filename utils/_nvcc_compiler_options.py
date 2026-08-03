@@ -1,3 +1,4 @@
+import os
 
 def _nvcc_compiler_options() -> list[str]:
     arch = _nvcc_arch_as_compile_option()

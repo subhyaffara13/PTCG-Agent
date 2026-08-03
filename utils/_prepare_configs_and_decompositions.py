@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _prepare_configs_and_decompositions(
     processed_configs: list[CustomOpConfig] | None,

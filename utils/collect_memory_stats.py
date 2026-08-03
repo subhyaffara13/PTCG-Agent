@@ -1,3 +1,4 @@
+import sys
 
 def collect_memory_stats() -> tuple[dict[str, int], dict[str, int]]:
     """Return stats about memory use.

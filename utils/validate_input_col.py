@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def validate_input_col(fn: Callable, input_col: int | tuple | list | None) -> None:
     """

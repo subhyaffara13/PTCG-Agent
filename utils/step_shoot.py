@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def step_shoot(state: EnvState, params: EnvParams) -> Tuple[EnvState, jnp.ndarray]:
     """Update aliens - shooting check and calculate rewards."""

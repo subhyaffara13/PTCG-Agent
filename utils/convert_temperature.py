@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_temperature(
     val: "npt.ArrayLike",

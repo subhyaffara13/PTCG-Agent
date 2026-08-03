@@ -1,3 +1,4 @@
+import random
 
 def reactionary(observation, configuration):
     global last_react_action

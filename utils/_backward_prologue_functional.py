@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def _backward_prologue_functional(
     ctx_saved_tensors: Sequence[torch.Tensor],

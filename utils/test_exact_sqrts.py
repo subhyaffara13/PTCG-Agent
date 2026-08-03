@@ -1,3 +1,4 @@
+import random
 
 def test_exact_sqrts():
     for i in range(20000):

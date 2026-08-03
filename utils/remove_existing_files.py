@@ -1,3 +1,4 @@
+import os
 
 def remove_existing_files(output_path: str):
     for filename in os.listdir(output_path):

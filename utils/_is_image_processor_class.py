@@ -1,3 +1,4 @@
+import os
 
 def _is_image_processor_class(func, parent_class):
     """

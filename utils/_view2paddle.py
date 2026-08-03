@@ -1,3 +1,5 @@
+import sys
+from typing import Dict
 
 def _view2paddle(safeview, device) -> Dict[str, paddle.Tensor]:
     result = {}

@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _normalize_and_validate_gemini_mime_type(
     mime_type: str, model: Optional[str]

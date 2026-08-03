@@ -1,3 +1,4 @@
+from typing import Any
 
 def compare_functorch_state(states: list[tuple[Any, ...]]) -> bool:
     # There are four possible cases covered here:

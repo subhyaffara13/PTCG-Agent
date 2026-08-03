@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional, Union
 
 def filter_team_based_models(
     healthy_deployments: Union[List[Dict], Dict],

@@ -1,3 +1,6 @@
+import random
+import math
+
 
 def generate_planets(rng=None):
     if rng is None:

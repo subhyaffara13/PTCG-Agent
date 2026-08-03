@@ -1,3 +1,4 @@
+import logging
 
 def _capture_peaks() -> list[int] | None:
   """Returns the per-local-device peak_bytes_in_use, or None if unsupported."""

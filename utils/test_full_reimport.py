@@ -1,3 +1,4 @@
+import sys
 
 def test_full_reimport():
     # Reimporting numpy like this is not safe due to use of global C state,

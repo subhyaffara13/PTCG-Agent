@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_io_paths(fname_inp, mname="untitled"):
     """Takes in a temporary file for testing and returns the expected output and input paths

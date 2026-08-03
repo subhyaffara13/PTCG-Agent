@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_byte_limiter(
     concurrent_bytes: int, sleep_time: float

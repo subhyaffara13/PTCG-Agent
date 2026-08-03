@@ -1,3 +1,4 @@
+import functools
 
 def module_class_lift_transform(
   transform, module_class, *trafo_args, methods=None, **trafo_kwargs

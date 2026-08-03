@@ -1,3 +1,4 @@
+import os
 
 def expand_path(path: str) -> str:
     """Expand the user home directory and any environment variables contained within

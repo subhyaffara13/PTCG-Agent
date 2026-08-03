@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def get_nested_value(
     data: Dict[str, Any], key_path: str, default: Optional[T] = None

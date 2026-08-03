@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def get_flex_attention_log_filename() -> str | None:
     flex_attention_file_name = os.environ.get(

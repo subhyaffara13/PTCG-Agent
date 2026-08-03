@@ -1,3 +1,4 @@
+from typing import Callable
 
 def cmdclass(
     values: dict[str, str],

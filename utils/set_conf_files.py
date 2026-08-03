@@ -1,3 +1,5 @@
+import json
+import os
 
 def set_conf_files(cdir, conf_dict):
     """Set config values from files

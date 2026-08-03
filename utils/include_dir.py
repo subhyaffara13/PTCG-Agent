@@ -1,3 +1,4 @@
+import os
 
 def include_dir() -> str:
     """Find the path of the lib-rt dir that needs to be included"""

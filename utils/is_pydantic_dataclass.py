@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_pydantic_dataclass(class_: type[Any], /) -> TypeGuard[type[PydanticDataclass]]:
     """Whether a class is a pydantic dataclass.

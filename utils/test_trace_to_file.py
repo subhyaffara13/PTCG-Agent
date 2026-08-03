@@ -1,3 +1,4 @@
+import re
 
 def test_trace_to_file(stream_trace):
     file = tempfile.NamedTemporaryFile(mode='r')

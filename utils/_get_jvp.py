@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_jvp(primals: list[Any], tangents: list[Any], **params: Any):
   ref_primal, *idx = primals

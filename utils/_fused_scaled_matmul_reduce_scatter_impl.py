@@ -1,3 +1,4 @@
+from typing import Any
 
 def _fused_scaled_matmul_reduce_scatter_impl(
     mm_out_op: torch._ops.OpOverload,

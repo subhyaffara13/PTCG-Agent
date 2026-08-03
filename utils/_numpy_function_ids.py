@@ -1,3 +1,4 @@
+from typing import Any
 
 def _numpy_function_ids() -> dict[int, str]:
     unsupported_funcs = {

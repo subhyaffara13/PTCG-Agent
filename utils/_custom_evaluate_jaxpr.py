@@ -1,3 +1,4 @@
+from typing import Any
 
 def _custom_evaluate_jaxpr(
     settings: CustomEvaluateSettings, jaxpr: core.Jaxpr, consts, *args

@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoInductorSupport(fn):
     reason = "inductor doesn't support."

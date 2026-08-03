@@ -1,3 +1,4 @@
+import random
 
 def _permutation_distribution(
     baseline_pairs: dict[tuple, dict[str, float]],

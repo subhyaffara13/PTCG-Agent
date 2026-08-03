@@ -1,3 +1,4 @@
+from typing import Optional
 
 def to_bool(val):
     """

@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _fetch_all_keys_with_pagination(
     source_client: KeysManagementClient, source_base_url: str

@@ -1,3 +1,4 @@
+import re
 
 def _sanitize_gcp_label_value(value: str) -> str:
     """

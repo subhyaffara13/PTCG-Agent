@@ -1,3 +1,5 @@
+import subprocess
+import time
 
 def proc_in_time_or_kill(cmd, time_out, wd=None, env=None):
     proc = Popen(

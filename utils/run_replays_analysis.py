@@ -1,3 +1,7 @@
+import json
+from typing import List
+from pathlib import Path
+
 
 def run_replays_analysis(replay_paths: List[Path], player_name_or_id: str, extractor) -> None:
     from factory.behavioral_features import compute_from_steps

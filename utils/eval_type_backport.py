@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def eval_type_backport(
     value: Any,

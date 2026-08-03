@@ -1,3 +1,4 @@
+import re
 
 def _maybe_remove_lang(text: str, skip_special_tokens: bool) -> str: ...
 

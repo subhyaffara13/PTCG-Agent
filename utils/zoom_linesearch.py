@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable, Optional
 
 def zoom_linesearch(
     max_linesearch_steps: jax.typing.ArrayLike,  # int

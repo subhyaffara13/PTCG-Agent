@@ -1,3 +1,5 @@
+import json
+from typing import Optional
 
 def encode_state_with_base_url(
     base_url: str,

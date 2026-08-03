@@ -1,3 +1,4 @@
+from typing import Any
 
 def should_hoist(cls: Any) -> bool:
     info = _resolve_opaque_type_info(cls)

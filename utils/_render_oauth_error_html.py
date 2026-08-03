@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _render_oauth_error_html(error: str, description: Optional[str]) -> HTMLResponse:
     """Render an actionable HTML page for an IdP-reported OAuth error.

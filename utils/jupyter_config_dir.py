@@ -1,3 +1,4 @@
+import os
 
 def jupyter_config_dir() -> str:
     """Get the Jupyter config directory for this platform and user.

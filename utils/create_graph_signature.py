@@ -1,3 +1,4 @@
+import itertools
 
 def create_graph_signature(
     fx_g: torch.fx.GraphModule,

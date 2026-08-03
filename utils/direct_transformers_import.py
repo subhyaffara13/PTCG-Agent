@@ -1,3 +1,5 @@
+import os
+import sys
 
 def direct_transformers_import(path: str, file="__init__.py") -> ModuleType:
     """Imports transformers directly

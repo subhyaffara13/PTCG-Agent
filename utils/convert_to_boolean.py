@@ -1,3 +1,4 @@
+from typing import Any
 
 def convert_to_boolean(value: Any | None) -> bool:
     """Return a boolean value translating from other types if necessary."""

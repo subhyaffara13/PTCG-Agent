@@ -1,3 +1,4 @@
+import re
 
 def _convert_peft_config_moe(peft_config, model_type: str):
     base_model_type = _MODEL_TO_CONVERSION_PATTERN.get(model_type, None)

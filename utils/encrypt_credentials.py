@@ -1,3 +1,4 @@
+from typing import Optional
 
 def encrypt_credentials(
     credentials: MCPCredentials, encryption_key: Optional[str]

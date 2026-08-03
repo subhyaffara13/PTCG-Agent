@@ -1,3 +1,4 @@
+import itertools
 
 def fix_instance(
     t: Instance,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _partial_eval_jaxpr_custom_rule(
     saveable: Callable[..., pe.RematCases_], unks_in: Sequence[bool],

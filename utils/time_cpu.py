@@ -1,3 +1,4 @@
+import time
 
 def time_cpu(fn, inputs, test_runs):
     s = time.perf_counter()

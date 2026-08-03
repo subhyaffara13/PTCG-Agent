@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def get_completion_messages(
     messages: List[AllMessageValues],

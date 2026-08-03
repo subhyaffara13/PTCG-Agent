@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_dynamic_nn_module(obj: Any, is_export: bool) -> bool:
     """Check for nn.Modules() created dynamically or mutated"""

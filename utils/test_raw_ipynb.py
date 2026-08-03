@@ -1,3 +1,5 @@
+import json
+import os
 
 def test_raw_ipynb(log_mock):
     raw_cfg = cli.Config(**BASE_CONFIG_WITH_IPYNB.config_values)

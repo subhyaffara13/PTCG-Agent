@@ -1,3 +1,5 @@
+import math
+
 
 def _pair_invalid(x1, y1, x2, y2, planets):
     """Validation for a candidate pair of symmetric planets."""

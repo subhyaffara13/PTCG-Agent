@@ -1,3 +1,7 @@
+import re
+import sys
+from pathlib import Path
+
 
 def register_kernel_replacements_and_fusions(
     cls: "type[PreTrainedModel]",

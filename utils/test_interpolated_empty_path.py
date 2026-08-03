@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_interpolated_empty_path():
     path = Path(np.zeros((0, 2)))

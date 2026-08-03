@@ -1,3 +1,4 @@
+import sys
 
 def _print_overwrite(report: str) -> None:
     """Print a report, overwriting the previous lines.

@@ -1,3 +1,4 @@
+import itertools
 
 def treewidth_decomp(G, heuristic=min_fill_in_heuristic):
     """Returns a treewidth decomposition using the passed heuristic.

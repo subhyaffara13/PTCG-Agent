@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def is_typing(value: Any) -> bool:
     # _Final catches most of typing classes:

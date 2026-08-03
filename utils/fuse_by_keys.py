@@ -1,3 +1,4 @@
+import logging
 
 def fuse_by_keys(
     *,

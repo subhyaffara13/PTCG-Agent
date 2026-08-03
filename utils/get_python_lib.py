@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_python_lib(
     plat_specific: bool = False, standard_lib: bool = False, prefix: str | None = None

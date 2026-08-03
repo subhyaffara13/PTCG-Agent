@@ -1,3 +1,5 @@
+import math
+
 
 def _dot_product_attention_fp8_fwd_batcher(
     batched_args, batch_dims, *, scale, use_causal_mask, layout, is_training):

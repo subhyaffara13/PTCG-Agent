@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def cudagraphs(dynamo_model: torch.fx.GraphModule, dynamo_inputs: Sequence[Any]) -> Any:
     from torch._inductor.cudagraph_trees import cudagraphify_impl

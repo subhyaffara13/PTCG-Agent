@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def string_or_object_state(
     name: str,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def storage_ptr(tensor: torch.Tensor) -> int:
     try:

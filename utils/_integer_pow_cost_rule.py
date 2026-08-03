@@ -1,3 +1,5 @@
+import math
+
 
 def _integer_pow_cost_rule(ctx: Context, *, y: int) -> CostEstimate:
   x_aval, = ctx.avals_in

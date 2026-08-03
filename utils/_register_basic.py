@@ -1,3 +1,4 @@
+from typing import Any
 
 def _register_basic(idx_fmt_name: tuple[int, str, str]) -> None:
     from .TiffTags import TYPES

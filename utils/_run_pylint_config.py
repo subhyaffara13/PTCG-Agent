@@ -1,3 +1,4 @@
+import sys
 
 def _run_pylint_config(argv: Sequence[str] | None = None) -> None:
     """Run pylint-config.

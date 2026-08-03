@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Dict, Optional, Tuple
 
 def _get_wrapper_num_retries(
     kwargs: Dict[str, Any], exception: Exception

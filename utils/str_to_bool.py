@@ -1,3 +1,4 @@
+from typing import Optional
 
 def str_to_bool(value, to_bool: bool = True) -> int | bool:
     """

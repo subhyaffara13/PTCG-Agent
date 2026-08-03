@@ -1,3 +1,7 @@
+import os
+from typing import Any
+from pathlib import Path
+
 
 def guess_filename(obj: Any, default: str | None = None) -> str | None:
     name = getattr(obj, "name", None)

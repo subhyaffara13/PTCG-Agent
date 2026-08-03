@@ -1,3 +1,4 @@
+import os
 
 def envwrap(name, app="", types=None, is_method=False):
     """

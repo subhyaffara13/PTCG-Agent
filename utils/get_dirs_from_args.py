@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def get_dirs_from_args(args: Iterable[str]) -> list[Path]:
     def is_option(x: str) -> bool:

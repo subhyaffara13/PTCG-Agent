@@ -1,3 +1,4 @@
+import random
 
 def get_random_length(max_sequence_length: int, average_sequence_length: int):
     assert average_sequence_length >= 1 and average_sequence_length <= max_sequence_length

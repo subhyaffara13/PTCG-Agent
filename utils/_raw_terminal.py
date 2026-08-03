@@ -1,3 +1,4 @@
+import sys
 
 def _raw_terminal():
     """Put the terminal in cbreak mode (read keypresses without Enter). No-op on Windows."""

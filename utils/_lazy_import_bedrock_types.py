@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lazy_import_bedrock_types(name: str) -> Any:
     """Handler for Bedrock type aliases"""

@@ -1,3 +1,4 @@
+import re
 
 def _init_checker_class() -> type[doctest.OutputChecker]:
     import doctest

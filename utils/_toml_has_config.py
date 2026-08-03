@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _toml_has_config(path: Path | str) -> bool:
     with open(path, mode="rb") as toml_handle:

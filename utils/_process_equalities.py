@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def _process_equalities(
     constraint: Constraint,

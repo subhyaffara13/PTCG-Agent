@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def decompose(path):
     if isinstance(path, str):

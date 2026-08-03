@@ -1,3 +1,4 @@
+from typing import Any
 
 def rebuild_dataclass_fields(
     cls: type[PydanticDataclass],

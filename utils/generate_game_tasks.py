@@ -1,3 +1,5 @@
+import os
+import random
 
 def generate_game_tasks(output_dir, num_blocks, config, use_random_agents, debug, shuffle_player_ids):
     """

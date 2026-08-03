@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_wrapped_exception(obj: Any) -> bool:
     if not isinstance(obj, tuple):

@@ -1,3 +1,4 @@
+import logging
 
 def _cached_lowering_to_hlo(
     closed_jaxpr: core.ClosedJaxpr, module_name, backend, num_const_args: int,

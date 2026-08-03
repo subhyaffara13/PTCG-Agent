@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_empty_array_sequence(
     space: Sequence, n: int = 1, fn=np.zeros

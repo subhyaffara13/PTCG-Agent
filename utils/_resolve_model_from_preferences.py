@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _resolve_model_from_preferences(
     model_preferences: Optional["ModelPreferences"],

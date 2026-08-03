@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_numpy(x) -> np.ndarray[Any]:
     if isinstance(x, np.ndarray):

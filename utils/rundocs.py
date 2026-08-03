@@ -1,3 +1,5 @@
+import os
+import sys
 
 def rundocs(filename=None, raise_on_error=True):
     """

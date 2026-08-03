@@ -1,3 +1,4 @@
+from typing import List
 
 def _redact_assessment_match_fields(assessments: List[dict]) -> List[dict]:
     """

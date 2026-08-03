@@ -1,3 +1,4 @@
+from typing import Any
 
 def gen_table_chunks(
     table: Mapping[str, Any],

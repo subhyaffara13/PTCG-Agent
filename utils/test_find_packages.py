@@ -1,3 +1,4 @@
+import os
 
 def test_find_packages(tmp_path, args, pkgs):
     files = {

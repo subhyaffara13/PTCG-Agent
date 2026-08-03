@@ -1,3 +1,4 @@
+import copy
 
 def make_mask(m, copy=False, shrink=True, dtype=MaskType):
     """

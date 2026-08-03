@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_compatible_kernels(
     args: Any,

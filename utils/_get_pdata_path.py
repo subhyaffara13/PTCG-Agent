@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_pdata_path(
     base_name: Path, recurs: int, pylint_home: Path = PYLINT_HOME_AS_PATH

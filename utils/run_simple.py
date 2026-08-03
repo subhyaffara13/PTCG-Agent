@@ -1,3 +1,4 @@
+import os
 
 def run_simple(
     hostname: str,

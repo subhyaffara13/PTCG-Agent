@@ -1,3 +1,4 @@
+import json
 
 def parse_links(page: IndexContent) -> Iterable[Link]:
     """

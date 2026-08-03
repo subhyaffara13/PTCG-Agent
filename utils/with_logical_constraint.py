@@ -1,3 +1,4 @@
+import functools
 
 def with_logical_constraint(
   x: ArrayPytree,

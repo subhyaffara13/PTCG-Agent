@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def checkify(f: Callable[..., Out],
              errors: frozenset[ErrorCategory] = user_checks

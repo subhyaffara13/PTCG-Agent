@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _dump_response(response: Any) -> Dict[str, Any]:
     if isinstance(response, dict):

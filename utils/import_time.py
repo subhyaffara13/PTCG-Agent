@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def import_time(loops):
     total_us = 0

@@ -1,3 +1,4 @@
+import sys
 
 def runtime_environment() -> str | None:
   """Returns None, "bazel" or "pytest"."""

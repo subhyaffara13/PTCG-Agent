@@ -1,3 +1,4 @@
+from typing import Any
 
 def insert_const_values_with_mask(
     tup: tuple[Any, ...], masks: list[bool], values: tuple[Any, ...]

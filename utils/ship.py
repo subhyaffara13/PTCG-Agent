@@ -1,3 +1,4 @@
+from typing import List
 
 def ship(box: Box, xy: tuple[float, float] = (0, 0)) -> Output:
     """

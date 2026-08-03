@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def cached_files(
     path_or_repo_id: str | os.PathLike,

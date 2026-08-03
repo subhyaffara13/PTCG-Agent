@@ -1,3 +1,7 @@
+import functools
+from typing import Any, Callable
+import math
+
 
 def cond(
     pred: bool | int | float | torch.Tensor,

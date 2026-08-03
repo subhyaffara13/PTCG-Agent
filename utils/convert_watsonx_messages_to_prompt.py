@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def convert_watsonx_messages_to_prompt(
     model: str,

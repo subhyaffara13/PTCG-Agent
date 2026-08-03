@@ -1,3 +1,5 @@
+import os
+import sys
 
 def load_signer_lib(signer_lib_path):
     _LOGGER.debug("loading signer library from %s", signer_lib_path)

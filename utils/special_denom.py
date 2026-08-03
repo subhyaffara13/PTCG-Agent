@@ -1,3 +1,4 @@
+import re
 
 def special_denom(a, ba, bd, ca, cd, DE, case='auto'):
     """

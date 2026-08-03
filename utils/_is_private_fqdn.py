@@ -1,3 +1,4 @@
+import re
 
 def _is_private_fqdn(host: str) -> bool:
     """

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def stuff(request, monkeypatch, distutils_managed_tempdir):
     self = request.instance

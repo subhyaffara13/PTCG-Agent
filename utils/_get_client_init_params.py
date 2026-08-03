@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _get_client_init_params(cls: type) -> Tuple[str, ...]:
     """Extract __init__ parameter names (excluding 'self') from a class."""

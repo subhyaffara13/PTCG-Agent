@@ -1,3 +1,4 @@
+from typing import Any
 
 def _issubclass(a: Any, b: Any) -> bool:
   """Determines if ``a`` is a subclass of ``b``.

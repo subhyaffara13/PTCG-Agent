@@ -1,3 +1,4 @@
+from typing import Any
 
 def broadcast_flattened_prefix_with_treedef(
     prefix_leaves: list[Any],

@@ -1,3 +1,4 @@
+import sys
 
 def test_no_distutils_backend(capfd, hello_world_f90, monkeypatch):
     """Check that distutils backend and related options fail

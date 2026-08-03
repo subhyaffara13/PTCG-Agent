@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _iter_syntax_lines(
     start: SyntaxPosition, end: SyntaxPosition

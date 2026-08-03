@@ -1,3 +1,4 @@
+from typing import Any
 
 def _homogenize(
     data, index: Index, dtype: DtypeObj | None

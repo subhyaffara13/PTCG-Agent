@@ -1,3 +1,4 @@
+from typing import Optional
 
 def indentedBlock(blockStatementExpr, indentStack, indent=True, backup_stacks=[]):
     """

@@ -1,3 +1,4 @@
+import re
 
 def shebang_matches(text, regex):
     r"""Check if the given regular expression matches the last part of the

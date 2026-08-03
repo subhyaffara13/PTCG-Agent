@@ -1,3 +1,4 @@
+from typing import Union
 
 def add_cache_control_to_content(
     anthropic_content_element: Union[

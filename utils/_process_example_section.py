@@ -1,3 +1,4 @@
+import re
 
 def _process_example_section(
     func_documentation, func, parent_class, class_name, model_name_lowercase, config_class, checkpoint, indent_level

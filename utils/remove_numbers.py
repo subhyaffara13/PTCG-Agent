@@ -1,3 +1,4 @@
+import re
 
 def remove_numbers(lines):
     def _clean(s):

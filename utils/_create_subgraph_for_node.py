@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_subgraph_for_node(
     graph: fx.Graph, node: fx.Node, additional_deps=None

@@ -1,3 +1,4 @@
+import os
 
 def parse_name_and_version_from_info_directory(
     dist: importlib.metadata.Distribution,

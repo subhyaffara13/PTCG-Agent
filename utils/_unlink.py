@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _unlink(name: str, *, dir_fd: int | None = None) -> None:
     with suppress(FileNotFoundError):

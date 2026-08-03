@@ -1,3 +1,4 @@
+from typing import Callable
 
 def extract_shadow_logger_info(
     model_a_shadows_b: nn.Module,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _parse_xprof_flags(unknown_flags: list[str]) -> dict[str, Any]:
   parsed: dict[str, Any] = {}

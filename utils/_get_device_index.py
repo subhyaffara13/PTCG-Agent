@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_device_index(
     device: Any,

@@ -1,3 +1,4 @@
+import functools
 
 def _deprecate_positional_args(func=None, *, version=None,
                                deprecated_args=None, custom_message=""):

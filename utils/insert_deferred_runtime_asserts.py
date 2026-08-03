@@ -1,3 +1,6 @@
+import functools
+import sys
+from typing import Any
 
 def insert_deferred_runtime_asserts(
     gm: GraphModule,

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_format_datetime64(
     is_dates_only: bool, nat_rep: str = "NaT", date_format: str | None = None

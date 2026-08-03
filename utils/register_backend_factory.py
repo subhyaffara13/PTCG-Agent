@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_backend_factory(name: str, factory: BackendFactory, *,
                              priority: int = 0,

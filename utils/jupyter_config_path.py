@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def jupyter_config_path() -> list[str]:
     """Return the search path for Jupyter config files as a list.

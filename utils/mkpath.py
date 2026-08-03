@@ -1,3 +1,4 @@
+import pathlib
 
 def mkpath(name: pathlib.Path, mode=0o777, verbose=True) -> None:
     """Create a directory and any missing ancestor directories.

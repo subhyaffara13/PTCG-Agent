@@ -1,3 +1,5 @@
+import json
+from typing import Dict, Optional, Tuple
 
 def sign_with_manual_credentials(
     headers: dict,

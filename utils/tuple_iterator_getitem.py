@@ -1,3 +1,4 @@
+from typing import Any
 
 def tuple_iterator_getitem(it: Any, index: int) -> Any:
     _, (obj,), start = it.__reduce__()

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _font_to_ps_type3(font_path, subset_index, glyph_indices):
     """

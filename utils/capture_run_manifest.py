@@ -1,3 +1,4 @@
+import os
 
 def capture_run_manifest() -> RunManifest:
   """Captures every reproducibility-relevant fact about the current process."""

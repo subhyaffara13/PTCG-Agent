@@ -1,3 +1,4 @@
+import random
 
 def random_mask(size=(100, 100)):
     """random_mask(size=(100,100)): return Mask

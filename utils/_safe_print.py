@@ -1,3 +1,4 @@
+from typing import Any
 
 def _safe_print(s):
     encoding = getattr(sys.stdout, 'encoding', None)

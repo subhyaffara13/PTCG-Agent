@@ -1,3 +1,4 @@
+import os
 
 def test_empty_npz(tmpdir):
     # Test for gh-9989

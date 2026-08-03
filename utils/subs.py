@@ -1,3 +1,5 @@
+import subprocess
+from typing import Union
 
 def subs(cmd: Union[list[str], str]) -> str | None:
     """

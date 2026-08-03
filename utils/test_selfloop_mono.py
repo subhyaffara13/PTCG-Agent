@@ -1,3 +1,4 @@
+import random
 
 def test_selfloop_mono():
     # Simple test for graphs with selfloops

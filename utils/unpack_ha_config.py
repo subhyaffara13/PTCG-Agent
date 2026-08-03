@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def unpack_ha_config(strategy_thresholds: Dict[str, Any]) -> dict:
     ha_config = strategy_thresholds.get("hand_analyst", {}) if isinstance(strategy_thresholds, dict) else {}

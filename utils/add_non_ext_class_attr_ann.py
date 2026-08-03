@@ -1,3 +1,4 @@
+from typing import Callable
 
 def add_non_ext_class_attr_ann(
     builder: IRBuilder,

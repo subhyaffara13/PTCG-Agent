@@ -1,3 +1,4 @@
+import functools
 
 def wrap_pytest_function_for_tracing(pyfuncitem) -> None:
     """Change the Python function object of the given Function item by a

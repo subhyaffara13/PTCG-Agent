@@ -1,3 +1,5 @@
+import math
+
 
 def test_issue_23566():
     i = integrate(1/sqrt(x**2-1), (x, -2, -1))

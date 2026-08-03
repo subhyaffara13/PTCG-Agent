@@ -1,3 +1,4 @@
+from typing import Any
 
 def _split_in_out_axes(xs: Mapping[CollectionFilter, Any]):
   unpack = lambda v: v.axis if isinstance(v, (In, Out)) else v

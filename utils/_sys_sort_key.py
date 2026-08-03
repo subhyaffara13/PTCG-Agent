@@ -1,3 +1,4 @@
+import sys
 
 def _sys_sort_key(sys):
     """Sort key for lists of polynomials"""

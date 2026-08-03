@@ -1,3 +1,4 @@
+import os
 
 def pids():
     """Returns a list of PIDs currently running on the system."""

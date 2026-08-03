@@ -1,3 +1,4 @@
+import re
 
 def quad_to_mpmath(q, ctx=None):
     """Turn the quad returned by ``evalf`` into an ``mpf`` or ``mpc``. """

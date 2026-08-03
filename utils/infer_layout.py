@@ -1,3 +1,5 @@
+import logging
+from typing import Any
 
 def infer_layout(
     module: ir.Module, *, fuel: int = _DEFAULT_LAYOUT_INFERENCE_FUEL,

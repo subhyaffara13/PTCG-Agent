@@ -1,3 +1,4 @@
+import copy
 
 def cobyla(calcfc, m_nlcon, x, Aineq=None, bineq=None, Aeq=None, beq=None,
            xl=None, xu=None, f0=None, nlconstr0=None, rhobeg=None, rhoend=None,

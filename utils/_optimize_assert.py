@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _optimize_assert(
     rebuild_ctx: Callable[[], OptimizeContext],

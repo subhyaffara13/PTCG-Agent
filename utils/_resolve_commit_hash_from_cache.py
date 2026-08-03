@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _resolve_commit_hash_from_cache(storage_folder: Path, revision: str | None) -> str:
     """

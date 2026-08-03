@@ -1,3 +1,4 @@
+from typing import Any
 
 def _to_kwargs(
     inputs: tuple[Any, ...],

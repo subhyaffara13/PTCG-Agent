@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def annotate(
     text: str,

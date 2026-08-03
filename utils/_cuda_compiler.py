@@ -1,3 +1,4 @@
+import os
 
 def _cuda_compiler() -> str | None:
     if cuda_env.nvcc_exist(config.cuda.cuda_cxx):

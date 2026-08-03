@@ -1,3 +1,4 @@
+import os
 
 def test_plotgrid_and_save(adaptive):
     if not matplotlib:

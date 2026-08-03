@@ -1,3 +1,6 @@
+import functools
+import math
+
 
 def _attention_forward(q, k, v, config: TuningConfig, save_residuals: bool = False):
   assert cuda_versions is not None

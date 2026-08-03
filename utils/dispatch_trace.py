@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dispatch_trace(
     root: Module | Callable[..., Any],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_runner(
     backend_name: str, backend_options: dict[str, Any]

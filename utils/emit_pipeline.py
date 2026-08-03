@@ -1,3 +1,8 @@
+import functools
+import itertools
+from typing import Callable
+import math
+
 
 def emit_pipeline(
     body,

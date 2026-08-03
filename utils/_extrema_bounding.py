@@ -1,3 +1,5 @@
+import math
+
 
 def _extrema_bounding(G, compute="diameter", weight=None):
     """Compute requested extreme distance metric of undirected graph G

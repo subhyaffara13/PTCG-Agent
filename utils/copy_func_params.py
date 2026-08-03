@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def copy_func_params(
     source_func: Callable[_P, Any],

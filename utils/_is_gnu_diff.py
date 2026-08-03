@@ -1,3 +1,4 @@
+import subprocess
 
 def _is_gnu_diff(diff_tool: str) -> bool:
     """Returns True if the provided diff executable is GNU diff."""

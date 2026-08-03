@@ -1,3 +1,4 @@
+from typing import Callable
 
 def optional_string_state(
     name: str,

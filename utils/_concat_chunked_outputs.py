@@ -1,3 +1,4 @@
+from typing import Any
 
 def _concat_chunked_outputs(
     out_dims: out_dims_t,

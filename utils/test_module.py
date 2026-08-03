@@ -1,3 +1,4 @@
+import sys
 
 def test_module(module_name: str) -> Iterator[Error]:
     """Tests a given module's stub against introspecting it at runtime.

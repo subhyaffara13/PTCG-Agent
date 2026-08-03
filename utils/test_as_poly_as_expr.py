@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_as_poly_as_expr():
     f = x**2 + 2*x*y

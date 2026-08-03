@@ -1,3 +1,5 @@
+import os
+import sys
 
 def _is_on_hf_mount(path: "str | os.PathLike") -> bool:
     """True if `path` lives on an hf-mount FUSE filesystem (device string 'hf-mount').

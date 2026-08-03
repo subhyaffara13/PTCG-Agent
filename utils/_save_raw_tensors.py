@@ -1,3 +1,4 @@
+import os
 
 def _save_raw_tensors(
     raw_items: dict[str, tuple[torch.Tensor, TensorProperties]],

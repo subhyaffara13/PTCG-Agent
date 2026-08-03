@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_xp(xp: ModuleType) -> Callable[[Callable[..., _T]], Callable[..., _T]]:
     """

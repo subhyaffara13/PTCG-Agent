@@ -1,3 +1,5 @@
+import uuid
+from typing import List, Optional, Union
 
 def convert_to_anthropic_tool_result(
     message: Union[ChatCompletionToolMessage, ChatCompletionFunctionMessage],

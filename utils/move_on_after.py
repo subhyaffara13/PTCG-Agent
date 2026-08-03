@@ -1,3 +1,5 @@
+import math
+
 
 def move_on_after(delay: float | None, shield: bool = False) -> CancelScope:
     """

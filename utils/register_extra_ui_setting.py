@@ -1,3 +1,4 @@
+from typing import Any
 
 def register_extra_ui_setting(name: str, annotation: Any, field: FieldInfo) -> None:
     """Register an additional UI settings field contributed by an extension package.

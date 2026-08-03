@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _get_tensor_methods() -> set[Callable]:
     """Returns a set of the overridable methods on ``torch.Tensor``"""

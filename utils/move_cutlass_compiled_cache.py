@@ -1,3 +1,4 @@
+import os
 
 def move_cutlass_compiled_cache() -> None:
     """Move CUTLASS compiled cache file to the cache directory if it exists."""

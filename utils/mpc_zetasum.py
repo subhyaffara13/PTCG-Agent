@@ -1,3 +1,5 @@
+import re
+import sys
 
 def mpc_zetasum(s, a, n, derivatives, reflect, prec):
     """

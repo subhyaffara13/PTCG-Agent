@@ -1,3 +1,4 @@
+from typing import Any
 
 def mutable_mapping_update(
     self,

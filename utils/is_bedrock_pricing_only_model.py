@@ -1,3 +1,4 @@
+import re
 
 def is_bedrock_pricing_only_model(key: str) -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def unpack_type(tp: Any, /) -> Any | None:
     """Return the type wrapped by the `Unpack` special form, or `None`."""

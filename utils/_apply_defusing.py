@@ -1,3 +1,4 @@
+import sys
 
 def _apply_defusing(defused_mod):
     assert defused_mod is sys.modules[defused_mod.__name__]

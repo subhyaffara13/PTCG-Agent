@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def init_rds_client(
     aws_access_key_id: Optional[str] = None,

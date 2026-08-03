@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_fingerprint_fast(fn_args_vt: Any) -> InputFingerprint:
     """Build fingerprint for the common case of flat leaf args, no kwargs."""

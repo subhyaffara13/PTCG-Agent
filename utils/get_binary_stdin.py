@@ -1,3 +1,4 @@
+import sys
 
 def get_binary_stdin() -> t.BinaryIO:
     reader = _find_binary_reader(sys.stdin)

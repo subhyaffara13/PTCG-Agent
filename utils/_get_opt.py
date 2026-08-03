@@ -1,3 +1,4 @@
+import functools
 
 def _get_opt(self: absltest.TestCase, opt_name: str):
   if opt_name == 'optimistic_adam':

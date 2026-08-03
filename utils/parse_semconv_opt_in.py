@@ -1,3 +1,4 @@
+from typing import Optional, Set
 
 def parse_semconv_opt_in(raw: Optional[str]) -> Set[OTELSemconvCategory]:
     """Parse the comma-separated OTEL_SEMCONV_STABILITY_OPT_IN value into the

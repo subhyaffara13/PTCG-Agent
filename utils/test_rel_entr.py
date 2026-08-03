@@ -1,3 +1,4 @@
+import itertools
 
 def test_rel_entr():
     def xfunc(x, y):

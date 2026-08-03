@@ -1,3 +1,4 @@
+import os
 
 def convert_to_float16(args: argparse.Namespace, old_paths: list[str], rank: int = 0):
     decoder_model_fp16_path = os.path.join(args.output, f"rank_{rank}_{args.model_name}_decoder_model_fp16.onnx")

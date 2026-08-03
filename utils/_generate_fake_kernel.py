@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _generate_fake_kernel(op_name: str, op_profile: set[OpProfile]) -> Callable:
     def _match_args(args_profile: tuple[TensorMetadata | None], args: Any) -> bool:

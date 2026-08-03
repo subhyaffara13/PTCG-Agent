@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_backend_initialization_hook(
     hook: Callable[[xla_client.Client], None],

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_unknown(x: Any) -> pe.PartialVal:
   if isinstance(x, jax.ShapeDtypeStruct):

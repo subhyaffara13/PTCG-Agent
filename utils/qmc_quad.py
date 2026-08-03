@@ -1,3 +1,5 @@
+import math
+
 
 def qmc_quad(func, a, b, *, n_estimates=8, n_points=1024, qrng=None,
              log=False):

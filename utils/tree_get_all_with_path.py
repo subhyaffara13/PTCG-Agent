@@ -1,3 +1,4 @@
+from typing import Any, Callable, Optional
 
 def tree_get_all_with_path(
     tree: base.PyTree,

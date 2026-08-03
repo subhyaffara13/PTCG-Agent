@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def dispatch_functionalize(
     func: Callable[..., Any], mode: FunctionalTensorMode = FunctionalTensorMode()

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def functional_init_with_buffers(
     model_class: type[nn.Module],

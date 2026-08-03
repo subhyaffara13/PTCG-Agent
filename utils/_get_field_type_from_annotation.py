@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _get_field_type_from_annotation(field_annotation: Any) -> str:
     """

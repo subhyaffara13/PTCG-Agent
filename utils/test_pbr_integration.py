@@ -1,3 +1,4 @@
+import subprocess
 
 def test_pbr_integration(pbr_package, venv, editable_opts):
     """Ensure editable installs work with pbr, issue #3500"""

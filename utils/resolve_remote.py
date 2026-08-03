@@ -1,3 +1,4 @@
+import json
 
 def resolve_remote(uri, handlers):
     """

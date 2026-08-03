@@ -1,3 +1,4 @@
+import sys
 
 def test_matmul():
     a = Matrix([[1, 2], [3, 4]])

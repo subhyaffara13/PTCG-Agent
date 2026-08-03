@@ -1,3 +1,4 @@
+import itertools
 
 def ring_of_cliques(num_cliques, clique_size):
     """Defines a "ring of cliques" graph.

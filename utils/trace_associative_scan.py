@@ -1,3 +1,5 @@
+import itertools
+from typing import Callable
 
 def trace_associative_scan(
     proxy_mode,

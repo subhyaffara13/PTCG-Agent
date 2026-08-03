@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Optional
 
 def dump(obj, file, protocol=None, buffer_callback=None):
     """Serialize obj as bytes streamed into file

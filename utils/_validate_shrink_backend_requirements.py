@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_shrink_backend_requirements(group_info: dict) -> Any:
     """Return the backend implementation for the target group or raise if unsupported."""

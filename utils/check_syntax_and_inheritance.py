@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def check_syntax_and_inheritance(staged_path: Path, content: str, skills_dir: Path) -> tuple[bool, str]:
     if staged_path.suffix == ".csv":

@@ -1,3 +1,4 @@
+import json
 
 def from_filename(filename, require=None, use_rsa_signer=True):
     """Reads a Google service account JSON file and returns its parsed info.

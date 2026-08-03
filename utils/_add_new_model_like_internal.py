@@ -1,3 +1,7 @@
+import os
+import subprocess
+from pathlib import Path
+
 
 def _add_new_model_like_internal(
     repo_path: Path,

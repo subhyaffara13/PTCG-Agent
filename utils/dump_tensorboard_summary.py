@@ -1,3 +1,4 @@
+import time
 
 def dump_tensorboard_summary(graph_executor, logdir):
     with FileWriter(logdir) as w:

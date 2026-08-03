@@ -1,3 +1,4 @@
+from typing import Callable
 
 def scale_by_factored_rms(
     factored: bool = True,

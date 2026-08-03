@@ -1,3 +1,6 @@
+import copy
+import functools
+from typing import Any
 
 def wrap_compiler_debug(
     unconfigured_compiler_fn: _CompileFxCallable,

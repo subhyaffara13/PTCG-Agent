@@ -1,3 +1,5 @@
+import logging
+from typing import Any, Callable
 
 def _vlog_dispatch(fn: Callable[..., Any], dispatcher_name: str):
   if logging.vlog_is_on(1):

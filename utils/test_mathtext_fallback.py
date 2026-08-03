@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 
 def test_mathtext_fallback(fallback, fontlist):
     mpl.font_manager.fontManager.addfont(

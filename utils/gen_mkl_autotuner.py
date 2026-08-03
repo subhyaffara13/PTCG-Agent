@@ -1,3 +1,4 @@
+import time
 
 def gen_mkl_autotuner(example_inputs, iters=10, warmup=1):
     """

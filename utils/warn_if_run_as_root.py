@@ -1,3 +1,5 @@
+import os
+import sys
 
 def warn_if_run_as_root() -> None:
     """Output a warning for sudo users on Unix.

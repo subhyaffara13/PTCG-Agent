@@ -1,3 +1,4 @@
+import os
 
 def _get_filtered_attrs(member, dest_path, for_data=True):
     new_attrs = {}

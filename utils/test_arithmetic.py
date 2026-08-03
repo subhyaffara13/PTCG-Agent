@@ -1,3 +1,4 @@
+import copy
 
 def test_arithmetic():
     a = ImmutableDenseNDimArray([3 for i in range(9)], (3, 3))

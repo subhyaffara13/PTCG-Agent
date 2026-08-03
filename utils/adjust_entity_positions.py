@@ -1,3 +1,4 @@
+import re
 
 def adjust_entity_positions(entity, text):
     """Adjust the positions of the entities in `text` to be relative to the text with special fields removed."""

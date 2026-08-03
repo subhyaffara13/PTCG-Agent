@@ -1,3 +1,4 @@
+from typing import Any
 
 def as_jsonable_value(v: Any) -> Any:
     if type(v) not in (int, str, float, bytes, bool, type(None)):

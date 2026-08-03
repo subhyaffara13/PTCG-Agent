@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _np2tf(numpy_dict: Dict[str, np.ndarray]) -> Dict[str, tf.Tensor]:
     for k, v in numpy_dict.items():

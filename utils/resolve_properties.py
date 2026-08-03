@@ -1,3 +1,4 @@
+from typing import Any
 
 def resolve_properties(
     mark: Mark, data: DataFrame, scales: dict[str, Scale]

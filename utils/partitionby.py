@@ -1,3 +1,4 @@
+import itertools
 
 def partitionby(func, seq):
     """ Partition a sequence according to a function

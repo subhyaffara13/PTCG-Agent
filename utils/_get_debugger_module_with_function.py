@@ -1,3 +1,5 @@
+import logging
+import os
 
 def _get_debugger_module_with_function(function_name):
   """Provides the `$PYTHONBREAKPOINT` module if it contains `function_name`.

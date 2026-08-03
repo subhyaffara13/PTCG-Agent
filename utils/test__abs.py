@@ -1,3 +1,4 @@
+import re
 
 def test_Abs():
     assert str(Abs(x)) == "Abs(x)"

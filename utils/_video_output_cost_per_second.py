@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _video_output_cost_per_second(
     model_info: Mapping[str, Any],

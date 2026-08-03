@@ -1,3 +1,5 @@
+import os
+from typing import Callable
 
 def _capture_output(fp: TextIO) -> Generator[Callable[[], str], None, None]:
   """Context manager to capture all output written to a given file object.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def aot_dispatch_autograd_graph(
     flat_fn: TraceFn,

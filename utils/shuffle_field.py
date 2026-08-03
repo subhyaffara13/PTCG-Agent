@@ -1,3 +1,4 @@
+import random
 
 def shuffle_field(agents, field_name):
     values = [agent[field_name] for agent in agents]

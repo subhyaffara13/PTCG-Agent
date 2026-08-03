@@ -1,3 +1,4 @@
+import itertools
 
 def merge_arrays(seqarrays, fill_value=-1, flatten=False,
                  usemask=False, asrecarray=False):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _writeLib(glyphObject: Any, element: ElementType, validate: bool) -> None:
     lib = getattr(glyphObject, "lib", None)

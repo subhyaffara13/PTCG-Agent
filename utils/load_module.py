@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Optional, Union
 
 def load_module(
     filename: Union[str, os.PathLike] = None,

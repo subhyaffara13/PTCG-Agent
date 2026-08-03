@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _write_plan(plan: SyncPlan, f) -> None:
     """Write a sync plan as JSONL to a file-like object."""

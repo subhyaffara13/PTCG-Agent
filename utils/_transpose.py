@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _transpose(x: ArrayType, axes: Tuple[int, ...], backend: str = "numpy") -> ArrayType:
     """Base transpose."""

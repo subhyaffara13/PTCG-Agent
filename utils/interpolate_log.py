@@ -1,3 +1,5 @@
+import math
+
 
 def interpolateLog(t, a, b):
     """Logarithmic interpolation between a and b, with t typically in [0, 1]."""

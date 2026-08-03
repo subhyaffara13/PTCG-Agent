@@ -1,3 +1,4 @@
+import os
 
 def upload_config_to_gcs(local_path: str, gcs_root: str, run_id: str) -> str:
   """Uploads the local config file to GCS and returns the GCS path."""

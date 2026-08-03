@@ -1,3 +1,4 @@
+from typing import Any
 
 def apply_known_metadata(annotation: Any, schema: CoreSchema) -> CoreSchema | None:  # noqa: C901
     """Apply `annotation` to `schema` if it is an annotation we know about (Gt, Le, etc.).

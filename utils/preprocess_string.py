@@ -1,3 +1,4 @@
+import re
 
 def preprocess_string(string, skip_cuda_tests):
     """Prepare a docstring or a `.md` file to be run by doctest.

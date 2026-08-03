@@ -1,3 +1,4 @@
+import sys
 
 def _import_plugins(
     plugins: list[Plugin],

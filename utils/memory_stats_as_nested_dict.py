@@ -1,3 +1,4 @@
+from typing import Any
 
 def memory_stats_as_nested_dict(device: "Device" = None) -> dict[str, Any]:
     r"""Return the result of :func:`~torch.cuda.memory_stats` as a nested dictionary."""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def parameterized_filterable(*,
     kwargs: Sequence[dict[str, Any]],

@@ -1,3 +1,4 @@
+import re
 
 def test_complex_adaptive_false():
     # verify that series with adaptive=False is evaluated with discretized

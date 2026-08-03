@@ -1,3 +1,4 @@
+from typing import Any
 
 def _type_has_config(type_: Any) -> bool:
     """Returns whether the type has config."""

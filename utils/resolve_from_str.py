@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def resolve_from_str(input: str, rootpath: Path) -> Path:
     input = expanduser(input)

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _combine_any_rank_results(rank_results: dict[int, Any]) -> Any:
     any_v = next(iter(rank_results.values()))

@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def update_messages_with_model_file_ids(
     messages: List[AllMessageValues],

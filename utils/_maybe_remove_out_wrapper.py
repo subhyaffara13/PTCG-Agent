@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _maybe_remove_out_wrapper(fn: Callable):
     return inspect.unwrap(

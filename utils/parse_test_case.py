@@ -1,3 +1,6 @@
+import os
+import re
+import sys
 
 def parse_test_case(case: DataDrivenTestCase) -> None:
     """Parse and prepare a single case from suite with test case descriptions.

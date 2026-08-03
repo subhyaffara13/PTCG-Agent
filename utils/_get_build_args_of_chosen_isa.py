@@ -1,3 +1,4 @@
+import copy
 
 def _get_build_args_of_chosen_isa(vec_isa: VecISA) -> tuple[list[str], list[str]]:
     macros: list[str] = []

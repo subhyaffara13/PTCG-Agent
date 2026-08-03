@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def all_literal_values(type_: type[Any]) -> tuple[Any, ...]:
     """

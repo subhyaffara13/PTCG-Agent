@@ -1,3 +1,4 @@
+from typing import List, Optional, Tuple
 
 def get_binary_exclude_tables(
     file1: str,

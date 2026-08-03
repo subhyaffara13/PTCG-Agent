@@ -1,3 +1,4 @@
+import itertools
 
 def _jaxpr_call_discharge(
     flat_should_discharge,

@@ -1,3 +1,4 @@
+from typing import Dict, List, Tuple, Union
 
 def key_class(updates, image_strip, image_rects: List[pg.Rect], is_white_key=True):
     """Return a keyboard key widget class

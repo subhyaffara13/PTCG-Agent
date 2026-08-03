@@ -1,3 +1,4 @@
+import os
 
 def download_compressed_file(tf_ckpt_url, ckpt_dir):
     r = requests.get(tf_ckpt_url)

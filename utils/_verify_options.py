@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _verify_options(
     model: nn.Module,

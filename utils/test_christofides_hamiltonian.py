@@ -1,3 +1,4 @@
+import random
 
 def test_christofides_hamiltonian():
     random.seed(42)

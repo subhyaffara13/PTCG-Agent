@@ -1,3 +1,4 @@
+from typing import Optional
 
 def conv2d(
     input: list[int],

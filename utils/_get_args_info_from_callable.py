@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_args_info_from_callable(
     member: _FunctionTypes,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pallas_call_state_discharge_rule(
     avals_in,

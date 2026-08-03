@@ -1,3 +1,4 @@
+from typing import Any
 
 def matches_module_pattern(
     pattern: Iterable[type], node: fx.Node, modules: dict[str, Any]

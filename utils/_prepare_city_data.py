@@ -1,3 +1,5 @@
+import math
+
 
 def _prepare_city_data(repos: list[RepoStorageInfo]) -> CityData:
     sorted_repos = sorted(repos, key=lambda r: r.storage, reverse=True)

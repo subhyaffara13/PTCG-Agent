@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def _save_netpbm(im: Image.Image, fp: IO[bytes], filename: str | bytes) -> None:
     # Unused by default.

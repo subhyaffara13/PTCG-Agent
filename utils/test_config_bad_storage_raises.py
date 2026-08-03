@@ -1,3 +1,4 @@
+import re
 
 def test_config_bad_storage_raises():
     msg = re.escape("Value must be one of python|pyarrow")

@@ -1,3 +1,4 @@
+from typing import Any
 
 def file_contents(contents: str, config: Config = DEFAULT_CONFIG) -> ParsedContent:
     """Parses a python file taking out and categorizing imports."""

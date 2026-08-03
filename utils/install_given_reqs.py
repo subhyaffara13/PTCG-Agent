@@ -1,3 +1,4 @@
+import logging
 
 def install_given_reqs(
     requirements: list[InstallRequirement],

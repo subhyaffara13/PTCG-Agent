@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def grad_and_value(
     func: Callable[_P, Any], argnums: argnums_t = 0, has_aux: bool = False

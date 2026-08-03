@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def pattern_either_validator(input_value: Any, /) -> re.Pattern[Any]:
     if isinstance(input_value, re.Pattern):

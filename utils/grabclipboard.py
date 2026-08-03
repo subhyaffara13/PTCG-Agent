@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def grabclipboard() -> Image.Image | list[str] | None:
     if sys.platform == "darwin":

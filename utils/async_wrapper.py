@@ -1,3 +1,4 @@
+import functools
 
 def async_wrapper(func, obj=None, semaphore=None):
     """

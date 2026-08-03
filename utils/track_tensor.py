@@ -1,3 +1,4 @@
+from typing import Callable
 
 def track_tensor(tensor: torch.Tensor, name: str) -> None:
     get_mem_tracker().set_tensor(name, tensor)

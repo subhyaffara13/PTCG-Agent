@@ -1,3 +1,4 @@
+import functools
 
 def skip_on_flag(flag_name, skip_value):
   """A decorator for test methods to skip the test when flags are set."""

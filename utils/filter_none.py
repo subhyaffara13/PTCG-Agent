@@ -1,3 +1,4 @@
+from typing import Any
 
 def filter_none(values: Iterable[Any]) -> Any:
     """Filter out ``None`` from an iterable of values.

@@ -1,3 +1,5 @@
+import math
+
 
 def _unique_sorted_mask(ar: Array, axis: int, equal_nan: bool) -> tuple[Array, Array, Array]:
   aux = moveaxis(ar, axis, 0)

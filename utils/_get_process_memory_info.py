@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _get_process_memory_info(
     worker_pid: int, include_process_info: bool

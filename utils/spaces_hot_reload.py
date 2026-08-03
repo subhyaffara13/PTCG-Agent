@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def spaces_hot_reload(
     space_id: Annotated[

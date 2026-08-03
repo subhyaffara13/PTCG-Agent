@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def _register_pre_backward_hooks(
     state: _FSDPState,

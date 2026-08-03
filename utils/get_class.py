@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def get_class(lookup_view):
     """

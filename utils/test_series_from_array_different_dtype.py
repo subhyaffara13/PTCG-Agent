@@ -1,3 +1,4 @@
+import copy
 
 def test_series_from_array_different_dtype(copy):
     arr = np.array([1, 2, 3], dtype="int64")

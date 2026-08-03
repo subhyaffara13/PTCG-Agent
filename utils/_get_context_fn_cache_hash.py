@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _get_context_fn_cache_hash(context_fn: Callable[..., Any]) -> str | None:
     """

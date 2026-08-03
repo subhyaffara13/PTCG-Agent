@@ -1,3 +1,5 @@
+import math
+
 
 def _print_columns(strings):
   """Prints a list of strings in columns."""

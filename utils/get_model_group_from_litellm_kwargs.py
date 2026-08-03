@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_model_group_from_litellm_kwargs(kwargs: dict) -> Optional[str]:
     _litellm_params = kwargs.get("litellm_params", None) or {}

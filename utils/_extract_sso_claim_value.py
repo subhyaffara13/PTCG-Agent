@@ -1,3 +1,4 @@
+from typing import Any, Union
 
 def _extract_sso_claim_value(
     result: Union[CustomOpenID, OpenID, dict], claim_path: str

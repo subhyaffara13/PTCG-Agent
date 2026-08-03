@@ -1,3 +1,4 @@
+import os
 
 def is_mlflow_available():
     if os.getenv("DISABLE_MLFLOW_INTEGRATION", "FALSE").upper() == "TRUE":

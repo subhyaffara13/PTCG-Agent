@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_functionalized_rng_ops_wrapper(
     func: Callable[..., Any],

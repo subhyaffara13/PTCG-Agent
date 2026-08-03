@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_optimizer_factory(optimizer_cls_or_factory: Any) -> bool:
     """

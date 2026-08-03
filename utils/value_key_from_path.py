@@ -1,3 +1,4 @@
+from typing import Any
 
 def value_key_from_path(path: tuple[Any, ...]) -> tuple[Any, ...]:
   """Converts a PartsOf JAX pytree path into a key for the corresponding value.

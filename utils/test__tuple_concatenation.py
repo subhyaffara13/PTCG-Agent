@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_Tuple_concatenation():
     assert Tuple(1, 2) + Tuple(3, 4) == Tuple(1, 2, 3, 4)

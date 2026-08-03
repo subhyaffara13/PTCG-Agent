@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _infer_params_cached(
     fun: Callable, jit_info: PjitInfo, signature: jax_jit.ArgumentSignature,

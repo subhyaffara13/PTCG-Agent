@@ -1,3 +1,4 @@
+import copy
 
 def _laplacian_dense_flo(graph, normed, axis, copy, form, dtype, symmetrized):
 

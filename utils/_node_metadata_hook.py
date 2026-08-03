@@ -1,3 +1,4 @@
+from typing import Any
 
 def _node_metadata_hook(
     node: torch.fx.Node,

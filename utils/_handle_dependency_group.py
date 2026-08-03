@@ -1,3 +1,4 @@
+import pathlib
 
 def _handle_dependency_group(
     option: Option, opt: str, value: str, parser: OptionParser

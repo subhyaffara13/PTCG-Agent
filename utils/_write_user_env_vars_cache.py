@@ -1,3 +1,5 @@
+import time
+from typing import Dict
 
 def _write_user_env_vars_cache(
     user_id: str, server_id: str, values: Dict[str, str]

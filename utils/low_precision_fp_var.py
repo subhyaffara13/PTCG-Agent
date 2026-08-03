@@ -1,3 +1,4 @@
+from typing import Any
 
 def low_precision_fp_var(var: CSEVariable | Any) -> bool:
     if not isinstance(var, CSEVariable):

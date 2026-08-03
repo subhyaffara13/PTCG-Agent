@@ -1,3 +1,4 @@
+import functools
 
 def test_is_valid_curry():
     def check_curry(func, args, kwargs, incomplete=True):

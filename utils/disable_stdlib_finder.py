@@ -1,3 +1,4 @@
+import sys
 
 def disable_stdlib_finder():
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def trace_scan(
     proxy_mode,

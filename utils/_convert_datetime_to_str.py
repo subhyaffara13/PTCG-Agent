@@ -1,3 +1,4 @@
+from typing import Union
 
 def _convert_datetime_to_str(value: Union[datetime, str, None]) -> Union[str, None]:
     """

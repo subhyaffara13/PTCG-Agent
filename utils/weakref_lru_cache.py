@@ -1,3 +1,4 @@
+from typing import Callable
 
 def weakref_lru_cache(
     f: Callable[P, R], /, *, maxsize: int | None = 2048,

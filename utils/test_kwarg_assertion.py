@@ -1,3 +1,4 @@
+import re
 
 def test_kwarg_assertion(kwargs):
     err_message = (

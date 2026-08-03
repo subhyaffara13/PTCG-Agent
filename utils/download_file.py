@@ -1,3 +1,4 @@
+import os
 
 def download_file(url, binary=True):
     from urllib.parse import urlsplit

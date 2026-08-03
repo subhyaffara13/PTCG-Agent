@@ -1,3 +1,4 @@
+from typing import Optional
 
 def upsample_nearest2d(input, output_size, scales_h=None, scales_w=None):
     torch._check(

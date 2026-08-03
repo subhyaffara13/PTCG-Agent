@@ -1,3 +1,4 @@
+import copy
 
 def fuse_as_graphmodule(
     gm: GraphModule,

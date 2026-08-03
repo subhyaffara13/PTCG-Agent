@@ -1,3 +1,4 @@
+import copy
 
 def test_trivial_labels_isomorphism_directed():
     """

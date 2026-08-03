@@ -1,3 +1,6 @@
+import os
+import re
+from typing import Optional
 
 def set_n_cpu_devices(n: Optional[int] = None) -> None:
   """Forces XLA to use `n` CPU threads as host devices.

@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def allow() -> Dict[str, Any]:
     """

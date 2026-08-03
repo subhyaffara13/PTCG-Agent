@@ -1,3 +1,4 @@
+import os
 
 def _read_lock_file(path: str) -> tuple[str | None, float, int]:
     # The lock file is created with O_EXCL | O_NOFOLLOW, so a symlink here is a hostile replacement and must

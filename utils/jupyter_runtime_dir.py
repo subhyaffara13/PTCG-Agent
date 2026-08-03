@@ -1,3 +1,4 @@
+import os
 
 def jupyter_runtime_dir() -> str:
     """Return the runtime dir for transient jupyter files.

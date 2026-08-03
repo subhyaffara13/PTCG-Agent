@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_fx_arg_to_onnx_arg(
     arg,

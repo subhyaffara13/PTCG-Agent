@@ -1,3 +1,4 @@
+import functools
 
 def _deco_axis_expand(func):
     """

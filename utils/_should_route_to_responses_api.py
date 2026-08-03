@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _should_route_to_responses_api(custom_llm_provider: Optional[str]) -> bool:
     """Return True when the provider should use the Responses API path.

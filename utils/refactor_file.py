@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def refactor_file(filepath):
     filepath = Path(filepath)

@@ -1,3 +1,4 @@
+import itertools
 
 def test_many_strl(temp_file, version):
     n = 65534

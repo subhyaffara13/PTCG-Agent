@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def merge_a2a_session_into_litellm_params(
     litellm_params: Dict[str, Any],

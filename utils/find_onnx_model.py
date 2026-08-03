@@ -1,3 +1,4 @@
+import os
 
 def find_onnx_model(model_name, onnx_dir="."):
     # Search onnx model in the following order: optimized fp16 model, optimized fp32 model, raw model

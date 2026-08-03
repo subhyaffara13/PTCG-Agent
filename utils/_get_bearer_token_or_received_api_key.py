@@ -1,3 +1,4 @@
+import re
 
 def _get_bearer_token_or_received_api_key(api_key: str) -> str:
     if api_key.startswith("Bearer "):  # ensure Bearer token passed in

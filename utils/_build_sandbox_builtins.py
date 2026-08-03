@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _build_sandbox_builtins() -> Dict[str, Any]:
     # ``limited_builtins`` overrides ``list``/``tuple``/``range`` from

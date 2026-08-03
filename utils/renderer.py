@@ -1,3 +1,4 @@
+import json
 
 def renderer(state, env):
     return json.dumps(Battle.obs)

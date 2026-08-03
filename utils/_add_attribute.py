@@ -1,3 +1,4 @@
+from typing import Any
 
 def _add_attribute(node: _C.Node, key: str, value: Any, aten: bool):
     r"""Initializes the right attribute based on type of value."""

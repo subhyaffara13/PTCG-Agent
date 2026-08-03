@@ -1,3 +1,6 @@
+import re
+import sys
+import time
 
 def test_webagg():
     pytest.importorskip("tornado")

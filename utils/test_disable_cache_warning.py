@@ -1,3 +1,4 @@
+import re
 
 def test_disable_cache_warning(anim):
     cache_frame_data = True

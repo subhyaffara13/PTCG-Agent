@@ -1,3 +1,4 @@
+from typing import Optional
 
 def create_vertex_url(
     vertex_location: str,

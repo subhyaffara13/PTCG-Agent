@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def embedding_score_messages(
     query: str,

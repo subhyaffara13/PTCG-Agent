@@ -1,3 +1,4 @@
+from typing import Any
 
 def enum_repr(value: Any, local: bool) -> str:
     # enum class can override __str__ method. Use __class__ and name attribute

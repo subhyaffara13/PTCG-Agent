@@ -1,3 +1,4 @@
+import itertools
 
 def render_figures(code, code_path, output_dir, output_base, context,
                    function_name, config, context_reset=False,

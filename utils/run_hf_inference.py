@@ -1,3 +1,4 @@
+import os
 
 def run_hf_inference(args, init_inputs, iter_inputs, model):
     # Inference steps to measure

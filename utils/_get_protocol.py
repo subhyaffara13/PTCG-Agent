@@ -1,3 +1,4 @@
+import os
 
 def _get_protocol(path: PathLike) -> str:
   """Extract the protocol."""

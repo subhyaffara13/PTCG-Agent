@@ -1,3 +1,4 @@
+import os
 
 def initialize_temp_directories(init_method: str | None = None) -> None:
     global tmp_dir

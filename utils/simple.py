@@ -1,3 +1,4 @@
+from typing import Any
 
 def simple(
     shape: tuple[int, int], want_mask: bool = False,

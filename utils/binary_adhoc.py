@@ -1,3 +1,4 @@
+from typing import Optional
 
 def binary_adhoc(
     source: Optional[g3_utils.Source] = None,

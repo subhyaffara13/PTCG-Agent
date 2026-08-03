@@ -1,3 +1,4 @@
+from typing import Callable
 
 def closed_call_partial_eval_custom_rule(
     jaxpr_param_name: str, params_updater: ParamsUpdater2,

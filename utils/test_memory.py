@@ -1,3 +1,4 @@
+from typing import Any
 
 def test_memory(args, device) -> dict[str, Any]:
     if len(args.batch_sizes) > 1:

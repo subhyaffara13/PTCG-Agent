@@ -1,3 +1,4 @@
+from typing import Callable
 
 def compute_activation_error(
     activations_match: dict[str, dict[str, Sequence[numpy.ndarray]]],

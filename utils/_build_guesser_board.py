@@ -1,3 +1,4 @@
+from typing import Any
 
 def _build_guesser_board(observation: Mapping[str, Any]) -> str:
     """Board state for Guesser (roles masked by the interpreter)."""

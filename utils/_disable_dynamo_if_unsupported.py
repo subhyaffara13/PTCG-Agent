@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _disable_dynamo_if_unsupported(
     single_tensor_fn: Callable[..., object] | None = None,

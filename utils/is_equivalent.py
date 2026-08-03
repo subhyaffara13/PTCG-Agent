@@ -1,3 +1,4 @@
+from typing import Callable
 
 def is_equivalent(
     a: Type,

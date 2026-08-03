@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_vector_store_request_for_spend_logs_payload(
     vector_store_request_metadata: Optional[List[StandardLoggingVectorStoreRequest]],

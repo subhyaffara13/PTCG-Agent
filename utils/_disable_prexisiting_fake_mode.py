@@ -1,3 +1,4 @@
+import functools
 
 def _disable_prexisiting_fake_mode(fn):
     @functools.wraps(fn)

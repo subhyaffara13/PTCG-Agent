@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def restore_vmap(
     func: Callable[..., _R], in_dims: in_dims_t, batch_size: int, randomness: str

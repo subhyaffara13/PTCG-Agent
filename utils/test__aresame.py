@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test__aresame():
     assert not _aresame(Basic(Tuple()), Basic())

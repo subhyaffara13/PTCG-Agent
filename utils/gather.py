@@ -1,3 +1,4 @@
+from typing import Any
 
 def gather(values, index, name="segmented_gather"):
     """

@@ -1,3 +1,5 @@
+import copy
+import sys
 
 def _test_sys_path(
     replacement_sys_path: list[str] | None = None,

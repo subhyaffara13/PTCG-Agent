@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_available_threads() -> int:
     """Determine number of physical cores that current process can use (best effort)."""

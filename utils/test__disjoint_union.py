@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_DisjointUnion():
     assert DisjointUnion(FiniteSet(1, 2, 3), FiniteSet(1, 2, 3), FiniteSet(1, 2, 3)).rewrite(Union) == (FiniteSet(1, 2, 3) * FiniteSet(0, 1, 2))

@@ -1,3 +1,4 @@
+import functools
 
 def call_barrier_arrive(
     token: jax.Array,

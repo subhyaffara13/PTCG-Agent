@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_all(
     pred: Callable[[Any], bool],

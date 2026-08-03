@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _binary_op_lowering_rule(ctx: LoweringRuleContext, x, y, *, impl, out_dtype=None):
   del out_dtype  # unused here.

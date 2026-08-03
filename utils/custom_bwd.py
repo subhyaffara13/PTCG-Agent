@@ -1,3 +1,4 @@
+import functools
 
 def custom_bwd(bwd=None, *, device_type: str):
     """Create a helper decorator for backward methods of custom autograd functions.

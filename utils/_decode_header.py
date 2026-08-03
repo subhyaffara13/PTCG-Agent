@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _decodeHeader(headerByte: int) -> Tuple[int, int]:
     id = headerByte & 0x03

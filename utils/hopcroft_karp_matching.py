@@ -1,3 +1,4 @@
+import itertools
 
 def hopcroft_karp_matching(G, top_nodes=None):
     """Returns the maximum cardinality matching of the bipartite graph `G`.

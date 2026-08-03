@@ -1,3 +1,4 @@
+from typing import Any, Optional, Union
 
 def scale_by_sophia(
     b1: jax.typing.ArrayLike = 0.965,

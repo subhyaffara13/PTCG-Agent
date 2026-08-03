@@ -1,3 +1,5 @@
+import math
+
 
 def float_factorial(n: int) -> float:
     """Compute the factorial and return as a float

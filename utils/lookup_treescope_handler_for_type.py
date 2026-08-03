@@ -1,3 +1,4 @@
+from typing import Any
 
 def lookup_treescope_handler_for_type(
     candidate_type: type[Any],

@@ -1,3 +1,4 @@
+import sys
 
 def clear() -> None:
     """Clears the terminal screen.  This will have the effect of clearing

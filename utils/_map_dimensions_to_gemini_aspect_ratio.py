@@ -1,3 +1,5 @@
+import math
+
 
 def _map_dimensions_to_gemini_aspect_ratio(width: int, height: int) -> str:
     if (width, height) in GEMINI_IMAGE_SIZE_TO_ASPECT_RATIO:

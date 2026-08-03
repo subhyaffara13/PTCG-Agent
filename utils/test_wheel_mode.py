@@ -1,3 +1,7 @@
+import os
+import pathlib
+import subprocess
+import sys
 
 def test_wheel_mode():
     @contextlib.contextmanager

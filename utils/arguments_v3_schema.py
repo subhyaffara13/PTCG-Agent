@@ -1,3 +1,4 @@
+from typing import Any
 
 def arguments_v3_schema(
     arguments: list[ArgumentsV3Parameter],

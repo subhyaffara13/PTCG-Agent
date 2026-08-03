@@ -1,3 +1,4 @@
+import functools
 
 def skipIfNoONEDNN(fn):
     reason = "Quantized operations require ONEDNN."

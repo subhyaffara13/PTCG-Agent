@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def resolve_operation_params(
     operation: Dict[str, Any],

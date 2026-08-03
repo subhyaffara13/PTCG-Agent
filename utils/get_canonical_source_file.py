@@ -1,3 +1,4 @@
+import re
 
 def get_canonical_source_file(file_name: str, caches: TracebackCaches) -> str:
   canonical_file_name = caches.canonical_name_cache.get(file_name, None)

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def rmtree_errorhandler(
     func: FunctionType,

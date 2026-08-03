@@ -1,3 +1,4 @@
+from typing import Callable
 
 def and_masks(*mask_functions: Callable) -> Callable:
     """Returns a mask function that is the intersection of provided mask functions"""

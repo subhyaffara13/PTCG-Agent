@@ -1,3 +1,5 @@
+import copy
+from typing import Any, Callable
 
 def get_embedding_qat_module_mappings() -> dict[Callable, Any]:
     """Get module mapping for quantization aware training

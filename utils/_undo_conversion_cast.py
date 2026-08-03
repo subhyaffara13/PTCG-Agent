@@ -1,3 +1,4 @@
+from typing import Any
 
 def _undo_conversion_cast(
     ir_value: ir.Value,

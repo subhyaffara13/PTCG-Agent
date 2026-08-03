@@ -1,3 +1,5 @@
+import os
+import sys
 
 def stream_file(path: os.PathLike) -> Iterator[IO[str]]:
     """

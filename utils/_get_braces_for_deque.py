@@ -1,3 +1,4 @@
+from typing import Any, Tuple
 
 def _get_braces_for_deque(_object: Deque[Any]) -> Tuple[str, str, str]:
     if _object.maxlen is None:

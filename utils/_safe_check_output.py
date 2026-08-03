@@ -1,3 +1,4 @@
+import subprocess
 
 def _safe_check_output(cmd: list[str]) -> str:
   """Runs cmd and returns its stripped stdout, or an empty string on error."""

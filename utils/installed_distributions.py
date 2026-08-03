@@ -1,3 +1,5 @@
+import os
+from typing import Dict, List
 
 def installed_distributions(
     local: bool = False, paths: List[os.PathLike] = []

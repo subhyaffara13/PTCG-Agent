@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_product_basic():
     H, T = 'H', 'T'

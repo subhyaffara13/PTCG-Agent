@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def build_training_dataset(aligner, source_paths: List[str]) -> Tuple[List[List[float]], List[int]]:
     """Builds tensors ready for model training, applying frame stacking and augmentation."""

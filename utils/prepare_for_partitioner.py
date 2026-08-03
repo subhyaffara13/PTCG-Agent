@@ -1,3 +1,5 @@
+import copy
+import itertools
 
 def prepare_for_partitioner(
     mod: torch.fx.GraphModule, num_primals: int, num_fw_outputs: int

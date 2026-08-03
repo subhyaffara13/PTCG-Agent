@@ -1,3 +1,4 @@
+import sys
 
 def _is_comprehension_start(tx: InstructionTranslatorBase) -> bool:
     """Detect if we're at the start of a list/dict comprehension in 3.12+.

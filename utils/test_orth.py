@@ -1,3 +1,4 @@
+import itertools
 
 def test_orth():
     dtypes = [np.float32, np.float64, np.complex64, np.complex128]

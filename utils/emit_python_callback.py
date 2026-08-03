@@ -1,3 +1,4 @@
+from typing import Any
 
 def emit_python_callback(
     ctx: mlir.LoweringRuleContext,

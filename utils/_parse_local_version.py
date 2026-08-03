@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _parse_local_version(local: str | None) -> LocalType | None:
     """

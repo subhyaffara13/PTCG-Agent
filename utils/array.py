@@ -1,3 +1,5 @@
+import copy
+from typing import Any
 
 def array(sound):
     """pygame.sndarray.array(Sound): return array

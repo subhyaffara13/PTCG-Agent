@@ -1,3 +1,4 @@
+import os
 
 def trailing_sep(path):
     """Return True if the path ends with a path separator.

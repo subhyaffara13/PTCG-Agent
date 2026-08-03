@@ -1,3 +1,4 @@
+import os
 
 def file_size(filelike: IO[bytes]) -> int:
     """Find length of any open read-mode file-like"""

@@ -1,3 +1,4 @@
+import re
 
 def to_camel(snake: str) -> str:
     """Convert a snake_case string to camelCase.

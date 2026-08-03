@@ -1,3 +1,4 @@
+import os
 
 def safe_listdir(path: StrOrBytesPath):
     """

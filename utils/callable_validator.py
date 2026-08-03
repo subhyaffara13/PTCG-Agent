@@ -1,3 +1,4 @@
+from typing import Any
 
 def callable_validator(v: Any) -> AnyCallable:
     """

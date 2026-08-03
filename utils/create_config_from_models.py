@@ -1,3 +1,4 @@
+import pathlib
 
 def create_config_from_models(
     model_files: typing.Iterable[pathlib.Path], output_file: pathlib.Path, enable_type_reduction: bool

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prepare_model_with_stubs(
     float_module: nn.Module,

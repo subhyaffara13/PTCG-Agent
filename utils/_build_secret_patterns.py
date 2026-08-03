@@ -1,3 +1,5 @@
+import re
+from typing import List
 
 def _build_secret_patterns() -> "re.Pattern[str]":
     patterns: List[str] = [

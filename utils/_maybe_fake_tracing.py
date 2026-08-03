@@ -1,3 +1,4 @@
+from typing import Any
 
 def _maybe_fake_tracing(fn, inputs: list[Any], pre_dispatch):
     fake_mode_det = None

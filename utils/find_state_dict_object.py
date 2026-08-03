@@ -1,3 +1,4 @@
+from typing import Any
 
 def find_state_dict_object(state_dict: STATE_DICT_TYPE, index: MetadataIndex) -> Any:
     if index.fqn not in state_dict:

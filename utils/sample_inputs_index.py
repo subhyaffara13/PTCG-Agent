@@ -1,3 +1,4 @@
+import copy
 
 def sample_inputs_index(op_info, device, dtype, requires_grad, reference=False, **kwargs):
     # target.index_add(dim, idx, source, *, alpha=1)

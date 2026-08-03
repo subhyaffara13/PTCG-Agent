@@ -1,3 +1,5 @@
+import os
+import re
 
 def _augment_frames(frames: list[_Frame]) -> int:
     """

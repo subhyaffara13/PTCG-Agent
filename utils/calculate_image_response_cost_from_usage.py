@@ -1,3 +1,4 @@
+from typing import Optional
 
 def calculate_image_response_cost_from_usage(
     model: str,

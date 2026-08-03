@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def resolves(
     typ: Union[type, pydantic.types.ConstrainedNumberMeta]

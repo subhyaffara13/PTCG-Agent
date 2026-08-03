@@ -1,3 +1,4 @@
+from typing import Any
 
 def _cast_forward_inputs(
     dtype: torch.dtype | None,

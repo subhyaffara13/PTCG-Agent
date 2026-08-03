@@ -1,3 +1,4 @@
+import re
 
 def _parse_reduction_hint(kernel_category: str, kernel_module_code: str) -> str | None:
     if kernel_category not in ("reduction", "persistent_reduction"):

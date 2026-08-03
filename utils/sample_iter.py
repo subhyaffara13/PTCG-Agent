@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def sample_iter(expr, condition=None, size=(), library='scipy',
                     numsamples=S.Infinity, seed=None, **kwargs):

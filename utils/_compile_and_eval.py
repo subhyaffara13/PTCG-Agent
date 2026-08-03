@@ -1,3 +1,4 @@
+from typing import Any
 
 def _compile_and_eval(
     script: str,

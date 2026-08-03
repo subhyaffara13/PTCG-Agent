@@ -1,3 +1,4 @@
+from typing import Any
 
 def _unflatten_oneof(space: OneOf, x: NDArray[Any]) -> tuple[int, Any]:
     idx = np.int64(x[0])

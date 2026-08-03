@@ -1,3 +1,4 @@
+import copy
 
 def _to_will_alias(
     a: TensorLikeType,

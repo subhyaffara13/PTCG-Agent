@@ -1,3 +1,4 @@
+from typing import Any
 
 def _has_prng_key_dtype(arg: Any) -> bool:
   """Returns True if the dtype of arg is a PRNG key dtype."""

@@ -1,3 +1,5 @@
+import copy
+import re
 
 def nan_to_num(self, nan=None, posinf=None, neginf=None):
     return torch.empty_like(self)

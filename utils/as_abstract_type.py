@@ -1,3 +1,4 @@
+from typing import Any
 
 def as_abstract_type(value) -> Any:
   """Converts a value to its abstract type."""

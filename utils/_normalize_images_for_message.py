@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _normalize_images_for_message(
     images: Optional[List[dict]],

@@ -1,3 +1,4 @@
+import os
 
 def setup_environment(args):
     """Sets up the output directory and logging."""

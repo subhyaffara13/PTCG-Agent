@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def adadelta(
     params: list[Tensor],

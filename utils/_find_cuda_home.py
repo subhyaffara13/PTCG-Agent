@@ -1,3 +1,4 @@
+import os
 
 def _find_cuda_home() -> str | None:
     """Find the CUDA install path."""

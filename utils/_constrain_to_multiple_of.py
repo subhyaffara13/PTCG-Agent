@@ -1,3 +1,5 @@
+import math
+
 
 def _constrain_to_multiple_of(val, multiple, min_val=0, max_val=None):
     """Constrain a value to be a multiple of another value."""

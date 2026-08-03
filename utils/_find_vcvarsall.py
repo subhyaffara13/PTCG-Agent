@@ -1,3 +1,4 @@
+import os
 
 def _find_vcvarsall(plat_spec):
     # bpo-38597: Removed vcruntime return value

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def tests_build_wheel(monkeypatch, tmpdir):
     monkeypatch.chdir(MAIN_DIR)

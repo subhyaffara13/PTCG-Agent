@@ -1,3 +1,5 @@
+import math
+
 
 def _apply_norm(
     x: TensorLikeType, norm: NormType, signal_numel: int, forward: bool

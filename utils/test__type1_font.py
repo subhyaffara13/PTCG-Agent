@@ -1,3 +1,4 @@
+import os
 
 def test_Type1Font():
     filename = os.path.join(os.path.dirname(__file__), 'data', 'cmr10.pfb')

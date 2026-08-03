@@ -1,3 +1,4 @@
+from typing import Callable
 
 def record_xml_attribute(request: FixtureRequest) -> Callable[[str, object], None]:
     """Add extra xml attributes to the tag for the calling test.

@@ -1,3 +1,4 @@
+import os
 
 def filter_traceback_for_conftest_import_failure(
     entry: _pytest._code.TracebackEntry,

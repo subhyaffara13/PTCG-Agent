@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _get_customer_id_from_standard_headers(
     request_headers: Optional[dict],

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _find_matches(
     root: GraphModule,

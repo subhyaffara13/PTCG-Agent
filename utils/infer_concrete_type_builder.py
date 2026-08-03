@@ -1,3 +1,4 @@
+import re
 
 def infer_concrete_type_builder(nn_module, share_types=True):
     """

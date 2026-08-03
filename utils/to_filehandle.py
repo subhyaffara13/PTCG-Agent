@@ -1,3 +1,4 @@
+import os
 
 def to_filehandle(fname, flag='r', return_opened=False, encoding=None):
     """

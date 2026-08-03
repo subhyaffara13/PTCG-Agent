@@ -1,3 +1,4 @@
+from typing import Any
 
 def as_slice_indices(arr: Any, idx: Index) -> tuple[
     tuple[int, ...], tuple[int, ...], tuple[int, ...]]:

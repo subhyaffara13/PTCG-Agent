@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _get_case_insensitive_mapping_value(
     mapping: Optional[Mapping[str, Any]], key: str

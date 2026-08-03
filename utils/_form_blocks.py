@@ -1,3 +1,4 @@
+import itertools
 
 def _form_blocks(arrays: list[ArrayLike], consolidate: bool, refs: list) -> list[Block]:
     tuples = enumerate(arrays)

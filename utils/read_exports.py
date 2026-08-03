@@ -1,3 +1,5 @@
+import json
+import sys
 
 def read_exports(stream):
     if sys.version_info[0] >= 3:

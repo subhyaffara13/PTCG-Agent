@@ -1,3 +1,4 @@
+from typing import Any
 
 def _binop_push_rule(
     prim: core.Primitive,

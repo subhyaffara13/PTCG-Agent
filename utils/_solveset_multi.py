@@ -1,3 +1,4 @@
+from typing import Union
 
 def _solveset_multi(eqs, syms, domains):
     '''Basic implementation of a multivariate solveset.

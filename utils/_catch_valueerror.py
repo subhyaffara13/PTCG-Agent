@@ -1,3 +1,4 @@
+import sys
 
 def _catch_valueerror(unraisable: sys.UnraisableHookArgs) -> None:  # pragma: no cover
     """Overwrite sys.unraisablehook to catch incorrect ValueError.

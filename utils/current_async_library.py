@@ -1,3 +1,4 @@
+import sys
 
 def current_async_library() -> str:
     # Determine if we're running under trio or asyncio.

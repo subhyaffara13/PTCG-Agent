@@ -1,3 +1,4 @@
+import sys
 
 def instruction_size(inst: Instruction) -> int:
     import torch

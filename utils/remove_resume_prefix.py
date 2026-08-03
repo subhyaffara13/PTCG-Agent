@@ -1,3 +1,4 @@
+import re
 
 def remove_resume_prefix(name: str) -> str:
     from .resume_execution import TORCH_DYNAMO_RESUME_IN_PREFIX

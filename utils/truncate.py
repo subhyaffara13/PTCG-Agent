@@ -1,3 +1,4 @@
+from typing import Union
 
 def truncate(X, lb=-np.inf, ub=np.inf):
     """Truncate the support of a random variable.

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def get_overridable_functions() -> dict[Any, list[Callable]]:
     """List functions that are overridable via __torch_function__

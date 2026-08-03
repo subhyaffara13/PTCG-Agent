@@ -1,3 +1,4 @@
+import re
 
 def test_adjoint_and_special_matrices():
     A = Identity(3)

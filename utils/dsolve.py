@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def dsolve(eq, func=None, hint="default", simplify=True,
     ics= None, xi=None, eta=None, x0=0, n=6, **kwargs):

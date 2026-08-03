@@ -1,3 +1,4 @@
+import re
 
 def _regex_transformer(value: str) -> Pattern[str]:
     """Prevents 're.error' from propagating and crash pylint."""

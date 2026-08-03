@@ -1,3 +1,5 @@
+import math
+
 
 def mpf_zeta(s, prec, rnd=round_fast, alt=0):
     sign, man, exp, bc = s

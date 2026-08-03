@@ -1,3 +1,5 @@
+import os
+import re
 
 def pytest_xdist_worker_id():
     """

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _infer_input_type(fun: Callable, dbg_fn: Callable[[], core.DebugInfo],
                       explicit_args) -> tuple[core.AbstractValue, ...]:

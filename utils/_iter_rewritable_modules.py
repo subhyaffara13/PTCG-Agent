@@ -1,3 +1,4 @@
+import os
 
 def _iter_rewritable_modules(package_files: Iterable[str]) -> Iterator[str]:
     """Given an iterable of file names in a source distribution, return the "names" that should

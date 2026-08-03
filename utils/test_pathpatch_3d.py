@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_pathpatch_3d(fig_test, fig_ref):
     ax = fig_ref.add_subplot(projection="3d")

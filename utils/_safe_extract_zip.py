@@ -1,3 +1,7 @@
+import os
+import re
+from pathlib import Path
+
 
 def _safe_extract_zip(zip_file, extract_to):
     """

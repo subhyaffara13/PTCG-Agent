@@ -1,3 +1,5 @@
+import logging
+import time
 
 def _wait_for_replicator_file_to_disappear(
     local_checkpoint_directory: epath.Path, *, timeout_seconds: int = 300

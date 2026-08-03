@@ -1,3 +1,5 @@
+import math
+
 
 def _canonicalize_reshape(
     input_shape: tuple[int, ...], shape: tuple[int, ...]

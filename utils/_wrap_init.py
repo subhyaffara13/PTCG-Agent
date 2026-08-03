@@ -1,3 +1,4 @@
+import functools
 
 def _wrap_init(init_fn):
   """`__init__` wrapper."""

@@ -1,3 +1,4 @@
+import os
 
 def tensorboard_trace_handler(
     dir_name: str, worker_name: str | None = None, use_gzip: bool = False

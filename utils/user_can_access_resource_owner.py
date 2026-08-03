@@ -1,3 +1,4 @@
+from typing import Optional
 
 def user_can_access_resource_owner(
     owner: Optional[str],

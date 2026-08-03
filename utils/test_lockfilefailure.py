@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_lockfilefailure(tmp_path):
     # The logic here:

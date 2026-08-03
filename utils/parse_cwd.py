@@ -1,3 +1,4 @@
+import re
 
 def parse_cwd(line: str) -> str | None:
     """Parse the second line of the program for the command line.

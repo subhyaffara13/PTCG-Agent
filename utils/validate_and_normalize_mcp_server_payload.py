@@ -1,3 +1,4 @@
+from typing import Any
 
 def validate_and_normalize_mcp_server_payload(payload: Any) -> None:
     """

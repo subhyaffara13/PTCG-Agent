@@ -1,3 +1,4 @@
+import json
 
 def extract(iterable, indices):
     """Yield values at the specified indices.

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def construct_meta_kernel(qualname: str, fake_impl_holder: FakeImplHolder) -> Callable:
     if fake_impl_holder.kernel is None:

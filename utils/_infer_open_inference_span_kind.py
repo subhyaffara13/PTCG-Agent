@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _infer_open_inference_span_kind(call_type: Optional[str]) -> str:
     """

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_annotatable_types() -> set[Any]:
     global _ANNOTATABLE_TYPES

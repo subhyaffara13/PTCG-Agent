@@ -1,3 +1,5 @@
+import os
+import sys
 
 def alive(pid: int) -> bool:
     """Is the process alive?"""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _assert_module_states(
     model: nn.Module,

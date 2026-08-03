@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def configure() -> None:
     """

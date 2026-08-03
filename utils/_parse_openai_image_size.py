@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _parse_openai_image_size(size: str) -> Optional[tuple[int, int]]:
     if size == "auto":

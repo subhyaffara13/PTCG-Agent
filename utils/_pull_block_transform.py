@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _pull_block_transform(
     jaxpr: core.Jaxpr,

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _set_config(dist: Distribution, field: str, value: Any):
     val = _PREPROCESS.get(field, _noop)(dist, value)

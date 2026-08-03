@@ -1,3 +1,4 @@
+import os
 
 def resolve_aws_region_with_source(
     aws_region: str | None, *, session: object | None = None

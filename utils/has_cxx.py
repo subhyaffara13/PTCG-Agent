@@ -1,3 +1,4 @@
+import os
 
 def has_cxx():
     if not hasattr(has_cxx, 'result'):

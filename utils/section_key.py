@@ -1,3 +1,4 @@
+import re
 
 def section_key(line: str, config: Config) -> str:
     section = "B"

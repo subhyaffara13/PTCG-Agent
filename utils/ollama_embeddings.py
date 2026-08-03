@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def ollama_embeddings(
     api_base: str,

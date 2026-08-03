@@ -1,3 +1,4 @@
+import itertools
 
 def style_generator(kw):
     """

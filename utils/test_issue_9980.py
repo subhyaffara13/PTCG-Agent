@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_9980():
     c1 = ComplexRegion(Interval(1, 2)*Interval(2, 3))

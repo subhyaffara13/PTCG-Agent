@@ -1,3 +1,4 @@
+import os
 
 def _get_max_string_length_prompt_in_db() -> int:
     """

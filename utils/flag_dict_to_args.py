@@ -1,3 +1,4 @@
+from typing import Any
 
 def flag_dict_to_args(
     flag_map: dict[str, Any], multi_flags: set[str] | None = None

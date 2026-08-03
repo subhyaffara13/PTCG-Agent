@@ -1,3 +1,4 @@
+from typing import Any
 
 def modify_spec_for_auto_manual(spec, mesh) -> P:
   new_spec: list[Any] = []

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _apply_grouping(
     events: list[dict[str, Any]], group_by_sm: bool, per_cta_occupancy: bool

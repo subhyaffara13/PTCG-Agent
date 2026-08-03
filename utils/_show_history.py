@@ -1,3 +1,4 @@
+from typing import Any, Dict, List
 
 def _show_history(console: Console, messages: List[Dict[str, Any]]):
     """Show conversation history"""

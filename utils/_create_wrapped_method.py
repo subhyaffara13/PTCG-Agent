@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def _create_wrapped_method(cls: type, name: str) -> Callable[..., Any]:
     orig_fn = getattr(cls, name)

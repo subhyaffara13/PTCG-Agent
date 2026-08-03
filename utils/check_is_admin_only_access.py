@@ -1,3 +1,4 @@
+from typing import Dict, Union
 
 def check_is_admin_only_access(ui_access_mode: Union[str, Dict]) -> bool:
     """Checks ui access mode is admin_only"""

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def run_and_get_constant_graph(
     gm: torch.fx.GraphModule,

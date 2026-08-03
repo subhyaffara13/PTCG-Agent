@@ -1,3 +1,4 @@
+from typing import Callable, List, Optional, Tuple
 
 def tls_auth_handler(
         url: str,

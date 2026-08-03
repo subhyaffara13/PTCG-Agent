@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _switch_internal(
     index: ArrayLike,

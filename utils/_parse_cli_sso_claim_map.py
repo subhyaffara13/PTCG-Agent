@@ -1,3 +1,4 @@
+from typing import List, Tuple
 
 def _parse_cli_sso_claim_map() -> List[Tuple[str, str]]:
     """

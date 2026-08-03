@@ -1,3 +1,5 @@
+import os
+import sys
 
 def is_relative(modname: str, from_file: str) -> bool:
     """Return true if the given module name is relative to the given

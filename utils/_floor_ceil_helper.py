@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _floor_ceil_helper(a: sympy.Basic, fn: Callable[..., sympy.Basic]) -> sympy.Basic:
     import sympy

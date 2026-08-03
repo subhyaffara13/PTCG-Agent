@@ -1,3 +1,4 @@
+import sys
 
 def _test_redirected_print(x, tp, ref=None):
     file = StringIO()

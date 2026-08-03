@@ -1,3 +1,5 @@
+import logging
+import sys
 
 def open_spinner(message: str) -> Generator[SpinnerInterface, None, None]:
     # Interactive spinner goes directly to sys.stdout rather than being routed

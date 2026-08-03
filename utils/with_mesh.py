@@ -1,3 +1,5 @@
+import math
+
 
 def with_mesh(named_shape: MeshSpec) -> Generator[None, None, None]:
   """Test utility for setting up meshes given mesh data from `schedules`."""

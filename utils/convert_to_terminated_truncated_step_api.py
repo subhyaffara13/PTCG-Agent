@@ -1,3 +1,4 @@
+from typing import Union
 
 def convert_to_terminated_truncated_step_api(
     step_returns: DoneStepType | TerminatedTruncatedStepType, is_vector_env=False

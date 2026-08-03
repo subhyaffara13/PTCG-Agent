@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_root(key: str) -> tuple[dict[str, Any], str]:
     path = key.split(".")

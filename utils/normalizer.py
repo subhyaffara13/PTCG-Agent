@@ -1,3 +1,4 @@
+import functools
 
 def normalizer(_func=None, *, promote_scalar_result=False):
     def normalizer_inner(func):

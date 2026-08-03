@@ -1,3 +1,4 @@
+import sys
 
 def run_symilar(argv: Sequence[str] | None = None) -> NoReturn:
     """Run symilar.

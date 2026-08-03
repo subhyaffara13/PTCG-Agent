@@ -1,3 +1,4 @@
+import os
 
 def _autotune_num_choices_displayed_default() -> int | None:
     env_val = os.environ.get("TORCHINDUCTOR_AUTOTUNE_NUM_CHOICES_DISPLAYED")

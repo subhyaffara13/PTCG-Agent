@@ -1,3 +1,4 @@
+import re
 
 def _android_platforms(arch: str) -> list[str]:
     match = re.fullmatch(r"android_(\d+)_(.+)", arch)

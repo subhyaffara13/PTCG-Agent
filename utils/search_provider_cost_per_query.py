@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def search_provider_cost_per_query(
     model: str,

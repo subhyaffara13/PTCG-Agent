@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_forward_arg_names(
     mod: torch.nn.Module,

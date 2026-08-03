@@ -1,3 +1,4 @@
+from typing import Dict
 
 def parse_css_declarations(style_attr: str) -> Dict[str, str]:
     # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style

@@ -1,3 +1,4 @@
+import re
 
 def _meijergexpand(func, z0, allow_hyper=False, rewrite='default',
                    place=None):

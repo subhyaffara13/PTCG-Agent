@@ -1,3 +1,4 @@
+from typing import Any
 
 def setup_stacktrace_preservation_hooks_from_tensors(outputs: Any) -> None:
     roots = [

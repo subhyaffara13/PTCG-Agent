@@ -1,3 +1,4 @@
+from typing import Any
 
 def interpolate_2d_inplace(
     data: np.ndarray,  # floating dtype

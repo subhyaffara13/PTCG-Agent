@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def deep_update(mapping: Dict[KeyType, Any], *updating_mappings: Dict[KeyType, Any]) -> Dict[KeyType, Any]:
     updated_mapping = mapping.copy()

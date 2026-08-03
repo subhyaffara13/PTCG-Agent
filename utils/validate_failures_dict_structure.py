@@ -1,3 +1,5 @@
+import re
+from typing import Any
 
 def validate_failures_dict_structure(
     failure_dict: "FailuresDict", test_utils: list[str], testcase: Any

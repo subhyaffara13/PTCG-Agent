@@ -1,3 +1,4 @@
+from typing import Any
 
 def config_from_dict(config: dict[str, Any]) -> Config:
     config = {**config}

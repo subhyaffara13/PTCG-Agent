@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def module(name: str, config: Config = DEFAULT_CONFIG) -> str:
     """Returns the section placement for the given module name."""

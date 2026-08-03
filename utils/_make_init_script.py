@@ -1,3 +1,4 @@
+import sys
 
 def _make_init_script(
     cls,

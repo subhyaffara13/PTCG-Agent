@@ -1,3 +1,4 @@
+import itertools
 
 def sample_inputs_group_norm(opinfo, device, dtype, requires_grad, **kwargs):
     make_arg = partial(make_tensor, device=device, dtype=dtype, requires_grad=requires_grad)

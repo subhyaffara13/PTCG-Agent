@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def mpmd_map(
     meshes_and_fns: Sequence[tuple[pallas_core.Mesh, Callable[..., None]]],

@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def build_namespace_package(tmpdir, name, version="1.0", impl="pkg_resources"):
     src_dir = tmpdir / name

@@ -1,3 +1,6 @@
+import json
+from typing import List
+
 
 def load_corpus() -> List[List[int]]:
     corpus = []

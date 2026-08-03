@@ -1,3 +1,4 @@
+import re
 
 def _parse_scores(observation: str) -> dict[str, int]:
     for line in observation.splitlines():

@@ -1,3 +1,4 @@
+import itertools
 
 def _get_numeric_values(text):
     """Parses text and returns numeric values."""

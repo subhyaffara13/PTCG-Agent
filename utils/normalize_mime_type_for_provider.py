@@ -1,3 +1,4 @@
+from typing import Optional
 
 def normalize_mime_type_for_provider(
     mime_type: str, provider: Optional[str] = None

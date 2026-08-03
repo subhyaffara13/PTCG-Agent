@@ -1,3 +1,4 @@
+import os
 
 def get_application_default_credentials_path():
     """Gets the path to the application default credentials file.

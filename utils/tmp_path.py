@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def tmp_path(
     request: FixtureRequest, tmp_path_factory: TempPathFactory

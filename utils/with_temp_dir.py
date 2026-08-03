@@ -1,3 +1,5 @@
+import os
+from typing import Any, Callable
 
 def with_temp_dir(
     func: Callable | None = None,

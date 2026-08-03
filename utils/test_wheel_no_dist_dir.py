@@ -1,3 +1,4 @@
+import os
 
 def test_wheel_no_dist_dir():
     project_name = 'nodistinfo'

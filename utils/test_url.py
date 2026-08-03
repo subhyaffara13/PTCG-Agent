@@ -1,3 +1,4 @@
+import os
 
 def test_url(httpserver, xml_file):
     pytest.importorskip("lxml")

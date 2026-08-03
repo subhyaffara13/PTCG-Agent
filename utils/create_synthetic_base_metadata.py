@@ -1,3 +1,4 @@
+from typing import Any
 
 def create_synthetic_base_metadata(
     m: ViewAndMutationMeta,

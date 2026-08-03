@@ -1,3 +1,4 @@
+from typing import Callable
 
 def linear_transpose(
     input: torch.Tensor, weight: torch.Tensor, bias: torch.Tensor | None

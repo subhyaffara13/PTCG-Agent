@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def pallas_call(
     kernel: Callable[..., None],

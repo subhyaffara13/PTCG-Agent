@@ -1,3 +1,4 @@
+from typing import Callable
 
 def model_signature(model: torch.nn.Module | Callable) -> inspect.Signature:
     return inspect.signature(

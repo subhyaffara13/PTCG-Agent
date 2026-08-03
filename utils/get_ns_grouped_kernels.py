@@ -1,3 +1,4 @@
+from typing import Callable
 
 def get_ns_grouped_kernels(
     *,

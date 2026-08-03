@@ -1,3 +1,4 @@
+import itertools
 
 def op_sharding_to_numpy_indices(
     hlo_sharding: xc.HloSharding, shape: Sequence[int],

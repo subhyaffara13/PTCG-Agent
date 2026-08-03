@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _get_response_model(completion_response: Any) -> Optional[str]:
     """

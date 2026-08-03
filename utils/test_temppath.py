@@ -1,3 +1,4 @@
+import os
 
 def test_temppath():
     with temppath() as fpath:

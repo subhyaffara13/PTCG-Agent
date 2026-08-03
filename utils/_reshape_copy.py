@@ -1,3 +1,4 @@
+from typing import Any
 
 def _reshape_copy(
     fake_mode: FakeTensorMode, func: OpOverload, a: FakeTensor, *shape: Any

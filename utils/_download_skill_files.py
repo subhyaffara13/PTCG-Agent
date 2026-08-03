@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _download_skill_files(api, skill: MarketplaceSkill, files: list[BucketFile], install_dir: Path) -> None:
     """Download bucket files into `install_dir`."""

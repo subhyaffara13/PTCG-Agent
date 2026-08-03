@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _vjp_with_argnums(
     func: Callable[..., Any],

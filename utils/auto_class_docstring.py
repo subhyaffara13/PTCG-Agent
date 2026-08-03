@@ -1,3 +1,4 @@
+import re
 
 def auto_class_docstring(cls, custom_intro=None, custom_args=None, checkpoint=None):
     """

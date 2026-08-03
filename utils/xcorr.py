@@ -1,3 +1,4 @@
+from typing import Callable
 
 def xcorr(
     x: ArrayLike,

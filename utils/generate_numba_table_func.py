@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def generate_numba_table_func(
     func: Callable[..., np.ndarray],

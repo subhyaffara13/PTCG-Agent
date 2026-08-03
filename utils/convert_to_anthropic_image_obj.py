@@ -1,3 +1,4 @@
+from typing import Optional
 
 def convert_to_anthropic_image_obj(
     openai_image_url: str, format: Optional[str]

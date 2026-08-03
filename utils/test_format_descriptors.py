@@ -1,3 +1,4 @@
+import re
 
 def test_format_descriptors():
     with pytest.raises(RuntimeError) as excinfo:

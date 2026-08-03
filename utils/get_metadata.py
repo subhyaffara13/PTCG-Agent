@@ -1,3 +1,6 @@
+import os
+import sys
+from typing import Any
 
 def get_metadata(args, is_xl: bool = False) -> dict[str, Any]:
     metadata = {

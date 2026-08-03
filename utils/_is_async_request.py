@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _is_async_request(
     kwargs: Optional[dict],

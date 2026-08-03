@@ -1,3 +1,4 @@
+from typing import Any, List
 
 def _parse_email_list(raw: Any) -> List[str]:
     """Parse emails from a list or comma-separated string."""

@@ -1,3 +1,4 @@
+import os
 
 def test_findall_curdir(example_source):
     with example_source.as_cwd():

@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _wrap_decimal_thousands(
     formatter: Callable, decimal: str, thousands: str | None

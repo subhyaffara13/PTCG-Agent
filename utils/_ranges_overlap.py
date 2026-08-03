@@ -1,3 +1,4 @@
+import itertools
 
 def _ranges_overlap(
     range1: tuple[slice | int, ...], range2: tuple[slice | int, ...]

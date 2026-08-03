@@ -1,3 +1,4 @@
+import itertools
 
 def _merge_branch_residuals(branch_res_avals):
   def enumerate_equal(xs):

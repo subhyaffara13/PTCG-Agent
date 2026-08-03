@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def pass_execution_and_save(
     func: Callable[..., Any], gm: GraphModule, inp: Sequence[Any], msg: str

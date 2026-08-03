@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def find_highest_version(ns: str | None, name: str) -> int | None:
     """Finds the highest registered version of the environment given the namespace and name in the registry.

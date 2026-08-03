@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_fullname(self):
     return _distribution_fullname(self.get_name(), self.get_version())

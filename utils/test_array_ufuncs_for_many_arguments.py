@@ -1,3 +1,4 @@
+import re
 
 def test_array_ufuncs_for_many_arguments():
     # GH39853

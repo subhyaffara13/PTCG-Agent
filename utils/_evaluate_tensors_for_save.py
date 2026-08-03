@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _evaluate_tensors_for_save(tensors: Dict[str, torch.Tensor]) -> None:
     if not isinstance(tensors, dict):

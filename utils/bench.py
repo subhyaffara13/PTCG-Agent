@@ -1,3 +1,4 @@
+import os
 
 def bench(strictio, fmode, skippypy):
     import platform

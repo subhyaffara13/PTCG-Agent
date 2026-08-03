@@ -1,3 +1,4 @@
+import re
 
 def mpc_square(z, prec, rnd=round_fast):
     # (a+b*I)**2 == a**2 - b**2 + 2*I*a*b

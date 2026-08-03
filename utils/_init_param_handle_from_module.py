@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _init_param_handle_from_module(
     state: _FSDPState,

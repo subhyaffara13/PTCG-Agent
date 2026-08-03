@@ -1,3 +1,4 @@
+import os
 
 def test_orc_reader_basic(dirpath):
     data = {

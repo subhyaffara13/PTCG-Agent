@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, List, Optional, Tuple
 
 def apply_proxy_header_overrides(
     project_name: str,

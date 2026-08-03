@@ -1,3 +1,4 @@
+from typing import Any, Dict, List, Optional
 
 def _normalize_alert_emails(
     cfg: Optional[Dict[str, Any]],

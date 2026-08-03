@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_log_path(  # noqa: PLR0913, PLR0917
     appname: str | None = None,

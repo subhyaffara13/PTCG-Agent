@@ -1,3 +1,4 @@
+import sys
 
 def auto_decode(data: bytes) -> str:
     """Check a bytes string for a BOM to correctly detect the encoding

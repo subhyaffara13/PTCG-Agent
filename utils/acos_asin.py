@@ -1,3 +1,4 @@
+import re
 
 def acos_asin(z, prec, rnd, n):
     """ complex acos for n = 0, asin for n = 1

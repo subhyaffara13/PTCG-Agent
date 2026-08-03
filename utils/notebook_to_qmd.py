@@ -1,3 +1,4 @@
+import os
 
 def notebook_to_qmd(notebook):
     """Convert a Jupyter notebook to its Quarto Markdown representation"""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def tree_map_only(
     type_or_types_or_pred: type[T],

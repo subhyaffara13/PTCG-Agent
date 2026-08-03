@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _trace_for_jit(
     fun: Callable, ji: PjitInfo, ctx_mesh: mesh_lib.Mesh,

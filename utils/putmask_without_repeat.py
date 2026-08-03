@@ -1,3 +1,4 @@
+from typing import Any
 
 def putmask_without_repeat(
     values: np.ndarray, mask: npt.NDArray[np.bool_], new: Any

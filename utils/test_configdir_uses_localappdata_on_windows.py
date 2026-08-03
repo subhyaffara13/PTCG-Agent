@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_configdir_uses_localappdata_on_windows(tmp_path):
     """Test that on Windows, config/cache dir uses LOCALAPPDATA for fresh installs."""

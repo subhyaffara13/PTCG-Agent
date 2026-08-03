@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_opaque_reference_type(cls: Any) -> bool:
     """

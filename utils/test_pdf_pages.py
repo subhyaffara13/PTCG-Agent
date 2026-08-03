@@ -1,3 +1,4 @@
+import os
 
 def test_pdf_pages(system):
     rc_pdflatex = {

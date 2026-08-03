@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_rules_from_op_strategy(
     op_strategy: Any,

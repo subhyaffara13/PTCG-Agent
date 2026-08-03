@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_set_enable_dynamic(enable: bool) -> Any:
     assert isinstance(enable, bool)

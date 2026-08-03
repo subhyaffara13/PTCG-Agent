@@ -1,3 +1,4 @@
+from typing import Any
 
 def _pcollectives_lowering_common(ctx, *, axis_name, perm, op_name):
   replica_groups = _replica_groups(ctx.module_context.axis_context, axis_name, None)

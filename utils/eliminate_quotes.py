@@ -1,3 +1,4 @@
+import re
 
 def eliminate_quotes(s):
     """Replace quoted substrings of input string.

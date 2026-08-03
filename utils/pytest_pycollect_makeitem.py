@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def pytest_pycollect_makeitem(collector, name, obj):  # type: ignore[no-untyped-def]
     """Fix pytest collecting for coroutines."""

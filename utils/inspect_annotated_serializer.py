@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def inspect_annotated_serializer(serializer: Callable[..., Any], mode: Literal['plain', 'wrap']) -> bool:
     """Look at a serializer function used via `Annotated` and determine whether it takes an info argument.

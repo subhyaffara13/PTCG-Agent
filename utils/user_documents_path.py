@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def user_documents_path() -> Path:
     """:returns: documents path tied to the user"""

@@ -1,3 +1,4 @@
+import re
 
 def _get_font_alt_names(font, primary_name):
     """

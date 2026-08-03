@@ -1,3 +1,4 @@
+from typing import Optional
 
 def warmup_exponential_decay_schedule(
     init_value: jax.typing.ArrayLike,

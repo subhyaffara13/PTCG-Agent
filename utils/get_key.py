@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_key(
     dotenv_path: StrPath,

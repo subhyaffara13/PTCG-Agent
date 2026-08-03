@@ -1,3 +1,4 @@
+import random
 
 def truncated_normal(stddev: RealNumeric = 1e-2,
                      dtype: DTypeLikeInexact | None = None,

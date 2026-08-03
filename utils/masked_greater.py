@@ -1,3 +1,4 @@
+import copy
 
 def masked_greater(x, value, copy=True):
     """

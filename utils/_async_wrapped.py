@@ -1,3 +1,4 @@
+import functools
 
 def _async_wrapped(func):
   @functools.wraps(func)

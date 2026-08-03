@@ -1,3 +1,4 @@
+from typing import Any
 
 def _split_by_sym_type(
     args: list[Any],

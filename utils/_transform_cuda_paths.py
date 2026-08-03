@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _transform_cuda_paths(lpaths: list[str]) -> None:
     # This handles two cases:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def consume_prefix_in_state_dict_if_present(
     state_dict: dict[str, Any],

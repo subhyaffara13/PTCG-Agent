@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _prepare_sources(mname, sources, bdir):
     extended_sources = sources.copy()

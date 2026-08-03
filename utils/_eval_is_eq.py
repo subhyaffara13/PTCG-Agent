@@ -1,3 +1,4 @@
+import re
 
 def _eval_is_eq(lhs, rhs):
     if lhs._size != rhs._size:

@@ -1,3 +1,4 @@
+import sys
 
 def print_color(
     s, color=None, bold=False, file=sys.stdout

@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def _pool_offsets_to_indices(
     offsets: TensorBox,

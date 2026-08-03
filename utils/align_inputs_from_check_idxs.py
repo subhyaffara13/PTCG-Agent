@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def align_inputs_from_check_idxs(
     model: Callable[[list[InputType]], _T],

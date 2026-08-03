@@ -1,3 +1,4 @@
+import os
 
 def write_arg(cmd, basename, filename, force: bool = False) -> None:
     argname = os.path.splitext(basename)[0]

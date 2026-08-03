@@ -1,3 +1,4 @@
+from typing import Union
 
 def selective_transform(
     optimizer: base.GradientTransformation,

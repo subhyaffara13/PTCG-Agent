@@ -1,3 +1,4 @@
+import sys
 
 def _has_generic_or_protocol_as_origin() -> bool:
     try:

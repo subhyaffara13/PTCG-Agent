@@ -1,3 +1,4 @@
+from typing import Callable
 
 def check_no_aliased_ref_args(dbg_fn: Callable[[], core.DebugInfo],
                               maybe_avals, args) -> None:

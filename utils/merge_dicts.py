@@ -1,3 +1,4 @@
+from typing import Any
 
 def merge_dicts(d1: dict[str, Any], d2: dict[str, Any]) -> None:
     for k, v in d2.items():

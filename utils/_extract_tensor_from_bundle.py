@@ -1,3 +1,4 @@
+from typing import Any
 
 def _extract_tensor_from_bundle(
     info: dict[str, Any],

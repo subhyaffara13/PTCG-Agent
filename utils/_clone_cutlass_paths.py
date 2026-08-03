@@ -1,3 +1,4 @@
+import os
 
 def _clone_cutlass_paths(build_root: str) -> list[str]:
     paths = _cutlass_paths()

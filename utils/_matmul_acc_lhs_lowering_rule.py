@@ -1,3 +1,4 @@
+from typing import Any
 
 def _matmul_acc_lhs_lowering_rule(
     ctx: LoweringRuleContext,

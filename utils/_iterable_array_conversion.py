@@ -1,3 +1,4 @@
+from typing import Any
 
 def _iterable_array_conversion(
     value: Iterable[Any], xp: ModuleType, device: Device | None = None

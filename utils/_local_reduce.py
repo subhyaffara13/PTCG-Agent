@@ -1,3 +1,4 @@
+import functools
 
 def _local_reduce(
     reduce_op: ReduceOp | str,

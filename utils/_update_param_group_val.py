@@ -1,3 +1,4 @@
+from typing import Any
 
 def _update_param_group_val(
     param_group: dict[str, Any], key: str, val: float | Tensor

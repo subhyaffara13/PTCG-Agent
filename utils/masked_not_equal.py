@@ -1,3 +1,4 @@
+import copy
 
 def masked_not_equal(x, value, copy=True):
     """

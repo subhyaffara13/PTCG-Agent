@@ -1,3 +1,4 @@
+import logging
 
 def get_log_level_for_setting(config: Config, *setting_names: str) -> int | None:
     for setting_name in setting_names:

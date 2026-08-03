@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_multiprocess_array(value: Any) -> bool:
   """Use GlobalAsyncCheckpointManager to save the array if it's only partially available on this host."""

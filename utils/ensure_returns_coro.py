@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def ensure_returns_coro(
     func: Callable[P, Awaitable[T_Retval]],

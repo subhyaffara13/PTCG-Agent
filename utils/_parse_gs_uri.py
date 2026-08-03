@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _parse_gs_uri(gs_uri: str) -> Tuple[str, str]:
     if not gs_uri.startswith("gs://"):

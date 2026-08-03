@@ -1,3 +1,4 @@
+from typing import Callable
 
 def histogram(items: Iterable[TItem]) -> dict[TItem, int]:
     """Accepts a list of hashable items and returns a dictionary where the keys are items and the values are counts of each item in the list."""

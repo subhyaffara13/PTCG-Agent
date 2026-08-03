@@ -1,3 +1,4 @@
+from typing import Callable
 
 def prune_lstm_output_linear(
     lstm: nn.LSTM, getitem: Callable, linear: nn.Linear

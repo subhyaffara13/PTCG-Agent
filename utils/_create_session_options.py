@@ -1,3 +1,4 @@
+import pathlib
 
 def _create_session_options(
     optimization_level: ort.GraphOptimizationLevel,

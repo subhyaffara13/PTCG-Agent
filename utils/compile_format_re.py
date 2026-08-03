@@ -1,3 +1,4 @@
+import re
 
 def compile_format_re() -> Pattern[str]:
     """Construct regexp to match format conversion specifiers in % interpolation.

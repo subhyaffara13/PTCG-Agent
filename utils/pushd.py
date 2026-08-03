@@ -1,3 +1,4 @@
+import os
 
 def pushd(dir: str | os.PathLike) -> Iterator[str | os.PathLike]:
     """

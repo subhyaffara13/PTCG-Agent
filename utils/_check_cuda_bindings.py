@@ -1,3 +1,4 @@
+from typing import Any
 
 def _check_cuda_bindings(result: Any) -> Any:
     """Check a cuda.bindings (cuda-python) call result for errors.

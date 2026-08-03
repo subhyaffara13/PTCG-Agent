@@ -1,3 +1,4 @@
+import itertools
 
 def test_memoverlap_accumulate_cmp(ufunc, dtype):
     if ufunc.signature:

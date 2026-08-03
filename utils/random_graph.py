@@ -1,3 +1,5 @@
+import math
+
 
 def random_graph(n, m, p, seed=None, directed=False):
     """Returns a bipartite random graph.

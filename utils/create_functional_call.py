@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def create_functional_call(
     mod: Any,

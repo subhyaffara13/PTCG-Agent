@@ -1,3 +1,4 @@
+from typing import Callable
 
 def _typer_param_setup_autocompletion_compat(
     self: click.Parameter,

@@ -1,3 +1,4 @@
+import os
 
 def convert_dos_path(s):
     r"""Convert paths using native DOS format like:

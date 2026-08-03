@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_user_input_output(flat_values: list[Any], error_type: UserErrorType) -> None:
     supported_types = [

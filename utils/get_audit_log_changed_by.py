@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_audit_log_changed_by(
     *,

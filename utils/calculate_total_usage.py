@@ -1,3 +1,4 @@
+from typing import List
 
 def calculate_total_usage(chunks: List[ModelResponse]) -> Usage:
     """Assume most recent usage chunk has total usage uptil then."""

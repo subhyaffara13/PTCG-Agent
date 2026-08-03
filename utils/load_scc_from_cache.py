@@ -1,3 +1,4 @@
+import json
 
 def load_scc_from_cache(
     scc: list[MypyFile], result: BuildResult, mapper: Mapper, ctx: DeserMaps

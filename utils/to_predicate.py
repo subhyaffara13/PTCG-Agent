@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_predicate(filter: Filter) -> Predicate:
   """Converts a Filter to a predicate function.

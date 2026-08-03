@@ -1,3 +1,4 @@
+from typing import List
 
 def _format_search_results_as_tool_output(
     results: List[VectorStoreSearchResult],

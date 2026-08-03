@@ -1,3 +1,5 @@
+import os
+import sys
 
 def hard_exit(status: int = 0) -> None:
     """Kill the current process without fully cleaning up.

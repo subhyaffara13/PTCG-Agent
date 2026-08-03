@@ -1,3 +1,4 @@
+from typing import Any
 
 def _render_grid_ascii(
     grid: list[list[str]],

@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def _resolve_proxy_base_url_env() -> Optional[str]:
     global _warned_invalid_proxy_base_url

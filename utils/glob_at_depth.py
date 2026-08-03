@@ -1,3 +1,4 @@
+import os
 
 def glob_at_depth(filename_glob, cwd=None):
     if cwd is not None:

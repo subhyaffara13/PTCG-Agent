@@ -1,3 +1,4 @@
+from typing import Any
 
 def is_supported_abstract_leaf(x: Any) -> bool:
   """Returns True if the given object is a supported AbstractLeaf."""

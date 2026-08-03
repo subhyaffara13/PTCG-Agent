@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _write_sources_to_build_dir(sources, build_dir):
     build_dir = build_dir or tempfile.mkdtemp()

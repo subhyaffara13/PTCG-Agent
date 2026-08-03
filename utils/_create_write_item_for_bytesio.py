@@ -1,3 +1,4 @@
+from typing import Any
 
 def _create_write_item_for_bytesio(fqn: str, bytes: Any):
     return WriteItem(

@@ -1,3 +1,4 @@
+from typing import Any
 
 def from_key_val_list(
     value: Mapping[Any, Any] | Iterable[tuple[Any, Any]] | None,

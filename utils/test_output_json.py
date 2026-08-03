@@ -1,3 +1,5 @@
+import os
+import re
 
 def test_output_json(testcase: DataDrivenTestCase) -> None:
     """Runs Mypy in a subprocess, and ensures that `--output=json` works as intended."""

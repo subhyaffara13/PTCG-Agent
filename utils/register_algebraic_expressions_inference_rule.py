@@ -1,3 +1,4 @@
+from typing import Callable
 
 def register_algebraic_expressions_inference_rule(
     call_target: Target,

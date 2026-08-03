@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_SeqExpr():
     #SeqExpr is a baseclass and does not take care of

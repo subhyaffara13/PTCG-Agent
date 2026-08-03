@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _state_converter(itr: tSequence) -> Tuple | Range:
     """

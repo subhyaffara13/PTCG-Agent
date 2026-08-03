@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def test_issue_16772():
     # because there is a converter for tuple, the

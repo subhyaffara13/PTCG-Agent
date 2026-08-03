@@ -1,3 +1,5 @@
+import math
+
 
 def batchwise_reference_chunk(op, sample):
     # reference for chunk() over dim=0

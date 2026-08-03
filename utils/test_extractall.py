@@ -1,3 +1,4 @@
+import re
 
 def test_extractall(any_string_dtype):
     data = [

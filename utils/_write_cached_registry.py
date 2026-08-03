@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 
 def _write_cached_registry(path: str, registry: Registry) -> None:
     try:

@@ -1,3 +1,4 @@
+import itertools
 
 def solve_rational_inequalities(eqs):
     """Solve a system of rational inequalities with rational coefficients.

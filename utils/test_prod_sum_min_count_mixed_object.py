@@ -1,3 +1,4 @@
+import re
 
 def test_prod_sum_min_count_mixed_object():
     # https://github.com/pandas-dev/pandas/issues/41074

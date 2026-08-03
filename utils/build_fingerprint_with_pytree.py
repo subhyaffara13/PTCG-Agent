@@ -1,3 +1,4 @@
+from typing import Any
 
 def build_fingerprint_with_pytree(
     tx: "InstructionTranslator",

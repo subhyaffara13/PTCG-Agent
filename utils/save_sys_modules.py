@@ -1,3 +1,4 @@
+import sys
 
 def save_sys_modules():
     """Make sure initial ``sys.modules`` is preserved"""

@@ -1,3 +1,4 @@
+import sys
 
 def parse_cmd_line_args():
     global DISABLED_TESTS_FILE

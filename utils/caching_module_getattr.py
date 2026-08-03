@@ -1,3 +1,4 @@
+import functools
 
 def caching_module_getattr(cls):
     """

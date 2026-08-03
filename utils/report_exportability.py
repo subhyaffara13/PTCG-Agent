@@ -1,3 +1,4 @@
+from typing import Any
 
 def report_exportability(
     mod: torch.nn.Module,

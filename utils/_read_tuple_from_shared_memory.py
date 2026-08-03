@@ -1,3 +1,4 @@
+from typing import Tuple
 
 def _read_tuple_from_shared_memory(space: Tuple, shared_memory, n: int = 1):
     return tuple(

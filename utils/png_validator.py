@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def pngValidator(
     path: Optional[str] = None,

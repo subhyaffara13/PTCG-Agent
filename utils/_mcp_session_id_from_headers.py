@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _mcp_session_id_from_headers(
     raw_headers: Optional[Dict[str, str]],

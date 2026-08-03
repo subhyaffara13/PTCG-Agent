@@ -1,3 +1,4 @@
+import re
 
 def maybe_hipify_code_wrapper(source_codes: str, force_hipify: bool = False) -> str:
     if torch.version.hip is None and not force_hipify:

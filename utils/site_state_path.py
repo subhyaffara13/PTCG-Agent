@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def site_state_path(
     appname: str | None = None,

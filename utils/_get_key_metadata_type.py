@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_key_metadata_type(key: Any) -> KeyType:
   """Translates the JAX key class into a proto enum."""

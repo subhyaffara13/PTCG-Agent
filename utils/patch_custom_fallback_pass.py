@@ -1,3 +1,4 @@
+from typing import Callable
 
 def patch_custom_fallback_pass(predicate: Callable[[torch.fx.Node], bool]) -> contextlib.ContextDecorator:
     """

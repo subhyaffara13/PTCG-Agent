@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def getVariableAttrs(cls: BaseTable, fmt: Optional[int] = None) -> Tuple[str]:
     """Return sequence of variable table field names (can be empty).

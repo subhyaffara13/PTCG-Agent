@@ -1,3 +1,4 @@
+import uuid
 
 def test_internal_eof_byte_to_file(all_parsers, temp_file):
     # see gh-16559

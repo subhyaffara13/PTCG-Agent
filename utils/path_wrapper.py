@@ -1,3 +1,4 @@
+import functools
 
 def path_wrapper(func):
     """Return the given infer function wrapped to handle the path.

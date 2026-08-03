@@ -1,3 +1,4 @@
+from typing import Any
 
 def _reload_prompt_in_registry(
     registry: Any, versioned_id: str, updated_prompt_spec: PromptSpec

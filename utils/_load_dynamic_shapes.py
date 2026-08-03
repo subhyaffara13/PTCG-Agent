@@ -1,3 +1,4 @@
+from typing import Any
 
 def _load_dynamic_shapes(
     spec: DynamicShapesSpec | dict[str, Any],

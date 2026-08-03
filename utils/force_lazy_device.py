@@ -1,3 +1,4 @@
+import itertools
 
 def force_lazy_device(model: fx.GraphModule):
     """

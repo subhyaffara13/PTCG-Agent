@@ -1,3 +1,4 @@
+from typing import Any
 
 def to_cutlass_scale_mode(
     scale_type: Any, swizzle_type: Any

@@ -1,3 +1,4 @@
+import os
 
 def check_modpath_has_init(path: str, mod_path: list[str]) -> bool:
     """Check there are some __init__.py all along the way."""

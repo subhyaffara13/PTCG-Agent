@@ -1,3 +1,4 @@
+import os
 
 def test_save_figure_return():
     from gi.repository import Gtk

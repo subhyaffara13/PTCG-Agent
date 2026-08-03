@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def masked(
     inner: base.GradientTransformation,

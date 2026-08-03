@@ -1,3 +1,4 @@
+from typing import Callable
 
 def ensure_key_mapped(
     values: ArrayLike | Index | Series, key: Callable | None, levels=None

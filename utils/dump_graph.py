@@ -1,3 +1,5 @@
+import os
+import sys
 
 def dump_graph(graph: Graph, stdout: TextIO | None = None) -> None:
     """Dump the graph as a JSON string to stdout.

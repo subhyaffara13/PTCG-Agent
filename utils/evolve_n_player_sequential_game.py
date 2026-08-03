@@ -1,3 +1,4 @@
+import random
 
 def evolve_n_player_sequential_game(seq_game, policy, graph, debug=False):
   state = seq_game.new_initial_state()

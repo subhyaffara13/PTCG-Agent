@@ -1,3 +1,4 @@
+import time
 
 def _worker_entry(args: tuple) -> GameResult:
     """Picklable worker entrypoint for ProcessPoolExecutor.map / submit.

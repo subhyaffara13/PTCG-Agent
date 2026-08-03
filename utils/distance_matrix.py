@@ -1,3 +1,4 @@
+import os
 
 def distance_matrix(x, y, p=2.0, threshold=1000000):
     """Compute the distance matrix.

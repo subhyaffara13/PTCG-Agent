@@ -1,3 +1,4 @@
+import itertools
 
 def reference_inputs_grid_sample(op_info, device, dtype, requires_grad, **kwargs):
 

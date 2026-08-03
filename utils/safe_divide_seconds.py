@@ -1,3 +1,4 @@
+from typing import Optional
 
 def safe_divide_seconds(
     seconds: float, denominator: float, default: Optional[float] = None

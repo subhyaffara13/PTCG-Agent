@@ -1,3 +1,4 @@
+from typing import Any
 
 def _upsample_others(ax: Axes, freq: BaseOffset, kwargs: dict[str, Any]) -> None:
     legend = ax.get_legend()

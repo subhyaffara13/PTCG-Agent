@@ -1,3 +1,4 @@
+import os
 
 def _get_write_cursor(target, h=None, comment=None, parallelism=None,
                       symmetry="general", precision=None):

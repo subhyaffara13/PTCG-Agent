@@ -1,3 +1,4 @@
+import os
 
 def renames(old: str, new: str) -> None:
     """Like os.renames(), but handles renaming across devices."""

@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def default(name: str) -> DefaultHandler:
     """A decorator which assigns a dynamic default for a Trait on a HasTraits object.

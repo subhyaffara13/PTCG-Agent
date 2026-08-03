@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _calculate_tiered_cost(
     tokens: int,

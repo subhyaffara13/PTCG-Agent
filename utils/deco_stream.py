@@ -1,3 +1,4 @@
+import functools
 
 def deco_stream(func):
     @functools.wraps(func)

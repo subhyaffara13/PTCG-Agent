@@ -1,3 +1,4 @@
+from typing import Any, List, Optional, Tuple
 
 def get_fallback_model_group(
     fallbacks: List[Any], model_group: str

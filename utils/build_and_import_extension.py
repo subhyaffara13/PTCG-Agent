@@ -1,3 +1,4 @@
+import pathlib
 
 def build_and_import_extension(
         modname, functions, *, prologue="", build_dir=None,

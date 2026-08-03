@@ -1,3 +1,4 @@
+from typing import Any
 
 def make_wrapped_dispatch(bus, g_logger):
     original_dispatch = bus.dispatch

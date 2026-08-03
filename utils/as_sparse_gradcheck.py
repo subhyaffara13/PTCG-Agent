@@ -1,3 +1,4 @@
+from typing import Any
 
 def as_sparse_gradcheck(gradcheck):
     """Decorate function, to extend gradcheck for sparse tensors.

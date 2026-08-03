@@ -1,3 +1,5 @@
+import math
+
 
 def multigammaln(a: TensorLikeType, p: int) -> TensorLikeType:
     c = 0.25 * p * (p - 1) * math.log(math.pi)

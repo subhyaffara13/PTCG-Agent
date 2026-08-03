@@ -1,3 +1,4 @@
+import os
 
 def temppath(*args, **kwargs):
     """Context manager for temporary files.

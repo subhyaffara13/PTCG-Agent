@@ -1,3 +1,4 @@
+import re
 
 def test_issue_14642():
     x = Symbol('x')

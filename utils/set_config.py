@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def set_config(**kwargs: Any) -> Callable[[Callable[..., None]], Callable[..., None]]:
     """Decorator for setting an option on the linter.

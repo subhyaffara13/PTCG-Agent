@@ -1,3 +1,4 @@
+from typing import Union
 
 def convert_to_done_step_api(
     step_returns: TerminatedTruncatedStepType | DoneStepType,

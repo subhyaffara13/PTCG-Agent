@@ -1,3 +1,4 @@
+from typing import Any
 
 def _slow_conv2d_adapter(
     shapes: tuple[Any, ...], concrete: tuple[Any, ...]

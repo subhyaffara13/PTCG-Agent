@@ -1,3 +1,4 @@
+from typing import Any
 
 def flagsaver(func: _CallableT) -> _CallableT:
   ...

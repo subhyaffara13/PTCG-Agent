@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _validate_caller_can_change_key_ownership(
     data: Optional[BaseModel],

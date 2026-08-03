@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def reduce_scatter_with_assert(
     cls,

@@ -1,3 +1,4 @@
+import sys
 
 def _patch_streams(out: TextIO) -> Iterator[None]:
     """Patch and subsequently reset a text stream."""

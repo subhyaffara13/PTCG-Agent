@@ -1,3 +1,4 @@
+import sys
 
 def _register_sigterm_with_faulthandler() -> None:
   """Have faulthandler dump stacks on SIGTERM.  Useful to diagnose timeouts."""

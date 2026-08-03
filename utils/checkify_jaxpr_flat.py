@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def checkify_jaxpr_flat(jaxpr: core.Jaxpr, consts: Sequence[core.Value],
                         enabled_errors, err_tree: PyTreeDef,

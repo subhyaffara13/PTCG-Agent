@@ -1,3 +1,4 @@
+import re
 
 def _dist_info_files(whl_zip):
     """Identify the .dist-info folder inside a wheel ZipFile."""

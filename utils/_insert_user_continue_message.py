@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _insert_user_continue_message(
     messages: List[AllMessageValues],

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def cudagraphify_impl(
     model: Callable[..., Any],

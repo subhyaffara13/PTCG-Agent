@@ -1,3 +1,4 @@
+import os
 
 def write_pkg_info(self, base_dir):
     """Write the PKG-INFO file into the release tree."""

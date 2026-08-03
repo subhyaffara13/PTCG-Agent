@@ -1,3 +1,4 @@
+from typing import Any
 
 def _collect_grad_tensors(
     output: Any, out: list[torch.Tensor], _depth: int = 0

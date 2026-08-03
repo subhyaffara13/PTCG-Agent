@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, Callable
 
 def _find_mgpu_call(block: ir.Block, args: list[ir.Value]):
   import torch  # pyrefly: ignore[missing-import]

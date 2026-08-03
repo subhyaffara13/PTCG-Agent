@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _filter_capabilities(upstream_capabilities: Any) -> Dict[str, Any]:
     """Return a capabilities dict containing only allowlisted, truthy keys."""

@@ -1,3 +1,5 @@
+import math
+
 
 def mpf_bernoulli_huge(n, prec, rnd=None):
     wp = prec + 10

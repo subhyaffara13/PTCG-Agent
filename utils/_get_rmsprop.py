@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_rmsprop(ctx: OptimizerContext) -> tuple[Any, dict[str, Any]]:
     """Get RMSprop optimizer."""

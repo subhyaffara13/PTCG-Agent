@@ -1,3 +1,4 @@
+from typing import Any
 
 def _is_tensorwise_scaling(sz: Any) -> bool:
     return (len(sz) == 0) or all(

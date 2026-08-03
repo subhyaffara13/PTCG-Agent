@@ -1,3 +1,4 @@
+from typing import Any
 
 def verify_overloadedfuncdef(
     stub: nodes.OverloadedFuncDef, runtime: MaybeMissing[Any], object_path: list[str]

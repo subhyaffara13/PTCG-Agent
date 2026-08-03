@@ -1,3 +1,4 @@
+from typing import Any
 
 def handle_observed_exception(tx: Any) -> None:
     # This is essentially exception handling code, equivalent of this pseudo code

@@ -1,3 +1,4 @@
+import itertools
 
 def test_diophantine_fuzz():
     # Fuzz test the diophantine solver

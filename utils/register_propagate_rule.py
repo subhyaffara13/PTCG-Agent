@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def register_propagate_rule(
     aten_op: torch._ops.OpOverload | Sequence[torch._ops.OpOverload],

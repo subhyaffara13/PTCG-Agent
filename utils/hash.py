@@ -1,3 +1,4 @@
+import os
 
 def hash(filename: os.PathLike, algorithm: str = "sha256") -> str:
     """

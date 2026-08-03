@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_path_deepcopy():
     # Should not raise any error

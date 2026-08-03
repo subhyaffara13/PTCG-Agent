@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def round_trip_pathlib(writer, reader, tmp_path: Path):
     """

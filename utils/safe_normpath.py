@@ -1,3 +1,4 @@
+import os
 
 def safe_normpath(path: str) -> str:
   """Normalizes path safely to get around `io.glob()` limitations."""

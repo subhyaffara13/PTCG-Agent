@@ -1,3 +1,4 @@
+import re
 
 def int_domain_regex() -> Pattern[str]:
     global _int_domain_regex_cache

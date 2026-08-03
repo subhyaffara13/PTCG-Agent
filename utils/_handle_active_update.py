@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _handle_active_update(op_type: str, value: Any, metadata: Dict[str, Any]) -> None:
     """Handle active status updates."""

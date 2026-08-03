@@ -1,3 +1,4 @@
+from typing import Optional
 
 def build_aspect_ratio_mask(
     aspect_ratios: list[list[tuple[int, int]]],

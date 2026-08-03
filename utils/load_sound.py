@@ -1,3 +1,4 @@
+import os
 
 def load_sound(file):
     """because pygame can be compiled without mixer."""

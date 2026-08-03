@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def _format_model_candidates(
     candidates: List[str],

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def populate_builtin_to_tensor_fn_map() -> None:
     global BUILTIN_TO_TENSOR_FN_MAP

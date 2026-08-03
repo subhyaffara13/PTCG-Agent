@@ -1,3 +1,4 @@
+from typing import Any
 
 def _partition_val(val: Any, spec: DTensorSpec) -> Any:
     """

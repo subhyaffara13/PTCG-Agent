@@ -1,3 +1,4 @@
+import sys
 
 def check_ast_node(name):
     "Check if the given name is that of a valid AST node."

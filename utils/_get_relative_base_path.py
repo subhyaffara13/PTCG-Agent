@@ -1,3 +1,4 @@
+import os
 
 def _get_relative_base_path(filename: str, path_to_check: str) -> list[str] | None:
     """Extracts the relative mod path of the file to import from.

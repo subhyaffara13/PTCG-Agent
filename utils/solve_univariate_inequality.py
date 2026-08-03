@@ -1,3 +1,4 @@
+from typing import Union
 
 def solve_univariate_inequality(expr, gen, relational=True, domain=S.Reals, continuous=False):
     """Solves a real univariate inequality.

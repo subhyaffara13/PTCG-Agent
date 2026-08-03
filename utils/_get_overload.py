@@ -1,3 +1,5 @@
+import math
+
 
 def _get_overload(qualified_name: str) -> torch._ops.OpOverload | None:
     """Obtain the torch op from <namespace>::<op_name>[.<overload>]"""

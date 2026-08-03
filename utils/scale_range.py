@@ -1,3 +1,5 @@
+import math
+
 
 def scale_range(vmin, vmax, n=1, threshold=100):
     dv = abs(vmax - vmin)  # > 0 as nonsingular is called before.

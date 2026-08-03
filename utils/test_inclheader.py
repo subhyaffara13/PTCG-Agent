@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_inclheader(capfd, hello_world_f90, monkeypatch):
     """Add to the include directories

@@ -1,3 +1,4 @@
+import itertools
 
 def could_be_isomorphic(G1, G2, *, properties="dtc"):
     """Returns False if graphs are definitely not isomorphic.

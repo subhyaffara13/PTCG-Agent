@@ -1,3 +1,4 @@
+import os
 
 def rename(src, dst, overwrite=False):
   if io_mode == BackendMode.DEFAULT:

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def create_and_load_iris_sqlite3(conn, iris_file: Path):
     stmt = """CREATE TABLE iris (

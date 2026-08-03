@@ -1,3 +1,4 @@
+from typing import Any
 
 def safe_repr(obj: Any) -> str:
     try:

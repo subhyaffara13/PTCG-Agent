@@ -1,3 +1,4 @@
+from typing import Any
 
 def set_cached_generic_type(
     parent: type[BaseModel],

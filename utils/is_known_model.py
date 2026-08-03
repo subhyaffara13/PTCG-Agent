@@ -1,3 +1,4 @@
+from typing import Optional
 
 def is_known_model(model: Optional[str], llm_router: Optional[Router]) -> bool:
     """

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def make_test_cls_with_patches(
     cls: type,

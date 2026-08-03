@@ -1,3 +1,4 @@
+from typing import Any
 
 def trace_frame(
     code: types.CodeType,

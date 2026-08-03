@@ -1,3 +1,4 @@
+from typing import Any
 
 def _prepare_model_fields(
     created_model: Type[GenericModel],

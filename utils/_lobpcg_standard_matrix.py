@@ -1,3 +1,4 @@
+import functools
 
 def _lobpcg_standard_matrix(
     A: jax.Array,

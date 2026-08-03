@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def custom_vjp(
   fn: Callable[..., Any],

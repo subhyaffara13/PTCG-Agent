@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def discussion_comment(
     repo_id: RepoIdArg,

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_buffered_cast_error_paths_unraisable():
     # The following gives an unraisable error. Pytest sometimes captures that

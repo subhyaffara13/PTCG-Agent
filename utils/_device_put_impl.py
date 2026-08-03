@@ -1,3 +1,4 @@
+import copy
 
 def _device_put_impl(
     x, *, device: Device | Sharding | Format | None,

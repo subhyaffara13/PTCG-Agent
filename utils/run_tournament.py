@@ -1,3 +1,4 @@
+import random
 
 def run_tournament(output_dir, num_tournaments, config, use_random_agents, debug, parallel, num_processes):
     """

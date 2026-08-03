@@ -1,3 +1,6 @@
+import os
+import math
+
 
 def _process_output_file(
     output_file: str,

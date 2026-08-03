@@ -1,3 +1,5 @@
+import time
+from typing import Any
 
 def _log_io_metrics(
     direction: types.IoDirection,

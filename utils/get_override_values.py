@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def get_override_values(config_flag) -> Dict[str, Any]:  # pylint: disable=g-bad-name
   """Returns a flat dict containing overridden values from the config flag.

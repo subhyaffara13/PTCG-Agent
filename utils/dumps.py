@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def dumps(obj, protocol=None, buffer_callback=None):
     """Serialize obj as a string of bytes allocated in memory

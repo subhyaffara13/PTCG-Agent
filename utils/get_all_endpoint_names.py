@@ -1,3 +1,4 @@
+from typing import List
 
 def get_all_endpoint_names() -> List[str]:
     """Get all endpoint names (sync and async) from config."""

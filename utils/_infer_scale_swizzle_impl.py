@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _infer_scale_swizzle_impl(
     mat_size: tuple[Any, Any],

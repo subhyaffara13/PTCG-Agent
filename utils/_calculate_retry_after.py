@@ -1,3 +1,5 @@
+import random
+from typing import Optional, Union
 
 def _calculate_retry_after(
     remaining_retries: int,

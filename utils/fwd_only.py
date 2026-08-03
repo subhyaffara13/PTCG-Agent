@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def fwd_only(
     fn: Callable[..., Any],

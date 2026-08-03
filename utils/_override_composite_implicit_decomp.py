@@ -1,3 +1,4 @@
+import functools
 
 def _override_composite_implicit_decomp(cia_ops_to_callable):
     # This function overrides CompositeImplicitAutograd decomp for

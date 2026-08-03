@@ -1,3 +1,4 @@
+from typing import Any
 
 def pallas_gpu_pad_inputs(inputs: list[Any], alignment: int = 128) -> list[Any]:
     """Flatten and pad each input JAX array to a multiple of alignment."""

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _fuse_ddp_communication(
     graph: fx.Graph, algorithm_fn: Callable[..., Any], fusion_fn: Callable[..., Any]

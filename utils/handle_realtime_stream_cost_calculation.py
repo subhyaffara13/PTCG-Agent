@@ -1,3 +1,4 @@
+from typing import Optional
 
 def handle_realtime_stream_cost_calculation(
     results: OpenAIRealtimeStreamList,

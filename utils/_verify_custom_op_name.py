@@ -1,3 +1,4 @@
+import re
 
 def _verify_custom_op_name(symbolic_name: str) -> None:
     if not re.match(r"^[a-zA-Z0-9-_]+::[a-zA-Z-_]+[a-zA-Z0-9-_]*$", symbolic_name):

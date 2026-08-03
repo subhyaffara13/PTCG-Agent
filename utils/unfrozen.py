@@ -1,3 +1,4 @@
+import sys
 
 def unfrozen(self: _T) -> _T:
   """Returns a lazy deep-copy of the dataclass."""

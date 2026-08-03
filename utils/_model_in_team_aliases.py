@@ -1,3 +1,4 @@
+from typing import Dict, Optional
 
 def _model_in_team_aliases(
     model: str, team_model_aliases: Optional[Dict[str, str]] = None

@@ -1,3 +1,5 @@
+import math
+
 
 def _shape(func, x):
     x = max(0.0, x)

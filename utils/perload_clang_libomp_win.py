@@ -1,3 +1,5 @@
+import os
+import subprocess
 
 def perload_clang_libomp_win(cpp_compiler: str, omp_name: str) -> None:
     try:

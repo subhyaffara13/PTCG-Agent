@@ -1,3 +1,4 @@
+import re
 
 def _strip_color_from_string(text: str) -> str:
     # This regular expression matches ANSI escape codes

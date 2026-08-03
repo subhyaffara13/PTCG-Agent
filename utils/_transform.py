@@ -1,3 +1,4 @@
+import re
 
 def _transform(raw_value):
     # TODO assumes a 'matrix' transform.

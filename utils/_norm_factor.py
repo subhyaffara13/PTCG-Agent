@@ -1,3 +1,5 @@
+import math
+
 
 def _norm_factor(p, k):
     """

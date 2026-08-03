@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def _resolve_credential_from_service_key(
     service_key: Optional[Union[str, dict]], cv: CredentialsValue

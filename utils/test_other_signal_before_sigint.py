@@ -1,3 +1,5 @@
+import os
+import sys
 
 def test_other_signal_before_sigint(env, target, kwargs, request):
     backend = env.get("MPLBACKEND")

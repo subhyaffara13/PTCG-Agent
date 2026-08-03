@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, Optional
 
 def _deserialize_json_dict(data: Any) -> Optional[Dict[str, str]]:
     """

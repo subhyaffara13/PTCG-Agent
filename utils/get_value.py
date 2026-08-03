@@ -1,3 +1,5 @@
+import functools
+from typing import Any
 
 def get_value(config_path: str, config: Any):
   """Gets value of a single field.

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def is_importable(module_name: str, module_path: Path) -> bool:
     """

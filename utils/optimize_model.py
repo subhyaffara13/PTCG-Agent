@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def optimize_model(model_path: Path, opt_model_path: Path):
     """

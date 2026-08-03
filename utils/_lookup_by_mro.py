@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lookup_by_mro(
     registry: dict[type[Any], T], candidate_type: type[Any]

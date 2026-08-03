@@ -1,3 +1,4 @@
+from typing import Dict
 
 def _load_beta_headers_config() -> Dict:
     """

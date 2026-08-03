@@ -1,3 +1,4 @@
+from typing import Any
 
 def get_required_world_size(obj: Any, default: int) -> int:
     """

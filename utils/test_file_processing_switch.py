@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+
 
 def test_file_processing_switch(capfd, hello_world_f90, retreal_f77,
                                 monkeypatch):

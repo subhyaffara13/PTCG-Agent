@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_include_package_data_in_setuppy(tmp_path):
     """Builds with ``pyproject.toml`` should consider ``include_package_data`` set in

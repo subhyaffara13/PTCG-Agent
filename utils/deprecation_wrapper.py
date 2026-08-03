@@ -1,3 +1,4 @@
+import logging
 
 def deprecation_wrapper(new_fn, old_name, new_name):
   """Allows deprecated functions to continue running, with a warning logged."""

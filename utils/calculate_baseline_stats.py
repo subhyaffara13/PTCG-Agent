@@ -1,3 +1,6 @@
+from typing import Tuple
+import math
+
 
 def calculate_baseline_stats(history: list) -> Tuple[float, float]:
     if not history:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def hash_file(path: str, blocksize: int = 1 << 20) -> tuple[Any, int]:
     """Return (hash, length) for path using hashlib.sha256()"""

@@ -1,3 +1,5 @@
+import os
+import sys
 
 def may_xfail(func):
     if sys.platform.lower() == 'darwin' or os.name == 'nt':

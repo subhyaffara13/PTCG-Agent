@@ -1,3 +1,4 @@
+import copy
 
 def structured_to_unstructured(arr, dtype=None, copy=False, casting='unsafe'):
     """

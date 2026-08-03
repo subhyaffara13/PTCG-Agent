@@ -1,3 +1,4 @@
+import random
 
 def test_random_graphs():
     """Generate 5 random graphs of different types and sizes and

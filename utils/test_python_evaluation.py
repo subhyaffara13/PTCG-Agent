@@ -1,3 +1,7 @@
+import os
+import re
+import subprocess
+import sys
 
 def test_python_evaluation(testcase: DataDrivenTestCase, cache_dir: str) -> None:
     """Runs Mypy in a subprocess.

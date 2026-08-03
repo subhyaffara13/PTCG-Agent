@@ -1,3 +1,4 @@
+from typing import Any
 
 def _remove_z_mask(
     z: ArrayLike | np.ma.MaskedArray[Any, Any] | None,

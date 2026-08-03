@@ -1,3 +1,4 @@
+import itertools
 
 def log_dynamo_start(code: CodeType, skip: int = 0) -> list[str]:
     convert_frame_intern = structured.intern_string(__file__)

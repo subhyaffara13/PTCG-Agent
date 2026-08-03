@@ -1,3 +1,6 @@
+import random
+import math
+
 
 def orthogonal(
     module: Module,

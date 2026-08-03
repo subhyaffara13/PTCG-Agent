@@ -1,3 +1,4 @@
+from typing import Dict, List
 
 def on_deck_search(prize_tracker, hand: List[str], discard: List[str], board: List[str],
                    deck_contents: List[str], deck_remaining: int) -> Dict[int, int]:

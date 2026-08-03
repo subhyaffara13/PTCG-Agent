@@ -1,3 +1,4 @@
+import random
 
 def test_add():
     per = SeqPer((1, 2), (n, 0, oo))

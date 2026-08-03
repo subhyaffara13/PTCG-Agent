@@ -1,3 +1,6 @@
+from pathlib import Path
+from utils.write_validation_log import write_validation_log
+
 
 def handle_validation_failure(report: dict, check_num: int, reason: str, log_file: Path) -> dict:
     report.update({"all_passed": False, "promoted": False, "failed_check": f"check_{check_num}", "reason": reason})

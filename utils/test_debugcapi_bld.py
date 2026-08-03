@@ -1,3 +1,7 @@
+import subprocess
+import sys
+from pathlib import Path
+
 
 def test_debugcapi_bld(hello_world_f90, monkeypatch):
     """Ensures that debugging wrappers work

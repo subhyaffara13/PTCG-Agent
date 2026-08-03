@@ -1,3 +1,4 @@
+from typing import Optional
 
 def assert_gpu_available(backend: Optional[str] = None) -> None:
   """Checks that at least one GPU device is available.

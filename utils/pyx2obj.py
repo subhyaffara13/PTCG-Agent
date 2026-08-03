@@ -1,3 +1,4 @@
+import os
 
 def pyx2obj(pyxpath, objpath=None, destdir=None, cwd=None,
             include_dirs=None, cy_kwargs=None, cplus=None, **kwargs):

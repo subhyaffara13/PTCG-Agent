@@ -1,3 +1,6 @@
+import subprocess
+from pathlib import Path
+
 
 def exec_ssh(
     destination: str, *, port: int | None = None, identity_file: Path | None = None, dry_run: bool = False

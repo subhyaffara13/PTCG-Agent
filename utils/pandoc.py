@@ -1,3 +1,4 @@
+import subprocess
 
 def pandoc(args, filein=None, fileout=None):
     """Execute pandoc with the given arguments"""

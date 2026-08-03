@@ -1,3 +1,4 @@
+from typing import Any
 
 def display(segments: Iterable[Segment], text: str) -> None:
     """Render segments to Jupyter."""

@@ -1,3 +1,4 @@
+import sys
 
 def _clear_parent_module_attr(module_name: str) -> None:
   """Remove parent reference (e.g. `path.to.child` -> `path.to`."""

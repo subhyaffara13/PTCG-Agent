@@ -1,3 +1,5 @@
+import os
+from typing import Optional
 
 def get_redis_connection_pool(
     **env_overrides,

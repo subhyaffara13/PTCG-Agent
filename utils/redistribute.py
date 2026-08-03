@@ -1,3 +1,4 @@
+import copy
 
 def redistribute(
     dtensor_input,

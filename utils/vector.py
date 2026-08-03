@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def vector(
     *shape,

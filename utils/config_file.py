@@ -1,3 +1,4 @@
+import os
 
 def config_file(kind="local"):
     """Get the filename of the distutils, local, global, or per-user config

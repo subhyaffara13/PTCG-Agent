@@ -1,3 +1,4 @@
+from typing import Any
 
 def check_offset_array(offsets: Any) -> None:
     if not isinstance(offsets, np.ndarray):

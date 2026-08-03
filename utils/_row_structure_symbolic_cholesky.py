@@ -1,3 +1,4 @@
+import copy
 
 def _row_structure_symbolic_cholesky(M):
     """Symbolic cholesky factorization, for pre-determination of the

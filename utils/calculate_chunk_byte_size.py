@@ -1,3 +1,5 @@
+import math
+
 
 def calculate_chunk_byte_size(
     write_shape: Shape,

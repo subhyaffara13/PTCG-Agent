@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def test_twin_logscale(fig_test, fig_ref, twin):
     twin_func = f'twin{twin}'  # test twinx or twiny

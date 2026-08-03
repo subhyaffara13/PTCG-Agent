@@ -1,3 +1,5 @@
+import math
+
 
 def _divisor_sigma(n:int, k:int=1) -> int:
     r""" Calculate the divisor function `\sigma_k(n)` for positive integer n

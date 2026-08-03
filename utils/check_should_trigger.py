@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def check_should_trigger(
     board_summary: Dict[str, Any],

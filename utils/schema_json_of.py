@@ -1,3 +1,5 @@
+import json
+from typing import Any, Optional
 
 def schema_json_of(
     type_: Any,

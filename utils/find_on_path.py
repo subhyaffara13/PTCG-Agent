@@ -1,3 +1,4 @@
+import os
 
 def find_on_path(importer: object | None, path_item, only=False):
     """Yield distributions accessible on a sys.path directory"""

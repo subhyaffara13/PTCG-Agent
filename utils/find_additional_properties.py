@@ -1,3 +1,4 @@
+import re
 
 def find_additional_properties(instance, schema):
     """

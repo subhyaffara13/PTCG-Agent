@@ -1,3 +1,4 @@
+import copy
 
 def _flatten_sharded_tensors(state_dict: STATE_DICT_TYPE) -> STATE_DICT_TYPE:
     r"""

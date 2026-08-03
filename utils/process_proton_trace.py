@@ -1,3 +1,4 @@
+import os
 
 def process_proton_trace(
     trace_path: str,

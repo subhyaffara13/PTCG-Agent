@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_access_token_from_file(path):
     if not path:

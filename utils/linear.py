@@ -1,3 +1,4 @@
+from typing import Optional
 
 def linear(x, weight, bias):
     return x @ weight.T + bias

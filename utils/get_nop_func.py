@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable
 
 def get_nop_func() -> Callable[
     [torch.fx.GraphModule, list[torch.Tensor]], Callable[..., Any]

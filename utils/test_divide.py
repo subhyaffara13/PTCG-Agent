@@ -1,3 +1,5 @@
+import math
+
 
 def test_divide(a_shape, b_shape):
     rng = np.random.default_rng(23409823)

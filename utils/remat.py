@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def remat(fun: Callable, *, prevent_cse: bool = True,
           policy: Callable[..., bool] | None = None,

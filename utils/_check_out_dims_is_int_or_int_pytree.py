@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def _check_out_dims_is_int_or_int_pytree(
     out_dims: out_dims_t, func: Callable[..., Any]

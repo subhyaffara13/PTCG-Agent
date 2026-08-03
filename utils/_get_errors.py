@@ -1,3 +1,4 @@
+from typing import Any
 
 def _get_errors(
     nbdict: Any, version: int, version_minor: int, relax_add_props: bool, *args: Any

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _prepare_azure_extra_body(
     extra_body: Optional[Dict[str, Any]],

@@ -1,3 +1,4 @@
+import os
 
 def setup_torch_model(args, location, auth, torch_dtype=torch.float32, device=None):
     world_size = get_size()

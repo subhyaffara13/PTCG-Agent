@@ -1,3 +1,4 @@
+from typing import Any
 
 def _find_loss_output(mod: torch.nn.Module, g: fx.Graph, output_loss_value_spec):
     output_nodes = [n for n in g.nodes if n.op == "output"]

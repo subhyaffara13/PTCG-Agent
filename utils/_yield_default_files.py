@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _yield_default_files() -> Iterator[Path]:
     """Iterate over the default config file names and see if they exist."""

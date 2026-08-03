@@ -1,3 +1,4 @@
+from typing import Optional, Tuple
 
 def buildColrV1(
     colorGlyphs: _ColorGlyphsDict,

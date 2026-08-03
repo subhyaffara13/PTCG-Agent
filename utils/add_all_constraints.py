@@ -1,3 +1,5 @@
+import itertools
+from typing import Any, List
 
 def add_all_constraints(
     game: coalitional_game.CoalitionalGame,

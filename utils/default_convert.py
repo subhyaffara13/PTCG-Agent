@@ -1,3 +1,4 @@
+import copy
 
 def default_convert(data):
     r"""

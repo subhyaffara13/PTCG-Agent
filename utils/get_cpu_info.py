@@ -1,3 +1,4 @@
+import json
 
 def get_cpu_info(run_lambda):
     rc, out, err = 0, "", ""

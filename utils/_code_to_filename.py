@@ -1,3 +1,4 @@
+import re
 
 def _code_to_filename(code: types.CodeType) -> str | None:
   """Returns the canonicalized filename of a code object.

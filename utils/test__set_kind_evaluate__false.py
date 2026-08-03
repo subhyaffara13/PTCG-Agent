@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_SetKind_evaluate_False():
     U = lambda *args: Union(*args, evaluate=False)

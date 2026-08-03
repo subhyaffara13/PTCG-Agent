@@ -1,3 +1,4 @@
+from typing import Callable
 
 def make_array_from_callback(
     shape: Shape, sharding: Sharding | Format,

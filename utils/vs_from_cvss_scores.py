@@ -1,3 +1,4 @@
+from typing import Union
 
 def vs_from_cvss_scores(scores: Union[tuple[float, ...], float, None]) -> VulnerabilitySeverity:
     """

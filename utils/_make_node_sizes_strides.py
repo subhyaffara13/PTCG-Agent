@@ -1,3 +1,6 @@
+import itertools
+import sys
+from typing import Callable
 
 def _make_node_sizes_strides(method: str, func: Callable[..., sympy.Basic]) -> None:
     # NB: don't LRU cache, lots of arguments

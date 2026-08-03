@@ -1,3 +1,4 @@
+from typing import Callable
 
 def partial_eval_jaxpr_stateful(
     jaxpr: Jaxpr,

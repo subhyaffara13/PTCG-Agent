@@ -1,3 +1,4 @@
+from typing import Any
 
 def torch_to_refs_map() -> dict[Any, Any]:
     """

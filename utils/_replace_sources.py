@@ -1,3 +1,4 @@
+from typing import Any
 
 def _replace_sources(result_str: str, flat_input_paths: list[Any]):
     """

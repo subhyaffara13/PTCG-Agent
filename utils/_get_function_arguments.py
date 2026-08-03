@@ -1,3 +1,4 @@
+import json
 
 def _get_function_arguments(function: FunctionDefinition) -> dict:
     """Helper to safely get and parse function arguments."""

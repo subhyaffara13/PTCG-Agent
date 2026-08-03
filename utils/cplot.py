@@ -1,3 +1,4 @@
+import re
 
 def cplot(ctx, f, re=[-5,5], im=[-5,5], points=2000, color=None,
     verbose=False, file=None, dpi=None, axes=None):

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _convert_option_to_argument(
     opt: str, optdict: dict[str, Any]

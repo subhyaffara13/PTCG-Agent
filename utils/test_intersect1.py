@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_intersect1():
     assert all(S.Integers.intersection(i) is i for i in

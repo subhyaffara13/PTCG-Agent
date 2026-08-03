@@ -1,3 +1,4 @@
+from typing import Any, Callable, Union
 
 def _get_default_string(
     obj: Union["TyperArgument", "TyperOption"],

@@ -1,3 +1,4 @@
+import itertools
 
 def makepairs(x, y):
     """Helper function to create an array of pairs of x and y."""

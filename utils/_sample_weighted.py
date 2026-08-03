@@ -1,3 +1,4 @@
+import random
 
 def _sample_weighted(iterator, k, weights, strict):
     # Implementation of "A-ExpJ" from the 2006 paper by Efraimidis et al. :

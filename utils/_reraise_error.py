@@ -1,3 +1,4 @@
+import functools
 
 def _reraise_error(fn: _T) -> _T:
   @functools.wraps(fn)

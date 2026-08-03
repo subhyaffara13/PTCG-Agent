@@ -1,3 +1,5 @@
+import os
+import sys
 
 def raise_on_not_writable_file(filename: str) -> None:
     """

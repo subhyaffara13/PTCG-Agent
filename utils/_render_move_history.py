@@ -1,3 +1,4 @@
+from typing import Any
 
 def _render_move_history(history: Any) -> str:
     """Render the per-board move log; arena-style annotated lines."""

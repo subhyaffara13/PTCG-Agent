@@ -1,3 +1,5 @@
+import math
+
 
 def try_cluster_cancel_lowering(
     ctx: lowering.LoweringRuleContext,

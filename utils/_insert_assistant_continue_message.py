@@ -1,3 +1,4 @@
+from typing import List, Optional, Union
 
 def _insert_assistant_continue_message(
     messages: List[AllMessageValues],

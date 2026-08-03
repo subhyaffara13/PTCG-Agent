@@ -1,3 +1,6 @@
+import copy
+import os
+import re
 
 def analyzeline(m, case, line):
     """

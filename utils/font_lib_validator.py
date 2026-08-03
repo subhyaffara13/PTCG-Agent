@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def fontLibValidator(value: Any) -> tuple[bool, Optional[str]]:
     """

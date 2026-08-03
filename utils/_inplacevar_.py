@@ -1,3 +1,4 @@
+from typing import Any
 
 def _inplacevar_(op: str, x: Any, y: Any) -> Any:
     # RestrictedPython rewrites ``x += 1`` on a simple name into

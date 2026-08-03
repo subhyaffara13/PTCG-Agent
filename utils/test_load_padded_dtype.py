@@ -1,3 +1,4 @@
+import os
 
 def test_load_padded_dtype(tmpdir, dt):
     arr = np.zeros(3, dt)

@@ -1,3 +1,4 @@
+import sys
 
 def render_diff_range(
     ranges: list[tuple[int, int]],

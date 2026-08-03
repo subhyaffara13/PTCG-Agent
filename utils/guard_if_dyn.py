@@ -1,3 +1,4 @@
+from typing import Any
 
 def guard_if_dyn(arg: Any) -> Any:
     from .variables import VariableTracker

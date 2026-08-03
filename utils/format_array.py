@@ -1,3 +1,4 @@
+from typing import Callable
 
 def format_array(
     values: ArrayLike,

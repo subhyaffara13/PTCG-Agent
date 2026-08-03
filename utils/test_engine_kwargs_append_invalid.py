@@ -1,3 +1,4 @@
+import re
 
 def test_engine_kwargs_append_invalid(tmp_excel):
     # GH 43445

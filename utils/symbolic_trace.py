@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def symbolic_trace(
     root: torch.nn.Module | Callable[..., Any],

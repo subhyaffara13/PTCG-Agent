@@ -1,3 +1,7 @@
+import os
+import time
+from pathlib import Path
+
 
 def upload_large_folder_internal(
     api: "HfApi",

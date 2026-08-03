@@ -1,3 +1,5 @@
+import sys
+from typing import Any, Optional
 
 def _check_finalvar(v: Optional[Type[Any]]) -> bool:
     """

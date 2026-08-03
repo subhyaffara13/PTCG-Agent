@@ -1,3 +1,4 @@
+from typing import Callable
 
 def validate_udf(func: Callable) -> None:
     """

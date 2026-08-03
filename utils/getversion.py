@@ -1,3 +1,4 @@
+from typing import Union
 
 def getversion(md: Union[MultiDict[object], MultiDictProxy[object]]) -> int:
     if isinstance(md, MultiDictProxy):

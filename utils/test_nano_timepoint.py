@@ -1,3 +1,4 @@
+import time
 
 def test_nano_timepoint():
     time = datetime.datetime.now()

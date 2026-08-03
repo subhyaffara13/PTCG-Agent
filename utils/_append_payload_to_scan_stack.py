@@ -1,3 +1,4 @@
+from typing import Any
 
 def _append_payload_to_scan_stack(
     payload_stack: list[tuple[Any, int]],

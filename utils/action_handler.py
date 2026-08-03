@@ -1,3 +1,4 @@
+from typing import Any
 
 def action_handler(args: Any) -> str | dict[str, Any]:
     try:

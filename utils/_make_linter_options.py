@@ -1,3 +1,5 @@
+import re
+import sys
 
 def _make_linter_options(linter: PyLinter) -> Options:
     """Return the options used in a PyLinter class."""

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def quarto(args, filein=None):
     """Execute quarto with the given arguments"""

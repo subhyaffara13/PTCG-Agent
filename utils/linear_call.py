@@ -1,3 +1,4 @@
+from typing import Callable
 
 def linear_call(fun: Callable,
                 fun_transpose: Callable, residual_args,

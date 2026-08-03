@@ -1,3 +1,5 @@
+import json
+from typing import Any
 
 def _parse_state(observation: Mapping[str, Any]) -> dict[str, Any]:
     """Parse the proxy's JSON observation, returning ``{}`` on any failure."""

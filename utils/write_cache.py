@@ -1,3 +1,4 @@
+import os
 
 def write_cache(
     id: str,

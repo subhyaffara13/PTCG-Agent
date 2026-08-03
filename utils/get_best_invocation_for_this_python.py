@@ -1,3 +1,5 @@
+import os
+import sys
 
 def get_best_invocation_for_this_python() -> str:
     """Try to figure out the best way to invoke the current Python."""

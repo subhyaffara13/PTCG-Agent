@@ -1,3 +1,4 @@
+import subprocess
 
 def invoke_uninstall(path, *, dependency_group=None, **kwargs):
     try:

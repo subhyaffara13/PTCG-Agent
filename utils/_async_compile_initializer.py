@@ -1,3 +1,4 @@
+import os
 
 def _async_compile_initializer(orig_ppid: int) -> None:
     import torch._C

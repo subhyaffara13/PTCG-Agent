@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def get_assistant_message_block_or_continue_message(
     message: ChatCompletionAssistantMessage,

@@ -1,3 +1,4 @@
+import copy
 
 def test_Permutation():
     import_stmt = "from sympy.combinatorics import Permutation"

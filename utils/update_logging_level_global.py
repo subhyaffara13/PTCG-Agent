@@ -1,3 +1,4 @@
+import logging
 
 def update_logging_level_global(logging_level: str | None) -> None:
   # remove previous handlers

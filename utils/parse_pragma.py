@@ -1,3 +1,4 @@
+import re
 
 def parse_pragma(pylint_pragma: str) -> Generator[PragmaRepresenter]:
     action: str | None = None

@@ -1,3 +1,8 @@
+import functools
+import itertools
+from typing import Any
+import math
+
 
 def lower_jaxpr_to_module(
     module_name: str,

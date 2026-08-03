@@ -1,3 +1,4 @@
+from typing import Any
 
 def _lower_static_weighted_ref_functional(
     model: GraphModule, qconfig_map: dict[str, QConfigAny]

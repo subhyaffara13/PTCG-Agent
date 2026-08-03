@@ -1,3 +1,4 @@
+from typing import Any
 
 def _run_state_jvp(primals: Sequence[Any], tangents: Sequence[Any], *,
                    jaxpr: core.Jaxpr, which_linear: tuple[bool, ...],

@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def populate_from_public_api(
     module: types.ModuleType,

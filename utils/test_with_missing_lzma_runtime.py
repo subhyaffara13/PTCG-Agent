@@ -1,3 +1,5 @@
+import subprocess
+import sys
 
 def test_with_missing_lzma_runtime():
     """Tests if ModuleNotFoundError is hit when calling lzma without

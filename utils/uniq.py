@@ -1,3 +1,4 @@
+import itertools
 
 def uniq(container):
     """

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def open_local(
     url: str | list[str] | Path | list[Path],

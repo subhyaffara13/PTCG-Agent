@@ -1,3 +1,4 @@
+from typing import Optional
 
 def _verify_param_shape_across_processes(
     process_group: dist.ProcessGroup,

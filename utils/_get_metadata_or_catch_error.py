@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def _get_metadata_or_catch_error(
     *,

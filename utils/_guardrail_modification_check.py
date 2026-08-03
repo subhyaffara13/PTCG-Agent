@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _guardrail_modification_check(
     request_body: dict, team_object: Optional[LiteLLM_TeamTable]

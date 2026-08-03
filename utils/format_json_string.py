@@ -1,3 +1,4 @@
+import json
 
 def format_json_string(s: str) -> str:
     """Attempts to pretty-print a JSON string or a markdown-fenced JSON string."""

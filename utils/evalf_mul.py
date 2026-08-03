@@ -1,3 +1,4 @@
+import re
 
 def evalf_mul(v: 'Mul', prec: int, options: OPT_DICT) -> TMP_RES:
     res = pure_complex(v)

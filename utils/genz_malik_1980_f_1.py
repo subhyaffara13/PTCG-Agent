@@ -1,3 +1,5 @@
+import math
+
 
 def genz_malik_1980_f_1(x, r, alphas, xp):
     r"""

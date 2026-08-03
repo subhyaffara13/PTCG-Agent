@@ -1,3 +1,4 @@
+import re
 
 def evalf_trig(v: Expr, prec: int, options: OPT_DICT) -> TMP_RES:
     """

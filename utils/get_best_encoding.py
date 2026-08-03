@@ -1,3 +1,4 @@
+import sys
 
 def get_best_encoding(stream: t.IO[t.Any]) -> str:
     """Returns the default stream encoding if not found."""

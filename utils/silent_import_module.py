@@ -1,3 +1,4 @@
+import os
 
 def silent_import_module(module_name: str) -> types.ModuleType:
     with open(os.devnull, "w") as devnull:

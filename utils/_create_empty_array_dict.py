@@ -1,3 +1,4 @@
+from typing import Any, Dict
 
 def _create_empty_array_dict(space: Dict, n: int = 1, fn=np.zeros) -> dict[str, Any]:
     return {

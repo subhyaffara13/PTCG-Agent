@@ -1,3 +1,4 @@
+from typing import Any, Callable, Union
 
 def _code_cache(fn: Callable[..., Any]) -> Callable[..., Any]:
     def _(

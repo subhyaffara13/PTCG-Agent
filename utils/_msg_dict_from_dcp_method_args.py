@@ -1,3 +1,4 @@
+from typing import Any
 
 def _msg_dict_from_dcp_method_args(*args, **kwargs) -> dict[str, Any]:
     """

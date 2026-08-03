@@ -1,3 +1,4 @@
+from typing import Any
 
 def isDictEnough(value: Any) -> bool:
     """

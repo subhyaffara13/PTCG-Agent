@@ -1,3 +1,4 @@
+import sys
 
 def test_import_lazy_import(name):
     """Make sure we can actually use the modules we lazy load.

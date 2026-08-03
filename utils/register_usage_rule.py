@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def register_usage_rule(
     prim: core.Primitive,

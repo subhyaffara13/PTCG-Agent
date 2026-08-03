@@ -1,3 +1,4 @@
+from typing import Optional
 
 def parallel_to_aec(
     par_env: ParallelEnv[AgentID, ObsType, Optional[ActionType]]

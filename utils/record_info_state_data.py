@@ -1,3 +1,4 @@
+from typing import Callable, Union
 
 def record_info_state_data(
     state: pyspiel.State,

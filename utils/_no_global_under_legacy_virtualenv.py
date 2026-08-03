@@ -1,3 +1,4 @@
+import os
 
 def _no_global_under_legacy_virtualenv() -> bool:
     """Check if "no-global-site-packages.txt" exists beside site.py

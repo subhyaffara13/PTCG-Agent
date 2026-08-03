@@ -1,3 +1,4 @@
+from typing import Any
 
 def csv_io_kwargs(mode: str) -> dict[str, Any]:
     """Return keyword arguments to properly open a CSV file

@@ -1,3 +1,4 @@
+from typing import Any
 
 def _format_import_statement(name: str, obj: Any, importer: Importer) -> str:
     if name in _custom_builtins:

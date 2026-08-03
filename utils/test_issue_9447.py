@@ -1,3 +1,4 @@
+from typing import Union
 
 def test_issue_9447():
     a = Interval(0, 1) + Interval(2, 3)

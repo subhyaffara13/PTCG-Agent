@@ -1,3 +1,4 @@
+import re
 
 def module_from_path(path: str) -> str:
     path = re.sub(r"\.pyi?$", "", path)

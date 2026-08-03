@@ -1,3 +1,7 @@
+import itertools
+import logging
+import math
+
 
 def sym(pt):
   """Symmetrize stack of payoff tensors (stacked along first dimension).

@@ -1,3 +1,4 @@
+import sys
 
 def fail(msg: str, stderr: TextIO, options: Options) -> NoReturn:
     """Fail with a serious error."""

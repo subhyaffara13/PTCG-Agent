@@ -1,3 +1,4 @@
+from typing import Any
 
 def _validate_outputs_match(
     fake_output: Any,

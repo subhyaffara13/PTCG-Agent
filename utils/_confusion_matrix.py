@@ -1,3 +1,5 @@
+import time
+from typing import List
 
 def _confusion_matrix(checker, cases: List[dict], label: str):
     """Run all cases, print confusion matrix, save results JSON."""

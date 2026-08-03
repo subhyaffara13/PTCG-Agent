@@ -1,3 +1,5 @@
+import math
+
 
 def _sympy_int_to_int(val: sympy.Expr, adjust: str) -> int | None:
     # Convert simple sympy Integers into concrete int

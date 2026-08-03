@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 
 def _get_combined_custom_metadata_from_standard_logging_payload(
     standard_logging_payload: Optional[dict],

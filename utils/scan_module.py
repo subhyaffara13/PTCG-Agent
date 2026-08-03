@@ -1,3 +1,4 @@
+import os
 
 def scan_module(egg_dir, base, name, stubs):
     """Check whether module possibly uses unsafe-for-zipfile stuff"""

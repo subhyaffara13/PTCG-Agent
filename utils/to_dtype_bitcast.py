@@ -1,3 +1,4 @@
+import copy
 
 def to_dtype_bitcast(x: TensorBox, dtype: torch.dtype, *, copy=False):
     x_dtype = x.get_dtype()

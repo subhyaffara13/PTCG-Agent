@@ -1,3 +1,4 @@
+import os
 
 def _has_init(directory: str) -> str | None:
     """If the given directory has a valid __init__ file, return its path,

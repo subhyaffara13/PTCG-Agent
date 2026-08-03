@@ -1,3 +1,4 @@
+from typing import Any
 
 def _exec_with_source(src: str, globals: dict[str, Any], co_fields=None):
     key = _loader.cache(src, globals, co_fields)

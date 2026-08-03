@@ -1,3 +1,4 @@
+import pathlib
 
 def _get_preamble():
     """Prepare a LaTeX preamble based on the rcParams configuration."""

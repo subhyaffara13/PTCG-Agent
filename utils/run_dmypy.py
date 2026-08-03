@@ -1,3 +1,4 @@
+import sys
 
 def run_dmypy(args: list[str]) -> tuple[str, str, int]:
     from mypy.dmypy.client import main

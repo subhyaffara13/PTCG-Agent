@@ -1,3 +1,6 @@
+from typing import List
+from pathlib import Path
+
 
 def _get_input_hash(file_list: List[str]) -> str:
     """Computes a hash of the input files (modification times + size).

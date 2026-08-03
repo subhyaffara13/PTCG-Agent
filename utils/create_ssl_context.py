@@ -1,3 +1,4 @@
+import os
 
 def create_ssl_context(
     verify: ssl.SSLContext | str | bool = True,

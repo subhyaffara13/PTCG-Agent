@@ -1,3 +1,4 @@
+from typing import Any, Callable
 
 def maybe_warning_due_to_dynamic_shape(
     fn_cache: dict[tuple[int, ...], Callable[..., Any]],

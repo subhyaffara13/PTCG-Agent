@@ -1,3 +1,4 @@
+from typing import Any
 
 def lower_jaxpr_into_pipelined_module(
     lowering_context: mlir.LoweringRuleContext,

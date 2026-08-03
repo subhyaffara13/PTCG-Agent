@@ -1,3 +1,4 @@
+from typing import Dict, List, Optional
 
 def test_optimizer_registration() -> None:
     def custom_optimizer(

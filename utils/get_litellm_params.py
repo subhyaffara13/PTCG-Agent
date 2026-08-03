@@ -1,3 +1,4 @@
+from typing import Optional
 
 def get_litellm_params(
     api_key: Optional[str] = None,

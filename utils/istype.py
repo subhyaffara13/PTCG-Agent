@@ -1,3 +1,4 @@
+from typing import Any
 
 def istype(obj: object, allowed_types: type[T]) -> TypeIs[T]: ...
 

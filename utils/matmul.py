@@ -1,3 +1,4 @@
+import functools
 
 def matmul(A: Tensor | None, B: Tensor) -> Tensor:
     """Multiply two matrices.

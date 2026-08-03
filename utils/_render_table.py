@@ -1,3 +1,4 @@
+from typing import Any
 
 def _render_table(
   table: Table,

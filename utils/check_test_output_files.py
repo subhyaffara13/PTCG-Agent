@@ -1,3 +1,4 @@
+import os
 
 def check_test_output_files(
     testcase: DataDrivenTestCase, step: int, strip_prefix: str = ""

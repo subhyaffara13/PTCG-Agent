@@ -1,3 +1,4 @@
+from typing import Any
 
 def _late_cache_key(origin: type[BaseModel], args: tuple[Any, ...], typevar_values: Any) -> GenericTypesCacheKey:
     """This is intended for use later in the process of creating a new type, when we have more information

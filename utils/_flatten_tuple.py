@@ -1,3 +1,4 @@
+from typing import Any, Tuple, Union
 
 def _flatten_tuple(space: Tuple, x: tuple[Any, ...]) -> tuple[Any, ...] | NDArray[Any]:
     if space.is_np_flattenable:

@@ -1,3 +1,4 @@
+from typing import Any
 
 def tree_add(tree_x: Any, tree_y: Any, *other_trees: Any) -> Any:
   r"""Add two (or more) pytrees.

@@ -1,3 +1,4 @@
+from typing import Any
 
 def zip_arguments(
     schema: torch.FunctionSchema, args: tuple[Any, ...], kwargs: dict[str, Any]

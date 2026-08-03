@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 def _get_runtime_id_across_restarts(
     previous_runtime_to_dist_id: Optional[List[int]],

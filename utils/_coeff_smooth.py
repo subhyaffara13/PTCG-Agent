@@ -1,3 +1,5 @@
+import math
+
 
 def _coeff_smooth(lam):
     xi = 1 - 96 * lam + 24 * lam * math.sqrt(3 + 144 * lam)

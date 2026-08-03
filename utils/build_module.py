@@ -1,3 +1,6 @@
+import os
+import subprocess
+import sys
 
 def build_module(name: str, doc: str | None = None) -> nodes.Module:
     """create and initialize an astroid Module node"""

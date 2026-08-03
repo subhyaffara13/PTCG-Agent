@@ -1,3 +1,5 @@
+import sys
+from typing import Any
 
 def _is_fiddle(obj: Any) -> bool:
   """Returns `True` if the object is a `fiddle` config object."""

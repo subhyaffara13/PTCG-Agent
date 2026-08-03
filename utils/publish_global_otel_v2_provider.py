@@ -1,3 +1,4 @@
+from typing import Callable
 
 def publish_global_otel_v2_provider(
     in_memory_loggers: Sequence[object],

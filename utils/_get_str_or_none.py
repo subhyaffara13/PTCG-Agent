@@ -1,3 +1,4 @@
+from typing import Any, Optional
 
 def _get_str_or_none(value: Any) -> Optional[str]:
     """Cast config value to Optional[str]."""

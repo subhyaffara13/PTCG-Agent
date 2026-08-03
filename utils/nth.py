@@ -1,3 +1,4 @@
+import itertools
 
 def nth(n, seq):
     """ The nth element in a sequence

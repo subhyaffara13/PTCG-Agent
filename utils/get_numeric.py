@@ -1,3 +1,4 @@
+from typing import Union
 
 def get_numeric(value: StrBytesIntFloat, native_expected_type: str) -> Union[None, int, float]:
     if isinstance(value, (int, float)):

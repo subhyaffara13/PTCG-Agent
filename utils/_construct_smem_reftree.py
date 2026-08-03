@@ -1,3 +1,5 @@
+import functools
+from typing import Any, Callable, Union
 
 def _construct_smem_reftree(
     cluster_shape: tuple[int, int, int],

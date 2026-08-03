@@ -1,3 +1,4 @@
+import os
 
 def _parse_editable(editable_req):
     url = editable_req

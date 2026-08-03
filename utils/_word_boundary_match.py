@@ -1,3 +1,4 @@
+import re
 
 def _word_boundary_match(text: str, token: str) -> bool:
     """True if token appears as a word in text."""

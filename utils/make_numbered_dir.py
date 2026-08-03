@@ -1,3 +1,5 @@
+from pathlib import Path
+
 
 def make_numbered_dir(root: Path, prefix: str, mode: int = 0o700) -> Path:
     """Create a directory with an increased number as suffix for the given prefix."""

@@ -1,3 +1,4 @@
+import copy
 
 def assert_multiindex_copied(copy, original):
     # Levels should be (at least, shallow copied)

@@ -1,3 +1,4 @@
+import re
 
 def filter_outputs_from_example(docstring, **kwargs):
     """

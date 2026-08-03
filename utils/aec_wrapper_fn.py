@@ -1,3 +1,4 @@
+from typing import Callable
 
 def aec_wrapper_fn(par_env_fn: Callable) -> Callable:
     """Converts class(pettingzoo.utils.env.ParallelEnv) -> class(pettingzoo.utils.env.AECEnv).

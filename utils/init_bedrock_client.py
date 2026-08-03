@@ -1,3 +1,4 @@
+from typing import Optional, Union
 
 def init_bedrock_client(
     region_name=None,

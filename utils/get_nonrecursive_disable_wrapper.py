@@ -1,3 +1,5 @@
+import functools
+from typing import Callable
 
 def get_nonrecursive_disable_wrapper(fn: Callable[_P, _R]) -> Callable[_P, _R]:
     # wrap function to get the right error message

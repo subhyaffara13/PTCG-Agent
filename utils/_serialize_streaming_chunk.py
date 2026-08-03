@@ -1,3 +1,4 @@
+from typing import Union
 
 def _serialize_streaming_chunk(chunk: BaseModel) -> Union[str, bytes]:
     if isinstance(chunk, ModelResponseStream):

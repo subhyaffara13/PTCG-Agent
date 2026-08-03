@@ -1,3 +1,5 @@
+import json
+from typing import Any, Dict, List
 
 def _save_conversation(console: Console, messages: List[Dict[str, Any]], command: str):
     """Save conversation to a file"""

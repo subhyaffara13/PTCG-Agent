@@ -1,3 +1,4 @@
+import re
 
 def collapse_line_continuation(l: list[str]) -> list[str]:
     r: list[str] = []

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 
 def _write_pyc(
     state: AssertionState,

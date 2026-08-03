@@ -1,3 +1,4 @@
+from typing import Any
 
 def _ordereddict_flatten_with_keys(
     d: OrderedDict[Any, T],

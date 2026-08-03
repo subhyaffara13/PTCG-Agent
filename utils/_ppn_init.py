@@ -1,3 +1,4 @@
+import os
 
 def _ppn_init(self, model_path, device):
     from .__getattr___actionprior_basevaluenetwork import ActionPrior

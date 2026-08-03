@@ -1,3 +1,4 @@
+import os
 
 def load_stdlib_py_versions(custom_typeshed_dir: str | None) -> StdlibVersions:
     """Return dict with minimum and maximum Python versions of stdlib modules.

@@ -1,3 +1,4 @@
+import sys
 
 def q_embedding_bag_byte_unpack_decomp(packed: torch.Tensor) -> torch.Tensor:
     def bitcast_u8_to_f32(u8: torch.Tensor) -> torch.Tensor:

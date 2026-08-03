@@ -1,3 +1,4 @@
+from typing import Any
 
 def _normalize_timestamps(
     events: list[dict[str, Any]], scale_factor: float = 1.0

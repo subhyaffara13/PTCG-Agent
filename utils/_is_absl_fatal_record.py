@@ -1,3 +1,4 @@
+import logging
 
 def _is_absl_fatal_record(log_record):
   return (log_record.levelno >= logging.FATAL and

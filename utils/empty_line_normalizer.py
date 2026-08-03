@@ -1,3 +1,4 @@
+import re
 
 def empty_line_normalizer(code: str) -> str:
     """

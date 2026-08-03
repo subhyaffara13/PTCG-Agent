@@ -1,3 +1,4 @@
+import itertools
 
 def interpose(el, seq):
     """ Introduce element between each pair of elements in seq
